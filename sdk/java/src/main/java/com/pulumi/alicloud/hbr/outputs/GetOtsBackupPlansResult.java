@@ -21,11 +21,23 @@ public final class GetOtsBackupPlansResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of OtsBackupPlan names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable String planId;
     private @Nullable String planName;
+    /**
+     * @return A list of Hbr OtsBackupPlans. Each element contains the following attributes:
+     * 
+     */
     private List<GetOtsBackupPlansPlan> plans;
+    /**
+     * @return The ID of backup vault.
+     * 
+     */
     private @Nullable String vaultId;
 
     private GetOtsBackupPlansResult() {}
@@ -42,6 +54,10 @@ public final class GetOtsBackupPlansResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of OtsBackupPlan names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -54,9 +70,17 @@ public final class GetOtsBackupPlansResult {
     public Optional<String> planName() {
         return Optional.ofNullable(this.planName);
     }
+    /**
+     * @return A list of Hbr OtsBackupPlans. Each element contains the following attributes:
+     * 
+     */
     public List<GetOtsBackupPlansPlan> plans() {
         return this.plans;
     }
+    /**
+     * @return The ID of backup vault.
+     * 
+     */
     public Optional<String> vaultId() {
         return Optional.ofNullable(this.vaultId);
     }

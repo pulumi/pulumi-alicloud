@@ -60,6 +60,9 @@ class GetServerFirewallRulesResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        Alibaba Cloud simple application server instance ID.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -70,6 +73,9 @@ class GetServerFirewallRulesResult:
     @_builtins.property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetServerFirewallRulesRuleResult']:
+        """
+        A list of Simple Application Server Firewall Rules. Each element contains the following attributes:
+        """
         return pulumi.get(self, "rules")
 
 
@@ -93,7 +99,7 @@ def get_server_firewall_rules(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Simple Application Server Firewall Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.143.0+.
+    > **NOTE:** Available since v1.143.0.
 
     ## Example Usage
 
@@ -136,7 +142,7 @@ def get_server_firewall_rules_output(ids: pulumi.Input[Optional[Optional[Sequenc
     """
     This data source provides the Simple Application Server Firewall Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.143.0+.
+    > **NOTE:** Available since v1.143.0.
 
     ## Example Usage
 

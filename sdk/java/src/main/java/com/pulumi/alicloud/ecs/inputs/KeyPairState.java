@@ -16,16 +16,32 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
 
     public static final KeyPairState Empty = new KeyPairState();
 
+    /**
+     * The creation time of the key pair.
+     * 
+     */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
+    /**
+     * @return The creation time of the key pair.
+     * 
+     */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
 
+    /**
+     * The finger print of the key pair.
+     * 
+     */
     @Import(name="fingerPrint")
     private @Nullable Output<String> fingerPrint;
 
+    /**
+     * @return The finger print of the key pair.
+     * 
+     */
     public Optional<Output<String>> fingerPrint() {
         return Optional.ofNullable(this.fingerPrint);
     }
@@ -46,7 +62,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The key pair&#39;s name. It is the only in one Alicloud account.
+     * The key pair&#39;s name. It is the only in one Alicloud account. Deprecated, use `keyPairName` instead.
      * 
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
@@ -56,7 +72,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> keyName;
 
     /**
-     * @return The key pair&#39;s name. It is the only in one Alicloud account.
+     * @return The key pair&#39;s name. It is the only in one Alicloud account. Deprecated, use `keyPairName` instead.
      * 
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
@@ -81,9 +97,17 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.keyNamePrefix);
     }
 
+    /**
+     * The key pair&#39;s name. It is the only in one Alicloud account.
+     * 
+     */
     @Import(name="keyPairName")
     private @Nullable Output<String> keyPairName;
 
+    /**
+     * @return The key pair&#39;s name. It is the only in one Alicloud account.
+     * 
+     */
     public Optional<Output<String>> keyPairName() {
         return Optional.ofNullable(this.keyPairName);
     }
@@ -120,6 +144,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A mapping of tags to assign to the resource.
+     * 
      * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      * 
      */
@@ -128,6 +153,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A mapping of tags to assign to the resource.
+     * 
      * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      * 
      */
@@ -167,20 +193,44 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
             $ = new KeyPairState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param createTime The creation time of the key pair.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
         }
 
+        /**
+         * @param createTime The creation time of the key pair.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
 
+        /**
+         * @param fingerPrint The finger print of the key pair.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fingerPrint(@Nullable Output<String> fingerPrint) {
             $.fingerPrint = fingerPrint;
             return this;
         }
 
+        /**
+         * @param fingerPrint The finger print of the key pair.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fingerPrint(String fingerPrint) {
             return fingerPrint(Output.of(fingerPrint));
         }
@@ -207,7 +257,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyName The key pair&#39;s name. It is the only in one Alicloud account.
+         * @param keyName The key pair&#39;s name. It is the only in one Alicloud account. Deprecated, use `keyPairName` instead.
          * 
          * @return builder
          * 
@@ -221,7 +271,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyName The key pair&#39;s name. It is the only in one Alicloud account.
+         * @param keyName The key pair&#39;s name. It is the only in one Alicloud account. Deprecated, use `keyPairName` instead.
          * 
          * @return builder
          * 
@@ -254,11 +304,23 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
             return keyNamePrefix(Output.of(keyNamePrefix));
         }
 
+        /**
+         * @param keyPairName The key pair&#39;s name. It is the only in one Alicloud account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyPairName(@Nullable Output<String> keyPairName) {
             $.keyPairName = keyPairName;
             return this;
         }
 
+        /**
+         * @param keyPairName The key pair&#39;s name. It is the only in one Alicloud account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyPairName(String keyPairName) {
             return keyPairName(Output.of(keyPairName));
         }
@@ -307,6 +369,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
+         * 
          * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
          * 
          * @return builder
@@ -319,6 +382,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
+         * 
          * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
          * 
          * @return builder

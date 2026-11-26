@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Sae Namespaces of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.129.0+.
+ * > **NOTE:** Available since v1.129.0.
  *
  * ## Example Usage
  *
@@ -63,14 +63,20 @@ export interface GetNamespacesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Namespace names.
+     */
     readonly names: string[];
+    /**
+     * A list of Sae Namespaces. Each element contains the following attributes:
+     */
     readonly namespaces: outputs.sae.GetNamespacesNamespace[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Sae Namespaces of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.129.0+.
+ * > **NOTE:** Available since v1.129.0.
  *
  * ## Example Usage
  *

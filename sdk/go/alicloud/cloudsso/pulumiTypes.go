@@ -1582,7 +1582,7 @@ type GetAccessAssignmentsAssignment struct {
 	PrincipalId string `pulumi:"principalId"`
 	// Cloud SSO identity name.
 	PrincipalName string `pulumi:"principalName"`
-	// Create the identity type of the access assignment, which can be a user or a user group.
+	// Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
 	PrincipalType string `pulumi:"principalType"`
 	// The ID of the target to create the resource range.
 	TargetId string `pulumi:"targetId"`
@@ -1590,7 +1590,7 @@ type GetAccessAssignmentsAssignment struct {
 	TargetName string `pulumi:"targetName"`
 	// The path name of the task target in the resource directory.
 	TargetPathName string `pulumi:"targetPathName"`
-	// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+	// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
 	TargetType string `pulumi:"targetType"`
 }
 
@@ -1618,7 +1618,7 @@ type GetAccessAssignmentsAssignmentArgs struct {
 	PrincipalId pulumi.StringInput `pulumi:"principalId"`
 	// Cloud SSO identity name.
 	PrincipalName pulumi.StringInput `pulumi:"principalName"`
-	// Create the identity type of the access assignment, which can be a user or a user group.
+	// Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
 	PrincipalType pulumi.StringInput `pulumi:"principalType"`
 	// The ID of the target to create the resource range.
 	TargetId pulumi.StringInput `pulumi:"targetId"`
@@ -1626,7 +1626,7 @@ type GetAccessAssignmentsAssignmentArgs struct {
 	TargetName pulumi.StringInput `pulumi:"targetName"`
 	// The path name of the task target in the resource directory.
 	TargetPathName pulumi.StringInput `pulumi:"targetPathName"`
-	// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+	// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
 	TargetType pulumi.StringInput `pulumi:"targetType"`
 }
 
@@ -1711,7 +1711,7 @@ func (o GetAccessAssignmentsAssignmentOutput) PrincipalName() pulumi.StringOutpu
 	return o.ApplyT(func(v GetAccessAssignmentsAssignment) string { return v.PrincipalName }).(pulumi.StringOutput)
 }
 
-// Create the identity type of the access assignment, which can be a user or a user group.
+// Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
 func (o GetAccessAssignmentsAssignmentOutput) PrincipalType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessAssignmentsAssignment) string { return v.PrincipalType }).(pulumi.StringOutput)
 }
@@ -1731,7 +1731,7 @@ func (o GetAccessAssignmentsAssignmentOutput) TargetPathName() pulumi.StringOutp
 	return o.ApplyT(func(v GetAccessAssignmentsAssignment) string { return v.TargetPathName }).(pulumi.StringOutput)
 }
 
-// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
 func (o GetAccessAssignmentsAssignmentOutput) TargetType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessAssignmentsAssignment) string { return v.TargetType }).(pulumi.StringOutput)
 }
@@ -2061,7 +2061,7 @@ func (o GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput) Index(i
 }
 
 type GetDirectoriesDirectory struct {
-	// The CreateTime of the CloudSSO directory.
+	// Saml identifies the creation time of the provider configuration.
 	CreateTime string `pulumi:"createTime"`
 	// The DirectoryId of the CloudSSO directory.
 	DirectoryId string `pulumi:"directoryId"`
@@ -2093,7 +2093,7 @@ type GetDirectoriesDirectoryInput interface {
 }
 
 type GetDirectoriesDirectoryArgs struct {
-	// The CreateTime of the CloudSSO directory.
+	// Saml identifies the creation time of the provider configuration.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The DirectoryId of the CloudSSO directory.
 	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
@@ -2164,7 +2164,7 @@ func (o GetDirectoriesDirectoryOutput) ToGetDirectoriesDirectoryOutputWithContex
 	return o
 }
 
-// The CreateTime of the CloudSSO directory.
+// Saml identifies the creation time of the provider configuration.
 func (o GetDirectoriesDirectoryOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectory) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -2602,7 +2602,7 @@ type GetGroupsGroup struct {
 	GroupName string `pulumi:"groupName"`
 	// The ID of the Group.
 	Id string `pulumi:"id"`
-	// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+	// The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
 	ProvisionType string `pulumi:"provisionType"`
 }
 
@@ -2630,7 +2630,7 @@ type GetGroupsGroupArgs struct {
 	GroupName pulumi.StringInput `pulumi:"groupName"`
 	// The ID of the Group.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+	// The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
 	ProvisionType pulumi.StringInput `pulumi:"provisionType"`
 }
 
@@ -2715,7 +2715,7 @@ func (o GetGroupsGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+// The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
 func (o GetGroupsGroupOutput) ProvisionType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.ProvisionType }).(pulumi.StringOutput)
 }
@@ -3187,9 +3187,9 @@ type GetUsersUser struct {
 	LastName string `pulumi:"lastName"`
 	// The List of MFA Device for User.
 	MfaDevices []GetUsersUserMfaDevice `pulumi:"mfaDevices"`
-	// ProvisionType.
+	// ProvisionType. Valid values: `Manual`, `Synchronized`.
 	ProvisionType string `pulumi:"provisionType"`
-	// User status. Valid values: `Enabled` and `Disabled`.
+	// The status of user. Valid values: `Disabled`, `Enabled`.
 	Status string `pulumi:"status"`
 	// The User ID of the group.
 	UserId string `pulumi:"userId"`
@@ -3227,9 +3227,9 @@ type GetUsersUserArgs struct {
 	LastName pulumi.StringInput `pulumi:"lastName"`
 	// The List of MFA Device for User.
 	MfaDevices GetUsersUserMfaDeviceArrayInput `pulumi:"mfaDevices"`
-	// ProvisionType.
+	// ProvisionType. Valid values: `Manual`, `Synchronized`.
 	ProvisionType pulumi.StringInput `pulumi:"provisionType"`
-	// User status. Valid values: `Enabled` and `Disabled`.
+	// The status of user. Valid values: `Disabled`, `Enabled`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The User ID of the group.
 	UserId pulumi.StringInput `pulumi:"userId"`
@@ -3333,12 +3333,12 @@ func (o GetUsersUserOutput) MfaDevices() GetUsersUserMfaDeviceArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []GetUsersUserMfaDevice { return v.MfaDevices }).(GetUsersUserMfaDeviceArrayOutput)
 }
 
-// ProvisionType.
+// ProvisionType. Valid values: `Manual`, `Synchronized`.
 func (o GetUsersUserOutput) ProvisionType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.ProvisionType }).(pulumi.StringOutput)
 }
 
-// User status. Valid values: `Enabled` and `Disabled`.
+// The status of user. Valid values: `Disabled`, `Enabled`.
 func (o GetUsersUserOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Status }).(pulumi.StringOutput)
 }

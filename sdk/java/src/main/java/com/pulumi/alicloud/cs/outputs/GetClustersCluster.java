@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.alicloud.cs.outputs.GetClustersClusterAutoMode;
+import com.pulumi.alicloud.cs.outputs.GetClustersClusterConnection;
 import com.pulumi.alicloud.cs.outputs.GetClustersClusterMaintenanceWindow;
 import com.pulumi.alicloud.cs.outputs.GetClustersClusterOperationPolicy;
 import com.pulumi.core.annotations.CustomType;
@@ -56,6 +57,11 @@ public final class GetClustersCluster {
      * 
      */
     private String clusterType;
+    /**
+     * @return (Available since v2.3.0) **NOTE:** This field is only available when `enableDetails` is `true`. The connection information of the cluster.
+     * 
+     */
+    private List<GetClustersClusterConnection> connections;
     /**
      * @return The current version of the cluster.
      * 
@@ -210,6 +216,13 @@ public final class GetClustersCluster {
         return this.clusterType;
     }
     /**
+     * @return (Available since v2.3.0) **NOTE:** This field is only available when `enableDetails` is `true`. The connection information of the cluster.
+     * 
+     */
+    public List<GetClustersClusterConnection> connections() {
+        return this.connections;
+    }
+    /**
      * @return The current version of the cluster.
      * 
      */
@@ -362,6 +375,7 @@ public final class GetClustersCluster {
         private String clusterName;
         private String clusterSpec;
         private String clusterType;
+        private List<GetClustersClusterConnection> connections;
         private String currentVersion;
         private Boolean deletionProtection;
         private String id;
@@ -390,6 +404,7 @@ public final class GetClustersCluster {
     	      this.clusterName = defaults.clusterName;
     	      this.clusterSpec = defaults.clusterSpec;
     	      this.clusterType = defaults.clusterType;
+    	      this.connections = defaults.connections;
     	      this.currentVersion = defaults.currentVersion;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.id = defaults.id;
@@ -458,6 +473,17 @@ public final class GetClustersCluster {
             }
             this.clusterType = clusterType;
             return this;
+        }
+        @CustomType.Setter
+        public Builder connections(List<GetClustersClusterConnection> connections) {
+            if (connections == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "connections");
+            }
+            this.connections = connections;
+            return this;
+        }
+        public Builder connections(GetClustersClusterConnection... connections) {
+            return connections(List.of(connections));
         }
         @CustomType.Setter
         public Builder currentVersion(String currentVersion) {
@@ -622,6 +648,7 @@ public final class GetClustersCluster {
             _resultValue.clusterName = clusterName;
             _resultValue.clusterSpec = clusterSpec;
             _resultValue.clusterType = clusterType;
+            _resultValue.connections = connections;
             _resultValue.currentVersion = currentVersion;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.id = id;

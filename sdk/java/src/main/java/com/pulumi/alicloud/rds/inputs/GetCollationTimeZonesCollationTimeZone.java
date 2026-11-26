@@ -15,14 +15,14 @@ public final class GetCollationTimeZonesCollationTimeZone extends com.pulumi.res
     public static final GetCollationTimeZonesCollationTimeZone Empty = new GetCollationTimeZonesCollationTimeZone();
 
     /**
-     * The code of the instance type.
+     * The description.
      * 
      */
     @Import(name="description")
     private @Nullable String description;
 
     /**
-     * @return The code of the instance type.
+     * @return The description.
      * 
      */
     public Optional<String> description() {
@@ -30,14 +30,14 @@ public final class GetCollationTimeZonesCollationTimeZone extends com.pulumi.res
     }
 
     /**
-     * The offset of the UTC time. The offset is in the following format: (UTC+&lt;i&gt;HH:mm&lt;/i&gt;).
+     * The offset of the UTC time.
      * 
      */
     @Import(name="standardTimeOffset")
     private @Nullable String standardTimeOffset;
 
     /**
-     * @return The offset of the UTC time. The offset is in the following format: (UTC+&lt;i&gt;HH:mm&lt;/i&gt;).
+     * @return The offset of the UTC time.
      * 
      */
     public Optional<String> standardTimeOffset() {
@@ -45,14 +45,14 @@ public final class GetCollationTimeZonesCollationTimeZone extends com.pulumi.res
     }
 
     /**
-     * The time zone that is available for use in ApsaraDB RDS.
+     * The time zone.
      * 
      */
     @Import(name="timeZone")
     private @Nullable String timeZone;
 
     /**
-     * @return The time zone that is available for use in ApsaraDB RDS.
+     * @return The time zone.
      * 
      */
     public Optional<String> timeZone() {
@@ -86,7 +86,7 @@ public final class GetCollationTimeZonesCollationTimeZone extends com.pulumi.res
         }
 
         /**
-         * @param description The code of the instance type.
+         * @param description The description.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class GetCollationTimeZonesCollationTimeZone extends com.pulumi.res
         }
 
         /**
-         * @param standardTimeOffset The offset of the UTC time. The offset is in the following format: (UTC+&lt;i&gt;HH:mm&lt;/i&gt;).
+         * @param standardTimeOffset The offset of the UTC time.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class GetCollationTimeZonesCollationTimeZone extends com.pulumi.res
         }
 
         /**
-         * @param timeZone The time zone that is available for use in ApsaraDB RDS.
+         * @param timeZone The time zone.
          * 
          * @return builder
          * 

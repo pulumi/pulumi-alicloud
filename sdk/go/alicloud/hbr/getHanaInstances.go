@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Hbr Hana Instances of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.178.0+.
+// > **NOTE:** Available since v1.178.0.
 //
 // ## Example Usage
 //
@@ -78,16 +78,20 @@ type GetHanaInstancesArgs struct {
 // A collection of values returned by getHanaInstances.
 type GetHanaInstancesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                     `pulumi:"id"`
-	Ids        []string                   `pulumi:"ids"`
-	Instances  []GetHanaInstancesInstance `pulumi:"instances"`
-	NameRegex  *string                    `pulumi:"nameRegex"`
-	Names      []string                   `pulumi:"names"`
-	OutputFile *string                    `pulumi:"outputFile"`
-	PageNumber *int                       `pulumi:"pageNumber"`
-	PageSize   *int                       `pulumi:"pageSize"`
-	Status     *string                    `pulumi:"status"`
-	VaultId    *string                    `pulumi:"vaultId"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Hbr Hana Instances. Each element contains the following attributes:
+	Instances []GetHanaInstancesInstance `pulumi:"instances"`
+	NameRegex *string                    `pulumi:"nameRegex"`
+	// A list of Hbr Hana Instance names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
+	// The status of the SAP HANA instance.
+	Status *string `pulumi:"status"`
+	// The ID of the backup vault.
+	VaultId *string `pulumi:"vaultId"`
 }
 
 func GetHanaInstancesOutput(ctx *pulumi.Context, args GetHanaInstancesOutputArgs, opts ...pulumi.InvokeOption) GetHanaInstancesResultOutput {
@@ -143,6 +147,7 @@ func (o GetHanaInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHanaInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Hbr Hana Instances. Each element contains the following attributes:
 func (o GetHanaInstancesResultOutput) Instances() GetHanaInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetHanaInstancesResult) []GetHanaInstancesInstance { return v.Instances }).(GetHanaInstancesInstanceArrayOutput)
 }
@@ -151,6 +156,7 @@ func (o GetHanaInstancesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHanaInstancesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Hbr Hana Instance names.
 func (o GetHanaInstancesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHanaInstancesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -167,10 +173,12 @@ func (o GetHanaInstancesResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetHanaInstancesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// The status of the SAP HANA instance.
 func (o GetHanaInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHanaInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the backup vault.
 func (o GetHanaInstancesResultOutput) VaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHanaInstancesResult) *string { return v.VaultId }).(pulumi.StringPtrOutput)
 }

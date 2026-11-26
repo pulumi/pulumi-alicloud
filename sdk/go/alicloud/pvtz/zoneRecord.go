@@ -16,6 +16,8 @@ import (
 //
 // > **NOTE:** Terraform will auto Create a Private Zone Record while it uses `pvtz.ZoneRecord` to build a Private Zone Record resource.
 //
+// > **NOTE:** Available since v1.13.0.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -33,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			zone, err := pvtz.NewZone(ctx, "zone", &pvtz.ZoneArgs{
-//				ZoneName: pulumi.String("foo.test.com"),
+//				ZoneName: pulumi.String("terraform-example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -43,6 +45,42 @@ import (
 //				Rr:     pulumi.String("www"),
 //				Type:   pulumi.String("CNAME"),
 //				Value:  pulumi.String("bbb.test.com"),
+//				Ttl:    pulumi.Int(60),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # AAAA (IPv6) Record
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/pvtz"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			zone, err := pvtz.NewZone(ctx, "zone", &pvtz.ZoneArgs{
+//				ZoneName: pulumi.String("terraform-example-aaaa.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pvtz.NewZoneRecord(ctx, "foo", &pvtz.ZoneRecordArgs{
+//				ZoneId: zone.ID(),
+//				Rr:     pulumi.String("www"),
+//				Type:   pulumi.String("AAAA"),
+//				Value:  pulumi.String("2001:db8::1"),
 //				Ttl:    pulumi.Int(60),
 //			})
 //			if err != nil {
@@ -86,8 +124,9 @@ type ZoneRecord struct {
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// The ttl of the Private Zone Record. Default to `60`.
 	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
-	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
-	Type         pulumi.StringOutput    `pulumi:"type"`
+	// The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
+	Type pulumi.StringOutput `pulumi:"type"`
+	// The user client ip of the Private Zone Record.
 	UserClientIp pulumi.StringPtrOutput `pulumi:"userClientIp"`
 	// The value of the Private Zone Record.
 	Value pulumi.StringOutput `pulumi:"value"`
@@ -154,8 +193,9 @@ type zoneRecordState struct {
 	Status *string `pulumi:"status"`
 	// The ttl of the Private Zone Record. Default to `60`.
 	Ttl *int `pulumi:"ttl"`
-	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
-	Type         *string `pulumi:"type"`
+	// The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
+	Type *string `pulumi:"type"`
+	// The user client ip of the Private Zone Record.
 	UserClientIp *string `pulumi:"userClientIp"`
 	// The value of the Private Zone Record.
 	Value *string `pulumi:"value"`
@@ -184,8 +224,9 @@ type ZoneRecordState struct {
 	Status pulumi.StringPtrInput
 	// The ttl of the Private Zone Record. Default to `60`.
 	Ttl pulumi.IntPtrInput
-	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
-	Type         pulumi.StringPtrInput
+	// The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
+	Type pulumi.StringPtrInput
+	// The user client ip of the Private Zone Record.
 	UserClientIp pulumi.StringPtrInput
 	// The value of the Private Zone Record.
 	Value pulumi.StringPtrInput
@@ -222,8 +263,9 @@ type zoneRecordArgs struct {
 	Status *string `pulumi:"status"`
 	// The ttl of the Private Zone Record. Default to `60`.
 	Ttl *int `pulumi:"ttl"`
-	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
-	Type         string  `pulumi:"type"`
+	// The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
+	Type string `pulumi:"type"`
+	// The user client ip of the Private Zone Record.
 	UserClientIp *string `pulumi:"userClientIp"`
 	// The value of the Private Zone Record.
 	Value string `pulumi:"value"`
@@ -251,8 +293,9 @@ type ZoneRecordArgs struct {
 	Status pulumi.StringPtrInput
 	// The ttl of the Private Zone Record. Default to `60`.
 	Ttl pulumi.IntPtrInput
-	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
-	Type         pulumi.StringInput
+	// The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
+	Type pulumi.StringInput
+	// The user client ip of the Private Zone Record.
 	UserClientIp pulumi.StringPtrInput
 	// The value of the Private Zone Record.
 	Value pulumi.StringInput
@@ -391,11 +434,12 @@ func (o ZoneRecordOutput) Ttl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.IntPtrOutput { return v.Ttl }).(pulumi.IntPtrOutput)
 }
 
-// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+// The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
 func (o ZoneRecordOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
+// The user client ip of the Private Zone Record.
 func (o ZoneRecordOutput) UserClientIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringPtrOutput { return v.UserClientIp }).(pulumi.StringPtrOutput)
 }

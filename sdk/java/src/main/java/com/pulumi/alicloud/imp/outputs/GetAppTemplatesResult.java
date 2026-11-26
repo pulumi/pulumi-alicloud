@@ -21,9 +21,21 @@ public final class GetAppTemplatesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of App Template names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return Application template usage status.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A list of Imp App Templates. Each element contains the following attributes:
+     * 
+     */
     private List<GetAppTemplatesTemplate> templates;
 
     private GetAppTemplatesResult() {}
@@ -40,15 +52,27 @@ public final class GetAppTemplatesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of App Template names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Application template usage status.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A list of Imp App Templates. Each element contains the following attributes:
+     * 
+     */
     public List<GetAppTemplatesTemplate> templates() {
         return this.templates;
     }

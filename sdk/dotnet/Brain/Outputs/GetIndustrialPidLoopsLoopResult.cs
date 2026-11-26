@@ -17,11 +17,17 @@ namespace Pulumi.AliCloud.Brain.Outputs
         /// The ID of the Pid Loop.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The configuration of Pid Loop.
+        /// </summary>
         public readonly string PidLoopConfiguration;
         /// <summary>
         /// The dcs type of Pid Loop.
         /// </summary>
         public readonly string PidLoopDcsType;
+        /// <summary>
+        /// The description of Pid Loop.
+        /// </summary>
         public readonly string PidLoopDesc;
         /// <summary>
         /// The ID of the Pid Loop.

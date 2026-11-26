@@ -19,7 +19,7 @@ public final class ClusterHostGroup {
      */
     private @Nullable Boolean autoRenew;
     /**
-     * @return Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+     * @return Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
      * 
      */
     private @Nullable String chargeType;
@@ -48,6 +48,10 @@ public final class ClusterHostGroup {
      * 
      */
     private @Nullable Boolean enableGracefulDecommission;
+    /**
+     * @return GPU driver.
+     * 
+     */
     private @Nullable String gpuDriver;
     /**
      * @return host group name.
@@ -99,7 +103,7 @@ public final class ClusterHostGroup {
         return Optional.ofNullable(this.autoRenew);
     }
     /**
-     * @return Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+     * @return Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
      * 
      */
     public Optional<String> chargeType() {
@@ -140,6 +144,10 @@ public final class ClusterHostGroup {
     public Optional<Boolean> enableGracefulDecommission() {
         return Optional.ofNullable(this.enableGracefulDecommission);
     }
+    /**
+     * @return GPU driver.
+     * 
+     */
     public Optional<String> gpuDriver() {
         return Optional.ofNullable(this.gpuDriver);
     }

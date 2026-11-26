@@ -62,6 +62,9 @@ class GetStocksResult:
     @_builtins.property
     @pulumi.getter
     def stocks(self) -> Sequence['outputs.GetStocksStockResult']:
+        """
+        A list of Cloud Storage Gateway Stocks. Each element contains the following attributes:
+        """
         return pulumi.get(self, "stocks")
 
 
@@ -83,7 +86,7 @@ def get_stocks(gateway_class: Optional[_builtins.str] = None,
     """
     This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.144.0+.
+    > **NOTE:** Available since v1.144.0.
 
     ## Example Usage
 
@@ -118,7 +121,7 @@ def get_stocks_output(gateway_class: pulumi.Input[Optional[Optional[_builtins.st
     """
     This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.144.0+.
+    > **NOTE:** Available since v1.144.0.
 
     ## Example Usage
 

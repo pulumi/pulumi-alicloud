@@ -92,6 +92,9 @@ class GetClustersResult:
     @_builtins.property
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the associated cluster.
+        """
         return pulumi.get(self, "cluster_name")
 
     @_builtins.property
@@ -102,11 +105,17 @@ class GetClustersResult:
     @_builtins.property
     @pulumi.getter
     def clusters(self) -> Sequence['outputs.GetClustersClusterResult']:
+        """
+        A list of Emr Clusters. Each element contains the following attributes:
+        """
         return pulumi.get(self, "clusters")
 
     @_builtins.property
     @pulumi.getter(name="createType")
     def create_type(self) -> Optional[_builtins.str]:
+        """
+        How to create a cluster.
+        """
         return pulumi.get(self, "create_type")
 
     @_builtins.property
@@ -117,6 +126,9 @@ class GetClustersResult:
     @_builtins.property
     @pulumi.getter(name="depositType")
     def deposit_type(self) -> Optional[_builtins.str]:
+        """
+        The hosting type of the cluster.
+        """
         return pulumi.get(self, "deposit_type")
 
     @_builtins.property
@@ -135,6 +147,9 @@ class GetClustersResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Cluster IDs.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -145,6 +160,9 @@ class GetClustersResult:
     @_builtins.property
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[_builtins.str]:
+        """
+        The host type of the cluster. The default is ECS.
+        """
         return pulumi.get(self, "machine_type")
 
     @_builtins.property
@@ -155,6 +173,9 @@ class GetClustersResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Cluster names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -185,11 +206,17 @@ class GetClustersResult:
     @_builtins.property
     @pulumi.getter(name="totalCount")
     def total_count(self) -> _builtins.int:
+        """
+        Total count of clusters.
+        """
         return pulumi.get(self, "total_count")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[_builtins.str]:
+        """
+        The VPC ID.
+        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -243,7 +270,7 @@ def get_clusters(cluster_name: Optional[_builtins.str] = None,
 
     > **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
 
-    > **NOTE:** Available in v1.146.0+.
+    > **NOTE:** Available since v1.146.0.
 
     ## Example Usage
 
@@ -256,7 +283,7 @@ def get_clusters(cluster_name: Optional[_builtins.str] = None,
     config = pulumi.Config()
     name = config.get("name")
     if name is None:
-        name = "tf-testAccClusters"
+        name = "tf-acc-clusters"
     default = alicloud.resourcemanager.get_resource_groups(status="OK")
     default_get_main_versions = alicloud.emr.get_main_versions()
     default_get_instance_types = alicloud.emr.get_instance_types(destination_resource="InstanceType",
@@ -441,7 +468,7 @@ def get_clusters_output(cluster_name: pulumi.Input[Optional[Optional[_builtins.s
 
     > **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
 
-    > **NOTE:** Available in v1.146.0+.
+    > **NOTE:** Available since v1.146.0.
 
     ## Example Usage
 
@@ -454,7 +481,7 @@ def get_clusters_output(cluster_name: pulumi.Input[Optional[Optional[_builtins.s
     config = pulumi.Config()
     name = config.get("name")
     if name is None:
-        name = "tf-testAccClusters"
+        name = "tf-acc-clusters"
     default = alicloud.resourcemanager.get_resource_groups(status="OK")
     default_get_main_versions = alicloud.emr.get_main_versions()
     default_get_instance_types = alicloud.emr.get_instance_types(destination_resource="InstanceType",

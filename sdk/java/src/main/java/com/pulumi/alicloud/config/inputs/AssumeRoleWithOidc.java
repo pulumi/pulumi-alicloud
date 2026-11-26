@@ -40,7 +40,7 @@ public final class AssumeRoleWithOidc {
      */
     private @Nullable String roleSessionName;
     /**
-     * @return The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+     * @return The validity period of the STS token. Unit: seconds. Valid value range: 900 to 3600. Default value: 3600.
      * 
      */
     private @Nullable Integer sessionExpiration;
@@ -85,7 +85,7 @@ public final class AssumeRoleWithOidc {
         return Optional.ofNullable(this.roleSessionName);
     }
     /**
-     * @return The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+     * @return The validity period of the STS token. Unit: seconds. Valid value range: 900 to 3600. Default value: 3600.
      * 
      */
     public Optional<Integer> sessionExpiration() {

@@ -13,6 +13,236 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type RouterExpressConnectRouterDisabledRouteEntry struct {
+	// (Computed, String, Available since v2.3.0) The destination CIDR block of the disabled route entry.
+	DestinationCidrBlock *string `pulumi:"destinationCidrBlock"`
+	// (Computed, String, Available since v2.3.0) The ID of the next hop instance of the disabled route entry.
+	NexthopInstanceId *string `pulumi:"nexthopInstanceId"`
+}
+
+// RouterExpressConnectRouterDisabledRouteEntryInput is an input type that accepts RouterExpressConnectRouterDisabledRouteEntryArgs and RouterExpressConnectRouterDisabledRouteEntryOutput values.
+// You can construct a concrete instance of `RouterExpressConnectRouterDisabledRouteEntryInput` via:
+//
+//	RouterExpressConnectRouterDisabledRouteEntryArgs{...}
+type RouterExpressConnectRouterDisabledRouteEntryInput interface {
+	pulumi.Input
+
+	ToRouterExpressConnectRouterDisabledRouteEntryOutput() RouterExpressConnectRouterDisabledRouteEntryOutput
+	ToRouterExpressConnectRouterDisabledRouteEntryOutputWithContext(context.Context) RouterExpressConnectRouterDisabledRouteEntryOutput
+}
+
+type RouterExpressConnectRouterDisabledRouteEntryArgs struct {
+	// (Computed, String, Available since v2.3.0) The destination CIDR block of the disabled route entry.
+	DestinationCidrBlock pulumi.StringPtrInput `pulumi:"destinationCidrBlock"`
+	// (Computed, String, Available since v2.3.0) The ID of the next hop instance of the disabled route entry.
+	NexthopInstanceId pulumi.StringPtrInput `pulumi:"nexthopInstanceId"`
+}
+
+func (RouterExpressConnectRouterDisabledRouteEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterExpressConnectRouterDisabledRouteEntry)(nil)).Elem()
+}
+
+func (i RouterExpressConnectRouterDisabledRouteEntryArgs) ToRouterExpressConnectRouterDisabledRouteEntryOutput() RouterExpressConnectRouterDisabledRouteEntryOutput {
+	return i.ToRouterExpressConnectRouterDisabledRouteEntryOutputWithContext(context.Background())
+}
+
+func (i RouterExpressConnectRouterDisabledRouteEntryArgs) ToRouterExpressConnectRouterDisabledRouteEntryOutputWithContext(ctx context.Context) RouterExpressConnectRouterDisabledRouteEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterExpressConnectRouterDisabledRouteEntryOutput)
+}
+
+// RouterExpressConnectRouterDisabledRouteEntryArrayInput is an input type that accepts RouterExpressConnectRouterDisabledRouteEntryArray and RouterExpressConnectRouterDisabledRouteEntryArrayOutput values.
+// You can construct a concrete instance of `RouterExpressConnectRouterDisabledRouteEntryArrayInput` via:
+//
+//	RouterExpressConnectRouterDisabledRouteEntryArray{ RouterExpressConnectRouterDisabledRouteEntryArgs{...} }
+type RouterExpressConnectRouterDisabledRouteEntryArrayInput interface {
+	pulumi.Input
+
+	ToRouterExpressConnectRouterDisabledRouteEntryArrayOutput() RouterExpressConnectRouterDisabledRouteEntryArrayOutput
+	ToRouterExpressConnectRouterDisabledRouteEntryArrayOutputWithContext(context.Context) RouterExpressConnectRouterDisabledRouteEntryArrayOutput
+}
+
+type RouterExpressConnectRouterDisabledRouteEntryArray []RouterExpressConnectRouterDisabledRouteEntryInput
+
+func (RouterExpressConnectRouterDisabledRouteEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterExpressConnectRouterDisabledRouteEntry)(nil)).Elem()
+}
+
+func (i RouterExpressConnectRouterDisabledRouteEntryArray) ToRouterExpressConnectRouterDisabledRouteEntryArrayOutput() RouterExpressConnectRouterDisabledRouteEntryArrayOutput {
+	return i.ToRouterExpressConnectRouterDisabledRouteEntryArrayOutputWithContext(context.Background())
+}
+
+func (i RouterExpressConnectRouterDisabledRouteEntryArray) ToRouterExpressConnectRouterDisabledRouteEntryArrayOutputWithContext(ctx context.Context) RouterExpressConnectRouterDisabledRouteEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterExpressConnectRouterDisabledRouteEntryArrayOutput)
+}
+
+type RouterExpressConnectRouterDisabledRouteEntryOutput struct{ *pulumi.OutputState }
+
+func (RouterExpressConnectRouterDisabledRouteEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterExpressConnectRouterDisabledRouteEntry)(nil)).Elem()
+}
+
+func (o RouterExpressConnectRouterDisabledRouteEntryOutput) ToRouterExpressConnectRouterDisabledRouteEntryOutput() RouterExpressConnectRouterDisabledRouteEntryOutput {
+	return o
+}
+
+func (o RouterExpressConnectRouterDisabledRouteEntryOutput) ToRouterExpressConnectRouterDisabledRouteEntryOutputWithContext(ctx context.Context) RouterExpressConnectRouterDisabledRouteEntryOutput {
+	return o
+}
+
+// (Computed, String, Available since v2.3.0) The destination CIDR block of the disabled route entry.
+func (o RouterExpressConnectRouterDisabledRouteEntryOutput) DestinationCidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterExpressConnectRouterDisabledRouteEntry) *string { return v.DestinationCidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// (Computed, String, Available since v2.3.0) The ID of the next hop instance of the disabled route entry.
+func (o RouterExpressConnectRouterDisabledRouteEntryOutput) NexthopInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterExpressConnectRouterDisabledRouteEntry) *string { return v.NexthopInstanceId }).(pulumi.StringPtrOutput)
+}
+
+type RouterExpressConnectRouterDisabledRouteEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterExpressConnectRouterDisabledRouteEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterExpressConnectRouterDisabledRouteEntry)(nil)).Elem()
+}
+
+func (o RouterExpressConnectRouterDisabledRouteEntryArrayOutput) ToRouterExpressConnectRouterDisabledRouteEntryArrayOutput() RouterExpressConnectRouterDisabledRouteEntryArrayOutput {
+	return o
+}
+
+func (o RouterExpressConnectRouterDisabledRouteEntryArrayOutput) ToRouterExpressConnectRouterDisabledRouteEntryArrayOutputWithContext(ctx context.Context) RouterExpressConnectRouterDisabledRouteEntryArrayOutput {
+	return o
+}
+
+func (o RouterExpressConnectRouterDisabledRouteEntryArrayOutput) Index(i pulumi.IntInput) RouterExpressConnectRouterDisabledRouteEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterExpressConnectRouterDisabledRouteEntry {
+		return vs[0].([]RouterExpressConnectRouterDisabledRouteEntry)[vs[1].(int)]
+	}).(RouterExpressConnectRouterDisabledRouteEntryOutput)
+}
+
+type RouterExpressConnectRouterGrantedInstance struct {
+	// (Computed, String, Available since v2.3.0) The ID of the granted network instance, for example `vpc-xxx` or `vbr-xxx`.
+	NodeId *string `pulumi:"nodeId"`
+	// (Computed, String, Available since v2.3.0) The ID of the Alibaba Cloud account that owns the granted network instance.
+	NodeOwnerUid *string `pulumi:"nodeOwnerUid"`
+	// (Computed, String, Available since v2.3.0) The region ID of the granted network instance.
+	NodeRegionId *string `pulumi:"nodeRegionId"`
+	// (Computed, String, Available since v2.3.0) The type of the granted network instance. Valid values: `VPC`, `VBR`.
+	NodeType *string `pulumi:"nodeType"`
+}
+
+// RouterExpressConnectRouterGrantedInstanceInput is an input type that accepts RouterExpressConnectRouterGrantedInstanceArgs and RouterExpressConnectRouterGrantedInstanceOutput values.
+// You can construct a concrete instance of `RouterExpressConnectRouterGrantedInstanceInput` via:
+//
+//	RouterExpressConnectRouterGrantedInstanceArgs{...}
+type RouterExpressConnectRouterGrantedInstanceInput interface {
+	pulumi.Input
+
+	ToRouterExpressConnectRouterGrantedInstanceOutput() RouterExpressConnectRouterGrantedInstanceOutput
+	ToRouterExpressConnectRouterGrantedInstanceOutputWithContext(context.Context) RouterExpressConnectRouterGrantedInstanceOutput
+}
+
+type RouterExpressConnectRouterGrantedInstanceArgs struct {
+	// (Computed, String, Available since v2.3.0) The ID of the granted network instance, for example `vpc-xxx` or `vbr-xxx`.
+	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
+	// (Computed, String, Available since v2.3.0) The ID of the Alibaba Cloud account that owns the granted network instance.
+	NodeOwnerUid pulumi.StringPtrInput `pulumi:"nodeOwnerUid"`
+	// (Computed, String, Available since v2.3.0) The region ID of the granted network instance.
+	NodeRegionId pulumi.StringPtrInput `pulumi:"nodeRegionId"`
+	// (Computed, String, Available since v2.3.0) The type of the granted network instance. Valid values: `VPC`, `VBR`.
+	NodeType pulumi.StringPtrInput `pulumi:"nodeType"`
+}
+
+func (RouterExpressConnectRouterGrantedInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterExpressConnectRouterGrantedInstance)(nil)).Elem()
+}
+
+func (i RouterExpressConnectRouterGrantedInstanceArgs) ToRouterExpressConnectRouterGrantedInstanceOutput() RouterExpressConnectRouterGrantedInstanceOutput {
+	return i.ToRouterExpressConnectRouterGrantedInstanceOutputWithContext(context.Background())
+}
+
+func (i RouterExpressConnectRouterGrantedInstanceArgs) ToRouterExpressConnectRouterGrantedInstanceOutputWithContext(ctx context.Context) RouterExpressConnectRouterGrantedInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterExpressConnectRouterGrantedInstanceOutput)
+}
+
+// RouterExpressConnectRouterGrantedInstanceArrayInput is an input type that accepts RouterExpressConnectRouterGrantedInstanceArray and RouterExpressConnectRouterGrantedInstanceArrayOutput values.
+// You can construct a concrete instance of `RouterExpressConnectRouterGrantedInstanceArrayInput` via:
+//
+//	RouterExpressConnectRouterGrantedInstanceArray{ RouterExpressConnectRouterGrantedInstanceArgs{...} }
+type RouterExpressConnectRouterGrantedInstanceArrayInput interface {
+	pulumi.Input
+
+	ToRouterExpressConnectRouterGrantedInstanceArrayOutput() RouterExpressConnectRouterGrantedInstanceArrayOutput
+	ToRouterExpressConnectRouterGrantedInstanceArrayOutputWithContext(context.Context) RouterExpressConnectRouterGrantedInstanceArrayOutput
+}
+
+type RouterExpressConnectRouterGrantedInstanceArray []RouterExpressConnectRouterGrantedInstanceInput
+
+func (RouterExpressConnectRouterGrantedInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterExpressConnectRouterGrantedInstance)(nil)).Elem()
+}
+
+func (i RouterExpressConnectRouterGrantedInstanceArray) ToRouterExpressConnectRouterGrantedInstanceArrayOutput() RouterExpressConnectRouterGrantedInstanceArrayOutput {
+	return i.ToRouterExpressConnectRouterGrantedInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i RouterExpressConnectRouterGrantedInstanceArray) ToRouterExpressConnectRouterGrantedInstanceArrayOutputWithContext(ctx context.Context) RouterExpressConnectRouterGrantedInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterExpressConnectRouterGrantedInstanceArrayOutput)
+}
+
+type RouterExpressConnectRouterGrantedInstanceOutput struct{ *pulumi.OutputState }
+
+func (RouterExpressConnectRouterGrantedInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterExpressConnectRouterGrantedInstance)(nil)).Elem()
+}
+
+func (o RouterExpressConnectRouterGrantedInstanceOutput) ToRouterExpressConnectRouterGrantedInstanceOutput() RouterExpressConnectRouterGrantedInstanceOutput {
+	return o
+}
+
+func (o RouterExpressConnectRouterGrantedInstanceOutput) ToRouterExpressConnectRouterGrantedInstanceOutputWithContext(ctx context.Context) RouterExpressConnectRouterGrantedInstanceOutput {
+	return o
+}
+
+// (Computed, String, Available since v2.3.0) The ID of the granted network instance, for example `vpc-xxx` or `vbr-xxx`.
+func (o RouterExpressConnectRouterGrantedInstanceOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterExpressConnectRouterGrantedInstance) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
+// (Computed, String, Available since v2.3.0) The ID of the Alibaba Cloud account that owns the granted network instance.
+func (o RouterExpressConnectRouterGrantedInstanceOutput) NodeOwnerUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterExpressConnectRouterGrantedInstance) *string { return v.NodeOwnerUid }).(pulumi.StringPtrOutput)
+}
+
+// (Computed, String, Available since v2.3.0) The region ID of the granted network instance.
+func (o RouterExpressConnectRouterGrantedInstanceOutput) NodeRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterExpressConnectRouterGrantedInstance) *string { return v.NodeRegionId }).(pulumi.StringPtrOutput)
+}
+
+// (Computed, String, Available since v2.3.0) The type of the granted network instance. Valid values: `VPC`, `VBR`.
+func (o RouterExpressConnectRouterGrantedInstanceOutput) NodeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterExpressConnectRouterGrantedInstance) *string { return v.NodeType }).(pulumi.StringPtrOutput)
+}
+
+type RouterExpressConnectRouterGrantedInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterExpressConnectRouterGrantedInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterExpressConnectRouterGrantedInstance)(nil)).Elem()
+}
+
+func (o RouterExpressConnectRouterGrantedInstanceArrayOutput) ToRouterExpressConnectRouterGrantedInstanceArrayOutput() RouterExpressConnectRouterGrantedInstanceArrayOutput {
+	return o
+}
+
+func (o RouterExpressConnectRouterGrantedInstanceArrayOutput) ToRouterExpressConnectRouterGrantedInstanceArrayOutputWithContext(ctx context.Context) RouterExpressConnectRouterGrantedInstanceArrayOutput {
+	return o
+}
+
+func (o RouterExpressConnectRouterGrantedInstanceArrayOutput) Index(i pulumi.IntInput) RouterExpressConnectRouterGrantedInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterExpressConnectRouterGrantedInstance {
+		return vs[0].([]RouterExpressConnectRouterGrantedInstance)[vs[1].(int)]
+	}).(RouterExpressConnectRouterGrantedInstanceOutput)
+}
+
 type RouterExpressConnectRouterRegion struct {
 	// Representative region ID.
 	RegionId *string `pulumi:"regionId"`
@@ -136,7 +366,7 @@ type GetAccessPointsPoint struct {
 	Id string `pulumi:"id"`
 	// The Location of the Access Point.
 	Location string `pulumi:"location"`
-	// The Physical Connection to Which the Access Point State.
+	// The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
 	Status string `pulumi:"status"`
 	// The Physical Connection to Which the Network Type.
 	Type string `pulumi:"type"`
@@ -170,7 +400,7 @@ type GetAccessPointsPointArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The Location of the Access Point.
 	Location pulumi.StringInput `pulumi:"location"`
-	// The Physical Connection to Which the Access Point State.
+	// The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The Physical Connection to Which the Network Type.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -269,7 +499,7 @@ func (o GetAccessPointsPointOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessPointsPoint) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The Physical Connection to Which the Access Point State.
+// The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
 func (o GetAccessPointsPointOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessPointsPoint) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -578,7 +808,7 @@ type GetPhysicalConnectionsConnection struct {
 	ReservationOrderType string `pulumi:"reservationOrderType"`
 	// The Physical Connection to Which the Specifications.
 	Spec string `pulumi:"spec"`
-	// Resources on Behalf of a State of the Resource Attribute Field.
+	// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
 	Status string `pulumi:"status"`
 	// Physical Private Line of Type. Default Value: VPC.
 	Type string `pulumi:"type"`
@@ -644,7 +874,7 @@ type GetPhysicalConnectionsConnectionArgs struct {
 	ReservationOrderType pulumi.StringInput `pulumi:"reservationOrderType"`
 	// The Physical Connection to Which the Specifications.
 	Spec pulumi.StringInput `pulumi:"spec"`
-	// Resources on Behalf of a State of the Resource Attribute Field.
+	// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// Physical Private Line of Type. Default Value: VPC.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -821,7 +1051,7 @@ func (o GetPhysicalConnectionsConnectionOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPhysicalConnectionsConnection) string { return v.Spec }).(pulumi.StringOutput)
 }
 
-// Resources on Behalf of a State of the Resource Attribute Field.
+// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
 func (o GetPhysicalConnectionsConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPhysicalConnectionsConnection) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1250,7 +1480,9 @@ func (o GetRouterGrantAssociationsAssociationArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetRouterInterfacesFilter struct {
-	Key    *string  `pulumi:"key"`
+	// The key of the field to filter by.
+	Key *string `pulumi:"key"`
+	// Set of values that are accepted for the given field.
 	Values []string `pulumi:"values"`
 }
 
@@ -1266,7 +1498,9 @@ type GetRouterInterfacesFilterInput interface {
 }
 
 type GetRouterInterfacesFilterArgs struct {
-	Key    pulumi.StringPtrInput   `pulumi:"key"`
+	// The key of the field to filter by.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Set of values that are accepted for the given field.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -1321,10 +1555,12 @@ func (o GetRouterInterfacesFilterOutput) ToGetRouterInterfacesFilterOutputWithCo
 	return o
 }
 
+// The key of the field to filter by.
 func (o GetRouterInterfacesFilterOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRouterInterfacesFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// Set of values that are accepted for the given field.
 func (o GetRouterInterfacesFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRouterInterfacesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -1376,7 +1612,8 @@ type GetRouterInterfacesInterface struct {
 	HealthCheckSourceIp string `pulumi:"healthCheckSourceIp"`
 	// The IP address for health screening purposes.
 	HealthCheckTargetIp string `pulumi:"healthCheckTargetIp"`
-	Id                  string `pulumi:"id"`
+	// The ID of the router interface.
+	Id string `pulumi:"id"`
 	// The Access point ID to which the other end belongs.
 	OppositeAccessPointId string `pulumi:"oppositeAccessPointId"`
 	// The opposite bandwidth of the router on the other side.
@@ -1465,7 +1702,8 @@ type GetRouterInterfacesInterfaceArgs struct {
 	HealthCheckSourceIp pulumi.StringInput `pulumi:"healthCheckSourceIp"`
 	// The IP address for health screening purposes.
 	HealthCheckTargetIp pulumi.StringInput `pulumi:"healthCheckTargetIp"`
-	Id                  pulumi.StringInput `pulumi:"id"`
+	// The ID of the router interface.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The Access point ID to which the other end belongs.
 	OppositeAccessPointId pulumi.StringInput `pulumi:"oppositeAccessPointId"`
 	// The opposite bandwidth of the router on the other side.
@@ -1632,6 +1870,7 @@ func (o GetRouterInterfacesInterfaceOutput) HealthCheckTargetIp() pulumi.StringO
 	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.HealthCheckTargetIp }).(pulumi.StringOutput)
 }
 
+// The ID of the router interface.
 func (o GetRouterInterfacesInterfaceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -2161,6 +2400,8 @@ type GetRouterVpcAssociationsAssociation struct {
 	AssociationNodeType string `pulumi:"associationNodeType"`
 	// The time when the association was created.
 	CreateTime string `pulumi:"createTime"`
+	// (String) The description of the association. Available since v2.3.0.
+	Description string `pulumi:"description"`
 	// The ID of the Express Connect Router instance.
 	EcrId string `pulumi:"ecrId"`
 	// The ID of the Vpc Association.
@@ -2197,6 +2438,8 @@ type GetRouterVpcAssociationsAssociationArgs struct {
 	AssociationNodeType pulumi.StringInput `pulumi:"associationNodeType"`
 	// The time when the association was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// (String) The description of the association. Available since v2.3.0.
+	Description pulumi.StringInput `pulumi:"description"`
 	// The ID of the Express Connect Router instance.
 	EcrId pulumi.StringInput `pulumi:"ecrId"`
 	// The ID of the Vpc Association.
@@ -2285,6 +2528,11 @@ func (o GetRouterVpcAssociationsAssociationOutput) AssociationNodeType() pulumi.
 // The time when the association was created.
 func (o GetRouterVpcAssociationsAssociationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterVpcAssociationsAssociation) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (String) The description of the association. Available since v2.3.0.
+func (o GetRouterVpcAssociationsAssociationOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVpcAssociationsAssociation) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The ID of the Express Connect Router instance.
@@ -3395,6 +3643,10 @@ func (o GetVirtualPhysicalConnectionsConnectionArrayOutput) Index(i pulumi.IntIn
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterExpressConnectRouterDisabledRouteEntryInput)(nil)).Elem(), RouterExpressConnectRouterDisabledRouteEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterExpressConnectRouterDisabledRouteEntryArrayInput)(nil)).Elem(), RouterExpressConnectRouterDisabledRouteEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterExpressConnectRouterGrantedInstanceInput)(nil)).Elem(), RouterExpressConnectRouterGrantedInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterExpressConnectRouterGrantedInstanceArrayInput)(nil)).Elem(), RouterExpressConnectRouterGrantedInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterExpressConnectRouterRegionInput)(nil)).Elem(), RouterExpressConnectRouterRegionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterExpressConnectRouterRegionArrayInput)(nil)).Elem(), RouterExpressConnectRouterRegionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessPointsPointInput)(nil)).Elem(), GetAccessPointsPointArgs{})
@@ -3427,6 +3679,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualBorderRoutersRouterArrayInput)(nil)).Elem(), GetVirtualBorderRoutersRouterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualPhysicalConnectionsConnectionInput)(nil)).Elem(), GetVirtualPhysicalConnectionsConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualPhysicalConnectionsConnectionArrayInput)(nil)).Elem(), GetVirtualPhysicalConnectionsConnectionArray{})
+	pulumi.RegisterOutputType(RouterExpressConnectRouterDisabledRouteEntryOutput{})
+	pulumi.RegisterOutputType(RouterExpressConnectRouterDisabledRouteEntryArrayOutput{})
+	pulumi.RegisterOutputType(RouterExpressConnectRouterGrantedInstanceOutput{})
+	pulumi.RegisterOutputType(RouterExpressConnectRouterGrantedInstanceArrayOutput{})
 	pulumi.RegisterOutputType(RouterExpressConnectRouterRegionOutput{})
 	pulumi.RegisterOutputType(RouterExpressConnectRouterRegionArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessPointsPointOutput{})

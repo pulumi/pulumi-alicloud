@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Rds.Outputs
     public sealed class GetCollationTimeZonesCollationTimeZoneResult
     {
         /// <summary>
-        /// The code of the instance type.
+        /// The description.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// The offset of the UTC time. The offset is in the following format: (UTC+&lt;i&gt;HH:mm&lt;/i&gt;).
+        /// The offset of the UTC time.
         /// </summary>
         public readonly string? StandardTimeOffset;
         /// <summary>
-        /// The time zone that is available for use in ApsaraDB RDS.
+        /// The time zone.
         /// </summary>
         public readonly string? TimeZone;
 

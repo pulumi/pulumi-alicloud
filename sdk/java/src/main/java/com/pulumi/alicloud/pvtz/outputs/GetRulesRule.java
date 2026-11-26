@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesRule {
     /**
-     * @return The List of the VPC. See the following `Block bindVpcs`. **NOTE:** Available in v1.158.0+.
+     * @return The List of the VPC. Each element contains the following attributes:
      * 
      */
     private List<GetRulesRuleBindVpc> bindVpcs;
@@ -33,6 +33,10 @@ public final class GetRulesRule {
      * 
      */
     private String endpointName;
+    /**
+     * @return Forwarding targets. Each element contains the following attributes:
+     * 
+     */
     private List<GetRulesRuleForwardIp> forwardIps;
     /**
      * @return The ID of the Rule.
@@ -62,7 +66,7 @@ public final class GetRulesRule {
 
     private GetRulesRule() {}
     /**
-     * @return The List of the VPC. See the following `Block bindVpcs`. **NOTE:** Available in v1.158.0+.
+     * @return The List of the VPC. Each element contains the following attributes:
      * 
      */
     public List<GetRulesRuleBindVpc> bindVpcs() {
@@ -89,6 +93,10 @@ public final class GetRulesRule {
     public String endpointName() {
         return this.endpointName;
     }
+    /**
+     * @return Forwarding targets. Each element contains the following attributes:
+     * 
+     */
     public List<GetRulesRuleForwardIp> forwardIps() {
         return this.forwardIps;
     }

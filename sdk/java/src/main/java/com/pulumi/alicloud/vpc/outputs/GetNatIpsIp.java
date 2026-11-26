@@ -22,7 +22,7 @@ public final class GetNatIpsIp {
      */
     private Boolean isDefault;
     /**
-     * @return The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+     * @return The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
      * 
      */
     private String natGatewayId;
@@ -32,7 +32,7 @@ public final class GetNatIpsIp {
      */
     private String natIp;
     /**
-     * @return The CIDR block to which the NAT IP address belongs.
+     * @return NAT IP ADDRESS of the address segment.
      * 
      */
     private String natIpCidr;
@@ -47,7 +47,7 @@ public final class GetNatIpsIp {
      */
     private String natIpId;
     /**
-     * @return The name of the NAT IP address.
+     * @return NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
      * 
      */
     private String natIpName;
@@ -73,7 +73,7 @@ public final class GetNatIpsIp {
         return this.isDefault;
     }
     /**
-     * @return The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+     * @return The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
      * 
      */
     public String natGatewayId() {
@@ -87,7 +87,7 @@ public final class GetNatIpsIp {
         return this.natIp;
     }
     /**
-     * @return The CIDR block to which the NAT IP address belongs.
+     * @return NAT IP ADDRESS of the address segment.
      * 
      */
     public String natIpCidr() {
@@ -108,7 +108,7 @@ public final class GetNatIpsIp {
         return this.natIpId;
     }
     /**
-     * @return The name of the NAT IP address.
+     * @return NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
      * 
      */
     public String natIpName() {

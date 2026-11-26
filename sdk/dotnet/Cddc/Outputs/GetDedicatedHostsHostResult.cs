@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cddc.Outputs
     public sealed class GetDedicatedHostsHostResult
     {
         /// <summary>
-        /// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+        /// Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
         /// </summary>
         public readonly string AllocationStatus;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Cddc.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The ID of the dedicated cluster in which the host is created.
+        /// The ID of the dedicated cluster.
         /// </summary>
         public readonly string DedicatedHostGroupId;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Cddc.Outputs
         /// </summary>
         public readonly string HostStorage;
         /// <summary>
-        /// The storage type of the host.
+        /// The storage type of the host. Valid values: `DhgLocalSsd` or `DhgCloudSsd`. `DhgLocalSsd`: specifies that the host uses local SSDs. `DhgCloudSsd`: specifies that the host uses enhanced SSDs (ESSDs).
         /// </summary>
         public readonly string HostType;
         /// <summary>
@@ -110,7 +110,8 @@ namespace Pulumi.AliCloud.Cddc.Outputs
         /// </summary>
         public readonly string OpenPermission;
         /// <summary>
-        /// The state of the host.
+        /// The state of the host. Valid values:
+        /// * `0:` The host is being created.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -118,7 +119,7 @@ namespace Pulumi.AliCloud.Cddc.Outputs
         /// </summary>
         public readonly string StorageUsed;
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
@@ -130,7 +131,7 @@ namespace Pulumi.AliCloud.Cddc.Outputs
         /// </summary>
         public readonly string VswitchId;
         /// <summary>
-        /// The zone ID of the host.
+        /// The ID of the zone.
         /// </summary>
         public readonly string ZoneId;
 

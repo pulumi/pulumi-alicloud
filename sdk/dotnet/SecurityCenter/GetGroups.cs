@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.SecurityCenter
         /// <summary>
         /// This data source provides the Security Center Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.SecurityCenter
         /// <summary>
         /// This data source provides the Security Center Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.SecurityCenter
         /// <summary>
         /// This data source provides the Security Center Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -177,6 +177,9 @@ namespace Pulumi.AliCloud.SecurityCenter
     [OutputType]
     public sealed class GetGroupsResult
     {
+        /// <summary>
+        /// A list of Security Center Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -184,6 +187,9 @@ namespace Pulumi.AliCloud.SecurityCenter
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

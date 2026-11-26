@@ -85,6 +85,9 @@ class GetDbInstancePlansResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of DB Instance Plan names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -95,21 +98,33 @@ class GetDbInstancePlansResult:
     @_builtins.property
     @pulumi.getter(name="planScheduleType")
     def plan_schedule_type(self) -> Optional[_builtins.str]:
+        """
+        Plan scheduling type. Valid values: `Postpone`, `Regular`.
+        """
         return pulumi.get(self, "plan_schedule_type")
 
     @_builtins.property
     @pulumi.getter(name="planType")
     def plan_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the Plan. Valid values: `PauseResume`, `Resize`.
+        """
         return pulumi.get(self, "plan_type")
 
     @_builtins.property
     @pulumi.getter
     def plans(self) -> Sequence['outputs.GetDbInstancePlansPlanResult']:
+        """
+        A list of Gpdb Db Instance Plans. Each element contains the following attributes:
+        """
         return pulumi.get(self, "plans")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The Status of the Plan.
+        """
         return pulumi.get(self, "status")
 
 
@@ -142,7 +157,7 @@ def get_db_instance_plans(db_instance_id: Optional[_builtins.str] = None,
     """
     This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.189.0+.
+    > **NOTE:** Available since v1.189.0.
 
     ## Example Usage
 
@@ -202,7 +217,7 @@ def get_db_instance_plans_output(db_instance_id: pulumi.Input[Optional[_builtins
     """
     This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.189.0+.
+    > **NOTE:** Available since v1.189.0.
 
     ## Example Usage
 

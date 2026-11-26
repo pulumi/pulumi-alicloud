@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nlb
         /// <summary>
         /// This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.191.0+.
+        /// &gt; **NOTE:** Available since v1.191.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Nlb
         /// <summary>
         /// This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.191.0+.
+        /// &gt; **NOTE:** Available since v1.191.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Nlb
         /// <summary>
         /// This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.191.0+.
+        /// &gt; **NOTE:** Available since v1.191.0.
         /// 
         /// ## Example Usage
         /// 
@@ -218,6 +218,10 @@ namespace Pulumi.AliCloud.Nlb
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -330,6 +334,10 @@ namespace Pulumi.AliCloud.Nlb
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -364,25 +372,58 @@ namespace Pulumi.AliCloud.Nlb
     [OutputType]
     public sealed class GetLoadBalancersResult
     {
+        /// <summary>
+        /// The IP version.
+        /// </summary>
         public readonly string? AddressIpVersion;
+        /// <summary>
+        /// The type of IPv4 address used by the NLB instance.
+        /// </summary>
         public readonly string? AddressType;
+        /// <summary>
+        /// A list of Nlb Load Balancers. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancersBalancerResult> Balancers;
+        /// <summary>
+        /// The domain name of the NLB instance.
+        /// </summary>
         public readonly string? DnsName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The type of IPv6 address used by the NLB instance.
+        /// </summary>
         public readonly string? Ipv6AddressType;
+        /// <summary>
+        /// The business status of the NLB instance.
+        /// </summary>
         public readonly string? LoadBalancerBusinessStatus;
         public readonly ImmutableArray<string> LoadBalancerNames;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Load Balancer names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// The status of the NLB instance.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         public readonly ImmutableArray<string> VpcIds;
+        /// <summary>
+        /// The name of the zone.
+        /// </summary>
         public readonly string? ZoneId;
 
         [OutputConstructor]

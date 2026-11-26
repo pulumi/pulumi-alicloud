@@ -21,9 +21,21 @@ public final class GetAccessPointsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Access Point names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Express Connect Access Points. Each element contains the following attributes:
+     * 
+     */
     private List<GetAccessPointsPoint> points;
+    /**
+     * @return The Physical Connection to Which the Access Point State.
+     * 
+     */
     private @Nullable String status;
 
     private GetAccessPointsResult() {}
@@ -40,15 +52,27 @@ public final class GetAccessPointsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Access Point names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Express Connect Access Points. Each element contains the following attributes:
+     * 
+     */
     public List<GetAccessPointsPoint> points() {
         return this.points;
     }
+    /**
+     * @return The Physical Connection to Which the Access Point State.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

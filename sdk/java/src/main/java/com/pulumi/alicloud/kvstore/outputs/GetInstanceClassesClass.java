@@ -15,6 +15,10 @@ public final class GetInstanceClassesClass {
      * 
      */
     private String instanceClass;
+    /**
+     * @return The price of the instance class.
+     * 
+     */
     private String price;
 
     private GetInstanceClassesClass() {}
@@ -25,6 +29,10 @@ public final class GetInstanceClassesClass {
     public String instanceClass() {
         return this.instanceClass;
     }
+    /**
+     * @return The price of the instance class.
+     * 
+     */
     public String price() {
         return this.price;
     }

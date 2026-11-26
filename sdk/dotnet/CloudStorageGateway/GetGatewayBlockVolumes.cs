@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.144.0+.
+        /// &gt; **NOTE:** Available since v1.144.0.
         /// 
         /// ## Example Usage
         /// 
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.144.0+.
+        /// &gt; **NOTE:** Available since v1.144.0.
         /// 
         /// ## Example Usage
         /// 
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.144.0+.
+        /// &gt; **NOTE:** Available since v1.144.0.
         /// 
         /// ## Example Usage
         /// 
@@ -237,6 +237,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     [OutputType]
     public sealed class GetGatewayBlockVolumesResult
     {
+        /// <summary>
+        /// The Gateway ID.
+        /// </summary>
         public readonly string GatewayId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -244,9 +247,18 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Gateway Block Volume names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of volume.
+        /// </summary>
         public readonly int? Status;
+        /// <summary>
+        /// A list of Cloud Storage Gateway Gateway Block Volumes. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewayBlockVolumesVolumeResult> Volumes;
 
         [OutputConstructor]

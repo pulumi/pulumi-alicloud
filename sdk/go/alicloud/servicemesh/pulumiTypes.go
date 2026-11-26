@@ -5885,7 +5885,7 @@ type GetVersionsVersion struct {
 	Edition string `pulumi:"edition"`
 	// The ASM version id. It formats as `<edition>:<version>`.
 	Id string `pulumi:"id"`
-	// A list of Service Mesh Service Meshes. Each element contains the following attributes:
+	// The AMS version.
 	Version string `pulumi:"version"`
 }
 
@@ -5907,7 +5907,7 @@ type GetVersionsVersionArgs struct {
 	Edition pulumi.StringInput `pulumi:"edition"`
 	// The ASM version id. It formats as `<edition>:<version>`.
 	Id pulumi.StringInput `pulumi:"id"`
-	// A list of Service Mesh Service Meshes. Each element contains the following attributes:
+	// The AMS version.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -5974,7 +5974,7 @@ func (o GetVersionsVersionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVersionsVersion) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of Service Mesh Service Meshes. Each element contains the following attributes:
+// The AMS version.
 func (o GetVersionsVersionOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVersionsVersion) string { return v.Version }).(pulumi.StringOutput)
 }

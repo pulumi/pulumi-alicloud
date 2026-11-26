@@ -14,8 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetApplicationGroupsResult {
+    /**
+     * @return The name of the Application.
+     * 
+     */
     private String applicationName;
+    /**
+     * @return The region ID of the deployment.
+     * 
+     */
     private @Nullable String deployRegionId;
+    /**
+     * @return A list of Oos Application Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetApplicationGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,16 +36,32 @@ public final class GetApplicationGroupsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Application Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetApplicationGroupsResult() {}
+    /**
+     * @return The name of the Application.
+     * 
+     */
     public String applicationName() {
         return this.applicationName;
     }
+    /**
+     * @return The region ID of the deployment.
+     * 
+     */
     public Optional<String> deployRegionId() {
         return Optional.ofNullable(this.deployRegionId);
     }
+    /**
+     * @return A list of Oos Application Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetApplicationGroupsGroup> groups() {
         return this.groups;
     }
@@ -50,6 +78,10 @@ public final class GetApplicationGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Application Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

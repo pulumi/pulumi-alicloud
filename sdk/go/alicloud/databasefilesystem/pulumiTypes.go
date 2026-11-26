@@ -328,7 +328,7 @@ type GetInstancesInstance struct {
 	RaidStripeUnitNumber string `pulumi:"raidStripeUnitNumber"`
 	// The size Of the Database file system. Unit: GiB.
 	Size int `pulumi:"size"`
-	// The status of the Database file system.
+	// Database file system state. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
 	Status string `pulumi:"status"`
 	// The Zone ID of the Database file system.
 	ZoneId string `pulumi:"zoneId"`
@@ -376,7 +376,7 @@ type GetInstancesInstanceArgs struct {
 	RaidStripeUnitNumber pulumi.StringInput `pulumi:"raidStripeUnitNumber"`
 	// The size Of the Database file system. Unit: GiB.
 	Size pulumi.IntInput `pulumi:"size"`
-	// The status of the Database file system.
+	// Database file system state. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The Zone ID of the Database file system.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -508,7 +508,7 @@ func (o GetInstancesInstanceOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// The status of the Database file system.
+// Database file system state. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -662,7 +662,7 @@ type GetSnapshotsSnapshot struct {
 	SnapshotType string `pulumi:"snapshotType"`
 	// Source database file system capacity.
 	SourceFsSize int `pulumi:"sourceFsSize"`
-	// The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+	// The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
 	Status string `pulumi:"status"`
 }
 
@@ -704,7 +704,7 @@ type GetSnapshotsSnapshotArgs struct {
 	SnapshotType pulumi.StringInput `pulumi:"snapshotType"`
 	// Source database file system capacity.
 	SourceFsSize pulumi.IntInput `pulumi:"sourceFsSize"`
-	// The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+	// The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -824,7 +824,7 @@ func (o GetSnapshotsSnapshotOutput) SourceFsSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.SourceFsSize }).(pulumi.IntOutput)
 }
 
-// The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+// The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
 func (o GetSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Status }).(pulumi.StringOutput)
 }

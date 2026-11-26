@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.152.0+.
+ * > **NOTE:** Available since v1.152.0.
  *
  * ## Example Usage
  *
@@ -71,6 +71,9 @@ export interface GetBgpGroupsArgs {
  * A collection of values returned by getBgpGroups.
  */
 export interface GetBgpGroupsResult {
+    /**
+     * A list of Vpc Bgp Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.vpc.GetBgpGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -78,15 +81,24 @@ export interface GetBgpGroupsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Bgp Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The ID of the VBR.
+     */
     readonly routerId?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.152.0+.
+ * > **NOTE:** Available since v1.152.0.
  *
  * ## Example Usage
  *

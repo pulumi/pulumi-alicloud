@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The identity of the trusted service.
+        /// The identification of the trusted service.
         /// </summary>
         public readonly string ServicePrincipal;
 

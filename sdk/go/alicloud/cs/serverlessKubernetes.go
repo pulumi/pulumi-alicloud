@@ -134,17 +134,16 @@ type ServerlessKubernetes struct {
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert pulumi.StringPtrOutput `pulumi:"clusterCaCert"`
 	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-	// - ack.standard: Standard serverless clusters.
-	// - ack.pro.small: Professional serverless clusters.
+	// - `ack.standard`: Standard serverless clusters.
+	// - `ack.pro.small`: Professional serverless clusters.
 	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	//
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	CustomSan pulumi.StringPtrOutput `pulumi:"customSan"`
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
 	DeleteOptions ServerlessKubernetesDeleteOptionArrayOutput `pulumi:"deleteOptions"`
 	// Whether enable the deletion protection or not.
-	// - true: Enable deletion protection.
-	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
 	// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
@@ -178,7 +177,7 @@ type ServerlessKubernetes struct {
 	NewNatGateway pulumi.BoolPtrOutput `pulumi:"newNatGateway"`
 	// The cluster automatic operation policy. See `operationPolicy` below.
 	//
-	// *Removed params*
+	// The following arguments have been removed since v1.229.1: `vswitchId`, `createV2Cluster`, and `forceUpdate`. Use `vswitchIds` instead of `vswitchId`.
 	OperationPolicy ServerlessKubernetesOperationPolicyOutput `pulumi:"operationPolicy"`
 	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
@@ -259,17 +258,16 @@ type serverlessKubernetesState struct {
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
 	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-	// - ack.standard: Standard serverless clusters.
-	// - ack.pro.small: Professional serverless clusters.
+	// - `ack.standard`: Standard serverless clusters.
+	// - `ack.pro.small`: Professional serverless clusters.
 	ClusterSpec *string `pulumi:"clusterSpec"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	//
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	CustomSan *string `pulumi:"customSan"`
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
 	DeleteOptions []ServerlessKubernetesDeleteOption `pulumi:"deleteOptions"`
 	// Whether enable the deletion protection or not.
-	// - true: Enable deletion protection.
-	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
 	// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
@@ -303,7 +301,7 @@ type serverlessKubernetesState struct {
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// The cluster automatic operation policy. See `operationPolicy` below.
 	//
-	// *Removed params*
+	// The following arguments have been removed since v1.229.1: `vswitchId`, `createV2Cluster`, and `forceUpdate`. Use `vswitchIds` instead of `vswitchId`.
 	OperationPolicy *ServerlessKubernetesOperationPolicy `pulumi:"operationPolicy"`
 	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
@@ -355,17 +353,16 @@ type ServerlessKubernetesState struct {
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert pulumi.StringPtrInput
 	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-	// - ack.standard: Standard serverless clusters.
-	// - ack.pro.small: Professional serverless clusters.
+	// - `ack.standard`: Standard serverless clusters.
+	// - `ack.pro.small`: Professional serverless clusters.
 	ClusterSpec pulumi.StringPtrInput
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	//
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	CustomSan pulumi.StringPtrInput
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
 	DeleteOptions ServerlessKubernetesDeleteOptionArrayInput
 	// Whether enable the deletion protection or not.
-	// - true: Enable deletion protection.
-	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
 	// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
 	// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
@@ -399,7 +396,7 @@ type ServerlessKubernetesState struct {
 	NewNatGateway pulumi.BoolPtrInput
 	// The cluster automatic operation policy. See `operationPolicy` below.
 	//
-	// *Removed params*
+	// The following arguments have been removed since v1.229.1: `vswitchId`, `createV2Cluster`, and `forceUpdate`. Use `vswitchIds` instead of `vswitchId`.
 	OperationPolicy ServerlessKubernetesOperationPolicyPtrInput
 	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
@@ -461,17 +458,16 @@ type serverlessKubernetesArgs struct {
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
 	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-	// - ack.standard: Standard serverless clusters.
-	// - ack.pro.small: Professional serverless clusters.
+	// - `ack.standard`: Standard serverless clusters.
+	// - `ack.pro.small`: Professional serverless clusters.
 	ClusterSpec *string `pulumi:"clusterSpec"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	//
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	CustomSan *string `pulumi:"customSan"`
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
 	DeleteOptions []ServerlessKubernetesDeleteOption `pulumi:"deleteOptions"`
 	// Whether enable the deletion protection or not.
-	// - true: Enable deletion protection.
-	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
 	// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
@@ -505,7 +501,7 @@ type serverlessKubernetesArgs struct {
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// The cluster automatic operation policy. See `operationPolicy` below.
 	//
-	// *Removed params*
+	// The following arguments have been removed since v1.229.1: `vswitchId`, `createV2Cluster`, and `forceUpdate`. Use `vswitchIds` instead of `vswitchId`.
 	OperationPolicy *ServerlessKubernetesOperationPolicy `pulumi:"operationPolicy"`
 	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
@@ -556,17 +552,16 @@ type ServerlessKubernetesArgs struct {
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert pulumi.StringPtrInput
 	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-	// - ack.standard: Standard serverless clusters.
-	// - ack.pro.small: Professional serverless clusters.
+	// - `ack.standard`: Standard serverless clusters.
+	// - `ack.pro.small`: Professional serverless clusters.
 	ClusterSpec pulumi.StringPtrInput
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	//
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	CustomSan pulumi.StringPtrInput
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
 	DeleteOptions ServerlessKubernetesDeleteOptionArrayInput
 	// Whether enable the deletion protection or not.
-	// - true: Enable deletion protection.
-	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
 	// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
 	// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
@@ -600,7 +595,7 @@ type ServerlessKubernetesArgs struct {
 	NewNatGateway pulumi.BoolPtrInput
 	// The cluster automatic operation policy. See `operationPolicy` below.
 	//
-	// *Removed params*
+	// The following arguments have been removed since v1.229.1: `vswitchId`, `createV2Cluster`, and `forceUpdate`. Use `vswitchIds` instead of `vswitchId`.
 	OperationPolicy ServerlessKubernetesOperationPolicyPtrInput
 	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
@@ -748,13 +743,14 @@ func (o ServerlessKubernetesOutput) ClusterCaCert() pulumi.StringPtrOutput {
 }
 
 // The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-// - ack.standard: Standard serverless clusters.
-// - ack.pro.small: Professional serverless clusters.
+// - `ack.standard`: Standard serverless clusters.
+// - `ack.pro.small`: Professional serverless clusters.
 func (o ServerlessKubernetesOutput) ClusterSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.ClusterSpec }).(pulumi.StringOutput)
 }
 
 // Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+//
 // > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 func (o ServerlessKubernetesOutput) CustomSan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.CustomSan }).(pulumi.StringPtrOutput)
@@ -766,8 +762,6 @@ func (o ServerlessKubernetesOutput) DeleteOptions() ServerlessKubernetesDeleteOp
 }
 
 // Whether enable the deletion protection or not.
-// - true: Enable deletion protection.
-// - false: Disable deletion protection.
 func (o ServerlessKubernetesOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -837,7 +831,7 @@ func (o ServerlessKubernetesOutput) NewNatGateway() pulumi.BoolPtrOutput {
 
 // The cluster automatic operation policy. See `operationPolicy` below.
 //
-// *Removed params*
+// The following arguments have been removed since v1.229.1: `vswitchId`, `createV2Cluster`, and `forceUpdate`. Use `vswitchIds` instead of `vswitchId`.
 func (o ServerlessKubernetesOutput) OperationPolicy() ServerlessKubernetesOperationPolicyOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) ServerlessKubernetesOperationPolicyOutput { return v.OperationPolicy }).(ServerlessKubernetesOperationPolicyOutput)
 }

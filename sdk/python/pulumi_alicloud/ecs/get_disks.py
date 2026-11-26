@@ -137,6 +137,9 @@ class GetDisksResult:
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyId")
     def auto_snapshot_policy_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the automatic snapshot policy.
+        """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
     @_builtins.property
@@ -159,21 +162,33 @@ class GetDisksResult:
     @_builtins.property
     @pulumi.getter(name="deleteAutoSnapshot")
     def delete_auto_snapshot(self) -> Optional[_builtins.bool]:
+        """
+        Whether to delete the automatic snapshot.
+        """
         return pulumi.get(self, "delete_auto_snapshot")
 
     @_builtins.property
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> Optional[_builtins.bool]:
+        """
+        Whether to delete the disk with the instance.
+        """
         return pulumi.get(self, "delete_with_instance")
 
     @_builtins.property
     @pulumi.getter(name="diskName")
     def disk_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the disk.
+        """
         return pulumi.get(self, "disk_name")
 
     @_builtins.property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[_builtins.str]:
+        """
+        The disk type.
+        """
         return pulumi.get(self, "disk_type")
 
     @_builtins.property
@@ -192,11 +207,17 @@ class GetDisksResult:
     @_builtins.property
     @pulumi.getter(name="enableAutoSnapshot")
     def enable_auto_snapshot(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable the automatic snapshot.
+        """
         return pulumi.get(self, "enable_auto_snapshot")
 
     @_builtins.property
     @pulumi.getter(name="enableAutomatedSnapshotPolicy")
     def enable_automated_snapshot_policy(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable the automated snapshot policy.
+        """
         return pulumi.get(self, "enable_automated_snapshot_policy")
 
     @_builtins.property
@@ -229,13 +250,16 @@ class GetDisksResult:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[_builtins.str]:
         """
-        ID of the related instance. It is `null` unless the `status` is `In_use`.
+        The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[_builtins.str]:
+        """
+        The KMS key ID.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
@@ -246,11 +270,17 @@ class GetDisksResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of disk names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
     @pulumi.getter(name="operationLocks")
     def operation_locks(self) -> Optional[Sequence['outputs.GetDisksOperationLockResult']]:
+        """
+        Operation locks.
+        """
         return pulumi.get(self, "operation_locks")
 
     @_builtins.property
@@ -271,11 +301,17 @@ class GetDisksResult:
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[_builtins.str]:
+        """
+        The payment type.
+        """
         return pulumi.get(self, "payment_type")
 
     @_builtins.property
     @pulumi.getter
     def portable(self) -> Optional[_builtins.bool]:
+        """
+        Whether the disk is portable.
+        """
         return pulumi.get(self, "portable")
 
     @_builtins.property
@@ -327,6 +363,9 @@ class GetDisksResult:
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
+        """
+        The zone ID.
+        """
         return pulumi.get(self, "zone_id")
 
 
@@ -417,17 +456,32 @@ def get_disks(additional_attributes: Optional[Sequence[_builtins.str]] = None,
     ```
 
 
-    :param _builtins.str availability_zone: Availability zone of the disk.
-    :param _builtins.str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk), `cloud_essd_entry`.
+    :param Sequence[_builtins.str] additional_attributes: Additional attributes.
+    :param _builtins.str auto_snapshot_policy_id: The ID of the automatic snapshot policy.
+    :param _builtins.str availability_zone: The availability zone. Deprecated; use `zone_id` instead.
+    :param _builtins.str category: Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, and `cloud_regional_disk_auto` (Regional ESSD).
+    :param _builtins.bool delete_auto_snapshot: Whether to delete the automatic snapshot.
+    :param _builtins.bool delete_with_instance: Whether to delete the disk with the instance.
+    :param _builtins.str disk_name: The name of the disk.
+    :param _builtins.str disk_type: Disk type. Valid values: `system`, `data`, `all`.
+    :param _builtins.bool dry_run: Whether to check validity without making the request.
+    :param _builtins.bool enable_auto_snapshot: Whether to enable the automatic snapshot.
+    :param _builtins.bool enable_automated_snapshot_policy: Whether to enable the automated snapshot policy.
+    :param _builtins.bool enable_shared: Whether to enable shared.
     :param _builtins.str encrypted: Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
     :param Sequence[_builtins.str] ids: A list of disks IDs.
     :param _builtins.str instance_id: Filter the results by the specified ECS instance ID.
+    :param _builtins.str kms_key_id: The KMS key ID.
     :param _builtins.str name_regex: A regex string to filter results by disk name.
+    :param Sequence[Union['GetDisksOperationLockArgs', 'GetDisksOperationLockArgsDict', 'outputs.GetDisksOperationLockResult']] operation_locks: Operation locks. See `operation_locks` below.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str payment_type: The payment type. Valid values: `PayAsYouGo`, `Subscription`.
+    :param _builtins.bool portable: Whether the disk is portable.
     :param _builtins.str resource_group_id: The Id of resource group which the disk belongs.
-    :param _builtins.str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
-    :param _builtins.str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+    :param _builtins.str snapshot_id: The snapshot ID.
+    :param _builtins.str status: The status of the disk.
     :param Mapping[str, _builtins.str] tags: A map of tags assigned to the disks. It must be in the format:
+           
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -438,6 +492,7 @@ def get_disks(additional_attributes: Optional[Sequence[_builtins.str]] = None,
            })
            ```
     :param _builtins.str type: Disk type. Possible values: `system` and `data`.
+    :param _builtins.str zone_id: The zone ID.
     """
     __args__ = dict()
     __args__['additionalAttributes'] = additional_attributes
@@ -552,17 +607,32 @@ def get_disks_output(additional_attributes: pulumi.Input[Optional[Optional[Seque
     ```
 
 
-    :param _builtins.str availability_zone: Availability zone of the disk.
-    :param _builtins.str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk), `cloud_essd_entry`.
+    :param Sequence[_builtins.str] additional_attributes: Additional attributes.
+    :param _builtins.str auto_snapshot_policy_id: The ID of the automatic snapshot policy.
+    :param _builtins.str availability_zone: The availability zone. Deprecated; use `zone_id` instead.
+    :param _builtins.str category: Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, and `cloud_regional_disk_auto` (Regional ESSD).
+    :param _builtins.bool delete_auto_snapshot: Whether to delete the automatic snapshot.
+    :param _builtins.bool delete_with_instance: Whether to delete the disk with the instance.
+    :param _builtins.str disk_name: The name of the disk.
+    :param _builtins.str disk_type: Disk type. Valid values: `system`, `data`, `all`.
+    :param _builtins.bool dry_run: Whether to check validity without making the request.
+    :param _builtins.bool enable_auto_snapshot: Whether to enable the automatic snapshot.
+    :param _builtins.bool enable_automated_snapshot_policy: Whether to enable the automated snapshot policy.
+    :param _builtins.bool enable_shared: Whether to enable shared.
     :param _builtins.str encrypted: Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
     :param Sequence[_builtins.str] ids: A list of disks IDs.
     :param _builtins.str instance_id: Filter the results by the specified ECS instance ID.
+    :param _builtins.str kms_key_id: The KMS key ID.
     :param _builtins.str name_regex: A regex string to filter results by disk name.
+    :param Sequence[Union['GetDisksOperationLockArgs', 'GetDisksOperationLockArgsDict', 'outputs.GetDisksOperationLockResult']] operation_locks: Operation locks. See `operation_locks` below.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str payment_type: The payment type. Valid values: `PayAsYouGo`, `Subscription`.
+    :param _builtins.bool portable: Whether the disk is portable.
     :param _builtins.str resource_group_id: The Id of resource group which the disk belongs.
-    :param _builtins.str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
-    :param _builtins.str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+    :param _builtins.str snapshot_id: The snapshot ID.
+    :param _builtins.str status: The status of the disk.
     :param Mapping[str, _builtins.str] tags: A map of tags assigned to the disks. It must be in the format:
+           
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -573,6 +643,7 @@ def get_disks_output(additional_attributes: pulumi.Input[Optional[Optional[Seque
            })
            ```
     :param _builtins.str type: Disk type. Possible values: `system` and `data`.
+    :param _builtins.str zone_id: The zone ID.
     """
     __args__ = dict()
     __args__['additionalAttributes'] = additional_attributes

@@ -188,6 +188,8 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:eci/containerGroup:ContainerGroup example &lt;container_group_id&gt;
  * ```
  * 
+ * &gt; **NOTE:** `acrRegistryInfo` (including `arnService` and `arnUser`) cannot be read back from the API, so it is not reconstructed on import. Configuring these role ARNs after import requires replacement of the container group; review the plan before applying.
+ * 
  */
 @ResourceType(type="alicloud:eci/containerGroup:ContainerGroup")
 public class ContainerGroup extends com.pulumi.resources.CustomResource {

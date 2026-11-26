@@ -33,14 +33,14 @@ public final class GetPrivateZonesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+     * The service region is the target region of the PrivateZone service accessed through CEN.
      * 
      */
     @Import(name="hostRegionId")
     private @Nullable Output<String> hostRegionId;
 
     /**
-     * @return The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+     * @return The service region is the target region of the PrivateZone service accessed through CEN.
      * 
      */
     public Optional<Output<String>> hostRegionId() {
@@ -50,7 +50,6 @@ public final class GetPrivateZonesArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
      * **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
-     * * ` hostRegionId  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
      * 
      */
     @Import(name="ids")
@@ -59,7 +58,6 @@ public final class GetPrivateZonesArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
      * **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
-     * * ` hostRegionId  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -146,7 +144,7 @@ public final class GetPrivateZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param hostRegionId The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+         * @param hostRegionId The service region is the target region of the PrivateZone service accessed through CEN.
          * 
          * @return builder
          * 
@@ -157,7 +155,7 @@ public final class GetPrivateZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param hostRegionId The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+         * @param hostRegionId The service region is the target region of the PrivateZone service accessed through CEN.
          * 
          * @return builder
          * 
@@ -169,7 +167,6 @@ public final class GetPrivateZonesArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param ids A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
          * **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
-         * * ` hostRegionId  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
          * 
          * @return builder
          * 
@@ -182,7 +179,6 @@ public final class GetPrivateZonesArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param ids A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
          * **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
-         * * ` hostRegionId  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
          * 
          * @return builder
          * 
@@ -194,7 +190,6 @@ public final class GetPrivateZonesArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param ids A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
          * **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
-         * * ` hostRegionId  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
          * 
          * @return builder
          * 

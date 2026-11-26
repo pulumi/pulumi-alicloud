@@ -55,7 +55,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.time.SleepArgs;
  * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewall;
  * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -73,10 +72,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var description = config.get("description").orElse("Created by Terraform");
  *         final var firewallName = config.get("firewallName").orElse("tf-example");
- *         final var trAttachmentMasterCidr = config.get("trAttachmentMasterCidr").orElse("192.168.3.192/26");
- *         final var firewallSubnetCidr = config.get("firewallSubnetCidr").orElse("192.168.3.0/25");
  *         final var region = config.get("region").orElse("cn-hangzhou");
- *         final var trAttachmentSlaveCidr = config.get("trAttachmentSlaveCidr").orElse("192.168.3.128/26");
  *         final var firewallVpcCidr = config.get("firewallVpcCidr").orElse("192.168.3.0/24");
  *         final var zone1 = config.get("zone1").orElse("cn-hangzhou-h");
  *         final var firewallNameUpdate = config.get("firewallNameUpdate").orElse("tf-example-1");
@@ -135,33 +131,28 @@ import javax.annotation.Nullable;
  *                     .zoneId(default_.resources()[0].masterZones()[2])
  *                     .vswitchId(vpc1vsw2.id())
  *                     .build())
- *             .vpcId(vpc1.id())
+ *             .vpcId(foo.vpcId())
  *             .cenId(cen.id())
  *             .transitRouterId(tr.transitRouterId())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(foo)
- *                 .build());
+ *             .build());
  * 
  *         var wait10Minutes = new Sleep("wait10Minutes", SleepArgs.builder()
  *             .createDuration("10m")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(Arrays.asList(tr_vpc1))
- *                 .build());
+ *             .triggers(Map.ofEntries(
+ *                 Map.entry("attachmentId", tr_vpc1.id()),
+ *                 Map.entry("cenId", tr_vpc1.cenId())
+ *             ))
+ *             .build());
  * 
  *         var defaultVpcCenTrFirewall = new VpcCenTrFirewall("defaultVpcCenTrFirewall", VpcCenTrFirewallArgs.builder()
- *             .cenId(tr_vpc1.cenId())
+ *             .cenId(wait10Minutes.get("triggers").get("cen_id"))
  *             .firewallName(name)
- *             .firewallSubnetCidr(firewallSubnetCidr)
- *             .trAttachmentSlaveCidr(trAttachmentSlaveCidr)
  *             .firewallDescription("VpcCenTrFirewall created by terraform")
  *             .regionNo(region)
- *             .trAttachmentMasterCidr(trAttachmentMasterCidr)
  *             .firewallVpcCidr(firewallVpcCidr)
  *             .transitRouterId(tr.transitRouterId())
  *             .routeMode("managed")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(wait10Minutes)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -252,18 +243,21 @@ public class VpcCenTrFirewall extends com.pulumi.resources.CustomResource {
         return this.firewallName;
     }
     /**
-     * The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
+     * Field `firewallSubnetCidr` has been deprecated from provider version 2.2.0.
+     * 
+     * @deprecated Field `firewallSubnetCidr` has been deprecated from provider version 2.2.0.
      * 
      */
+    @Deprecated
     @Export(name="firewallSubnetCidr", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> firewallSubnetCidr;
+    private Output<String> firewallSubnetCidr;
 
     /**
-     * @return The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
+     * @return Field `firewallSubnetCidr` has been deprecated from provider version 2.2.0.
      * 
      */
-    public Output<Optional<String>> firewallSubnetCidr() {
-        return Codegen.optional(this.firewallSubnetCidr);
+    public Output<String> firewallSubnetCidr() {
+        return this.firewallSubnetCidr;
     }
     /**
      * The attachment ID used in the firewall VPC to connect to the transit router (TR) in automatic mode.
@@ -284,14 +278,42 @@ public class VpcCenTrFirewall extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="firewallVpcCidr", refs={String.class}, tree="[0]")
-    private Output<String> firewallVpcCidr;
+    private Output</* @Nullable */ String> firewallVpcCidr;
 
     /**
      * @return The CIDR block of the firewall VPC in automatic mode.
      * 
      */
-    public Output<String> firewallVpcCidr() {
-        return this.firewallVpcCidr;
+    public Output<Optional<String>> firewallVpcCidr() {
+        return Codegen.optional(this.firewallVpcCidr);
+    }
+    /**
+     * The ID of the VPC where the firewall ENI is created in manual mode.
+     * 
+     */
+    @Export(name="firewallVpcId", refs={String.class}, tree="[0]")
+    private Output<String> firewallVpcId;
+
+    /**
+     * @return The ID of the VPC where the firewall ENI is created in manual mode.
+     * 
+     */
+    public Output<String> firewallVpcId() {
+        return this.firewallVpcId;
+    }
+    /**
+     * The ID of the vSwitch where the firewall ENI is created in manual mode.
+     * 
+     */
+    @Export(name="firewallVswitchId", refs={String.class}, tree="[0]")
+    private Output<String> firewallVswitchId;
+
+    /**
+     * @return The ID of the vSwitch where the firewall ENI is created in manual mode.
+     * 
+     */
+    public Output<String> firewallVswitchId() {
+        return this.firewallVswitchId;
     }
     /**
      * The region ID of transit router instance I.
@@ -336,14 +358,17 @@ public class VpcCenTrFirewall extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+     * Field `trAttachmentMasterCidr` has been deprecated from provider version 2.2.0.
+     * 
+     * @deprecated Field `trAttachmentMasterCidr` has been deprecated from provider version 2.2.0.
      * 
      */
+    @Deprecated
     @Export(name="trAttachmentMasterCidr", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trAttachmentMasterCidr;
 
     /**
-     * @return The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+     * @return Field `trAttachmentMasterCidr` has been deprecated from provider version 2.2.0.
      * 
      */
     public Output<Optional<String>> trAttachmentMasterCidr() {
@@ -352,8 +377,6 @@ public class VpcCenTrFirewall extends com.pulumi.resources.CustomResource {
     /**
      * The primary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
-     * 
      */
     @Export(name="trAttachmentMasterZone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trAttachmentMasterZone;
@@ -361,21 +384,22 @@ public class VpcCenTrFirewall extends com.pulumi.resources.CustomResource {
     /**
      * @return The primary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
-     * 
      */
     public Output<Optional<String>> trAttachmentMasterZone() {
         return Codegen.optional(this.trAttachmentMasterZone);
     }
     /**
-     * The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+     * Field `trAttachmentSlaveCidr` has been deprecated from provider version 2.2.0.
+     * 
+     * @deprecated Field `trAttachmentSlaveCidr` has been deprecated from provider version 2.2.0.
      * 
      */
+    @Deprecated
     @Export(name="trAttachmentSlaveCidr", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trAttachmentSlaveCidr;
 
     /**
-     * @return The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+     * @return Field `trAttachmentSlaveCidr` has been deprecated from provider version 2.2.0.
      * 
      */
     public Output<Optional<String>> trAttachmentSlaveCidr() {
@@ -384,16 +408,12 @@ public class VpcCenTrFirewall extends com.pulumi.resources.CustomResource {
     /**
      * The secondary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
-     * 
      */
     @Export(name="trAttachmentSlaveZone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trAttachmentSlaveZone;
 
     /**
      * @return The secondary zone of the vSwitch.
-     * 
-     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Output<Optional<String>> trAttachmentSlaveZone() {

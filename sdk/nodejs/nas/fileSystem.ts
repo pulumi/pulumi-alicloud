@@ -114,6 +114,10 @@ export class FileSystem extends pulumi.CustomResource {
     }
 
     /**
+     * The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `autoUpgradeConfig` below.
+     */
+    declare public readonly autoUpgradeConfig: pulumi.Output<outputs.nas.FileSystemAutoUpgradeConfig>;
+    /**
      * File system capacity.
      *
      * Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -136,6 +140,8 @@ export class FileSystem extends pulumi.CustomResource {
      * - 2~128 English or Chinese characters in length.
      * - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
+     *
+     * > **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -212,6 +218,8 @@ export class FileSystem extends pulumi.CustomResource {
     declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the resource group.
+     *
+     * > **NOTE:** For `standard` file system types, the NAS server writes `resourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
@@ -286,6 +294,7 @@ export class FileSystem extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FileSystemState | undefined;
+            resourceInputs["autoUpgradeConfig"] = state?.autoUpgradeConfig;
             resourceInputs["capacity"] = state?.capacity;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
@@ -318,6 +327,7 @@ export class FileSystem extends pulumi.CustomResource {
             if (args?.storageType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageType'");
             }
+            resourceInputs["autoUpgradeConfig"] = args?.autoUpgradeConfig;
             resourceInputs["capacity"] = args?.capacity;
             resourceInputs["description"] = args?.description;
             resourceInputs["encryptType"] = args?.encryptType;
@@ -353,6 +363,10 @@ export class FileSystem extends pulumi.CustomResource {
  */
 export interface FileSystemState {
     /**
+     * The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `autoUpgradeConfig` below.
+     */
+    autoUpgradeConfig?: pulumi.Input<inputs.nas.FileSystemAutoUpgradeConfig | undefined>;
+    /**
      * File system capacity.
      *
      * Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -375,6 +389,8 @@ export interface FileSystemState {
      * - 2~128 English or Chinese characters in length.
      * - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
+     *
+     * > **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -451,6 +467,8 @@ export interface FileSystemState {
     regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
+     *
+     * > **NOTE:** For `standard` file system types, the NAS server writes `resourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
@@ -518,6 +536,10 @@ export interface FileSystemState {
  */
 export interface FileSystemArgs {
     /**
+     * The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `autoUpgradeConfig` below.
+     */
+    autoUpgradeConfig?: pulumi.Input<inputs.nas.FileSystemAutoUpgradeConfig | undefined>;
+    /**
      * File system capacity.
      *
      * Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -536,6 +558,8 @@ export interface FileSystemArgs {
      * - 2~128 English or Chinese characters in length.
      * - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
+     *
+     * > **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -608,6 +632,8 @@ export interface FileSystemArgs {
     redundancyVswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the resource group.
+     *
+     * > **NOTE:** For `standard` file system types, the NAS server writes `resourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**

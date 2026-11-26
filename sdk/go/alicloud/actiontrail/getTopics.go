@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
 //
-// > **NOTE:** Available in 1.56.0+
+// > **NOTE:** Available since v1.56.0.
 //
 // ## Example Usage
 //
@@ -84,7 +84,7 @@ type GetTopicsResult struct {
 	PageSize   *int     `pulumi:"pageSize"`
 	// The name of the topic.
 	Topic *string `pulumi:"topic"`
-	// A list of topics. Each element contains the following attributes:
+	// A list of topics. Each element contains the following attributes. See `topics` for the optional argument block.
 	Topics     []GetTopicsTopic `pulumi:"topics"`
 	TotalCount int              `pulumi:"totalCount"`
 }
@@ -169,7 +169,7 @@ func (o GetTopicsResultOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTopicsResult) *string { return v.Topic }).(pulumi.StringPtrOutput)
 }
 
-// A list of topics. Each element contains the following attributes:
+// A list of topics. Each element contains the following attributes. See `topics` for the optional argument block.
 func (o GetTopicsResultOutput) Topics() GetTopicsTopicArrayOutput {
 	return o.ApplyT(func(v GetTopicsResult) []GetTopicsTopic { return v.Topics }).(GetTopicsTopicArrayOutput)
 }

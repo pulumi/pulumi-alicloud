@@ -62,6 +62,9 @@ class GetEcsImageComponentsResult:
     @_builtins.property
     @pulumi.getter
     def components(self) -> Sequence['outputs.GetEcsImageComponentsComponentResult']:
+        """
+        A list of Ecs Image Components. Each element contains the following attributes:
+        """
         return pulumi.get(self, "components")
 
     @_builtins.property
@@ -80,6 +83,9 @@ class GetEcsImageComponentsResult:
     @_builtins.property
     @pulumi.getter(name="imageComponentName")
     def image_component_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the image component.
+        """
         return pulumi.get(self, "image_component_name")
 
     @_builtins.property
@@ -90,6 +96,9 @@ class GetEcsImageComponentsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Image Component names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -100,16 +109,25 @@ class GetEcsImageComponentsResult:
     @_builtins.property
     @pulumi.getter
     def owner(self) -> Optional[_builtins.str]:
+        """
+        The type of the image component.
+        """
         return pulumi.get(self, "owner")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        List of label key-value pairs.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -142,7 +160,7 @@ def get_ecs_image_components(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ecs Image Components of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.159.0+.
+    > **NOTE:** Available since v1.159.0.
 
     ## Example Usage
 
@@ -202,7 +220,7 @@ def get_ecs_image_components_output(ids: pulumi.Input[Optional[Optional[Sequence
     """
     This data source provides the Ecs Image Components of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.159.0+.
+    > **NOTE:** Available since v1.159.0.
 
     ## Example Usage
 

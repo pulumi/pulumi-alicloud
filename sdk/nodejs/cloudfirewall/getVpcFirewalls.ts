@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+ * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://www.alibabacloud.com/help/doc-detail/342932.htm)
  *
  * > **NOTE:** Available since v1.194.0.
  *
@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     ids: ["id-example"],
  *     memberUid: "1415189284827022",
  *     status: "closed",
- *     vpcFirewallName: "tf-test",
+ *     vpcFirewallName: "tf-example",
  * });
  * export const alicloudCfwVpcFirewallExampleId = _default.then(_default => _default.firewalls?.[0]?.id);
  * ```
@@ -68,7 +68,7 @@ export interface GetVpcFirewallsArgs {
      */
     outputFile?: string;
     /**
-     * The region ID of the peer VPC.
+     * The region ID.
      */
     regionNo?: string;
     /**
@@ -84,7 +84,7 @@ export interface GetVpcFirewallsArgs {
      */
     vpcFirewallName?: string;
     /**
-     * The ID of the peer VPC instance.
+     * The ID of the VPC instance.
      */
     vpcId?: string;
 }
@@ -106,9 +106,6 @@ export interface GetVpcFirewallsResult {
      */
     readonly ids: string[];
     readonly lang?: string;
-    /**
-     * The UID of the Alibaba Cloud member account.
-     */
     readonly memberUid?: string;
     readonly nameRegex?: string;
     /**
@@ -138,7 +135,7 @@ export interface GetVpcFirewallsResult {
     readonly vpcId?: string;
 }
 /**
- * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+ * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://www.alibabacloud.com/help/doc-detail/342932.htm)
  *
  * > **NOTE:** Available since v1.194.0.
  *
@@ -152,7 +149,7 @@ export interface GetVpcFirewallsResult {
  *     ids: ["id-example"],
  *     memberUid: "1415189284827022",
  *     status: "closed",
- *     vpcFirewallName: "tf-test",
+ *     vpcFirewallName: "tf-example",
  * });
  * export const alicloudCfwVpcFirewallExampleId = _default.then(_default => _default.firewalls?.[0]?.id);
  * ```
@@ -199,7 +196,7 @@ export interface GetVpcFirewallsOutputArgs {
      */
     outputFile?: pulumi.Input<string | undefined>;
     /**
-     * The region ID of the peer VPC.
+     * The region ID.
      */
     regionNo?: pulumi.Input<string | undefined>;
     /**
@@ -215,7 +212,7 @@ export interface GetVpcFirewallsOutputArgs {
      */
     vpcFirewallName?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the peer VPC instance.
+     * The ID of the VPC instance.
      */
     vpcId?: pulumi.Input<string | undefined>;
 }

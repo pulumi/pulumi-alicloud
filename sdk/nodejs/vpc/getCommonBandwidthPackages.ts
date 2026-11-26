@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
  *
- * > **NOTE:** Available in 1.36.0+.
+ * > **NOTE:** Available since v1.36.0+.
  *
  * ## Example Usage
  *
@@ -19,22 +19,14 @@ import * as utilities from "../utilities";
  *
  * const fooCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("foo", {
  *     bandwidth: "2",
- *     name: "tf-testAccCommonBandwidthPackage",
- *     description: "tf-testAcc-CommonBandwidthPackage",
+ *     name: "tf-exampleCommonBandwidthPackage",
+ *     description: "tf-exampleCommonBandwidthPackage",
  * });
  * const foo = alicloud.vpc.getCommonBandwidthPackagesOutput({
- *     nameRegex: "^tf-testAcc.*",
+ *     nameRegex: "^tf-example.*",
  *     ids: [fooCommonBandwithPackage.id],
  * });
  * ```
- *
- * ## Public ip addresses Block
- *
- *   The public ip addresses mapping supports the following:
- *
- *   * `ipAddress`   - The address of the EIP.
- *   * `allocationId` - The ID of the EIP instance.
- *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
  */
 export function getCommonBandwidthPackages(args?: GetCommonBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetCommonBandwidthPackagesResult> {
     args = args || {};
@@ -129,7 +121,7 @@ export interface GetCommonBandwidthPackagesResult {
 /**
  * This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
  *
- * > **NOTE:** Available in 1.36.0+.
+ * > **NOTE:** Available since v1.36.0+.
  *
  * ## Example Usage
  *
@@ -139,22 +131,14 @@ export interface GetCommonBandwidthPackagesResult {
  *
  * const fooCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("foo", {
  *     bandwidth: "2",
- *     name: "tf-testAccCommonBandwidthPackage",
- *     description: "tf-testAcc-CommonBandwidthPackage",
+ *     name: "tf-exampleCommonBandwidthPackage",
+ *     description: "tf-exampleCommonBandwidthPackage",
  * });
  * const foo = alicloud.vpc.getCommonBandwidthPackagesOutput({
- *     nameRegex: "^tf-testAcc.*",
+ *     nameRegex: "^tf-example.*",
  *     ids: [fooCommonBandwithPackage.id],
  * });
  * ```
- *
- * ## Public ip addresses Block
- *
- *   The public ip addresses mapping supports the following:
- *
- *   * `ipAddress`   - The address of the EIP.
- *   * `allocationId` - The ID of the EIP instance.
- *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
  */
 export function getCommonBandwidthPackagesOutput(args?: GetCommonBandwidthPackagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCommonBandwidthPackagesResult> {
     args = args || {};

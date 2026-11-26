@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides the Nas Filesets of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.153.0+.
+        /// &gt; **NOTE:** Available since v1.153.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides the Nas Filesets of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.153.0+.
+        /// &gt; **NOTE:** Available since v1.153.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides the Nas Filesets of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.153.0+.
+        /// &gt; **NOTE:** Available since v1.153.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -204,7 +204,13 @@ namespace Pulumi.AliCloud.Nas
     [OutputType]
     public sealed class GetFilesetsResult
     {
+        /// <summary>
+        /// The ID of the file system.
+        /// </summary>
         public readonly string FileSystemId;
+        /// <summary>
+        /// A list of Nas Filesets. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetFilesetsFilesetResult> Filesets;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -212,6 +218,9 @@ namespace Pulumi.AliCloud.Nas
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the fileset.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

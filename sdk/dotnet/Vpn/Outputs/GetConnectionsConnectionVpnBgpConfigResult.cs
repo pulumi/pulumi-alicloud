@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class GetConnectionsConnectionVpnBgpConfigResult
     {
         /// <summary>
-        /// The authentication keys for BGP routing protocols.
+        /// (Optional) The authentication keys for BGP routing protocols.
         /// </summary>
         public readonly string? AuthKey;
         /// <summary>
@@ -26,15 +26,15 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string? LocalBgpIp;
         /// <summary>
-        /// The counterpart autonomous system number.
+        /// The peer ASN.
         /// </summary>
         public readonly int? PeerAsn;
         /// <summary>
-        /// The BGP address on the other side.
+        /// The peer BGP IP.
         /// </summary>
         public readonly string? PeerBgpIp;
         /// <summary>
-        /// The negotiation status of the BGP routing protocol. Valid values: `Success`, `False`.
+        /// The status of the tunnel.
         /// </summary>
         public readonly string? Status;
         /// <summary>

@@ -25,7 +25,13 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// The expiration time of the classic network address.
         /// </summary>
         public readonly string ExpiredTime;
+        /// <summary>
+        /// The ID of the instance.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID of the instance.
+        /// </summary>
         public readonly string InstanceId;
         /// <summary>
         /// The IP address of the instance.

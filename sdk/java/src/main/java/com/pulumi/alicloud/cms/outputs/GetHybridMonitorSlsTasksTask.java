@@ -111,7 +111,7 @@ public final class GetHybridMonitorSlsTasksTask {
      */
     private List<GetHybridMonitorSlsTasksTaskMatchExpress> matchExpresses;
     /**
-     * @return The namespace to which the host belongs.
+     * @return The name of the namespace.
      * 
      */
     private String namespace;
@@ -145,6 +145,10 @@ public final class GetHybridMonitorSlsTasksTask {
      * 
      */
     private String uploadRegion;
+    /**
+     * @return The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
+     * 
+     */
     private String yarmConfig;
 
     private GetHybridMonitorSlsTasksTask() {}
@@ -282,7 +286,7 @@ public final class GetHybridMonitorSlsTasksTask {
         return this.matchExpresses;
     }
     /**
-     * @return The namespace to which the host belongs.
+     * @return The name of the namespace.
      * 
      */
     public String namespace() {
@@ -330,6 +334,10 @@ public final class GetHybridMonitorSlsTasksTask {
     public String uploadRegion() {
         return this.uploadRegion;
     }
+    /**
+     * @return The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
+     * 
+     */
     public String yarmConfig() {
         return this.yarmConfig;
     }

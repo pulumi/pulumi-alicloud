@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.185.0+.
+// > **NOTE:** Available since v1.185.0.
 //
 // ## Example Usage
 //
@@ -74,12 +74,14 @@ type GetLogConfigsArgs struct {
 
 // A collection of values returned by getLogConfigs.
 type GetLogConfigsResult struct {
+	// A list of Api Gateway Log Configs. Each element contains the following attributes:
 	Configs []GetLogConfigsConfig `pulumi:"configs"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	LogType    *string  `pulumi:"logType"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The type the of log.
+	LogType    *string `pulumi:"logType"`
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 func GetLogConfigsOutput(ctx *pulumi.Context, args GetLogConfigsOutputArgs, opts ...pulumi.InvokeOption) GetLogConfigsResultOutput {
@@ -116,6 +118,7 @@ func (o GetLogConfigsResultOutput) ToGetLogConfigsResultOutputWithContext(ctx co
 	return o
 }
 
+// A list of Api Gateway Log Configs. Each element contains the following attributes:
 func (o GetLogConfigsResultOutput) Configs() GetLogConfigsConfigArrayOutput {
 	return o.ApplyT(func(v GetLogConfigsResult) []GetLogConfigsConfig { return v.Configs }).(GetLogConfigsConfigArrayOutput)
 }
@@ -129,6 +132,7 @@ func (o GetLogConfigsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLogConfigsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The type the of log.
 func (o GetLogConfigsResultOutput) LogType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLogConfigsResult) *string { return v.LogType }).(pulumi.StringPtrOutput)
 }

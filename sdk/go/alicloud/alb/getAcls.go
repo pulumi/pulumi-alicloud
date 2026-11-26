@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.133.0+.
+// > **NOTE:** Available since v1.133.0.
 //
 // ## Example Usage
 //
@@ -80,18 +80,23 @@ type GetAclsArgs struct {
 
 // A collection of values returned by getAcls.
 type GetAclsResult struct {
-	AclIds        []string     `pulumi:"aclIds"`
-	AclName       *string      `pulumi:"aclName"`
+	AclIds []string `pulumi:"aclIds"`
+	// The ACL Name.
+	AclName *string `pulumi:"aclName"`
+	// A list of Alb Acls. Each element contains the following attributes:
 	Acls          []GetAclsAcl `pulumi:"acls"`
 	EnableDetails *bool        `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string   `pulumi:"id"`
-	Ids             []string `pulumi:"ids"`
-	NameRegex       *string  `pulumi:"nameRegex"`
-	Names           []string `pulumi:"names"`
-	OutputFile      *string  `pulumi:"outputFile"`
-	ResourceGroupId *string  `pulumi:"resourceGroupId"`
-	Status          *string  `pulumi:"status"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Acl names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// Resource Group to Which the Number.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+	Status *string `pulumi:"status"`
 }
 
 func GetAclsOutput(ctx *pulumi.Context, args GetAclsOutputArgs, opts ...pulumi.InvokeOption) GetAclsResultOutput {
@@ -142,10 +147,12 @@ func (o GetAclsResultOutput) AclIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAclsResult) []string { return v.AclIds }).(pulumi.StringArrayOutput)
 }
 
+// The ACL Name.
 func (o GetAclsResultOutput) AclName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAclsResult) *string { return v.AclName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Alb Acls. Each element contains the following attributes:
 func (o GetAclsResultOutput) Acls() GetAclsAclArrayOutput {
 	return o.ApplyT(func(v GetAclsResult) []GetAclsAcl { return v.Acls }).(GetAclsAclArrayOutput)
 }
@@ -167,6 +174,7 @@ func (o GetAclsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAclsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Acl names.
 func (o GetAclsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAclsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -175,10 +183,12 @@ func (o GetAclsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAclsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Resource Group to Which the Number.
 func (o GetAclsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAclsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
 func (o GetAclsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAclsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// This data source provides the Sae Ingresses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// &gt; **NOTE:** Available since v1.137.0.
         /// 
         /// ## Example Usage
         /// 
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// This data source provides the Sae Ingresses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// &gt; **NOTE:** Available since v1.137.0.
         /// 
         /// ## Example Usage
         /// 
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// This data source provides the Sae Ingresses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// &gt; **NOTE:** Available since v1.137.0.
         /// 
         /// ## Example Usage
         /// 
@@ -411,7 +411,13 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Sae Ingresses. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetIngressesIngressResult> Ingresses;
+        /// <summary>
+        /// The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+        /// </summary>
         public readonly string NamespaceId;
         public readonly string? OutputFile;
 

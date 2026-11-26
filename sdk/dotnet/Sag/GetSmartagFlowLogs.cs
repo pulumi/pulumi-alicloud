@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sag
         /// <summary>
         /// This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.168.0+.
+        /// &gt; **NOTE:** Available since v1.168.0+
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Sag
         /// <summary>
         /// This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.168.0+.
+        /// &gt; **NOTE:** Available since v1.168.0+
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Sag
         /// <summary>
         /// This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.168.0+.
+        /// &gt; **NOTE:** Available since v1.168.0+
         /// 
         /// ## Example Usage
         /// 
@@ -240,18 +240,30 @@ namespace Pulumi.AliCloud.Sag
     [OutputType]
     public sealed class GetSmartagFlowLogsResult
     {
+        /// <summary>
+        /// The description of the flow log.
+        /// </summary>
         public readonly string? Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Smartag Flow Logs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSmartagFlowLogsLogResult> Logs;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Flow Log names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

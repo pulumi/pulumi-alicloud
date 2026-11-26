@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:**  Available in 1.86.0+.
+// > **NOTE:** Available since v1.86.0.
 //
 // ## Example Usage
 //

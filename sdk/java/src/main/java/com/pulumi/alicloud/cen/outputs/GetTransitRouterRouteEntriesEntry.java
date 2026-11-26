@@ -10,15 +10,35 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTransitRouterRouteEntriesEntry {
+    /**
+     * @return The ID of the CEN Transit Router Route Entry.
+     * 
+     */
     private String id;
+    /**
+     * @return The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+     * 
+     */
     private String status;
+    /**
+     * @return The description of the transit router route entry.
+     * 
+     */
     private String transitRouterRouteEntryDescription;
     /**
-     * @return The target network segment of the route entry.
+     * @return The destination CIDR block of the route entry.
      * 
      */
     private String transitRouterRouteEntryDestinationCidrBlock;
+    /**
+     * @return The ID of the route entry.
+     * 
+     */
     private String transitRouterRouteEntryId;
+    /**
+     * @return The name of the transit router route entry.
+     * 
+     */
     private String transitRouterRouteEntryName;
     /**
      * @return ID of the next hop.
@@ -37,25 +57,45 @@ public final class GetTransitRouterRouteEntriesEntry {
     private String transitRouterRouteEntryType;
 
     private GetTransitRouterRouteEntriesEntry() {}
+    /**
+     * @return The ID of the CEN Transit Router Route Entry.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+     * 
+     */
     public String status() {
         return this.status;
     }
+    /**
+     * @return The description of the transit router route entry.
+     * 
+     */
     public String transitRouterRouteEntryDescription() {
         return this.transitRouterRouteEntryDescription;
     }
     /**
-     * @return The target network segment of the route entry.
+     * @return The destination CIDR block of the route entry.
      * 
      */
     public String transitRouterRouteEntryDestinationCidrBlock() {
         return this.transitRouterRouteEntryDestinationCidrBlock;
     }
+    /**
+     * @return The ID of the route entry.
+     * 
+     */
     public String transitRouterRouteEntryId() {
         return this.transitRouterRouteEntryId;
     }
+    /**
+     * @return The name of the transit router route entry.
+     * 
+     */
     public String transitRouterRouteEntryName() {
         return this.transitRouterRouteEntryName;
     }

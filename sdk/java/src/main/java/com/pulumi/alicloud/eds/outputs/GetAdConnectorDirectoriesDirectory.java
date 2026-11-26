@@ -79,7 +79,7 @@ public final class GetAdConnectorDirectoriesDirectory {
      */
     private Boolean mfaEnabled;
     /**
-     * @return The status of directory.
+     * @return The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
      * 
      */
     private String status;
@@ -202,7 +202,7 @@ public final class GetAdConnectorDirectoriesDirectory {
         return this.mfaEnabled;
     }
     /**
-     * @return The status of directory.
+     * @return The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
      * 
      */
     public String status() {

@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the CA certificate list.
         /// 
+        /// &gt; **NOTE:** Available since v1.22.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -39,6 +41,8 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the CA certificate list.
         /// 
+        /// &gt; **NOTE:** Available since v1.22.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -63,6 +67,8 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// This data source provides the CA certificate list.
+        /// 
+        /// &gt; **NOTE:** Available since v1.22.0.
         /// 
         /// ## Example Usage
         /// 

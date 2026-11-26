@@ -204,6 +204,7 @@ type ReadOnlyInstance struct {
 	// - perfer
 	// - verify-ca
 	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	//
 	// > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	ReplicationAcl pulumi.StringOutput `pulumi:"replicationAcl"`
 	// The ID of resource group which the DB read-only instance belongs.
@@ -253,6 +254,7 @@ type ReadOnlyInstance struct {
 	// - Classic: classic network in enhanced whitelist mode
 	// - VPC: virtual private cloud (VPC) in enhanced whitelist mode
 	// - MIX: standard whitelist mode
+	//
 	// > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
 	WhitelistNetworkType pulumi.StringPtrOutput `pulumi:"whitelistNetworkType"`
 	// The Zone to launch the DB instance.
@@ -391,6 +393,7 @@ type readOnlyInstanceState struct {
 	// - perfer
 	// - verify-ca
 	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	//
 	// > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	ReplicationAcl *string `pulumi:"replicationAcl"`
 	// The ID of resource group which the DB read-only instance belongs.
@@ -440,6 +443,7 @@ type readOnlyInstanceState struct {
 	// - Classic: classic network in enhanced whitelist mode
 	// - VPC: virtual private cloud (VPC) in enhanced whitelist mode
 	// - MIX: standard whitelist mode
+	//
 	// > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
 	WhitelistNetworkType *string `pulumi:"whitelistNetworkType"`
 	// The Zone to launch the DB instance.
@@ -537,6 +541,7 @@ type ReadOnlyInstanceState struct {
 	// - perfer
 	// - verify-ca
 	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	//
 	// > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	ReplicationAcl pulumi.StringPtrInput
 	// The ID of resource group which the DB read-only instance belongs.
@@ -586,6 +591,7 @@ type ReadOnlyInstanceState struct {
 	// - Classic: classic network in enhanced whitelist mode
 	// - VPC: virtual private cloud (VPC) in enhanced whitelist mode
 	// - MIX: standard whitelist mode
+	//
 	// > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
 	WhitelistNetworkType pulumi.StringPtrInput
 	// The Zone to launch the DB instance.
@@ -687,6 +693,7 @@ type readOnlyInstanceArgs struct {
 	// - perfer
 	// - verify-ca
 	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	//
 	// > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	ReplicationAcl *string `pulumi:"replicationAcl"`
 	// The ID of resource group which the DB read-only instance belongs.
@@ -736,6 +743,7 @@ type readOnlyInstanceArgs struct {
 	// - Classic: classic network in enhanced whitelist mode
 	// - VPC: virtual private cloud (VPC) in enhanced whitelist mode
 	// - MIX: standard whitelist mode
+	//
 	// > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
 	WhitelistNetworkType *string `pulumi:"whitelistNetworkType"`
 	// The Zone to launch the DB instance.
@@ -828,6 +836,7 @@ type ReadOnlyInstanceArgs struct {
 	// - perfer
 	// - verify-ca
 	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	//
 	// > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	ReplicationAcl pulumi.StringPtrInput
 	// The ID of resource group which the DB read-only instance belongs.
@@ -877,6 +886,7 @@ type ReadOnlyInstanceArgs struct {
 	// - Classic: classic network in enhanced whitelist mode
 	// - VPC: virtual private cloud (VPC) in enhanced whitelist mode
 	// - MIX: standard whitelist mode
+	//
 	// > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
 	WhitelistNetworkType pulumi.StringPtrInput
 	// The Zone to launch the DB instance.
@@ -1141,6 +1151,7 @@ func (o ReadOnlyInstanceOutput) Port() pulumi.StringOutput {
 // - perfer
 // - verify-ca
 // - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+//
 // > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 func (o ReadOnlyInstanceOutput) ReplicationAcl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.ReplicationAcl }).(pulumi.StringOutput)
@@ -1229,6 +1240,7 @@ func (o ReadOnlyInstanceOutput) VswitchId() pulumi.StringPtrOutput {
 // - Classic: classic network in enhanced whitelist mode
 // - VPC: virtual private cloud (VPC) in enhanced whitelist mode
 // - MIX: standard whitelist mode
+//
 // > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
 func (o ReadOnlyInstanceOutput) WhitelistNetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringPtrOutput { return v.WhitelistNetworkType }).(pulumi.StringPtrOutput)

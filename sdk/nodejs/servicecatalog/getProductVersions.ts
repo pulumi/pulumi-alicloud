@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
  *
- * > **NOTE:** Available in 1.196.0+
+ * > **NOTE:** Available since v1.196.0+
  *
  * ## Example Usage
  *
@@ -39,6 +39,9 @@ export function getProductVersions(args: GetProductVersionsArgs, opts?: pulumi.I
  * A collection of arguments for invoking getProductVersions.
  */
 export interface GetProductVersionsArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: boolean;
     /**
      * A list of Product Version IDs.
@@ -77,12 +80,17 @@ export interface GetProductVersionsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * Product ID.
+     */
     readonly productId: string;
     /**
      * A list of Product Version Entries. Each element contains the following attributes:
      */
     readonly productVersions: outputs.servicecatalog.GetProductVersionsProductVersion[];
     /**
+     * (Deprecated since v1.197.0) A list of Product Version Entries. Each element contains the following attributes:
+     *
      * @deprecated Field 'versions' has been deprecated from provider version 1.197.0.
      */
     readonly versions: outputs.servicecatalog.GetProductVersionsVersion[];
@@ -90,7 +98,7 @@ export interface GetProductVersionsResult {
 /**
  * This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
  *
- * > **NOTE:** Available in 1.196.0+
+ * > **NOTE:** Available since v1.196.0+
  *
  * ## Example Usage
  *
@@ -120,6 +128,9 @@ export function getProductVersionsOutput(args: GetProductVersionsOutputArgs, opt
  * A collection of arguments for invoking getProductVersions.
  */
 export interface GetProductVersionsOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Product Version IDs.

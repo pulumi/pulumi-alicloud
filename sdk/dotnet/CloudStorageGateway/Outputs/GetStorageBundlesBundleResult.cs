@@ -13,11 +13,29 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
     [OutputType]
     public sealed class GetStorageBundlesBundleResult
     {
+        /// <summary>
+        /// Storage Bundle created time.
+        /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// Storage Bundle description.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The ID of the Storage Bundle.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Storage Bundle location.
+        /// </summary>
         public readonly string Location;
+        /// <summary>
+        /// The ID of the Storage Bundle.
+        /// </summary>
         public readonly string StorageBundleId;
+        /// <summary>
+        /// The name of the Storage Bundle.
+        /// </summary>
         public readonly string StorageBundleName;
 
         [OutputConstructor]

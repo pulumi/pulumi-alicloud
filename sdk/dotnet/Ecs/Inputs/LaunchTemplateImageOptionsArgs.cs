@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Ecs.Inputs
 
     public sealed class LaunchTemplateImageOptionsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the instance that uses the image supports logons of the ecs-user user.
+        /// </summary>
         [Input("loginAsNonRoot")]
         public Input<bool>? LoginAsNonRoot { get; set; }
 

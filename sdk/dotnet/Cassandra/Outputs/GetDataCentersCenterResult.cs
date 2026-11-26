@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.Cassandra.Outputs
         /// The commodity ID of the Cassandra dataCenter.
         /// </summary>
         public readonly string CommodityInstance;
+        /// <summary>
+        /// The created time of the dataCenter.
+        /// </summary>
         public readonly string CreatedTime;
         /// <summary>
         /// The id of the Cassandra dataCenter.

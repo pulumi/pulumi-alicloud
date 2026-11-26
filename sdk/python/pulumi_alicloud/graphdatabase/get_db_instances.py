@@ -53,6 +53,9 @@ class GetDbInstancesResult:
     @_builtins.property
     @pulumi.getter(name="dbInstanceDescription")
     def db_instance_description(self) -> Optional[_builtins.str]:
+        """
+        According to the practical example or notes.
+        """
         return pulumi.get(self, "db_instance_description")
 
     @_builtins.property
@@ -76,6 +79,9 @@ class GetDbInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetDbInstancesInstanceResult']:
+        """
+        A list of Graph Database Db Instances. Each element contains the following attributes. See `instances` for the optional argument block.
+        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
@@ -86,6 +92,9 @@ class GetDbInstancesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -113,7 +122,7 @@ def get_db_instances(db_instance_description: Optional[_builtins.str] = None,
     """
     This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.136.0+.
+    > **NOTE:** Available since v1.136.0.
 
     ## Example Usage
 
@@ -166,7 +175,7 @@ def get_db_instances_output(db_instance_description: pulumi.Input[Optional[Optio
     """
     This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.136.0+.
+    > **NOTE:** Available since v1.136.0.
 
     ## Example Usage
 

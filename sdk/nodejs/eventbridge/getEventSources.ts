@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.130.0+.
+ * > **NOTE:** Available since v1.130.0.
  *
  * ## Example Usage
  *
@@ -64,14 +64,20 @@ export interface GetEventSourcesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Event Source names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Event Bridge Event Sources. Each element contains the following attributes:
+     */
     readonly sources: outputs.eventbridge.GetEventSourcesSource[];
 }
 /**
  * This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.130.0+.
+ * > **NOTE:** Available since v1.130.0.
  *
  * ## Example Usage
  *

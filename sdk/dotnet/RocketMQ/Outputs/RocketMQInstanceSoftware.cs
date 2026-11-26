@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
     public sealed class RocketMQInstanceSoftware
     {
         /// <summary>
-        /// Upgrade time period.
+        /// The RocketMQ API has deprecated this maintenance-window setting. Omit it from new configurations; existing state remains readable. See [GetInstance](https://help.aliyun.com/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-getinstance).
         /// </summary>
         public readonly string? MaintainTime;
         /// <summary>

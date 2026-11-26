@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.166.0+.
+// > **NOTE:** Available since v1.166.0.
 //
 // ## Example Usage
 //
@@ -73,15 +73,18 @@ type GetEcsNetworkInterfacePermissionsArgs struct {
 // A collection of values returned by getEcsNetworkInterfacePermissions.
 type GetEcsNetworkInterfacePermissionsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                 string                                        `pulumi:"id"`
-	Ids                []string                                      `pulumi:"ids"`
-	NetworkInterfaceId string                                        `pulumi:"networkInterfaceId"`
-	OutputFile         *string                                       `pulumi:"outputFile"`
-	PageNumber         *int                                          `pulumi:"pageNumber"`
-	PageSize           *int                                          `pulumi:"pageSize"`
-	Permissions        []GetEcsNetworkInterfacePermissionsPermission `pulumi:"permissions"`
-	Status             *string                                       `pulumi:"status"`
-	TotalCount         int                                           `pulumi:"totalCount"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The ID of the network interface.
+	NetworkInterfaceId string  `pulumi:"networkInterfaceId"`
+	OutputFile         *string `pulumi:"outputFile"`
+	PageNumber         *int    `pulumi:"pageNumber"`
+	PageSize           *int    `pulumi:"pageSize"`
+	// A list of Ecs Network Interface Permissions. Each element contains the following attributes:
+	Permissions []GetEcsNetworkInterfacePermissionsPermission `pulumi:"permissions"`
+	// The Status of the Network Interface Permissions.
+	Status     *string `pulumi:"status"`
+	TotalCount int     `pulumi:"totalCount"`
 }
 
 func GetEcsNetworkInterfacePermissionsOutput(ctx *pulumi.Context, args GetEcsNetworkInterfacePermissionsOutputArgs, opts ...pulumi.InvokeOption) GetEcsNetworkInterfacePermissionsResultOutput {
@@ -131,6 +134,7 @@ func (o GetEcsNetworkInterfacePermissionsResultOutput) Ids() pulumi.StringArrayO
 	return o.ApplyT(func(v GetEcsNetworkInterfacePermissionsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the network interface.
 func (o GetEcsNetworkInterfacePermissionsResultOutput) NetworkInterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacePermissionsResult) string { return v.NetworkInterfaceId }).(pulumi.StringOutput)
 }
@@ -147,12 +151,14 @@ func (o GetEcsNetworkInterfacePermissionsResultOutput) PageSize() pulumi.IntPtrO
 	return o.ApplyT(func(v GetEcsNetworkInterfacePermissionsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// A list of Ecs Network Interface Permissions. Each element contains the following attributes:
 func (o GetEcsNetworkInterfacePermissionsResultOutput) Permissions() GetEcsNetworkInterfacePermissionsPermissionArrayOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacePermissionsResult) []GetEcsNetworkInterfacePermissionsPermission {
 		return v.Permissions
 	}).(GetEcsNetworkInterfacePermissionsPermissionArrayOutput)
 }
 
+// The Status of the Network Interface Permissions.
 func (o GetEcsNetworkInterfacePermissionsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacePermissionsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

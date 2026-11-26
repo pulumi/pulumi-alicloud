@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.ExpressConnect.Outputs
         /// </summary>
         public readonly string Spec;
         /// <summary>
-        /// Resources on Behalf of a State of the Resource Attribute Field.
+        /// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
         /// </summary>
         public readonly string Status;
         /// <summary>

@@ -130,7 +130,7 @@ def get_kubernetes_clusters(enable_details: Optional[_builtins.bool] = None,
                             output_file: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubernetesClustersResult:
     """
-    > **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs_get_clusters` instead.
+    > **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs_get_clusters` instead.
 
     This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
 
@@ -183,7 +183,7 @@ def get_kubernetes_clusters_output(enable_details: pulumi.Input[Optional[Optiona
                                    output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubernetesClustersResult]:
     """
-    > **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs_get_clusters` instead.
+    > **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs_get_clusters` instead.
 
     This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
 

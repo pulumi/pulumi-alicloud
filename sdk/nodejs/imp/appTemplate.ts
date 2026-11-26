@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Apsara Agile Live (IMP) App Template resource.
  *
- * For information about Apsara Agile Live (IMP) App Template and how to use it, see [What is App Template](https://help.aliyun.com/document_detail/270121.html).
+ * For information about Apsara Agile Live (IMP) App Template and how to use it, see [What is App Template](https://www.alibabacloud.com/help/doc-detail/270121.html).
  *
- * > **NOTE:** Available in v1.137.0+.
+ * > **NOTE:** Available since v1.137.0.
  *
  * ## Example Usage
  *
@@ -90,7 +90,7 @@ export class AppTemplate extends pulumi.CustomResource {
      */
     declare public readonly componentLists: pulumi.Output<string[]>;
     /**
-     * Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
+     * Configuration list. It have several default configs after the resource is created. See `configList` below.
      */
     declare public readonly configLists: pulumi.Output<outputs.imp.AppTemplateConfigList[]>;
     /**
@@ -160,7 +160,7 @@ export interface AppTemplateState {
      */
     componentLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
+     * Configuration list. It have several default configs after the resource is created. See `configList` below.
      */
     configLists?: pulumi.Input<pulumi.Input<inputs.imp.AppTemplateConfigList>[] | undefined>;
     /**
@@ -192,7 +192,7 @@ export interface AppTemplateArgs {
      */
     componentLists: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
+     * Configuration list. It have several default configs after the resource is created. See `configList` below.
      */
     configLists?: pulumi.Input<pulumi.Input<inputs.imp.AppTemplateConfigList>[] | undefined>;
     /**

@@ -50,6 +50,9 @@ class DataCenterArgs:
                - Custom storage space; value range: [160, 2000].
                - 80-GB increments.
         :param pulumi.Input[_builtins.str] disk_type: The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+        :param pulumi.Input[_builtins.bool] enable_public: Whether to enable public access. System default to `false`.
+        :param pulumi.Input[_builtins.int] period: The purchase period of the dataCenter. Valid when pay_type = Subscription.
+        :param pulumi.Input[_builtins.str] period_unit: The unit of the purchase period. Valid values are `Month`, `Year`. Valid when pay_type = Subscription.
         :param pulumi.Input[_builtins.str] zone_id: The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -203,6 +206,9 @@ class DataCenterArgs:
     @_builtins.property
     @pulumi.getter(name="enablePublic")
     def enable_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable public access. System default to `false`.
+        """
         return pulumi.get(self, "enable_public")
 
     @enable_public.setter
@@ -212,6 +218,9 @@ class DataCenterArgs:
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The purchase period of the dataCenter. Valid when pay_type = Subscription.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -221,6 +230,9 @@ class DataCenterArgs:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unit of the purchase period. Valid values are `Month`, `Year`. Valid when pay_type = Subscription.
+        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -266,14 +278,20 @@ class _DataCenterState:
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
         :param pulumi.Input[_builtins.int] auto_renew_period: Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
         :param pulumi.Input[_builtins.str] cluster_id: Cassandra cluster id of dataCenter-2 belongs to.
+        :param pulumi.Input[_builtins.str] data_center_id: The ID of the Cassandra dataCenter.
         :param pulumi.Input[_builtins.str] data_center_name: Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
         :param pulumi.Input[_builtins.int] disk_size: User-defined Cassandra dataCenter one core node's storage space.Unit: GB. Value range:
                - Custom storage space; value range: [160, 2000].
                - 80-GB increments.
         :param pulumi.Input[_builtins.str] disk_type: The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+        :param pulumi.Input[_builtins.bool] enable_public: Whether to enable public access. System default to `false`.
         :param pulumi.Input[_builtins.str] instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
         :param pulumi.Input[_builtins.int] node_count: The node count of Cassandra dataCenter-2, default to 2.
         :param pulumi.Input[_builtins.str] pay_type: The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
+        :param pulumi.Input[_builtins.int] period: The purchase period of the dataCenter. Valid when pay_type = Subscription.
+        :param pulumi.Input[_builtins.str] period_unit: The unit of the purchase period. Valid values are `Month`, `Year`. Valid when pay_type = Subscription.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_points: The public access points of the Cassandra dataCenter.
+        :param pulumi.Input[_builtins.str] status: The status of the Cassandra dataCenter.
         :param pulumi.Input[_builtins.str] vswitch_id: The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
                
                > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
@@ -353,6 +371,9 @@ class _DataCenterState:
     @_builtins.property
     @pulumi.getter(name="dataCenterId")
     def data_center_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the Cassandra dataCenter.
+        """
         return pulumi.get(self, "data_center_id")
 
     @data_center_id.setter
@@ -400,6 +421,9 @@ class _DataCenterState:
     @_builtins.property
     @pulumi.getter(name="enablePublic")
     def enable_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable public access. System default to `false`.
+        """
         return pulumi.get(self, "enable_public")
 
     @enable_public.setter
@@ -445,6 +469,9 @@ class _DataCenterState:
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The purchase period of the dataCenter. Valid when pay_type = Subscription.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -454,6 +481,9 @@ class _DataCenterState:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unit of the purchase period. Valid values are `Month`, `Year`. Valid when pay_type = Subscription.
+        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -463,6 +493,9 @@ class _DataCenterState:
     @_builtins.property
     @pulumi.getter(name="publicPoints")
     def public_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The public access points of the Cassandra dataCenter.
+        """
         return pulumi.get(self, "public_points")
 
     @public_points.setter
@@ -472,6 +505,9 @@ class _DataCenterState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The status of the Cassandra dataCenter.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -529,14 +565,14 @@ class DataCenter(pulumi.CustomResource):
         """
         Provides a Cassandra dataCenter resource supports replica set dataCenters only. The Cassandra provides stable, reliable, and automatic scalable database services.
         It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-        You can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).
+        You can see detail product introduction in the [Cassandra product documentation](https://www.alibabacloud.com/help/product/49055.htm).
 
         > **NOTE:** Available since v1.88.0.
 
         > **NOTE:**  Create a cassandra dataCenter need a clusterId,so need create a cassandra cluster first.
 
         > **NOTE:**  The following regions support create Vpc network Cassandra cluster.
-        The official website mark  more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).
+        The official website mark more regions. Or you can call [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/157540.html).
 
         > **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
 
@@ -600,9 +636,12 @@ class DataCenter(pulumi.CustomResource):
                - Custom storage space; value range: [160, 2000].
                - 80-GB increments.
         :param pulumi.Input[_builtins.str] disk_type: The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+        :param pulumi.Input[_builtins.bool] enable_public: Whether to enable public access. System default to `false`.
         :param pulumi.Input[_builtins.str] instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
         :param pulumi.Input[_builtins.int] node_count: The node count of Cassandra dataCenter-2, default to 2.
         :param pulumi.Input[_builtins.str] pay_type: The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
+        :param pulumi.Input[_builtins.int] period: The purchase period of the dataCenter. Valid when pay_type = Subscription.
+        :param pulumi.Input[_builtins.str] period_unit: The unit of the purchase period. Valid values are `Month`, `Year`. Valid when pay_type = Subscription.
         :param pulumi.Input[_builtins.str] vswitch_id: The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
                
                > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
@@ -617,14 +656,14 @@ class DataCenter(pulumi.CustomResource):
         """
         Provides a Cassandra dataCenter resource supports replica set dataCenters only. The Cassandra provides stable, reliable, and automatic scalable database services.
         It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-        You can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).
+        You can see detail product introduction in the [Cassandra product documentation](https://www.alibabacloud.com/help/product/49055.htm).
 
         > **NOTE:** Available since v1.88.0.
 
         > **NOTE:**  Create a cassandra dataCenter need a clusterId,so need create a cassandra cluster first.
 
         > **NOTE:**  The following regions support create Vpc network Cassandra cluster.
-        The official website mark  more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).
+        The official website mark more regions. Or you can call [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/157540.html).
 
         > **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
 
@@ -780,14 +819,20 @@ class DataCenter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
         :param pulumi.Input[_builtins.int] auto_renew_period: Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
         :param pulumi.Input[_builtins.str] cluster_id: Cassandra cluster id of dataCenter-2 belongs to.
+        :param pulumi.Input[_builtins.str] data_center_id: The ID of the Cassandra dataCenter.
         :param pulumi.Input[_builtins.str] data_center_name: Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
         :param pulumi.Input[_builtins.int] disk_size: User-defined Cassandra dataCenter one core node's storage space.Unit: GB. Value range:
                - Custom storage space; value range: [160, 2000].
                - 80-GB increments.
         :param pulumi.Input[_builtins.str] disk_type: The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+        :param pulumi.Input[_builtins.bool] enable_public: Whether to enable public access. System default to `false`.
         :param pulumi.Input[_builtins.str] instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
         :param pulumi.Input[_builtins.int] node_count: The node count of Cassandra dataCenter-2, default to 2.
         :param pulumi.Input[_builtins.str] pay_type: The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
+        :param pulumi.Input[_builtins.int] period: The purchase period of the dataCenter. Valid when pay_type = Subscription.
+        :param pulumi.Input[_builtins.str] period_unit: The unit of the purchase period. Valid values are `Month`, `Year`. Valid when pay_type = Subscription.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_points: The public access points of the Cassandra dataCenter.
+        :param pulumi.Input[_builtins.str] status: The status of the Cassandra dataCenter.
         :param pulumi.Input[_builtins.str] vswitch_id: The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
                
                > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
@@ -883,6 +928,9 @@ class DataCenter(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="dataCenterId")
     def data_center_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the Cassandra dataCenter.
+        """
         return pulumi.get(self, "data_center_id")
 
     @_builtins.property
@@ -914,6 +962,9 @@ class DataCenter(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="enablePublic")
     def enable_public(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to enable public access. System default to `false`.
+        """
         return pulumi.get(self, "enable_public")
 
     @_builtins.property
@@ -943,21 +994,33 @@ class DataCenter(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The purchase period of the dataCenter. Valid when pay_type = Subscription.
+        """
         return pulumi.get(self, "period")
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The unit of the purchase period. Valid values are `Month`, `Year`. Valid when pay_type = Subscription.
+        """
         return pulumi.get(self, "period_unit")
 
     @_builtins.property
     @pulumi.getter(name="publicPoints")
     def public_points(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        The public access points of the Cassandra dataCenter.
+        """
         return pulumi.get(self, "public_points")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
+        """
+        The status of the Cassandra dataCenter.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property

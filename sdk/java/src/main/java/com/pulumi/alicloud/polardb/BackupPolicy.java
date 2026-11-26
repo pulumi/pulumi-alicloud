@@ -6,6 +6,8 @@ package com.pulumi.alicloud.polardb;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.polardb.BackupPolicyArgs;
 import com.pulumi.alicloud.polardb.inputs.BackupPolicyState;
+import com.pulumi.alicloud.polardb.outputs.BackupPolicyAdvancedDataPolicy;
+import com.pulumi.alicloud.polardb.outputs.BackupPolicyAutoCreatedAdvancedDataPolicy;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -94,9 +96,65 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * ### Advanced backup policies
+ * 
+ * The following example manages a custom advanced data backup rule. Use a separate cluster from a Normal backup policy example: changing `backupPolicyLevel` from `Normal` to `Advanced` is irreversible. The cluster must support advanced backup policies (`advancedPolicyOption` must not be `notSupport`).
+ * 
+ * For a same-region rule such as this example, the provider fills omitted `srcRegion` and `destRegion` with its configured region because the API requires both values. For a cross-region rule (`srcType` or `destType` is `level2Cross`), set both regions explicitly.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.polardb.BackupPolicy;
+ * import com.pulumi.alicloud.polardb.BackupPolicyArgs;
+ * import com.pulumi.alicloud.polardb.inputs.BackupPolicyAdvancedDataPolicyArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var advanced = new BackupPolicy("advanced", BackupPolicyArgs.builder()
+ *             .dbClusterId(default_.get("id"))
+ *             .backupPolicyLevel("Advanced")
+ *             .backupRetentionPolicyOnClusterDeletion("NONE")
+ *             .advancedDataPolicies(BackupPolicyAdvancedDataPolicyArgs.builder()
+ *                 .retentionType("delay")
+ *                 .retentionValue("7")
+ *                 .filterType("crontab")
+ *                 .filterKey("dayOfWeek")
+ *                 .filterValue("1,2,3,4,5,6,7")
+ *                 .srcType("db")
+ *                 .destType("level1")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * `policyId` is assigned by the service after creation. To manage an existing custom rule after importing the cluster policy, specify that rule&#39;s `policyId` in the `advancedDataPolicies` block. Rules generated automatically by the service are exposed through `autoCreatedAdvancedDataPolicies` and are never modified or deleted by this resource.
+ * 
+ * Optional advanced-rule fields returned by the service retain their current values if removed from Terraform configuration. Removing an attribute is not a way to clear it; the API does not document clearing semantics for omitted fields. To remove a custom rule entirely, remove its `advancedDataPolicies` block.
+ * 
+ * In Advanced mode, the legacy data-backup and log-backup arguments cannot be changed through this resource; configure data backup behavior with `advancedDataPolicies` instead. Removing this Terraform resource deletes only its managed custom advanced rules. It does not delete the cluster backup policy or restore the `Normal` level.
+ * 
  * ### Removing alicloud.polardb.Cluster from your configuration
  * 
- * The alicloud.polardb.BackupPolicy resource allows you to manage your polardb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the polardb Console.
+ * The `alicloud.polardb.BackupPolicy` resource manages a cluster policy, but Terraform cannot destroy the policy itself. Removing a Normal policy resource only removes it from Terraform state. Removing an Advanced policy resource deletes its managed custom advanced rules but leaves the cluster policy, its Advanced level, and service-generated rules in place.
  * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
@@ -112,6 +170,48 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:polardb/backupPolicy:BackupPolicy")
 public class BackupPolicy extends com.pulumi.resources.CustomResource {
     /**
+     * Custom advanced data backup policy blocks. Available only when `backupPolicyLevel` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advancedDataPolicies` below.
+     * 
+     */
+    @Export(name="advancedDataPolicies", refs={List.class,BackupPolicyAdvancedDataPolicy.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<BackupPolicyAdvancedDataPolicy>> advancedDataPolicies;
+
+    /**
+     * @return Custom advanced data backup policy blocks. Available only when `backupPolicyLevel` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advancedDataPolicies` below.
+     * 
+     */
+    public Output<Optional<List<BackupPolicyAdvancedDataPolicy>>> advancedDataPolicies() {
+        return Codegen.optional(this.advancedDataPolicies);
+    }
+    /**
+     * Whether advanced policies are supported or enabled by the cluster.
+     * 
+     */
+    @Export(name="advancedPolicyOption", refs={String.class}, tree="[0]")
+    private Output<String> advancedPolicyOption;
+
+    /**
+     * @return Whether advanced policies are supported or enabled by the cluster.
+     * 
+     */
+    public Output<String> advancedPolicyOption() {
+        return this.advancedPolicyOption;
+    }
+    /**
+     * Service-generated advanced backup rules. Fields have the same names as `advancedDataPolicies`, but are read-only.
+     * 
+     */
+    @Export(name="autoCreatedAdvancedDataPolicies", refs={List.class,BackupPolicyAutoCreatedAdvancedDataPolicy.class}, tree="[0,1]")
+    private Output<List<BackupPolicyAutoCreatedAdvancedDataPolicy>> autoCreatedAdvancedDataPolicies;
+
+    /**
+     * @return Service-generated advanced backup rules. Fields have the same names as `advancedDataPolicies`, but are read-only.
+     * 
+     */
+    public Output<List<BackupPolicyAutoCreatedAdvancedDataPolicy>> autoCreatedAdvancedDataPolicies() {
+        return this.autoCreatedAdvancedDataPolicies;
+    }
+    /**
      * The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
      * 
      */
@@ -124,6 +224,20 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> backupFrequency() {
         return this.backupFrequency;
+    }
+    /**
+     * Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+     * 
+     */
+    @Export(name="backupPolicyLevel", refs={String.class}, tree="[0]")
+    private Output<String> backupPolicyLevel;
+
+    /**
+     * @return Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+     * 
+     */
+    public Output<String> backupPolicyLevel() {
+        return this.backupPolicyLevel;
     }
     /**
      * Cluster backup retention days, Fixed for 7 days, not modified.
@@ -169,6 +283,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * PolarDB Cluster of level-1 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+     * 
      * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      * 
      */
@@ -177,6 +292,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return PolarDB Cluster of level-1 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+     * 
      * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      * 
      */
@@ -241,6 +357,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * PolarDB Cluster of level-2 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+     * 
      * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      * 
      */
@@ -249,6 +366,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return PolarDB Cluster of level-2 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+     * 
      * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      * 
      */
@@ -313,6 +431,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+     * 
      * &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
      * 
      */
@@ -321,6 +440,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+     * 
      * &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
      * 
      */

@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Eais.Outputs
         /// </summary>
         public readonly string InstanceName;
         /// <summary>
-        /// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        /// EAIS instance type. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
         /// </summary>
         public readonly string InstanceType;
         /// <summary>

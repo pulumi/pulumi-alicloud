@@ -14,17 +14,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBackupPlansResult {
+    /**
+     * @return The ID of the cluster for the backup.
+     * 
+     */
     private String clusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return A list of Backup Plan IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Cassandra Backup Plans. Each element contains the following attributes:
+     * 
+     */
     private List<GetBackupPlansPlan> plans;
 
     private GetBackupPlansResult() {}
+    /**
+     * @return The ID of the cluster for the backup.
+     * 
+     */
     public String clusterId() {
         return this.clusterId;
     }
@@ -35,12 +51,20 @@ public final class GetBackupPlansResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Backup Plan IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Cassandra Backup Plans. Each element contains the following attributes:
+     * 
+     */
     public List<GetBackupPlansPlan> plans() {
         return this.plans;
     }

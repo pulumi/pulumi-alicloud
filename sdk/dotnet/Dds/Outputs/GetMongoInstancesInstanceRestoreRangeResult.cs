@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Dds.Outputs
     [OutputType]
     public sealed class GetMongoInstancesInstanceRestoreRangeResult
     {
+        /// <summary>
+        /// The beginning of the recoverable time range.
+        /// </summary>
         public readonly string RestoreBeginTime;
+        /// <summary>
+        /// The end of the recoverable time range.
+        /// </summary>
         public readonly string RestoreEndTime;
+        /// <summary>
+        /// The restoration method.
+        /// </summary>
         public readonly string RestoreType;
 
         [OutputConstructor]

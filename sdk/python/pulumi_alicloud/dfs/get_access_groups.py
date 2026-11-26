@@ -62,6 +62,9 @@ class GetAccessGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetAccessGroupsGroupResult']:
+        """
+        A list of Dfs Access Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -90,6 +93,9 @@ class GetAccessGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Access Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -142,7 +148,7 @@ def get_access_groups(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 
@@ -160,8 +166,12 @@ def get_access_groups(ids: Optional[Sequence[_builtins.str]] = None,
 
 
     :param Sequence[_builtins.str] ids: A list of Access Group IDs.
+    :param _builtins.int limit: The number of Access Groups to return.
     :param _builtins.str name_regex: A regex string to filter results by Access Group name.
+    :param _builtins.str order_by: The field that sorts the Access Groups. Valid values: `CreateTime`, `AccessGroupName`.
+    :param _builtins.str order_type: The sort order. Valid values: `ASC`, `DESC`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.int start_offset: The start offset of the Access Groups list.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -196,7 +206,7 @@ def get_access_groups_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
     """
     This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 
@@ -214,8 +224,12 @@ def get_access_groups_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
 
 
     :param Sequence[_builtins.str] ids: A list of Access Group IDs.
+    :param _builtins.int limit: The number of Access Groups to return.
     :param _builtins.str name_regex: A regex string to filter results by Access Group name.
+    :param _builtins.str order_by: The field that sorts the Access Groups. Valid values: `CreateTime`, `AccessGroupName`.
+    :param _builtins.str order_type: The sort order. Valid values: `ASC`, `DESC`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.int start_offset: The start offset of the Access Groups list.
     """
     __args__ = dict()
     __args__['ids'] = ids

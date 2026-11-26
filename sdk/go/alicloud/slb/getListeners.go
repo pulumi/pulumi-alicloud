@@ -13,6 +13,8 @@ import (
 
 // This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
 //
+// > **NOTE:** Available since v1.15.0
+//
 // ## Example Usage
 //
 // ```go
@@ -28,12 +30,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
-//				LoadBalancerName: pulumi.String("tf-testAccSlbListenertcp"),
+//				LoadBalancerName:   pulumi.String("terraform-exampleSlbListenerAclDs"),
+//				InternetChargeType: pulumi.String("PayByTraffic"),
+//				AddressType:        pulumi.String("internet"),
+//				LoadBalancerSpec:   pulumi.String("slb.s1.small"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = slb.NewListener(ctx, "tcp", &slb.ListenerArgs{
+//			tcp, err := slb.NewListener(ctx, "tcp", &slb.ListenerArgs{
 //				LoadBalancerId:         _default.ID(),
 //				BackendPort:            pulumi.Int(22),
 //				FrontendPort:           pulumi.Int(22),
@@ -54,10 +59,13 @@ import (
 //				return err
 //			}
 //			sampleDs := slb.GetListenersOutput(ctx, slb.GetListenersOutputArgs{
-//				LoadBalancerId: _default.ID(),
+//				LoadBalancerId: tcp.LoadBalancerId,
 //			}, nil)
 //			ctx.Export("firstSlbListenerProtocol", sampleDs.ApplyT(func(sampleDs slb.GetListenersResult) (*string, error) {
 //				return sampleDs.SlbListeners[0].Protocol, nil
+//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("firstSlbListenerId", sampleDs.ApplyT(func(sampleDs slb.GetListenersResult) (*string, error) {
+//				return sampleDs.SlbListeners[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

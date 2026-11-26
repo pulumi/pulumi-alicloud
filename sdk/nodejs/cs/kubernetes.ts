@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * > **DEPRECATION NOTICE:** This resource has been deprecated since v1.276.0 and will be removed in a future release.
+ * > **DEPRECATED:** This resource has been deprecated from version `1.276.0` and will be removed in a future release.
  *
  * This resource will help you to manage a Kubernetes Cluster in Alibaba Cloud Kubernetes Service, see [What is kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-an-ask-cluster-1).
  *
@@ -52,159 +52,77 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-kubernetes-example";
- * // Existing vpc id used to create several vswitches and other resources.
- * const vpcId = config.get("vpcId") || "";
- * // The cidr block used to launch a new vpc when 'vpc_id' is not specified.
- * const vpcCidr = config.get("vpcCidr") || "10.0.0.0/8";
- * // List of existing vswitch id.
- * const vswitchIds = config.getObject<Array<string>>("vswitchIds") || [];
- * // List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
- * const vswitchCidrs = config.getObject<Array<string>>("vswitchCidrs") || [
- *     "10.1.0.0/16",
- *     "10.2.0.0/16",
- *     "10.3.0.0/16",
- * ];
- * // List of existing vswitch ids for terway.
- * const terwayVswitchIds = config.getObject<Array<string>>("terwayVswitchIds") || [];
- * // List of cidr blocks used to create several new vswitches when 'terway_vswitch_cidrs' is not specified.
- * const terwayVswitchCidrs = config.getObject<Array<string>>("terwayVswitchCidrs") || [
- *     "10.4.0.0/16",
- *     "10.5.0.0/16",
- *     "10.6.0.0/16",
- * ];
- * const clusterAddons = config.getObject<Array<{config?: Record<string, string>, name?: string}>>("clusterAddons") || [
- *     {
- *         config: {},
- *         name: "terway-eniip",
- *     },
- *     {
- *         config: {},
- *         name: "csi-plugin",
- *     },
- *     {
- *         config: {},
- *         name: "csi-provisioner",
- *     },
- *     {
- *         config: {
- *             IngressDashboardEnabled: "true",
- *         },
- *         name: "logtail-ds",
- *     },
- *     {
- *         config: {
- *             IngressSlbNetworkType: "internet",
- *         },
- *         name: "nginx-ingress-controller",
- *     },
- *     {
- *         config: {},
- *         name: "arms-prometheus",
- *     },
- *     {
- *         config: {
- *             sls_project_name: "",
- *         },
- *         name: "ack-node-problem-detector",
- *     },
- * ];
+ * const instanceType = config.get("instanceType") || "ecs.c6.xlarge";
  * const enhanced = alicloud.vpc.getEnhancedNatAvailableZones({});
- * // If there is not specifying vpc_id, the module will launch a new vpc
- * const vpc: alicloud.vpc.Network[] = [];
- * for (let range = 0; range < (vpcId == "" ? 1 : 0); range++) {
- *     vpc.push(new alicloud.vpc.Network(`vpc-${range}`, {cidrBlock: vpcCidr}));
- * }
- * // According to the vswitch cidr blocks to launch several vswitches
- * const vswitches: alicloud.vpc.Switch[] = [];
- * for (let range = 0; range < (vswitchIds.length > 0 ? 0 : vswitchCidrs.length); range++) {
- *     vswitches.push(new alicloud.vpc.Switch(`vswitches-${range}`, {
- *         vpcId: vpcId == "" ? std.joinOutput({
- *             separator: "",
- *             input: vpc.map(__item => __item.id),
- *         }).result : vpcId,
- *         cidrBlock: vswitchCidrs[range],
- *         zoneId: Promise.all([enhanced, enhanced.then(enhanced => enhanced.zones.length)]).then(([enhanced, length]) => enhanced.zones[range < length ? range : 0].zoneId),
- *     }));
- * }
- * // According to the vswitch cidr blocks to launch several vswitches
- * const terwayVswitches: alicloud.vpc.Switch[] = [];
- * for (let range = 0; range < (terwayVswitchIds.length > 0 ? 0 : terwayVswitchCidrs.length); range++) {
- *     terwayVswitches.push(new alicloud.vpc.Switch(`terway_vswitches-${range}`, {
- *         vpcId: vpcId == "" ? std.joinOutput({
- *             separator: "",
- *             input: vpc.map(__item => __item.id),
- *         }).result : vpcId,
- *         cidrBlock: terwayVswitchCidrs[range],
- *         zoneId: Promise.all([enhanced, enhanced.then(enhanced => enhanced.zones.length)]).then(([enhanced, length]) => enhanced.zones[range < length ? range : 0].zoneId),
- *     }));
- * }
- * const _default = alicloud.resourcemanager.getResourceGroups({
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ *     availableDiskCategory: "cloud_essd",
+ *     availableInstanceType: instanceType,
+ * });
+ * // The zone must offer the master instance type and support the enhanced NAT gateway created by `new_nat_gateway`.
+ * const zoneId = Promise.all([_default, enhanced]).then(([_default, enhanced]) => std.setintersection({
+ *     input: [
+ *         _default.zones.map(__item => __item.id),
+ *         enhanced.zones.map(__item => __item.zoneId),
+ *     ],
+ * })).then(invoke => std.sort({
+ *     input: invoke.result,
+ * })).then(invoke => invoke.result?.[0]);
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
- * const cloudEssd = Array.from({length: 3}, (_, i) => i).map(__index => (alicloud.ecs.getInstanceTypesOutput({
- *     availabilityZone: Promise.all([enhanced, enhanced.then(enhanced => enhanced.zones.length)]).then(([enhanced, length]) => enhanced.zones[__index < length ? __index : 0].zoneId),
- *     cpuCoreCount: 4,
- *     memorySize: 8,
- *     systemDiskCategory: "cloud_essd",
- * })));
+ * const defaultGetKubernetesVersion = alicloud.cs.getKubernetesVersion({
+ *     clusterType: "Kubernetes",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.1.0/24",
+ *     zoneId: zoneId,
+ * });
  * const defaultKubernetes = new alicloud.cs.Kubernetes("default", {
- *     addons: clusterAddons.map((v, k) => ({key: k, value: v})).map(entry => ({
- *         name: output(std.lookup({
- *             map: entry.value,
- *             key: "name",
- *             "default": clusterAddons,
- *         }).then(invoke => invoke.result)).apply(x =>String(x)),
- *         config: JSON.stringify(std.lookup({
- *             map: entry.value,
- *             key: "config",
- *             "default": clusterAddons,
- *         }).then(invoke => invoke.result)),
- *     })),
- *     masterVswitchIds: vswitchIds.length > 0 ? std.join({
- *         separator: ",",
- *         input: vswitchIds,
- *     }).then(invoke => std.split({
- *         separator: ",",
- *         text: invoke.result,
- *     })).then(invoke => invoke.result) : vswitchCidrs.length < 1 ? [] : std.splitOutput({
- *         separator: ",",
- *         text: std.joinOutput({
- *             separator: ",",
- *             input: vswitches.map(__item => __item.id),
- *         }).result,
- *     }).result,
- *     podVswitchIds: terwayVswitchIds.length > 0 ? std.join({
- *         separator: ",",
- *         input: terwayVswitchIds,
- *     }).then(invoke => std.split({
- *         separator: ",",
- *         text: invoke.result,
- *     })).then(invoke => invoke.result) : terwayVswitchCidrs.length < 1 ? [] : std.splitOutput({
- *         separator: ",",
- *         text: std.joinOutput({
- *             separator: ",",
- *             input: terwayVswitches.map(__item => __item.id),
- *         }).result,
- *     }).result,
+ *     name: name,
+ *     version: defaultGetKubernetesVersion.then(defaultGetKubernetesVersion => defaultGetKubernetesVersion.metadatas?.[2]?.version),
+ *     masterVswitchIds: [
+ *         defaultSwitch.id,
+ *         defaultSwitch.id,
+ *         defaultSwitch.id,
+ *     ],
  *     masterInstanceTypes: [
- *         cloudEssd[0].apply(cloudEssd => cloudEssd.instanceTypes?.[0]?.id),
- *         cloudEssd[1].apply(cloudEssd => cloudEssd.instanceTypes?.[0]?.id),
- *         cloudEssd[2].apply(cloudEssd => cloudEssd.instanceTypes?.[0]?.id),
+ *         instanceType,
+ *         instanceType,
+ *         instanceType,
  *     ],
  *     masterDiskCategory: "cloud_essd",
+ *     masterDiskSize: 80,
  *     password: "Yourpassword1234",
+ *     podCidr: "10.72.0.0/16",
  *     serviceCidr: "172.18.0.0/16",
+ *     nodeCidrMask: 24,
+ *     enableSsh: false,
  *     installCloudMonitor: true,
- *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[0]?.id),
  *     deletionProtection: false,
- *     timezone: "Asia/Shanghai",
  *     osType: "Linux",
- *     platform: "AliyunLinux3",
+ *     platform: "AliyunLinux4ContainerOptimized",
+ *     imageId: "aliyun_4_x64_20G_container_optimized_alibase_20260402.vhd",
  *     clusterDomain: "cluster.local",
  *     proxyMode: "ipvs",
  *     customSan: "www.terraform.io",
  *     newNatGateway: true,
- *     skipSetCertificateAuthority: true,
+ *     slbInternetEnabled: false,
+ *     skipSetCertificateAuthority: false,
+ *     runtimes: [{
+ *         name: "containerd",
+ *         version: "1.6.20",
+ *     }],
+ *     tags: {
+ *         Platform: "TF",
+ *     },
  * });
  * ```
  *
@@ -286,7 +204,11 @@ export class Kubernetes extends pulumi.CustomResource {
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
-     * *Removed params*
+     * Removed params:
+     *
+     * The following parameters have been removed from the resource. Use `alicloud.cs.NodePool` to manage worker nodes instead.
+     *
+     * `masterInstanceType`, `workerInstanceType`, `vswitchId`, `vswitchIds`, `forceUpdate`, `logConfig`, `clusterNetworkType`, `workerDataDiskCategory`, `workerDataDiskSize`, `workerNumbers`, `nodes`, `excludeAutoscalerNodes`, `kubeConfig`, `availabilityZone`, `workerNumber`, `workerVswitchIds`, `workerInstanceTypes`, `workerInstanceChargeType`, `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew`, `workerAutoRenewPeriod`, `workerDiskCategory`, `workerDiskSize`, `workerDataDisks`, `nodePortRange`, `cpuPolicy`, `userData`, `taints`, `workerDiskPerformanceLevel`, `workerDiskSnapshotPolicyId`
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
@@ -368,7 +290,7 @@ export class Kubernetes extends pulumi.CustomResource {
     /**
      * Master node system disk auto snapshot policy.
      *
-     * *Computed params*
+     * Computed params:
      */
     declare public readonly masterDiskSnapshotPolicyId: pulumi.Output<string | undefined>;
     /**
@@ -476,7 +398,7 @@ export class Kubernetes extends pulumi.CustomResource {
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      *
-     * *Network params*
+     * Network params:
      */
     declare public readonly skipSetCertificateAuthority: pulumi.Output<boolean | undefined>;
     /**
@@ -493,7 +415,7 @@ export class Kubernetes extends pulumi.CustomResource {
      * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
      * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
      *
-     * *Master params*
+     * Master params:
      */
     declare public readonly slbInternetEnabled: pulumi.Output<boolean | undefined>;
     /**
@@ -709,7 +631,11 @@ export interface KubernetesState {
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
-     * *Removed params*
+     * Removed params:
+     *
+     * The following parameters have been removed from the resource. Use `alicloud.cs.NodePool` to manage worker nodes instead.
+     *
+     * `masterInstanceType`, `workerInstanceType`, `vswitchId`, `vswitchIds`, `forceUpdate`, `logConfig`, `clusterNetworkType`, `workerDataDiskCategory`, `workerDataDiskSize`, `workerNumbers`, `nodes`, `excludeAutoscalerNodes`, `kubeConfig`, `availabilityZone`, `workerNumber`, `workerVswitchIds`, `workerInstanceTypes`, `workerInstanceChargeType`, `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew`, `workerAutoRenewPeriod`, `workerDiskCategory`, `workerDiskSize`, `workerDataDisks`, `nodePortRange`, `cpuPolicy`, `userData`, `taints`, `workerDiskPerformanceLevel`, `workerDiskSnapshotPolicyId`
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
@@ -791,7 +717,7 @@ export interface KubernetesState {
     /**
      * Master node system disk auto snapshot policy.
      *
-     * *Computed params*
+     * Computed params:
      */
     masterDiskSnapshotPolicyId?: pulumi.Input<string | undefined>;
     /**
@@ -899,7 +825,7 @@ export interface KubernetesState {
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      *
-     * *Network params*
+     * Network params:
      */
     skipSetCertificateAuthority?: pulumi.Input<boolean | undefined>;
     /**
@@ -916,7 +842,7 @@ export interface KubernetesState {
      * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
      * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
      *
-     * *Master params*
+     * Master params:
      */
     slbInternetEnabled?: pulumi.Input<boolean | undefined>;
     /**
@@ -976,7 +902,11 @@ export interface KubernetesArgs {
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
-     * *Removed params*
+     * Removed params:
+     *
+     * The following parameters have been removed from the resource. Use `alicloud.cs.NodePool` to manage worker nodes instead.
+     *
+     * `masterInstanceType`, `workerInstanceType`, `vswitchId`, `vswitchIds`, `forceUpdate`, `logConfig`, `clusterNetworkType`, `workerDataDiskCategory`, `workerDataDiskSize`, `workerNumbers`, `nodes`, `excludeAutoscalerNodes`, `kubeConfig`, `availabilityZone`, `workerNumber`, `workerVswitchIds`, `workerInstanceTypes`, `workerInstanceChargeType`, `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew`, `workerAutoRenewPeriod`, `workerDiskCategory`, `workerDiskSize`, `workerDataDisks`, `nodePortRange`, `cpuPolicy`, `userData`, `taints`, `workerDiskPerformanceLevel`, `workerDiskSnapshotPolicyId`
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
@@ -1054,7 +984,7 @@ export interface KubernetesArgs {
     /**
      * Master node system disk auto snapshot policy.
      *
-     * *Computed params*
+     * Computed params:
      */
     masterDiskSnapshotPolicyId?: pulumi.Input<string | undefined>;
     /**
@@ -1154,7 +1084,7 @@ export interface KubernetesArgs {
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      *
-     * *Network params*
+     * Network params:
      */
     skipSetCertificateAuthority?: pulumi.Input<boolean | undefined>;
     /**
@@ -1163,7 +1093,7 @@ export interface KubernetesArgs {
      * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
      * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
      *
-     * *Master params*
+     * Master params:
      */
     slbInternetEnabled?: pulumi.Input<boolean | undefined>;
     /**

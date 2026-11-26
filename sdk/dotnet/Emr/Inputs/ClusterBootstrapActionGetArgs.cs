@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Emr.Inputs
         public Input<string>? ExecutionTarget { get; set; }
 
         /// <summary>
-        /// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+        /// bootstrap action name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -66,6 +66,7 @@ public final class SaslUserArgs extends com.pulumi.resources.ResourceArgs {
      * The encryption method. Valid values:
      * - SCRAM-SHA-512. This is the default value.
      * - SCRAM-SHA-256
+     * 
      * &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
      * 
      */
@@ -76,6 +77,7 @@ public final class SaslUserArgs extends com.pulumi.resources.ResourceArgs {
      * @return The encryption method. Valid values:
      * - SCRAM-SHA-512. This is the default value.
      * - SCRAM-SHA-256
+     * 
      * &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
      * 
      */
@@ -225,6 +227,7 @@ public final class SaslUserArgs extends com.pulumi.resources.ResourceArgs {
          * @param mechanism The encryption method. Valid values:
          * - SCRAM-SHA-512. This is the default value.
          * - SCRAM-SHA-256
+         * 
          * &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
          * 
          * @return builder
@@ -239,6 +242,7 @@ public final class SaslUserArgs extends com.pulumi.resources.ResourceArgs {
          * @param mechanism The encryption method. Valid values:
          * - SCRAM-SHA-512. This is the default value.
          * - SCRAM-SHA-256
+         * 
          * &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
          * 
          * @return builder

@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * This data source provides Alibaba Cloud regions.
  *
+ * > **NOTE:** Available since v0.1.0
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -74,6 +76,8 @@ export interface GetRegionsResult {
 }
 /**
  * This data source provides Alibaba Cloud regions.
+ *
+ * > **NOTE:** Available since v0.1.0
  *
  * ## Example Usage
  *

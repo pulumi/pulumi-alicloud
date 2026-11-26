@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.160.0+.
+        /// &gt; **NOTE:** Available since v1.160.0.
         /// 
         /// ## Example Usage
         /// 
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.160.0+.
+        /// &gt; **NOTE:** Available since v1.160.0.
         /// 
         /// ## Example Usage
         /// 
@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.160.0+.
+        /// &gt; **NOTE:** Available since v1.160.0.
         /// 
         /// ## Example Usage
         /// 
@@ -300,18 +300,36 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetEcsSnapshotGroupsResult
     {
+        /// <summary>
+        /// A list of Ecs Snapshot Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsSnapshotGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The ID of the instance.
+        /// </summary>
         public readonly string? InstanceId;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Snapshot Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The name of the snapshot-consistent group.
+        /// </summary>
         public readonly string? SnapshotGroupName;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// (Optional) List of label key-value pairs.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]

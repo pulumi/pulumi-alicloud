@@ -456,7 +456,7 @@ class HoneypotPresetMetaArgs:
 class HoneypotProbeHoneypotBindListArgsDict(TypedDict):
     bind_port_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgsDict']]]]]
     """
-    List of listening ports.See the following `Block BindPortList`.
+    List of listening ports.See the following `bind_port_list` below.
     """
     honeypot_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -469,7 +469,7 @@ class HoneypotProbeHoneypotBindListArgs:
                  bind_port_lists: pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]]] = None,
                  honeypot_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]] bind_port_lists: List of listening ports.See the following `Block BindPortList`.
+        :param pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]] bind_port_lists: List of listening ports.See the following `bind_port_list` below.
         :param pulumi.Input[_builtins.str] honeypot_id: Honeypot ID.
         """
         if bind_port_lists is not None:
@@ -481,7 +481,7 @@ class HoneypotProbeHoneypotBindListArgs:
     @pulumi.getter(name="bindPortLists")
     def bind_port_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]]]:
         """
-        List of listening ports.See the following `Block BindPortList`.
+        List of listening ports.See the following `bind_port_list` below.
         """
         return pulumi.get(self, "bind_port_lists")
 
@@ -616,6 +616,10 @@ class InstancePostPayModuleSwitchObjArgsDict(TypedDict):
     """
     Agentless Detection Module. Valid values:
     """
+    ai_digital: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The AI digital human module. Valid values:
+    """
     anti_ransomware: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Anti-Ransomware Module. Valid values:
@@ -628,6 +632,10 @@ class InstancePostPayModuleSwitchObjArgsDict(TypedDict):
     """
     Cloud Security Configuration Check Module. Valid values:
     """
+    cspm_instance: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Agentic cloud security configuration check module. Valid values:
+    """
     ctdr: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Threat Analysis and Response Module. Valid values:
@@ -635,6 +643,10 @@ class InstancePostPayModuleSwitchObjArgsDict(TypedDict):
     ctdr_storage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Log Management Module. Valid values:
+    """
+    image_scan: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The image scan module. Valid values:
     """
     post_host: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -665,11 +677,14 @@ class InstancePostPayModuleSwitchObjArgsDict(TypedDict):
 class InstancePostPayModuleSwitchObjArgs:
     def __init__(__self__, *,
                  agentless: pulumi.Input[Optional[_builtins.int]] = None,
+                 ai_digital: pulumi.Input[Optional[_builtins.int]] = None,
                  anti_ransomware: pulumi.Input[Optional[_builtins.int]] = None,
                  basic_service: pulumi.Input[Optional[_builtins.int]] = None,
                  cspm: pulumi.Input[Optional[_builtins.int]] = None,
+                 cspm_instance: pulumi.Input[Optional[_builtins.int]] = None,
                  ctdr: pulumi.Input[Optional[_builtins.int]] = None,
                  ctdr_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 image_scan: pulumi.Input[Optional[_builtins.int]] = None,
                  post_host: pulumi.Input[Optional[_builtins.int]] = None,
                  rasp: pulumi.Input[Optional[_builtins.int]] = None,
                  sdk: pulumi.Input[Optional[_builtins.int]] = None,
@@ -678,11 +693,14 @@ class InstancePostPayModuleSwitchObjArgs:
                  web_lock: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] agentless: Agentless Detection Module. Valid values:
+        :param pulumi.Input[_builtins.int] ai_digital: The AI digital human module. Valid values:
         :param pulumi.Input[_builtins.int] anti_ransomware: Anti-Ransomware Module. Valid values:
         :param pulumi.Input[_builtins.int] basic_service: Basic service module. Valid values:
         :param pulumi.Input[_builtins.int] cspm: Cloud Security Configuration Check Module. Valid values:
+        :param pulumi.Input[_builtins.int] cspm_instance: The Agentic cloud security configuration check module. Valid values:
         :param pulumi.Input[_builtins.int] ctdr: Threat Analysis and Response Module. Valid values:
         :param pulumi.Input[_builtins.int] ctdr_storage: Log Management Module. Valid values:
+        :param pulumi.Input[_builtins.int] image_scan: The image scan module. Valid values:
         :param pulumi.Input[_builtins.int] post_host: Host and Container Security Module. Valid values:
         :param pulumi.Input[_builtins.int] rasp: Application Protection Module. Valid values:
         :param pulumi.Input[_builtins.int] sdk: Malicious File Detection SDK Module. Valid values:
@@ -692,16 +710,22 @@ class InstancePostPayModuleSwitchObjArgs:
         """
         if agentless is not None:
             pulumi.set(__self__, "agentless", agentless)
+        if ai_digital is not None:
+            pulumi.set(__self__, "ai_digital", ai_digital)
         if anti_ransomware is not None:
             pulumi.set(__self__, "anti_ransomware", anti_ransomware)
         if basic_service is not None:
             pulumi.set(__self__, "basic_service", basic_service)
         if cspm is not None:
             pulumi.set(__self__, "cspm", cspm)
+        if cspm_instance is not None:
+            pulumi.set(__self__, "cspm_instance", cspm_instance)
         if ctdr is not None:
             pulumi.set(__self__, "ctdr", ctdr)
         if ctdr_storage is not None:
             pulumi.set(__self__, "ctdr_storage", ctdr_storage)
+        if image_scan is not None:
+            pulumi.set(__self__, "image_scan", image_scan)
         if post_host is not None:
             pulumi.set(__self__, "post_host", post_host)
         if rasp is not None:
@@ -726,6 +750,18 @@ class InstancePostPayModuleSwitchObjArgs:
     @agentless.setter
     def agentless(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "agentless", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aiDigital")
+    def ai_digital(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The AI digital human module. Valid values:
+        """
+        return pulumi.get(self, "ai_digital")
+
+    @ai_digital.setter
+    def ai_digital(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "ai_digital", value)
 
     @_builtins.property
     @pulumi.getter(name="antiRansomware")
@@ -764,6 +800,18 @@ class InstancePostPayModuleSwitchObjArgs:
         pulumi.set(self, "cspm", value)
 
     @_builtins.property
+    @pulumi.getter(name="cspmInstance")
+    def cspm_instance(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Agentic cloud security configuration check module. Valid values:
+        """
+        return pulumi.get(self, "cspm_instance")
+
+    @cspm_instance.setter
+    def cspm_instance(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cspm_instance", value)
+
+    @_builtins.property
     @pulumi.getter
     def ctdr(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -786,6 +834,18 @@ class InstancePostPayModuleSwitchObjArgs:
     @ctdr_storage.setter
     def ctdr_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ctdr_storage", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageScan")
+    def image_scan(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The image scan module. Valid values:
+        """
+        return pulumi.get(self, "image_scan")
+
+    @image_scan.setter
+    def image_scan(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "image_scan", value)
 
     @_builtins.property
     @pulumi.getter(name="postHost")

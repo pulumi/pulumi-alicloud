@@ -851,6 +851,9 @@ provider configuration:
 * `credentialsUri` - (Optional, Available since v1.141.0) The URI of sidecar credentials service.
   Can also be set with the `ALIBABA_CLOUD_CREDENTIALS_URI` environment variable since v1.228.0.
   Environment variable `ALICLOUD_CREDENTIALS_URI` has been deprecated since v1.228.0.
+  The provider requests this URI again before the returned STS token expires, so a rotating sidecar
+  keeps a long-running apply authenticated. The refresh relies on the response carrying an RFC3339
+  `Expiration` field; without it the credentials are read once at provider configuration.
 
 * `endpoints` - (Optional) An `endpoints` block to support custom endpoints.
 
@@ -866,9 +869,9 @@ provider configuration:
 
 * `protocol` - (Optional, Available since v1.72.0) The Protocol of used by API request. Valid values: `HTTP` and `HTTPS`. Default to `HTTPS`.
 
-* `clientReadTimeout` - (Optional, Available since v1.125.0) The maximum timeout in millisecond second of the client read request. Default to 60000.
+* `clientReadTimeout` - (Optional, Available since v1.125.0) The maximum timeout in millisecond second of the client read request. Default to 60000. The value must be non-negative.
 
-* `clientConnectTimeout` - (Optional, Available since v1.125.0) The maximum timeout in millisecond second of the client connection server. Default to 60000.
+* `clientConnectTimeout` - (Optional, Available since v1.125.0) The maximum timeout in millisecond second of the client connection server. Default to 60000. The value must be non-negative.
 
 * `maxRetryTimeout` - (Optional, Available since v1.183.0) The maximum retry timeout in second of the request. Default to `0`.
 
@@ -902,11 +905,15 @@ The `assumeRoleWithOidc` configuration block supports the following arguments:
 * `roleArn` - (Required) ARN of the RAM Role to assume. Can also be set with the `ALIBABA_CLOUD_ROLE_ARN` environment variable.
 * `oidcToken` - (Optional) Value of a RRSA security token from an OIDC Idp. One of `oidcToken` or `oidcTokenFile` is required.
   Can also be set with the `ALIBABA_CLOUD_OIDC_TOKEN` environment variable.
+  The token is exchanged for an STS token only once during provider configuration and is not refreshed afterwards;
+  an apply that runs longer than the resulting STS session fails with `InvalidSecurityToken.Expired`. Prefer `oidcTokenFile` for long applies.
 * `oidcTokenFile` - (Optional) File containing a RRSA security token from an OIDC. One of `oidcTokenFile` or `oidcToken` is required.
   Can also be set with the `ALIBABA_CLOUD_OIDC_TOKEN_FILE` environment variable.
+  The file is re-read and the role is re-assumed whenever the STS session is about to expire, so applies longer than one session are supported
+  as long as the file keeps containing a valid OIDC token.
 * `roleSessionName` - (Optional) The session name to use when assuming the role. If omitted, 'pulumi' is passed to the AssumeRoleWithOIDC call as session name.
   Can also be set with the `ALIBABA_CLOUD_ROLE_SESSION_NAME` environment variable.
-* `sessionExpiration` - (Optional) The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+* `sessionExpiration` - (Optional) The validity period of the STS token. Unit: seconds. Valid value range: 900 to 3600. Default value: 3600.
 * `policy` - (Optional) The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
 ### `signVersion`
 

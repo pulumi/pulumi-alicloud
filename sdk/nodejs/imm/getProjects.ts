@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Intelligent Media Management Projects of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -58,12 +58,15 @@ export interface GetProjectsResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Imm Projects. Each element contains the following attributes:
+     */
     readonly projects: outputs.imm.GetProjectsProject[];
 }
 /**
  * This data source provides the Intelligent Media Management Projects of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *

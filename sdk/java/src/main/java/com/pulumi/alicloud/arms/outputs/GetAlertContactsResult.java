@@ -14,8 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAlertContactsResult {
+    /**
+     * @return The name of the alert contact.
+     * 
+     */
     private @Nullable String alertContactName;
+    /**
+     * @return A list of Arms Alert Contacts. Each element contains the following attributes:
+     * 
+     */
     private List<GetAlertContactsContact> contacts;
+    /**
+     * @return The email address of the alert contact.
+     * 
+     */
     private @Nullable String email;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,17 +36,37 @@ public final class GetAlertContactsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Alert Contact names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The mobile number of the alert contact.
+     * 
+     */
     private @Nullable String phoneNum;
 
     private GetAlertContactsResult() {}
+    /**
+     * @return The name of the alert contact.
+     * 
+     */
     public Optional<String> alertContactName() {
         return Optional.ofNullable(this.alertContactName);
     }
+    /**
+     * @return A list of Arms Alert Contacts. Each element contains the following attributes:
+     * 
+     */
     public List<GetAlertContactsContact> contacts() {
         return this.contacts;
     }
+    /**
+     * @return The email address of the alert contact.
+     * 
+     */
     public Optional<String> email() {
         return Optional.ofNullable(this.email);
     }
@@ -51,12 +83,20 @@ public final class GetAlertContactsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Alert Contact names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The mobile number of the alert contact.
+     * 
+     */
     public Optional<String> phoneNum() {
         return Optional.ofNullable(this.phoneNum);
     }

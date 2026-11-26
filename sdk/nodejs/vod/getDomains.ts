@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Vod Domains of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *
@@ -92,6 +92,9 @@ export interface GetDomainsArgs {
  */
 export interface GetDomainsResult {
     readonly domainSearchType?: string;
+    /**
+     * A list of Vod Domains. Each element contains the following attributes:
+     */
     readonly domains: outputs.vod.GetDomainsDomain[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -99,15 +102,21 @@ export interface GetDomainsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Domain names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Vod Domains of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *

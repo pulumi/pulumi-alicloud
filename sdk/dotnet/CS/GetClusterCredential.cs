@@ -29,28 +29,62 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the function
-        ///     var k8s = AliCloud.CS.GetManagedKubernetesClusters.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
-        ///         NameRegex = "my-cluster",
-        ///         EnableDetails = false,
+        ///         AvailableResourceCreation = "VSwitch",
         ///     });
         /// 
-        ///     var auth = Std.Toset.Invoke(new()
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
         ///     {
-        ///         Input = k8s.Apply(getManagedKubernetesClustersResult =&gt; getManagedKubernetesClustersResult.Ids),
-        ///     }).Apply(invoke =&gt; .ToDictionary(item =&gt; {
-        ///         var __key = item.Key;
-        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
-        ///     }, item =&gt; {
-        ///         var __key = item.Key;
-        ///         return AliCloud.CS.GetClusterCredential.Invoke(new()
+        ///         VpcName = name,
+        ///         CidrBlock = "10.4.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = Std.Cidrsubnet.Invoke(new()
         ///         {
-        ///             ClusterId = __key.ToString(System.Globalization.CultureInfo.InvariantCulture),
-        ///             TemporaryDurationMinutes = 60,
-        ///             OutputFile = "my-auth-json",
-        ///         });
-        ///     }));
+        ///             Input = defaultNetwork.CidrBlock,
+        ///             Newbits = 8,
+        ///             Netnum = 8,
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///     });
+        /// 
+        ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
+        ///     {
+        ///         Name = name,
+        ///         ClusterSpec = "ack.pro.small",
+        ///         VswitchIds = new[]
+        ///         {
+        ///             defaultSwitch.Id,
+        ///         },
+        ///         NewNatGateway = false,
+        ///         PodCidr = Std.Cidrsubnet.Invoke(new()
+        ///         {
+        ///             Input = "10.0.0.0/8",
+        ///             Newbits = 8,
+        ///             Netnum = 37,
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
+        ///         {
+        ///             Input = "172.18.0.0/16",
+        ///             Newbits = 4,
+        ///             Netnum = 7,
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         SlbInternetEnabled = true,
+        ///     });
+        /// 
+        ///     var auth = AliCloud.CS.GetClusterCredential.Invoke(new()
+        ///     {
+        ///         ClusterId = defaultManagedKubernetes.Id,
+        ///         TemporaryDurationMinutes = 60,
+        ///         OutputFile = "my-auth-json",
+        ///     });
         /// 
         /// });
         /// ```
@@ -76,28 +110,62 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the function
-        ///     var k8s = AliCloud.CS.GetManagedKubernetesClusters.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
-        ///         NameRegex = "my-cluster",
-        ///         EnableDetails = false,
+        ///         AvailableResourceCreation = "VSwitch",
         ///     });
         /// 
-        ///     var auth = Std.Toset.Invoke(new()
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
         ///     {
-        ///         Input = k8s.Apply(getManagedKubernetesClustersResult =&gt; getManagedKubernetesClustersResult.Ids),
-        ///     }).Apply(invoke =&gt; .ToDictionary(item =&gt; {
-        ///         var __key = item.Key;
-        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
-        ///     }, item =&gt; {
-        ///         var __key = item.Key;
-        ///         return AliCloud.CS.GetClusterCredential.Invoke(new()
+        ///         VpcName = name,
+        ///         CidrBlock = "10.4.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = Std.Cidrsubnet.Invoke(new()
         ///         {
-        ///             ClusterId = __key.ToString(System.Globalization.CultureInfo.InvariantCulture),
-        ///             TemporaryDurationMinutes = 60,
-        ///             OutputFile = "my-auth-json",
-        ///         });
-        ///     }));
+        ///             Input = defaultNetwork.CidrBlock,
+        ///             Newbits = 8,
+        ///             Netnum = 8,
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///     });
+        /// 
+        ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
+        ///     {
+        ///         Name = name,
+        ///         ClusterSpec = "ack.pro.small",
+        ///         VswitchIds = new[]
+        ///         {
+        ///             defaultSwitch.Id,
+        ///         },
+        ///         NewNatGateway = false,
+        ///         PodCidr = Std.Cidrsubnet.Invoke(new()
+        ///         {
+        ///             Input = "10.0.0.0/8",
+        ///             Newbits = 8,
+        ///             Netnum = 37,
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
+        ///         {
+        ///             Input = "172.18.0.0/16",
+        ///             Newbits = 4,
+        ///             Netnum = 7,
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         SlbInternetEnabled = true,
+        ///     });
+        /// 
+        ///     var auth = AliCloud.CS.GetClusterCredential.Invoke(new()
+        ///     {
+        ///         ClusterId = defaultManagedKubernetes.Id,
+        ///         TemporaryDurationMinutes = 60,
+        ///         OutputFile = "my-auth-json",
+        ///     });
         /// 
         /// });
         /// ```
@@ -123,28 +191,62 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the function
-        ///     var k8s = AliCloud.CS.GetManagedKubernetesClusters.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
-        ///         NameRegex = "my-cluster",
-        ///         EnableDetails = false,
+        ///         AvailableResourceCreation = "VSwitch",
         ///     });
         /// 
-        ///     var auth = Std.Toset.Invoke(new()
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
         ///     {
-        ///         Input = k8s.Apply(getManagedKubernetesClustersResult =&gt; getManagedKubernetesClustersResult.Ids),
-        ///     }).Apply(invoke =&gt; .ToDictionary(item =&gt; {
-        ///         var __key = item.Key;
-        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
-        ///     }, item =&gt; {
-        ///         var __key = item.Key;
-        ///         return AliCloud.CS.GetClusterCredential.Invoke(new()
+        ///         VpcName = name,
+        ///         CidrBlock = "10.4.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = Std.Cidrsubnet.Invoke(new()
         ///         {
-        ///             ClusterId = __key.ToString(System.Globalization.CultureInfo.InvariantCulture),
-        ///             TemporaryDurationMinutes = 60,
-        ///             OutputFile = "my-auth-json",
-        ///         });
-        ///     }));
+        ///             Input = defaultNetwork.CidrBlock,
+        ///             Newbits = 8,
+        ///             Netnum = 8,
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///     });
+        /// 
+        ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
+        ///     {
+        ///         Name = name,
+        ///         ClusterSpec = "ack.pro.small",
+        ///         VswitchIds = new[]
+        ///         {
+        ///             defaultSwitch.Id,
+        ///         },
+        ///         NewNatGateway = false,
+        ///         PodCidr = Std.Cidrsubnet.Invoke(new()
+        ///         {
+        ///             Input = "10.0.0.0/8",
+        ///             Newbits = 8,
+        ///             Netnum = 37,
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
+        ///         {
+        ///             Input = "172.18.0.0/16",
+        ///             Newbits = 4,
+        ///             Netnum = 7,
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         SlbInternetEnabled = true,
+        ///     });
+        /// 
+        ///     var auth = AliCloud.CS.GetClusterCredential.Invoke(new()
+        ///     {
+        ///         ClusterId = defaultManagedKubernetes.Id,
+        ///         TemporaryDurationMinutes = 60,
+        ///         OutputFile = "my-auth-json",
+        ///     });
         /// 
         /// });
         /// ```

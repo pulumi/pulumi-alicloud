@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Example Usage
  *
@@ -75,7 +75,13 @@ export interface GetAccountsArgs {
  * A collection of values returned by getAccounts.
  */
 export interface GetAccountsResult {
+    /**
+     * A list of Gpdb Accounts. Each element contains the following attributes:
+     */
     readonly accounts: outputs.gpdb.GetAccountsAccount[];
+    /**
+     * The ID of the instance.
+     */
     readonly dbInstanceId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -83,14 +89,20 @@ export interface GetAccountsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Account names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Example Usage
  *

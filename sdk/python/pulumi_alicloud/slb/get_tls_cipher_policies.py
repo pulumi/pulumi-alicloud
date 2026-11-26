@@ -82,6 +82,9 @@ class GetTlsCipherPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Tls Cipher Policy names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -92,16 +95,25 @@ class GetTlsCipherPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetTlsCipherPoliciesPolicyResult']:
+        """
+        A list of Slb Tls Cipher Policies. Each element contains the following attributes:
+        """
         return pulumi.get(self, "policies")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        TLS policy instance state.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="tlsCipherPolicyName")
     def tls_cipher_policy_name(self) -> Optional[_builtins.str]:
+        """
+        TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
+        """
         return pulumi.get(self, "tls_cipher_policy_name")
 
 
@@ -132,7 +144,7 @@ def get_tls_cipher_policies(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 
@@ -189,7 +201,7 @@ def get_tls_cipher_policies_output(ids: pulumi.Input[Optional[Optional[Sequence[
     """
     This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 

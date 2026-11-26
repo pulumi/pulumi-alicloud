@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
-        /// Public ip addresses that in the Common Bandwidth Pakcage.
+        /// The PublicIpAddresses mapping supports the following:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCommonBandwidthPackagesPackagePublicIpAddressResult> PublicIpAddresses;
         /// <summary>

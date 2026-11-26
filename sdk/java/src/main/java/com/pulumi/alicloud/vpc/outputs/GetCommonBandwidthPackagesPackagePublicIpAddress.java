@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCommonBandwidthPackagesPackagePublicIpAddress {
+    /**
+     * @return The ID of the EIP instance.
+     * 
+     */
     private String allocationId;
+    /**
+     * @return The IP relation status of bandwidth package.
+     * 
+     */
     private String bandwidthPackageIpRelationStatus;
+    /**
+     * @return The address of the EIP.
+     * 
+     */
     private String ipAddress;
 
     private GetCommonBandwidthPackagesPackagePublicIpAddress() {}
+    /**
+     * @return The ID of the EIP instance.
+     * 
+     */
     public String allocationId() {
         return this.allocationId;
     }
+    /**
+     * @return The IP relation status of bandwidth package.
+     * 
+     */
     public String bandwidthPackageIpRelationStatus() {
         return this.bandwidthPackageIpRelationStatus;
     }
+    /**
+     * @return The address of the EIP.
+     * 
+     */
     public String ipAddress() {
         return this.ipAddress;
     }

@@ -25,6 +25,10 @@ public final class GetVpcEndpointConnectionsResult {
      * 
      */
     private @Nullable String endpointId;
+    /**
+     * @return The owner ID of the endpoint.
+     * 
+     */
     private @Nullable Integer endpointOwnerId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -59,6 +63,10 @@ public final class GetVpcEndpointConnectionsResult {
     public Optional<String> endpointId() {
         return Optional.ofNullable(this.endpointId);
     }
+    /**
+     * @return The owner ID of the endpoint.
+     * 
+     */
     public Optional<Integer> endpointOwnerId() {
         return Optional.ofNullable(this.endpointOwnerId);
     }

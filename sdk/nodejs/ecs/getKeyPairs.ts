@@ -81,7 +81,7 @@ export interface GetKeyPairsResult {
     readonly id: string;
     readonly ids: string[];
     /**
-     * A list of key pairs. Each element contains the following attributes:
+     * (Deprecated) A list of key pairs. Each element contains the following attributes:
      *
      * @deprecated Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
      */
@@ -92,13 +92,16 @@ export interface GetKeyPairsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of key pairs. Each element contains the following attributes:
+     */
     readonly pairs: outputs.ecs.GetKeyPairsPair[];
     /**
      * The Id of resource group.
      */
     readonly resourceGroupId?: string;
     /**
-     * (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
+     * A map of tags assigned to the key pair.
      */
     readonly tags?: {[key: string]: string};
 }

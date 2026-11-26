@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// &gt; **NOTE:** Available since v1.142.0.
         /// 
         /// ## Example Usage
         /// 
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// &gt; **NOTE:** Available since v1.142.0.
         /// 
         /// ## Example Usage
         /// 
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// &gt; **NOTE:** Available since v1.142.0.
         /// 
         /// ## Example Usage
         /// 
@@ -231,7 +231,13 @@ namespace Pulumi.AliCloud.Eds
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Ecd Network Packages. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNetworkPackagesPackageResult> Packages;
+        /// <summary>
+        /// The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

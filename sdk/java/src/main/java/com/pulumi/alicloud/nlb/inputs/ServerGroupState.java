@@ -160,7 +160,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
      * 
      * - `TCP` (default)
      * - `UDP`
-     * - `TCPSSL`
+     * - `TCP_UDP`
      * 
      */
     @Import(name="protocol")
@@ -171,7 +171,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
      * 
      * - `TCP` (default)
      * - `UDP`
-     * - `TCPSSL`
+     * - `TCP_UDP`
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -557,7 +557,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
          * 
          * - `TCP` (default)
          * - `UDP`
-         * - `TCPSSL`
+         * - `TCP_UDP`
          * 
          * @return builder
          * 
@@ -572,7 +572,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
          * 
          * - `TCP` (default)
          * - `UDP`
-         * - `TCPSSL`
+         * - `TCP_UDP`
          * 
          * @return builder
          * 

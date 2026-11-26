@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Amqp
         /// <summary>
         /// This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.128.0+.
+        /// &gt; **NOTE:** Available since v1.128.0.
         /// 
         /// ## Example Usage
         /// 
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Amqp
         /// <summary>
         /// This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.128.0+.
+        /// &gt; **NOTE:** Available since v1.128.0.
         /// 
         /// ## Example Usage
         /// 
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Amqp
         /// <summary>
         /// This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.128.0+.
+        /// &gt; **NOTE:** Available since v1.128.0.
         /// 
         /// ## Example Usage
         /// 
@@ -243,16 +243,28 @@ namespace Pulumi.AliCloud.Amqp
     [OutputType]
     public sealed class GetExchangesResult
     {
+        /// <summary>
+        /// A list of Amqp Exchanges. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetExchangesExchangeResult> Exchanges;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The ID of the instance.
+        /// </summary>
         public readonly string InstanceId;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Exchange names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The name of virtual host where an exchange resides.
+        /// </summary>
         public readonly string VirtualHostName;
 
         [OutputConstructor]

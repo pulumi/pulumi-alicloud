@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Mongodb Sharding Network Public Addresses of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.149.0+.
+// > **NOTE:** Available since v1.149.0.
 //
 // ## Example Usage
 //
@@ -69,13 +69,17 @@ type GetShardingNetworkPublicAddressesArgs struct {
 
 // A collection of values returned by getShardingNetworkPublicAddresses.
 type GetShardingNetworkPublicAddressesResult struct {
-	Addresses    []GetShardingNetworkPublicAddressesAddress `pulumi:"addresses"`
-	DbInstanceId string                                     `pulumi:"dbInstanceId"`
+	// A list of Mongodb Sharding Network Addresses. Each element contains the following attributes:
+	Addresses []GetShardingNetworkPublicAddressesAddress `pulumi:"addresses"`
+	// The db instance id.
+	DbInstanceId string `pulumi:"dbInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
 	NodeId     *string `pulumi:"nodeId"`
 	OutputFile *string `pulumi:"outputFile"`
-	Role       *string `pulumi:"role"`
+	// The role of the node.
+	Role *string `pulumi:"role"`
 }
 
 func GetShardingNetworkPublicAddressesOutput(ctx *pulumi.Context, args GetShardingNetworkPublicAddressesOutputArgs, opts ...pulumi.InvokeOption) GetShardingNetworkPublicAddressesResultOutput {
@@ -114,12 +118,14 @@ func (o GetShardingNetworkPublicAddressesResultOutput) ToGetShardingNetworkPubli
 	return o
 }
 
+// A list of Mongodb Sharding Network Addresses. Each element contains the following attributes:
 func (o GetShardingNetworkPublicAddressesResultOutput) Addresses() GetShardingNetworkPublicAddressesAddressArrayOutput {
 	return o.ApplyT(func(v GetShardingNetworkPublicAddressesResult) []GetShardingNetworkPublicAddressesAddress {
 		return v.Addresses
 	}).(GetShardingNetworkPublicAddressesAddressArrayOutput)
 }
 
+// The db instance id.
 func (o GetShardingNetworkPublicAddressesResultOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetShardingNetworkPublicAddressesResult) string { return v.DbInstanceId }).(pulumi.StringOutput)
 }
@@ -129,6 +135,7 @@ func (o GetShardingNetworkPublicAddressesResultOutput) Id() pulumi.StringOutput 
 	return o.ApplyT(func(v GetShardingNetworkPublicAddressesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
 func (o GetShardingNetworkPublicAddressesResultOutput) NodeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetShardingNetworkPublicAddressesResult) *string { return v.NodeId }).(pulumi.StringPtrOutput)
 }
@@ -137,6 +144,7 @@ func (o GetShardingNetworkPublicAddressesResultOutput) OutputFile() pulumi.Strin
 	return o.ApplyT(func(v GetShardingNetworkPublicAddressesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The role of the node.
 func (o GetShardingNetworkPublicAddressesResultOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetShardingNetworkPublicAddressesResult) *string { return v.Role }).(pulumi.StringPtrOutput)
 }

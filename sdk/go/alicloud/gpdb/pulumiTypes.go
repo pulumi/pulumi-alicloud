@@ -1285,7 +1285,7 @@ type InstanceIpWhitelist struct {
 	// The value of this parameter is empty by default. The attribute of the whitelist group.
 	// If the value contains `hidden`, this white list item will not output.
 	IpGroupAttribute *string `pulumi:"ipGroupAttribute"`
-	// IP whitelist group name.
+	// IP whitelist group name. Defaults to `default`, the built-in whitelist group; a group without a name is applied to the `default` group instead of creating a new one.
 	IpGroupName *string `pulumi:"ipGroupName"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpList *string `pulumi:"securityIpList"`
@@ -1306,7 +1306,7 @@ type InstanceIpWhitelistArgs struct {
 	// The value of this parameter is empty by default. The attribute of the whitelist group.
 	// If the value contains `hidden`, this white list item will not output.
 	IpGroupAttribute pulumi.StringPtrInput `pulumi:"ipGroupAttribute"`
-	// IP whitelist group name.
+	// IP whitelist group name. Defaults to `default`, the built-in whitelist group; a group without a name is applied to the `default` group instead of creating a new one.
 	IpGroupName pulumi.StringPtrInput `pulumi:"ipGroupName"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpList pulumi.StringPtrInput `pulumi:"securityIpList"`
@@ -1369,7 +1369,7 @@ func (o InstanceIpWhitelistOutput) IpGroupAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceIpWhitelist) *string { return v.IpGroupAttribute }).(pulumi.StringPtrOutput)
 }
 
-// IP whitelist group name.
+// IP whitelist group name. Defaults to `default`, the built-in whitelist group; a group without a name is applied to the `default` group instead of creating a new one.
 func (o InstanceIpWhitelistOutput) IpGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceIpWhitelist) *string { return v.IpGroupName }).(pulumi.StringPtrOutput)
 }
@@ -2206,7 +2206,8 @@ type GetDbInstancePlansPlan struct {
 	Id string `pulumi:"id"`
 	// Plan configuration information.
 	PlanConfigs []GetDbInstancePlansPlanPlanConfig `pulumi:"planConfigs"`
-	PlanDesc    string                             `pulumi:"planDesc"`
+	// The description of the Plan.
+	PlanDesc string `pulumi:"planDesc"`
 	// The end time of the Plan.
 	PlanEndDate string `pulumi:"planEndDate"`
 	// The ID of DB Instance Plan.
@@ -2217,7 +2218,7 @@ type GetDbInstancePlansPlan struct {
 	PlanStartDate string `pulumi:"planStartDate"`
 	// The type of the Plan. Valid values: `PauseResume`, `Resize`.
 	PlanType string `pulumi:"planType"`
-	// The Status of the Plan.
+	// Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
 	Status string `pulumi:"status"`
 }
 
@@ -2239,7 +2240,8 @@ type GetDbInstancePlansPlanArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Plan configuration information.
 	PlanConfigs GetDbInstancePlansPlanPlanConfigArrayInput `pulumi:"planConfigs"`
-	PlanDesc    pulumi.StringInput                         `pulumi:"planDesc"`
+	// The description of the Plan.
+	PlanDesc pulumi.StringInput `pulumi:"planDesc"`
 	// The end time of the Plan.
 	PlanEndDate pulumi.StringInput `pulumi:"planEndDate"`
 	// The ID of DB Instance Plan.
@@ -2250,7 +2252,7 @@ type GetDbInstancePlansPlanArgs struct {
 	PlanStartDate pulumi.StringInput `pulumi:"planStartDate"`
 	// The type of the Plan. Valid values: `PauseResume`, `Resize`.
 	PlanType pulumi.StringInput `pulumi:"planType"`
-	// The Status of the Plan.
+	// Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2320,6 +2322,7 @@ func (o GetDbInstancePlansPlanOutput) PlanConfigs() GetDbInstancePlansPlanPlanCo
 	return o.ApplyT(func(v GetDbInstancePlansPlan) []GetDbInstancePlansPlanPlanConfig { return v.PlanConfigs }).(GetDbInstancePlansPlanPlanConfigArrayOutput)
 }
 
+// The description of the Plan.
 func (o GetDbInstancePlansPlanOutput) PlanDesc() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbInstancePlansPlan) string { return v.PlanDesc }).(pulumi.StringOutput)
 }
@@ -2349,7 +2352,7 @@ func (o GetDbInstancePlansPlanOutput) PlanType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbInstancePlansPlan) string { return v.PlanType }).(pulumi.StringOutput)
 }
 
-// The Status of the Plan.
+// Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
 func (o GetDbInstancePlansPlanOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbInstancePlansPlan) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2981,13 +2984,15 @@ func (o GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput) Index(i pulumi.IntI
 type GetInstancesInstance struct {
 	// Instance availability zone.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	ChargeType       string `pulumi:"chargeType"`
-	// The connection string of the instance.
+	// The billing method of the instance.
+	ChargeType string `pulumi:"chargeType"`
+	// The endpoint of the instance.
 	ConnectionString string `pulumi:"connectionString"`
 	// The number of CPU cores of the computing node. Unit: Core.
 	CpuCores string `pulumi:"cpuCores"`
 	// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
-	CreateTime   string `pulumi:"createTime"`
+	CreateTime string `pulumi:"createTime"`
+	// The time when the instance was created.
 	CreationTime string `pulumi:"creationTime"`
 	// The db instance category. Valid values: `HighAvailability`, `Basic`.
 	DbInstanceCategory string `pulumi:"dbInstanceCategory"`
@@ -3029,11 +3034,11 @@ type GetInstancesInstance struct {
 	StorageSize int `pulumi:"storageSize"`
 	// The type of disks. Valid values: `cloudEssd`, `cloudEfficiency`.
 	StorageType string `pulumi:"storageType"`
-	// The tags of the instance.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The ID of the VPC。.
+	// The ID of the VPC.
 	VpcId string `pulumi:"vpcId"`
-	// The vswitch id.
+	// Used to retrieve instances belong to specified `vswitch` resources.
 	VswitchId string `pulumi:"vswitchId"`
 	// The zone ID of the instance.
 	ZoneId string `pulumi:"zoneId"`
@@ -3053,13 +3058,15 @@ type GetInstancesInstanceInput interface {
 type GetInstancesInstanceArgs struct {
 	// Instance availability zone.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	ChargeType       pulumi.StringInput `pulumi:"chargeType"`
-	// The connection string of the instance.
+	// The billing method of the instance.
+	ChargeType pulumi.StringInput `pulumi:"chargeType"`
+	// The endpoint of the instance.
 	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
 	// The number of CPU cores of the computing node. Unit: Core.
 	CpuCores pulumi.StringInput `pulumi:"cpuCores"`
 	// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
-	CreateTime   pulumi.StringInput `pulumi:"createTime"`
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The time when the instance was created.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// The db instance category. Valid values: `HighAvailability`, `Basic`.
 	DbInstanceCategory pulumi.StringInput `pulumi:"dbInstanceCategory"`
@@ -3101,11 +3108,11 @@ type GetInstancesInstanceArgs struct {
 	StorageSize pulumi.IntInput `pulumi:"storageSize"`
 	// The type of disks. Valid values: `cloudEssd`, `cloudEfficiency`.
 	StorageType pulumi.StringInput `pulumi:"storageType"`
-	// The tags of the instance.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// The ID of the VPC。.
+	// The ID of the VPC.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// The vswitch id.
+	// Used to retrieve instances belong to specified `vswitch` resources.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 	// The zone ID of the instance.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -3167,11 +3174,12 @@ func (o GetInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+// The billing method of the instance.
 func (o GetInstancesInstanceOutput) ChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ChargeType }).(pulumi.StringOutput)
 }
 
-// The connection string of the instance.
+// The endpoint of the instance.
 func (o GetInstancesInstanceOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ConnectionString }).(pulumi.StringOutput)
 }
@@ -3186,6 +3194,7 @@ func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The time when the instance was created.
 func (o GetInstancesInstanceOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreationTime }).(pulumi.StringOutput)
 }
@@ -3290,17 +3299,17 @@ func (o GetInstancesInstanceOutput) StorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.StorageType }).(pulumi.StringOutput)
 }
 
-// The tags of the instance.
+// A mapping of tags to assign to the resource.
 func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The ID of the VPC。.
+// The ID of the VPC.
 func (o GetInstancesInstanceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The vswitch id.
+// Used to retrieve instances belong to specified `vswitch` resources.
 func (o GetInstancesInstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -3333,7 +3342,7 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 type GetInstancesInstanceIpWhitelist struct {
 	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
 	IpGroupAttribute string `pulumi:"ipGroupAttribute"`
-	// IP whitelist group name
+	// IP whitelist group name.
 	IpGroupName string `pulumi:"ipGroupName"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpList string `pulumi:"securityIpList"`
@@ -3353,7 +3362,7 @@ type GetInstancesInstanceIpWhitelistInput interface {
 type GetInstancesInstanceIpWhitelistArgs struct {
 	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
 	IpGroupAttribute pulumi.StringInput `pulumi:"ipGroupAttribute"`
-	// IP whitelist group name
+	// IP whitelist group name.
 	IpGroupName pulumi.StringInput `pulumi:"ipGroupName"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpList pulumi.StringInput `pulumi:"securityIpList"`
@@ -3415,7 +3424,7 @@ func (o GetInstancesInstanceIpWhitelistOutput) IpGroupAttribute() pulumi.StringO
 	return o.ApplyT(func(v GetInstancesInstanceIpWhitelist) string { return v.IpGroupAttribute }).(pulumi.StringOutput)
 }
 
-// IP whitelist group name
+// IP whitelist group name.
 func (o GetInstancesInstanceIpWhitelistOutput) IpGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceIpWhitelist) string { return v.IpGroupName }).(pulumi.StringOutput)
 }

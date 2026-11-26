@@ -63,7 +63,7 @@ public final class GetGatewayCacheDisksDisk {
      */
     private String renewUrl;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
      * 
      */
     private Integer status;
@@ -140,7 +140,7 @@ public final class GetGatewayCacheDisksDisk {
         return this.renewUrl;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
      * 
      */
     public Integer status() {

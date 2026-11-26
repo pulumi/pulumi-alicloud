@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.145.0+.
+ * > **NOTE:** Available since v1.145.0.
  *
  * ## Example Usage
  *
@@ -84,6 +84,9 @@ export interface GetVirtualNodesArgs {
      * The name of the virtual node.
      */
     virtualNodeName?: string;
+    /**
+     * The ID of the vSwitch.
+     */
     vswitchId?: string;
 }
 
@@ -97,20 +100,44 @@ export interface GetVirtualNodesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Virtual Node names.
+     */
     readonly names: string[];
+    /**
+     * A list of Eci Virtual Nodes. Each element contains the following attributes:
+     */
     readonly nodes: outputs.eci.GetVirtualNodesNode[];
     readonly outputFile?: string;
+    /**
+     * The resource group ID.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * The security group ID.
+     */
     readonly securityGroupId?: string;
+    /**
+     * The Status of the virtual node.
+     */
     readonly status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The name of the virtual node.
+     */
     readonly virtualNodeName?: string;
+    /**
+     * The vswitch id.
+     */
     readonly vswitchId?: string;
 }
 /**
  * This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.145.0+.
+ * > **NOTE:** Available since v1.145.0.
  *
  * ## Example Usage
  *
@@ -185,5 +212,8 @@ export interface GetVirtualNodesOutputArgs {
      * The name of the virtual node.
      */
     virtualNodeName?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the vSwitch.
+     */
     vswitchId?: pulumi.Input<string | undefined>;
 }

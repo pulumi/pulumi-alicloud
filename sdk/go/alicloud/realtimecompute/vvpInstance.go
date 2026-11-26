@@ -14,9 +14,11 @@ import (
 
 // Provides a Realtime Compute Vvp Instance resource.
 //
-// For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://next.api.alibabacloud.com/api/foasconsole/2019-06-01/CreateInstance).
+// For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://api.aliyun.com/api/foasconsole/2021-10-28/CreateInstance?RegionId=cn-hangzhou).
 //
 // > **NOTE:** Available since v1.214.0.
+//
+// > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
 //
 // ## Example Usage
 //
@@ -95,7 +97,6 @@ import (
 //				},
 //				VvpInstanceName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				VpcId:           pulumi.String(defaultGetNetworks.Ids[0]),
-//				ZoneId:          pulumi.String(zoneId),
 //				VswitchIds: pulumi.StringArray{
 //					pulumi.String(defaultGetSwitches.Ids[0]),
 //				},
@@ -132,6 +133,8 @@ type VvpInstance struct {
 	AutoRenewDuration pulumi.IntPtrOutput `pulumi:"autoRenewDuration"`
 	// The creation time of the resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The default namespace resource configuration. See `defaultNamespaceResourceSpec` below.
+	DefaultNamespaceResourceSpec VvpInstanceDefaultNamespaceResourceSpecPtrOutput `pulumi:"defaultNamespaceResourceSpec"`
 	// The number of subscription periods. If the payment type is PRE, this parameter is required.
 	Duration pulumi.IntPtrOutput `pulumi:"duration"`
 	// The payment type of the resource.
@@ -160,7 +163,9 @@ type VvpInstance struct {
 	VswitchIds pulumi.StringArrayOutput `pulumi:"vswitchIds"`
 	// The name of the workspace.
 	VvpInstanceName pulumi.StringOutput `pulumi:"vvpInstanceName"`
-	// The zone ID of the resource.
+	// The zone ID of the resource. Field `zoneId` has been deprecated from version 2.3.0.
+	//
+	// Deprecated: Field `zoneId` has been deprecated from version 2.3.0.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -185,9 +190,6 @@ func NewVvpInstance(ctx *pulumi.Context,
 	}
 	if args.VvpInstanceName == nil {
 		return nil, errors.New("invalid value for required argument 'VvpInstanceName'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VvpInstance
@@ -216,6 +218,8 @@ type vvpInstanceState struct {
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// The creation time of the resource.
 	CreateTime *string `pulumi:"createTime"`
+	// The default namespace resource configuration. See `defaultNamespaceResourceSpec` below.
+	DefaultNamespaceResourceSpec *VvpInstanceDefaultNamespaceResourceSpec `pulumi:"defaultNamespaceResourceSpec"`
 	// The number of subscription periods. If the payment type is PRE, this parameter is required.
 	Duration *int `pulumi:"duration"`
 	// The payment type of the resource.
@@ -244,7 +248,9 @@ type vvpInstanceState struct {
 	VswitchIds []string `pulumi:"vswitchIds"`
 	// The name of the workspace.
 	VvpInstanceName *string `pulumi:"vvpInstanceName"`
-	// The zone ID of the resource.
+	// The zone ID of the resource. Field `zoneId` has been deprecated from version 2.3.0.
+	//
+	// Deprecated: Field `zoneId` has been deprecated from version 2.3.0.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -253,6 +259,8 @@ type VvpInstanceState struct {
 	AutoRenewDuration pulumi.IntPtrInput
 	// The creation time of the resource.
 	CreateTime pulumi.StringPtrInput
+	// The default namespace resource configuration. See `defaultNamespaceResourceSpec` below.
+	DefaultNamespaceResourceSpec VvpInstanceDefaultNamespaceResourceSpecPtrInput
 	// The number of subscription periods. If the payment type is PRE, this parameter is required.
 	Duration pulumi.IntPtrInput
 	// The payment type of the resource.
@@ -281,7 +289,9 @@ type VvpInstanceState struct {
 	VswitchIds pulumi.StringArrayInput
 	// The name of the workspace.
 	VvpInstanceName pulumi.StringPtrInput
-	// The zone ID of the resource.
+	// The zone ID of the resource. Field `zoneId` has been deprecated from version 2.3.0.
+	//
+	// Deprecated: Field `zoneId` has been deprecated from version 2.3.0.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -298,6 +308,8 @@ func VvpInstanceExists(ctx *pulumi.Context,
 type vvpInstanceArgs struct {
 	// The auto-renewal period of the subscription instance. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
+	// The default namespace resource configuration. See `defaultNamespaceResourceSpec` below.
+	DefaultNamespaceResourceSpec *VvpInstanceDefaultNamespaceResourceSpec `pulumi:"defaultNamespaceResourceSpec"`
 	// The number of subscription periods. If the payment type is PRE, this parameter is required.
 	Duration *int `pulumi:"duration"`
 	// The payment type of the resource.
@@ -322,14 +334,18 @@ type vvpInstanceArgs struct {
 	VswitchIds []string `pulumi:"vswitchIds"`
 	// The name of the workspace.
 	VvpInstanceName string `pulumi:"vvpInstanceName"`
-	// The zone ID of the resource.
-	ZoneId string `pulumi:"zoneId"`
+	// The zone ID of the resource. Field `zoneId` has been deprecated from version 2.3.0.
+	//
+	// Deprecated: Field `zoneId` has been deprecated from version 2.3.0.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a VvpInstance resource.
 type VvpInstanceArgs struct {
 	// The auto-renewal period of the subscription instance. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
 	AutoRenewDuration pulumi.IntPtrInput
+	// The default namespace resource configuration. See `defaultNamespaceResourceSpec` below.
+	DefaultNamespaceResourceSpec VvpInstanceDefaultNamespaceResourceSpecPtrInput
 	// The number of subscription periods. If the payment type is PRE, this parameter is required.
 	Duration pulumi.IntPtrInput
 	// The payment type of the resource.
@@ -354,8 +370,10 @@ type VvpInstanceArgs struct {
 	VswitchIds pulumi.StringArrayInput
 	// The name of the workspace.
 	VvpInstanceName pulumi.StringInput
-	// The zone ID of the resource.
-	ZoneId pulumi.StringInput
+	// The zone ID of the resource. Field `zoneId` has been deprecated from version 2.3.0.
+	//
+	// Deprecated: Field `zoneId` has been deprecated from version 2.3.0.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (VvpInstanceArgs) ElementType() reflect.Type {
@@ -455,6 +473,13 @@ func (o VvpInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *VvpInstance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The default namespace resource configuration. See `defaultNamespaceResourceSpec` below.
+func (o VvpInstanceOutput) DefaultNamespaceResourceSpec() VvpInstanceDefaultNamespaceResourceSpecPtrOutput {
+	return o.ApplyT(func(v *VvpInstance) VvpInstanceDefaultNamespaceResourceSpecPtrOutput {
+		return v.DefaultNamespaceResourceSpec
+	}).(VvpInstanceDefaultNamespaceResourceSpecPtrOutput)
+}
+
 // The number of subscription periods. If the payment type is PRE, this parameter is required.
 func (o VvpInstanceOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VvpInstance) pulumi.IntPtrOutput { return v.Duration }).(pulumi.IntPtrOutput)
@@ -525,7 +550,9 @@ func (o VvpInstanceOutput) VvpInstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *VvpInstance) pulumi.StringOutput { return v.VvpInstanceName }).(pulumi.StringOutput)
 }
 
-// The zone ID of the resource.
+// The zone ID of the resource. Field `zoneId` has been deprecated from version 2.3.0.
+//
+// Deprecated: Field `zoneId` has been deprecated from version 2.3.0.
 func (o VvpInstanceOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VvpInstance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

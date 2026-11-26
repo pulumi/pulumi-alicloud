@@ -56,6 +56,9 @@ class GetActivationsResult:
     @_builtins.property
     @pulumi.getter
     def activations(self) -> Sequence['outputs.GetActivationsActivationResult']:
+        """
+        A list of Ecs Activations. Each element contains the following attributes:
+        """
         return pulumi.get(self, "activations")
 
     @_builtins.property
@@ -74,6 +77,9 @@ class GetActivationsResult:
     @_builtins.property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[_builtins.str]:
+        """
+        The default prefix of the instance name.
+        """
         return pulumi.get(self, "instance_name")
 
     @_builtins.property
@@ -122,7 +128,7 @@ def get_activations(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ecs Activations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.177.0+.
+    > **NOTE:** Available since v1.177.0.
 
     ## Example Usage
 
@@ -168,7 +174,7 @@ def get_activations_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtin
     """
     This data source provides the Ecs Activations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.177.0+.
+    > **NOTE:** Available since v1.177.0.
 
     ## Example Usage
 

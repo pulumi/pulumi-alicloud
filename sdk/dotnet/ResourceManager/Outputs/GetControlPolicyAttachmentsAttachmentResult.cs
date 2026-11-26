@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string PolicyName;
         /// <summary>
-        /// The type of policy.
+        /// The policy type of control policy. Valid values: `Custom` and `System`.
         /// </summary>
         public readonly string PolicyType;
 

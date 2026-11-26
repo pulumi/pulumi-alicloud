@@ -14,21 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LaunchTemplateDataDisk {
     /**
-     * @return The category of the disk:
-     * - cloud: Basic cloud disk.
-     * - cloud_efficiency: Ultra cloud disk.
-     * - cloud_ssd: SSD cloud Disks.
-     * - ephemeral_ssd: local SSD Disks
-     * - cloud_essd: ESSD cloud Disks.
-     * 
-     * Default to `cloudEfficiency`.
+     * @return The category of the disk.
      * 
      */
     private @Nullable String category;
     /**
-     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
-     * 
-     * Default to true
+     * @return Delete this data disk when the instance is destroyed. Default to `true`.
      * 
      */
     private @Nullable Boolean deleteWithInstance;
@@ -37,56 +28,52 @@ public final class LaunchTemplateDataDisk {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return The mount point of the data disk.
+     * 
+     */
     private @Nullable String device;
     /**
-     * @return Encrypted the data in this disk.
-     * 
-     * Default to false
+     * @return Encrypted the data in this disk. Default to `false`.
      * 
      */
     private @Nullable Boolean encrypted;
+    /**
+     * @return The ID of the KMS key used for the data disk.
+     * 
+     */
     private @Nullable String kmsKeyId;
     /**
      * @return The name of the data disk.
      * 
      */
     private @Nullable String name;
+    /**
+     * @return The performance level of the ESSD used as the data disk.
+     * 
+     */
     private @Nullable String performanceLevel;
     /**
      * @return The size of the data disk.
-     * - cloud：[5, 2000]
-     * - cloud_efficiency：[20, 32768]
-     * - cloud_ssd：[20, 32768]
-     * - cloud_essd：[20, 32768]
-     * - ephemeral_ssd: [5, 800]
      * 
      */
     private @Nullable Integer size;
     /**
-     * @return The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+     * @return The snapshot ID used to initialize the data disk.
      * 
      */
     private @Nullable String snapshotId;
 
     private LaunchTemplateDataDisk() {}
     /**
-     * @return The category of the disk:
-     * - cloud: Basic cloud disk.
-     * - cloud_efficiency: Ultra cloud disk.
-     * - cloud_ssd: SSD cloud Disks.
-     * - ephemeral_ssd: local SSD Disks
-     * - cloud_essd: ESSD cloud Disks.
-     * 
-     * Default to `cloudEfficiency`.
+     * @return The category of the disk.
      * 
      */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
     /**
-     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
-     * 
-     * Default to true
+     * @return Delete this data disk when the instance is destroyed. Default to `true`.
      * 
      */
     public Optional<Boolean> deleteWithInstance() {
@@ -99,18 +86,24 @@ public final class LaunchTemplateDataDisk {
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return The mount point of the data disk.
+     * 
+     */
     public Optional<String> device() {
         return Optional.ofNullable(this.device);
     }
     /**
-     * @return Encrypted the data in this disk.
-     * 
-     * Default to false
+     * @return Encrypted the data in this disk. Default to `false`.
      * 
      */
     public Optional<Boolean> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
+    /**
+     * @return The ID of the KMS key used for the data disk.
+     * 
+     */
     public Optional<String> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
@@ -121,23 +114,22 @@ public final class LaunchTemplateDataDisk {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return The performance level of the ESSD used as the data disk.
+     * 
+     */
     public Optional<String> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
     }
     /**
      * @return The size of the data disk.
-     * - cloud：[5, 2000]
-     * - cloud_efficiency：[20, 32768]
-     * - cloud_ssd：[20, 32768]
-     * - cloud_essd：[20, 32768]
-     * - ephemeral_ssd: [5, 800]
      * 
      */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }
     /**
-     * @return The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+     * @return The snapshot ID used to initialize the data disk.
      * 
      */
     public Optional<String> snapshotId() {

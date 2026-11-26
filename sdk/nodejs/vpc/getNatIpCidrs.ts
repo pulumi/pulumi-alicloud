@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0+.
  *
  * ## Example Usage
  *
@@ -101,6 +101,9 @@ export interface GetNatIpCidrsArgs {
  * A collection of values returned by getNatIpCidrs.
  */
 export interface GetNatIpCidrsResult {
+    /**
+     * A list of Vpc Nat Ip Cidrs. Each element contains the following attributes:
+     */
     readonly cidrs: outputs.vpc.GetNatIpCidrsCidr[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -108,17 +111,29 @@ export interface GetNatIpCidrsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Nat Ip Cidr names.
+     */
     readonly names: string[];
+    /**
+     * The ID of the VPC NAT gateway.
+     */
     readonly natGatewayId: string;
+    /**
+     * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+     */
     readonly natIpCidrNames?: string[];
     readonly natIpCidrs?: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0+.
  *
  * ## Example Usage
  *

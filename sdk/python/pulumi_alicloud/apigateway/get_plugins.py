@@ -83,6 +83,9 @@ class GetPluginsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Plugin names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -103,21 +106,33 @@ class GetPluginsResult:
     @_builtins.property
     @pulumi.getter(name="pluginName")
     def plugin_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the plug-in that you want to create.
+        """
         return pulumi.get(self, "plugin_name")
 
     @_builtins.property
     @pulumi.getter(name="pluginType")
     def plugin_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the plug-in.
+        """
         return pulumi.get(self, "plugin_type")
 
     @_builtins.property
     @pulumi.getter
     def plugins(self) -> Sequence['outputs.GetPluginsPluginResult']:
+        """
+        A list of Api Gateway Plugins. Each element contains the following attributes:
+        """
         return pulumi.get(self, "plugins")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The tag of the resource.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -152,7 +167,7 @@ def get_plugins(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.187.0+.
+    > **NOTE:** Available since v1.187.0.
 
     ## Example Usage
 
@@ -212,7 +227,7 @@ def get_plugins_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.st
     """
     This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.187.0+.
+    > **NOTE:** Available since v1.187.0.
 
     ## Example Usage
 

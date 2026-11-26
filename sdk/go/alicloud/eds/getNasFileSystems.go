@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.141.0+.
+// > **NOTE:** Available since v1.141.0.
 //
 // ## Example Usage
 //
@@ -91,14 +91,18 @@ type GetNasFileSystemsArgs struct {
 // A collection of values returned by getNasFileSystems.
 type GetNasFileSystemsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                    `pulumi:"id"`
-	Ids          []string                  `pulumi:"ids"`
-	NameRegex    *string                   `pulumi:"nameRegex"`
-	Names        []string                  `pulumi:"names"`
-	OfficeSiteId *string                   `pulumi:"officeSiteId"`
-	OutputFile   *string                   `pulumi:"outputFile"`
-	Status       *string                   `pulumi:"status"`
-	Systems      []GetNasFileSystemsSystem `pulumi:"systems"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Nas File System names.
+	Names []string `pulumi:"names"`
+	// The ID of office site.
+	OfficeSiteId *string `pulumi:"officeSiteId"`
+	OutputFile   *string `pulumi:"outputFile"`
+	// The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+	Status *string `pulumi:"status"`
+	// A list of Ecd Nas File Systems. Each element contains the following attributes:
+	Systems []GetNasFileSystemsSystem `pulumi:"systems"`
 }
 
 func GetNasFileSystemsOutput(ctx *pulumi.Context, args GetNasFileSystemsOutputArgs, opts ...pulumi.InvokeOption) GetNasFileSystemsResultOutput {
@@ -152,10 +156,12 @@ func (o GetNasFileSystemsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNasFileSystemsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Nas File System names.
 func (o GetNasFileSystemsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNasFileSystemsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
+// The ID of office site.
 func (o GetNasFileSystemsResultOutput) OfficeSiteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNasFileSystemsResult) *string { return v.OfficeSiteId }).(pulumi.StringPtrOutput)
 }
@@ -164,10 +170,12 @@ func (o GetNasFileSystemsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNasFileSystemsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
 func (o GetNasFileSystemsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNasFileSystemsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecd Nas File Systems. Each element contains the following attributes:
 func (o GetNasFileSystemsResultOutput) Systems() GetNasFileSystemsSystemArrayOutput {
 	return o.ApplyT(func(v GetNasFileSystemsResult) []GetNasFileSystemsSystem { return v.Systems }).(GetNasFileSystemsSystemArrayOutput)
 }

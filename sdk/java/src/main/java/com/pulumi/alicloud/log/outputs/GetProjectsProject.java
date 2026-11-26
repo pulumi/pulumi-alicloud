@@ -31,7 +31,7 @@ public final class GetProjectsProject {
      */
     private String owner;
     /**
-     * @return The policy of project.
+     * @return (Available in 1.198.0+) The policy of project.
      * 
      */
     private String policy;
@@ -46,7 +46,7 @@ public final class GetProjectsProject {
      */
     private String region;
     /**
-     * @return The status of project.
+     * @return The status of log project. Valid values `Normal` and `Disable`.
      * 
      */
     private String status;
@@ -81,7 +81,7 @@ public final class GetProjectsProject {
         return this.owner;
     }
     /**
-     * @return The policy of project.
+     * @return (Available in 1.198.0+) The policy of project.
      * 
      */
     public String policy() {
@@ -102,7 +102,7 @@ public final class GetProjectsProject {
         return this.region;
     }
     /**
-     * @return The status of project.
+     * @return The status of log project. Valid values `Normal` and `Disable`.
      * 
      */
     public String status() {

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Example Usage
  *
@@ -131,6 +131,9 @@ export interface GetTrafficMirrorSessionsArgs {
  * A collection of values returned by getTrafficMirrorSessions.
  */
 export interface GetTrafficMirrorSessionsResult {
+    /**
+     * Indicates whether traffic mirror sessions are enabled. default to `false`.
+     */
     readonly enabled?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -138,20 +141,41 @@ export interface GetTrafficMirrorSessionsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Traffic Mirror Session names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The priority of the traffic mirror session. A smaller value indicates a higher priority.
+     */
     readonly priority?: number;
+    /**
+     * A list of Vpc Traffic Mirror Sessions. Each element contains the following attributes:
+     */
     readonly sessions: outputs.vpc.GetTrafficMirrorSessionsSession[];
+    /**
+     * The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+     */
     readonly status?: string;
+    /**
+     * The ID of the filter.
+     */
     readonly trafficMirrorFilterId?: string;
+    /**
+     * The name of the traffic mirror session.
+     */
     readonly trafficMirrorSessionName?: string;
     readonly trafficMirrorSourceId?: string;
+    /**
+     * The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
+     */
     readonly trafficMirrorTargetId?: string;
 }
 /**
  * This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Example Usage
  *

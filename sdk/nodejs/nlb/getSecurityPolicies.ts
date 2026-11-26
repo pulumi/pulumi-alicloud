@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.187.0+.
+ * > **NOTE:** Available since v1.187.0.
  *
  * ## Example Usage
  *
@@ -69,6 +69,9 @@ export interface GetSecurityPoliciesArgs {
      * The status of the resource. Valid values: `Available`, `Configuring`.
      */
     status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: {[key: string]: string};
 }
 
@@ -82,18 +85,33 @@ export interface GetSecurityPoliciesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Security Policy names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Nlb Security Policies. Each element contains the following attributes:
+     */
     readonly policies: outputs.nlb.GetSecurityPoliciesPolicy[];
+    /**
+     * The ID of the resource group.
+     */
     readonly resourceGroupId?: string;
     readonly securityPolicyNames?: string[];
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.187.0+.
+ * > **NOTE:** Available since v1.187.0.
  *
  * ## Example Usage
  *
@@ -153,5 +171,8 @@ export interface GetSecurityPoliciesOutputArgs {
      * The status of the resource. Valid values: `Available`, `Configuring`.
      */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

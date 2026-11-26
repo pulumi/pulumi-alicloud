@@ -169,8 +169,10 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
      * The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mnsTopic&#34;, &#34;cdnEvents&#34;, &#34;eventbridge&#34;].
      * 
      * &gt; **NOTE:** Config does not support modification when type is mns_topic.
-     * **NOTE:** type = cdn_events, available in 1.47.0+.
-     * **NOTE:** type = eventbridge, available in 1.173.0+.
+     * 
+     * &gt; **NOTE:** type = cdn_events, available in 1.47.0+.
+     * 
+     * &gt; **NOTE:** type = eventbridge, available in 1.173.0+.
      * 
      */
     @Import(name="type")
@@ -180,8 +182,10 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
      * @return The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mnsTopic&#34;, &#34;cdnEvents&#34;, &#34;eventbridge&#34;].
      * 
      * &gt; **NOTE:** Config does not support modification when type is mns_topic.
-     * **NOTE:** type = cdn_events, available in 1.47.0+.
-     * **NOTE:** type = eventbridge, available in 1.173.0+.
+     * 
+     * &gt; **NOTE:** type = cdn_events, available in 1.47.0+.
+     * 
+     * &gt; **NOTE:** type = eventbridge, available in 1.173.0+.
      * 
      */
     public Optional<Output<String>> type() {
@@ -436,8 +440,10 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
          * @param type The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mnsTopic&#34;, &#34;cdnEvents&#34;, &#34;eventbridge&#34;].
          * 
          * &gt; **NOTE:** Config does not support modification when type is mns_topic.
-         * **NOTE:** type = cdn_events, available in 1.47.0+.
-         * **NOTE:** type = eventbridge, available in 1.173.0+.
+         * 
+         * &gt; **NOTE:** type = cdn_events, available in 1.47.0+.
+         * 
+         * &gt; **NOTE:** type = eventbridge, available in 1.173.0+.
          * 
          * @return builder
          * 
@@ -451,8 +457,10 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
          * @param type The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mnsTopic&#34;, &#34;cdnEvents&#34;, &#34;eventbridge&#34;].
          * 
          * &gt; **NOTE:** Config does not support modification when type is mns_topic.
-         * **NOTE:** type = cdn_events, available in 1.47.0+.
-         * **NOTE:** type = eventbridge, available in 1.173.0+.
+         * 
+         * &gt; **NOTE:** type = cdn_events, available in 1.47.0+.
+         * 
+         * &gt; **NOTE:** type = eventbridge, available in 1.173.0+.
          * 
          * @return builder
          * 

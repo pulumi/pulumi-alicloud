@@ -46,9 +46,17 @@ public final class GetHoneypotImagesArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.nameRegex);
     }
 
+    /**
+     * The id of the honeypot management node.
+     * 
+     */
     @Import(name="nodeId")
     private @Nullable Output<String> nodeId;
 
+    /**
+     * @return The id of the honeypot management node.
+     * 
+     */
     public Optional<Output<String>> nodeId() {
         return Optional.ofNullable(this.nodeId);
     }
@@ -147,11 +155,23 @@ public final class GetHoneypotImagesArgs extends com.pulumi.resources.InvokeArgs
             return nameRegex(Output.of(nameRegex));
         }
 
+        /**
+         * @param nodeId The id of the honeypot management node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeId(@Nullable Output<String> nodeId) {
             $.nodeId = nodeId;
             return this;
         }
 
+        /**
+         * @param nodeId The id of the honeypot management node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeId(String nodeId) {
             return nodeId(Output.of(nodeId));
         }

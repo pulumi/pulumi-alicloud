@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.146.0+.
+// > **NOTE:** Available since v1.146.0.
 //
 // ## Example Usage
 //
@@ -63,6 +63,7 @@ type GetConsumerChannelsArgs struct {
 
 // A collection of values returned by getConsumerChannels.
 type GetConsumerChannelsResult struct {
+	// A list of Dts Consumer Channels. Each element contains the following attributes:
 	Channels      []GetConsumerChannelsChannel `pulumi:"channels"`
 	DtsInstanceId string                       `pulumi:"dtsInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
@@ -105,6 +106,7 @@ func (o GetConsumerChannelsResultOutput) ToGetConsumerChannelsResultOutputWithCo
 	return o
 }
 
+// A list of Dts Consumer Channels. Each element contains the following attributes:
 func (o GetConsumerChannelsResultOutput) Channels() GetConsumerChannelsChannelArrayOutput {
 	return o.ApplyT(func(v GetConsumerChannelsResult) []GetConsumerChannelsChannel { return v.Channels }).(GetConsumerChannelsChannelArrayOutput)
 }

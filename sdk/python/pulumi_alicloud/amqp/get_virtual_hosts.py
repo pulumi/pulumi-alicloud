@@ -53,6 +53,9 @@ class GetVirtualHostsResult:
     @_builtins.property
     @pulumi.getter
     def hosts(self) -> Sequence['outputs.GetVirtualHostsHostResult']:
+        """
+        A list of Amqp Virtual Hosts. Each element contains the following attributes:
+        """
         return pulumi.get(self, "hosts")
 
     @_builtins.property
@@ -71,6 +74,9 @@ class GetVirtualHostsResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        InstanceId.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -81,6 +87,9 @@ class GetVirtualHostsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Virtual Host names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -112,7 +121,7 @@ def get_virtual_hosts(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.126.0+.
+    > **NOTE:** Available since v1.126.0.
 
     ## Example Usage
 
@@ -163,7 +172,7 @@ def get_virtual_hosts_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
     """
     This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.126.0+.
+    > **NOTE:** Available since v1.126.0.
 
     ## Example Usage
 

@@ -110,6 +110,7 @@ namespace Pulumi.AliCloud.Cfg
         /// The trigger type of the rule. Valid values:
         /// - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
         /// - `ScheduledNotification`: The rule is periodically triggered.
+        /// 
         /// &gt; **NOTE:** Separate multiple trigger types with commas (,).
         /// </summary>
         [Output("configRuleTriggerTypes")]
@@ -261,6 +262,7 @@ namespace Pulumi.AliCloud.Cfg
         /// The trigger type of the rule. Valid values:
         /// - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
         /// - `ScheduledNotification`: The rule is periodically triggered.
+        /// 
         /// &gt; **NOTE:** Separate multiple trigger types with commas (,).
         /// </summary>
         [Input("configRuleTriggerTypes", required: true)]
@@ -398,6 +400,7 @@ namespace Pulumi.AliCloud.Cfg
         /// The trigger type of the rule. Valid values:
         /// - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
         /// - `ScheduledNotification`: The rule is periodically triggered.
+        /// 
         /// &gt; **NOTE:** Separate multiple trigger types with commas (,).
         /// </summary>
         [Input("configRuleTriggerTypes")]

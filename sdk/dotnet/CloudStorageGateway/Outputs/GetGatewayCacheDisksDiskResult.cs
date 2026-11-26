@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// </summary>
         public readonly string RenewUrl;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
         /// </summary>
         public readonly int Status;
 

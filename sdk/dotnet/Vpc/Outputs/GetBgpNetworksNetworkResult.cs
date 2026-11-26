@@ -22,11 +22,11 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The ID of the vRouter.
+        /// The ID of the router to which the route table belongs.
         /// </summary>
         public readonly string RouterId;
         /// <summary>
-        /// The state of the advertised BGP network.
+        /// The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
         /// </summary>
         public readonly string Status;
 

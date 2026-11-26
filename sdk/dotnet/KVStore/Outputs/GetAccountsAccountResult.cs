@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
-        /// The status of account.
+        /// The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
         /// </summary>
         public readonly string Status;
 

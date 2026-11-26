@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The status of the fileset.
+        /// The status of the fileset. Valid values: `CREATED`, `CREATING`, `RELEASED`, `RELEASING`.
         /// </summary>
         public readonly string Status;
         /// <summary>

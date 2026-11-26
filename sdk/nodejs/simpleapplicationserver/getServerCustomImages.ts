@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Simple Application Server Custom Images of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *
@@ -66,15 +66,21 @@ export interface GetServerCustomImagesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Simple Application Server Custom Images. Each element contains the following attributes:
+     */
     readonly images: outputs.simpleapplicationserver.GetServerCustomImagesImage[];
     readonly nameRegex?: string;
+    /**
+     * A list of Custom Image names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Simple Application Server Custom Images of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *

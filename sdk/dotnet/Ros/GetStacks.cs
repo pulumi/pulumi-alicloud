@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Stacks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.106.0+.
+        /// &gt; **NOTE:** Available since v1.106.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Stacks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.106.0+.
+        /// &gt; **NOTE:** Available since v1.106.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Stacks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.106.0+.
+        /// &gt; **NOTE:** Available since v1.106.0.
         /// 
         /// ## Example Usage
         /// 
@@ -280,13 +280,31 @@ namespace Pulumi.AliCloud.Ros
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Stack names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Parent Stack Id.
+        /// </summary>
         public readonly string? ParentStackId;
         public readonly bool? ShowNestedStack;
+        /// <summary>
+        /// Stack Name.
+        /// </summary>
         public readonly string? StackName;
+        /// <summary>
+        /// A list of Ros Stacks. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetStacksStackResult> Stacks;
+        /// <summary>
+        /// The status of Stack.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// Tags of the Stack.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]

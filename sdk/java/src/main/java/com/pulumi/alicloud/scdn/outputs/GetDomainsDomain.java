@@ -59,7 +59,7 @@ public final class GetDomainsDomain {
      */
     private List<GetDomainsDomainSource> sources;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: &#34;checkFailed&#34;, &#34;checking&#34;, &#34;configureFailed&#34;, &#34;configuring&#34;, &#34;offline&#34;, &#34;online&#34;.
      * 
      */
     private String status;
@@ -129,7 +129,7 @@ public final class GetDomainsDomain {
         return this.sources;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: &#34;checkFailed&#34;, &#34;checking&#34;, &#34;configureFailed&#34;, &#34;configuring&#34;, &#34;offline&#34;, &#34;online&#34;.
      * 
      */
     public String status() {

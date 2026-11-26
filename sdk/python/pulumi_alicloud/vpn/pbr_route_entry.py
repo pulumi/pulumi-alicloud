@@ -24,7 +24,9 @@ class PbrRouteEntryArgs:
                  route_dest: pulumi.Input[_builtins.str],
                  route_source: pulumi.Input[_builtins.str],
                  vpn_gateway_id: pulumi.Input[_builtins.str],
-                 weight: pulumi.Input[_builtins.int]):
+                 weight: pulumi.Input[_builtins.int],
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a PbrRouteEntry resource.
 
@@ -34,6 +36,10 @@ class PbrRouteEntryArgs:
         :param pulumi.Input[_builtins.str] route_source: The source CIDR block of the policy-based route.
         :param pulumi.Input[_builtins.str] vpn_gateway_id: The ID of the vpn gateway.
         :param pulumi.Input[_builtins.int] weight: The weight of the policy-based route. Valid values: 0 and 100.
+        :param pulumi.Input[_builtins.str] description: The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+        :param pulumi.Input[_builtins.int] priority: The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+               
+               > **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
         """
         pulumi.set(__self__, "next_hop", next_hop)
         pulumi.set(__self__, "publish_vpc", publish_vpc)
@@ -41,6 +47,10 @@ class PbrRouteEntryArgs:
         pulumi.set(__self__, "route_source", route_source)
         pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
         pulumi.set(__self__, "weight", weight)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
 
     @_builtins.property
     @pulumi.getter(name="nextHop")
@@ -114,11 +124,39 @@ class PbrRouteEntryArgs:
     def weight(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "weight", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+
+        > **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "priority", value)
+
 
 @pulumi.input_type
 class _PbrRouteEntryState:
     def __init__(__self__, *,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
                  publish_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
                  route_dest: pulumi.Input[Optional[_builtins.str]] = None,
                  route_source: pulumi.Input[Optional[_builtins.str]] = None,
@@ -128,7 +166,11 @@ class _PbrRouteEntryState:
         """
         Input properties used for looking up and filtering PbrRouteEntry resources.
 
+        :param pulumi.Input[_builtins.str] description: The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
         :param pulumi.Input[_builtins.str] next_hop: The next hop of the policy-based route.
+        :param pulumi.Input[_builtins.int] priority: The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+               
+               > **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
         :param pulumi.Input[_builtins.bool] publish_vpc: Whether to issue the destination route to the VPC.
         :param pulumi.Input[_builtins.str] route_dest: The destination CIDR block of the policy-based route.
         :param pulumi.Input[_builtins.str] route_source: The source CIDR block of the policy-based route.
@@ -136,8 +178,12 @@ class _PbrRouteEntryState:
         :param pulumi.Input[_builtins.str] vpn_gateway_id: The ID of the vpn gateway.
         :param pulumi.Input[_builtins.int] weight: The weight of the policy-based route. Valid values: 0 and 100.
         """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if next_hop is not None:
             pulumi.set(__self__, "next_hop", next_hop)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
         if publish_vpc is not None:
             pulumi.set(__self__, "publish_vpc", publish_vpc)
         if route_dest is not None:
@@ -152,6 +198,18 @@ class _PbrRouteEntryState:
             pulumi.set(__self__, "weight", weight)
 
     @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
     @pulumi.getter(name="nextHop")
     def next_hop(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -162,6 +220,20 @@ class _PbrRouteEntryState:
     @next_hop.setter
     def next_hop(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+
+        > **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="publishVpc")
@@ -242,7 +314,9 @@ class PbrRouteEntry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
                  publish_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
                  route_dest: pulumi.Input[Optional[_builtins.str]] = None,
                  route_source: pulumi.Input[Optional[_builtins.str]] = None,
@@ -365,10 +439,16 @@ class PbrRouteEntry(pulumi.CustomResource):
         $ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example <vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>
         ```
 
+        The four-part ID must match exactly one remote route entry. If primary/backup or other route entries share the same four-part key, the ID cannot disambiguate them and the import returns an error instead of selecting one.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] description: The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
         :param pulumi.Input[_builtins.str] next_hop: The next hop of the policy-based route.
+        :param pulumi.Input[_builtins.int] priority: The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+               
+               > **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
         :param pulumi.Input[_builtins.bool] publish_vpc: Whether to issue the destination route to the VPC.
         :param pulumi.Input[_builtins.str] route_dest: The destination CIDR block of the policy-based route.
         :param pulumi.Input[_builtins.str] route_source: The source CIDR block of the policy-based route.
@@ -497,6 +577,8 @@ class PbrRouteEntry(pulumi.CustomResource):
         $ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example <vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>
         ```
 
+        The four-part ID must match exactly one remote route entry. If primary/backup or other route entries share the same four-part key, the ID cannot disambiguate them and the import returns an error instead of selecting one.
+
 
         :param str resource_name: The name of the resource.
         :param PbrRouteEntryArgs args: The arguments to use to populate this resource's properties.
@@ -513,7 +595,9 @@ class PbrRouteEntry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
                  publish_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
                  route_dest: pulumi.Input[Optional[_builtins.str]] = None,
                  route_source: pulumi.Input[Optional[_builtins.str]] = None,
@@ -528,9 +612,11 @@ class PbrRouteEntry(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PbrRouteEntryArgs.__new__(PbrRouteEntryArgs)
 
+            __props__.__dict__["description"] = description
             if next_hop is None and not opts.urn:
                 raise TypeError("Missing required property 'next_hop'")
             __props__.__dict__["next_hop"] = next_hop
+            __props__.__dict__["priority"] = priority
             if publish_vpc is None and not opts.urn:
                 raise TypeError("Missing required property 'publish_vpc'")
             __props__.__dict__["publish_vpc"] = publish_vpc
@@ -557,7 +643,9 @@ class PbrRouteEntry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
             next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
             publish_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
             route_dest: pulumi.Input[Optional[_builtins.str]] = None,
             route_source: pulumi.Input[Optional[_builtins.str]] = None,
@@ -571,7 +659,11 @@ class PbrRouteEntry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] description: The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
         :param pulumi.Input[_builtins.str] next_hop: The next hop of the policy-based route.
+        :param pulumi.Input[_builtins.int] priority: The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+               
+               > **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
         :param pulumi.Input[_builtins.bool] publish_vpc: Whether to issue the destination route to the VPC.
         :param pulumi.Input[_builtins.str] route_dest: The destination CIDR block of the policy-based route.
         :param pulumi.Input[_builtins.str] route_source: The source CIDR block of the policy-based route.
@@ -583,7 +675,9 @@ class PbrRouteEntry(pulumi.CustomResource):
 
         __props__ = _PbrRouteEntryState.__new__(_PbrRouteEntryState)
 
+        __props__.__dict__["description"] = description
         __props__.__dict__["next_hop"] = next_hop
+        __props__.__dict__["priority"] = priority
         __props__.__dict__["publish_vpc"] = publish_vpc
         __props__.__dict__["route_dest"] = route_dest
         __props__.__dict__["route_source"] = route_source
@@ -595,7 +689,9 @@ class PbrRouteEntry(pulumi.CustomResource):
     @staticmethod
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
             next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
             publish_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
             route_dest: pulumi.Input[Optional[_builtins.str]] = None,
             route_source: pulumi.Input[Optional[_builtins.str]] = None,
@@ -603,7 +699,9 @@ class PbrRouteEntry(pulumi.CustomResource):
             vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
             weight: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
+        __props__["description"] = description
         __props__["nextHop"] = next_hop
+        __props__["priority"] = priority
         __props__["publishVpc"] = publish_vpc
         __props__["routeDest"] = route_dest
         __props__["routeSource"] = route_source
@@ -613,12 +711,30 @@ class PbrRouteEntry(pulumi.CustomResource):
         return pulumi.runtime.exists_resource(None, 'alicloud:vpn/pbrRouteEntry:PbrRouteEntry', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
     @pulumi.getter(name="nextHop")
     def next_hop(self) -> pulumi.Output[_builtins.str]:
         """
         The next hop of the policy-based route.
         """
         return pulumi.get(self, "next_hop")
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> pulumi.Output[_builtins.int]:
+        """
+        The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+
+        > **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+        """
+        return pulumi.get(self, "priority")
 
     @_builtins.property
     @pulumi.getter(name="publishVpc")

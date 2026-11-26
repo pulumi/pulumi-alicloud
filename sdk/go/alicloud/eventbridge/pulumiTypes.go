@@ -4397,8 +4397,9 @@ type GetEventSourcesSource struct {
 	// The ID of the Event Source.
 	Id string `pulumi:"id"`
 	// Whether to connect to an external data source.
-	LinkedExternalSource bool   `pulumi:"linkedExternalSource"`
-	Type                 string `pulumi:"type"`
+	LinkedExternalSource bool `pulumi:"linkedExternalSource"`
+	// The type of the event source.
+	Type string `pulumi:"type"`
 }
 
 // GetEventSourcesSourceInput is an input type that accepts GetEventSourcesSourceArgs and GetEventSourcesSourceOutput values.
@@ -4424,8 +4425,9 @@ type GetEventSourcesSourceArgs struct {
 	// The ID of the Event Source.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Whether to connect to an external data source.
-	LinkedExternalSource pulumi.BoolInput   `pulumi:"linkedExternalSource"`
-	Type                 pulumi.StringInput `pulumi:"type"`
+	LinkedExternalSource pulumi.BoolInput `pulumi:"linkedExternalSource"`
+	// The type of the event source.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetEventSourcesSourceArgs) ElementType() reflect.Type {
@@ -4509,6 +4511,7 @@ func (o GetEventSourcesSourceOutput) LinkedExternalSource() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEventSourcesSource) bool { return v.LinkedExternalSource }).(pulumi.BoolOutput)
 }
 
+// The type of the event source.
 func (o GetEventSourcesSourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEventSourcesSource) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4544,7 +4547,7 @@ type GetRulesRule struct {
 	Id string `pulumi:"id"`
 	// The name of rule.
 	RuleName string `pulumi:"ruleName"`
-	// Rule status, either Enable or Disable.
+	// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
 	Status string `pulumi:"status"`
 	// The target for rule.
 	Targets []GetRulesRuleTarget `pulumi:"targets"`
@@ -4572,7 +4575,7 @@ type GetRulesRuleArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The name of rule.
 	RuleName pulumi.StringInput `pulumi:"ruleName"`
-	// Rule status, either Enable or Disable.
+	// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The target for rule.
 	Targets GetRulesRuleTargetArrayInput `pulumi:"targets"`
@@ -4654,7 +4657,7 @@ func (o GetRulesRuleOutput) RuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.RuleName }).(pulumi.StringOutput)
 }
 
-// Rule status, either Enable or Disable.
+// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
 func (o GetRulesRuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.Status }).(pulumi.StringOutput)
 }

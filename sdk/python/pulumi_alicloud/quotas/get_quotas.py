@@ -93,6 +93,9 @@ class GetQuotasResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Quota IDs.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -108,6 +111,9 @@ class GetQuotasResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Quota names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -123,6 +129,9 @@ class GetQuotasResult:
     @_builtins.property
     @pulumi.getter(name="quotaActionCode")
     def quota_action_code(self) -> Optional[_builtins.str]:
+        """
+        The quota action code.
+        """
         return pulumi.get(self, "quota_action_code")
 
     @_builtins.property
@@ -133,6 +142,9 @@ class GetQuotasResult:
     @_builtins.property
     @pulumi.getter
     def quotas(self) -> Sequence['outputs.GetQuotasQuotaResult']:
+        """
+        A list of Quotas Quotas. Each element contains the following attributes:
+        """
         return pulumi.get(self, "quotas")
 
     @_builtins.property
@@ -182,7 +194,7 @@ def get_quotas(dimensions: Optional[Sequence[Union['GetQuotasDimensionArgs', 'Ge
     """
     This data source provides the Quotas Quotas of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.115.0+.
+    > **NOTE:** Available since v1.115.0.
 
     ## Example Usage
 
@@ -198,7 +210,7 @@ def get_quotas(dimensions: Optional[Sequence[Union['GetQuotasDimensionArgs', 'Ge
     ```
 
 
-    :param Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict', 'outputs.GetQuotasDimensionResult']] dimensions: The dimensions.
+    :param Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict', 'outputs.GetQuotasDimensionResult']] dimensions: The dimensions. See `dimensions` below.
     :param _builtins.str group_code: The group code.
     :param _builtins.str key_word: The key word.
     :param _builtins.str name_regex: A regex string to filter results by Quota name.
@@ -252,7 +264,7 @@ def get_quotas_output(dimensions: pulumi.Input[Optional[Optional[Sequence[Union[
     """
     This data source provides the Quotas Quotas of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.115.0+.
+    > **NOTE:** Available since v1.115.0.
 
     ## Example Usage
 
@@ -268,7 +280,7 @@ def get_quotas_output(dimensions: pulumi.Input[Optional[Optional[Sequence[Union[
     ```
 
 
-    :param Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict', 'outputs.GetQuotasDimensionResult']] dimensions: The dimensions.
+    :param Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict', 'outputs.GetQuotasDimensionResult']] dimensions: The dimensions. See `dimensions` below.
     :param _builtins.str group_code: The group code.
     :param _builtins.str key_word: The key word.
     :param _builtins.str name_regex: A regex string to filter results by Quota name.

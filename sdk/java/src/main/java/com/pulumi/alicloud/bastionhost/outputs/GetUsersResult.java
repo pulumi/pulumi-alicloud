@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetUsersResult {
+    /**
+     * @return Specify the New Created the User&#39;s Display Name. Supports up to 128 Characters.
+     * 
+     */
     private @Nullable String displayName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -21,18 +25,54 @@ public final class GetUsersResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return You Want to Query the User the Bastion Host ID of.
+     * 
+     */
     private String instanceId;
+    /**
+     * @return Specify the New of the User That Created a Different Mobile Phone Number from Your.
+     * 
+     */
     private @Nullable String mobile;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of User names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+     * 
+     */
     private @Nullable String source;
+    /**
+     * @return Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User&#39;s Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+     * 
+     */
     private @Nullable String sourceUserId;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+     * 
+     */
     private @Nullable String userName;
+    /**
+     * @return A list of Bastionhost Users. Each element contains the following attributes:
+     * 
+     */
     private List<GetUsersUser> users;
 
     private GetUsersResult() {}
+    /**
+     * @return Specify the New Created the User&#39;s Display Name. Supports up to 128 Characters.
+     * 
+     */
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
     }
@@ -46,33 +86,65 @@ public final class GetUsersResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return You Want to Query the User the Bastion Host ID of.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
+    /**
+     * @return Specify the New of the User That Created a Different Mobile Phone Number from Your.
+     * 
+     */
     public Optional<String> mobile() {
         return Optional.ofNullable(this.mobile);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of User names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+     * 
+     */
     public Optional<String> source() {
         return Optional.ofNullable(this.source);
     }
+    /**
+     * @return Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User&#39;s Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+     * 
+     */
     public Optional<String> sourceUserId() {
         return Optional.ofNullable(this.sourceUserId);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+     * 
+     */
     public Optional<String> userName() {
         return Optional.ofNullable(this.userName);
     }
+    /**
+     * @return A list of Bastionhost Users. Each element contains the following attributes:
+     * 
+     */
     public List<GetUsersUser> users() {
         return this.users;
     }

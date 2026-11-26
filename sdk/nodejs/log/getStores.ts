@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Log Stores of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.126.0+.
+ * > **NOTE:** Available since v1.126.0.
  *
  * ## Example Usage
  *
@@ -52,6 +52,9 @@ export interface GetStoresArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * The name of the log project.
+     */
     project: string;
 }
 
@@ -65,15 +68,21 @@ export interface GetStoresResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of store names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly project: string;
+    /**
+     * A list of Log Stores. Each element contains the following attributes:
+     */
     readonly stores: outputs.log.GetStoresStore[];
 }
 /**
  * This data source provides the Log Stores of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.126.0+.
+ * > **NOTE:** Available since v1.126.0.
  *
  * ## Example Usage
  *
@@ -116,5 +125,8 @@ export interface GetStoresOutputArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the log project.
+     */
     project: pulumi.Input<string>;
 }

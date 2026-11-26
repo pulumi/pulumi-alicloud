@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
         /// 
-        /// &gt; **NOTE:** Available in v1.101.0+.
+        /// &gt; **NOTE:** Available since v1.101.0.
         /// 
         /// ## Example Usage
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
         /// 
-        /// &gt; **NOTE:** Available in v1.101.0+.
+        /// &gt; **NOTE:** Available since v1.101.0.
         /// 
         /// ## Example Usage
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
         /// 
-        /// &gt; **NOTE:** Available in v1.101.0+.
+        /// &gt; **NOTE:** Available since v1.101.0.
         /// 
         /// ## Example Usage
         /// 

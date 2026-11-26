@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.DirectMail
         /// <summary>
         /// This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.DirectMail
         /// <summary>
         /// This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.DirectMail
         /// <summary>
         /// This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -210,6 +210,9 @@ namespace Pulumi.AliCloud.DirectMail
     [OutputType]
     public sealed class GetMailAddressesResult
     {
+        /// <summary>
+        /// A list of Direct Mail Mail Addresses. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetMailAddressesAddressResult> Addresses;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -218,7 +221,13 @@ namespace Pulumi.AliCloud.DirectMail
         public readonly ImmutableArray<string> Ids;
         public readonly string? KeyWord;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Account type.
+        /// </summary>
         public readonly string? Sendtype;
+        /// <summary>
+        /// Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

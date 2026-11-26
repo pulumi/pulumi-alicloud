@@ -156,7 +156,8 @@ type KeyPairAttachment struct {
 	// The name of key pair used to bind.
 	//
 	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
-	KeyName     pulumi.StringOutput `pulumi:"keyName"`
+	KeyName pulumi.StringOutput `pulumi:"keyName"`
+	// The name of key pair used to bind.
 	KeyPairName pulumi.StringOutput `pulumi:"keyPairName"`
 }
 
@@ -200,7 +201,8 @@ type keyPairAttachmentState struct {
 	// The name of key pair used to bind.
 	//
 	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
-	KeyName     *string `pulumi:"keyName"`
+	KeyName *string `pulumi:"keyName"`
+	// The name of key pair used to bind.
 	KeyPairName *string `pulumi:"keyPairName"`
 }
 
@@ -212,7 +214,8 @@ type KeyPairAttachmentState struct {
 	// The name of key pair used to bind.
 	//
 	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
-	KeyName     pulumi.StringPtrInput
+	KeyName pulumi.StringPtrInput
+	// The name of key pair used to bind.
 	KeyPairName pulumi.StringPtrInput
 }
 
@@ -234,7 +237,8 @@ type keyPairAttachmentArgs struct {
 	// The name of key pair used to bind.
 	//
 	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
-	KeyName     *string `pulumi:"keyName"`
+	KeyName *string `pulumi:"keyName"`
+	// The name of key pair used to bind.
 	KeyPairName *string `pulumi:"keyPairName"`
 }
 
@@ -247,7 +251,8 @@ type KeyPairAttachmentArgs struct {
 	// The name of key pair used to bind.
 	//
 	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
-	KeyName     pulumi.StringPtrInput
+	KeyName pulumi.StringPtrInput
+	// The name of key pair used to bind.
 	KeyPairName pulumi.StringPtrInput
 }
 
@@ -355,6 +360,7 @@ func (o KeyPairAttachmentOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyPairAttachment) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
 }
 
+// The name of key pair used to bind.
 func (o KeyPairAttachmentOutput) KeyPairName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyPairAttachment) pulumi.StringOutput { return v.KeyPairName }).(pulumi.StringOutput)
 }

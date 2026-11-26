@@ -21,6 +21,10 @@ public final class GetTrailsTrail {
      * 
      */
     private String id;
+    /**
+     * @return Indicates whether the trail is a multi-account trail.
+     * 
+     */
     private Boolean isOrganizationTrail;
     /**
      * @return The name of the specified OSS bucket.
@@ -32,6 +36,10 @@ public final class GetTrailsTrail {
      * 
      */
     private String ossKeyPrefix;
+    /**
+     * @return The RAM role ARN that ActionTrail assumes to access the OSS bucket.
+     * 
+     */
     private String ossWriteRoleArn;
     /**
      * @return The unique ARN of the Log Service project.
@@ -74,6 +82,10 @@ public final class GetTrailsTrail {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Indicates whether the trail is a multi-account trail.
+     * 
+     */
     public Boolean isOrganizationTrail() {
         return this.isOrganizationTrail;
     }
@@ -91,6 +103,10 @@ public final class GetTrailsTrail {
     public String ossKeyPrefix() {
         return this.ossKeyPrefix;
     }
+    /**
+     * @return The RAM role ARN that ActionTrail assumes to access the OSS bucket.
+     * 
+     */
     public String ossWriteRoleArn() {
         return this.ossWriteRoleArn;
     }

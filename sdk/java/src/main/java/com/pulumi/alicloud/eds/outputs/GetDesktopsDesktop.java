@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.eds.outputs;
 
+import com.pulumi.alicloud.eds.outputs.GetDesktopsDesktopDisk;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -18,37 +19,42 @@ public final class GetDesktopsDesktop {
      */
     private Integer cpu;
     /**
-     * @return The creation time of the Desktop.
+     * @return The creation time of the cloud desktop.
      * 
      */
     private String createTime;
     /**
-     * @return The desktop id of the Desktop.
+     * @return The cloud desktop ID.
      * 
      */
     private String desktopId;
     /**
-     * @return The desktop name of the Desktop.
+     * @return The cloud desktop name.
      * 
      */
     private String desktopName;
     /**
-     * @return The desktop type of the Desktop.
+     * @return The specifications of the cloud desktop.
      * 
      */
     private String desktopType;
     /**
-     * @return The directory id of the Desktop.
+     * @return The directory ID.
      * 
      */
     private String directoryId;
     /**
-     * @return The desktop end user id of the Desktop.
+     * @return (Available since v2.3.0) The disk information.
+     * 
+     */
+    private List<GetDesktopsDesktopDisk> disks;
+    /**
+     * @return The authorized users of the cloud desktop.
      * 
      */
     private List<String> endUserIds;
     /**
-     * @return The expired time of the Desktop.
+     * @return The expiration time of the subscription cloud desktop.
      * 
      */
     private String expiredTime;
@@ -58,32 +64,32 @@ public final class GetDesktopsDesktop {
      */
     private String id;
     /**
-     * @return The image id of the Desktop.
+     * @return The image ID.
      * 
      */
     private String imageId;
     /**
-     * @return The memory of the Desktop.
+     * @return The memory size.
      * 
      */
     private String memory;
     /**
-     * @return The network interface id of the Desktop.
+     * @return The ID of the secondary elastic network interface (ENI) created by the cloud desktop service for a RAM or AD user.
      * 
      */
     private String networkInterfaceId;
     /**
-     * @return The payment type of the Desktop.
+     * @return The billing method of the cloud desktop.
      * 
      */
     private String paymentType;
     /**
-     * @return The policy group id of the Desktop.
+     * @return The cloud desktop policy ID.
      * 
      */
     private String policyGroupId;
     /**
-     * @return The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+     * @return The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
      * 
      */
     private String status;
@@ -102,49 +108,56 @@ public final class GetDesktopsDesktop {
         return this.cpu;
     }
     /**
-     * @return The creation time of the Desktop.
+     * @return The creation time of the cloud desktop.
      * 
      */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return The desktop id of the Desktop.
+     * @return The cloud desktop ID.
      * 
      */
     public String desktopId() {
         return this.desktopId;
     }
     /**
-     * @return The desktop name of the Desktop.
+     * @return The cloud desktop name.
      * 
      */
     public String desktopName() {
         return this.desktopName;
     }
     /**
-     * @return The desktop type of the Desktop.
+     * @return The specifications of the cloud desktop.
      * 
      */
     public String desktopType() {
         return this.desktopType;
     }
     /**
-     * @return The directory id of the Desktop.
+     * @return The directory ID.
      * 
      */
     public String directoryId() {
         return this.directoryId;
     }
     /**
-     * @return The desktop end user id of the Desktop.
+     * @return (Available since v2.3.0) The disk information.
+     * 
+     */
+    public List<GetDesktopsDesktopDisk> disks() {
+        return this.disks;
+    }
+    /**
+     * @return The authorized users of the cloud desktop.
      * 
      */
     public List<String> endUserIds() {
         return this.endUserIds;
     }
     /**
-     * @return The expired time of the Desktop.
+     * @return The expiration time of the subscription cloud desktop.
      * 
      */
     public String expiredTime() {
@@ -158,42 +171,42 @@ public final class GetDesktopsDesktop {
         return this.id;
     }
     /**
-     * @return The image id of the Desktop.
+     * @return The image ID.
      * 
      */
     public String imageId() {
         return this.imageId;
     }
     /**
-     * @return The memory of the Desktop.
+     * @return The memory size.
      * 
      */
     public String memory() {
         return this.memory;
     }
     /**
-     * @return The network interface id of the Desktop.
+     * @return The ID of the secondary elastic network interface (ENI) created by the cloud desktop service for a RAM or AD user.
      * 
      */
     public String networkInterfaceId() {
         return this.networkInterfaceId;
     }
     /**
-     * @return The payment type of the Desktop.
+     * @return The billing method of the cloud desktop.
      * 
      */
     public String paymentType() {
         return this.paymentType;
     }
     /**
-     * @return The policy group id of the Desktop.
+     * @return The cloud desktop policy ID.
      * 
      */
     public String policyGroupId() {
         return this.policyGroupId;
     }
     /**
-     * @return The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+     * @return The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
      * 
      */
     public String status() {
@@ -222,6 +235,7 @@ public final class GetDesktopsDesktop {
         private String desktopName;
         private String desktopType;
         private String directoryId;
+        private List<GetDesktopsDesktopDisk> disks;
         private List<String> endUserIds;
         private String expiredTime;
         private String id;
@@ -241,6 +255,7 @@ public final class GetDesktopsDesktop {
     	      this.desktopName = defaults.desktopName;
     	      this.desktopType = defaults.desktopType;
     	      this.directoryId = defaults.directoryId;
+    	      this.disks = defaults.disks;
     	      this.endUserIds = defaults.endUserIds;
     	      this.expiredTime = defaults.expiredTime;
     	      this.id = defaults.id;
@@ -300,6 +315,17 @@ public final class GetDesktopsDesktop {
             }
             this.directoryId = directoryId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder disks(List<GetDesktopsDesktopDisk> disks) {
+            if (disks == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "disks");
+            }
+            this.disks = disks;
+            return this;
+        }
+        public Builder disks(GetDesktopsDesktopDisk... disks) {
+            return disks(List.of(disks));
         }
         @CustomType.Setter
         public Builder endUserIds(List<String> endUserIds) {
@@ -392,6 +418,7 @@ public final class GetDesktopsDesktop {
             _resultValue.desktopName = desktopName;
             _resultValue.desktopType = desktopType;
             _resultValue.directoryId = directoryId;
+            _resultValue.disks = disks;
             _resultValue.endUserIds = endUserIds;
             _resultValue.expiredTime = expiredTime;
             _resultValue.id = id;

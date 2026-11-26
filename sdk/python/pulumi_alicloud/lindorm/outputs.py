@@ -546,7 +546,7 @@ class GetInstancesInstanceResult(dict):
         :param _builtins.int search_engine_node_count: The count of search engine.
         :param _builtins.str search_engine_specification: The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param _builtins.str service_type: The service type of Instance, Valid values:  `lindorm`, `serverless_lindorm`, `lindorm_standalone`.
-        :param _builtins.str status: The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+        :param _builtins.str status: Instance status, Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
         :param _builtins.int table_engine_node_count: The count of table engine.
         :param _builtins.str table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param _builtins.int time_series_engine_node_count: The count of time series engine.
@@ -802,7 +802,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+        Instance status, Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
         """
         return pulumi.get(self, "status")
 

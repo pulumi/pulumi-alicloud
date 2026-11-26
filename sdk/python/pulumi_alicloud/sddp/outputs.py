@@ -237,6 +237,7 @@ class GetInstancesInstanceResult(dict):
                  status: _builtins.str):
         """
         :param _builtins.bool authed: Whether the required RAM authorization is configured.
+        :param _builtins.str id: The ID of the instance.
         :param _builtins.str instance_id: The ID of the instance.
         :param _builtins.str instance_num: The number of instances.
         :param _builtins.bool odps_set: Whether the authorized MaxCompute (ODPS) assets.
@@ -268,6 +269,9 @@ class GetInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the instance.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

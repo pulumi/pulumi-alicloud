@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.116.0+.
+ * > **NOTE:** Available since v1.116.0.
  *
  * ## Example Usage
  *
@@ -58,6 +58,9 @@ export interface GetHpcClustersArgs {
  * A collection of values returned by getHpcClusters.
  */
 export interface GetHpcClustersResult {
+    /**
+     * A list of Ecs Hpc Clusters. Each element contains the following attributes:
+     */
     readonly clusters: outputs.ecs.GetHpcClustersCluster[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -65,13 +68,16 @@ export interface GetHpcClustersResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Hpc Cluster names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.116.0+.
+ * > **NOTE:** Available since v1.116.0.
  *
  * ## Example Usage
  *

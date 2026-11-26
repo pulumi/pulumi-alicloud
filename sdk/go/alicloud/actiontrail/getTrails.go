@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
 //
-// > **NOTE:** Available in 1.95.0+
+// > **NOTE:** Available since v1.95.0.
 //
 // ## Example Usage
 //
@@ -69,7 +69,7 @@ type GetTrailsArgs struct {
 
 // A collection of values returned by getTrails.
 type GetTrailsResult struct {
-	// Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead."
+	// (Deprecated since v1.95.0) Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead. Each element contains the following attributes:
 	//
 	// Deprecated: Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.
 	Actiontrails []GetTrailsActiontrail `pulumi:"actiontrails"`
@@ -129,7 +129,7 @@ func (o GetTrailsResultOutput) ToGetTrailsResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead."
+// (Deprecated since v1.95.0) Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead. Each element contains the following attributes:
 //
 // Deprecated: Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.
 func (o GetTrailsResultOutput) Actiontrails() GetTrailsActiontrailArrayOutput {

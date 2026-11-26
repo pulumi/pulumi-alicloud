@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.179.0+.
+        /// &gt; **NOTE:** Available since v1.179.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.179.0+.
+        /// &gt; **NOTE:** Available since v1.179.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.179.0+.
+        /// &gt; **NOTE:** Available since v1.179.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -216,10 +216,16 @@ namespace Pulumi.AliCloud.Cms
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? Keyword;
+        /// <summary>
+        /// The namespace to which the host belongs.
+        /// </summary>
         public readonly string? Namespace;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// A list of Cms Hybrid Monitor Sls Tasks. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHybridMonitorSlsTasksTaskResult> Tasks;
 
         [OutputConstructor]

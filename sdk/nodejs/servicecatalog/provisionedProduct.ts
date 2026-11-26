@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccServiceCatalogProvisionedProduct";
+ * const name = config.get("name") || "tf-accServiceCatalogProvisionedProduct";
  * const _default = new alicloud.servicecatalog.ProvisionedProduct("default", {
  *     provisionedProductName: name,
  *     stackRegionId: "cn-hangzhou",
@@ -117,7 +117,7 @@ export class ProvisionedProduct extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly ownerPrincipalType: pulumi.Output<string>;
     /**
-     * Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+     * Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
      */
     declare public readonly parameters: pulumi.Output<outputs.servicecatalog.ProvisionedProductParameter[] | undefined>;
     /**
@@ -287,7 +287,7 @@ export interface ProvisionedProductState {
      */
     ownerPrincipalType?: pulumi.Input<string | undefined>;
     /**
-     * Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+     * Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.servicecatalog.ProvisionedProductParameter>[] | undefined>;
     /**
@@ -353,7 +353,7 @@ export interface ProvisionedProductState {
  */
 export interface ProvisionedProductArgs {
     /**
-     * Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+     * Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.servicecatalog.ProvisionedProductParameter>[] | undefined>;
     /**

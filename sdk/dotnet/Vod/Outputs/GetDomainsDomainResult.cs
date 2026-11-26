@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Vod.Outputs
         /// </summary>
         public readonly string SandBox;
         /// <summary>
-        /// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+        /// The information about the address of the origin server. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainsDomainSourceResult> Sources;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Vod.Outputs
         /// </summary>
         public readonly string SslProtocol;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the domain name. The value of this parameter is used as a condition to filter domain names.
         /// </summary>
         public readonly string Status;
 

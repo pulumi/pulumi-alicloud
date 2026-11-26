@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.157.0+.
+// > **NOTE:** Available since v1.157.0.
 //
 // ## Example Usage
 //
@@ -71,12 +71,14 @@ type GetMigrationJobsArgs struct {
 type GetMigrationJobsResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                `pulumi:"id"`
-	Ids        []string              `pulumi:"ids"`
-	Jobs       []GetMigrationJobsJob `pulumi:"jobs"`
-	NameRegex  *string               `pulumi:"nameRegex"`
-	Names      []string              `pulumi:"names"`
-	OutputFile *string               `pulumi:"outputFile"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Dts Migration Jobs. Each element contains the following attributes:
+	Jobs      []GetMigrationJobsJob `pulumi:"jobs"`
+	NameRegex *string               `pulumi:"nameRegex"`
+	// A list of Migration Job names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 }
 
 func GetMigrationJobsOutput(ctx *pulumi.Context, args GetMigrationJobsOutputArgs, opts ...pulumi.InvokeOption) GetMigrationJobsResultOutput {
@@ -128,6 +130,7 @@ func (o GetMigrationJobsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMigrationJobsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Dts Migration Jobs. Each element contains the following attributes:
 func (o GetMigrationJobsResultOutput) Jobs() GetMigrationJobsJobArrayOutput {
 	return o.ApplyT(func(v GetMigrationJobsResult) []GetMigrationJobsJob { return v.Jobs }).(GetMigrationJobsJobArrayOutput)
 }
@@ -136,6 +139,7 @@ func (o GetMigrationJobsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMigrationJobsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Migration Job names.
 func (o GetMigrationJobsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMigrationJobsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

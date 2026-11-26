@@ -72,6 +72,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter(name="engineType")
     def engine_type(self) -> Optional[_builtins.str]:
+        """
+        The engine type of instance. Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+        """
         return pulumi.get(self, "engine_type")
 
     @_builtins.property
@@ -90,6 +93,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
+        """
+        A list of TSDB Instances. Each element contains the following attributes:
+        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
@@ -105,6 +111,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
@@ -143,7 +152,7 @@ def get_instances(app_key: Optional[_builtins.str] = None,
     """
     This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.112.0+.
+    > **NOTE:** Available since v1.112.0.
 
     ## Example Usage
 
@@ -202,7 +211,7 @@ def get_instances_output(app_key: pulumi.Input[Optional[Optional[_builtins.str]]
     """
     This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.112.0+.
+    > **NOTE:** Available since v1.112.0.
 
     ## Example Usage
 

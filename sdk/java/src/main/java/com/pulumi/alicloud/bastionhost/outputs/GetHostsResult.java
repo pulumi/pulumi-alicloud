@@ -17,7 +17,15 @@ import javax.annotation.Nullable;
 public final class GetHostsResult {
     private @Nullable Boolean enableDetails;
     private @Nullable String hostAddress;
+    /**
+     * @return Specify the new create a host name of the supports up to 128 characters.
+     * 
+     */
     private @Nullable String hostName;
+    /**
+     * @return A list of Bastionhost Hosts. Each element contains the following attributes:
+     * 
+     */
     private List<GetHostsHost> hosts;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -25,12 +33,32 @@ public final class GetHostsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return Specify the new create a host where the Bastion host ID of.
+     * 
+     */
     private String instanceId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Host names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return Specify the new create the host&#39;s operating system. Valid values: Linux Windows.
+     * 
+     */
     private @Nullable String osType;
     private @Nullable String outputFile;
+    /**
+     * @return Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
+     * 
+     */
     private @Nullable String source;
+    /**
+     * @return Specify the newly created ECS instance ID or dedicated cluster host ID.
+     * 
+     */
     private @Nullable String sourceInstanceId;
     private @Nullable String sourceInstanceState;
 
@@ -41,9 +69,17 @@ public final class GetHostsResult {
     public Optional<String> hostAddress() {
         return Optional.ofNullable(this.hostAddress);
     }
+    /**
+     * @return Specify the new create a host name of the supports up to 128 characters.
+     * 
+     */
     public Optional<String> hostName() {
         return Optional.ofNullable(this.hostName);
     }
+    /**
+     * @return A list of Bastionhost Hosts. Each element contains the following attributes:
+     * 
+     */
     public List<GetHostsHost> hosts() {
         return this.hosts;
     }
@@ -57,24 +93,44 @@ public final class GetHostsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return Specify the new create a host where the Bastion host ID of.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Host names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return Specify the new create the host&#39;s operating system. Valid values: Linux Windows.
+     * 
+     */
     public Optional<String> osType() {
         return Optional.ofNullable(this.osType);
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
+     * 
+     */
     public Optional<String> source() {
         return Optional.ofNullable(this.source);
     }
+    /**
+     * @return Specify the newly created ECS instance ID or dedicated cluster host ID.
+     * 
+     */
     public Optional<String> sourceInstanceId() {
         return Optional.ofNullable(this.sourceInstanceId);
     }

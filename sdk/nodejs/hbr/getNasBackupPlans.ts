@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *
@@ -67,6 +67,9 @@ export interface GetNasBackupPlansArgs {
  * A collection of values returned by getNasBackupPlans.
  */
 export interface GetNasBackupPlansResult {
+    /**
+     * The File System ID of Nas.
+     */
     readonly fileSystemId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -74,15 +77,24 @@ export interface GetNasBackupPlansResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of NasBackupPlan names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Hbr NasBackupPlans. Each element contains the following attributes:
+     */
     readonly plans: outputs.hbr.GetNasBackupPlansPlan[];
+    /**
+     * The ID of backup vault.
+     */
     readonly vaultId?: string;
 }
 /**
  * This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *

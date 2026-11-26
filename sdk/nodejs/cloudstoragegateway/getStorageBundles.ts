@@ -6,6 +6,26 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * This data source provides the Cloud Storage Gateway Storage Bundles of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.132.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cloudstoragegateway.getStorageBundles({
+ *     backendBucketRegionId: "cn-hangzhou",
+ *     nameRegex: "^my-StorageBundle",
+ * });
+ * export const storageBundleId = example.then(example => example.bundles?.[0]?.storageBundleId);
+ * ```
+ */
 export function getStorageBundles(args: GetStorageBundlesArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageBundlesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", {
@@ -22,11 +42,29 @@ export function getStorageBundles(args: GetStorageBundlesArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getStorageBundles.
  */
 export interface GetStorageBundlesArgs {
+    /**
+     * The region id of the backend bucket.
+     */
     backendBucketRegionId: string;
+    /**
+     * A list of Storage Bundle IDs.
+     */
     ids?: string[];
+    /**
+     * A regex string to filter results by Storage Bundle name.
+     */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
+    /**
+     * Page number.
+     */
     pageNumber?: number;
+    /**
+     * Page size. Default to 50.
+     */
     pageSize?: number;
 }
 
@@ -35,19 +73,51 @@ export interface GetStorageBundlesArgs {
  */
 export interface GetStorageBundlesResult {
     readonly backendBucketRegionId: string;
+    /**
+     * A list of Cloud Storage Gateway Storage Bundles. Each element contains the following attributes:
+     */
     readonly bundles: outputs.cloudstoragegateway.GetStorageBundlesBundle[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Storage Bundle IDs.
+     */
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Storage Bundle names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * Total count of Storage Bundle.
+     */
     readonly totalCount: number;
 }
+/**
+ * This data source provides the Cloud Storage Gateway Storage Bundles of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.132.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cloudstoragegateway.getStorageBundles({
+ *     backendBucketRegionId: "cn-hangzhou",
+ *     nameRegex: "^my-StorageBundle",
+ * });
+ * export const storageBundleId = example.then(example => example.bundles?.[0]?.storageBundleId);
+ * ```
+ */
 export function getStorageBundlesOutput(args: GetStorageBundlesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStorageBundlesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", {
@@ -64,10 +134,28 @@ export function getStorageBundlesOutput(args: GetStorageBundlesOutputArgs, opts?
  * A collection of arguments for invoking getStorageBundles.
  */
 export interface GetStorageBundlesOutputArgs {
+    /**
+     * The region id of the backend bucket.
+     */
     backendBucketRegionId: pulumi.Input<string>;
+    /**
+     * A list of Storage Bundle IDs.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * A regex string to filter results by Storage Bundle name.
+     */
     nameRegex?: pulumi.Input<string | undefined>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * Page number.
+     */
     pageNumber?: pulumi.Input<number | undefined>;
+    /**
+     * Page size. Default to 50.
+     */
     pageSize?: pulumi.Input<number | undefined>;
 }

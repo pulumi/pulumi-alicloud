@@ -13,7 +13,7 @@ import (
 
 // This data source provides Sag Acls available to the user.
 //
-// > **NOTE:** Available in 1.60.0+
+// > **NOTE:** Available since v1.60.0+
 //
 // > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 //
@@ -33,21 +33,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sag.GetAcls(ctx, &sag.GetAclsArgs{
-//				Ids: []string{
-//					defaultAlicloudSagAcls.Id,
-//				},
-//				NameRegex: pulumi.StringRef("^tf-testAcc.*"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sag.NewAcl(ctx, "default", &sag.AclArgs{
-//				Name: pulumi.String("tf-testAccSagAclName"),
+//			defaultAcl, err := sag.NewAcl(ctx, "default", &sag.AclArgs{
+//				Name: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			_ = sag.GetAclsOutput(ctx, sag.GetAclsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAcl.ID(),
+//				},
+//				NameRegex: pulumi.String("^terraform-example"),
+//			}, nil)
 //			return nil
 //		})
 //	}
@@ -68,7 +65,8 @@ type GetAclsArgs struct {
 	// A list of Sag Acl IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter Sag Acl instances by name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -96,7 +94,8 @@ type GetAclsOutputArgs struct {
 	// A list of Sag Acl IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter Sag Acl instances by name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

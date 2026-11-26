@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the ECS instance type families of Alibaba Cloud.
  *
- * > **NOTE:** Available in 1.54.0+
+ * > **NOTE:** Available since v1.54.0
  *
  * ## Example Usage
  *
@@ -66,6 +66,9 @@ export interface GetInstanceTypeFamiliesArgs {
  * A collection of values returned by getInstanceTypeFamilies.
  */
 export interface GetInstanceTypeFamiliesResult {
+    /**
+     * A list of instance type families. Each element contains the following attributes:
+     */
     readonly families: outputs.ecs.GetInstanceTypeFamiliesFamily[];
     /**
      * The generation of the instance type family.
@@ -87,7 +90,7 @@ export interface GetInstanceTypeFamiliesResult {
 /**
  * This data source provides the ECS instance type families of Alibaba Cloud.
  *
- * > **NOTE:** Available in 1.54.0+
+ * > **NOTE:** Available since v1.54.0
  *
  * ## Example Usage
  *

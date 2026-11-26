@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// Start time in Unix timestamp format.
         /// </summary>
         public readonly string Checkpoint;
+        /// <summary>
+        /// The creation time of synchronization job.
+        /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// Whether to execute DTS supports schema migration, full data migration, or full-data initialization.
@@ -66,12 +69,21 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// The username of database account.
         /// </summary>
         public readonly string DestinationEndpointUserName;
+        /// <summary>
+        /// The ID of synchronization instance.
+        /// </summary>
         public readonly string DtsInstanceId;
+        /// <summary>
+        /// The ID of synchronization job.
+        /// </summary>
         public readonly string DtsJobId;
         /// <summary>
         /// The name of synchronization job.
         /// </summary>
         public readonly string DtsJobName;
+        /// <summary>
+        /// The expiration time. Formatting with yyyy-MM-ddTHH:mm:ssZ(UTC time).
+        /// </summary>
         public readonly string ExpireTime;
         /// <summary>
         /// The ID of synchronizing instance. It's the ID of resource `alicloud.dts.SynchronizationInstance`.
@@ -122,7 +134,7 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// </summary>
         public readonly string SourceEndpointUserName;
         /// <summary>
-        /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+        /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. `Downgrade`, `Failed`, `Finished`, `InitializeFailed`, `Locked`, `Modifying`, `NotConfigured`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Upgrade`.
         /// </summary>
         public readonly string Status;
         /// <summary>

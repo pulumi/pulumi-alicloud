@@ -59,6 +59,9 @@ class GetPatchBaselinesResult:
     @_builtins.property
     @pulumi.getter
     def baselines(self) -> Sequence['outputs.GetPatchBaselinesBaselineResult']:
+        """
+        A list of Oos Patch Baselines. Each element contains the following attributes:
+        """
         return pulumi.get(self, "baselines")
 
     @_builtins.property
@@ -87,11 +90,17 @@ class GetPatchBaselinesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Patch Baseline names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
     @pulumi.getter(name="operationSystem")
     def operation_system(self) -> Optional[_builtins.str]:
+        """
+        Operating system type.
+        """
         return pulumi.get(self, "operation_system")
 
     @_builtins.property
@@ -102,6 +111,9 @@ class GetPatchBaselinesResult:
     @_builtins.property
     @pulumi.getter(name="shareType")
     def share_type(self) -> Optional[_builtins.str]:
+        """
+        Patch baseline sharing type.
+        """
         return pulumi.get(self, "share_type")
 
 
@@ -132,7 +144,7 @@ def get_patch_baselines(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.146.0+.
+    > **NOTE:** Available since v1.146.0.
 
 
     :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -172,7 +184,7 @@ def get_patch_baselines_output(enable_details: pulumi.Input[Optional[Optional[_b
     """
     This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.146.0+.
+    > **NOTE:** Available since v1.146.0.
 
 
     :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

@@ -25,6 +25,9 @@ namespace Pulumi.AliCloud.Ecp.Outputs
         /// The list of available instance type.
         /// </summary>
         public readonly string InstanceType;
+        /// <summary>
+        /// The family of the current instance type.
+        /// </summary>
         public readonly string InstanceTypeFamily;
         /// <summary>
         /// The name of the current instance type.

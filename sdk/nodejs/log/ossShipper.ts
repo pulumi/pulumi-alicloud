@@ -119,30 +119,38 @@ export class OssShipper extends pulumi.CustomResource {
      * OSS data storage compression method, support: none, snappy. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
      */
     declare public readonly compressType: pulumi.Output<string | undefined>;
+    /**
+     * Field configuration in csv configuration format.
+     */
     declare public readonly csvConfigColumns: pulumi.Output<string[] | undefined>;
+    /**
+     * Separator configuration in csv configuration format.
+     */
     declare public readonly csvConfigDelimiter: pulumi.Output<string | undefined>;
+    /**
+     * Indicates whether to write the field name to the CSV file, the default value is `false`.
+     */
     declare public readonly csvConfigHeader: pulumi.Output<boolean | undefined>;
+    /**
+     * lineFeed in csv configuration.
+     */
     declare public readonly csvConfigLinefeed: pulumi.Output<string | undefined>;
+    /**
+     * Invalid field content.
+     */
     declare public readonly csvConfigNullidentifier: pulumi.Output<string | undefined>;
+    /**
+     * Escape character under csv configuration.
+     */
     declare public readonly csvConfigQuote: pulumi.Output<string | undefined>;
     /**
      * Storage format, only supports three types: `json`, `parquet`, `csv`.
      * **According to the different format, please select the following parameters**
-     * - format = `json`
-     *   `jsonEnableTag` - (Optional) Whether to deliver the label.
-     * - format = `csv`
-     *   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-     *   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
-     *   `csvConfigNullidentifier` - (Optional) Invalid field content.
-     *   `csvConfigQuote` - (Optional) Escape character under csv configuration.
-     *   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-     *   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
-     * - format = `parquet`
-     *   `parquetConfig` - (Optional) Configure to use parquet storage format.
-     *   `name` - (Required) The name of the key.
-     *   `type` - (Required) Type of configuration name.
      */
     declare public readonly format: pulumi.Output<string>;
+    /**
+     * Whether to deliver the label.
+     */
     declare public readonly jsonEnableTag: pulumi.Output<boolean | undefined>;
     /**
      * The name of the log logstore.
@@ -156,6 +164,9 @@ export class OssShipper extends pulumi.CustomResource {
      * The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
      */
     declare public readonly ossPrefix: pulumi.Output<string | undefined>;
+    /**
+     * Configure to use parquet storage format. See `parquetConfig` below.
+     */
     declare public readonly parquetConfigs: pulumi.Output<outputs.log.OssShipperParquetConfig[] | undefined>;
     /**
      * The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
@@ -273,30 +284,38 @@ export interface OssShipperState {
      * OSS data storage compression method, support: none, snappy. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
      */
     compressType?: pulumi.Input<string | undefined>;
+    /**
+     * Field configuration in csv configuration format.
+     */
     csvConfigColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Separator configuration in csv configuration format.
+     */
     csvConfigDelimiter?: pulumi.Input<string | undefined>;
+    /**
+     * Indicates whether to write the field name to the CSV file, the default value is `false`.
+     */
     csvConfigHeader?: pulumi.Input<boolean | undefined>;
+    /**
+     * lineFeed in csv configuration.
+     */
     csvConfigLinefeed?: pulumi.Input<string | undefined>;
+    /**
+     * Invalid field content.
+     */
     csvConfigNullidentifier?: pulumi.Input<string | undefined>;
+    /**
+     * Escape character under csv configuration.
+     */
     csvConfigQuote?: pulumi.Input<string | undefined>;
     /**
      * Storage format, only supports three types: `json`, `parquet`, `csv`.
      * **According to the different format, please select the following parameters**
-     * - format = `json`
-     *   `jsonEnableTag` - (Optional) Whether to deliver the label.
-     * - format = `csv`
-     *   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-     *   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
-     *   `csvConfigNullidentifier` - (Optional) Invalid field content.
-     *   `csvConfigQuote` - (Optional) Escape character under csv configuration.
-     *   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-     *   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
-     * - format = `parquet`
-     *   `parquetConfig` - (Optional) Configure to use parquet storage format.
-     *   `name` - (Required) The name of the key.
-     *   `type` - (Required) Type of configuration name.
      */
     format?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to deliver the label.
+     */
     jsonEnableTag?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the log logstore.
@@ -310,6 +329,9 @@ export interface OssShipperState {
      * The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
      */
     ossPrefix?: pulumi.Input<string | undefined>;
+    /**
+     * Configure to use parquet storage format. See `parquetConfig` below.
+     */
     parquetConfigs?: pulumi.Input<pulumi.Input<inputs.log.OssShipperParquetConfig>[] | undefined>;
     /**
      * The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
@@ -345,30 +367,38 @@ export interface OssShipperArgs {
      * OSS data storage compression method, support: none, snappy. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
      */
     compressType?: pulumi.Input<string | undefined>;
+    /**
+     * Field configuration in csv configuration format.
+     */
     csvConfigColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Separator configuration in csv configuration format.
+     */
     csvConfigDelimiter?: pulumi.Input<string | undefined>;
+    /**
+     * Indicates whether to write the field name to the CSV file, the default value is `false`.
+     */
     csvConfigHeader?: pulumi.Input<boolean | undefined>;
+    /**
+     * lineFeed in csv configuration.
+     */
     csvConfigLinefeed?: pulumi.Input<string | undefined>;
+    /**
+     * Invalid field content.
+     */
     csvConfigNullidentifier?: pulumi.Input<string | undefined>;
+    /**
+     * Escape character under csv configuration.
+     */
     csvConfigQuote?: pulumi.Input<string | undefined>;
     /**
      * Storage format, only supports three types: `json`, `parquet`, `csv`.
      * **According to the different format, please select the following parameters**
-     * - format = `json`
-     *   `jsonEnableTag` - (Optional) Whether to deliver the label.
-     * - format = `csv`
-     *   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-     *   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
-     *   `csvConfigNullidentifier` - (Optional) Invalid field content.
-     *   `csvConfigQuote` - (Optional) Escape character under csv configuration.
-     *   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-     *   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
-     * - format = `parquet`
-     *   `parquetConfig` - (Optional) Configure to use parquet storage format.
-     *   `name` - (Required) The name of the key.
-     *   `type` - (Required) Type of configuration name.
      */
     format: pulumi.Input<string>;
+    /**
+     * Whether to deliver the label.
+     */
     jsonEnableTag?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the log logstore.
@@ -382,6 +412,9 @@ export interface OssShipperArgs {
      * The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
      */
     ossPrefix?: pulumi.Input<string | undefined>;
+    /**
+     * Configure to use parquet storage format. See `parquetConfig` below.
+     */
     parquetConfigs?: pulumi.Input<pulumi.Input<inputs.log.OssShipperParquetConfig>[] | undefined>;
     /**
      * The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.

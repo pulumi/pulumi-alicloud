@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPrometheusAlertRulesResult {
+    /**
+     * @return The ID of the cluster.
+     * 
+     */
     private String clusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,13 +28,33 @@ public final class GetPrometheusAlertRulesResult {
     private List<String> ids;
     private @Nullable String matchExpressions;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Prometheus Alert Rule names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Arms Prometheus Alert Rules. Each element contains the following attributes:
+     * 
+     */
     private List<GetPrometheusAlertRulesRule> rules;
+    /**
+     * @return The status of the resource. Valid values: `0`, `1` (0=off,1=open).
+     * 
+     */
     private @Nullable Integer status;
+    /**
+     * @return The type of the alert rule.
+     * 
+     */
     private @Nullable String type;
 
     private GetPrometheusAlertRulesResult() {}
+    /**
+     * @return The ID of the cluster.
+     * 
+     */
     public String clusterId() {
         return this.clusterId;
     }
@@ -50,18 +74,34 @@ public final class GetPrometheusAlertRulesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Prometheus Alert Rule names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Arms Prometheus Alert Rules. Each element contains the following attributes:
+     * 
+     */
     public List<GetPrometheusAlertRulesRule> rules() {
         return this.rules;
     }
+    /**
+     * @return The status of the resource. Valid values: `0`, `1` (0=off,1=open).
+     * 
+     */
     public Optional<Integer> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The type of the alert rule.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

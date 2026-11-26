@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
  * Filters support regular expression for the cluster name, ids or tags.
  *
- * > **NOTE:**  Available in 1.88.0+.
+ * > **NOTE:** Available since v1.88.0.
  *
  * > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
  *
@@ -81,7 +81,7 @@ export interface GetClustersResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * A mapping of tags to assign to the resource.
+     * (Optional) A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: string};
 }
@@ -89,7 +89,7 @@ export interface GetClustersResult {
  * The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
  * Filters support regular expression for the cluster name, ids or tags.
  *
- * > **NOTE:**  Available in 1.88.0+.
+ * > **NOTE:** Available since v1.88.0.
  *
  * > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
  *

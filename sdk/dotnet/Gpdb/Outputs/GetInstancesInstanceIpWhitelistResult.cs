@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         /// </summary>
         public readonly string IpGroupAttribute;
         /// <summary>
-        /// IP whitelist group name
+        /// IP whitelist group name.
         /// </summary>
         public readonly string IpGroupName;
         /// <summary>

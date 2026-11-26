@@ -13,7 +13,7 @@ import (
 
 // This data source provides Cloud Connect Networks available to the user.
 //
-// > **NOTE:** Available in 1.59.0+
+// > **NOTE:** Available since v1.59.0+
 //
 // > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 //
@@ -31,24 +31,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudconnect.GetNetworks(ctx, &cloudconnect.GetNetworksArgs{
-//				Ids: []string{
-//					defaultAlicloudCloudConnectNetworks.Id,
-//				},
-//				NameRegex: pulumi.StringRef("^tf-testAcc.*"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudconnect.NewNetwork(ctx, "default", &cloudconnect.NetworkArgs{
-//				Name:        pulumi.String("tf-testAccCloudConnectNetworkName"),
-//				Description: pulumi.String("tf-testAccCloudConnectNetworkDescription"),
+//			defaultNetwork, err := cloudconnect.NewNetwork(ctx, "default", &cloudconnect.NetworkArgs{
+//				Name:        pulumi.String("terraform-example"),
+//				Description: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),
 //				IsDefault:   pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			_ = cloudconnect.GetNetworksOutput(ctx, cloudconnect.GetNetworksOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultNetwork.ID(),
+//				},
+//				NameRegex: pulumi.String("^terraform-example"),
+//			}, nil)
 //			return nil
 //		})
 //	}
@@ -69,7 +66,8 @@ type GetNetworksArgs struct {
 	// A list of CCN instances IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter CCN instances by name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -97,7 +95,8 @@ type GetNetworksOutputArgs struct {
 	// A list of CCN instances IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter CCN instances by name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

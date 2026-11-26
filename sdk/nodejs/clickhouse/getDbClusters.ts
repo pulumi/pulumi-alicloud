@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Click House DBCluster of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -78,7 +78,13 @@ export interface GetDbClustersArgs {
  * A collection of values returned by getDbClusters.
  */
 export interface GetDbClustersResult {
+    /**
+     * A list of Click House DBClusters. Each element contains the following attributes:
+     */
     readonly clusters: outputs.clickhouse.GetDbClustersCluster[];
+    /**
+     * The DBCluster description.
+     */
     readonly dbClusterDescription?: string;
     readonly enableDetails?: boolean;
     /**
@@ -87,12 +93,15 @@ export interface GetDbClustersResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Click House DBCluster of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *

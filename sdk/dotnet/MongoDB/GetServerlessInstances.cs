@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.148.0+.
+        /// &gt; **NOTE:** Available since v1.148.0.
         /// 
         /// ## Example Usage
         /// 
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.148.0+.
+        /// &gt; **NOTE:** Available since v1.148.0.
         /// 
         /// ## Example Usage
         /// 
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.148.0+.
+        /// &gt; **NOTE:** Available since v1.148.0.
         /// 
         /// ## Example Usage
         /// 
@@ -345,7 +345,13 @@ namespace Pulumi.AliCloud.MongoDB
     [OutputType]
     public sealed class GetServerlessInstancesResult
     {
+        /// <summary>
+        /// The db instance class.
+        /// </summary>
         public readonly string? DbInstanceClass;
+        /// <summary>
+        /// The db instance description.
+        /// </summary>
         public readonly string? DbInstanceDescription;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -353,14 +359,38 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Mongodb Serverless Instances. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServerlessInstancesInstanceResult> Instances;
+        /// <summary>
+        /// The network type of the instance.
+        /// </summary>
         public readonly string? NetworkType;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// The status of the instance.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The ID of the VPC network.
+        /// </summary>
         public readonly string? VpcId;
+        /// <summary>
+        /// The id of the vswitch.
+        /// </summary>
         public readonly string? VswitchId;
+        /// <summary>
+        /// The ID of the zone.
+        /// </summary>
         public readonly string? ZoneId;
 
         [OutputConstructor]

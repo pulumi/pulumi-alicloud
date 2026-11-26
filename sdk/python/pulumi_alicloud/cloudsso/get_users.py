@@ -62,6 +62,9 @@ class GetUsersResult:
     @_builtins.property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> _builtins.str:
+        """
+        The ID of the Directory.
+        """
         return pulumi.get(self, "directory_id")
 
     @_builtins.property
@@ -90,6 +93,9 @@ class GetUsersResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of User names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -100,16 +106,25 @@ class GetUsersResult:
     @_builtins.property
     @pulumi.getter(name="provisionType")
     def provision_type(self) -> Optional[_builtins.str]:
+        """
+        ProvisionType.
+        """
         return pulumi.get(self, "provision_type")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        User status. Valid values: `Enabled` and `Disabled`.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetUsersUserResult']:
+        """
+        A list of Cloud Sso Users. Each element contains the following attributes:
+        """
         return pulumi.get(self, "users")
 
 
@@ -142,7 +157,7 @@ def get_users(directory_id: Optional[_builtins.str] = None,
     """
     This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
@@ -215,7 +230,7 @@ def get_users_output(directory_id: pulumi.Input[Optional[_builtins.str]] = None,
     """
     This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 

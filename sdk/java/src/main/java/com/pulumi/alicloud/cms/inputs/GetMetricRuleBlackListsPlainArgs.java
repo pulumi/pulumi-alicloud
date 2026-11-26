@@ -91,9 +91,17 @@ public final class GetMetricRuleBlackListsPlainArgs extends com.pulumi.resources
         return Optional.ofNullable(this.namespace);
     }
 
+    /**
+     * The order of the Metric Rule Black List.
+     * 
+     */
     @Import(name="order")
     private @Nullable Integer order;
 
+    /**
+     * @return The order of the Metric Rule Black List.
+     * 
+     */
     public Optional<Integer> order() {
         return Optional.ofNullable(this.order);
     }
@@ -224,6 +232,12 @@ public final class GetMetricRuleBlackListsPlainArgs extends com.pulumi.resources
             return this;
         }
 
+        /**
+         * @param order The order of the Metric Rule Black List.
+         * 
+         * @return builder
+         * 
+         */
         public Builder order(@Nullable Integer order) {
             $.order = order;
             return this;

@@ -15,7 +15,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccessConfigurationsResult {
+    /**
+     * @return A list of Cloud Sso Access Configurations. Each element contains the following attributes:
+     * 
+     */
     private List<GetAccessConfigurationsConfiguration> configurations;
+    /**
+     * @return The ID of the Directory.
+     * 
+     */
     private String directoryId;
     private @Nullable Boolean enableDetails;
     /**
@@ -25,13 +33,25 @@ public final class GetAccessConfigurationsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Access Configuration names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetAccessConfigurationsResult() {}
+    /**
+     * @return A list of Cloud Sso Access Configurations. Each element contains the following attributes:
+     * 
+     */
     public List<GetAccessConfigurationsConfiguration> configurations() {
         return this.configurations;
     }
+    /**
+     * @return The ID of the Directory.
+     * 
+     */
     public String directoryId() {
         return this.directoryId;
     }
@@ -51,6 +71,10 @@ public final class GetAccessConfigurationsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Access Configuration names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

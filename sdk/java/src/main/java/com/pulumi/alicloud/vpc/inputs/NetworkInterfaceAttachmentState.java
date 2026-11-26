@@ -32,9 +32,17 @@ public final class NetworkInterfaceAttachmentState extends com.pulumi.resources.
         return Optional.ofNullable(this.instanceId);
     }
 
+    /**
+     * The index of the network card.
+     * 
+     */
     @Import(name="networkCardIndex")
     private @Nullable Output<Integer> networkCardIndex;
 
+    /**
+     * @return The index of the network card.
+     * 
+     */
     public Optional<Output<Integer>> networkCardIndex() {
         return Optional.ofNullable(this.networkCardIndex);
     }
@@ -54,16 +62,32 @@ public final class NetworkInterfaceAttachmentState extends com.pulumi.resources.
         return Optional.ofNullable(this.networkInterfaceId);
     }
 
+    /**
+     * The ID of the trunk network instance.
+     * 
+     */
     @Import(name="trunkNetworkInstanceId")
     private @Nullable Output<String> trunkNetworkInstanceId;
 
+    /**
+     * @return The ID of the trunk network instance.
+     * 
+     */
     public Optional<Output<String>> trunkNetworkInstanceId() {
         return Optional.ofNullable(this.trunkNetworkInstanceId);
     }
 
+    /**
+     * Whether to wait for the network configuration to be ready.
+     * 
+     */
     @Import(name="waitForNetworkConfigurationReady")
     private @Nullable Output<Boolean> waitForNetworkConfigurationReady;
 
+    /**
+     * @return Whether to wait for the network configuration to be ready.
+     * 
+     */
     public Optional<Output<Boolean>> waitForNetworkConfigurationReady() {
         return Optional.ofNullable(this.waitForNetworkConfigurationReady);
     }
@@ -117,11 +141,23 @@ public final class NetworkInterfaceAttachmentState extends com.pulumi.resources.
             return instanceId(Output.of(instanceId));
         }
 
+        /**
+         * @param networkCardIndex The index of the network card.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkCardIndex(@Nullable Output<Integer> networkCardIndex) {
             $.networkCardIndex = networkCardIndex;
             return this;
         }
 
+        /**
+         * @param networkCardIndex The index of the network card.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkCardIndex(Integer networkCardIndex) {
             return networkCardIndex(Output.of(networkCardIndex));
         }
@@ -147,20 +183,44 @@ public final class NetworkInterfaceAttachmentState extends com.pulumi.resources.
             return networkInterfaceId(Output.of(networkInterfaceId));
         }
 
+        /**
+         * @param trunkNetworkInstanceId The ID of the trunk network instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder trunkNetworkInstanceId(@Nullable Output<String> trunkNetworkInstanceId) {
             $.trunkNetworkInstanceId = trunkNetworkInstanceId;
             return this;
         }
 
+        /**
+         * @param trunkNetworkInstanceId The ID of the trunk network instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder trunkNetworkInstanceId(String trunkNetworkInstanceId) {
             return trunkNetworkInstanceId(Output.of(trunkNetworkInstanceId));
         }
 
+        /**
+         * @param waitForNetworkConfigurationReady Whether to wait for the network configuration to be ready.
+         * 
+         * @return builder
+         * 
+         */
         public Builder waitForNetworkConfigurationReady(@Nullable Output<Boolean> waitForNetworkConfigurationReady) {
             $.waitForNetworkConfigurationReady = waitForNetworkConfigurationReady;
             return this;
         }
 
+        /**
+         * @param waitForNetworkConfigurationReady Whether to wait for the network configuration to be ready.
+         * 
+         * @return builder
+         * 
+         */
         public Builder waitForNetworkConfigurationReady(Boolean waitForNetworkConfigurationReady) {
             return waitForNetworkConfigurationReady(Output.of(waitForNetworkConfigurationReady));
         }

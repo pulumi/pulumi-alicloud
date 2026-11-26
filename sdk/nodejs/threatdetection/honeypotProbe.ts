@@ -100,7 +100,7 @@ export class HoneypotProbe extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string>;
     /**
-     * Configure the service.See the following `Block HoneypotBindList`.
+     * Configure the service.See the following `honeypotBindList` below.
      */
     declare public readonly honeypotBindLists: pulumi.Output<outputs.threatdetection.HoneypotProbeHoneypotBindList[] | undefined>;
     /**
@@ -213,7 +213,7 @@ export interface HoneypotProbeState {
      */
     displayName?: pulumi.Input<string | undefined>;
     /**
-     * Configure the service.See the following `Block HoneypotBindList`.
+     * Configure the service.See the following `honeypotBindList` below.
      */
     honeypotBindLists?: pulumi.Input<pulumi.Input<inputs.threatdetection.HoneypotProbeHoneypotBindList>[] | undefined>;
     /**
@@ -271,7 +271,7 @@ export interface HoneypotProbeArgs {
      */
     displayName: pulumi.Input<string>;
     /**
-     * Configure the service.See the following `Block HoneypotBindList`.
+     * Configure the service.See the following `honeypotBindList` below.
      */
     honeypotBindLists?: pulumi.Input<pulumi.Input<inputs.threatdetection.HoneypotProbeHoneypotBindList>[] | undefined>;
     /**

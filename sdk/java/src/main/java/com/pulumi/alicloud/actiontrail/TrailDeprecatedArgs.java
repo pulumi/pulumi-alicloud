@@ -16,57 +16,99 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
 
     public static final TrailDeprecatedArgs Empty = new TrailDeprecatedArgs();
 
+    /**
+     * The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+     * 
+     */
     @Import(name="dataEventTrailRegion")
     private @Nullable Output<String> dataEventTrailRegion;
 
+    /**
+     * @return The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+     * 
+     */
     public Optional<Output<String>> dataEventTrailRegion() {
         return Optional.ofNullable(this.dataEventTrailRegion);
     }
 
     /**
-     * Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
+     * The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
      * 
      */
     @Import(name="eventRw")
     private @Nullable Output<String> eventRw;
 
     /**
-     * @return Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
+     * @return The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
      * 
      */
     public Optional<Output<String>> eventRw() {
         return Optional.ofNullable(this.eventRw);
     }
 
+    /**
+     * The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+     * 
+     */
     @Import(name="eventSelectors")
     private @Nullable Output<String> eventSelectors;
 
+    /**
+     * @return The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+     * 
+     */
     public Optional<Output<String>> eventSelectors() {
         return Optional.ofNullable(this.eventSelectors);
     }
 
+    /**
+     * Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
+     * 
+     */
     @Import(name="isOrganizationTrail")
     private @Nullable Output<Boolean> isOrganizationTrail;
 
+    /**
+     * @return Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
+     * 
+     */
     public Optional<Output<Boolean>> isOrganizationTrail() {
         return Optional.ofNullable(this.isOrganizationTrail);
     }
 
+    /**
+     * The ARN of the MaxCompute project to which you want to deliver events.
+     * 
+     */
     @Import(name="maxComputeProjectArn")
     private @Nullable Output<String> maxComputeProjectArn;
 
+    /**
+     * @return The ARN of the MaxCompute project to which you want to deliver events.
+     * 
+     */
     public Optional<Output<String>> maxComputeProjectArn() {
         return Optional.ofNullable(this.maxComputeProjectArn);
     }
 
+    /**
+     * The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
+     * 
+     */
     @Import(name="maxComputeWriteRoleArn")
     private @Nullable Output<String> maxComputeWriteRoleArn;
 
+    /**
+     * @return The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
+     * 
+     */
     public Optional<Output<String>> maxComputeWriteRoleArn() {
         return Optional.ofNullable(this.maxComputeWriteRoleArn);
     }
 
     /**
+     * Field `mnsTopicArn` has been deprecated from provider version 1.118.0.
+     * 
      * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
      * 
      */
@@ -75,6 +117,8 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> mnsTopicArn;
 
     /**
+     * @return Field `mnsTopicArn` has been deprecated from provider version 1.118.0.
+     * 
      * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
      * 
      */
@@ -84,7 +128,7 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the trail to be created, which must be unique for an account.
+     * Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
      * 
@@ -94,7 +138,7 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the trail to be created, which must be unique for an account.
+     * @return Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
      * 
@@ -105,14 +149,14 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
+     * The OSS bucket to which the trail delivers logs.
      * 
      */
     @Import(name="ossBucketName")
     private @Nullable Output<String> ossBucketName;
 
     /**
-     * @return The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
+     * @return The OSS bucket to which the trail delivers logs.
      * 
      */
     public Optional<Output<String>> ossBucketName() {
@@ -120,29 +164,37 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The prefix of the specified OSS bucket name. This parameter can be left empty.
+     * The prefix of the file name in the OSS bucket to which the trail delivers logs.
      * 
      */
     @Import(name="ossKeyPrefix")
     private @Nullable Output<String> ossKeyPrefix;
 
     /**
-     * @return The prefix of the specified OSS bucket name. This parameter can be left empty.
+     * @return The prefix of the file name in the OSS bucket to which the trail delivers logs.
      * 
      */
     public Optional<Output<String>> ossKeyPrefix() {
         return Optional.ofNullable(this.ossKeyPrefix);
     }
 
+    /**
+     * The name of the RAM role that the user allows ActionTrail to access OSS service.
+     * 
+     */
     @Import(name="ossWriteRoleArn")
     private @Nullable Output<String> ossWriteRoleArn;
 
+    /**
+     * @return The name of the RAM role that the user allows ActionTrail to access OSS service.
+     * 
+     */
     public Optional<Output<String>> ossWriteRoleArn() {
         return Optional.ofNullable(this.ossWriteRoleArn);
     }
 
     /**
-     * The RAM role in ActionTrail permitted by the user.
+     * Field `roleName` has been deprecated from provider version 1.118.0.
      * 
      * @deprecated Field `roleName` has been deprecated from version 1.118.0
      * 
@@ -152,7 +204,7 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> roleName;
 
     /**
-     * @return The RAM role in ActionTrail permitted by the user.
+     * @return Field `roleName` has been deprecated from provider version 1.118.0.
      * 
      * @deprecated Field `roleName` has been deprecated from version 1.118.0
      * 
@@ -163,14 +215,14 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The unique ARN of the Log Service project.
+     * The ARN of the Simple Log Service project to which the trail delivers logs.
      * 
      */
     @Import(name="slsProjectArn")
     private @Nullable Output<String> slsProjectArn;
 
     /**
-     * @return The unique ARN of the Log Service project.
+     * @return The ARN of the Simple Log Service project to which the trail delivers logs.
      * 
      */
     public Optional<Output<String>> slsProjectArn() {
@@ -178,41 +230,61 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The unique ARN of the Log Service role.
-     * 
-     * &gt; **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
+     * The ARN of the role that ActionTrail assumes to deliver operation events to the Simple Log Service project.
      * 
      */
     @Import(name="slsWriteRoleArn")
     private @Nullable Output<String> slsWriteRoleArn;
 
     /**
-     * @return The unique ARN of the Log Service role.
-     * 
-     * &gt; **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
+     * @return The ARN of the role that ActionTrail assumes to deliver operation events to the Simple Log Service project.
      * 
      */
     public Optional<Output<String>> slsWriteRoleArn() {
         return Optional.ofNullable(this.slsWriteRoleArn);
     }
 
+    /**
+     * The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * The name of the trail to be created.
+     * 
+     */
     @Import(name="trailName")
     private @Nullable Output<String> trailName;
 
+    /**
+     * @return The name of the trail to be created.
+     * 
+     */
     public Optional<Output<String>> trailName() {
         return Optional.ofNullable(this.trailName);
     }
 
+    /**
+     * The region of the trail.
+     * 
+     */
     @Import(name="trailRegion")
     private @Nullable Output<String> trailRegion;
 
+    /**
+     * @return The region of the trail.
+     * 
+     */
     public Optional<Output<String>> trailRegion() {
         return Optional.ofNullable(this.trailRegion);
     }
@@ -257,17 +329,29 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
             $ = new TrailDeprecatedArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dataEventTrailRegion The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataEventTrailRegion(@Nullable Output<String> dataEventTrailRegion) {
             $.dataEventTrailRegion = dataEventTrailRegion;
             return this;
         }
 
+        /**
+         * @param dataEventTrailRegion The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataEventTrailRegion(String dataEventTrailRegion) {
             return dataEventTrailRegion(Output.of(dataEventTrailRegion));
         }
 
         /**
-         * @param eventRw Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
+         * @param eventRw The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
          * 
          * @return builder
          * 
@@ -278,7 +362,7 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param eventRw Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
+         * @param eventRw The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
          * 
          * @return builder
          * 
@@ -287,43 +371,93 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
             return eventRw(Output.of(eventRw));
         }
 
+        /**
+         * @param eventSelectors The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder eventSelectors(@Nullable Output<String> eventSelectors) {
             $.eventSelectors = eventSelectors;
             return this;
         }
 
+        /**
+         * @param eventSelectors The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder eventSelectors(String eventSelectors) {
             return eventSelectors(Output.of(eventSelectors));
         }
 
+        /**
+         * @param isOrganizationTrail Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
         public Builder isOrganizationTrail(@Nullable Output<Boolean> isOrganizationTrail) {
             $.isOrganizationTrail = isOrganizationTrail;
             return this;
         }
 
+        /**
+         * @param isOrganizationTrail Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
         public Builder isOrganizationTrail(Boolean isOrganizationTrail) {
             return isOrganizationTrail(Output.of(isOrganizationTrail));
         }
 
+        /**
+         * @param maxComputeProjectArn The ARN of the MaxCompute project to which you want to deliver events.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxComputeProjectArn(@Nullable Output<String> maxComputeProjectArn) {
             $.maxComputeProjectArn = maxComputeProjectArn;
             return this;
         }
 
+        /**
+         * @param maxComputeProjectArn The ARN of the MaxCompute project to which you want to deliver events.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxComputeProjectArn(String maxComputeProjectArn) {
             return maxComputeProjectArn(Output.of(maxComputeProjectArn));
         }
 
+        /**
+         * @param maxComputeWriteRoleArn The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxComputeWriteRoleArn(@Nullable Output<String> maxComputeWriteRoleArn) {
             $.maxComputeWriteRoleArn = maxComputeWriteRoleArn;
             return this;
         }
 
+        /**
+         * @param maxComputeWriteRoleArn The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxComputeWriteRoleArn(String maxComputeWriteRoleArn) {
             return maxComputeWriteRoleArn(Output.of(maxComputeWriteRoleArn));
         }
 
         /**
+         * @param mnsTopicArn Field `mnsTopicArn` has been deprecated from provider version 1.118.0.
+         * 
          * @return builder
          * 
          * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
@@ -336,6 +470,8 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param mnsTopicArn Field `mnsTopicArn` has been deprecated from provider version 1.118.0.
+         * 
          * @return builder
          * 
          * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
@@ -347,7 +483,7 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name The name of the trail to be created, which must be unique for an account.
+         * @param name Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
          * 
          * @return builder
          * 
@@ -361,7 +497,7 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name The name of the trail to be created, which must be unique for an account.
+         * @param name Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
          * 
          * @return builder
          * 
@@ -374,7 +510,7 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ossBucketName The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
+         * @param ossBucketName The OSS bucket to which the trail delivers logs.
          * 
          * @return builder
          * 
@@ -385,7 +521,7 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ossBucketName The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
+         * @param ossBucketName The OSS bucket to which the trail delivers logs.
          * 
          * @return builder
          * 
@@ -395,7 +531,7 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ossKeyPrefix The prefix of the specified OSS bucket name. This parameter can be left empty.
+         * @param ossKeyPrefix The prefix of the file name in the OSS bucket to which the trail delivers logs.
          * 
          * @return builder
          * 
@@ -406,7 +542,7 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ossKeyPrefix The prefix of the specified OSS bucket name. This parameter can be left empty.
+         * @param ossKeyPrefix The prefix of the file name in the OSS bucket to which the trail delivers logs.
          * 
          * @return builder
          * 
@@ -415,17 +551,29 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
             return ossKeyPrefix(Output.of(ossKeyPrefix));
         }
 
+        /**
+         * @param ossWriteRoleArn The name of the RAM role that the user allows ActionTrail to access OSS service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ossWriteRoleArn(@Nullable Output<String> ossWriteRoleArn) {
             $.ossWriteRoleArn = ossWriteRoleArn;
             return this;
         }
 
+        /**
+         * @param ossWriteRoleArn The name of the RAM role that the user allows ActionTrail to access OSS service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ossWriteRoleArn(String ossWriteRoleArn) {
             return ossWriteRoleArn(Output.of(ossWriteRoleArn));
         }
 
         /**
-         * @param roleName The RAM role in ActionTrail permitted by the user.
+         * @param roleName Field `roleName` has been deprecated from provider version 1.118.0.
          * 
          * @return builder
          * 
@@ -439,7 +587,7 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param roleName The RAM role in ActionTrail permitted by the user.
+         * @param roleName Field `roleName` has been deprecated from provider version 1.118.0.
          * 
          * @return builder
          * 
@@ -452,7 +600,7 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param slsProjectArn The unique ARN of the Log Service project.
+         * @param slsProjectArn The ARN of the Simple Log Service project to which the trail delivers logs.
          * 
          * @return builder
          * 
@@ -463,7 +611,7 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param slsProjectArn The unique ARN of the Log Service project.
+         * @param slsProjectArn The ARN of the Simple Log Service project to which the trail delivers logs.
          * 
          * @return builder
          * 
@@ -473,9 +621,7 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param slsWriteRoleArn The unique ARN of the Log Service role.
-         * 
-         * &gt; **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
+         * @param slsWriteRoleArn The ARN of the role that ActionTrail assumes to deliver operation events to the Simple Log Service project.
          * 
          * @return builder
          * 
@@ -486,9 +632,7 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param slsWriteRoleArn The unique ARN of the Log Service role.
-         * 
-         * &gt; **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
+         * @param slsWriteRoleArn The ARN of the role that ActionTrail assumes to deliver operation events to the Simple Log Service project.
          * 
          * @return builder
          * 
@@ -497,29 +641,65 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
             return slsWriteRoleArn(Output.of(slsWriteRoleArn));
         }
 
+        /**
+         * @param status The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }
 
+        /**
+         * @param trailName The name of the trail to be created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder trailName(@Nullable Output<String> trailName) {
             $.trailName = trailName;
             return this;
         }
 
+        /**
+         * @param trailName The name of the trail to be created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder trailName(String trailName) {
             return trailName(Output.of(trailName));
         }
 
+        /**
+         * @param trailRegion The region of the trail.
+         * 
+         * @return builder
+         * 
+         */
         public Builder trailRegion(@Nullable Output<String> trailRegion) {
             $.trailRegion = trailRegion;
             return this;
         }
 
+        /**
+         * @param trailRegion The region of the trail.
+         * 
+         * @return builder
+         * 
+         */
         public Builder trailRegion(String trailRegion) {
             return trailRegion(Output.of(trailRegion));
         }

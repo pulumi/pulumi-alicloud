@@ -206,6 +206,9 @@ namespace Pulumi.AliCloud.KVStore
         [Input("shardNumber")]
         public int? ShardNumber { get; set; }
 
+        /// <summary>
+        /// The field used to sort the returned instance classes. Valid values: `Price`.
+        /// </summary>
         [Input("sortedBy")]
         public string? SortedBy { get; set; }
 
@@ -303,6 +306,9 @@ namespace Pulumi.AliCloud.KVStore
         [Input("shardNumber")]
         public Input<int>? ShardNumber { get; set; }
 
+        /// <summary>
+        /// The field used to sort the returned instance classes. Valid values: `Price`.
+        /// </summary>
         [Input("sortedBy")]
         public Input<string>? SortedBy { get; set; }
 

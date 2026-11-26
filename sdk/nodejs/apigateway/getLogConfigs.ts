@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.185.0+.
+ * > **NOTE:** Available since v1.185.0.
  *
  * ## Example Usage
  *
@@ -61,19 +61,25 @@ export interface GetLogConfigsArgs {
  * A collection of values returned by getLogConfigs.
  */
 export interface GetLogConfigsResult {
+    /**
+     * A list of Api Gateway Log Configs. Each element contains the following attributes:
+     */
     readonly configs: outputs.apigateway.GetLogConfigsConfig[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The type the of log.
+     */
     readonly logType?: string;
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.185.0+.
+ * > **NOTE:** Available since v1.185.0.
  *
  * ## Example Usage
  *

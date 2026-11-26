@@ -460,6 +460,8 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
      * The name of the route table.
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
+     * &gt; **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
+     * 
      */
     @Import(name="systemRouteTableName")
     private @Nullable Output<String> systemRouteTableName;
@@ -467,6 +469,8 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The name of the route table.
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * 
+     * &gt; **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
      * 
      */
     public Optional<Output<String>> systemRouteTableName() {
@@ -1198,6 +1202,8 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
          * @param systemRouteTableName The name of the route table.
          * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
          * 
+         * &gt; **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
+         * 
          * @return builder
          * 
          */
@@ -1209,6 +1215,8 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param systemRouteTableName The name of the route table.
          * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+         * 
+         * &gt; **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
          * 
          * @return builder
          * 

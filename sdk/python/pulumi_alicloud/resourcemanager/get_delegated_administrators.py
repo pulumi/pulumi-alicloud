@@ -53,6 +53,9 @@ class GetDelegatedAdministratorsResult:
     @_builtins.property
     @pulumi.getter
     def administrators(self) -> Sequence['outputs.GetDelegatedAdministratorsAdministratorResult']:
+        """
+        A list of Resource Manager Delegated Administrators. Each element contains the following attributes:
+        """
         return pulumi.get(self, "administrators")
 
     @_builtins.property
@@ -86,6 +89,9 @@ class GetDelegatedAdministratorsResult:
     @_builtins.property
     @pulumi.getter(name="servicePrincipal")
     def service_principal(self) -> Optional[_builtins.str]:
+        """
+        The identity of the trusted service.
+        """
         return pulumi.get(self, "service_principal")
 
 
@@ -113,7 +119,7 @@ def get_delegated_administrators(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.181.0+.
+    > **NOTE:** Available since v1.181.0.
 
     ## Example Usage
 
@@ -158,7 +164,7 @@ def get_delegated_administrators_output(ids: pulumi.Input[Optional[Optional[Sequ
     """
     This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.181.0+.
+    > **NOTE:** Available since v1.181.0.
 
     ## Example Usage
 

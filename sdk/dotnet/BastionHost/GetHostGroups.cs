@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost Host Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost Host Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost Host Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -237,15 +237,27 @@ namespace Pulumi.AliCloud.BastionHost
     [OutputType]
     public sealed class GetHostGroupsResult
     {
+        /// <summary>
+        /// A list of Bastionhost Host Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHostGroupsGroupResult> Groups;
+        /// <summary>
+        /// Specify the New Host Group Name, Supports up to 128 Characters.
+        /// </summary>
         public readonly string? HostGroupName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// Specify the New Host Group Where the Bastion Host ID of.
+        /// </summary>
         public readonly string InstanceId;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Host Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

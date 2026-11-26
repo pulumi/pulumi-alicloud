@@ -96,6 +96,8 @@ def get_attachments(instance_ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the server load balancer attachments of the current Alibaba Cloud user.
 
+    > **NOTE:** Available since v1.15.0.
+
     ## Example Usage
 
     ```python
@@ -130,6 +132,8 @@ def get_attachments_output(instance_ids: pulumi.Input[Optional[Optional[Sequence
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAttachmentsResult]:
     """
     This data source provides the server load balancer attachments of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.15.0.
 
     ## Example Usage
 

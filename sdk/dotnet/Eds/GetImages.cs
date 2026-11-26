@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Images of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// 
         /// ## Example Usage
         /// 
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Images of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// 
         /// ## Example Usage
         /// 
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Images of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// 
         /// ## Example Usage
         /// 
@@ -423,12 +423,27 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
+        /// </summary>
         public readonly string? ImageType;
+        /// <summary>
+        /// A list of Ecd Images. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetImagesImageResult> Images;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Image names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// The os type of the image.
+        /// </summary>
         public readonly string? OsType;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

@@ -66,6 +66,9 @@ namespace Pulumi.AliCloud.Emr.Inputs
         [Input("refreshHostConfig")]
         public Input<bool>? RefreshHostConfig { get; set; }
 
+        /// <summary>
+        /// Cluster service configuration modification name, e.g. ’HDFS’.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 

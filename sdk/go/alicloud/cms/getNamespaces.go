@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cms Namespaces of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.171.0+.
+// > **NOTE:** Available since v1.171.0.
 //
 // ## Example Usage
 //
@@ -70,9 +70,10 @@ type GetNamespacesArgs struct {
 // A collection of values returned by getNamespaces.
 type GetNamespacesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                   `pulumi:"id"`
-	Ids        []string                 `pulumi:"ids"`
-	Keyword    *string                  `pulumi:"keyword"`
+	Id      string   `pulumi:"id"`
+	Ids     []string `pulumi:"ids"`
+	Keyword *string  `pulumi:"keyword"`
+	// A list of Cms Namespaces. Each element contains the following attributes:
 	Namespaces []GetNamespacesNamespace `pulumi:"namespaces"`
 	OutputFile *string                  `pulumi:"outputFile"`
 	PageNumber *int                     `pulumi:"pageNumber"`
@@ -128,6 +129,7 @@ func (o GetNamespacesResultOutput) Keyword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNamespacesResult) *string { return v.Keyword }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cms Namespaces. Each element contains the following attributes:
 func (o GetNamespacesResultOutput) Namespaces() GetNamespacesNamespaceArrayOutput {
 	return o.ApplyT(func(v GetNamespacesResult) []GetNamespacesNamespace { return v.Namespaces }).(GetNamespacesNamespaceArrayOutput)
 }

@@ -17,23 +17,31 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetDesktopsArgs Empty = new GetDesktopsArgs();
 
     /**
-     * The desktop name.
+     * The cloud desktop name.
      * 
      */
     @Import(name="desktopName")
     private @Nullable Output<String> desktopName;
 
     /**
-     * @return The desktop name.
+     * @return The cloud desktop name.
      * 
      */
     public Optional<Output<String>> desktopName() {
         return Optional.ofNullable(this.desktopName);
     }
 
+    /**
+     * The authorized users of the cloud desktop.
+     * 
+     */
     @Import(name="endUserIds")
     private @Nullable Output<List<String>> endUserIds;
 
+    /**
+     * @return The authorized users of the cloud desktop.
+     * 
+     */
     public Optional<Output<List<String>>> endUserIds() {
         return Optional.ofNullable(this.endUserIds);
     }
@@ -99,14 +107,14 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The policy group id of the Desktop.
+     * The cloud desktop policy ID.
      * 
      */
     @Import(name="policyGroupId")
     private @Nullable Output<String> policyGroupId;
 
     /**
-     * @return The policy group id of the Desktop.
+     * @return The cloud desktop policy ID.
      * 
      */
     public Optional<Output<String>> policyGroupId() {
@@ -114,14 +122,14 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+     * The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+     * @return The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -160,7 +168,7 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param desktopName The desktop name.
+         * @param desktopName The cloud desktop name.
          * 
          * @return builder
          * 
@@ -171,7 +179,7 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param desktopName The desktop name.
+         * @param desktopName The cloud desktop name.
          * 
          * @return builder
          * 
@@ -180,15 +188,33 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
             return desktopName(Output.of(desktopName));
         }
 
+        /**
+         * @param endUserIds The authorized users of the cloud desktop.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endUserIds(@Nullable Output<List<String>> endUserIds) {
             $.endUserIds = endUserIds;
             return this;
         }
 
+        /**
+         * @param endUserIds The authorized users of the cloud desktop.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endUserIds(List<String> endUserIds) {
             return endUserIds(Output.of(endUserIds));
         }
 
+        /**
+         * @param endUserIds The authorized users of the cloud desktop.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endUserIds(String... endUserIds) {
             return endUserIds(List.of(endUserIds));
         }
@@ -288,7 +314,7 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param policyGroupId The policy group id of the Desktop.
+         * @param policyGroupId The cloud desktop policy ID.
          * 
          * @return builder
          * 
@@ -299,7 +325,7 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param policyGroupId The policy group id of the Desktop.
+         * @param policyGroupId The cloud desktop policy ID.
          * 
          * @return builder
          * 
@@ -309,7 +335,7 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+         * @param status The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
          * 
          * @return builder
          * 
@@ -320,7 +346,7 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+         * @param status The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
          * 
          * @return builder
          * 

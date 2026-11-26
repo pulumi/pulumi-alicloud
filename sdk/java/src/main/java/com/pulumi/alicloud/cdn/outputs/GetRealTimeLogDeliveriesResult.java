@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRealTimeLogDeliveriesResult {
+    /**
+     * @return A list of Cdn Real Time Log Deliveries. Each element contains the following attributes:
+     * 
+     */
     private List<GetRealTimeLogDeliveriesDelivery> deliveries;
+    /**
+     * @return Real-Time Log Service Domain.
+     * 
+     */
     private String domain;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,12 +30,24 @@ public final class GetRealTimeLogDeliveriesResult {
      */
     private String id;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+     * 
+     */
     private @Nullable String status;
 
     private GetRealTimeLogDeliveriesResult() {}
+    /**
+     * @return A list of Cdn Real Time Log Deliveries. Each element contains the following attributes:
+     * 
+     */
     public List<GetRealTimeLogDeliveriesDelivery> deliveries() {
         return this.deliveries;
     }
+    /**
+     * @return Real-Time Log Service Domain.
+     * 
+     */
     public String domain() {
         return this.domain;
     }
@@ -41,6 +61,10 @@ public final class GetRealTimeLogDeliveriesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

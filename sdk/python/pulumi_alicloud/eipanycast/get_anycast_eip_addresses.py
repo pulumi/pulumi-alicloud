@@ -74,11 +74,17 @@ class GetAnycastEipAddressesResult:
     @_builtins.property
     @pulumi.getter
     def addresses(self) -> Sequence['outputs.GetAnycastEipAddressesAddressResult']:
+        """
+        A list of Eipanycast Anycast Eip Addresses. Each element contains the following attributes:
+        """
         return pulumi.get(self, "addresses")
 
     @_builtins.property
     @pulumi.getter(name="anycastEipAddressName")
     def anycast_eip_address_name(self) -> Optional[_builtins.str]:
+        """
+        Anycast EIP instance name.
+        """
         return pulumi.get(self, "anycast_eip_address_name")
 
     @_builtins.property
@@ -89,6 +95,9 @@ class GetAnycastEipAddressesResult:
     @_builtins.property
     @pulumi.getter(name="businessStatus")
     def business_status(self) -> Optional[_builtins.str]:
+        """
+        The business status of the Anycast EIP instance. -`Normal`: Normal state. -`FinancialLocked`: The status of arrears locked.
+        """
         return pulumi.get(self, "business_status")
 
     @_builtins.property
@@ -107,11 +116,17 @@ class GetAnycastEipAddressesResult:
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[_builtins.str]:
+        """
+        The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
+        """
         return pulumi.get(self, "internet_charge_type")
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[_builtins.str]:
+        """
+        Anycast EIP instance IP address.
+        """
         return pulumi.get(self, "ip_address")
 
     @_builtins.property
@@ -122,6 +137,9 @@ class GetAnycastEipAddressesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Anycast Eip Address names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -132,16 +150,25 @@ class GetAnycastEipAddressesResult:
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[_builtins.str]:
+        """
+        The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+        """
         return pulumi.get(self, "payment_type")
 
     @_builtins.property
     @pulumi.getter(name="serviceLocation")
     def service_location(self) -> Optional[_builtins.str]:
+        """
+        Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+        """
         return pulumi.get(self, "service_location")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -182,7 +209,7 @@ def get_anycast_eip_addresses(anycast_eip_address_name: Optional[_builtins.str] 
     """
     This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.113.0+.
+    > **NOTE:** Available since v1.113.0.
 
     ## Example Usage
 
@@ -255,7 +282,7 @@ def get_anycast_eip_addresses_output(anycast_eip_address_name: pulumi.Input[Opti
     """
     This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.113.0+.
+    > **NOTE:** Available since v1.113.0.
 
     ## Example Usage
 

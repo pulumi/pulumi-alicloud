@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cddc
         /// <summary>
         /// This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Cddc
         /// <summary>
         /// This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Cddc
         /// <summary>
         /// This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -189,7 +189,13 @@ namespace Pulumi.AliCloud.Cddc
     [OutputType]
     public sealed class GetDedicatedHostGroupsResult
     {
+        /// <summary>
+        /// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+        /// </summary>
         public readonly string? Engine;
+        /// <summary>
+        /// A list of Cddc Dedicated Host Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDedicatedHostGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -197,6 +203,9 @@ namespace Pulumi.AliCloud.Cddc
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Dedicated Host Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

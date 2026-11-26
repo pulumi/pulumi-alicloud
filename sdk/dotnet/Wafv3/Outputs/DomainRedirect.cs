@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
     public sealed class DomainRedirect
     {
         /// <summary>
+        /// The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `Listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `BackendPorts` below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.DomainRedirectBackendPort> BackendPorts;
+        /// <summary>
         /// The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
         /// 
         /// - If you specify IP addresses, specify the value in the **\["ip1","ip2",...]** format. You can enter up to 20 IP addresses.
@@ -63,6 +67,7 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         public readonly string Loadbalance;
         /// <summary>
         /// The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+        /// 
         /// &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
         /// </summary>
         public readonly int? MaxBodySize;
@@ -100,6 +105,8 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
 
         [OutputConstructor]
         private DomainRedirect(
+            ImmutableArray<Outputs.DomainRedirectBackendPort> backendPorts,
+
             ImmutableArray<string> backends,
 
             ImmutableArray<string> backupBackends,
@@ -136,6 +143,7 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
 
             bool? xffProto)
         {
+            BackendPorts = backendPorts;
             Backends = backends;
             BackupBackends = backupBackends;
             ConnectTimeout = connectTimeout;

@@ -13,9 +13,117 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type AclEntryList struct {
+type AclEntryAttachmentEntry struct {
+	// The comment of the acl entry.
 	Comment *string `pulumi:"comment"`
-	Entry   *string `pulumi:"entry"`
+	// The CIDR block of the acl entry.
+	Entry string `pulumi:"entry"`
+}
+
+// AclEntryAttachmentEntryInput is an input type that accepts AclEntryAttachmentEntryArgs and AclEntryAttachmentEntryOutput values.
+// You can construct a concrete instance of `AclEntryAttachmentEntryInput` via:
+//
+//	AclEntryAttachmentEntryArgs{...}
+type AclEntryAttachmentEntryInput interface {
+	pulumi.Input
+
+	ToAclEntryAttachmentEntryOutput() AclEntryAttachmentEntryOutput
+	ToAclEntryAttachmentEntryOutputWithContext(context.Context) AclEntryAttachmentEntryOutput
+}
+
+type AclEntryAttachmentEntryArgs struct {
+	// The comment of the acl entry.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// The CIDR block of the acl entry.
+	Entry pulumi.StringInput `pulumi:"entry"`
+}
+
+func (AclEntryAttachmentEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclEntryAttachmentEntry)(nil)).Elem()
+}
+
+func (i AclEntryAttachmentEntryArgs) ToAclEntryAttachmentEntryOutput() AclEntryAttachmentEntryOutput {
+	return i.ToAclEntryAttachmentEntryOutputWithContext(context.Background())
+}
+
+func (i AclEntryAttachmentEntryArgs) ToAclEntryAttachmentEntryOutputWithContext(ctx context.Context) AclEntryAttachmentEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclEntryAttachmentEntryOutput)
+}
+
+// AclEntryAttachmentEntryArrayInput is an input type that accepts AclEntryAttachmentEntryArray and AclEntryAttachmentEntryArrayOutput values.
+// You can construct a concrete instance of `AclEntryAttachmentEntryArrayInput` via:
+//
+//	AclEntryAttachmentEntryArray{ AclEntryAttachmentEntryArgs{...} }
+type AclEntryAttachmentEntryArrayInput interface {
+	pulumi.Input
+
+	ToAclEntryAttachmentEntryArrayOutput() AclEntryAttachmentEntryArrayOutput
+	ToAclEntryAttachmentEntryArrayOutputWithContext(context.Context) AclEntryAttachmentEntryArrayOutput
+}
+
+type AclEntryAttachmentEntryArray []AclEntryAttachmentEntryInput
+
+func (AclEntryAttachmentEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclEntryAttachmentEntry)(nil)).Elem()
+}
+
+func (i AclEntryAttachmentEntryArray) ToAclEntryAttachmentEntryArrayOutput() AclEntryAttachmentEntryArrayOutput {
+	return i.ToAclEntryAttachmentEntryArrayOutputWithContext(context.Background())
+}
+
+func (i AclEntryAttachmentEntryArray) ToAclEntryAttachmentEntryArrayOutputWithContext(ctx context.Context) AclEntryAttachmentEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclEntryAttachmentEntryArrayOutput)
+}
+
+type AclEntryAttachmentEntryOutput struct{ *pulumi.OutputState }
+
+func (AclEntryAttachmentEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclEntryAttachmentEntry)(nil)).Elem()
+}
+
+func (o AclEntryAttachmentEntryOutput) ToAclEntryAttachmentEntryOutput() AclEntryAttachmentEntryOutput {
+	return o
+}
+
+func (o AclEntryAttachmentEntryOutput) ToAclEntryAttachmentEntryOutputWithContext(ctx context.Context) AclEntryAttachmentEntryOutput {
+	return o
+}
+
+// The comment of the acl entry.
+func (o AclEntryAttachmentEntryOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AclEntryAttachmentEntry) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// The CIDR block of the acl entry.
+func (o AclEntryAttachmentEntryOutput) Entry() pulumi.StringOutput {
+	return o.ApplyT(func(v AclEntryAttachmentEntry) string { return v.Entry }).(pulumi.StringOutput)
+}
+
+type AclEntryAttachmentEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (AclEntryAttachmentEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclEntryAttachmentEntry)(nil)).Elem()
+}
+
+func (o AclEntryAttachmentEntryArrayOutput) ToAclEntryAttachmentEntryArrayOutput() AclEntryAttachmentEntryArrayOutput {
+	return o
+}
+
+func (o AclEntryAttachmentEntryArrayOutput) ToAclEntryAttachmentEntryArrayOutputWithContext(ctx context.Context) AclEntryAttachmentEntryArrayOutput {
+	return o
+}
+
+func (o AclEntryAttachmentEntryArrayOutput) Index(i pulumi.IntInput) AclEntryAttachmentEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclEntryAttachmentEntry {
+		return vs[0].([]AclEntryAttachmentEntry)[vs[1].(int)]
+	}).(AclEntryAttachmentEntryOutput)
+}
+
+type AclEntryList struct {
+	// The comment of the entry.
+	Comment *string `pulumi:"comment"`
+	// The CIDR blocks.
+	Entry *string `pulumi:"entry"`
 }
 
 // AclEntryListInput is an input type that accepts AclEntryListArgs and AclEntryListOutput values.
@@ -30,8 +138,10 @@ type AclEntryListInput interface {
 }
 
 type AclEntryListArgs struct {
+	// The comment of the entry.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	Entry   pulumi.StringPtrInput `pulumi:"entry"`
+	// The CIDR blocks.
+	Entry pulumi.StringPtrInput `pulumi:"entry"`
 }
 
 func (AclEntryListArgs) ElementType() reflect.Type {
@@ -85,10 +195,12 @@ func (o AclEntryListOutput) ToAclEntryListOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The comment of the entry.
 func (o AclEntryListOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclEntryList) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// The CIDR blocks.
 func (o AclEntryListOutput) Entry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclEntryList) *string { return v.Entry }).(pulumi.StringPtrOutput)
 }
@@ -114,10 +226,14 @@ func (o AclEntryListArrayOutput) Index(i pulumi.IntInput) AclEntryListOutput {
 }
 
 type BackendServerBackendServer struct {
-	ServerId string  `pulumi:"serverId"`
+	// A list backend server ID (ECS instance ID).
+	ServerId string `pulumi:"serverId"`
+	// ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `serverIp` parameter.
 	ServerIp *string `pulumi:"serverIp"`
-	Type     *string `pulumi:"type"`
-	Weight   int     `pulumi:"weight"`
+	// Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
+	Type *string `pulumi:"type"`
+	// Weight of the backend server. Valid value range: [0-100].
+	Weight int `pulumi:"weight"`
 }
 
 // BackendServerBackendServerInput is an input type that accepts BackendServerBackendServerArgs and BackendServerBackendServerOutput values.
@@ -132,10 +248,14 @@ type BackendServerBackendServerInput interface {
 }
 
 type BackendServerBackendServerArgs struct {
-	ServerId pulumi.StringInput    `pulumi:"serverId"`
+	// A list backend server ID (ECS instance ID).
+	ServerId pulumi.StringInput `pulumi:"serverId"`
+	// ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `serverIp` parameter.
 	ServerIp pulumi.StringPtrInput `pulumi:"serverIp"`
-	Type     pulumi.StringPtrInput `pulumi:"type"`
-	Weight   pulumi.IntInput       `pulumi:"weight"`
+	// Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Weight of the backend server. Valid value range: [0-100].
+	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
 func (BackendServerBackendServerArgs) ElementType() reflect.Type {
@@ -189,18 +309,22 @@ func (o BackendServerBackendServerOutput) ToBackendServerBackendServerOutputWith
 	return o
 }
 
+// A list backend server ID (ECS instance ID).
 func (o BackendServerBackendServerOutput) ServerId() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendServerBackendServer) string { return v.ServerId }).(pulumi.StringOutput)
 }
 
+// ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `serverIp` parameter.
 func (o BackendServerBackendServerOutput) ServerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendServerBackendServer) *string { return v.ServerIp }).(pulumi.StringPtrOutput)
 }
 
+// Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
 func (o BackendServerBackendServerOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendServerBackendServer) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Weight of the backend server. Valid value range: [0-100].
 func (o BackendServerBackendServerOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v BackendServerBackendServer) int { return v.Weight }).(pulumi.IntOutput)
 }
@@ -677,14 +801,15 @@ func (o ServerGroupServerArrayOutput) Index(i pulumi.IntInput) ServerGroupServer
 }
 
 type GetAclsAcl struct {
-	// A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
+	// A list of entry (IP addresses or CIDR blocks).
 	EntryLists []GetAclsAclEntryList `pulumi:"entryLists"`
 	// Acl ID.
-	Id        string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The IP version of the access control list.
 	IpVersion string `pulumi:"ipVersion"`
 	// Acl name.
 	Name string `pulumi:"name"`
-	// A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
+	// A list of listeners attached to the acl.
 	RelatedListeners []GetAclsAclRelatedListener `pulumi:"relatedListeners"`
 	// The Id of resource group which acl belongs.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
@@ -704,14 +829,15 @@ type GetAclsAclInput interface {
 }
 
 type GetAclsAclArgs struct {
-	// A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
+	// A list of entry (IP addresses or CIDR blocks).
 	EntryLists GetAclsAclEntryListArrayInput `pulumi:"entryLists"`
 	// Acl ID.
-	Id        pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// The IP version of the access control list.
 	IpVersion pulumi.StringInput `pulumi:"ipVersion"`
 	// Acl name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
+	// A list of listeners attached to the acl.
 	RelatedListeners GetAclsAclRelatedListenerArrayInput `pulumi:"relatedListeners"`
 	// The Id of resource group which acl belongs.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
@@ -770,7 +896,7 @@ func (o GetAclsAclOutput) ToGetAclsAclOutputWithContext(ctx context.Context) Get
 	return o
 }
 
-// A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
+// A list of entry (IP addresses or CIDR blocks).
 func (o GetAclsAclOutput) EntryLists() GetAclsAclEntryListArrayOutput {
 	return o.ApplyT(func(v GetAclsAcl) []GetAclsAclEntryList { return v.EntryLists }).(GetAclsAclEntryListArrayOutput)
 }
@@ -780,6 +906,7 @@ func (o GetAclsAclOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAcl) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The IP version of the access control list.
 func (o GetAclsAclOutput) IpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAcl) string { return v.IpVersion }).(pulumi.StringOutput)
 }
@@ -789,7 +916,7 @@ func (o GetAclsAclOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAcl) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
+// A list of listeners attached to the acl.
 func (o GetAclsAclOutput) RelatedListeners() GetAclsAclRelatedListenerArrayOutput {
 	return o.ApplyT(func(v GetAclsAcl) []GetAclsAclRelatedListener { return v.RelatedListeners }).(GetAclsAclRelatedListenerArrayOutput)
 }
@@ -825,8 +952,10 @@ func (o GetAclsAclArrayOutput) Index(i pulumi.IntInput) GetAclsAclOutput {
 }
 
 type GetAclsAclEntryList struct {
+	// The comment of the entry.
 	Comment string `pulumi:"comment"`
-	Entry   string `pulumi:"entry"`
+	// An IP address or CIDR block.
+	Entry string `pulumi:"entry"`
 }
 
 // GetAclsAclEntryListInput is an input type that accepts GetAclsAclEntryListArgs and GetAclsAclEntryListOutput values.
@@ -841,8 +970,10 @@ type GetAclsAclEntryListInput interface {
 }
 
 type GetAclsAclEntryListArgs struct {
+	// The comment of the entry.
 	Comment pulumi.StringInput `pulumi:"comment"`
-	Entry   pulumi.StringInput `pulumi:"entry"`
+	// An IP address or CIDR block.
+	Entry pulumi.StringInput `pulumi:"entry"`
 }
 
 func (GetAclsAclEntryListArgs) ElementType() reflect.Type {
@@ -896,10 +1027,12 @@ func (o GetAclsAclEntryListOutput) ToGetAclsAclEntryListOutputWithContext(ctx co
 	return o
 }
 
+// The comment of the entry.
 func (o GetAclsAclEntryListOutput) Comment() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAclEntryList) string { return v.Comment }).(pulumi.StringOutput)
 }
 
+// An IP address or CIDR block.
 func (o GetAclsAclEntryListOutput) Entry() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAclEntryList) string { return v.Entry }).(pulumi.StringOutput)
 }
@@ -925,10 +1058,14 @@ func (o GetAclsAclEntryListArrayOutput) Index(i pulumi.IntInput) GetAclsAclEntry
 }
 
 type GetAclsAclRelatedListener struct {
-	AclType        string `pulumi:"aclType"`
-	FrontendPort   int    `pulumi:"frontendPort"`
+	// The type of the acl (such as white/black).
+	AclType string `pulumi:"aclType"`
+	// The listener port.
+	FrontendPort int `pulumi:"frontendPort"`
+	// The id of load balancer instance the listener belongs to.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
-	Protocol       string `pulumi:"protocol"`
+	// The listener protocol (such as tcp/udp/http/https, etc).
+	Protocol string `pulumi:"protocol"`
 }
 
 // GetAclsAclRelatedListenerInput is an input type that accepts GetAclsAclRelatedListenerArgs and GetAclsAclRelatedListenerOutput values.
@@ -943,10 +1080,14 @@ type GetAclsAclRelatedListenerInput interface {
 }
 
 type GetAclsAclRelatedListenerArgs struct {
-	AclType        pulumi.StringInput `pulumi:"aclType"`
-	FrontendPort   pulumi.IntInput    `pulumi:"frontendPort"`
+	// The type of the acl (such as white/black).
+	AclType pulumi.StringInput `pulumi:"aclType"`
+	// The listener port.
+	FrontendPort pulumi.IntInput `pulumi:"frontendPort"`
+	// The id of load balancer instance the listener belongs to.
 	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
-	Protocol       pulumi.StringInput `pulumi:"protocol"`
+	// The listener protocol (such as tcp/udp/http/https, etc).
+	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
 
 func (GetAclsAclRelatedListenerArgs) ElementType() reflect.Type {
@@ -1000,18 +1141,22 @@ func (o GetAclsAclRelatedListenerOutput) ToGetAclsAclRelatedListenerOutputWithCo
 	return o
 }
 
+// The type of the acl (such as white/black).
 func (o GetAclsAclRelatedListenerOutput) AclType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAclRelatedListener) string { return v.AclType }).(pulumi.StringOutput)
 }
 
+// The listener port.
 func (o GetAclsAclRelatedListenerOutput) FrontendPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAclsAclRelatedListener) int { return v.FrontendPort }).(pulumi.IntOutput)
 }
 
+// The id of load balancer instance the listener belongs to.
 func (o GetAclsAclRelatedListenerOutput) LoadBalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAclRelatedListener) string { return v.LoadBalancerId }).(pulumi.StringOutput)
 }
 
+// The listener protocol (such as tcp/udp/http/https, etc).
 func (o GetAclsAclRelatedListenerOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAclRelatedListener) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -1063,7 +1208,7 @@ type GetApplicationLoadBalancersBalancer struct {
 	Id string `pulumi:"id"`
 	// The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
 	InternetChargeType string `pulumi:"internetChargeType"`
-	// The listener ports and protocal of the SLB.
+	// The listener ports and protocol of the SLB.
 	ListenerPortsAndProtocals []GetApplicationLoadBalancersBalancerListenerPortsAndProtocal `pulumi:"listenerPortsAndProtocals"`
 	// The listener ports and protocol of the SLB.
 	ListenerPortsAndProtocols []GetApplicationLoadBalancersBalancerListenerPortsAndProtocol `pulumi:"listenerPortsAndProtocols"`
@@ -1143,7 +1288,7 @@ type GetApplicationLoadBalancersBalancerArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
 	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
-	// The listener ports and protocal of the SLB.
+	// The listener ports and protocol of the SLB.
 	ListenerPortsAndProtocals GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayInput `pulumi:"listenerPortsAndProtocals"`
 	// The listener ports and protocol of the SLB.
 	ListenerPortsAndProtocols GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayInput `pulumi:"listenerPortsAndProtocols"`
@@ -1303,7 +1448,7 @@ func (o GetApplicationLoadBalancersBalancerOutput) InternetChargeType() pulumi.S
 	return o.ApplyT(func(v GetApplicationLoadBalancersBalancer) string { return v.InternetChargeType }).(pulumi.StringOutput)
 }
 
-// The listener ports and protocal of the SLB.
+// The listener ports and protocol of the SLB.
 func (o GetApplicationLoadBalancersBalancerOutput) ListenerPortsAndProtocals() GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersBalancer) []GetApplicationLoadBalancersBalancerListenerPortsAndProtocal {
 		return v.ListenerPortsAndProtocals
@@ -1554,7 +1699,7 @@ func (o GetApplicationLoadBalancersBalancerBackendServerArrayOutput) Index(i pul
 type GetApplicationLoadBalancersBalancerListenerPortsAndProtocal struct {
 	// The listener port.
 	ListenerPort int `pulumi:"listenerPort"`
-	// The listener protoal.
+	// The listener protocol.
 	ListenerProtocal string `pulumi:"listenerProtocal"`
 }
 
@@ -1572,7 +1717,7 @@ type GetApplicationLoadBalancersBalancerListenerPortsAndProtocalInput interface 
 type GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArgs struct {
 	// The listener port.
 	ListenerPort pulumi.IntInput `pulumi:"listenerPort"`
-	// The listener protoal.
+	// The listener protocol.
 	ListenerProtocal pulumi.StringInput `pulumi:"listenerProtocal"`
 }
 
@@ -1632,7 +1777,7 @@ func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocalOutput) Liste
 	return o.ApplyT(func(v GetApplicationLoadBalancersBalancerListenerPortsAndProtocal) int { return v.ListenerPort }).(pulumi.IntOutput)
 }
 
-// The listener protoal.
+// The listener protocol.
 func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocalOutput) ListenerProtocal() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersBalancerListenerPortsAndProtocal) string { return v.ListenerProtocal }).(pulumi.StringOutput)
 }
@@ -2559,6 +2704,8 @@ type GetListenersSlbListener struct {
 	HealthCheckUri string `pulumi:"healthCheckUri"`
 	// Number of consecutive successes of health check performed on the same ECS instance (from failure to success).
 	HealthyThreshold int `pulumi:"healthyThreshold"`
+	// (String, Available since v2.3.0) The listener ID, in the format of `<load_balancer_id>:<protocol>:<frontend_port>`. It is the same as the import ID of `slb.Listener`.
+	Id string `pulumi:"id"`
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
 	IdleTimeout int `pulumi:"idleTimeout"`
 	// ID of the active/standby server group.
@@ -2574,7 +2721,8 @@ type GetListenersSlbListener struct {
 	// Algorithm used to distribute traffic. Possible values: `wrr` (weighted round robin), `wlc` (weighted least connection) and `rr` (round robin).
 	Scheduler string `pulumi:"scheduler"`
 	// Security status. Only available when the protocol is `https`.
-	SecurityStatus      string `pulumi:"securityStatus"`
+	SecurityStatus string `pulumi:"securityStatus"`
+	// ID of the server certificate. Only available when the protocol is `https`.
 	ServerCertificateId string `pulumi:"serverCertificateId"`
 	// ID of the linked VServer group.
 	ServerGroupId string `pulumi:"serverGroupId"`
@@ -2652,6 +2800,8 @@ type GetListenersSlbListenerArgs struct {
 	HealthCheckUri pulumi.StringInput `pulumi:"healthCheckUri"`
 	// Number of consecutive successes of health check performed on the same ECS instance (from failure to success).
 	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
+	// (String, Available since v2.3.0) The listener ID, in the format of `<load_balancer_id>:<protocol>:<frontend_port>`. It is the same as the import ID of `slb.Listener`.
+	Id pulumi.StringInput `pulumi:"id"`
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
 	IdleTimeout pulumi.IntInput `pulumi:"idleTimeout"`
 	// ID of the active/standby server group.
@@ -2667,7 +2817,8 @@ type GetListenersSlbListenerArgs struct {
 	// Algorithm used to distribute traffic. Possible values: `wrr` (weighted round robin), `wlc` (weighted least connection) and `rr` (round robin).
 	Scheduler pulumi.StringInput `pulumi:"scheduler"`
 	// Security status. Only available when the protocol is `https`.
-	SecurityStatus      pulumi.StringInput `pulumi:"securityStatus"`
+	SecurityStatus pulumi.StringInput `pulumi:"securityStatus"`
+	// ID of the server certificate. Only available when the protocol is `https`.
 	ServerCertificateId pulumi.StringInput `pulumi:"serverCertificateId"`
 	// ID of the linked VServer group.
 	ServerGroupId pulumi.StringInput `pulumi:"serverGroupId"`
@@ -2844,6 +2995,11 @@ func (o GetListenersSlbListenerOutput) HealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetListenersSlbListener) int { return v.HealthyThreshold }).(pulumi.IntOutput)
 }
 
+// (String, Available since v2.3.0) The listener ID, in the format of `<load_balancer_id>:<protocol>:<frontend_port>`. It is the same as the import ID of `slb.Listener`.
+func (o GetListenersSlbListenerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.Id }).(pulumi.StringOutput)
+}
+
 // Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
 func (o GetListenersSlbListenerOutput) IdleTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v GetListenersSlbListener) int { return v.IdleTimeout }).(pulumi.IntOutput)
@@ -2884,6 +3040,7 @@ func (o GetListenersSlbListenerOutput) SecurityStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersSlbListener) string { return v.SecurityStatus }).(pulumi.StringOutput)
 }
 
+// ID of the server certificate. Only available when the protocol is `https`.
 func (o GetListenersSlbListenerOutput) ServerCertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersSlbListener) string { return v.ServerCertificateId }).(pulumi.StringOutput)
 }
@@ -2965,64 +3122,66 @@ func (o GetListenersSlbListenerArrayOutput) Index(i pulumi.IntInput) GetListener
 
 type GetLoadBalancersBalancer struct {
 	// Service address of the SLBs.
-	Address          string                                  `pulumi:"address"`
-	AddressIpVersion string                                  `pulumi:"addressIpVersion"`
-	AddressType      string                                  `pulumi:"addressType"`
-	AutoReleaseTime  int                                     `pulumi:"autoReleaseTime"`
-	BackendServers   []GetLoadBalancersBalancerBackendServer `pulumi:"backendServers"`
-	Bandwidth        int                                     `pulumi:"bandwidth"`
-	CreateTime       string                                  `pulumi:"createTime"`
-	CreateTimeStamp  int                                     `pulumi:"createTimeStamp"`
-	DeleteProtection string                                  `pulumi:"deleteProtection"`
-	EndTime          string                                  `pulumi:"endTime"`
-	EndTimeStamp     int                                     `pulumi:"endTimeStamp"`
+	Address string `pulumi:"address"`
+	// The address ip version. Valid values `ipv4` and `ipv6`.
+	AddressIpVersion string `pulumi:"addressIpVersion"`
+	// The address type of the SLB. Valid values `internet` and `intranet`.
+	AddressType string `pulumi:"addressType"`
+	// The auto release time.
+	AutoReleaseTime int `pulumi:"autoReleaseTime"`
+	// The backend servers of the SLB.
+	BackendServers []GetLoadBalancersBalancerBackendServer `pulumi:"backendServers"`
+	// The bandwidth of the SLB.
+	Bandwidth int `pulumi:"bandwidth"`
+	// The creation time of the SLB, mapped from the API `CreateTime` field.
+	CreateTime string `pulumi:"createTime"`
+	// The create time stamp of the SLB.
+	CreateTimeStamp int `pulumi:"createTimeStamp"`
+	// Whether the SLB should delete protection.
+	DeleteProtection string `pulumi:"deleteProtection"`
+	// The end time of the SLB.
+	EndTime string `pulumi:"endTime"`
+	// The end time stamp of the SLB.
+	EndTimeStamp int `pulumi:"endTimeStamp"`
 	// ID of the SLB.
-	Id                           string                                             `pulumi:"id"`
-	InternetChargeType           string                                             `pulumi:"internetChargeType"`
-	ListenerPortsAndProtocals    []GetLoadBalancersBalancerListenerPortsAndProtocal `pulumi:"listenerPortsAndProtocals"`
-	ListenerPortsAndProtocols    []GetLoadBalancersBalancerListenerPortsAndProtocol `pulumi:"listenerPortsAndProtocols"`
-	LoadBalancerId               string                                             `pulumi:"loadBalancerId"`
-	LoadBalancerName             string                                             `pulumi:"loadBalancerName"`
-	LoadBalancerSpec             string                                             `pulumi:"loadBalancerSpec"`
-	MasterZoneId                 string                                             `pulumi:"masterZoneId"`
-	ModificationProtectionReason string                                             `pulumi:"modificationProtectionReason"`
-	ModificationProtectionStatus string                                             `pulumi:"modificationProtectionStatus"`
+	Id string `pulumi:"id"`
+	// The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+	InternetChargeType string `pulumi:"internetChargeType"`
+	// The listener ports and protocol of the SLB.
+	ListenerPortsAndProtocals []GetLoadBalancersBalancerListenerPortsAndProtocal `pulumi:"listenerPortsAndProtocals"`
+	// The listener ports and protocol of the SLB.
+	ListenerPortsAndProtocols []GetLoadBalancersBalancerListenerPortsAndProtocol `pulumi:"listenerPortsAndProtocols"`
+	// Thd ID of the SLB.
+	LoadBalancerId string `pulumi:"loadBalancerId"`
+	// The name of the SLB.
+	LoadBalancerName string `pulumi:"loadBalancerName"`
+	// The specification of the SLB.
+	LoadBalancerSpec string `pulumi:"loadBalancerSpec"`
+	// The master zone id of the SLB.
+	MasterZoneId string `pulumi:"masterZoneId"`
+	// The reason of modification protection.
+	ModificationProtectionReason string `pulumi:"modificationProtectionReason"`
+	// The status of modification protection.
+	ModificationProtectionStatus string `pulumi:"modificationProtectionStatus"`
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
-	NetworkType     string `pulumi:"networkType"`
-	PaymentType     string `pulumi:"paymentType"`
-	RegionIdAlias   string `pulumi:"regionIdAlias"`
-	RenewalCycUnit  string `pulumi:"renewalCycUnit"`
-	RenewalDuration int    `pulumi:"renewalDuration"`
-	RenewalStatus   string `pulumi:"renewalStatus"`
+	NetworkType string `pulumi:"networkType"`
+	// The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+	PaymentType string `pulumi:"paymentType"`
+	// Region ID the SLB belongs to.
+	RegionIdAlias string `pulumi:"regionIdAlias"`
+	// The renewal cyc unit of the SLB.
+	RenewalCycUnit string `pulumi:"renewalCycUnit"`
+	// The renewal duration of the SLB.
+	RenewalDuration int `pulumi:"renewalDuration"`
+	// The renewal status of the SLB.
+	RenewalStatus string `pulumi:"renewalStatus"`
 	// The Id of resource group which SLB belongs.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
-	SlaveZoneId     string `pulumi:"slaveZoneId"`
-	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	// The slave zone id of the SLB.
+	SlaveZoneId string `pulumi:"slaveZoneId"`
+	// The status of the SLB. Valid values: `active`, `inactive` and `locked`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/slb"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-	// 			Tags: map[string]string{
-	// 				"tagKey1": "tagValue1",
-	// 				"tagKey2": "tagValue2",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags map[string]string `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId string `pulumi:"vpcId"`
@@ -3043,64 +3202,66 @@ type GetLoadBalancersBalancerInput interface {
 
 type GetLoadBalancersBalancerArgs struct {
 	// Service address of the SLBs.
-	Address          pulumi.StringInput                              `pulumi:"address"`
-	AddressIpVersion pulumi.StringInput                              `pulumi:"addressIpVersion"`
-	AddressType      pulumi.StringInput                              `pulumi:"addressType"`
-	AutoReleaseTime  pulumi.IntInput                                 `pulumi:"autoReleaseTime"`
-	BackendServers   GetLoadBalancersBalancerBackendServerArrayInput `pulumi:"backendServers"`
-	Bandwidth        pulumi.IntInput                                 `pulumi:"bandwidth"`
-	CreateTime       pulumi.StringInput                              `pulumi:"createTime"`
-	CreateTimeStamp  pulumi.IntInput                                 `pulumi:"createTimeStamp"`
-	DeleteProtection pulumi.StringInput                              `pulumi:"deleteProtection"`
-	EndTime          pulumi.StringInput                              `pulumi:"endTime"`
-	EndTimeStamp     pulumi.IntInput                                 `pulumi:"endTimeStamp"`
+	Address pulumi.StringInput `pulumi:"address"`
+	// The address ip version. Valid values `ipv4` and `ipv6`.
+	AddressIpVersion pulumi.StringInput `pulumi:"addressIpVersion"`
+	// The address type of the SLB. Valid values `internet` and `intranet`.
+	AddressType pulumi.StringInput `pulumi:"addressType"`
+	// The auto release time.
+	AutoReleaseTime pulumi.IntInput `pulumi:"autoReleaseTime"`
+	// The backend servers of the SLB.
+	BackendServers GetLoadBalancersBalancerBackendServerArrayInput `pulumi:"backendServers"`
+	// The bandwidth of the SLB.
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// The creation time of the SLB, mapped from the API `CreateTime` field.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The create time stamp of the SLB.
+	CreateTimeStamp pulumi.IntInput `pulumi:"createTimeStamp"`
+	// Whether the SLB should delete protection.
+	DeleteProtection pulumi.StringInput `pulumi:"deleteProtection"`
+	// The end time of the SLB.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// The end time stamp of the SLB.
+	EndTimeStamp pulumi.IntInput `pulumi:"endTimeStamp"`
 	// ID of the SLB.
-	Id                           pulumi.StringInput                                         `pulumi:"id"`
-	InternetChargeType           pulumi.StringInput                                         `pulumi:"internetChargeType"`
-	ListenerPortsAndProtocals    GetLoadBalancersBalancerListenerPortsAndProtocalArrayInput `pulumi:"listenerPortsAndProtocals"`
-	ListenerPortsAndProtocols    GetLoadBalancersBalancerListenerPortsAndProtocolArrayInput `pulumi:"listenerPortsAndProtocols"`
-	LoadBalancerId               pulumi.StringInput                                         `pulumi:"loadBalancerId"`
-	LoadBalancerName             pulumi.StringInput                                         `pulumi:"loadBalancerName"`
-	LoadBalancerSpec             pulumi.StringInput                                         `pulumi:"loadBalancerSpec"`
-	MasterZoneId                 pulumi.StringInput                                         `pulumi:"masterZoneId"`
-	ModificationProtectionReason pulumi.StringInput                                         `pulumi:"modificationProtectionReason"`
-	ModificationProtectionStatus pulumi.StringInput                                         `pulumi:"modificationProtectionStatus"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
+	// The listener ports and protocol of the SLB.
+	ListenerPortsAndProtocals GetLoadBalancersBalancerListenerPortsAndProtocalArrayInput `pulumi:"listenerPortsAndProtocals"`
+	// The listener ports and protocol of the SLB.
+	ListenerPortsAndProtocols GetLoadBalancersBalancerListenerPortsAndProtocolArrayInput `pulumi:"listenerPortsAndProtocols"`
+	// Thd ID of the SLB.
+	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
+	// The name of the SLB.
+	LoadBalancerName pulumi.StringInput `pulumi:"loadBalancerName"`
+	// The specification of the SLB.
+	LoadBalancerSpec pulumi.StringInput `pulumi:"loadBalancerSpec"`
+	// The master zone id of the SLB.
+	MasterZoneId pulumi.StringInput `pulumi:"masterZoneId"`
+	// The reason of modification protection.
+	ModificationProtectionReason pulumi.StringInput `pulumi:"modificationProtectionReason"`
+	// The status of modification protection.
+	ModificationProtectionStatus pulumi.StringInput `pulumi:"modificationProtectionStatus"`
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
-	NetworkType     pulumi.StringInput `pulumi:"networkType"`
-	PaymentType     pulumi.StringInput `pulumi:"paymentType"`
-	RegionIdAlias   pulumi.StringInput `pulumi:"regionIdAlias"`
-	RenewalCycUnit  pulumi.StringInput `pulumi:"renewalCycUnit"`
-	RenewalDuration pulumi.IntInput    `pulumi:"renewalDuration"`
-	RenewalStatus   pulumi.StringInput `pulumi:"renewalStatus"`
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// Region ID the SLB belongs to.
+	RegionIdAlias pulumi.StringInput `pulumi:"regionIdAlias"`
+	// The renewal cyc unit of the SLB.
+	RenewalCycUnit pulumi.StringInput `pulumi:"renewalCycUnit"`
+	// The renewal duration of the SLB.
+	RenewalDuration pulumi.IntInput `pulumi:"renewalDuration"`
+	// The renewal status of the SLB.
+	RenewalStatus pulumi.StringInput `pulumi:"renewalStatus"`
 	// The Id of resource group which SLB belongs.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
-	SlaveZoneId     pulumi.StringInput `pulumi:"slaveZoneId"`
-	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	// The slave zone id of the SLB.
+	SlaveZoneId pulumi.StringInput `pulumi:"slaveZoneId"`
+	// The status of the SLB. Valid values: `active`, `inactive` and `locked`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/slb"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-	// 			Tags: map[string]string{
-	// 				"tagKey1": "tagValue1",
-	// 				"tagKey2": "tagValue2",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -3164,42 +3325,52 @@ func (o GetLoadBalancersBalancerOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.Address }).(pulumi.StringOutput)
 }
 
+// The address ip version. Valid values `ipv4` and `ipv6`.
 func (o GetLoadBalancersBalancerOutput) AddressIpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.AddressIpVersion }).(pulumi.StringOutput)
 }
 
+// The address type of the SLB. Valid values `internet` and `intranet`.
 func (o GetLoadBalancersBalancerOutput) AddressType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.AddressType }).(pulumi.StringOutput)
 }
 
+// The auto release time.
 func (o GetLoadBalancersBalancerOutput) AutoReleaseTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) int { return v.AutoReleaseTime }).(pulumi.IntOutput)
 }
 
+// The backend servers of the SLB.
 func (o GetLoadBalancersBalancerOutput) BackendServers() GetLoadBalancersBalancerBackendServerArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) []GetLoadBalancersBalancerBackendServer { return v.BackendServers }).(GetLoadBalancersBalancerBackendServerArrayOutput)
 }
 
+// The bandwidth of the SLB.
 func (o GetLoadBalancersBalancerOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
+// The creation time of the SLB, mapped from the API `CreateTime` field.
 func (o GetLoadBalancersBalancerOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The create time stamp of the SLB.
 func (o GetLoadBalancersBalancerOutput) CreateTimeStamp() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) int { return v.CreateTimeStamp }).(pulumi.IntOutput)
 }
 
+// Whether the SLB should delete protection.
 func (o GetLoadBalancersBalancerOutput) DeleteProtection() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.DeleteProtection }).(pulumi.StringOutput)
 }
 
+// The end time of the SLB.
 func (o GetLoadBalancersBalancerOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
+// The end time stamp of the SLB.
 func (o GetLoadBalancersBalancerOutput) EndTimeStamp() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) int { return v.EndTimeStamp }).(pulumi.IntOutput)
 }
@@ -3209,42 +3380,51 @@ func (o GetLoadBalancersBalancerOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
 func (o GetLoadBalancersBalancerOutput) InternetChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.InternetChargeType }).(pulumi.StringOutput)
 }
 
+// The listener ports and protocol of the SLB.
 func (o GetLoadBalancersBalancerOutput) ListenerPortsAndProtocals() GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) []GetLoadBalancersBalancerListenerPortsAndProtocal {
 		return v.ListenerPortsAndProtocals
 	}).(GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput)
 }
 
+// The listener ports and protocol of the SLB.
 func (o GetLoadBalancersBalancerOutput) ListenerPortsAndProtocols() GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) []GetLoadBalancersBalancerListenerPortsAndProtocol {
 		return v.ListenerPortsAndProtocols
 	}).(GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput)
 }
 
+// Thd ID of the SLB.
 func (o GetLoadBalancersBalancerOutput) LoadBalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.LoadBalancerId }).(pulumi.StringOutput)
 }
 
+// The name of the SLB.
 func (o GetLoadBalancersBalancerOutput) LoadBalancerName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.LoadBalancerName }).(pulumi.StringOutput)
 }
 
+// The specification of the SLB.
 func (o GetLoadBalancersBalancerOutput) LoadBalancerSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.LoadBalancerSpec }).(pulumi.StringOutput)
 }
 
+// The master zone id of the SLB.
 func (o GetLoadBalancersBalancerOutput) MasterZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.MasterZoneId }).(pulumi.StringOutput)
 }
 
+// The reason of modification protection.
 func (o GetLoadBalancersBalancerOutput) ModificationProtectionReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.ModificationProtectionReason }).(pulumi.StringOutput)
 }
 
+// The status of modification protection.
 func (o GetLoadBalancersBalancerOutput) ModificationProtectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.ModificationProtectionStatus }).(pulumi.StringOutput)
 }
@@ -3254,22 +3434,27 @@ func (o GetLoadBalancersBalancerOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
+// The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
 func (o GetLoadBalancersBalancerOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
+// Region ID the SLB belongs to.
 func (o GetLoadBalancersBalancerOutput) RegionIdAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.RegionIdAlias }).(pulumi.StringOutput)
 }
 
+// The renewal cyc unit of the SLB.
 func (o GetLoadBalancersBalancerOutput) RenewalCycUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.RenewalCycUnit }).(pulumi.StringOutput)
 }
 
+// The renewal duration of the SLB.
 func (o GetLoadBalancersBalancerOutput) RenewalDuration() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) int { return v.RenewalDuration }).(pulumi.IntOutput)
 }
 
+// The renewal status of the SLB.
 func (o GetLoadBalancersBalancerOutput) RenewalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.RenewalStatus }).(pulumi.StringOutput)
 }
@@ -3279,42 +3464,17 @@ func (o GetLoadBalancersBalancerOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// The slave zone id of the SLB.
 func (o GetLoadBalancersBalancerOutput) SlaveZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.SlaveZoneId }).(pulumi.StringOutput)
 }
 
-// SLB current status. Possible values: `inactive`, `active` and `locked`.
+// The status of the SLB. Valid values: `active`, `inactive` and `locked`.
 func (o GetLoadBalancersBalancerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/slb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-//				Tags: map[string]string{
-//					"tagKey1": "tagValue1",
-//					"tagKey2": "tagValue2",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o GetLoadBalancersBalancerOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -3350,10 +3510,14 @@ func (o GetLoadBalancersBalancerArrayOutput) Index(i pulumi.IntInput) GetLoadBal
 }
 
 type GetLoadBalancersBalancerBackendServer struct {
+	// The description of protocol.
 	Description string `pulumi:"description"`
-	ServerId    string `pulumi:"serverId"`
-	Type        string `pulumi:"type"`
-	Weight      int    `pulumi:"weight"`
+	// The server ID.
+	ServerId string `pulumi:"serverId"`
+	// The type of servers.
+	Type string `pulumi:"type"`
+	// The weight of servers.
+	Weight int `pulumi:"weight"`
 }
 
 // GetLoadBalancersBalancerBackendServerInput is an input type that accepts GetLoadBalancersBalancerBackendServerArgs and GetLoadBalancersBalancerBackendServerOutput values.
@@ -3368,10 +3532,14 @@ type GetLoadBalancersBalancerBackendServerInput interface {
 }
 
 type GetLoadBalancersBalancerBackendServerArgs struct {
+	// The description of protocol.
 	Description pulumi.StringInput `pulumi:"description"`
-	ServerId    pulumi.StringInput `pulumi:"serverId"`
-	Type        pulumi.StringInput `pulumi:"type"`
-	Weight      pulumi.IntInput    `pulumi:"weight"`
+	// The server ID.
+	ServerId pulumi.StringInput `pulumi:"serverId"`
+	// The type of servers.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The weight of servers.
+	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
 func (GetLoadBalancersBalancerBackendServerArgs) ElementType() reflect.Type {
@@ -3425,18 +3593,22 @@ func (o GetLoadBalancersBalancerBackendServerOutput) ToGetLoadBalancersBalancerB
 	return o
 }
 
+// The description of protocol.
 func (o GetLoadBalancersBalancerBackendServerOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerBackendServer) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The server ID.
 func (o GetLoadBalancersBalancerBackendServerOutput) ServerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerBackendServer) string { return v.ServerId }).(pulumi.StringOutput)
 }
 
+// The type of servers.
 func (o GetLoadBalancersBalancerBackendServerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerBackendServer) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The weight of servers.
 func (o GetLoadBalancersBalancerBackendServerOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerBackendServer) int { return v.Weight }).(pulumi.IntOutput)
 }
@@ -3462,7 +3634,9 @@ func (o GetLoadBalancersBalancerBackendServerArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetLoadBalancersBalancerListenerPortsAndProtocal struct {
-	ListenerPort     int    `pulumi:"listenerPort"`
+	// The listener port.
+	ListenerPort int `pulumi:"listenerPort"`
+	// The listener protocol.
 	ListenerProtocal string `pulumi:"listenerProtocal"`
 }
 
@@ -3478,7 +3652,9 @@ type GetLoadBalancersBalancerListenerPortsAndProtocalInput interface {
 }
 
 type GetLoadBalancersBalancerListenerPortsAndProtocalArgs struct {
-	ListenerPort     pulumi.IntInput    `pulumi:"listenerPort"`
+	// The listener port.
+	ListenerPort pulumi.IntInput `pulumi:"listenerPort"`
+	// The listener protocol.
 	ListenerProtocal pulumi.StringInput `pulumi:"listenerProtocal"`
 }
 
@@ -3533,10 +3709,12 @@ func (o GetLoadBalancersBalancerListenerPortsAndProtocalOutput) ToGetLoadBalance
 	return o
 }
 
+// The listener port.
 func (o GetLoadBalancersBalancerListenerPortsAndProtocalOutput) ListenerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerListenerPortsAndProtocal) int { return v.ListenerPort }).(pulumi.IntOutput)
 }
 
+// The listener protocol.
 func (o GetLoadBalancersBalancerListenerPortsAndProtocalOutput) ListenerProtocal() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerListenerPortsAndProtocal) string { return v.ListenerProtocal }).(pulumi.StringOutput)
 }
@@ -3562,10 +3740,15 @@ func (o GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput) Index(i pul
 }
 
 type GetLoadBalancersBalancerListenerPortsAndProtocol struct {
-	Description      string `pulumi:"description"`
-	ForwardPort      int    `pulumi:"forwardPort"`
-	ListenerForward  string `pulumi:"listenerForward"`
-	ListenerPort     int    `pulumi:"listenerPort"`
+	// The description of protocol.
+	Description string `pulumi:"description"`
+	// The forward port.
+	ForwardPort int `pulumi:"forwardPort"`
+	// The listener forward.
+	ListenerForward string `pulumi:"listenerForward"`
+	// The listener port.
+	ListenerPort int `pulumi:"listenerPort"`
+	// The listener protocol.
 	ListenerProtocol string `pulumi:"listenerProtocol"`
 }
 
@@ -3581,10 +3764,15 @@ type GetLoadBalancersBalancerListenerPortsAndProtocolInput interface {
 }
 
 type GetLoadBalancersBalancerListenerPortsAndProtocolArgs struct {
-	Description      pulumi.StringInput `pulumi:"description"`
-	ForwardPort      pulumi.IntInput    `pulumi:"forwardPort"`
-	ListenerForward  pulumi.StringInput `pulumi:"listenerForward"`
-	ListenerPort     pulumi.IntInput    `pulumi:"listenerPort"`
+	// The description of protocol.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The forward port.
+	ForwardPort pulumi.IntInput `pulumi:"forwardPort"`
+	// The listener forward.
+	ListenerForward pulumi.StringInput `pulumi:"listenerForward"`
+	// The listener port.
+	ListenerPort pulumi.IntInput `pulumi:"listenerPort"`
+	// The listener protocol.
 	ListenerProtocol pulumi.StringInput `pulumi:"listenerProtocol"`
 }
 
@@ -3639,22 +3827,27 @@ func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) ToGetLoadBalance
 	return o
 }
 
+// The description of protocol.
 func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerListenerPortsAndProtocol) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The forward port.
 func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) ForwardPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerListenerPortsAndProtocol) int { return v.ForwardPort }).(pulumi.IntOutput)
 }
 
+// The listener forward.
 func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) ListenerForward() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerListenerPortsAndProtocol) string { return v.ListenerForward }).(pulumi.StringOutput)
 }
 
+// The listener port.
 func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) ListenerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerListenerPortsAndProtocol) int { return v.ListenerPort }).(pulumi.IntOutput)
 }
 
+// The listener protocol.
 func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) ListenerProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerListenerPortsAndProtocol) string { return v.ListenerProtocol }).(pulumi.StringOutput)
 }
@@ -3682,48 +3875,25 @@ func (o GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput) Index(i pul
 type GetLoadBalancersSlb struct {
 	// Service address of the SLBs.
 	Address string `pulumi:"address"`
-	// SLB creation time.
+	// The creation time of the SLB.
 	CreationTime string `pulumi:"creationTime"`
 	// ID of the SLB.
 	Id string `pulumi:"id"`
-	// SLB addressType: internet if `true`, intranet if `false`. Must be `false` when `networkType` is `vpc`.
+	// Whether the SLB is internet-facing.
 	Internet bool `pulumi:"internet"`
-	// Master availability zone of the SLBs.
+	// Master availability zone of the SLB.
 	MasterAvailabilityZone string `pulumi:"masterAvailabilityZone"`
-	// SLB name.
+	// The name of the SLB.
 	Name string `pulumi:"name"`
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
 	NetworkType string `pulumi:"networkType"`
 	// Region ID the SLB belongs to.
 	RegionId string `pulumi:"regionId"`
-	// Slave availability zone of the SLBs.
+	// Slave availability zone of the SLB.
 	SlaveAvailabilityZone string `pulumi:"slaveAvailabilityZone"`
-	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	// The status of the SLB. Valid values: `active`, `inactive` and `locked`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/slb"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-	// 			Tags: map[string]string{
-	// 				"tagKey1": "tagValue1",
-	// 				"tagKey2": "tagValue2",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags map[string]string `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId string `pulumi:"vpcId"`
@@ -3745,48 +3915,25 @@ type GetLoadBalancersSlbInput interface {
 type GetLoadBalancersSlbArgs struct {
 	// Service address of the SLBs.
 	Address pulumi.StringInput `pulumi:"address"`
-	// SLB creation time.
+	// The creation time of the SLB.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// ID of the SLB.
 	Id pulumi.StringInput `pulumi:"id"`
-	// SLB addressType: internet if `true`, intranet if `false`. Must be `false` when `networkType` is `vpc`.
+	// Whether the SLB is internet-facing.
 	Internet pulumi.BoolInput `pulumi:"internet"`
-	// Master availability zone of the SLBs.
+	// Master availability zone of the SLB.
 	MasterAvailabilityZone pulumi.StringInput `pulumi:"masterAvailabilityZone"`
-	// SLB name.
+	// The name of the SLB.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
 	NetworkType pulumi.StringInput `pulumi:"networkType"`
 	// Region ID the SLB belongs to.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	// Slave availability zone of the SLBs.
+	// Slave availability zone of the SLB.
 	SlaveAvailabilityZone pulumi.StringInput `pulumi:"slaveAvailabilityZone"`
-	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	// The status of the SLB. Valid values: `active`, `inactive` and `locked`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/slb"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-	// 			Tags: map[string]string{
-	// 				"tagKey1": "tagValue1",
-	// 				"tagKey2": "tagValue2",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -3850,7 +3997,7 @@ func (o GetLoadBalancersSlbOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.Address }).(pulumi.StringOutput)
 }
 
-// SLB creation time.
+// The creation time of the SLB.
 func (o GetLoadBalancersSlbOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.CreationTime }).(pulumi.StringOutput)
 }
@@ -3860,17 +4007,17 @@ func (o GetLoadBalancersSlbOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// SLB addressType: internet if `true`, intranet if `false`. Must be `false` when `networkType` is `vpc`.
+// Whether the SLB is internet-facing.
 func (o GetLoadBalancersSlbOutput) Internet() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLoadBalancersSlb) bool { return v.Internet }).(pulumi.BoolOutput)
 }
 
-// Master availability zone of the SLBs.
+// Master availability zone of the SLB.
 func (o GetLoadBalancersSlbOutput) MasterAvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.MasterAvailabilityZone }).(pulumi.StringOutput)
 }
 
-// SLB name.
+// The name of the SLB.
 func (o GetLoadBalancersSlbOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3885,43 +4032,17 @@ func (o GetLoadBalancersSlbOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// Slave availability zone of the SLBs.
+// Slave availability zone of the SLB.
 func (o GetLoadBalancersSlbOutput) SlaveAvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.SlaveAvailabilityZone }).(pulumi.StringOutput)
 }
 
-// SLB current status. Possible values: `inactive`, `active` and `locked`.
+// The status of the SLB. Valid values: `active`, `inactive` and `locked`.
 func (o GetLoadBalancersSlbOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/slb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-//				Tags: map[string]string{
-//					"tagKey1": "tagValue1",
-//					"tagKey2": "tagValue2",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o GetLoadBalancersSlbOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetLoadBalancersSlb) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -4772,7 +4893,7 @@ type GetTlsCipherPoliciesPolicy struct {
 	Id string `pulumi:"id"`
 	// Array of Relate Listeners.
 	RelateListeners []GetTlsCipherPoliciesPolicyRelateListener `pulumi:"relateListeners"`
-	// TLS policy instance state.
+	// TLS policy instance state. Valid values: `configuring`, `normal`.
 	Status string `pulumi:"status"`
 	// The ID of TLS cipher policy.
 	TlsCipherPolicyId string `pulumi:"tlsCipherPolicyId"`
@@ -4802,7 +4923,7 @@ type GetTlsCipherPoliciesPolicyArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Array of Relate Listeners.
 	RelateListeners GetTlsCipherPoliciesPolicyRelateListenerArrayInput `pulumi:"relateListeners"`
-	// TLS policy instance state.
+	// TLS policy instance state. Valid values: `configuring`, `normal`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The ID of TLS cipher policy.
 	TlsCipherPolicyId pulumi.StringInput `pulumi:"tlsCipherPolicyId"`
@@ -4885,7 +5006,7 @@ func (o GetTlsCipherPoliciesPolicyOutput) RelateListeners() GetTlsCipherPolicies
 	}).(GetTlsCipherPoliciesPolicyRelateListenerArrayOutput)
 }
 
-// TLS policy instance state.
+// TLS policy instance state. Valid values: `configuring`, `normal`.
 func (o GetTlsCipherPoliciesPolicyOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTlsCipherPoliciesPolicy) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -5289,6 +5410,8 @@ func (o GetZonesZoneSupportedResourceArrayOutput) Index(i pulumi.IntInput) GetZo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AclEntryAttachmentEntryInput)(nil)).Elem(), AclEntryAttachmentEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclEntryAttachmentEntryArrayInput)(nil)).Elem(), AclEntryAttachmentEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclEntryListInput)(nil)).Elem(), AclEntryListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclEntryListArrayInput)(nil)).Elem(), AclEntryListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServerBackendServerInput)(nil)).Elem(), BackendServerBackendServerArgs{})
@@ -5355,6 +5478,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneSupportedResourceInput)(nil)).Elem(), GetZonesZoneSupportedResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneSupportedResourceArrayInput)(nil)).Elem(), GetZonesZoneSupportedResourceArray{})
+	pulumi.RegisterOutputType(AclEntryAttachmentEntryOutput{})
+	pulumi.RegisterOutputType(AclEntryAttachmentEntryArrayOutput{})
 	pulumi.RegisterOutputType(AclEntryListOutput{})
 	pulumi.RegisterOutputType(AclEntryListArrayOutput{})
 	pulumi.RegisterOutputType(BackendServerBackendServerOutput{})

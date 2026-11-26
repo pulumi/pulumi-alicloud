@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Alb Health Check Templates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Alb Health Check Templates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Alb Health Check Templates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -241,6 +241,9 @@ namespace Pulumi.AliCloud.Alb
     public sealed class GetHealthCheckTemplatesResult
     {
         public readonly ImmutableArray<string> HealthCheckTemplateIds;
+        /// <summary>
+        /// The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        /// </summary>
         public readonly string? HealthCheckTemplateName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -248,8 +251,14 @@ namespace Pulumi.AliCloud.Alb
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Health Check Template names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Alb Health Check Templates. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHealthCheckTemplatesTemplateResult> Templates;
 
         [OutputConstructor]

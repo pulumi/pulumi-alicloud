@@ -62,21 +62,33 @@ class GetServerPlansResult:
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> Optional[_builtins.int]:
+        """
+        The peak bandwidth. Unit: Mbit/s.
+        """
         return pulumi.get(self, "bandwidth")
 
     @_builtins.property
     @pulumi.getter
     def core(self) -> Optional[_builtins.int]:
+        """
+        The number of CPU cores.
+        """
         return pulumi.get(self, "core")
 
     @_builtins.property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[_builtins.int]:
+        """
+        The size of the enhanced SSD (ESSD). Unit: GB.
+        """
         return pulumi.get(self, "disk_size")
 
     @_builtins.property
     @pulumi.getter
     def flow(self) -> Optional[_builtins.int]:
+        """
+        The monthly data transfer quota. Unit: GB.
+        """
         return pulumi.get(self, "flow")
 
     @_builtins.property
@@ -95,6 +107,9 @@ class GetServerPlansResult:
     @_builtins.property
     @pulumi.getter
     def memory(self) -> Optional[_builtins.float]:
+        """
+        The memory size. Unit: GB.
+        """
         return pulumi.get(self, "memory")
 
     @_builtins.property
@@ -105,6 +120,9 @@ class GetServerPlansResult:
     @_builtins.property
     @pulumi.getter
     def plans(self) -> Sequence['outputs.GetServerPlansPlanResult']:
+        """
+        A list of Simple Application Server Plans. Each element contains the following attributes:
+        """
         return pulumi.get(self, "plans")
 
     @_builtins.property
@@ -143,7 +161,7 @@ def get_server_plans(bandwidth: Optional[_builtins.int] = None,
     """
     This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 
@@ -169,7 +187,7 @@ def get_server_plans(bandwidth: Optional[_builtins.int] = None,
     :param Sequence[_builtins.str] ids: A list of Instance Plan IDs.
     :param _builtins.float memory: The memory size. Unit: GB.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str platform: The platform of Plan supported. Valid values: ["Linux", "Windows"].
+    :param _builtins.str platform: Available in v1.161.0. The platform of Plan supported. Valid values: ["Linux", "Windows"].
     """
     __args__ = dict()
     __args__['bandwidth'] = bandwidth
@@ -206,7 +224,7 @@ def get_server_plans_output(bandwidth: pulumi.Input[Optional[Optional[_builtins.
     """
     This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 
@@ -232,7 +250,7 @@ def get_server_plans_output(bandwidth: pulumi.Input[Optional[Optional[_builtins.
     :param Sequence[_builtins.str] ids: A list of Instance Plan IDs.
     :param _builtins.float memory: The memory size. Unit: GB.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str platform: The platform of Plan supported. Valid values: ["Linux", "Windows"].
+    :param _builtins.str platform: Available in v1.161.0. The platform of Plan supported. Valid values: ["Linux", "Windows"].
     """
     __args__ = dict()
     __args__['bandwidth'] = bandwidth

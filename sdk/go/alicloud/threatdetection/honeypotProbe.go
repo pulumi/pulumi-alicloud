@@ -80,7 +80,7 @@ type HoneypotProbe struct {
 	ControlNodeId pulumi.StringOutput `pulumi:"controlNodeId"`
 	// Probe display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Configure the service.See the following `Block HoneypotBindList`.
+	// Configure the service.See the following `honeypotBindList` below.
 	HoneypotBindLists HoneypotProbeHoneypotBindListArrayOutput `pulumi:"honeypotBindLists"`
 	// The first ID of the resource
 	HoneypotProbeId pulumi.StringOutput `pulumi:"honeypotProbeId"`
@@ -147,7 +147,7 @@ type honeypotProbeState struct {
 	ControlNodeId *string `pulumi:"controlNodeId"`
 	// Probe display name.
 	DisplayName *string `pulumi:"displayName"`
-	// Configure the service.See the following `Block HoneypotBindList`.
+	// Configure the service.See the following `honeypotBindList` below.
 	HoneypotBindLists []HoneypotProbeHoneypotBindList `pulumi:"honeypotBindLists"`
 	// The first ID of the resource
 	HoneypotProbeId *string `pulumi:"honeypotProbeId"`
@@ -176,7 +176,7 @@ type HoneypotProbeState struct {
 	ControlNodeId pulumi.StringPtrInput
 	// Probe display name.
 	DisplayName pulumi.StringPtrInput
-	// Configure the service.See the following `Block HoneypotBindList`.
+	// Configure the service.See the following `honeypotBindList` below.
 	HoneypotBindLists HoneypotProbeHoneypotBindListArrayInput
 	// The first ID of the resource
 	HoneypotProbeId pulumi.StringPtrInput
@@ -215,7 +215,7 @@ type honeypotProbeArgs struct {
 	ControlNodeId string `pulumi:"controlNodeId"`
 	// Probe display name.
 	DisplayName string `pulumi:"displayName"`
-	// Configure the service.See the following `Block HoneypotBindList`.
+	// Configure the service.See the following `honeypotBindList` below.
 	HoneypotBindLists []HoneypotProbeHoneypotBindList `pulumi:"honeypotBindLists"`
 	// Ping scan detection. Value: **true**: Enable **false**: Disabled
 	Ping *bool `pulumi:"ping"`
@@ -241,7 +241,7 @@ type HoneypotProbeArgs struct {
 	ControlNodeId pulumi.StringInput
 	// Probe display name.
 	DisplayName pulumi.StringInput
-	// Configure the service.See the following `Block HoneypotBindList`.
+	// Configure the service.See the following `honeypotBindList` below.
 	HoneypotBindLists HoneypotProbeHoneypotBindListArrayInput
 	// Ping scan detection. Value: **true**: Enable **false**: Disabled
 	Ping pulumi.BoolPtrInput
@@ -361,7 +361,7 @@ func (o HoneypotProbeOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *HoneypotProbe) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Configure the service.See the following `Block HoneypotBindList`.
+// Configure the service.See the following `honeypotBindList` below.
 func (o HoneypotProbeOutput) HoneypotBindLists() HoneypotProbeHoneypotBindListArrayOutput {
 	return o.ApplyT(func(v *HoneypotProbe) HoneypotProbeHoneypotBindListArrayOutput { return v.HoneypotBindLists }).(HoneypotProbeHoneypotBindListArrayOutput)
 }

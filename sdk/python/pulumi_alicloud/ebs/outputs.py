@@ -419,6 +419,7 @@ class GetDedicatedBlockStorageClustersClusterResult(dict):
         :param _builtins.str delivery_capacity: Capacity to be delivered in GB.
         :param _builtins.str description: The description of the dedicated block storage cluster.
         :param _builtins.str expired_time: The expiration time of the dedicated block storage cluster, in the Unix timestamp format, in seconds.
+        :param _builtins.str id: The first ID of the Dedicated Block Storage Cluster.
         :param _builtins.str performance_level: Cloud disk performance level, possible values:-PL0.-PL1.-PL2.-PL3.> Only valid in SupportedCategory = cloud_essd.
         :param _builtins.str resource_group_id: The ID of the resource group
         :param _builtins.str status: The status of the resource
@@ -513,6 +514,9 @@ class GetDedicatedBlockStorageClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The first ID of the Dedicated Block Storage Cluster.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -798,6 +802,7 @@ class GetDiskReplicaPairsPairResult(dict):
         :param _builtins.str destination_region_id: The ID of the region to which the disaster recovery site belongs.
         :param _builtins.str destination_zone_id: The ID of the zone to which the disaster recovery site belongs.
         :param _builtins.str disk_id: The ID of the primary disk.
+        :param _builtins.str id: The first ID of the Disk Replica Pair.
         :param _builtins.str pair_name: The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
         :param _builtins.str payment_type: The payment type of the resource.
         :param _builtins.str replica_pair_id: The first ID of the resource
@@ -872,6 +877,9 @@ class GetDiskReplicaPairsPairResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The first ID of the Disk Replica Pair.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -937,7 +945,7 @@ class GetRegionsRegionResult(dict):
                  region_id: _builtins.str,
                  zones: Sequence['outputs.GetRegionsRegionZoneResult']):
         """
-        :param _builtins.str region_id: The ID of the region.
+        :param _builtins.str region_id: A list of Disk Replica Group IDs.
         :param Sequence['GetRegionsRegionZoneArgs'] zones: A list of Ebs Zones.
         """
         pulumi.set(__self__, "region_id", region_id)
@@ -947,7 +955,7 @@ class GetRegionsRegionResult(dict):
     @pulumi.getter(name="regionId")
     def region_id(self) -> _builtins.str:
         """
-        The ID of the region.
+        A list of Disk Replica Group IDs.
         """
         return pulumi.get(self, "region_id")
 

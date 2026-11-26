@@ -15,8 +15,57 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'TairInstanceAdditionalBandwidth',
     'GetGlobalSecurityIpGroupsGroupResult',
 ]
+
+@pulumi.output_type
+class TairInstanceAdditionalBandwidth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeId":
+            suggest = "node_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TairInstanceAdditionalBandwidth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TairInstanceAdditionalBandwidth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TairInstanceAdditionalBandwidth.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bandwidth: Optional[_builtins.int] = None,
+                 node_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int bandwidth: The additional bandwidth to add. Unit: MB/s. Must be set in every `additional_bandwidth` block; a block without it is rejected. Valid values: non-negative integers. The maximum value is 6 times the default bandwidth of the instance (or shard) specification, capped at 192 MB/s. Set to `0` to release the additional bandwidth purchased for the shard.
+        :param _builtins.str node_id: The data shard whose bandwidth is adjusted. Use the shard node name (`r-xxx-db-0`, the `InsName` reported by the `DescribeRoleZoneInfo` operation) or its full topology ID (`r-xxx-db-0#123456`); a suffix such as `db-0` is also accepted when exactly one data shard of the instance ends with it. Required on cluster and read/write splitting instances, and each data shard can be configured at most once. A standard instance takes `bandwidth` alone and must leave this argument unset, because `EnableAdditionalBandwidth` only accepts `NodeId` for the cluster and read/write splitting architectures.
+        """
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
+        if node_id is not None:
+            pulumi.set(__self__, "node_id", node_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[_builtins.int]:
+        """
+        The additional bandwidth to add. Unit: MB/s. Must be set in every `additional_bandwidth` block; a block without it is rejected. Valid values: non-negative integers. The maximum value is 6 times the default bandwidth of the instance (or shard) specification, capped at 192 MB/s. Set to `0` to release the additional bandwidth purchased for the shard.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> Optional[_builtins.str]:
+        """
+        The data shard whose bandwidth is adjusted. Use the shard node name (`r-xxx-db-0`, the `InsName` reported by the `DescribeRoleZoneInfo` operation) or its full topology ID (`r-xxx-db-0#123456`); a suffix such as `db-0` is also accepted when exactly one data shard of the instance ends with it. Required on cluster and read/write splitting instances, and each data shard can be configured at most once. A standard instance takes `bandwidth` alone and must leave this argument unset, because `EnableAdditionalBandwidth` only accepts `NodeId` for the cluster and read/write splitting architectures.
+        """
+        return pulumi.get(self, "node_id")
+
 
 @pulumi.output_type
 class GetGlobalSecurityIpGroupsGroupResult(dict):

@@ -56,6 +56,9 @@ class GetUserGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetUserGroupsGroupResult']:
+        """
+        A list of Bastionhost User Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -74,6 +77,9 @@ class GetUserGroupsResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        Specify the New Group of the Bastion Host of Instance Id.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -84,6 +90,9 @@ class GetUserGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of User Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -94,6 +103,9 @@ class GetUserGroupsResult:
     @_builtins.property
     @pulumi.getter(name="userGroupName")
     def user_group_name(self) -> Optional[_builtins.str]:
+        """
+        Specify the New Group Name. Supports up to 128 Characters.
+        """
         return pulumi.get(self, "user_group_name")
 
 
@@ -122,7 +134,7 @@ def get_user_groups(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Bastionhost User Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 
@@ -177,7 +189,7 @@ def get_user_groups_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtin
     """
     This data source provides the Bastionhost User Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 

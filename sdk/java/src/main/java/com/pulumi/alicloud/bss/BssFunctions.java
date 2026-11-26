@@ -253,6 +253,40 @@ public final class BssFunctions {
      * 
      * &gt; **NOTE:** Available since v1.195.0.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bss.BssFunctions;
+     * import com.pulumi.alicloud.bss.inputs.GetOpenApiProductsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = BssFunctions.getOpenApiProducts(GetOpenApiProductsArgs.builder()
+     *             .nameRegex("内容分发网络CDN")
+     *             .build());
+     * 
+     *         ctx.export("alicloudBssOpenApiProductExampleId", default_.products()[0].productCode());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetOpenApiProductsResult> getOpenApiProducts() {
         return getOpenApiProducts(GetOpenApiProductsArgs.Empty, InvokeOptions.Empty);
@@ -261,6 +295,40 @@ public final class BssFunctions {
      * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
      * 
      * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bss.BssFunctions;
+     * import com.pulumi.alicloud.bss.inputs.GetOpenApiProductsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = BssFunctions.getOpenApiProducts(GetOpenApiProductsArgs.builder()
+     *             .nameRegex("内容分发网络CDN")
+     *             .build());
+     * 
+     *         ctx.export("alicloudBssOpenApiProductExampleId", default_.products()[0].productCode());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetOpenApiProductsResult> getOpenApiProductsPlain() {
@@ -271,6 +339,40 @@ public final class BssFunctions {
      * 
      * &gt; **NOTE:** Available since v1.195.0.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bss.BssFunctions;
+     * import com.pulumi.alicloud.bss.inputs.GetOpenApiProductsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = BssFunctions.getOpenApiProducts(GetOpenApiProductsArgs.builder()
+     *             .nameRegex("内容分发网络CDN")
+     *             .build());
+     * 
+     *         ctx.export("alicloudBssOpenApiProductExampleId", default_.products()[0].productCode());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetOpenApiProductsResult> getOpenApiProducts(GetOpenApiProductsArgs args) {
         return getOpenApiProducts(args, InvokeOptions.Empty);
@@ -279,6 +381,40 @@ public final class BssFunctions {
      * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
      * 
      * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bss.BssFunctions;
+     * import com.pulumi.alicloud.bss.inputs.GetOpenApiProductsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = BssFunctions.getOpenApiProducts(GetOpenApiProductsArgs.builder()
+     *             .nameRegex("内容分发网络CDN")
+     *             .build());
+     * 
+     *         ctx.export("alicloudBssOpenApiProductExampleId", default_.products()[0].productCode());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetOpenApiProductsResult> getOpenApiProductsPlain(GetOpenApiProductsPlainArgs args) {
@@ -289,6 +425,40 @@ public final class BssFunctions {
      * 
      * &gt; **NOTE:** Available since v1.195.0.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bss.BssFunctions;
+     * import com.pulumi.alicloud.bss.inputs.GetOpenApiProductsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = BssFunctions.getOpenApiProducts(GetOpenApiProductsArgs.builder()
+     *             .nameRegex("内容分发网络CDN")
+     *             .build());
+     * 
+     *         ctx.export("alicloudBssOpenApiProductExampleId", default_.products()[0].productCode());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetOpenApiProductsResult> getOpenApiProducts(GetOpenApiProductsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:bss/getOpenApiProducts:getOpenApiProducts", TypeShape.of(GetOpenApiProductsResult.class), args, Utilities.withVersion(options));
@@ -298,6 +468,40 @@ public final class BssFunctions {
      * 
      * &gt; **NOTE:** Available since v1.195.0.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bss.BssFunctions;
+     * import com.pulumi.alicloud.bss.inputs.GetOpenApiProductsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = BssFunctions.getOpenApiProducts(GetOpenApiProductsArgs.builder()
+     *             .nameRegex("内容分发网络CDN")
+     *             .build());
+     * 
+     *         ctx.export("alicloudBssOpenApiProductExampleId", default_.products()[0].productCode());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetOpenApiProductsResult> getOpenApiProducts(GetOpenApiProductsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:bss/getOpenApiProducts:getOpenApiProducts", TypeShape.of(GetOpenApiProductsResult.class), args, Utilities.withVersion(options));
@@ -306,6 +510,40 @@ public final class BssFunctions {
      * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
      * 
      * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bss.BssFunctions;
+     * import com.pulumi.alicloud.bss.inputs.GetOpenApiProductsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = BssFunctions.getOpenApiProducts(GetOpenApiProductsArgs.builder()
+     *             .nameRegex("内容分发网络CDN")
+     *             .build());
+     * 
+     *         ctx.export("alicloudBssOpenApiProductExampleId", default_.products()[0].productCode());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetOpenApiProductsResult> getOpenApiProductsPlain(GetOpenApiProductsPlainArgs args, InvokeOptions options) {

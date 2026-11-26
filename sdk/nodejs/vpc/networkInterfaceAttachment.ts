@@ -62,12 +62,21 @@ export class NetworkInterfaceAttachment extends pulumi.CustomResource {
      * The instance ID to attach.
      */
     declare public readonly instanceId: pulumi.Output<string>;
+    /**
+     * The index of the network card.
+     */
     declare public readonly networkCardIndex: pulumi.Output<number | undefined>;
     /**
      * The ENI ID to attach.
      */
     declare public readonly networkInterfaceId: pulumi.Output<string>;
+    /**
+     * The ID of the trunk network instance.
+     */
     declare public readonly trunkNetworkInstanceId: pulumi.Output<string | undefined>;
+    /**
+     * Whether to wait for the network configuration to be ready.
+     */
     declare public readonly waitForNetworkConfigurationReady: pulumi.Output<boolean | undefined>;
 
     /**
@@ -115,12 +124,21 @@ export interface NetworkInterfaceAttachmentState {
      * The instance ID to attach.
      */
     instanceId?: pulumi.Input<string | undefined>;
+    /**
+     * The index of the network card.
+     */
     networkCardIndex?: pulumi.Input<number | undefined>;
     /**
      * The ENI ID to attach.
      */
     networkInterfaceId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the trunk network instance.
+     */
     trunkNetworkInstanceId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to wait for the network configuration to be ready.
+     */
     waitForNetworkConfigurationReady?: pulumi.Input<boolean | undefined>;
 }
 
@@ -132,11 +150,20 @@ export interface NetworkInterfaceAttachmentArgs {
      * The instance ID to attach.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * The index of the network card.
+     */
     networkCardIndex?: pulumi.Input<number | undefined>;
     /**
      * The ENI ID to attach.
      */
     networkInterfaceId: pulumi.Input<string>;
+    /**
+     * The ID of the trunk network instance.
+     */
     trunkNetworkInstanceId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to wait for the network configuration to be ready.
+     */
     waitForNetworkConfigurationReady?: pulumi.Input<boolean | undefined>;
 }

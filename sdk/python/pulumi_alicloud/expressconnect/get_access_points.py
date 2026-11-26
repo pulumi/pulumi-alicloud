@@ -71,6 +71,9 @@ class GetAccessPointsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Access Point names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -81,11 +84,17 @@ class GetAccessPointsResult:
     @_builtins.property
     @pulumi.getter
     def points(self) -> Sequence['outputs.GetAccessPointsPointResult']:
+        """
+        A list of Express Connect Access Points. Each element contains the following attributes:
+        """
         return pulumi.get(self, "points")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The Physical Connection to Which the Access Point State.
+        """
         return pulumi.get(self, "status")
 
 
@@ -112,7 +121,7 @@ def get_access_points(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 
@@ -158,7 +167,7 @@ def get_access_points_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
     """
     This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 

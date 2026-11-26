@@ -363,6 +363,216 @@ func (o AccessPointRootPathPermissionPtrOutput) Permission() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type FileSystemAutoUpgradeConfig struct {
+	// The capacity usage threshold. Valid values: 1 to 99. Unit: percent.
+	CapacityUsedRatio *int `pulumi:"capacityUsedRatio"`
+	// Whether to enable automatic capacity expansion.
+	Enabled *bool `pulumi:"enabled"`
+	// The capacity expansion step. Unit: GiB.
+	Step *int `pulumi:"step"`
+	// The duration threshold. Unit: minutes.
+	//
+	// > **NOTE:** Automatic capacity expansion is a modify-time feature: it is applied through the NAS ModifyFileSystem API after the file system has been created.
+	//
+	// > **NOTE:** This block is Optional and Computed. Removing the entire block from the configuration does **not** disable automatic capacity expansion or send a disable request to the server; the previous server value is retained as a computed value and the plan stays stable. To disable automatic capacity expansion, set `enabled = false` explicitly. When only `enabled` is configured, the other attributes (`capacityUsedRatio`, `step`, `time`) become computed and are read back from the server.
+	Time *int `pulumi:"time"`
+}
+
+// FileSystemAutoUpgradeConfigInput is an input type that accepts FileSystemAutoUpgradeConfigArgs and FileSystemAutoUpgradeConfigOutput values.
+// You can construct a concrete instance of `FileSystemAutoUpgradeConfigInput` via:
+//
+//	FileSystemAutoUpgradeConfigArgs{...}
+type FileSystemAutoUpgradeConfigInput interface {
+	pulumi.Input
+
+	ToFileSystemAutoUpgradeConfigOutput() FileSystemAutoUpgradeConfigOutput
+	ToFileSystemAutoUpgradeConfigOutputWithContext(context.Context) FileSystemAutoUpgradeConfigOutput
+}
+
+type FileSystemAutoUpgradeConfigArgs struct {
+	// The capacity usage threshold. Valid values: 1 to 99. Unit: percent.
+	CapacityUsedRatio pulumi.IntPtrInput `pulumi:"capacityUsedRatio"`
+	// Whether to enable automatic capacity expansion.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The capacity expansion step. Unit: GiB.
+	Step pulumi.IntPtrInput `pulumi:"step"`
+	// The duration threshold. Unit: minutes.
+	//
+	// > **NOTE:** Automatic capacity expansion is a modify-time feature: it is applied through the NAS ModifyFileSystem API after the file system has been created.
+	//
+	// > **NOTE:** This block is Optional and Computed. Removing the entire block from the configuration does **not** disable automatic capacity expansion or send a disable request to the server; the previous server value is retained as a computed value and the plan stays stable. To disable automatic capacity expansion, set `enabled = false` explicitly. When only `enabled` is configured, the other attributes (`capacityUsedRatio`, `step`, `time`) become computed and are read back from the server.
+	Time pulumi.IntPtrInput `pulumi:"time"`
+}
+
+func (FileSystemAutoUpgradeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSystemAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (i FileSystemAutoUpgradeConfigArgs) ToFileSystemAutoUpgradeConfigOutput() FileSystemAutoUpgradeConfigOutput {
+	return i.ToFileSystemAutoUpgradeConfigOutputWithContext(context.Background())
+}
+
+func (i FileSystemAutoUpgradeConfigArgs) ToFileSystemAutoUpgradeConfigOutputWithContext(ctx context.Context) FileSystemAutoUpgradeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemAutoUpgradeConfigOutput)
+}
+
+func (i FileSystemAutoUpgradeConfigArgs) ToFileSystemAutoUpgradeConfigPtrOutput() FileSystemAutoUpgradeConfigPtrOutput {
+	return i.ToFileSystemAutoUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FileSystemAutoUpgradeConfigArgs) ToFileSystemAutoUpgradeConfigPtrOutputWithContext(ctx context.Context) FileSystemAutoUpgradeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemAutoUpgradeConfigOutput).ToFileSystemAutoUpgradeConfigPtrOutputWithContext(ctx)
+}
+
+// FileSystemAutoUpgradeConfigPtrInput is an input type that accepts FileSystemAutoUpgradeConfigArgs, FileSystemAutoUpgradeConfigPtr and FileSystemAutoUpgradeConfigPtrOutput values.
+// You can construct a concrete instance of `FileSystemAutoUpgradeConfigPtrInput` via:
+//
+//	        FileSystemAutoUpgradeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FileSystemAutoUpgradeConfigPtrInput interface {
+	pulumi.Input
+
+	ToFileSystemAutoUpgradeConfigPtrOutput() FileSystemAutoUpgradeConfigPtrOutput
+	ToFileSystemAutoUpgradeConfigPtrOutputWithContext(context.Context) FileSystemAutoUpgradeConfigPtrOutput
+}
+
+type fileSystemAutoUpgradeConfigPtrType FileSystemAutoUpgradeConfigArgs
+
+func FileSystemAutoUpgradeConfigPtr(v *FileSystemAutoUpgradeConfigArgs) FileSystemAutoUpgradeConfigPtrInput {
+	return (*fileSystemAutoUpgradeConfigPtrType)(v)
+}
+
+func (*fileSystemAutoUpgradeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSystemAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (i *fileSystemAutoUpgradeConfigPtrType) ToFileSystemAutoUpgradeConfigPtrOutput() FileSystemAutoUpgradeConfigPtrOutput {
+	return i.ToFileSystemAutoUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fileSystemAutoUpgradeConfigPtrType) ToFileSystemAutoUpgradeConfigPtrOutputWithContext(ctx context.Context) FileSystemAutoUpgradeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemAutoUpgradeConfigPtrOutput)
+}
+
+type FileSystemAutoUpgradeConfigOutput struct{ *pulumi.OutputState }
+
+func (FileSystemAutoUpgradeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSystemAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (o FileSystemAutoUpgradeConfigOutput) ToFileSystemAutoUpgradeConfigOutput() FileSystemAutoUpgradeConfigOutput {
+	return o
+}
+
+func (o FileSystemAutoUpgradeConfigOutput) ToFileSystemAutoUpgradeConfigOutputWithContext(ctx context.Context) FileSystemAutoUpgradeConfigOutput {
+	return o
+}
+
+func (o FileSystemAutoUpgradeConfigOutput) ToFileSystemAutoUpgradeConfigPtrOutput() FileSystemAutoUpgradeConfigPtrOutput {
+	return o.ToFileSystemAutoUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FileSystemAutoUpgradeConfigOutput) ToFileSystemAutoUpgradeConfigPtrOutputWithContext(ctx context.Context) FileSystemAutoUpgradeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileSystemAutoUpgradeConfig) *FileSystemAutoUpgradeConfig {
+		return &v
+	}).(FileSystemAutoUpgradeConfigPtrOutput)
+}
+
+// The capacity usage threshold. Valid values: 1 to 99. Unit: percent.
+func (o FileSystemAutoUpgradeConfigOutput) CapacityUsedRatio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileSystemAutoUpgradeConfig) *int { return v.CapacityUsedRatio }).(pulumi.IntPtrOutput)
+}
+
+// Whether to enable automatic capacity expansion.
+func (o FileSystemAutoUpgradeConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FileSystemAutoUpgradeConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The capacity expansion step. Unit: GiB.
+func (o FileSystemAutoUpgradeConfigOutput) Step() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileSystemAutoUpgradeConfig) *int { return v.Step }).(pulumi.IntPtrOutput)
+}
+
+// The duration threshold. Unit: minutes.
+//
+// > **NOTE:** Automatic capacity expansion is a modify-time feature: it is applied through the NAS ModifyFileSystem API after the file system has been created.
+//
+// > **NOTE:** This block is Optional and Computed. Removing the entire block from the configuration does **not** disable automatic capacity expansion or send a disable request to the server; the previous server value is retained as a computed value and the plan stays stable. To disable automatic capacity expansion, set `enabled = false` explicitly. When only `enabled` is configured, the other attributes (`capacityUsedRatio`, `step`, `time`) become computed and are read back from the server.
+func (o FileSystemAutoUpgradeConfigOutput) Time() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileSystemAutoUpgradeConfig) *int { return v.Time }).(pulumi.IntPtrOutput)
+}
+
+type FileSystemAutoUpgradeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FileSystemAutoUpgradeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSystemAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (o FileSystemAutoUpgradeConfigPtrOutput) ToFileSystemAutoUpgradeConfigPtrOutput() FileSystemAutoUpgradeConfigPtrOutput {
+	return o
+}
+
+func (o FileSystemAutoUpgradeConfigPtrOutput) ToFileSystemAutoUpgradeConfigPtrOutputWithContext(ctx context.Context) FileSystemAutoUpgradeConfigPtrOutput {
+	return o
+}
+
+func (o FileSystemAutoUpgradeConfigPtrOutput) Elem() FileSystemAutoUpgradeConfigOutput {
+	return o.ApplyT(func(v *FileSystemAutoUpgradeConfig) FileSystemAutoUpgradeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FileSystemAutoUpgradeConfig
+		return ret
+	}).(FileSystemAutoUpgradeConfigOutput)
+}
+
+// The capacity usage threshold. Valid values: 1 to 99. Unit: percent.
+func (o FileSystemAutoUpgradeConfigPtrOutput) CapacityUsedRatio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FileSystemAutoUpgradeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CapacityUsedRatio
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to enable automatic capacity expansion.
+func (o FileSystemAutoUpgradeConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FileSystemAutoUpgradeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The capacity expansion step. Unit: GiB.
+func (o FileSystemAutoUpgradeConfigPtrOutput) Step() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FileSystemAutoUpgradeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Step
+	}).(pulumi.IntPtrOutput)
+}
+
+// The duration threshold. Unit: minutes.
+//
+// > **NOTE:** Automatic capacity expansion is a modify-time feature: it is applied through the NAS ModifyFileSystem API after the file system has been created.
+//
+// > **NOTE:** This block is Optional and Computed. Removing the entire block from the configuration does **not** disable automatic capacity expansion or send a disable request to the server; the previous server value is retained as a computed value and the plan stays stable. To disable automatic capacity expansion, set `enabled = false` explicitly. When only `enabled` is configured, the other attributes (`capacityUsedRatio`, `step`, `time`) become computed and are read back from the server.
+func (o FileSystemAutoUpgradeConfigPtrOutput) Time() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FileSystemAutoUpgradeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Time
+	}).(pulumi.IntPtrOutput)
+}
+
 type FileSystemNfsAcl struct {
 	// Whether the NFS ACL function is enabled.
 	Enabled *bool `pulumi:"enabled"`
@@ -1646,7 +1856,7 @@ type GetDataFlowsFlow struct {
 	SourceSecurityType string `pulumi:"sourceSecurityType"`
 	// The access path of the source store. Format: `<storage type>://<path>`.
 	SourceStorage string `pulumi:"sourceStorage"`
-	// The status of the Data flow.
+	// The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
 	Status string `pulumi:"status"`
 	// The maximum transmission bandwidth of data flow, unit: `MB/s`.
 	Throughput int `pulumi:"throughput"`
@@ -1686,7 +1896,7 @@ type GetDataFlowsFlowArgs struct {
 	SourceSecurityType pulumi.StringInput `pulumi:"sourceSecurityType"`
 	// The access path of the source store. Format: `<storage type>://<path>`.
 	SourceStorage pulumi.StringInput `pulumi:"sourceStorage"`
-	// The status of the Data flow.
+	// The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The maximum transmission bandwidth of data flow, unit: `MB/s`.
 	Throughput pulumi.IntInput `pulumi:"throughput"`
@@ -1798,7 +2008,7 @@ func (o GetDataFlowsFlowOutput) SourceStorage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataFlowsFlow) string { return v.SourceStorage }).(pulumi.StringOutput)
 }
 
-// The status of the Data flow.
+// The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
 func (o GetDataFlowsFlowOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataFlowsFlow) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1829,6 +2039,8 @@ func (o GetDataFlowsFlowArrayOutput) Index(i pulumi.IntInput) GetDataFlowsFlowOu
 }
 
 type GetFileSystemsSystem struct {
+	// (List, Available since v2.1.0) The automatic capacity expansion configuration. Each element contains the following attributes:
+	AutoUpgradeConfigs []GetFileSystemsSystemAutoUpgradeConfig `pulumi:"autoUpgradeConfigs"`
 	// (Optional, Available in v1.140.0+) The capacity of the file system.
 	Capacity int `pulumi:"capacity"`
 	// Time of creation.
@@ -1878,6 +2090,8 @@ type GetFileSystemsSystemInput interface {
 }
 
 type GetFileSystemsSystemArgs struct {
+	// (List, Available since v2.1.0) The automatic capacity expansion configuration. Each element contains the following attributes:
+	AutoUpgradeConfigs GetFileSystemsSystemAutoUpgradeConfigArrayInput `pulumi:"autoUpgradeConfigs"`
 	// (Optional, Available in v1.140.0+) The capacity of the file system.
 	Capacity pulumi.IntInput `pulumi:"capacity"`
 	// Time of creation.
@@ -1964,6 +2178,11 @@ func (o GetFileSystemsSystemOutput) ToGetFileSystemsSystemOutput() GetFileSystem
 
 func (o GetFileSystemsSystemOutput) ToGetFileSystemsSystemOutputWithContext(ctx context.Context) GetFileSystemsSystemOutput {
 	return o
+}
+
+// (List, Available since v2.1.0) The automatic capacity expansion configuration. Each element contains the following attributes:
+func (o GetFileSystemsSystemOutput) AutoUpgradeConfigs() GetFileSystemsSystemAutoUpgradeConfigArrayOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) []GetFileSystemsSystemAutoUpgradeConfig { return v.AutoUpgradeConfigs }).(GetFileSystemsSystemAutoUpgradeConfigArrayOutput)
 }
 
 // (Optional, Available in v1.140.0+) The capacity of the file system.
@@ -2057,6 +2276,130 @@ func (o GetFileSystemsSystemArrayOutput) Index(i pulumi.IntInput) GetFileSystems
 	}).(GetFileSystemsSystemOutput)
 }
 
+type GetFileSystemsSystemAutoUpgradeConfig struct {
+	// (Int, Available since v2.1.0) The capacity usage threshold. Unit: percent.
+	CapacityUsedRatio int `pulumi:"capacityUsedRatio"`
+	// (Bool, Available since v2.1.0) Whether automatic capacity expansion is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// (Int, Available since v2.1.0) The capacity expansion step. Unit: GiB.
+	Step int `pulumi:"step"`
+	// (Int, Available since v2.1.0) The duration threshold. Unit: minutes.
+	Time int `pulumi:"time"`
+}
+
+// GetFileSystemsSystemAutoUpgradeConfigInput is an input type that accepts GetFileSystemsSystemAutoUpgradeConfigArgs and GetFileSystemsSystemAutoUpgradeConfigOutput values.
+// You can construct a concrete instance of `GetFileSystemsSystemAutoUpgradeConfigInput` via:
+//
+//	GetFileSystemsSystemAutoUpgradeConfigArgs{...}
+type GetFileSystemsSystemAutoUpgradeConfigInput interface {
+	pulumi.Input
+
+	ToGetFileSystemsSystemAutoUpgradeConfigOutput() GetFileSystemsSystemAutoUpgradeConfigOutput
+	ToGetFileSystemsSystemAutoUpgradeConfigOutputWithContext(context.Context) GetFileSystemsSystemAutoUpgradeConfigOutput
+}
+
+type GetFileSystemsSystemAutoUpgradeConfigArgs struct {
+	// (Int, Available since v2.1.0) The capacity usage threshold. Unit: percent.
+	CapacityUsedRatio pulumi.IntInput `pulumi:"capacityUsedRatio"`
+	// (Bool, Available since v2.1.0) Whether automatic capacity expansion is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// (Int, Available since v2.1.0) The capacity expansion step. Unit: GiB.
+	Step pulumi.IntInput `pulumi:"step"`
+	// (Int, Available since v2.1.0) The duration threshold. Unit: minutes.
+	Time pulumi.IntInput `pulumi:"time"`
+}
+
+func (GetFileSystemsSystemAutoUpgradeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFileSystemsSystemAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (i GetFileSystemsSystemAutoUpgradeConfigArgs) ToGetFileSystemsSystemAutoUpgradeConfigOutput() GetFileSystemsSystemAutoUpgradeConfigOutput {
+	return i.ToGetFileSystemsSystemAutoUpgradeConfigOutputWithContext(context.Background())
+}
+
+func (i GetFileSystemsSystemAutoUpgradeConfigArgs) ToGetFileSystemsSystemAutoUpgradeConfigOutputWithContext(ctx context.Context) GetFileSystemsSystemAutoUpgradeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFileSystemsSystemAutoUpgradeConfigOutput)
+}
+
+// GetFileSystemsSystemAutoUpgradeConfigArrayInput is an input type that accepts GetFileSystemsSystemAutoUpgradeConfigArray and GetFileSystemsSystemAutoUpgradeConfigArrayOutput values.
+// You can construct a concrete instance of `GetFileSystemsSystemAutoUpgradeConfigArrayInput` via:
+//
+//	GetFileSystemsSystemAutoUpgradeConfigArray{ GetFileSystemsSystemAutoUpgradeConfigArgs{...} }
+type GetFileSystemsSystemAutoUpgradeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetFileSystemsSystemAutoUpgradeConfigArrayOutput() GetFileSystemsSystemAutoUpgradeConfigArrayOutput
+	ToGetFileSystemsSystemAutoUpgradeConfigArrayOutputWithContext(context.Context) GetFileSystemsSystemAutoUpgradeConfigArrayOutput
+}
+
+type GetFileSystemsSystemAutoUpgradeConfigArray []GetFileSystemsSystemAutoUpgradeConfigInput
+
+func (GetFileSystemsSystemAutoUpgradeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFileSystemsSystemAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (i GetFileSystemsSystemAutoUpgradeConfigArray) ToGetFileSystemsSystemAutoUpgradeConfigArrayOutput() GetFileSystemsSystemAutoUpgradeConfigArrayOutput {
+	return i.ToGetFileSystemsSystemAutoUpgradeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetFileSystemsSystemAutoUpgradeConfigArray) ToGetFileSystemsSystemAutoUpgradeConfigArrayOutputWithContext(ctx context.Context) GetFileSystemsSystemAutoUpgradeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFileSystemsSystemAutoUpgradeConfigArrayOutput)
+}
+
+type GetFileSystemsSystemAutoUpgradeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetFileSystemsSystemAutoUpgradeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFileSystemsSystemAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (o GetFileSystemsSystemAutoUpgradeConfigOutput) ToGetFileSystemsSystemAutoUpgradeConfigOutput() GetFileSystemsSystemAutoUpgradeConfigOutput {
+	return o
+}
+
+func (o GetFileSystemsSystemAutoUpgradeConfigOutput) ToGetFileSystemsSystemAutoUpgradeConfigOutputWithContext(ctx context.Context) GetFileSystemsSystemAutoUpgradeConfigOutput {
+	return o
+}
+
+// (Int, Available since v2.1.0) The capacity usage threshold. Unit: percent.
+func (o GetFileSystemsSystemAutoUpgradeConfigOutput) CapacityUsedRatio() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFileSystemsSystemAutoUpgradeConfig) int { return v.CapacityUsedRatio }).(pulumi.IntOutput)
+}
+
+// (Bool, Available since v2.1.0) Whether automatic capacity expansion is enabled.
+func (o GetFileSystemsSystemAutoUpgradeConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetFileSystemsSystemAutoUpgradeConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// (Int, Available since v2.1.0) The capacity expansion step. Unit: GiB.
+func (o GetFileSystemsSystemAutoUpgradeConfigOutput) Step() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFileSystemsSystemAutoUpgradeConfig) int { return v.Step }).(pulumi.IntOutput)
+}
+
+// (Int, Available since v2.1.0) The duration threshold. Unit: minutes.
+func (o GetFileSystemsSystemAutoUpgradeConfigOutput) Time() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFileSystemsSystemAutoUpgradeConfig) int { return v.Time }).(pulumi.IntOutput)
+}
+
+type GetFileSystemsSystemAutoUpgradeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFileSystemsSystemAutoUpgradeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFileSystemsSystemAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (o GetFileSystemsSystemAutoUpgradeConfigArrayOutput) ToGetFileSystemsSystemAutoUpgradeConfigArrayOutput() GetFileSystemsSystemAutoUpgradeConfigArrayOutput {
+	return o
+}
+
+func (o GetFileSystemsSystemAutoUpgradeConfigArrayOutput) ToGetFileSystemsSystemAutoUpgradeConfigArrayOutputWithContext(ctx context.Context) GetFileSystemsSystemAutoUpgradeConfigArrayOutput {
+	return o
+}
+
+func (o GetFileSystemsSystemAutoUpgradeConfigArrayOutput) Index(i pulumi.IntInput) GetFileSystemsSystemAutoUpgradeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFileSystemsSystemAutoUpgradeConfig {
+		return vs[0].([]GetFileSystemsSystemAutoUpgradeConfig)[vs[1].(int)]
+	}).(GetFileSystemsSystemAutoUpgradeConfigOutput)
+}
+
 type GetFilesetsFileset struct {
 	// The time when Fileset was created.
 	CreateTime string `pulumi:"createTime"`
@@ -2070,7 +2413,7 @@ type GetFilesetsFileset struct {
 	FilesetId string `pulumi:"filesetId"`
 	// The ID of the Fileset.
 	Id string `pulumi:"id"`
-	// The status of the fileset.
+	// The status of the fileset. Valid values: `CREATED`, `CREATING`, `RELEASED`, `RELEASING`.
 	Status string `pulumi:"status"`
 	// The latest update time of Fileset.
 	UpdateTime string `pulumi:"updateTime"`
@@ -2100,7 +2443,7 @@ type GetFilesetsFilesetArgs struct {
 	FilesetId pulumi.StringInput `pulumi:"filesetId"`
 	// The ID of the Fileset.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The status of the fileset.
+	// The status of the fileset. Valid values: `CREATED`, `CREATING`, `RELEASED`, `RELEASING`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The latest update time of Fileset.
 	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
@@ -2187,7 +2530,7 @@ func (o GetFilesetsFilesetOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFilesetsFileset) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The status of the fileset.
+// The status of the fileset. Valid values: `CREATED`, `CREATING`, `RELEASED`, `RELEASING`.
 func (o GetFilesetsFilesetOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFilesetsFileset) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2695,7 +3038,7 @@ type GetSnapshotsSnapshot struct {
 	SourceFileSystemSize string `pulumi:"sourceFileSystemSize"`
 	// The version of the source file system.
 	SourceFileSystemVersion string `pulumi:"sourceFileSystemVersion"`
-	// The status of the snapshot.
+	// Status. Valid values: `accomplished`, `failed`, `progressing`.
 	Status string `pulumi:"status"`
 }
 
@@ -2735,7 +3078,7 @@ type GetSnapshotsSnapshotArgs struct {
 	SourceFileSystemSize pulumi.StringInput `pulumi:"sourceFileSystemSize"`
 	// The version of the source file system.
 	SourceFileSystemVersion pulumi.StringInput `pulumi:"sourceFileSystemVersion"`
-	// The status of the snapshot.
+	// Status. Valid values: `accomplished`, `failed`, `progressing`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2850,7 +3193,7 @@ func (o GetSnapshotsSnapshotOutput) SourceFileSystemVersion() pulumi.StringOutpu
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceFileSystemVersion }).(pulumi.StringOutput)
 }
 
-// The status of the snapshot.
+// Status. Valid values: `accomplished`, `failed`, `progressing`.
 func (o GetSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2982,9 +3325,9 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 type GetZonesZoneInstanceType struct {
-	// File transfer protocol type. Valid values:
+	// File transfer protocol type. Valid values: `NFS`, `SMB` and `cpfs`.
 	ProtocolType string `pulumi:"protocolType"`
-	// The storage type of the nas zones. Valid values:
+	// The storage type of the nas zones. Valid values: `Performance`, `Capacity`, `Standard`, `Advance`, `advance100` and `advance200`.
 	StorageType string `pulumi:"storageType"`
 }
 
@@ -3000,9 +3343,9 @@ type GetZonesZoneInstanceTypeInput interface {
 }
 
 type GetZonesZoneInstanceTypeArgs struct {
-	// File transfer protocol type. Valid values:
+	// File transfer protocol type. Valid values: `NFS`, `SMB` and `cpfs`.
 	ProtocolType pulumi.StringInput `pulumi:"protocolType"`
-	// The storage type of the nas zones. Valid values:
+	// The storage type of the nas zones. Valid values: `Performance`, `Capacity`, `Standard`, `Advance`, `advance100` and `advance200`.
 	StorageType pulumi.StringInput `pulumi:"storageType"`
 }
 
@@ -3057,12 +3400,12 @@ func (o GetZonesZoneInstanceTypeOutput) ToGetZonesZoneInstanceTypeOutputWithCont
 	return o
 }
 
-// File transfer protocol type. Valid values:
+// File transfer protocol type. Valid values: `NFS`, `SMB` and `cpfs`.
 func (o GetZonesZoneInstanceTypeOutput) ProtocolType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZoneInstanceType) string { return v.ProtocolType }).(pulumi.StringOutput)
 }
 
-// The storage type of the nas zones. Valid values:
+// The storage type of the nas zones. Valid values: `Performance`, `Capacity`, `Standard`, `Advance`, `advance100` and `advance200`.
 func (o GetZonesZoneInstanceTypeOutput) StorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZoneInstanceType) string { return v.StorageType }).(pulumi.StringOutput)
 }
@@ -3092,6 +3435,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPointPosixUserPtrInput)(nil)).Elem(), AccessPointPosixUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPointRootPathPermissionInput)(nil)).Elem(), AccessPointRootPathPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPointRootPathPermissionPtrInput)(nil)).Elem(), AccessPointRootPathPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemAutoUpgradeConfigInput)(nil)).Elem(), FileSystemAutoUpgradeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemAutoUpgradeConfigPtrInput)(nil)).Elem(), FileSystemAutoUpgradeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemNfsAclInput)(nil)).Elem(), FileSystemNfsAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemNfsAclPtrInput)(nil)).Elem(), FileSystemNfsAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemOptionsInput)(nil)).Elem(), FileSystemOptionsArgs{})
@@ -3110,6 +3455,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDataFlowsFlowArrayInput)(nil)).Elem(), GetDataFlowsFlowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFileSystemsSystemInput)(nil)).Elem(), GetFileSystemsSystemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFileSystemsSystemArrayInput)(nil)).Elem(), GetFileSystemsSystemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFileSystemsSystemAutoUpgradeConfigInput)(nil)).Elem(), GetFileSystemsSystemAutoUpgradeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFileSystemsSystemAutoUpgradeConfigArrayInput)(nil)).Elem(), GetFileSystemsSystemAutoUpgradeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFilesetsFilesetInput)(nil)).Elem(), GetFilesetsFilesetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFilesetsFilesetArrayInput)(nil)).Elem(), GetFilesetsFilesetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLifecyclePoliciesPolicyInput)(nil)).Elem(), GetLifecyclePoliciesPolicyArgs{})
@@ -3128,6 +3475,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessPointPosixUserPtrOutput{})
 	pulumi.RegisterOutputType(AccessPointRootPathPermissionOutput{})
 	pulumi.RegisterOutputType(AccessPointRootPathPermissionPtrOutput{})
+	pulumi.RegisterOutputType(FileSystemAutoUpgradeConfigOutput{})
+	pulumi.RegisterOutputType(FileSystemAutoUpgradeConfigPtrOutput{})
 	pulumi.RegisterOutputType(FileSystemNfsAclOutput{})
 	pulumi.RegisterOutputType(FileSystemNfsAclPtrOutput{})
 	pulumi.RegisterOutputType(FileSystemOptionsOutput{})
@@ -3146,6 +3495,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDataFlowsFlowArrayOutput{})
 	pulumi.RegisterOutputType(GetFileSystemsSystemOutput{})
 	pulumi.RegisterOutputType(GetFileSystemsSystemArrayOutput{})
+	pulumi.RegisterOutputType(GetFileSystemsSystemAutoUpgradeConfigOutput{})
+	pulumi.RegisterOutputType(GetFileSystemsSystemAutoUpgradeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetFilesetsFilesetOutput{})
 	pulumi.RegisterOutputType(GetFilesetsFilesetArrayOutput{})
 	pulumi.RegisterOutputType(GetLifecyclePoliciesPolicyOutput{})

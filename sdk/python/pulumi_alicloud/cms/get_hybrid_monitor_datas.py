@@ -56,6 +56,9 @@ class GetHybridMonitorDatasResult:
     @_builtins.property
     @pulumi.getter
     def datas(self) -> Sequence['outputs.GetHybridMonitorDatasDataResult']:
+        """
+        A list of Cms Hybrid Monitor Datas. Each element contains the following attributes:
+        """
         return pulumi.get(self, "datas")
 
     @_builtins.property
@@ -123,7 +126,7 @@ def get_hybrid_monitor_datas(end: Optional[_builtins.str] = None,
     """
     This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.177.0+.
+    > **NOTE:** Available since v1.177.0+.
 
     ## Example Usage
 
@@ -177,7 +180,7 @@ def get_hybrid_monitor_datas_output(end: pulumi.Input[Optional[_builtins.str]] =
     """
     This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.177.0+.
+    > **NOTE:** Available since v1.177.0+.
 
     ## Example Usage
 

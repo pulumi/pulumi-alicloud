@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0+.
  *
  * ## Example Usage
  *
@@ -77,6 +77,9 @@ export interface GetDynamicTagGroupsArgs {
  * A collection of values returned by getDynamicTagGroups.
  */
 export interface GetDynamicTagGroupsResult {
+    /**
+     * A list of Cms Dynamic Tag Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.cms.GetDynamicTagGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -84,13 +87,19 @@ export interface GetDynamicTagGroupsResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the resource. Valid values: `RUNNING`, `FINISH`.
+     */
     readonly status?: string;
+    /**
+     * The tag key of the tag.
+     */
     readonly tagKey?: string;
 }
 /**
  * This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0+.
  *
  * ## Example Usage
  *

@@ -129,7 +129,7 @@ def get_private_zones(cen_id: Optional[_builtins.str] = None,
     """
     This data source provides CEN Private Zones available to the user.
 
-    > **NOTE:** Available in v1.88.0+.
+    > **NOTE:** Available since v1.88.0+.
 
     ## Example Usage
 
@@ -145,10 +145,9 @@ def get_private_zones(cen_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str cen_id: The ID of the CEN instance.
-    :param _builtins.str host_region_id: The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+    :param _builtins.str host_region_id: The service region is the target region of the PrivateZone service accessed through CEN.
     :param Sequence[_builtins.str] ids: A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
            **NOTE:** Before 1.162.0, each element same as `access_region_id`.
-           * ` host_region_id  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str status: The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
     """
@@ -178,7 +177,7 @@ def get_private_zones_output(cen_id: pulumi.Input[Optional[_builtins.str]] = Non
     """
     This data source provides CEN Private Zones available to the user.
 
-    > **NOTE:** Available in v1.88.0+.
+    > **NOTE:** Available since v1.88.0+.
 
     ## Example Usage
 
@@ -194,10 +193,9 @@ def get_private_zones_output(cen_id: pulumi.Input[Optional[_builtins.str]] = Non
 
 
     :param _builtins.str cen_id: The ID of the CEN instance.
-    :param _builtins.str host_region_id: The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+    :param _builtins.str host_region_id: The service region is the target region of the PrivateZone service accessed through CEN.
     :param Sequence[_builtins.str] ids: A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
            **NOTE:** Before 1.162.0, each element same as `access_region_id`.
-           * ` host_region_id  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str status: The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
     """

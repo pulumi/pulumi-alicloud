@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides CEN Private Zones available to the user.
         /// 
-        /// &gt; **NOTE:** Available in v1.88.0+.
+        /// &gt; **NOTE:** Available since v1.88.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides CEN Private Zones available to the user.
         /// 
-        /// &gt; **NOTE:** Available in v1.88.0+.
+        /// &gt; **NOTE:** Available since v1.88.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides CEN Private Zones available to the user.
         /// 
-        /// &gt; **NOTE:** Available in v1.88.0+.
+        /// &gt; **NOTE:** Available since v1.88.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Cen
         public string CenId { get; set; } = null!;
 
         /// <summary>
-        /// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+        /// The service region is the target region of the PrivateZone service accessed through CEN.
         /// </summary>
         [Input("hostRegionId")]
         public string? HostRegionId { get; set; }
@@ -138,7 +138,6 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
         /// **NOTE:** Before 1.162.0, each element same as `AccessRegionId`.
-        /// * ` HostRegionId  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
         /// </summary>
         public List<string> Ids
         {
@@ -173,7 +172,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string> CenId { get; set; } = null!;
 
         /// <summary>
-        /// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+        /// The service region is the target region of the PrivateZone service accessed through CEN.
         /// </summary>
         [Input("hostRegionId")]
         public Input<string>? HostRegionId { get; set; }
@@ -184,7 +183,6 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
         /// **NOTE:** Before 1.162.0, each element same as `AccessRegionId`.
-        /// * ` HostRegionId  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
         /// </summary>
         public InputList<string> Ids
         {

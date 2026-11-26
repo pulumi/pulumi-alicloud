@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the server load balancer attachments of the current Alibaba Cloud user.
         /// 
+        /// &gt; **NOTE:** Available since v1.15.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -42,6 +44,8 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the server load balancer attachments of the current Alibaba Cloud user.
         /// 
+        /// &gt; **NOTE:** Available since v1.15.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -69,6 +73,8 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// This data source provides the server load balancer attachments of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.15.0.
         /// 
         /// ## Example Usage
         /// 

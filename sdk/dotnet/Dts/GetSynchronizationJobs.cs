@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -102,6 +102,9 @@ namespace Pulumi.AliCloud.Dts
 
     public sealed class GetSynchronizationJobsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `False`. Set it to `True` to fetch detailed attributes for each synchronization job, including `SourceEndpointOwnerId` and `SourceEndpointRole`.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -143,6 +146,9 @@ namespace Pulumi.AliCloud.Dts
 
     public sealed class GetSynchronizationJobsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `False`. Set it to `True` to fetch detailed attributes for each synchronization job, including `SourceEndpointOwnerId` and `SourceEndpointRole`.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -192,9 +198,15 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Dts Synchronization Jobs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSynchronizationJobsJobResult> Jobs;
         public readonly string? NameRegex;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

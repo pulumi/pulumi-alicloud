@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the server load balancer attachments of the current Alibaba Cloud user.
  *
+ * > **NOTE:** Available since v1.15.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -66,6 +68,8 @@ export interface GetAttachmentsResult {
 }
 /**
  * This data source provides the server load balancer attachments of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.15.0.
  *
  * ## Example Usage
  *

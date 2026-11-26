@@ -13,6 +13,8 @@ import (
 
 // This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
 //
+// > **NOTE:** Available since v1.9.0
+//
 // ## Example Usage
 //
 // ```go
@@ -64,6 +66,7 @@ func GetSecurityGroups(ctx *pulumi.Context, args *GetSecurityGroupsArgs, opts ..
 
 // A collection of arguments for invoking getSecurityGroups.
 type GetSecurityGroupsArgs struct {
+	// Default to true. Set it to false to only output `id` in the `groups` block.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Security Group IDs.
 	Ids []string `pulumi:"ids"`
@@ -76,6 +79,7 @@ type GetSecurityGroupsArgs struct {
 	// The Id of resource group which the securityGroup belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -121,7 +125,7 @@ type GetSecurityGroupsResult struct {
 	PageSize   *int     `pulumi:"pageSize"`
 	// The Id of resource group which the securityGroup belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// A map of tags assigned to the ECS instance.
+	// (Optional) A map of tags assigned to the ECS instance.
 	Tags       map[string]string `pulumi:"tags"`
 	TotalCount int               `pulumi:"totalCount"`
 	// The ID of the VPC that owns the security group.
@@ -135,6 +139,7 @@ func GetSecurityGroupsOutput(ctx *pulumi.Context, args GetSecurityGroupsOutputAr
 
 // A collection of arguments for invoking getSecurityGroups.
 type GetSecurityGroupsOutputArgs struct {
+	// Default to true. Set it to false to only output `id` in the `groups` block.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Security Group IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -147,6 +152,7 @@ type GetSecurityGroupsOutputArgs struct {
 	// The Id of resource group which the securityGroup belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -239,7 +245,7 @@ func (o GetSecurityGroupsResultOutput) ResourceGroupId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetSecurityGroupsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-// A map of tags assigned to the ECS instance.
+// (Optional) A map of tags assigned to the ECS instance.
 func (o GetSecurityGroupsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSecurityGroupsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

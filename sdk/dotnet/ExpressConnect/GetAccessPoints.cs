@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -222,9 +222,18 @@ namespace Pulumi.AliCloud.ExpressConnect
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Access Point names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Express Connect Access Points. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAccessPointsPointResult> Points;
+        /// <summary>
+        /// The Physical Connection to Which the Access Point State.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Sae Config Maps of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.130.0+.
+// > **NOTE:** Available since v1.130.0.
 //
 // ## Example Usage
 //
@@ -100,13 +100,16 @@ type GetConfigMapsArgs struct {
 // A collection of values returned by getConfigMaps.
 type GetConfigMapsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string             `pulumi:"id"`
-	Ids         []string           `pulumi:"ids"`
-	Maps        []GetConfigMapsMap `pulumi:"maps"`
-	NameRegex   *string            `pulumi:"nameRegex"`
-	Names       []string           `pulumi:"names"`
-	NamespaceId string             `pulumi:"namespaceId"`
-	OutputFile  *string            `pulumi:"outputFile"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Sae Config Maps. Each element contains the following attributes:
+	Maps      []GetConfigMapsMap `pulumi:"maps"`
+	NameRegex *string            `pulumi:"nameRegex"`
+	// A list of Config Map names.
+	Names []string `pulumi:"names"`
+	// The NamespaceId of Config Maps.
+	NamespaceId string  `pulumi:"namespaceId"`
+	OutputFile  *string `pulumi:"outputFile"`
 }
 
 func GetConfigMapsOutput(ctx *pulumi.Context, args GetConfigMapsOutputArgs, opts ...pulumi.InvokeOption) GetConfigMapsResultOutput {
@@ -154,6 +157,7 @@ func (o GetConfigMapsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConfigMapsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Sae Config Maps. Each element contains the following attributes:
 func (o GetConfigMapsResultOutput) Maps() GetConfigMapsMapArrayOutput {
 	return o.ApplyT(func(v GetConfigMapsResult) []GetConfigMapsMap { return v.Maps }).(GetConfigMapsMapArrayOutput)
 }
@@ -162,10 +166,12 @@ func (o GetConfigMapsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConfigMapsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Config Map names.
 func (o GetConfigMapsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConfigMapsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
+// The NamespaceId of Config Maps.
 func (o GetConfigMapsResultOutput) NamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConfigMapsResult) string { return v.NamespaceId }).(pulumi.StringOutput)
 }

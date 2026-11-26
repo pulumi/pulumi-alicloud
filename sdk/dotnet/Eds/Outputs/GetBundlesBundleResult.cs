@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
     public sealed class GetBundlesBundleResult
     {
         /// <summary>
-        /// The bundle id of the bundle.
+        /// A list of bundle IDs used to filter the results.
         /// </summary>
         public readonly string BundleId;
         /// <summary>

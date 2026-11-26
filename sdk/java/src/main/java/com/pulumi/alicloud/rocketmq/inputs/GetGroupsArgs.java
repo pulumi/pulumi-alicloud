@@ -49,14 +49,14 @@ public final class GetGroupsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A list of group names.
+     * A list of group IDs to filter results.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return A list of group names.
+     * @return A list of group IDs to filter results.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -78,9 +78,17 @@ public final class GetGroupsArgs extends com.pulumi.resources.InvokeArgs {
         return this.instanceId;
     }
 
+    /**
+     * A regex string to filter results by the group name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
+    /**
+     * @return A regex string to filter results by the group name.
+     * 
+     */
     public Optional<Output<String>> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -188,7 +196,7 @@ public final class GetGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of group names.
+         * @param ids A list of group IDs to filter results.
          * 
          * @return builder
          * 
@@ -199,7 +207,7 @@ public final class GetGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of group names.
+         * @param ids A list of group IDs to filter results.
          * 
          * @return builder
          * 
@@ -209,7 +217,7 @@ public final class GetGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of group names.
+         * @param ids A list of group IDs to filter results.
          * 
          * @return builder
          * 
@@ -239,11 +247,23 @@ public final class GetGroupsArgs extends com.pulumi.resources.InvokeArgs {
             return instanceId(Output.of(instanceId));
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by the group name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable Output<String> nameRegex) {
             $.nameRegex = nameRegex;
             return this;
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by the group name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(String nameRegex) {
             return nameRegex(Output.of(nameRegex));
         }

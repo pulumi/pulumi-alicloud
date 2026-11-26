@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Oos State Configurations of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.147.0+.
+// > **NOTE:** Available since v1.147.0.
 //
 // ## Example Usage
 //
@@ -65,13 +65,16 @@ type GetStateConfigurationsArgs struct {
 
 // A collection of values returned by getStateConfigurations.
 type GetStateConfigurationsResult struct {
+	// A list of Oos State Configurations. Each element contains the following attributes:
 	Configurations []GetStateConfigurationsConfiguration `pulumi:"configurations"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string            `pulumi:"id"`
-	Ids             []string          `pulumi:"ids"`
-	OutputFile      *string           `pulumi:"outputFile"`
-	ResourceGroupId *string           `pulumi:"resourceGroupId"`
-	Tags            map[string]string `pulumi:"tags"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetStateConfigurationsOutput(ctx *pulumi.Context, args GetStateConfigurationsOutputArgs, opts ...pulumi.InvokeOption) GetStateConfigurationsResultOutput {
@@ -110,6 +113,7 @@ func (o GetStateConfigurationsResultOutput) ToGetStateConfigurationsResultOutput
 	return o
 }
 
+// A list of Oos State Configurations. Each element contains the following attributes:
 func (o GetStateConfigurationsResultOutput) Configurations() GetStateConfigurationsConfigurationArrayOutput {
 	return o.ApplyT(func(v GetStateConfigurationsResult) []GetStateConfigurationsConfiguration { return v.Configurations }).(GetStateConfigurationsConfigurationArrayOutput)
 }
@@ -127,10 +131,12 @@ func (o GetStateConfigurationsResultOutput) OutputFile() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetStateConfigurationsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the resource group.
 func (o GetStateConfigurationsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStateConfigurationsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The tag of the resource.
 func (o GetStateConfigurationsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetStateConfigurationsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

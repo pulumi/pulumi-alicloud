@@ -6,6 +6,49 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.13.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.mongodb.getZones({});
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
+ * });
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.zones?.[0]?.id,
+ * }));
+ * const defaultGetSecurityGroups = defaultGetNetworks.then(defaultGetNetworks => alicloud.ecs.getSecurityGroups({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ * }));
+ * const defaultInstance = new alicloud.mongodb.Instance("default", {
+ *     engineVersion: "4.4",
+ *     dbInstanceClass: "mdb.shard.2x.xlarge.d",
+ *     dbInstanceStorage: 20,
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     name: name,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Instance",
+ *     },
+ * });
+ * const ids = alicloud.dds.getMongoInstancesOutput({
+ *     ids: [defaultInstance.id],
+ * });
+ * export const mongodbInstancesId0 = ids.apply(ids => ids.instances?.[0]?.id);
+ * ```
+ */
 export function getMongoInstances(args?: GetMongoInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -26,14 +69,41 @@ export function getMongoInstances(args?: GetMongoInstancesArgs, opts?: pulumi.In
  * A collection of arguments for invoking getMongoInstances.
  */
 export interface GetMongoInstancesArgs {
+    /**
+     * The zone ID.
+     */
     availabilityZone?: string;
+    /**
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
+     */
     enableDetails?: boolean;
+    /**
+     * A list of Instance IDs.
+     */
     ids?: string[];
+    /**
+     * The instance type.
+     */
     instanceClass?: string;
+    /**
+     * The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
+     */
     instanceType?: string;
+    /**
+     * A regex string to filter results by Instance name.
+     */
     nameRegex?: string;
+    /**
+     * The name of file that can save the collection of instances after running `pulumi preview`.
+     */
     outputFile?: string;
+    /**
+     * The instance status.
+     */
     status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: {[key: string]: string};
 }
 
@@ -41,6 +111,9 @@ export interface GetMongoInstancesArgs {
  * A collection of values returned by getMongoInstances.
  */
 export interface GetMongoInstancesResult {
+    /**
+     * The zone ID of the instance.
+     */
     readonly availabilityZone?: string;
     readonly enableDetails?: boolean;
     /**
@@ -48,15 +121,76 @@ export interface GetMongoInstancesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The instance type.
+     */
     readonly instanceClass?: string;
+    /**
+     * The instance architecture.
+     */
     readonly instanceType?: string;
+    /**
+     * A list of Instances. Each element contains the following attributes:
+     */
     readonly instances: outputs.dds.GetMongoInstancesInstance[];
     readonly nameRegex?: string;
+    /**
+     * (Available since v1.42.0) A list of Instance names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The instance status.
+     */
     readonly status?: string;
+    /**
+     * (Available since v1.66.0) The details of the resource tags.
+     */
     readonly tags?: {[key: string]: string};
 }
+/**
+ * This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.13.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.mongodb.getZones({});
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
+ * });
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.zones?.[0]?.id,
+ * }));
+ * const defaultGetSecurityGroups = defaultGetNetworks.then(defaultGetNetworks => alicloud.ecs.getSecurityGroups({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ * }));
+ * const defaultInstance = new alicloud.mongodb.Instance("default", {
+ *     engineVersion: "4.4",
+ *     dbInstanceClass: "mdb.shard.2x.xlarge.d",
+ *     dbInstanceStorage: 20,
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     name: name,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Instance",
+ *     },
+ * });
+ * const ids = alicloud.dds.getMongoInstancesOutput({
+ *     ids: [defaultInstance.id],
+ * });
+ * export const mongodbInstancesId0 = ids.apply(ids => ids.instances?.[0]?.id);
+ * ```
+ */
 export function getMongoInstancesOutput(args?: GetMongoInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMongoInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -77,13 +211,40 @@ export function getMongoInstancesOutput(args?: GetMongoInstancesOutputArgs, opts
  * A collection of arguments for invoking getMongoInstances.
  */
 export interface GetMongoInstancesOutputArgs {
+    /**
+     * The zone ID.
+     */
     availabilityZone?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
+    /**
+     * A list of Instance IDs.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The instance type.
+     */
     instanceClass?: pulumi.Input<string | undefined>;
+    /**
+     * The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
+     */
     instanceType?: pulumi.Input<string | undefined>;
+    /**
+     * A regex string to filter results by Instance name.
+     */
     nameRegex?: pulumi.Input<string | undefined>;
+    /**
+     * The name of file that can save the collection of instances after running `pulumi preview`.
+     */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * The instance status.
+     */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -57,6 +57,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the acls in the region.
      * 
+     * &gt; **NOTE:** Available since v1.21.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -89,22 +91,6 @@ public final class SlbFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Entry Block
-     * 
-     * The entry mapping supports the following:
-     * 
-     * * `entry`   - An IP addresses or CIDR blocks.
-     * * `comment` - the comment of the entry.
-     * 
-     * ## Listener Block
-     * 
-     * The Listener mapping supports the following:
-     * 
-     * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
-     * * `frontendPort` - the listener port.
-     * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-     * * `aclType`      - the type of acl (such as white/black).
      * 
      */
     public static Output<GetAclsResult> getAcls() {
@@ -113,6 +99,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the acls in the region.
      * 
+     * &gt; **NOTE:** Available since v1.21.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -145,22 +133,6 @@ public final class SlbFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Entry Block
-     * 
-     * The entry mapping supports the following:
-     * 
-     * * `entry`   - An IP addresses or CIDR blocks.
-     * * `comment` - the comment of the entry.
-     * 
-     * ## Listener Block
-     * 
-     * The Listener mapping supports the following:
-     * 
-     * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
-     * * `frontendPort` - the listener port.
-     * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-     * * `aclType`      - the type of acl (such as white/black).
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain() {
@@ -169,6 +141,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the acls in the region.
      * 
+     * &gt; **NOTE:** Available since v1.21.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -201,22 +175,6 @@ public final class SlbFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Entry Block
-     * 
-     * The entry mapping supports the following:
-     * 
-     * * `entry`   - An IP addresses or CIDR blocks.
-     * * `comment` - the comment of the entry.
-     * 
-     * ## Listener Block
-     * 
-     * The Listener mapping supports the following:
-     * 
-     * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
-     * * `frontendPort` - the listener port.
-     * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-     * * `aclType`      - the type of acl (such as white/black).
      * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args) {
@@ -225,6 +183,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the acls in the region.
      * 
+     * &gt; **NOTE:** Available since v1.21.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -257,22 +217,6 @@ public final class SlbFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Entry Block
-     * 
-     * The entry mapping supports the following:
-     * 
-     * * `entry`   - An IP addresses or CIDR blocks.
-     * * `comment` - the comment of the entry.
-     * 
-     * ## Listener Block
-     * 
-     * The Listener mapping supports the following:
-     * 
-     * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
-     * * `frontendPort` - the listener port.
-     * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-     * * `aclType`      - the type of acl (such as white/black).
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args) {
@@ -281,6 +225,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the acls in the region.
      * 
+     * &gt; **NOTE:** Available since v1.21.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -313,22 +259,6 @@ public final class SlbFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Entry Block
-     * 
-     * The entry mapping supports the following:
-     * 
-     * * `entry`   - An IP addresses or CIDR blocks.
-     * * `comment` - the comment of the entry.
-     * 
-     * ## Listener Block
-     * 
-     * The Listener mapping supports the following:
-     * 
-     * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
-     * * `frontendPort` - the listener port.
-     * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-     * * `aclType`      - the type of acl (such as white/black).
      * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args, InvokeOptions options) {
@@ -337,6 +267,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the acls in the region.
      * 
+     * &gt; **NOTE:** Available since v1.21.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -369,22 +301,6 @@ public final class SlbFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Entry Block
-     * 
-     * The entry mapping supports the following:
-     * 
-     * * `entry`   - An IP addresses or CIDR blocks.
-     * * `comment` - the comment of the entry.
-     * 
-     * ## Listener Block
-     * 
-     * The Listener mapping supports the following:
-     * 
-     * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
-     * * `frontendPort` - the listener port.
-     * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-     * * `aclType`      - the type of acl (such as white/black).
      * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args, InvokeOutputOptions options) {
@@ -393,6 +309,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the acls in the region.
      * 
+     * &gt; **NOTE:** Available since v1.21.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -425,22 +343,6 @@ public final class SlbFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Entry Block
-     * 
-     * The entry mapping supports the following:
-     * 
-     * * `entry`   - An IP addresses or CIDR blocks.
-     * * `comment` - the comment of the entry.
-     * 
-     * ## Listener Block
-     * 
-     * The Listener mapping supports the following:
-     * 
-     * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
-     * * `frontendPort` - the listener port.
-     * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-     * * `aclType`      - the type of acl (such as white/black).
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args, InvokeOptions options) {
@@ -778,6 +680,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the server load balancer attachments of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.15.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -818,6 +722,8 @@ public final class SlbFunctions {
     }
     /**
      * This data source provides the server load balancer attachments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.15.0.
      * 
      * ## Example Usage
      * 
@@ -860,6 +766,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the server load balancer attachments of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.15.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -900,6 +808,8 @@ public final class SlbFunctions {
     }
     /**
      * This data source provides the server load balancer attachments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.15.0.
      * 
      * ## Example Usage
      * 
@@ -942,6 +852,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the server load balancer attachments of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.15.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -983,7 +895,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the server load balancer backend servers related to a server load balancer..
      * 
-     * &gt; **NOTE:** Available in 1.53.0+
+     * &gt; **NOTE:** Available since v1.53.0.
      * 
      * ## Example Usage
      * 
@@ -1026,7 +938,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the server load balancer backend servers related to a server load balancer..
      * 
-     * &gt; **NOTE:** Available in 1.53.0+
+     * &gt; **NOTE:** Available since v1.53.0.
      * 
      * ## Example Usage
      * 
@@ -1069,7 +981,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the server load balancer backend servers related to a server load balancer..
      * 
-     * &gt; **NOTE:** Available in 1.53.0+
+     * &gt; **NOTE:** Available since v1.53.0.
      * 
      * ## Example Usage
      * 
@@ -1112,7 +1024,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the server load balancer backend servers related to a server load balancer..
      * 
-     * &gt; **NOTE:** Available in 1.53.0+
+     * &gt; **NOTE:** Available since v1.53.0.
      * 
      * ## Example Usage
      * 
@@ -1155,7 +1067,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the server load balancer backend servers related to a server load balancer..
      * 
-     * &gt; **NOTE:** Available in 1.53.0+
+     * &gt; **NOTE:** Available since v1.53.0.
      * 
      * ## Example Usage
      * 
@@ -1198,6 +1110,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the CA certificate list.
      * 
+     * &gt; **NOTE:** Available since v1.22.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1237,6 +1151,8 @@ public final class SlbFunctions {
     }
     /**
      * This data source provides the CA certificate list.
+     * 
+     * &gt; **NOTE:** Available since v1.22.0.
      * 
      * ## Example Usage
      * 
@@ -1278,6 +1194,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the CA certificate list.
      * 
+     * &gt; **NOTE:** Available since v1.22.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1317,6 +1235,8 @@ public final class SlbFunctions {
     }
     /**
      * This data source provides the CA certificate list.
+     * 
+     * &gt; **NOTE:** Available since v1.22.0.
      * 
      * ## Example Usage
      * 
@@ -1358,6 +1278,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the CA certificate list.
      * 
+     * &gt; **NOTE:** Available since v1.22.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1397,6 +1319,8 @@ public final class SlbFunctions {
     }
     /**
      * This data source provides the CA certificate list.
+     * 
+     * &gt; **NOTE:** Available since v1.22.0.
      * 
      * ## Example Usage
      * 
@@ -1438,6 +1362,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the CA certificate list.
      * 
+     * &gt; **NOTE:** Available since v1.22.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1478,7 +1404,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the domain extensions associated with a server load balancer listener.
      * 
-     * &gt; **NOTE:** Available in 1.60.0+
+     * &gt; **NOTE:** Available since v1.60.0
      * 
      * ## Example Usage
      * 
@@ -1522,7 +1448,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the domain extensions associated with a server load balancer listener.
      * 
-     * &gt; **NOTE:** Available in 1.60.0+
+     * &gt; **NOTE:** Available since v1.60.0
      * 
      * ## Example Usage
      * 
@@ -1566,7 +1492,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the domain extensions associated with a server load balancer listener.
      * 
-     * &gt; **NOTE:** Available in 1.60.0+
+     * &gt; **NOTE:** Available since v1.60.0
      * 
      * ## Example Usage
      * 
@@ -1610,7 +1536,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the domain extensions associated with a server load balancer listener.
      * 
-     * &gt; **NOTE:** Available in 1.60.0+
+     * &gt; **NOTE:** Available since v1.60.0
      * 
      * ## Example Usage
      * 
@@ -1654,7 +1580,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the domain extensions associated with a server load balancer listener.
      * 
-     * &gt; **NOTE:** Available in 1.60.0+
+     * &gt; **NOTE:** Available since v1.60.0
      * 
      * ## Example Usage
      * 
@@ -1698,6 +1624,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.15.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1727,7 +1655,10 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()
-     *             .loadBalancerName("tf-testAccSlbListenertcp")
+     *             .loadBalancerName("terraform-exampleSlbListenerAclDs")
+     *             .internetChargeType("PayByTraffic")
+     *             .addressType("internet")
+     *             .loadBalancerSpec("slb.s1.small")
      *             .build());
      * 
      *         var tcp = new Listener("tcp", ListenerArgs.builder()
@@ -1749,10 +1680,11 @@ public final class SlbFunctions {
      *             .build());
      * 
      *         final var sampleDs = SlbFunctions.getListeners(GetListenersArgs.builder()
-     *             .loadBalancerId(default_.id())
+     *             .loadBalancerId(tcp.loadBalancerId())
      *             .build());
      * 
      *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(_sampleDs -> _sampleDs.slbListeners().get(0).protocol()));
+     *         ctx.export("firstSlbListenerId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbListeners().get(0).id()));
      *     }
      * }
      * }
@@ -1765,6 +1697,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.15.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1794,7 +1728,10 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()
-     *             .loadBalancerName("tf-testAccSlbListenertcp")
+     *             .loadBalancerName("terraform-exampleSlbListenerAclDs")
+     *             .internetChargeType("PayByTraffic")
+     *             .addressType("internet")
+     *             .loadBalancerSpec("slb.s1.small")
      *             .build());
      * 
      *         var tcp = new Listener("tcp", ListenerArgs.builder()
@@ -1816,10 +1753,11 @@ public final class SlbFunctions {
      *             .build());
      * 
      *         final var sampleDs = SlbFunctions.getListeners(GetListenersArgs.builder()
-     *             .loadBalancerId(default_.id())
+     *             .loadBalancerId(tcp.loadBalancerId())
      *             .build());
      * 
      *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(_sampleDs -> _sampleDs.slbListeners().get(0).protocol()));
+     *         ctx.export("firstSlbListenerId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbListeners().get(0).id()));
      *     }
      * }
      * }
@@ -1832,6 +1770,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.15.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1861,7 +1801,10 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()
-     *             .loadBalancerName("tf-testAccSlbListenertcp")
+     *             .loadBalancerName("terraform-exampleSlbListenerAclDs")
+     *             .internetChargeType("PayByTraffic")
+     *             .addressType("internet")
+     *             .loadBalancerSpec("slb.s1.small")
      *             .build());
      * 
      *         var tcp = new Listener("tcp", ListenerArgs.builder()
@@ -1883,10 +1826,11 @@ public final class SlbFunctions {
      *             .build());
      * 
      *         final var sampleDs = SlbFunctions.getListeners(GetListenersArgs.builder()
-     *             .loadBalancerId(default_.id())
+     *             .loadBalancerId(tcp.loadBalancerId())
      *             .build());
      * 
      *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(_sampleDs -> _sampleDs.slbListeners().get(0).protocol()));
+     *         ctx.export("firstSlbListenerId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbListeners().get(0).id()));
      *     }
      * }
      * }
@@ -1899,6 +1843,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.15.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1928,7 +1874,10 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()
-     *             .loadBalancerName("tf-testAccSlbListenertcp")
+     *             .loadBalancerName("terraform-exampleSlbListenerAclDs")
+     *             .internetChargeType("PayByTraffic")
+     *             .addressType("internet")
+     *             .loadBalancerSpec("slb.s1.small")
      *             .build());
      * 
      *         var tcp = new Listener("tcp", ListenerArgs.builder()
@@ -1950,10 +1899,11 @@ public final class SlbFunctions {
      *             .build());
      * 
      *         final var sampleDs = SlbFunctions.getListeners(GetListenersArgs.builder()
-     *             .loadBalancerId(default_.id())
+     *             .loadBalancerId(tcp.loadBalancerId())
      *             .build());
      * 
      *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(_sampleDs -> _sampleDs.slbListeners().get(0).protocol()));
+     *         ctx.export("firstSlbListenerId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbListeners().get(0).id()));
      *     }
      * }
      * }
@@ -1966,6 +1916,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.15.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1995,7 +1947,10 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()
-     *             .loadBalancerName("tf-testAccSlbListenertcp")
+     *             .loadBalancerName("terraform-exampleSlbListenerAclDs")
+     *             .internetChargeType("PayByTraffic")
+     *             .addressType("internet")
+     *             .loadBalancerSpec("slb.s1.small")
      *             .build());
      * 
      *         var tcp = new Listener("tcp", ListenerArgs.builder()
@@ -2017,10 +1972,11 @@ public final class SlbFunctions {
      *             .build());
      * 
      *         final var sampleDs = SlbFunctions.getListeners(GetListenersArgs.builder()
-     *             .loadBalancerId(default_.id())
+     *             .loadBalancerId(tcp.loadBalancerId())
      *             .build());
      * 
      *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(_sampleDs -> _sampleDs.slbListeners().get(0).protocol()));
+     *         ctx.export("firstSlbListenerId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbListeners().get(0).id()));
      *     }
      * }
      * }
@@ -2044,8 +2000,6 @@ public final class SlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.slb.LoadBalancer;
-     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.ArrayList;
@@ -2061,15 +2015,15 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()
-     *             .name("sample_slb")
-     *             .build());
-     * 
-     *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *         final var example = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("sample_slb")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("tagKey1", "tagValue1"),
+     *                 Map.entry("tagKey2", "tagValue2")
+     *             ))
      *             .build());
      * 
-     *         ctx.export("firstSlbId", slbsDs.slbs()[0].id());
+     *         ctx.export("firstSlbId", example.balancers()[0].id());
      *     }
      * }
      * }
@@ -2093,8 +2047,6 @@ public final class SlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.slb.LoadBalancer;
-     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.ArrayList;
@@ -2110,15 +2062,15 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()
-     *             .name("sample_slb")
-     *             .build());
-     * 
-     *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *         final var example = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("sample_slb")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("tagKey1", "tagValue1"),
+     *                 Map.entry("tagKey2", "tagValue2")
+     *             ))
      *             .build());
      * 
-     *         ctx.export("firstSlbId", slbsDs.slbs()[0].id());
+     *         ctx.export("firstSlbId", example.balancers()[0].id());
      *     }
      * }
      * }
@@ -2142,8 +2094,6 @@ public final class SlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.slb.LoadBalancer;
-     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.ArrayList;
@@ -2159,15 +2109,15 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()
-     *             .name("sample_slb")
-     *             .build());
-     * 
-     *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *         final var example = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("sample_slb")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("tagKey1", "tagValue1"),
+     *                 Map.entry("tagKey2", "tagValue2")
+     *             ))
      *             .build());
      * 
-     *         ctx.export("firstSlbId", slbsDs.slbs()[0].id());
+     *         ctx.export("firstSlbId", example.balancers()[0].id());
      *     }
      * }
      * }
@@ -2191,8 +2141,6 @@ public final class SlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.slb.LoadBalancer;
-     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.ArrayList;
@@ -2208,15 +2156,15 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()
-     *             .name("sample_slb")
-     *             .build());
-     * 
-     *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *         final var example = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("sample_slb")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("tagKey1", "tagValue1"),
+     *                 Map.entry("tagKey2", "tagValue2")
+     *             ))
      *             .build());
      * 
-     *         ctx.export("firstSlbId", slbsDs.slbs()[0].id());
+     *         ctx.export("firstSlbId", example.balancers()[0].id());
      *     }
      * }
      * }
@@ -2240,8 +2188,6 @@ public final class SlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.slb.LoadBalancer;
-     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.ArrayList;
@@ -2257,15 +2203,15 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()
-     *             .name("sample_slb")
-     *             .build());
-     * 
-     *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *         final var example = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("sample_slb")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("tagKey1", "tagValue1"),
+     *                 Map.entry("tagKey2", "tagValue2")
+     *             ))
      *             .build());
      * 
-     *         ctx.export("firstSlbId", slbsDs.slbs()[0].id());
+     *         ctx.export("firstSlbId", example.balancers()[0].id());
      *     }
      * }
      * }
@@ -2289,8 +2235,6 @@ public final class SlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.slb.LoadBalancer;
-     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.ArrayList;
@@ -2306,15 +2250,15 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()
-     *             .name("sample_slb")
-     *             .build());
-     * 
-     *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *         final var example = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("sample_slb")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("tagKey1", "tagValue1"),
+     *                 Map.entry("tagKey2", "tagValue2")
+     *             ))
      *             .build());
      * 
-     *         ctx.export("firstSlbId", slbsDs.slbs()[0].id());
+     *         ctx.export("firstSlbId", example.balancers()[0].id());
      *     }
      * }
      * }
@@ -2338,8 +2282,6 @@ public final class SlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.slb.LoadBalancer;
-     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.ArrayList;
@@ -2355,15 +2297,15 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()
-     *             .name("sample_slb")
-     *             .build());
-     * 
-     *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *         final var example = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("sample_slb")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("tagKey1", "tagValue1"),
+     *                 Map.entry("tagKey2", "tagValue2")
+     *             ))
      *             .build());
      * 
-     *         ctx.export("firstSlbId", slbsDs.slbs()[0].id());
+     *         ctx.export("firstSlbId", example.balancers()[0].id());
      *     }
      * }
      * }
@@ -2376,7 +2318,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the master slave server groups related to a server load balancer.
      * 
-     * &gt; **NOTE:** Available in 1.54.0+
+     * &gt; **NOTE:** Available since v1.54.0.
      * 
      */
     public static Output<GetMasterSlaveServerGroupsResult> getMasterSlaveServerGroups(GetMasterSlaveServerGroupsArgs args) {
@@ -2385,7 +2327,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the master slave server groups related to a server load balancer.
      * 
-     * &gt; **NOTE:** Available in 1.54.0+
+     * &gt; **NOTE:** Available since v1.54.0.
      * 
      */
     public static CompletableFuture<GetMasterSlaveServerGroupsResult> getMasterSlaveServerGroupsPlain(GetMasterSlaveServerGroupsPlainArgs args) {
@@ -2394,7 +2336,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the master slave server groups related to a server load balancer.
      * 
-     * &gt; **NOTE:** Available in 1.54.0+
+     * &gt; **NOTE:** Available since v1.54.0.
      * 
      */
     public static Output<GetMasterSlaveServerGroupsResult> getMasterSlaveServerGroups(GetMasterSlaveServerGroupsArgs args, InvokeOptions options) {
@@ -2403,7 +2345,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the master slave server groups related to a server load balancer.
      * 
-     * &gt; **NOTE:** Available in 1.54.0+
+     * &gt; **NOTE:** Available since v1.54.0.
      * 
      */
     public static Output<GetMasterSlaveServerGroupsResult> getMasterSlaveServerGroups(GetMasterSlaveServerGroupsArgs args, InvokeOutputOptions options) {
@@ -2412,7 +2354,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the master slave server groups related to a server load balancer.
      * 
-     * &gt; **NOTE:** Available in 1.54.0+
+     * &gt; **NOTE:** Available since v1.54.0.
      * 
      */
     public static CompletableFuture<GetMasterSlaveServerGroupsResult> getMasterSlaveServerGroupsPlain(GetMasterSlaveServerGroupsPlainArgs args, InvokeOptions options) {
@@ -2420,6 +2362,8 @@ public final class SlbFunctions {
     }
     /**
      * This data source provides the rules associated with a server load balancer listener.
+     * 
+     * &gt; **NOTE:** Available since v1.15.0.
      * 
      * ## Example Usage
      * 
@@ -2523,6 +2467,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the rules associated with a server load balancer listener.
      * 
+     * &gt; **NOTE:** Available since v1.15.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2624,6 +2570,8 @@ public final class SlbFunctions {
     }
     /**
      * This data source provides the rules associated with a server load balancer listener.
+     * 
+     * &gt; **NOTE:** Available since v1.15.0.
      * 
      * ## Example Usage
      * 
@@ -2727,6 +2675,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the rules associated with a server load balancer listener.
      * 
+     * &gt; **NOTE:** Available since v1.15.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2828,6 +2778,8 @@ public final class SlbFunctions {
     }
     /**
      * This data source provides the rules associated with a server load balancer listener.
+     * 
+     * &gt; **NOTE:** Available since v1.15.0.
      * 
      * ## Example Usage
      * 
@@ -2931,6 +2883,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the server certificate list.
      * 
+     * &gt; **NOTE:** Available since v1.21.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2970,6 +2924,8 @@ public final class SlbFunctions {
     }
     /**
      * This data source provides the server certificate list.
+     * 
+     * &gt; **NOTE:** Available since v1.21.0.
      * 
      * ## Example Usage
      * 
@@ -3011,6 +2967,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the server certificate list.
      * 
+     * &gt; **NOTE:** Available since v1.21.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -3050,6 +3008,8 @@ public final class SlbFunctions {
     }
     /**
      * This data source provides the server certificate list.
+     * 
+     * &gt; **NOTE:** Available since v1.21.0.
      * 
      * ## Example Usage
      * 
@@ -3091,6 +3051,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the server certificate list.
      * 
+     * &gt; **NOTE:** Available since v1.21.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -3130,6 +3092,8 @@ public final class SlbFunctions {
     }
     /**
      * This data source provides the server certificate list.
+     * 
+     * &gt; **NOTE:** Available since v1.21.0.
      * 
      * ## Example Usage
      * 
@@ -3171,6 +3135,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the server certificate list.
      * 
+     * &gt; **NOTE:** Available since v1.21.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -3210,6 +3176,8 @@ public final class SlbFunctions {
     }
     /**
      * This data source provides the VServer groups related to a server load balancer.
+     * 
+     * &gt; **NOTE:** Available since v1.15.0.
      * 
      * ## Example Usage
      * 
@@ -3290,6 +3258,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the VServer groups related to a server load balancer.
      * 
+     * &gt; **NOTE:** Available since v1.15.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -3368,6 +3338,8 @@ public final class SlbFunctions {
     }
     /**
      * This data source provides the VServer groups related to a server load balancer.
+     * 
+     * &gt; **NOTE:** Available since v1.15.0.
      * 
      * ## Example Usage
      * 
@@ -3448,6 +3420,8 @@ public final class SlbFunctions {
     /**
      * This data source provides the VServer groups related to a server load balancer.
      * 
+     * &gt; **NOTE:** Available since v1.15.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -3526,6 +3500,8 @@ public final class SlbFunctions {
     }
     /**
      * This data source provides the VServer groups related to a server load balancer.
+     * 
+     * &gt; **NOTE:** Available since v1.15.0.
      * 
      * ## Example Usage
      * 
@@ -3606,7 +3582,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -3658,7 +3634,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -3710,7 +3686,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -3762,7 +3738,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -3814,7 +3790,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -3866,7 +3842,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -3918,7 +3894,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 

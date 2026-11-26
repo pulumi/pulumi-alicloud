@@ -337,11 +337,11 @@ public final class DatabasefilesystemFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", TypeShape.of(GetAutoSnapShotPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
      * 
      * This data source provides the DBFS Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -389,11 +389,11 @@ public final class DatabasefilesystemFunctions {
         return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
      * 
      * This data source provides the DBFS Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -441,11 +441,11 @@ public final class DatabasefilesystemFunctions {
         return getInstancesPlain(GetInstancesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
      * 
      * This data source provides the DBFS Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -493,11 +493,11 @@ public final class DatabasefilesystemFunctions {
         return getInstances(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
      * 
      * This data source provides the DBFS Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -545,11 +545,11 @@ public final class DatabasefilesystemFunctions {
         return getInstancesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
      * 
      * This data source provides the DBFS Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -597,11 +597,11 @@ public final class DatabasefilesystemFunctions {
         return Deployment.getInstance().invoke("alicloud:databasefilesystem/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
      * 
      * This data source provides the DBFS Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -649,11 +649,11 @@ public final class DatabasefilesystemFunctions {
         return Deployment.getInstance().invoke("alicloud:databasefilesystem/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
      * 
      * This data source provides the DBFS Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -701,11 +701,11 @@ public final class DatabasefilesystemFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:databasefilesystem/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
      * 
      * This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.156.0+.
+     * &gt; **NOTE:** Available since v1.156.0.
      * 
      * ## Example Usage
      * 
@@ -758,11 +758,11 @@ public final class DatabasefilesystemFunctions {
         return getSnapshots(GetSnapshotsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
      * 
      * This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.156.0+.
+     * &gt; **NOTE:** Available since v1.156.0.
      * 
      * ## Example Usage
      * 
@@ -815,11 +815,11 @@ public final class DatabasefilesystemFunctions {
         return getSnapshotsPlain(GetSnapshotsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
      * 
      * This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.156.0+.
+     * &gt; **NOTE:** Available since v1.156.0.
      * 
      * ## Example Usage
      * 
@@ -872,11 +872,11 @@ public final class DatabasefilesystemFunctions {
         return getSnapshots(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
      * 
      * This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.156.0+.
+     * &gt; **NOTE:** Available since v1.156.0.
      * 
      * ## Example Usage
      * 
@@ -929,11 +929,11 @@ public final class DatabasefilesystemFunctions {
         return getSnapshotsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
      * 
      * This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.156.0+.
+     * &gt; **NOTE:** Available since v1.156.0.
      * 
      * ## Example Usage
      * 
@@ -986,11 +986,11 @@ public final class DatabasefilesystemFunctions {
         return Deployment.getInstance().invoke("alicloud:databasefilesystem/getSnapshots:getSnapshots", TypeShape.of(GetSnapshotsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
      * 
      * This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.156.0+.
+     * &gt; **NOTE:** Available since v1.156.0.
      * 
      * ## Example Usage
      * 
@@ -1043,11 +1043,11 @@ public final class DatabasefilesystemFunctions {
         return Deployment.getInstance().invoke("alicloud:databasefilesystem/getSnapshots:getSnapshots", TypeShape.of(GetSnapshotsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
      * 
      * This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.156.0+.
+     * &gt; **NOTE:** Available since v1.156.0.
      * 
      * ## Example Usage
      * 

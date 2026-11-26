@@ -72,6 +72,9 @@ class GetVpcEndpointConnectionsResult:
     @_builtins.property
     @pulumi.getter(name="endpointOwnerId")
     def endpoint_owner_id(self) -> Optional[_builtins.int]:
+        """
+        The owner ID of the endpoint.
+        """
         return pulumi.get(self, "endpoint_owner_id")
 
     @_builtins.property

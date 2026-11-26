@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.138.0+.
+// > **NOTE:** Available since v1.138.0.
 //
 // > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 //
@@ -73,13 +73,16 @@ type GetScimServerCredentialsArgs struct {
 
 // A collection of values returned by getScimServerCredentials.
 type GetScimServerCredentialsResult struct {
+	// A list of Cloud Sso Scim Server Credentials. Each element contains the following attributes:
 	Credentials []GetScimServerCredentialsCredential `pulumi:"credentials"`
-	DirectoryId string                               `pulumi:"directoryId"`
+	// The ID of the Directory.
+	DirectoryId string `pulumi:"directoryId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string   `pulumi:"id"`
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The Status of the resource. Valid values: `Disabled`, `Enabled`.
+	Status *string `pulumi:"status"`
 }
 
 func GetScimServerCredentialsOutput(ctx *pulumi.Context, args GetScimServerCredentialsOutputArgs, opts ...pulumi.InvokeOption) GetScimServerCredentialsResultOutput {
@@ -118,10 +121,12 @@ func (o GetScimServerCredentialsResultOutput) ToGetScimServerCredentialsResultOu
 	return o
 }
 
+// A list of Cloud Sso Scim Server Credentials. Each element contains the following attributes:
 func (o GetScimServerCredentialsResultOutput) Credentials() GetScimServerCredentialsCredentialArrayOutput {
 	return o.ApplyT(func(v GetScimServerCredentialsResult) []GetScimServerCredentialsCredential { return v.Credentials }).(GetScimServerCredentialsCredentialArrayOutput)
 }
 
+// The ID of the Directory.
 func (o GetScimServerCredentialsResultOutput) DirectoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScimServerCredentialsResult) string { return v.DirectoryId }).(pulumi.StringOutput)
 }
@@ -139,6 +144,7 @@ func (o GetScimServerCredentialsResultOutput) OutputFile() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetScimServerCredentialsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The Status of the resource. Valid values: `Disabled`, `Enabled`.
 func (o GetScimServerCredentialsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetScimServerCredentialsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

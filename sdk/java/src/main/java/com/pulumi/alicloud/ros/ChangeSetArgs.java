@@ -96,14 +96,14 @@ public final class ChangeSetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Parameters.
+     * Parameters. See `parameters` below.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<ChangeSetParameterArgs>> parameters;
 
     /**
-     * @return Parameters.
+     * @return Parameters. See `parameters` below.
      * 
      */
     public Optional<Output<List<ChangeSetParameterArgs>>> parameters() {
@@ -447,7 +447,7 @@ public final class ChangeSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Parameters.
+         * @param parameters Parameters. See `parameters` below.
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class ChangeSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Parameters.
+         * @param parameters Parameters. See `parameters` below.
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class ChangeSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Parameters.
+         * @param parameters Parameters. See `parameters` below.
          * 
          * @return builder
          * 

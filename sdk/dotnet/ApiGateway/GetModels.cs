@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <summary>
         /// This data source provides the Api Gateway Models of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// &gt; **NOTE:** Available since v1.187.0.
         /// 
         /// ## Example Usage
         /// 
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <summary>
         /// This data source provides the Api Gateway Models of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// &gt; **NOTE:** Available since v1.187.0.
         /// 
         /// ## Example Usage
         /// 
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <summary>
         /// This data source provides the Api Gateway Models of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// &gt; **NOTE:** Available since v1.187.0.
         /// 
         /// ## Example Usage
         /// 

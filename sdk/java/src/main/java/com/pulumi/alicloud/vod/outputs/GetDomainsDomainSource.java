@@ -10,21 +10,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDomainsDomainSource {
+    /**
+     * @return The address of the origin server. You can specify an IP address or a domain name.
+     * 
+     */
     private String sourceContent;
+    /**
+     * @return The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+     * 
+     */
     private String sourcePort;
+    /**
+     * @return The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+     * 
+     */
     private String sourcePriority;
+    /**
+     * @return The origin server type. Valid values: `ipaddr`, `domain`, `oss`.
+     * 
+     */
     private String sourceType;
 
     private GetDomainsDomainSource() {}
+    /**
+     * @return The address of the origin server. You can specify an IP address or a domain name.
+     * 
+     */
     public String sourceContent() {
         return this.sourceContent;
     }
+    /**
+     * @return The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+     * 
+     */
     public String sourcePort() {
         return this.sourcePort;
     }
+    /**
+     * @return The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+     * 
+     */
     public String sourcePriority() {
         return this.sourcePriority;
     }
+    /**
+     * @return The origin server type. Valid values: `ipaddr`, `domain`, `oss`.
+     * 
+     */
     public String sourceType() {
         return this.sourceType;
     }

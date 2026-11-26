@@ -63,6 +63,9 @@ class GetServerCustomImagesResult:
     @_builtins.property
     @pulumi.getter
     def images(self) -> Sequence['outputs.GetServerCustomImagesImageResult']:
+        """
+        A list of Simple Application Server Custom Images. Each element contains the following attributes:
+        """
         return pulumi.get(self, "images")
 
     @_builtins.property
@@ -73,6 +76,9 @@ class GetServerCustomImagesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Custom Image names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -102,7 +108,7 @@ def get_server_custom_images(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Simple Application Server Custom Images of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.143.0+.
+    > **NOTE:** Available since v1.143.0.
 
     ## Example Usage
 
@@ -144,7 +150,7 @@ def get_server_custom_images_output(ids: pulumi.Input[Optional[Optional[Sequence
     """
     This data source provides the Simple Application Server Custom Images of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.143.0+.
+    > **NOTE:** Available since v1.143.0.
 
     ## Example Usage
 

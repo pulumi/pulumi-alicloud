@@ -36,13 +36,9 @@ public final class GetVpcFirewallCensResult {
      */
     private List<String> ids;
     private @Nullable String lang;
-    /**
-     * @return The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
-     * 
-     */
     private @Nullable String memberUid;
     /**
-     * @return The ID of the VPC instance that created the VPC firewall.
+     * @return The ID of the network instance.
      * 
      */
     private @Nullable String networkInstanceId;
@@ -97,15 +93,11 @@ public final class GetVpcFirewallCensResult {
     public Optional<String> lang() {
         return Optional.ofNullable(this.lang);
     }
-    /**
-     * @return The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
-     * 
-     */
     public Optional<String> memberUid() {
         return Optional.ofNullable(this.memberUid);
     }
     /**
-     * @return The ID of the VPC instance that created the VPC firewall.
+     * @return The ID of the network instance.
      * 
      */
     public Optional<String> networkInstanceId() {

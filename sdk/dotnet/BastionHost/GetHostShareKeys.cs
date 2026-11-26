@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost Host Share Keys of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.165.0+.
+        /// &gt; **NOTE:** Available since v1.165.0.
         /// 
         /// ## Example Usage
         /// 
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost Host Share Keys of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.165.0+.
+        /// &gt; **NOTE:** Available since v1.165.0.
         /// 
         /// ## Example Usage
         /// 
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost Host Share Keys of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.165.0+.
+        /// &gt; **NOTE:** Available since v1.165.0.
         /// 
         /// ## Example Usage
         /// 
@@ -243,9 +243,18 @@ namespace Pulumi.AliCloud.BastionHost
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The ID of the Bastion instance.
+        /// </summary>
         public readonly string InstanceId;
+        /// <summary>
+        /// A list of Bastionhost Host Share Keys. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHostShareKeysKeyResult> Keys;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Host Share Key names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

@@ -71,6 +71,9 @@ class GetSynchronizationJobsResult:
     @_builtins.property
     @pulumi.getter
     def jobs(self) -> Sequence['outputs.GetSynchronizationJobsJobResult']:
+        """
+        A list of Dts Synchronization Jobs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "jobs")
 
     @_builtins.property
@@ -86,6 +89,9 @@ class GetSynchronizationJobsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -113,7 +119,7 @@ def get_synchronization_jobs(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.138.0+.
+    > **NOTE:** Available since v1.138.0.
 
     ## Example Usage
 
@@ -128,6 +134,7 @@ def get_synchronization_jobs(enable_details: Optional[_builtins.bool] = None,
     ```
 
 
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` to fetch detailed attributes for each synchronization job, including `source_endpoint_owner_id` and `source_endpoint_role`.
     :param Sequence[_builtins.str] ids: A list of Synchronization Job IDs.
     :param _builtins.str name_regex: A regex string to filter results by synchronization job name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -159,7 +166,7 @@ def get_synchronization_jobs_output(enable_details: pulumi.Input[Optional[Option
     """
     This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.138.0+.
+    > **NOTE:** Available since v1.138.0.
 
     ## Example Usage
 
@@ -174,6 +181,7 @@ def get_synchronization_jobs_output(enable_details: pulumi.Input[Optional[Option
     ```
 
 
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` to fetch detailed attributes for each synchronization job, including `source_endpoint_owner_id` and `source_endpoint_role`.
     :param Sequence[_builtins.str] ids: A list of Synchronization Job IDs.
     :param _builtins.str name_regex: A regex string to filter results by synchronization job name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).

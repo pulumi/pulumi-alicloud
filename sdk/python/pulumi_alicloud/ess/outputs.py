@@ -2586,7 +2586,7 @@ class ScalingConfigurationNetworkInterface(dict):
                  security_group_ids: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.str instance_type: The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
-        :param _builtins.int ipv6_address_count: The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+        :param _builtins.int ipv6_address_count: The number of randomly generated IPv6 addresses that you want to assign to primary ENI N. Setting it to `0` or removing it from the configuration stops requesting IPv6 addresses: the parameter is left out of the request and the Auto Scaling service drops the previously requested count.
         :param _builtins.str network_interface_traffic_mode: The communication mode of the ENI. Valid values: Standard, HighPerformance.
         :param Sequence[_builtins.str] security_group_ids: The ID of security group N to which ENI N belongs.
         """
@@ -2611,7 +2611,7 @@ class ScalingConfigurationNetworkInterface(dict):
     @pulumi.getter(name="ipv6AddressCount")
     def ipv6_address_count(self) -> Optional[_builtins.int]:
         """
-        The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+        The number of randomly generated IPv6 addresses that you want to assign to primary ENI N. Setting it to `0` or removing it from the configuration stops requesting IPv6 addresses: the parameter is left out of the request and the Auto Scaling service drops the previously requested count.
         """
         return pulumi.get(self, "ipv6_address_count")
 

@@ -24,7 +24,10 @@ class TunnelArgs:
                  instance_name: pulumi.Input[_builtins.str],
                  table_name: pulumi.Input[_builtins.str],
                  tunnel_name: pulumi.Input[_builtins.str],
-                 tunnel_type: pulumi.Input[_builtins.str]):
+                 tunnel_type: pulumi.Input[_builtins.str],
+                 end_offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_offset_flag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Tunnel resource.
 
@@ -32,11 +35,20 @@ class TunnelArgs:
         :param pulumi.Input[_builtins.str] table_name: The name of the OTS table. If changed, a new table would be created.
         :param pulumi.Input[_builtins.str] tunnel_name: The name of the OTS tunnel. If changed, a new tunnel would be created.
         :param pulumi.Input[_builtins.str] tunnel_type: The type of the OTS tunnel. Only `BaseAndStream`, `BaseData` or `Stream` is allowed.
+        :param pulumi.Input[_builtins.str] end_offset: The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `start_offset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+        :param pulumi.Input[_builtins.str] start_offset: The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `start_offset_flag`. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+        :param pulumi.Input[_builtins.str] start_offset_flag: The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `start_offset`. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
         """
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "table_name", table_name)
         pulumi.set(__self__, "tunnel_name", tunnel_name)
         pulumi.set(__self__, "tunnel_type", tunnel_type)
+        if end_offset is not None:
+            pulumi.set(__self__, "end_offset", end_offset)
+        if start_offset is not None:
+            pulumi.set(__self__, "start_offset", start_offset)
+        if start_offset_flag is not None:
+            pulumi.set(__self__, "start_offset_flag", start_offset_flag)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
@@ -86,14 +98,53 @@ class TunnelArgs:
     def tunnel_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "tunnel_type", value)
 
+    @_builtins.property
+    @pulumi.getter(name="endOffset")
+    def end_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `start_offset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+        """
+        return pulumi.get(self, "end_offset")
+
+    @end_offset.setter
+    def end_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "end_offset", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startOffset")
+    def start_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `start_offset_flag`. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+        """
+        return pulumi.get(self, "start_offset")
+
+    @start_offset.setter
+    def start_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_offset", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startOffsetFlag")
+    def start_offset_flag(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `start_offset`. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+        """
+        return pulumi.get(self, "start_offset_flag")
+
+    @start_offset_flag.setter
+    def start_offset_flag(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_offset_flag", value)
+
 
 @pulumi.input_type
 class _TunnelState:
     def __init__(__self__, *,
                  channels: pulumi.Input[Optional[Sequence[pulumi.Input['TunnelChannelArgs']]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 end_offset: pulumi.Input[Optional[_builtins.str]] = None,
                  expired: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_offset_flag: pulumi.Input[Optional[_builtins.str]] = None,
                  table_name: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -105,8 +156,11 @@ class _TunnelState:
 
         :param pulumi.Input[Sequence[pulumi.Input['TunnelChannelArgs']]] channels: The channels of OTS tunnel. Each element contains the following attributes:
         :param pulumi.Input[_builtins.int] create_time: The creation time of the Tunnel.
+        :param pulumi.Input[_builtins.str] end_offset: The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `start_offset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
         :param pulumi.Input[_builtins.bool] expired: Whether the tunnel has expired.
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance in which table will located.
+        :param pulumi.Input[_builtins.str] start_offset: The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `start_offset_flag`. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+        :param pulumi.Input[_builtins.str] start_offset_flag: The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `start_offset`. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
         :param pulumi.Input[_builtins.str] table_name: The name of the OTS table. If changed, a new table would be created.
         :param pulumi.Input[_builtins.str] tunnel_id: The tunnel id of the OTS which could not be changed.
         :param pulumi.Input[_builtins.str] tunnel_name: The name of the OTS tunnel. If changed, a new tunnel would be created.
@@ -118,10 +172,16 @@ class _TunnelState:
             pulumi.set(__self__, "channels", channels)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if end_offset is not None:
+            pulumi.set(__self__, "end_offset", end_offset)
         if expired is not None:
             pulumi.set(__self__, "expired", expired)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
+        if start_offset is not None:
+            pulumi.set(__self__, "start_offset", start_offset)
+        if start_offset_flag is not None:
+            pulumi.set(__self__, "start_offset_flag", start_offset_flag)
         if table_name is not None:
             pulumi.set(__self__, "table_name", table_name)
         if tunnel_id is not None:
@@ -160,6 +220,18 @@ class _TunnelState:
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="endOffset")
+    def end_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `start_offset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+        """
+        return pulumi.get(self, "end_offset")
+
+    @end_offset.setter
+    def end_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "end_offset", value)
+
+    @_builtins.property
     @pulumi.getter
     def expired(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -182,6 +254,30 @@ class _TunnelState:
     @instance_name.setter
     def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startOffset")
+    def start_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `start_offset_flag`. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+        """
+        return pulumi.get(self, "start_offset")
+
+    @start_offset.setter
+    def start_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_offset", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startOffsetFlag")
+    def start_offset_flag(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `start_offset`. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+        """
+        return pulumi.get(self, "start_offset_flag")
+
+    @start_offset_flag.setter
+    def start_offset_flag(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_offset_flag", value)
 
     @_builtins.property
     @pulumi.getter(name="tableName")
@@ -262,7 +358,10 @@ class Tunnel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 end_offset: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_offset_flag: pulumi.Input[Optional[_builtins.str]] = None,
                  table_name: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_name: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -274,22 +373,20 @@ class Tunnel(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.172.0.
 
+        > **NOTE:** `start_offset`, `end_offset` and `start_offset_flag` are only supported for `Stream` tunnels; configuring any of them for a `BaseData` or `BaseAndStream` tunnel is rejected during planning. The OTS stream expiration (maximum 7 days) determines the valid time window for `start_offset`/`end_offset`. Changing any of these arguments replaces the tunnel. `start_offset` and `start_offset_flag` are mutually exclusive. When importing a `Stream` tunnel, configure the same offsets or the same flag that the tunnel reports; an omitted `start_offset_flag` and `LATEST` are equivalent, while an imported tunnel that reports `EARLIEST` must be configured with `EARLIEST`. Otherwise the next plan proposes a replacement.
+
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.Integer("default",
-            min=10000,
-            max=99999)
-        default_instance = alicloud.ots.Instance("default",
-            name=f"{name}-{default['result']}",
+        default = alicloud.ots.Instance("default",
+            name=name,
             description=name,
             accessed_by="Any",
             tags={
@@ -297,7 +394,7 @@ class Tunnel(pulumi.CustomResource):
                 "For": "example",
             })
         default_table = alicloud.ots.Table("default",
-            instance_name=default_instance.name,
+            instance_name=default.name,
             table_name="tf_example",
             time_to_live=-1,
             max_version=1,
@@ -318,10 +415,41 @@ class Tunnel(pulumi.CustomResource):
                 },
             ])
         default_tunnel = alicloud.ots.Tunnel("default",
-            instance_name=default_instance.name,
+            instance_name=default.name,
             table_name=default_table.table_name,
             tunnel_name="tf_example",
             tunnel_type="BaseAndStream")
+        ```
+
+        Stream tunnel with incremental data consumption from the earliest available offset:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example-demo"
+        default = alicloud.ots.Instance("default",
+            name=name,
+            description=name,
+            accessed_by="Any")
+        default_table = alicloud.ots.Table("default",
+            instance_name=default.name,
+            table_name="terraform_example_stream",
+            time_to_live=-1,
+            max_version=1,
+            primary_keys=[{
+                "name": "pk1",
+                "type": "Integer",
+            }])
+        default_tunnel = alicloud.ots.Tunnel("default",
+            instance_name=default.name,
+            table_name=default_table.table_name,
+            tunnel_name="terraform_example_stream",
+            tunnel_type="Stream",
+            start_offset_flag="EARLIEST")
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -337,7 +465,10 @@ class Tunnel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] end_offset: The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `start_offset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance in which table will located.
+        :param pulumi.Input[_builtins.str] start_offset: The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `start_offset_flag`. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+        :param pulumi.Input[_builtins.str] start_offset_flag: The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `start_offset`. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
         :param pulumi.Input[_builtins.str] table_name: The name of the OTS table. If changed, a new table would be created.
         :param pulumi.Input[_builtins.str] tunnel_name: The name of the OTS tunnel. If changed, a new tunnel would be created.
         :param pulumi.Input[_builtins.str] tunnel_type: The type of the OTS tunnel. Only `BaseAndStream`, `BaseData` or `Stream` is allowed.
@@ -355,22 +486,20 @@ class Tunnel(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.172.0.
 
+        > **NOTE:** `start_offset`, `end_offset` and `start_offset_flag` are only supported for `Stream` tunnels; configuring any of them for a `BaseData` or `BaseAndStream` tunnel is rejected during planning. The OTS stream expiration (maximum 7 days) determines the valid time window for `start_offset`/`end_offset`. Changing any of these arguments replaces the tunnel. `start_offset` and `start_offset_flag` are mutually exclusive. When importing a `Stream` tunnel, configure the same offsets or the same flag that the tunnel reports; an omitted `start_offset_flag` and `LATEST` are equivalent, while an imported tunnel that reports `EARLIEST` must be configured with `EARLIEST`. Otherwise the next plan proposes a replacement.
+
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.Integer("default",
-            min=10000,
-            max=99999)
-        default_instance = alicloud.ots.Instance("default",
-            name=f"{name}-{default['result']}",
+        default = alicloud.ots.Instance("default",
+            name=name,
             description=name,
             accessed_by="Any",
             tags={
@@ -378,7 +507,7 @@ class Tunnel(pulumi.CustomResource):
                 "For": "example",
             })
         default_table = alicloud.ots.Table("default",
-            instance_name=default_instance.name,
+            instance_name=default.name,
             table_name="tf_example",
             time_to_live=-1,
             max_version=1,
@@ -399,10 +528,41 @@ class Tunnel(pulumi.CustomResource):
                 },
             ])
         default_tunnel = alicloud.ots.Tunnel("default",
-            instance_name=default_instance.name,
+            instance_name=default.name,
             table_name=default_table.table_name,
             tunnel_name="tf_example",
             tunnel_type="BaseAndStream")
+        ```
+
+        Stream tunnel with incremental data consumption from the earliest available offset:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example-demo"
+        default = alicloud.ots.Instance("default",
+            name=name,
+            description=name,
+            accessed_by="Any")
+        default_table = alicloud.ots.Table("default",
+            instance_name=default.name,
+            table_name="terraform_example_stream",
+            time_to_live=-1,
+            max_version=1,
+            primary_keys=[{
+                "name": "pk1",
+                "type": "Integer",
+            }])
+        default_tunnel = alicloud.ots.Tunnel("default",
+            instance_name=default.name,
+            table_name=default_table.table_name,
+            tunnel_name="terraform_example_stream",
+            tunnel_type="Stream",
+            start_offset_flag="EARLIEST")
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -431,7 +591,10 @@ class Tunnel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 end_offset: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_offset_flag: pulumi.Input[Optional[_builtins.str]] = None,
                  table_name: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_name: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -444,9 +607,12 @@ class Tunnel(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TunnelArgs.__new__(TunnelArgs)
 
+            __props__.__dict__["end_offset"] = end_offset
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
             __props__.__dict__["instance_name"] = instance_name
+            __props__.__dict__["start_offset"] = start_offset
+            __props__.__dict__["start_offset_flag"] = start_offset_flag
             if table_name is None and not opts.urn:
                 raise TypeError("Missing required property 'table_name'")
             __props__.__dict__["table_name"] = table_name
@@ -474,8 +640,11 @@ class Tunnel(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             channels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TunnelChannelArgs', 'TunnelChannelArgsDict', 'outputs.TunnelChannel']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            end_offset: pulumi.Input[Optional[_builtins.str]] = None,
             expired: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            start_offset: pulumi.Input[Optional[_builtins.str]] = None,
+            start_offset_flag: pulumi.Input[Optional[_builtins.str]] = None,
             table_name: pulumi.Input[Optional[_builtins.str]] = None,
             tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
             tunnel_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -491,8 +660,11 @@ class Tunnel(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TunnelChannelArgs', 'TunnelChannelArgsDict', 'outputs.TunnelChannel']]]] channels: The channels of OTS tunnel. Each element contains the following attributes:
         :param pulumi.Input[_builtins.int] create_time: The creation time of the Tunnel.
+        :param pulumi.Input[_builtins.str] end_offset: The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `start_offset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
         :param pulumi.Input[_builtins.bool] expired: Whether the tunnel has expired.
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance in which table will located.
+        :param pulumi.Input[_builtins.str] start_offset: The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `start_offset_flag`. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+        :param pulumi.Input[_builtins.str] start_offset_flag: The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `start_offset`. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
         :param pulumi.Input[_builtins.str] table_name: The name of the OTS table. If changed, a new table would be created.
         :param pulumi.Input[_builtins.str] tunnel_id: The tunnel id of the OTS which could not be changed.
         :param pulumi.Input[_builtins.str] tunnel_name: The name of the OTS tunnel. If changed, a new tunnel would be created.
@@ -506,8 +678,11 @@ class Tunnel(pulumi.CustomResource):
 
         __props__.__dict__["channels"] = channels
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["end_offset"] = end_offset
         __props__.__dict__["expired"] = expired
         __props__.__dict__["instance_name"] = instance_name
+        __props__.__dict__["start_offset"] = start_offset
+        __props__.__dict__["start_offset_flag"] = start_offset_flag
         __props__.__dict__["table_name"] = table_name
         __props__.__dict__["tunnel_id"] = tunnel_id
         __props__.__dict__["tunnel_name"] = tunnel_name
@@ -521,8 +696,11 @@ class Tunnel(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             channels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TunnelChannelArgs', 'TunnelChannelArgsDict', 'outputs.TunnelChannel']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            end_offset: pulumi.Input[Optional[_builtins.str]] = None,
             expired: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            start_offset: pulumi.Input[Optional[_builtins.str]] = None,
+            start_offset_flag: pulumi.Input[Optional[_builtins.str]] = None,
             table_name: pulumi.Input[Optional[_builtins.str]] = None,
             tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
             tunnel_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -532,8 +710,11 @@ class Tunnel(pulumi.CustomResource):
         __props__: dict = {}
         __props__["channels"] = channels
         __props__["createTime"] = create_time
+        __props__["endOffset"] = end_offset
         __props__["expired"] = expired
         __props__["instanceName"] = instance_name
+        __props__["startOffset"] = start_offset
+        __props__["startOffsetFlag"] = start_offset_flag
         __props__["tableName"] = table_name
         __props__["tunnelId"] = tunnel_id
         __props__["tunnelName"] = tunnel_name
@@ -559,6 +740,14 @@ class Tunnel(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @_builtins.property
+    @pulumi.getter(name="endOffset")
+    def end_offset(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `start_offset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+        """
+        return pulumi.get(self, "end_offset")
+
+    @_builtins.property
     @pulumi.getter
     def expired(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -573,6 +762,22 @@ class Tunnel(pulumi.CustomResource):
         The name of the OTS instance in which table will located.
         """
         return pulumi.get(self, "instance_name")
+
+    @_builtins.property
+    @pulumi.getter(name="startOffset")
+    def start_offset(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `start_offset_flag`. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+        """
+        return pulumi.get(self, "start_offset")
+
+    @_builtins.property
+    @pulumi.getter(name="startOffsetFlag")
+    def start_offset_flag(self) -> pulumi.Output[_builtins.str]:
+        """
+        The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `start_offset`. Available since v2.3.0. This argument is only supported when `tunnel_type` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+        """
+        return pulumi.get(self, "start_offset_flag")
 
     @_builtins.property
     @pulumi.getter(name="tableName")

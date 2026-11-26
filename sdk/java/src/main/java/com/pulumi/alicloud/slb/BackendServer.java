@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * Add a group of backend servers (ECS or ENI instance) to the Server Load Balancer or remove them from it.
  * 
- * &gt; **NOTE:** Available in 1.53.0+
+ * &gt; **NOTE:** Available since v1.53.0+
  * 
  * ## Import
  * 
@@ -34,14 +34,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:slb/backendServer:BackendServer")
 public class BackendServer extends com.pulumi.resources.CustomResource {
     /**
-     * A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+     * A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `backendServers` below.
      * 
      */
     @Export(name="backendServers", refs={List.class,BackendServerBackendServer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<BackendServerBackendServer>> backendServers;
 
     /**
-     * @return A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+     * @return A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `backendServers` below.
      * 
      */
     public Output<Optional<List<BackendServerBackendServer>>> backendServers() {

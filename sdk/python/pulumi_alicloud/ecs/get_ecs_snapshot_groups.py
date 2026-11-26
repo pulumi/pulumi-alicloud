@@ -62,6 +62,9 @@ class GetEcsSnapshotGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetEcsSnapshotGroupsGroupResult']:
+        """
+        A list of Ecs Snapshot Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -80,6 +83,9 @@ class GetEcsSnapshotGroupsResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -90,6 +96,9 @@ class GetEcsSnapshotGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Snapshot Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -100,16 +109,25 @@ class GetEcsSnapshotGroupsResult:
     @_builtins.property
     @pulumi.getter(name="snapshotGroupName")
     def snapshot_group_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the snapshot-consistent group.
+        """
         return pulumi.get(self, "snapshot_group_name")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Optional) List of label key-value pairs.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -142,7 +160,7 @@ def get_ecs_snapshot_groups(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.160.0+.
+    > **NOTE:** Available since v1.160.0.
 
     ## Example Usage
 
@@ -204,7 +222,7 @@ def get_ecs_snapshot_groups_output(ids: pulumi.Input[Optional[Optional[Sequence[
     """
     This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.160.0+.
+    > **NOTE:** Available since v1.160.0.
 
     ## Example Usage
 

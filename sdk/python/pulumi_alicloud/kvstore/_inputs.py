@@ -15,9 +15,60 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'InstanceAdditionalBandwidthArgs',
+    'InstanceAdditionalBandwidthArgsDict',
     'InstanceParameterArgs',
     'InstanceParameterArgsDict',
 ]
+
+class InstanceAdditionalBandwidthArgsDict(TypedDict):
+    bandwidth: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The additional bandwidth to add. Unit: MB/s. Must be set in every `additional_bandwidth` block; a block without it is rejected. Valid values: non-negative integers. The maximum value is 6 times the default bandwidth of the instance (or shard) specification, capped at 192 MB/s. Set to `0` to release the additional bandwidth purchased for the shard.
+    """
+    node_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The data shard whose bandwidth is adjusted. Use the shard node name (`r-xxx-db-0`, the `InsName` reported by the `DescribeRoleZoneInfo` operation) or its full topology ID (`r-xxx-db-0#123456`); a suffix such as `db-0` is also accepted when exactly one data shard of the instance ends with it. Required on [cluster](https://www.alibabacloud.com/help/en/redis/user-guide/cluster-instances) and [read/write splitting](https://www.alibabacloud.com/help/en/redis/user-guide/read-write-splitting-based-on-proxy-nodes) instances, and each data shard can be configured at most once. A standard instance takes `bandwidth` alone and must leave this argument unset, because `EnableAdditionalBandwidth` only accepts `NodeId` for the cluster and read/write splitting architectures.
+    """
+
+@pulumi.input_type
+class InstanceAdditionalBandwidthArgs:
+    def __init__(__self__, *,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] bandwidth: The additional bandwidth to add. Unit: MB/s. Must be set in every `additional_bandwidth` block; a block without it is rejected. Valid values: non-negative integers. The maximum value is 6 times the default bandwidth of the instance (or shard) specification, capped at 192 MB/s. Set to `0` to release the additional bandwidth purchased for the shard.
+        :param pulumi.Input[_builtins.str] node_id: The data shard whose bandwidth is adjusted. Use the shard node name (`r-xxx-db-0`, the `InsName` reported by the `DescribeRoleZoneInfo` operation) or its full topology ID (`r-xxx-db-0#123456`); a suffix such as `db-0` is also accepted when exactly one data shard of the instance ends with it. Required on [cluster](https://www.alibabacloud.com/help/en/redis/user-guide/cluster-instances) and [read/write splitting](https://www.alibabacloud.com/help/en/redis/user-guide/read-write-splitting-based-on-proxy-nodes) instances, and each data shard can be configured at most once. A standard instance takes `bandwidth` alone and must leave this argument unset, because `EnableAdditionalBandwidth` only accepts `NodeId` for the cluster and read/write splitting architectures.
+        """
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
+        if node_id is not None:
+            pulumi.set(__self__, "node_id", node_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The additional bandwidth to add. Unit: MB/s. Must be set in every `additional_bandwidth` block; a block without it is rejected. Valid values: non-negative integers. The maximum value is 6 times the default bandwidth of the instance (or shard) specification, capped at 192 MB/s. Set to `0` to release the additional bandwidth purchased for the shard.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "bandwidth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The data shard whose bandwidth is adjusted. Use the shard node name (`r-xxx-db-0`, the `InsName` reported by the `DescribeRoleZoneInfo` operation) or its full topology ID (`r-xxx-db-0#123456`); a suffix such as `db-0` is also accepted when exactly one data shard of the instance ends with it. Required on [cluster](https://www.alibabacloud.com/help/en/redis/user-guide/cluster-instances) and [read/write splitting](https://www.alibabacloud.com/help/en/redis/user-guide/read-write-splitting-based-on-proxy-nodes) instances, and each data shard can be configured at most once. A standard instance takes `bandwidth` alone and must leave this argument unset, because `EnableAdditionalBandwidth` only accepts `NodeId` for the cluster and read/write splitting architectures.
+        """
+        return pulumi.get(self, "node_id")
+
+    @node_id.setter
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "node_id", value)
+
 
 class InstanceParameterArgsDict(TypedDict):
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]

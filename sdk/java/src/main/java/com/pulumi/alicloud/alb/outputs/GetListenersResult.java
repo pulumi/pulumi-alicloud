@@ -23,10 +23,22 @@ public final class GetListenersResult {
     private String id;
     private List<String> ids;
     private @Nullable List<String> listenerIds;
+    /**
+     * @return Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+     * 
+     */
     private @Nullable String listenerProtocol;
+    /**
+     * @return A list of Alb Listeners. Each element contains the following attributes:
+     * 
+     */
     private List<GetListenersListener> listeners;
     private @Nullable List<String> loadBalancerIds;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the listener.
+     * 
+     */
     private @Nullable String status;
 
     private GetListenersResult() {}
@@ -46,9 +58,17 @@ public final class GetListenersResult {
     public List<String> listenerIds() {
         return this.listenerIds == null ? List.of() : this.listenerIds;
     }
+    /**
+     * @return Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+     * 
+     */
     public Optional<String> listenerProtocol() {
         return Optional.ofNullable(this.listenerProtocol);
     }
+    /**
+     * @return A list of Alb Listeners. Each element contains the following attributes:
+     * 
+     */
     public List<GetListenersListener> listeners() {
         return this.listeners;
     }
@@ -58,6 +78,10 @@ public final class GetListenersResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the listener.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

@@ -138,9 +138,17 @@ public final class GetContainerGroupsPlainArgs extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Map<String,String> tags;
 
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Optional<Map<String,String>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -160,9 +168,17 @@ public final class GetContainerGroupsPlainArgs extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.vswitchId);
     }
 
+    /**
+     * Whether to return container group events.
+     * 
+     */
     @Import(name="withEvent")
     private @Nullable Boolean withEvent;
 
+    /**
+     * @return Whether to return container group events.
+     * 
+     */
     public Optional<Boolean> withEvent() {
         return Optional.ofNullable(this.withEvent);
     }
@@ -315,6 +331,12 @@ public final class GetContainerGroupsPlainArgs extends com.pulumi.resources.Invo
             return this;
         }
 
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Map<String,String> tags) {
             $.tags = tags;
             return this;
@@ -331,6 +353,12 @@ public final class GetContainerGroupsPlainArgs extends com.pulumi.resources.Invo
             return this;
         }
 
+        /**
+         * @param withEvent Whether to return container group events.
+         * 
+         * @return builder
+         * 
+         */
         public Builder withEvent(@Nullable Boolean withEvent) {
             $.withEvent = withEvent;
             return this;

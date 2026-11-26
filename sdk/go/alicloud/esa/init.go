@@ -103,6 +103,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Site{}
 	case "alicloud:esa/siteDeliveryTask:SiteDeliveryTask":
 		r = &SiteDeliveryTask{}
+	case "alicloud:esa/siteEnvironment:SiteEnvironment":
+		r = &SiteEnvironment{}
 	case "alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate":
 		r = &SiteOriginClientCertificate{}
 	case "alicloud:esa/transportLayerApplication:TransportLayerApplication":
@@ -339,6 +341,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/siteDeliveryTask",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/siteEnvironment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

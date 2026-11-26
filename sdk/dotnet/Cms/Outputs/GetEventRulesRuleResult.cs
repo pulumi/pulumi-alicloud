@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly int SilenceTime;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `DISABLED`, `ENABLED`.
         /// </summary>
         public readonly string Status;
 

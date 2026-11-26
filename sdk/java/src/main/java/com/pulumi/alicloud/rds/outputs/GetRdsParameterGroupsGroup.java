@@ -13,45 +13,131 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRdsParameterGroupsGroup {
+    /**
+     * @return The database engine.
+     * 
+     */
     private String engine;
+    /**
+     * @return The version of the database engine.
+     * 
+     */
     private String engineVersion;
+    /**
+     * @return Indicates whether applying the parameter template requires the instance to be restarted. Valid values: `0`: A restart is not required. `1`: A restart is required.
+     * 
+     */
     private Integer forceRestart;
+    /**
+     * @return The ID of the Parameter Group.
+     * 
+     */
     private String id;
+    /**
+     * @return The number of parameters in the parameter template.
+     * 
+     */
     private Integer paramCounts;
+    /**
+     * @return Parameter list.
+     * 
+     */
     private List<GetRdsParameterGroupsGroupParamDetail> paramDetails;
+    /**
+     * @return The description of the parameter template.
+     * 
+     */
     private String parameterGroupDesc;
+    /**
+     * @return The ParameterGroupId of the Parameter Group.
+     * 
+     */
     private String parameterGroupId;
+    /**
+     * @return The name of the parameter template.
+     * 
+     */
     private String parameterGroupName;
+    /**
+     * @return The type of the parameter template. Valid values:
+     * `0`: indicates a default parameter template.
+     * `1`: indicates a custom parameter template.
+     * `2`: an automatic backup parameter template. After you apply this type of template to an RDS instance, the system automatically backs up the parameter settings of that instance and saves the data backup as a template.
+     * 
+     */
     private Integer parameterGroupType;
 
     private GetRdsParameterGroupsGroup() {}
+    /**
+     * @return The database engine.
+     * 
+     */
     public String engine() {
         return this.engine;
     }
+    /**
+     * @return The version of the database engine.
+     * 
+     */
     public String engineVersion() {
         return this.engineVersion;
     }
+    /**
+     * @return Indicates whether applying the parameter template requires the instance to be restarted. Valid values: `0`: A restart is not required. `1`: A restart is required.
+     * 
+     */
     public Integer forceRestart() {
         return this.forceRestart;
     }
+    /**
+     * @return The ID of the Parameter Group.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The number of parameters in the parameter template.
+     * 
+     */
     public Integer paramCounts() {
         return this.paramCounts;
     }
+    /**
+     * @return Parameter list.
+     * 
+     */
     public List<GetRdsParameterGroupsGroupParamDetail> paramDetails() {
         return this.paramDetails;
     }
+    /**
+     * @return The description of the parameter template.
+     * 
+     */
     public String parameterGroupDesc() {
         return this.parameterGroupDesc;
     }
+    /**
+     * @return The ParameterGroupId of the Parameter Group.
+     * 
+     */
     public String parameterGroupId() {
         return this.parameterGroupId;
     }
+    /**
+     * @return The name of the parameter template.
+     * 
+     */
     public String parameterGroupName() {
         return this.parameterGroupName;
     }
+    /**
+     * @return The type of the parameter template. Valid values:
+     * `0`: indicates a default parameter template.
+     * `1`: indicates a custom parameter template.
+     * `2`: an automatic backup parameter template. After you apply this type of template to an RDS instance, the system automatically backs up the parameter settings of that instance and saves the data backup as a template.
+     * 
+     */
     public Integer parameterGroupType() {
         return this.parameterGroupType;
     }

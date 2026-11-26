@@ -83,21 +83,33 @@ class GetLoadBalancersResult:
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> Optional[_builtins.str]:
+        """
+        The IP version.
+        """
         return pulumi.get(self, "address_ip_version")
 
     @_builtins.property
     @pulumi.getter(name="addressType")
     def address_type(self) -> Optional[_builtins.str]:
+        """
+        The type of IPv4 address used by the NLB instance.
+        """
         return pulumi.get(self, "address_type")
 
     @_builtins.property
     @pulumi.getter
     def balancers(self) -> Sequence['outputs.GetLoadBalancersBalancerResult']:
+        """
+        A list of Nlb Load Balancers. Each element contains the following attributes:
+        """
         return pulumi.get(self, "balancers")
 
     @_builtins.property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> Optional[_builtins.str]:
+        """
+        The domain name of the NLB instance.
+        """
         return pulumi.get(self, "dns_name")
 
     @_builtins.property
@@ -116,11 +128,17 @@ class GetLoadBalancersResult:
     @_builtins.property
     @pulumi.getter(name="ipv6AddressType")
     def ipv6_address_type(self) -> Optional[_builtins.str]:
+        """
+        The type of IPv6 address used by the NLB instance.
+        """
         return pulumi.get(self, "ipv6_address_type")
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerBusinessStatus")
     def load_balancer_business_status(self) -> Optional[_builtins.str]:
+        """
+        The business status of the NLB instance.
+        """
         return pulumi.get(self, "load_balancer_business_status")
 
     @_builtins.property
@@ -136,6 +154,9 @@ class GetLoadBalancersResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Load Balancer names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -146,16 +167,25 @@ class GetLoadBalancersResult:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the NLB instance.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The tag of the resource.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
@@ -166,6 +196,9 @@ class GetLoadBalancersResult:
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
+        """
+        The name of the zone.
+        """
         return pulumi.get(self, "zone_id")
 
 
@@ -212,7 +245,7 @@ def get_load_balancers(address_ip_version: Optional[_builtins.str] = None,
     """
     This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.191.0+.
+    > **NOTE:** Available since v1.191.0.
 
     ## Example Usage
 
@@ -240,6 +273,7 @@ def get_load_balancers(address_ip_version: Optional[_builtins.str] = None,
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str resource_group_id: The ID of the resource group.
     :param _builtins.str status: The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     :param Sequence[_builtins.str] vpc_ids: The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify at most 10 IDs.
     :param _builtins.str zone_id: The name of the zone.
     """
@@ -297,7 +331,7 @@ def get_load_balancers_output(address_ip_version: pulumi.Input[Optional[Optional
     """
     This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.191.0+.
+    > **NOTE:** Available since v1.191.0.
 
     ## Example Usage
 
@@ -325,6 +359,7 @@ def get_load_balancers_output(address_ip_version: pulumi.Input[Optional[Optional
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str resource_group_id: The ID of the resource group.
     :param _builtins.str status: The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     :param Sequence[_builtins.str] vpc_ids: The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify at most 10 IDs.
     :param _builtins.str zone_id: The name of the zone.
     """

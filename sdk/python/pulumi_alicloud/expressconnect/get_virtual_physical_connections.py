@@ -193,7 +193,7 @@ def get_virtual_physical_connections(business_status: Optional[_builtins.str] = 
     """
     This data source provides Express Connect Virtual Physical Connection available to the user.
 
-    > **NOTE:** Available in 1.196.0+
+    > **NOTE:** Available since v1.196.0
 
     ## Example Usage
 
@@ -215,6 +215,7 @@ def get_virtual_physical_connections(business_status: Optional[_builtins.str] = 
            - **Financialized**: Arrears locked.
            - **SecurityLocked**: locked for security reasons.
     :param Sequence[_builtins.str] ids: A list of Virtual Physical Connection IDs.
+    :param _builtins.bool is_confirmed: Whether the virtual physical connection is confirmed.
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str parent_physical_connection_id: The ID of the instance of the physical connection.
@@ -268,7 +269,7 @@ def get_virtual_physical_connections_output(business_status: pulumi.Input[Option
     """
     This data source provides Express Connect Virtual Physical Connection available to the user.
 
-    > **NOTE:** Available in 1.196.0+
+    > **NOTE:** Available since v1.196.0
 
     ## Example Usage
 
@@ -290,6 +291,7 @@ def get_virtual_physical_connections_output(business_status: pulumi.Input[Option
            - **Financialized**: Arrears locked.
            - **SecurityLocked**: locked for security reasons.
     :param Sequence[_builtins.str] ids: A list of Virtual Physical Connection IDs.
+    :param _builtins.bool is_confirmed: Whether the virtual physical connection is confirmed.
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str parent_physical_connection_id: The ID of the instance of the physical connection.

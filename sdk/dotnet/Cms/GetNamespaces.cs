@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Namespaces of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.171.0+.
+        /// &gt; **NOTE:** Available since v1.171.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Namespaces of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.171.0+.
+        /// &gt; **NOTE:** Available since v1.171.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Namespaces of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.171.0+.
+        /// &gt; **NOTE:** Available since v1.171.0.
         /// 
         /// ## Example Usage
         /// 
@@ -204,6 +204,9 @@ namespace Pulumi.AliCloud.Cms
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? Keyword;
+        /// <summary>
+        /// A list of Cms Namespaces. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNamespacesNamespaceResult> Namespaces;
         public readonly string? OutputFile;
         public readonly int? PageNumber;

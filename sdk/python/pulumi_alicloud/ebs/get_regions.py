@@ -57,11 +57,17 @@ class GetRegionsResult:
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the region.
+        """
         return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter
     def regions(self) -> Sequence['outputs.GetRegionsRegionResult']:
+        """
+        A list of Ebs Regions. Each element contains the following attributes:
+        """
         return pulumi.get(self, "regions")
 
 
@@ -83,7 +89,7 @@ def get_regions(output_file: Optional[_builtins.str] = None,
     """
     This data source provides the Ebs Regions of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.187.0+.
+    > **NOTE:** Available since v1.187.0.
 
     ## Example Usage
 
@@ -118,7 +124,7 @@ def get_regions_output(output_file: pulumi.Input[Optional[Optional[_builtins.str
     """
     This data source provides the Ebs Regions of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.187.0+.
+    > **NOTE:** Available since v1.187.0.
 
     ## Example Usage
 

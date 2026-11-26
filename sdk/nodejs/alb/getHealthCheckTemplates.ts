@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Alb Health Check Templates of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -72,6 +72,9 @@ export interface GetHealthCheckTemplatesArgs {
  */
 export interface GetHealthCheckTemplatesResult {
     readonly healthCheckTemplateIds?: string[];
+    /**
+     * The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     */
     readonly healthCheckTemplateName?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -79,14 +82,20 @@ export interface GetHealthCheckTemplatesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Health Check Template names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Alb Health Check Templates. Each element contains the following attributes:
+     */
     readonly templates: outputs.alb.GetHealthCheckTemplatesTemplate[];
 }
 /**
  * This data source provides the Alb Health Check Templates of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *

@@ -25,6 +25,9 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// Custom configuration service file name, e.g. ’hdfs-site’.
         /// </summary>
         public readonly string FileName;
+        /// <summary>
+        /// Custom configuration service name, e.g. ’HDFS’.
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

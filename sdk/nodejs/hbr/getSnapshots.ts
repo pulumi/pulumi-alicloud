@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Hbr Snapshots of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
@@ -102,11 +102,17 @@ export interface GetSnapshotsArgs {
      * The ID of ECS instance. The ecs backup client must have been installed on the host. While sourceType equals `ECS_FILE`, this parameter must be set.
      */
     instanceId?: string;
+    /**
+     * The limit of snapshots to query.
+     */
     limit?: number;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * The query string used to filter snapshots.
+     */
     query?: string;
     /**
      * Data source type, valid values: `ECS_FILE`, `OSS`, `NAS`.
@@ -126,29 +132,53 @@ export interface GetSnapshotsArgs {
  * A collection of values returned by getSnapshots.
  */
 export interface GetSnapshotsResult {
+    /**
+     * (OSS) The name of OSS bucket.
+     */
     readonly bucket?: string;
+    /**
+     * The time when the snapshot completed. UNIX time in seconds.
+     */
     readonly completeTime?: string;
     readonly completeTimeChecker?: string;
+    /**
+     * (NAS) File System Creation Time of Nas. Unix Time Seconds.
+     */
     readonly createTime?: string;
+    /**
+     * (NAS) The ID of NAS File system.
+     */
     readonly fileSystemId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * (ECS_FILE) The ID of ECS instance.
+     */
     readonly instanceId?: string;
     readonly limit?: number;
     readonly outputFile?: string;
     readonly query?: string;
+    /**
+     * A list of Hbr Snapshots. Each element contains the following attributes:
+     */
     readonly snapshots: outputs.hbr.GetSnapshotsSnapshot[];
+    /**
+     * Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+     */
     readonly sourceType: string;
+    /**
+     * The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+     */
     readonly status?: string;
     readonly vaultId: string;
 }
 /**
  * This data source provides the Hbr Snapshots of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
@@ -241,11 +271,17 @@ export interface GetSnapshotsOutputArgs {
      * The ID of ECS instance. The ecs backup client must have been installed on the host. While sourceType equals `ECS_FILE`, this parameter must be set.
      */
     instanceId?: pulumi.Input<string | undefined>;
+    /**
+     * The limit of snapshots to query.
+     */
     limit?: pulumi.Input<number | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * The query string used to filter snapshots.
+     */
     query?: pulumi.Input<string | undefined>;
     /**
      * Data source type, valid values: `ECS_FILE`, `OSS`, `NAS`.

@@ -42,7 +42,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -91,7 +91,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -140,7 +140,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -189,7 +189,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -238,7 +238,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -287,7 +287,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -336,7 +336,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -385,7 +385,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -439,7 +439,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -493,7 +493,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -547,7 +547,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -601,7 +601,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -655,7 +655,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -712,7 +712,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -769,7 +769,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -826,7 +826,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -883,7 +883,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -940,7 +940,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -994,7 +994,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -1048,7 +1048,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -1102,7 +1102,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -1156,7 +1156,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -1210,7 +1210,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -1296,7 +1296,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -1382,7 +1382,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -1468,7 +1468,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -1554,7 +1554,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -1640,7 +1640,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1692,7 +1692,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1744,7 +1744,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1796,7 +1796,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1848,7 +1848,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -2208,7 +2208,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -2253,7 +2253,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -2298,7 +2298,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -2343,7 +2343,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -2388,7 +2388,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -2433,7 +2433,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -2478,7 +2478,7 @@ public final class CloudstoragegatewayFunctions {
     /**
      * This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -2520,18 +2520,233 @@ public final class CloudstoragegatewayFunctions {
     public static CompletableFuture<GetStocksResult> getStocksPlain(GetStocksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cloudstoragegateway/getStocks:getStocks", TypeShape.of(GetStocksResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides the Cloud Storage Gateway Storage Bundles of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.132.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStorageBundlesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudstoragegatewayFunctions.getStorageBundles(GetStorageBundlesArgs.builder()
+     *             .backendBucketRegionId("cn-hangzhou")
+     *             .nameRegex("^my-StorageBundle")
+     *             .build());
+     * 
+     *         ctx.export("storageBundleId", example.bundles()[0].storageBundleId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetStorageBundlesResult> getStorageBundles(GetStorageBundlesArgs args) {
         return getStorageBundles(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides the Cloud Storage Gateway Storage Bundles of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.132.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStorageBundlesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudstoragegatewayFunctions.getStorageBundles(GetStorageBundlesArgs.builder()
+     *             .backendBucketRegionId("cn-hangzhou")
+     *             .nameRegex("^my-StorageBundle")
+     *             .build());
+     * 
+     *         ctx.export("storageBundleId", example.bundles()[0].storageBundleId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetStorageBundlesResult> getStorageBundlesPlain(GetStorageBundlesPlainArgs args) {
         return getStorageBundlesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides the Cloud Storage Gateway Storage Bundles of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.132.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStorageBundlesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudstoragegatewayFunctions.getStorageBundles(GetStorageBundlesArgs.builder()
+     *             .backendBucketRegionId("cn-hangzhou")
+     *             .nameRegex("^my-StorageBundle")
+     *             .build());
+     * 
+     *         ctx.export("storageBundleId", example.bundles()[0].storageBundleId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetStorageBundlesResult> getStorageBundles(GetStorageBundlesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", TypeShape.of(GetStorageBundlesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides the Cloud Storage Gateway Storage Bundles of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.132.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStorageBundlesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudstoragegatewayFunctions.getStorageBundles(GetStorageBundlesArgs.builder()
+     *             .backendBucketRegionId("cn-hangzhou")
+     *             .nameRegex("^my-StorageBundle")
+     *             .build());
+     * 
+     *         ctx.export("storageBundleId", example.bundles()[0].storageBundleId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetStorageBundlesResult> getStorageBundles(GetStorageBundlesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", TypeShape.of(GetStorageBundlesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides the Cloud Storage Gateway Storage Bundles of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.132.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStorageBundlesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudstoragegatewayFunctions.getStorageBundles(GetStorageBundlesArgs.builder()
+     *             .backendBucketRegionId("cn-hangzhou")
+     *             .nameRegex("^my-StorageBundle")
+     *             .build());
+     * 
+     *         ctx.export("storageBundleId", example.bundles()[0].storageBundleId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetStorageBundlesResult> getStorageBundlesPlain(GetStorageBundlesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", TypeShape.of(GetStorageBundlesResult.class), args, Utilities.withVersion(options));
     }

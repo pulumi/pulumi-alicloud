@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *
@@ -99,6 +99,9 @@ export interface GetUsersArgs {
  * A collection of values returned by getUsers.
  */
 export interface GetUsersResult {
+    /**
+     * The ID of the Directory.
+     */
     readonly directoryId: string;
     readonly enableDetails?: boolean;
     /**
@@ -107,16 +110,28 @@ export interface GetUsersResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of User names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * ProvisionType.
+     */
     readonly provisionType?: string;
+    /**
+     * User status. Valid values: `Enabled` and `Disabled`.
+     */
     readonly status?: string;
+    /**
+     * A list of Cloud Sso Users. Each element contains the following attributes:
+     */
     readonly users: outputs.cloudsso.GetUsersUser[];
 }
 /**
  * This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *

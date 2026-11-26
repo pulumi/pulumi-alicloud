@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.EventBridge
         /// <summary>
         /// This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// &gt; **NOTE:** Available since v1.129.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.EventBridge
         /// <summary>
         /// This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// &gt; **NOTE:** Available since v1.129.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.EventBridge
         /// <summary>
         /// This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// &gt; **NOTE:** Available since v1.129.0.
         /// 
         /// ## Example Usage
         /// 
@@ -210,6 +210,9 @@ namespace Pulumi.AliCloud.EventBridge
     [OutputType]
     public sealed class GetEventBusesResult
     {
+        /// <summary>
+        /// A list of Event Bridge Event Buses. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEventBusesBusResult> Buses;
         public readonly string? EventBusType;
         /// <summary>
@@ -219,6 +222,9 @@ namespace Pulumi.AliCloud.EventBridge
         public readonly ImmutableArray<string> Ids;
         public readonly string? NamePrefix;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Event Bus names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

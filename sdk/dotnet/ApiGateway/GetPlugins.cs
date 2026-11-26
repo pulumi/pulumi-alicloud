@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <summary>
         /// This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// &gt; **NOTE:** Available since v1.187.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <summary>
         /// This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// &gt; **NOTE:** Available since v1.187.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <summary>
         /// This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// &gt; **NOTE:** Available since v1.187.0.
         /// 
         /// ## Example Usage
         /// 
@@ -252,13 +252,28 @@ namespace Pulumi.AliCloud.ApiGateway
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Plugin names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// The name of the plug-in that you want to create.
+        /// </summary>
         public readonly string? PluginName;
+        /// <summary>
+        /// The type of the plug-in.
+        /// </summary>
         public readonly string? PluginType;
+        /// <summary>
+        /// A list of Api Gateway Plugins. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPluginsPluginResult> Plugins;
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]

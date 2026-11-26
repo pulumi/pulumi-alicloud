@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about VOD Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/product/29932.html).
  *
- * > **NOTE:** Available since v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *
@@ -91,11 +91,23 @@ export class Domain extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+     * The ID of the certificate.
      */
-    declare public /*out*/ readonly certName: pulumi.Output<string>;
+    declare public readonly certId: pulumi.Output<string>;
     /**
-     * The URL that is used for health checks.
+     * The name of the certificate.
+     */
+    declare public readonly certName: pulumi.Output<string>;
+    /**
+     * The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+     */
+    declare public readonly certRegion: pulumi.Output<string>;
+    /**
+     * The type of the certificate. Valid values:
+     */
+    declare public readonly certType: pulumi.Output<string>;
+    /**
+     * The URL for health checks.
      */
     declare public readonly checkUrl: pulumi.Output<string | undefined>;
     /**
@@ -103,7 +115,7 @@ export class Domain extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly cname: pulumi.Output<string>;
     /**
-     * The description of the domain name for CDN.
+     * The description of the ApsaraVideo VOD accelerated domain name.
      */
     declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
@@ -111,37 +123,45 @@ export class Domain extends pulumi.CustomResource {
      */
     declare public readonly domainName: pulumi.Output<string>;
     /**
-     * The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+     */
+    declare public readonly env: pulumi.Output<string | undefined>;
+    /**
+     * The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
      */
     declare public /*out*/ readonly gmtCreated: pulumi.Output<string>;
     /**
-     * The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
      */
     declare public /*out*/ readonly gmtModified: pulumi.Output<string>;
     /**
-     * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+     * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
      */
     declare public readonly scope: pulumi.Output<string | undefined>;
     /**
-     * The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+     * The list of origin addresses. See `sources` below.
      */
     declare public readonly sources: pulumi.Output<outputs.vod.DomainSource[]>;
     /**
-     * Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
+     * The content of the private key.
      */
-    declare public /*out*/ readonly sslProtocol: pulumi.Output<string>;
+    declare public readonly sslPri: pulumi.Output<string | undefined>;
     /**
-     * The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+     * Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
      */
-    declare public /*out*/ readonly sslPub: pulumi.Output<string>;
+    declare public readonly sslProtocol: pulumi.Output<string>;
     /**
-     * The status of the domain name for CDN. Valid values:
+     * The content of the security certificate.
+     */
+    declare public readonly sslPub: pulumi.Output<string>;
+    /**
+     * The running status of the accelerated domain name.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
+     * - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+     * - `Value`: It can be up to 128 characters in length. It can be a null string.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -166,15 +186,20 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
+            resourceInputs["certId"] = state?.certId;
             resourceInputs["certName"] = state?.certName;
+            resourceInputs["certRegion"] = state?.certRegion;
+            resourceInputs["certType"] = state?.certType;
             resourceInputs["checkUrl"] = state?.checkUrl;
             resourceInputs["cname"] = state?.cname;
             resourceInputs["description"] = state?.description;
             resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["env"] = state?.env;
             resourceInputs["gmtCreated"] = state?.gmtCreated;
             resourceInputs["gmtModified"] = state?.gmtModified;
             resourceInputs["scope"] = state?.scope;
             resourceInputs["sources"] = state?.sources;
+            resourceInputs["sslPri"] = state?.sslPri;
             resourceInputs["sslProtocol"] = state?.sslProtocol;
             resourceInputs["sslPub"] = state?.sslPub;
             resourceInputs["status"] = state?.status;
@@ -189,23 +214,30 @@ export class Domain extends pulumi.CustomResource {
             if (args?.sources === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sources'");
             }
+            resourceInputs["certId"] = args?.certId;
+            resourceInputs["certName"] = args?.certName;
+            resourceInputs["certRegion"] = args?.certRegion;
+            resourceInputs["certType"] = args?.certType;
             resourceInputs["checkUrl"] = args?.checkUrl;
             resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["env"] = args?.env;
             resourceInputs["scope"] = args?.scope;
             resourceInputs["sources"] = args?.sources;
+            resourceInputs["sslPri"] = args?.sslPri ? pulumi.secret(args.sslPri) : undefined;
+            resourceInputs["sslProtocol"] = args?.sslProtocol;
+            resourceInputs["sslPub"] = args?.sslPub;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["topLevelDomain"] = args?.topLevelDomain;
-            resourceInputs["certName"] = undefined /*out*/;
             resourceInputs["cname"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["gmtCreated"] = undefined /*out*/;
             resourceInputs["gmtModified"] = undefined /*out*/;
-            resourceInputs["sslProtocol"] = undefined /*out*/;
-            resourceInputs["sslPub"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["weight"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["sslPri"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Domain.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -215,11 +247,23 @@ export class Domain extends pulumi.CustomResource {
  */
 export interface DomainState {
     /**
-     * The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+     * The ID of the certificate.
+     */
+    certId?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the certificate.
      */
     certName?: pulumi.Input<string | undefined>;
     /**
-     * The URL that is used for health checks.
+     * The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+     */
+    certRegion?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the certificate. Valid values:
+     */
+    certType?: pulumi.Input<string | undefined>;
+    /**
+     * The URL for health checks.
      */
     checkUrl?: pulumi.Input<string | undefined>;
     /**
@@ -227,7 +271,7 @@ export interface DomainState {
      */
     cname?: pulumi.Input<string | undefined>;
     /**
-     * The description of the domain name for CDN.
+     * The description of the ApsaraVideo VOD accelerated domain name.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -235,37 +279,45 @@ export interface DomainState {
      */
     domainName?: pulumi.Input<string | undefined>;
     /**
-     * The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+     */
+    env?: pulumi.Input<string | undefined>;
+    /**
+     * The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
      */
     gmtCreated?: pulumi.Input<string | undefined>;
     /**
-     * The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
      */
     gmtModified?: pulumi.Input<string | undefined>;
     /**
-     * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+     * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
      */
     scope?: pulumi.Input<string | undefined>;
     /**
-     * The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+     * The list of origin addresses. See `sources` below.
      */
     sources?: pulumi.Input<pulumi.Input<inputs.vod.DomainSource>[] | undefined>;
     /**
-     * Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
+     * The content of the private key.
+     */
+    sslPri?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
      */
     sslProtocol?: pulumi.Input<string | undefined>;
     /**
-     * The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+     * The content of the security certificate.
      */
     sslPub?: pulumi.Input<string | undefined>;
     /**
-     * The status of the domain name for CDN. Valid values:
+     * The running status of the accelerated domain name.
      */
     status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
+     * - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+     * - `Value`: It can be up to 128 characters in length. It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -283,7 +335,23 @@ export interface DomainState {
  */
 export interface DomainArgs {
     /**
-     * The URL that is used for health checks.
+     * The ID of the certificate.
+     */
+    certId?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the certificate.
+     */
+    certName?: pulumi.Input<string | undefined>;
+    /**
+     * The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+     */
+    certRegion?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the certificate. Valid values:
+     */
+    certType?: pulumi.Input<string | undefined>;
+    /**
+     * The URL for health checks.
      */
     checkUrl?: pulumi.Input<string | undefined>;
     /**
@@ -291,17 +359,33 @@ export interface DomainArgs {
      */
     domainName: pulumi.Input<string>;
     /**
-     * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+     * Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+     */
+    env?: pulumi.Input<string | undefined>;
+    /**
+     * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
      */
     scope?: pulumi.Input<string | undefined>;
     /**
-     * The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+     * The list of origin addresses. See `sources` below.
      */
     sources: pulumi.Input<pulumi.Input<inputs.vod.DomainSource>[]>;
     /**
+     * The content of the private key.
+     */
+    sslPri?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
+     */
+    sslProtocol?: pulumi.Input<string | undefined>;
+    /**
+     * The content of the security certificate.
+     */
+    sslPub?: pulumi.Input<string | undefined>;
+    /**
      * A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
+     * - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+     * - `Value`: It can be up to 128 characters in length. It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**

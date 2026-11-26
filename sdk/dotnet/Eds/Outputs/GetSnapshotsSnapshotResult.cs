@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The ID of the cloud desktop to which the snapshot belongs.
+        /// The ID of the Desktop.
         /// </summary>
         public readonly string DesktopId;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly int RemainTime;
         /// <summary>
-        /// The ID of the snapshot.
+        /// The ID of the Snapshot.
         /// </summary>
         public readonly string SnapshotId;
         /// <summary>

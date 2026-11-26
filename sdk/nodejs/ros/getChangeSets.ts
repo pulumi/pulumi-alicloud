@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ros Change Sets of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.105.0+.
+ * > **NOTE:** Available since v1.105.0.
  *
  * ## Example Usage
  *
@@ -78,6 +78,9 @@ export interface GetChangeSetsArgs {
  * A collection of values returned by getChangeSets.
  */
 export interface GetChangeSetsResult {
+    /**
+     * The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+     */
     readonly changeSetName?: string;
     readonly enableDetails?: boolean;
     /**
@@ -86,16 +89,28 @@ export interface GetChangeSetsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Change Set names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Ros Change Sets. Each element contains the following attributes. See `sets` below.
+     */
     readonly sets: outputs.ros.GetChangeSetsSet[];
+    /**
+     * The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
+     */
     readonly stackId: string;
+    /**
+     * The status of the change set.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Ros Change Sets of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.105.0+.
+ * > **NOTE:** Available since v1.105.0.
  *
  * ## Example Usage
  *

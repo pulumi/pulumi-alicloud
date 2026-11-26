@@ -42,6 +42,10 @@ public final class GetEventSourcesSource {
      * 
      */
     private Boolean linkedExternalSource;
+    /**
+     * @return The type of the event source.
+     * 
+     */
     private String type;
 
     private GetEventSourcesSource() {}
@@ -87,6 +91,10 @@ public final class GetEventSourcesSource {
     public Boolean linkedExternalSource() {
         return this.linkedExternalSource;
     }
+    /**
+     * @return The type of the event source.
+     * 
+     */
     public String type() {
         return this.type;
     }

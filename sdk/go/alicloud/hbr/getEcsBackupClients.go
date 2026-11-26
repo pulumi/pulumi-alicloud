@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Example Usage
 //
@@ -80,13 +80,15 @@ type GetEcsBackupClientsArgs struct {
 
 // A collection of values returned by getEcsBackupClients.
 type GetEcsBackupClientsResult struct {
+	// A list of Hbr Ecs Backup Clients. Each element contains the following attributes:
 	Clients []GetEcsBackupClientsClient `pulumi:"clients"`
 	// The provider-assigned unique ID for this managed resource.
 	Id          string   `pulumi:"id"`
 	Ids         []string `pulumi:"ids"`
 	InstanceIds []string `pulumi:"instanceIds"`
 	OutputFile  *string  `pulumi:"outputFile"`
-	Status      *string  `pulumi:"status"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
 }
 
 func GetEcsBackupClientsOutput(ctx *pulumi.Context, args GetEcsBackupClientsOutputArgs, opts ...pulumi.InvokeOption) GetEcsBackupClientsResultOutput {
@@ -125,6 +127,7 @@ func (o GetEcsBackupClientsResultOutput) ToGetEcsBackupClientsResultOutputWithCo
 	return o
 }
 
+// A list of Hbr Ecs Backup Clients. Each element contains the following attributes:
 func (o GetEcsBackupClientsResultOutput) Clients() GetEcsBackupClientsClientArrayOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsResult) []GetEcsBackupClientsClient { return v.Clients }).(GetEcsBackupClientsClientArrayOutput)
 }
@@ -146,6 +149,7 @@ func (o GetEcsBackupClientsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetEcsBackupClientsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

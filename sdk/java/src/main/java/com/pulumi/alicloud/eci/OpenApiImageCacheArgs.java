@@ -19,72 +19,152 @@ public final class OpenApiImageCacheArgs extends com.pulumi.resources.ResourceAr
 
     public static final OpenApiImageCacheArgs Empty = new OpenApiImageCacheArgs();
 
+    /**
+     * The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
+     * 
+     */
     @Import(name="eipInstanceId")
     private @Nullable Output<String> eipInstanceId;
 
+    /**
+     * @return The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
+     * 
+     */
     public Optional<Output<String>> eipInstanceId() {
         return Optional.ofNullable(this.eipInstanceId);
     }
 
+    /**
+     * The name of the image cache.
+     * 
+     */
     @Import(name="imageCacheName", required=true)
     private Output<String> imageCacheName;
 
+    /**
+     * @return The name of the image cache.
+     * 
+     */
     public Output<String> imageCacheName() {
         return this.imageCacheName;
     }
 
+    /**
+     * The size of the image cache. Default to `20`. Unit: GiB.
+     * 
+     */
     @Import(name="imageCacheSize")
     private @Nullable Output<Integer> imageCacheSize;
 
+    /**
+     * @return The size of the image cache. Default to `20`. Unit: GiB.
+     * 
+     */
     public Optional<Output<Integer>> imageCacheSize() {
         return Optional.ofNullable(this.imageCacheSize);
     }
 
+    /**
+     * The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
+     * 
+     */
     @Import(name="imageRegistryCredentials")
     private @Nullable Output<List<OpenApiImageCacheImageRegistryCredentialArgs>> imageRegistryCredentials;
 
+    /**
+     * @return The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
+     * 
+     */
     public Optional<Output<List<OpenApiImageCacheImageRegistryCredentialArgs>>> imageRegistryCredentials() {
         return Optional.ofNullable(this.imageRegistryCredentials);
     }
 
+    /**
+     * The images to be cached. The image name must be versioned.
+     * 
+     */
     @Import(name="images", required=true)
     private Output<List<String>> images;
 
+    /**
+     * @return The images to be cached. The image name must be versioned.
+     * 
+     */
     public Output<List<String>> images() {
         return this.images;
     }
 
+    /**
+     * The ID of the resource group.
+     * 
+     */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+     * 
+     */
     @Import(name="retentionDays")
     private @Nullable Output<Integer> retentionDays;
 
+    /**
+     * @return The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+     * 
+     */
     public Optional<Output<Integer>> retentionDays() {
         return Optional.ofNullable(this.retentionDays);
     }
 
+    /**
+     * The ID of the security group. You do not need to specify the same security group as the container group.
+     * 
+     */
     @Import(name="securityGroupId", required=true)
     private Output<String> securityGroupId;
 
+    /**
+     * @return The ID of the security group. You do not need to specify the same security group as the container group.
+     * 
+     */
     public Output<String> securityGroupId() {
         return this.securityGroupId;
     }
 
+    /**
+     * The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
+     * 
+     */
     @Import(name="vswitchId", required=true)
     private Output<String> vswitchId;
 
+    /**
+     * @return The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
+     * 
+     */
     public Output<String> vswitchId() {
         return this.vswitchId;
     }
 
+    /**
+     * The zone id to cache image.
+     * 
+     */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
+    /**
+     * @return The zone id to cache image.
+     * 
+     */
     public Optional<Output<String>> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }
@@ -122,100 +202,232 @@ public final class OpenApiImageCacheArgs extends com.pulumi.resources.ResourceAr
             $ = new OpenApiImageCacheArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param eipInstanceId The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
+         * 
+         * @return builder
+         * 
+         */
         public Builder eipInstanceId(@Nullable Output<String> eipInstanceId) {
             $.eipInstanceId = eipInstanceId;
             return this;
         }
 
+        /**
+         * @param eipInstanceId The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
+         * 
+         * @return builder
+         * 
+         */
         public Builder eipInstanceId(String eipInstanceId) {
             return eipInstanceId(Output.of(eipInstanceId));
         }
 
+        /**
+         * @param imageCacheName The name of the image cache.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageCacheName(Output<String> imageCacheName) {
             $.imageCacheName = imageCacheName;
             return this;
         }
 
+        /**
+         * @param imageCacheName The name of the image cache.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageCacheName(String imageCacheName) {
             return imageCacheName(Output.of(imageCacheName));
         }
 
+        /**
+         * @param imageCacheSize The size of the image cache. Default to `20`. Unit: GiB.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageCacheSize(@Nullable Output<Integer> imageCacheSize) {
             $.imageCacheSize = imageCacheSize;
             return this;
         }
 
+        /**
+         * @param imageCacheSize The size of the image cache. Default to `20`. Unit: GiB.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageCacheSize(Integer imageCacheSize) {
             return imageCacheSize(Output.of(imageCacheSize));
         }
 
+        /**
+         * @param imageRegistryCredentials The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageRegistryCredentials(@Nullable Output<List<OpenApiImageCacheImageRegistryCredentialArgs>> imageRegistryCredentials) {
             $.imageRegistryCredentials = imageRegistryCredentials;
             return this;
         }
 
+        /**
+         * @param imageRegistryCredentials The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageRegistryCredentials(List<OpenApiImageCacheImageRegistryCredentialArgs> imageRegistryCredentials) {
             return imageRegistryCredentials(Output.of(imageRegistryCredentials));
         }
 
+        /**
+         * @param imageRegistryCredentials The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageRegistryCredentials(OpenApiImageCacheImageRegistryCredentialArgs... imageRegistryCredentials) {
             return imageRegistryCredentials(List.of(imageRegistryCredentials));
         }
 
+        /**
+         * @param images The images to be cached. The image name must be versioned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder images(Output<List<String>> images) {
             $.images = images;
             return this;
         }
 
+        /**
+         * @param images The images to be cached. The image name must be versioned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder images(List<String> images) {
             return images(Output.of(images));
         }
 
+        /**
+         * @param images The images to be cached. The image name must be versioned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder images(String... images) {
             return images(List.of(images));
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
             $.resourceGroupId = resourceGroupId;
             return this;
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
+        /**
+         * @param retentionDays The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retentionDays(@Nullable Output<Integer> retentionDays) {
             $.retentionDays = retentionDays;
             return this;
         }
 
+        /**
+         * @param retentionDays The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retentionDays(Integer retentionDays) {
             return retentionDays(Output.of(retentionDays));
         }
 
+        /**
+         * @param securityGroupId The ID of the security group. You do not need to specify the same security group as the container group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGroupId(Output<String> securityGroupId) {
             $.securityGroupId = securityGroupId;
             return this;
         }
 
+        /**
+         * @param securityGroupId The ID of the security group. You do not need to specify the same security group as the container group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGroupId(String securityGroupId) {
             return securityGroupId(Output.of(securityGroupId));
         }
 
+        /**
+         * @param vswitchId The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vswitchId(Output<String> vswitchId) {
             $.vswitchId = vswitchId;
             return this;
         }
 
+        /**
+         * @param vswitchId The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vswitchId(String vswitchId) {
             return vswitchId(Output.of(vswitchId));
         }
 
+        /**
+         * @param zoneId The zone id to cache image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
+        /**
+         * @param zoneId The zone id to cache image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
         }

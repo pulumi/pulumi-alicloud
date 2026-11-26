@@ -215,12 +215,14 @@ export class Network extends pulumi.CustomResource {
      * The description of the route table.
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
-    declare public readonly systemRouteTableDescription: pulumi.Output<string | undefined>;
+    declare public readonly systemRouteTableDescription: pulumi.Output<string>;
     /**
      * The name of the route table.
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     *
+     * > **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
      */
-    declare public readonly systemRouteTableName: pulumi.Output<string | undefined>;
+    declare public readonly systemRouteTableName: pulumi.Output<string>;
     /**
      * Whether the system route table receives propagation routes.
      */
@@ -454,6 +456,8 @@ export interface NetworkState {
     /**
      * The name of the route table.
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     *
+     * > **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
      */
     systemRouteTableName?: pulumi.Input<string | undefined>;
     /**
@@ -581,6 +585,8 @@ export interface NetworkArgs {
     /**
      * The name of the route table.
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     *
+     * > **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
      */
     systemRouteTableName?: pulumi.Input<string | undefined>;
     /**

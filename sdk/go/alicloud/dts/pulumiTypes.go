@@ -169,7 +169,7 @@ type GetInstancesInstance struct {
 	CreateTime string `pulumi:"createTime"`
 	// The target database engine type.
 	DestinationEndpointEngineName string `pulumi:"destinationEndpointEngineName"`
-	// The destination instance region.
+	// The target instance region.
 	DestinationRegion string `pulumi:"destinationRegion"`
 	// The ID of the subscription instance.
 	DtsInstanceId string `pulumi:"dtsInstanceId"`
@@ -177,7 +177,8 @@ type GetInstancesInstance struct {
 	Id string `pulumi:"id"`
 	// The type of the migration or synchronization instance.- The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.- The types of synchronization instances: **large**, **medium**, **small**, **micro**.
 	InstanceClass string `pulumi:"instanceClass"`
-	InstanceName  string `pulumi:"instanceName"`
+	// The name of the instance.
+	InstanceName string `pulumi:"instanceName"`
 	// The payment type of the resource.
 	PaymentType string `pulumi:"paymentType"`
 	// Resource Group ID
@@ -188,7 +189,7 @@ type GetInstancesInstance struct {
 	SourceRegion string `pulumi:"sourceRegion"`
 	// Instance status.
 	Status string `pulumi:"status"`
-	// The tag value corresponding to the tag key.
+	// (Optional) The tag value corresponding to the tag key.
 	Tags map[string]string `pulumi:"tags"`
 	// The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
 	Type string `pulumi:"type"`
@@ -210,7 +211,7 @@ type GetInstancesInstanceArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The target database engine type.
 	DestinationEndpointEngineName pulumi.StringInput `pulumi:"destinationEndpointEngineName"`
-	// The destination instance region.
+	// The target instance region.
 	DestinationRegion pulumi.StringInput `pulumi:"destinationRegion"`
 	// The ID of the subscription instance.
 	DtsInstanceId pulumi.StringInput `pulumi:"dtsInstanceId"`
@@ -218,7 +219,8 @@ type GetInstancesInstanceArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The type of the migration or synchronization instance.- The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.- The types of synchronization instances: **large**, **medium**, **small**, **micro**.
 	InstanceClass pulumi.StringInput `pulumi:"instanceClass"`
-	InstanceName  pulumi.StringInput `pulumi:"instanceName"`
+	// The name of the instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
 	// The payment type of the resource.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// Resource Group ID
@@ -229,7 +231,7 @@ type GetInstancesInstanceArgs struct {
 	SourceRegion pulumi.StringInput `pulumi:"sourceRegion"`
 	// Instance status.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The tag value corresponding to the tag key.
+	// (Optional) The tag value corresponding to the tag key.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -296,7 +298,7 @@ func (o GetInstancesInstanceOutput) DestinationEndpointEngineName() pulumi.Strin
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.DestinationEndpointEngineName }).(pulumi.StringOutput)
 }
 
-// The destination instance region.
+// The target instance region.
 func (o GetInstancesInstanceOutput) DestinationRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.DestinationRegion }).(pulumi.StringOutput)
 }
@@ -316,6 +318,7 @@ func (o GetInstancesInstanceOutput) InstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
 }
 
+// The name of the instance.
 func (o GetInstancesInstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceName }).(pulumi.StringOutput)
 }
@@ -345,7 +348,7 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tag value corresponding to the tag key.
+// (Optional) The tag value corresponding to the tag key.
 func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -774,7 +777,7 @@ type GetSubscriptionJobsJob struct {
 	SourceEndpointRole string `pulumi:"sourceEndpointRole"`
 	// The username of source database instance account.
 	SourceEndpointUserName string `pulumi:"sourceEndpointUserName"`
-	// The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+	// The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
 	Status string `pulumi:"status"`
 	// Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
 	SubscriptionDataTypeDdl bool `pulumi:"subscriptionDataTypeDdl"`
@@ -788,7 +791,7 @@ type GetSubscriptionJobsJob struct {
 	SubscriptionInstanceVpcId string `pulumi:"subscriptionInstanceVpcId"`
 	// The ID of subscription instance vswitch.
 	SubscriptionInstanceVswitchId string `pulumi:"subscriptionInstanceVswitchId"`
-	// The tag of the resource.
+	// A mapping of tags to filter results.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -844,7 +847,7 @@ type GetSubscriptionJobsJobArgs struct {
 	SourceEndpointRole pulumi.StringInput `pulumi:"sourceEndpointRole"`
 	// The username of source database instance account.
 	SourceEndpointUserName pulumi.StringInput `pulumi:"sourceEndpointUserName"`
-	// The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+	// The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
 	SubscriptionDataTypeDdl pulumi.BoolInput `pulumi:"subscriptionDataTypeDdl"`
@@ -858,7 +861,7 @@ type GetSubscriptionJobsJobArgs struct {
 	SubscriptionInstanceVpcId pulumi.StringInput `pulumi:"subscriptionInstanceVpcId"`
 	// The ID of subscription instance vswitch.
 	SubscriptionInstanceVswitchId pulumi.StringInput `pulumi:"subscriptionInstanceVswitchId"`
-	// The tag of the resource.
+	// A mapping of tags to filter results.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
@@ -1013,7 +1016,7 @@ func (o GetSubscriptionJobsJobOutput) SourceEndpointUserName() pulumi.StringOutp
 	return o.ApplyT(func(v GetSubscriptionJobsJob) string { return v.SourceEndpointUserName }).(pulumi.StringOutput)
 }
 
-// The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+// The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
 func (o GetSubscriptionJobsJobOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionJobsJob) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1048,7 +1051,7 @@ func (o GetSubscriptionJobsJobOutput) SubscriptionInstanceVswitchId() pulumi.Str
 	return o.ApplyT(func(v GetSubscriptionJobsJob) string { return v.SubscriptionInstanceVswitchId }).(pulumi.StringOutput)
 }
 
-// The tag of the resource.
+// A mapping of tags to filter results.
 func (o GetSubscriptionJobsJobOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSubscriptionJobsJob) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -1191,6 +1194,7 @@ func (o GetSubscriptionJobsJobSubscriptionHostArrayOutput) Index(i pulumi.IntInp
 type GetSynchronizationJobsJob struct {
 	// Start time in Unix timestamp format.
 	Checkpoint string `pulumi:"checkpoint"`
+	// The creation time of synchronization job.
 	CreateTime string `pulumi:"createTime"`
 	// Whether to execute DTS supports schema migration, full data migration, or full-data initialization.
 	DataInitialization bool `pulumi:"dataInitialization"`
@@ -1216,10 +1220,13 @@ type GetSynchronizationJobsJob struct {
 	DestinationEndpointRegion string `pulumi:"destinationEndpointRegion"`
 	// The username of database account.
 	DestinationEndpointUserName string `pulumi:"destinationEndpointUserName"`
-	DtsInstanceId               string `pulumi:"dtsInstanceId"`
-	DtsJobId                    string `pulumi:"dtsJobId"`
+	// The ID of synchronization instance.
+	DtsInstanceId string `pulumi:"dtsInstanceId"`
+	// The ID of synchronization job.
+	DtsJobId string `pulumi:"dtsJobId"`
 	// The name of synchronization job.
 	DtsJobName string `pulumi:"dtsJobName"`
+	// The expiration time. Formatting with yyyy-MM-ddTHH:mm:ssZ(UTC time).
 	ExpireTime string `pulumi:"expireTime"`
 	// The ID of synchronizing instance. It's the ID of resource `dts.SynchronizationInstance`.
 	Id string `pulumi:"id"`
@@ -1245,7 +1252,7 @@ type GetSynchronizationJobsJob struct {
 	SourceEndpointRole string `pulumi:"sourceEndpointRole"`
 	// The username of database account.
 	SourceEndpointUserName string `pulumi:"sourceEndpointUserName"`
-	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. `Downgrade`, `Failed`, `Finished`, `InitializeFailed`, `Locked`, `Modifying`, `NotConfigured`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Upgrade`.
 	Status string `pulumi:"status"`
 	// Whether to perform a database table structure to migrate or initialization values include:
 	StructureInitialization bool `pulumi:"structureInitialization"`
@@ -1267,6 +1274,7 @@ type GetSynchronizationJobsJobInput interface {
 type GetSynchronizationJobsJobArgs struct {
 	// Start time in Unix timestamp format.
 	Checkpoint pulumi.StringInput `pulumi:"checkpoint"`
+	// The creation time of synchronization job.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// Whether to execute DTS supports schema migration, full data migration, or full-data initialization.
 	DataInitialization pulumi.BoolInput `pulumi:"dataInitialization"`
@@ -1292,10 +1300,13 @@ type GetSynchronizationJobsJobArgs struct {
 	DestinationEndpointRegion pulumi.StringInput `pulumi:"destinationEndpointRegion"`
 	// The username of database account.
 	DestinationEndpointUserName pulumi.StringInput `pulumi:"destinationEndpointUserName"`
-	DtsInstanceId               pulumi.StringInput `pulumi:"dtsInstanceId"`
-	DtsJobId                    pulumi.StringInput `pulumi:"dtsJobId"`
+	// The ID of synchronization instance.
+	DtsInstanceId pulumi.StringInput `pulumi:"dtsInstanceId"`
+	// The ID of synchronization job.
+	DtsJobId pulumi.StringInput `pulumi:"dtsJobId"`
 	// The name of synchronization job.
 	DtsJobName pulumi.StringInput `pulumi:"dtsJobName"`
+	// The expiration time. Formatting with yyyy-MM-ddTHH:mm:ssZ(UTC time).
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
 	// The ID of synchronizing instance. It's the ID of resource `dts.SynchronizationInstance`.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -1321,7 +1332,7 @@ type GetSynchronizationJobsJobArgs struct {
 	SourceEndpointRole pulumi.StringInput `pulumi:"sourceEndpointRole"`
 	// The username of database account.
 	SourceEndpointUserName pulumi.StringInput `pulumi:"sourceEndpointUserName"`
-	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. `Downgrade`, `Failed`, `Finished`, `InitializeFailed`, `Locked`, `Modifying`, `NotConfigured`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Upgrade`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// Whether to perform a database table structure to migrate or initialization values include:
 	StructureInitialization pulumi.BoolInput `pulumi:"structureInitialization"`
@@ -1385,6 +1396,7 @@ func (o GetSynchronizationJobsJobOutput) Checkpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSynchronizationJobsJob) string { return v.Checkpoint }).(pulumi.StringOutput)
 }
 
+// The creation time of synchronization job.
 func (o GetSynchronizationJobsJobOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSynchronizationJobsJob) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -1449,10 +1461,12 @@ func (o GetSynchronizationJobsJobOutput) DestinationEndpointUserName() pulumi.St
 	return o.ApplyT(func(v GetSynchronizationJobsJob) string { return v.DestinationEndpointUserName }).(pulumi.StringOutput)
 }
 
+// The ID of synchronization instance.
 func (o GetSynchronizationJobsJobOutput) DtsInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSynchronizationJobsJob) string { return v.DtsInstanceId }).(pulumi.StringOutput)
 }
 
+// The ID of synchronization job.
 func (o GetSynchronizationJobsJobOutput) DtsJobId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSynchronizationJobsJob) string { return v.DtsJobId }).(pulumi.StringOutput)
 }
@@ -1462,6 +1476,7 @@ func (o GetSynchronizationJobsJobOutput) DtsJobName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSynchronizationJobsJob) string { return v.DtsJobName }).(pulumi.StringOutput)
 }
 
+// The expiration time. Formatting with yyyy-MM-ddTHH:mm:ssZ(UTC time).
 func (o GetSynchronizationJobsJobOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSynchronizationJobsJob) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
@@ -1526,7 +1541,7 @@ func (o GetSynchronizationJobsJobOutput) SourceEndpointUserName() pulumi.StringO
 	return o.ApplyT(func(v GetSynchronizationJobsJob) string { return v.SourceEndpointUserName }).(pulumi.StringOutput)
 }
 
-// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+// The status of the resource. Valid values: `Synchronizing`, `Suspending`. `Downgrade`, `Failed`, `Finished`, `InitializeFailed`, `Locked`, `Modifying`, `NotConfigured`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Upgrade`.
 func (o GetSynchronizationJobsJobOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSynchronizationJobsJob) string { return v.Status }).(pulumi.StringOutput)
 }

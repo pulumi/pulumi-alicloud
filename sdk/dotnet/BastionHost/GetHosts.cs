@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -311,19 +311,40 @@ namespace Pulumi.AliCloud.BastionHost
     {
         public readonly bool? EnableDetails;
         public readonly string? HostAddress;
+        /// <summary>
+        /// Specify the new create a host name of the supports up to 128 characters.
+        /// </summary>
         public readonly string? HostName;
+        /// <summary>
+        /// A list of Bastionhost Hosts. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHostsHostResult> Hosts;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// Specify the new create a host where the Bastion host ID of.
+        /// </summary>
         public readonly string InstanceId;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Host names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// Specify the new create the host's operating system. Valid values: Linux Windows.
+        /// </summary>
         public readonly string? OsType;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
+        /// </summary>
         public readonly string? Source;
+        /// <summary>
+        /// Specify the newly created ECS instance ID or dedicated cluster host ID.
+        /// </summary>
         public readonly string? SourceInstanceId;
         public readonly string? SourceInstanceState;
 

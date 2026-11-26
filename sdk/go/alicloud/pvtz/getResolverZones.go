@@ -13,7 +13,7 @@ import (
 
 // This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.143.0+.
+// > **NOTE:** Available since v1.143.0.
 //
 // ## Example Usage
 //
@@ -64,10 +64,12 @@ type GetResolverZonesArgs struct {
 // A collection of values returned by getResolverZones.
 type GetResolverZonesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Status     *string                `pulumi:"status"`
-	Zones      []GetResolverZonesZone `pulumi:"zones"`
+	Id         string  `pulumi:"id"`
+	OutputFile *string `pulumi:"outputFile"`
+	// The status of the Zone.
+	Status *string `pulumi:"status"`
+	// A list of Private Zone Resolver zones. Each element contains the following attributes:
+	Zones []GetResolverZonesZone `pulumi:"zones"`
 }
 
 func GetResolverZonesOutput(ctx *pulumi.Context, args GetResolverZonesOutputArgs, opts ...pulumi.InvokeOption) GetResolverZonesResultOutput {
@@ -111,10 +113,12 @@ func (o GetResolverZonesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResolverZonesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the Zone.
 func (o GetResolverZonesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResolverZonesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A list of Private Zone Resolver zones. Each element contains the following attributes:
 func (o GetResolverZonesResultOutput) Zones() GetResolverZonesZoneArrayOutput {
 	return o.ApplyT(func(v GetResolverZonesResult) []GetResolverZonesZone { return v.Zones }).(GetResolverZonesZoneArrayOutput)
 }

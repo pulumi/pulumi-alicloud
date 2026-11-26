@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides CEN Transit Router peer attachments available to the user.
  *
- * > **NOTE:** Available in 1.128.0+
+ * > **NOTE:** Available since v1.128.0+
  *
  * ## Example Usage
  *
@@ -74,6 +74,9 @@ export interface GetTransitRouterPeerAttachmentsArgs {
  * A collection of values returned by getTransitRouterPeerAttachments.
  */
 export interface GetTransitRouterPeerAttachmentsResult {
+    /**
+     * A list of CEN Transit Router peer Attachments. Each element contains the following attributes:
+     */
     readonly attachments: outputs.cen.GetTransitRouterPeerAttachmentsAttachment[];
     readonly cenId: string;
     /**
@@ -106,7 +109,7 @@ export interface GetTransitRouterPeerAttachmentsResult {
 /**
  * This data source provides CEN Transit Router peer attachments available to the user.
  *
- * > **NOTE:** Available in 1.128.0+
+ * > **NOTE:** Available since v1.128.0+
  *
  * ## Example Usage
  *

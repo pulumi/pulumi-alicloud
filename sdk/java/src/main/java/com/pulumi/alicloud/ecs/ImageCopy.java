@@ -127,12 +127,6 @@ import javax.annotation.Nullable;
  * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
- * ## Attributes Reference0
- * 
- *  The following attributes are exported:
- * 
- * * `id` - ID of the image.
- * 
  * ## Import
  * 
  * image can be imported using the id, e.g.
@@ -144,9 +138,21 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/imageCopy:ImageCopy")
 public class ImageCopy extends com.pulumi.resources.CustomResource {
+    /**
+     * Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
     @Export(name="deleteAutoSnapshot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteAutoSnapshot;
 
+    /**
+     * @return Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
     public Output<Optional<Boolean>> deleteAutoSnapshot() {
         return Codegen.optional(this.deleteAutoSnapshot);
     }
@@ -225,6 +231,8 @@ public class ImageCopy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsKeyId);
     }
     /**
+     * Attribute &#39;name&#39; has been deprecated, please use `imageName` instead.
+     * 
      * @deprecated Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
      * 
      */
@@ -232,6 +240,10 @@ public class ImageCopy extends com.pulumi.resources.CustomResource {
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Attribute &#39;name&#39; has been deprecated, please use `imageName` instead.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }

@@ -919,6 +919,7 @@ type GetBandwidthPackagesPackage struct {
 	CenIds []string `pulumi:"cenIds"`
 	// Description of the CEN Bandwidth Package.
 	Description string `pulumi:"description"`
+	// The expiration time of the CEN Bandwidth Package.
 	ExpiredTime string `pulumi:"expiredTime"`
 	// Region ID of the interconnected regions.
 	GeographicRegionAId string `pulumi:"geographicRegionAId"`
@@ -976,6 +977,7 @@ type GetBandwidthPackagesPackageArgs struct {
 	CenIds pulumi.StringArrayInput `pulumi:"cenIds"`
 	// Description of the CEN Bandwidth Package.
 	Description pulumi.StringInput `pulumi:"description"`
+	// The expiration time of the CEN Bandwidth Package.
 	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
 	// Region ID of the interconnected regions.
 	GeographicRegionAId pulumi.StringInput `pulumi:"geographicRegionAId"`
@@ -1093,6 +1095,7 @@ func (o GetBandwidthPackagesPackageOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The expiration time of the CEN Bandwidth Package.
 func (o GetBandwidthPackagesPackageOutput) ExpiredTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.ExpiredTime }).(pulumi.StringOutput)
 }
@@ -2071,7 +2074,8 @@ func (o GetInterRegionTrafficQosPoliciesPolicyArrayOutput) Index(i pulumi.IntInp
 type GetInterRegionTrafficQosQueuesQueue struct {
 	// The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
 	Dscps []string `pulumi:"dscps"`
-	Id    string   `pulumi:"id"`
+	// The ID of the Inter Region Traffic Qos Queue.
+	Id string `pulumi:"id"`
 	// The description information of the traffic scheduling policy.
 	InterRegionTrafficQosQueueDescription string `pulumi:"interRegionTrafficQosQueueDescription"`
 	// The ID of the resource.
@@ -2100,7 +2104,8 @@ type GetInterRegionTrafficQosQueuesQueueInput interface {
 type GetInterRegionTrafficQosQueuesQueueArgs struct {
 	// The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
 	Dscps pulumi.StringArrayInput `pulumi:"dscps"`
-	Id    pulumi.StringInput      `pulumi:"id"`
+	// The ID of the Inter Region Traffic Qos Queue.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The description information of the traffic scheduling policy.
 	InterRegionTrafficQosQueueDescription pulumi.StringInput `pulumi:"interRegionTrafficQosQueueDescription"`
 	// The ID of the resource.
@@ -2171,6 +2176,7 @@ func (o GetInterRegionTrafficQosQueuesQueueOutput) Dscps() pulumi.StringArrayOut
 	return o.ApplyT(func(v GetInterRegionTrafficQosQueuesQueue) []string { return v.Dscps }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the Inter Region Traffic Qos Queue.
 func (o GetInterRegionTrafficQosQueuesQueueOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInterRegionTrafficQosQueuesQueue) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -2230,7 +2236,7 @@ type GetPrivateZonesZone struct {
 	AccessRegionId string `pulumi:"accessRegionId"`
 	// The ID of the CEN instance.
 	CenId string `pulumi:"cenId"`
-	// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+	// The service region is the target region of the PrivateZone service accessed through CEN.
 	HostRegionId string `pulumi:"hostRegionId"`
 	// The VPC that belongs to the service region.
 	HostVpcId string `pulumi:"hostVpcId"`
@@ -2258,7 +2264,7 @@ type GetPrivateZonesZoneArgs struct {
 	AccessRegionId pulumi.StringInput `pulumi:"accessRegionId"`
 	// The ID of the CEN instance.
 	CenId pulumi.StringInput `pulumi:"cenId"`
-	// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+	// The service region is the target region of the PrivateZone service accessed through CEN.
 	HostRegionId pulumi.StringInput `pulumi:"hostRegionId"`
 	// The VPC that belongs to the service region.
 	HostVpcId pulumi.StringInput `pulumi:"hostVpcId"`
@@ -2331,7 +2337,7 @@ func (o GetPrivateZonesZoneOutput) CenId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateZonesZone) string { return v.CenId }).(pulumi.StringOutput)
 }
 
-// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+// The service region is the target region of the PrivateZone service accessed through CEN.
 func (o GetPrivateZonesZoneOutput) HostRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateZonesZone) string { return v.HostRegionId }).(pulumi.StringOutput)
 }
@@ -3339,7 +3345,7 @@ func (o GetRouteServicesServiceArrayOutput) Index(i pulumi.IntInput) GetRouteSer
 }
 
 type GetTrafficMarkingPoliciesPolicy struct {
-	// The description of the Traffic Marking Policy.
+	// The traffic marking policy description.
 	Description string `pulumi:"description"`
 	// The ID of the resource. The value is formatted `<transit_router_id>:<traffic_marking_policy_id>`.
 	Id string `pulumi:"id"`
@@ -3347,7 +3353,7 @@ type GetTrafficMarkingPoliciesPolicy struct {
 	MarkingDscp int `pulumi:"markingDscp"`
 	// The Priority of the Traffic Marking Policy.
 	Priority int `pulumi:"priority"`
-	// The status of the resource.
+	// The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
 	Status string `pulumi:"status"`
 	// The ID of the Traffic Marking Policy.
 	TrafficMarkingPolicyId string `pulumi:"trafficMarkingPolicyId"`
@@ -3369,7 +3375,7 @@ type GetTrafficMarkingPoliciesPolicyInput interface {
 }
 
 type GetTrafficMarkingPoliciesPolicyArgs struct {
-	// The description of the Traffic Marking Policy.
+	// The traffic marking policy description.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The ID of the resource. The value is formatted `<transit_router_id>:<traffic_marking_policy_id>`.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -3377,7 +3383,7 @@ type GetTrafficMarkingPoliciesPolicyArgs struct {
 	MarkingDscp pulumi.IntInput `pulumi:"markingDscp"`
 	// The Priority of the Traffic Marking Policy.
 	Priority pulumi.IntInput `pulumi:"priority"`
-	// The status of the resource.
+	// The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The ID of the Traffic Marking Policy.
 	TrafficMarkingPolicyId pulumi.StringInput `pulumi:"trafficMarkingPolicyId"`
@@ -3438,7 +3444,7 @@ func (o GetTrafficMarkingPoliciesPolicyOutput) ToGetTrafficMarkingPoliciesPolicy
 	return o
 }
 
-// The description of the Traffic Marking Policy.
+// The traffic marking policy description.
 func (o GetTrafficMarkingPoliciesPolicyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrafficMarkingPoliciesPolicy) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -3458,7 +3464,7 @@ func (o GetTrafficMarkingPoliciesPolicyOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v GetTrafficMarkingPoliciesPolicy) int { return v.Priority }).(pulumi.IntOutput)
 }
 
-// The status of the resource.
+// The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
 func (o GetTrafficMarkingPoliciesPolicyOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrafficMarkingPoliciesPolicy) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -4908,7 +4914,7 @@ type GetTransitRouterPrefixListAssociationsAssociation struct {
 	OwnerUid int `pulumi:"ownerUid"`
 	// The ID of the prefix list.
 	PrefixListId string `pulumi:"prefixListId"`
-	// The status of the prefix list.
+	// The status of the prefix list. Valid Value: `Active`, `Updating`.
 	Status string `pulumi:"status"`
 	// The ID of the transit router.
 	TransitRouterId string `pulumi:"transitRouterId"`
@@ -4940,7 +4946,7 @@ type GetTransitRouterPrefixListAssociationsAssociationArgs struct {
 	OwnerUid pulumi.IntInput `pulumi:"ownerUid"`
 	// The ID of the prefix list.
 	PrefixListId pulumi.StringInput `pulumi:"prefixListId"`
-	// The status of the prefix list.
+	// The status of the prefix list. Valid Value: `Active`, `Updating`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringInput `pulumi:"transitRouterId"`
@@ -5029,7 +5035,7 @@ func (o GetTransitRouterPrefixListAssociationsAssociationOutput) PrefixListId() 
 	return o.ApplyT(func(v GetTransitRouterPrefixListAssociationsAssociation) string { return v.PrefixListId }).(pulumi.StringOutput)
 }
 
-// The status of the prefix list.
+// The status of the prefix list. Valid Value: `Active`, `Updating`.
 func (o GetTransitRouterPrefixListAssociationsAssociationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterPrefixListAssociationsAssociation) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -5065,13 +5071,18 @@ func (o GetTransitRouterPrefixListAssociationsAssociationArrayOutput) Index(i pu
 }
 
 type GetTransitRouterRouteEntriesEntry struct {
-	Id                                 string `pulumi:"id"`
-	Status                             string `pulumi:"status"`
+	// The ID of the CEN Transit Router Route Entry.
+	Id string `pulumi:"id"`
+	// The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+	Status string `pulumi:"status"`
+	// The description of the transit router route entry.
 	TransitRouterRouteEntryDescription string `pulumi:"transitRouterRouteEntryDescription"`
-	// The target network segment of the route entry.
+	// The destination CIDR block of the route entry.
 	TransitRouterRouteEntryDestinationCidrBlock string `pulumi:"transitRouterRouteEntryDestinationCidrBlock"`
-	TransitRouterRouteEntryId                   string `pulumi:"transitRouterRouteEntryId"`
-	TransitRouterRouteEntryName                 string `pulumi:"transitRouterRouteEntryName"`
+	// The ID of the route entry.
+	TransitRouterRouteEntryId string `pulumi:"transitRouterRouteEntryId"`
+	// The name of the transit router route entry.
+	TransitRouterRouteEntryName string `pulumi:"transitRouterRouteEntryName"`
 	// ID of the next hop.
 	TransitRouterRouteEntryNextHopId string `pulumi:"transitRouterRouteEntryNextHopId"`
 	// Type of the next hop.
@@ -5092,13 +5103,18 @@ type GetTransitRouterRouteEntriesEntryInput interface {
 }
 
 type GetTransitRouterRouteEntriesEntryArgs struct {
-	Id                                 pulumi.StringInput `pulumi:"id"`
-	Status                             pulumi.StringInput `pulumi:"status"`
+	// The ID of the CEN Transit Router Route Entry.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The description of the transit router route entry.
 	TransitRouterRouteEntryDescription pulumi.StringInput `pulumi:"transitRouterRouteEntryDescription"`
-	// The target network segment of the route entry.
+	// The destination CIDR block of the route entry.
 	TransitRouterRouteEntryDestinationCidrBlock pulumi.StringInput `pulumi:"transitRouterRouteEntryDestinationCidrBlock"`
-	TransitRouterRouteEntryId                   pulumi.StringInput `pulumi:"transitRouterRouteEntryId"`
-	TransitRouterRouteEntryName                 pulumi.StringInput `pulumi:"transitRouterRouteEntryName"`
+	// The ID of the route entry.
+	TransitRouterRouteEntryId pulumi.StringInput `pulumi:"transitRouterRouteEntryId"`
+	// The name of the transit router route entry.
+	TransitRouterRouteEntryName pulumi.StringInput `pulumi:"transitRouterRouteEntryName"`
 	// ID of the next hop.
 	TransitRouterRouteEntryNextHopId pulumi.StringInput `pulumi:"transitRouterRouteEntryNextHopId"`
 	// Type of the next hop.
@@ -5158,27 +5174,32 @@ func (o GetTransitRouterRouteEntriesEntryOutput) ToGetTransitRouterRouteEntriesE
 	return o
 }
 
+// The ID of the CEN Transit Router Route Entry.
 func (o GetTransitRouterRouteEntriesEntryOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteEntriesEntry) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
 func (o GetTransitRouterRouteEntriesEntryOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteEntriesEntry) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The description of the transit router route entry.
 func (o GetTransitRouterRouteEntriesEntryOutput) TransitRouterRouteEntryDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteEntriesEntry) string { return v.TransitRouterRouteEntryDescription }).(pulumi.StringOutput)
 }
 
-// The target network segment of the route entry.
+// The destination CIDR block of the route entry.
 func (o GetTransitRouterRouteEntriesEntryOutput) TransitRouterRouteEntryDestinationCidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteEntriesEntry) string { return v.TransitRouterRouteEntryDestinationCidrBlock }).(pulumi.StringOutput)
 }
 
+// The ID of the route entry.
 func (o GetTransitRouterRouteEntriesEntryOutput) TransitRouterRouteEntryId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteEntriesEntry) string { return v.TransitRouterRouteEntryId }).(pulumi.StringOutput)
 }
 
+// The name of the transit router route entry.
 func (o GetTransitRouterRouteEntriesEntryOutput) TransitRouterRouteEntryName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteEntriesEntry) string { return v.TransitRouterRouteEntryName }).(pulumi.StringOutput)
 }
@@ -5219,6 +5240,7 @@ func (o GetTransitRouterRouteEntriesEntryArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetTransitRouterRouteTableAssociationsAssociation struct {
+	// The ID of the CEN Transit Router Route Table Association.
 	Id string `pulumi:"id"`
 	// ID of the transit router route table association.
 	ResourceId string `pulumi:"resourceId"`
@@ -5244,6 +5266,7 @@ type GetTransitRouterRouteTableAssociationsAssociationInput interface {
 }
 
 type GetTransitRouterRouteTableAssociationsAssociationArgs struct {
+	// The ID of the CEN Transit Router Route Table Association.
 	Id pulumi.StringInput `pulumi:"id"`
 	// ID of the transit router route table association.
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
@@ -5308,6 +5331,7 @@ func (o GetTransitRouterRouteTableAssociationsAssociationOutput) ToGetTransitRou
 	return o
 }
 
+// The ID of the CEN Transit Router Route Table Association.
 func (o GetTransitRouterRouteTableAssociationsAssociationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteTableAssociationsAssociation) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -5642,15 +5666,17 @@ func (o GetTransitRouterRouteTablesTableArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetTransitRouterVbrAttachmentsAttachment struct {
-	// ID of the region where the conflicted VBR is located.
-	AutoPublishRouteEnabled bool   `pulumi:"autoPublishRouteEnabled"`
-	Id                      string `pulumi:"id"`
+	// Auto publish route enabled.
+	AutoPublishRouteEnabled bool `pulumi:"autoPublishRouteEnabled"`
+	// The ID of the CEN Transit Router VBR Attachment.
+	Id string `pulumi:"id"`
 	// Type of the resource.
 	ResourceType string `pulumi:"resourceType"`
 	// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
-	Status                             string `pulumi:"status"`
+	Status string `pulumi:"status"`
+	// The description of the transit router attachment.
 	TransitRouterAttachmentDescription string `pulumi:"transitRouterAttachmentDescription"`
-	// ID of the transit router VBR attachment.
+	// ID of the transit router attachment.
 	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`
 	// Name of the transit router attachment.
 	TransitRouterAttachmentName string `pulumi:"transitRouterAttachmentName"`
@@ -5672,15 +5698,17 @@ type GetTransitRouterVbrAttachmentsAttachmentInput interface {
 }
 
 type GetTransitRouterVbrAttachmentsAttachmentArgs struct {
-	// ID of the region where the conflicted VBR is located.
-	AutoPublishRouteEnabled pulumi.BoolInput   `pulumi:"autoPublishRouteEnabled"`
-	Id                      pulumi.StringInput `pulumi:"id"`
+	// Auto publish route enabled.
+	AutoPublishRouteEnabled pulumi.BoolInput `pulumi:"autoPublishRouteEnabled"`
+	// The ID of the CEN Transit Router VBR Attachment.
+	Id pulumi.StringInput `pulumi:"id"`
 	// Type of the resource.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 	// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
-	Status                             pulumi.StringInput `pulumi:"status"`
+	Status pulumi.StringInput `pulumi:"status"`
+	// The description of the transit router attachment.
 	TransitRouterAttachmentDescription pulumi.StringInput `pulumi:"transitRouterAttachmentDescription"`
-	// ID of the transit router VBR attachment.
+	// ID of the transit router attachment.
 	TransitRouterAttachmentId pulumi.StringInput `pulumi:"transitRouterAttachmentId"`
 	// Name of the transit router attachment.
 	TransitRouterAttachmentName pulumi.StringInput `pulumi:"transitRouterAttachmentName"`
@@ -5741,11 +5769,12 @@ func (o GetTransitRouterVbrAttachmentsAttachmentOutput) ToGetTransitRouterVbrAtt
 	return o
 }
 
-// ID of the region where the conflicted VBR is located.
+// Auto publish route enabled.
 func (o GetTransitRouterVbrAttachmentsAttachmentOutput) AutoPublishRouteEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTransitRouterVbrAttachmentsAttachment) bool { return v.AutoPublishRouteEnabled }).(pulumi.BoolOutput)
 }
 
+// The ID of the CEN Transit Router VBR Attachment.
 func (o GetTransitRouterVbrAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVbrAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -5760,11 +5789,12 @@ func (o GetTransitRouterVbrAttachmentsAttachmentOutput) Status() pulumi.StringOu
 	return o.ApplyT(func(v GetTransitRouterVbrAttachmentsAttachment) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The description of the transit router attachment.
 func (o GetTransitRouterVbrAttachmentsAttachmentOutput) TransitRouterAttachmentDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVbrAttachmentsAttachment) string { return v.TransitRouterAttachmentDescription }).(pulumi.StringOutput)
 }
 
-// ID of the transit router VBR attachment.
+// ID of the transit router attachment.
 func (o GetTransitRouterVbrAttachmentsAttachmentOutput) TransitRouterAttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVbrAttachmentsAttachment) string { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
 }

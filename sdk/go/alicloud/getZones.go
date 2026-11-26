@@ -13,6 +13,8 @@ import (
 
 // This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 //
+// > **NOTE:** Available since v0.1.0
+//
 // > **NOTE:** If one zone is sold out, it will not be exported.
 //
 // ## Example Usage
@@ -80,7 +82,7 @@ type GetZonesArgs struct {
 	NetworkType *string `pulumi:"networkType"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+	// Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 }
 
@@ -139,7 +141,7 @@ type GetZonesOutputArgs struct {
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+	// Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy pulumi.StringPtrInput `pulumi:"spotStrategy"`
 }
 

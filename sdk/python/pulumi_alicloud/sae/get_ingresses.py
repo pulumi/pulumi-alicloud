@@ -68,11 +68,17 @@ class GetIngressesResult:
     @_builtins.property
     @pulumi.getter
     def ingresses(self) -> Sequence['outputs.GetIngressesIngressResult']:
+        """
+        A list of Sae Ingresses. Each element contains the following attributes:
+        """
         return pulumi.get(self, "ingresses")
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> _builtins.str:
+        """
+        The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+        """
         return pulumi.get(self, "namespace_id")
 
     @_builtins.property
@@ -103,7 +109,7 @@ def get_ingresses(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Sae Ingresses of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.137.0+.
+    > **NOTE:** Available since v1.137.0.
 
     ## Example Usage
 
@@ -195,7 +201,7 @@ def get_ingresses_output(enable_details: pulumi.Input[Optional[Optional[_builtin
     """
     This data source provides the Sae Ingresses of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.137.0+.
+    > **NOTE:** Available since v1.137.0.
 
     ## Example Usage
 

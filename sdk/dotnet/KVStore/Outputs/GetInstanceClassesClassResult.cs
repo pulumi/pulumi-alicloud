@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// KVStore available instance class.
         /// </summary>
         public readonly string InstanceClass;
+        /// <summary>
+        /// The price of the instance class.
+        /// </summary>
         public readonly string Price;
 
         [OutputConstructor]

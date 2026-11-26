@@ -9,60 +9,182 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Quotas
 {
+    /// <summary>
+    /// Provides a Quotas Application Info resource. Details of Quota Application.
+    /// 
+    /// &gt; **NOTE:** Available since v1.117.0.
+    /// 
+    /// This is an alias of `alicloud.quotas.QuotaApplication`.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Quotas.ApplicationInfo("default", new()
+    ///     {
+    ///         QuotaActionCode = "q_desktop-count",
+    ///         ProductCode = "gws",
+    ///         QuotaCategory = "CommonQuota",
+    ///         NoticeType = 3,
+    ///         Dimensions = new[]
+    ///         {
+    ///             new AliCloud.Quotas.Inputs.ApplicationInfoDimensionArgs
+    ///             {
+    ///                 Key = "regionId",
+    ///                 Value = "cn-hangzhou",
+    ///             },
+    ///         },
+    ///         DesireValue = 1001.0,
+    ///         Reason = "测试",
+    ///         EnvLanguage = "zh",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.quotas.ApplicationInfo` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.quotas.ApplicationInfo`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
+    /// ## Import
+    /// 
+    /// Quotas Application Info can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import alicloud:quotas/applicationInfo:ApplicationInfo example &lt;id&gt;
+    /// ```
+    /// </summary>
     [AliCloudResourceType("alicloud:quotas/applicationInfo:ApplicationInfo")]
     public partial class ApplicationInfo : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The approve value of the quota application.
+        /// </summary>
         [Output("approveValue")]
         public Output<string> ApproveValue { get; private set; } = null!;
 
+        /// <summary>
+        /// This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+        /// - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+        /// - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+        /// </summary>
         [Output("auditMode")]
         public Output<string> AuditMode { get; private set; } = null!;
 
+        /// <summary>
+        /// The audit reason.
+        /// </summary>
         [Output("auditReason")]
         public Output<string> AuditReason { get; private set; } = null!;
 
+        /// <summary>
+        /// Resource attribute field representing creation time.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// The desire value of the quota application.
+        /// </summary>
         [Output("desireValue")]
         public Output<double> DesireValue { get; private set; } = null!;
 
+        /// <summary>
+        /// QuotaDimensions. See `Dimensions` below.
+        /// </summary>
         [Output("dimensions")]
         public Output<ImmutableArray<Outputs.ApplicationInfoDimension>> Dimensions { get; private set; } = null!;
 
+        /// <summary>
+        /// The effective time of the quota application.
+        /// </summary>
         [Output("effectiveTime")]
         public Output<string?> EffectiveTime { get; private set; } = null!;
 
+        /// <summary>
+        /// The language of the quota alert notification. Value:
+        /// - zh (default): Chinese.
+        /// - en: English.
+        /// </summary>
         [Output("envLanguage")]
         public Output<string?> EnvLanguage { get; private set; } = null!;
 
+        /// <summary>
+        /// The expired time of the quota application.
+        /// </summary>
         [Output("expireTime")]
         public Output<string?> ExpireTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+        /// </summary>
         [Output("noticeType")]
         public Output<int> NoticeType { get; private set; } = null!;
 
+        /// <summary>
+        /// The product code.
+        /// </summary>
         [Output("productCode")]
         public Output<string> ProductCode { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of quota action.
+        /// </summary>
         [Output("quotaActionCode")]
         public Output<string> QuotaActionCode { get; private set; } = null!;
 
+        /// <summary>
+        /// The quota type.
+        /// - CommonQuota (default): Generic quota.
+        /// - FlowControl:API rate quota.
+        /// - WhiteListLabel: Equity quota.
+        /// </summary>
         [Output("quotaCategory")]
         public Output<string?> QuotaCategory { get; private set; } = null!;
 
+        /// <summary>
+        /// The description of the quota application.
+        /// </summary>
         [Output("quotaDescription")]
         public Output<string> QuotaDescription { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the quota application.
+        /// </summary>
         [Output("quotaName")]
         public Output<string> QuotaName { get; private set; } = null!;
 
+        /// <summary>
+        /// The unit of the quota application.
+        /// </summary>
         [Output("quotaUnit")]
         public Output<string> QuotaUnit { get; private set; } = null!;
 
+        /// <summary>
+        /// The reason of the quota application.
+        /// </summary>
         [Output("reason")]
         public Output<string> Reason { get; private set; } = null!;
 
+        /// <summary>
+        /// Application Status:
+        /// - Disagree: reject.
+        /// - Agree: Approved.
+        /// - Process: under review.
+        /// - Cancel: Closed.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -112,41 +234,82 @@ namespace Pulumi.AliCloud.Quotas
 
     public sealed class ApplicationInfoArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+        /// - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+        /// - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+        /// </summary>
         [Input("auditMode")]
         public Input<string>? AuditMode { get; set; }
 
+        /// <summary>
+        /// The desire value of the quota application.
+        /// </summary>
         [Input("desireValue", required: true)]
         public Input<double> DesireValue { get; set; } = null!;
 
         [Input("dimensions")]
         private InputList<Inputs.ApplicationInfoDimensionArgs>? _dimensions;
+
+        /// <summary>
+        /// QuotaDimensions. See `Dimensions` below.
+        /// </summary>
         public InputList<Inputs.ApplicationInfoDimensionArgs> Dimensions
         {
             get => _dimensions ?? (_dimensions = new InputList<Inputs.ApplicationInfoDimensionArgs>());
             set => _dimensions = value;
         }
 
+        /// <summary>
+        /// The effective time of the quota application.
+        /// </summary>
         [Input("effectiveTime")]
         public Input<string>? EffectiveTime { get; set; }
 
+        /// <summary>
+        /// The language of the quota alert notification. Value:
+        /// - zh (default): Chinese.
+        /// - en: English.
+        /// </summary>
         [Input("envLanguage")]
         public Input<string>? EnvLanguage { get; set; }
 
+        /// <summary>
+        /// The expired time of the quota application.
+        /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
 
+        /// <summary>
+        /// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+        /// </summary>
         [Input("noticeType")]
         public Input<int>? NoticeType { get; set; }
 
+        /// <summary>
+        /// The product code.
+        /// </summary>
         [Input("productCode", required: true)]
         public Input<string> ProductCode { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of quota action.
+        /// </summary>
         [Input("quotaActionCode", required: true)]
         public Input<string> QuotaActionCode { get; set; } = null!;
 
+        /// <summary>
+        /// The quota type.
+        /// - CommonQuota (default): Generic quota.
+        /// - FlowControl:API rate quota.
+        /// - WhiteListLabel: Equity quota.
+        /// </summary>
         [Input("quotaCategory")]
         public Input<string>? QuotaCategory { get; set; }
 
+        /// <summary>
+        /// The reason of the quota application.
+        /// </summary>
         [Input("reason", required: true)]
         public Input<string> Reason { get; set; } = null!;
 
@@ -158,62 +321,128 @@ namespace Pulumi.AliCloud.Quotas
 
     public sealed class ApplicationInfoState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The approve value of the quota application.
+        /// </summary>
         [Input("approveValue")]
         public Input<string>? ApproveValue { get; set; }
 
+        /// <summary>
+        /// This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+        /// - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+        /// - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+        /// </summary>
         [Input("auditMode")]
         public Input<string>? AuditMode { get; set; }
 
+        /// <summary>
+        /// The audit reason.
+        /// </summary>
         [Input("auditReason")]
         public Input<string>? AuditReason { get; set; }
 
+        /// <summary>
+        /// Resource attribute field representing creation time.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// The desire value of the quota application.
+        /// </summary>
         [Input("desireValue")]
         public Input<double>? DesireValue { get; set; }
 
         [Input("dimensions")]
         private InputList<Inputs.ApplicationInfoDimensionGetArgs>? _dimensions;
+
+        /// <summary>
+        /// QuotaDimensions. See `Dimensions` below.
+        /// </summary>
         public InputList<Inputs.ApplicationInfoDimensionGetArgs> Dimensions
         {
             get => _dimensions ?? (_dimensions = new InputList<Inputs.ApplicationInfoDimensionGetArgs>());
             set => _dimensions = value;
         }
 
+        /// <summary>
+        /// The effective time of the quota application.
+        /// </summary>
         [Input("effectiveTime")]
         public Input<string>? EffectiveTime { get; set; }
 
+        /// <summary>
+        /// The language of the quota alert notification. Value:
+        /// - zh (default): Chinese.
+        /// - en: English.
+        /// </summary>
         [Input("envLanguage")]
         public Input<string>? EnvLanguage { get; set; }
 
+        /// <summary>
+        /// The expired time of the quota application.
+        /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
 
+        /// <summary>
+        /// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+        /// </summary>
         [Input("noticeType")]
         public Input<int>? NoticeType { get; set; }
 
+        /// <summary>
+        /// The product code.
+        /// </summary>
         [Input("productCode")]
         public Input<string>? ProductCode { get; set; }
 
+        /// <summary>
+        /// The ID of quota action.
+        /// </summary>
         [Input("quotaActionCode")]
         public Input<string>? QuotaActionCode { get; set; }
 
+        /// <summary>
+        /// The quota type.
+        /// - CommonQuota (default): Generic quota.
+        /// - FlowControl:API rate quota.
+        /// - WhiteListLabel: Equity quota.
+        /// </summary>
         [Input("quotaCategory")]
         public Input<string>? QuotaCategory { get; set; }
 
+        /// <summary>
+        /// The description of the quota application.
+        /// </summary>
         [Input("quotaDescription")]
         public Input<string>? QuotaDescription { get; set; }
 
+        /// <summary>
+        /// The name of the quota application.
+        /// </summary>
         [Input("quotaName")]
         public Input<string>? QuotaName { get; set; }
 
+        /// <summary>
+        /// The unit of the quota application.
+        /// </summary>
         [Input("quotaUnit")]
         public Input<string>? QuotaUnit { get; set; }
 
+        /// <summary>
+        /// The reason of the quota application.
+        /// </summary>
         [Input("reason")]
         public Input<string>? Reason { get; set; }
 
+        /// <summary>
+        /// Application Status:
+        /// - Disagree: reject.
+        /// - Agree: Approved.
+        /// - Process: under review.
+        /// - Cancel: Closed.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

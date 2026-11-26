@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCollationTimeZonesCollationTimeZone {
     /**
-     * @return The code of the instance type.
+     * @return The description.
      * 
      */
     private @Nullable String description;
     /**
-     * @return The offset of the UTC time. The offset is in the following format: (UTC+&lt;i&gt;HH:mm&lt;/i&gt;).
+     * @return The offset of the UTC time.
      * 
      */
     private @Nullable String standardTimeOffset;
     /**
-     * @return The time zone that is available for use in ApsaraDB RDS.
+     * @return The time zone.
      * 
      */
     private @Nullable String timeZone;
 
     private GetCollationTimeZonesCollationTimeZone() {}
     /**
-     * @return The code of the instance type.
+     * @return The description.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The offset of the UTC time. The offset is in the following format: (UTC+&lt;i&gt;HH:mm&lt;/i&gt;).
+     * @return The offset of the UTC time.
      * 
      */
     public Optional<String> standardTimeOffset() {
         return Optional.ofNullable(this.standardTimeOffset);
     }
     /**
-     * @return The time zone that is available for use in ApsaraDB RDS.
+     * @return The time zone.
      * 
      */
     public Optional<String> timeZone() {

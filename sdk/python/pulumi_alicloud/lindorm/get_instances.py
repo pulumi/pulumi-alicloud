@@ -80,6 +80,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
+        """
+        A list of Lindorm Instances. Each element contains the following attributes:
+        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
@@ -90,6 +93,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Instance names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -105,6 +111,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
@@ -142,7 +151,7 @@ def get_instances(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Lindorm Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 
@@ -200,7 +209,7 @@ def get_instances_output(enable_details: pulumi.Input[Optional[Optional[_builtin
     """
     This data source provides the Lindorm Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 

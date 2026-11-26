@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// &gt; **NOTE:** Available since v1.120.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// &gt; **NOTE:** Available since v1.120.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// &gt; **NOTE:** Available since v1.120.0.
         /// 
         /// ## Example Usage
         /// 
@@ -233,9 +233,18 @@ namespace Pulumi.AliCloud.ResourceManager
         public readonly ImmutableArray<string> Ids;
         public readonly string? Language;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Control Policy names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Resource Manager Control Policies. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetControlPoliciesPolicyResult> Policies;
+        /// <summary>
+        /// The type of policy.
+        /// </summary>
         public readonly string? PolicyType;
 
         [OutputConstructor]

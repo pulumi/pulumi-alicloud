@@ -160,7 +160,7 @@ def get_image_caches(ids: Optional[Sequence[_builtins.str]] = None,
     """
     Provides a collection of ECI Image Cache to the specified filters.
 
-    > **NOTE:** Available in 1.90.0+.
+    > **NOTE:** Available since v1.90.0.
 
     ## Example Usage
 
@@ -214,7 +214,7 @@ def get_image_caches_output(ids: pulumi.Input[Optional[Optional[Sequence[_builti
     """
     Provides a collection of ECI Image Cache to the specified filters.
 
-    > **NOTE:** Available in 1.90.0+.
+    > **NOTE:** Available since v1.90.0.
 
     ## Example Usage
 

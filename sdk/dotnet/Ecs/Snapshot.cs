@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
     /// 
-    /// &gt; **NOTE:** Deprecated since v1.120.0.
+    /// &gt; **DEPRECATED:** This resource has been deprecated from v1.120.0.
     /// 
     /// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsSnapshot from version 1.120.0.
     /// 
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ecs
     ///     var snapshot = new AliCloud.Ecs.Snapshot("snapshot", new()
     ///     {
     ///         DiskId = instance_attachment.DiskId,
-    ///         Name = "test-snapshot",
+    ///         Name = "demo-snapshot",
     ///         Description = "this snapshot is created for testing",
     ///         Tags = 
     ///         {
@@ -55,12 +55,21 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/snapshot:Snapshot")]
     public partial class Snapshot : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether the snapshot is available.
+        /// </summary>
         [Output("available")]
         public Output<bool> Available { get; private set; } = null!;
 
+        /// <summary>
+        /// The category of the snapshot. Valid values: `Standard`, `Flash`.
+        /// </summary>
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
 
+        /// <summary>
+        /// The creation time of the snapshot.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
@@ -76,22 +85,34 @@ namespace Pulumi.AliCloud.Ecs
         [Output("diskId")]
         public Output<string> DiskId { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to force delete the snapshot.
+        /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
+        /// <summary>
+        /// Deprecated.
+        /// </summary>
         [Output("instantAccess")]
         public Output<bool?> InstantAccess { get; private set; } = null!;
 
+        /// <summary>
+        /// Deprecated.
+        /// </summary>
         [Output("instantAccessRetentionDays")]
         public Output<int?> InstantAccessRetentionDays { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        /// The name of the snapshot to be created. Deprecated, use `SnapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         /// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The region ID of the snapshot.
+        /// </summary>
         [Output("regionId")]
         public Output<string> RegionId { get; private set; } = null!;
 
@@ -101,12 +122,21 @@ namespace Pulumi.AliCloud.Ecs
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// The retention days of the snapshot.
+        /// </summary>
         [Output("retentionDays")]
         public Output<int?> RetentionDays { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the snapshot.
+        /// </summary>
         [Output("snapshotName")]
         public Output<string> SnapshotName { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of the snapshot.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -116,6 +146,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// Wait until the snapshot reaches the specified state. Valid values: `Accomplished`, `Available`.
+        /// </summary>
         [Output("waitUntil")]
         public Output<string?> WaitUntil { get; private set; } = null!;
 
@@ -165,6 +198,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class SnapshotArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The category of the snapshot. Valid values: `Standard`, `Flash`.
+        /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
@@ -180,17 +216,26 @@ namespace Pulumi.AliCloud.Ecs
         [Input("diskId", required: true)]
         public Input<string> DiskId { get; set; } = null!;
 
+        /// <summary>
+        /// Whether to force delete the snapshot.
+        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
+        /// <summary>
+        /// Deprecated.
+        /// </summary>
         [Input("instantAccess")]
         public Input<bool>? InstantAccess { get; set; }
 
+        /// <summary>
+        /// Deprecated.
+        /// </summary>
         [Input("instantAccessRetentionDays")]
         public Input<int>? InstantAccessRetentionDays { get; set; }
 
         /// <summary>
-        /// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        /// The name of the snapshot to be created. Deprecated, use `SnapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         /// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
         /// </summary>
         [Input("name")]
@@ -202,9 +247,15 @@ namespace Pulumi.AliCloud.Ecs
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The retention days of the snapshot.
+        /// </summary>
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }
 
+        /// <summary>
+        /// The name of the snapshot.
+        /// </summary>
         [Input("snapshotName")]
         public Input<string>? SnapshotName { get; set; }
 
@@ -220,6 +271,9 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Wait until the snapshot reaches the specified state. Valid values: `Accomplished`, `Available`.
+        /// </summary>
         [Input("waitUntil")]
         public Input<string>? WaitUntil { get; set; }
 
@@ -231,12 +285,21 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class SnapshotState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the snapshot is available.
+        /// </summary>
         [Input("available")]
         public Input<bool>? Available { get; set; }
 
+        /// <summary>
+        /// The category of the snapshot. Valid values: `Standard`, `Flash`.
+        /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
+        /// <summary>
+        /// The creation time of the snapshot.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
@@ -252,22 +315,34 @@ namespace Pulumi.AliCloud.Ecs
         [Input("diskId")]
         public Input<string>? DiskId { get; set; }
 
+        /// <summary>
+        /// Whether to force delete the snapshot.
+        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
+        /// <summary>
+        /// Deprecated.
+        /// </summary>
         [Input("instantAccess")]
         public Input<bool>? InstantAccess { get; set; }
 
+        /// <summary>
+        /// Deprecated.
+        /// </summary>
         [Input("instantAccessRetentionDays")]
         public Input<int>? InstantAccessRetentionDays { get; set; }
 
         /// <summary>
-        /// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        /// The name of the snapshot to be created. Deprecated, use `SnapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         /// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The region ID of the snapshot.
+        /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }
 
@@ -277,12 +352,21 @@ namespace Pulumi.AliCloud.Ecs
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The retention days of the snapshot.
+        /// </summary>
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }
 
+        /// <summary>
+        /// The name of the snapshot.
+        /// </summary>
         [Input("snapshotName")]
         public Input<string>? SnapshotName { get; set; }
 
+        /// <summary>
+        /// The status of the snapshot.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -298,6 +382,9 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Wait until the snapshot reaches the specified state. Valid values: `Accomplished`, `Available`.
+        /// </summary>
         [Input("waitUntil")]
         public Input<string>? WaitUntil { get; set; }
 

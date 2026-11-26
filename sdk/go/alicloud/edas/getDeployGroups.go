@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
 //
-// > **NOTE:** Available in 1.82.0+
+// > **NOTE:** Available since v1.82.0.
 //
 // ## Example Usage
 //
@@ -30,10 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			groups, err := edas.GetDeployGroups(ctx, &edas.GetDeployGroupsArgs{
-//				AppId: "xxx",
-//				Ids: []string{
-//					"xxx",
-//				},
+//				AppId:      "xxx",
 //				OutputFile: pulumi.StringRef("groups.txt"),
 //			}, nil)
 //			if err != nil {

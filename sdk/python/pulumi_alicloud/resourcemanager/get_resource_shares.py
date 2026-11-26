@@ -77,6 +77,9 @@ class GetResourceSharesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Resource Share names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -87,21 +90,33 @@ class GetResourceSharesResult:
     @_builtins.property
     @pulumi.getter(name="resourceShareName")
     def resource_share_name(self) -> Optional[_builtins.str]:
+        """
+        The name of resource share.
+        """
         return pulumi.get(self, "resource_share_name")
 
     @_builtins.property
     @pulumi.getter(name="resourceShareOwner")
     def resource_share_owner(self) -> _builtins.str:
+        """
+        The owner of resource share.
+        """
         return pulumi.get(self, "resource_share_owner")
 
     @_builtins.property
     @pulumi.getter
     def shares(self) -> Sequence['outputs.GetResourceSharesShareResult']:
+        """
+        A list of Resource Manager Resource Shares. Each element contains the following attributes:
+        """
         return pulumi.get(self, "shares")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of resource share.
+        """
         return pulumi.get(self, "status")
 
 
@@ -132,7 +147,7 @@ def get_resource_shares(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.111.0+.
+    > **NOTE:** Available since v1.111.0.
 
     ## Example Usage
 
@@ -186,7 +201,7 @@ def get_resource_shares_output(ids: pulumi.Input[Optional[Optional[Sequence[_bui
     """
     This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.111.0+.
+    > **NOTE:** Available since v1.111.0.
 
     ## Example Usage
 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.QuickBI
         /// <summary>
         /// This data source provides the Quick BI Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.QuickBI
         /// <summary>
         /// This data source provides the Quick BI Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.QuickBI
         /// <summary>
         /// This data source provides the Quick BI Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -206,6 +206,9 @@ namespace Pulumi.AliCloud.QuickBI
         public readonly ImmutableArray<string> Ids;
         public readonly string? Keyword;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Quick BI Users. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetUsersUserResult> Users;
 
         [OutputConstructor]

@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> CompressType { get; private set; } = null!;
 
         /// <summary>
-        /// Configure columns when `ContentType` is `Parquet` or `Orc`.
+        /// Configure columns when `ContentType` is `Parquet` or `Orc`. See `ConfigColumns` below.
         /// </summary>
         [Output("configColumns")]
         public Output<ImmutableArray<Outputs.OssExportConfigColumn>> ConfigColumns { get; private set; } = null!;
@@ -319,7 +319,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.OssExportConfigColumnArgs>? _configColumns;
 
         /// <summary>
-        /// Configure columns when `ContentType` is `Parquet` or `Orc`.
+        /// Configure columns when `ContentType` is `Parquet` or `Orc`. See `ConfigColumns` below.
         /// </summary>
         public InputList<Inputs.OssExportConfigColumnArgs> ConfigColumns
         {
@@ -490,7 +490,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.OssExportConfigColumnGetArgs>? _configColumns;
 
         /// <summary>
-        /// Configure columns when `ContentType` is `Parquet` or `Orc`.
+        /// Configure columns when `ContentType` is `Parquet` or `Orc`. See `ConfigColumns` below.
         /// </summary>
         public InputList<Inputs.OssExportConfigColumnGetArgs> ConfigColumns
         {

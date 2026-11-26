@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.179.0+.
+// > **NOTE:** Available since v1.179.0+.
 //
 // ## Example Usage
 //
@@ -70,13 +70,15 @@ type GetHybridMonitorFcTasksArgs struct {
 // A collection of values returned by getHybridMonitorFcTasks.
 type GetHybridMonitorFcTasksResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                        `pulumi:"id"`
-	Ids        []string                      `pulumi:"ids"`
-	Namespace  *string                       `pulumi:"namespace"`
-	OutputFile *string                       `pulumi:"outputFile"`
-	PageNumber *int                          `pulumi:"pageNumber"`
-	PageSize   *int                          `pulumi:"pageSize"`
-	Tasks      []GetHybridMonitorFcTasksTask `pulumi:"tasks"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The index warehouse where the host belongs.
+	Namespace  *string `pulumi:"namespace"`
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
+	// A list of Cms Hybrid Monitor Fc Tasks. Each element contains the following attributes:
+	Tasks []GetHybridMonitorFcTasksTask `pulumi:"tasks"`
 }
 
 func GetHybridMonitorFcTasksOutput(ctx *pulumi.Context, args GetHybridMonitorFcTasksOutputArgs, opts ...pulumi.InvokeOption) GetHybridMonitorFcTasksResultOutput {
@@ -124,6 +126,7 @@ func (o GetHybridMonitorFcTasksResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHybridMonitorFcTasksResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The index warehouse where the host belongs.
 func (o GetHybridMonitorFcTasksResultOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHybridMonitorFcTasksResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
@@ -140,6 +143,7 @@ func (o GetHybridMonitorFcTasksResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetHybridMonitorFcTasksResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// A list of Cms Hybrid Monitor Fc Tasks. Each element contains the following attributes:
 func (o GetHybridMonitorFcTasksResultOutput) Tasks() GetHybridMonitorFcTasksTaskArrayOutput {
 	return o.ApplyT(func(v GetHybridMonitorFcTasksResult) []GetHybridMonitorFcTasksTask { return v.Tasks }).(GetHybridMonitorFcTasksTaskArrayOutput)
 }

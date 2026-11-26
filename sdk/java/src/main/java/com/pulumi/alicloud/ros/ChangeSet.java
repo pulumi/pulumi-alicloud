@@ -155,14 +155,14 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notificationUrls);
     }
     /**
-     * Parameters.
+     * Parameters. See `parameters` below.
      * 
      */
     @Export(name="parameters", refs={List.class,ChangeSetParameter.class}, tree="[0,1]")
     private Output<List<ChangeSetParameter>> parameters;
 
     /**
-     * @return Parameters.
+     * @return Parameters. See `parameters` below.
      * 
      */
     public Output<List<ChangeSetParameter>> parameters() {

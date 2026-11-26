@@ -14,8 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccessAssignmentsResult {
+    /**
+     * @return Access configuration ID.
+     * 
+     */
     private @Nullable String accessConfigurationId;
+    /**
+     * @return A list of Cloud Sso Access Assignments. Each element contains the following attributes:
+     * 
+     */
     private List<GetAccessAssignmentsAssignment> assignments;
+    /**
+     * @return Directory ID.
+     * 
+     */
     private String directoryId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,17 +36,41 @@ public final class GetAccessAssignmentsResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return Create the identity type of the access assignment, which can be a user or a user group.
+     * 
+     */
     private @Nullable String principalType;
+    /**
+     * @return The ID of the target to create the resource range.
+     * 
+     */
     private @Nullable String targetId;
+    /**
+     * @return The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+     * 
+     */
     private @Nullable String targetType;
 
     private GetAccessAssignmentsResult() {}
+    /**
+     * @return Access configuration ID.
+     * 
+     */
     public Optional<String> accessConfigurationId() {
         return Optional.ofNullable(this.accessConfigurationId);
     }
+    /**
+     * @return A list of Cloud Sso Access Assignments. Each element contains the following attributes:
+     * 
+     */
     public List<GetAccessAssignmentsAssignment> assignments() {
         return this.assignments;
     }
+    /**
+     * @return Directory ID.
+     * 
+     */
     public String directoryId() {
         return this.directoryId;
     }
@@ -51,12 +87,24 @@ public final class GetAccessAssignmentsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Create the identity type of the access assignment, which can be a user or a user group.
+     * 
+     */
     public Optional<String> principalType() {
         return Optional.ofNullable(this.principalType);
     }
+    /**
+     * @return The ID of the target to create the resource range.
+     * 
+     */
     public Optional<String> targetId() {
         return Optional.ofNullable(this.targetId);
     }
+    /**
+     * @return The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+     * 
+     */
     public Optional<String> targetType() {
         return Optional.ofNullable(this.targetType);
     }

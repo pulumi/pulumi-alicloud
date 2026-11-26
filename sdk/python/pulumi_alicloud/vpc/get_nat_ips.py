@@ -73,11 +73,17 @@ class GetNatIpsResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Nat Ip IDs.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
     @pulumi.getter
     def ips(self) -> Sequence['outputs.GetNatIpsIpResult']:
+        """
+        A list of Vpc Nat Ips. Each element contains the following attributes:
+        """
         return pulumi.get(self, "ips")
 
     @_builtins.property
@@ -88,16 +94,25 @@ class GetNatIpsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Nat Ip names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
     @pulumi.getter(name="natGatewayId")
     def nat_gateway_id(self) -> _builtins.str:
+        """
+        The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+        """
         return pulumi.get(self, "nat_gateway_id")
 
     @_builtins.property
     @pulumi.getter(name="natIpCidr")
     def nat_ip_cidr(self) -> Optional[_builtins.str]:
+        """
+        The CIDR block to which the NAT IP address belongs.
+        """
         return pulumi.get(self, "nat_ip_cidr")
 
     @_builtins.property
@@ -108,6 +123,9 @@ class GetNatIpsResult:
     @_builtins.property
     @pulumi.getter(name="natIpNames")
     def nat_ip_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The name of the NAT IP address.
+        """
         return pulumi.get(self, "nat_ip_names")
 
     @_builtins.property
@@ -118,6 +136,9 @@ class GetNatIpsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -152,7 +173,7 @@ def get_nat_ips(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.136.0+.
+    > **NOTE:** Available since v1.136.0+.
 
     ## Example Usage
 
@@ -194,6 +215,7 @@ def get_nat_ips(ids: Optional[Sequence[_builtins.str]] = None,
     :param _builtins.str name_regex: A regex string to filter results by Nat Ip name.
     :param _builtins.str nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
     :param _builtins.str nat_ip_cidr: NAT IP ADDRESS of the address segment.
+    :param Sequence[_builtins.str] nat_ip_ids: A list of Nat Ip IDs used to filter results.
     :param Sequence[_builtins.str] nat_ip_names: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str status: The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
@@ -234,7 +256,7 @@ def get_nat_ips_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.st
     """
     This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.136.0+.
+    > **NOTE:** Available since v1.136.0+.
 
     ## Example Usage
 
@@ -276,6 +298,7 @@ def get_nat_ips_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.st
     :param _builtins.str name_regex: A regex string to filter results by Nat Ip name.
     :param _builtins.str nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
     :param _builtins.str nat_ip_cidr: NAT IP ADDRESS of the address segment.
+    :param Sequence[_builtins.str] nat_ip_ids: A list of Nat Ip IDs used to filter results.
     :param Sequence[_builtins.str] nat_ip_names: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str status: The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.

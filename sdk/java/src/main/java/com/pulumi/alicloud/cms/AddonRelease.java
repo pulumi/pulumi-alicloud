@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cms;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cms.AddonReleaseArgs;
 import com.pulumi.alicloud.cms.inputs.AddonReleaseState;
+import com.pulumi.alicloud.cms.outputs.AddonReleaseEntityRules;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -190,18 +191,35 @@ public class AddonRelease extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Specifies whether to perform a dry run. Valid values: `true`, `false`.
+     * Field `dryRun` has been deprecated from provider version 2.2.0.
+     * 
+     * @deprecated Field `dryRun` has been deprecated from provider version 2.2.0.
      * 
      */
+    @Deprecated
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Specifies whether to perform a dry run. Valid values: `true`, `false`.
+     * @return Field `dryRun` has been deprecated from provider version 2.2.0.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
+    }
+    /**
+     * The entity discovery rule model. See `entityRules` below.
+     * 
+     */
+    @Export(name="entityRules", refs={AddonReleaseEntityRules.class}, tree="[0]")
+    private Output</* @Nullable */ AddonReleaseEntityRules> entityRules;
+
+    /**
+     * @return The entity discovery rule model. See `entityRules` below.
+     * 
+     */
+    public Output<Optional<AddonReleaseEntityRules>> entityRules() {
+        return Codegen.optional(this.entityRules);
     }
     /**
      * The environment type. Valid values: `CS`, `ECS`, `Cloud`.

@@ -80,14 +80,14 @@ public final class OssExportState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configure columns when `contentType` is `parquet` or `orc`.
+     * Configure columns when `contentType` is `parquet` or `orc`. See `configColumns` below.
      * 
      */
     @Import(name="configColumns")
     private @Nullable Output<List<OssExportConfigColumnArgs>> configColumns;
 
     /**
-     * @return Configure columns when `contentType` is `parquet` or `orc`.
+     * @return Configure columns when `contentType` is `parquet` or `orc`. See `configColumns` below.
      * 
      */
     public Optional<Output<List<OssExportConfigColumnArgs>>> configColumns() {
@@ -529,7 +529,7 @@ public final class OssExportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configColumns Configure columns when `contentType` is `parquet` or `orc`.
+         * @param configColumns Configure columns when `contentType` is `parquet` or `orc`. See `configColumns` below.
          * 
          * @return builder
          * 
@@ -540,7 +540,7 @@ public final class OssExportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configColumns Configure columns when `contentType` is `parquet` or `orc`.
+         * @param configColumns Configure columns when `contentType` is `parquet` or `orc`. See `configColumns` below.
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class OssExportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configColumns Configure columns when `contentType` is `parquet` or `orc`.
+         * @param configColumns Configure columns when `contentType` is `parquet` or `orc`. See `configColumns` below.
          * 
          * @return builder
          * 

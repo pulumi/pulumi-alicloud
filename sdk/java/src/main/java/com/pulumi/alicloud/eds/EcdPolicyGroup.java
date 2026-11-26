@@ -8,6 +8,7 @@ import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
 import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupState;
 import com.pulumi.alicloud.eds.outputs.EcdPolicyGroupAuthorizeAccessPolicyRule;
 import com.pulumi.alicloud.eds.outputs.EcdPolicyGroupAuthorizeSecurityPolicyRule;
+import com.pulumi.alicloud.eds.outputs.EcdPolicyGroupClientType;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -135,6 +136,20 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
         return this.cameraRedirect;
     }
     /**
+     * The list of client type access rules used to control which clients can access cloud desktops. See `clientTypes` below.
+     * 
+     */
+    @Export(name="clientTypes", refs={List.class,EcdPolicyGroupClientType.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<EcdPolicyGroupClientType>> clientTypes;
+
+    /**
+     * @return The list of client type access rules used to control which clients can access cloud desktops. See `clientTypes` below.
+     * 
+     */
+    public Output<Optional<List<EcdPolicyGroupClientType>>> clientTypes() {
+        return Codegen.optional(this.clientTypes);
+    }
+    /**
      * The clipboard policy. Valid values: `off`, `read`, `readwrite`.
      * 
      */
@@ -161,6 +176,34 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> domainList() {
         return Codegen.optional(this.domainList);
+    }
+    /**
+     * Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+     * 
+     */
+    @Export(name="endUserApplyAdminCoordinate", refs={String.class}, tree="[0]")
+    private Output<String> endUserApplyAdminCoordinate;
+
+    /**
+     * @return Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+     * 
+     */
+    public Output<String> endUserApplyAdminCoordinate() {
+        return this.endUserApplyAdminCoordinate;
+    }
+    /**
+     * Whether to allow end users to join user groups. Valid values: `off`, `on`.
+     * 
+     */
+    @Export(name="endUserGroupCoordinate", refs={String.class}, tree="[0]")
+    private Output<String> endUserGroupCoordinate;
+
+    /**
+     * @return Whether to allow end users to join user groups. Valid values: `off`, `on`.
+     * 
+     */
+    public Output<String> endUserGroupCoordinate() {
+        return this.endUserGroupCoordinate;
     }
     /**
      * The access of html5. Valid values: `off`, `on`.
@@ -191,14 +234,28 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
         return this.htmlFileTransfer;
     }
     /**
-     * Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+     * The network communication protocol. Valid values: `BOTH`, `TCP`.
+     * 
+     */
+    @Export(name="internetCommunicationProtocol", refs={String.class}, tree="[0]")
+    private Output<String> internetCommunicationProtocol;
+
+    /**
+     * @return The network communication protocol. Valid values: `BOTH`, `TCP`.
+     * 
+     */
+    public Output<String> internetCommunicationProtocol() {
+        return this.internetCommunicationProtocol;
+    }
+    /**
+     * Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
      * 
      */
     @Export(name="localDrive", refs={String.class}, tree="[0]")
     private Output<String> localDrive;
 
     /**
-     * @return Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+     * @return Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
      * 
      */
     public Output<String> localDrive() {
@@ -231,6 +288,20 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<String> recording() {
         return this.recording;
+    }
+    /**
+     * The recording duration. Valid values: `10`, `20`, `30`, `60`.
+     * 
+     */
+    @Export(name="recordingDuration", refs={Integer.class}, tree="[0]")
+    private Output<Integer> recordingDuration;
+
+    /**
+     * @return The recording duration. Valid values: `10`, `20`, `30`, `60`.
+     * 
+     */
+    public Output<Integer> recordingDuration() {
+        return this.recordingDuration;
     }
     /**
      * The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.

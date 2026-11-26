@@ -88,7 +88,7 @@ class GetBaselineStrategiesResult:
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
         """
-        A list of name of Baseline Strategys.
+        A list of name of Baseline Strategies.
         """
         return pulumi.get(self, "names")
 
@@ -100,6 +100,9 @@ class GetBaselineStrategiesResult:
     @_builtins.property
     @pulumi.getter
     def strategies(self) -> Sequence['outputs.GetBaselineStrategiesStrategyResult']:
+        """
+        A list of Baseline Strategy Entries. Each element contains the following attributes:
+        """
         return pulumi.get(self, "strategies")
 
     @_builtins.property
@@ -133,7 +136,7 @@ def get_baseline_strategies(custom_type: Optional[_builtins.str] = None,
     """
     This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -152,7 +155,7 @@ def get_baseline_strategies(custom_type: Optional[_builtins.str] = None,
     default = alicloud.threatdetection.get_baseline_strategies_output(ids=[default_baseline_strategy.id],
         name_regex=default_baseline_strategy.name,
         custom_type="custom")
-    pulumi.export("alicloudThreatDetectionBaselineStrategyExampleId", default_alicloud_threat_detection_baseline_strategys["strategys"][0]["id"])
+    pulumi.export("alicloudThreatDetectionBaselineStrategyExampleId", default.strategies[0].id)
     ```
 
 
@@ -160,6 +163,7 @@ def get_baseline_strategies(custom_type: Optional[_builtins.str] = None,
     :param Sequence[_builtins.str] ids: A list of Baseline Strategy IDs.
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str strategy_ids: The IDs of the Baseline Strategy.
     """
     __args__ = dict()
     __args__['customType'] = custom_type
@@ -188,7 +192,7 @@ def get_baseline_strategies_output(custom_type: pulumi.Input[Optional[Optional[_
     """
     This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -207,7 +211,7 @@ def get_baseline_strategies_output(custom_type: pulumi.Input[Optional[Optional[_
     default = alicloud.threatdetection.get_baseline_strategies_output(ids=[default_baseline_strategy.id],
         name_regex=default_baseline_strategy.name,
         custom_type="custom")
-    pulumi.export("alicloudThreatDetectionBaselineStrategyExampleId", default_alicloud_threat_detection_baseline_strategys["strategys"][0]["id"])
+    pulumi.export("alicloudThreatDetectionBaselineStrategyExampleId", default.strategies[0].id)
     ```
 
 
@@ -215,6 +219,7 @@ def get_baseline_strategies_output(custom_type: pulumi.Input[Optional[Optional[_
     :param Sequence[_builtins.str] ids: A list of Baseline Strategy IDs.
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str strategy_ids: The IDs of the Baseline Strategy.
     """
     __args__ = dict()
     __args__['customType'] = custom_type

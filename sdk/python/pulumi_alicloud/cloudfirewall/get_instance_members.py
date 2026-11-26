@@ -117,7 +117,7 @@ def get_instance_members(current_page: Optional[_builtins.str] = None,
                          page_size: Optional[_builtins.int] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceMembersResult:
     """
-    This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
+    This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://www.alibabacloud.com/help/doc-detail/261237.htm)
 
     > **NOTE:** Available since v1.194.0.
 
@@ -132,6 +132,7 @@ def get_instance_members(current_page: Optional[_builtins.str] = None,
     ```
 
 
+    :param _builtins.str current_page: The current page number.
     :param Sequence[_builtins.str] ids: A list of Instance Member IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -159,7 +160,7 @@ def get_instance_members_output(current_page: pulumi.Input[Optional[Optional[_bu
                                 page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceMembersResult]:
     """
-    This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
+    This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://www.alibabacloud.com/help/doc-detail/261237.htm)
 
     > **NOTE:** Available since v1.194.0.
 
@@ -174,6 +175,7 @@ def get_instance_members_output(current_page: pulumi.Input[Optional[Optional[_bu
     ```
 
 
+    :param _builtins.str current_page: The current page number.
     :param Sequence[_builtins.str] ids: A list of Instance Member IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """

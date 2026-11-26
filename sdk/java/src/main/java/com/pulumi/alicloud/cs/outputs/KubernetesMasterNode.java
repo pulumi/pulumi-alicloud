@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KubernetesMasterNode {
     /**
-     * @return ID of the node.
+     * @return (Optional) The id of a node.
      * 
      */
     private @Nullable String id;
@@ -22,14 +22,14 @@ public final class KubernetesMasterNode {
      */
     private @Nullable String name;
     /**
-     * @return The private IP address of node.
+     * @return (Optional) The private ip of a node.
      * 
      */
     private @Nullable String privateIp;
 
     private KubernetesMasterNode() {}
     /**
-     * @return ID of the node.
+     * @return (Optional) The id of a node.
      * 
      */
     public Optional<String> id() {
@@ -43,7 +43,7 @@ public final class KubernetesMasterNode {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The private IP address of node.
+     * @return (Optional) The private ip of a node.
      * 
      */
     public Optional<String> privateIp() {

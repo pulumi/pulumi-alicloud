@@ -64,7 +64,7 @@ public final class GetProjectsProject {
      */
     private String status;
     /**
-     * @return Project type
+     * @return Optional: When creating a table, the Lifecycle clause is optional. If the Lifecycle of the table is not set, the table is permanently valid.mandatory: the Lifecycle clause is required. You must set the Lifecycle of the table.inherit: If you do not set the lifecycle of the table when creating a table, the lifecycle of the table is the value of ODPS. table.lifecycle.value, and the ODPS. table.lifecycle.value attribute sets the lifecycle of the table.
      * 
      */
     private String type;
@@ -141,7 +141,7 @@ public final class GetProjectsProject {
         return this.status;
     }
     /**
-     * @return Project type
+     * @return Optional: When creating a table, the Lifecycle clause is optional. If the Lifecycle of the table is not set, the table is permanently valid.mandatory: the Lifecycle clause is required. You must set the Lifecycle of the table.inherit: If you do not set the lifecycle of the table when creating a table, the lifecycle of the table is the value of ODPS. table.lifecycle.value, and the ODPS. table.lifecycle.value attribute sets the lifecycle of the table.
      * 
      */
     public String type() {

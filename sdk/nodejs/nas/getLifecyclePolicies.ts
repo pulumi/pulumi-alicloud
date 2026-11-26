@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Nas Lifecycle Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.153.0+.
+ * > **NOTE:** Available since v1.153.0+.
  *
  * ## Example Usage
  *
@@ -70,6 +70,9 @@ export interface GetLifecyclePoliciesArgs {
  * A collection of values returned by getLifecyclePolicies.
  */
 export interface GetLifecyclePoliciesResult {
+    /**
+     * The ID of the file system.
+     */
     readonly fileSystemId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -77,14 +80,20 @@ export interface GetLifecyclePoliciesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Lifecycle Policy names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Nas Lifecycle Policies. Each element contains the following attributes:
+     */
     readonly policies: outputs.nas.GetLifecyclePoliciesPolicy[];
 }
 /**
  * This data source provides the Nas Lifecycle Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.153.0+.
+ * > **NOTE:** Available since v1.153.0+.
  *
  * ## Example Usage
  *

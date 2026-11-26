@@ -22,6 +22,10 @@ public final class GetGatewaysGateway {
      * 
      */
     private String gatewayDesc;
+    /**
+     * @return Gateway instance List.
+     * 
+     */
     private List<GetGatewaysGatewayGatewayInstance> gatewayInstances;
     /**
      * @return The name of the Gateway.
@@ -74,6 +78,10 @@ public final class GetGatewaysGateway {
     public String gatewayDesc() {
         return this.gatewayDesc;
     }
+    /**
+     * @return Gateway instance List.
+     * 
+     */
     public List<GetGatewaysGatewayGatewayInstance> gatewayInstances() {
         return this.gatewayInstances;
     }

@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetContainerGroupsGroupDnsConfigOption {
     /**
-     * @return The name of the object variable.
+     * @return The name of the volume.
      * 
      */
     private String name;
     /**
-     * @return The value of the object variable.
+     * @return The value of the variable.
      * 
      */
     private String value;
 
     private GetContainerGroupsGroupDnsConfigOption() {}
     /**
-     * @return The name of the object variable.
+     * @return The name of the volume.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The value of the object variable.
+     * @return The value of the variable.
      * 
      */
     public String value() {

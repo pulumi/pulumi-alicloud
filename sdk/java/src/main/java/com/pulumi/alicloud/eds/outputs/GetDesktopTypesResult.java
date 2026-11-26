@@ -16,24 +16,60 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDesktopTypesResult {
+    /**
+     * @return The CPU cores.
+     * 
+     */
     private @Nullable Integer cpuCount;
+    /**
+     * @return The GPU cores.
+     * 
+     */
     private @Nullable Double gpuCount;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return A list of Desktop Type IDs.
+     * 
+     */
     private List<String> ids;
+    /**
+     * @return The Specification family.
+     * 
+     */
     private @Nullable String instanceTypeFamily;
+    /**
+     * @return The Memory size. Unit: MiB.
+     * 
+     */
     private @Nullable Integer memorySize;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A list of Ecd Desktop Types. Each element contains the following attributes:
+     * 
+     */
     private List<GetDesktopTypesType> types;
 
     private GetDesktopTypesResult() {}
+    /**
+     * @return The CPU cores.
+     * 
+     */
     public Optional<Integer> cpuCount() {
         return Optional.ofNullable(this.cpuCount);
     }
+    /**
+     * @return The GPU cores.
+     * 
+     */
     public Optional<Double> gpuCount() {
         return Optional.ofNullable(this.gpuCount);
     }
@@ -44,21 +80,41 @@ public final class GetDesktopTypesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Desktop Type IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The Specification family.
+     * 
+     */
     public Optional<String> instanceTypeFamily() {
         return Optional.ofNullable(this.instanceTypeFamily);
     }
+    /**
+     * @return The Memory size. Unit: MiB.
+     * 
+     */
     public Optional<Integer> memorySize() {
         return Optional.ofNullable(this.memorySize);
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A list of Ecd Desktop Types. Each element contains the following attributes:
+     * 
+     */
     public List<GetDesktopTypesType> types() {
         return this.types;
     }

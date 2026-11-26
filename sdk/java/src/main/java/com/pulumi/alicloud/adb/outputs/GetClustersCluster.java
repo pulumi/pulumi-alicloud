@@ -14,138 +14,272 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClustersCluster {
+    /**
+     * @return Auto-renewal period of an cluster, in the unit of the month.
+     * 
+     */
     private Integer autoRenewPeriod;
+    /**
+     * @return The minor versions to which you can update the current minor version of the cluster.
+     * 
+     */
     private List<GetClustersClusterAvailableKernelVersion> availableKernelVersions;
     /**
-     * @return Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
+     * @return The payment type of the resource.
      * 
      */
     private String chargeType;
+    /**
+     * @return The name of the service.
+     * 
+     */
     private String commodityCode;
+    /**
+     * @return The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources.
+     * 
+     */
     private String computeResource;
+    /**
+     * @return The endpoint of the cluster.
+     * 
+     */
     private String connectionString;
     /**
      * @return The CreateTime of the ADB cluster.
      * 
      */
     private String createTime;
+    /**
+     * @return The db cluster category.
+     * 
+     */
     private String dbClusterCategory;
+    /**
+     * @return The db cluster id.
+     * 
+     */
     private String dbClusterId;
+    /**
+     * @return The db cluster network type.
+     * 
+     */
     private String dbClusterNetworkType;
+    /**
+     * @return The db cluster type.
+     * 
+     */
     private String dbClusterType;
+    /**
+     * @return The db cluster version.
+     * 
+     */
     private String dbClusterVersion;
     /**
-     * @return The DBNodeClass of the ADB cluster.
+     * @return The db node class.
      * 
      */
     private String dbNodeClass;
     /**
-     * @return The DBNodeCount of the ADB cluster.
+     * @return The db node count.
      * 
      */
     private Integer dbNodeCount;
     /**
-     * @return The DBNodeStorage of the ADB cluster.
+     * @return The db node storage.
      * 
      */
     private Integer dbNodeStorage;
     /**
-     * @return The description of the ADB cluster.
+     * @return The description of DBCluster.
      * 
      */
     private String description;
+    /**
+     * @return The type of the disk.
+     * 
+     */
     private String diskType;
+    /**
+     * @return The ID of the data synchronization task in Data Transmission Service (DTS). This parameter is valid only for analytic instances.
+     * 
+     */
     private String dtsJobId;
+    /**
+     * @return The elastic io resource.
+     * 
+     */
     private Integer elasticIoResource;
+    /**
+     * @return The engine of the database.
+     * 
+     */
     private String engine;
+    /**
+     * @return The engine version of the database.
+     * 
+     */
     private String engineVersion;
+    /**
+     * @return The number of nodes. The node resources are used for data computing in elastic mode.
+     * 
+     */
     private String executorCount;
     /**
-     * @return Expiration time. Pay-As-You-Go clusters never expire.
+     * @return The time when the cluster expires.
      * 
      */
     private String expireTime;
     /**
-     * @return The expired of the ADB cluster.
+     * @return Indicates whether the cluster has expired.
      * 
      */
     private String expired;
     /**
-     * @return The ID of the ADB cluster.
+     * @return The ID of the DBCluster.
      * 
      */
     private String id;
+    /**
+     * @return The minor version. Example: 3.1.9.
+     * 
+     */
     private String kernelVersion;
     /**
-     * @return The LockMode of the ADB cluster.
+     * @return The lock mode of the cluster.
      * 
      */
     private String lockMode;
+    /**
+     * @return The reason why the cluster is locked.
+     * 
+     */
     private String lockReason;
+    /**
+     * @return The maintenance window of the cluster.
+     * 
+     */
     private String maintainTime;
+    /**
+     * @return The lock mode of the cluster.
+     * 
+     */
     private String mode;
     /**
-     * @return The DBClusterNetworkType of the ADB cluster.
+     * @return The db cluster network type.
      * 
      */
     private String networkType;
+    /**
+     * @return The payment type of the resource.
+     * 
+     */
     private String paymentType;
+    /**
+     * @return The port that is used to access the cluster.
+     * 
+     */
     private Integer port;
+    /**
+     * @return The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is valid only for analytic instances.
+     * 
+     */
     private String rdsInstanceId;
     /**
-     * @return Region ID the cluster belongs to.
+     * @return The region ID  of the resource.
      * 
      */
     private String regionId;
+    /**
+     * @return The status of renewal.
+     * 
+     */
     private String renewalStatus;
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     private String resourceGroupId;
+    /**
+     * @return List of IP addresses allowed to access all databases of an cluster.
+     * 
+     */
     private List<String> securityIps;
     /**
-     * @return The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+     * @return The status of the resource.
      * 
      */
     private String status;
+    /**
+     * @return The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster.
+     * 
+     */
     private String storageResource;
     /**
-     * @return A mapping of tags to assign to the resource.
-     * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
+     * @return A map of tags assigned to the cluster.
      * 
      */
     private Map<String,String> tags;
+    /**
+     * @return The vpc cloud instance id.
+     * 
+     */
     private String vpcCloudInstanceId;
     /**
-     * @return ID of the VPC the cluster belongs to.
+     * @return The vpc id.
      * 
      */
     private String vpcId;
+    /**
+     * @return The vswitch id.
+     * 
+     */
     private String vswitchId;
     /**
-     * @return The ZoneId of the ADB cluster.
+     * @return The zone ID  of the resource.
      * 
      */
     private String zoneId;
 
     private GetClustersCluster() {}
+    /**
+     * @return Auto-renewal period of an cluster, in the unit of the month.
+     * 
+     */
     public Integer autoRenewPeriod() {
         return this.autoRenewPeriod;
     }
+    /**
+     * @return The minor versions to which you can update the current minor version of the cluster.
+     * 
+     */
     public List<GetClustersClusterAvailableKernelVersion> availableKernelVersions() {
         return this.availableKernelVersions;
     }
     /**
-     * @return Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
+     * @return The payment type of the resource.
      * 
      */
     public String chargeType() {
         return this.chargeType;
     }
+    /**
+     * @return The name of the service.
+     * 
+     */
     public String commodityCode() {
         return this.commodityCode;
     }
+    /**
+     * @return The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources.
+     * 
+     */
     public String computeResource() {
         return this.computeResource;
     }
+    /**
+     * @return The endpoint of the cluster.
+     * 
+     */
     public String connectionString() {
         return this.connectionString;
     }
@@ -156,173 +290,267 @@ public final class GetClustersCluster {
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return The db cluster category.
+     * 
+     */
     public String dbClusterCategory() {
         return this.dbClusterCategory;
     }
+    /**
+     * @return The db cluster id.
+     * 
+     */
     public String dbClusterId() {
         return this.dbClusterId;
     }
+    /**
+     * @return The db cluster network type.
+     * 
+     */
     public String dbClusterNetworkType() {
         return this.dbClusterNetworkType;
     }
+    /**
+     * @return The db cluster type.
+     * 
+     */
     public String dbClusterType() {
         return this.dbClusterType;
     }
+    /**
+     * @return The db cluster version.
+     * 
+     */
     public String dbClusterVersion() {
         return this.dbClusterVersion;
     }
     /**
-     * @return The DBNodeClass of the ADB cluster.
+     * @return The db node class.
      * 
      */
     public String dbNodeClass() {
         return this.dbNodeClass;
     }
     /**
-     * @return The DBNodeCount of the ADB cluster.
+     * @return The db node count.
      * 
      */
     public Integer dbNodeCount() {
         return this.dbNodeCount;
     }
     /**
-     * @return The DBNodeStorage of the ADB cluster.
+     * @return The db node storage.
      * 
      */
     public Integer dbNodeStorage() {
         return this.dbNodeStorage;
     }
     /**
-     * @return The description of the ADB cluster.
+     * @return The description of DBCluster.
      * 
      */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The type of the disk.
+     * 
+     */
     public String diskType() {
         return this.diskType;
     }
+    /**
+     * @return The ID of the data synchronization task in Data Transmission Service (DTS). This parameter is valid only for analytic instances.
+     * 
+     */
     public String dtsJobId() {
         return this.dtsJobId;
     }
+    /**
+     * @return The elastic io resource.
+     * 
+     */
     public Integer elasticIoResource() {
         return this.elasticIoResource;
     }
+    /**
+     * @return The engine of the database.
+     * 
+     */
     public String engine() {
         return this.engine;
     }
+    /**
+     * @return The engine version of the database.
+     * 
+     */
     public String engineVersion() {
         return this.engineVersion;
     }
+    /**
+     * @return The number of nodes. The node resources are used for data computing in elastic mode.
+     * 
+     */
     public String executorCount() {
         return this.executorCount;
     }
     /**
-     * @return Expiration time. Pay-As-You-Go clusters never expire.
+     * @return The time when the cluster expires.
      * 
      */
     public String expireTime() {
         return this.expireTime;
     }
     /**
-     * @return The expired of the ADB cluster.
+     * @return Indicates whether the cluster has expired.
      * 
      */
     public String expired() {
         return this.expired;
     }
     /**
-     * @return The ID of the ADB cluster.
+     * @return The ID of the DBCluster.
      * 
      */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The minor version. Example: 3.1.9.
+     * 
+     */
     public String kernelVersion() {
         return this.kernelVersion;
     }
     /**
-     * @return The LockMode of the ADB cluster.
+     * @return The lock mode of the cluster.
      * 
      */
     public String lockMode() {
         return this.lockMode;
     }
+    /**
+     * @return The reason why the cluster is locked.
+     * 
+     */
     public String lockReason() {
         return this.lockReason;
     }
+    /**
+     * @return The maintenance window of the cluster.
+     * 
+     */
     public String maintainTime() {
         return this.maintainTime;
     }
+    /**
+     * @return The lock mode of the cluster.
+     * 
+     */
     public String mode() {
         return this.mode;
     }
     /**
-     * @return The DBClusterNetworkType of the ADB cluster.
+     * @return The db cluster network type.
      * 
      */
     public String networkType() {
         return this.networkType;
     }
+    /**
+     * @return The payment type of the resource.
+     * 
+     */
     public String paymentType() {
         return this.paymentType;
     }
+    /**
+     * @return The port that is used to access the cluster.
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is valid only for analytic instances.
+     * 
+     */
     public String rdsInstanceId() {
         return this.rdsInstanceId;
     }
     /**
-     * @return Region ID the cluster belongs to.
+     * @return The region ID  of the resource.
      * 
      */
     public String regionId() {
         return this.regionId;
     }
+    /**
+     * @return The status of renewal.
+     * 
+     */
     public String renewalStatus() {
         return this.renewalStatus;
     }
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public String resourceGroupId() {
         return this.resourceGroupId;
     }
+    /**
+     * @return List of IP addresses allowed to access all databases of an cluster.
+     * 
+     */
     public List<String> securityIps() {
         return this.securityIps;
     }
     /**
-     * @return The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+     * @return The status of the resource.
      * 
      */
     public String status() {
         return this.status;
     }
+    /**
+     * @return The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster.
+     * 
+     */
     public String storageResource() {
         return this.storageResource;
     }
     /**
-     * @return A mapping of tags to assign to the resource.
-     * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
+     * @return A map of tags assigned to the cluster.
      * 
      */
     public Map<String,String> tags() {
         return this.tags;
     }
+    /**
+     * @return The vpc cloud instance id.
+     * 
+     */
     public String vpcCloudInstanceId() {
         return this.vpcCloudInstanceId;
     }
     /**
-     * @return ID of the VPC the cluster belongs to.
+     * @return The vpc id.
      * 
      */
     public String vpcId() {
         return this.vpcId;
     }
+    /**
+     * @return The vswitch id.
+     * 
+     */
     public String vswitchId() {
         return this.vswitchId;
     }
     /**
-     * @return The ZoneId of the ADB cluster.
+     * @return The zone ID  of the resource.
      * 
      */
     public String zoneId() {

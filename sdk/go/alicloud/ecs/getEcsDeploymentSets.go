@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.140.0+.
+// > **NOTE:** Available since v1.140.0.
 //
 // ## Example Usage
 //
@@ -78,15 +78,19 @@ type GetEcsDeploymentSetsArgs struct {
 
 // A collection of values returned by getEcsDeploymentSets.
 type GetEcsDeploymentSetsResult struct {
+	// The name of the deployment set.
 	DeploymentSetName *string `pulumi:"deploymentSetName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                    `pulumi:"id"`
-	Ids        []string                  `pulumi:"ids"`
-	NameRegex  *string                   `pulumi:"nameRegex"`
-	Names      []string                  `pulumi:"names"`
-	OutputFile *string                   `pulumi:"outputFile"`
-	Sets       []GetEcsDeploymentSetsSet `pulumi:"sets"`
-	Strategy   *string                   `pulumi:"strategy"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Deployment Set names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Ecs Deployment Sets. Each element contains the following attributes:
+	Sets []GetEcsDeploymentSetsSet `pulumi:"sets"`
+	// The deployment strategy.
+	Strategy *string `pulumi:"strategy"`
 }
 
 func GetEcsDeploymentSetsOutput(ctx *pulumi.Context, args GetEcsDeploymentSetsOutputArgs, opts ...pulumi.InvokeOption) GetEcsDeploymentSetsResultOutput {
@@ -127,6 +131,7 @@ func (o GetEcsDeploymentSetsResultOutput) ToGetEcsDeploymentSetsResultOutputWith
 	return o
 }
 
+// The name of the deployment set.
 func (o GetEcsDeploymentSetsResultOutput) DeploymentSetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDeploymentSetsResult) *string { return v.DeploymentSetName }).(pulumi.StringPtrOutput)
 }
@@ -144,6 +149,7 @@ func (o GetEcsDeploymentSetsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDeploymentSetsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Deployment Set names.
 func (o GetEcsDeploymentSetsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsDeploymentSetsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -152,10 +158,12 @@ func (o GetEcsDeploymentSetsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDeploymentSetsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecs Deployment Sets. Each element contains the following attributes:
 func (o GetEcsDeploymentSetsResultOutput) Sets() GetEcsDeploymentSetsSetArrayOutput {
 	return o.ApplyT(func(v GetEcsDeploymentSetsResult) []GetEcsDeploymentSetsSet { return v.Sets }).(GetEcsDeploymentSetsSetArrayOutput)
 }
 
+// The deployment strategy.
 func (o GetEcsDeploymentSetsResultOutput) Strategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDeploymentSetsResult) *string { return v.Strategy }).(pulumi.StringPtrOutput)
 }

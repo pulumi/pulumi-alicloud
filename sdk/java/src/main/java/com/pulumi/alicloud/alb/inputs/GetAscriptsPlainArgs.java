@@ -31,9 +31,17 @@ public final class GetAscriptsPlainArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.ascriptName);
     }
 
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
+    /**
+     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -138,6 +146,12 @@ public final class GetAscriptsPlainArgs extends com.pulumi.resources.InvokeArgs 
             return this;
         }
 
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             $.enableDetails = enableDetails;
             return this;

@@ -17,14 +17,14 @@ public final class AlertSeverityConfigurationArgs extends com.pulumi.resources.R
     public static final AlertSeverityConfigurationArgs Empty = new AlertSeverityConfigurationArgs();
 
     /**
-     * Severity when this condition is met.
+     * Severity when this condition is met. The map supports `condition` (condition for each row) and `countCondition` (count&#39;s condition for the rows met condition above) keys.
      * 
      */
     @Import(name="evalCondition", required=true)
     private Output<Map<String,String>> evalCondition;
 
     /**
-     * @return Severity when this condition is met.
+     * @return Severity when this condition is met. The map supports `condition` (condition for each row) and `countCondition` (count&#39;s condition for the rows met condition above) keys.
      * 
      */
     public Output<Map<String,String>> evalCondition() {
@@ -72,7 +72,7 @@ public final class AlertSeverityConfigurationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param evalCondition Severity when this condition is met.
+         * @param evalCondition Severity when this condition is met. The map supports `condition` (condition for each row) and `countCondition` (count&#39;s condition for the rows met condition above) keys.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class AlertSeverityConfigurationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param evalCondition Severity when this condition is met.
+         * @param evalCondition Severity when this condition is met. The map supports `condition` (condition for each row) and `countCondition` (count&#39;s condition for the rows met condition above) keys.
          * 
          * @return builder
          * 

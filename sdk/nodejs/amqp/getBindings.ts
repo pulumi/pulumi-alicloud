@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Amqp Bindings of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *
@@ -56,20 +56,32 @@ export interface GetBindingsArgs {
  * A collection of values returned by getBindings.
  */
 export interface GetBindingsResult {
+    /**
+     * A list of Amqp Bindings. Each element contains the following attributes:
+     */
     readonly bindings: outputs.amqp.GetBindingsBinding[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Binding IDs. Each item value formats as `<instance_id>:<virtual_host_name>:<source_exchange>:<destination_name>`.
+     */
     readonly ids: string[];
+    /**
+     * Instance Id.
+     */
     readonly instanceId: string;
     readonly outputFile?: string;
+    /**
+     * Virtualhost Name.
+     */
     readonly virtualHostName: string;
 }
 /**
  * This data source provides the Amqp Bindings of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *

@@ -69,11 +69,17 @@ class GetImagesResult:
     @_builtins.property
     @pulumi.getter(name="imageType")
     def image_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the image. Valid values: `app`, `custom`, `system`.
+        """
         return pulumi.get(self, "image_type")
 
     @_builtins.property
     @pulumi.getter
     def images(self) -> Sequence['outputs.GetImagesImageResult']:
+        """
+        A list of Simple Application Server Images. Each element contains the following attributes:
+        """
         return pulumi.get(self, "images")
 
     @_builtins.property
@@ -84,6 +90,9 @@ class GetImagesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of  Image names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -94,6 +103,9 @@ class GetImagesResult:
     @_builtins.property
     @pulumi.getter
     def platform(self) -> Optional[_builtins.str]:
+        """
+        (Available in v1.161.0) The platform of Plan supported.
+        """
         return pulumi.get(self, "platform")
 
 
@@ -122,7 +134,7 @@ def get_images(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 
@@ -136,13 +148,12 @@ def get_images(ids: Optional[Sequence[_builtins.str]] = None,
     pulumi.export("simpleApplicationServerImageId1", ids["images"][0]["id"])
     ```
 
-    The following arguments are supported:
 
-    * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
-    * `image_type` - (Optional, ForceNew) The image type. Valid values: `app`, `custom`, `system`.
-    * `name_regex` - (Optional, ForceNew) A regex string to filter results by Image name.
-    * `platform` - (Available in v1.161.0) The platform of Image supported. Valid values: ["Linux", "Windows"].
-    * `output_file` - (Optional) File name where to save data source results (after running `pulumi preview`).
+    :param Sequence[_builtins.str] ids: A list of Image IDs.
+    :param _builtins.str image_type: The image type. Valid values: `app`, `custom`, `system`.
+    :param _builtins.str name_regex: A regex string to filter results by Image name.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str platform: Available in v1.161.0. The platform of Image supported. Valid values: ["Linux", "Windows"].
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -171,7 +182,7 @@ def get_images_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str
     """
     This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 
@@ -185,13 +196,12 @@ def get_images_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str
     pulumi.export("simpleApplicationServerImageId1", ids["images"][0]["id"])
     ```
 
-    The following arguments are supported:
 
-    * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
-    * `image_type` - (Optional, ForceNew) The image type. Valid values: `app`, `custom`, `system`.
-    * `name_regex` - (Optional, ForceNew) A regex string to filter results by Image name.
-    * `platform` - (Available in v1.161.0) The platform of Image supported. Valid values: ["Linux", "Windows"].
-    * `output_file` - (Optional) File name where to save data source results (after running `pulumi preview`).
+    :param Sequence[_builtins.str] ids: A list of Image IDs.
+    :param _builtins.str image_type: The image type. Valid values: `app`, `custom`, `system`.
+    :param _builtins.str name_regex: A regex string to filter results by Image name.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str platform: Available in v1.161.0. The platform of Image supported. Valid values: ["Linux", "Windows"].
     """
     __args__ = dict()
     __args__['ids'] = ids

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -133,6 +135,10 @@ export class Desktop extends pulumi.CustomResource {
      */
     declare public readonly desktopName: pulumi.Output<string | undefined>;
     /**
+     * The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktopTimers` below.
+     */
+    declare public readonly desktopTimers: pulumi.Output<outputs.eds.DesktopDesktopTimer[] | undefined>;
+    /**
      * The desktop type of the Desktop.
      */
     declare public readonly desktopType: pulumi.Output<string>;
@@ -141,9 +147,11 @@ export class Desktop extends pulumi.CustomResource {
      */
     declare public readonly endUserIds: pulumi.Output<string[] | undefined>;
     /**
-     * The hostname of the Desktop.
+     * The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+     *
+     * > **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `hostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
      */
-    declare public readonly hostName: pulumi.Output<string | undefined>;
+    declare public readonly hostName: pulumi.Output<string>;
     /**
      * The ID of the Simple Office Site.
      */
@@ -177,6 +185,12 @@ export class Desktop extends pulumi.CustomResource {
      */
     declare public readonly stoppedMode: pulumi.Output<string>;
     /**
+     * The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+     *
+     * > **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+     */
+    declare public readonly subnetId: pulumi.Output<string>;
+    /**
      * A mapping of tags to assign to the resource.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
@@ -207,6 +221,7 @@ export class Desktop extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = state?.autoRenew;
             resourceInputs["bundleId"] = state?.bundleId;
             resourceInputs["desktopName"] = state?.desktopName;
+            resourceInputs["desktopTimers"] = state?.desktopTimers;
             resourceInputs["desktopType"] = state?.desktopType;
             resourceInputs["endUserIds"] = state?.endUserIds;
             resourceInputs["hostName"] = state?.hostName;
@@ -218,6 +233,7 @@ export class Desktop extends pulumi.CustomResource {
             resourceInputs["rootDiskSizeGib"] = state?.rootDiskSizeGib;
             resourceInputs["status"] = state?.status;
             resourceInputs["stoppedMode"] = state?.stoppedMode;
+            resourceInputs["subnetId"] = state?.subnetId;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["userAssignMode"] = state?.userAssignMode;
             resourceInputs["userDiskSizeGib"] = state?.userDiskSizeGib;
@@ -237,6 +253,7 @@ export class Desktop extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = args?.autoRenew;
             resourceInputs["bundleId"] = args?.bundleId;
             resourceInputs["desktopName"] = args?.desktopName;
+            resourceInputs["desktopTimers"] = args?.desktopTimers;
             resourceInputs["desktopType"] = args?.desktopType;
             resourceInputs["endUserIds"] = args?.endUserIds;
             resourceInputs["hostName"] = args?.hostName;
@@ -248,6 +265,7 @@ export class Desktop extends pulumi.CustomResource {
             resourceInputs["rootDiskSizeGib"] = args?.rootDiskSizeGib;
             resourceInputs["status"] = args?.status;
             resourceInputs["stoppedMode"] = args?.stoppedMode;
+            resourceInputs["subnetId"] = args?.subnetId;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["userAssignMode"] = args?.userAssignMode;
             resourceInputs["userDiskSizeGib"] = args?.userDiskSizeGib;
@@ -282,6 +300,10 @@ export interface DesktopState {
      */
     desktopName?: pulumi.Input<string | undefined>;
     /**
+     * The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktopTimers` below.
+     */
+    desktopTimers?: pulumi.Input<pulumi.Input<inputs.eds.DesktopDesktopTimer>[] | undefined>;
+    /**
      * The desktop type of the Desktop.
      */
     desktopType?: pulumi.Input<string | undefined>;
@@ -290,7 +312,9 @@ export interface DesktopState {
      */
     endUserIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The hostname of the Desktop.
+     * The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+     *
+     * > **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `hostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
      */
     hostName?: pulumi.Input<string | undefined>;
     /**
@@ -325,6 +349,12 @@ export interface DesktopState {
      * The stopped mode of the Desktop.
      */
     stoppedMode?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+     *
+     * > **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+     */
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -364,6 +394,10 @@ export interface DesktopArgs {
      */
     desktopName?: pulumi.Input<string | undefined>;
     /**
+     * The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktopTimers` below.
+     */
+    desktopTimers?: pulumi.Input<pulumi.Input<inputs.eds.DesktopDesktopTimer>[] | undefined>;
+    /**
      * The desktop type of the Desktop.
      */
     desktopType?: pulumi.Input<string | undefined>;
@@ -372,7 +406,9 @@ export interface DesktopArgs {
      */
     endUserIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The hostname of the Desktop.
+     * The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+     *
+     * > **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `hostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
      */
     hostName?: pulumi.Input<string | undefined>;
     /**
@@ -407,6 +443,12 @@ export interface DesktopArgs {
      * The stopped mode of the Desktop.
      */
     stoppedMode?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+     *
+     * > **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+     */
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */

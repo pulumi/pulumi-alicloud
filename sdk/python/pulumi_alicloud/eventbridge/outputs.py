@@ -1901,6 +1901,7 @@ class GetEventSourcesSourceResult(dict):
         :param _builtins.str external_source_type: The type of external data source.
         :param _builtins.str id: The ID of the Event Source.
         :param _builtins.bool linked_external_source: Whether to connect to an external data source.
+        :param _builtins.str type: The type of the event source.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "event_source_name", event_source_name)
@@ -1961,6 +1962,9 @@ class GetEventSourcesSourceResult(dict):
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
+        """
+        The type of the event source.
+        """
         return pulumi.get(self, "type")
 
 
@@ -1980,7 +1984,7 @@ class GetRulesRuleResult(dict):
         :param _builtins.str filter_pattern: The pattern to match interested events.
         :param _builtins.str id: The ID of the Rule.
         :param _builtins.str rule_name: The name of rule.
-        :param _builtins.str status: Rule status, either Enable or Disable.
+        :param _builtins.str status: Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
         :param Sequence['GetRulesRuleTargetArgs'] targets: The target for rule.
         """
         pulumi.set(__self__, "description", description)
@@ -2035,7 +2039,7 @@ class GetRulesRuleResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Rule status, either Enable or Disable.
+        Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
         """
         return pulumi.get(self, "status")
 

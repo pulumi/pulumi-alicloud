@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEndpointsResult {
+    /**
+     * @return A list of Pvtz Endpoints. Each element contains the following attributes:
+     * 
+     */
     private List<GetEndpointsEndpoint> endpoints;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,11 +26,23 @@ public final class GetEndpointsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Endpoint names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
+     * 
+     */
     private @Nullable String status;
 
     private GetEndpointsResult() {}
+    /**
+     * @return A list of Pvtz Endpoints. Each element contains the following attributes:
+     * 
+     */
     public List<GetEndpointsEndpoint> endpoints() {
         return this.endpoints;
     }
@@ -43,12 +59,20 @@ public final class GetEndpointsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Endpoint names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

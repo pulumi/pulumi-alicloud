@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.224.0.
  *
+ * > **NOTE:** If you maintain a narrow custom RAM policy that predates v2.3.0, `refresh` and `plan` will surface a `403 NoPermission` error from whichever supplementary action your role lacks, rather than silently leaving the computed field empty. Grant the two actions listed in RAM Permissions below — at resource level (`acs:expressconnectrouter::<accountId>:expressconnectrouter/<EcrId>`) or service level (`*`) — so refresh and plan stay green.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -33,6 +35,15 @@ import * as utilities from "../utilities";
  * You can resume managing the subscription instance via the AlibabaCloud Console.
  *
  * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
+ * ## RAM Permissions
+ *
+ * The two read-only attributes `disabledRouteEntries` and `grantedInstances` (available since v2.3.0) are populated by the following supplementary Describe actions. Each is an independent RAM permission on the `expressconnectrouter` service and is queried on every `read`/`refresh`/`plan`:
+ *
+ * * `expressconnectrouter:DescribeDisabledExpressConnectRouterRouteEntries` — lists the route entries currently disabled on the ECR.
+ * * `expressconnectrouter:DescribeInstanceGrantedToExpressConnectRouter` — lists the network instances granted to the ECR.
+ *
+ * These actions are in addition to the base resource actions (`expressconnectrouter:CreateExpressConnectRouter`, `expressconnectrouter:ModifyExpressConnectRouter`, `expressconnectrouter:DeleteExpressConnectRouter`, `expressconnectrouter:DescribeExpressConnectRouter`, etc.).
  *
  * ## Import
  *
@@ -94,9 +105,17 @@ export class RouterExpressConnectRouter extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabledRouteEntries` below.
+     */
+    declare public /*out*/ readonly disabledRouteEntries: pulumi.Output<outputs.expressconnect.RouterExpressConnectRouterDisabledRouteEntry[]>;
+    /**
      * Name of the Gateway representing the leased line.
      */
     declare public readonly ecrName: pulumi.Output<string | undefined>;
+    /**
+     * (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `grantedInstances` below.
+     */
+    declare public /*out*/ readonly grantedInstances: pulumi.Output<outputs.expressconnect.RouterExpressConnectRouterGrantedInstance[]>;
     /**
      * List of regions representing leased line gateways. See `regions` below.
      */
@@ -131,7 +150,9 @@ export class RouterExpressConnectRouter extends pulumi.CustomResource {
             resourceInputs["alibabaSideAsn"] = state?.alibabaSideAsn;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
+            resourceInputs["disabledRouteEntries"] = state?.disabledRouteEntries;
             resourceInputs["ecrName"] = state?.ecrName;
+            resourceInputs["grantedInstances"] = state?.grantedInstances;
             resourceInputs["regions"] = state?.regions;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["status"] = state?.status;
@@ -148,6 +169,8 @@ export class RouterExpressConnectRouter extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["disabledRouteEntries"] = undefined /*out*/;
+            resourceInputs["grantedInstances"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -172,9 +195,17 @@ export interface RouterExpressConnectRouterState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabledRouteEntries` below.
+     */
+    disabledRouteEntries?: pulumi.Input<pulumi.Input<inputs.expressconnect.RouterExpressConnectRouterDisabledRouteEntry>[] | undefined>;
+    /**
      * Name of the Gateway representing the leased line.
      */
     ecrName?: pulumi.Input<string | undefined>;
+    /**
+     * (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `grantedInstances` below.
+     */
+    grantedInstances?: pulumi.Input<pulumi.Input<inputs.expressconnect.RouterExpressConnectRouterGrantedInstance>[] | undefined>;
     /**
      * List of regions representing leased line gateways. See `regions` below.
      */

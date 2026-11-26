@@ -58,6 +58,9 @@ class GetRdsParameterGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetRdsParameterGroupsGroupResult']:
+        """
+        A list of Rds Parameter Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -81,6 +84,9 @@ class GetRdsParameterGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Parameter Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -110,7 +116,28 @@ def get_rds_parameter_groups(enable_details: Optional[_builtins.bool] = None,
                              output_file: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRdsParameterGroupsResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.119.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.rds.get_rds_parameter_groups(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstRdsParameterGroupId", example.groups[0].id)
+    ```
+
+
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[_builtins.str] ids: A list of Parameter Group IDs.
+    :param _builtins.str name_regex: A regex string to filter results by Parameter Group name.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -134,7 +161,28 @@ def get_rds_parameter_groups_output(enable_details: pulumi.Input[Optional[Option
                                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRdsParameterGroupsResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.119.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.rds.get_rds_parameter_groups(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstRdsParameterGroupId", example.groups[0].id)
+    ```
+
+
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[_builtins.str] ids: A list of Parameter Group IDs.
+    :param _builtins.str name_regex: A regex string to filter results by Parameter Group name.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details

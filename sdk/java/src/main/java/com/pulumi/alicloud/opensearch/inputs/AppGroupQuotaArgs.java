@@ -63,28 +63,14 @@ public final class AppGroupQuotaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specification. Valid values:
-     * * `opensearch.share.junior`: Entry-level.
-     * * `opensearch.share.common`: Shared universal.
-     * * `opensearch.share.compute`: Shared computing.
-     * * `opensearch.share.storage`: Shared storage type.
-     * * `opensearch.private.common`: Exclusive universal type.
-     * * `opensearch.private.compute`: Exclusive computing type.
-     * * `opensearch.private.storage`: Exclusive storage type
+     * Specification. Valid values: `opensearch.share.junior` (Entry-level), `opensearch.share.common` (Shared universal), `opensearch.share.compute` (Shared computing), `opensearch.share.storage` (Shared storage type), `opensearch.private.common` (Exclusive universal type), `opensearch.private.compute` (Exclusive computing type), `opensearch.private.storage` (Exclusive storage type).
      * 
      */
     @Import(name="spec", required=true)
     private Output<String> spec;
 
     /**
-     * @return Specification. Valid values:
-     * * `opensearch.share.junior`: Entry-level.
-     * * `opensearch.share.common`: Shared universal.
-     * * `opensearch.share.compute`: Shared computing.
-     * * `opensearch.share.storage`: Shared storage type.
-     * * `opensearch.private.common`: Exclusive universal type.
-     * * `opensearch.private.compute`: Exclusive computing type.
-     * * `opensearch.private.storage`: Exclusive storage type
+     * @return Specification. Valid values: `opensearch.share.junior` (Entry-level), `opensearch.share.common` (Shared universal), `opensearch.share.compute` (Shared computing), `opensearch.share.storage` (Shared storage type), `opensearch.private.common` (Exclusive universal type), `opensearch.private.compute` (Exclusive computing type), `opensearch.private.storage` (Exclusive storage type).
      * 
      */
     public Output<String> spec() {
@@ -182,14 +168,7 @@ public final class AppGroupQuotaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spec Specification. Valid values:
-         * * `opensearch.share.junior`: Entry-level.
-         * * `opensearch.share.common`: Shared universal.
-         * * `opensearch.share.compute`: Shared computing.
-         * * `opensearch.share.storage`: Shared storage type.
-         * * `opensearch.private.common`: Exclusive universal type.
-         * * `opensearch.private.compute`: Exclusive computing type.
-         * * `opensearch.private.storage`: Exclusive storage type
+         * @param spec Specification. Valid values: `opensearch.share.junior` (Entry-level), `opensearch.share.common` (Shared universal), `opensearch.share.compute` (Shared computing), `opensearch.share.storage` (Shared storage type), `opensearch.private.common` (Exclusive universal type), `opensearch.private.compute` (Exclusive computing type), `opensearch.private.storage` (Exclusive storage type).
          * 
          * @return builder
          * 
@@ -200,14 +179,7 @@ public final class AppGroupQuotaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spec Specification. Valid values:
-         * * `opensearch.share.junior`: Entry-level.
-         * * `opensearch.share.common`: Shared universal.
-         * * `opensearch.share.compute`: Shared computing.
-         * * `opensearch.share.storage`: Shared storage type.
-         * * `opensearch.private.common`: Exclusive universal type.
-         * * `opensearch.private.compute`: Exclusive computing type.
-         * * `opensearch.private.storage`: Exclusive storage type
+         * @param spec Specification. Valid values: `opensearch.share.junior` (Entry-level), `opensearch.share.common` (Shared universal), `opensearch.share.compute` (Shared computing), `opensearch.share.storage` (Shared storage type), `opensearch.private.common` (Exclusive universal type), `opensearch.private.compute` (Exclusive computing type), `opensearch.private.storage` (Exclusive storage type).
          * 
          * @return builder
          * 

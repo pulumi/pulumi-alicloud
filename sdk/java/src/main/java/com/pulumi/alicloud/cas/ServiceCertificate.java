@@ -150,6 +150,20 @@ public class ServiceCertificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cert);
     }
     /**
+     * (Available since v2.3.0) The global certificate identifier in the format of &#34;id+region&#34;, e.g. &#34;13781326-cn-hangzhou&#34;.
+     * 
+     */
+    @Export(name="certIdentifier", refs={String.class}, tree="[0]")
+    private Output<String> certIdentifier;
+
+    /**
+     * @return (Available since v2.3.0) The global certificate identifier in the format of &#34;id+region&#34;, e.g. &#34;13781326-cn-hangzhou&#34;.
+     * 
+     */
+    public Output<String> certIdentifier() {
+        return this.certIdentifier;
+    }
+    /**
      * A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
      * 
      */

@@ -77,9 +77,17 @@ public final class GetNatIpsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.natIpCidr);
     }
 
+    /**
+     * A list of Nat Ip IDs used to filter results.
+     * 
+     */
     @Import(name="natIpIds")
     private @Nullable Output<List<String>> natIpIds;
 
+    /**
+     * @return A list of Nat Ip IDs used to filter results.
+     * 
+     */
     public Optional<Output<List<String>>> natIpIds() {
         return Optional.ofNullable(this.natIpIds);
     }
@@ -254,15 +262,33 @@ public final class GetNatIpsArgs extends com.pulumi.resources.InvokeArgs {
             return natIpCidr(Output.of(natIpCidr));
         }
 
+        /**
+         * @param natIpIds A list of Nat Ip IDs used to filter results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder natIpIds(@Nullable Output<List<String>> natIpIds) {
             $.natIpIds = natIpIds;
             return this;
         }
 
+        /**
+         * @param natIpIds A list of Nat Ip IDs used to filter results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder natIpIds(List<String> natIpIds) {
             return natIpIds(Output.of(natIpIds));
         }
 
+        /**
+         * @param natIpIds A list of Nat Ip IDs used to filter results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder natIpIds(String... natIpIds) {
             return natIpIds(List.of(natIpIds));
         }

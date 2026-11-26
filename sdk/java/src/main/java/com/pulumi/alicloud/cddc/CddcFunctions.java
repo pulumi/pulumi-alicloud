@@ -30,7 +30,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.148.0+.
+     * &gt; **NOTE:** Available since v1.148.0.
      * 
      * ## Example Usage
      * 
@@ -74,7 +74,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.148.0+.
+     * &gt; **NOTE:** Available since v1.148.0.
      * 
      * ## Example Usage
      * 
@@ -118,7 +118,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.148.0+.
+     * &gt; **NOTE:** Available since v1.148.0.
      * 
      * ## Example Usage
      * 
@@ -162,7 +162,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.148.0+.
+     * &gt; **NOTE:** Available since v1.148.0.
      * 
      * ## Example Usage
      * 
@@ -206,7 +206,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.148.0+.
+     * &gt; **NOTE:** Available since v1.148.0.
      * 
      * ## Example Usage
      * 
@@ -250,7 +250,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.148.0+.
+     * &gt; **NOTE:** Available since v1.148.0.
      * 
      * ## Example Usage
      * 
@@ -294,7 +294,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.148.0+.
+     * &gt; **NOTE:** Available since v1.148.0.
      * 
      * ## Example Usage
      * 
@@ -338,7 +338,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -383,7 +383,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -428,7 +428,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -473,7 +473,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -518,7 +518,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -563,7 +563,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -608,7 +608,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -653,7 +653,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -737,7 +737,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -821,7 +821,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -905,7 +905,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -989,7 +989,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -1073,7 +1073,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      */
     public static Output<GetHostEcsLevelInfosResult> getHostEcsLevelInfos(GetHostEcsLevelInfosArgs args) {
@@ -1082,7 +1082,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      */
     public static CompletableFuture<GetHostEcsLevelInfosResult> getHostEcsLevelInfosPlain(GetHostEcsLevelInfosPlainArgs args) {
@@ -1091,7 +1091,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      */
     public static Output<GetHostEcsLevelInfosResult> getHostEcsLevelInfos(GetHostEcsLevelInfosArgs args, InvokeOptions options) {
@@ -1100,7 +1100,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      */
     public static Output<GetHostEcsLevelInfosResult> getHostEcsLevelInfos(GetHostEcsLevelInfosArgs args, InvokeOutputOptions options) {
@@ -1109,7 +1109,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      */
     public static CompletableFuture<GetHostEcsLevelInfosResult> getHostEcsLevelInfosPlain(GetHostEcsLevelInfosPlainArgs args, InvokeOptions options) {
@@ -1118,7 +1118,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Zones of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -1162,7 +1162,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Zones of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -1206,7 +1206,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Zones of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -1250,7 +1250,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Zones of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -1294,7 +1294,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Zones of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -1338,7 +1338,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Zones of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -1382,7 +1382,7 @@ public final class CddcFunctions {
     /**
      * This data source provides the Cddc Zones of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 

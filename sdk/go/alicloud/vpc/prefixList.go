@@ -36,19 +36,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testacc-example"
+//			name := "tf-prefixlist-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
 //			defaultRg, err := resourcemanager.NewResourceGroup(ctx, "defaultRg", &resourcemanager.ResourceGroupArgs{
-//				DisplayName:       pulumi.String("tf-testacc-chenyi"),
+//				DisplayName:       pulumi.String("tf-prefixlist-default-rg"),
 //				ResourceGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = resourcemanager.NewResourceGroup(ctx, "changeRg", &resourcemanager.ResourceGroupArgs{
-//				DisplayName:       pulumi.String("tf-testacc-chenyi-change"),
+//				DisplayName:       pulumi.String("tf-prefixlist-change-rg"),
 //				ResourceGroupName: pulumi.Sprintf("%v1", name),
 //			})
 //			if err != nil {
@@ -90,7 +90,7 @@ type PrefixList struct {
 
 	// The time when the prefix list was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The CIDR address block list of the prefix list.See the following `Block Entrys`.
+	// The CIDR address block list of the prefix list. See `entrys` below.
 	Entrys PrefixListEntryArrayOutput `pulumi:"entrys"`
 	// The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
 	IpVersion pulumi.StringOutput `pulumi:"ipVersion"`
@@ -146,7 +146,7 @@ func GetPrefixList(ctx *pulumi.Context,
 type prefixListState struct {
 	// The time when the prefix list was created.
 	CreateTime *string `pulumi:"createTime"`
-	// The CIDR address block list of the prefix list.See the following `Block Entrys`.
+	// The CIDR address block list of the prefix list. See `entrys` below.
 	Entrys []PrefixListEntry `pulumi:"entrys"`
 	// The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
 	IpVersion *string `pulumi:"ipVersion"`
@@ -173,7 +173,7 @@ type prefixListState struct {
 type PrefixListState struct {
 	// The time when the prefix list was created.
 	CreateTime pulumi.StringPtrInput
-	// The CIDR address block list of the prefix list.See the following `Block Entrys`.
+	// The CIDR address block list of the prefix list. See `entrys` below.
 	Entrys PrefixListEntryArrayInput
 	// The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
 	IpVersion pulumi.StringPtrInput
@@ -208,7 +208,7 @@ func PrefixListExists(ctx *pulumi.Context,
 }
 
 type prefixListArgs struct {
-	// The CIDR address block list of the prefix list.See the following `Block Entrys`.
+	// The CIDR address block list of the prefix list. See `entrys` below.
 	Entrys []PrefixListEntry `pulumi:"entrys"`
 	// The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
 	IpVersion *string `pulumi:"ipVersion"`
@@ -226,7 +226,7 @@ type prefixListArgs struct {
 
 // The set of arguments for constructing a PrefixList resource.
 type PrefixListArgs struct {
-	// The CIDR address block list of the prefix list.See the following `Block Entrys`.
+	// The CIDR address block list of the prefix list. See `entrys` below.
 	Entrys PrefixListEntryArrayInput
 	// The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
 	IpVersion pulumi.StringPtrInput
@@ -334,7 +334,7 @@ func (o PrefixListOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrefixList) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The CIDR address block list of the prefix list.See the following `Block Entrys`.
+// The CIDR address block list of the prefix list. See `entrys` below.
 func (o PrefixListOutput) Entrys() PrefixListEntryArrayOutput {
 	return o.ApplyT(func(v *PrefixList) PrefixListEntryArrayOutput { return v.Entrys }).(PrefixListEntryArrayOutput)
 }

@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Adb
     /// 
     /// &gt; **NOTE:** Available since v1.190.0.
     /// 
+    /// &gt; **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, convert the instance to `PayAsYouGo` by setting `PaymentType = "PayAsYouGo"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -201,6 +203,7 @@ namespace Pulumi.AliCloud.Adb
         /// The edition of the cluster. Valid values:
         /// - `BasicVersion`: Basic Edition.
         /// - `EnterpriseVersion`: Enterprise Edition.
+        /// 
         /// &gt; **NOTE:** `ProductVersion` must be specified only when `ProductForm` is set to `IntegrationForm`.
         /// </summary>
         [Output("productVersion")]
@@ -410,6 +413,7 @@ namespace Pulumi.AliCloud.Adb
         /// The edition of the cluster. Valid values:
         /// - `BasicVersion`: Basic Edition.
         /// - `EnterpriseVersion`: Enterprise Edition.
+        /// 
         /// &gt; **NOTE:** `ProductVersion` must be specified only when `ProductForm` is set to `IntegrationForm`.
         /// </summary>
         [Input("productVersion")]
@@ -635,6 +639,7 @@ namespace Pulumi.AliCloud.Adb
         /// The edition of the cluster. Valid values:
         /// - `BasicVersion`: Basic Edition.
         /// - `EnterpriseVersion`: Enterprise Edition.
+        /// 
         /// &gt; **NOTE:** `ProductVersion` must be specified only when `ProductForm` is set to `IntegrationForm`.
         /// </summary>
         [Input("productVersion")]

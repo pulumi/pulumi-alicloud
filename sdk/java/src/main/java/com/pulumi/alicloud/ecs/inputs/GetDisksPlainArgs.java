@@ -19,22 +19,38 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDisksPlainArgs Empty = new GetDisksPlainArgs();
 
+    /**
+     * Additional attributes.
+     * 
+     */
     @Import(name="additionalAttributes")
     private @Nullable List<String> additionalAttributes;
 
+    /**
+     * @return Additional attributes.
+     * 
+     */
     public Optional<List<String>> additionalAttributes() {
         return Optional.ofNullable(this.additionalAttributes);
     }
 
+    /**
+     * The ID of the automatic snapshot policy.
+     * 
+     */
     @Import(name="autoSnapshotPolicyId")
     private @Nullable String autoSnapshotPolicyId;
 
+    /**
+     * @return The ID of the automatic snapshot policy.
+     * 
+     */
     public Optional<String> autoSnapshotPolicyId() {
         return Optional.ofNullable(this.autoSnapshotPolicyId);
     }
 
     /**
-     * Availability zone of the disk.
+     * The availability zone. Deprecated; use `zoneId` instead.
      * 
      * @deprecated Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
      * 
@@ -44,7 +60,7 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable String availabilityZone;
 
     /**
-     * @return Availability zone of the disk.
+     * @return The availability zone. Deprecated; use `zoneId` instead.
      * 
      * @deprecated Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
      * 
@@ -55,72 +71,136 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk), `cloudEssdEntry`.
+     * Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, and `cloudRegionalDiskAuto` (Regional ESSD).
      * 
      */
     @Import(name="category")
     private @Nullable String category;
 
     /**
-     * @return Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk), `cloudEssdEntry`.
+     * @return Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, and `cloudRegionalDiskAuto` (Regional ESSD).
      * 
      */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
 
+    /**
+     * Whether to delete the automatic snapshot.
+     * 
+     */
     @Import(name="deleteAutoSnapshot")
     private @Nullable Boolean deleteAutoSnapshot;
 
+    /**
+     * @return Whether to delete the automatic snapshot.
+     * 
+     */
     public Optional<Boolean> deleteAutoSnapshot() {
         return Optional.ofNullable(this.deleteAutoSnapshot);
     }
 
+    /**
+     * Whether to delete the disk with the instance.
+     * 
+     */
     @Import(name="deleteWithInstance")
     private @Nullable Boolean deleteWithInstance;
 
+    /**
+     * @return Whether to delete the disk with the instance.
+     * 
+     */
     public Optional<Boolean> deleteWithInstance() {
         return Optional.ofNullable(this.deleteWithInstance);
     }
 
+    /**
+     * The name of the disk.
+     * 
+     */
     @Import(name="diskName")
     private @Nullable String diskName;
 
+    /**
+     * @return The name of the disk.
+     * 
+     */
     public Optional<String> diskName() {
         return Optional.ofNullable(this.diskName);
     }
 
+    /**
+     * Disk type. Valid values: `system`, `data`, `all`.
+     * 
+     */
     @Import(name="diskType")
     private @Nullable String diskType;
 
+    /**
+     * @return Disk type. Valid values: `system`, `data`, `all`.
+     * 
+     */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }
 
+    /**
+     * Whether to check validity without making the request.
+     * 
+     */
     @Import(name="dryRun")
     private @Nullable Boolean dryRun;
 
+    /**
+     * @return Whether to check validity without making the request.
+     * 
+     */
     public Optional<Boolean> dryRun() {
         return Optional.ofNullable(this.dryRun);
     }
 
+    /**
+     * Whether to enable the automatic snapshot.
+     * 
+     */
     @Import(name="enableAutoSnapshot")
     private @Nullable Boolean enableAutoSnapshot;
 
+    /**
+     * @return Whether to enable the automatic snapshot.
+     * 
+     */
     public Optional<Boolean> enableAutoSnapshot() {
         return Optional.ofNullable(this.enableAutoSnapshot);
     }
 
+    /**
+     * Whether to enable the automated snapshot policy.
+     * 
+     */
     @Import(name="enableAutomatedSnapshotPolicy")
     private @Nullable Boolean enableAutomatedSnapshotPolicy;
 
+    /**
+     * @return Whether to enable the automated snapshot policy.
+     * 
+     */
     public Optional<Boolean> enableAutomatedSnapshotPolicy() {
         return Optional.ofNullable(this.enableAutomatedSnapshotPolicy);
     }
 
+    /**
+     * Whether to enable shared.
+     * 
+     */
     @Import(name="enableShared")
     private @Nullable Boolean enableShared;
 
+    /**
+     * @return Whether to enable shared.
+     * 
+     */
     public Optional<Boolean> enableShared() {
         return Optional.ofNullable(this.enableShared);
     }
@@ -170,9 +250,17 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.instanceId);
     }
 
+    /**
+     * The KMS key ID.
+     * 
+     */
     @Import(name="kmsKeyId")
     private @Nullable String kmsKeyId;
 
+    /**
+     * @return The KMS key ID.
+     * 
+     */
     public Optional<String> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
@@ -192,9 +280,17 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.nameRegex);
     }
 
+    /**
+     * Operation locks. See `operationLocks` below.
+     * 
+     */
     @Import(name="operationLocks")
     private @Nullable List<GetDisksOperationLock> operationLocks;
 
+    /**
+     * @return Operation locks. See `operationLocks` below.
+     * 
+     */
     public Optional<List<GetDisksOperationLock>> operationLocks() {
         return Optional.ofNullable(this.operationLocks);
     }
@@ -228,16 +324,32 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * The payment type. Valid values: `PayAsYouGo`, `Subscription`.
+     * 
+     */
     @Import(name="paymentType")
     private @Nullable String paymentType;
 
+    /**
+     * @return The payment type. Valid values: `PayAsYouGo`, `Subscription`.
+     * 
+     */
     public Optional<String> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }
 
+    /**
+     * Whether the disk is portable.
+     * 
+     */
     @Import(name="portable")
     private @Nullable Boolean portable;
 
+    /**
+     * @return Whether the disk is portable.
+     * 
+     */
     public Optional<Boolean> portable() {
         return Optional.ofNullable(this.portable);
     }
@@ -258,14 +370,14 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     * The snapshot ID.
      * 
      */
     @Import(name="snapshotId")
     private @Nullable String snapshotId;
 
     /**
-     * @return Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     * @return The snapshot ID.
      * 
      */
     public Optional<String> snapshotId() {
@@ -273,14 +385,14 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+     * The status of the disk.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+     * @return The status of the disk.
      * 
      */
     public Optional<String> status() {
@@ -289,6 +401,7 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * A map of tags assigned to the disks. It must be in the format:
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -329,6 +442,7 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return A map of tags assigned to the disks. It must be in the format:
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -389,9 +503,17 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * The zone ID.
+     * 
+     */
     @Import(name="zoneId")
     private @Nullable String zoneId;
 
+    /**
+     * @return The zone ID.
+     * 
+     */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }
@@ -448,22 +570,40 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetDisksPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param additionalAttributes Additional attributes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder additionalAttributes(@Nullable List<String> additionalAttributes) {
             $.additionalAttributes = additionalAttributes;
             return this;
         }
 
+        /**
+         * @param additionalAttributes Additional attributes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder additionalAttributes(String... additionalAttributes) {
             return additionalAttributes(List.of(additionalAttributes));
         }
 
+        /**
+         * @param autoSnapshotPolicyId The ID of the automatic snapshot policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoSnapshotPolicyId(@Nullable String autoSnapshotPolicyId) {
             $.autoSnapshotPolicyId = autoSnapshotPolicyId;
             return this;
         }
 
         /**
-         * @param availabilityZone Availability zone of the disk.
+         * @param availabilityZone The availability zone. Deprecated; use `zoneId` instead.
          * 
          * @return builder
          * 
@@ -477,7 +617,7 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param category Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk), `cloudEssdEntry`.
+         * @param category Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, and `cloudRegionalDiskAuto` (Regional ESSD).
          * 
          * @return builder
          * 
@@ -487,41 +627,89 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param deleteAutoSnapshot Whether to delete the automatic snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteAutoSnapshot(@Nullable Boolean deleteAutoSnapshot) {
             $.deleteAutoSnapshot = deleteAutoSnapshot;
             return this;
         }
 
+        /**
+         * @param deleteWithInstance Whether to delete the disk with the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteWithInstance(@Nullable Boolean deleteWithInstance) {
             $.deleteWithInstance = deleteWithInstance;
             return this;
         }
 
+        /**
+         * @param diskName The name of the disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskName(@Nullable String diskName) {
             $.diskName = diskName;
             return this;
         }
 
+        /**
+         * @param diskType Disk type. Valid values: `system`, `data`, `all`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskType(@Nullable String diskType) {
             $.diskType = diskType;
             return this;
         }
 
+        /**
+         * @param dryRun Whether to check validity without making the request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dryRun(@Nullable Boolean dryRun) {
             $.dryRun = dryRun;
             return this;
         }
 
+        /**
+         * @param enableAutoSnapshot Whether to enable the automatic snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableAutoSnapshot(@Nullable Boolean enableAutoSnapshot) {
             $.enableAutoSnapshot = enableAutoSnapshot;
             return this;
         }
 
+        /**
+         * @param enableAutomatedSnapshotPolicy Whether to enable the automated snapshot policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableAutomatedSnapshotPolicy(@Nullable Boolean enableAutomatedSnapshotPolicy) {
             $.enableAutomatedSnapshotPolicy = enableAutomatedSnapshotPolicy;
             return this;
         }
 
+        /**
+         * @param enableShared Whether to enable shared.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableShared(@Nullable Boolean enableShared) {
             $.enableShared = enableShared;
             return this;
@@ -570,6 +758,12 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param kmsKeyId The KMS key ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(@Nullable String kmsKeyId) {
             $.kmsKeyId = kmsKeyId;
             return this;
@@ -586,11 +780,23 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param operationLocks Operation locks. See `operationLocks` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder operationLocks(@Nullable List<GetDisksOperationLock> operationLocks) {
             $.operationLocks = operationLocks;
             return this;
         }
 
+        /**
+         * @param operationLocks Operation locks. See `operationLocks` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder operationLocks(GetDisksOperationLock... operationLocks) {
             return operationLocks(List.of(operationLocks));
         }
@@ -616,11 +822,23 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param paymentType The payment type. Valid values: `PayAsYouGo`, `Subscription`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paymentType(@Nullable String paymentType) {
             $.paymentType = paymentType;
             return this;
         }
 
+        /**
+         * @param portable Whether the disk is portable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder portable(@Nullable Boolean portable) {
             $.portable = portable;
             return this;
@@ -638,7 +856,7 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param snapshotId Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+         * @param snapshotId The snapshot ID.
          * 
          * @return builder
          * 
@@ -649,7 +867,7 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+         * @param status The status of the disk.
          * 
          * @return builder
          * 
@@ -661,6 +879,7 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param tags A map of tags assigned to the disks. It must be in the format:
+         * 
          * <pre>
          * {@code
          * package generated_program;
@@ -717,6 +936,12 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param zoneId The zone ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;

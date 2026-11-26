@@ -17,10 +17,14 @@ from .. import _utilities
 __all__ = [
     'CustomPropertyPropertyValueArgs',
     'CustomPropertyPropertyValueArgsDict',
+    'DesktopDesktopTimerArgs',
+    'DesktopDesktopTimerArgsDict',
     'EcdPolicyGroupAuthorizeAccessPolicyRuleArgs',
     'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict',
     'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs',
     'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict',
+    'EcdPolicyGroupClientTypeArgs',
+    'EcdPolicyGroupClientTypeArgsDict',
 ]
 
 class CustomPropertyPropertyValueArgsDict(TypedDict):
@@ -70,6 +74,161 @@ class CustomPropertyPropertyValueArgs:
     @property_value_id.setter
     def property_value_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "property_value_id", value)
+
+
+class DesktopDesktopTimerArgsDict(TypedDict):
+    allow_client_setting: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to allow the end user to configure the scheduled timer task. Default to `false`.
+    """
+    cron_expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The cron expression of the scheduled timer task. The cron expression uses UTC time. For example, to execute at 00:00 Beijing time every day, set the value to `0 0 16 ? * 1,2,3,4,5,6,7`.
+    """
+    enforce: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to force the execution of the scheduled timer task.
+    """
+    interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The time interval, in minutes.
+    """
+    operation_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The operation type of the scheduled timer task, only valid when `timer_type` is `NoConnect`. Valid values: `Hibernate`, `Shutdown`.
+
+    > **NOTE:** `desktop_timers` is a write-only field. Since the DescribeDesktops API does not return timer configurations, Terraform cannot detect drift on this field, and the field is ignored when importing. Removing the block stops Terraform from managing the timers: no update is sent, because `ModifyDesktopTimer` rejects a request that sets neither a timer type nor timer entries, so previously configured timers stay on the cloud desktop.
+    """
+    reset_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The reset type of the Desktop. Valid values: `RESET_TYPE_BOTH`, `RESET_TYPE_SYSTEM`.
+    """
+    timer_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of the scheduled timer task. Required when a `desktop_timers` block is configured. Valid values: `LoginAutoConnect`, `LogoutShutdown`, `NoConnect`, `NoOperationDisconnect`, `NoOperationReboot`, `NoOperationShutdown`, `TimerBoot`, `TimerReboot`, `TimerReset`, `TimerShutdown`.
+    """
+
+@pulumi.input_type
+class DesktopDesktopTimerArgs:
+    def __init__(__self__, *,
+                 allow_client_setting: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cron_expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce: pulumi.Input[Optional[_builtins.bool]] = None,
+                 interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 operation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 reset_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 timer_type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] allow_client_setting: Whether to allow the end user to configure the scheduled timer task. Default to `false`.
+        :param pulumi.Input[_builtins.str] cron_expression: The cron expression of the scheduled timer task. The cron expression uses UTC time. For example, to execute at 00:00 Beijing time every day, set the value to `0 0 16 ? * 1,2,3,4,5,6,7`.
+        :param pulumi.Input[_builtins.bool] enforce: Whether to force the execution of the scheduled timer task.
+        :param pulumi.Input[_builtins.int] interval: The time interval, in minutes.
+        :param pulumi.Input[_builtins.str] operation_type: The operation type of the scheduled timer task, only valid when `timer_type` is `NoConnect`. Valid values: `Hibernate`, `Shutdown`.
+               
+               > **NOTE:** `desktop_timers` is a write-only field. Since the DescribeDesktops API does not return timer configurations, Terraform cannot detect drift on this field, and the field is ignored when importing. Removing the block stops Terraform from managing the timers: no update is sent, because `ModifyDesktopTimer` rejects a request that sets neither a timer type nor timer entries, so previously configured timers stay on the cloud desktop.
+        :param pulumi.Input[_builtins.str] reset_type: The reset type of the Desktop. Valid values: `RESET_TYPE_BOTH`, `RESET_TYPE_SYSTEM`.
+        :param pulumi.Input[_builtins.str] timer_type: The type of the scheduled timer task. Required when a `desktop_timers` block is configured. Valid values: `LoginAutoConnect`, `LogoutShutdown`, `NoConnect`, `NoOperationDisconnect`, `NoOperationReboot`, `NoOperationShutdown`, `TimerBoot`, `TimerReboot`, `TimerReset`, `TimerShutdown`.
+        """
+        if allow_client_setting is not None:
+            pulumi.set(__self__, "allow_client_setting", allow_client_setting)
+        if cron_expression is not None:
+            pulumi.set(__self__, "cron_expression", cron_expression)
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if operation_type is not None:
+            pulumi.set(__self__, "operation_type", operation_type)
+        if reset_type is not None:
+            pulumi.set(__self__, "reset_type", reset_type)
+        if timer_type is not None:
+            pulumi.set(__self__, "timer_type", timer_type)
+
+    @_builtins.property
+    @pulumi.getter(name="allowClientSetting")
+    def allow_client_setting(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to allow the end user to configure the scheduled timer task. Default to `false`.
+        """
+        return pulumi.get(self, "allow_client_setting")
+
+    @allow_client_setting.setter
+    def allow_client_setting(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "allow_client_setting", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The cron expression of the scheduled timer task. The cron expression uses UTC time. For example, to execute at 00:00 Beijing time every day, set the value to `0 0 16 ? * 1,2,3,4,5,6,7`.
+        """
+        return pulumi.get(self, "cron_expression")
+
+    @cron_expression.setter
+    def cron_expression(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cron_expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enforce(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to force the execution of the scheduled timer task.
+        """
+        return pulumi.get(self, "enforce")
+
+    @enforce.setter
+    def enforce(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enforce", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The time interval, in minutes.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="operationType")
+    def operation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The operation type of the scheduled timer task, only valid when `timer_type` is `NoConnect`. Valid values: `Hibernate`, `Shutdown`.
+
+        > **NOTE:** `desktop_timers` is a write-only field. Since the DescribeDesktops API does not return timer configurations, Terraform cannot detect drift on this field, and the field is ignored when importing. Removing the block stops Terraform from managing the timers: no update is sent, because `ModifyDesktopTimer` rejects a request that sets neither a timer type nor timer entries, so previously configured timers stay on the cloud desktop.
+        """
+        return pulumi.get(self, "operation_type")
+
+    @operation_type.setter
+    def operation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "operation_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resetType")
+    def reset_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The reset type of the Desktop. Valid values: `RESET_TYPE_BOTH`, `RESET_TYPE_SYSTEM`.
+        """
+        return pulumi.get(self, "reset_type")
+
+    @reset_type.setter
+    def reset_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "reset_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timerType")
+    def timer_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the scheduled timer task. Required when a `desktop_timers` block is configured. Valid values: `LoginAutoConnect`, `LogoutShutdown`, `NoConnect`, `NoOperationDisconnect`, `NoOperationReboot`, `NoOperationShutdown`, `TimerBoot`, `TimerReboot`, `TimerReset`, `TimerShutdown`.
+        """
+        return pulumi.get(self, "timer_type")
+
+    @timer_type.setter
+    def timer_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "timer_type", value)
 
 
 class EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict(TypedDict):
@@ -268,5 +427,60 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs:
     @type.setter
     def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
+
+
+class EcdPolicyGroupClientTypeArgsDict(TypedDict):
+    client_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The client type. Valid values: `android`, `html5`, `ios`, `macos`, `windows`.
+    """
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Whether to allow the client type to access. Valid values: `off`, `on`.
+
+    > **NOTE:** `client_types` manages only the client types listed in the configuration; types that are not listed are not sent to the API and are left to the service. `DescribePolicyGroups` returns every client type, but unconfigured entries are not written back to state, and entries that omit `status` are not read back either, so out-of-band changes to those values are not detected. `pulumi import` does not populate `client_types`; apply the configuration again to manage the client types. Removing all `client_types` blocks calls `ModifyPolicyGroup` without client-type parameters, which the API treats as allowing every client type.
+    """
+
+@pulumi.input_type
+class EcdPolicyGroupClientTypeArgs:
+    def __init__(__self__, *,
+                 client_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] client_type: The client type. Valid values: `android`, `html5`, `ios`, `macos`, `windows`.
+        :param pulumi.Input[_builtins.str] status: Whether to allow the client type to access. Valid values: `off`, `on`.
+               
+               > **NOTE:** `client_types` manages only the client types listed in the configuration; types that are not listed are not sent to the API and are left to the service. `DescribePolicyGroups` returns every client type, but unconfigured entries are not written back to state, and entries that omit `status` are not read back either, so out-of-band changes to those values are not detected. `pulumi import` does not populate `client_types`; apply the configuration again to manage the client types. Removing all `client_types` blocks calls `ModifyPolicyGroup` without client-type parameters, which the API treats as allowing every client type.
+        """
+        if client_type is not None:
+            pulumi.set(__self__, "client_type", client_type)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="clientType")
+    def client_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The client type. Valid values: `android`, `html5`, `ios`, `macos`, `windows`.
+        """
+        return pulumi.get(self, "client_type")
+
+    @client_type.setter
+    def client_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether to allow the client type to access. Valid values: `off`, `on`.
+
+        > **NOTE:** `client_types` manages only the client types listed in the configuration; types that are not listed are not sent to the API and are left to the service. `DescribePolicyGroups` returns every client type, but unconfigured entries are not written back to state, and entries that omit `status` are not read back either, so out-of-band changes to those values are not detected. `pulumi import` does not populate `client_types`; apply the configuration again to manage the client types. Removing all `client_types` blocks calls `ModifyPolicyGroup` without client-type parameters, which the API treats as allowing every client type.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "status", value)
 
 

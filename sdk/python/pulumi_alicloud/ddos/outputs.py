@@ -1627,7 +1627,9 @@ class GetDdosBgpIpsIpResult(dict):
         :param _builtins.str instance_id: The ID of the native protection enterprise instance to be operated.
         :param _builtins.str ip: The IP address.
         :param _builtins.str product: The type of cloud asset to which the IP address belongs.
-        :param _builtins.str status: The current state of the IP address.
+        :param _builtins.str status: The current state of the IP address. Valid Value:
+               - normal: indicates normal (not attacked).
+               - hole_begin: indicates that you are in a black hole state.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -1671,7 +1673,9 @@ class GetDdosBgpIpsIpResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The current state of the IP address.
+        The current state of the IP address. Valid Value:
+        - normal: indicates normal (not attacked).
+        - hole_begin: indicates that you are in a black hole state.
         """
         return pulumi.get(self, "status")
 

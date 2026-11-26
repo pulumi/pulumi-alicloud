@@ -38,8 +38,8 @@ class GetImagesImageResult(dict):
         :param _builtins.str id: The ID of the Instance Image.
         :param _builtins.str image_id: The ID of the image.
         :param _builtins.str image_name: The name of the resource.
-        :param _builtins.str image_type: The type of the image. Valid values: `app`, `custom`, `system`.
-        :param _builtins.str platform: The platform of Plan supported.
+        :param _builtins.str image_type: The image type. Valid values: `app`, `custom`, `system`.
+        :param _builtins.str platform: Available in v1.161.0. The platform of Image supported. Valid values: ["Linux", "Windows"].
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
@@ -84,7 +84,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter(name="imageType")
     def image_type(self) -> _builtins.str:
         """
-        The type of the image. Valid values: `app`, `custom`, `system`.
+        The image type. Valid values: `app`, `custom`, `system`.
         """
         return pulumi.get(self, "image_type")
 
@@ -92,7 +92,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter
     def platform(self) -> _builtins.str:
         """
-        The platform of Plan supported.
+        Available in v1.161.0. The platform of Image supported. Valid values: ["Linux", "Windows"].
         """
         return pulumi.get(self, "platform")
 
@@ -123,10 +123,10 @@ class GetInstancesInstanceResult(dict):
         :param _builtins.str inner_ip_address: The internal IP address of the simple application server.
         :param _builtins.str instance_id: The ID of the simple application server.
         :param _builtins.str instance_name: The name of the resource.
-        :param _builtins.str payment_type: The billing method of the simple application server.
+        :param _builtins.str payment_type: The paymen type of the resource. Valid values: `Subscription`.
         :param _builtins.str plan_id: The ID of the simple application server plan.
         :param _builtins.str public_ip_address: The public IP address of the simple application server.
-        :param _builtins.str status: The status of the resource.
+        :param _builtins.str status: The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
         """
         pulumi.set(__self__, "business_status", business_status)
         pulumi.set(__self__, "create_time", create_time)
@@ -218,7 +218,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> _builtins.str:
         """
-        The billing method of the simple application server.
+        The paymen type of the resource. Valid values: `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -242,7 +242,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
         """
         return pulumi.get(self, "status")
 
@@ -331,7 +331,7 @@ class GetServerDisksDiskResult(dict):
         :param _builtins.str disk_name: The name of the resource.
         :param _builtins.str disk_type: The type of the disk. Possible values: `System`, `Data`.
         :param _builtins.str id: The ID of the Disk.
-        :param _builtins.str instance_id: Alibaba Cloud simple application server instance ID.
+        :param _builtins.str instance_id: The ID of the simple application server to which the disk is attached.
         :param _builtins.str payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
         :param _builtins.int size: The size of the disk. Unit: `GB`.
         :param _builtins.str status: The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
@@ -408,7 +408,7 @@ class GetServerDisksDiskResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
         """
-        Alibaba Cloud simple application server instance ID.
+        The ID of the simple application server to which the disk is attached.
         """
         return pulumi.get(self, "instance_id")
 
@@ -529,7 +529,7 @@ class GetServerPlansPlanResult(dict):
         :param _builtins.str id: The ID of the Instance Plan.
         :param _builtins.float memory: The memory size. Unit: GB.
         :param _builtins.str plan_id: The ID of the Instance Plan.
-        :param _builtins.str support_platform: The platform of Plan supported.
+        :param _builtins.str support_platform: (Available in v1.161.0) The platform of Plan supported.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "core", core)
@@ -600,7 +600,7 @@ class GetServerPlansPlanResult(dict):
     @pulumi.getter(name="supportPlatform")
     def support_platform(self) -> _builtins.str:
         """
-        The platform of Plan supported.
+        (Available in v1.161.0) The platform of Plan supported.
         """
         return pulumi.get(self, "support_platform")
 
@@ -619,7 +619,7 @@ class GetServerSnapshotsSnapshotResult(dict):
                  status: _builtins.str):
         """
         :param _builtins.str create_time: The time when the snapshot was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
-        :param _builtins.str disk_id: The ID of the source disk. This parameter has a value even after the source disk is released.
+        :param _builtins.str disk_id: The ID of the disk.
         :param _builtins.str id: The ID of the Snapshot.
         :param _builtins.str progress: The progress of snapshot creation.
         :param _builtins.str remark: The remarks of the snapshot.
@@ -650,7 +650,7 @@ class GetServerSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="diskId")
     def disk_id(self) -> _builtins.str:
         """
-        The ID of the source disk. This parameter has a value even after the source disk is released.
+        The ID of the disk.
         """
         return pulumi.get(self, "disk_id")
 

@@ -17,6 +17,11 @@ public final class InstancePostPayModuleSwitchObj {
      */
     private @Nullable Integer agentless;
     /**
+     * @return The AI digital human module. Valid values:
+     * 
+     */
+    private @Nullable Integer aiDigital;
+    /**
      * @return Anti-Ransomware Module. Valid values:
      * 
      */
@@ -32,6 +37,11 @@ public final class InstancePostPayModuleSwitchObj {
      */
     private @Nullable Integer cspm;
     /**
+     * @return The Agentic cloud security configuration check module. Valid values:
+     * 
+     */
+    private @Nullable Integer cspmInstance;
+    /**
      * @return Threat Analysis and Response Module. Valid values:
      * 
      */
@@ -41,6 +51,11 @@ public final class InstancePostPayModuleSwitchObj {
      * 
      */
     private @Nullable Integer ctdrStorage;
+    /**
+     * @return The image scan module. Valid values:
+     * 
+     */
+    private @Nullable Integer imageScan;
     /**
      * @return Host and Container Security Module. Valid values:
      * 
@@ -81,6 +96,13 @@ public final class InstancePostPayModuleSwitchObj {
         return Optional.ofNullable(this.agentless);
     }
     /**
+     * @return The AI digital human module. Valid values:
+     * 
+     */
+    public Optional<Integer> aiDigital() {
+        return Optional.ofNullable(this.aiDigital);
+    }
+    /**
      * @return Anti-Ransomware Module. Valid values:
      * 
      */
@@ -102,6 +124,13 @@ public final class InstancePostPayModuleSwitchObj {
         return Optional.ofNullable(this.cspm);
     }
     /**
+     * @return The Agentic cloud security configuration check module. Valid values:
+     * 
+     */
+    public Optional<Integer> cspmInstance() {
+        return Optional.ofNullable(this.cspmInstance);
+    }
+    /**
      * @return Threat Analysis and Response Module. Valid values:
      * 
      */
@@ -114,6 +143,13 @@ public final class InstancePostPayModuleSwitchObj {
      */
     public Optional<Integer> ctdrStorage() {
         return Optional.ofNullable(this.ctdrStorage);
+    }
+    /**
+     * @return The image scan module. Valid values:
+     * 
+     */
+    public Optional<Integer> imageScan() {
+        return Optional.ofNullable(this.imageScan);
     }
     /**
      * @return Host and Container Security Module. Valid values:
@@ -168,11 +204,14 @@ public final class InstancePostPayModuleSwitchObj {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer agentless;
+        private @Nullable Integer aiDigital;
         private @Nullable Integer antiRansomware;
         private @Nullable Integer basicService;
         private @Nullable Integer cspm;
+        private @Nullable Integer cspmInstance;
         private @Nullable Integer ctdr;
         private @Nullable Integer ctdrStorage;
+        private @Nullable Integer imageScan;
         private @Nullable Integer postHost;
         private @Nullable Integer rasp;
         private @Nullable Integer sdk;
@@ -183,11 +222,14 @@ public final class InstancePostPayModuleSwitchObj {
         public Builder(InstancePostPayModuleSwitchObj defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.agentless = defaults.agentless;
+    	      this.aiDigital = defaults.aiDigital;
     	      this.antiRansomware = defaults.antiRansomware;
     	      this.basicService = defaults.basicService;
     	      this.cspm = defaults.cspm;
+    	      this.cspmInstance = defaults.cspmInstance;
     	      this.ctdr = defaults.ctdr;
     	      this.ctdrStorage = defaults.ctdrStorage;
+    	      this.imageScan = defaults.imageScan;
     	      this.postHost = defaults.postHost;
     	      this.rasp = defaults.rasp;
     	      this.sdk = defaults.sdk;
@@ -200,6 +242,12 @@ public final class InstancePostPayModuleSwitchObj {
         public Builder agentless(@Nullable Integer agentless) {
 
             this.agentless = agentless;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder aiDigital(@Nullable Integer aiDigital) {
+
+            this.aiDigital = aiDigital;
             return this;
         }
         @CustomType.Setter
@@ -221,6 +269,12 @@ public final class InstancePostPayModuleSwitchObj {
             return this;
         }
         @CustomType.Setter
+        public Builder cspmInstance(@Nullable Integer cspmInstance) {
+
+            this.cspmInstance = cspmInstance;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ctdr(@Nullable Integer ctdr) {
 
             this.ctdr = ctdr;
@@ -230,6 +284,12 @@ public final class InstancePostPayModuleSwitchObj {
         public Builder ctdrStorage(@Nullable Integer ctdrStorage) {
 
             this.ctdrStorage = ctdrStorage;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder imageScan(@Nullable Integer imageScan) {
+
+            this.imageScan = imageScan;
             return this;
         }
         @CustomType.Setter
@@ -271,11 +331,14 @@ public final class InstancePostPayModuleSwitchObj {
         public InstancePostPayModuleSwitchObj build() {
             final var _resultValue = new InstancePostPayModuleSwitchObj();
             _resultValue.agentless = agentless;
+            _resultValue.aiDigital = aiDigital;
             _resultValue.antiRansomware = antiRansomware;
             _resultValue.basicService = basicService;
             _resultValue.cspm = cspm;
+            _resultValue.cspmInstance = cspmInstance;
             _resultValue.ctdr = ctdr;
             _resultValue.ctdrStorage = ctdrStorage;
+            _resultValue.imageScan = imageScan;
             _resultValue.postHost = postHost;
             _resultValue.rasp = rasp;
             _resultValue.sdk = sdk;

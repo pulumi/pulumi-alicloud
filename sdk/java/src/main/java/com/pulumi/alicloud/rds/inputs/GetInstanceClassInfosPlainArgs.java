@@ -64,14 +64,14 @@ public final class GetInstanceClassInfosPlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * A list of Rds available resource. Each element contains the following attributes:
+     * A list of Rds available resource. See `infos` below.
      * 
      */
     @Import(name="infos")
     private @Nullable List<GetInstanceClassInfosInfo> infos;
 
     /**
-     * @return A list of Rds available resource. Each element contains the following attributes:
+     * @return A list of Rds available resource. See `infos` below.
      * 
      */
     public Optional<List<GetInstanceClassInfosInfo>> infos() {
@@ -179,7 +179,7 @@ public final class GetInstanceClassInfosPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param infos A list of Rds available resource. Each element contains the following attributes:
+         * @param infos A list of Rds available resource. See `infos` below.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class GetInstanceClassInfosPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param infos A list of Rds available resource. Each element contains the following attributes:
+         * @param infos A list of Rds available resource. See `infos` below.
          * 
          * @return builder
          * 

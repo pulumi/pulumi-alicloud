@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.129.0+.
+// > **NOTE:** Available since v1.129.0.
 //
 // ## Example Usage
 //
@@ -74,6 +74,7 @@ type GetEventBusesArgs struct {
 
 // A collection of values returned by getEventBuses.
 type GetEventBusesResult struct {
+	// A list of Event Bridge Event Buses. Each element contains the following attributes:
 	Buses        []GetEventBusesBus `pulumi:"buses"`
 	EventBusType *string            `pulumi:"eventBusType"`
 	// The provider-assigned unique ID for this managed resource.
@@ -81,6 +82,7 @@ type GetEventBusesResult struct {
 	Ids        []string `pulumi:"ids"`
 	NamePrefix *string  `pulumi:"namePrefix"`
 	NameRegex  *string  `pulumi:"nameRegex"`
+	// A list of Event Bus names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -123,6 +125,7 @@ func (o GetEventBusesResultOutput) ToGetEventBusesResultOutputWithContext(ctx co
 	return o
 }
 
+// A list of Event Bridge Event Buses. Each element contains the following attributes:
 func (o GetEventBusesResultOutput) Buses() GetEventBusesBusArrayOutput {
 	return o.ApplyT(func(v GetEventBusesResult) []GetEventBusesBus { return v.Buses }).(GetEventBusesBusArrayOutput)
 }
@@ -148,6 +151,7 @@ func (o GetEventBusesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEventBusesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Event Bus names.
 func (o GetEventBusesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEventBusesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

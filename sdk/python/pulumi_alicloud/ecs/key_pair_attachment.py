@@ -29,6 +29,7 @@ class KeyPairAttachmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[_builtins.bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[_builtins.str] key_name: The name of key pair used to bind.
+        :param pulumi.Input[_builtins.str] key_pair_name: The name of key pair used to bind.
         """
         pulumi.set(__self__, "instance_ids", instance_ids)
         if force is not None:
@@ -81,6 +82,9 @@ class KeyPairAttachmentArgs:
     @_builtins.property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of key pair used to bind.
+        """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
@@ -101,6 +105,7 @@ class _KeyPairAttachmentState:
         :param pulumi.Input[_builtins.bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[_builtins.str] key_name: The name of key pair used to bind.
+        :param pulumi.Input[_builtins.str] key_pair_name: The name of key pair used to bind.
         """
         if force is not None:
             pulumi.set(__self__, "force", force)
@@ -154,6 +159,9 @@ class _KeyPairAttachmentState:
     @_builtins.property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of key pair used to bind.
+        """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
@@ -239,6 +247,7 @@ class KeyPairAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[_builtins.str] key_name: The name of key pair used to bind.
+        :param pulumi.Input[_builtins.str] key_pair_name: The name of key pair used to bind.
         """
         ...
     @overload
@@ -366,6 +375,7 @@ class KeyPairAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[_builtins.str] key_name: The name of key pair used to bind.
+        :param pulumi.Input[_builtins.str] key_pair_name: The name of key pair used to bind.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -419,5 +429,8 @@ class KeyPairAttachment(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of key pair used to bind.
+        """
         return pulumi.get(self, "key_pair_name")
 

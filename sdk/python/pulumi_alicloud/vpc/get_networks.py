@@ -170,6 +170,9 @@ class GetNetworksResult:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the resource group to which the VPC belongs.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
@@ -268,6 +271,8 @@ def get_networks(cidr_block: Optional[_builtins.str] = None,
     """
     This data source provides VPCs available to the user.
 
+    > **NOTE:** Available since v1.2.0.
+
     ## Example Usage
 
     ```python
@@ -356,6 +361,8 @@ def get_networks_output(cidr_block: pulumi.Input[Optional[Optional[_builtins.str
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworksResult]:
     """
     This data source provides VPCs available to the user.
+
+    > **NOTE:** Available since v1.2.0.
 
     ## Example Usage
 

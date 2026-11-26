@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.180.0+.
+ * > **NOTE:** Available since v1.180.0.
  *
  * ## Example Usage
  *
@@ -81,18 +81,27 @@ export interface GetDdosBgpIpsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The ID of the native protection enterprise instance to be operated.
+     */
     readonly instanceId: string;
+    /**
+     * A list of Ddos Bgp Ips. Each element contains the following attributes:
+     */
     readonly ips: outputs.ddos.GetDdosBgpIpsIp[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
     readonly productName?: string;
+    /**
+     * The current state of the IP address.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.180.0+.
+ * > **NOTE:** Available since v1.180.0.
  *
  * ## Example Usage
  *

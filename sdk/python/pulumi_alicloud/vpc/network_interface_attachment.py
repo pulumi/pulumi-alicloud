@@ -29,6 +29,9 @@ class NetworkInterfaceAttachmentArgs:
 
         :param pulumi.Input[_builtins.str] instance_id: The instance ID to attach.
         :param pulumi.Input[_builtins.str] network_interface_id: The ENI ID to attach.
+        :param pulumi.Input[_builtins.int] network_card_index: The index of the network card.
+        :param pulumi.Input[_builtins.str] trunk_network_instance_id: The ID of the trunk network instance.
+        :param pulumi.Input[_builtins.bool] wait_for_network_configuration_ready: Whether to wait for the network configuration to be ready.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "network_interface_id", network_interface_id)
@@ -66,6 +69,9 @@ class NetworkInterfaceAttachmentArgs:
     @_builtins.property
     @pulumi.getter(name="networkCardIndex")
     def network_card_index(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The index of the network card.
+        """
         return pulumi.get(self, "network_card_index")
 
     @network_card_index.setter
@@ -75,6 +81,9 @@ class NetworkInterfaceAttachmentArgs:
     @_builtins.property
     @pulumi.getter(name="trunkNetworkInstanceId")
     def trunk_network_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the trunk network instance.
+        """
         return pulumi.get(self, "trunk_network_instance_id")
 
     @trunk_network_instance_id.setter
@@ -84,6 +93,9 @@ class NetworkInterfaceAttachmentArgs:
     @_builtins.property
     @pulumi.getter(name="waitForNetworkConfigurationReady")
     def wait_for_network_configuration_ready(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to wait for the network configuration to be ready.
+        """
         return pulumi.get(self, "wait_for_network_configuration_ready")
 
     @wait_for_network_configuration_ready.setter
@@ -103,7 +115,10 @@ class _NetworkInterfaceAttachmentState:
         Input properties used for looking up and filtering NetworkInterfaceAttachment resources.
 
         :param pulumi.Input[_builtins.str] instance_id: The instance ID to attach.
+        :param pulumi.Input[_builtins.int] network_card_index: The index of the network card.
         :param pulumi.Input[_builtins.str] network_interface_id: The ENI ID to attach.
+        :param pulumi.Input[_builtins.str] trunk_network_instance_id: The ID of the trunk network instance.
+        :param pulumi.Input[_builtins.bool] wait_for_network_configuration_ready: Whether to wait for the network configuration to be ready.
         """
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
@@ -131,6 +146,9 @@ class _NetworkInterfaceAttachmentState:
     @_builtins.property
     @pulumi.getter(name="networkCardIndex")
     def network_card_index(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The index of the network card.
+        """
         return pulumi.get(self, "network_card_index")
 
     @network_card_index.setter
@@ -152,6 +170,9 @@ class _NetworkInterfaceAttachmentState:
     @_builtins.property
     @pulumi.getter(name="trunkNetworkInstanceId")
     def trunk_network_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the trunk network instance.
+        """
         return pulumi.get(self, "trunk_network_instance_id")
 
     @trunk_network_instance_id.setter
@@ -161,6 +182,9 @@ class _NetworkInterfaceAttachmentState:
     @_builtins.property
     @pulumi.getter(name="waitForNetworkConfigurationReady")
     def wait_for_network_configuration_ready(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to wait for the network configuration to be ready.
+        """
         return pulumi.get(self, "wait_for_network_configuration_ready")
 
     @wait_for_network_configuration_ready.setter
@@ -199,7 +223,10 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: The instance ID to attach.
+        :param pulumi.Input[_builtins.int] network_card_index: The index of the network card.
         :param pulumi.Input[_builtins.str] network_interface_id: The ENI ID to attach.
+        :param pulumi.Input[_builtins.str] trunk_network_instance_id: The ID of the trunk network instance.
+        :param pulumi.Input[_builtins.bool] wait_for_network_configuration_ready: Whether to wait for the network configuration to be ready.
         """
         ...
     @overload
@@ -284,7 +311,10 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: The instance ID to attach.
+        :param pulumi.Input[_builtins.int] network_card_index: The index of the network card.
         :param pulumi.Input[_builtins.str] network_interface_id: The ENI ID to attach.
+        :param pulumi.Input[_builtins.str] trunk_network_instance_id: The ID of the trunk network instance.
+        :param pulumi.Input[_builtins.bool] wait_for_network_configuration_ready: Whether to wait for the network configuration to be ready.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -324,6 +354,9 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="networkCardIndex")
     def network_card_index(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The index of the network card.
+        """
         return pulumi.get(self, "network_card_index")
 
     @_builtins.property
@@ -337,10 +370,16 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="trunkNetworkInstanceId")
     def trunk_network_instance_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the trunk network instance.
+        """
         return pulumi.get(self, "trunk_network_instance_id")
 
     @_builtins.property
     @pulumi.getter(name="waitForNetworkConfigurationReady")
     def wait_for_network_configuration_ready(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to wait for the network configuration to be ready.
+        """
         return pulumi.get(self, "wait_for_network_configuration_ready")
 

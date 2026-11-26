@@ -56,6 +56,9 @@ class GetTransitRouterCidrsResult:
     @_builtins.property
     @pulumi.getter
     def cidrs(self) -> Sequence['outputs.GetTransitRouterCidrsCidrResult']:
+        """
+        A list of Cen Transit Router Cidrs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "cidrs")
 
     @_builtins.property
@@ -79,6 +82,9 @@ class GetTransitRouterCidrsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Transit Router Cidr names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -89,11 +95,17 @@ class GetTransitRouterCidrsResult:
     @_builtins.property
     @pulumi.getter(name="transitRouterCidrId")
     def transit_router_cidr_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the transit router cidr.
+        """
         return pulumi.get(self, "transit_router_cidr_id")
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> _builtins.str:
+        """
+        The ID of the transit router.
+        """
         return pulumi.get(self, "transit_router_id")
 
 
@@ -122,7 +134,7 @@ def get_transit_router_cidrs(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.193.0+.
+    > **NOTE:** Available since v1.193.0+.
 
     ## Example Usage
 
@@ -174,7 +186,7 @@ def get_transit_router_cidrs_output(ids: pulumi.Input[Optional[Optional[Sequence
     """
     This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.193.0+.
+    > **NOTE:** Available since v1.193.0+.
 
     ## Example Usage
 

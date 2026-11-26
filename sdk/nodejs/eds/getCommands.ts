@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecd Commands of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  *
  * ## Example Usage
  *
@@ -108,9 +108,18 @@ export interface GetCommandsArgs {
  * A collection of values returned by getCommands.
  */
 export interface GetCommandsResult {
+    /**
+     * The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
+     */
     readonly commandType?: string;
+    /**
+     * A list of Ecd Commands. Each element contains the following attributes:
+     */
     readonly commands: outputs.eds.GetCommandsCommand[];
     readonly contentEncoding?: string;
+    /**
+     * The desktop id of the Desktop.
+     */
     readonly desktopId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -118,12 +127,15 @@ export interface GetCommandsResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Ecd Commands of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  *
  * ## Example Usage
  *

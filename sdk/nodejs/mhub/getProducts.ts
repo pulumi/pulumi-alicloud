@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Mhub Products of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * ## Example Usage
  *
@@ -68,14 +68,20 @@ export interface GetProductsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Product names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Mhub Products. Each element contains the following attributes:
+     */
     readonly products: outputs.mhub.GetProductsProduct[];
 }
 /**
  * This data source provides the Mhub Products of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * ## Example Usage
  *

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.195.0+.
+// > **NOTE:** Available since v1.195.0+.
 //
 // ## Example Usage
 //

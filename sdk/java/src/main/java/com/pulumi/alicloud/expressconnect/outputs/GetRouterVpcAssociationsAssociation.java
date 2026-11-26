@@ -37,6 +37,11 @@ public final class GetRouterVpcAssociationsAssociation {
      */
     private String createTime;
     /**
+     * @return (String) The description of the association. Available since v2.3.0.
+     * 
+     */
+    private String description;
+    /**
      * @return The ID of the Express Connect Router instance.
      * 
      */
@@ -104,6 +109,13 @@ public final class GetRouterVpcAssociationsAssociation {
         return this.createTime;
     }
     /**
+     * @return (String) The description of the association. Available since v2.3.0.
+     * 
+     */
+    public String description() {
+        return this.description;
+    }
+    /**
      * @return The ID of the Express Connect Router instance.
      * 
      */
@@ -160,6 +172,7 @@ public final class GetRouterVpcAssociationsAssociation {
         private String associationId;
         private String associationNodeType;
         private String createTime;
+        private String description;
         private String ecrId;
         private String id;
         private String modifyTime;
@@ -174,6 +187,7 @@ public final class GetRouterVpcAssociationsAssociation {
     	      this.associationId = defaults.associationId;
     	      this.associationNodeType = defaults.associationNodeType;
     	      this.createTime = defaults.createTime;
+    	      this.description = defaults.description;
     	      this.ecrId = defaults.ecrId;
     	      this.id = defaults.id;
     	      this.modifyTime = defaults.modifyTime;
@@ -223,6 +237,14 @@ public final class GetRouterVpcAssociationsAssociation {
               throw new MissingRequiredPropertyException("GetRouterVpcAssociationsAssociation", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRouterVpcAssociationsAssociation", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
@@ -280,6 +302,7 @@ public final class GetRouterVpcAssociationsAssociation {
             _resultValue.associationId = associationId;
             _resultValue.associationNodeType = associationNodeType;
             _resultValue.createTime = createTime;
+            _resultValue.description = description;
             _resultValue.ecrId = ecrId;
             _resultValue.id = id;
             _resultValue.modifyTime = modifyTime;

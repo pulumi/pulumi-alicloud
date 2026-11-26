@@ -13,13 +13,25 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
     [OutputType]
     public sealed class GetVpcFirewallCensCenLocalVpcResult
     {
+        /// <summary>
+        /// The ID of the attachment.
+        /// </summary>
         public readonly string AttachmentId;
+        /// <summary>
+        /// The name of the attachment.
+        /// </summary>
         public readonly string AttachmentName;
         /// <summary>
         /// The list of network segments protected by the VPC firewall.
         /// </summary>
         public readonly ImmutableArray<string> DefendCidrLists;
+        /// <summary>
+        /// The list of ENIs.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcFirewallCensCenLocalVpcEniListResult> EniLists;
+        /// <summary>
+        /// The ID of the vSwitch specified when the routing mode is manual mode.
+        /// </summary>
         public readonly string ManualVswitchId;
         /// <summary>
         /// The ID of the VPC instance that created the VPC firewall.
@@ -30,7 +42,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly string NetworkInstanceName;
         /// <summary>
-        /// The type of the network instance. Value: **VPC * *.
+        /// The type of the network instance. Value: **VPC**.
         /// </summary>
         public readonly string NetworkInstanceType;
         /// <summary>
@@ -49,6 +61,9 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// Whether routing mode supports manual mode. Value:-**1**: Supported.-**0**: Not supported.
         /// </summary>
         public readonly string SupportManualMode;
+        /// <summary>
+        /// The ID of the transit router.
+        /// </summary>
         public readonly string TransitRouterId;
         /// <summary>
         /// The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.

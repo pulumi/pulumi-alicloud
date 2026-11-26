@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.188.0+.
+ * > **NOTE:** Available since v1.188.0+.
  *
  * ## Example Usage
  *
@@ -81,6 +81,9 @@ export interface GetTransitRouterPrefixListAssociationsArgs {
  * A collection of values returned by getTransitRouterPrefixListAssociations.
  */
 export interface GetTransitRouterPrefixListAssociationsResult {
+    /**
+     * A list of Cen Transit Router Prefix List Associations. Each element contains the following attributes:
+     */
     readonly associations: outputs.cen.GetTransitRouterPrefixListAssociationsAssociation[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -88,18 +91,33 @@ export interface GetTransitRouterPrefixListAssociationsResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * The ID of the Alibaba Cloud account to which the prefix list belongs.
+     */
     readonly ownerUid?: number;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * The ID of the prefix list.
+     */
     readonly prefixListId?: string;
+    /**
+     * The status of the prefix list.
+     */
     readonly status?: string;
+    /**
+     * The ID of the transit router.
+     */
     readonly transitRouterId: string;
+    /**
+     * The ID of the route table of the transit router.
+     */
     readonly transitRouterTableId: string;
 }
 /**
  * This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.188.0+.
+ * > **NOTE:** Available since v1.188.0+.
  *
  * ## Example Usage
  *

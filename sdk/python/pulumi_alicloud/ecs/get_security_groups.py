@@ -137,7 +137,7 @@ class GetSecurityGroupsResult:
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        A map of tags assigned to the ECS instance.
+        (Optional) A map of tags assigned to the ECS instance.
         """
         return pulumi.get(self, "tags")
 
@@ -189,6 +189,8 @@ def get_security_groups(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
 
+    > **NOTE:** Available since v1.9.0
+
     ## Example Usage
 
     ```python
@@ -205,11 +207,13 @@ def get_security_groups(enable_details: Optional[_builtins.bool] = None,
     ```
 
 
+    :param _builtins.bool enable_details: Default to true. Set it to false to only output `id` in the `groups` block.
     :param Sequence[_builtins.str] ids: A list of Security Group IDs.
     :param _builtins.str name_regex: A regex string to filter the resulting security groups by their names.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str resource_group_id: The Id of resource group which the security_group belongs.
     :param Mapping[str, _builtins.str] tags: A map of tags assigned to the ECS instances. It must be in the format:
+           
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -261,6 +265,8 @@ def get_security_groups_output(enable_details: pulumi.Input[Optional[Optional[_b
     """
     This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
 
+    > **NOTE:** Available since v1.9.0
+
     ## Example Usage
 
     ```python
@@ -277,11 +283,13 @@ def get_security_groups_output(enable_details: pulumi.Input[Optional[Optional[_b
     ```
 
 
+    :param _builtins.bool enable_details: Default to true. Set it to false to only output `id` in the `groups` block.
     :param Sequence[_builtins.str] ids: A list of Security Group IDs.
     :param _builtins.str name_regex: A regex string to filter the resulting security groups by their names.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str resource_group_id: The Id of resource group which the security_group belongs.
     :param Mapping[str, _builtins.str] tags: A map of tags assigned to the ECS instances. It must be in the format:
+           
            ```python
            import pulumi
            import pulumi_alicloud as alicloud

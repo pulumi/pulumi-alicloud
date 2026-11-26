@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly bool? AutoRenew;
         /// <summary>
-        /// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+        /// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global ChargeType value.
         /// </summary>
         public readonly string? ChargeType;
         /// <summary>
@@ -41,6 +41,9 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
         /// </summary>
         public readonly bool? EnableGracefulDecommission;
+        /// <summary>
+        /// GPU driver.
+        /// </summary>
         public readonly string? GpuDriver;
         /// <summary>
         /// host group name.

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.142.0+.
+// > **NOTE:** Available since v1.142.0+.
 //
 // ## Example Usage
 //
@@ -97,13 +97,16 @@ type GetDynamicTagGroupsArgs struct {
 
 // A collection of values returned by getDynamicTagGroups.
 type GetDynamicTagGroupsResult struct {
+	// A list of Cms Dynamic Tag Groups. Each element contains the following attributes:
 	Groups []GetDynamicTagGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string   `pulumi:"id"`
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
-	TagKey     *string  `pulumi:"tagKey"`
+	// The status of the resource. Valid values: `RUNNING`, `FINISH`.
+	Status *string `pulumi:"status"`
+	// The tag key of the tag.
+	TagKey *string `pulumi:"tagKey"`
 }
 
 func GetDynamicTagGroupsOutput(ctx *pulumi.Context, args GetDynamicTagGroupsOutputArgs, opts ...pulumi.InvokeOption) GetDynamicTagGroupsResultOutput {
@@ -142,6 +145,7 @@ func (o GetDynamicTagGroupsResultOutput) ToGetDynamicTagGroupsResultOutputWithCo
 	return o
 }
 
+// A list of Cms Dynamic Tag Groups. Each element contains the following attributes:
 func (o GetDynamicTagGroupsResultOutput) Groups() GetDynamicTagGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetDynamicTagGroupsResult) []GetDynamicTagGroupsGroup { return v.Groups }).(GetDynamicTagGroupsGroupArrayOutput)
 }
@@ -159,10 +163,12 @@ func (o GetDynamicTagGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDynamicTagGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource. Valid values: `RUNNING`, `FINISH`.
 func (o GetDynamicTagGroupsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDynamicTagGroupsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The tag key of the tag.
 func (o GetDynamicTagGroupsResultOutput) TagKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDynamicTagGroupsResult) *string { return v.TagKey }).(pulumi.StringPtrOutput)
 }

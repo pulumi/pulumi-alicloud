@@ -4,6 +4,53 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * > **DEPRECATED:** `alicloud.ecs.CopyImage` is a deprecated alias of alicloud_image_copy. Use `alicloud.ecs.ImageCopy` instead. The two resources share the same schema and backend `CopyImage` API; this page is retained only for backward compatibility and will be removed in a future release.
+ *
+ * Copies a custom image from one region to another. You can use copied images to perform operations in the target region, such as creating instances (RunInstances) and replacing system disks (ReplaceSystemDisk).
+ *
+ * For information about image copy and how to use it, see [CopyImage](https://www.alibabacloud.com/help/doc-detail/25538.html).
+ *
+ * > **NOTE:** You can only copy the custom image when it is in the Available state.
+ *
+ * > **NOTE:** You can only copy the image belonging to your Alibaba Cloud account. Images cannot be copied from one account to another.
+ *
+ * > **NOTE:** If the copying is not completed, you cannot call DeleteImage to delete the image but you can call CancelCopyImage to cancel the copying.
+ *
+ * > **NOTE:** Available since v1.66.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.ecs.Image("default", {
+ *     instanceId: defaultAlicloudInstance.id,
+ *     imageName: "terraform-example",
+ *     description: "terraform-example",
+ * });
+ * const defaultCopyImage = new alicloud.ecs.CopyImage("default", {
+ *     sourceImageId: _default.id,
+ *     sourceRegionId: "cn-hangzhou",
+ *     imageName: "terraform-example",
+ *     description: "terraform-example",
+ *     tags: {
+ *         FinanceDept: "FinanceDeptJoshua",
+ *     },
+ * });
+ * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
+ * ## Import
+ *
+ * Image can be imported using the id, e.g.
+ *
+ * ```sh
+ * $ pulumi import alicloud:ecs/copyImage:CopyImage default m-uf66871ape***yg1q***
+ * ```
+ */
 export class CopyImage extends pulumi.CustomResource {
     /**
      * Get an existing CopyImage resource's state with the given name, ID, and optional extra
@@ -43,18 +90,51 @@ export class CopyImage extends pulumi.CustomResource {
         return obj['__pulumiType'] === CopyImage.__pulumiType;
     }
 
+    /**
+     * Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
     declare public readonly deleteAutoSnapshot: pulumi.Output<boolean | undefined>;
+    /**
+     * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+     */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * Indicates whether to encrypt the image.
+     */
     declare public readonly encrypted: pulumi.Output<boolean | undefined>;
+    /**
+     * Indicates whether to force delete the custom image, Default is `false`.
+     * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+     * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+     */
     declare public readonly force: pulumi.Output<boolean | undefined>;
+    /**
+     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     */
     declare public readonly imageName: pulumi.Output<string>;
+    /**
+     * Key ID used to encrypt the image.
+     */
     declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
     /**
+     * Attribute 'name' has been deprecated, please use `imageName` instead.
+     *
      * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * The source image ID.
+     */
     declare public readonly sourceImageId: pulumi.Output<string>;
+    /**
+     * The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+     */
     declare public readonly sourceRegionId: pulumi.Output<string>;
+    /**
+     * The tag value of an image. The value of N ranges from 1 to 20.
+     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -108,18 +188,51 @@ export class CopyImage extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CopyImage resources.
  */
 export interface CopyImageState {
+    /**
+     * Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
     deleteAutoSnapshot?: pulumi.Input<boolean | undefined>;
+    /**
+     * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+     */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Indicates whether to encrypt the image.
+     */
     encrypted?: pulumi.Input<boolean | undefined>;
+    /**
+     * Indicates whether to force delete the custom image, Default is `false`.
+     * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+     * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+     */
     force?: pulumi.Input<boolean | undefined>;
+    /**
+     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     */
     imageName?: pulumi.Input<string | undefined>;
+    /**
+     * Key ID used to encrypt the image.
+     */
     kmsKeyId?: pulumi.Input<string | undefined>;
     /**
+     * Attribute 'name' has been deprecated, please use `imageName` instead.
+     *
      * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The source image ID.
+     */
     sourceImageId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+     */
     sourceRegionId?: pulumi.Input<string | undefined>;
+    /**
+     * The tag value of an image. The value of N ranges from 1 to 20.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
@@ -127,17 +240,50 @@ export interface CopyImageState {
  * The set of arguments for constructing a CopyImage resource.
  */
 export interface CopyImageArgs {
+    /**
+     * Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
     deleteAutoSnapshot?: pulumi.Input<boolean | undefined>;
+    /**
+     * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+     */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Indicates whether to encrypt the image.
+     */
     encrypted?: pulumi.Input<boolean | undefined>;
+    /**
+     * Indicates whether to force delete the custom image, Default is `false`.
+     * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+     * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+     */
     force?: pulumi.Input<boolean | undefined>;
+    /**
+     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     */
     imageName?: pulumi.Input<string | undefined>;
+    /**
+     * Key ID used to encrypt the image.
+     */
     kmsKeyId?: pulumi.Input<string | undefined>;
     /**
+     * Attribute 'name' has been deprecated, please use `imageName` instead.
+     *
      * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The source image ID.
+     */
     sourceImageId: pulumi.Input<string>;
+    /**
+     * The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+     */
     sourceRegionId: pulumi.Input<string>;
+    /**
+     * The tag value of an image. The value of N ranges from 1 to 20.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

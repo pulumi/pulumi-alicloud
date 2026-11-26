@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *
@@ -57,13 +57,19 @@ export interface GetResolverZonesResult {
      */
     readonly id: string;
     readonly outputFile?: string;
+    /**
+     * The status of the Zone.
+     */
     readonly status?: string;
+    /**
+     * A list of Private Zone Resolver zones. Each element contains the following attributes:
+     */
     readonly zones: outputs.pvtz.GetResolverZonesZone[];
 }
 /**
  * This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *

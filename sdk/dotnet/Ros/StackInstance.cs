@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Ros
         public Output<string?> OperationPreferences { get; private set; } = null!;
 
         /// <summary>
-        /// ParameterOverrides. See the following `Block ParameterOverrides`.
+        /// ParameterOverrides. See `ParameterOverrides` below.
         /// </summary>
         [Output("parameterOverrides")]
         public Output<ImmutableArray<Outputs.StackInstanceParameterOverride>> ParameterOverrides { get; private set; } = null!;
@@ -136,12 +136,7 @@ namespace Pulumi.AliCloud.Ros
         public Output<string> StackInstanceRegionId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-        /// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-        /// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-        /// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-        /// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-        /// * The create or update operation is not complete.
+        /// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -222,7 +217,7 @@ namespace Pulumi.AliCloud.Ros
         private InputList<Inputs.StackInstanceParameterOverrideArgs>? _parameterOverrides;
 
         /// <summary>
-        /// ParameterOverrides. See the following `Block ParameterOverrides`.
+        /// ParameterOverrides. See `ParameterOverrides` below.
         /// </summary>
         public InputList<Inputs.StackInstanceParameterOverrideArgs> ParameterOverrides
         {
@@ -292,7 +287,7 @@ namespace Pulumi.AliCloud.Ros
         private InputList<Inputs.StackInstanceParameterOverrideGetArgs>? _parameterOverrides;
 
         /// <summary>
-        /// ParameterOverrides. See the following `Block ParameterOverrides`.
+        /// ParameterOverrides. See `ParameterOverrides` below.
         /// </summary>
         public InputList<Inputs.StackInstanceParameterOverrideGetArgs> ParameterOverrides
         {
@@ -329,12 +324,7 @@ namespace Pulumi.AliCloud.Ros
         public Input<string>? StackInstanceRegionId { get; set; }
 
         /// <summary>
-        /// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-        /// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-        /// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-        /// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-        /// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-        /// * The create or update operation is not complete.
+        /// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

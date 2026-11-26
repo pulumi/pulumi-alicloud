@@ -91,9 +91,17 @@ public final class GetHoneypotProbesPlainArgs extends com.pulumi.resources.Invok
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The status of the honeypot probe.
+     * 
+     */
     @Import(name="probeStatus")
     private @Nullable String probeStatus;
 
+    /**
+     * @return The status of the honeypot probe.
+     * 
+     */
     public Optional<String> probeStatus() {
         return Optional.ofNullable(this.probeStatus);
     }
@@ -208,6 +216,12 @@ public final class GetHoneypotProbesPlainArgs extends com.pulumi.resources.Invok
             return this;
         }
 
+        /**
+         * @param probeStatus The status of the honeypot probe.
+         * 
+         * @return builder
+         * 
+         */
         public Builder probeStatus(@Nullable String probeStatus) {
             $.probeStatus = probeStatus;
             return this;

@@ -73,8 +73,9 @@ type GetVpcEndpointConnectionsResult struct {
 	// A list of Privatelink Vpc Endpoint Connections. Each element contains the following attributes:
 	Connections []GetVpcEndpointConnectionsConnection `pulumi:"connections"`
 	// The ID of the Vpc Endpoint.
-	EndpointId      *string `pulumi:"endpointId"`
-	EndpointOwnerId *int    `pulumi:"endpointOwnerId"`
+	EndpointId *string `pulumi:"endpointId"`
+	// The owner ID of the endpoint.
+	EndpointOwnerId *int `pulumi:"endpointOwnerId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of Vpc Endpoint Connection IDs.
@@ -133,6 +134,7 @@ func (o GetVpcEndpointConnectionsResultOutput) EndpointId() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetVpcEndpointConnectionsResult) *string { return v.EndpointId }).(pulumi.StringPtrOutput)
 }
 
+// The owner ID of the endpoint.
 func (o GetVpcEndpointConnectionsResultOutput) EndpointOwnerId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointConnectionsResult) *int { return v.EndpointOwnerId }).(pulumi.IntPtrOutput)
 }

@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The Specification family.
+        /// The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
         /// </summary>
         public readonly string InstanceTypeFamily;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly string MemorySize;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `SUFFICIENT`.
         /// </summary>
         public readonly string Status;
         /// <summary>

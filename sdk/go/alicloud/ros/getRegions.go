@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ros Regions of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.145.0+.
+// > **NOTE:** Available since v1.145.0.
 //
 // ## Example Usage
 //
@@ -60,9 +60,10 @@ type GetRegionsArgs struct {
 // A collection of values returned by getRegions.
 type GetRegionsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string             `pulumi:"id"`
-	OutputFile *string            `pulumi:"outputFile"`
-	Regions    []GetRegionsRegion `pulumi:"regions"`
+	Id         string  `pulumi:"id"`
+	OutputFile *string `pulumi:"outputFile"`
+	// A list of Ros Regions. Each element contains the following attributes:
+	Regions []GetRegionsRegion `pulumi:"regions"`
 }
 
 func GetRegionsOutput(ctx *pulumi.Context, args GetRegionsOutputArgs, opts ...pulumi.InvokeOption) GetRegionsResultOutput {
@@ -104,6 +105,7 @@ func (o GetRegionsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ros Regions. Each element contains the following attributes:
 func (o GetRegionsResultOutput) Regions() GetRegionsRegionArrayOutput {
 	return o.ApplyT(func(v GetRegionsResult) []GetRegionsRegion { return v.Regions }).(GetRegionsRegionArrayOutput)
 }

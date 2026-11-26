@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.130.0+.
+ * > **NOTE:** Available since v1.130.0.
  *
  * ## Example Usage
  *
@@ -82,6 +82,9 @@ export interface GetPolicyGroupsArgs {
  * A collection of values returned by getPolicyGroups.
  */
 export interface GetPolicyGroupsResult {
+    /**
+     * A list of Ecd Policy Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.eds.GetPolicyGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -89,14 +92,20 @@ export interface GetPolicyGroupsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Policy Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of policy.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.130.0+.
+ * > **NOTE:** Available since v1.130.0.
  *
  * ## Example Usage
  *

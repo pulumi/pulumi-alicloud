@@ -22,9 +22,9 @@ type GetImagesImage struct {
 	ImageId string `pulumi:"imageId"`
 	// The name of the resource.
 	ImageName string `pulumi:"imageName"`
-	// The type of the image. Valid values: `app`, `custom`, `system`.
+	// The image type. Valid values: `app`, `custom`, `system`.
 	ImageType string `pulumi:"imageType"`
-	// The platform of Plan supported.
+	// Available in v1.161.0. The platform of Image supported. Valid values: ["Linux", "Windows"].
 	Platform string `pulumi:"platform"`
 }
 
@@ -48,9 +48,9 @@ type GetImagesImageArgs struct {
 	ImageId pulumi.StringInput `pulumi:"imageId"`
 	// The name of the resource.
 	ImageName pulumi.StringInput `pulumi:"imageName"`
-	// The type of the image. Valid values: `app`, `custom`, `system`.
+	// The image type. Valid values: `app`, `custom`, `system`.
 	ImageType pulumi.StringInput `pulumi:"imageType"`
-	// The platform of Plan supported.
+	// Available in v1.161.0. The platform of Image supported. Valid values: ["Linux", "Windows"].
 	Platform pulumi.StringInput `pulumi:"platform"`
 }
 
@@ -125,12 +125,12 @@ func (o GetImagesImageOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.ImageName }).(pulumi.StringOutput)
 }
 
-// The type of the image. Valid values: `app`, `custom`, `system`.
+// The image type. Valid values: `app`, `custom`, `system`.
 func (o GetImagesImageOutput) ImageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.ImageType }).(pulumi.StringOutput)
 }
 
-// The platform of Plan supported.
+// Available in v1.161.0. The platform of Image supported. Valid values: ["Linux", "Windows"].
 func (o GetImagesImageOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Platform }).(pulumi.StringOutput)
 }
@@ -174,13 +174,13 @@ type GetInstancesInstance struct {
 	InstanceId string `pulumi:"instanceId"`
 	// The name of the resource.
 	InstanceName string `pulumi:"instanceName"`
-	// The billing method of the simple application server.
+	// The paymen type of the resource. Valid values: `Subscription`.
 	PaymentType string `pulumi:"paymentType"`
 	// The ID of the simple application server plan.
 	PlanId string `pulumi:"planId"`
 	// The public IP address of the simple application server.
 	PublicIpAddress string `pulumi:"publicIpAddress"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
 	Status string `pulumi:"status"`
 }
 
@@ -214,13 +214,13 @@ type GetInstancesInstanceArgs struct {
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The name of the resource.
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
-	// The billing method of the simple application server.
+	// The paymen type of the resource. Valid values: `Subscription`.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// The ID of the simple application server plan.
 	PlanId pulumi.StringInput `pulumi:"planId"`
 	// The public IP address of the simple application server.
 	PublicIpAddress pulumi.StringInput `pulumi:"publicIpAddress"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -320,7 +320,7 @@ func (o GetInstancesInstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// The billing method of the simple application server.
+// The paymen type of the resource. Valid values: `Subscription`.
 func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
 }
@@ -335,7 +335,7 @@ func (o GetInstancesInstanceOutput) PublicIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PublicIpAddress }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -508,7 +508,7 @@ type GetServerDisksDisk struct {
 	DiskType string `pulumi:"diskType"`
 	// The ID of the Disk.
 	Id string `pulumi:"id"`
-	// Alibaba Cloud simple application server instance ID.
+	// The ID of the simple application server to which the disk is attached.
 	InstanceId string `pulumi:"instanceId"`
 	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType string `pulumi:"paymentType"`
@@ -544,7 +544,7 @@ type GetServerDisksDiskArgs struct {
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// The ID of the Disk.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Alibaba Cloud simple application server instance ID.
+	// The ID of the simple application server to which the disk is attached.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
@@ -640,7 +640,7 @@ func (o GetServerDisksDiskOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerDisksDisk) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Alibaba Cloud simple application server instance ID.
+// The ID of the simple application server to which the disk is attached.
 func (o GetServerDisksDiskOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerDisksDisk) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -837,7 +837,7 @@ type GetServerPlansPlan struct {
 	Memory float64 `pulumi:"memory"`
 	// The ID of the Instance Plan.
 	PlanId string `pulumi:"planId"`
-	// The platform of Plan supported.
+	// (Available in v1.161.0) The platform of Plan supported.
 	SupportPlatform string `pulumi:"supportPlatform"`
 }
 
@@ -867,7 +867,7 @@ type GetServerPlansPlanArgs struct {
 	Memory pulumi.Float64Input `pulumi:"memory"`
 	// The ID of the Instance Plan.
 	PlanId pulumi.StringInput `pulumi:"planId"`
-	// The platform of Plan supported.
+	// (Available in v1.161.0) The platform of Plan supported.
 	SupportPlatform pulumi.StringInput `pulumi:"supportPlatform"`
 }
 
@@ -957,7 +957,7 @@ func (o GetServerPlansPlanOutput) PlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerPlansPlan) string { return v.PlanId }).(pulumi.StringOutput)
 }
 
-// The platform of Plan supported.
+// (Available in v1.161.0) The platform of Plan supported.
 func (o GetServerPlansPlanOutput) SupportPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerPlansPlan) string { return v.SupportPlatform }).(pulumi.StringOutput)
 }
@@ -985,7 +985,7 @@ func (o GetServerPlansPlanArrayOutput) Index(i pulumi.IntInput) GetServerPlansPl
 type GetServerSnapshotsSnapshot struct {
 	// The time when the snapshot was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	CreateTime string `pulumi:"createTime"`
-	// The ID of the source disk. This parameter has a value even after the source disk is released.
+	// The ID of the disk.
 	DiskId string `pulumi:"diskId"`
 	// The ID of the Snapshot.
 	Id string `pulumi:"id"`
@@ -1017,7 +1017,7 @@ type GetServerSnapshotsSnapshotInput interface {
 type GetServerSnapshotsSnapshotArgs struct {
 	// The time when the snapshot was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The ID of the source disk. This parameter has a value even after the source disk is released.
+	// The ID of the disk.
 	DiskId pulumi.StringInput `pulumi:"diskId"`
 	// The ID of the Snapshot.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -1091,7 +1091,7 @@ func (o GetServerSnapshotsSnapshotOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSnapshotsSnapshot) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The ID of the source disk. This parameter has a value even after the source disk is released.
+// The ID of the disk.
 func (o GetServerSnapshotsSnapshotOutput) DiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSnapshotsSnapshot) string { return v.DiskId }).(pulumi.StringOutput)
 }

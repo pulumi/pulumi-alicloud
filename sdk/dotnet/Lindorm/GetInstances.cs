@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Lindorm
         /// <summary>
         /// This data source provides the Lindorm Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Lindorm
         /// <summary>
         /// This data source provides the Lindorm Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Lindorm
         /// <summary>
         /// This data source provides the Lindorm Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -240,11 +240,20 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Lindorm Instances. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Instance names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string? QueryStr;
+        /// <summary>
+        /// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+        /// </summary>
         public readonly string? Status;
         public readonly int? SupportEngine;
 

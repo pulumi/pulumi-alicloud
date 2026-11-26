@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// A `DiskDeviceMappings` block as defined below. Description of the system with disks and snapshots under the image.
+        /// A list of disk device mappings. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetImagesImageDiskDeviceMappingResult> DiskDeviceMappings;
         /// <summary>
@@ -45,7 +45,13 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Version of the image.
         /// </summary>
         public readonly string ImageVersion;
+        /// <summary>
+        /// Whether the image is copied.
+        /// </summary>
         public readonly bool IsCopied;
+        /// <summary>
+        /// Whether the image is shared by the current user.
+        /// </summary>
         public readonly string IsSelfShared;
         /// <summary>
         /// Whether the user has subscribed to the terms of service for the image product corresponding to the ProductCode.
@@ -55,6 +61,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Specifies whether the image can be used on I/O optimized instances.
         /// </summary>
         public readonly bool IsSupportIoOptimized;
+        /// <summary>
+        /// The name of the image.
+        /// </summary>
         public readonly string Name;
         /// <summary>
         /// The display Chinese name of the OS.
@@ -68,6 +77,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// The operating system type of the image. Valid values: `Windows` and `Linux`.
         /// </summary>
         public readonly string OsType;
+        /// <summary>
+        /// The platform of the image.
+        /// </summary>
         public readonly string Platform;
         /// <summary>
         /// The product code of the image on the image market.
@@ -81,6 +93,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// The size of the created disk.
         /// </summary>
         public readonly int Size;
+        /// <summary>
+        /// The state of the image.
+        /// </summary>
         public readonly string State;
         /// <summary>
         /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:

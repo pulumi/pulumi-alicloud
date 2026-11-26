@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.144.0+.
+ * > **NOTE:** Available since v1.144.0.
  *
  * ## Example Usage
  *
@@ -75,6 +75,9 @@ export interface GetGatewayBlockVolumesArgs {
  * A collection of values returned by getGatewayBlockVolumes.
  */
 export interface GetGatewayBlockVolumesResult {
+    /**
+     * The Gateway ID.
+     */
     readonly gatewayId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -82,15 +85,24 @@ export interface GetGatewayBlockVolumesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Gateway Block Volume names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of volume.
+     */
     readonly status?: number;
+    /**
+     * A list of Cloud Storage Gateway Gateway Block Volumes. Each element contains the following attributes:
+     */
     readonly volumes: outputs.cloudstoragegateway.GetGatewayBlockVolumesVolume[];
 }
 /**
  * This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.144.0+.
+ * > **NOTE:** Available since v1.144.0.
  *
  * ## Example Usage
  *

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
         /// 
-        /// &gt; **NOTE:** Available in v1.198.0+.
+        /// &gt; **NOTE:** Available since v1.198.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
         /// 
-        /// &gt; **NOTE:** Available in v1.198.0+.
+        /// &gt; **NOTE:** Available since v1.198.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
         /// 
-        /// &gt; **NOTE:** Available in v1.198.0+.
+        /// &gt; **NOTE:** Available since v1.198.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -115,8 +115,7 @@ namespace Pulumi.AliCloud.Rds
         private List<Inputs.GetCollationTimeZonesCollationTimeZoneArgs>? _collationTimeZones;
 
         /// <summary>
-        /// An array that consists of the character set collations and time zones that are available for
-        /// use in ApsaraDB RDS.
+        /// An array that consists of the character set collations and time zones. See `CollationTimeZones` below.
         /// </summary>
         public List<Inputs.GetCollationTimeZonesCollationTimeZoneArgs> CollationTimeZones
         {
@@ -142,8 +141,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.GetCollationTimeZonesCollationTimeZoneInputArgs>? _collationTimeZones;
 
         /// <summary>
-        /// An array that consists of the character set collations and time zones that are available for
-        /// use in ApsaraDB RDS.
+        /// An array that consists of the character set collations and time zones. See `CollationTimeZones` below.
         /// </summary>
         public InputList<Inputs.GetCollationTimeZonesCollationTimeZoneInputArgs> CollationTimeZones
         {
@@ -167,11 +165,18 @@ namespace Pulumi.AliCloud.Rds
     [OutputType]
     public sealed class GetCollationTimeZonesResult
     {
+        /// <summary>
+        /// An array that consists of the character set collations and time zones that are available for
+        /// use in ApsaraDB RDS.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCollationTimeZonesCollationTimeZoneResult> CollationTimeZones;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of time zones.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
 

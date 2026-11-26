@@ -2971,6 +2971,8 @@ func (o DomainListenPtrOutput) XffHeaders() pulumi.StringArrayOutput {
 }
 
 type DomainRedirect struct {
+	// The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `backendPorts` below.
+	BackendPorts []DomainRedirectBackendPort `pulumi:"backendPorts"`
 	// The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
 	//
 	// - If you specify IP addresses, specify the value in the **\["ip1","ip2",...]** format. You can enter up to 20 IP addresses.
@@ -3000,6 +3002,7 @@ type DomainRedirect struct {
 	// The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
 	Loadbalance string `pulumi:"loadbalance"`
 	// The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+	//
 	// > **NOTE:** This parameter is supported only by the Ultimate edition.
 	MaxBodySize *int `pulumi:"maxBodySize"`
 	// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
@@ -3033,6 +3036,8 @@ type DomainRedirectInput interface {
 }
 
 type DomainRedirectArgs struct {
+	// The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `backendPorts` below.
+	BackendPorts DomainRedirectBackendPortArrayInput `pulumi:"backendPorts"`
 	// The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
 	//
 	// - If you specify IP addresses, specify the value in the **\["ip1","ip2",...]** format. You can enter up to 20 IP addresses.
@@ -3062,6 +3067,7 @@ type DomainRedirectArgs struct {
 	// The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
 	Loadbalance pulumi.StringInput `pulumi:"loadbalance"`
 	// The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+	//
 	// > **NOTE:** This parameter is supported only by the Ultimate edition.
 	MaxBodySize pulumi.IntPtrInput `pulumi:"maxBodySize"`
 	// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
@@ -3160,6 +3166,11 @@ func (o DomainRedirectOutput) ToDomainRedirectPtrOutputWithContext(ctx context.C
 	}).(DomainRedirectPtrOutput)
 }
 
+// The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `backendPorts` below.
+func (o DomainRedirectOutput) BackendPorts() DomainRedirectBackendPortArrayOutput {
+	return o.ApplyT(func(v DomainRedirect) []DomainRedirectBackendPort { return v.BackendPorts }).(DomainRedirectBackendPortArrayOutput)
+}
+
 // The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
 //
 // - If you specify IP addresses, specify the value in the **\["ip1","ip2",...]** format. You can enter up to 20 IP addresses.
@@ -3219,6 +3230,7 @@ func (o DomainRedirectOutput) Loadbalance() pulumi.StringOutput {
 }
 
 // The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+//
 // > **NOTE:** This parameter is supported only by the Ultimate edition.
 func (o DomainRedirectOutput) MaxBodySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *int { return v.MaxBodySize }).(pulumi.IntPtrOutput)
@@ -3284,6 +3296,16 @@ func (o DomainRedirectPtrOutput) Elem() DomainRedirectOutput {
 		var ret DomainRedirect
 		return ret
 	}).(DomainRedirectOutput)
+}
+
+// The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `backendPorts` below.
+func (o DomainRedirectPtrOutput) BackendPorts() DomainRedirectBackendPortArrayOutput {
+	return o.ApplyT(func(v *DomainRedirect) []DomainRedirectBackendPort {
+		if v == nil {
+			return nil
+		}
+		return v.BackendPorts
+	}).(DomainRedirectBackendPortArrayOutput)
 }
 
 // The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
@@ -3395,6 +3417,7 @@ func (o DomainRedirectPtrOutput) Loadbalance() pulumi.StringPtrOutput {
 }
 
 // The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+//
 // > **NOTE:** This parameter is supported only by the Ultimate edition.
 func (o DomainRedirectPtrOutput) MaxBodySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DomainRedirect) *int {
@@ -3476,6 +3499,121 @@ func (o DomainRedirectPtrOutput) XffProto() pulumi.BoolPtrOutput {
 		}
 		return v.XffProto
 	}).(pulumi.BoolPtrOutput)
+}
+
+type DomainRedirectBackendPort struct {
+	// The back-to-source port. Valid values: `1` to `65535`. Required together with `listenPort` and `protocol`.
+	BackendPort *int `pulumi:"backendPort"`
+	// The listening port. Valid values: `1` to `65535`. Required together with `backendPort` and `protocol`.
+	ListenPort *int `pulumi:"listenPort"`
+	// The protocol type. Valid values: `http` and `https`. Required together with `listenPort` and `backendPort`.
+	Protocol *string `pulumi:"protocol"`
+}
+
+// DomainRedirectBackendPortInput is an input type that accepts DomainRedirectBackendPortArgs and DomainRedirectBackendPortOutput values.
+// You can construct a concrete instance of `DomainRedirectBackendPortInput` via:
+//
+//	DomainRedirectBackendPortArgs{...}
+type DomainRedirectBackendPortInput interface {
+	pulumi.Input
+
+	ToDomainRedirectBackendPortOutput() DomainRedirectBackendPortOutput
+	ToDomainRedirectBackendPortOutputWithContext(context.Context) DomainRedirectBackendPortOutput
+}
+
+type DomainRedirectBackendPortArgs struct {
+	// The back-to-source port. Valid values: `1` to `65535`. Required together with `listenPort` and `protocol`.
+	BackendPort pulumi.IntPtrInput `pulumi:"backendPort"`
+	// The listening port. Valid values: `1` to `65535`. Required together with `backendPort` and `protocol`.
+	ListenPort pulumi.IntPtrInput `pulumi:"listenPort"`
+	// The protocol type. Valid values: `http` and `https`. Required together with `listenPort` and `backendPort`.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+}
+
+func (DomainRedirectBackendPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainRedirectBackendPort)(nil)).Elem()
+}
+
+func (i DomainRedirectBackendPortArgs) ToDomainRedirectBackendPortOutput() DomainRedirectBackendPortOutput {
+	return i.ToDomainRedirectBackendPortOutputWithContext(context.Background())
+}
+
+func (i DomainRedirectBackendPortArgs) ToDomainRedirectBackendPortOutputWithContext(ctx context.Context) DomainRedirectBackendPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectBackendPortOutput)
+}
+
+// DomainRedirectBackendPortArrayInput is an input type that accepts DomainRedirectBackendPortArray and DomainRedirectBackendPortArrayOutput values.
+// You can construct a concrete instance of `DomainRedirectBackendPortArrayInput` via:
+//
+//	DomainRedirectBackendPortArray{ DomainRedirectBackendPortArgs{...} }
+type DomainRedirectBackendPortArrayInput interface {
+	pulumi.Input
+
+	ToDomainRedirectBackendPortArrayOutput() DomainRedirectBackendPortArrayOutput
+	ToDomainRedirectBackendPortArrayOutputWithContext(context.Context) DomainRedirectBackendPortArrayOutput
+}
+
+type DomainRedirectBackendPortArray []DomainRedirectBackendPortInput
+
+func (DomainRedirectBackendPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainRedirectBackendPort)(nil)).Elem()
+}
+
+func (i DomainRedirectBackendPortArray) ToDomainRedirectBackendPortArrayOutput() DomainRedirectBackendPortArrayOutput {
+	return i.ToDomainRedirectBackendPortArrayOutputWithContext(context.Background())
+}
+
+func (i DomainRedirectBackendPortArray) ToDomainRedirectBackendPortArrayOutputWithContext(ctx context.Context) DomainRedirectBackendPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectBackendPortArrayOutput)
+}
+
+type DomainRedirectBackendPortOutput struct{ *pulumi.OutputState }
+
+func (DomainRedirectBackendPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainRedirectBackendPort)(nil)).Elem()
+}
+
+func (o DomainRedirectBackendPortOutput) ToDomainRedirectBackendPortOutput() DomainRedirectBackendPortOutput {
+	return o
+}
+
+func (o DomainRedirectBackendPortOutput) ToDomainRedirectBackendPortOutputWithContext(ctx context.Context) DomainRedirectBackendPortOutput {
+	return o
+}
+
+// The back-to-source port. Valid values: `1` to `65535`. Required together with `listenPort` and `protocol`.
+func (o DomainRedirectBackendPortOutput) BackendPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DomainRedirectBackendPort) *int { return v.BackendPort }).(pulumi.IntPtrOutput)
+}
+
+// The listening port. Valid values: `1` to `65535`. Required together with `backendPort` and `protocol`.
+func (o DomainRedirectBackendPortOutput) ListenPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DomainRedirectBackendPort) *int { return v.ListenPort }).(pulumi.IntPtrOutput)
+}
+
+// The protocol type. Valid values: `http` and `https`. Required together with `listenPort` and `backendPort`.
+func (o DomainRedirectBackendPortOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainRedirectBackendPort) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+type DomainRedirectBackendPortArrayOutput struct{ *pulumi.OutputState }
+
+func (DomainRedirectBackendPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainRedirectBackendPort)(nil)).Elem()
+}
+
+func (o DomainRedirectBackendPortArrayOutput) ToDomainRedirectBackendPortArrayOutput() DomainRedirectBackendPortArrayOutput {
+	return o
+}
+
+func (o DomainRedirectBackendPortArrayOutput) ToDomainRedirectBackendPortArrayOutputWithContext(ctx context.Context) DomainRedirectBackendPortArrayOutput {
+	return o
+}
+
+func (o DomainRedirectBackendPortArrayOutput) Index(i pulumi.IntInput) DomainRedirectBackendPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainRedirectBackendPort {
+		return vs[0].([]DomainRedirectBackendPort)[vs[1].(int)]
+	}).(DomainRedirectBackendPortOutput)
 }
 
 type DomainRedirectRequestHeader struct {
@@ -6368,6 +6506,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainListenPtrInput)(nil)).Elem(), DomainListenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectInput)(nil)).Elem(), DomainRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectPtrInput)(nil)).Elem(), DomainRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectBackendPortInput)(nil)).Elem(), DomainRedirectBackendPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectBackendPortArrayInput)(nil)).Elem(), DomainRedirectBackendPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectRequestHeaderInput)(nil)).Elem(), DomainRedirectRequestHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectRequestHeaderArrayInput)(nil)).Elem(), DomainRedirectRequestHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookInput)(nil)).Elem(), GetAddressBooksBookArgs{})
@@ -6436,6 +6576,8 @@ func init() {
 	pulumi.RegisterOutputType(DomainListenPtrOutput{})
 	pulumi.RegisterOutputType(DomainRedirectOutput{})
 	pulumi.RegisterOutputType(DomainRedirectPtrOutput{})
+	pulumi.RegisterOutputType(DomainRedirectBackendPortOutput{})
+	pulumi.RegisterOutputType(DomainRedirectBackendPortArrayOutput{})
 	pulumi.RegisterOutputType(DomainRedirectRequestHeaderOutput{})
 	pulumi.RegisterOutputType(DomainRedirectRequestHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetAddressBooksBookOutput{})

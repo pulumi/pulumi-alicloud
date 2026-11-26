@@ -145,6 +145,7 @@ class ProjectProperties(dict):
         :param _builtins.bool enable_decimal2: Whether to turn on Decimal2.0.
         :param _builtins.bool enable_dr: Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
         :param 'ProjectPropertiesEncryptionArgs' encryption: Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+               
                > **NOTE :**:
                To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
                
@@ -212,6 +213,7 @@ class ProjectProperties(dict):
     def encryption(self) -> Optional['outputs.ProjectPropertiesEncryption']:
         """
         Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+
         > **NOTE :**:
         To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
 
@@ -393,7 +395,7 @@ class ProjectSecurityProperties(dict):
         :param _builtins.bool object_creator_has_grant_permission: The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
         :param 'ProjectSecurityPropertiesProjectProtectionArgs' project_protection: Project protection See `project_protection` below.
         :param _builtins.bool using_acl: Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
-        :param _builtins.bool using_policy: Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+        :param _builtins.bool using_policy: Set whether to use the [Policy permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         """
         if enable_download_privilege is not None:
             pulumi.set(__self__, "enable_download_privilege", enable_download_privilege)
@@ -462,7 +464,7 @@ class ProjectSecurityProperties(dict):
     @pulumi.getter(name="usingPolicy")
     def using_policy(self) -> Optional[_builtins.bool]:
         """
-        Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+        Set whether to use the [Policy permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         """
         return pulumi.get(self, "using_policy")
 
@@ -1133,7 +1135,7 @@ class GetProjectsProjectResult(dict):
         :param 'GetProjectsProjectPropertiesArgs' properties: Project base attributes
         :param 'GetProjectsProjectSecurityPropertiesArgs' security_properties: Security-related attributes
         :param _builtins.str status: The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
-        :param _builtins.str type: Project type
+        :param _builtins.str type: Optional: When creating a table, the Lifecycle clause is optional. If the Lifecycle of the table is not set, the table is permanently valid.mandatory: the Lifecycle clause is required. You must set the Lifecycle of the table.inherit: If you do not set the lifecycle of the table when creating a table, the lifecycle of the table is the value of ODPS. table.lifecycle.value, and the ODPS. table.lifecycle.value attribute sets the lifecycle of the table.
         """
         pulumi.set(__self__, "comment", comment)
         pulumi.set(__self__, "cost_storage", cost_storage)
@@ -1231,7 +1233,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Project type
+        Optional: When creating a table, the Lifecycle clause is optional. If the Lifecycle of the table is not set, the table is permanently valid.mandatory: the Lifecycle clause is required. You must set the Lifecycle of the table.inherit: If you do not set the lifecycle of the table when creating a table, the lifecycle of the table is the value of ODPS. table.lifecycle.value, and the ODPS. table.lifecycle.value attribute sets the lifecycle of the table.
         """
         return pulumi.get(self, "type")
 
@@ -1406,7 +1408,7 @@ class GetProjectsProjectPropertiesTableLifecycleResult(dict):
                  type: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str type: Project type
+        :param _builtins.str type: Optional: When creating a table, the Lifecycle clause is optional. If the Lifecycle of the table is not set, the table is permanently valid.mandatory: the Lifecycle clause is required. You must set the Lifecycle of the table.inherit: If you do not set the lifecycle of the table when creating a table, the lifecycle of the table is the value of ODPS. table.lifecycle.value, and the ODPS. table.lifecycle.value attribute sets the lifecycle of the table.
         :param _builtins.str value: The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
         """
         pulumi.set(__self__, "type", type)
@@ -1416,7 +1418,7 @@ class GetProjectsProjectPropertiesTableLifecycleResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Project type
+        Optional: When creating a table, the Lifecycle clause is optional. If the Lifecycle of the table is not set, the table is permanently valid.mandatory: the Lifecycle clause is required. You must set the Lifecycle of the table.inherit: If you do not set the lifecycle of the table when creating a table, the lifecycle of the table is the value of ODPS. table.lifecycle.value, and the ODPS. table.lifecycle.value attribute sets the lifecycle of the table.
         """
         return pulumi.get(self, "type")
 
@@ -1446,7 +1448,7 @@ class GetProjectsProjectSecurityPropertiesResult(dict):
         :param _builtins.bool object_creator_has_grant_permission: The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
         :param 'GetProjectsProjectSecurityPropertiesProjectProtectionArgs' project_protection: Project protection.
         :param _builtins.bool using_acl: Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
-        :param _builtins.bool using_policy: Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+        :param _builtins.bool using_policy: Set whether to use the [Policy permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         """
         pulumi.set(__self__, "enable_download_privilege", enable_download_privilege)
         pulumi.set(__self__, "label_security", label_security)
@@ -1508,7 +1510,7 @@ class GetProjectsProjectSecurityPropertiesResult(dict):
     @pulumi.getter(name="usingPolicy")
     def using_policy(self) -> _builtins.bool:
         """
-        Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+        Set whether to use the [Policy permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         """
         return pulumi.get(self, "using_policy")
 

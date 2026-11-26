@@ -13,9 +13,21 @@ namespace Pulumi.AliCloud.Slb.Outputs
     [OutputType]
     public sealed class GetLoadBalancersBalancerBackendServerResult
     {
+        /// <summary>
+        /// The description of protocol.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The server ID.
+        /// </summary>
         public readonly string ServerId;
+        /// <summary>
+        /// The type of servers.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The weight of servers.
+        /// </summary>
         public readonly int Weight;
 
         [OutputConstructor]

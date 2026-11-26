@@ -32,12 +32,12 @@ public final class GetSecurityPoliciesPolicy {
      */
     private String securityPolicyId;
     /**
-     * @return The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+     * @return The name of the resource.
      * 
      */
     private String securityPolicyName;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values : `Available`, `Configuring`.
      * 
      */
     private String status;
@@ -77,14 +77,14 @@ public final class GetSecurityPoliciesPolicy {
         return this.securityPolicyId;
     }
     /**
-     * @return The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+     * @return The name of the resource.
      * 
      */
     public String securityPolicyName() {
         return this.securityPolicyName;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values : `Available`, `Configuring`.
      * 
      */
     public String status() {

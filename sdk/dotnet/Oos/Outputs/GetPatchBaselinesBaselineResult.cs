@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// </summary>
         public readonly bool IsDefault;
         /// <summary>
-        /// Operating system type.
+        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
         /// </summary>
         public readonly string OperationSystem;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// </summary>
         public readonly string PatchBaselineName;
         /// <summary>
-        /// Patch baseline sharing type.
+        /// Patch baseline sharing type. Valid values: `Private`, `Public`.
         /// </summary>
         public readonly string ShareType;
         /// <summary>

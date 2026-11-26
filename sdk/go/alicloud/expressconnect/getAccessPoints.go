@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Example Usage
 //
@@ -77,13 +77,16 @@ type GetAccessPointsArgs struct {
 // A collection of values returned by getAccessPoints.
 type GetAccessPointsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
-	NameRegex  *string                `pulumi:"nameRegex"`
-	Names      []string               `pulumi:"names"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Points     []GetAccessPointsPoint `pulumi:"points"`
-	Status     *string                `pulumi:"status"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Access Point names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Express Connect Access Points. Each element contains the following attributes:
+	Points []GetAccessPointsPoint `pulumi:"points"`
+	// The Physical Connection to Which the Access Point State.
+	Status *string `pulumi:"status"`
 }
 
 func GetAccessPointsOutput(ctx *pulumi.Context, args GetAccessPointsOutputArgs, opts ...pulumi.InvokeOption) GetAccessPointsResultOutput {
@@ -135,6 +138,7 @@ func (o GetAccessPointsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessPointsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Access Point names.
 func (o GetAccessPointsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAccessPointsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -143,10 +147,12 @@ func (o GetAccessPointsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessPointsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Express Connect Access Points. Each element contains the following attributes:
 func (o GetAccessPointsResultOutput) Points() GetAccessPointsPointArrayOutput {
 	return o.ApplyT(func(v GetAccessPointsResult) []GetAccessPointsPoint { return v.Points }).(GetAccessPointsPointArrayOutput)
 }
 
+// The Physical Connection to Which the Access Point State.
 func (o GetAccessPointsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessPointsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

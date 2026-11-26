@@ -20,6 +20,10 @@ public final class GetRegionsRegion {
      * 
      */
     private String localName;
+    /**
+     * @return ID of the region.
+     * 
+     */
     private String regionId;
 
     private GetRegionsRegion() {}
@@ -37,6 +41,10 @@ public final class GetRegionsRegion {
     public String localName() {
         return this.localName;
     }
+    /**
+     * @return ID of the region.
+     * 
+     */
     public String regionId() {
         return this.regionId;
     }

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Rds Accounts of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.120.0+.
+// > **NOTE:** Available since v1.120.0+.
 //
 // ## Example Usage
 //
@@ -58,7 +58,7 @@ func GetAccounts(ctx *pulumi.Context, args *GetAccountsArgs, opts ...pulumi.Invo
 type GetAccountsArgs struct {
 	// The db instance id.
 	DbInstanceId string `pulumi:"dbInstanceId"`
-	// A list of Account IDs.
+	// A list of rds account IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Account name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -70,15 +70,19 @@ type GetAccountsArgs struct {
 
 // A collection of values returned by getAccounts.
 type GetAccountsResult struct {
+	// A list of Rds Accounts. Each element contains the following attributes:
 	Accounts     []GetAccountsAccount `pulumi:"accounts"`
 	DbInstanceId string               `pulumi:"dbInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id string `pulumi:"id"`
+	// A list of Account IDs.
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Account names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
 }
 
 func GetAccountsOutput(ctx *pulumi.Context, args GetAccountsOutputArgs, opts ...pulumi.InvokeOption) GetAccountsResultOutput {
@@ -90,7 +94,7 @@ func GetAccountsOutput(ctx *pulumi.Context, args GetAccountsOutputArgs, opts ...
 type GetAccountsOutputArgs struct {
 	// The db instance id.
 	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
-	// A list of Account IDs.
+	// A list of rds account IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Account name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
@@ -119,6 +123,7 @@ func (o GetAccountsResultOutput) ToGetAccountsResultOutputWithContext(ctx contex
 	return o
 }
 
+// A list of Rds Accounts. Each element contains the following attributes:
 func (o GetAccountsResultOutput) Accounts() GetAccountsAccountArrayOutput {
 	return o.ApplyT(func(v GetAccountsResult) []GetAccountsAccount { return v.Accounts }).(GetAccountsAccountArrayOutput)
 }
@@ -132,6 +137,7 @@ func (o GetAccountsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Account IDs.
 func (o GetAccountsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAccountsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -140,6 +146,7 @@ func (o GetAccountsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Account names.
 func (o GetAccountsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAccountsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -148,6 +155,7 @@ func (o GetAccountsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetAccountsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

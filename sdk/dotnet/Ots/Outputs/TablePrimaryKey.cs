@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Ots.Outputs
     public sealed class TablePrimaryKey
     {
         /// <summary>
+        /// Specifies whether the primary key column is auto-incremented. Defaults to `False`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `AutoIncrement`. Changing this field forces a new resource.
+        /// </summary>
+        public readonly bool? AutoIncrement;
+        /// <summary>
         /// Name for primary key.
         /// </summary>
         public readonly string Name;
@@ -24,10 +28,13 @@ namespace Pulumi.AliCloud.Ots.Outputs
 
         [OutputConstructor]
         private TablePrimaryKey(
+            bool? autoIncrement,
+
             string name,
 
             string type)
         {
+            AutoIncrement = autoIncrement;
             Name = name;
             Type = type;
         }

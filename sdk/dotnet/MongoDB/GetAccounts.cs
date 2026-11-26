@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// This data source provides the Mongodb Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.148.0+.
+        /// &gt; **NOTE:** Available since v1.148.0.
         /// 
         /// ## Example Usage
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// This data source provides the Mongodb Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.148.0+.
+        /// &gt; **NOTE:** Available since v1.148.0.
         /// 
         /// ## Example Usage
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// This data source provides the Mongodb Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.148.0+.
+        /// &gt; **NOTE:** Available since v1.148.0.
         /// 
         /// ## Example Usage
         /// 
@@ -168,12 +168,21 @@ namespace Pulumi.AliCloud.MongoDB
     [OutputType]
     public sealed class GetAccountsResult
     {
+        /// <summary>
+        /// The name of the account.
+        /// </summary>
         public readonly string? AccountName;
+        /// <summary>
+        /// A list of Mongodb Accounts. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountsAccountResult> Accounts;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The id of the instance to which the account belongs.
+        /// </summary>
         public readonly string InstanceId;
         public readonly string? OutputFile;
 

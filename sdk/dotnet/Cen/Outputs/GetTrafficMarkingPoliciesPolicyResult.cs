@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
     public sealed class GetTrafficMarkingPoliciesPolicyResult
     {
         /// <summary>
-        /// The description of the Traffic Marking Policy.
+        /// The traffic marking policy description.
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly int Priority;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
         /// </summary>
         public readonly string Status;
         /// <summary>

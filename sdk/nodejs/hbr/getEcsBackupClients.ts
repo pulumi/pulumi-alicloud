@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *
@@ -67,6 +67,9 @@ export interface GetEcsBackupClientsArgs {
  * A collection of values returned by getEcsBackupClients.
  */
 export interface GetEcsBackupClientsResult {
+    /**
+     * A list of Hbr Ecs Backup Clients. Each element contains the following attributes:
+     */
     readonly clients: outputs.hbr.GetEcsBackupClientsClient[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -75,12 +78,15 @@ export interface GetEcsBackupClientsResult {
     readonly ids: string[];
     readonly instanceIds?: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *

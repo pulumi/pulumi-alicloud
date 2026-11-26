@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Imp.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ComponentLists;
         /// <summary>
-        /// List of config.
+        /// List of config. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppTemplatesTemplateConfigListResult> ConfigLists;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Imp.Outputs
         /// </summary>
         public readonly string StandardRoomInfo;
         /// <summary>
-        /// Application template usage status.
+        /// Application template usage status. Valid values: ["attached", "unattached"].
         /// </summary>
         public readonly string Status;
 

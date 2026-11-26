@@ -13,7 +13,7 @@ import (
 
 // This data source provides Express Connect Virtual Physical Connection available to the user.
 //
-// > **NOTE:** Available in 1.196.0+
+// > **NOTE:** Available since v1.196.0
 //
 // ## Example Usage
 //
@@ -65,8 +65,9 @@ type GetVirtualPhysicalConnectionsArgs struct {
 	// - **SecurityLocked**: locked for security reasons.
 	BusinessStatus *string `pulumi:"businessStatus"`
 	// A list of Virtual Physical Connection IDs.
-	Ids         []string `pulumi:"ids"`
-	IsConfirmed *bool    `pulumi:"isConfirmed"`
+	Ids []string `pulumi:"ids"`
+	// Whether the virtual physical connection is confirmed.
+	IsConfirmed *bool `pulumi:"isConfirmed"`
 	// A regex string to filter results by Group Metric Rule name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
@@ -124,8 +125,9 @@ type GetVirtualPhysicalConnectionsOutputArgs struct {
 	// - **SecurityLocked**: locked for security reasons.
 	BusinessStatus pulumi.StringPtrInput `pulumi:"businessStatus"`
 	// A list of Virtual Physical Connection IDs.
-	Ids         pulumi.StringArrayInput `pulumi:"ids"`
-	IsConfirmed pulumi.BoolPtrInput     `pulumi:"isConfirmed"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Whether the virtual physical connection is confirmed.
+	IsConfirmed pulumi.BoolPtrInput `pulumi:"isConfirmed"`
 	// A regex string to filter results by Group Metric Rule name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).

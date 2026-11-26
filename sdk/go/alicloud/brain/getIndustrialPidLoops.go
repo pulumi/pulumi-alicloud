@@ -61,6 +61,7 @@ func GetIndustrialPidLoops(ctx *pulumi.Context, args *GetIndustrialPidLoopsArgs,
 
 // A collection of arguments for invoking getIndustrialPidLoops.
 type GetIndustrialPidLoopsArgs struct {
+	// Whether to detail the Pid Loops. Default to `false`. When it is set to `true`, the data source will query the Pid Loop details by `GetLoop`.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Pid Loop IDs.
 	Ids []string `pulumi:"ids"`
@@ -89,8 +90,9 @@ type GetIndustrialPidLoopsResult struct {
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// The name of Pid Loop.
-	PidLoopName  *string `pulumi:"pidLoopName"`
-	PidProjectId string  `pulumi:"pidProjectId"`
+	PidLoopName *string `pulumi:"pidLoopName"`
+	// The pid project id of Pid Loop.
+	PidProjectId string `pulumi:"pidProjectId"`
 	// The status of Pid Loop.
 	Status *string `pulumi:"status"`
 }
@@ -102,6 +104,7 @@ func GetIndustrialPidLoopsOutput(ctx *pulumi.Context, args GetIndustrialPidLoops
 
 // A collection of arguments for invoking getIndustrialPidLoops.
 type GetIndustrialPidLoopsOutputArgs struct {
+	// Whether to detail the Pid Loops. Default to `false`. When it is set to `true`, the data source will query the Pid Loop details by `GetLoop`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Pid Loop IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -172,6 +175,7 @@ func (o GetIndustrialPidLoopsResultOutput) PidLoopName() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetIndustrialPidLoopsResult) *string { return v.PidLoopName }).(pulumi.StringPtrOutput)
 }
 
+// The pid project id of Pid Loop.
 func (o GetIndustrialPidLoopsResultOutput) PidProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIndustrialPidLoopsResult) string { return v.PidProjectId }).(pulumi.StringOutput)
 }

@@ -74,15 +74,17 @@ import (
 //
 // > **NOTE:** Available since v1.224.0.
 //
-// Security Group Rule can be imported using the id, e.g.
+// Security Group Rule can be imported using the ID in the format `<security_group_id>:<type>:<ip_protocol>:<port_range>:<nic_type>:<cidr_ip>:<policy>:<priority>`, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ecs/securityGroupRule:SecurityGroupRule example <id>
+// $ pulumi import alicloud:ecs/securityGroupRule:SecurityGroupRule example sg-12345678:ingress:tcp:80/80:internet:10.0.0.0/8:accept:1
 // ```
+//
+// **NOTE:** The `<cidr_ip>` part is the source or destination of the rule: use `cidrIp` for IPv4 rules, `sourceSecurityGroupId` when the rule references another security group, `prefixListId` for prefix list rules, or `ipv6CidrIp` for IPv6 rules — with every `:` in the IPv6 address replaced by `_`, e.g. `2408:4004:cc:400::/56` becomes `2408_4004_cc_400__/56`. Every part must match the rule exactly as shown in the console, including `nicType` (`intranet` for security groups in a VPC). Otherwise the rule cannot be found and the import fails.
 type SecurityGroupRule struct {
 	pulumi.CustomResourceState
 
-	// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
+	// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. The value must be a single IPv4 address or CIDR block, without leading or trailing whitespace or a trailing comma; a comma or whitespace separated list of CIDRs is rejected by the provider during plan because one rule carries exactly one CIDR — define one `ecs.SecurityGroupRule` resource per CIDR instead. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
 	CidrIp pulumi.StringPtrOutput `pulumi:"cidrIp"`
 	// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
 	//
@@ -158,7 +160,7 @@ func GetSecurityGroupRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecurityGroupRule resources.
 type securityGroupRuleState struct {
-	// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
+	// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. The value must be a single IPv4 address or CIDR block, without leading or trailing whitespace or a trailing comma; a comma or whitespace separated list of CIDRs is rejected by the provider during plan because one rule carries exactly one CIDR — define one `ecs.SecurityGroupRule` resource per CIDR instead. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
 	CidrIp *string `pulumi:"cidrIp"`
 	// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
 	//
@@ -196,7 +198,7 @@ type securityGroupRuleState struct {
 }
 
 type SecurityGroupRuleState struct {
-	// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
+	// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. The value must be a single IPv4 address or CIDR block, without leading or trailing whitespace or a trailing comma; a comma or whitespace separated list of CIDRs is rejected by the provider during plan because one rule carries exactly one CIDR — define one `ecs.SecurityGroupRule` resource per CIDR instead. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
 	CidrIp pulumi.StringPtrInput
 	// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
 	//
@@ -244,7 +246,7 @@ func SecurityGroupRuleExists(ctx *pulumi.Context,
 }
 
 type securityGroupRuleArgs struct {
-	// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
+	// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. The value must be a single IPv4 address or CIDR block, without leading or trailing whitespace or a trailing comma; a comma or whitespace separated list of CIDRs is rejected by the provider during plan because one rule carries exactly one CIDR — define one `ecs.SecurityGroupRule` resource per CIDR instead. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
 	CidrIp *string `pulumi:"cidrIp"`
 	// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
 	//
@@ -281,7 +283,7 @@ type securityGroupRuleArgs struct {
 
 // The set of arguments for constructing a SecurityGroupRule resource.
 type SecurityGroupRuleArgs struct {
-	// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
+	// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. The value must be a single IPv4 address or CIDR block, without leading or trailing whitespace or a trailing comma; a comma or whitespace separated list of CIDRs is rejected by the provider during plan because one rule carries exactly one CIDR — define one `ecs.SecurityGroupRule` resource per CIDR instead. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
 	CidrIp pulumi.StringPtrInput
 	// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
 	//
@@ -403,7 +405,7 @@ func (o SecurityGroupRuleOutput) ToSecurityGroupRuleOutputWithContext(ctx contex
 	return o
 }
 
-// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
+// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. The value must be a single IPv4 address or CIDR block, without leading or trailing whitespace or a trailing comma; a comma or whitespace separated list of CIDRs is rejected by the provider during plan because one rule carries exactly one CIDR — define one `ecs.SecurityGroupRule` resource per CIDR instead. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
 func (o SecurityGroupRuleOutput) CidrIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.CidrIp }).(pulumi.StringPtrOutput)
 }

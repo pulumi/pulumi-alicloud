@@ -68,11 +68,17 @@ class GetNamespacesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Namespace names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
     @pulumi.getter
     def namespaces(self) -> Sequence['outputs.GetNamespacesNamespaceResult']:
+        """
+        A list of Sae Namespaces. Each element contains the following attributes:
+        """
         return pulumi.get(self, "namespaces")
 
     @_builtins.property
@@ -102,7 +108,7 @@ def get_namespaces(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Sae Namespaces of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.129.0+.
+    > **NOTE:** Available since v1.129.0.
 
     ## Example Usage
 
@@ -142,7 +148,7 @@ def get_namespaces_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins
     """
     This data source provides the Sae Namespaces of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.129.0+.
+    > **NOTE:** Available since v1.129.0.
 
     ## Example Usage
 

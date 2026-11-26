@@ -94,14 +94,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ids list of AnalyticDB for PostgreSQL instances.
+     * A list of DB Instance IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return The ids list of AnalyticDB for PostgreSQL instances.
+     * @return A list of DB Instance IDs.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -183,9 +183,17 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -347,7 +355,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids The ids list of AnalyticDB for PostgreSQL instances.
+         * @param ids A list of DB Instance IDs.
          * 
          * @return builder
          * 
@@ -358,7 +366,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids The ids list of AnalyticDB for PostgreSQL instances.
+         * @param ids A list of DB Instance IDs.
          * 
          * @return builder
          * 
@@ -368,7 +376,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids The ids list of AnalyticDB for PostgreSQL instances.
+         * @param ids A list of DB Instance IDs.
          * 
          * @return builder
          * 
@@ -482,11 +490,23 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
             return status(Output.of(status));
         }
 
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
         }

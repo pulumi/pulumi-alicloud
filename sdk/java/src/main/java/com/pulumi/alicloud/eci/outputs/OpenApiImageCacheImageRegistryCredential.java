@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OpenApiImageCacheImageRegistryCredential {
+    /**
+     * @return The password of the Image Registry.
+     * 
+     */
     private @Nullable String password;
+    /**
+     * @return The address of Image Registry without `http://` or `https://`.
+     * 
+     */
     private @Nullable String server;
+    /**
+     * @return The user name of Image Registry.
+     * 
+     */
     private @Nullable String userName;
 
     private OpenApiImageCacheImageRegistryCredential() {}
+    /**
+     * @return The password of the Image Registry.
+     * 
+     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
+    /**
+     * @return The address of Image Registry without `http://` or `https://`.
+     * 
+     */
     public Optional<String> server() {
         return Optional.ofNullable(this.server);
     }
+    /**
+     * @return The user name of Image Registry.
+     * 
+     */
     public Optional<String> userName() {
         return Optional.ofNullable(this.userName);
     }

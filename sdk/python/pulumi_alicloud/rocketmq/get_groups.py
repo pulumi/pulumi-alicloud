@@ -99,6 +99,9 @@ class GetGroupsResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        ID of the ONS Instance that owns the group.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -109,6 +112,9 @@ class GetGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -154,7 +160,7 @@ def get_groups(group_id_regex: Optional[_builtins.str] = None,
     """
     This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.53.0+
+    > **NOTE:** Available since v1.53.0.
 
     ## Example Usage
 
@@ -185,8 +191,9 @@ def get_groups(group_id_regex: Optional[_builtins.str] = None,
 
     :param _builtins.str group_id_regex: A regex string to filter results by the group name.
     :param _builtins.str group_type: Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
-    :param Sequence[_builtins.str] ids: A list of group names.
+    :param Sequence[_builtins.str] ids: A list of group IDs to filter results.
     :param _builtins.str instance_id: ID of the ONS Instance that owns the groups.
+    :param _builtins.str name_regex: A regex string to filter results by the group name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, _builtins.str] tags: A map of tags assigned to the Ons instance.
     """
@@ -223,7 +230,7 @@ def get_groups_output(group_id_regex: pulumi.Input[Optional[Optional[_builtins.s
     """
     This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.53.0+
+    > **NOTE:** Available since v1.53.0.
 
     ## Example Usage
 
@@ -254,8 +261,9 @@ def get_groups_output(group_id_regex: pulumi.Input[Optional[Optional[_builtins.s
 
     :param _builtins.str group_id_regex: A regex string to filter results by the group name.
     :param _builtins.str group_type: Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
-    :param Sequence[_builtins.str] ids: A list of group names.
+    :param Sequence[_builtins.str] ids: A list of group IDs to filter results.
     :param _builtins.str instance_id: ID of the ONS Instance that owns the groups.
+    :param _builtins.str name_regex: A regex string to filter results by the group name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, _builtins.str] tags: A map of tags assigned to the Ons instance.
     """

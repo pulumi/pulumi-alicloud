@@ -21,7 +21,7 @@ public final class GetPrivateZonesZone {
      */
     private String cenId;
     /**
-     * @return The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+     * @return The service region is the target region of the PrivateZone service accessed through CEN.
      * 
      */
     private String hostRegionId;
@@ -62,7 +62,7 @@ public final class GetPrivateZonesZone {
         return this.cenId;
     }
     /**
-     * @return The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+     * @return The service region is the target region of the PrivateZone service accessed through CEN.
      * 
      */
     public String hostRegionId() {

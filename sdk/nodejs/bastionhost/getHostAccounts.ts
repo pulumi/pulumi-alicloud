@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *
@@ -87,24 +87,42 @@ export interface GetHostAccountsArgs {
  * A collection of values returned by getHostAccounts.
  */
 export interface GetHostAccountsResult {
+    /**
+     * A list of Bastionhost Host Accounts. Each element contains the following attributes:
+     */
     readonly accounts: outputs.bastionhost.GetHostAccountsAccount[];
+    /**
+     * Specify the new hosting account's name, support the longest 128 characters.
+     */
     readonly hostAccountName?: string;
+    /**
+     * Specifies the database where you want to create your hosting account's host ID.
+     */
     readonly hostId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * Specifies the database where you want to create your hosting account's host bastion host ID of.
+     */
     readonly instanceId: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Host Account names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
+     */
     readonly protocolName?: string;
 }
 /**
  * This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *

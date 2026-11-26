@@ -14,50 +14,43 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class LaunchTemplateDataDisk
     {
         /// <summary>
-        /// The category of the disk:
-        /// - cloud: Basic cloud disk.
-        /// - cloud_efficiency: Ultra cloud disk.
-        /// - cloud_ssd: SSD cloud Disks.
-        /// - ephemeral_ssd: local SSD Disks
-        /// - cloud_essd: ESSD cloud Disks.
-        /// 
-        /// Default to `CloudEfficiency`.
+        /// The category of the disk.
         /// </summary>
         public readonly string? Category;
         /// <summary>
-        /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, CloudSsd and CloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-        /// 
-        /// Default to true
+        /// Delete this data disk when the instance is destroyed. Default to `True`.
         /// </summary>
         public readonly bool? DeleteWithInstance;
         /// <summary>
         /// The description of the data disk.
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// The mount point of the data disk.
+        /// </summary>
         public readonly string? Device;
         /// <summary>
-        /// Encrypted the data in this disk.
-        /// 
-        /// Default to false
+        /// Encrypted the data in this disk. Default to `False`.
         /// </summary>
         public readonly bool? Encrypted;
+        /// <summary>
+        /// The ID of the KMS key used for the data disk.
+        /// </summary>
         public readonly string? KmsKeyId;
         /// <summary>
         /// The name of the data disk.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The performance level of the ESSD used as the data disk.
+        /// </summary>
         public readonly string? PerformanceLevel;
         /// <summary>
         /// The size of the data disk.
-        /// - cloud：[5, 2000]
-        /// - cloud_efficiency：[20, 32768]
-        /// - cloud_ssd：[20, 32768]
-        /// - cloud_essd：[20, 32768]
-        /// - ephemeral_ssd: [5, 800]
         /// </summary>
         public readonly int? Size;
         /// <summary>
-        /// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+        /// The snapshot ID used to initialize the data disk.
         /// </summary>
         public readonly string? SnapshotId;
 

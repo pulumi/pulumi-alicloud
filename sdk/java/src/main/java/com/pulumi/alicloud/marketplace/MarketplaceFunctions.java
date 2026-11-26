@@ -21,7 +21,7 @@ public final class MarketplaceFunctions {
     /**
      * This data source provides the Market product item details of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in 1.69.0+
+     * &gt; **NOTE:** Available since v1.69.0+
      * 
      * ## Example Usage
      * 
@@ -66,7 +66,7 @@ public final class MarketplaceFunctions {
     /**
      * This data source provides the Market product item details of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in 1.69.0+
+     * &gt; **NOTE:** Available since v1.69.0+
      * 
      * ## Example Usage
      * 
@@ -111,7 +111,7 @@ public final class MarketplaceFunctions {
     /**
      * This data source provides the Market product item details of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in 1.69.0+
+     * &gt; **NOTE:** Available since v1.69.0+
      * 
      * ## Example Usage
      * 
@@ -156,7 +156,7 @@ public final class MarketplaceFunctions {
     /**
      * This data source provides the Market product item details of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in 1.69.0+
+     * &gt; **NOTE:** Available since v1.69.0+
      * 
      * ## Example Usage
      * 
@@ -201,7 +201,7 @@ public final class MarketplaceFunctions {
     /**
      * This data source provides the Market product item details of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in 1.69.0+
+     * &gt; **NOTE:** Available since v1.69.0+
      * 
      * ## Example Usage
      * 

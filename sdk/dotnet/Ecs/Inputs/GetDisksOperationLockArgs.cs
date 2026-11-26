@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Ecs.Inputs
 
     public sealed class GetDisksOperationLockInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The reason of the operation lock.
+        /// </summary>
         [Input("lockReason")]
         public Input<string>? LockReason { get; set; }
 

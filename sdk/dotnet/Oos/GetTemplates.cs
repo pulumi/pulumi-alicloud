@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oos
         /// <summary>
         /// This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in v1.92.0+.
+        /// &gt; **NOTE:** Available since v1.92.0.
         /// 
         /// ## Example Usage
         /// 
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Oos
         /// <summary>
         /// This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in v1.92.0+.
+        /// &gt; **NOTE:** Available since v1.92.0.
         /// 
         /// ## Example Usage
         /// 
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Oos
         /// <summary>
         /// This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in v1.92.0+.
+        /// &gt; **NOTE:** Available since v1.92.0.
         /// 
         /// ## Example Usage
         /// 
@@ -339,10 +339,22 @@ namespace Pulumi.AliCloud.Oos
     [OutputType]
     public sealed class GetTemplatesResult
     {
+        /// <summary>
+        /// The category of the template.
+        /// </summary>
         public readonly string? Category;
+        /// <summary>
+        /// The user who created the template.
+        /// </summary>
         public readonly string? CreatedBy;
+        /// <summary>
+        /// The time when the template was created.
+        /// </summary>
         public readonly string? CreatedDate;
         public readonly string? CreatedDateAfter;
+        /// <summary>
+        /// Whether the template has a trigger.
+        /// </summary>
         public readonly bool? HasTrigger;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -358,11 +370,23 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The sharing type of the template.
+        /// </summary>
         public readonly string? ShareType;
         public readonly string? SortField;
         public readonly string? SortOrder;
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The format of the template.
+        /// </summary>
         public readonly string? TemplateFormat;
+        /// <summary>
+        /// The type of the OOS Template.
+        /// </summary>
         public readonly string? TemplateType;
         /// <summary>
         /// A list of OOS Templates. Each element contains the following attributes:

@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Emr
         /// 
         /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// 
         /// ## Example Usage
         /// 
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Emr
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf-testAccClusters";
+        ///     var name = config.Get("name") ?? "tf-acc-clusters";
         ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
         ///     {
         ///         Status = "OK",
@@ -194,7 +194,7 @@ namespace Pulumi.AliCloud.Emr
         /// 
         /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// 
         /// ## Example Usage
         /// 
@@ -209,7 +209,7 @@ namespace Pulumi.AliCloud.Emr
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf-testAccClusters";
+        ///     var name = config.Get("name") ?? "tf-acc-clusters";
         ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
         ///     {
         ///         Status = "OK",
@@ -372,7 +372,7 @@ namespace Pulumi.AliCloud.Emr
         /// 
         /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// 
         /// ## Example Usage
         /// 
@@ -387,7 +387,7 @@ namespace Pulumi.AliCloud.Emr
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf-testAccClusters";
+        ///     var name = config.Get("name") ?? "tf-acc-clusters";
         ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
         ///     {
         ///         Status = "OK",
@@ -783,28 +783,55 @@ namespace Pulumi.AliCloud.Emr
     [OutputType]
     public sealed class GetClustersResult
     {
+        /// <summary>
+        /// The name of the associated cluster.
+        /// </summary>
         public readonly string? ClusterName;
         public readonly ImmutableArray<string> ClusterTypeLists;
+        /// <summary>
+        /// A list of Emr Clusters. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClustersClusterResult> Clusters;
+        /// <summary>
+        /// How to create a cluster.
+        /// </summary>
         public readonly string? CreateType;
         public readonly bool? DefaultStatus;
+        /// <summary>
+        /// The hosting type of the cluster.
+        /// </summary>
         public readonly string? DepositType;
         public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Cluster IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly bool? IsDesc;
+        /// <summary>
+        /// The host type of the cluster. The default is ECS.
+        /// </summary>
         public readonly string? MachineType;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Cluster names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
         public readonly string? ResourceGroupId;
         public readonly ImmutableArray<string> StatusLists;
+        /// <summary>
+        /// Total count of clusters.
+        /// </summary>
         public readonly int TotalCount;
+        /// <summary>
+        /// The VPC ID.
+        /// </summary>
         public readonly string? VpcId;
 
         [OutputConstructor]

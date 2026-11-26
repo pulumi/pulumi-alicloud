@@ -13,6 +13,10 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.5.0.
  *
+ * > **NOTE:** The `collationName`, `accountName` and `accountPrivilege` arguments take effect only when the database is created. Changing any of them forces a new database to be created.
+ *
+ * > **NOTE:** The account permission granted through `accountName` and `accountPrivilege` is not read back from the API. If the permission of the same account on this database is also managed by `alicloud.rds.AccountPrivilege`, both configurations write the same permission and the last applied one wins.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -51,15 +55,23 @@ import * as utilities from "../utilities";
  *     engineVersion: "8.0",
  *     dbInstanceStorageType: "cloud_essd",
  *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRanges?.min),
+ *     instanceStorage: output(defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRanges?.[0]?.min)).apply(x =>Number(x)),
  *     vswitchId: defaultSwitch.id,
  *     instanceName: name,
  *     instanceChargeType: "Postpaid",
  * });
+ * const defaultRdsAccount = new alicloud.rds.RdsAccount("default", {
+ *     dbInstanceId: defaultInstance.id,
+ *     accountName: "terraform_example",
+ *     accountPassword: "Test12345",
+ * });
  * const defaultDatabase = new alicloud.rds.Database("default", {
  *     instanceId: defaultInstance.id,
  *     dataBaseName: name,
- *     characterSet: "utf8",
+ *     characterSet: "gbk",
+ *     collationName: "gbk_chinese_ci",
+ *     accountName: defaultRdsAccount.accountName,
+ *     accountPrivilege: "ReadWrite",
  * });
  * ```
  *
@@ -113,6 +125,18 @@ export class Database extends pulumi.CustomResource {
     }
 
     /**
+     * The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+     *
+     * > **NOTE:** The account must belong to the instance specified by `instanceId` and must exist before the database is created.
+     */
+    declare public readonly accountName: pulumi.Output<string | undefined>;
+    /**
+     * The privilege granted to the account specified by `accountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+     *
+     * > **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `accountName` to be set.
+     */
+    declare public readonly accountPrivilege: pulumi.Output<string | undefined>;
+    /**
      * Character set. The value range is limited to the following:
      * - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
      * - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -126,7 +150,12 @@ export class Database extends pulumi.CustomResource {
      */
     declare public readonly characterSet: pulumi.Output<string | undefined>;
     /**
+     * The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `characterSet`, for example `gbkChineseCi` for `gbk` or `utf8mb4GeneralCi` for `utf8mb4`.
+     */
+    declare public readonly collationName: pulumi.Output<string | undefined>;
+    /**
      * The name of the database.
+     *
      * > **NOTE:**
      * The name must be 2 to 64 characters in length.
      * The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -145,6 +174,7 @@ export class Database extends pulumi.CustomResource {
     declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+     *
      * > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.
@@ -168,7 +198,10 @@ export class Database extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
+            resourceInputs["accountName"] = state?.accountName;
+            resourceInputs["accountPrivilege"] = state?.accountPrivilege;
             resourceInputs["characterSet"] = state?.characterSet;
+            resourceInputs["collationName"] = state?.collationName;
             resourceInputs["dataBaseName"] = state?.dataBaseName;
             resourceInputs["description"] = state?.description;
             resourceInputs["instanceId"] = state?.instanceId;
@@ -179,7 +212,10 @@ export class Database extends pulumi.CustomResource {
             if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
+            resourceInputs["accountName"] = args?.accountName;
+            resourceInputs["accountPrivilege"] = args?.accountPrivilege;
             resourceInputs["characterSet"] = args?.characterSet;
+            resourceInputs["collationName"] = args?.collationName;
             resourceInputs["dataBaseName"] = args?.dataBaseName;
             resourceInputs["description"] = args?.description;
             resourceInputs["instanceId"] = args?.instanceId;
@@ -196,6 +232,18 @@ export class Database extends pulumi.CustomResource {
  */
 export interface DatabaseState {
     /**
+     * The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+     *
+     * > **NOTE:** The account must belong to the instance specified by `instanceId` and must exist before the database is created.
+     */
+    accountName?: pulumi.Input<string | undefined>;
+    /**
+     * The privilege granted to the account specified by `accountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+     *
+     * > **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `accountName` to be set.
+     */
+    accountPrivilege?: pulumi.Input<string | undefined>;
+    /**
      * Character set. The value range is limited to the following:
      * - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
      * - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -209,7 +257,12 @@ export interface DatabaseState {
      */
     characterSet?: pulumi.Input<string | undefined>;
     /**
+     * The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `characterSet`, for example `gbkChineseCi` for `gbk` or `utf8mb4GeneralCi` for `utf8mb4`.
+     */
+    collationName?: pulumi.Input<string | undefined>;
+    /**
      * The name of the database.
+     *
      * > **NOTE:**
      * The name must be 2 to 64 characters in length.
      * The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -228,6 +281,7 @@ export interface DatabaseState {
     instanceId?: pulumi.Input<string | undefined>;
     /**
      * The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+     *
      * > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.
@@ -244,6 +298,18 @@ export interface DatabaseState {
  */
 export interface DatabaseArgs {
     /**
+     * The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+     *
+     * > **NOTE:** The account must belong to the instance specified by `instanceId` and must exist before the database is created.
+     */
+    accountName?: pulumi.Input<string | undefined>;
+    /**
+     * The privilege granted to the account specified by `accountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+     *
+     * > **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `accountName` to be set.
+     */
+    accountPrivilege?: pulumi.Input<string | undefined>;
+    /**
      * Character set. The value range is limited to the following:
      * - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
      * - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -257,7 +323,12 @@ export interface DatabaseArgs {
      */
     characterSet?: pulumi.Input<string | undefined>;
     /**
+     * The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `characterSet`, for example `gbkChineseCi` for `gbk` or `utf8mb4GeneralCi` for `utf8mb4`.
+     */
+    collationName?: pulumi.Input<string | undefined>;
+    /**
      * The name of the database.
+     *
      * > **NOTE:**
      * The name must be 2 to 64 characters in length.
      * The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -276,6 +347,7 @@ export interface DatabaseArgs {
     instanceId: pulumi.Input<string>;
     /**
      * The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+     *
      * > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.

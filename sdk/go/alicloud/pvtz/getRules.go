@@ -13,7 +13,7 @@ import (
 
 // This data source provides the PrivateZone Rules of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.143.0+.
+// > **NOTE:** Available since v1.143.0.
 //
 // ## Example Usage
 //
@@ -72,14 +72,17 @@ type GetRulesArgs struct {
 
 // A collection of values returned by getRules.
 type GetRulesResult struct {
+	// The ID of the Endpoint.
 	EndpointId *string `pulumi:"endpointId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string         `pulumi:"id"`
-	Ids        []string       `pulumi:"ids"`
-	NameRegex  *string        `pulumi:"nameRegex"`
-	Names      []string       `pulumi:"names"`
-	OutputFile *string        `pulumi:"outputFile"`
-	Rules      []GetRulesRule `pulumi:"rules"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Rule names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of PrivateZone Rules. Each element contains the following attributes:
+	Rules []GetRulesRule `pulumi:"rules"`
 }
 
 func GetRulesOutput(ctx *pulumi.Context, args GetRulesOutputArgs, opts ...pulumi.InvokeOption) GetRulesResultOutput {
@@ -118,6 +121,7 @@ func (o GetRulesResultOutput) ToGetRulesResultOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The ID of the Endpoint.
 func (o GetRulesResultOutput) EndpointId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.EndpointId }).(pulumi.StringPtrOutput)
 }
@@ -135,6 +139,7 @@ func (o GetRulesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Rule names.
 func (o GetRulesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -143,6 +148,7 @@ func (o GetRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of PrivateZone Rules. Each element contains the following attributes:
 func (o GetRulesResultOutput) Rules() GetRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetRulesResult) []GetRulesRule { return v.Rules }).(GetRulesRuleArrayOutput)
 }

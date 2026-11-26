@@ -244,7 +244,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * 
      * - `TCP` (default)
      * - `UDP`
-     * - `TCPSSL`
+     * - `TCP_UDP`
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
@@ -255,7 +255,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * 
      * - `TCP` (default)
      * - `UDP`
-     * - `TCPSSL`
+     * - `TCP_UDP`
      * 
      */
     public Output<String> protocol() {

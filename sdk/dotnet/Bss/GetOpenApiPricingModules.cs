@@ -116,6 +116,10 @@ namespace Pulumi.AliCloud.Bss
     {
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of Price Module IDs.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
@@ -164,6 +168,10 @@ namespace Pulumi.AliCloud.Bss
     {
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Price Module IDs.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());
@@ -227,8 +235,17 @@ namespace Pulumi.AliCloud.Bss
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The product code.
+        /// </summary>
         public readonly string ProductCode;
+        /// <summary>
+        /// The product type.
+        /// </summary>
         public readonly string? ProductType;
+        /// <summary>
+        /// The subscription type.
+        /// </summary>
         public readonly string SubscriptionType;
 
         [OutputConstructor]

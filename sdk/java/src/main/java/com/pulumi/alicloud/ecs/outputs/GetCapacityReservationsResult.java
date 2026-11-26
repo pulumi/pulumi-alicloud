@@ -64,7 +64,7 @@ public final class GetCapacityReservationsResult {
      */
     private @Nullable String status;
     /**
-     * @return A mapping of tags to assign to the Capacity Reservation.
+     * @return (Optional) A mapping of tags to assign to the Capacity Reservation.
      * 
      */
     private @Nullable Map<String,String> tags;
@@ -143,7 +143,7 @@ public final class GetCapacityReservationsResult {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return A mapping of tags to assign to the Capacity Reservation.
+     * @return (Optional) A mapping of tags to assign to the Capacity Reservation.
      * 
      */
     public Map<String,String> tags() {

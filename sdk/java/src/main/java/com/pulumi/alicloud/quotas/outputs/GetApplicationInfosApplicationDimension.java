@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetApplicationInfosApplicationDimension {
+    /**
+     * @return The key of dimensions.
+     * 
+     */
     private String key;
+    /**
+     * @return The value of dimensions.
+     * 
+     */
     private String value;
 
     private GetApplicationInfosApplicationDimension() {}
+    /**
+     * @return The key of dimensions.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return The value of dimensions.
+     * 
+     */
     public String value() {
         return this.value;
     }

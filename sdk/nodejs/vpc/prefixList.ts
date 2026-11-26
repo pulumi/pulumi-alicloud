@@ -22,13 +22,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testacc-example";
+ * const name = config.get("name") || "tf-prefixlist-example";
  * const defaultRg = new alicloud.resourcemanager.ResourceGroup("defaultRg", {
- *     displayName: "tf-testacc-chenyi",
+ *     displayName: "tf-prefixlist-default-rg",
  *     resourceGroupName: name,
  * });
  * const changeRg = new alicloud.resourcemanager.ResourceGroup("changeRg", {
- *     displayName: "tf-testacc-chenyi-change",
+ *     displayName: "tf-prefixlist-change-rg",
  *     resourceGroupName: `${name}1`,
  * });
  * const _default = new alicloud.vpc.PrefixList("default", {
@@ -98,7 +98,7 @@ export class PrefixList extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The CIDR address block list of the prefix list.See the following `Block Entrys`.
+     * The CIDR address block list of the prefix list. See `entrys` below.
      */
     declare public readonly entrys: pulumi.Output<outputs.vpc.PrefixListEntry[] | undefined>;
     /**
@@ -196,7 +196,7 @@ export interface PrefixListState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * The CIDR address block list of the prefix list.See the following `Block Entrys`.
+     * The CIDR address block list of the prefix list. See `entrys` below.
      */
     entrys?: pulumi.Input<pulumi.Input<inputs.vpc.PrefixListEntry>[] | undefined>;
     /**
@@ -246,7 +246,7 @@ export interface PrefixListState {
  */
 export interface PrefixListArgs {
     /**
-     * The CIDR address block list of the prefix list.See the following `Block Entrys`.
+     * The CIDR address block list of the prefix list. See `entrys` below.
      */
     entrys?: pulumi.Input<pulumi.Input<inputs.vpc.PrefixListEntry>[] | undefined>;
     /**

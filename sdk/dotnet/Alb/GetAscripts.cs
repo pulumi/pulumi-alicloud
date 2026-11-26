@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides Alb Ascript available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Alb
         ///             defaultAlicloudAlbAscript.Id,
         ///         },
         ///         NameRegex = defaultAlicloudAlbAscript.Name,
-        ///         AscriptName = "test",
+        ///         AscriptName = "example",
         ///         ListenerId = listenerId,
         ///     });
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides Alb Ascript available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Alb
         ///             defaultAlicloudAlbAscript.Id,
         ///         },
         ///         NameRegex = defaultAlicloudAlbAscript.Name,
-        ///         AscriptName = "test",
+        ///         AscriptName = "example",
         ///         ListenerId = listenerId,
         ///     });
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides Alb Ascript available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Alb
         ///             defaultAlicloudAlbAscript.Id,
         ///         },
         ///         NameRegex = defaultAlicloudAlbAscript.Name,
-        ///         AscriptName = "test",
+        ///         AscriptName = "example",
         ///         ListenerId = listenerId,
         ///     });
         /// 
@@ -129,6 +129,9 @@ namespace Pulumi.AliCloud.Alb
         [Input("ascriptName")]
         public string? AscriptName { get; set; }
 
+        /// <summary>
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -176,6 +179,9 @@ namespace Pulumi.AliCloud.Alb
         [Input("ascriptName")]
         public Input<string>? AscriptName { get; set; }
 
+        /// <summary>
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 

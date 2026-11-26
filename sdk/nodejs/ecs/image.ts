@@ -233,6 +233,8 @@ export class Image extends pulumi.CustomResource {
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates whether the image is available. Valid values:
+     * * true: The image is available and can be used to create ECS instances.
+     * * false: The image is unavailable and cannot be used to create ECS instances.
      */
     declare public /*out*/ readonly usable: pulumi.Output<boolean>;
 
@@ -409,6 +411,8 @@ export interface ImageState {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates whether the image is available. Valid values:
+     * * true: The image is available and can be used to create ECS instances.
+     * * false: The image is unavailable and cannot be used to create ECS instances.
      */
     usable?: pulumi.Input<boolean | undefined>;
 }

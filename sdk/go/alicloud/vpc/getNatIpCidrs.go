@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.136.0+.
+// > **NOTE:** Available since v1.136.0+.
 //
 // ## Example Usage
 //
@@ -116,17 +116,22 @@ type GetNatIpCidrsArgs struct {
 
 // A collection of values returned by getNatIpCidrs.
 type GetNatIpCidrsResult struct {
+	// A list of Vpc Nat Ip Cidrs. Each element contains the following attributes:
 	Cidrs []GetNatIpCidrsCidr `pulumi:"cidrs"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string   `pulumi:"id"`
-	Ids            []string `pulumi:"ids"`
-	NameRegex      *string  `pulumi:"nameRegex"`
-	Names          []string `pulumi:"names"`
-	NatGatewayId   string   `pulumi:"natGatewayId"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Nat Ip Cidr names.
+	Names []string `pulumi:"names"`
+	// The ID of the VPC NAT gateway.
+	NatGatewayId string `pulumi:"natGatewayId"`
+	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
 	NatIpCidrNames []string `pulumi:"natIpCidrNames"`
 	NatIpCidrs     []string `pulumi:"natIpCidrs"`
 	OutputFile     *string  `pulumi:"outputFile"`
-	Status         *string  `pulumi:"status"`
+	// The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+	Status *string `pulumi:"status"`
 }
 
 func GetNatIpCidrsOutput(ctx *pulumi.Context, args GetNatIpCidrsOutputArgs, opts ...pulumi.InvokeOption) GetNatIpCidrsResultOutput {
@@ -171,6 +176,7 @@ func (o GetNatIpCidrsResultOutput) ToGetNatIpCidrsResultOutputWithContext(ctx co
 	return o
 }
 
+// A list of Vpc Nat Ip Cidrs. Each element contains the following attributes:
 func (o GetNatIpCidrsResultOutput) Cidrs() GetNatIpCidrsCidrArrayOutput {
 	return o.ApplyT(func(v GetNatIpCidrsResult) []GetNatIpCidrsCidr { return v.Cidrs }).(GetNatIpCidrsCidrArrayOutput)
 }
@@ -188,14 +194,17 @@ func (o GetNatIpCidrsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNatIpCidrsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Nat Ip Cidr names.
 func (o GetNatIpCidrsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNatIpCidrsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the VPC NAT gateway.
 func (o GetNatIpCidrsResultOutput) NatGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatIpCidrsResult) string { return v.NatGatewayId }).(pulumi.StringOutput)
 }
 
+// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
 func (o GetNatIpCidrsResultOutput) NatIpCidrNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNatIpCidrsResult) []string { return v.NatIpCidrNames }).(pulumi.StringArrayOutput)
 }
@@ -208,6 +217,7 @@ func (o GetNatIpCidrsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNatIpCidrsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
 func (o GetNatIpCidrsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNatIpCidrsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

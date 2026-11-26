@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Imp App Templates of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.137.0+.
+ * > **NOTE:** Available since v1.137.0.
  *
  * ## Example Usage
  *
@@ -70,15 +70,24 @@ export interface GetAppTemplatesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of App Template names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * Application template usage status.
+     */
     readonly status?: string;
+    /**
+     * A list of Imp App Templates. Each element contains the following attributes:
+     */
     readonly templates: outputs.imp.GetAppTemplatesTemplate[];
 }
 /**
  * This data source provides the Imp App Templates of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.137.0+.
+ * > **NOTE:** Available since v1.137.0.
  *
  * ## Example Usage
  *

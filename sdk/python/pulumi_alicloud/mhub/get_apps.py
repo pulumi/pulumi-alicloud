@@ -59,6 +59,9 @@ class GetAppsResult:
     @_builtins.property
     @pulumi.getter
     def apps(self) -> Sequence['outputs.GetAppsAppResult']:
+        """
+        A list of Mhub Apps. Each element contains the following attributes:
+        """
         return pulumi.get(self, "apps")
 
     @_builtins.property
@@ -87,6 +90,9 @@ class GetAppsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of App names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -102,6 +108,9 @@ class GetAppsResult:
     @_builtins.property
     @pulumi.getter(name="productId")
     def product_id(self) -> _builtins.str:
+        """
+        The ID of the Product.
+        """
         return pulumi.get(self, "product_id")
 
 
@@ -132,7 +141,7 @@ def get_apps(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Mhub Apps of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.138.0+.
+    > **NOTE:** Available since v1.138.0.
 
     ## Example Usage
 
@@ -149,7 +158,7 @@ def get_apps(enable_details: Optional[_builtins.bool] = None,
     default = alicloud.mhub.App("default",
         app_name=name,
         product_id=default_alicloud_mhub_product["id"],
-        package_name="com.test.android",
+        package_name="com.example.android",
         type="2")
     ids = alicloud.mhub.get_apps()
     pulumi.export("mhubAppId1", ids.apps[0].id)
@@ -195,7 +204,7 @@ def get_apps_output(enable_details: pulumi.Input[Optional[Optional[_builtins.boo
     """
     This data source provides the Mhub Apps of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.138.0+.
+    > **NOTE:** Available since v1.138.0.
 
     ## Example Usage
 
@@ -212,7 +221,7 @@ def get_apps_output(enable_details: pulumi.Input[Optional[Optional[_builtins.boo
     default = alicloud.mhub.App("default",
         app_name=name,
         product_id=default_alicloud_mhub_product["id"],
-        package_name="com.test.android",
+        package_name="com.example.android",
         type="2")
     ids = alicloud.mhub.get_apps()
     pulumi.export("mhubAppId1", ids.apps[0].id)

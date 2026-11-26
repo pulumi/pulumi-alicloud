@@ -103,8 +103,8 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
     /**
      * The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-     * - ack.standard: Standard serverless clusters.
-     * - ack.pro.small: Professional serverless clusters.
+     * - `ack.standard`: Standard serverless clusters.
+     * - `ack.pro.small`: Professional serverless clusters.
      * 
      */
     @Import(name="clusterSpec")
@@ -112,8 +112,8 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
     /**
      * @return The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-     * - ack.standard: Standard serverless clusters.
-     * - ack.pro.small: Professional serverless clusters.
+     * - `ack.standard`: Standard serverless clusters.
+     * - `ack.pro.small`: Professional serverless clusters.
      * 
      */
     public Optional<Output<String>> clusterSpec() {
@@ -122,6 +122,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     * 
      * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      * 
      */
@@ -130,6 +131,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
     /**
      * @return Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     * 
      * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      * 
      */
@@ -154,8 +156,6 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
     /**
      * Whether enable the deletion protection or not.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
      * 
      */
     @Import(name="deletionProtection")
@@ -163,8 +163,6 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
     /**
      * @return Whether enable the deletion protection or not.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -361,7 +359,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     /**
      * The cluster automatic operation policy. See `operationPolicy` below.
      * 
-     * *Removed params*
+     * The following arguments have been removed since v1.229.1: `vswitchId`, `createV2Cluster`, and `forceUpdate`. Use `vswitchIds` instead of `vswitchId`.
      * 
      */
     @Import(name="operationPolicy")
@@ -370,7 +368,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     /**
      * @return The cluster automatic operation policy. See `operationPolicy` below.
      * 
-     * *Removed params*
+     * The following arguments have been removed since v1.229.1: `vswitchId`, `createV2Cluster`, and `forceUpdate`. Use `vswitchIds` instead of `vswitchId`.
      * 
      */
     public Optional<Output<ServerlessKubernetesOperationPolicyArgs>> operationPolicy() {
@@ -770,8 +768,8 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
         /**
          * @param clusterSpec The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-         * - ack.standard: Standard serverless clusters.
-         * - ack.pro.small: Professional serverless clusters.
+         * - `ack.standard`: Standard serverless clusters.
+         * - `ack.pro.small`: Professional serverless clusters.
          * 
          * @return builder
          * 
@@ -783,8 +781,8 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
         /**
          * @param clusterSpec The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-         * - ack.standard: Standard serverless clusters.
-         * - ack.pro.small: Professional serverless clusters.
+         * - `ack.standard`: Standard serverless clusters.
+         * - `ack.pro.small`: Professional serverless clusters.
          * 
          * @return builder
          * 
@@ -795,6 +793,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
         /**
          * @param customSan Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+         * 
          * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
          * 
          * @return builder
@@ -807,6 +806,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
         /**
          * @param customSan Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+         * 
          * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
          * 
          * @return builder
@@ -849,8 +849,6 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
         /**
          * @param deletionProtection Whether enable the deletion protection or not.
-         * - true: Enable deletion protection.
-         * - false: Disable deletion protection.
          * 
          * @return builder
          * 
@@ -862,8 +860,6 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
         /**
          * @param deletionProtection Whether enable the deletion protection or not.
-         * - true: Enable deletion protection.
-         * - false: Disable deletion protection.
          * 
          * @return builder
          * 
@@ -1128,7 +1124,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         /**
          * @param operationPolicy The cluster automatic operation policy. See `operationPolicy` below.
          * 
-         * *Removed params*
+         * The following arguments have been removed since v1.229.1: `vswitchId`, `createV2Cluster`, and `forceUpdate`. Use `vswitchIds` instead of `vswitchId`.
          * 
          * @return builder
          * 
@@ -1141,7 +1137,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         /**
          * @param operationPolicy The cluster automatic operation policy. See `operationPolicy` below.
          * 
-         * *Removed params*
+         * The following arguments have been removed since v1.229.1: `vswitchId`, `createV2Cluster`, and `forceUpdate`. Use `vswitchIds` instead of `vswitchId`.
          * 
          * @return builder
          * 

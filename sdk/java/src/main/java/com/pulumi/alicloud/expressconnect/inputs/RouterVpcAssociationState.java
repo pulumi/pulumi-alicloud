@@ -18,18 +18,33 @@ public final class RouterVpcAssociationState extends com.pulumi.resources.Resour
     public static final RouterVpcAssociationState Empty = new RouterVpcAssociationState();
 
     /**
-     * The list of allowed route prefixes.
+     * The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowedPrefixesMode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowedPrefixesMode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
      * 
      */
     @Import(name="allowedPrefixes")
     private @Nullable Output<List<String>> allowedPrefixes;
 
     /**
-     * @return The list of allowed route prefixes.
+     * @return The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowedPrefixesMode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowedPrefixesMode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
      * 
      */
     public Optional<Output<List<String>>> allowedPrefixes() {
         return Optional.ofNullable(this.allowedPrefixes);
+    }
+
+    /**
+     * The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowedPrefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowedPrefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowedPrefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
+     * 
+     */
+    @Import(name="allowedPrefixesMode")
+    private @Nullable Output<String> allowedPrefixesMode;
+
+    /**
+     * @return The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowedPrefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowedPrefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowedPrefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
+     * 
+     */
+    public Optional<Output<String>> allowedPrefixesMode() {
+        return Optional.ofNullable(this.allowedPrefixesMode);
     }
 
     /**
@@ -75,6 +90,21 @@ public final class RouterVpcAssociationState extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     /**
@@ -124,6 +154,7 @@ public final class RouterVpcAssociationState extends com.pulumi.resources.Resour
 
     /**
      * The ID of the Alibaba Cloud account that owns the VPC.
+     * 
      * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      * 
      */
@@ -132,6 +163,7 @@ public final class RouterVpcAssociationState extends com.pulumi.resources.Resour
 
     /**
      * @return The ID of the Alibaba Cloud account that owns the VPC.
+     * 
      * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      * 
      */
@@ -143,9 +175,11 @@ public final class RouterVpcAssociationState extends com.pulumi.resources.Resour
 
     private RouterVpcAssociationState(RouterVpcAssociationState $) {
         this.allowedPrefixes = $.allowedPrefixes;
+        this.allowedPrefixesMode = $.allowedPrefixesMode;
         this.associationId = $.associationId;
         this.associationRegionId = $.associationRegionId;
         this.createTime = $.createTime;
+        this.description = $.description;
         this.ecrId = $.ecrId;
         this.status = $.status;
         this.vpcId = $.vpcId;
@@ -171,7 +205,7 @@ public final class RouterVpcAssociationState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allowedPrefixes The list of allowed route prefixes.
+         * @param allowedPrefixes The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowedPrefixesMode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowedPrefixesMode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
          * 
          * @return builder
          * 
@@ -182,7 +216,7 @@ public final class RouterVpcAssociationState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allowedPrefixes The list of allowed route prefixes.
+         * @param allowedPrefixes The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowedPrefixesMode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowedPrefixesMode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
          * 
          * @return builder
          * 
@@ -192,13 +226,34 @@ public final class RouterVpcAssociationState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allowedPrefixes The list of allowed route prefixes.
+         * @param allowedPrefixes The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowedPrefixesMode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowedPrefixesMode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
          * 
          * @return builder
          * 
          */
         public Builder allowedPrefixes(String... allowedPrefixes) {
             return allowedPrefixes(List.of(allowedPrefixes));
+        }
+
+        /**
+         * @param allowedPrefixesMode The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowedPrefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowedPrefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowedPrefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedPrefixesMode(@Nullable Output<String> allowedPrefixesMode) {
+            $.allowedPrefixesMode = allowedPrefixesMode;
+            return this;
+        }
+
+        /**
+         * @param allowedPrefixesMode The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowedPrefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowedPrefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowedPrefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedPrefixesMode(String allowedPrefixesMode) {
+            return allowedPrefixesMode(Output.of(allowedPrefixesMode));
         }
 
         /**
@@ -262,6 +317,27 @@ public final class RouterVpcAssociationState extends com.pulumi.resources.Resour
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**
@@ -329,6 +405,7 @@ public final class RouterVpcAssociationState extends com.pulumi.resources.Resour
 
         /**
          * @param vpcOwnerId The ID of the Alibaba Cloud account that owns the VPC.
+         * 
          * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
          * 
          * @return builder
@@ -341,6 +418,7 @@ public final class RouterVpcAssociationState extends com.pulumi.resources.Resour
 
         /**
          * @param vpcOwnerId The ID of the Alibaba Cloud account that owns the VPC.
+         * 
          * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
          * 
          * @return builder

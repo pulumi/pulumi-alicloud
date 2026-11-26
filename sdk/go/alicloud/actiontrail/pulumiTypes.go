@@ -1673,12 +1673,14 @@ type GetTrailsActiontrail struct {
 	// Indicates whether the event is a read or a write event.
 	EventRw string `pulumi:"eventRw"`
 	// The id of the ActionTrail Trail. It is the same as trail name.
-	Id                  string `pulumi:"id"`
-	IsOrganizationTrail bool   `pulumi:"isOrganizationTrail"`
+	Id string `pulumi:"id"`
+	// Indicates whether the trail is a multi-account trail.
+	IsOrganizationTrail bool `pulumi:"isOrganizationTrail"`
 	// The name of the specified OSS bucket.
 	OssBucketName string `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
-	OssKeyPrefix    string `pulumi:"ossKeyPrefix"`
+	OssKeyPrefix string `pulumi:"ossKeyPrefix"`
+	// The RAM role ARN that ActionTrail assumes to access the OSS bucket.
 	OssWriteRoleArn string `pulumi:"ossWriteRoleArn"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn string `pulumi:"slsProjectArn"`
@@ -1707,12 +1709,14 @@ type GetTrailsActiontrailArgs struct {
 	// Indicates whether the event is a read or a write event.
 	EventRw pulumi.StringInput `pulumi:"eventRw"`
 	// The id of the ActionTrail Trail. It is the same as trail name.
-	Id                  pulumi.StringInput `pulumi:"id"`
-	IsOrganizationTrail pulumi.BoolInput   `pulumi:"isOrganizationTrail"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// Indicates whether the trail is a multi-account trail.
+	IsOrganizationTrail pulumi.BoolInput `pulumi:"isOrganizationTrail"`
 	// The name of the specified OSS bucket.
 	OssBucketName pulumi.StringInput `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
-	OssKeyPrefix    pulumi.StringInput `pulumi:"ossKeyPrefix"`
+	OssKeyPrefix pulumi.StringInput `pulumi:"ossKeyPrefix"`
+	// The RAM role ARN that ActionTrail assumes to access the OSS bucket.
 	OssWriteRoleArn pulumi.StringInput `pulumi:"ossWriteRoleArn"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn pulumi.StringInput `pulumi:"slsProjectArn"`
@@ -1787,6 +1791,7 @@ func (o GetTrailsActiontrailOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Indicates whether the trail is a multi-account trail.
 func (o GetTrailsActiontrailOutput) IsOrganizationTrail() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTrailsActiontrail) bool { return v.IsOrganizationTrail }).(pulumi.BoolOutput)
 }
@@ -1801,6 +1806,7 @@ func (o GetTrailsActiontrailOutput) OssKeyPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.OssKeyPrefix }).(pulumi.StringOutput)
 }
 
+// The RAM role ARN that ActionTrail assumes to access the OSS bucket.
 func (o GetTrailsActiontrailOutput) OssWriteRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.OssWriteRoleArn }).(pulumi.StringOutput)
 }
@@ -1852,21 +1858,27 @@ func (o GetTrailsActiontrailArrayOutput) Index(i pulumi.IntInput) GetTrailsActio
 
 type GetTrailsDeprecatedActiontrail struct {
 	// Indicates whether the event is a read or a write event.
-	EventRw             string `pulumi:"eventRw"`
-	Id                  string `pulumi:"id"`
-	IsOrganizationTrail bool   `pulumi:"isOrganizationTrail"`
+	EventRw string `pulumi:"eventRw"`
+	// The id of the ActionTrail Trail. It is the same as trail name.
+	Id string `pulumi:"id"`
+	// Indicates whether the trail is a multi-account trail.
+	IsOrganizationTrail bool `pulumi:"isOrganizationTrail"`
 	// The name of the specified OSS bucket.
 	OssBucketName string `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
-	OssKeyPrefix    string `pulumi:"ossKeyPrefix"`
+	OssKeyPrefix string `pulumi:"ossKeyPrefix"`
+	// The RAM role ARN that ActionTrail assumes to access the OSS bucket.
 	OssWriteRoleArn string `pulumi:"ossWriteRoleArn"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn string `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
 	SlsWriteRoleArn string `pulumi:"slsWriteRoleArn"`
-	Status          string `pulumi:"status"`
-	TrailName       string `pulumi:"trailName"`
-	TrailRegion     string `pulumi:"trailRegion"`
+	// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+	Status string `pulumi:"status"`
+	// The name of the ActionTrail Trail.
+	TrailName string `pulumi:"trailName"`
+	// The regions to which the trail is applied.
+	TrailRegion string `pulumi:"trailRegion"`
 }
 
 // GetTrailsDeprecatedActiontrailInput is an input type that accepts GetTrailsDeprecatedActiontrailArgs and GetTrailsDeprecatedActiontrailOutput values.
@@ -1882,21 +1894,27 @@ type GetTrailsDeprecatedActiontrailInput interface {
 
 type GetTrailsDeprecatedActiontrailArgs struct {
 	// Indicates whether the event is a read or a write event.
-	EventRw             pulumi.StringInput `pulumi:"eventRw"`
-	Id                  pulumi.StringInput `pulumi:"id"`
-	IsOrganizationTrail pulumi.BoolInput   `pulumi:"isOrganizationTrail"`
+	EventRw pulumi.StringInput `pulumi:"eventRw"`
+	// The id of the ActionTrail Trail. It is the same as trail name.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Indicates whether the trail is a multi-account trail.
+	IsOrganizationTrail pulumi.BoolInput `pulumi:"isOrganizationTrail"`
 	// The name of the specified OSS bucket.
 	OssBucketName pulumi.StringInput `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
-	OssKeyPrefix    pulumi.StringInput `pulumi:"ossKeyPrefix"`
+	OssKeyPrefix pulumi.StringInput `pulumi:"ossKeyPrefix"`
+	// The RAM role ARN that ActionTrail assumes to access the OSS bucket.
 	OssWriteRoleArn pulumi.StringInput `pulumi:"ossWriteRoleArn"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn pulumi.StringInput `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
 	SlsWriteRoleArn pulumi.StringInput `pulumi:"slsWriteRoleArn"`
-	Status          pulumi.StringInput `pulumi:"status"`
-	TrailName       pulumi.StringInput `pulumi:"trailName"`
-	TrailRegion     pulumi.StringInput `pulumi:"trailRegion"`
+	// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The name of the ActionTrail Trail.
+	TrailName pulumi.StringInput `pulumi:"trailName"`
+	// The regions to which the trail is applied.
+	TrailRegion pulumi.StringInput `pulumi:"trailRegion"`
 }
 
 func (GetTrailsDeprecatedActiontrailArgs) ElementType() reflect.Type {
@@ -1955,10 +1973,12 @@ func (o GetTrailsDeprecatedActiontrailOutput) EventRw() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.EventRw }).(pulumi.StringOutput)
 }
 
+// The id of the ActionTrail Trail. It is the same as trail name.
 func (o GetTrailsDeprecatedActiontrailOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Indicates whether the trail is a multi-account trail.
 func (o GetTrailsDeprecatedActiontrailOutput) IsOrganizationTrail() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) bool { return v.IsOrganizationTrail }).(pulumi.BoolOutput)
 }
@@ -1973,6 +1993,7 @@ func (o GetTrailsDeprecatedActiontrailOutput) OssKeyPrefix() pulumi.StringOutput
 	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.OssKeyPrefix }).(pulumi.StringOutput)
 }
 
+// The RAM role ARN that ActionTrail assumes to access the OSS bucket.
 func (o GetTrailsDeprecatedActiontrailOutput) OssWriteRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.OssWriteRoleArn }).(pulumi.StringOutput)
 }
@@ -1987,14 +2008,17 @@ func (o GetTrailsDeprecatedActiontrailOutput) SlsWriteRoleArn() pulumi.StringOut
 	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.SlsWriteRoleArn }).(pulumi.StringOutput)
 }
 
+// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
 func (o GetTrailsDeprecatedActiontrailOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The name of the ActionTrail Trail.
 func (o GetTrailsDeprecatedActiontrailOutput) TrailName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.TrailName }).(pulumi.StringOutput)
 }
 
+// The regions to which the trail is applied.
 func (o GetTrailsDeprecatedActiontrailOutput) TrailRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.TrailRegion }).(pulumi.StringOutput)
 }
@@ -2021,21 +2045,27 @@ func (o GetTrailsDeprecatedActiontrailArrayOutput) Index(i pulumi.IntInput) GetT
 
 type GetTrailsDeprecatedTrail struct {
 	// Indicates whether the event is a read or a write event.
-	EventRw             string `pulumi:"eventRw"`
-	Id                  string `pulumi:"id"`
-	IsOrganizationTrail bool   `pulumi:"isOrganizationTrail"`
+	EventRw string `pulumi:"eventRw"`
+	// The id of the ActionTrail Trail. It is the same as trail name.
+	Id string `pulumi:"id"`
+	// Indicates whether the trail is a multi-account trail.
+	IsOrganizationTrail bool `pulumi:"isOrganizationTrail"`
 	// The name of the specified OSS bucket.
 	OssBucketName string `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
-	OssKeyPrefix    string `pulumi:"ossKeyPrefix"`
+	OssKeyPrefix string `pulumi:"ossKeyPrefix"`
+	// The RAM role ARN that ActionTrail assumes to access the OSS bucket.
 	OssWriteRoleArn string `pulumi:"ossWriteRoleArn"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn string `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
 	SlsWriteRoleArn string `pulumi:"slsWriteRoleArn"`
-	Status          string `pulumi:"status"`
-	TrailName       string `pulumi:"trailName"`
-	TrailRegion     string `pulumi:"trailRegion"`
+	// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+	Status string `pulumi:"status"`
+	// The name of the ActionTrail Trail.
+	TrailName string `pulumi:"trailName"`
+	// The regions to which the trail is applied.
+	TrailRegion string `pulumi:"trailRegion"`
 }
 
 // GetTrailsDeprecatedTrailInput is an input type that accepts GetTrailsDeprecatedTrailArgs and GetTrailsDeprecatedTrailOutput values.
@@ -2051,21 +2081,27 @@ type GetTrailsDeprecatedTrailInput interface {
 
 type GetTrailsDeprecatedTrailArgs struct {
 	// Indicates whether the event is a read or a write event.
-	EventRw             pulumi.StringInput `pulumi:"eventRw"`
-	Id                  pulumi.StringInput `pulumi:"id"`
-	IsOrganizationTrail pulumi.BoolInput   `pulumi:"isOrganizationTrail"`
+	EventRw pulumi.StringInput `pulumi:"eventRw"`
+	// The id of the ActionTrail Trail. It is the same as trail name.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Indicates whether the trail is a multi-account trail.
+	IsOrganizationTrail pulumi.BoolInput `pulumi:"isOrganizationTrail"`
 	// The name of the specified OSS bucket.
 	OssBucketName pulumi.StringInput `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
-	OssKeyPrefix    pulumi.StringInput `pulumi:"ossKeyPrefix"`
+	OssKeyPrefix pulumi.StringInput `pulumi:"ossKeyPrefix"`
+	// The RAM role ARN that ActionTrail assumes to access the OSS bucket.
 	OssWriteRoleArn pulumi.StringInput `pulumi:"ossWriteRoleArn"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn pulumi.StringInput `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
 	SlsWriteRoleArn pulumi.StringInput `pulumi:"slsWriteRoleArn"`
-	Status          pulumi.StringInput `pulumi:"status"`
-	TrailName       pulumi.StringInput `pulumi:"trailName"`
-	TrailRegion     pulumi.StringInput `pulumi:"trailRegion"`
+	// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The name of the ActionTrail Trail.
+	TrailName pulumi.StringInput `pulumi:"trailName"`
+	// The regions to which the trail is applied.
+	TrailRegion pulumi.StringInput `pulumi:"trailRegion"`
 }
 
 func (GetTrailsDeprecatedTrailArgs) ElementType() reflect.Type {
@@ -2124,10 +2160,12 @@ func (o GetTrailsDeprecatedTrailOutput) EventRw() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.EventRw }).(pulumi.StringOutput)
 }
 
+// The id of the ActionTrail Trail. It is the same as trail name.
 func (o GetTrailsDeprecatedTrailOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Indicates whether the trail is a multi-account trail.
 func (o GetTrailsDeprecatedTrailOutput) IsOrganizationTrail() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedTrail) bool { return v.IsOrganizationTrail }).(pulumi.BoolOutput)
 }
@@ -2142,6 +2180,7 @@ func (o GetTrailsDeprecatedTrailOutput) OssKeyPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.OssKeyPrefix }).(pulumi.StringOutput)
 }
 
+// The RAM role ARN that ActionTrail assumes to access the OSS bucket.
 func (o GetTrailsDeprecatedTrailOutput) OssWriteRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.OssWriteRoleArn }).(pulumi.StringOutput)
 }
@@ -2156,14 +2195,17 @@ func (o GetTrailsDeprecatedTrailOutput) SlsWriteRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.SlsWriteRoleArn }).(pulumi.StringOutput)
 }
 
+// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
 func (o GetTrailsDeprecatedTrailOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The name of the ActionTrail Trail.
 func (o GetTrailsDeprecatedTrailOutput) TrailName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.TrailName }).(pulumi.StringOutput)
 }
 
+// The regions to which the trail is applied.
 func (o GetTrailsDeprecatedTrailOutput) TrailRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.TrailRegion }).(pulumi.StringOutput)
 }
@@ -2192,12 +2234,14 @@ type GetTrailsTrail struct {
 	// Indicates whether the event is a read or a write event.
 	EventRw string `pulumi:"eventRw"`
 	// The id of the ActionTrail Trail. It is the same as trail name.
-	Id                  string `pulumi:"id"`
-	IsOrganizationTrail bool   `pulumi:"isOrganizationTrail"`
+	Id string `pulumi:"id"`
+	// Indicates whether the trail is a multi-account trail.
+	IsOrganizationTrail bool `pulumi:"isOrganizationTrail"`
 	// The name of the specified OSS bucket.
 	OssBucketName string `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
-	OssKeyPrefix    string `pulumi:"ossKeyPrefix"`
+	OssKeyPrefix string `pulumi:"ossKeyPrefix"`
+	// The RAM role ARN that ActionTrail assumes to access the OSS bucket.
 	OssWriteRoleArn string `pulumi:"ossWriteRoleArn"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn string `pulumi:"slsProjectArn"`
@@ -2226,12 +2270,14 @@ type GetTrailsTrailArgs struct {
 	// Indicates whether the event is a read or a write event.
 	EventRw pulumi.StringInput `pulumi:"eventRw"`
 	// The id of the ActionTrail Trail. It is the same as trail name.
-	Id                  pulumi.StringInput `pulumi:"id"`
-	IsOrganizationTrail pulumi.BoolInput   `pulumi:"isOrganizationTrail"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// Indicates whether the trail is a multi-account trail.
+	IsOrganizationTrail pulumi.BoolInput `pulumi:"isOrganizationTrail"`
 	// The name of the specified OSS bucket.
 	OssBucketName pulumi.StringInput `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
-	OssKeyPrefix    pulumi.StringInput `pulumi:"ossKeyPrefix"`
+	OssKeyPrefix pulumi.StringInput `pulumi:"ossKeyPrefix"`
+	// The RAM role ARN that ActionTrail assumes to access the OSS bucket.
 	OssWriteRoleArn pulumi.StringInput `pulumi:"ossWriteRoleArn"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn pulumi.StringInput `pulumi:"slsProjectArn"`
@@ -2306,6 +2352,7 @@ func (o GetTrailsTrailOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsTrail) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Indicates whether the trail is a multi-account trail.
 func (o GetTrailsTrailOutput) IsOrganizationTrail() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTrailsTrail) bool { return v.IsOrganizationTrail }).(pulumi.BoolOutput)
 }
@@ -2320,6 +2367,7 @@ func (o GetTrailsTrailOutput) OssKeyPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsTrail) string { return v.OssKeyPrefix }).(pulumi.StringOutput)
 }
 
+// The RAM role ARN that ActionTrail assumes to access the OSS bucket.
 func (o GetTrailsTrailOutput) OssWriteRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsTrail) string { return v.OssWriteRoleArn }).(pulumi.StringOutput)
 }

@@ -57,7 +57,7 @@ public final class GetTrafficMirrorFilterIngressRulesRule {
      */
     private String status;
     /**
-     * @return The ID of the filter associated with the inbound rule.
+     * @return The ID of the Traffic Mirror Filter.
      * 
      */
     private String trafficMirrorFilterId;
@@ -132,7 +132,7 @@ public final class GetTrafficMirrorFilterIngressRulesRule {
         return this.status;
     }
     /**
-     * @return The ID of the filter associated with the inbound rule.
+     * @return The ID of the Traffic Mirror Filter.
      * 
      */
     public String trafficMirrorFilterId() {

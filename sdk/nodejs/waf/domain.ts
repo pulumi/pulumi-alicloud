@@ -145,9 +145,7 @@ export class Domain extends pulumi.CustomResource {
      */
     declare public readonly loadBalancing: pulumi.Output<string | undefined>;
     /**
-     * The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-     * * key: The key of label
-     * * value: The value of label
+     * The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `logHeaders` below.
      */
     declare public readonly logHeaders: pulumi.Output<outputs.waf.DomainLogHeader[] | undefined>;
     /**
@@ -290,9 +288,7 @@ export interface DomainState {
      */
     loadBalancing?: pulumi.Input<string | undefined>;
     /**
-     * The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-     * * key: The key of label
-     * * value: The value of label
+     * The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `logHeaders` below.
      */
     logHeaders?: pulumi.Input<pulumi.Input<inputs.waf.DomainLogHeader>[] | undefined>;
     /**
@@ -369,9 +365,7 @@ export interface DomainArgs {
      */
     loadBalancing?: pulumi.Input<string | undefined>;
     /**
-     * The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-     * * key: The key of label
-     * * value: The value of label
+     * The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `logHeaders` below.
      */
     logHeaders?: pulumi.Input<pulumi.Input<inputs.waf.DomainLogHeader>[] | undefined>;
     /**

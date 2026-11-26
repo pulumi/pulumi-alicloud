@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly int? Agentless;
         /// <summary>
+        /// The AI digital human module. Valid values:
+        /// </summary>
+        public readonly int? AiDigital;
+        /// <summary>
         /// Anti-Ransomware Module. Valid values:
         /// </summary>
         public readonly int? AntiRansomware;
@@ -30,6 +34,10 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly int? Cspm;
         /// <summary>
+        /// The Agentic cloud security configuration check module. Valid values:
+        /// </summary>
+        public readonly int? CspmInstance;
+        /// <summary>
         /// Threat Analysis and Response Module. Valid values:
         /// </summary>
         public readonly int? Ctdr;
@@ -37,6 +45,10 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// Log Management Module. Valid values:
         /// </summary>
         public readonly int? CtdrStorage;
+        /// <summary>
+        /// The image scan module. Valid values:
+        /// </summary>
+        public readonly int? ImageScan;
         /// <summary>
         /// Host and Container Security Module. Valid values:
         /// </summary>
@@ -66,15 +78,21 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         private InstancePostPayModuleSwitchObj(
             int? agentless,
 
+            int? aiDigital,
+
             int? antiRansomware,
 
             int? basicService,
 
             int? cspm,
 
+            int? cspmInstance,
+
             int? ctdr,
 
             int? ctdrStorage,
+
+            int? imageScan,
 
             int? postHost,
 
@@ -89,11 +107,14 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
             int? webLock)
         {
             Agentless = agentless;
+            AiDigital = aiDigital;
             AntiRansomware = antiRansomware;
             BasicService = basicService;
             Cspm = cspm;
+            CspmInstance = cspmInstance;
             Ctdr = ctdr;
             CtdrStorage = ctdrStorage;
+            ImageScan = imageScan;
             PostHost = postHost;
             Rasp = rasp;
             Sdk = sdk;

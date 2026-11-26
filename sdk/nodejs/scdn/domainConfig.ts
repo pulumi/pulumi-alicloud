@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a SCDN Accelerated Domain resource.
  *
- * For information about domain config and how to use it, see [Batch set config](https://help.aliyun.com/document_detail/92912.html)
+ * For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/doc-detail/92912.html)
  *
- * > **NOTE:** Available in v1.131.0+.
+ * > **NOTE:** Available since v1.131.0.
  *
  * > **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
  *
@@ -105,7 +105,7 @@ export class DomainConfig extends pulumi.CustomResource {
      */
     declare public readonly domainName: pulumi.Output<string>;
     /**
-     * The args of the domain config.
+     * The args of the domain config. See `functionArgs` below for details.
      */
     declare public readonly functionArgs: pulumi.Output<outputs.scdn.DomainConfigFunctionArg[]>;
     /**
@@ -170,7 +170,7 @@ export interface DomainConfigState {
      */
     domainName?: pulumi.Input<string | undefined>;
     /**
-     * The args of the domain config.
+     * The args of the domain config. See `functionArgs` below for details.
      */
     functionArgs?: pulumi.Input<pulumi.Input<inputs.scdn.DomainConfigFunctionArg>[] | undefined>;
     /**
@@ -192,7 +192,7 @@ export interface DomainConfigArgs {
      */
     domainName: pulumi.Input<string>;
     /**
-     * The args of the domain config.
+     * The args of the domain config. See `functionArgs` below for details.
      */
     functionArgs: pulumi.Input<pulumi.Input<inputs.scdn.DomainConfigFunctionArg>[]>;
     /**

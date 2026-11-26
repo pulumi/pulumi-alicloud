@@ -12,52 +12,72 @@ import java.util.Objects;
 @CustomType
 public final class GetCertificatesCertificate {
     /**
-     * @return The cert is buy from aliyun or not.
+     * @return Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buyInAliyun` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private Boolean buyInAliyun;
+    /**
+     * @return The Cert of the certificate. **Note:** `cert` takes effect only if `enableDetails` is set to `true`.
+     * 
+     */
     private String cert;
+    /**
+     * @return The ID of the certificate.
+     * 
+     */
     private String certId;
+    /**
+     * @return The name of the certificate.
+     * 
+     */
     private String certificateName;
     /**
-     * @return The cert&#39;s city.
+     * @return The city in which the organization is located.
      * 
      */
     private String city;
     /**
-     * @return The cert&#39;s common name.
+     * @return The parent domain name of the certificate.
      * 
      */
     private String common;
     /**
-     * @return The cert&#39;s country.
+     * @return The code of the country in which the organization is located.
      * 
      */
     private String country;
     /**
-     * @return The cert&#39;s not valid after time.
+     * @return The time at which the certificate expires.
      * 
      */
     private String endDate;
     /**
-     * @return The cert is expired or not.
+     * @return Whether the certificate has expired.
      * 
      */
     private Boolean expired;
+    /**
+     * @return The fingerprint of the certificate.
+     * 
+     */
     private String fingerprint;
     /**
-     * @return The cert&#39;s id.
+     * @return The ID of the Ssl Certificates Service Certificate.
      * 
      */
     private String id;
     /**
-     * @return The cert&#39;s .
+     * @return The issuer of the certificate.
      * 
      */
     private String issuer;
+    /**
+     * @return The Key of the certificate. **Note:** `key` takes effect only if `enableDetails` is set to `true`.
+     * 
+     */
     private String key;
     /**
-     * @return The cert&#39;s name.
+     * @return (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
      * 
      * @deprecated Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
      * 
@@ -65,100 +85,120 @@ public final class GetCertificatesCertificate {
     @Deprecated
     private String name;
     /**
-     * @return The cert&#39;s organization.
+     * @return The name of the organization that is associated with the certificate.
      * 
      */
     private String orgName;
     /**
-     * @return The cert&#39;s province.
+     * @return The province or autonomous region in which the organization is located.
      * 
      */
     private String province;
     /**
-     * @return The cert&#39;s subject alternative name.
+     * @return All domain names that are bound to the certificate.
      * 
      */
     private String sans;
     /**
-     * @return The cert&#39;s not valid before time.
+     * @return The time at which the certificate starts to take effect.
      * 
      */
     private String startDate;
 
     private GetCertificatesCertificate() {}
     /**
-     * @return The cert is buy from aliyun or not.
+     * @return Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buyInAliyun` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public Boolean buyInAliyun() {
         return this.buyInAliyun;
     }
+    /**
+     * @return The Cert of the certificate. **Note:** `cert` takes effect only if `enableDetails` is set to `true`.
+     * 
+     */
     public String cert() {
         return this.cert;
     }
+    /**
+     * @return The ID of the certificate.
+     * 
+     */
     public String certId() {
         return this.certId;
     }
+    /**
+     * @return The name of the certificate.
+     * 
+     */
     public String certificateName() {
         return this.certificateName;
     }
     /**
-     * @return The cert&#39;s city.
+     * @return The city in which the organization is located.
      * 
      */
     public String city() {
         return this.city;
     }
     /**
-     * @return The cert&#39;s common name.
+     * @return The parent domain name of the certificate.
      * 
      */
     public String common() {
         return this.common;
     }
     /**
-     * @return The cert&#39;s country.
+     * @return The code of the country in which the organization is located.
      * 
      */
     public String country() {
         return this.country;
     }
     /**
-     * @return The cert&#39;s not valid after time.
+     * @return The time at which the certificate expires.
      * 
      */
     public String endDate() {
         return this.endDate;
     }
     /**
-     * @return The cert is expired or not.
+     * @return Whether the certificate has expired.
      * 
      */
     public Boolean expired() {
         return this.expired;
     }
+    /**
+     * @return The fingerprint of the certificate.
+     * 
+     */
     public String fingerprint() {
         return this.fingerprint;
     }
     /**
-     * @return The cert&#39;s id.
+     * @return The ID of the Ssl Certificates Service Certificate.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The cert&#39;s .
+     * @return The issuer of the certificate.
      * 
      */
     public String issuer() {
         return this.issuer;
     }
+    /**
+     * @return The Key of the certificate. **Note:** `key` takes effect only if `enableDetails` is set to `true`.
+     * 
+     */
     public String key() {
         return this.key;
     }
     /**
-     * @return The cert&#39;s name.
+     * @return (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
      * 
      * @deprecated Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
      * 
@@ -168,28 +208,28 @@ public final class GetCertificatesCertificate {
         return this.name;
     }
     /**
-     * @return The cert&#39;s organization.
+     * @return The name of the organization that is associated with the certificate.
      * 
      */
     public String orgName() {
         return this.orgName;
     }
     /**
-     * @return The cert&#39;s province.
+     * @return The province or autonomous region in which the organization is located.
      * 
      */
     public String province() {
         return this.province;
     }
     /**
-     * @return The cert&#39;s subject alternative name.
+     * @return All domain names that are bound to the certificate.
      * 
      */
     public String sans() {
         return this.sans;
     }
     /**
-     * @return The cert&#39;s not valid before time.
+     * @return The time at which the certificate starts to take effect.
      * 
      */
     public String startDate() {

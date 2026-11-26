@@ -18,7 +18,7 @@ public final class OpensearchFunctions {
     /**
      * This data source provides the Open Search App Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -50,7 +50,7 @@ public final class OpensearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf_testacc");
+     *         final var name = config.get("name").orElse("tf_acc");
      *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()
      *             .appGroupName(name)
      *             .paymentType("PayAsYouGo")
@@ -79,7 +79,7 @@ public final class OpensearchFunctions {
     /**
      * This data source provides the Open Search App Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -111,7 +111,7 @@ public final class OpensearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf_testacc");
+     *         final var name = config.get("name").orElse("tf_acc");
      *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()
      *             .appGroupName(name)
      *             .paymentType("PayAsYouGo")
@@ -140,7 +140,7 @@ public final class OpensearchFunctions {
     /**
      * This data source provides the Open Search App Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -172,7 +172,7 @@ public final class OpensearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf_testacc");
+     *         final var name = config.get("name").orElse("tf_acc");
      *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()
      *             .appGroupName(name)
      *             .paymentType("PayAsYouGo")
@@ -201,7 +201,7 @@ public final class OpensearchFunctions {
     /**
      * This data source provides the Open Search App Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -233,7 +233,7 @@ public final class OpensearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf_testacc");
+     *         final var name = config.get("name").orElse("tf_acc");
      *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()
      *             .appGroupName(name)
      *             .paymentType("PayAsYouGo")
@@ -262,7 +262,7 @@ public final class OpensearchFunctions {
     /**
      * This data source provides the Open Search App Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -294,7 +294,7 @@ public final class OpensearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf_testacc");
+     *         final var name = config.get("name").orElse("tf_acc");
      *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()
      *             .appGroupName(name)
      *             .paymentType("PayAsYouGo")
@@ -323,7 +323,7 @@ public final class OpensearchFunctions {
     /**
      * This data source provides the Open Search App Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -355,7 +355,7 @@ public final class OpensearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf_testacc");
+     *         final var name = config.get("name").orElse("tf_acc");
      *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()
      *             .appGroupName(name)
      *             .paymentType("PayAsYouGo")
@@ -384,7 +384,7 @@ public final class OpensearchFunctions {
     /**
      * This data source provides the Open Search App Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -416,7 +416,7 @@ public final class OpensearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf_testacc");
+     *         final var name = config.get("name").orElse("tf_acc");
      *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()
      *             .appGroupName(name)
      *             .paymentType("PayAsYouGo")

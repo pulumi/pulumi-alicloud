@@ -83,16 +83,25 @@ class GetTemplatesResult:
     @_builtins.property
     @pulumi.getter
     def category(self) -> Optional[_builtins.str]:
+        """
+        The category of the template.
+        """
         return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[_builtins.str]:
+        """
+        The user who created the template.
+        """
         return pulumi.get(self, "created_by")
 
     @_builtins.property
     @pulumi.getter(name="createdDate")
     def created_date(self) -> Optional[_builtins.str]:
+        """
+        The time when the template was created.
+        """
         return pulumi.get(self, "created_date")
 
     @_builtins.property
@@ -103,6 +112,9 @@ class GetTemplatesResult:
     @_builtins.property
     @pulumi.getter(name="hasTrigger")
     def has_trigger(self) -> Optional[_builtins.bool]:
+        """
+        Whether the template has a trigger.
+        """
         return pulumi.get(self, "has_trigger")
 
     @_builtins.property
@@ -142,6 +154,9 @@ class GetTemplatesResult:
     @_builtins.property
     @pulumi.getter(name="shareType")
     def share_type(self) -> Optional[_builtins.str]:
+        """
+        The sharing type of the template.
+        """
         return pulumi.get(self, "share_type")
 
     @_builtins.property
@@ -157,16 +172,25 @@ class GetTemplatesResult:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The tag of the resource.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="templateFormat")
     def template_format(self) -> Optional[_builtins.str]:
+        """
+        The format of the template.
+        """
         return pulumi.get(self, "template_format")
 
     @_builtins.property
     @pulumi.getter(name="templateType")
     def template_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the OOS Template.
+        """
         return pulumi.get(self, "template_type")
 
     @_builtins.property
@@ -221,7 +245,7 @@ def get_templates(category: Optional[_builtins.str] = None,
     """
     This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in v1.92.0+.
+    > **NOTE:** Available since v1.92.0.
 
     ## Example Usage
 
@@ -310,7 +334,7 @@ def get_templates_output(category: pulumi.Input[Optional[Optional[_builtins.str]
     """
     This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in v1.92.0+.
+    > **NOTE:** Available since v1.92.0.
 
     ## Example Usage
 

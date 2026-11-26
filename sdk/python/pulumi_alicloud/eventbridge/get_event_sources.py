@@ -68,6 +68,9 @@ class GetEventSourcesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Event Source names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -78,6 +81,9 @@ class GetEventSourcesResult:
     @_builtins.property
     @pulumi.getter
     def sources(self) -> Sequence['outputs.GetEventSourcesSourceResult']:
+        """
+        A list of Event Bridge Event Sources. Each element contains the following attributes:
+        """
         return pulumi.get(self, "sources")
 
 
@@ -102,7 +108,7 @@ def get_event_sources(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.130.0+.
+    > **NOTE:** Available since v1.130.0.
 
     ## Example Usage
 
@@ -143,7 +149,7 @@ def get_event_sources_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
     """
     This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.130.0+.
+    > **NOTE:** Available since v1.130.0.
 
     ## Example Usage
 

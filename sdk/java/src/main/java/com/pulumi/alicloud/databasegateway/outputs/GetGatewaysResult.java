@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGatewaysResult {
     private @Nullable Boolean enableDetails;
+    /**
+     * @return A list of Database Gateway Gateways. Each element contains the following attributes:
+     * 
+     */
     private List<GetGatewaysGateway> gateways;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,15 +28,27 @@ public final class GetGatewaysResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Gateway names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable String searchKey;
+    /**
+     * @return The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+     * 
+     */
     private @Nullable String status;
 
     private GetGatewaysResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
+    /**
+     * @return A list of Database Gateway Gateways. Each element contains the following attributes:
+     * 
+     */
     public List<GetGatewaysGateway> gateways() {
         return this.gateways;
     }
@@ -49,6 +65,10 @@ public final class GetGatewaysResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Gateway names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -58,6 +78,10 @@ public final class GetGatewaysResult {
     public Optional<String> searchKey() {
         return Optional.ofNullable(this.searchKey);
     }
+    /**
+     * @return The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

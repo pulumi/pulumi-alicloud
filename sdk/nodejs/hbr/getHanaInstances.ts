@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Hbr Hana Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.178.0+.
+ * > **NOTE:** Available since v1.178.0.
  *
  * ## Example Usage
  *
@@ -80,19 +80,31 @@ export interface GetHanaInstancesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Hbr Hana Instances. Each element contains the following attributes:
+     */
     readonly instances: outputs.hbr.GetHanaInstancesInstance[];
     readonly nameRegex?: string;
+    /**
+     * A list of Hbr Hana Instance names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * The status of the SAP HANA instance.
+     */
     readonly status?: string;
+    /**
+     * The ID of the backup vault.
+     */
     readonly vaultId?: string;
 }
 /**
  * This data source provides the Hbr Hana Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.178.0+.
+ * > **NOTE:** Available since v1.178.0.
  *
  * ## Example Usage
  *

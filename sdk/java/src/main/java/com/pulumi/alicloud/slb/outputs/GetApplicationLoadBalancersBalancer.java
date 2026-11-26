@@ -82,7 +82,7 @@ public final class GetApplicationLoadBalancersBalancer {
      */
     private String internetChargeType;
     /**
-     * @return The listener ports and protocal of the SLB.
+     * @return The listener ports and protocol of the SLB.
      * 
      */
     private List<GetApplicationLoadBalancersBalancerListenerPortsAndProtocal> listenerPortsAndProtocals;
@@ -275,7 +275,7 @@ public final class GetApplicationLoadBalancersBalancer {
         return this.internetChargeType;
     }
     /**
-     * @return The listener ports and protocal of the SLB.
+     * @return The listener ports and protocol of the SLB.
      * 
      */
     public List<GetApplicationLoadBalancersBalancerListenerPortsAndProtocal> listenerPortsAndProtocals() {

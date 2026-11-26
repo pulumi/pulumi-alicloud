@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetHybridMonitorSlsTasksTaskAttachLabel {
     /**
-     * @return The key of the tag.
+     * @return The name of the instance.
      * 
      */
     private String name;
     /**
-     * @return The value of the tag.
+     * @return The value of the key that is used to filter logs imported from Log Service.
      * 
      */
     private String value;
 
     private GetHybridMonitorSlsTasksTaskAttachLabel() {}
     /**
-     * @return The key of the tag.
+     * @return The name of the instance.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The value of the tag.
+     * @return The value of the key that is used to filter logs imported from Log Service.
      * 
      */
     public String value() {

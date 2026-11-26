@@ -56,6 +56,7 @@ func GetOpenApiPricingModules(ctx *pulumi.Context, args *GetOpenApiPricingModule
 
 // A collection of arguments for invoking getOpenApiPricingModules.
 type GetOpenApiPricingModulesArgs struct {
+	// A list of Price Module IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Property name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -80,11 +81,14 @@ type GetOpenApiPricingModulesResult struct {
 	Modules   []GetOpenApiPricingModulesModule `pulumi:"modules"`
 	NameRegex *string                          `pulumi:"nameRegex"`
 	// A list of name of Pricing Modules.
-	Names            []string `pulumi:"names"`
-	OutputFile       *string  `pulumi:"outputFile"`
-	ProductCode      string   `pulumi:"productCode"`
-	ProductType      *string  `pulumi:"productType"`
-	SubscriptionType string   `pulumi:"subscriptionType"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The product code.
+	ProductCode string `pulumi:"productCode"`
+	// The product type.
+	ProductType *string `pulumi:"productType"`
+	// The subscription type.
+	SubscriptionType string `pulumi:"subscriptionType"`
 }
 
 func GetOpenApiPricingModulesOutput(ctx *pulumi.Context, args GetOpenApiPricingModulesOutputArgs, opts ...pulumi.InvokeOption) GetOpenApiPricingModulesResultOutput {
@@ -94,6 +98,7 @@ func GetOpenApiPricingModulesOutput(ctx *pulumi.Context, args GetOpenApiPricingM
 
 // A collection of arguments for invoking getOpenApiPricingModules.
 type GetOpenApiPricingModulesOutputArgs struct {
+	// A list of Price Module IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Property name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
@@ -155,14 +160,17 @@ func (o GetOpenApiPricingModulesResultOutput) OutputFile() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetOpenApiPricingModulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The product code.
 func (o GetOpenApiPricingModulesResultOutput) ProductCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesResult) string { return v.ProductCode }).(pulumi.StringOutput)
 }
 
+// The product type.
 func (o GetOpenApiPricingModulesResultOutput) ProductType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesResult) *string { return v.ProductType }).(pulumi.StringPtrOutput)
 }
 
+// The subscription type.
 func (o GetOpenApiPricingModulesResultOutput) SubscriptionType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesResult) string { return v.SubscriptionType }).(pulumi.StringOutput)
 }

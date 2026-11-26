@@ -9,13 +9,20 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
  *
+ * > **NOTE:** Available since v1.15.0
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.slb.ApplicationLoadBalancer("default", {loadBalancerName: "tf-testAccSlbListenertcp"});
+ * const _default = new alicloud.slb.ApplicationLoadBalancer("default", {
+ *     loadBalancerName: "terraform-exampleSlbListenerAclDs",
+ *     internetChargeType: "PayByTraffic",
+ *     addressType: "internet",
+ *     loadBalancerSpec: "slb.s1.small",
+ * });
  * const tcp = new alicloud.slb.Listener("tcp", {
  *     loadBalancerId: _default.id,
  *     backendPort: 22,
@@ -34,9 +41,10 @@ import * as utilities from "../utilities";
  *     establishedTimeout: 600,
  * });
  * const sampleDs = alicloud.slb.getListenersOutput({
- *     loadBalancerId: _default.id,
+ *     loadBalancerId: tcp.loadBalancerId,
  * });
  * export const firstSlbListenerProtocol = sampleDs.apply(sampleDs => sampleDs.slbListeners?.[0]?.protocol);
+ * export const firstSlbListenerId = sampleDs.apply(sampleDs => sampleDs.slbListeners?.[0]?.id);
  * ```
  */
 export function getListeners(args: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> {
@@ -103,13 +111,20 @@ export interface GetListenersResult {
 /**
  * This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
  *
+ * > **NOTE:** Available since v1.15.0
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.slb.ApplicationLoadBalancer("default", {loadBalancerName: "tf-testAccSlbListenertcp"});
+ * const _default = new alicloud.slb.ApplicationLoadBalancer("default", {
+ *     loadBalancerName: "terraform-exampleSlbListenerAclDs",
+ *     internetChargeType: "PayByTraffic",
+ *     addressType: "internet",
+ *     loadBalancerSpec: "slb.s1.small",
+ * });
  * const tcp = new alicloud.slb.Listener("tcp", {
  *     loadBalancerId: _default.id,
  *     backendPort: 22,
@@ -128,9 +143,10 @@ export interface GetListenersResult {
  *     establishedTimeout: 600,
  * });
  * const sampleDs = alicloud.slb.getListenersOutput({
- *     loadBalancerId: _default.id,
+ *     loadBalancerId: tcp.loadBalancerId,
  * });
  * export const firstSlbListenerProtocol = sampleDs.apply(sampleDs => sampleDs.slbListeners?.[0]?.protocol);
+ * export const firstSlbListenerId = sampleDs.apply(sampleDs => sampleDs.slbListeners?.[0]?.id);
  * ```
  */
 export function getListenersOutput(args: GetListenersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetListenersResult> {

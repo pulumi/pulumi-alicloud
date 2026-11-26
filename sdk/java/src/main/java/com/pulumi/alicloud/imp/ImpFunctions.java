@@ -18,7 +18,7 @@ public final class ImpFunctions {
     /**
      * This data source provides the Imp App Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * ## Example Usage
      * 
@@ -67,7 +67,7 @@ public final class ImpFunctions {
     /**
      * This data source provides the Imp App Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * ## Example Usage
      * 
@@ -116,7 +116,7 @@ public final class ImpFunctions {
     /**
      * This data source provides the Imp App Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * ## Example Usage
      * 
@@ -165,7 +165,7 @@ public final class ImpFunctions {
     /**
      * This data source provides the Imp App Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * ## Example Usage
      * 
@@ -214,7 +214,7 @@ public final class ImpFunctions {
     /**
      * This data source provides the Imp App Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * ## Example Usage
      * 
@@ -263,7 +263,7 @@ public final class ImpFunctions {
     /**
      * This data source provides the Imp App Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * ## Example Usage
      * 
@@ -312,7 +312,7 @@ public final class ImpFunctions {
     /**
      * This data source provides the Imp App Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * ## Example Usage
      * 

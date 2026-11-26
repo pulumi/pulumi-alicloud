@@ -14,16 +14,32 @@ public final class GetQuotaAlarmsQuotaDimension extends com.pulumi.resources.Inv
 
     public static final GetQuotaAlarmsQuotaDimension Empty = new GetQuotaAlarmsQuotaDimension();
 
+    /**
+     * The key of quota_dimensions.
+     * 
+     */
     @Import(name="key")
     private @Nullable String key;
 
+    /**
+     * @return The key of quota_dimensions.
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * The value of quota_dimensions.
+     * 
+     */
     @Import(name="value")
     private @Nullable String value;
 
+    /**
+     * @return The value of quota_dimensions.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }
@@ -53,11 +69,23 @@ public final class GetQuotaAlarmsQuotaDimension extends com.pulumi.resources.Inv
             $ = new GetQuotaAlarmsQuotaDimension(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key The key of quota_dimensions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable String key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param value The value of quota_dimensions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable String value) {
             $.value = value;
             return this;

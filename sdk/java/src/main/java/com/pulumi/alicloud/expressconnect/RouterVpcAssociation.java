@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default8qAtD6 = new Network("default8qAtD6", NetworkArgs.builder()
  *             .cidrBlock("172.16.0.0/16")
+ *             .vpcName(name)
  *             .build());
  * 
  *         var defaultM9YxGW = new RouterExpressConnectRouter("defaultM9YxGW", RouterExpressConnectRouterArgs.builder()
@@ -73,9 +74,11 @@ import javax.annotation.Nullable;
  *                 "172.16.3.0/24",
  *                 "172.16.2.0/24",
  *                 "172.16.1.0/24")
+ *             .allowedPrefixesMode("MatchMode")
  *             .vpcOwnerId(current.id())
  *             .associationRegionId("cn-hangzhou")
  *             .vpcId(default8qAtD6.id())
+ *             .description("test")
  *             .build());
  * 
  *     }
@@ -97,18 +100,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation")
 public class RouterVpcAssociation extends com.pulumi.resources.CustomResource {
     /**
-     * The list of allowed route prefixes.
+     * The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowedPrefixesMode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowedPrefixesMode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
      * 
      */
     @Export(name="allowedPrefixes", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> allowedPrefixes;
+    private Output<List<String>> allowedPrefixes;
 
     /**
-     * @return The list of allowed route prefixes.
+     * @return The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowedPrefixesMode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowedPrefixesMode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
      * 
      */
-    public Output<Optional<List<String>>> allowedPrefixes() {
-        return Codegen.optional(this.allowedPrefixes);
+    public Output<List<String>> allowedPrefixes() {
+        return this.allowedPrefixes;
+    }
+    /**
+     * The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowedPrefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowedPrefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowedPrefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
+     * 
+     */
+    @Export(name="allowedPrefixesMode", refs={String.class}, tree="[0]")
+    private Output<String> allowedPrefixesMode;
+
+    /**
+     * @return The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowedPrefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowedPrefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowedPrefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
+     * 
+     */
+    public Output<String> allowedPrefixesMode() {
+        return this.allowedPrefixesMode;
     }
     /**
      * The ID of the association between the ECR and the VPC.
@@ -151,6 +168,20 @@ public class RouterVpcAssociation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
      * The ECR ID.
@@ -196,6 +227,7 @@ public class RouterVpcAssociation extends com.pulumi.resources.CustomResource {
     }
     /**
      * The ID of the Alibaba Cloud account that owns the VPC.
+     * 
      * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      * 
      */
@@ -204,6 +236,7 @@ public class RouterVpcAssociation extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the Alibaba Cloud account that owns the VPC.
+     * 
      * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      * 
      */

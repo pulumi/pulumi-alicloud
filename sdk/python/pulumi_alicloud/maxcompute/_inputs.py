@@ -126,6 +126,7 @@ class ProjectPropertiesArgsDict(TypedDict):
     encryption: NotRequired[pulumi.Input[Optional['ProjectPropertiesEncryptionArgsDict']]]
     """
     Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+
     > **NOTE :**:
     To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
 
@@ -178,6 +179,7 @@ class ProjectPropertiesArgs:
         :param pulumi.Input[_builtins.bool] enable_decimal2: Whether to turn on Decimal2.0.
         :param pulumi.Input[_builtins.bool] enable_dr: Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
         :param pulumi.Input['ProjectPropertiesEncryptionArgs'] encryption: Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+               
                > **NOTE :**:
                To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
                
@@ -257,6 +259,7 @@ class ProjectPropertiesArgs:
     def encryption(self) -> pulumi.Input[Optional['ProjectPropertiesEncryptionArgs']]:
         """
         Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+
         > **NOTE :**:
         To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
 
@@ -489,7 +492,7 @@ class ProjectSecurityPropertiesArgsDict(TypedDict):
     """
     using_policy: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+    Set whether to use the [Policy permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
     """
 
 @pulumi.input_type
@@ -509,7 +512,7 @@ class ProjectSecurityPropertiesArgs:
         :param pulumi.Input[_builtins.bool] object_creator_has_grant_permission: The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
         :param pulumi.Input['ProjectSecurityPropertiesProjectProtectionArgs'] project_protection: Project protection See `project_protection` below.
         :param pulumi.Input[_builtins.bool] using_acl: Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
-        :param pulumi.Input[_builtins.bool] using_policy: Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+        :param pulumi.Input[_builtins.bool] using_policy: Set whether to use the [Policy permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         """
         if enable_download_privilege is not None:
             pulumi.set(__self__, "enable_download_privilege", enable_download_privilege)
@@ -602,7 +605,7 @@ class ProjectSecurityPropertiesArgs:
     @pulumi.getter(name="usingPolicy")
     def using_policy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+        Set whether to use the [Policy permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         """
         return pulumi.get(self, "using_policy")
 

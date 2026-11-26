@@ -111,8 +111,12 @@ type AddonRelease struct {
 	Config pulumi.StringPtrOutput `pulumi:"config"`
 	// The time when the add-on was accessed.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Specifies whether to perform a dry run. Valid values: `true`, `false`.
+	// Field `dryRun` has been deprecated from provider version 2.2.0.
+	//
+	// Deprecated: Field `dryRun` has been deprecated from provider version 2.2.0.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	// The entity discovery rule model. See `entityRules` below.
+	EntityRules AddonReleaseEntityRulesPtrOutput `pulumi:"entityRules"`
 	// The environment type. Valid values: `CS`, `ECS`, `Cloud`.
 	EnvType pulumi.StringOutput `pulumi:"envType"`
 	// The ID of the environment policy.
@@ -174,8 +178,12 @@ type addonReleaseState struct {
 	Config *string `pulumi:"config"`
 	// The time when the add-on was accessed.
 	CreateTime *string `pulumi:"createTime"`
-	// Specifies whether to perform a dry run. Valid values: `true`, `false`.
+	// Field `dryRun` has been deprecated from provider version 2.2.0.
+	//
+	// Deprecated: Field `dryRun` has been deprecated from provider version 2.2.0.
 	DryRun *bool `pulumi:"dryRun"`
+	// The entity discovery rule model. See `entityRules` below.
+	EntityRules *AddonReleaseEntityRules `pulumi:"entityRules"`
 	// The environment type. Valid values: `CS`, `ECS`, `Cloud`.
 	EnvType *string `pulumi:"envType"`
 	// The ID of the environment policy.
@@ -199,8 +207,12 @@ type AddonReleaseState struct {
 	Config pulumi.StringPtrInput
 	// The time when the add-on was accessed.
 	CreateTime pulumi.StringPtrInput
-	// Specifies whether to perform a dry run. Valid values: `true`, `false`.
+	// Field `dryRun` has been deprecated from provider version 2.2.0.
+	//
+	// Deprecated: Field `dryRun` has been deprecated from provider version 2.2.0.
 	DryRun pulumi.BoolPtrInput
+	// The entity discovery rule model. See `entityRules` below.
+	EntityRules AddonReleaseEntityRulesPtrInput
 	// The environment type. Valid values: `CS`, `ECS`, `Cloud`.
 	EnvType pulumi.StringPtrInput
 	// The ID of the environment policy.
@@ -232,8 +244,12 @@ type addonReleaseArgs struct {
 	AliyunLang *string `pulumi:"aliyunLang"`
 	// The metadata.
 	Config *string `pulumi:"config"`
-	// Specifies whether to perform a dry run. Valid values: `true`, `false`.
+	// Field `dryRun` has been deprecated from provider version 2.2.0.
+	//
+	// Deprecated: Field `dryRun` has been deprecated from provider version 2.2.0.
 	DryRun *bool `pulumi:"dryRun"`
+	// The entity discovery rule model. See `entityRules` below.
+	EntityRules *AddonReleaseEntityRules `pulumi:"entityRules"`
 	// The environment type. Valid values: `CS`, `ECS`, `Cloud`.
 	EnvType *string `pulumi:"envType"`
 	// The ID of the environment policy.
@@ -254,8 +270,12 @@ type AddonReleaseArgs struct {
 	AliyunLang pulumi.StringPtrInput
 	// The metadata.
 	Config pulumi.StringPtrInput
-	// Specifies whether to perform a dry run. Valid values: `true`, `false`.
+	// Field `dryRun` has been deprecated from provider version 2.2.0.
+	//
+	// Deprecated: Field `dryRun` has been deprecated from provider version 2.2.0.
 	DryRun pulumi.BoolPtrInput
+	// The entity discovery rule model. See `entityRules` below.
+	EntityRules AddonReleaseEntityRulesPtrInput
 	// The environment type. Valid values: `CS`, `ECS`, `Cloud`.
 	EnvType pulumi.StringPtrInput
 	// The ID of the environment policy.
@@ -381,9 +401,16 @@ func (o AddonReleaseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AddonRelease) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Specifies whether to perform a dry run. Valid values: `true`, `false`.
+// Field `dryRun` has been deprecated from provider version 2.2.0.
+//
+// Deprecated: Field `dryRun` has been deprecated from provider version 2.2.0.
 func (o AddonReleaseOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AddonRelease) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The entity discovery rule model. See `entityRules` below.
+func (o AddonReleaseOutput) EntityRules() AddonReleaseEntityRulesPtrOutput {
+	return o.ApplyT(func(v *AddonRelease) AddonReleaseEntityRulesPtrOutput { return v.EntityRules }).(AddonReleaseEntityRulesPtrOutput)
 }
 
 // The environment type. Valid values: `CS`, `ECS`, `Cloud`.

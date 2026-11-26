@@ -18,8 +18,6 @@ import (
 //
 // > **NOTE:** Available since v1.142.0.
 //
-// > **NOTE:** Deprecated since v1.249.0.
-//
 // > **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource hbr.Policy and alicloud_hbr_policy_binding.
 //
 // ## Example Usage
@@ -139,7 +137,7 @@ type ServerBackupPlan struct {
 	CrossAccountType pulumi.StringOutput `pulumi:"crossAccountType"`
 	// The original account ID of the cross account backup managed by the current account.
 	CrossAccountUserId pulumi.IntPtrOutput `pulumi:"crossAccountUserId"`
-	// ECS server backup plan details.
+	// ECS server backup plan details. See `detail` below.
 	Details ServerBackupPlanDetailArrayOutput `pulumi:"details"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
@@ -205,7 +203,7 @@ type serverBackupPlanState struct {
 	CrossAccountType *string `pulumi:"crossAccountType"`
 	// The original account ID of the cross account backup managed by the current account.
 	CrossAccountUserId *int `pulumi:"crossAccountUserId"`
-	// ECS server backup plan details.
+	// ECS server backup plan details. See `detail` below.
 	Details []ServerBackupPlanDetail `pulumi:"details"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled *bool `pulumi:"disabled"`
@@ -227,7 +225,7 @@ type ServerBackupPlanState struct {
 	CrossAccountType pulumi.StringPtrInput
 	// The original account ID of the cross account backup managed by the current account.
 	CrossAccountUserId pulumi.IntPtrInput
-	// ECS server backup plan details.
+	// ECS server backup plan details. See `detail` below.
 	Details ServerBackupPlanDetailArrayInput
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolPtrInput
@@ -259,7 +257,7 @@ type serverBackupPlanArgs struct {
 	CrossAccountType *string `pulumi:"crossAccountType"`
 	// The original account ID of the cross account backup managed by the current account.
 	CrossAccountUserId *int `pulumi:"crossAccountUserId"`
-	// ECS server backup plan details.
+	// ECS server backup plan details. See `detail` below.
 	Details []ServerBackupPlanDetail `pulumi:"details"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled *bool `pulumi:"disabled"`
@@ -282,7 +280,7 @@ type ServerBackupPlanArgs struct {
 	CrossAccountType pulumi.StringPtrInput
 	// The original account ID of the cross account backup managed by the current account.
 	CrossAccountUserId pulumi.IntPtrInput
-	// ECS server backup plan details.
+	// ECS server backup plan details. See `detail` below.
 	Details ServerBackupPlanDetailArrayInput
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolPtrInput
@@ -399,7 +397,7 @@ func (o ServerBackupPlanOutput) CrossAccountUserId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerBackupPlan) pulumi.IntPtrOutput { return v.CrossAccountUserId }).(pulumi.IntPtrOutput)
 }
 
-// ECS server backup plan details.
+// ECS server backup plan details. See `detail` below.
 func (o ServerBackupPlanOutput) Details() ServerBackupPlanDetailArrayOutput {
 	return o.ApplyT(func(v *ServerBackupPlan) ServerBackupPlanDetailArrayOutput { return v.Details }).(ServerBackupPlanDetailArrayOutput)
 }

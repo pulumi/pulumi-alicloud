@@ -2634,7 +2634,7 @@ class GetVersionsVersionResult(dict):
                - Default: Standard Edition
                - Pro: Professional Edition
         :param _builtins.str id: The ASM version id. It formats as `<edition>:<version>`.
-        :param _builtins.str version: A list of Service Mesh Service Meshes. Each element contains the following attributes:
+        :param _builtins.str version: The AMS version.
         """
         pulumi.set(__self__, "edition", edition)
         pulumi.set(__self__, "id", id)
@@ -2662,7 +2662,7 @@ class GetVersionsVersionResult(dict):
     @pulumi.getter
     def version(self) -> _builtins.str:
         """
-        A list of Service Mesh Service Meshes. Each element contains the following attributes:
+        The AMS version.
         """
         return pulumi.get(self, "version")
 

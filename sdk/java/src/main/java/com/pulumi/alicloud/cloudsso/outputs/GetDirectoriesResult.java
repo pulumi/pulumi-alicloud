@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDirectoriesResult {
+    /**
+     * @return A list of Cloud Sso Directories. Each element contains the following attributes:
+     * 
+     */
     private List<GetDirectoriesDirectory> directories;
     private @Nullable Boolean enableDetails;
     /**
@@ -24,10 +28,18 @@ public final class GetDirectoriesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Directory names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetDirectoriesResult() {}
+    /**
+     * @return A list of Cloud Sso Directories. Each element contains the following attributes:
+     * 
+     */
     public List<GetDirectoriesDirectory> directories() {
         return this.directories;
     }
@@ -47,6 +59,10 @@ public final class GetDirectoriesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Directory names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

@@ -13,9 +13,12 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class GetEcsPrefixListsListEntryResult
     {
+        /// <summary>
+        /// The CIDR block of the entry.
+        /// </summary>
         public readonly string Cidr;
         /// <summary>
-        /// The description of the prefix list.
+        /// The description of the entry.
         /// </summary>
         public readonly string Description;
 

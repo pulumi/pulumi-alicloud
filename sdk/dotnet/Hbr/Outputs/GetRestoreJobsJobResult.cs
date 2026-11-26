@@ -37,6 +37,9 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// The creation time of restore job.
         /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// The error file of the recovery task.
+        /// </summary>
         public readonly string ErrorFile;
         /// <summary>
         /// The error message of recovery task execution.
@@ -62,6 +65,9 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// Recovery Options.
         /// </summary>
         public readonly string Options;
+        /// <summary>
+        /// The parent ID of the restore job.
+        /// </summary>
         public readonly string ParentId;
         /// <summary>
         /// The recovery progress.
@@ -72,7 +78,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string RestoreJobId;
         /// <summary>
-        /// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        /// The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
         /// </summary>
         public readonly string RestoreType;
         /// <summary>
@@ -92,21 +98,27 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string StartTime;
         /// <summary>
-        /// The status of restore job.
+        /// The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The name of target ofo OSS bucket.
+        /// The name of target OSS bucket.
         /// </summary>
         public readonly string TargetBucket;
+        /// <summary>
+        /// The target client ID.
+        /// </summary>
         public readonly string TargetClientId;
         /// <summary>
         /// The creation time of destination file system.
         /// </summary>
         public readonly string TargetCreateTime;
+        /// <summary>
+        /// The target data source ID.
+        /// </summary>
         public readonly string TargetDataSourceId;
         /// <summary>
-        /// The ID of destination file system.
+        /// Valid while SourceType equals `NAS`. The list of destination File System IDs.
         /// </summary>
         public readonly string TargetFileSystemId;
         /// <summary>
@@ -126,7 +138,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string UpdatedTime;
         /// <summary>
-        /// The ID of backup vault.
+        /// The list of backup vault IDs.
         /// </summary>
         public readonly string VaultId;
 

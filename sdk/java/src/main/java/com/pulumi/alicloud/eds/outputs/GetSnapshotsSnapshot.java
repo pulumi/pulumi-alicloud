@@ -22,7 +22,7 @@ public final class GetSnapshotsSnapshot {
      */
     private String description;
     /**
-     * @return The ID of the cloud desktop to which the snapshot belongs.
+     * @return The ID of the Desktop.
      * 
      */
     private String desktopId;
@@ -42,7 +42,7 @@ public final class GetSnapshotsSnapshot {
      */
     private Integer remainTime;
     /**
-     * @return The ID of the snapshot.
+     * @return The ID of the Snapshot.
      * 
      */
     private String snapshotId;
@@ -88,7 +88,7 @@ public final class GetSnapshotsSnapshot {
         return this.description;
     }
     /**
-     * @return The ID of the cloud desktop to which the snapshot belongs.
+     * @return The ID of the Desktop.
      * 
      */
     public String desktopId() {
@@ -116,7 +116,7 @@ public final class GetSnapshotsSnapshot {
         return this.remainTime;
     }
     /**
-     * @return The ID of the snapshot.
+     * @return The ID of the Snapshot.
      * 
      */
     public String snapshotId() {

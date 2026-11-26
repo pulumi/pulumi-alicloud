@@ -16,6 +16,8 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'RouterExpressConnectRouterDisabledRouteEntry',
+    'RouterExpressConnectRouterGrantedInstance',
     'RouterExpressConnectRouterRegion',
     'GetAccessPointsPointResult',
     'GetAccessPointsPointAccessPointFeatureModelResult',
@@ -33,6 +35,134 @@ __all__ = [
     'GetVirtualBorderRoutersRouterResult',
     'GetVirtualPhysicalConnectionsConnectionResult',
 ]
+
+@pulumi.output_type
+class RouterExpressConnectRouterDisabledRouteEntry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationCidrBlock":
+            suggest = "destination_cidr_block"
+        elif key == "nexthopInstanceId":
+            suggest = "nexthop_instance_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouterExpressConnectRouterDisabledRouteEntry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouterExpressConnectRouterDisabledRouteEntry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouterExpressConnectRouterDisabledRouteEntry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_cidr_block: Optional[_builtins.str] = None,
+                 nexthop_instance_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str destination_cidr_block: (Computed, String, Available since v2.3.0) The destination CIDR block of the disabled route entry.
+        :param _builtins.str nexthop_instance_id: (Computed, String, Available since v2.3.0) The ID of the next hop instance of the disabled route entry.
+        """
+        if destination_cidr_block is not None:
+            pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
+        if nexthop_instance_id is not None:
+            pulumi.set(__self__, "nexthop_instance_id", nexthop_instance_id)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationCidrBlock")
+    def destination_cidr_block(self) -> Optional[_builtins.str]:
+        """
+        (Computed, String, Available since v2.3.0) The destination CIDR block of the disabled route entry.
+        """
+        return pulumi.get(self, "destination_cidr_block")
+
+    @_builtins.property
+    @pulumi.getter(name="nexthopInstanceId")
+    def nexthop_instance_id(self) -> Optional[_builtins.str]:
+        """
+        (Computed, String, Available since v2.3.0) The ID of the next hop instance of the disabled route entry.
+        """
+        return pulumi.get(self, "nexthop_instance_id")
+
+
+@pulumi.output_type
+class RouterExpressConnectRouterGrantedInstance(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeId":
+            suggest = "node_id"
+        elif key == "nodeOwnerUid":
+            suggest = "node_owner_uid"
+        elif key == "nodeRegionId":
+            suggest = "node_region_id"
+        elif key == "nodeType":
+            suggest = "node_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouterExpressConnectRouterGrantedInstance. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouterExpressConnectRouterGrantedInstance.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouterExpressConnectRouterGrantedInstance.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_id: Optional[_builtins.str] = None,
+                 node_owner_uid: Optional[_builtins.str] = None,
+                 node_region_id: Optional[_builtins.str] = None,
+                 node_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str node_id: (Computed, String, Available since v2.3.0) The ID of the granted network instance, for example `vpc-xxx` or `vbr-xxx`.
+        :param _builtins.str node_owner_uid: (Computed, String, Available since v2.3.0) The ID of the Alibaba Cloud account that owns the granted network instance.
+        :param _builtins.str node_region_id: (Computed, String, Available since v2.3.0) The region ID of the granted network instance.
+        :param _builtins.str node_type: (Computed, String, Available since v2.3.0) The type of the granted network instance. Valid values: `VPC`, `VBR`.
+        """
+        if node_id is not None:
+            pulumi.set(__self__, "node_id", node_id)
+        if node_owner_uid is not None:
+            pulumi.set(__self__, "node_owner_uid", node_owner_uid)
+        if node_region_id is not None:
+            pulumi.set(__self__, "node_region_id", node_region_id)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> Optional[_builtins.str]:
+        """
+        (Computed, String, Available since v2.3.0) The ID of the granted network instance, for example `vpc-xxx` or `vbr-xxx`.
+        """
+        return pulumi.get(self, "node_id")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeOwnerUid")
+    def node_owner_uid(self) -> Optional[_builtins.str]:
+        """
+        (Computed, String, Available since v2.3.0) The ID of the Alibaba Cloud account that owns the granted network instance.
+        """
+        return pulumi.get(self, "node_owner_uid")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeRegionId")
+    def node_region_id(self) -> Optional[_builtins.str]:
+        """
+        (Computed, String, Available since v2.3.0) The region ID of the granted network instance.
+        """
+        return pulumi.get(self, "node_region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> Optional[_builtins.str]:
+        """
+        (Computed, String, Available since v2.3.0) The type of the granted network instance. Valid values: `VPC`, `VBR`.
+        """
+        return pulumi.get(self, "node_type")
+
 
 @pulumi.output_type
 class RouterExpressConnectRouterRegion(dict):
@@ -106,7 +236,7 @@ class GetAccessPointsPointResult(dict):
         :param _builtins.str host_operator: The Access Point Belongs to the Operator.
         :param _builtins.str id: The ID of the Access Point.
         :param _builtins.str location: The Location of the Access Point.
-        :param _builtins.str status: The Physical Connection to Which the Access Point State.
+        :param _builtins.str status: The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
         :param _builtins.str type: The Physical Connection to Which the Network Type.
         """
         pulumi.set(__self__, "access_point_feature_models", access_point_feature_models)
@@ -188,7 +318,7 @@ class GetAccessPointsPointResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The Physical Connection to Which the Access Point State.
+        The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
         """
         return pulumi.get(self, "status")
 
@@ -335,7 +465,7 @@ class GetPhysicalConnectionsConnectionResult(dict):
         :param _builtins.str reservation_internet_charge_type: Renewal Type.
         :param _builtins.str reservation_order_type: Renewal Order Type.
         :param _builtins.str spec: The Physical Connection to Which the Specifications.
-        :param _builtins.str status: Resources on Behalf of a State of the Resource Attribute Field.
+        :param _builtins.str status: Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
         :param _builtins.str type: Physical Private Line of Type. Default Value: VPC.
         """
         pulumi.set(__self__, "access_point_id", access_point_id)
@@ -561,7 +691,7 @@ class GetPhysicalConnectionsConnectionResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Resources on Behalf of a State of the Resource Attribute Field.
+        Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
         """
         return pulumi.get(self, "status")
 
@@ -861,6 +991,10 @@ class GetRouterInterfacesFilterResult(dict):
     def __init__(__self__, *,
                  key: Optional[_builtins.str] = None,
                  values: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str key: The key of the field to filter by.
+        :param Sequence[_builtins.str] values: Set of values that are accepted for the given field.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if values is not None:
@@ -869,11 +1003,17 @@ class GetRouterInterfacesFilterResult(dict):
     @_builtins.property
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
+        """
+        The key of the field to filter by.
+        """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
     def values(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Set of values that are accepted for the given field.
+        """
         return pulumi.get(self, "values")
 
 
@@ -932,6 +1072,7 @@ class GetRouterInterfacesInterfaceResult(dict):
         :param _builtins.str hc_threshold: The hc threshold of the resource.
         :param _builtins.str health_check_source_ip: The health check source IP address, must be an unused IP within the local VPC.
         :param _builtins.str health_check_target_ip: The IP address for health screening purposes.
+        :param _builtins.str id: The ID of the router interface.
         :param _builtins.str opposite_access_point_id: The Access point ID to which the other end belongs.
         :param _builtins.int opposite_bandwidth: The opposite bandwidth of the router on the other side.
         :param _builtins.str opposite_interface_business_status: The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
@@ -1103,6 +1244,9 @@ class GetRouterInterfacesInterfaceResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the router interface.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -1562,6 +1706,7 @@ class GetRouterVpcAssociationsAssociationResult(dict):
                  association_id: _builtins.str,
                  association_node_type: _builtins.str,
                  create_time: _builtins.str,
+                 description: _builtins.str,
                  ecr_id: _builtins.str,
                  id: _builtins.str,
                  modify_time: _builtins.str,
@@ -1574,6 +1719,7 @@ class GetRouterVpcAssociationsAssociationResult(dict):
         :param _builtins.str association_id: The ID of the association between the Express Connect Router and the VPC.
         :param _builtins.str association_node_type: The type of the associated resource.
         :param _builtins.str create_time: The time when the association was created.
+        :param _builtins.str description: (String) The description of the association. Available since v2.3.0.
         :param _builtins.str ecr_id: The ID of the Express Connect Router instance.
         :param _builtins.str id: The ID of the Vpc Association.
         :param _builtins.str modify_time: The time when the association was modified.
@@ -1586,6 +1732,7 @@ class GetRouterVpcAssociationsAssociationResult(dict):
         pulumi.set(__self__, "association_id", association_id)
         pulumi.set(__self__, "association_node_type", association_node_type)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "ecr_id", ecr_id)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "modify_time", modify_time)
@@ -1632,6 +1779,14 @@ class GetRouterVpcAssociationsAssociationResult(dict):
         The time when the association was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        (String) The description of the association. Available since v2.3.0.
+        """
+        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="ecrId")

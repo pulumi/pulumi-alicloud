@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// </summary>
         public readonly string SourceEndpointUserName;
         /// <summary>
-        /// The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+        /// The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// </summary>
         public readonly string SubscriptionInstanceVswitchId;
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to filter results.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
 

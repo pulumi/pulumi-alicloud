@@ -54,8 +54,10 @@ import * as utilities from "../utilities";
  * const _default = alicloud.cs.getClustersOutput({
  *     ids: [defaultManagedKubernetes.id],
  *     nameRegex: defaultManagedKubernetes.name,
+ *     enableDetails: true,
  * });
  * export const alicloudCsManagedKubernetesExampleId = _default.apply(_default => _default.clusters?.[0]?.id);
+ * export const alicloudCsManagedKubernetesExampleApiServerInternet = _default.apply(_default => _default.clusters?.[0]?.connections?.[0]?.apiServerInternet);
  * ```
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
@@ -222,8 +224,10 @@ export interface GetClustersResult {
  * const _default = alicloud.cs.getClustersOutput({
  *     ids: [defaultManagedKubernetes.id],
  *     nameRegex: defaultManagedKubernetes.name,
+ *     enableDetails: true,
  * });
  * export const alicloudCsManagedKubernetesExampleId = _default.apply(_default => _default.clusters?.[0]?.id);
+ * export const alicloudCsManagedKubernetesExampleApiServerInternet = _default.apply(_default => _default.clusters?.[0]?.connections?.[0]?.apiServerInternet);
  * ```
  */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClustersResult> {

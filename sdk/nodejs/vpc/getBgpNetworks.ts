@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.153.0+.
+ * > **NOTE:** Available since v1.153.0.
  *
  * ## Example Usage
  *
@@ -75,15 +75,24 @@ export interface GetBgpNetworksResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Vpc Bgp Networks. Each element contains the following attributes:
+     */
     readonly networks: outputs.vpc.GetBgpNetworksNetwork[];
     readonly outputFile?: string;
+    /**
+     * The ID of the vRouter.
+     */
     readonly routerId?: string;
+    /**
+     * The state of the advertised BGP network.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.153.0+.
+ * > **NOTE:** Available since v1.153.0.
  *
  * ## Example Usage
  *

@@ -72,7 +72,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the CMS Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.101.0+.
+     * &gt; **NOTE:** Available since v1.101.0+.
      * 
      * ## Example Usage
      * 
@@ -116,7 +116,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the CMS Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.101.0+.
+     * &gt; **NOTE:** Available since v1.101.0+.
      * 
      * ## Example Usage
      * 
@@ -160,7 +160,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the CMS Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.101.0+.
+     * &gt; **NOTE:** Available since v1.101.0+.
      * 
      * ## Example Usage
      * 
@@ -204,7 +204,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the CMS Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.101.0+.
+     * &gt; **NOTE:** Available since v1.101.0+.
      * 
      * ## Example Usage
      * 
@@ -248,7 +248,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the CMS Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.101.0+.
+     * &gt; **NOTE:** Available since v1.101.0+.
      * 
      * ## Example Usage
      * 
@@ -292,7 +292,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the CMS Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.101.0+.
+     * &gt; **NOTE:** Available since v1.101.0+.
      * 
      * ## Example Usage
      * 
@@ -336,7 +336,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the CMS Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.101.0+.
+     * &gt; **NOTE:** Available since v1.101.0+.
      * 
      * ## Example Usage
      * 
@@ -380,7 +380,7 @@ public final class CmsFunctions {
     /**
      * Provides a list of alarm contact owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in v1.99.0+.
+     * &gt; **NOTE:** Available since v1.99.0+.
      * 
      * ## Example Usage
      * 
@@ -425,7 +425,7 @@ public final class CmsFunctions {
     /**
      * Provides a list of alarm contact owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in v1.99.0+.
+     * &gt; **NOTE:** Available since v1.99.0+.
      * 
      * ## Example Usage
      * 
@@ -470,7 +470,7 @@ public final class CmsFunctions {
     /**
      * Provides a list of alarm contact owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in v1.99.0+.
+     * &gt; **NOTE:** Available since v1.99.0+.
      * 
      * ## Example Usage
      * 
@@ -515,7 +515,7 @@ public final class CmsFunctions {
     /**
      * Provides a list of alarm contact owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in v1.99.0+.
+     * &gt; **NOTE:** Available since v1.99.0+.
      * 
      * ## Example Usage
      * 
@@ -560,7 +560,7 @@ public final class CmsFunctions {
     /**
      * Provides a list of alarm contact owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in v1.99.0+.
+     * &gt; **NOTE:** Available since v1.99.0+.
      * 
      * ## Example Usage
      * 
@@ -605,7 +605,7 @@ public final class CmsFunctions {
     /**
      * Provides a list of alarm contact owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in v1.99.0+.
+     * &gt; **NOTE:** Available since v1.99.0+.
      * 
      * ## Example Usage
      * 
@@ -650,7 +650,7 @@ public final class CmsFunctions {
     /**
      * Provides a list of alarm contact owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in v1.99.0+.
+     * &gt; **NOTE:** Available since v1.99.0+.
      * 
      * ## Example Usage
      * 
@@ -1839,7 +1839,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0+.
      * 
      * ## Example Usage
      * 
@@ -1906,7 +1906,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0+.
      * 
      * ## Example Usage
      * 
@@ -1973,7 +1973,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0+.
      * 
      * ## Example Usage
      * 
@@ -2040,7 +2040,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0+.
      * 
      * ## Example Usage
      * 
@@ -2107,7 +2107,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0+.
      * 
      * ## Example Usage
      * 
@@ -2174,7 +2174,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0+.
      * 
      * ## Example Usage
      * 
@@ -2241,7 +2241,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0+.
      * 
      * ## Example Usage
      * 
@@ -2863,7 +2863,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.182.0+.
+     * &gt; **NOTE:** Available since v1.182.0+.
      * 
      * ## Example Usage
      * 
@@ -2913,7 +2913,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.182.0+.
+     * &gt; **NOTE:** Available since v1.182.0+.
      * 
      * ## Example Usage
      * 
@@ -2963,7 +2963,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.182.0+.
+     * &gt; **NOTE:** Available since v1.182.0+.
      * 
      * ## Example Usage
      * 
@@ -3013,7 +3013,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.182.0+.
+     * &gt; **NOTE:** Available since v1.182.0+.
      * 
      * ## Example Usage
      * 
@@ -3063,7 +3063,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.182.0+.
+     * &gt; **NOTE:** Available since v1.182.0+.
      * 
      * ## Example Usage
      * 
@@ -3113,7 +3113,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.182.0+.
+     * &gt; **NOTE:** Available since v1.182.0+.
      * 
      * ## Example Usage
      * 
@@ -3163,7 +3163,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.182.0+.
+     * &gt; **NOTE:** Available since v1.182.0+.
      * 
      * ## Example Usage
      * 
@@ -3213,7 +3213,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.104.0+.
+     * &gt; **NOTE:** Available since v1.104.0+.
      * 
      * ## Example Usage
      * 
@@ -3259,7 +3259,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.104.0+.
+     * &gt; **NOTE:** Available since v1.104.0+.
      * 
      * ## Example Usage
      * 
@@ -3305,7 +3305,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.104.0+.
+     * &gt; **NOTE:** Available since v1.104.0+.
      * 
      * ## Example Usage
      * 
@@ -3351,7 +3351,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.104.0+.
+     * &gt; **NOTE:** Available since v1.104.0+.
      * 
      * ## Example Usage
      * 
@@ -3397,7 +3397,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.104.0+.
+     * &gt; **NOTE:** Available since v1.104.0+.
      * 
      * ## Example Usage
      * 
@@ -3443,7 +3443,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.104.0+.
+     * &gt; **NOTE:** Available since v1.104.0+.
      * 
      * ## Example Usage
      * 
@@ -3489,7 +3489,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.104.0+.
+     * &gt; **NOTE:** Available since v1.104.0+.
      * 
      * ## Example Usage
      * 
@@ -3535,7 +3535,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.177.0+.
+     * &gt; **NOTE:** Available since v1.177.0+.
      * 
      * ## Example Usage
      * 
@@ -3583,7 +3583,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.177.0+.
+     * &gt; **NOTE:** Available since v1.177.0+.
      * 
      * ## Example Usage
      * 
@@ -3631,7 +3631,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.177.0+.
+     * &gt; **NOTE:** Available since v1.177.0+.
      * 
      * ## Example Usage
      * 
@@ -3679,7 +3679,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.177.0+.
+     * &gt; **NOTE:** Available since v1.177.0+.
      * 
      * ## Example Usage
      * 
@@ -3727,7 +3727,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.177.0+.
+     * &gt; **NOTE:** Available since v1.177.0+.
      * 
      * ## Example Usage
      * 
@@ -3775,7 +3775,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.179.0+.
+     * &gt; **NOTE:** Available since v1.179.0+.
      * 
      * ## Example Usage
      * 
@@ -3820,7 +3820,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.179.0+.
+     * &gt; **NOTE:** Available since v1.179.0+.
      * 
      * ## Example Usage
      * 
@@ -3865,7 +3865,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.179.0+.
+     * &gt; **NOTE:** Available since v1.179.0+.
      * 
      * ## Example Usage
      * 
@@ -3910,7 +3910,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.179.0+.
+     * &gt; **NOTE:** Available since v1.179.0+.
      * 
      * ## Example Usage
      * 
@@ -3955,7 +3955,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.179.0+.
+     * &gt; **NOTE:** Available since v1.179.0+.
      * 
      * ## Example Usage
      * 
@@ -4000,7 +4000,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.179.0+.
+     * &gt; **NOTE:** Available since v1.179.0+.
      * 
      * ## Example Usage
      * 
@@ -4045,7 +4045,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.179.0+.
+     * &gt; **NOTE:** Available since v1.179.0+.
      * 
      * ## Example Usage
      * 
@@ -4090,7 +4090,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.179.0+.
+     * &gt; **NOTE:** Available since v1.179.0+.
      * 
      * ## Example Usage
      * 
@@ -4135,7 +4135,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.179.0+.
+     * &gt; **NOTE:** Available since v1.179.0+.
      * 
      * ## Example Usage
      * 
@@ -4180,7 +4180,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.179.0+.
+     * &gt; **NOTE:** Available since v1.179.0+.
      * 
      * ## Example Usage
      * 
@@ -4225,7 +4225,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.179.0+.
+     * &gt; **NOTE:** Available since v1.179.0+.
      * 
      * ## Example Usage
      * 
@@ -4270,7 +4270,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.179.0+.
+     * &gt; **NOTE:** Available since v1.179.0+.
      * 
      * ## Example Usage
      * 
@@ -4315,7 +4315,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.179.0+.
+     * &gt; **NOTE:** Available since v1.179.0+.
      * 
      * ## Example Usage
      * 
@@ -4360,7 +4360,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.179.0+.
+     * &gt; **NOTE:** Available since v1.179.0+.
      * 
      * ## Example Usage
      * 
@@ -4405,7 +4405,7 @@ public final class CmsFunctions {
     /**
      * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0+
      * 
      * ## Example Usage
      * 
@@ -4450,7 +4450,7 @@ public final class CmsFunctions {
     /**
      * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0+
      * 
      * ## Example Usage
      * 
@@ -4495,7 +4495,7 @@ public final class CmsFunctions {
     /**
      * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0+
      * 
      * ## Example Usage
      * 
@@ -4540,7 +4540,7 @@ public final class CmsFunctions {
     /**
      * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0+
      * 
      * ## Example Usage
      * 
@@ -4585,7 +4585,7 @@ public final class CmsFunctions {
     /**
      * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0+
      * 
      * ## Example Usage
      * 
@@ -4630,7 +4630,7 @@ public final class CmsFunctions {
     /**
      * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0+
      * 
      * ## Example Usage
      * 
@@ -4675,7 +4675,7 @@ public final class CmsFunctions {
     /**
      * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0+
      * 
      * ## Example Usage
      * 
@@ -4720,7 +4720,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -4780,7 +4780,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -4840,7 +4840,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -4900,7 +4900,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -4960,7 +4960,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -5020,7 +5020,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -5080,7 +5080,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -5137,25 +5137,275 @@ public final class CmsFunctions {
     public static CompletableFuture<GetMetricRuleTemplatesResult> getMetricRuleTemplatesPlain(GetMetricRuleTemplatesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cms/getMetricRuleTemplates:getMetricRuleTemplates", TypeShape.of(GetMetricRuleTemplatesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides the Cms Monitor Group Instanceses of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.115.0.
+     * 
+     * &gt; **NOTE:** This data source is the legacy alias of `alicloud.cms.MonitorGroupInstances` and shares the same implementation.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.MonitorGroup;
+     * import com.pulumi.alicloud.cms.MonitorGroupArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetMonitorGroupInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var exampleMonitorGroup = new MonitorGroup("exampleMonitorGroup", MonitorGroupArgs.builder()
+     *             .monitorGroupName("tf-example-accmonitorgroup")
+     *             .build());
+     * 
+     *         final var example = CmsFunctions.getMonitorGroupInstances(GetMonitorGroupInstancesArgs.builder()
+     *             .ids(exampleMonitorGroup.id())
+     *             .build());
+     * 
+     *         ctx.export("firstCmsMonitorGroupInstances", example.applyValue(_example -> _example.instances().get(0).instances()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetMonitorGroupInstancesResult> getMonitorGroupInstances(GetMonitorGroupInstancesArgs args) {
         return getMonitorGroupInstances(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides the Cms Monitor Group Instanceses of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.115.0.
+     * 
+     * &gt; **NOTE:** This data source is the legacy alias of `alicloud.cms.MonitorGroupInstances` and shares the same implementation.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.MonitorGroup;
+     * import com.pulumi.alicloud.cms.MonitorGroupArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetMonitorGroupInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var exampleMonitorGroup = new MonitorGroup("exampleMonitorGroup", MonitorGroupArgs.builder()
+     *             .monitorGroupName("tf-example-accmonitorgroup")
+     *             .build());
+     * 
+     *         final var example = CmsFunctions.getMonitorGroupInstances(GetMonitorGroupInstancesArgs.builder()
+     *             .ids(exampleMonitorGroup.id())
+     *             .build());
+     * 
+     *         ctx.export("firstCmsMonitorGroupInstances", example.applyValue(_example -> _example.instances().get(0).instances()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetMonitorGroupInstancesResult> getMonitorGroupInstancesPlain(GetMonitorGroupInstancesPlainArgs args) {
         return getMonitorGroupInstancesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides the Cms Monitor Group Instanceses of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.115.0.
+     * 
+     * &gt; **NOTE:** This data source is the legacy alias of `alicloud.cms.MonitorGroupInstances` and shares the same implementation.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.MonitorGroup;
+     * import com.pulumi.alicloud.cms.MonitorGroupArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetMonitorGroupInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var exampleMonitorGroup = new MonitorGroup("exampleMonitorGroup", MonitorGroupArgs.builder()
+     *             .monitorGroupName("tf-example-accmonitorgroup")
+     *             .build());
+     * 
+     *         final var example = CmsFunctions.getMonitorGroupInstances(GetMonitorGroupInstancesArgs.builder()
+     *             .ids(exampleMonitorGroup.id())
+     *             .build());
+     * 
+     *         ctx.export("firstCmsMonitorGroupInstances", example.applyValue(_example -> _example.instances().get(0).instances()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetMonitorGroupInstancesResult> getMonitorGroupInstances(GetMonitorGroupInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", TypeShape.of(GetMonitorGroupInstancesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides the Cms Monitor Group Instanceses of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.115.0.
+     * 
+     * &gt; **NOTE:** This data source is the legacy alias of `alicloud.cms.MonitorGroupInstances` and shares the same implementation.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.MonitorGroup;
+     * import com.pulumi.alicloud.cms.MonitorGroupArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetMonitorGroupInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var exampleMonitorGroup = new MonitorGroup("exampleMonitorGroup", MonitorGroupArgs.builder()
+     *             .monitorGroupName("tf-example-accmonitorgroup")
+     *             .build());
+     * 
+     *         final var example = CmsFunctions.getMonitorGroupInstances(GetMonitorGroupInstancesArgs.builder()
+     *             .ids(exampleMonitorGroup.id())
+     *             .build());
+     * 
+     *         ctx.export("firstCmsMonitorGroupInstances", example.applyValue(_example -> _example.instances().get(0).instances()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetMonitorGroupInstancesResult> getMonitorGroupInstances(GetMonitorGroupInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", TypeShape.of(GetMonitorGroupInstancesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides the Cms Monitor Group Instanceses of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.115.0.
+     * 
+     * &gt; **NOTE:** This data source is the legacy alias of `alicloud.cms.MonitorGroupInstances` and shares the same implementation.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.MonitorGroup;
+     * import com.pulumi.alicloud.cms.MonitorGroupArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetMonitorGroupInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var exampleMonitorGroup = new MonitorGroup("exampleMonitorGroup", MonitorGroupArgs.builder()
+     *             .monitorGroupName("tf-example-accmonitorgroup")
+     *             .build());
+     * 
+     *         final var example = CmsFunctions.getMonitorGroupInstances(GetMonitorGroupInstancesArgs.builder()
+     *             .ids(exampleMonitorGroup.id())
+     *             .build());
+     * 
+     *         ctx.export("firstCmsMonitorGroupInstances", example.applyValue(_example -> _example.instances().get(0).instances()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetMonitorGroupInstancesResult> getMonitorGroupInstancesPlain(GetMonitorGroupInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", TypeShape.of(GetMonitorGroupInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -5201,7 +5451,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -5247,7 +5497,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -5293,7 +5543,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -5339,7 +5589,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -5385,7 +5635,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -5431,7 +5681,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -5477,7 +5727,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -5522,7 +5772,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -5567,7 +5817,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -5612,7 +5862,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -5657,7 +5907,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -5702,7 +5952,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -5747,7 +5997,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -6702,7 +6952,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -6752,7 +7002,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -6802,7 +7052,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -6852,7 +7102,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -6902,7 +7152,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -6952,7 +7202,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -7002,7 +7252,7 @@ public final class CmsFunctions {
     /**
      * This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 

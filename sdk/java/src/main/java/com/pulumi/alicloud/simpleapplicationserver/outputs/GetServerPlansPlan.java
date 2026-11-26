@@ -48,7 +48,7 @@ public final class GetServerPlansPlan {
      */
     private String planId;
     /**
-     * @return The platform of Plan supported.
+     * @return (Available in v1.161.0) The platform of Plan supported.
      * 
      */
     private String supportPlatform;
@@ -104,7 +104,7 @@ public final class GetServerPlansPlan {
         return this.planId;
     }
     /**
-     * @return The platform of Plan supported.
+     * @return (Available in v1.161.0) The platform of Plan supported.
      * 
      */
     public String supportPlatform() {

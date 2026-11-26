@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.FNF
         /// 
         /// For information about Fnf and how to use it, see [What is Fnf](https://www.alibabacloud.com/help/en/product/113549.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.114.0+
+        /// &gt; **NOTE:** Available since v1.114.0.
         /// 
         /// ## Example Usage
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.FNF
         /// 
         /// For information about Fnf and how to use it, see [What is Fnf](https://www.alibabacloud.com/help/en/product/113549.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.114.0+
+        /// &gt; **NOTE:** Available since v1.114.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.FNF
         /// 
         /// For information about Fnf and how to use it, see [What is Fnf](https://www.alibabacloud.com/help/en/product/113549.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.114.0+
+        /// &gt; **NOTE:** Available since v1.114.0.
         /// 
         /// ## Example Usage
         /// 

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cms Event Rules of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.182.0+.
+// > **NOTE:** Available since v1.182.0+.
 //
 // ## Example Usage
 //
@@ -81,16 +81,19 @@ type GetEventRulesArgs struct {
 // A collection of values returned by getEventRules.
 type GetEventRulesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string              `pulumi:"id"`
-	Ids        []string            `pulumi:"ids"`
-	NamePrefix *string             `pulumi:"namePrefix"`
-	NameRegex  *string             `pulumi:"nameRegex"`
-	Names      []string            `pulumi:"names"`
-	OutputFile *string             `pulumi:"outputFile"`
-	PageNumber *int                `pulumi:"pageNumber"`
-	PageSize   *int                `pulumi:"pageSize"`
-	Rules      []GetEventRulesRule `pulumi:"rules"`
-	Status     *string             `pulumi:"status"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	NamePrefix *string  `pulumi:"namePrefix"`
+	NameRegex  *string  `pulumi:"nameRegex"`
+	// A list of Event Rule names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
+	// A list of Cms Event Rules. Each element contains the following attributes:
+	Rules []GetEventRulesRule `pulumi:"rules"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
 }
 
 func GetEventRulesOutput(ctx *pulumi.Context, args GetEventRulesOutputArgs, opts ...pulumi.InvokeOption) GetEventRulesResultOutput {
@@ -150,6 +153,7 @@ func (o GetEventRulesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEventRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Event Rule names.
 func (o GetEventRulesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEventRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -166,10 +170,12 @@ func (o GetEventRulesResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetEventRulesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// A list of Cms Event Rules. Each element contains the following attributes:
 func (o GetEventRulesResultOutput) Rules() GetEventRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetEventRulesResult) []GetEventRulesRule { return v.Rules }).(GetEventRulesRuleArrayOutput)
 }
 
+// The status of the resource.
 func (o GetEventRulesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEventRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

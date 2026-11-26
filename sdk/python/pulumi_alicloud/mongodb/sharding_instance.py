@@ -25,6 +25,8 @@ class ShardingInstanceArgs:
                  mongo_lists: pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]],
                  shard_lists: pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]],
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -79,8 +81,12 @@ class ShardingInstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]] mongo_lists: The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]] shard_lists: The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
         :param pulumi.Input[_builtins.str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+               
                > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
         :param pulumi.Input[_builtins.str] backup_interval: The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
@@ -115,6 +121,7 @@ class ShardingInstanceArgs:
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[_builtins.str] restore_time: The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+               
                > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
@@ -129,6 +136,7 @@ class ShardingInstanceArgs:
                - `Open`: turn on SSL encryption.
                - `Close`: turn off SSL encryption.
                - `Update`: update SSL certificate.
+               
                > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         :param pulumi.Input[_builtins.str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[_builtins.str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
@@ -144,6 +152,10 @@ class ShardingInstanceArgs:
         pulumi.set(__self__, "shard_lists", shard_lists)
         if account_password is not None:
             pulumi.set(__self__, "account_password", account_password)
+        if account_password_wo is not None:
+            pulumi.set(__self__, "account_password_wo", account_password_wo)
+        if account_password_wo_version is not None:
+            pulumi.set(__self__, "account_password_wo_version", account_password_wo_version)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_duration is not None:
@@ -288,6 +300,31 @@ class ShardingInstanceArgs:
         pulumi.set(self, "account_password", value)
 
     @_builtins.property
+    @pulumi.getter(name="accountPasswordWo")
+    def account_password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan.
+        """
+        return pulumi.get(self, "account_password_wo")
+
+    @account_password_wo.setter
+    def account_password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "account_password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWoVersion")
+    def account_password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
+        """
+        return pulumi.get(self, "account_password_wo_version")
+
+    @account_password_wo_version.setter
+    def account_password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "account_password_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -304,6 +341,7 @@ class ShardingInstanceArgs:
     def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+
         > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
         """
         return pulumi.get(self, "auto_renew_duration")
@@ -668,6 +706,7 @@ class ShardingInstanceArgs:
     def restore_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+
         > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
         """
         return pulumi.get(self, "restore_time")
@@ -770,6 +809,7 @@ class ShardingInstanceArgs:
         - `Open`: turn on SSL encryption.
         - `Close`: turn off SSL encryption.
         - `Update`: update SSL certificate.
+
         > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         """
         return pulumi.get(self, "ssl_action")
@@ -868,6 +908,8 @@ class ShardingInstanceArgs:
 class _ShardingInstanceState:
     def __init__(__self__, *,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -926,8 +968,12 @@ class _ShardingInstanceState:
         Input properties used for looking up and filtering ShardingInstance resources.
 
         :param pulumi.Input[_builtins.str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+               
                > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
         :param pulumi.Input[_builtins.str] backup_interval: The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
@@ -965,6 +1011,7 @@ class _ShardingInstanceState:
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[_builtins.str] restore_time: The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+               
                > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
         :param pulumi.Input[_builtins.int] retention_period: (Available since v1.42.0) Instance data backup retention days.
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
@@ -981,6 +1028,7 @@ class _ShardingInstanceState:
                - `Open`: turn on SSL encryption.
                - `Close`: turn off SSL encryption.
                - `Update`: update SSL certificate.
+               
                > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         :param pulumi.Input[_builtins.str] ssl_status: (Available since v1.259.0) The status of the SSL feature.
         :param pulumi.Input[_builtins.str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -995,6 +1043,10 @@ class _ShardingInstanceState:
         """
         if account_password is not None:
             pulumi.set(__self__, "account_password", account_password)
+        if account_password_wo is not None:
+            pulumi.set(__self__, "account_password_wo", account_password_wo)
+        if account_password_wo_version is not None:
+            pulumi.set(__self__, "account_password_wo_version", account_password_wo_version)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_duration is not None:
@@ -1117,6 +1169,31 @@ class _ShardingInstanceState:
         pulumi.set(self, "account_password", value)
 
     @_builtins.property
+    @pulumi.getter(name="accountPasswordWo")
+    def account_password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan.
+        """
+        return pulumi.get(self, "account_password_wo")
+
+    @account_password_wo.setter
+    def account_password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "account_password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWoVersion")
+    def account_password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
+        """
+        return pulumi.get(self, "account_password_wo_version")
+
+    @account_password_wo_version.setter
+    def account_password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "account_password_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -1133,6 +1210,7 @@ class _ShardingInstanceState:
     def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+
         > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
         """
         return pulumi.get(self, "auto_renew_duration")
@@ -1533,6 +1611,7 @@ class _ShardingInstanceState:
     def restore_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+
         > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
         """
         return pulumi.get(self, "restore_time")
@@ -1659,6 +1738,7 @@ class _ShardingInstanceState:
         - `Open`: turn on SSL encryption.
         - `Close`: turn off SSL encryption.
         - `Update`: update SSL certificate.
+
         > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         """
         return pulumi.get(self, "ssl_action")
@@ -1784,6 +1864,8 @@ class ShardingInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1841,6 +1923,8 @@ class ShardingInstance(pulumi.CustomResource):
         You can see detail product introduction [MongoDB documentation](https://www.alibabacloud.com/help/doc-detail/26558.htm)
 
         > **NOTE:** Available since v1.40.0.
+
+        > **NOTE:** Destroying a `PrePaid` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
 
         > **NOTE:**  The following regions don't support create Classic network MongoDB Sharding Instance.
         [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-3`,`ap-southeast-5`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
@@ -1913,8 +1997,12 @@ class ShardingInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+               
                > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
         :param pulumi.Input[_builtins.str] backup_interval: The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
@@ -1951,6 +2039,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[_builtins.str] restore_time: The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+               
                > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
@@ -1966,6 +2055,7 @@ class ShardingInstance(pulumi.CustomResource):
                - `Open`: turn on SSL encryption.
                - `Close`: turn off SSL encryption.
                - `Update`: update SSL certificate.
+               
                > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         :param pulumi.Input[_builtins.str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[_builtins.str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
@@ -1988,6 +2078,8 @@ class ShardingInstance(pulumi.CustomResource):
         You can see detail product introduction [MongoDB documentation](https://www.alibabacloud.com/help/doc-detail/26558.htm)
 
         > **NOTE:** Available since v1.40.0.
+
+        > **NOTE:** Destroying a `PrePaid` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
 
         > **NOTE:**  The following regions don't support create Classic network MongoDB Sharding Instance.
         [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-3`,`ap-southeast-5`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
@@ -2073,6 +2165,8 @@ class ShardingInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2133,6 +2227,8 @@ class ShardingInstance(pulumi.CustomResource):
             __props__ = ShardingInstanceArgs.__new__(ShardingInstanceArgs)
 
             __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
+            __props__.__dict__["account_password_wo"] = None if account_password_wo is None else pulumi.Output.secret(account_password_wo)
+            __props__.__dict__["account_password_wo_version"] = account_password_wo_version
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["auto_renew_duration"] = auto_renew_duration
             __props__.__dict__["backup_interval"] = backup_interval
@@ -2193,7 +2289,7 @@ class ShardingInstance(pulumi.CustomResource):
             __props__.__dict__["retention_period"] = None
             __props__.__dict__["ssl_status"] = None
             __props__.__dict__["zone_infos"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword", "accountPasswordWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ShardingInstance, __self__).__init__(
             'alicloud:mongodb/shardingInstance:ShardingInstance',
@@ -2206,6 +2302,8 @@ class ShardingInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
             backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2268,8 +2366,12 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+               
                > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
         :param pulumi.Input[_builtins.str] backup_interval: The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
@@ -2307,6 +2409,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[_builtins.str] restore_time: The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+               
                > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
         :param pulumi.Input[_builtins.int] retention_period: (Available since v1.42.0) Instance data backup retention days.
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
@@ -2323,6 +2426,7 @@ class ShardingInstance(pulumi.CustomResource):
                - `Open`: turn on SSL encryption.
                - `Close`: turn off SSL encryption.
                - `Update`: update SSL certificate.
+               
                > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         :param pulumi.Input[_builtins.str] ssl_status: (Available since v1.259.0) The status of the SSL feature.
         :param pulumi.Input[_builtins.str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -2340,6 +2444,8 @@ class ShardingInstance(pulumi.CustomResource):
         __props__ = _ShardingInstanceState.__new__(_ShardingInstanceState)
 
         __props__.__dict__["account_password"] = account_password
+        __props__.__dict__["account_password_wo"] = account_password_wo
+        __props__.__dict__["account_password_wo_version"] = account_password_wo_version
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["auto_renew_duration"] = auto_renew_duration
         __props__.__dict__["backup_interval"] = backup_interval
@@ -2400,6 +2506,8 @@ class ShardingInstance(pulumi.CustomResource):
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
             backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2456,6 +2564,8 @@ class ShardingInstance(pulumi.CustomResource):
             zone_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceZoneInfoArgs', 'ShardingInstanceZoneInfoArgsDict', 'outputs.ShardingInstanceZoneInfo']]]]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["accountPassword"] = account_password
+        __props__["accountPasswordWo"] = account_password_wo
+        __props__["accountPasswordWoVersion"] = account_password_wo_version
         __props__["autoRenew"] = auto_renew
         __props__["autoRenewDuration"] = auto_renew_duration
         __props__["backupInterval"] = backup_interval
@@ -2521,6 +2631,23 @@ class ShardingInstance(pulumi.CustomResource):
         return pulumi.get(self, "account_password")
 
     @_builtins.property
+    @pulumi.getter(name="accountPasswordWo")
+    def account_password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan.
+        """
+        return pulumi.get(self, "account_password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWoVersion")
+    def account_password_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
+        """
+        return pulumi.get(self, "account_password_wo_version")
+
+    @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -2533,6 +2660,7 @@ class ShardingInstance(pulumi.CustomResource):
     def auto_renew_duration(self) -> pulumi.Output[_builtins.int]:
         """
         The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+
         > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
         """
         return pulumi.get(self, "auto_renew_duration")
@@ -2801,6 +2929,7 @@ class ShardingInstance(pulumi.CustomResource):
     def restore_time(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+
         > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
         """
         return pulumi.get(self, "restore_time")
@@ -2887,6 +3016,7 @@ class ShardingInstance(pulumi.CustomResource):
         - `Open`: turn on SSL encryption.
         - `Close`: turn off SSL encryption.
         - `Update`: update SSL certificate.
+
         > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         """
         return pulumi.get(self, "ssl_action")

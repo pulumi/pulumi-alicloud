@@ -80,12 +80,12 @@ export interface GetConnectionsResult {
      */
     readonly id: string;
     /**
-     * (Optional) IDs of the VPN connections.
+     * IDs of the VPN connections.
      */
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * (Optional) names of the VPN connections.
+     * Names of the VPN connections.
      */
     readonly names: string[];
     readonly outputFile?: string;

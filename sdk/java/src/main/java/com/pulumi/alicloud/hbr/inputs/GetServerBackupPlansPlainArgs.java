@@ -17,14 +17,14 @@ public final class GetServerBackupPlansPlainArgs extends com.pulumi.resources.In
     public static final GetServerBackupPlansPlainArgs Empty = new GetServerBackupPlansPlainArgs();
 
     /**
-     * The filters.
+     * The filters. See `filters` below.
      * 
      */
     @Import(name="filters")
     private @Nullable List<GetServerBackupPlansFilter> filters;
 
     /**
-     * @return The filters.
+     * @return The filters. See `filters` below.
      * 
      */
     public Optional<List<GetServerBackupPlansFilter>> filters() {
@@ -88,7 +88,7 @@ public final class GetServerBackupPlansPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param filters The filters.
+         * @param filters The filters. See `filters` below.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class GetServerBackupPlansPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param filters The filters.
+         * @param filters The filters. See `filters` below.
          * 
          * @return builder
          * 

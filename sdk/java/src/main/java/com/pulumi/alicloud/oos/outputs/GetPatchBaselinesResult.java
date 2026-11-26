@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPatchBaselinesResult {
+    /**
+     * @return A list of Oos Patch Baselines. Each element contains the following attributes:
+     * 
+     */
     private List<GetPatchBaselinesBaseline> baselines;
     private @Nullable Boolean enableDetails;
     /**
@@ -24,12 +28,28 @@ public final class GetPatchBaselinesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Patch Baseline names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return Operating system type.
+     * 
+     */
     private @Nullable String operationSystem;
     private @Nullable String outputFile;
+    /**
+     * @return Patch baseline sharing type.
+     * 
+     */
     private @Nullable String shareType;
 
     private GetPatchBaselinesResult() {}
+    /**
+     * @return A list of Oos Patch Baselines. Each element contains the following attributes:
+     * 
+     */
     public List<GetPatchBaselinesBaseline> baselines() {
         return this.baselines;
     }
@@ -49,15 +69,27 @@ public final class GetPatchBaselinesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Patch Baseline names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return Operating system type.
+     * 
+     */
     public Optional<String> operationSystem() {
         return Optional.ofNullable(this.operationSystem);
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Patch baseline sharing type.
+     * 
+     */
     public Optional<String> shareType() {
         return Optional.ofNullable(this.shareType);
     }

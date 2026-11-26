@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
     /// 
-    /// &gt; **NOTE:** Available in 1.42.0+.
+    /// &gt; **NOTE:** Available since v1.42.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var sp = new AliCloud.Ecs.SnapshotPolicy("sp", new()
     ///     {
-    ///         Name = "tf-testAcc-sp",
+    ///         Name = "tf-demoAcc-sp",
     ///         RepeatWeekdays = new[]
     ///         {
     ///             "1",
@@ -62,30 +62,51 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/snapshotPolicy:SnapshotPolicy")]
     public partial class SnapshotPolicy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The association type of the automatic snapshot policy.
+        /// </summary>
         [Output("associationType")]
         public Output<string> AssociationType { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the snapshot policy.
+        /// </summary>
         [Output("autoSnapshotPolicyName")]
         public Output<string> AutoSnapshotPolicyName { get; private set; } = null!;
 
+        /// <summary>
+        /// The retention period of cross-region copied snapshots. Unit: days.
+        /// </summary>
         [Output("copiedSnapshotsRetentionDays")]
         public Output<int> CopiedSnapshotsRetentionDays { get; private set; } = null!;
 
+        /// <summary>
+        /// The encryption configuration for cross-region copy. See `CopyEncryptionConfiguration` below.
+        /// </summary>
         [Output("copyEncryptionConfiguration")]
         public Output<Outputs.SnapshotPolicyCopyEncryptionConfiguration?> CopyEncryptionConfiguration { get; private set; } = null!;
 
+        /// <summary>
+        /// The creation time of the snapshot policy.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies whether to enable cross-region copy.
+        /// </summary>
         [Output("enableCrossRegionCopy")]
         public Output<bool?> EnableCrossRegionCopy { get; private set; } = null!;
 
         /// <summary>
-        /// The snapshot policy name.
+        /// The snapshot policy name. It has been deprecated from provider version 1.236.0, and use field `AutoSnapshotPolicyName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The region ID of the snapshot policy.
+        /// </summary>
         [Output("regionId")]
         public Output<string> RegionId { get; private set; } = null!;
 
@@ -97,6 +118,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("repeatWeekdays")]
         public Output<ImmutableArray<string>> RepeatWeekdays { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the resource group to which the snapshot policy belongs.
+        /// </summary>
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
@@ -110,15 +134,27 @@ namespace Pulumi.AliCloud.Ecs
         [Output("retentionDays")]
         public Output<int> RetentionDays { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of the snapshot policy.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// The target regions for cross-region copy.
+        /// </summary>
         [Output("targetCopyRegions")]
         public Output<ImmutableArray<string>> TargetCopyRegions { get; private set; } = null!;
 
+        /// <summary>
+        /// The tags to be added to the snapshot. See `TargetTags` below.
+        /// </summary>
         [Output("targetTags")]
         public Output<ImmutableArray<Outputs.SnapshotPolicyTargetTag>> TargetTags { get; private set; } = null!;
 
@@ -176,23 +212,38 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class SnapshotPolicyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The association type of the automatic snapshot policy.
+        /// </summary>
         [Input("associationType")]
         public Input<string>? AssociationType { get; set; }
 
+        /// <summary>
+        /// The name of the snapshot policy.
+        /// </summary>
         [Input("autoSnapshotPolicyName")]
         public Input<string>? AutoSnapshotPolicyName { get; set; }
 
+        /// <summary>
+        /// The retention period of cross-region copied snapshots. Unit: days.
+        /// </summary>
         [Input("copiedSnapshotsRetentionDays")]
         public Input<int>? CopiedSnapshotsRetentionDays { get; set; }
 
+        /// <summary>
+        /// The encryption configuration for cross-region copy. See `CopyEncryptionConfiguration` below.
+        /// </summary>
         [Input("copyEncryptionConfiguration")]
         public Input<Inputs.SnapshotPolicyCopyEncryptionConfigurationArgs>? CopyEncryptionConfiguration { get; set; }
 
+        /// <summary>
+        /// Specifies whether to enable cross-region copy.
+        /// </summary>
         [Input("enableCrossRegionCopy")]
         public Input<bool>? EnableCrossRegionCopy { get; set; }
 
         /// <summary>
-        /// The snapshot policy name.
+        /// The snapshot policy name. It has been deprecated from provider version 1.236.0, and use field `AutoSnapshotPolicyName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -211,6 +262,9 @@ namespace Pulumi.AliCloud.Ecs
             set => _repeatWeekdays = value;
         }
 
+        /// <summary>
+        /// The ID of the resource group to which the snapshot policy belongs.
+        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
@@ -226,6 +280,10 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -234,6 +292,10 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("targetCopyRegions")]
         private InputList<string>? _targetCopyRegions;
+
+        /// <summary>
+        /// The target regions for cross-region copy.
+        /// </summary>
         public InputList<string> TargetCopyRegions
         {
             get => _targetCopyRegions ?? (_targetCopyRegions = new InputList<string>());
@@ -242,6 +304,10 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("targetTags")]
         private InputList<Inputs.SnapshotPolicyTargetTagArgs>? _targetTags;
+
+        /// <summary>
+        /// The tags to be added to the snapshot. See `TargetTags` below.
+        /// </summary>
         public InputList<Inputs.SnapshotPolicyTargetTagArgs> TargetTags
         {
             get => _targetTags ?? (_targetTags = new InputList<Inputs.SnapshotPolicyTargetTagArgs>());
@@ -270,30 +336,51 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class SnapshotPolicyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The association type of the automatic snapshot policy.
+        /// </summary>
         [Input("associationType")]
         public Input<string>? AssociationType { get; set; }
 
+        /// <summary>
+        /// The name of the snapshot policy.
+        /// </summary>
         [Input("autoSnapshotPolicyName")]
         public Input<string>? AutoSnapshotPolicyName { get; set; }
 
+        /// <summary>
+        /// The retention period of cross-region copied snapshots. Unit: days.
+        /// </summary>
         [Input("copiedSnapshotsRetentionDays")]
         public Input<int>? CopiedSnapshotsRetentionDays { get; set; }
 
+        /// <summary>
+        /// The encryption configuration for cross-region copy. See `CopyEncryptionConfiguration` below.
+        /// </summary>
         [Input("copyEncryptionConfiguration")]
         public Input<Inputs.SnapshotPolicyCopyEncryptionConfigurationGetArgs>? CopyEncryptionConfiguration { get; set; }
 
+        /// <summary>
+        /// The creation time of the snapshot policy.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// Specifies whether to enable cross-region copy.
+        /// </summary>
         [Input("enableCrossRegionCopy")]
         public Input<bool>? EnableCrossRegionCopy { get; set; }
 
         /// <summary>
-        /// The snapshot policy name.
+        /// The snapshot policy name. It has been deprecated from provider version 1.236.0, and use field `AutoSnapshotPolicyName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The region ID of the snapshot policy.
+        /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }
 
@@ -311,6 +398,9 @@ namespace Pulumi.AliCloud.Ecs
             set => _repeatWeekdays = value;
         }
 
+        /// <summary>
+        /// The ID of the resource group to which the snapshot policy belongs.
+        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
@@ -324,11 +414,18 @@ namespace Pulumi.AliCloud.Ecs
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }
 
+        /// <summary>
+        /// The status of the snapshot policy.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -337,6 +434,10 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("targetCopyRegions")]
         private InputList<string>? _targetCopyRegions;
+
+        /// <summary>
+        /// The target regions for cross-region copy.
+        /// </summary>
         public InputList<string> TargetCopyRegions
         {
             get => _targetCopyRegions ?? (_targetCopyRegions = new InputList<string>());
@@ -345,6 +446,10 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("targetTags")]
         private InputList<Inputs.SnapshotPolicyTargetTagGetArgs>? _targetTags;
+
+        /// <summary>
+        /// The tags to be added to the snapshot. See `TargetTags` below.
+        /// </summary>
         public InputList<Inputs.SnapshotPolicyTargetTagGetArgs> TargetTags
         {
             get => _targetTags ?? (_targetTags = new InputList<Inputs.SnapshotPolicyTargetTagGetArgs>());

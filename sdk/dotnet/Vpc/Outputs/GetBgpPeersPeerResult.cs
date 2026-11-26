@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly int BfdMultiHop;
         /// <summary>
-        /// The ID of the BGP group.
+        /// The ID of the BGP group to which the BGP peer that you want to query belongs.
         /// </summary>
         public readonly string BgpGroupId;
         /// <summary>
@@ -82,11 +82,11 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string RouteLimit;
         /// <summary>
-        /// The ID of the router.
+        /// The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
         /// </summary>
         public readonly string RouterId;
         /// <summary>
-        /// The status of the BGP peer.
+        /// The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
         /// </summary>
         public readonly string Status;
 

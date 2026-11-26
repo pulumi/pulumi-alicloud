@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.174.0+.
+ * > **NOTE:** Available since v1.174.0.
  *
  * ## Example Usage
  *
@@ -49,14 +49,20 @@ export interface GetZonesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Zone IDs.
+     */
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of availability zone information collection.
+     */
     readonly zones: outputs.eds.GetZonesZone[];
 }
 /**
  * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.174.0+.
+ * > **NOTE:** Available since v1.174.0.
  *
  * ## Example Usage
  *

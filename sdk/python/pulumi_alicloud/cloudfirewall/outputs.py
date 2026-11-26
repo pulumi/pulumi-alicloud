@@ -2632,7 +2632,7 @@ class GetInstancesInstanceResult(dict):
         :param _builtins.str end_time: The end time of the resource..
         :param _builtins.str id: The ID of the Instance.
         :param _builtins.str instance_id: The first ID of the resource.
-        :param _builtins.str payment_type: The payment type of the resource. Valid values: `Subscription`.
+        :param _builtins.str payment_type: The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
         :param _builtins.str renewal_duration_unit: Automatic renewal period unit. Valid values: `Month`,`Year`.
         :param _builtins.str renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
         :param _builtins.str status: The Status of Instance.
@@ -2682,7 +2682,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> _builtins.str:
         """
-        The payment type of the resource. Valid values: `Subscription`.
+        The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -3236,14 +3236,19 @@ class GetVpcFirewallCensCenLocalVpcResult(dict):
                  vpc_id: _builtins.str,
                  vpc_name: _builtins.str):
         """
+        :param _builtins.str attachment_id: The ID of the attachment.
+        :param _builtins.str attachment_name: The name of the attachment.
         :param Sequence[_builtins.str] defend_cidr_lists: The list of network segments protected by the VPC firewall.
+        :param Sequence['GetVpcFirewallCensCenLocalVpcEniListArgs'] eni_lists: The list of ENIs.
+        :param _builtins.str manual_vswitch_id: The ID of the vSwitch specified when the routing mode is manual mode.
         :param _builtins.str network_instance_id: The ID of the VPC instance that created the VPC firewall.
         :param _builtins.str network_instance_name: The name of the network instance.
-        :param _builtins.str network_instance_type: The type of the network instance. Value: **VPC * *.
+        :param _builtins.str network_instance_type: The type of the network instance. Value: **VPC**.
         :param _builtins.str owner_id: The UID of the Alibaba Cloud account to which the VPC belongs.
         :param _builtins.str region_no: The region ID of the VPC.
         :param _builtins.str route_mode: Routing mode,. Value:-auto: indicates automatic mode.-manual: indicates manual mode.
         :param _builtins.str support_manual_mode: Whether routing mode supports manual mode. Value:-**1**: Supported.-**0**: Not supported.
+        :param _builtins.str transit_router_id: The ID of the transit router.
         :param _builtins.str transit_router_type: The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
         :param Sequence['GetVpcFirewallCensCenLocalVpcVpcCidrTableListArgs'] vpc_cidr_table_lists: The VPC network segment list.
         :param _builtins.str vpc_id: The ID of the VPC instance.
@@ -3270,11 +3275,17 @@ class GetVpcFirewallCensCenLocalVpcResult(dict):
     @_builtins.property
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> _builtins.str:
+        """
+        The ID of the attachment.
+        """
         return pulumi.get(self, "attachment_id")
 
     @_builtins.property
     @pulumi.getter(name="attachmentName")
     def attachment_name(self) -> _builtins.str:
+        """
+        The name of the attachment.
+        """
         return pulumi.get(self, "attachment_name")
 
     @_builtins.property
@@ -3288,11 +3299,17 @@ class GetVpcFirewallCensCenLocalVpcResult(dict):
     @_builtins.property
     @pulumi.getter(name="eniLists")
     def eni_lists(self) -> Sequence['outputs.GetVpcFirewallCensCenLocalVpcEniListResult']:
+        """
+        The list of ENIs.
+        """
         return pulumi.get(self, "eni_lists")
 
     @_builtins.property
     @pulumi.getter(name="manualVswitchId")
     def manual_vswitch_id(self) -> _builtins.str:
+        """
+        The ID of the vSwitch specified when the routing mode is manual mode.
+        """
         return pulumi.get(self, "manual_vswitch_id")
 
     @_builtins.property
@@ -3315,7 +3332,7 @@ class GetVpcFirewallCensCenLocalVpcResult(dict):
     @pulumi.getter(name="networkInstanceType")
     def network_instance_type(self) -> _builtins.str:
         """
-        The type of the network instance. Value: **VPC * *.
+        The type of the network instance. Value: **VPC**.
         """
         return pulumi.get(self, "network_instance_type")
 
@@ -3354,6 +3371,9 @@ class GetVpcFirewallCensCenLocalVpcResult(dict):
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> _builtins.str:
+        """
+        The ID of the transit router.
+        """
         return pulumi.get(self, "transit_router_id")
 
     @_builtins.property
@@ -3394,17 +3414,27 @@ class GetVpcFirewallCensCenLocalVpcEniListResult(dict):
     def __init__(__self__, *,
                  eni_id: _builtins.str,
                  eni_private_ip_address: _builtins.str):
+        """
+        :param _builtins.str eni_id: The ID of the ENI.
+        :param _builtins.str eni_private_ip_address: The private IP address of the ENI.
+        """
         pulumi.set(__self__, "eni_id", eni_id)
         pulumi.set(__self__, "eni_private_ip_address", eni_private_ip_address)
 
     @_builtins.property
     @pulumi.getter(name="eniId")
     def eni_id(self) -> _builtins.str:
+        """
+        The ID of the ENI.
+        """
         return pulumi.get(self, "eni_id")
 
     @_builtins.property
     @pulumi.getter(name="eniPrivateIpAddress")
     def eni_private_ip_address(self) -> _builtins.str:
+        """
+        The private IP address of the ENI.
+        """
         return pulumi.get(self, "eni_private_ip_address")
 
 
@@ -3862,9 +3892,12 @@ class GetVpcFirewallsFirewallLocalVpcResult(dict):
                  vpc_id: _builtins.str,
                  vpc_name: _builtins.str):
         """
+        :param _builtins.str eni_id: The ID of the ENI.
+        :param _builtins.str eni_private_ip_address: The private IP address of the ENI.
         :param Sequence['GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArgs'] local_vpc_cidr_table_lists: The network segment list of the local VPC.
-        :param _builtins.str region_no: The region ID of the peer VPC.
-        :param _builtins.str vpc_id: The ID of the peer VPC instance.
+        :param _builtins.str region_no: The region ID.
+        :param _builtins.str router_interface_id: The ID of the router interface.
+        :param _builtins.str vpc_id: The ID of the VPC instance.
         :param _builtins.str vpc_name: The instance name of the peer VPC.
         """
         pulumi.set(__self__, "eni_id", eni_id)
@@ -3878,11 +3911,17 @@ class GetVpcFirewallsFirewallLocalVpcResult(dict):
     @_builtins.property
     @pulumi.getter(name="eniId")
     def eni_id(self) -> _builtins.str:
+        """
+        The ID of the ENI.
+        """
         return pulumi.get(self, "eni_id")
 
     @_builtins.property
     @pulumi.getter(name="eniPrivateIpAddress")
     def eni_private_ip_address(self) -> _builtins.str:
+        """
+        The private IP address of the ENI.
+        """
         return pulumi.get(self, "eni_private_ip_address")
 
     @_builtins.property
@@ -3897,20 +3936,23 @@ class GetVpcFirewallsFirewallLocalVpcResult(dict):
     @pulumi.getter(name="regionNo")
     def region_no(self) -> _builtins.str:
         """
-        The region ID of the peer VPC.
+        The region ID.
         """
         return pulumi.get(self, "region_no")
 
     @_builtins.property
     @pulumi.getter(name="routerInterfaceId")
     def router_interface_id(self) -> _builtins.str:
+        """
+        The ID of the router interface.
+        """
         return pulumi.get(self, "router_interface_id")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.str:
         """
-        The ID of the peer VPC instance.
+        The ID of the VPC instance.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -3992,9 +4034,12 @@ class GetVpcFirewallsFirewallPeerVpcResult(dict):
                  vpc_id: _builtins.str,
                  vpc_name: _builtins.str):
         """
+        :param _builtins.str eni_id: The ID of the ENI.
+        :param _builtins.str eni_private_ip_address: The private IP address of the ENI.
         :param Sequence['GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArgs'] peer_vpc_cidr_table_lists: The network segment list of the peer VPC.
-        :param _builtins.str region_no: The region ID of the peer VPC.
-        :param _builtins.str vpc_id: The ID of the peer VPC instance.
+        :param _builtins.str region_no: The region ID.
+        :param _builtins.str router_interface_id: The ID of the router interface.
+        :param _builtins.str vpc_id: The ID of the VPC instance.
         :param _builtins.str vpc_name: The instance name of the peer VPC.
         """
         pulumi.set(__self__, "eni_id", eni_id)
@@ -4008,11 +4053,17 @@ class GetVpcFirewallsFirewallPeerVpcResult(dict):
     @_builtins.property
     @pulumi.getter(name="eniId")
     def eni_id(self) -> _builtins.str:
+        """
+        The ID of the ENI.
+        """
         return pulumi.get(self, "eni_id")
 
     @_builtins.property
     @pulumi.getter(name="eniPrivateIpAddress")
     def eni_private_ip_address(self) -> _builtins.str:
+        """
+        The private IP address of the ENI.
+        """
         return pulumi.get(self, "eni_private_ip_address")
 
     @_builtins.property
@@ -4027,20 +4078,23 @@ class GetVpcFirewallsFirewallPeerVpcResult(dict):
     @pulumi.getter(name="regionNo")
     def region_no(self) -> _builtins.str:
         """
-        The region ID of the peer VPC.
+        The region ID.
         """
         return pulumi.get(self, "region_no")
 
     @_builtins.property
     @pulumi.getter(name="routerInterfaceId")
     def router_interface_id(self) -> _builtins.str:
+        """
+        The ID of the router interface.
+        """
         return pulumi.get(self, "router_interface_id")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.str:
         """
-        The ID of the peer VPC instance.
+        The ID of the VPC instance.
         """
         return pulumi.get(self, "vpc_id")
 

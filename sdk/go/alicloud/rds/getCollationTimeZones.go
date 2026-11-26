@@ -13,7 +13,7 @@ import (
 
 // Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
 //
-// > **NOTE:** Available in v1.198.0+.
+// > **NOTE:** Available since v1.198.0+.
 //
 // ## Example Usage
 //
@@ -55,8 +55,7 @@ func GetCollationTimeZones(ctx *pulumi.Context, args *GetCollationTimeZonesArgs,
 
 // A collection of arguments for invoking getCollationTimeZones.
 type GetCollationTimeZonesArgs struct {
-	// An array that consists of the character set collations and time zones that are available for
-	// use in ApsaraDB RDS.
+	// An array that consists of the character set collations and time zones. See `collationTimeZones` below.
 	CollationTimeZones []GetCollationTimeZonesCollationTimeZone `pulumi:"collationTimeZones"`
 	// File name where to save data source results (after running `pulumi up`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -64,9 +63,12 @@ type GetCollationTimeZonesArgs struct {
 
 // A collection of values returned by getCollationTimeZones.
 type GetCollationTimeZonesResult struct {
+	// An array that consists of the character set collations and time zones that are available for
+	// use in ApsaraDB RDS.
 	CollationTimeZones []GetCollationTimeZonesCollationTimeZone `pulumi:"collationTimeZones"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of time zones.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -78,8 +80,7 @@ func GetCollationTimeZonesOutput(ctx *pulumi.Context, args GetCollationTimeZones
 
 // A collection of arguments for invoking getCollationTimeZones.
 type GetCollationTimeZonesOutputArgs struct {
-	// An array that consists of the character set collations and time zones that are available for
-	// use in ApsaraDB RDS.
+	// An array that consists of the character set collations and time zones. See `collationTimeZones` below.
 	CollationTimeZones GetCollationTimeZonesCollationTimeZoneArrayInput `pulumi:"collationTimeZones"`
 	// File name where to save data source results (after running `pulumi up`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
@@ -104,6 +105,8 @@ func (o GetCollationTimeZonesResultOutput) ToGetCollationTimeZonesResultOutputWi
 	return o
 }
 
+// An array that consists of the character set collations and time zones that are available for
+// use in ApsaraDB RDS.
 func (o GetCollationTimeZonesResultOutput) CollationTimeZones() GetCollationTimeZonesCollationTimeZoneArrayOutput {
 	return o.ApplyT(func(v GetCollationTimeZonesResult) []GetCollationTimeZonesCollationTimeZone {
 		return v.CollationTimeZones
@@ -115,6 +118,7 @@ func (o GetCollationTimeZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCollationTimeZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of time zones.
 func (o GetCollationTimeZonesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCollationTimeZonesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

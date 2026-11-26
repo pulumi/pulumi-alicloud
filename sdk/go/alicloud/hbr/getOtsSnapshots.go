@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Hbr Ots Snapshots of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.164.0+.
+// > **NOTE:** Available since v1.164.0.
 //
 // ## Example Usage
 //
@@ -53,8 +53,9 @@ func GetOtsSnapshots(ctx *pulumi.Context, args *GetOtsSnapshotsArgs, opts ...pul
 // A collection of arguments for invoking getOtsSnapshots.
 type GetOtsSnapshotsArgs struct {
 	// The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds
-	EndTime *string  `pulumi:"endTime"`
-	Ids     []string `pulumi:"ids"`
+	EndTime *string `pulumi:"endTime"`
+	// A list of Ots Snapshot IDs.
+	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
@@ -65,11 +66,13 @@ type GetOtsSnapshotsArgs struct {
 type GetOtsSnapshotsResult struct {
 	EndTime *string `pulumi:"endTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                    `pulumi:"id"`
-	Ids        []string                  `pulumi:"ids"`
-	OutputFile *string                   `pulumi:"outputFile"`
-	Snapshots  []GetOtsSnapshotsSnapshot `pulumi:"snapshots"`
-	StartTime  *string                   `pulumi:"startTime"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Hbr Ots Snapshots. Each element contains the following attributes:
+	Snapshots []GetOtsSnapshotsSnapshot `pulumi:"snapshots"`
+	// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+	StartTime *string `pulumi:"startTime"`
 }
 
 func GetOtsSnapshotsOutput(ctx *pulumi.Context, args GetOtsSnapshotsOutputArgs, opts ...pulumi.InvokeOption) GetOtsSnapshotsResultOutput {
@@ -80,8 +83,9 @@ func GetOtsSnapshotsOutput(ctx *pulumi.Context, args GetOtsSnapshotsOutputArgs, 
 // A collection of arguments for invoking getOtsSnapshots.
 type GetOtsSnapshotsOutputArgs struct {
 	// The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds
-	EndTime pulumi.StringPtrInput   `pulumi:"endTime"`
-	Ids     pulumi.StringArrayInput `pulumi:"ids"`
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// A list of Ots Snapshot IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
@@ -124,10 +128,12 @@ func (o GetOtsSnapshotsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOtsSnapshotsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Hbr Ots Snapshots. Each element contains the following attributes:
 func (o GetOtsSnapshotsResultOutput) Snapshots() GetOtsSnapshotsSnapshotArrayOutput {
 	return o.ApplyT(func(v GetOtsSnapshotsResult) []GetOtsSnapshotsSnapshot { return v.Snapshots }).(GetOtsSnapshotsSnapshotArrayOutput)
 }
 
+// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
 func (o GetOtsSnapshotsResultOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOtsSnapshotsResult) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }

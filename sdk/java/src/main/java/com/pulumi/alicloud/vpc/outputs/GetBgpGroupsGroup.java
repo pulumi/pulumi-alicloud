@@ -68,12 +68,12 @@ public final class GetBgpGroupsGroup {
      */
     private String routeLimit;
     /**
-     * @return The ID of the VBR.
+     * @return The ID of the virtual border router (VBR) that is associated with the BGP group.
      * 
      */
     private String routerId;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
      * 
      */
     private String status;
@@ -157,14 +157,14 @@ public final class GetBgpGroupsGroup {
         return this.routeLimit;
     }
     /**
-     * @return The ID of the VBR.
+     * @return The ID of the virtual border router (VBR) that is associated with the BGP group.
      * 
      */
     public String routerId() {
         return this.routerId;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
      * 
      */
     public String status() {

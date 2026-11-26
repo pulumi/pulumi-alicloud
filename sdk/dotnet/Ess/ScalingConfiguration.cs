@@ -494,15 +494,19 @@ namespace Pulumi.AliCloud.Ess
         /// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+        /// 
+        /// &gt; **NOTE:** When `Tags` is not set in the configuration, the provider keeps the tags returned by the API, so tags written out of band (for example by the ACK cluster autoscaler) do not produce a diff. Setting `tags = {}` sends an empty tag set to the API, but the Auto Scaling service keeps the existing instance tags, so the diff remains. Tags removed out of band (a non-empty tag document replaces the whole set) are refreshed into the state: a configuration that does not set `Tags` does not recreate them, while one that sets `Tags` converges back to the declared set.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
+        /// 
+        /// &gt; **NOTE:** When `UserData` is not set in the configuration, the provider keeps the value returned by the API, so user data written out of band (for example by the ACK cluster autoscaler) does not produce a diff. An empty `UserData` is treated as unset, so the provider does not send a clear request; sending an empty `UserData` value directly to the API does not clear the stored value either.
         /// </summary>
         [Output("userData")]
-        public Output<string?> UserData { get; private set; } = null!;
+        public Output<string> UserData { get; private set; } = null!;
 
 
         /// <summary>
@@ -984,6 +988,8 @@ namespace Pulumi.AliCloud.Ess
         /// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+        /// 
+        /// &gt; **NOTE:** When `Tags` is not set in the configuration, the provider keeps the tags returned by the API, so tags written out of band (for example by the ACK cluster autoscaler) do not produce a diff. Setting `tags = {}` sends an empty tag set to the API, but the Auto Scaling service keeps the existing instance tags, so the diff remains. Tags removed out of band (a non-empty tag document replaces the whole set) are refreshed into the state: a configuration that does not set `Tags` does not recreate them, while one that sets `Tags` converges back to the declared set.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -993,6 +999,8 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
+        /// 
+        /// &gt; **NOTE:** When `UserData` is not set in the configuration, the provider keeps the value returned by the API, so user data written out of band (for example by the ACK cluster autoscaler) does not produce a diff. An empty `UserData` is treated as unset, so the provider does not send a clear request; sending an empty `UserData` value directly to the API does not clear the stored value either.
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
@@ -1439,6 +1447,8 @@ namespace Pulumi.AliCloud.Ess
         /// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+        /// 
+        /// &gt; **NOTE:** When `Tags` is not set in the configuration, the provider keeps the tags returned by the API, so tags written out of band (for example by the ACK cluster autoscaler) do not produce a diff. Setting `tags = {}` sends an empty tag set to the API, but the Auto Scaling service keeps the existing instance tags, so the diff remains. Tags removed out of band (a non-empty tag document replaces the whole set) are refreshed into the state: a configuration that does not set `Tags` does not recreate them, while one that sets `Tags` converges back to the declared set.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -1448,6 +1458,8 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
+        /// 
+        /// &gt; **NOTE:** When `UserData` is not set in the configuration, the provider keeps the value returned by the API, so user data written out of band (for example by the ACK cluster autoscaler) does not produce a diff. An empty `UserData` is treated as unset, so the provider does not send a clear request; sending an empty `UserData` value directly to the API does not clear the stored value either.
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }

@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Dts
     ///             Engine = "MySQL",
     ///             EngineVersion = "8.0",
     ///             InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///             InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRanges?.Min),
+    ///             InstanceStorage = Output.Create(exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRanges[0]?.Min)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///             InstanceChargeType = "Postpaid",
     ///             InstanceName = Std.Format.Invoke(new()
     ///             {
@@ -238,6 +238,12 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> Checkpoint { get; private set; } = null!;
 
         /// <summary>
+        /// The data verification configuration of the migration job, in the format of a JSON string, such as parameter limits or alarm configurations. The `dataCheckDbList` field is required when this argument is set. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+        /// </summary>
+        [Output("dataCheckConfigure")]
+        public Output<string?> DataCheckConfigure { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to execute DTS supports schema migration.
         /// </summary>
         [Output("dataInitialization")]
@@ -263,6 +269,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+        /// 
+        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         /// </summary>
         [Output("destSecondaryVswitchId")]
         public Output<string?> DestSecondaryVswitchId { get; private set; } = null!;
@@ -274,7 +282,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> DestinationEndpointDatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        /// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         /// </summary>
         [Output("destinationEndpointEngineName")]
         public Output<string> DestinationEndpointEngineName { get; private set; } = null!;
@@ -358,7 +366,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> SourceEndpointDatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        /// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
         /// </summary>
         [Output("sourceEndpointEngineName")]
         public Output<string> SourceEndpointEngineName { get; private set; } = null!;
@@ -442,9 +450,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> SrcSecondaryVswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-        /// 
-        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
+        /// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`. While the job is being prepared or is running, the computed value is `Migrating`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -508,6 +514,12 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? Checkpoint { get; set; }
 
         /// <summary>
+        /// The data verification configuration of the migration job, in the format of a JSON string, such as parameter limits or alarm configurations. The `dataCheckDbList` field is required when this argument is set. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+        /// </summary>
+        [Input("dataCheckConfigure")]
+        public Input<string>? DataCheckConfigure { get; set; }
+
+        /// <summary>
         /// Whether to execute DTS supports schema migration.
         /// </summary>
         [Input("dataInitialization", required: true)]
@@ -533,6 +545,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+        /// 
+        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         /// </summary>
         [Input("destSecondaryVswitchId")]
         public Input<string>? DestSecondaryVswitchId { get; set; }
@@ -544,7 +558,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        /// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         /// </summary>
         [Input("destinationEndpointEngineName", required: true)]
         public Input<string> DestinationEndpointEngineName { get; set; } = null!;
@@ -628,7 +642,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        /// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
         /// </summary>
         [Input("sourceEndpointEngineName", required: true)]
         public Input<string> SourceEndpointEngineName { get; set; } = null!;
@@ -712,9 +726,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SrcSecondaryVswitchId { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-        /// 
-        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
+        /// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`. While the job is being prepared or is running, the computed value is `Migrating`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -738,6 +750,12 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Input("checkpoint")]
         public Input<string>? Checkpoint { get; set; }
+
+        /// <summary>
+        /// The data verification configuration of the migration job, in the format of a JSON string, such as parameter limits or alarm configurations. The `dataCheckDbList` field is required when this argument is set. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+        /// </summary>
+        [Input("dataCheckConfigure")]
+        public Input<string>? DataCheckConfigure { get; set; }
 
         /// <summary>
         /// Whether to execute DTS supports schema migration.
@@ -765,6 +783,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+        /// 
+        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         /// </summary>
         [Input("destSecondaryVswitchId")]
         public Input<string>? DestSecondaryVswitchId { get; set; }
@@ -776,7 +796,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        /// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         /// </summary>
         [Input("destinationEndpointEngineName")]
         public Input<string>? DestinationEndpointEngineName { get; set; }
@@ -860,7 +880,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        /// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
         /// </summary>
         [Input("sourceEndpointEngineName")]
         public Input<string>? SourceEndpointEngineName { get; set; }
@@ -944,9 +964,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SrcSecondaryVswitchId { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-        /// 
-        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
+        /// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`. While the job is being prepared or is running, the computed value is `Migrating`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -19,10 +19,14 @@ __all__ = [
     'InstanceClientNodeConfigurationArgsDict',
     'InstanceDataNodeConfigurationArgs',
     'InstanceDataNodeConfigurationArgsDict',
+    'InstanceIndexNodeConfigurationArgs',
+    'InstanceIndexNodeConfigurationArgsDict',
     'InstanceKibanaConfigurationArgs',
     'InstanceKibanaConfigurationArgsDict',
     'InstanceMasterConfigurationArgs',
     'InstanceMasterConfigurationArgsDict',
+    'InstanceSearchNodeConfigurationArgs',
+    'InstanceSearchNodeConfigurationArgsDict',
     'InstanceWarmNodeConfigurationArgs',
     'InstanceWarmNodeConfigurationArgsDict',
 ]
@@ -256,6 +260,114 @@ class InstanceDataNodeConfigurationArgs:
         pulumi.set(self, "performance_level", value)
 
 
+class InstanceIndexNodeConfigurationArgsDict(TypedDict):
+    spec: pulumi.Input[_builtins.str]
+    """
+    Node specification. **Note: The parameter is immutable after resource creation.** For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+    """
+    amount: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of index nodes.
+    """
+    disk: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Storage capacity per node, in GB.
+    """
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Storage type of the node. ESSD (`cloud_essd`) is supported. Changing this forces recreation.
+    """
+    performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
+    """
+
+@pulumi.input_type
+class InstanceIndexNodeConfigurationArgs:
+    def __init__(__self__, *,
+                 spec: pulumi.Input[_builtins.str],
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] spec: Node specification. **Note: The parameter is immutable after resource creation.** For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+        :param pulumi.Input[_builtins.int] amount: Number of index nodes.
+        :param pulumi.Input[_builtins.int] disk: Storage capacity per node, in GB.
+        :param pulumi.Input[_builtins.str] disk_type: Storage type of the node. ESSD (`cloud_essd`) is supported. Changing this forces recreation.
+        :param pulumi.Input[_builtins.str] performance_level: Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
+        """
+        pulumi.set(__self__, "spec", spec)
+        if amount is not None:
+            pulumi.set(__self__, "amount", amount)
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+
+    @_builtins.property
+    @pulumi.getter
+    def spec(self) -> pulumi.Input[_builtins.str]:
+        """
+        Node specification. **Note: The parameter is immutable after resource creation.** For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "spec", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def amount(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of index nodes.
+        """
+        return pulumi.get(self, "amount")
+
+    @amount.setter
+    def amount(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "amount", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Storage capacity per node, in GB.
+        """
+        return pulumi.get(self, "disk")
+
+    @disk.setter
+    def disk(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Storage type of the node. ESSD (`cloud_essd`) is supported. Changing this forces recreation.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @performance_level.setter
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "performance_level", value)
+
+
 class InstanceKibanaConfigurationArgsDict(TypedDict):
     spec: pulumi.Input[_builtins.str]
     """
@@ -411,6 +523,114 @@ class InstanceMasterConfigurationArgs:
     @spec.setter
     def spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec", value)
+
+
+class InstanceSearchNodeConfigurationArgsDict(TypedDict):
+    spec: pulumi.Input[_builtins.str]
+    """
+    Node specification. **Note: The parameter is immutable after resource creation.** For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+    """
+    amount: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of search (query) nodes.
+    """
+    disk: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Storage capacity per node, in GB.
+    """
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Storage type of the node. ESSD (`cloud_essd`) is supported. Changing this forces recreation.
+    """
+    performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
+    """
+
+@pulumi.input_type
+class InstanceSearchNodeConfigurationArgs:
+    def __init__(__self__, *,
+                 spec: pulumi.Input[_builtins.str],
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] spec: Node specification. **Note: The parameter is immutable after resource creation.** For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+        :param pulumi.Input[_builtins.int] amount: Number of search (query) nodes.
+        :param pulumi.Input[_builtins.int] disk: Storage capacity per node, in GB.
+        :param pulumi.Input[_builtins.str] disk_type: Storage type of the node. ESSD (`cloud_essd`) is supported. Changing this forces recreation.
+        :param pulumi.Input[_builtins.str] performance_level: Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
+        """
+        pulumi.set(__self__, "spec", spec)
+        if amount is not None:
+            pulumi.set(__self__, "amount", amount)
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+
+    @_builtins.property
+    @pulumi.getter
+    def spec(self) -> pulumi.Input[_builtins.str]:
+        """
+        Node specification. **Note: The parameter is immutable after resource creation.** For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "spec", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def amount(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of search (query) nodes.
+        """
+        return pulumi.get(self, "amount")
+
+    @amount.setter
+    def amount(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "amount", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Storage capacity per node, in GB.
+        """
+        return pulumi.get(self, "disk")
+
+    @disk.setter
+    def disk(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Storage type of the node. ESSD (`cloud_essd`) is supported. Changing this forces recreation.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @performance_level.setter
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "performance_level", value)
 
 
 class InstanceWarmNodeConfigurationArgsDict(TypedDict):

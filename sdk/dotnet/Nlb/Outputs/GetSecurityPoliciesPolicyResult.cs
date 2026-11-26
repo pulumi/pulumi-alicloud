@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         /// </summary>
         public readonly string SecurityPolicyName;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Available`, `Configuring`.
         /// </summary>
         public readonly string Status;
         /// <summary>

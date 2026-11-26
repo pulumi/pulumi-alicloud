@@ -15,23 +15,47 @@ public final class GetMonitorGroupInstancesPlainArgs extends com.pulumi.resource
 
     public static final GetMonitorGroupInstancesPlainArgs Empty = new GetMonitorGroupInstancesPlainArgs();
 
+    /**
+     * A list of Monitor Group Instances IDs.
+     * 
+     */
     @Import(name="ids", required=true)
     private String ids;
 
+    /**
+     * @return A list of Monitor Group Instances IDs.
+     * 
+     */
     public String ids() {
         return this.ids;
     }
 
+    /**
+     * The keyword.
+     * 
+     */
     @Import(name="keyword")
     private @Nullable String keyword;
 
+    /**
+     * @return The keyword.
+     * 
+     */
     public Optional<String> keyword() {
         return Optional.ofNullable(this.keyword);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable String outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -62,16 +86,34 @@ public final class GetMonitorGroupInstancesPlainArgs extends com.pulumi.resource
             $ = new GetMonitorGroupInstancesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids A list of Monitor Group Instances IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param keyword The keyword.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyword(@Nullable String keyword) {
             $.keyword = keyword;
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
             return this;

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Fnf Schedules of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.105.0+.
+// > **NOTE:** Available since v1.105.0.
 //
 // ## Example Usage
 //
@@ -75,13 +75,15 @@ type GetSchedulesArgs struct {
 type GetSchedulesResult struct {
 	FlowName string `pulumi:"flowName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
-	Limit      *int                   `pulumi:"limit"`
-	NameRegex  *string                `pulumi:"nameRegex"`
-	Names      []string               `pulumi:"names"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Schedules  []GetSchedulesSchedule `pulumi:"schedules"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	Limit     *int     `pulumi:"limit"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Schedule names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Fnf Schedules. Each element contains the following attributes:
+	Schedules []GetSchedulesSchedule `pulumi:"schedules"`
 }
 
 func GetSchedulesOutput(ctx *pulumi.Context, args GetSchedulesOutputArgs, opts ...pulumi.InvokeOption) GetSchedulesResultOutput {
@@ -143,6 +145,7 @@ func (o GetSchedulesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSchedulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Schedule names.
 func (o GetSchedulesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSchedulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -151,6 +154,7 @@ func (o GetSchedulesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSchedulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Fnf Schedules. Each element contains the following attributes:
 func (o GetSchedulesResultOutput) Schedules() GetSchedulesScheduleArrayOutput {
 	return o.ApplyT(func(v GetSchedulesResult) []GetSchedulesSchedule { return v.Schedules }).(GetSchedulesScheduleArrayOutput)
 }

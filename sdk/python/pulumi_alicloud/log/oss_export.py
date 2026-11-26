@@ -60,7 +60,7 @@ class OssExportArgs:
         :param pulumi.Input[_builtins.str] project_name: The name of the log project. It is the only in one Alicloud account.
         :param pulumi.Input[_builtins.str] time_zone: This time zone that is used to format the time, `+0800` e.g.
         :param pulumi.Input[_builtins.str] compress_type: OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
-        :param pulumi.Input[Sequence[pulumi.Input['OssExportConfigColumnArgs']]] config_columns: Configure columns when `content_type` is `parquet` or `orc`.
+        :param pulumi.Input[Sequence[pulumi.Input['OssExportConfigColumnArgs']]] config_columns: Configure columns when `content_type` is `parquet` or `orc`. See `config_columns` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] csv_config_columns: Field configuration in csv content_type.
         :param pulumi.Input[_builtins.str] csv_config_delimiter: Separator configuration in csv content_type.
         :param pulumi.Input[_builtins.str] csv_config_escape: escape in csv content_type.
@@ -243,7 +243,7 @@ class OssExportArgs:
     @pulumi.getter(name="configColumns")
     def config_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]]:
         """
-        Configure columns when `content_type` is `parquet` or `orc`.
+        Configure columns when `content_type` is `parquet` or `orc`. See `config_columns` below.
         """
         return pulumi.get(self, "config_columns")
 
@@ -455,7 +455,7 @@ class _OssExportState:
         :param pulumi.Input[_builtins.int] buffer_interval: How often is it delivered every interval.
         :param pulumi.Input[_builtins.int] buffer_size: Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
         :param pulumi.Input[_builtins.str] compress_type: OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
-        :param pulumi.Input[Sequence[pulumi.Input['OssExportConfigColumnArgs']]] config_columns: Configure columns when `content_type` is `parquet` or `orc`.
+        :param pulumi.Input[Sequence[pulumi.Input['OssExportConfigColumnArgs']]] config_columns: Configure columns when `content_type` is `parquet` or `orc`. See `config_columns` below.
         :param pulumi.Input[_builtins.str] content_type: Storage format, only supports three types: `json`, `parquet`, `orc`, `csv`.
                **According to the different format, please select the following parameters**
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] csv_config_columns: Field configuration in csv content_type.
@@ -581,7 +581,7 @@ class _OssExportState:
     @pulumi.getter(name="configColumns")
     def config_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]]:
         """
-        Configure columns when `content_type` is `parquet` or `orc`.
+        Configure columns when `content_type` is `parquet` or `orc`. See `config_columns` below.
         """
         return pulumi.get(self, "config_columns")
 
@@ -934,7 +934,7 @@ class OssExport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] buffer_interval: How often is it delivered every interval.
         :param pulumi.Input[_builtins.int] buffer_size: Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
         :param pulumi.Input[_builtins.str] compress_type: OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OssExportConfigColumnArgs', 'OssExportConfigColumnArgsDict', 'outputs.OssExportConfigColumn']]]] config_columns: Configure columns when `content_type` is `parquet` or `orc`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OssExportConfigColumnArgs', 'OssExportConfigColumnArgsDict', 'outputs.OssExportConfigColumn']]]] config_columns: Configure columns when `content_type` is `parquet` or `orc`. See `config_columns` below.
         :param pulumi.Input[_builtins.str] content_type: Storage format, only supports three types: `json`, `parquet`, `orc`, `csv`.
                **According to the different format, please select the following parameters**
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] csv_config_columns: Field configuration in csv content_type.
@@ -1166,7 +1166,7 @@ class OssExport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] buffer_interval: How often is it delivered every interval.
         :param pulumi.Input[_builtins.int] buffer_size: Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
         :param pulumi.Input[_builtins.str] compress_type: OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OssExportConfigColumnArgs', 'OssExportConfigColumnArgsDict', 'outputs.OssExportConfigColumn']]]] config_columns: Configure columns when `content_type` is `parquet` or `orc`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OssExportConfigColumnArgs', 'OssExportConfigColumnArgsDict', 'outputs.OssExportConfigColumn']]]] config_columns: Configure columns when `content_type` is `parquet` or `orc`. See `config_columns` below.
         :param pulumi.Input[_builtins.str] content_type: Storage format, only supports three types: `json`, `parquet`, `orc`, `csv`.
                **According to the different format, please select the following parameters**
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] csv_config_columns: Field configuration in csv content_type.
@@ -1312,7 +1312,7 @@ class OssExport(pulumi.CustomResource):
     @pulumi.getter(name="configColumns")
     def config_columns(self) -> pulumi.Output[Optional[Sequence['outputs.OssExportConfigColumn']]]:
         """
-        Configure columns when `content_type` is `parquet` or `orc`.
+        Configure columns when `content_type` is `parquet` or `orc`. See `config_columns` below.
         """
         return pulumi.get(self, "config_columns")
 

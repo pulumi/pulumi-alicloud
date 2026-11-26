@@ -38,6 +38,10 @@ public final class GetRulesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The name of rule.
+     * 
+     */
     private @Nullable String name;
     private @Nullable String nameRegex;
     /**
@@ -108,6 +112,10 @@ public final class GetRulesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The name of rule.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

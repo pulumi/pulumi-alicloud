@@ -137,9 +137,17 @@ public final class GetVirtualNodesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.virtualNodeName);
     }
 
+    /**
+     * The ID of the vSwitch.
+     * 
+     */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
+    /**
+     * @return The ID of the vSwitch.
+     * 
+     */
     public Optional<Output<String>> vswitchId() {
         return Optional.ofNullable(this.vswitchId);
     }
@@ -354,11 +362,23 @@ public final class GetVirtualNodesArgs extends com.pulumi.resources.InvokeArgs {
             return virtualNodeName(Output.of(virtualNodeName));
         }
 
+        /**
+         * @param vswitchId The ID of the vSwitch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vswitchId(@Nullable Output<String> vswitchId) {
             $.vswitchId = vswitchId;
             return this;
         }
 
+        /**
+         * @param vswitchId The ID of the vSwitch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vswitchId(String vswitchId) {
             return vswitchId(Output.of(vswitchId));
         }

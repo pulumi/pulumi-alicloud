@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -55,6 +55,7 @@ func GetRealTimeLogDeliveries(ctx *pulumi.Context, args *GetRealTimeLogDeliverie
 
 // A collection of arguments for invoking getRealTimeLogDeliveries.
 type GetRealTimeLogDeliveriesArgs struct {
+	// The domain name.
 	Domain string `pulumi:"domain"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -64,12 +65,15 @@ type GetRealTimeLogDeliveriesArgs struct {
 
 // A collection of values returned by getRealTimeLogDeliveries.
 type GetRealTimeLogDeliveriesResult struct {
+	// A list of Cdn Real Time Log Deliveries. Each element contains the following attributes:
 	Deliveries []GetRealTimeLogDeliveriesDelivery `pulumi:"deliveries"`
-	Domain     string                             `pulumi:"domain"`
+	// Real-Time Log Service Domain.
+	Domain string `pulumi:"domain"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	OutputFile *string `pulumi:"outputFile"`
-	Status     *string `pulumi:"status"`
+	// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+	Status *string `pulumi:"status"`
 }
 
 func GetRealTimeLogDeliveriesOutput(ctx *pulumi.Context, args GetRealTimeLogDeliveriesOutputArgs, opts ...pulumi.InvokeOption) GetRealTimeLogDeliveriesResultOutput {
@@ -79,6 +83,7 @@ func GetRealTimeLogDeliveriesOutput(ctx *pulumi.Context, args GetRealTimeLogDeli
 
 // A collection of arguments for invoking getRealTimeLogDeliveries.
 type GetRealTimeLogDeliveriesOutputArgs struct {
+	// The domain name.
 	Domain pulumi.StringInput `pulumi:"domain"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
@@ -105,10 +110,12 @@ func (o GetRealTimeLogDeliveriesResultOutput) ToGetRealTimeLogDeliveriesResultOu
 	return o
 }
 
+// A list of Cdn Real Time Log Deliveries. Each element contains the following attributes:
 func (o GetRealTimeLogDeliveriesResultOutput) Deliveries() GetRealTimeLogDeliveriesDeliveryArrayOutput {
 	return o.ApplyT(func(v GetRealTimeLogDeliveriesResult) []GetRealTimeLogDeliveriesDelivery { return v.Deliveries }).(GetRealTimeLogDeliveriesDeliveryArrayOutput)
 }
 
+// Real-Time Log Service Domain.
 func (o GetRealTimeLogDeliveriesResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRealTimeLogDeliveriesResult) string { return v.Domain }).(pulumi.StringOutput)
 }
@@ -122,6 +129,7 @@ func (o GetRealTimeLogDeliveriesResultOutput) OutputFile() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetRealTimeLogDeliveriesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
 func (o GetRealTimeLogDeliveriesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRealTimeLogDeliveriesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

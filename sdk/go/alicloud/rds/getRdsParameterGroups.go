@@ -11,6 +11,41 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+//
+// > **NOTE:** Available since v1.119.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/rds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := rds.GetRdsParameterGroups(ctx, &rds.GetRdsParameterGroupsArgs{
+//				Ids: []string{
+//					"example_value",
+//				},
+//				NameRegex: pulumi.StringRef("the_resource_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstRdsParameterGroupId", example.Groups[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRdsParameterGroups(ctx *pulumi.Context, args *GetRdsParameterGroupsArgs, opts ...pulumi.InvokeOption) (*GetRdsParameterGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRdsParameterGroupsResult
@@ -23,20 +58,26 @@ func GetRdsParameterGroups(ctx *pulumi.Context, args *GetRdsParameterGroupsArgs,
 
 // A collection of arguments for invoking getRdsParameterGroups.
 type GetRdsParameterGroupsArgs struct {
-	EnableDetails *bool    `pulumi:"enableDetails"`
-	Ids           []string `pulumi:"ids"`
-	NameRegex     *string  `pulumi:"nameRegex"`
-	OutputFile    *string  `pulumi:"outputFile"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails *bool `pulumi:"enableDetails"`
+	// A list of Parameter Group IDs.
+	Ids []string `pulumi:"ids"`
+	// A regex string to filter results by Parameter Group name.
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getRdsParameterGroups.
 type GetRdsParameterGroupsResult struct {
-	EnableDetails *bool                        `pulumi:"enableDetails"`
-	Groups        []GetRdsParameterGroupsGroup `pulumi:"groups"`
+	EnableDetails *bool `pulumi:"enableDetails"`
+	// A list of Rds Parameter Groups. Each element contains the following attributes:
+	Groups []GetRdsParameterGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Parameter Group names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -48,10 +89,14 @@ func GetRdsParameterGroupsOutput(ctx *pulumi.Context, args GetRdsParameterGroups
 
 // A collection of arguments for invoking getRdsParameterGroups.
 type GetRdsParameterGroupsOutputArgs struct {
-	EnableDetails pulumi.BoolPtrInput     `pulumi:"enableDetails"`
-	Ids           pulumi.StringArrayInput `pulumi:"ids"`
-	NameRegex     pulumi.StringPtrInput   `pulumi:"nameRegex"`
-	OutputFile    pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Parameter Group IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Parameter Group name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetRdsParameterGroupsOutputArgs) ElementType() reflect.Type {
@@ -77,6 +122,7 @@ func (o GetRdsParameterGroupsResultOutput) EnableDetails() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v GetRdsParameterGroupsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
+// A list of Rds Parameter Groups. Each element contains the following attributes:
 func (o GetRdsParameterGroupsResultOutput) Groups() GetRdsParameterGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetRdsParameterGroupsResult) []GetRdsParameterGroupsGroup { return v.Groups }).(GetRdsParameterGroupsGroupArrayOutput)
 }
@@ -94,6 +140,7 @@ func (o GetRdsParameterGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRdsParameterGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Parameter Group names.
 func (o GetRdsParameterGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRdsParameterGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

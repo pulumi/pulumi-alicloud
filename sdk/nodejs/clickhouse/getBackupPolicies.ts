@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
  *
  * ## Example Usage
  *
@@ -51,18 +51,24 @@ export interface GetBackupPoliciesArgs {
  * A collection of values returned by getBackupPolicies.
  */
 export interface GetBackupPoliciesResult {
+    /**
+     * The db cluster id.
+     */
     readonly dbClusterId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly outputFile?: string;
+    /**
+     * A list of Click House Backup Policies. Each element contains the following attributes:
+     */
     readonly policies: outputs.clickhouse.GetBackupPoliciesPolicy[];
 }
 /**
  * This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
  *
  * ## Example Usage
  *

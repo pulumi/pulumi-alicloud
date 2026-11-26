@@ -343,7 +343,7 @@ public final class VideosurveillanceFunctions {
     /**
      * This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -398,7 +398,7 @@ public final class VideosurveillanceFunctions {
     /**
      * This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -453,7 +453,7 @@ public final class VideosurveillanceFunctions {
     /**
      * This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -508,7 +508,7 @@ public final class VideosurveillanceFunctions {
     /**
      * This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -563,7 +563,7 @@ public final class VideosurveillanceFunctions {
     /**
      * This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -618,7 +618,7 @@ public final class VideosurveillanceFunctions {
     /**
      * This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -673,7 +673,7 @@ public final class VideosurveillanceFunctions {
     /**
      * This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecd bundles of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *
@@ -40,6 +40,9 @@ export function getBundles(args?: GetBundlesArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getBundles.
  */
 export interface GetBundlesArgs {
+    /**
+     * A list of bundle IDs used to filter the results.
+     */
     bundleIds?: string[];
     /**
      * The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
@@ -63,8 +66,17 @@ export interface GetBundlesArgs {
  * A collection of values returned by getBundles.
  */
 export interface GetBundlesResult {
+    /**
+     * The bundle id of the bundle.
+     */
     readonly bundleIds: string[];
+    /**
+     * The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
+     */
     readonly bundleType?: string;
+    /**
+     * A list of Ecd Bundle. Each element contains the following attributes:
+     */
     readonly bundles: outputs.eds.GetBundlesBundle[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -72,13 +84,16 @@ export interface GetBundlesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Bundle names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Ecd bundles of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *
@@ -109,6 +124,9 @@ export function getBundlesOutput(args?: GetBundlesOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getBundles.
  */
 export interface GetBundlesOutputArgs {
+    /**
+     * A list of bundle IDs used to filter the results.
+     */
     bundleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.

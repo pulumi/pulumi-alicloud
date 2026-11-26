@@ -33,6 +33,7 @@ public final class PublicIpAddressPoolCidrBlockState extends com.pulumi.resource
 
     /**
      * IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+     * 
      * &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
      * 
      */
@@ -41,6 +42,7 @@ public final class PublicIpAddressPoolCidrBlockState extends com.pulumi.resource
 
     /**
      * @return IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+     * 
      * &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
      * 
      */
@@ -144,6 +146,7 @@ public final class PublicIpAddressPoolCidrBlockState extends com.pulumi.resource
 
         /**
          * @param cidrMask IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+         * 
          * &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
          * 
          * @return builder
@@ -156,6 +159,7 @@ public final class PublicIpAddressPoolCidrBlockState extends com.pulumi.resource
 
         /**
          * @param cidrMask IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+         * 
          * &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
          * 
          * @return builder

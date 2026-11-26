@@ -17,9 +17,17 @@ public final class GetBackupJobsPlainArgs extends com.pulumi.resources.InvokeArg
 
     public static final GetBackupJobsPlainArgs Empty = new GetBackupJobsPlainArgs();
 
+    /**
+     * More complex filters can be expressed using one or more `filter` sub-blocks, which take the following arguments. See `filter` below.
+     * 
+     */
     @Import(name="filters")
     private @Nullable List<GetBackupJobsFilter> filters;
 
+    /**
+     * @return More complex filters can be expressed using one or more `filter` sub-blocks, which take the following arguments. See `filter` below.
+     * 
+     */
     public Optional<List<GetBackupJobsFilter>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -128,11 +136,23 @@ public final class GetBackupJobsPlainArgs extends com.pulumi.resources.InvokeArg
             $ = new GetBackupJobsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters More complex filters can be expressed using one or more `filter` sub-blocks, which take the following arguments. See `filter` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable List<GetBackupJobsFilter> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters More complex filters can be expressed using one or more `filter` sub-blocks, which take the following arguments. See `filter` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetBackupJobsFilter... filters) {
             return filters(List.of(filters));
         }

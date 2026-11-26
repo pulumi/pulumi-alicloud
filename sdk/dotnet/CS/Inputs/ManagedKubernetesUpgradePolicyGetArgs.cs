@@ -16,7 +16,8 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `True`, `False`. When set to `True`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `False`.
         /// 
         /// for example:
-        /// ```
+        /// 
+        /// ```text
         /// # Upgrade cluster version with control plane only
         /// version = "1.32.1-aliyun.1"
         /// 

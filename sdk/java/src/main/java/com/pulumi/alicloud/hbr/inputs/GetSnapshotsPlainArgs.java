@@ -122,9 +122,17 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.instanceId);
     }
 
+    /**
+     * The limit of snapshots to query.
+     * 
+     */
     @Import(name="limit")
     private @Nullable Integer limit;
 
+    /**
+     * @return The limit of snapshots to query.
+     * 
+     */
     public Optional<Integer> limit() {
         return Optional.ofNullable(this.limit);
     }
@@ -144,9 +152,17 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The query string used to filter snapshots.
+     * 
+     */
     @Import(name="query")
     private @Nullable String query;
 
+    /**
+     * @return The query string used to filter snapshots.
+     * 
+     */
     public Optional<String> query() {
         return Optional.ofNullable(this.query);
     }
@@ -319,6 +335,12 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
+        /**
+         * @param limit The limit of snapshots to query.
+         * 
+         * @return builder
+         * 
+         */
         public Builder limit(@Nullable Integer limit) {
             $.limit = limit;
             return this;
@@ -335,6 +357,12 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
+        /**
+         * @param query The query string used to filter snapshots.
+         * 
+         * @return builder
+         * 
+         */
         public Builder query(@Nullable String query) {
             $.query = query;
             return this;

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.159.0+.
+ * > **NOTE:** Available since v1.159.0.
  *
  * ## Example Usage
  *
@@ -60,6 +60,9 @@ export interface GetApplicationScalingRulesArgs {
  * A collection of values returned by getApplicationScalingRules.
  */
 export interface GetApplicationScalingRulesResult {
+    /**
+     * The ID of the Application.
+     */
     readonly appId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -67,12 +70,15 @@ export interface GetApplicationScalingRulesResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Sae Application Scaling Rules. Each element contains the following attributes:
+     */
     readonly rules: outputs.sae.GetApplicationScalingRulesRule[];
 }
 /**
  * This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.159.0+.
+ * > **NOTE:** Available since v1.159.0.
  *
  * ## Example Usage
  *

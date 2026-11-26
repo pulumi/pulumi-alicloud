@@ -83,7 +83,10 @@ import * as utilities from "../utilities";
  *     dataCode: "metering_log",
  *     centralizeEnabled: true,
  *     productCode: "oss",
- *     policyName: "xc-example-oss-01",
+ *     policyName: std.format({
+ *         input: "xc-example-oss-%s",
+ *         args: [_default.result],
+ *     }).then(invoke => invoke.result),
  *     enabled: true,
  *     dataConfig: {
  *         dataRegion: "cn-hangzhou",
@@ -95,8 +98,7 @@ import * as utilities from "../utilities";
  *         destLogstore: logstoreCreate01.logstoreName,
  *     },
  *     resourceDirectory: {
- *         accountGroupType: "custom",
- *         members: ["1936728897040477"],
+ *         accountGroupType: "all",
  *     },
  * });
  * ```
@@ -174,7 +176,10 @@ import * as utilities from "../utilities";
  *     dataCode: "access_log",
  *     centralizeEnabled: false,
  *     productCode: "oss",
- *     policyName: "xc-example-oss-01",
+ *     policyName: std.format({
+ *         input: "xc-example-oss-%s",
+ *         args: [_default.result],
+ *     }).then(invoke => invoke.result),
  *     enabled: true,
  * });
  * ```
@@ -235,7 +240,7 @@ export class CollectionPolicy extends pulumi.CustomResource {
     /**
      * Specifies whether to enable centralized forwarding. Default value: false.
      */
-    declare public readonly centralizeEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly centralizeEnabled: pulumi.Output<boolean>;
     /**
      * Log type code.
      */
@@ -265,8 +270,10 @@ export class CollectionPolicy extends pulumi.CustomResource {
     declare public readonly productCode: pulumi.Output<string>;
     /**
      * Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
+     *
+     * > **NOTE:** The SLS API does not support removing `resourceDirectory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
      */
-    declare public readonly resourceDirectory: pulumi.Output<outputs.sls.CollectionPolicyResourceDirectory>;
+    declare public readonly resourceDirectory: pulumi.Output<outputs.sls.CollectionPolicyResourceDirectory | undefined>;
 
     /**
      * Create a CollectionPolicy resource with the given unique name, arguments, and options.
@@ -363,6 +370,8 @@ export interface CollectionPolicyState {
     productCode?: pulumi.Input<string | undefined>;
     /**
      * Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
+     *
+     * > **NOTE:** The SLS API does not support removing `resourceDirectory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
      */
     resourceDirectory?: pulumi.Input<inputs.sls.CollectionPolicyResourceDirectory | undefined>;
 }
@@ -408,6 +417,8 @@ export interface CollectionPolicyArgs {
     productCode: pulumi.Input<string>;
     /**
      * Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
+     *
+     * > **NOTE:** The SLS API does not support removing `resourceDirectory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
      */
     resourceDirectory?: pulumi.Input<inputs.sls.CollectionPolicyResourceDirectory | undefined>;
 }

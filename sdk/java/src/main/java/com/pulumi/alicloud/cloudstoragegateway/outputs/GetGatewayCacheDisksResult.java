@@ -15,7 +15,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGatewayCacheDisksResult {
+    /**
+     * @return A list of Cloud Storage Gateway Gateway Cache Disks. Each element contains the following attributes:
+     * 
+     */
     private List<GetGatewayCacheDisksDisk> disks;
+    /**
+     * @return The ID of the gateway.
+     * 
+     */
     private String gatewayId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,12 +32,24 @@ public final class GetGatewayCacheDisksResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable Integer status;
 
     private GetGatewayCacheDisksResult() {}
+    /**
+     * @return A list of Cloud Storage Gateway Gateway Cache Disks. Each element contains the following attributes:
+     * 
+     */
     public List<GetGatewayCacheDisksDisk> disks() {
         return this.disks;
     }
+    /**
+     * @return The ID of the gateway.
+     * 
+     */
     public String gatewayId() {
         return this.gatewayId;
     }
@@ -46,6 +66,10 @@ public final class GetGatewayCacheDisksResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<Integer> status() {
         return Optional.ofNullable(this.status);
     }

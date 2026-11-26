@@ -81,7 +81,8 @@ type Project struct {
 	// > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
 	IsLogical pulumi.StringPtrOutput `pulumi:"isLogical"`
 	// Project owner
-	Owner       pulumi.StringOutput    `pulumi:"owner"`
+	Owner pulumi.StringOutput `pulumi:"owner"`
+	// The product type of the MaxCompute project.
 	ProductType pulumi.StringPtrOutput `pulumi:"productType"`
 	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
@@ -145,7 +146,8 @@ type projectState struct {
 	// > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
 	IsLogical *string `pulumi:"isLogical"`
 	// Project owner
-	Owner       *string `pulumi:"owner"`
+	Owner *string `pulumi:"owner"`
+	// The product type of the MaxCompute project.
 	ProductType *string `pulumi:"productType"`
 	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 	ProjectName *string `pulumi:"projectName"`
@@ -180,7 +182,8 @@ type ProjectState struct {
 	// > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
 	IsLogical pulumi.StringPtrInput
 	// Project owner
-	Owner       pulumi.StringPtrInput
+	Owner pulumi.StringPtrInput
+	// The product type of the MaxCompute project.
 	ProductType pulumi.StringPtrInput
 	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 	ProjectName pulumi.StringPtrInput
@@ -221,7 +224,8 @@ type projectArgs struct {
 	// Whether to logically delete. Default value: true. Value: (ture/false),
 	//
 	// > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
-	IsLogical   *string `pulumi:"isLogical"`
+	IsLogical *string `pulumi:"isLogical"`
+	// The product type of the MaxCompute project.
 	ProductType *string `pulumi:"productType"`
 	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 	ProjectName *string `pulumi:"projectName"`
@@ -249,7 +253,8 @@ type ProjectArgs struct {
 	// Whether to logically delete. Default value: true. Value: (ture/false),
 	//
 	// > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
-	IsLogical   pulumi.StringPtrInput
+	IsLogical pulumi.StringPtrInput
+	// The product type of the MaxCompute project.
 	ProductType pulumi.StringPtrInput
 	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 	ProjectName pulumi.StringPtrInput
@@ -385,6 +390,7 @@ func (o ProjectOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
+// The product type of the MaxCompute project.
 func (o ProjectOutput) ProductType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.ProductType }).(pulumi.StringPtrOutput)
 }

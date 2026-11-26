@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
  *
- * > **NOTE:**  Available in 1.47.0+
+ * > **NOTE:** Available since v1.47.0.
  *
  * ## Example Usage
  *
@@ -68,7 +68,7 @@ export interface GetInstancesArgs {
      */
     enableDetails?: boolean;
     /**
-     * The ids list of AnalyticDB for PostgreSQL instances.
+     * A list of DB Instance IDs.
      */
     ids?: string[];
     /**
@@ -91,6 +91,9 @@ export interface GetInstancesArgs {
      * The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
      */
     status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: {[key: string]: string};
     /**
      * Used to retrieve instances belong to specified `vswitch` resources.
@@ -102,30 +105,57 @@ export interface GetInstancesArgs {
  * A collection of values returned by getInstances.
  */
 export interface GetInstancesResult {
+    /**
+     * The ID of the availability zone.
+     */
     readonly availabilityZone?: string;
     readonly dbInstanceCategories?: string;
     readonly dbInstanceModes?: string;
+    /**
+     * The description of the instance.
+     */
     readonly description?: string;
     readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The ids list of AnalyticDB for PostgreSQL instances.
+     */
     readonly ids: string[];
+    /**
+     * The network type of the instance.
+     */
     readonly instanceNetworkType?: string;
+    /**
+     * A list of Gpdb Db Instances. Each element contains the following attributes:
+     */
     readonly instances: outputs.gpdb.GetInstancesInstance[];
     readonly nameRegex?: string;
+    /**
+     * The names list of AnalyticDB for PostgreSQL instance.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly resourceGroupId?: string;
+    /**
+     * The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+     */
     readonly status?: string;
+    /**
+     * The tags of the instance.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The vswitch id.
+     */
     readonly vswitchId?: string;
 }
 /**
  * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
  *
- * > **NOTE:**  Available in 1.47.0+
+ * > **NOTE:** Available since v1.47.0.
  *
  * ## Example Usage
  *
@@ -184,7 +214,7 @@ export interface GetInstancesOutputArgs {
      */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
-     * The ids list of AnalyticDB for PostgreSQL instances.
+     * A list of DB Instance IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -207,6 +237,9 @@ export interface GetInstancesOutputArgs {
      * The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
      */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Used to retrieve instances belong to specified `vswitch` resources.

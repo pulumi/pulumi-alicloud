@@ -48,8 +48,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var zoneId = config.get("zoneId").orElse("cn-beijing-h");
- *         final var regionId = config.get("regionId").orElse("cn-beijing");
  *         var default_ = new GlobalSecurityIpGroup("default", GlobalSecurityIpGroupArgs.builder()
  *             .globalIpGroupName("ggn_example_create")
  *             .globalIpList("192.168.0.1,10.10.10.10,172.16.0.1")

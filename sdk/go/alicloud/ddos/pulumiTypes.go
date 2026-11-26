@@ -2997,7 +2997,9 @@ type GetDdosBgpIpsIp struct {
 	Ip string `pulumi:"ip"`
 	// The type of cloud asset to which the IP address belongs.
 	Product string `pulumi:"product"`
-	// The current state of the IP address.
+	// The current state of the IP address. Valid Value:
+	// - normal: indicates normal (not attacked).
+	// - hole_begin: indicates that you are in a black hole state.
 	Status string `pulumi:"status"`
 }
 
@@ -3021,7 +3023,9 @@ type GetDdosBgpIpsIpArgs struct {
 	Ip pulumi.StringInput `pulumi:"ip"`
 	// The type of cloud asset to which the IP address belongs.
 	Product pulumi.StringInput `pulumi:"product"`
-	// The current state of the IP address.
+	// The current state of the IP address. Valid Value:
+	// - normal: indicates normal (not attacked).
+	// - hole_begin: indicates that you are in a black hole state.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -3096,7 +3100,9 @@ func (o GetDdosBgpIpsIpOutput) Product() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDdosBgpIpsIp) string { return v.Product }).(pulumi.StringOutput)
 }
 
-// The current state of the IP address.
+// The current state of the IP address. Valid Value:
+// - normal: indicates normal (not attacked).
+// - hole_begin: indicates that you are in a black hole state.
 func (o GetDdosBgpIpsIpOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDdosBgpIpsIp) string { return v.Status }).(pulumi.StringOutput)
 }

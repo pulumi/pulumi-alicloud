@@ -44,7 +44,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -73,10 +72,6 @@ import javax.annotation.Nullable;
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory("cloud_efficiency")
  *             .availableResourceCreation("VSwitch")
- *             .build());
- * 
- *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(default_.zones()[0].id())
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -108,7 +103,7 @@ import javax.annotation.Nullable;
  *             .hostName("terraform-example")
  *             .instanceChargeType("PrePaid")
  *             .instanceName("terraform-example")
- *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
+ *             .instanceType("ecs.s6-c1m1.small")
  *             .internetChargeType("PayByBandwidth")
  *             .internetMaxBandwidthIn(5)
  *             .internetMaxBandwidthOut(5)

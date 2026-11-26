@@ -96,7 +96,7 @@ public final class GetServerlessInstancesInstance {
      */
     private Integer maxIops;
     /**
-     * @return The network type of the instance.
+     * @return The network type of the instance. Valid values: `Classic` or `VPC`.
      * 
      */
     private String networkType;
@@ -121,7 +121,7 @@ public final class GetServerlessInstancesInstance {
      */
     private List<GetServerlessInstancesInstanceSecurityIpGroup> securityIpGroups;
     /**
-     * @return The status of the instance.
+     * @return The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
      * 
      */
     private String status;
@@ -131,7 +131,7 @@ public final class GetServerlessInstancesInstance {
      */
     private String storageEngine;
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     private Map<String,String> tags;
@@ -270,7 +270,7 @@ public final class GetServerlessInstancesInstance {
         return this.maxIops;
     }
     /**
-     * @return The network type of the instance.
+     * @return The network type of the instance. Valid values: `Classic` or `VPC`.
      * 
      */
     public String networkType() {
@@ -305,7 +305,7 @@ public final class GetServerlessInstancesInstance {
         return this.securityIpGroups;
     }
     /**
-     * @return The status of the instance.
+     * @return The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
      * 
      */
     public String status() {
@@ -319,7 +319,7 @@ public final class GetServerlessInstancesInstance {
         return this.storageEngine;
     }
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {

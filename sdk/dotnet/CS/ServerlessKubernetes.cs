@@ -130,14 +130,15 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-        /// - ack.standard: Standard serverless clusters.
-        /// - ack.pro.small: Professional serverless clusters.
+        /// - `ack.standard`: Standard serverless clusters.
+        /// - `ack.pro.small`: Professional serverless clusters.
         /// </summary>
         [Output("clusterSpec")]
         public Output<string> ClusterSpec { get; private set; } = null!;
 
         /// <summary>
         /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        /// 
         /// &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         /// </summary>
         [Output("customSan")]
@@ -151,8 +152,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether enable the deletion protection or not.
-        /// - true: Enable deletion protection.
-        /// - false: Disable deletion protection.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -228,7 +227,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// The cluster automatic operation policy. See `OperationPolicy` below.
         /// 
-        /// *Removed params*
+        /// The following arguments have been removed since v1.229.1: `VswitchId`, `CreateV2Cluster`, and `ForceUpdate`. Use `VswitchIds` instead of `VswitchId`.
         /// </summary>
         [Output("operationPolicy")]
         public Output<Outputs.ServerlessKubernetesOperationPolicy> OperationPolicy { get; private set; } = null!;
@@ -395,14 +394,15 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-        /// - ack.standard: Standard serverless clusters.
-        /// - ack.pro.small: Professional serverless clusters.
+        /// - `ack.standard`: Standard serverless clusters.
+        /// - `ack.pro.small`: Professional serverless clusters.
         /// </summary>
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
 
         /// <summary>
         /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        /// 
         /// &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         /// </summary>
         [Input("customSan")]
@@ -422,8 +422,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether enable the deletion protection or not.
-        /// - true: Enable deletion protection.
-        /// - false: Disable deletion protection.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -499,7 +497,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// The cluster automatic operation policy. See `OperationPolicy` below.
         /// 
-        /// *Removed params*
+        /// The following arguments have been removed since v1.229.1: `VswitchId`, `CreateV2Cluster`, and `ForceUpdate`. Use `VswitchIds` instead of `VswitchId`.
         /// </summary>
         [Input("operationPolicy")]
         public Input<Inputs.ServerlessKubernetesOperationPolicyArgs>? OperationPolicy { get; set; }
@@ -646,14 +644,15 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-        /// - ack.standard: Standard serverless clusters.
-        /// - ack.pro.small: Professional serverless clusters.
+        /// - `ack.standard`: Standard serverless clusters.
+        /// - `ack.pro.small`: Professional serverless clusters.
         /// </summary>
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
 
         /// <summary>
         /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        /// 
         /// &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         /// </summary>
         [Input("customSan")]
@@ -673,8 +672,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether enable the deletion protection or not.
-        /// - true: Enable deletion protection.
-        /// - false: Disable deletion protection.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -750,7 +747,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// The cluster automatic operation policy. See `OperationPolicy` below.
         /// 
-        /// *Removed params*
+        /// The following arguments have been removed since v1.229.1: `VswitchId`, `CreateV2Cluster`, and `ForceUpdate`. Use `VswitchIds` instead of `VswitchId`.
         /// </summary>
         [Input("operationPolicy")]
         public Input<Inputs.ServerlessKubernetesOperationPolicyGetArgs>? OperationPolicy { get; set; }

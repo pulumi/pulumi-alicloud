@@ -65,11 +65,17 @@ class GetRegionsResult:
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[_builtins.str]:
+        """
+        The Region ID.
+        """
         return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter
     def regions(self) -> Sequence['outputs.GetRegionsRegionResult']:
+        """
+        A list of Click House Regions. Each element contains the following attributes:
+        """
         return pulumi.get(self, "regions")
 
 
@@ -93,7 +99,7 @@ def get_regions(current: Optional[_builtins.bool] = None,
     """
     This data source provides the Click House Regions of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.138.0+.
+    > **NOTE:** Available since v1.138.0.
 
     ## Example Usage
 
@@ -132,7 +138,7 @@ def get_regions_output(current: pulumi.Input[Optional[Optional[_builtins.bool]]]
     """
     This data source provides the Click House Regions of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.138.0+.
+    > **NOTE:** Available since v1.138.0.
 
     ## Example Usage
 

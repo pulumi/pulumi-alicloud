@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string EmailSubject;
         /// <summary>
-        /// Indicates whether the alert rule is enabled.
+        /// EnableState.
         /// </summary>
         public readonly bool EnableState;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string SourceType;
         /// <summary>
-        /// The status of Group Metric Rule..
+        /// The status of Group Metric Rule.
         /// </summary>
         public readonly string Status;
         /// <summary>

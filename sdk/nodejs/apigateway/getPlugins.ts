@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.187.0+.
+ * > **NOTE:** Available since v1.187.0.
  *
  * ## Example Usage
  *
@@ -84,19 +84,34 @@ export interface GetPluginsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Plugin names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * The name of the plug-in that you want to create.
+     */
     readonly pluginName?: string;
+    /**
+     * The type of the plug-in.
+     */
     readonly pluginType?: string;
+    /**
+     * A list of Api Gateway Plugins. Each element contains the following attributes:
+     */
     readonly plugins: outputs.apigateway.GetPluginsPlugin[];
+    /**
+     * The tag of the resource.
+     */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.187.0+.
+ * > **NOTE:** Available since v1.187.0.
  *
  * ## Example Usage
  *

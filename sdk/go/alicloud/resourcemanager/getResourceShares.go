@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.111.0+.
+// > **NOTE:** Available since v1.111.0.
 //
 // ## Example Usage
 //
@@ -76,15 +76,20 @@ type GetResourceSharesArgs struct {
 // A collection of values returned by getResourceShares.
 type GetResourceSharesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                 string                   `pulumi:"id"`
-	Ids                []string                 `pulumi:"ids"`
-	NameRegex          *string                  `pulumi:"nameRegex"`
-	Names              []string                 `pulumi:"names"`
-	OutputFile         *string                  `pulumi:"outputFile"`
-	ResourceShareName  *string                  `pulumi:"resourceShareName"`
-	ResourceShareOwner string                   `pulumi:"resourceShareOwner"`
-	Shares             []GetResourceSharesShare `pulumi:"shares"`
-	Status             *string                  `pulumi:"status"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Resource Share names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The name of resource share.
+	ResourceShareName *string `pulumi:"resourceShareName"`
+	// The owner of resource share.
+	ResourceShareOwner string `pulumi:"resourceShareOwner"`
+	// A list of Resource Manager Resource Shares. Each element contains the following attributes:
+	Shares []GetResourceSharesShare `pulumi:"shares"`
+	// The status of resource share.
+	Status *string `pulumi:"status"`
 }
 
 func GetResourceSharesOutput(ctx *pulumi.Context, args GetResourceSharesOutputArgs, opts ...pulumi.InvokeOption) GetResourceSharesResultOutput {
@@ -140,6 +145,7 @@ func (o GetResourceSharesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceSharesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Resource Share names.
 func (o GetResourceSharesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetResourceSharesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -148,18 +154,22 @@ func (o GetResourceSharesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceSharesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The name of resource share.
 func (o GetResourceSharesResultOutput) ResourceShareName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceSharesResult) *string { return v.ResourceShareName }).(pulumi.StringPtrOutput)
 }
 
+// The owner of resource share.
 func (o GetResourceSharesResultOutput) ResourceShareOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceSharesResult) string { return v.ResourceShareOwner }).(pulumi.StringOutput)
 }
 
+// A list of Resource Manager Resource Shares. Each element contains the following attributes:
 func (o GetResourceSharesResultOutput) Shares() GetResourceSharesShareArrayOutput {
 	return o.ApplyT(func(v GetResourceSharesResult) []GetResourceSharesShare { return v.Shares }).(GetResourceSharesShareArrayOutput)
 }
 
+// The status of resource share.
 func (o GetResourceSharesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceSharesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

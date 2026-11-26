@@ -71,6 +71,9 @@ class GetSimpleOfficeSitesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Simple Office Site names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -81,11 +84,17 @@ class GetSimpleOfficeSitesResult:
     @_builtins.property
     @pulumi.getter
     def sites(self) -> Sequence['outputs.GetSimpleOfficeSitesSiteResult']:
+        """
+        A list of Ecd Simple Office Sites. Each element contains the following attributes:
+        """
         return pulumi.get(self, "sites")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+        """
         return pulumi.get(self, "status")
 
 
@@ -112,7 +121,7 @@ def get_simple_office_sites(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     ## Example Usage
 
@@ -157,7 +166,7 @@ def get_simple_office_sites_output(ids: pulumi.Input[Optional[Optional[Sequence[
     """
     This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     ## Example Usage
 

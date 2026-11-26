@@ -44,6 +44,7 @@ import (
 //			}
 //			default8qAtD6, err := vpc.NewNetwork(ctx, "default8qAtD6", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
+//				VpcName:   pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -66,9 +67,11 @@ import (
 //					pulumi.String("172.16.2.0/24"),
 //					pulumi.String("172.16.1.0/24"),
 //				},
+//				AllowedPrefixesMode: pulumi.String("MatchMode"),
 //				VpcOwnerId:          pulumi.String(current.Id),
 //				AssociationRegionId: pulumi.String("cn-hangzhou"),
 //				VpcId:               default8qAtD6.ID(),
+//				Description:         pulumi.String("test"),
 //			})
 //			if err != nil {
 //				return err
@@ -91,14 +94,18 @@ import (
 type RouterVpcAssociation struct {
 	pulumi.CustomResourceState
 
-	// The list of allowed route prefixes.
+	// The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowedPrefixesMode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowedPrefixesMode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
 	AllowedPrefixes pulumi.StringArrayOutput `pulumi:"allowedPrefixes"`
+	// The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowedPrefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowedPrefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowedPrefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
+	AllowedPrefixesMode pulumi.StringOutput `pulumi:"allowedPrefixesMode"`
 	// The ID of the association between the ECR and the VPC.
 	AssociationId pulumi.StringOutput `pulumi:"associationId"`
 	// The region ID of the resource to be associated.
 	AssociationRegionId pulumi.StringOutput `pulumi:"associationRegionId"`
 	// The time when the association was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ECR ID.
 	EcrId pulumi.StringOutput `pulumi:"ecrId"`
 	// The deployment state of the associated resource.
@@ -106,6 +113,7 @@ type RouterVpcAssociation struct {
 	// The VPC ID.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The ID of the Alibaba Cloud account that owns the VPC.
+	//
 	// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 	VpcOwnerId pulumi.IntOutput `pulumi:"vpcOwnerId"`
 }
@@ -149,14 +157,18 @@ func GetRouterVpcAssociation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RouterVpcAssociation resources.
 type routerVpcAssociationState struct {
-	// The list of allowed route prefixes.
+	// The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowedPrefixesMode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowedPrefixesMode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
 	AllowedPrefixes []string `pulumi:"allowedPrefixes"`
+	// The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowedPrefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowedPrefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowedPrefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
+	AllowedPrefixesMode *string `pulumi:"allowedPrefixesMode"`
 	// The ID of the association between the ECR and the VPC.
 	AssociationId *string `pulumi:"associationId"`
 	// The region ID of the resource to be associated.
 	AssociationRegionId *string `pulumi:"associationRegionId"`
 	// The time when the association was created.
 	CreateTime *string `pulumi:"createTime"`
+	// The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
+	Description *string `pulumi:"description"`
 	// The ECR ID.
 	EcrId *string `pulumi:"ecrId"`
 	// The deployment state of the associated resource.
@@ -164,19 +176,24 @@ type routerVpcAssociationState struct {
 	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of the Alibaba Cloud account that owns the VPC.
+	//
 	// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 	VpcOwnerId *int `pulumi:"vpcOwnerId"`
 }
 
 type RouterVpcAssociationState struct {
-	// The list of allowed route prefixes.
+	// The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowedPrefixesMode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowedPrefixesMode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
 	AllowedPrefixes pulumi.StringArrayInput
+	// The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowedPrefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowedPrefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowedPrefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
+	AllowedPrefixesMode pulumi.StringPtrInput
 	// The ID of the association between the ECR and the VPC.
 	AssociationId pulumi.StringPtrInput
 	// The region ID of the resource to be associated.
 	AssociationRegionId pulumi.StringPtrInput
 	// The time when the association was created.
 	CreateTime pulumi.StringPtrInput
+	// The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
+	Description pulumi.StringPtrInput
 	// The ECR ID.
 	EcrId pulumi.StringPtrInput
 	// The deployment state of the associated resource.
@@ -184,6 +201,7 @@ type RouterVpcAssociationState struct {
 	// The VPC ID.
 	VpcId pulumi.StringPtrInput
 	// The ID of the Alibaba Cloud account that owns the VPC.
+	//
 	// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 	VpcOwnerId pulumi.IntPtrInput
 }
@@ -199,30 +217,40 @@ func RouterVpcAssociationExists(ctx *pulumi.Context,
 }
 
 type routerVpcAssociationArgs struct {
-	// The list of allowed route prefixes.
+	// The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowedPrefixesMode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowedPrefixesMode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
 	AllowedPrefixes []string `pulumi:"allowedPrefixes"`
+	// The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowedPrefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowedPrefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowedPrefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
+	AllowedPrefixesMode *string `pulumi:"allowedPrefixesMode"`
 	// The region ID of the resource to be associated.
 	AssociationRegionId string `pulumi:"associationRegionId"`
+	// The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
+	Description *string `pulumi:"description"`
 	// The ECR ID.
 	EcrId string `pulumi:"ecrId"`
 	// The VPC ID.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of the Alibaba Cloud account that owns the VPC.
+	//
 	// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 	VpcOwnerId *int `pulumi:"vpcOwnerId"`
 }
 
 // The set of arguments for constructing a RouterVpcAssociation resource.
 type RouterVpcAssociationArgs struct {
-	// The list of allowed route prefixes.
+	// The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowedPrefixesMode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowedPrefixesMode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
 	AllowedPrefixes pulumi.StringArrayInput
+	// The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowedPrefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowedPrefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowedPrefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
+	AllowedPrefixesMode pulumi.StringPtrInput
 	// The region ID of the resource to be associated.
 	AssociationRegionId pulumi.StringInput
+	// The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
+	Description pulumi.StringPtrInput
 	// The ECR ID.
 	EcrId pulumi.StringInput
 	// The VPC ID.
 	VpcId pulumi.StringInput
 	// The ID of the Alibaba Cloud account that owns the VPC.
+	//
 	// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 	VpcOwnerId pulumi.IntPtrInput
 }
@@ -314,9 +342,14 @@ func (o RouterVpcAssociationOutput) ToRouterVpcAssociationOutputWithContext(ctx 
 	return o
 }
 
-// The list of allowed route prefixes.
+// The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowedPrefixesMode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowedPrefixesMode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
 func (o RouterVpcAssociationOutput) AllowedPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RouterVpcAssociation) pulumi.StringArrayOutput { return v.AllowedPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowedPrefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowedPrefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowedPrefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
+func (o RouterVpcAssociationOutput) AllowedPrefixesMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterVpcAssociation) pulumi.StringOutput { return v.AllowedPrefixesMode }).(pulumi.StringOutput)
 }
 
 // The ID of the association between the ECR and the VPC.
@@ -332,6 +365,11 @@ func (o RouterVpcAssociationOutput) AssociationRegionId() pulumi.StringOutput {
 // The time when the association was created.
 func (o RouterVpcAssociationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterVpcAssociation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
+func (o RouterVpcAssociationOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterVpcAssociation) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The ECR ID.
@@ -350,6 +388,7 @@ func (o RouterVpcAssociationOutput) VpcId() pulumi.StringOutput {
 }
 
 // The ID of the Alibaba Cloud account that owns the VPC.
+//
 // > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 func (o RouterVpcAssociationOutput) VpcOwnerId() pulumi.IntOutput {
 	return o.ApplyT(func(v *RouterVpcAssociation) pulumi.IntOutput { return v.VpcOwnerId }).(pulumi.IntOutput)

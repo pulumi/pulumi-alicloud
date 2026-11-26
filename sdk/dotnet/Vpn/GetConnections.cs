@@ -214,12 +214,12 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (Optional) IDs of the VPN connections.
+        /// IDs of the VPN connections.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// (Optional) names of the VPN connections.
+        /// Names of the VPN connections.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

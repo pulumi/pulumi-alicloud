@@ -48,6 +48,7 @@ class SubscriptionJobArgs:
                  source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  subscription_data_type_ddl: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -90,6 +91,7 @@ class SubscriptionJobArgs:
         :param pulumi.Input[_builtins.str] source_endpoint_password: The password of source database instance account.
         :param pulumi.Input[_builtins.str] source_endpoint_port: The port of source database.
         :param pulumi.Input[_builtins.str] source_endpoint_role: Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
+        :param pulumi.Input[_builtins.str] source_endpoint_ssl: The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
         :param pulumi.Input[_builtins.str] source_endpoint_user_name: The username of source database instance account.
         :param pulumi.Input[_builtins.str] status: The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
         :param pulumi.Input[_builtins.bool] subscription_data_type_ddl: Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
@@ -155,6 +157,8 @@ class SubscriptionJobArgs:
             pulumi.set(__self__, "source_endpoint_port", source_endpoint_port)
         if source_endpoint_role is not None:
             pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
+        if source_endpoint_ssl is not None:
+            pulumi.set(__self__, "source_endpoint_ssl", source_endpoint_ssl)
         if source_endpoint_user_name is not None:
             pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
         if status is not None:
@@ -525,6 +529,18 @@ class SubscriptionJobArgs:
         pulumi.set(self, "source_endpoint_role", value)
 
     @_builtins.property
+    @pulumi.getter(name="sourceEndpointSsl")
+    def source_endpoint_ssl(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+        """
+        return pulumi.get(self, "source_endpoint_ssl")
+
+    @source_endpoint_ssl.setter
+    def source_endpoint_ssl(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_endpoint_ssl", value)
+
+    @_builtins.property
     @pulumi.getter(name="sourceEndpointUserName")
     def source_endpoint_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -677,6 +693,7 @@ class _SubscriptionJobState:
                  source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  subscription_data_type_ddl: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -719,6 +736,7 @@ class _SubscriptionJobState:
         :param pulumi.Input[_builtins.str] source_endpoint_port: The port of source database.
         :param pulumi.Input[_builtins.str] source_endpoint_region: The region of source database.
         :param pulumi.Input[_builtins.str] source_endpoint_role: Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
+        :param pulumi.Input[_builtins.str] source_endpoint_ssl: The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
         :param pulumi.Input[_builtins.str] source_endpoint_user_name: The username of source database instance account.
         :param pulumi.Input[_builtins.str] status: The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
         :param pulumi.Input[_builtins.bool] subscription_data_type_ddl: Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
@@ -788,6 +806,8 @@ class _SubscriptionJobState:
             pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
         if source_endpoint_role is not None:
             pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
+        if source_endpoint_ssl is not None:
+            pulumi.set(__self__, "source_endpoint_ssl", source_endpoint_ssl)
         if source_endpoint_user_name is not None:
             pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
         if status is not None:
@@ -1158,6 +1178,18 @@ class _SubscriptionJobState:
         pulumi.set(self, "source_endpoint_role", value)
 
     @_builtins.property
+    @pulumi.getter(name="sourceEndpointSsl")
+    def source_endpoint_ssl(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+        """
+        return pulumi.get(self, "source_endpoint_ssl")
+
+    @source_endpoint_ssl.setter
+    def source_endpoint_ssl(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_endpoint_ssl", value)
+
+    @_builtins.property
     @pulumi.getter(name="sourceEndpointUserName")
     def source_endpoint_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1313,6 +1345,7 @@ class SubscriptionJob(pulumi.CustomResource):
                  source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  subscription_data_type_ddl: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1380,7 +1413,7 @@ class SubscriptionJob(pulumi.CustomResource):
             security_group_ids=[example_security_group.id])
         example_rds_account = alicloud.rds.RdsAccount("example",
             db_instance_id=example_instance.id,
-            account_name="test_mysql",
+            account_name="example_mysql",
             account_password="N1cetest")
         example_database = alicloud.rds.Database("example",
             instance_id=example_instance.id,
@@ -1416,11 +1449,15 @@ class SubscriptionJob(pulumi.CustomResource):
 
         ## Import
 
-        DTS Subscription Job can be imported using the id, e.g.
+        DTS Subscription Job can be imported using its canonical `DtsJobId`, e.g.
 
         ```sh
-        $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <id>
+        $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <DtsJobId>
         ```
+
+        The import ID must exactly match `DtsJobId` returned by `DescribeDtsJobDetail`. A DTS instance ID (`DtsInstanceID`) is not a job ID, even if the detail API accepts it as a lookup key. Import rejects a different or missing job identity and does not automatically bind to another task.
+
+        If existing state contains an instance ID, first back up the state and verify the intended job in DTS. Remove only the incorrect local state binding with `terraform state rm`, then explicitly import the verified `DtsJobId`. Do not delete the cloud job to correct its state binding. If the original job has been deleted or rebuilt, verify the replacement separately before importing it.
 
 
         :param str resource_name: The name of the resource.
@@ -1454,6 +1491,7 @@ class SubscriptionJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_endpoint_port: The port of source database.
         :param pulumi.Input[_builtins.str] source_endpoint_region: The region of source database.
         :param pulumi.Input[_builtins.str] source_endpoint_role: Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
+        :param pulumi.Input[_builtins.str] source_endpoint_ssl: The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
         :param pulumi.Input[_builtins.str] source_endpoint_user_name: The username of source database instance account.
         :param pulumi.Input[_builtins.str] status: The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
         :param pulumi.Input[_builtins.bool] subscription_data_type_ddl: Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
@@ -1527,7 +1565,7 @@ class SubscriptionJob(pulumi.CustomResource):
             security_group_ids=[example_security_group.id])
         example_rds_account = alicloud.rds.RdsAccount("example",
             db_instance_id=example_instance.id,
-            account_name="test_mysql",
+            account_name="example_mysql",
             account_password="N1cetest")
         example_database = alicloud.rds.Database("example",
             instance_id=example_instance.id,
@@ -1563,11 +1601,15 @@ class SubscriptionJob(pulumi.CustomResource):
 
         ## Import
 
-        DTS Subscription Job can be imported using the id, e.g.
+        DTS Subscription Job can be imported using its canonical `DtsJobId`, e.g.
 
         ```sh
-        $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <id>
+        $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <DtsJobId>
         ```
+
+        The import ID must exactly match `DtsJobId` returned by `DescribeDtsJobDetail`. A DTS instance ID (`DtsInstanceID`) is not a job ID, even if the detail API accepts it as a lookup key. Import rejects a different or missing job identity and does not automatically bind to another task.
+
+        If existing state contains an instance ID, first back up the state and verify the intended job in DTS. Remove only the incorrect local state binding with `terraform state rm`, then explicitly import the verified `DtsJobId`. Do not delete the cloud job to correct its state binding. If the original job has been deleted or rebuilt, verify the replacement separately before importing it.
 
 
         :param str resource_name: The name of the resource.
@@ -1614,6 +1656,7 @@ class SubscriptionJob(pulumi.CustomResource):
                  source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  subscription_data_type_ddl: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1670,6 +1713,7 @@ class SubscriptionJob(pulumi.CustomResource):
                 raise TypeError("Missing required property 'source_endpoint_region'")
             __props__.__dict__["source_endpoint_region"] = source_endpoint_region
             __props__.__dict__["source_endpoint_role"] = source_endpoint_role
+            __props__.__dict__["source_endpoint_ssl"] = source_endpoint_ssl
             __props__.__dict__["source_endpoint_user_name"] = source_endpoint_user_name
             __props__.__dict__["status"] = status
             __props__.__dict__["subscription_data_type_ddl"] = subscription_data_type_ddl
@@ -1719,6 +1763,7 @@ class SubscriptionJob(pulumi.CustomResource):
             source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
             source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
             source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
             source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             subscription_data_type_ddl: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1765,6 +1810,7 @@ class SubscriptionJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_endpoint_port: The port of source database.
         :param pulumi.Input[_builtins.str] source_endpoint_region: The region of source database.
         :param pulumi.Input[_builtins.str] source_endpoint_role: Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
+        :param pulumi.Input[_builtins.str] source_endpoint_ssl: The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
         :param pulumi.Input[_builtins.str] source_endpoint_user_name: The username of source database instance account.
         :param pulumi.Input[_builtins.str] status: The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
         :param pulumi.Input[_builtins.bool] subscription_data_type_ddl: Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
@@ -1809,6 +1855,7 @@ class SubscriptionJob(pulumi.CustomResource):
         __props__.__dict__["source_endpoint_port"] = source_endpoint_port
         __props__.__dict__["source_endpoint_region"] = source_endpoint_region
         __props__.__dict__["source_endpoint_role"] = source_endpoint_role
+        __props__.__dict__["source_endpoint_ssl"] = source_endpoint_ssl
         __props__.__dict__["source_endpoint_user_name"] = source_endpoint_user_name
         __props__.__dict__["status"] = status
         __props__.__dict__["subscription_data_type_ddl"] = subscription_data_type_ddl
@@ -1853,6 +1900,7 @@ class SubscriptionJob(pulumi.CustomResource):
             source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
             source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
             source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
             source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             subscription_data_type_ddl: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1893,6 +1941,7 @@ class SubscriptionJob(pulumi.CustomResource):
         __props__["sourceEndpointPort"] = source_endpoint_port
         __props__["sourceEndpointRegion"] = source_endpoint_region
         __props__["sourceEndpointRole"] = source_endpoint_role
+        __props__["sourceEndpointSsl"] = source_endpoint_ssl
         __props__["sourceEndpointUserName"] = source_endpoint_user_name
         __props__["status"] = status
         __props__["subscriptionDataTypeDdl"] = subscription_data_type_ddl
@@ -2136,6 +2185,14 @@ class SubscriptionJob(pulumi.CustomResource):
         Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
         """
         return pulumi.get(self, "source_endpoint_role")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceEndpointSsl")
+    def source_endpoint_ssl(self) -> pulumi.Output[_builtins.str]:
+        """
+        The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+        """
+        return pulumi.get(self, "source_endpoint_ssl")
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointUserName")

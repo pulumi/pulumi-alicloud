@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the rules associated with a server load balancer listener.
  *
+ * > **NOTE:** Available since v1.15.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -123,6 +125,8 @@ export interface GetRulesResult {
 }
 /**
  * This data source provides the rules associated with a server load balancer listener.
+ *
+ * > **NOTE:** Available since v1.15.0.
  *
  * ## Example Usage
  *

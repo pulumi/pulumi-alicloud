@@ -17,7 +17,7 @@ public final class GetApplicationLoadBalancersBalancerListenerPortsAndProtocal {
      */
     private Integer listenerPort;
     /**
-     * @return The listener protoal.
+     * @return The listener protocol.
      * 
      */
     private String listenerProtocal;
@@ -31,7 +31,7 @@ public final class GetApplicationLoadBalancersBalancerListenerPortsAndProtocal {
         return this.listenerPort;
     }
     /**
-     * @return The listener protoal.
+     * @return The listener protocol.
      * 
      */
     public String listenerProtocal() {

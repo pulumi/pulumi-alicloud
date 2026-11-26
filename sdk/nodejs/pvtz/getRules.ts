@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the PrivateZone Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *
@@ -64,6 +64,9 @@ export interface GetRulesArgs {
  * A collection of values returned by getRules.
  */
 export interface GetRulesResult {
+    /**
+     * The ID of the Endpoint.
+     */
     readonly endpointId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -71,14 +74,20 @@ export interface GetRulesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Rule names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of PrivateZone Rules. Each element contains the following attributes:
+     */
     readonly rules: outputs.pvtz.GetRulesRule[];
 }
 /**
  * This data source provides the PrivateZone Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *

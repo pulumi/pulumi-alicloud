@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Hbr Vaults of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.129.0+.
+// > **NOTE:** Available since v1.129.0.
 //
 // ## Example Usage
 //
@@ -72,14 +72,18 @@ type GetVaultsArgs struct {
 // A collection of values returned by getVaults.
 type GetVaultsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string           `pulumi:"id"`
-	Ids        []string         `pulumi:"ids"`
-	NameRegex  *string          `pulumi:"nameRegex"`
-	Names      []string         `pulumi:"names"`
-	OutputFile *string          `pulumi:"outputFile"`
-	Status     *string          `pulumi:"status"`
-	VaultType  *string          `pulumi:"vaultType"`
-	Vaults     []GetVaultsVault `pulumi:"vaults"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of vault names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
+	Status *string `pulumi:"status"`
+	// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+	VaultType *string `pulumi:"vaultType"`
+	// A list of Hbr vaults. Each element contains the following attributes:
+	Vaults []GetVaultsVault `pulumi:"vaults"`
 }
 
 func GetVaultsOutput(ctx *pulumi.Context, args GetVaultsOutputArgs, opts ...pulumi.InvokeOption) GetVaultsResultOutput {
@@ -135,6 +139,7 @@ func (o GetVaultsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVaultsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of vault names.
 func (o GetVaultsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVaultsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -143,14 +148,17 @@ func (o GetVaultsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVaultsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
 func (o GetVaultsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVaultsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
 func (o GetVaultsResultOutput) VaultType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVaultsResult) *string { return v.VaultType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Hbr vaults. Each element contains the following attributes:
 func (o GetVaultsResultOutput) Vaults() GetVaultsVaultArrayOutput {
 	return o.ApplyT(func(v GetVaultsResult) []GetVaultsVault { return v.Vaults }).(GetVaultsVaultArrayOutput)
 }

@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BackendServerBackendServer {
+    /**
+     * @return A list backend server ID (ECS instance ID).
+     * 
+     */
     private String serverId;
+    /**
+     * @return ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `serverIp` parameter.
+     * 
+     */
     private @Nullable String serverIp;
+    /**
+     * @return Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
+     * 
+     */
     private @Nullable String type;
+    /**
+     * @return Weight of the backend server. Valid value range: [0-100].
+     * 
+     */
     private Integer weight;
 
     private BackendServerBackendServer() {}
+    /**
+     * @return A list backend server ID (ECS instance ID).
+     * 
+     */
     public String serverId() {
         return this.serverId;
     }
+    /**
+     * @return ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `serverIp` parameter.
+     * 
+     */
     public Optional<String> serverIp() {
         return Optional.ofNullable(this.serverIp);
     }
+    /**
+     * @return Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Weight of the backend server. Valid value range: [0-100].
+     * 
+     */
     public Integer weight() {
         return this.weight;
     }

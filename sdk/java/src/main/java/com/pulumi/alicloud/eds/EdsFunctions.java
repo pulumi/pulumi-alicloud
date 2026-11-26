@@ -63,7 +63,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -108,7 +108,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -153,7 +153,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -198,7 +198,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -243,7 +243,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -288,7 +288,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -333,7 +333,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -378,7 +378,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.176.0+.
+     * &gt; **NOTE:** Available since v1.176.0.
      * 
      * ## Example Usage
      * 
@@ -427,7 +427,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.176.0+.
+     * &gt; **NOTE:** Available since v1.176.0.
      * 
      * ## Example Usage
      * 
@@ -476,7 +476,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.176.0+.
+     * &gt; **NOTE:** Available since v1.176.0.
      * 
      * ## Example Usage
      * 
@@ -525,7 +525,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.176.0+.
+     * &gt; **NOTE:** Available since v1.176.0.
      * 
      * ## Example Usage
      * 
@@ -574,7 +574,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.176.0+.
+     * &gt; **NOTE:** Available since v1.176.0.
      * 
      * ## Example Usage
      * 
@@ -623,7 +623,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.176.0+.
+     * &gt; **NOTE:** Available since v1.176.0.
      * 
      * ## Example Usage
      * 
@@ -672,7 +672,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.176.0+.
+     * &gt; **NOTE:** Available since v1.176.0.
      * 
      * ## Example Usage
      * 
@@ -721,7 +721,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd bundles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.143.0+.
+     * &gt; **NOTE:** Available since v1.143.0.
      * 
      * ## Example Usage
      * 
@@ -765,7 +765,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd bundles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.143.0+.
+     * &gt; **NOTE:** Available since v1.143.0.
      * 
      * ## Example Usage
      * 
@@ -809,7 +809,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd bundles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.143.0+.
+     * &gt; **NOTE:** Available since v1.143.0.
      * 
      * ## Example Usage
      * 
@@ -853,7 +853,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd bundles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.143.0+.
+     * &gt; **NOTE:** Available since v1.143.0.
      * 
      * ## Example Usage
      * 
@@ -897,7 +897,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd bundles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.143.0+.
+     * &gt; **NOTE:** Available since v1.143.0.
      * 
      * ## Example Usage
      * 
@@ -941,7 +941,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd bundles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.143.0+.
+     * &gt; **NOTE:** Available since v1.143.0.
      * 
      * ## Example Usage
      * 
@@ -985,7 +985,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd bundles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.143.0+.
+     * &gt; **NOTE:** Available since v1.143.0.
      * 
      * ## Example Usage
      * 
@@ -1029,7 +1029,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Commands of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -1127,7 +1127,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Commands of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -1225,7 +1225,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Commands of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -1323,7 +1323,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Commands of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -1421,7 +1421,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Commands of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -1519,7 +1519,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Commands of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -1617,7 +1617,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Commands of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -1715,7 +1715,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.176.0+.
+     * &gt; **NOTE:** Available since v1.176.0.
      * 
      * ## Example Usage
      * 
@@ -1760,7 +1760,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.176.0+.
+     * &gt; **NOTE:** Available since v1.176.0.
      * 
      * ## Example Usage
      * 
@@ -1805,7 +1805,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.176.0+.
+     * &gt; **NOTE:** Available since v1.176.0.
      * 
      * ## Example Usage
      * 
@@ -1850,7 +1850,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.176.0+.
+     * &gt; **NOTE:** Available since v1.176.0.
      * 
      * ## Example Usage
      * 
@@ -1895,7 +1895,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.176.0+.
+     * &gt; **NOTE:** Available since v1.176.0.
      * 
      * ## Example Usage
      * 
@@ -1940,7 +1940,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.176.0+.
+     * &gt; **NOTE:** Available since v1.176.0.
      * 
      * ## Example Usage
      * 
@@ -1985,7 +1985,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.176.0+.
+     * &gt; **NOTE:** Available since v1.176.0.
      * 
      * ## Example Usage
      * 
@@ -2030,7 +2030,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.170.0+.
+     * &gt; **NOTE:** Available since v1.170.0.
      * 
      * ## Example Usage
      * 
@@ -2075,7 +2075,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.170.0+.
+     * &gt; **NOTE:** Available since v1.170.0.
      * 
      * ## Example Usage
      * 
@@ -2120,7 +2120,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.170.0+.
+     * &gt; **NOTE:** Available since v1.170.0.
      * 
      * ## Example Usage
      * 
@@ -2165,7 +2165,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.170.0+.
+     * &gt; **NOTE:** Available since v1.170.0.
      * 
      * ## Example Usage
      * 
@@ -2210,7 +2210,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.170.0+.
+     * &gt; **NOTE:** Available since v1.170.0.
      * 
      * ## Example Usage
      * 
@@ -2255,7 +2255,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.170.0+.
+     * &gt; **NOTE:** Available since v1.170.0.
      * 
      * ## Example Usage
      * 
@@ -2300,7 +2300,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.170.0+.
+     * &gt; **NOTE:** Available since v1.170.0.
      * 
      * ## Example Usage
      * 
@@ -2345,7 +2345,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Desktops of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -2358,10 +2358,13 @@ public final class EdsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
      * import com.pulumi.alicloud.eds.SimpleOfficeSite;
      * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
-     * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.Bundle;
+     * import com.pulumi.alicloud.eds.BundleArgs;
      * import com.pulumi.alicloud.eds.EcdPolicyGroup;
      * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
      * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
@@ -2378,34 +2381,55 @@ public final class EdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform_example");
+     *         final var default = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .imageType("SYSTEM")
+     *             .osType("Windows")
+     *             .desktopInstanceType("eds.hf.4c8g")
+     *             .build());
+     * 
+     *         final var defaultGetDesktopTypes = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
+     *             .instanceTypeFamily("eds.hf")
+     *             .cpuCount(4)
+     *             .memorySize(8192)
+     *             .build());
+     * 
      *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
-     *             .officeSiteName("your_office_site_name")
+     *             .officeSiteName(name)
      *             .build());
      * 
-     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType("SYSTEM")
+     *         var defaultBundle = new Bundle("defaultBundle", BundleArgs.builder()
+     *             .desktopType(defaultGetDesktopTypes.ids()[0])
+     *             .imageId(default_.ids()[0])
+     *             .userDiskSizeGibs(110)
+     *             .rootDiskSizeGib(120)
+     *             .rootDiskPerformanceLevel("PL1")
+     *             .userDiskPerformanceLevel("PL1")
+     *             .bundleName(name)
+     *             .description(name)
      *             .build());
      * 
      *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
-     *             .policyGroupName("your_policy_group_name")
+     *             .policyGroupName(name)
      *             .clipboard("readwrite")
      *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description("example_value")
+     *                 .description(name)
      *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
      *                 .type("inflow")
      *                 .policy("accept")
-     *                 .description("example_value")
+     *                 .description(name)
      *                 .portRange("80/80")
      *                 .ipProtocol("TCP")
      *                 .priority("1")
@@ -2414,17 +2438,15 @@ public final class EdsFunctions {
      *             .build());
      * 
      *         var defaultUser = new User("defaultUser", UserArgs.builder()
-     *             .endUserId("your_end_user_id")
-     *             .email("your_email")
-     *             .phone("your_phone")
-     *             .password("your_password")
+     *             .endUserId(name)
+     *             .email(String.format("%s}{@literal @}{@code aaa.com", name))
      *             .build());
      * 
      *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(default_.bundles()[0].id())
-     *             .desktopName("your_desktop_name")
+     *             .bundleId(defaultBundle.id())
+     *             .desktopName(name)
      *             .endUserIds(defaultUser.id())
      *             .build());
      * 
@@ -2432,14 +2454,9 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
-     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
-     *             .nameRegex(defaultDesktop.desktopName())
-     *             .build());
-     * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops().get(0).id()));
-     *     }
-     * }
+     *         ctx.export("ecdDesktopsId0", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -2450,7 +2467,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Desktops of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -2463,10 +2480,13 @@ public final class EdsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
      * import com.pulumi.alicloud.eds.SimpleOfficeSite;
      * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
-     * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.Bundle;
+     * import com.pulumi.alicloud.eds.BundleArgs;
      * import com.pulumi.alicloud.eds.EcdPolicyGroup;
      * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
      * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
@@ -2483,34 +2503,55 @@ public final class EdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform_example");
+     *         final var default = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .imageType("SYSTEM")
+     *             .osType("Windows")
+     *             .desktopInstanceType("eds.hf.4c8g")
+     *             .build());
+     * 
+     *         final var defaultGetDesktopTypes = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
+     *             .instanceTypeFamily("eds.hf")
+     *             .cpuCount(4)
+     *             .memorySize(8192)
+     *             .build());
+     * 
      *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
-     *             .officeSiteName("your_office_site_name")
+     *             .officeSiteName(name)
      *             .build());
      * 
-     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType("SYSTEM")
+     *         var defaultBundle = new Bundle("defaultBundle", BundleArgs.builder()
+     *             .desktopType(defaultGetDesktopTypes.ids()[0])
+     *             .imageId(default_.ids()[0])
+     *             .userDiskSizeGibs(110)
+     *             .rootDiskSizeGib(120)
+     *             .rootDiskPerformanceLevel("PL1")
+     *             .userDiskPerformanceLevel("PL1")
+     *             .bundleName(name)
+     *             .description(name)
      *             .build());
      * 
      *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
-     *             .policyGroupName("your_policy_group_name")
+     *             .policyGroupName(name)
      *             .clipboard("readwrite")
      *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description("example_value")
+     *                 .description(name)
      *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
      *                 .type("inflow")
      *                 .policy("accept")
-     *                 .description("example_value")
+     *                 .description(name)
      *                 .portRange("80/80")
      *                 .ipProtocol("TCP")
      *                 .priority("1")
@@ -2519,17 +2560,15 @@ public final class EdsFunctions {
      *             .build());
      * 
      *         var defaultUser = new User("defaultUser", UserArgs.builder()
-     *             .endUserId("your_end_user_id")
-     *             .email("your_email")
-     *             .phone("your_phone")
-     *             .password("your_password")
+     *             .endUserId(name)
+     *             .email(String.format("%s}{@literal @}{@code aaa.com", name))
      *             .build());
      * 
      *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(default_.bundles()[0].id())
-     *             .desktopName("your_desktop_name")
+     *             .bundleId(defaultBundle.id())
+     *             .desktopName(name)
      *             .endUserIds(defaultUser.id())
      *             .build());
      * 
@@ -2537,14 +2576,9 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
-     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
-     *             .nameRegex(defaultDesktop.desktopName())
-     *             .build());
-     * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops().get(0).id()));
-     *     }
-     * }
+     *         ctx.export("ecdDesktopsId0", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -2555,7 +2589,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Desktops of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -2568,10 +2602,13 @@ public final class EdsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
      * import com.pulumi.alicloud.eds.SimpleOfficeSite;
      * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
-     * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.Bundle;
+     * import com.pulumi.alicloud.eds.BundleArgs;
      * import com.pulumi.alicloud.eds.EcdPolicyGroup;
      * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
      * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
@@ -2588,34 +2625,55 @@ public final class EdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform_example");
+     *         final var default = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .imageType("SYSTEM")
+     *             .osType("Windows")
+     *             .desktopInstanceType("eds.hf.4c8g")
+     *             .build());
+     * 
+     *         final var defaultGetDesktopTypes = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
+     *             .instanceTypeFamily("eds.hf")
+     *             .cpuCount(4)
+     *             .memorySize(8192)
+     *             .build());
+     * 
      *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
-     *             .officeSiteName("your_office_site_name")
+     *             .officeSiteName(name)
      *             .build());
      * 
-     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType("SYSTEM")
+     *         var defaultBundle = new Bundle("defaultBundle", BundleArgs.builder()
+     *             .desktopType(defaultGetDesktopTypes.ids()[0])
+     *             .imageId(default_.ids()[0])
+     *             .userDiskSizeGibs(110)
+     *             .rootDiskSizeGib(120)
+     *             .rootDiskPerformanceLevel("PL1")
+     *             .userDiskPerformanceLevel("PL1")
+     *             .bundleName(name)
+     *             .description(name)
      *             .build());
      * 
      *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
-     *             .policyGroupName("your_policy_group_name")
+     *             .policyGroupName(name)
      *             .clipboard("readwrite")
      *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description("example_value")
+     *                 .description(name)
      *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
      *                 .type("inflow")
      *                 .policy("accept")
-     *                 .description("example_value")
+     *                 .description(name)
      *                 .portRange("80/80")
      *                 .ipProtocol("TCP")
      *                 .priority("1")
@@ -2624,17 +2682,15 @@ public final class EdsFunctions {
      *             .build());
      * 
      *         var defaultUser = new User("defaultUser", UserArgs.builder()
-     *             .endUserId("your_end_user_id")
-     *             .email("your_email")
-     *             .phone("your_phone")
-     *             .password("your_password")
+     *             .endUserId(name)
+     *             .email(String.format("%s}{@literal @}{@code aaa.com", name))
      *             .build());
      * 
      *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(default_.bundles()[0].id())
-     *             .desktopName("your_desktop_name")
+     *             .bundleId(defaultBundle.id())
+     *             .desktopName(name)
      *             .endUserIds(defaultUser.id())
      *             .build());
      * 
@@ -2642,14 +2698,9 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
-     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
-     *             .nameRegex(defaultDesktop.desktopName())
-     *             .build());
-     * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops().get(0).id()));
-     *     }
-     * }
+     *         ctx.export("ecdDesktopsId0", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -2660,7 +2711,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Desktops of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -2673,10 +2724,13 @@ public final class EdsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
      * import com.pulumi.alicloud.eds.SimpleOfficeSite;
      * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
-     * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.Bundle;
+     * import com.pulumi.alicloud.eds.BundleArgs;
      * import com.pulumi.alicloud.eds.EcdPolicyGroup;
      * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
      * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
@@ -2693,34 +2747,55 @@ public final class EdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform_example");
+     *         final var default = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .imageType("SYSTEM")
+     *             .osType("Windows")
+     *             .desktopInstanceType("eds.hf.4c8g")
+     *             .build());
+     * 
+     *         final var defaultGetDesktopTypes = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
+     *             .instanceTypeFamily("eds.hf")
+     *             .cpuCount(4)
+     *             .memorySize(8192)
+     *             .build());
+     * 
      *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
-     *             .officeSiteName("your_office_site_name")
+     *             .officeSiteName(name)
      *             .build());
      * 
-     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType("SYSTEM")
+     *         var defaultBundle = new Bundle("defaultBundle", BundleArgs.builder()
+     *             .desktopType(defaultGetDesktopTypes.ids()[0])
+     *             .imageId(default_.ids()[0])
+     *             .userDiskSizeGibs(110)
+     *             .rootDiskSizeGib(120)
+     *             .rootDiskPerformanceLevel("PL1")
+     *             .userDiskPerformanceLevel("PL1")
+     *             .bundleName(name)
+     *             .description(name)
      *             .build());
      * 
      *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
-     *             .policyGroupName("your_policy_group_name")
+     *             .policyGroupName(name)
      *             .clipboard("readwrite")
      *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description("example_value")
+     *                 .description(name)
      *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
      *                 .type("inflow")
      *                 .policy("accept")
-     *                 .description("example_value")
+     *                 .description(name)
      *                 .portRange("80/80")
      *                 .ipProtocol("TCP")
      *                 .priority("1")
@@ -2729,17 +2804,15 @@ public final class EdsFunctions {
      *             .build());
      * 
      *         var defaultUser = new User("defaultUser", UserArgs.builder()
-     *             .endUserId("your_end_user_id")
-     *             .email("your_email")
-     *             .phone("your_phone")
-     *             .password("your_password")
+     *             .endUserId(name)
+     *             .email(String.format("%s}{@literal @}{@code aaa.com", name))
      *             .build());
      * 
      *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(default_.bundles()[0].id())
-     *             .desktopName("your_desktop_name")
+     *             .bundleId(defaultBundle.id())
+     *             .desktopName(name)
      *             .endUserIds(defaultUser.id())
      *             .build());
      * 
@@ -2747,14 +2820,9 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
-     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
-     *             .nameRegex(defaultDesktop.desktopName())
-     *             .build());
-     * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops().get(0).id()));
-     *     }
-     * }
+     *         ctx.export("ecdDesktopsId0", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -2765,7 +2833,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Desktops of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -2778,10 +2846,13 @@ public final class EdsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
      * import com.pulumi.alicloud.eds.SimpleOfficeSite;
      * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
-     * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.Bundle;
+     * import com.pulumi.alicloud.eds.BundleArgs;
      * import com.pulumi.alicloud.eds.EcdPolicyGroup;
      * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
      * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
@@ -2798,34 +2869,55 @@ public final class EdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform_example");
+     *         final var default = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .imageType("SYSTEM")
+     *             .osType("Windows")
+     *             .desktopInstanceType("eds.hf.4c8g")
+     *             .build());
+     * 
+     *         final var defaultGetDesktopTypes = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
+     *             .instanceTypeFamily("eds.hf")
+     *             .cpuCount(4)
+     *             .memorySize(8192)
+     *             .build());
+     * 
      *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
-     *             .officeSiteName("your_office_site_name")
+     *             .officeSiteName(name)
      *             .build());
      * 
-     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType("SYSTEM")
+     *         var defaultBundle = new Bundle("defaultBundle", BundleArgs.builder()
+     *             .desktopType(defaultGetDesktopTypes.ids()[0])
+     *             .imageId(default_.ids()[0])
+     *             .userDiskSizeGibs(110)
+     *             .rootDiskSizeGib(120)
+     *             .rootDiskPerformanceLevel("PL1")
+     *             .userDiskPerformanceLevel("PL1")
+     *             .bundleName(name)
+     *             .description(name)
      *             .build());
      * 
      *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
-     *             .policyGroupName("your_policy_group_name")
+     *             .policyGroupName(name)
      *             .clipboard("readwrite")
      *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description("example_value")
+     *                 .description(name)
      *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
      *                 .type("inflow")
      *                 .policy("accept")
-     *                 .description("example_value")
+     *                 .description(name)
      *                 .portRange("80/80")
      *                 .ipProtocol("TCP")
      *                 .priority("1")
@@ -2834,17 +2926,15 @@ public final class EdsFunctions {
      *             .build());
      * 
      *         var defaultUser = new User("defaultUser", UserArgs.builder()
-     *             .endUserId("your_end_user_id")
-     *             .email("your_email")
-     *             .phone("your_phone")
-     *             .password("your_password")
+     *             .endUserId(name)
+     *             .email(String.format("%s}{@literal @}{@code aaa.com", name))
      *             .build());
      * 
      *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(default_.bundles()[0].id())
-     *             .desktopName("your_desktop_name")
+     *             .bundleId(defaultBundle.id())
+     *             .desktopName(name)
      *             .endUserIds(defaultUser.id())
      *             .build());
      * 
@@ -2852,14 +2942,9 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
-     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
-     *             .nameRegex(defaultDesktop.desktopName())
-     *             .build());
-     * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops().get(0).id()));
-     *     }
-     * }
+     *         ctx.export("ecdDesktopsId0", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -2870,7 +2955,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Desktops of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -2883,10 +2968,13 @@ public final class EdsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
      * import com.pulumi.alicloud.eds.SimpleOfficeSite;
      * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
-     * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.Bundle;
+     * import com.pulumi.alicloud.eds.BundleArgs;
      * import com.pulumi.alicloud.eds.EcdPolicyGroup;
      * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
      * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
@@ -2903,34 +2991,55 @@ public final class EdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform_example");
+     *         final var default = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .imageType("SYSTEM")
+     *             .osType("Windows")
+     *             .desktopInstanceType("eds.hf.4c8g")
+     *             .build());
+     * 
+     *         final var defaultGetDesktopTypes = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
+     *             .instanceTypeFamily("eds.hf")
+     *             .cpuCount(4)
+     *             .memorySize(8192)
+     *             .build());
+     * 
      *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
-     *             .officeSiteName("your_office_site_name")
+     *             .officeSiteName(name)
      *             .build());
      * 
-     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType("SYSTEM")
+     *         var defaultBundle = new Bundle("defaultBundle", BundleArgs.builder()
+     *             .desktopType(defaultGetDesktopTypes.ids()[0])
+     *             .imageId(default_.ids()[0])
+     *             .userDiskSizeGibs(110)
+     *             .rootDiskSizeGib(120)
+     *             .rootDiskPerformanceLevel("PL1")
+     *             .userDiskPerformanceLevel("PL1")
+     *             .bundleName(name)
+     *             .description(name)
      *             .build());
      * 
      *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
-     *             .policyGroupName("your_policy_group_name")
+     *             .policyGroupName(name)
      *             .clipboard("readwrite")
      *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description("example_value")
+     *                 .description(name)
      *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
      *                 .type("inflow")
      *                 .policy("accept")
-     *                 .description("example_value")
+     *                 .description(name)
      *                 .portRange("80/80")
      *                 .ipProtocol("TCP")
      *                 .priority("1")
@@ -2939,17 +3048,15 @@ public final class EdsFunctions {
      *             .build());
      * 
      *         var defaultUser = new User("defaultUser", UserArgs.builder()
-     *             .endUserId("your_end_user_id")
-     *             .email("your_email")
-     *             .phone("your_phone")
-     *             .password("your_password")
+     *             .endUserId(name)
+     *             .email(String.format("%s}{@literal @}{@code aaa.com", name))
      *             .build());
      * 
      *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(default_.bundles()[0].id())
-     *             .desktopName("your_desktop_name")
+     *             .bundleId(defaultBundle.id())
+     *             .desktopName(name)
      *             .endUserIds(defaultUser.id())
      *             .build());
      * 
@@ -2957,14 +3064,9 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
-     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
-     *             .nameRegex(defaultDesktop.desktopName())
-     *             .build());
-     * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops().get(0).id()));
-     *     }
-     * }
+     *         ctx.export("ecdDesktopsId0", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -2975,7 +3077,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Desktops of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -2988,10 +3090,13 @@ public final class EdsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
      * import com.pulumi.alicloud.eds.SimpleOfficeSite;
      * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
-     * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.Bundle;
+     * import com.pulumi.alicloud.eds.BundleArgs;
      * import com.pulumi.alicloud.eds.EcdPolicyGroup;
      * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
      * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
@@ -3008,34 +3113,55 @@ public final class EdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform_example");
+     *         final var default = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .imageType("SYSTEM")
+     *             .osType("Windows")
+     *             .desktopInstanceType("eds.hf.4c8g")
+     *             .build());
+     * 
+     *         final var defaultGetDesktopTypes = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
+     *             .instanceTypeFamily("eds.hf")
+     *             .cpuCount(4)
+     *             .memorySize(8192)
+     *             .build());
+     * 
      *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
-     *             .officeSiteName("your_office_site_name")
+     *             .officeSiteName(name)
      *             .build());
      * 
-     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType("SYSTEM")
+     *         var defaultBundle = new Bundle("defaultBundle", BundleArgs.builder()
+     *             .desktopType(defaultGetDesktopTypes.ids()[0])
+     *             .imageId(default_.ids()[0])
+     *             .userDiskSizeGibs(110)
+     *             .rootDiskSizeGib(120)
+     *             .rootDiskPerformanceLevel("PL1")
+     *             .userDiskPerformanceLevel("PL1")
+     *             .bundleName(name)
+     *             .description(name)
      *             .build());
      * 
      *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
-     *             .policyGroupName("your_policy_group_name")
+     *             .policyGroupName(name)
      *             .clipboard("readwrite")
      *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description("example_value")
+     *                 .description(name)
      *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
      *                 .type("inflow")
      *                 .policy("accept")
-     *                 .description("example_value")
+     *                 .description(name)
      *                 .portRange("80/80")
      *                 .ipProtocol("TCP")
      *                 .priority("1")
@@ -3044,17 +3170,15 @@ public final class EdsFunctions {
      *             .build());
      * 
      *         var defaultUser = new User("defaultUser", UserArgs.builder()
-     *             .endUserId("your_end_user_id")
-     *             .email("your_email")
-     *             .phone("your_phone")
-     *             .password("your_password")
+     *             .endUserId(name)
+     *             .email(String.format("%s}{@literal @}{@code aaa.com", name))
      *             .build());
      * 
      *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(default_.bundles()[0].id())
-     *             .desktopName("your_desktop_name")
+     *             .bundleId(defaultBundle.id())
+     *             .desktopName(name)
      *             .endUserIds(defaultUser.id())
      *             .build());
      * 
@@ -3062,14 +3186,9 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
-     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
-     *             .nameRegex(defaultDesktop.desktopName())
-     *             .build());
-     * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops().get(0).id()));
-     *     }
-     * }
+     *         ctx.export("ecdDesktopsId0", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -3080,7 +3199,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Images of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -3183,7 +3302,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Images of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -3286,7 +3405,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Images of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -3389,7 +3508,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Images of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -3492,7 +3611,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Images of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -3595,7 +3714,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Images of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -3698,7 +3817,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Images of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -3801,7 +3920,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.141.0+.
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
      * 
@@ -3867,7 +3986,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.141.0+.
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
      * 
@@ -3933,7 +4052,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.141.0+.
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
      * 
@@ -3999,7 +4118,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.141.0+.
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
      * 
@@ -4065,7 +4184,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.141.0+.
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
      * 
@@ -4131,7 +4250,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.141.0+.
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
      * 
@@ -4197,7 +4316,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.141.0+.
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
      * 
@@ -4263,7 +4382,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -4323,7 +4442,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -4383,7 +4502,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -4443,7 +4562,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -4503,7 +4622,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -4563,7 +4682,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -4623,7 +4742,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -4683,7 +4802,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -4753,7 +4872,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -4823,7 +4942,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -4893,7 +5012,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -4963,7 +5082,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -5033,7 +5152,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -5103,7 +5222,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -5173,7 +5292,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -5223,7 +5342,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -5273,7 +5392,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -5323,7 +5442,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -5373,7 +5492,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -5423,7 +5542,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -5473,7 +5592,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -5523,7 +5642,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -5569,7 +5688,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -5615,7 +5734,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -5661,7 +5780,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -5707,7 +5826,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -5753,7 +5872,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -5799,7 +5918,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -5845,7 +5964,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.169.0+.
+     * &gt; **NOTE:** Available since v1.169.0.
      * 
      * ## Example Usage
      * 
@@ -5889,7 +6008,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.169.0+.
+     * &gt; **NOTE:** Available since v1.169.0.
      * 
      * ## Example Usage
      * 
@@ -5933,7 +6052,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.169.0+.
+     * &gt; **NOTE:** Available since v1.169.0.
      * 
      * ## Example Usage
      * 
@@ -5977,7 +6096,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.169.0+.
+     * &gt; **NOTE:** Available since v1.169.0.
      * 
      * ## Example Usage
      * 
@@ -6021,7 +6140,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.169.0+.
+     * &gt; **NOTE:** Available since v1.169.0.
      * 
      * ## Example Usage
      * 
@@ -6065,7 +6184,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.169.0+.
+     * &gt; **NOTE:** Available since v1.169.0.
      * 
      * ## Example Usage
      * 
@@ -6109,7 +6228,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.169.0+.
+     * &gt; **NOTE:** Available since v1.169.0.
      * 
      * ## Example Usage
      * 
@@ -6153,7 +6272,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -6206,7 +6325,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -6259,7 +6378,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -6312,7 +6431,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -6365,7 +6484,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -6418,7 +6537,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -6471,7 +6590,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -6524,7 +6643,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -6568,7 +6687,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -6612,7 +6731,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -6656,7 +6775,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -6700,7 +6819,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -6744,7 +6863,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 
@@ -6788,7 +6907,7 @@ public final class EdsFunctions {
     /**
      * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0.
      * 
      * ## Example Usage
      * 

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.181.0+.
+ * > **NOTE:** Available since v1.181.0.
  *
  * ## Example Usage
  *
@@ -59,6 +59,9 @@ export interface GetBackendsArgs {
  * A collection of values returned by getBackends.
  */
 export interface GetBackendsResult {
+    /**
+     * A list of Api Gateway Backends. Each element contains the following attributes:
+     */
     readonly backends: outputs.apigateway.GetBackendsBackend[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -66,6 +69,9 @@ export interface GetBackendsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Backend names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
@@ -74,7 +80,7 @@ export interface GetBackendsResult {
 /**
  * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.181.0+.
+ * > **NOTE:** Available since v1.181.0.
  *
  * ## Example Usage
  *

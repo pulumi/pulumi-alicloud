@@ -58,7 +58,7 @@ public final class GetOssBackupPlansPlan {
     private String retention;
     /**
      * @return Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
-     * * `startTime` Backup start time, UNIX time seconds.
+     * - `startTime` Backup start time, UNIX time seconds.
      * 
      */
     private String schedule;
@@ -68,7 +68,7 @@ public final class GetOssBackupPlansPlan {
      */
     private String updatedTime;
     /**
-     * @return The ID of backup vault.
+     * @return The ID of backup vault the OssBackupPlan used.
      * 
      */
     private String vaultId;
@@ -139,7 +139,7 @@ public final class GetOssBackupPlansPlan {
     }
     /**
      * @return Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
-     * * `startTime` Backup start time, UNIX time seconds.
+     * - `startTime` Backup start time, UNIX time seconds.
      * 
      */
     public String schedule() {
@@ -153,7 +153,7 @@ public final class GetOssBackupPlansPlan {
         return this.updatedTime;
     }
     /**
-     * @return The ID of backup vault.
+     * @return The ID of backup vault the OssBackupPlan used.
      * 
      */
     public String vaultId() {

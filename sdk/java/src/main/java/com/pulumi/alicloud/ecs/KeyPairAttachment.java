@@ -182,9 +182,17 @@ public class KeyPairAttachment extends com.pulumi.resources.CustomResource {
     public Output<String> keyName() {
         return this.keyName;
     }
+    /**
+     * The name of key pair used to bind.
+     * 
+     */
     @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output<String> keyPairName;
 
+    /**
+     * @return The name of key pair used to bind.
+     * 
+     */
     public Output<String> keyPairName() {
         return this.keyPairName;
     }

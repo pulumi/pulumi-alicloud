@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Dfs File Systems of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *
@@ -67,14 +67,20 @@ export interface GetFileSystemsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of File System names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Dfs File Systems. Each element contains the following attributes:
+     */
     readonly systems: outputs.dfs.GetFileSystemsSystem[];
 }
 /**
  * This data source provides the Dfs File Systems of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *

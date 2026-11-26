@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.148.0+.
+ * > **NOTE:** Available since v1.148.0.
  *
  * ## Example Usage
  *
@@ -64,7 +64,13 @@ export interface GetDedicatedHostAccountsArgs {
  * A collection of values returned by getDedicatedHostAccounts.
  */
 export interface GetDedicatedHostAccountsResult {
+    /**
+     * A list of Cddc Dedicated Host Accounts. Each element contains the following attributes:
+     */
     readonly accounts: outputs.cddc.GetDedicatedHostAccountsAccount[];
+    /**
+     * The ID of the Dedicated host.
+     */
     readonly dedicatedHostId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -72,6 +78,9 @@ export interface GetDedicatedHostAccountsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Account names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
@@ -80,7 +89,7 @@ export interface GetDedicatedHostAccountsResult {
 /**
  * This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.148.0+.
+ * > **NOTE:** Available since v1.148.0.
  *
  * ## Example Usage
  *

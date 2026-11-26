@@ -1158,7 +1158,7 @@ class GetControlPoliciesPolicyResult(dict):
         :param _builtins.str id: The ID of the Control Policy.
         :param _builtins.str policy_document: The policy document.
         :param _builtins.str policy_id: The ID of policy.
-        :param _builtins.str policy_type: The type of policy.
+        :param _builtins.str policy_type: The policy type of control policy. Valid values `System` and `Custom`.
         """
         pulumi.set(__self__, "attachment_count", attachment_count)
         pulumi.set(__self__, "control_policy_name", control_policy_name)
@@ -1229,7 +1229,7 @@ class GetControlPoliciesPolicyResult(dict):
     @pulumi.getter(name="policyType")
     def policy_type(self) -> _builtins.str:
         """
-        The type of policy.
+        The policy type of control policy. Valid values `System` and `Custom`.
         """
         return pulumi.get(self, "policy_type")
 
@@ -1249,7 +1249,7 @@ class GetControlPolicyAttachmentsAttachmentResult(dict):
         :param _builtins.str id: The ID of the Control Policy Attachment.
         :param _builtins.str policy_id: The ID of policy.
         :param _builtins.str policy_name: The name of policy.
-        :param _builtins.str policy_type: The type of policy.
+        :param _builtins.str policy_type: The policy type of control policy. Valid values: `Custom` and `System`.
         """
         pulumi.set(__self__, "attach_date", attach_date)
         pulumi.set(__self__, "description", description)
@@ -1302,7 +1302,7 @@ class GetControlPolicyAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="policyType")
     def policy_type(self) -> _builtins.str:
         """
-        The type of policy.
+        The policy type of control policy. Valid values: `Custom` and `System`.
         """
         return pulumi.get(self, "policy_type")
 
@@ -1318,7 +1318,7 @@ class GetDelegatedAdministratorsAdministratorResult(dict):
         :param _builtins.str account_id: The ID of the member account.
         :param _builtins.str delegation_enabled_time: The time when the member was specified as a delegated administrator account.
         :param _builtins.str id: The ID of the Delegated Administrator.
-        :param _builtins.str service_principal: The identity of the trusted service.
+        :param _builtins.str service_principal: The identification of the trusted service.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "delegation_enabled_time", delegation_enabled_time)
@@ -1353,7 +1353,7 @@ class GetDelegatedAdministratorsAdministratorResult(dict):
     @pulumi.getter(name="servicePrincipal")
     def service_principal(self) -> _builtins.str:
         """
-        The identity of the trusted service.
+        The identification of the trusted service.
         """
         return pulumi.get(self, "service_principal")
 
@@ -1987,8 +1987,8 @@ class GetResourceSharesShareResult(dict):
         :param _builtins.str id: The ID of the Resource Share.
         :param _builtins.str resource_share_id: The ID of the resource share.
         :param _builtins.str resource_share_name: The name of resource share.
-        :param _builtins.str resource_share_owner: The owner of resource share.
-        :param _builtins.str status: The status of resource share.
+        :param _builtins.str resource_share_owner: The owner of resource share, Valid values: `Self` and `OtherAccounts`.
+        :param _builtins.str status: The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "resource_share_id", resource_share_id)
@@ -2024,7 +2024,7 @@ class GetResourceSharesShareResult(dict):
     @pulumi.getter(name="resourceShareOwner")
     def resource_share_owner(self) -> _builtins.str:
         """
-        The owner of resource share.
+        The owner of resource share, Valid values: `Self` and `OtherAccounts`.
         """
         return pulumi.get(self, "resource_share_owner")
 
@@ -2032,7 +2032,7 @@ class GetResourceSharesShareResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of resource share.
+        The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
         """
         return pulumi.get(self, "status")
 

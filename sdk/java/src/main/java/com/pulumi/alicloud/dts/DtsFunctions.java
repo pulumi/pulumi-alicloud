@@ -30,7 +30,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -74,7 +74,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -118,7 +118,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -162,7 +162,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -206,7 +206,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -250,7 +250,7 @@ public final class DtsFunctions {
     /**
      * This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
      * 
-     * &gt; **NOTE:** Available in 1.198.0+
+     * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
      * 
@@ -294,7 +294,7 @@ public final class DtsFunctions {
     /**
      * This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
      * 
-     * &gt; **NOTE:** Available in 1.198.0+
+     * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
      * 
@@ -338,7 +338,7 @@ public final class DtsFunctions {
     /**
      * This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
      * 
-     * &gt; **NOTE:** Available in 1.198.0+
+     * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
      * 
@@ -382,7 +382,7 @@ public final class DtsFunctions {
     /**
      * This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
      * 
-     * &gt; **NOTE:** Available in 1.198.0+
+     * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
      * 
@@ -426,7 +426,7 @@ public final class DtsFunctions {
     /**
      * This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
      * 
-     * &gt; **NOTE:** Available in 1.198.0+
+     * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
      * 
@@ -470,7 +470,7 @@ public final class DtsFunctions {
     /**
      * This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
      * 
-     * &gt; **NOTE:** Available in 1.198.0+
+     * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
      * 
@@ -514,7 +514,7 @@ public final class DtsFunctions {
     /**
      * This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
      * 
-     * &gt; **NOTE:** Available in 1.198.0+
+     * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
      * 
@@ -558,7 +558,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.157.0+.
+     * &gt; **NOTE:** Available since v1.157.0.
      * 
      * ## Example Usage
      * 
@@ -603,7 +603,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.157.0+.
+     * &gt; **NOTE:** Available since v1.157.0.
      * 
      * ## Example Usage
      * 
@@ -648,7 +648,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.157.0+.
+     * &gt; **NOTE:** Available since v1.157.0.
      * 
      * ## Example Usage
      * 
@@ -693,7 +693,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.157.0+.
+     * &gt; **NOTE:** Available since v1.157.0.
      * 
      * ## Example Usage
      * 
@@ -738,7 +738,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.157.0+.
+     * &gt; **NOTE:** Available since v1.157.0.
      * 
      * ## Example Usage
      * 
@@ -783,7 +783,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.157.0+.
+     * &gt; **NOTE:** Available since v1.157.0.
      * 
      * ## Example Usage
      * 
@@ -828,7 +828,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.157.0+.
+     * &gt; **NOTE:** Available since v1.157.0.
      * 
      * ## Example Usage
      * 
@@ -873,7 +873,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -917,7 +917,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -961,7 +961,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1005,7 +1005,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1049,7 +1049,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1093,7 +1093,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1137,7 +1137,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1181,7 +1181,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1225,7 +1225,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1269,7 +1269,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1313,7 +1313,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1357,7 +1357,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1401,7 +1401,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1445,7 +1445,7 @@ public final class DtsFunctions {
     /**
      * This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 

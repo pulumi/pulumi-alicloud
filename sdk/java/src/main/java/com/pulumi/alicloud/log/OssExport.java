@@ -176,14 +176,14 @@ public class OssExport extends com.pulumi.resources.CustomResource {
         return this.compressType;
     }
     /**
-     * Configure columns when `contentType` is `parquet` or `orc`.
+     * Configure columns when `contentType` is `parquet` or `orc`. See `configColumns` below.
      * 
      */
     @Export(name="configColumns", refs={List.class,OssExportConfigColumn.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OssExportConfigColumn>> configColumns;
 
     /**
-     * @return Configure columns when `contentType` is `parquet` or `orc`.
+     * @return Configure columns when `contentType` is `parquet` or `orc`. See `configColumns` below.
      * 
      */
     public Output<Optional<List<OssExportConfigColumn>>> configColumns() {

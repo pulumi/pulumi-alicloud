@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.82.0+
+ * > **NOTE:** Available since v1.82.0.
  *
  * ## Example Usage
  *
@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * const groups = alicloud.edas.getDeployGroups({
  *     appId: "xxx",
- *     ids: ["xxx"],
  *     outputFile: "groups.txt",
  * });
  * export const firstGroupName = groups.then(groups => groups.groups?.[0]?.groupName);
@@ -78,7 +77,7 @@ export interface GetDeployGroupsResult {
 /**
  * This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.82.0+
+ * > **NOTE:** Available since v1.82.0.
  *
  * ## Example Usage
  *
@@ -88,7 +87,6 @@ export interface GetDeployGroupsResult {
  *
  * const groups = alicloud.edas.getDeployGroups({
  *     appId: "xxx",
- *     ids: ["xxx"],
  *     outputFile: "groups.txt",
  * });
  * export const firstGroupName = groups.then(groups => groups.groups?.[0]?.groupName);

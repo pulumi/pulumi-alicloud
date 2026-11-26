@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.DirectMail.Outputs
         /// </summary>
         public readonly string ReceiversName;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
         /// </summary>
         public readonly int Status;
 

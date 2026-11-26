@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.176.0+.
+        /// &gt; **NOTE:** Available since v1.176.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.176.0+.
+        /// &gt; **NOTE:** Available since v1.176.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.176.0+.
+        /// &gt; **NOTE:** Available since v1.176.0.
         /// 
         /// ## Example Usage
         /// 
@@ -180,6 +180,9 @@ namespace Pulumi.AliCloud.Eds
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Ecd Custom Properties. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCustomPropertiesPropertyResult> Properties;
 
         [OutputConstructor]

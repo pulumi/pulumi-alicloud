@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.DirectMail.Outputs
         /// </summary>
         public readonly string ReplyStatus;
         /// <summary>
-        /// Account type.
+        /// Account type. Valid values: `Batch`, `Trigger`.
         /// </summary>
         public readonly string Sendtype;
         /// <summary>

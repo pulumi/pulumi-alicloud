@@ -156,8 +156,6 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
-     * *Removed params*
-     * 
      * @deprecated Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
      */
@@ -167,8 +165,6 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * @return From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-     * 
-     * *Removed params*
      * 
      * @deprecated Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
@@ -799,6 +795,21 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+     * 
+     */
+    @Import(name="supportPolicy")
+    private @Nullable Output<String> supportPolicy;
+
+    /**
+     * @return Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+     * 
+     */
+    public Optional<Output<String>> supportPolicy() {
+        return Optional.ofNullable(this.supportPolicy);
+    }
+
+    /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
      * 
      */
@@ -843,7 +854,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
      * 
      * &gt; **NOTE:** This parameter only applies during resource update.
      * 
-     * *Network params*
+     * Network params
      * 
      */
     @Import(name="upgradePolicy")
@@ -854,7 +865,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
      * 
      * &gt; **NOTE:** This parameter only applies during resource update.
      * 
-     * *Network params*
+     * Network params
      * 
      */
     public Optional<Output<ManagedKubernetesUpgradePolicyArgs>> upgradePolicy() {
@@ -1033,6 +1044,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         this.slbInternet = $.slbInternet;
         this.slbInternetEnabled = $.slbInternetEnabled;
         this.slbIntranet = $.slbIntranet;
+        this.supportPolicy = $.supportPolicy;
         this.tags = $.tags;
         this.timezone = $.timezone;
         this.upgradePolicy = $.upgradePolicy;
@@ -1264,8 +1276,6 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         /**
          * @param clusterCaCert From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
          * 
-         * *Removed params*
-         * 
          * @return builder
          * 
          * @deprecated Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
@@ -1279,8 +1289,6 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param clusterCaCert From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-         * 
-         * *Removed params*
          * 
          * @return builder
          * 
@@ -2191,6 +2199,27 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param supportPolicy Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportPolicy(@Nullable Output<String> supportPolicy) {
+            $.supportPolicy = supportPolicy;
+            return this;
+        }
+
+        /**
+         * @param supportPolicy Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportPolicy(String supportPolicy) {
+            return supportPolicy(Output.of(supportPolicy));
+        }
+
+        /**
          * @param tags Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
          * 
          * @return builder
@@ -2247,7 +2276,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
          * 
          * &gt; **NOTE:** This parameter only applies during resource update.
          * 
-         * *Network params*
+         * Network params
          * 
          * @return builder
          * 
@@ -2262,7 +2291,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
          * 
          * &gt; **NOTE:** This parameter only applies during resource update.
          * 
-         * *Network params*
+         * Network params
          * 
          * @return builder
          * 

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *
@@ -68,6 +68,9 @@ export interface GetDirectoriesArgs {
  * A collection of values returned by getDirectories.
  */
 export interface GetDirectoriesResult {
+    /**
+     * A list of Cloud Sso Directories. Each element contains the following attributes:
+     */
     readonly directories: outputs.cloudsso.GetDirectoriesDirectory[];
     readonly enableDetails?: boolean;
     /**
@@ -76,13 +79,16 @@ export interface GetDirectoriesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Directory names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *

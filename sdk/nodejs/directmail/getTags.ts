@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.144.0+.
+ * > **NOTE:** Available since v1.144.0.
  *
  * ## Example Usage
  *
@@ -67,14 +67,20 @@ export interface GetTagsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Tag names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Direct Mail Tags. Each element contains the following attributes:
+     */
     readonly tags: outputs.directmail.GetTagsTag[];
 }
 /**
  * This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.144.0+.
+ * > **NOTE:** Available since v1.144.0.
  *
  * ## Example Usage
  *

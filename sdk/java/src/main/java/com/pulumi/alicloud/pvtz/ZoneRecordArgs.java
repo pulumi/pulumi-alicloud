@@ -133,23 +133,31 @@ public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+     * The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+     * @return The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
 
+    /**
+     * The user client ip of the Private Zone Record.
+     * 
+     */
     @Import(name="userClientIp")
     private @Nullable Output<String> userClientIp;
 
+    /**
+     * @return The user client ip of the Private Zone Record.
+     * 
+     */
     public Optional<Output<String>> userClientIp() {
         return Optional.ofNullable(this.userClientIp);
     }
@@ -376,7 +384,7 @@ public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+         * @param type The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
          * 
          * @return builder
          * 
@@ -387,7 +395,7 @@ public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+         * @param type The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
          * 
          * @return builder
          * 
@@ -396,11 +404,23 @@ public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
             return type(Output.of(type));
         }
 
+        /**
+         * @param userClientIp The user client ip of the Private Zone Record.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userClientIp(@Nullable Output<String> userClientIp) {
             $.userClientIp = userClientIp;
             return this;
         }
 
+        /**
+         * @param userClientIp The user client ip of the Private Zone Record.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userClientIp(String userClientIp) {
             return userClientIp(Output.of(userClientIp));
         }

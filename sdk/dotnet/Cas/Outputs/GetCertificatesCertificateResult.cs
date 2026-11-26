@@ -14,60 +14,75 @@ namespace Pulumi.AliCloud.Cas.Outputs
     public sealed class GetCertificatesCertificateResult
     {
         /// <summary>
-        /// The cert is buy from aliyun or not.
+        /// Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `BuyInAliyun` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly bool BuyInAliyun;
+        /// <summary>
+        /// The Cert of the certificate. **Note:** `Cert` takes effect only if `EnableDetails` is set to `True`.
+        /// </summary>
         public readonly string Cert;
+        /// <summary>
+        /// The ID of the certificate.
+        /// </summary>
         public readonly string CertId;
+        /// <summary>
+        /// The name of the certificate.
+        /// </summary>
         public readonly string CertificateName;
         /// <summary>
-        /// The cert's city.
+        /// The city in which the organization is located.
         /// </summary>
         public readonly string City;
         /// <summary>
-        /// The cert's common name.
+        /// The parent domain name of the certificate.
         /// </summary>
         public readonly string Common;
         /// <summary>
-        /// The cert's country.
+        /// The code of the country in which the organization is located.
         /// </summary>
         public readonly string Country;
         /// <summary>
-        /// The cert's not valid after time.
+        /// The time at which the certificate expires.
         /// </summary>
         public readonly string EndDate;
         /// <summary>
-        /// The cert is expired or not.
+        /// Whether the certificate has expired.
         /// </summary>
         public readonly bool Expired;
+        /// <summary>
+        /// The fingerprint of the certificate.
+        /// </summary>
         public readonly string Fingerprint;
         /// <summary>
-        /// The cert's id.
+        /// The ID of the Ssl Certificates Service Certificate.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The cert's .
+        /// The issuer of the certificate.
         /// </summary>
         public readonly string Issuer;
+        /// <summary>
+        /// The Key of the certificate. **Note:** `Key` takes effect only if `EnableDetails` is set to `True`.
+        /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The cert's name.
+        /// (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `Name` has been deprecated from provider version 1.129.0. New field `CertificateName` instead.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The cert's organization.
+        /// The name of the organization that is associated with the certificate.
         /// </summary>
         public readonly string OrgName;
         /// <summary>
-        /// The cert's province.
+        /// The province or autonomous region in which the organization is located.
         /// </summary>
         public readonly string Province;
         /// <summary>
-        /// The cert's subject alternative name.
+        /// All domain names that are bound to the certificate.
         /// </summary>
         public readonly string Sans;
         /// <summary>
-        /// The cert's not valid before time.
+        /// The time at which the certificate starts to take effect.
         /// </summary>
         public readonly string StartDate;
 

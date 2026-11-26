@@ -145,6 +145,11 @@ export type IntegrationExporter = import("./integrationExporter").IntegrationExp
 export const IntegrationExporter: typeof import("./integrationExporter").IntegrationExporter = null as any;
 utilities.lazyLoad(exports, ["IntegrationExporter"], () => require("./integrationExporter"));
 
+export { NotificationPolicyArgs, NotificationPolicyState } from "./notificationPolicy";
+export type NotificationPolicy = import("./notificationPolicy").NotificationPolicy;
+export const NotificationPolicy: typeof import("./notificationPolicy").NotificationPolicy = null as any;
+utilities.lazyLoad(exports, ["NotificationPolicy"], () => require("./notificationPolicy"));
+
 export { PrometheusArgs, PrometheusState } from "./prometheus";
 export type Prometheus = import("./prometheus").Prometheus;
 export const Prometheus: typeof import("./prometheus").Prometheus = null as any;
@@ -199,6 +204,8 @@ const _module = {
                 return new GrafanaWorkspace(name, <any>undefined, { urn })
             case "alicloud:arms/integrationExporter:IntegrationExporter":
                 return new IntegrationExporter(name, <any>undefined, { urn })
+            case "alicloud:arms/notificationPolicy:NotificationPolicy":
+                return new NotificationPolicy(name, <any>undefined, { urn })
             case "alicloud:arms/prometheus:Prometheus":
                 return new Prometheus(name, <any>undefined, { urn })
             case "alicloud:arms/prometheusAlertRule:PrometheusAlertRule":
@@ -226,6 +233,7 @@ pulumi.runtime.registerResourceModule("alicloud", "arms/envServiceMonitor", _mod
 pulumi.runtime.registerResourceModule("alicloud", "arms/environment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/grafanaWorkspace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/integrationExporter", _module)
+pulumi.runtime.registerResourceModule("alicloud", "arms/notificationPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/prometheus", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/prometheusAlertRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/prometheusMonitoring", _module)

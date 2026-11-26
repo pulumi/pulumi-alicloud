@@ -93,6 +93,12 @@ namespace Pulumi.AliCloud.Eds
         public Output<string> CameraRedirect { get; private set; } = null!;
 
         /// <summary>
+        /// The list of client type access rules used to control which clients can access cloud desktops. See `ClientTypes` below.
+        /// </summary>
+        [Output("clientTypes")]
+        public Output<ImmutableArray<Outputs.EcdPolicyGroupClientType>> ClientTypes { get; private set; } = null!;
+
+        /// <summary>
         /// The clipboard policy. Valid values: `Off`, `Read`, `Readwrite`.
         /// </summary>
         [Output("clipboard")]
@@ -103,6 +109,18 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         [Output("domainList")]
         public Output<string?> DomainList { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to allow end users to apply for administrator assistance. Valid values: `Off`, `On`.
+        /// </summary>
+        [Output("endUserApplyAdminCoordinate")]
+        public Output<string> EndUserApplyAdminCoordinate { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to allow end users to join user groups. Valid values: `Off`, `On`.
+        /// </summary>
+        [Output("endUserGroupCoordinate")]
+        public Output<string> EndUserGroupCoordinate { get; private set; } = null!;
 
         /// <summary>
         /// The access of html5. Valid values: `Off`, `On`.
@@ -117,7 +135,13 @@ namespace Pulumi.AliCloud.Eds
         public Output<string> HtmlFileTransfer { get; private set; } = null!;
 
         /// <summary>
-        /// Local drive redirect policy. Valid values: `  readwrite `, `Off`, `Read`.
+        /// The network communication protocol. Valid values: `BOTH`, `TCP`.
+        /// </summary>
+        [Output("internetCommunicationProtocol")]
+        public Output<string> InternetCommunicationProtocol { get; private set; } = null!;
+
+        /// <summary>
+        /// Local drive redirect policy. Valid values: `Readwrite`, `Off`, `Read`.
         /// </summary>
         [Output("localDrive")]
         public Output<string> LocalDrive { get; private set; } = null!;
@@ -133,6 +157,12 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         [Output("recording")]
         public Output<string> Recording { get; private set; } = null!;
+
+        /// <summary>
+        /// The recording duration. Valid values: `10`, `20`, `30`, `60`.
+        /// </summary>
+        [Output("recordingDuration")]
+        public Output<int> RecordingDuration { get; private set; } = null!;
 
         /// <summary>
         /// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `Recording` is `Period`.
@@ -270,6 +300,18 @@ namespace Pulumi.AliCloud.Eds
         [Input("cameraRedirect")]
         public Input<string>? CameraRedirect { get; set; }
 
+        [Input("clientTypes")]
+        private InputList<Inputs.EcdPolicyGroupClientTypeArgs>? _clientTypes;
+
+        /// <summary>
+        /// The list of client type access rules used to control which clients can access cloud desktops. See `ClientTypes` below.
+        /// </summary>
+        public InputList<Inputs.EcdPolicyGroupClientTypeArgs> ClientTypes
+        {
+            get => _clientTypes ?? (_clientTypes = new InputList<Inputs.EcdPolicyGroupClientTypeArgs>());
+            set => _clientTypes = value;
+        }
+
         /// <summary>
         /// The clipboard policy. Valid values: `Off`, `Read`, `Readwrite`.
         /// </summary>
@@ -281,6 +323,18 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         [Input("domainList")]
         public Input<string>? DomainList { get; set; }
+
+        /// <summary>
+        /// Whether to allow end users to apply for administrator assistance. Valid values: `Off`, `On`.
+        /// </summary>
+        [Input("endUserApplyAdminCoordinate")]
+        public Input<string>? EndUserApplyAdminCoordinate { get; set; }
+
+        /// <summary>
+        /// Whether to allow end users to join user groups. Valid values: `Off`, `On`.
+        /// </summary>
+        [Input("endUserGroupCoordinate")]
+        public Input<string>? EndUserGroupCoordinate { get; set; }
 
         /// <summary>
         /// The access of html5. Valid values: `Off`, `On`.
@@ -295,7 +349,13 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? HtmlFileTransfer { get; set; }
 
         /// <summary>
-        /// Local drive redirect policy. Valid values: `  readwrite `, `Off`, `Read`.
+        /// The network communication protocol. Valid values: `BOTH`, `TCP`.
+        /// </summary>
+        [Input("internetCommunicationProtocol")]
+        public Input<string>? InternetCommunicationProtocol { get; set; }
+
+        /// <summary>
+        /// Local drive redirect policy. Valid values: `Readwrite`, `Off`, `Read`.
         /// </summary>
         [Input("localDrive")]
         public Input<string>? LocalDrive { get; set; }
@@ -311,6 +371,12 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         [Input("recording")]
         public Input<string>? Recording { get; set; }
+
+        /// <summary>
+        /// The recording duration. Valid values: `10`, `20`, `30`, `60`.
+        /// </summary>
+        [Input("recordingDuration")]
+        public Input<int>? RecordingDuration { get; set; }
 
         /// <summary>
         /// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `Recording` is `Period`.
@@ -404,6 +470,18 @@ namespace Pulumi.AliCloud.Eds
         [Input("cameraRedirect")]
         public Input<string>? CameraRedirect { get; set; }
 
+        [Input("clientTypes")]
+        private InputList<Inputs.EcdPolicyGroupClientTypeGetArgs>? _clientTypes;
+
+        /// <summary>
+        /// The list of client type access rules used to control which clients can access cloud desktops. See `ClientTypes` below.
+        /// </summary>
+        public InputList<Inputs.EcdPolicyGroupClientTypeGetArgs> ClientTypes
+        {
+            get => _clientTypes ?? (_clientTypes = new InputList<Inputs.EcdPolicyGroupClientTypeGetArgs>());
+            set => _clientTypes = value;
+        }
+
         /// <summary>
         /// The clipboard policy. Valid values: `Off`, `Read`, `Readwrite`.
         /// </summary>
@@ -415,6 +493,18 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         [Input("domainList")]
         public Input<string>? DomainList { get; set; }
+
+        /// <summary>
+        /// Whether to allow end users to apply for administrator assistance. Valid values: `Off`, `On`.
+        /// </summary>
+        [Input("endUserApplyAdminCoordinate")]
+        public Input<string>? EndUserApplyAdminCoordinate { get; set; }
+
+        /// <summary>
+        /// Whether to allow end users to join user groups. Valid values: `Off`, `On`.
+        /// </summary>
+        [Input("endUserGroupCoordinate")]
+        public Input<string>? EndUserGroupCoordinate { get; set; }
 
         /// <summary>
         /// The access of html5. Valid values: `Off`, `On`.
@@ -429,7 +519,13 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? HtmlFileTransfer { get; set; }
 
         /// <summary>
-        /// Local drive redirect policy. Valid values: `  readwrite `, `Off`, `Read`.
+        /// The network communication protocol. Valid values: `BOTH`, `TCP`.
+        /// </summary>
+        [Input("internetCommunicationProtocol")]
+        public Input<string>? InternetCommunicationProtocol { get; set; }
+
+        /// <summary>
+        /// Local drive redirect policy. Valid values: `Readwrite`, `Off`, `Read`.
         /// </summary>
         [Input("localDrive")]
         public Input<string>? LocalDrive { get; set; }
@@ -445,6 +541,12 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         [Input("recording")]
         public Input<string>? Recording { get; set; }
+
+        /// <summary>
+        /// The recording duration. Valid values: `10`, `20`, `30`, `60`.
+        /// </summary>
+        [Input("recordingDuration")]
+        public Input<int>? RecordingDuration { get; set; }
 
         /// <summary>
         /// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `Recording` is `Period`.

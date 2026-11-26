@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the available instance types with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.158.0+.
+ * > **NOTE:** Available since v1.158.0.
  *
  * ## Example Usage
  *
@@ -49,13 +49,16 @@ export interface GetInstanceTypesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of ecp Instance types. Each element contains the following attributes:
+     */
     readonly instanceTypes: outputs.ecp.GetInstanceTypesInstanceType[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the available instance types with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.158.0+.
+ * > **NOTE:** Available since v1.158.0.
  *
  * ## Example Usage
  *

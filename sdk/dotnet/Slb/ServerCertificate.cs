@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// For information about Server Certificate and how to use it, see [Configure Server Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
     /// 
+    /// &gt; **NOTE:** Available since v1.21.0.
+    /// 
     /// ## Example Usage
     /// 
     /// * using server_certificate/private content as string example
@@ -80,9 +82,15 @@ namespace Pulumi.AliCloud.Slb
     [AliCloudResourceType("alicloud:slb/serverCertificate:ServerCertificate")]
     public partial class ServerCertificate : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+        /// </summary>
         [Output("alicloudCertifacteId")]
         public Output<string?> AlicloudCertifacteId { get; private set; } = null!;
 
+        /// <summary>
+        /// Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
+        /// </summary>
         [Output("alicloudCertifacteName")]
         public Output<string?> AlicloudCertifacteName { get; private set; } = null!;
 
@@ -180,9 +188,15 @@ namespace Pulumi.AliCloud.Slb
 
     public sealed class ServerCertificateArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+        /// </summary>
         [Input("alicloudCertifacteId")]
         public Input<string>? AlicloudCertifacteId { get; set; }
 
+        /// <summary>
+        /// Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
+        /// </summary>
         [Input("alicloudCertifacteName")]
         public Input<string>? AlicloudCertifacteName { get; set; }
 
@@ -248,9 +262,15 @@ namespace Pulumi.AliCloud.Slb
 
     public sealed class ServerCertificateState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+        /// </summary>
         [Input("alicloudCertifacteId")]
         public Input<string>? AlicloudCertifacteId { get; set; }
 
+        /// <summary>
+        /// Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
+        /// </summary>
         [Input("alicloudCertifacteName")]
         public Input<string>? AlicloudCertifacteName { get; set; }
 

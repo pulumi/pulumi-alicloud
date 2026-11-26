@@ -125,6 +125,8 @@ type ServiceCertificate struct {
 
 	// The content of a non-SM certificate in PEM format.
 	Cert pulumi.StringPtrOutput `pulumi:"cert"`
+	// (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+	CertIdentifier pulumi.StringOutput `pulumi:"certIdentifier"`
 	// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
 	CertificateName pulumi.StringOutput `pulumi:"certificateName"`
 	// The content of an SM encryption certificate in PEM format.
@@ -207,6 +209,8 @@ func GetServiceCertificate(ctx *pulumi.Context,
 type serviceCertificateState struct {
 	// The content of a non-SM certificate in PEM format.
 	Cert *string `pulumi:"cert"`
+	// (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+	CertIdentifier *string `pulumi:"certIdentifier"`
 	// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
 	CertificateName *string `pulumi:"certificateName"`
 	// The content of an SM encryption certificate in PEM format.
@@ -241,6 +245,8 @@ type serviceCertificateState struct {
 type ServiceCertificateState struct {
 	// The content of a non-SM certificate in PEM format.
 	Cert pulumi.StringPtrInput
+	// (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+	CertIdentifier pulumi.StringPtrInput
 	// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
 	CertificateName pulumi.StringPtrInput
 	// The content of an SM encryption certificate in PEM format.
@@ -441,6 +447,11 @@ func (o ServiceCertificateOutput) ToServiceCertificateOutputWithContext(ctx cont
 // The content of a non-SM certificate in PEM format.
 func (o ServiceCertificateOutput) Cert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceCertificate) pulumi.StringPtrOutput { return v.Cert }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+func (o ServiceCertificateOutput) CertIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceCertificate) pulumi.StringOutput { return v.CertIdentifier }).(pulumi.StringOutput)
 }
 
 // A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.

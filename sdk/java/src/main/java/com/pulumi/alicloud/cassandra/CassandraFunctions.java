@@ -27,7 +27,7 @@ public final class CassandraFunctions {
     /**
      * This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 
@@ -74,7 +74,7 @@ public final class CassandraFunctions {
     /**
      * This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 
@@ -121,7 +121,7 @@ public final class CassandraFunctions {
     /**
      * This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 
@@ -168,7 +168,7 @@ public final class CassandraFunctions {
     /**
      * This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 
@@ -215,7 +215,7 @@ public final class CassandraFunctions {
     /**
      * This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 
@@ -263,7 +263,7 @@ public final class CassandraFunctions {
      * The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
      * Filters support regular expression for the cluster name, ids or tags.
      * 
-     * &gt; **NOTE:**  Available in 1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 
@@ -308,7 +308,7 @@ public final class CassandraFunctions {
      * The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
      * Filters support regular expression for the cluster name, ids or tags.
      * 
-     * &gt; **NOTE:**  Available in 1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 
@@ -353,7 +353,7 @@ public final class CassandraFunctions {
      * The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
      * Filters support regular expression for the cluster name, ids or tags.
      * 
-     * &gt; **NOTE:**  Available in 1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 
@@ -398,7 +398,7 @@ public final class CassandraFunctions {
      * The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
      * Filters support regular expression for the cluster name, ids or tags.
      * 
-     * &gt; **NOTE:**  Available in 1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 
@@ -443,7 +443,7 @@ public final class CassandraFunctions {
      * The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
      * Filters support regular expression for the cluster name, ids or tags.
      * 
-     * &gt; **NOTE:**  Available in 1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 
@@ -488,7 +488,7 @@ public final class CassandraFunctions {
      * The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
      * Filters support regular expression for the cluster name, ids or tags.
      * 
-     * &gt; **NOTE:**  Available in 1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 
@@ -533,7 +533,7 @@ public final class CassandraFunctions {
      * The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
      * Filters support regular expression for the cluster name, ids or tags.
      * 
-     * &gt; **NOTE:**  Available in 1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 
@@ -578,7 +578,7 @@ public final class CassandraFunctions {
      * The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
      * Filters support regular expression for the cluster name or ids.
      * 
-     * &gt; **NOTE:**  Available in 1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 
@@ -624,7 +624,7 @@ public final class CassandraFunctions {
      * The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
      * Filters support regular expression for the cluster name or ids.
      * 
-     * &gt; **NOTE:**  Available in 1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 
@@ -670,7 +670,7 @@ public final class CassandraFunctions {
      * The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
      * Filters support regular expression for the cluster name or ids.
      * 
-     * &gt; **NOTE:**  Available in 1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 
@@ -716,7 +716,7 @@ public final class CassandraFunctions {
      * The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
      * Filters support regular expression for the cluster name or ids.
      * 
-     * &gt; **NOTE:**  Available in 1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 
@@ -762,7 +762,7 @@ public final class CassandraFunctions {
      * The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
      * Filters support regular expression for the cluster name or ids.
      * 
-     * &gt; **NOTE:**  Available in 1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0.
      * 
      * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
      * 

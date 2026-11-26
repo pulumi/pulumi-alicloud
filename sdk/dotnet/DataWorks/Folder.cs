@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.DataWorks
     /// <summary>
     /// Provides a Data Works Folder resource.
     /// 
-    /// For information about Data Works Folder and how to use it, see [What is Folder](https://help.aliyun.com/document_detail/173940.html).
+    /// For information about Data Works Folder and how to use it, see [What is Folder](https://www.alibabacloud.com/help/doc-detail/173940.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.131.0+.
+    /// &gt; **NOTE:** Available since v1.131.0.
     /// 
     /// ## Example Usage
     /// 
@@ -50,6 +50,9 @@ namespace Pulumi.AliCloud.DataWorks
     [AliCloudResourceType("alicloud:dataworks/folder:Folder")]
     public partial class Folder : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The ID of the Folder.
+        /// </summary>
         [Output("folderId")]
         public Output<string> FolderId { get; private set; } = null!;
 
@@ -65,6 +68,9 @@ namespace Pulumi.AliCloud.DataWorks
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
 
+        /// <summary>
+        /// The project identifier.
+        /// </summary>
         [Output("projectIdentifier")]
         public Output<string?> ProjectIdentifier { get; private set; } = null!;
 
@@ -126,6 +132,9 @@ namespace Pulumi.AliCloud.DataWorks
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// The project identifier.
+        /// </summary>
         [Input("projectIdentifier")]
         public Input<string>? ProjectIdentifier { get; set; }
 
@@ -137,6 +146,9 @@ namespace Pulumi.AliCloud.DataWorks
 
     public sealed class FolderState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the Folder.
+        /// </summary>
         [Input("folderId")]
         public Input<string>? FolderId { get; set; }
 
@@ -152,6 +164,9 @@ namespace Pulumi.AliCloud.DataWorks
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// The project identifier.
+        /// </summary>
         [Input("projectIdentifier")]
         public Input<string>? ProjectIdentifier { get; set; }
 

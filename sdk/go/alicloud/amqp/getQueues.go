@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Amqp Queues of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.127.0+.
+// > **NOTE:** Available since v1.127.0.
 //
 // ## Example Usage
 //
@@ -84,14 +84,18 @@ type GetQueuesArgs struct {
 // A collection of values returned by getQueues.
 type GetQueuesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id              string           `pulumi:"id"`
-	Ids             []string         `pulumi:"ids"`
-	InstanceId      string           `pulumi:"instanceId"`
-	NameRegex       *string          `pulumi:"nameRegex"`
-	Names           []string         `pulumi:"names"`
-	OutputFile      *string          `pulumi:"outputFile"`
-	Queues          []GetQueuesQueue `pulumi:"queues"`
-	VirtualHostName string           `pulumi:"virtualHostName"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The ID of the instance.
+	InstanceId string  `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of Queue names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Amqp Queues. Each element contains the following attributes:
+	Queues []GetQueuesQueue `pulumi:"queues"`
+	// The name of the virtual host.
+	VirtualHostName string `pulumi:"virtualHostName"`
 }
 
 func GetQueuesOutput(ctx *pulumi.Context, args GetQueuesOutputArgs, opts ...pulumi.InvokeOption) GetQueuesResultOutput {
@@ -141,6 +145,7 @@ func (o GetQueuesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetQueuesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the instance.
 func (o GetQueuesResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetQueuesResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -149,6 +154,7 @@ func (o GetQueuesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQueuesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Queue names.
 func (o GetQueuesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetQueuesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -157,10 +163,12 @@ func (o GetQueuesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQueuesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Amqp Queues. Each element contains the following attributes:
 func (o GetQueuesResultOutput) Queues() GetQueuesQueueArrayOutput {
 	return o.ApplyT(func(v GetQueuesResult) []GetQueuesQueue { return v.Queues }).(GetQueuesQueueArrayOutput)
 }
 
+// The name of the virtual host.
 func (o GetQueuesResultOutput) VirtualHostName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetQueuesResult) string { return v.VirtualHostName }).(pulumi.StringOutput)
 }

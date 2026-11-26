@@ -704,6 +704,8 @@ func (o TableDefinedColumnArrayOutput) Index(i pulumi.IntInput) TableDefinedColu
 }
 
 type TablePrimaryKey struct {
+	// Specifies whether the primary key column is auto-incremented. Defaults to `false`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `autoIncrement`. Changing this field forces a new resource.
+	AutoIncrement *bool `pulumi:"autoIncrement"`
 	// Name for primary key.
 	Name string `pulumi:"name"`
 	// Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
@@ -722,6 +724,8 @@ type TablePrimaryKeyInput interface {
 }
 
 type TablePrimaryKeyArgs struct {
+	// Specifies whether the primary key column is auto-incremented. Defaults to `false`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `autoIncrement`. Changing this field forces a new resource.
+	AutoIncrement pulumi.BoolPtrInput `pulumi:"autoIncrement"`
 	// Name for primary key.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
@@ -777,6 +781,11 @@ func (o TablePrimaryKeyOutput) ToTablePrimaryKeyOutput() TablePrimaryKeyOutput {
 
 func (o TablePrimaryKeyOutput) ToTablePrimaryKeyOutputWithContext(ctx context.Context) TablePrimaryKeyOutput {
 	return o
+}
+
+// Specifies whether the primary key column is auto-incremented. Defaults to `false`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `autoIncrement`. Changing this field forces a new resource.
+func (o TablePrimaryKeyOutput) AutoIncrement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TablePrimaryKey) *bool { return v.AutoIncrement }).(pulumi.BoolPtrOutput)
 }
 
 // Name for primary key.
@@ -1736,6 +1745,7 @@ func (o GetSecondaryIndexesIndexArrayOutput) Index(i pulumi.IntInput) GetSeconda
 }
 
 type GetTablesTable struct {
+	// The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
 	DefinedColumns []GetTablesTableDefinedColumn `pulumi:"definedColumns"`
 	// ID of the table. The value is `<instance_name>:<table_name>`.
 	Id string `pulumi:"id"`
@@ -1743,7 +1753,7 @@ type GetTablesTable struct {
 	InstanceName string `pulumi:"instanceName"`
 	// The maximum number of versions stored in this table.
 	MaxVersion int `pulumi:"maxVersion"`
-	// The property of `TableMeta` which indicates the structure information of a table.
+	// The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
 	PrimaryKeys []GetTablesTablePrimaryKey `pulumi:"primaryKeys"`
 	// The table name of the OTS which could not be changed.
 	TableName string `pulumi:"tableName"`
@@ -1763,6 +1773,7 @@ type GetTablesTableInput interface {
 }
 
 type GetTablesTableArgs struct {
+	// The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
 	DefinedColumns GetTablesTableDefinedColumnArrayInput `pulumi:"definedColumns"`
 	// ID of the table. The value is `<instance_name>:<table_name>`.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -1770,7 +1781,7 @@ type GetTablesTableArgs struct {
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
 	// The maximum number of versions stored in this table.
 	MaxVersion pulumi.IntInput `pulumi:"maxVersion"`
-	// The property of `TableMeta` which indicates the structure information of a table.
+	// The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
 	PrimaryKeys GetTablesTablePrimaryKeyArrayInput `pulumi:"primaryKeys"`
 	// The table name of the OTS which could not be changed.
 	TableName pulumi.StringInput `pulumi:"tableName"`
@@ -1829,6 +1840,7 @@ func (o GetTablesTableOutput) ToGetTablesTableOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
 func (o GetTablesTableOutput) DefinedColumns() GetTablesTableDefinedColumnArrayOutput {
 	return o.ApplyT(func(v GetTablesTable) []GetTablesTableDefinedColumn { return v.DefinedColumns }).(GetTablesTableDefinedColumnArrayOutput)
 }
@@ -1848,7 +1860,7 @@ func (o GetTablesTableOutput) MaxVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v GetTablesTable) int { return v.MaxVersion }).(pulumi.IntOutput)
 }
 
-// The property of `TableMeta` which indicates the structure information of a table.
+// The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
 func (o GetTablesTableOutput) PrimaryKeys() GetTablesTablePrimaryKeyArrayOutput {
 	return o.ApplyT(func(v GetTablesTable) []GetTablesTablePrimaryKey { return v.PrimaryKeys }).(GetTablesTablePrimaryKeyArrayOutput)
 }
@@ -1884,7 +1896,9 @@ func (o GetTablesTableArrayOutput) Index(i pulumi.IntInput) GetTablesTableOutput
 }
 
 type GetTablesTableDefinedColumn struct {
+	// Name for defined column.
 	Name string `pulumi:"name"`
+	// Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
 	Type string `pulumi:"type"`
 }
 
@@ -1900,7 +1914,9 @@ type GetTablesTableDefinedColumnInput interface {
 }
 
 type GetTablesTableDefinedColumnArgs struct {
+	// Name for defined column.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1955,10 +1971,12 @@ func (o GetTablesTableDefinedColumnOutput) ToGetTablesTableDefinedColumnOutputWi
 	return o
 }
 
+// Name for defined column.
 func (o GetTablesTableDefinedColumnOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTablesTableDefinedColumn) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
 func (o GetTablesTableDefinedColumnOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTablesTableDefinedColumn) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1984,7 +2002,9 @@ func (o GetTablesTableDefinedColumnArrayOutput) Index(i pulumi.IntInput) GetTabl
 }
 
 type GetTablesTablePrimaryKey struct {
+	// Name for defined column.
 	Name string `pulumi:"name"`
+	// Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
 	Type string `pulumi:"type"`
 }
 
@@ -2000,7 +2020,9 @@ type GetTablesTablePrimaryKeyInput interface {
 }
 
 type GetTablesTablePrimaryKeyArgs struct {
+	// Name for defined column.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -2055,10 +2077,12 @@ func (o GetTablesTablePrimaryKeyOutput) ToGetTablesTablePrimaryKeyOutputWithCont
 	return o
 }
 
+// Name for defined column.
 func (o GetTablesTablePrimaryKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTablesTablePrimaryKey) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
 func (o GetTablesTablePrimaryKeyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTablesTablePrimaryKey) string { return v.Type }).(pulumi.StringOutput)
 }

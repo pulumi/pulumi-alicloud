@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cdn
         /// <summary>
         /// This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Cdn
         /// <summary>
         /// This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Cdn
         /// <summary>
         /// This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -111,6 +111,9 @@ namespace Pulumi.AliCloud.Cdn
 
     public sealed class GetRealTimeLogDeliveriesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The domain name.
+        /// </summary>
         [Input("domain", required: true)]
         public string Domain { get; set; } = null!;
 
@@ -134,6 +137,9 @@ namespace Pulumi.AliCloud.Cdn
 
     public sealed class GetRealTimeLogDeliveriesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The domain name.
+        /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
@@ -159,13 +165,22 @@ namespace Pulumi.AliCloud.Cdn
     [OutputType]
     public sealed class GetRealTimeLogDeliveriesResult
     {
+        /// <summary>
+        /// A list of Cdn Real Time Log Deliveries. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRealTimeLogDeliveriesDeliveryResult> Deliveries;
+        /// <summary>
+        /// Real-Time Log Service Domain.
+        /// </summary>
         public readonly string Domain;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the real-time log delivery feature. Valid Values: `Online` and `Offline`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

@@ -23,6 +23,10 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.5.0.
  * 
+ * &gt; **NOTE:** The `collationName`, `accountName` and `accountPrivilege` arguments take effect only when the database is created. Changing any of them forces a new database to be created.
+ * 
+ * &gt; **NOTE:** The account permission granted through `accountName` and `accountPrivilege` is not read back from the API. If the permission of the same account on this database is also managed by `alicloud.rds.AccountPrivilege`, both configurations write the same permission and the last applied one wins.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -41,6 +45,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.rds.Instance;
  * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.alicloud.rds.RdsAccount;
+ * import com.pulumi.alicloud.rds.RdsAccountArgs;
  * import com.pulumi.alicloud.rds.Database;
  * import com.pulumi.alicloud.rds.DatabaseArgs;
  * import java.util.ArrayList;
@@ -92,16 +98,25 @@ import javax.annotation.Nullable;
  *             .engineVersion("8.0")
  *             .dbInstanceStorageType("cloud_essd")
  *             .instanceType(defaultGetInstanceClasses.instanceClasses()[0].instanceClass())
- *             .instanceStorage(defaultGetInstanceClasses.instanceClasses()[0].storageRanges().min())
+ *             .instanceStorage(defaultGetInstanceClasses.instanceClasses()[0].storageRanges()[0].min())
  *             .vswitchId(defaultSwitch.id())
  *             .instanceName(name)
  *             .instanceChargeType("Postpaid")
  *             .build());
  * 
+ *         var defaultRdsAccount = new RdsAccount("defaultRdsAccount", RdsAccountArgs.builder()
+ *             .dbInstanceId(defaultInstance.id())
+ *             .accountName("terraform_example")
+ *             .accountPassword("Test12345")
+ *             .build());
+ * 
  *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .dataBaseName(name)
- *             .characterSet("utf8")
+ *             .characterSet("gbk")
+ *             .collationName("gbk_chinese_ci")
+ *             .accountName(defaultRdsAccount.accountName())
+ *             .accountPrivilege("ReadWrite")
  *             .build());
  * 
  *     }
@@ -122,6 +137,42 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:rds/database:Database")
 public class Database extends com.pulumi.resources.CustomResource {
+    /**
+     * The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+     * 
+     * &gt; **NOTE:** The account must belong to the instance specified by `instanceId` and must exist before the database is created.
+     * 
+     */
+    @Export(name="accountName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> accountName;
+
+    /**
+     * @return The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+     * 
+     * &gt; **NOTE:** The account must belong to the instance specified by `instanceId` and must exist before the database is created.
+     * 
+     */
+    public Output<Optional<String>> accountName() {
+        return Codegen.optional(this.accountName);
+    }
+    /**
+     * The privilege granted to the account specified by `accountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+     * 
+     * &gt; **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `accountName` to be set.
+     * 
+     */
+    @Export(name="accountPrivilege", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> accountPrivilege;
+
+    /**
+     * @return The privilege granted to the account specified by `accountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+     * 
+     * &gt; **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `accountName` to be set.
+     * 
+     */
+    public Output<Optional<String>> accountPrivilege() {
+        return Codegen.optional(this.accountPrivilege);
+    }
     /**
      * Character set. The value range is limited to the following:
      * - MySQL: [ utf8, gbk, latin1, utf8mb4 ] &#92;(`utf8mb4` only supports versions 5.5 and 5.6&#92;).
@@ -155,7 +206,22 @@ public class Database extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.characterSet);
     }
     /**
+     * The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `characterSet`, for example `gbkChineseCi` for `gbk` or `utf8mb4GeneralCi` for `utf8mb4`.
+     * 
+     */
+    @Export(name="collationName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> collationName;
+
+    /**
+     * @return The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `characterSet`, for example `gbkChineseCi` for `gbk` or `utf8mb4GeneralCi` for `utf8mb4`.
+     * 
+     */
+    public Output<Optional<String>> collationName() {
+        return Codegen.optional(this.collationName);
+    }
+    /**
      * The name of the database.
+     * 
      * &gt; **NOTE:**
      * The name must be 2 to 64 characters in length.
      * The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -169,6 +235,7 @@ public class Database extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the database.
+     * 
      * &gt; **NOTE:**
      * The name must be 2 to 64 characters in length.
      * The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -210,6 +277,7 @@ public class Database extends com.pulumi.resources.CustomResource {
     }
     /**
      * The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+     * 
      * &gt; **NOTE:** The value of &#34;dataBaseName&#34; or &#34;characterSet&#34;  does not support modification.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.266.0. New field &#39;data_base_name&#39; instead.
@@ -221,6 +289,7 @@ public class Database extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+     * 
      * &gt; **NOTE:** The value of &#34;dataBaseName&#34; or &#34;characterSet&#34;  does not support modification.
      * 
      */

@@ -19,8 +19,16 @@ public final class GetWafPoliciesResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Waf Policy IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Waf Policy names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     /**
@@ -43,12 +51,20 @@ public final class GetWafPoliciesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Waf Policy IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Waf Policy names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTrafficMarkingPoliciesResult {
+    /**
+     * @return The description of the Traffic Marking Policy.
+     * 
+     */
     private @Nullable String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,13 +26,33 @@ public final class GetTrafficMarkingPoliciesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Traffic Marking Policy names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Cen Traffic Marking Policies. Each element contains the following attributes:
+     * 
+     */
     private List<GetTrafficMarkingPoliciesPolicy> policies;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The ID of the transit router.
+     * 
+     */
     private String transitRouterId;
 
     private GetTrafficMarkingPoliciesResult() {}
+    /**
+     * @return The description of the Traffic Marking Policy.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -45,18 +69,34 @@ public final class GetTrafficMarkingPoliciesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Traffic Marking Policy names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Cen Traffic Marking Policies. Each element contains the following attributes:
+     * 
+     */
     public List<GetTrafficMarkingPoliciesPolicy> policies() {
         return this.policies;
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The ID of the transit router.
+     * 
+     */
     public String transitRouterId() {
         return this.transitRouterId;
     }

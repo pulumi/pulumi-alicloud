@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of Service Mesh Service Meshes. Each element contains the following attributes:
+        /// The AMS version.
         /// </summary>
         public readonly string Version;
 

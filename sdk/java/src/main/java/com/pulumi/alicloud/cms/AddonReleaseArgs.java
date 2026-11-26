@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.cms;
 
+import com.pulumi.alicloud.cms.inputs.AddonReleaseEntityRulesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -93,18 +94,39 @@ public final class AddonReleaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to perform a dry run. Valid values: `true`, `false`.
+     * Field `dryRun` has been deprecated from provider version 2.2.0.
+     * 
+     * @deprecated Field `dryRun` has been deprecated from provider version 2.2.0.
      * 
      */
+    @Deprecated
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Specifies whether to perform a dry run. Valid values: `true`, `false`.
+     * @return Field `dryRun` has been deprecated from provider version 2.2.0.
+     * 
+     * @deprecated Field `dryRun` has been deprecated from provider version 2.2.0.
      * 
      */
+    @Deprecated
     public Optional<Output<Boolean>> dryRun() {
         return Optional.ofNullable(this.dryRun);
+    }
+
+    /**
+     * The entity discovery rule model. See `entityRules` below.
+     * 
+     */
+    @Import(name="entityRules")
+    private @Nullable Output<AddonReleaseEntityRulesArgs> entityRules;
+
+    /**
+     * @return The entity discovery rule model. See `entityRules` below.
+     * 
+     */
+    public Optional<Output<AddonReleaseEntityRulesArgs>> entityRules() {
+        return Optional.ofNullable(this.entityRules);
     }
 
     /**
@@ -161,6 +183,7 @@ public final class AddonReleaseArgs extends com.pulumi.resources.ResourceArgs {
         this.aliyunLang = $.aliyunLang;
         this.config = $.config;
         this.dryRun = $.dryRun;
+        this.entityRules = $.entityRules;
         this.envType = $.envType;
         this.integrationPolicyId = $.integrationPolicyId;
         this.workspace = $.workspace;
@@ -290,24 +313,51 @@ public final class AddonReleaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to perform a dry run. Valid values: `true`, `false`.
+         * @param dryRun Field `dryRun` has been deprecated from provider version 2.2.0.
          * 
          * @return builder
          * 
+         * @deprecated Field `dryRun` has been deprecated from provider version 2.2.0.
+         * 
          */
+        @Deprecated
         public Builder dryRun(@Nullable Output<Boolean> dryRun) {
             $.dryRun = dryRun;
             return this;
         }
 
         /**
-         * @param dryRun Specifies whether to perform a dry run. Valid values: `true`, `false`.
+         * @param dryRun Field `dryRun` has been deprecated from provider version 2.2.0.
+         * 
+         * @return builder
+         * 
+         * @deprecated Field `dryRun` has been deprecated from provider version 2.2.0.
+         * 
+         */
+        @Deprecated
+        public Builder dryRun(Boolean dryRun) {
+            return dryRun(Output.of(dryRun));
+        }
+
+        /**
+         * @param entityRules The entity discovery rule model. See `entityRules` below.
          * 
          * @return builder
          * 
          */
-        public Builder dryRun(Boolean dryRun) {
-            return dryRun(Output.of(dryRun));
+        public Builder entityRules(@Nullable Output<AddonReleaseEntityRulesArgs> entityRules) {
+            $.entityRules = entityRules;
+            return this;
+        }
+
+        /**
+         * @param entityRules The entity discovery rule model. See `entityRules` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entityRules(AddonReleaseEntityRulesArgs entityRules) {
+            return entityRules(Output.of(entityRules));
         }
 
         /**

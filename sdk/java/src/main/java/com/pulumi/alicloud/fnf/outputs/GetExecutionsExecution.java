@@ -41,7 +41,7 @@ public final class GetExecutionsExecution {
      */
     private String startedTime;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Running`, `Stopped`, `Succeeded`, `Failed`, `TimedOut`.
      * 
      */
     private String status;
@@ -95,7 +95,7 @@ public final class GetExecutionsExecution {
         return this.startedTime;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Running`, `Stopped`, `Succeeded`, `Failed`, `TimedOut`.
      * 
      */
     public String status() {

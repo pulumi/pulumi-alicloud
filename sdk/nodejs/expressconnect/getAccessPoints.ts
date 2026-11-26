@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *
@@ -72,15 +72,24 @@ export interface GetAccessPointsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Access Point names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Express Connect Access Points. Each element contains the following attributes:
+     */
     readonly points: outputs.expressconnect.GetAccessPointsPoint[];
+    /**
+     * The Physical Connection to Which the Access Point State.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *

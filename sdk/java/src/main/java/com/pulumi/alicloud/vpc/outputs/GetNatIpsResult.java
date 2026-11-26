@@ -19,15 +19,43 @@ public final class GetNatIpsResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Nat Ip IDs.
+     * 
+     */
     private List<String> ids;
+    /**
+     * @return A list of Vpc Nat Ips. Each element contains the following attributes:
+     * 
+     */
     private List<GetNatIpsIp> ips;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Nat Ip names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+     * 
+     */
     private String natGatewayId;
+    /**
+     * @return The CIDR block to which the NAT IP address belongs.
+     * 
+     */
     private @Nullable String natIpCidr;
     private @Nullable List<String> natIpIds;
+    /**
+     * @return The name of the NAT IP address.
+     * 
+     */
     private @Nullable List<String> natIpNames;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
+     * 
+     */
     private @Nullable String status;
 
     private GetNatIpsResult() {}
@@ -38,33 +66,61 @@ public final class GetNatIpsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Nat Ip IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Vpc Nat Ips. Each element contains the following attributes:
+     * 
+     */
     public List<GetNatIpsIp> ips() {
         return this.ips;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Nat Ip names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+     * 
+     */
     public String natGatewayId() {
         return this.natGatewayId;
     }
+    /**
+     * @return The CIDR block to which the NAT IP address belongs.
+     * 
+     */
     public Optional<String> natIpCidr() {
         return Optional.ofNullable(this.natIpCidr);
     }
     public List<String> natIpIds() {
         return this.natIpIds == null ? List.of() : this.natIpIds;
     }
+    /**
+     * @return The name of the NAT IP address.
+     * 
+     */
     public List<String> natIpNames() {
         return this.natIpNames == null ? List.of() : this.natIpNames;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

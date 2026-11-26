@@ -14,8 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHostAccountsResult {
+    /**
+     * @return A list of Bastionhost Host Accounts. Each element contains the following attributes:
+     * 
+     */
     private List<GetHostAccountsAccount> accounts;
+    /**
+     * @return Specify the new hosting account&#39;s name, support the longest 128 characters.
+     * 
+     */
     private @Nullable String hostAccountName;
+    /**
+     * @return Specifies the database where you want to create your hosting account&#39;s host ID.
+     * 
+     */
     private String hostId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,19 +35,43 @@ public final class GetHostAccountsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return Specifies the database where you want to create your hosting account&#39;s host bastion host ID of.
+     * 
+     */
     private String instanceId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Host Account names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
+     * 
+     */
     private @Nullable String protocolName;
 
     private GetHostAccountsResult() {}
+    /**
+     * @return A list of Bastionhost Host Accounts. Each element contains the following attributes:
+     * 
+     */
     public List<GetHostAccountsAccount> accounts() {
         return this.accounts;
     }
+    /**
+     * @return Specify the new hosting account&#39;s name, support the longest 128 characters.
+     * 
+     */
     public Optional<String> hostAccountName() {
         return Optional.ofNullable(this.hostAccountName);
     }
+    /**
+     * @return Specifies the database where you want to create your hosting account&#39;s host ID.
+     * 
+     */
     public String hostId() {
         return this.hostId;
     }
@@ -49,18 +85,30 @@ public final class GetHostAccountsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return Specifies the database where you want to create your hosting account&#39;s host bastion host ID of.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Host Account names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
+     * 
+     */
     public Optional<String> protocolName() {
         return Optional.ofNullable(this.protocolName);
     }

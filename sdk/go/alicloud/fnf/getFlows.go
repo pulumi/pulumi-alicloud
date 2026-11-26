@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Fnf Flows of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.105.0+.
+// > **NOTE:** Available since v1.105.0.
 //
 // ## Example Usage
 //
@@ -70,12 +70,14 @@ type GetFlowsArgs struct {
 
 // A collection of values returned by getFlows.
 type GetFlowsResult struct {
+	// A list of Fnf Flows. Each element contains the following attributes:
 	Flows []GetFlowsFlow `pulumi:"flows"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	Limit      *int     `pulumi:"limit"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	Limit     *int     `pulumi:"limit"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Flow names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -116,6 +118,7 @@ func (o GetFlowsResultOutput) ToGetFlowsResultOutputWithContext(ctx context.Cont
 	return o
 }
 
+// A list of Fnf Flows. Each element contains the following attributes:
 func (o GetFlowsResultOutput) Flows() GetFlowsFlowArrayOutput {
 	return o.ApplyT(func(v GetFlowsResult) []GetFlowsFlow { return v.Flows }).(GetFlowsFlowArrayOutput)
 }
@@ -137,6 +140,7 @@ func (o GetFlowsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Flow names.
 func (o GetFlowsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFlowsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

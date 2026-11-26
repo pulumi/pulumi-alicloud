@@ -17,9 +17,17 @@ public final class GetHistoryDeliveryJobsPlainArgs extends com.pulumi.resources.
 
     public static final GetHistoryDeliveryJobsPlainArgs Empty = new GetHistoryDeliveryJobsPlainArgs();
 
+    /**
+     * Whether to enable details for the jobs. Default value: `false`.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
+    /**
+     * @return Whether to enable details for the jobs. Default value: `false`.
+     * 
+     */
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -96,6 +104,12 @@ public final class GetHistoryDeliveryJobsPlainArgs extends com.pulumi.resources.
             $ = new GetHistoryDeliveryJobsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableDetails Whether to enable details for the jobs. Default value: `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             $.enableDetails = enableDetails;
             return this;

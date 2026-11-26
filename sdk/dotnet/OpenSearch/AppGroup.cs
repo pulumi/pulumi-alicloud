@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.OpenSearch
     /// 
     /// For information about Open Search App Group and how to use it, see [What is App Group](https://www.aliyun.com/product/opensearch).
     /// 
-    /// &gt; **NOTE:** Available in v1.136.0+.
+    /// &gt; **NOTE:** Available since v1.136.0.
     /// 
     /// ## Example Usage
     /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.OpenSearch
         public Output<string> OrderType { get; private set; } = null!;
 
         /// <summary>
-        /// Order cycle information. The details see Block order.
+        /// Order cycle information. See `Order` below.
         /// </summary>
         [Output("orders")]
         public Output<ImmutableArray<Outputs.AppGroupOrder>> Orders { get; private set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.OpenSearch
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// Quota information.  The details see Block quota.
+        /// Quota information. See `Quota` below.
         /// </summary>
         [Output("quota")]
         public Output<Outputs.AppGroupQuota> Quota { get; private set; } = null!;
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.OpenSearch
         private InputList<Inputs.AppGroupOrderArgs>? _orders;
 
         /// <summary>
-        /// Order cycle information. The details see Block order.
+        /// Order cycle information. See `Order` below.
         /// </summary>
         public InputList<Inputs.AppGroupOrderArgs> Orders
         {
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.OpenSearch
         public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
-        /// Quota information.  The details see Block quota.
+        /// Quota information. See `Quota` below.
         /// </summary>
         [Input("quota", required: true)]
         public Input<Inputs.AppGroupQuotaArgs> Quota { get; set; } = null!;
@@ -279,7 +279,7 @@ namespace Pulumi.AliCloud.OpenSearch
         private InputList<Inputs.AppGroupOrderGetArgs>? _orders;
 
         /// <summary>
-        /// Order cycle information. The details see Block order.
+        /// Order cycle information. See `Order` below.
         /// </summary>
         public InputList<Inputs.AppGroupOrderGetArgs> Orders
         {
@@ -294,7 +294,7 @@ namespace Pulumi.AliCloud.OpenSearch
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Quota information.  The details see Block quota.
+        /// Quota information. See `Quota` below.
         /// </summary>
         [Input("quota")]
         public Input<Inputs.AppGroupQuotaGetArgs>? Quota { get; set; }

@@ -247,6 +247,7 @@ class ServiceCertificateArgs:
 class _ServiceCertificateState:
     def __init__(__self__, *,
                  cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -263,6 +264,7 @@ class _ServiceCertificateState:
         Input properties used for looking up and filtering ServiceCertificate resources.
 
         :param pulumi.Input[_builtins.str] cert: The content of a non-SM certificate in PEM format.
+        :param pulumi.Input[_builtins.str] cert_identifier: (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
         :param pulumi.Input[_builtins.str] certificate_name: A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
         :param pulumi.Input[_builtins.str] encrypt_cert: The content of an SM encryption certificate in PEM format.
         :param pulumi.Input[_builtins.str] encrypt_private_key: The private key of an SM encryption certificate in PEM format.
@@ -279,6 +281,8 @@ class _ServiceCertificateState:
         """
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
+        if cert_identifier is not None:
+            pulumi.set(__self__, "cert_identifier", cert_identifier)
         if certificate_name is not None:
             pulumi.set(__self__, "certificate_name", certificate_name)
         if encrypt_cert is not None:
@@ -321,6 +325,18 @@ class _ServiceCertificateState:
     @cert.setter
     def cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="certIdentifier")
+    def cert_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+        """
+        return pulumi.get(self, "cert_identifier")
+
+    @cert_identifier.setter
+    def cert_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cert_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateName")
@@ -739,6 +755,7 @@ class ServiceCertificate(pulumi.CustomResource):
             __props__.__dict__["sign_cert"] = sign_cert
             __props__.__dict__["sign_private_key"] = None if sign_private_key is None else pulumi.Output.secret(sign_private_key)
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["cert_identifier"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["encryptPrivateKey", "key", "keyWo", "signPrivateKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ServiceCertificate, __self__).__init__(
@@ -752,6 +769,7 @@ class ServiceCertificate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cert: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
             certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
             encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
             encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -772,6 +790,7 @@ class ServiceCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cert: The content of a non-SM certificate in PEM format.
+        :param pulumi.Input[_builtins.str] cert_identifier: (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
         :param pulumi.Input[_builtins.str] certificate_name: A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
         :param pulumi.Input[_builtins.str] encrypt_cert: The content of an SM encryption certificate in PEM format.
         :param pulumi.Input[_builtins.str] encrypt_private_key: The private key of an SM encryption certificate in PEM format.
@@ -791,6 +810,7 @@ class ServiceCertificate(pulumi.CustomResource):
         __props__ = _ServiceCertificateState.__new__(_ServiceCertificateState)
 
         __props__.__dict__["cert"] = cert
+        __props__.__dict__["cert_identifier"] = cert_identifier
         __props__.__dict__["certificate_name"] = certificate_name
         __props__.__dict__["encrypt_cert"] = encrypt_cert
         __props__.__dict__["encrypt_private_key"] = encrypt_private_key
@@ -809,6 +829,7 @@ class ServiceCertificate(pulumi.CustomResource):
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cert: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
             certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
             encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
             encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -823,6 +844,7 @@ class ServiceCertificate(pulumi.CustomResource):
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["cert"] = cert
+        __props__["certIdentifier"] = cert_identifier
         __props__["certificateName"] = certificate_name
         __props__["encryptCert"] = encrypt_cert
         __props__["encryptPrivateKey"] = encrypt_private_key
@@ -844,6 +866,14 @@ class ServiceCertificate(pulumi.CustomResource):
         The content of a non-SM certificate in PEM format.
         """
         return pulumi.get(self, "cert")
+
+    @_builtins.property
+    @pulumi.getter(name="certIdentifier")
+    def cert_identifier(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+        """
+        return pulumi.get(self, "cert_identifier")
 
     @_builtins.property
     @pulumi.getter(name="certificateName")

@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.GraphDatabase.Outputs
         /// </summary>
         public readonly string DbInstanceId;
         /// <summary>
-        /// IP ADDRESS whitelist for the instance group list.
+        /// IP ADDRESS whitelist for the instance group list. See `DbInstanceIpArray` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDbInstancesInstanceDbInstanceIpArrayResult> DbInstanceIpArrays;
         /// <summary>
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.GraphDatabase.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ReadOnlyDbInstanceIds;
         /// <summary>
-        /// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+        /// Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
         /// </summary>
         public readonly string Status;
         /// <summary>

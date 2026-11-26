@@ -205,6 +205,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
+     * Configuration of index nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `indexNodeConfiguration` below.
+     */
+    declare public readonly indexNodeConfiguration: pulumi.Output<outputs.elasticsearch.InstanceIndexNodeConfiguration>;
+    /**
      * Edition type:
      * - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
      * - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
@@ -287,6 +291,15 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly password: pulumi.Output<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+     */
+    declare public readonly passwordWo: pulumi.Output<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+     */
+    declare public readonly passwordWoVersion: pulumi.Output<number | undefined>;
+    /**
      * The billing method of the instance. Supported values:
      * - `PayAsYouGo`: Pay-as-you-go
      * - `Subscription`: Subscription
@@ -306,6 +319,8 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly privateWhitelists: pulumi.Output<string[]>;
     /**
      * The access protocol. Supported protocols: HTTP and HTTPS.
+     *
+     * > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `clientNodeConfiguration` (or the deprecated `clientNodeSpec` and `clientNodeAmount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
      */
     declare public readonly protocol: pulumi.Output<string>;
     /**
@@ -336,9 +351,13 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly renewalDurationUnit: pulumi.Output<string>;
     /**
-     * The ID of the resource group to which the instance belongs.
+     * The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
+    /**
+     * Configuration of search (query) nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `searchNodeConfiguration` below.
+     */
+    declare public readonly searchNodeConfiguration: pulumi.Output<outputs.elasticsearch.InstanceSearchNodeConfiguration>;
     /**
      * YML configuration file settings for the instance.
      */
@@ -451,6 +470,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["enableKibanaPublicNetwork"] = state?.enableKibanaPublicNetwork;
             resourceInputs["enablePublic"] = state?.enablePublic;
             resourceInputs["force"] = state?.force;
+            resourceInputs["indexNodeConfiguration"] = state?.indexNodeConfiguration;
             resourceInputs["instanceCategory"] = state?.instanceCategory;
             resourceInputs["instanceChargeType"] = state?.instanceChargeType;
             resourceInputs["kibanaConfiguration"] = state?.kibanaConfiguration;
@@ -468,6 +488,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["masterNodeSpec"] = state?.masterNodeSpec;
             resourceInputs["orderActionType"] = state?.orderActionType;
             resourceInputs["password"] = state?.password;
+            resourceInputs["passwordWo"] = state?.passwordWo;
+            resourceInputs["passwordWoVersion"] = state?.passwordWoVersion;
             resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["period"] = state?.period;
             resourceInputs["port"] = state?.port;
@@ -479,6 +501,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["renewStatus"] = state?.renewStatus;
             resourceInputs["renewalDurationUnit"] = state?.renewalDurationUnit;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["searchNodeConfiguration"] = state?.searchNodeConfiguration;
             resourceInputs["settingConfig"] = state?.settingConfig;
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
@@ -516,6 +539,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["enableKibanaPublicNetwork"] = args?.enableKibanaPublicNetwork;
             resourceInputs["enablePublic"] = args?.enablePublic;
             resourceInputs["force"] = args?.force;
+            resourceInputs["indexNodeConfiguration"] = args?.indexNodeConfiguration;
             resourceInputs["instanceCategory"] = args?.instanceCategory;
             resourceInputs["instanceChargeType"] = args?.instanceChargeType;
             resourceInputs["kibanaConfiguration"] = args?.kibanaConfiguration;
@@ -530,6 +554,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["masterNodeSpec"] = args?.masterNodeSpec;
             resourceInputs["orderActionType"] = args?.orderActionType;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["passwordWo"] = args?.passwordWo ? pulumi.secret(args.passwordWo) : undefined;
+            resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
             resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["period"] = args?.period;
             resourceInputs["privateWhitelists"] = args?.privateWhitelists;
@@ -538,6 +564,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["renewStatus"] = args?.renewStatus;
             resourceInputs["renewalDurationUnit"] = args?.renewalDurationUnit;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["searchNodeConfiguration"] = args?.searchNodeConfiguration;
             resourceInputs["settingConfig"] = args?.settingConfig;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["updateStrategy"] = args?.updateStrategy;
@@ -562,7 +589,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["password"] };
+        const secretOpts = { additionalSecretOutputs: ["password", "passwordWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
@@ -675,6 +702,10 @@ export interface InstanceState {
      */
     force?: pulumi.Input<boolean | undefined>;
     /**
+     * Configuration of index nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `indexNodeConfiguration` below.
+     */
+    indexNodeConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceIndexNodeConfiguration | undefined>;
+    /**
      * Edition type:
      * - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
      * - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
@@ -757,6 +788,15 @@ export interface InstanceState {
      */
     password?: pulumi.Input<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+     */
+    passwordWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+     */
+    passwordWoVersion?: pulumi.Input<number | undefined>;
+    /**
      * The billing method of the instance. Supported values:
      * - `PayAsYouGo`: Pay-as-you-go
      * - `Subscription`: Subscription
@@ -776,6 +816,8 @@ export interface InstanceState {
     privateWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The access protocol. Supported protocols: HTTP and HTTPS.
+     *
+     * > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `clientNodeConfiguration` (or the deprecated `clientNodeSpec` and `clientNodeAmount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
      */
     protocol?: pulumi.Input<string | undefined>;
     /**
@@ -806,9 +848,13 @@ export interface InstanceState {
      */
     renewalDurationUnit?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the resource group to which the instance belongs.
+     * The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration of search (query) nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `searchNodeConfiguration` below.
+     */
+    searchNodeConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceSearchNodeConfiguration | undefined>;
     /**
      * YML configuration file settings for the instance.
      */
@@ -985,6 +1031,10 @@ export interface InstanceArgs {
      */
     force?: pulumi.Input<boolean | undefined>;
     /**
+     * Configuration of index nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `indexNodeConfiguration` below.
+     */
+    indexNodeConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceIndexNodeConfiguration | undefined>;
+    /**
      * Edition type:
      * - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
      * - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
@@ -1055,6 +1105,15 @@ export interface InstanceArgs {
      */
     password?: pulumi.Input<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+     */
+    passwordWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+     */
+    passwordWoVersion?: pulumi.Input<number | undefined>;
+    /**
      * The billing method of the instance. Supported values:
      * - `PayAsYouGo`: Pay-as-you-go
      * - `Subscription`: Subscription
@@ -1070,6 +1129,8 @@ export interface InstanceArgs {
     privateWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The access protocol. Supported protocols: HTTP and HTTPS.
+     *
+     * > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `clientNodeConfiguration` (or the deprecated `clientNodeSpec` and `clientNodeAmount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
      */
     protocol?: pulumi.Input<string | undefined>;
     /**
@@ -1092,9 +1153,13 @@ export interface InstanceArgs {
      */
     renewalDurationUnit?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the resource group to which the instance belongs.
+     * The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration of search (query) nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `searchNodeConfiguration` below.
+     */
+    searchNodeConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceSearchNodeConfiguration | undefined>;
     /**
      * YML configuration file settings for the instance.
      */

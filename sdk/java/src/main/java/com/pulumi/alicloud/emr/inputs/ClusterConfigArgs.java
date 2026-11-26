@@ -59,9 +59,17 @@ public final class ClusterConfigArgs extends com.pulumi.resources.ResourceArgs {
         return this.fileName;
     }
 
+    /**
+     * Custom configuration service name, e.g. ’HDFS’.
+     * 
+     */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
+    /**
+     * @return Custom configuration service name, e.g. ’HDFS’.
+     * 
+     */
     public Output<String> serviceName() {
         return this.serviceName;
     }
@@ -156,11 +164,23 @@ public final class ClusterConfigArgs extends com.pulumi.resources.ResourceArgs {
             return fileName(Output.of(fileName));
         }
 
+        /**
+         * @param serviceName Custom configuration service name, e.g. ’HDFS’.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
+        /**
+         * @param serviceName Custom configuration service name, e.g. ’HDFS’.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
         }

@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetStackGroupsResult {
     private @Nullable Boolean enableDetails;
+    /**
+     * @return A list of Ros Stack Groups. Each element contains the following attributes. See `groups` below.
+     * 
+     */
     private List<GetStackGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,14 +28,26 @@ public final class GetStackGroupsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Stack Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of Stack Group.
+     * 
+     */
     private @Nullable String status;
 
     private GetStackGroupsResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
+    /**
+     * @return A list of Ros Stack Groups. Each element contains the following attributes. See `groups` below.
+     * 
+     */
     public List<GetStackGroupsGroup> groups() {
         return this.groups;
     }
@@ -48,12 +64,20 @@ public final class GetStackGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Stack Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of Stack Group.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

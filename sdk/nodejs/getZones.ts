@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
+ * > **NOTE:** Available since v0.1.0
+ *
  * > **NOTE:** If one zone is sold out, it will not be exported.
  *
  * ## Example Usage
@@ -93,7 +95,7 @@ export interface GetZonesArgs {
      */
     outputFile?: string;
     /**
-     * - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+     * Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
      */
     spotStrategy?: string;
 }
@@ -131,6 +133,8 @@ export interface GetZonesResult {
 }
 /**
  * This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+ *
+ * > **NOTE:** Available since v0.1.0
  *
  * > **NOTE:** If one zone is sold out, it will not be exported.
  *
@@ -216,7 +220,7 @@ export interface GetZonesOutputArgs {
      */
     outputFile?: pulumi.Input<string | undefined>;
     /**
-     * - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+     * Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
      */
     spotStrategy?: pulumi.Input<string | undefined>;
 }

@@ -33,14 +33,14 @@ public final class ScalingConfigurationNetworkInterfaceArgs extends com.pulumi.r
     }
 
     /**
-     * The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+     * The number of randomly generated IPv6 addresses that you want to assign to primary ENI N. Setting it to `0` or removing it from the configuration stops requesting IPv6 addresses: the parameter is left out of the request and the Auto Scaling service drops the previously requested count.
      * 
      */
     @Import(name="ipv6AddressCount")
     private @Nullable Output<Integer> ipv6AddressCount;
 
     /**
-     * @return The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+     * @return The number of randomly generated IPv6 addresses that you want to assign to primary ENI N. Setting it to `0` or removing it from the configuration stops requesting IPv6 addresses: the parameter is left out of the request and the Auto Scaling service drops the previously requested count.
      * 
      */
     public Optional<Output<Integer>> ipv6AddressCount() {
@@ -126,7 +126,7 @@ public final class ScalingConfigurationNetworkInterfaceArgs extends com.pulumi.r
         }
 
         /**
-         * @param ipv6AddressCount The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+         * @param ipv6AddressCount The number of randomly generated IPv6 addresses that you want to assign to primary ENI N. Setting it to `0` or removing it from the configuration stops requesting IPv6 addresses: the parameter is left out of the request and the Auto Scaling service drops the previously requested count.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ScalingConfigurationNetworkInterfaceArgs extends com.pulumi.r
         }
 
         /**
-         * @param ipv6AddressCount The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+         * @param ipv6AddressCount The number of randomly generated IPv6 addresses that you want to assign to primary ENI N. Setting it to `0` or removing it from the configuration stops requesting IPv6 addresses: the parameter is left out of the request and the Auto Scaling service drops the previously requested count.
          * 
          * @return builder
          * 

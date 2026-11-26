@@ -17,6 +17,10 @@ public final class GetGatewaysGateway {
      * 
      */
     private String activatedTime;
+    /**
+     * @return gateway buy url.
+     * 
+     */
     private String buyUrl;
     /**
      * @return gateway category.
@@ -103,6 +107,10 @@ public final class GetGatewaysGateway {
      * 
      */
     private Integer publicNetworkBandwidth;
+    /**
+     * @return gateway renew url.
+     * 
+     */
     private String renewUrl;
     /**
      * @return gateway status.
@@ -143,6 +151,10 @@ public final class GetGatewaysGateway {
     public String activatedTime() {
         return this.activatedTime;
     }
+    /**
+     * @return gateway buy url.
+     * 
+     */
     public String buyUrl() {
         return this.buyUrl;
     }
@@ -265,6 +277,10 @@ public final class GetGatewaysGateway {
     public Integer publicNetworkBandwidth() {
         return this.publicNetworkBandwidth;
     }
+    /**
+     * @return gateway renew url.
+     * 
+     */
     public String renewUrl() {
         return this.renewUrl;
     }

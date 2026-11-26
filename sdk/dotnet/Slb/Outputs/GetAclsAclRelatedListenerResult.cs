@@ -13,9 +13,21 @@ namespace Pulumi.AliCloud.Slb.Outputs
     [OutputType]
     public sealed class GetAclsAclRelatedListenerResult
     {
+        /// <summary>
+        /// The type of the acl (such as white/black).
+        /// </summary>
         public readonly string AclType;
+        /// <summary>
+        /// The listener port.
+        /// </summary>
         public readonly int FrontendPort;
+        /// <summary>
+        /// The id of load balancer instance the listener belongs to.
+        /// </summary>
         public readonly string LoadBalancerId;
+        /// <summary>
+        /// The listener protocol (such as tcp/udp/http/https, etc).
+        /// </summary>
         public readonly string Protocol;
 
         [OutputConstructor]

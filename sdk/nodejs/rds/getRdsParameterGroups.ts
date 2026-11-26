@@ -6,6 +6,26 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.119.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.rds.getRdsParameterGroups({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstRdsParameterGroupId = example.then(example => example.groups?.[0]?.id);
+ * ```
+ */
 export function getRdsParameterGroups(args?: GetRdsParameterGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetRdsParameterGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -21,9 +41,21 @@ export function getRdsParameterGroups(args?: GetRdsParameterGroupsArgs, opts?: p
  * A collection of arguments for invoking getRdsParameterGroups.
  */
 export interface GetRdsParameterGroupsArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: boolean;
+    /**
+     * A list of Parameter Group IDs.
+     */
     ids?: string[];
+    /**
+     * A regex string to filter results by Parameter Group name.
+     */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -32,6 +64,9 @@ export interface GetRdsParameterGroupsArgs {
  */
 export interface GetRdsParameterGroupsResult {
     readonly enableDetails?: boolean;
+    /**
+     * A list of Rds Parameter Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.rds.GetRdsParameterGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -39,9 +74,32 @@ export interface GetRdsParameterGroupsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Parameter Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
+/**
+ * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.119.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.rds.getRdsParameterGroups({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstRdsParameterGroupId = example.then(example => example.groups?.[0]?.id);
+ * ```
+ */
 export function getRdsParameterGroupsOutput(args?: GetRdsParameterGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRdsParameterGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -57,8 +115,20 @@ export function getRdsParameterGroupsOutput(args?: GetRdsParameterGroupsOutputAr
  * A collection of arguments for invoking getRdsParameterGroups.
  */
 export interface GetRdsParameterGroupsOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
+    /**
+     * A list of Parameter Group IDs.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * A regex string to filter results by Parameter Group name.
+     */
     nameRegex?: pulumi.Input<string | undefined>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string | undefined>;
 }

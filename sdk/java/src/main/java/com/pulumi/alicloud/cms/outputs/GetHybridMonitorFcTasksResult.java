@@ -21,10 +21,18 @@ public final class GetHybridMonitorFcTasksResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The index warehouse where the host belongs.
+     * 
+     */
     private @Nullable String namespace;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return A list of Cms Hybrid Monitor Fc Tasks. Each element contains the following attributes:
+     * 
+     */
     private List<GetHybridMonitorFcTasksTask> tasks;
 
     private GetHybridMonitorFcTasksResult() {}
@@ -38,6 +46,10 @@ public final class GetHybridMonitorFcTasksResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The index warehouse where the host belongs.
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
@@ -50,6 +62,10 @@ public final class GetHybridMonitorFcTasksResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return A list of Cms Hybrid Monitor Fc Tasks. Each element contains the following attributes:
+     * 
+     */
     public List<GetHybridMonitorFcTasksTask> tasks() {
         return this.tasks;
     }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.SchedulerX
         /// <summary>
         /// This data source provides the Schedulerx Namespaces of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.173.0+.
+        /// &gt; **NOTE:** Available since v1.173.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.SchedulerX
         /// <summary>
         /// This data source provides the Schedulerx Namespaces of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.173.0+.
+        /// &gt; **NOTE:** Available since v1.173.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.SchedulerX
         /// <summary>
         /// This data source provides the Schedulerx Namespaces of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.173.0+.
+        /// &gt; **NOTE:** Available since v1.173.0.
         /// 
         /// ## Example Usage
         /// 
@@ -192,7 +192,13 @@ namespace Pulumi.AliCloud.SchedulerX
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Namespace names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// A list of Schedulerx Namespaces. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNamespacesNamespaceResult> Namespaces;
         public readonly string? OutputFile;
 

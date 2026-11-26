@@ -15,16 +15,32 @@ public final class DomainLogHeaderArgs extends com.pulumi.resources.ResourceArgs
 
     public static final DomainLogHeaderArgs Empty = new DomainLogHeaderArgs();
 
+    /**
+     * The key of label.
+     * 
+     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
+    /**
+     * @return The key of label.
+     * 
+     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * The value of label.
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return The value of label.
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -54,20 +70,44 @@ public final class DomainLogHeaderArgs extends com.pulumi.resources.ResourceArgs
             $ = new DomainLogHeaderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key The key of label.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key The key of label.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param value The value of label.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The value of label.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

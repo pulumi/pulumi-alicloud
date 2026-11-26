@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.CloudConnect.Outputs
         /// CidrBlock of the CCN instance.
         /// </summary>
         public readonly string CidrBlock;
+        /// <summary>
+        /// The description of the CCN instance.
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// ID of the CCN instance.

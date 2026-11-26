@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Iot
         /// <summary>
         /// This data source provides the Iot Device Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Iot
         /// <summary>
         /// This data source provides the Iot Device Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Iot
         /// <summary>
         /// This data source provides the Iot Device Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -217,7 +217,13 @@ namespace Pulumi.AliCloud.Iot
     public sealed class GetDeviceGroupsResult
     {
         public readonly bool? EnableDetails;
+        /// <summary>
+        /// The GroupName of the device group.
+        /// </summary>
         public readonly string? GroupName;
+        /// <summary>
+        /// A list of Iot Device Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDeviceGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

@@ -23,7 +23,15 @@ class ServiceLinkedRoleArgs:
         """
         The set of arguments for constructing a ServiceLinkedRole resource.
 
-        :param pulumi.Input[_builtins.str] service_linked_role: The name of the service linked role.
+        :param pulumi.Input[_builtins.str] service_linked_role: The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+               - `AliyunServiceRoleForSas`
+               - `AliyunServiceRoleForSasCspm`
+               - `AliyunServiceRoleForSasAgentless`
+               - `AliyunServiceRoleForOssMfd`
+               - `AliyunServiceRoleForAntiRansomwareMssp`
+               - `AliyunServiceRoleForSasSecllm`
+               - `AliyunServiceRoleForSasAI`
+               - `AliyunLogETLRole`
         """
         if service_linked_role is not None:
             pulumi.set(__self__, "service_linked_role", service_linked_role)
@@ -32,7 +40,15 @@ class ServiceLinkedRoleArgs:
     @pulumi.getter(name="serviceLinkedRole")
     def service_linked_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the service linked role.
+        The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+        - `AliyunServiceRoleForSas`
+        - `AliyunServiceRoleForSasCspm`
+        - `AliyunServiceRoleForSasAgentless`
+        - `AliyunServiceRoleForOssMfd`
+        - `AliyunServiceRoleForAntiRansomwareMssp`
+        - `AliyunServiceRoleForSasSecllm`
+        - `AliyunServiceRoleForSasAI`
+        - `AliyunLogETLRole`
         """
         return pulumi.get(self, "service_linked_role")
 
@@ -50,7 +66,15 @@ class _ServiceLinkedRoleState:
         Input properties used for looking up and filtering ServiceLinkedRole resources.
 
         :param pulumi.Input[_builtins.bool] role_status: Whether the service linked role exists.
-        :param pulumi.Input[_builtins.str] service_linked_role: The name of the service linked role.
+        :param pulumi.Input[_builtins.str] service_linked_role: The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+               - `AliyunServiceRoleForSas`
+               - `AliyunServiceRoleForSasCspm`
+               - `AliyunServiceRoleForSasAgentless`
+               - `AliyunServiceRoleForOssMfd`
+               - `AliyunServiceRoleForAntiRansomwareMssp`
+               - `AliyunServiceRoleForSasSecllm`
+               - `AliyunServiceRoleForSasAI`
+               - `AliyunLogETLRole`
         """
         if role_status is not None:
             pulumi.set(__self__, "role_status", role_status)
@@ -73,7 +97,15 @@ class _ServiceLinkedRoleState:
     @pulumi.getter(name="serviceLinkedRole")
     def service_linked_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the service linked role.
+        The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+        - `AliyunServiceRoleForSas`
+        - `AliyunServiceRoleForSasCspm`
+        - `AliyunServiceRoleForSasAgentless`
+        - `AliyunServiceRoleForOssMfd`
+        - `AliyunServiceRoleForAntiRansomwareMssp`
+        - `AliyunServiceRoleForSasSecllm`
+        - `AliyunServiceRoleForSasAI`
+        - `AliyunLogETLRole`
         """
         return pulumi.get(self, "service_linked_role")
 
@@ -99,6 +131,10 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.283.0.
 
+        > **NOTE:** This resource refuses to adopt a service linked role that already exists, for example one created by the Security Center console or by another tool. Creation fails with the import command to run instead of taking the existing role into state, so that a later `terraform destroy` never deletes a role that Terraform did not create. When importing a role other than `AliyunServiceRoleForSas`, keep `service_linked_role` in the configuration with that same name; because the argument has a default, omitting it plans a replacement of the imported role.
+
+        > **NOTE:** Upgrading from v1.283.0-v2.1.0: if `service_linked_role` was omitted from the configuration, the state entry stores an id that is not a role name. The first apply after upgrading replaces the resource and fails with an import hint. Run the printed `pulumi import` command; if it reports that the resource is already managed by Terraform, run `terraform state rm <ADDRESS>` and then import again.
+
         ## Example Usage
 
         Basic Usage
@@ -123,7 +159,15 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] service_linked_role: The name of the service linked role.
+        :param pulumi.Input[_builtins.str] service_linked_role: The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+               - `AliyunServiceRoleForSas`
+               - `AliyunServiceRoleForSasCspm`
+               - `AliyunServiceRoleForSasAgentless`
+               - `AliyunServiceRoleForOssMfd`
+               - `AliyunServiceRoleForAntiRansomwareMssp`
+               - `AliyunServiceRoleForSasSecllm`
+               - `AliyunServiceRoleForSasAI`
+               - `AliyunLogETLRole`
         """
         ...
     @overload
@@ -139,6 +183,10 @@ class ServiceLinkedRole(pulumi.CustomResource):
         For information about Threat Detection Service Linked Role and how to use it, see [What is Service Linked Role](https://www.alibabacloud.com/help/en/doc-detail/42302.htm).
 
         > **NOTE:** Available since v1.283.0.
+
+        > **NOTE:** This resource refuses to adopt a service linked role that already exists, for example one created by the Security Center console or by another tool. Creation fails with the import command to run instead of taking the existing role into state, so that a later `terraform destroy` never deletes a role that Terraform did not create. When importing a role other than `AliyunServiceRoleForSas`, keep `service_linked_role` in the configuration with that same name; because the argument has a default, omitting it plans a replacement of the imported role.
+
+        > **NOTE:** Upgrading from v1.283.0-v2.1.0: if `service_linked_role` was omitted from the configuration, the state entry stores an id that is not a role name. The first apply after upgrading replaces the resource and fails with an import hint. Run the printed `pulumi import` command; if it reports that the resource is already managed by Terraform, run `terraform state rm <ADDRESS>` and then import again.
 
         ## Example Usage
 
@@ -209,7 +257,15 @@ class ServiceLinkedRole(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] role_status: Whether the service linked role exists.
-        :param pulumi.Input[_builtins.str] service_linked_role: The name of the service linked role.
+        :param pulumi.Input[_builtins.str] service_linked_role: The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+               - `AliyunServiceRoleForSas`
+               - `AliyunServiceRoleForSasCspm`
+               - `AliyunServiceRoleForSasAgentless`
+               - `AliyunServiceRoleForOssMfd`
+               - `AliyunServiceRoleForAntiRansomwareMssp`
+               - `AliyunServiceRoleForSasSecllm`
+               - `AliyunServiceRoleForSasAI`
+               - `AliyunLogETLRole`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -239,9 +295,17 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="serviceLinkedRole")
-    def service_linked_role(self) -> pulumi.Output[_builtins.str]:
+    def service_linked_role(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the service linked role.
+        The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+        - `AliyunServiceRoleForSas`
+        - `AliyunServiceRoleForSasCspm`
+        - `AliyunServiceRoleForSasAgentless`
+        - `AliyunServiceRoleForOssMfd`
+        - `AliyunServiceRoleForAntiRansomwareMssp`
+        - `AliyunServiceRoleForSasSecllm`
+        - `AliyunServiceRoleForSasAI`
+        - `AliyunLogETLRole`
         """
         return pulumi.get(self, "service_linked_role")
 

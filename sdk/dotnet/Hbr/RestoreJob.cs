@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> Options { get; private set; } = null!;
 
         /// <summary>
-        /// The details about the Tablestore instance. See the following `Block OtsDetail`.
+        /// The details about the Tablestore instance. See `OtsDetail` below.
         /// </summary>
         [Output("otsDetail")]
         public Output<Outputs.RestoreJobOtsDetail> OtsDetail { get; private set; } = null!;
@@ -360,7 +360,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Options { get; set; }
 
         /// <summary>
-        /// The details about the Tablestore instance. See the following `Block OtsDetail`.
+        /// The details about the Tablestore instance. See `OtsDetail` below.
         /// </summary>
         [Input("otsDetail")]
         public Input<Inputs.RestoreJobOtsDetailArgs>? OtsDetail { get; set; }
@@ -518,7 +518,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Options { get; set; }
 
         /// <summary>
-        /// The details about the Tablestore instance. See the following `Block OtsDetail`.
+        /// The details about the Tablestore instance. See `OtsDetail` below.
         /// </summary>
         [Input("otsDetail")]
         public Input<Inputs.RestoreJobOtsDetailGetArgs>? OtsDetail { get; set; }

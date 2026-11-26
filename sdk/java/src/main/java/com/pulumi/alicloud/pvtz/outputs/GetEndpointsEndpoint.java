@@ -22,9 +22,13 @@ public final class GetEndpointsEndpoint {
      * 
      */
     private String endpointName;
+    /**
+     * @return The ID of the Endpoint.
+     * 
+     */
     private String id;
     /**
-     * @return The Ip Configs.
+     * @return The Ip Configs. Each element contains the following attributes:
      * 
      */
     private List<GetEndpointsEndpointIpConfig> ipConfigs;
@@ -69,11 +73,15 @@ public final class GetEndpointsEndpoint {
     public String endpointName() {
         return this.endpointName;
     }
+    /**
+     * @return The ID of the Endpoint.
+     * 
+     */
     public String id() {
         return this.id;
     }
     /**
-     * @return The Ip Configs.
+     * @return The Ip Configs. Each element contains the following attributes:
      * 
      */
     public List<GetEndpointsEndpointIpConfig> ipConfigs() {

@@ -29,6 +29,7 @@ class MigrationJobArgs:
                  source_endpoint_instance_type: pulumi.Input[_builtins.str],
                  structure_initialization: pulumi.Input[_builtins.bool],
                  checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_check_configure: pulumi.Input[Optional[_builtins.str]] = None,
                  dest_primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dest_secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -62,15 +63,18 @@ class MigrationJobArgs:
         :param pulumi.Input[_builtins.bool] data_initialization: Whether to execute DTS supports schema migration.
         :param pulumi.Input[_builtins.bool] data_synchronization: Whether to perform incremental data migration.
         :param pulumi.Input[_builtins.str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
-        :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_type: The type of destination instance. Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[_builtins.str] dts_instance_id: The Migration instance ID. The ID of `dts.MigrationInstance`.
-        :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
         :param pulumi.Input[_builtins.str] source_endpoint_instance_type: The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[_builtins.bool] structure_initialization: Whether to perform a database table structure to migrate.
         :param pulumi.Input[_builtins.str] checkpoint: Start time in Unix timestamp format.
+        :param pulumi.Input[_builtins.str] data_check_configure: The data verification configuration of the migration job, in the format of a JSON string, such as parameter limits or alarm configurations. The `dataCheckDbList` field is required when this argument is set. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
         :param pulumi.Input[_builtins.str] dest_primary_vswitch_id: The ID of the primary vSwitch on the destination side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] dest_secondary_vswitch_id: The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+               
+               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         :param pulumi.Input[_builtins.str] destination_endpoint_database_name: The name of migrate the database.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_id: The ID of destination instance.
         :param pulumi.Input[_builtins.str] destination_endpoint_ip: The ip of source endpoint.
@@ -95,9 +99,7 @@ class MigrationJobArgs:
         :param pulumi.Input[_builtins.str] source_endpoint_user_name: The username of database account.
         :param pulumi.Input[_builtins.str] src_primary_vswitch_id: The ID of the primary vSwitch on the source side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] src_secondary_vswitch_id: The ID of the secondary vSwitch on the source side of a VPC NAT connection.
-        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-               
-               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`. While the job is being prepared or is running, the computed value is `Migrating`.
         """
         pulumi.set(__self__, "data_initialization", data_initialization)
         pulumi.set(__self__, "data_synchronization", data_synchronization)
@@ -110,6 +112,8 @@ class MigrationJobArgs:
         pulumi.set(__self__, "structure_initialization", structure_initialization)
         if checkpoint is not None:
             pulumi.set(__self__, "checkpoint", checkpoint)
+        if data_check_configure is not None:
+            pulumi.set(__self__, "data_check_configure", data_check_configure)
         if dest_primary_vswitch_id is not None:
             pulumi.set(__self__, "dest_primary_vswitch_id", dest_primary_vswitch_id)
         if dest_secondary_vswitch_id is not None:
@@ -205,7 +209,7 @@ class MigrationJobArgs:
     @pulumi.getter(name="destinationEndpointEngineName")
     def destination_endpoint_engine_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         """
         return pulumi.get(self, "destination_endpoint_engine_name")
 
@@ -241,7 +245,7 @@ class MigrationJobArgs:
     @pulumi.getter(name="sourceEndpointEngineName")
     def source_endpoint_engine_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
         """
         return pulumi.get(self, "source_endpoint_engine_name")
 
@@ -286,6 +290,18 @@ class MigrationJobArgs:
         pulumi.set(self, "checkpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataCheckConfigure")
+    def data_check_configure(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The data verification configuration of the migration job, in the format of a JSON string, such as parameter limits or alarm configurations. The `dataCheckDbList` field is required when this argument is set. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+        """
+        return pulumi.get(self, "data_check_configure")
+
+    @data_check_configure.setter
+    def data_check_configure(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "data_check_configure", value)
+
+    @_builtins.property
     @pulumi.getter(name="destPrimaryVswitchId")
     def dest_primary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -302,6 +318,8 @@ class MigrationJobArgs:
     def dest_secondary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+
+        > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         """
         return pulumi.get(self, "dest_secondary_vswitch_id")
 
@@ -601,9 +619,7 @@ class MigrationJobArgs:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-
-        > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
+        The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`. While the job is being prepared or is running, the computed value is `Migrating`.
         """
         return pulumi.get(self, "status")
 
@@ -616,6 +632,7 @@ class MigrationJobArgs:
 class _MigrationJobState:
     def __init__(__self__, *,
                  checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_check_configure: pulumi.Input[Optional[_builtins.str]] = None,
                  data_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_synchronization: pulumi.Input[Optional[_builtins.bool]] = None,
                  db_list: pulumi.Input[Optional[_builtins.str]] = None,
@@ -656,13 +673,16 @@ class _MigrationJobState:
         Input properties used for looking up and filtering MigrationJob resources.
 
         :param pulumi.Input[_builtins.str] checkpoint: Start time in Unix timestamp format.
+        :param pulumi.Input[_builtins.str] data_check_configure: The data verification configuration of the migration job, in the format of a JSON string, such as parameter limits or alarm configurations. The `dataCheckDbList` field is required when this argument is set. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
         :param pulumi.Input[_builtins.bool] data_initialization: Whether to execute DTS supports schema migration.
         :param pulumi.Input[_builtins.bool] data_synchronization: Whether to perform incremental data migration.
         :param pulumi.Input[_builtins.str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
         :param pulumi.Input[_builtins.str] dest_primary_vswitch_id: The ID of the primary vSwitch on the destination side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] dest_secondary_vswitch_id: The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+               
+               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         :param pulumi.Input[_builtins.str] destination_endpoint_database_name: The name of migrate the database.
-        :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_id: The ID of destination instance.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_type: The type of destination instance. Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[_builtins.str] destination_endpoint_ip: The ip of source endpoint.
@@ -676,7 +696,7 @@ class _MigrationJobState:
         :param pulumi.Input[_builtins.str] dts_job_name: The name of migration job.
         :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
         :param pulumi.Input[_builtins.str] source_endpoint_database_name: The name of migrate the database.
-        :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
         :param pulumi.Input[_builtins.str] source_endpoint_instance_id: The ID of source instance.
         :param pulumi.Input[_builtins.str] source_endpoint_instance_type: The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[_builtins.str] source_endpoint_ip: The ip of source endpoint.
@@ -690,13 +710,13 @@ class _MigrationJobState:
         :param pulumi.Input[_builtins.str] source_endpoint_user_name: The username of database account.
         :param pulumi.Input[_builtins.str] src_primary_vswitch_id: The ID of the primary vSwitch on the source side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] src_secondary_vswitch_id: The ID of the secondary vSwitch on the source side of a VPC NAT connection.
-        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-               
-               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`. While the job is being prepared or is running, the computed value is `Migrating`.
         :param pulumi.Input[_builtins.bool] structure_initialization: Whether to perform a database table structure to migrate.
         """
         if checkpoint is not None:
             pulumi.set(__self__, "checkpoint", checkpoint)
+        if data_check_configure is not None:
+            pulumi.set(__self__, "data_check_configure", data_check_configure)
         if data_initialization is not None:
             pulumi.set(__self__, "data_initialization", data_initialization)
         if data_synchronization is not None:
@@ -783,6 +803,18 @@ class _MigrationJobState:
         pulumi.set(self, "checkpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataCheckConfigure")
+    def data_check_configure(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The data verification configuration of the migration job, in the format of a JSON string, such as parameter limits or alarm configurations. The `dataCheckDbList` field is required when this argument is set. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+        """
+        return pulumi.get(self, "data_check_configure")
+
+    @data_check_configure.setter
+    def data_check_configure(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "data_check_configure", value)
+
+    @_builtins.property
     @pulumi.getter(name="dataInitialization")
     def data_initialization(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -835,6 +867,8 @@ class _MigrationJobState:
     def dest_secondary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+
+        > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         """
         return pulumi.get(self, "dest_secondary_vswitch_id")
 
@@ -858,7 +892,7 @@ class _MigrationJobState:
     @pulumi.getter(name="destinationEndpointEngineName")
     def destination_endpoint_engine_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         """
         return pulumi.get(self, "destination_endpoint_engine_name")
 
@@ -1026,7 +1060,7 @@ class _MigrationJobState:
     @pulumi.getter(name="sourceEndpointEngineName")
     def source_endpoint_engine_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
         """
         return pulumi.get(self, "source_endpoint_engine_name")
 
@@ -1194,9 +1228,7 @@ class _MigrationJobState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-
-        > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
+        The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`. While the job is being prepared or is running, the computed value is `Migrating`.
         """
         return pulumi.get(self, "status")
 
@@ -1224,6 +1256,7 @@ class MigrationJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_check_configure: pulumi.Input[Optional[_builtins.str]] = None,
                  data_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_synchronization: pulumi.Input[Optional[_builtins.bool]] = None,
                  db_list: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1312,7 +1345,7 @@ class MigrationJob(pulumi.CustomResource):
                 engine="MySQL",
                 engine_version="8.0",
                 instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-                instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
+                instance_storage=output(example_get_instance_classes.instance_classes[0].storage_ranges[0].min).apply(lambda x: int(x)),
                 instance_charge_type="Postpaid",
                 instance_name=std.format(input=f"{name}_%d",
                     args=[example_instance_range["value"] + 1]).result,
@@ -1402,13 +1435,16 @@ class MigrationJob(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] checkpoint: Start time in Unix timestamp format.
+        :param pulumi.Input[_builtins.str] data_check_configure: The data verification configuration of the migration job, in the format of a JSON string, such as parameter limits or alarm configurations. The `dataCheckDbList` field is required when this argument is set. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
         :param pulumi.Input[_builtins.bool] data_initialization: Whether to execute DTS supports schema migration.
         :param pulumi.Input[_builtins.bool] data_synchronization: Whether to perform incremental data migration.
         :param pulumi.Input[_builtins.str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
         :param pulumi.Input[_builtins.str] dest_primary_vswitch_id: The ID of the primary vSwitch on the destination side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] dest_secondary_vswitch_id: The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+               
+               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         :param pulumi.Input[_builtins.str] destination_endpoint_database_name: The name of migrate the database.
-        :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_id: The ID of destination instance.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_type: The type of destination instance. Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[_builtins.str] destination_endpoint_ip: The ip of source endpoint.
@@ -1422,7 +1458,7 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dts_job_name: The name of migration job.
         :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
         :param pulumi.Input[_builtins.str] source_endpoint_database_name: The name of migrate the database.
-        :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
         :param pulumi.Input[_builtins.str] source_endpoint_instance_id: The ID of source instance.
         :param pulumi.Input[_builtins.str] source_endpoint_instance_type: The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[_builtins.str] source_endpoint_ip: The ip of source endpoint.
@@ -1436,9 +1472,7 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_endpoint_user_name: The username of database account.
         :param pulumi.Input[_builtins.str] src_primary_vswitch_id: The ID of the primary vSwitch on the source side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] src_secondary_vswitch_id: The ID of the secondary vSwitch on the source side of a VPC NAT connection.
-        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-               
-               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`. While the job is being prepared or is running, the computed value is `Migrating`.
         :param pulumi.Input[_builtins.bool] structure_initialization: Whether to perform a database table structure to migrate.
         """
         ...
@@ -1498,7 +1532,7 @@ class MigrationJob(pulumi.CustomResource):
                 engine="MySQL",
                 engine_version="8.0",
                 instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-                instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
+                instance_storage=output(example_get_instance_classes.instance_classes[0].storage_ranges[0].min).apply(lambda x: int(x)),
                 instance_charge_type="Postpaid",
                 instance_name=std.format(input=f"{name}_%d",
                     args=[example_instance_range["value"] + 1]).result,
@@ -1601,6 +1635,7 @@ class MigrationJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_check_configure: pulumi.Input[Optional[_builtins.str]] = None,
                  data_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_synchronization: pulumi.Input[Optional[_builtins.bool]] = None,
                  db_list: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1647,6 +1682,7 @@ class MigrationJob(pulumi.CustomResource):
             __props__ = MigrationJobArgs.__new__(MigrationJobArgs)
 
             __props__.__dict__["checkpoint"] = checkpoint
+            __props__.__dict__["data_check_configure"] = data_check_configure
             if data_initialization is None and not opts.urn:
                 raise TypeError("Missing required property 'data_initialization'")
             __props__.__dict__["data_initialization"] = data_initialization
@@ -1712,6 +1748,7 @@ class MigrationJob(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            data_check_configure: pulumi.Input[Optional[_builtins.str]] = None,
             data_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
             data_synchronization: pulumi.Input[Optional[_builtins.bool]] = None,
             db_list: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1756,13 +1793,16 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] checkpoint: Start time in Unix timestamp format.
+        :param pulumi.Input[_builtins.str] data_check_configure: The data verification configuration of the migration job, in the format of a JSON string, such as parameter limits or alarm configurations. The `dataCheckDbList` field is required when this argument is set. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
         :param pulumi.Input[_builtins.bool] data_initialization: Whether to execute DTS supports schema migration.
         :param pulumi.Input[_builtins.bool] data_synchronization: Whether to perform incremental data migration.
         :param pulumi.Input[_builtins.str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
         :param pulumi.Input[_builtins.str] dest_primary_vswitch_id: The ID of the primary vSwitch on the destination side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] dest_secondary_vswitch_id: The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+               
+               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         :param pulumi.Input[_builtins.str] destination_endpoint_database_name: The name of migrate the database.
-        :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_id: The ID of destination instance.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_type: The type of destination instance. Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[_builtins.str] destination_endpoint_ip: The ip of source endpoint.
@@ -1776,7 +1816,7 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dts_job_name: The name of migration job.
         :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
         :param pulumi.Input[_builtins.str] source_endpoint_database_name: The name of migrate the database.
-        :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
         :param pulumi.Input[_builtins.str] source_endpoint_instance_id: The ID of source instance.
         :param pulumi.Input[_builtins.str] source_endpoint_instance_type: The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[_builtins.str] source_endpoint_ip: The ip of source endpoint.
@@ -1790,9 +1830,7 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_endpoint_user_name: The username of database account.
         :param pulumi.Input[_builtins.str] src_primary_vswitch_id: The ID of the primary vSwitch on the source side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] src_secondary_vswitch_id: The ID of the secondary vSwitch on the source side of a VPC NAT connection.
-        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-               
-               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`. While the job is being prepared or is running, the computed value is `Migrating`.
         :param pulumi.Input[_builtins.bool] structure_initialization: Whether to perform a database table structure to migrate.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1800,6 +1838,7 @@ class MigrationJob(pulumi.CustomResource):
         __props__ = _MigrationJobState.__new__(_MigrationJobState)
 
         __props__.__dict__["checkpoint"] = checkpoint
+        __props__.__dict__["data_check_configure"] = data_check_configure
         __props__.__dict__["data_initialization"] = data_initialization
         __props__.__dict__["data_synchronization"] = data_synchronization
         __props__.__dict__["db_list"] = db_list
@@ -1842,6 +1881,7 @@ class MigrationJob(pulumi.CustomResource):
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            data_check_configure: pulumi.Input[Optional[_builtins.str]] = None,
             data_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
             data_synchronization: pulumi.Input[Optional[_builtins.bool]] = None,
             db_list: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1880,6 +1920,7 @@ class MigrationJob(pulumi.CustomResource):
             structure_initialization: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["checkpoint"] = checkpoint
+        __props__["dataCheckConfigure"] = data_check_configure
         __props__["dataInitialization"] = data_initialization
         __props__["dataSynchronization"] = data_synchronization
         __props__["dbList"] = db_list
@@ -1927,6 +1968,14 @@ class MigrationJob(pulumi.CustomResource):
         return pulumi.get(self, "checkpoint")
 
     @_builtins.property
+    @pulumi.getter(name="dataCheckConfigure")
+    def data_check_configure(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The data verification configuration of the migration job, in the format of a JSON string, such as parameter limits or alarm configurations. The `dataCheckDbList` field is required when this argument is set. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+        """
+        return pulumi.get(self, "data_check_configure")
+
+    @_builtins.property
     @pulumi.getter(name="dataInitialization")
     def data_initialization(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -1963,6 +2012,8 @@ class MigrationJob(pulumi.CustomResource):
     def dest_secondary_vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+
+        > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         """
         return pulumi.get(self, "dest_secondary_vswitch_id")
 
@@ -1978,7 +2029,7 @@ class MigrationJob(pulumi.CustomResource):
     @pulumi.getter(name="destinationEndpointEngineName")
     def destination_endpoint_engine_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         """
         return pulumi.get(self, "destination_endpoint_engine_name")
 
@@ -2090,7 +2141,7 @@ class MigrationJob(pulumi.CustomResource):
     @pulumi.getter(name="sourceEndpointEngineName")
     def source_endpoint_engine_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
         """
         return pulumi.get(self, "source_endpoint_engine_name")
 
@@ -2202,9 +2253,7 @@ class MigrationJob(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-
-        > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
+        The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`. While the job is being prepared or is running, the computed value is `Migrating`.
         """
         return pulumi.get(self, "status")
 

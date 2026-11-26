@@ -47,12 +47,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new KeyPair("basic", KeyPairArgs.builder()
- *             .keyName("terraform-test-key-pair")
+ *             .keyName("terraform-demo-key-pair")
  *             .build());
  * 
  *         // Using name prefix to build key pair
  *         var prefix = new KeyPair("prefix", KeyPairArgs.builder()
- *             .keyNamePrefix("terraform-test-key-pair-prefix")
+ *             .keyNamePrefix("terraform-demo-key-pair-prefix")
  *             .build());
  * 
  *         // Import an existing public key to build a alicloud key pair
@@ -79,15 +79,31 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/keyPair:KeyPair")
 public class KeyPair extends com.pulumi.resources.CustomResource {
+    /**
+     * The creation time of the key pair.
+     * 
+     */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
+    /**
+     * @return The creation time of the key pair.
+     * 
+     */
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * The finger print of the key pair.
+     * 
+     */
     @Export(name="fingerPrint", refs={String.class}, tree="[0]")
     private Output<String> fingerPrint;
 
+    /**
+     * @return The finger print of the key pair.
+     * 
+     */
     public Output<String> fingerPrint() {
         return this.fingerPrint;
     }
@@ -106,7 +122,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.keyFile);
     }
     /**
-     * The key pair&#39;s name. It is the only in one Alicloud account.
+     * The key pair&#39;s name. It is the only in one Alicloud account. Deprecated, use `keyPairName` instead.
      * 
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
@@ -116,7 +132,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
     private Output<String> keyName;
 
     /**
-     * @return The key pair&#39;s name. It is the only in one Alicloud account.
+     * @return The key pair&#39;s name. It is the only in one Alicloud account. Deprecated, use `keyPairName` instead.
      * 
      */
     public Output<String> keyName() {
@@ -136,9 +152,17 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> keyNamePrefix() {
         return Codegen.optional(this.keyNamePrefix);
     }
+    /**
+     * The key pair&#39;s name. It is the only in one Alicloud account.
+     * 
+     */
     @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output<String> keyPairName;
 
+    /**
+     * @return The key pair&#39;s name. It is the only in one Alicloud account.
+     * 
+     */
     public Output<String> keyPairName() {
         return this.keyPairName;
     }
@@ -172,6 +196,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
     }
     /**
      * A mapping of tags to assign to the resource.
+     * 
      * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      * 
      */
@@ -180,6 +205,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A mapping of tags to assign to the resource.
+     * 
      * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      * 
      */

@@ -107,7 +107,7 @@ class GetElasticityAssurancesResult:
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        A mapping of tags to assign to the Capacity Reservation.
+        (Optional) A mapping of tags to assign to the Capacity Reservation.
         """
         return pulumi.get(self, "tags")
 
@@ -138,7 +138,7 @@ def get_elasticity_assurances(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides Ecs Elasticity Assurance available to the user.
 
-    > **NOTE:** Available in 1.196.0+
+    > **NOTE:** Available since v1.196.0
 
     ## Example Usage
 
@@ -187,7 +187,7 @@ def get_elasticity_assurances_output(ids: pulumi.Input[Optional[Optional[Sequenc
     """
     This data source provides Ecs Elasticity Assurance available to the user.
 
-    > **NOTE:** Available in 1.196.0+
+    > **NOTE:** Available since v1.196.0
 
     ## Example Usage
 

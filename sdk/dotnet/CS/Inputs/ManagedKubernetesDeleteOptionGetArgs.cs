@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
         /// - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
         /// 
-        /// ```
+        /// ```text
         /// ...
         /// // Specify delete_options as below when deleting cluster
         /// // delete SLB resources created by the Nginx Ingress Service

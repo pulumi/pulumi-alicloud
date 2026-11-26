@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.144.0+.
+// > **NOTE:** Available since v1.144.0.
 //
 // ## Example Usage
 //
@@ -75,12 +75,14 @@ type GetTagsArgs struct {
 // A collection of values returned by getTags.
 type GetTagsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string       `pulumi:"id"`
-	Ids        []string     `pulumi:"ids"`
-	NameRegex  *string      `pulumi:"nameRegex"`
-	Names      []string     `pulumi:"names"`
-	OutputFile *string      `pulumi:"outputFile"`
-	Tags       []GetTagsTag `pulumi:"tags"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Tag names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Direct Mail Tags. Each element contains the following attributes:
+	Tags []GetTagsTag `pulumi:"tags"`
 }
 
 func GetTagsOutput(ctx *pulumi.Context, args GetTagsOutputArgs, opts ...pulumi.InvokeOption) GetTagsResultOutput {
@@ -130,6 +132,7 @@ func (o GetTagsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTagsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Tag names.
 func (o GetTagsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTagsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -138,6 +141,7 @@ func (o GetTagsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTagsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Direct Mail Tags. Each element contains the following attributes:
 func (o GetTagsResultOutput) Tags() GetTagsTagArrayOutput {
 	return o.ApplyT(func(v GetTagsResult) []GetTagsTag { return v.Tags }).(GetTagsTagArrayOutput)
 }

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.180.0+.
+// > **NOTE:** Available since v1.180.0.
 //
 // ## Example Usage
 //
@@ -78,15 +78,18 @@ type GetDdosBgpIpsArgs struct {
 // A collection of values returned by getDdosBgpIps.
 type GetDdosBgpIpsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string            `pulumi:"id"`
-	Ids         []string          `pulumi:"ids"`
-	InstanceId  string            `pulumi:"instanceId"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The ID of the native protection enterprise instance to be operated.
+	InstanceId string `pulumi:"instanceId"`
+	// A list of Ddos Bgp Ips. Each element contains the following attributes:
 	Ips         []GetDdosBgpIpsIp `pulumi:"ips"`
 	OutputFile  *string           `pulumi:"outputFile"`
 	PageNumber  *int              `pulumi:"pageNumber"`
 	PageSize    *int              `pulumi:"pageSize"`
 	ProductName *string           `pulumi:"productName"`
-	Status      *string           `pulumi:"status"`
+	// The current state of the IP address.
+	Status *string `pulumi:"status"`
 }
 
 func GetDdosBgpIpsOutput(ctx *pulumi.Context, args GetDdosBgpIpsOutputArgs, opts ...pulumi.InvokeOption) GetDdosBgpIpsResultOutput {
@@ -140,10 +143,12 @@ func (o GetDdosBgpIpsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDdosBgpIpsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the native protection enterprise instance to be operated.
 func (o GetDdosBgpIpsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDdosBgpIpsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// A list of Ddos Bgp Ips. Each element contains the following attributes:
 func (o GetDdosBgpIpsResultOutput) Ips() GetDdosBgpIpsIpArrayOutput {
 	return o.ApplyT(func(v GetDdosBgpIpsResult) []GetDdosBgpIpsIp { return v.Ips }).(GetDdosBgpIpsIpArrayOutput)
 }
@@ -164,6 +169,7 @@ func (o GetDdosBgpIpsResultOutput) ProductName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDdosBgpIpsResult) *string { return v.ProductName }).(pulumi.StringPtrOutput)
 }
 
+// The current state of the IP address.
 func (o GetDdosBgpIpsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDdosBgpIpsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

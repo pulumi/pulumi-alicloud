@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
 //
-// > **NOTE:** Available in 1.56.0+
+// > **NOTE:** Available since v1.56.0.
 //
 // ## Example Usage
 //
@@ -67,9 +67,10 @@ type GetConsumerGroupsArgs struct {
 
 // A collection of values returned by getConsumerGroups.
 type GetConsumerGroupsResult struct {
-	ConsumerIdRegex *string  `pulumi:"consumerIdRegex"`
-	ConsumerIds     []string `pulumi:"consumerIds"`
-	// A list of consumer group. Each element contains the following attributes:
+	ConsumerIdRegex *string `pulumi:"consumerIdRegex"`
+	// A list of consumer group ids.
+	ConsumerIds []string `pulumi:"consumerIds"`
+	// A list of consumer group. Each element contains the following attributes. See `groups` for the optional argument block.
 	Groups []GetConsumerGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
 	Id  string   `pulumi:"id"`
@@ -121,11 +122,12 @@ func (o GetConsumerGroupsResultOutput) ConsumerIdRegex() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetConsumerGroupsResult) *string { return v.ConsumerIdRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of consumer group ids.
 func (o GetConsumerGroupsResultOutput) ConsumerIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConsumerGroupsResult) []string { return v.ConsumerIds }).(pulumi.StringArrayOutput)
 }
 
-// A list of consumer group. Each element contains the following attributes:
+// A list of consumer group. Each element contains the following attributes. See `groups` for the optional argument block.
 func (o GetConsumerGroupsResultOutput) Groups() GetConsumerGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetConsumerGroupsResult) []GetConsumerGroupsGroup { return v.Groups }).(GetConsumerGroupsGroupArrayOutput)
 }

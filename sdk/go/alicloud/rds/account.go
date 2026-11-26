@@ -76,7 +76,7 @@ import (
 //			}
 //			_, err = rds.NewAccount(ctx, "account", &rds.AccountArgs{
 //				InstanceId: instance.ID(),
-//				Name:       pulumi.String("tftestnormal"),
+//				Name:       pulumi.String("tfaccountnormal"),
 //				Password:   pulumi.String("Test12345"),
 //			})
 //			if err != nil {
@@ -100,20 +100,28 @@ import (
 type Account struct {
 	pulumi.CustomResourceState
 
-	AccountDescription pulumi.StringOutput    `pulumi:"accountDescription"`
-	AccountName        pulumi.StringOutput    `pulumi:"accountName"`
-	AccountPassword    pulumi.StringPtrOutput `pulumi:"accountPassword"`
+	// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+	AccountDescription pulumi.StringOutput `pulumi:"accountDescription"`
+	// The name of the account. It conflicts with `name` and is ignored when `name` is set.
+	AccountName pulumi.StringOutput `pulumi:"accountName"`
+	// The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
+	AccountPassword pulumi.StringPtrOutput `pulumi:"accountPassword"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	AccountPasswordWo        pulumi.StringPtrOutput `pulumi:"accountPasswordWo"`
-	AccountPasswordWoVersion pulumi.IntPtrOutput    `pulumi:"accountPasswordWoVersion"`
-	AccountType              pulumi.StringOutput    `pulumi:"accountType"`
-	CheckPolicy              pulumi.BoolPtrOutput   `pulumi:"checkPolicy"`
-	DbInstanceId             pulumi.StringOutput    `pulumi:"dbInstanceId"`
-	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// The write-only password of the account. It conflicts with `password` and `kmsEncryptedPassword`, and must be specified together with `accountPasswordWoVersion`.
+	AccountPasswordWo pulumi.StringPtrOutput `pulumi:"accountPasswordWo"`
+	// The version of the write-only password. It must be specified together with `accountPasswordWo`.
+	AccountPasswordWoVersion pulumi.IntPtrOutput `pulumi:"accountPasswordWoVersion"`
+	// The account type. Valid values: Normal/Super/Sysadmin.
+	AccountType pulumi.StringOutput `pulumi:"accountType"`
+	// Whether to apply password policy.
+	CheckPolicy pulumi.BoolPtrOutput `pulumi:"checkPolicy"`
+	// The ID of the instance.
+	DbInstanceId pulumi.StringOutput `pulumi:"dbInstanceId"`
+	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
 	//
 	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The Id of instance in which account belongs.
+	// The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
 	//
 	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -121,21 +129,23 @@ type Account struct {
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `accountName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
 	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
-	Password            pulumi.StringPtrOutput `pulumi:"password"`
-	ResetPermissionFlag pulumi.BoolPtrOutput   `pulumi:"resetPermissionFlag"`
-	Status              pulumi.StringOutput    `pulumi:"status"`
+	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+	ResetPermissionFlag pulumi.BoolPtrOutput `pulumi:"resetPermissionFlag"`
+	// The status of the resource. Valid values: `Available`, `Unavailable`.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
 	//
-	// Default to Normal.
+	// Default to Normal. The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -186,20 +196,28 @@ func GetAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Account resources.
 type accountState struct {
+	// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
 	AccountDescription *string `pulumi:"accountDescription"`
-	AccountName        *string `pulumi:"accountName"`
-	AccountPassword    *string `pulumi:"accountPassword"`
+	// The name of the account. It conflicts with `name` and is ignored when `name` is set.
+	AccountName *string `pulumi:"accountName"`
+	// The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
+	AccountPassword *string `pulumi:"accountPassword"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	AccountPasswordWo        *string `pulumi:"accountPasswordWo"`
-	AccountPasswordWoVersion *int    `pulumi:"accountPasswordWoVersion"`
-	AccountType              *string `pulumi:"accountType"`
-	CheckPolicy              *bool   `pulumi:"checkPolicy"`
-	DbInstanceId             *string `pulumi:"dbInstanceId"`
-	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// The write-only password of the account. It conflicts with `password` and `kmsEncryptedPassword`, and must be specified together with `accountPasswordWoVersion`.
+	AccountPasswordWo *string `pulumi:"accountPasswordWo"`
+	// The version of the write-only password. It must be specified together with `accountPasswordWo`.
+	AccountPasswordWoVersion *int `pulumi:"accountPasswordWoVersion"`
+	// The account type. Valid values: Normal/Super/Sysadmin.
+	AccountType *string `pulumi:"accountType"`
+	// Whether to apply password policy.
+	CheckPolicy *bool `pulumi:"checkPolicy"`
+	// The ID of the instance.
+	DbInstanceId *string `pulumi:"dbInstanceId"`
+	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
 	//
 	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
 	Description *string `pulumi:"description"`
-	// The Id of instance in which account belongs.
+	// The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
 	//
 	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId *string `pulumi:"instanceId"`
@@ -207,41 +225,51 @@ type accountState struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `accountName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name *string `pulumi:"name"`
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
 	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
-	Password            *string `pulumi:"password"`
-	ResetPermissionFlag *bool   `pulumi:"resetPermissionFlag"`
-	Status              *string `pulumi:"status"`
+	Password *string `pulumi:"password"`
+	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+	ResetPermissionFlag *bool `pulumi:"resetPermissionFlag"`
+	// The status of the resource. Valid values: `Available`, `Unavailable`.
+	Status *string `pulumi:"status"`
 	// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
 	//
-	// Default to Normal.
+	// Default to Normal. The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type *string `pulumi:"type"`
 }
 
 type AccountState struct {
+	// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
 	AccountDescription pulumi.StringPtrInput
-	AccountName        pulumi.StringPtrInput
-	AccountPassword    pulumi.StringPtrInput
+	// The name of the account. It conflicts with `name` and is ignored when `name` is set.
+	AccountName pulumi.StringPtrInput
+	// The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
+	AccountPassword pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	AccountPasswordWo        pulumi.StringPtrInput
+	// The write-only password of the account. It conflicts with `password` and `kmsEncryptedPassword`, and must be specified together with `accountPasswordWoVersion`.
+	AccountPasswordWo pulumi.StringPtrInput
+	// The version of the write-only password. It must be specified together with `accountPasswordWo`.
 	AccountPasswordWoVersion pulumi.IntPtrInput
-	AccountType              pulumi.StringPtrInput
-	CheckPolicy              pulumi.BoolPtrInput
-	DbInstanceId             pulumi.StringPtrInput
-	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// The account type. Valid values: Normal/Super/Sysadmin.
+	AccountType pulumi.StringPtrInput
+	// Whether to apply password policy.
+	CheckPolicy pulumi.BoolPtrInput
+	// The ID of the instance.
+	DbInstanceId pulumi.StringPtrInput
+	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
 	//
 	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
 	Description pulumi.StringPtrInput
-	// The Id of instance in which account belongs.
+	// The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
 	//
 	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId pulumi.StringPtrInput
@@ -249,21 +277,23 @@ type AccountState struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `accountName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name pulumi.StringPtrInput
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
 	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
-	Password            pulumi.StringPtrInput
+	Password pulumi.StringPtrInput
+	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
 	ResetPermissionFlag pulumi.BoolPtrInput
-	Status              pulumi.StringPtrInput
+	// The status of the resource. Valid values: `Available`, `Unavailable`.
+	Status pulumi.StringPtrInput
 	// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
 	//
-	// Default to Normal.
+	// Default to Normal. The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type pulumi.StringPtrInput
@@ -280,20 +310,28 @@ func AccountExists(ctx *pulumi.Context,
 }
 
 type accountArgs struct {
+	// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
 	AccountDescription *string `pulumi:"accountDescription"`
-	AccountName        *string `pulumi:"accountName"`
-	AccountPassword    *string `pulumi:"accountPassword"`
+	// The name of the account. It conflicts with `name` and is ignored when `name` is set.
+	AccountName *string `pulumi:"accountName"`
+	// The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
+	AccountPassword *string `pulumi:"accountPassword"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	AccountPasswordWo        *string `pulumi:"accountPasswordWo"`
-	AccountPasswordWoVersion *int    `pulumi:"accountPasswordWoVersion"`
-	AccountType              *string `pulumi:"accountType"`
-	CheckPolicy              *bool   `pulumi:"checkPolicy"`
-	DbInstanceId             *string `pulumi:"dbInstanceId"`
-	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// The write-only password of the account. It conflicts with `password` and `kmsEncryptedPassword`, and must be specified together with `accountPasswordWoVersion`.
+	AccountPasswordWo *string `pulumi:"accountPasswordWo"`
+	// The version of the write-only password. It must be specified together with `accountPasswordWo`.
+	AccountPasswordWoVersion *int `pulumi:"accountPasswordWoVersion"`
+	// The account type. Valid values: Normal/Super/Sysadmin.
+	AccountType *string `pulumi:"accountType"`
+	// Whether to apply password policy.
+	CheckPolicy *bool `pulumi:"checkPolicy"`
+	// The ID of the instance.
+	DbInstanceId *string `pulumi:"dbInstanceId"`
+	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
 	//
 	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
 	Description *string `pulumi:"description"`
-	// The Id of instance in which account belongs.
+	// The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
 	//
 	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId *string `pulumi:"instanceId"`
@@ -301,21 +339,23 @@ type accountArgs struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `accountName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name *string `pulumi:"name"`
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
 	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
-	Password            *string `pulumi:"password"`
-	ResetPermissionFlag *bool   `pulumi:"resetPermissionFlag"`
-	Status              *string `pulumi:"status"`
+	Password *string `pulumi:"password"`
+	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+	ResetPermissionFlag *bool `pulumi:"resetPermissionFlag"`
+	// The status of the resource. Valid values: `Available`, `Unavailable`.
+	Status *string `pulumi:"status"`
 	// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
 	//
-	// Default to Normal.
+	// Default to Normal. The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type *string `pulumi:"type"`
@@ -323,20 +363,28 @@ type accountArgs struct {
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
+	// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
 	AccountDescription pulumi.StringPtrInput
-	AccountName        pulumi.StringPtrInput
-	AccountPassword    pulumi.StringPtrInput
+	// The name of the account. It conflicts with `name` and is ignored when `name` is set.
+	AccountName pulumi.StringPtrInput
+	// The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
+	AccountPassword pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	AccountPasswordWo        pulumi.StringPtrInput
+	// The write-only password of the account. It conflicts with `password` and `kmsEncryptedPassword`, and must be specified together with `accountPasswordWoVersion`.
+	AccountPasswordWo pulumi.StringPtrInput
+	// The version of the write-only password. It must be specified together with `accountPasswordWo`.
 	AccountPasswordWoVersion pulumi.IntPtrInput
-	AccountType              pulumi.StringPtrInput
-	CheckPolicy              pulumi.BoolPtrInput
-	DbInstanceId             pulumi.StringPtrInput
-	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// The account type. Valid values: Normal/Super/Sysadmin.
+	AccountType pulumi.StringPtrInput
+	// Whether to apply password policy.
+	CheckPolicy pulumi.BoolPtrInput
+	// The ID of the instance.
+	DbInstanceId pulumi.StringPtrInput
+	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
 	//
 	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
 	Description pulumi.StringPtrInput
-	// The Id of instance in which account belongs.
+	// The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
 	//
 	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId pulumi.StringPtrInput
@@ -344,21 +392,23 @@ type AccountArgs struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `accountName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name pulumi.StringPtrInput
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
 	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
-	Password            pulumi.StringPtrInput
+	Password pulumi.StringPtrInput
+	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
 	ResetPermissionFlag pulumi.BoolPtrInput
-	Status              pulumi.StringPtrInput
+	// The status of the resource. Valid values: `Available`, `Unavailable`.
+	Status pulumi.StringPtrInput
 	// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
 	//
-	// Default to Normal.
+	// Default to Normal. The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type pulumi.StringPtrInput
@@ -451,47 +501,55 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 	return o
 }
 
+// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
 func (o AccountOutput) AccountDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountDescription }).(pulumi.StringOutput)
 }
 
+// The name of the account. It conflicts with `name` and is ignored when `name` is set.
 func (o AccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }
 
+// The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
 func (o AccountOutput) AccountPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountPassword }).(pulumi.StringPtrOutput)
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The write-only password of the account. It conflicts with `password` and `kmsEncryptedPassword`, and must be specified together with `accountPasswordWoVersion`.
 func (o AccountOutput) AccountPasswordWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountPasswordWo }).(pulumi.StringPtrOutput)
 }
 
+// The version of the write-only password. It must be specified together with `accountPasswordWo`.
 func (o AccountOutput) AccountPasswordWoVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.IntPtrOutput { return v.AccountPasswordWoVersion }).(pulumi.IntPtrOutput)
 }
 
+// The account type. Valid values: Normal/Super/Sysadmin.
 func (o AccountOutput) AccountType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountType }).(pulumi.StringOutput)
 }
 
+// Whether to apply password policy.
 func (o AccountOutput) CheckPolicy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.BoolPtrOutput { return v.CheckPolicy }).(pulumi.BoolPtrOutput)
 }
 
+// The ID of the instance.
 func (o AccountOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)
 }
 
-// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
 //
 // Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
 func (o AccountOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The Id of instance in which account belongs.
+// The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
 //
 // Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 func (o AccountOutput) InstanceId() pulumi.StringOutput {
@@ -508,24 +566,26 @@ func (o AccountOutput) KmsEncryptionContext() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
-// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `accountName` instead.
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 func (o AccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
 //
 // Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 func (o AccountOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
 func (o AccountOutput) ResetPermissionFlag() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.BoolPtrOutput { return v.ResetPermissionFlag }).(pulumi.BoolPtrOutput)
 }
 
+// The status of the resource. Valid values: `Available`, `Unavailable`.
 func (o AccountOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -534,7 +594,7 @@ func (o AccountOutput) Status() pulumi.StringOutput {
 // - Normal: Common privilege.
 // - Super: High privilege.
 //
-// Default to Normal.
+// Default to Normal. The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 //
 // Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 func (o AccountOutput) Type() pulumi.StringOutput {

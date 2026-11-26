@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *
@@ -79,15 +79,24 @@ export interface GetSystemGroupsArgs {
  * A collection of values returned by getSystemGroups.
  */
 export interface GetSystemGroupsResult {
+    /**
+     * A list of Video Surveillance System Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.videosurveillance.GetSystemGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+     */
     readonly inProtocol?: string;
     readonly name?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
@@ -95,7 +104,7 @@ export interface GetSystemGroupsResult {
 /**
  * This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *

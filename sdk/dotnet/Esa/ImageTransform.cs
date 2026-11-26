@@ -68,16 +68,34 @@ namespace Pulumi.AliCloud.Esa
     public partial class ImageTransform : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Config Id
+        /// Specifies whether to enable adaptive AVIF. Valid values:
+        /// </summary>
+        [Output("autoAvif")]
+        public Output<string?> AutoAvif { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable adaptive WebP. Valid values:
+        /// </summary>
+        [Output("autoWebp")]
+        public Output<string?> AutoWebp { get; private set; } = null!;
+
+        /// <summary>
+        /// The configuration ID.
         /// </summary>
         [Output("configId")]
         public Output<int> ConfigId { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the image transformations feature is enabled. Valid values:
+        /// (Available since v2.2.0) The configuration type.
+        /// </summary>
+        [Output("configType")]
+        public Output<string> ConfigType { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable image transformation. Valid values:
         /// </summary>
         [Output("enable")]
-        public Output<string?> Enable { get; private set; } = null!;
+        public Output<string> Enable { get; private set; } = null!;
 
         /// <summary>
         /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -88,7 +106,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> Rule { get; private set; } = null!;
 
         /// <summary>
-        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        /// Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
         /// </summary>
         [Output("ruleEnable")]
         public Output<string?> RuleEnable { get; private set; } = null!;
@@ -164,10 +182,22 @@ namespace Pulumi.AliCloud.Esa
     public sealed class ImageTransformArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates whether the image transformations feature is enabled. Valid values:
+        /// Specifies whether to enable adaptive AVIF. Valid values:
         /// </summary>
-        [Input("enable")]
-        public Input<string>? Enable { get; set; }
+        [Input("autoAvif")]
+        public Input<string>? AutoAvif { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable adaptive WebP. Valid values:
+        /// </summary>
+        [Input("autoWebp")]
+        public Input<string>? AutoWebp { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable image transformation. Valid values:
+        /// </summary>
+        [Input("enable", required: true)]
+        public Input<string> Enable { get; set; } = null!;
 
         /// <summary>
         /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -178,7 +208,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        /// Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
@@ -216,13 +246,31 @@ namespace Pulumi.AliCloud.Esa
     public sealed class ImageTransformState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Config Id
+        /// Specifies whether to enable adaptive AVIF. Valid values:
+        /// </summary>
+        [Input("autoAvif")]
+        public Input<string>? AutoAvif { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable adaptive WebP. Valid values:
+        /// </summary>
+        [Input("autoWebp")]
+        public Input<string>? AutoWebp { get; set; }
+
+        /// <summary>
+        /// The configuration ID.
         /// </summary>
         [Input("configId")]
         public Input<int>? ConfigId { get; set; }
 
         /// <summary>
-        /// Indicates whether the image transformations feature is enabled. Valid values:
+        /// (Available since v2.2.0) The configuration type.
+        /// </summary>
+        [Input("configType")]
+        public Input<string>? ConfigType { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable image transformation. Valid values:
         /// </summary>
         [Input("enable")]
         public Input<string>? Enable { get; set; }
@@ -236,7 +284,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        /// Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }

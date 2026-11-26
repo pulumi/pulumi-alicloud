@@ -70,16 +70,25 @@ class GetCrossRegionBackupsResult:
     @_builtins.property
     @pulumi.getter
     def backups(self) -> Sequence['outputs.GetCrossRegionBackupsBackupResult']:
+        """
+        An array that consists of details of the cross-region data backup files:
+        """
         return pulumi.get(self, "backups")
 
     @_builtins.property
     @pulumi.getter(name="crossBackupId")
     def cross_backup_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the cross-region data backup file.
+        """
         return pulumi.get(self, "cross_backup_id")
 
     @_builtins.property
     @pulumi.getter(name="crossBackupRegion")
     def cross_backup_region(self) -> Optional[_builtins.str]:
+        """
+        The ID of the destination region where the cross-region data backup file of the instance is stored.
+        """
         return pulumi.get(self, "cross_backup_region")
 
     @_builtins.property
@@ -103,6 +112,9 @@ class GetCrossRegionBackupsResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Cross Region Backup IDs.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -153,7 +165,7 @@ def get_cross_region_backups(backup_id: Optional[_builtins.str] = None,
     """
     This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.196.0+.
+    > **NOTE:** Available since v1.196.0+.
 
     ## Example Usage
 
@@ -220,7 +232,7 @@ def get_cross_region_backups_output(backup_id: pulumi.Input[Optional[Optional[_b
     """
     This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.196.0+.
+    > **NOTE:** Available since v1.196.0+.
 
     ## Example Usage
 

@@ -54,6 +54,9 @@ class GetZonesResult:
     @_builtins.property
     @pulumi.getter
     def zones(self) -> Sequence['outputs.GetZonesZoneResult']:
+        """
+        A list of availability zone information collection.
+        """
         return pulumi.get(self, "zones")
 
 
@@ -73,7 +76,7 @@ def get_zones(output_file: Optional[_builtins.str] = None,
     """
     This data source provides the available zones with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.158.0+.
+    > **NOTE:** Available since v1.158.0.
 
     ## Example Usage
 
@@ -104,7 +107,7 @@ def get_zones_output(output_file: pulumi.Input[Optional[Optional[_builtins.str]]
     """
     This data source provides the available zones with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.158.0+.
+    > **NOTE:** Available since v1.158.0.
 
     ## Example Usage
 

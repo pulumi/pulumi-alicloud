@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr OtsBackupPlans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.163.0+.
+        /// &gt; **NOTE:** Available since v1.163.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr OtsBackupPlans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.163.0+.
+        /// &gt; **NOTE:** Available since v1.163.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr OtsBackupPlans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.163.0+.
+        /// &gt; **NOTE:** Available since v1.163.0.
         /// 
         /// ## Example Usage
         /// 
@@ -219,11 +219,20 @@ namespace Pulumi.AliCloud.Hbr
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of OtsBackupPlan names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string? PlanId;
         public readonly string? PlanName;
+        /// <summary>
+        /// A list of Hbr OtsBackupPlans. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetOtsBackupPlansPlanResult> Plans;
+        /// <summary>
+        /// The ID of backup vault.
+        /// </summary>
         public readonly string? VaultId;
 
         [OutputConstructor]

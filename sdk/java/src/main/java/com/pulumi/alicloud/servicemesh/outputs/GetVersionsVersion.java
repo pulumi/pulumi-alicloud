@@ -23,7 +23,7 @@ public final class GetVersionsVersion {
      */
     private String id;
     /**
-     * @return A list of Service Mesh Service Meshes. Each element contains the following attributes:
+     * @return The AMS version.
      * 
      */
     private String version;
@@ -46,7 +46,7 @@ public final class GetVersionsVersion {
         return this.id;
     }
     /**
-     * @return A list of Service Mesh Service Meshes. Each element contains the following attributes:
+     * @return The AMS version.
      * 
      */
     public String version() {

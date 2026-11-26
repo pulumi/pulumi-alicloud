@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     [OutputType]
     public sealed class GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfigResult
     {
+        /// <summary>
+        /// The BGP status.
+        /// </summary>
         public readonly string BgpStatus;
         /// <summary>
         /// Local asn.
@@ -23,11 +26,11 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string LocalBgpIp;
         /// <summary>
-        /// The counterpart autonomous system number.
+        /// The peer ASN.
         /// </summary>
         public readonly string PeerAsn;
         /// <summary>
-        /// The BGP address on the other side.
+        /// The peer BGP IP.
         /// </summary>
         public readonly string PeerBgpIp;
         /// <summary>

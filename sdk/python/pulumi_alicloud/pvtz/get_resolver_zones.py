@@ -57,11 +57,17 @@ class GetResolverZonesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the Zone.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def zones(self) -> Sequence['outputs.GetResolverZonesZoneResult']:
+        """
+        A list of Private Zone Resolver zones. Each element contains the following attributes:
+        """
         return pulumi.get(self, "zones")
 
 
@@ -83,7 +89,7 @@ def get_resolver_zones(output_file: Optional[_builtins.str] = None,
     """
     This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.143.0+.
+    > **NOTE:** Available since v1.143.0.
 
     ## Example Usage
 
@@ -118,7 +124,7 @@ def get_resolver_zones_output(output_file: pulumi.Input[Optional[Optional[_built
     """
     This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.143.0+.
+    > **NOTE:** Available since v1.143.0.
 
     ## Example Usage
 

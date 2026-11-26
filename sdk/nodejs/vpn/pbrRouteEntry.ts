@@ -121,6 +121,8 @@ import * as utilities from "../utilities";
  * ```sh
  * $ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example <vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>
  * ```
+ *
+ * The four-part ID must match exactly one remote route entry. If primary/backup or other route entries share the same four-part key, the ID cannot disambiguate them and the import returns an error instead of selecting one.
  */
 export class PbrRouteEntry extends pulumi.CustomResource {
     /**
@@ -162,9 +164,19 @@ export class PbrRouteEntry extends pulumi.CustomResource {
     }
 
     /**
+     * The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+     */
+    declare public readonly description: pulumi.Output<string | undefined>;
+    /**
      * The next hop of the policy-based route.
      */
     declare public readonly nextHop: pulumi.Output<string>;
+    /**
+     * The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+     *
+     * > **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+     */
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * Whether to issue the destination route to the VPC.
      */
@@ -203,7 +215,9 @@ export class PbrRouteEntry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PbrRouteEntryState | undefined;
+            resourceInputs["description"] = state?.description;
             resourceInputs["nextHop"] = state?.nextHop;
+            resourceInputs["priority"] = state?.priority;
             resourceInputs["publishVpc"] = state?.publishVpc;
             resourceInputs["routeDest"] = state?.routeDest;
             resourceInputs["routeSource"] = state?.routeSource;
@@ -230,7 +244,9 @@ export class PbrRouteEntry extends pulumi.CustomResource {
             if (args?.weight === undefined && !opts.urn) {
                 throw new Error("Missing required property 'weight'");
             }
+            resourceInputs["description"] = args?.description;
             resourceInputs["nextHop"] = args?.nextHop;
+            resourceInputs["priority"] = args?.priority;
             resourceInputs["publishVpc"] = args?.publishVpc;
             resourceInputs["routeDest"] = args?.routeDest;
             resourceInputs["routeSource"] = args?.routeSource;
@@ -248,9 +264,19 @@ export class PbrRouteEntry extends pulumi.CustomResource {
  */
 export interface PbrRouteEntryState {
     /**
+     * The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
      * The next hop of the policy-based route.
      */
     nextHop?: pulumi.Input<string | undefined>;
+    /**
+     * The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+     *
+     * > **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+     */
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Whether to issue the destination route to the VPC.
      */
@@ -282,9 +308,19 @@ export interface PbrRouteEntryState {
  */
 export interface PbrRouteEntryArgs {
     /**
+     * The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
      * The next hop of the policy-based route.
      */
     nextHop: pulumi.Input<string>;
+    /**
+     * The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+     *
+     * > **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+     */
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Whether to issue the destination route to the VPC.
      */

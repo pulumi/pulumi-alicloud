@@ -21,7 +21,15 @@ public final class GetUsersResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A list of Ecd Users. Each element contains the following attributes:
+     * 
+     */
     private List<GetUsersUser> users;
 
     private GetUsersResult() {}
@@ -38,9 +46,17 @@ public final class GetUsersResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A list of Ecd Users. Each element contains the following attributes:
+     * 
+     */
     public List<GetUsersUser> users() {
         return this.users;
     }

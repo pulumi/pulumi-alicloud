@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Vaults of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// &gt; **NOTE:** Available since v1.129.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Vaults of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// &gt; **NOTE:** Available since v1.129.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Vaults of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// &gt; **NOTE:** Available since v1.129.0.
         /// 
         /// ## Example Usage
         /// 
@@ -211,10 +211,22 @@ namespace Pulumi.AliCloud.Hbr
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of vault names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        /// </summary>
         public readonly string? VaultType;
+        /// <summary>
+        /// A list of Hbr vaults. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVaultsVaultResult> Vaults;
 
         [OutputConstructor]

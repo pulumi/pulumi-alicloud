@@ -17,30 +17,62 @@ public final class BackendServerBackendServerArgs extends com.pulumi.resources.R
 
     public static final BackendServerBackendServerArgs Empty = new BackendServerBackendServerArgs();
 
+    /**
+     * A list backend server ID (ECS instance ID).
+     * 
+     */
     @Import(name="serverId", required=true)
     private Output<String> serverId;
 
+    /**
+     * @return A list backend server ID (ECS instance ID).
+     * 
+     */
     public Output<String> serverId() {
         return this.serverId;
     }
 
+    /**
+     * ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `serverIp` parameter.
+     * 
+     */
     @Import(name="serverIp")
     private @Nullable Output<String> serverIp;
 
+    /**
+     * @return ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `serverIp` parameter.
+     * 
+     */
     public Optional<Output<String>> serverIp() {
         return Optional.ofNullable(this.serverIp);
     }
 
+    /**
+     * Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Weight of the backend server. Valid value range: [0-100].
+     * 
+     */
     @Import(name="weight", required=true)
     private Output<Integer> weight;
 
+    /**
+     * @return Weight of the backend server. Valid value range: [0-100].
+     * 
+     */
     public Output<Integer> weight() {
         return this.weight;
     }
@@ -72,38 +104,86 @@ public final class BackendServerBackendServerArgs extends com.pulumi.resources.R
             $ = new BackendServerBackendServerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param serverId A list backend server ID (ECS instance ID).
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverId(Output<String> serverId) {
             $.serverId = serverId;
             return this;
         }
 
+        /**
+         * @param serverId A list backend server ID (ECS instance ID).
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverId(String serverId) {
             return serverId(Output.of(serverId));
         }
 
+        /**
+         * @param serverIp ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `serverIp` parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverIp(@Nullable Output<String> serverIp) {
             $.serverIp = serverIp;
             return this;
         }
 
+        /**
+         * @param serverIp ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `serverIp` parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverIp(String serverIp) {
             return serverIp(Output.of(serverIp));
         }
 
+        /**
+         * @param type Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }
 
+        /**
+         * @param weight Weight of the backend server. Valid value range: [0-100].
+         * 
+         * @return builder
+         * 
+         */
         public Builder weight(Output<Integer> weight) {
             $.weight = weight;
             return this;
         }
 
+        /**
+         * @param weight Weight of the backend server. Valid value range: [0-100].
+         * 
+         * @return builder
+         * 
+         */
         public Builder weight(Integer weight) {
             return weight(Output.of(weight));
         }

@@ -159,6 +159,7 @@ export class ServerGroupAttachment extends pulumi.CustomResource {
     declare public readonly serverGroupId: pulumi.Output<string>;
     /**
      * The type of server group N. Valid values: ALB, NLB, GWLB.
+     *
      * > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
      */
     declare public readonly type: pulumi.Output<string>;
@@ -232,6 +233,7 @@ export interface ServerGroupAttachmentState {
     serverGroupId?: pulumi.Input<string | undefined>;
     /**
      * The type of server group N. Valid values: ALB, NLB, GWLB.
+     *
      * > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
      */
     type?: pulumi.Input<string | undefined>;
@@ -264,6 +266,7 @@ export interface ServerGroupAttachmentArgs {
     serverGroupId: pulumi.Input<string>;
     /**
      * The type of server group N. Valid values: ALB, NLB, GWLB.
+     *
      * > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
      */
     type: pulumi.Input<string>;

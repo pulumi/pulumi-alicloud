@@ -16,36 +16,60 @@ public final class GetTrailsDeprecatedPlainArgs extends com.pulumi.resources.Inv
 
     public static final GetTrailsDeprecatedPlainArgs Empty = new GetTrailsDeprecatedPlainArgs();
 
+    /**
+     * A list of ActionTrail Trail IDs. It is the same as trail name.
+     * 
+     */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
+    /**
+     * @return A list of ActionTrail Trail IDs. It is the same as trail name.
+     * 
+     */
     public Optional<List<String>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * Whether to show organization tracking. Default to `false`.
+     * 
+     */
     @Import(name="includeOrganizationTrail")
     private @Nullable Boolean includeOrganizationTrail;
 
+    /**
+     * @return Whether to show organization tracking. Default to `false`.
+     * 
+     */
     public Optional<Boolean> includeOrganizationTrail() {
         return Optional.ofNullable(this.includeOrganizationTrail);
     }
 
+    /**
+     * Whether to show shadow tracking. Default to `false`.
+     * 
+     */
     @Import(name="includeShadowTrails")
     private @Nullable Boolean includeShadowTrails;
 
+    /**
+     * @return Whether to show shadow tracking. Default to `false`.
+     * 
+     */
     public Optional<Boolean> includeShadowTrails() {
         return Optional.ofNullable(this.includeShadowTrails);
     }
 
     /**
-     * A regex string to filter results action trail name.
+     * A regex string to filter results by trail name.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
     /**
-     * @return A regex string to filter results action trail name.
+     * @return A regex string to filter results by trail name.
      * 
      */
     public Optional<String> nameRegex() {
@@ -67,9 +91,17 @@ public final class GetTrailsDeprecatedPlainArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+     * 
+     */
     @Import(name="status")
     private @Nullable String status;
 
+    /**
+     * @return Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
@@ -103,27 +135,51 @@ public final class GetTrailsDeprecatedPlainArgs extends com.pulumi.resources.Inv
             $ = new GetTrailsDeprecatedPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids A list of ActionTrail Trail IDs. It is the same as trail name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable List<String> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids A list of ActionTrail Trail IDs. It is the same as trail name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param includeOrganizationTrail Whether to show organization tracking. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeOrganizationTrail(@Nullable Boolean includeOrganizationTrail) {
             $.includeOrganizationTrail = includeOrganizationTrail;
             return this;
         }
 
+        /**
+         * @param includeShadowTrails Whether to show shadow tracking. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeShadowTrails(@Nullable Boolean includeShadowTrails) {
             $.includeShadowTrails = includeShadowTrails;
             return this;
         }
 
         /**
-         * @param nameRegex A regex string to filter results action trail name.
+         * @param nameRegex A regex string to filter results by trail name.
          * 
          * @return builder
          * 
@@ -144,6 +200,12 @@ public final class GetTrailsDeprecatedPlainArgs extends com.pulumi.resources.Inv
             return this;
         }
 
+        /**
+         * @param status Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable String status) {
             $.status = status;
             return this;

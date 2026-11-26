@@ -28,13 +28,13 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var basic = new AliCloud.Ecs.KeyPair("basic", new()
     ///     {
-    ///         KeyName = "terraform-test-key-pair",
+    ///         KeyName = "terraform-demo-key-pair",
     ///     });
     /// 
     ///     // Using name prefix to build key pair
     ///     var prefix = new AliCloud.Ecs.KeyPair("prefix", new()
     ///     {
-    ///         KeyNamePrefix = "terraform-test-key-pair-prefix",
+    ///         KeyNamePrefix = "terraform-demo-key-pair-prefix",
     ///     });
     /// 
     ///     // Import an existing public key to build a alicloud key pair
@@ -60,9 +60,15 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/keyPair:KeyPair")]
     public partial class KeyPair : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The creation time of the key pair.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// The finger print of the key pair.
+        /// </summary>
         [Output("fingerPrint")]
         public Output<string> FingerPrint { get; private set; } = null!;
 
@@ -73,7 +79,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> KeyFile { get; private set; } = null!;
 
         /// <summary>
-        /// The key pair's name. It is the only in one Alicloud account.
+        /// The key pair's name. It is the only in one Alicloud account. Deprecated, use `KeyPairName` instead.
         /// </summary>
         [Output("keyName")]
         public Output<string> KeyName { get; private set; } = null!;
@@ -84,6 +90,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("keyNamePrefix")]
         public Output<string?> KeyNamePrefix { get; private set; } = null!;
 
+        /// <summary>
+        /// The key pair's name. It is the only in one Alicloud account.
+        /// </summary>
         [Output("keyPairName")]
         public Output<string> KeyPairName { get; private set; } = null!;
 
@@ -101,6 +110,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
         /// &gt; **NOTE:** If `KeyName` and `KeyNamePrefix` are not set, terraform will produce a specified ID to replace.
         /// </summary>
         [Output("tags")]
@@ -159,7 +169,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? KeyFile { get; set; }
 
         /// <summary>
-        /// The key pair's name. It is the only in one Alicloud account.
+        /// The key pair's name. It is the only in one Alicloud account. Deprecated, use `KeyPairName` instead.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -170,6 +180,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("keyNamePrefix")]
         public Input<string>? KeyNamePrefix { get; set; }
 
+        /// <summary>
+        /// The key pair's name. It is the only in one Alicloud account.
+        /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
@@ -190,6 +203,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
         /// &gt; **NOTE:** If `KeyName` and `KeyNamePrefix` are not set, terraform will produce a specified ID to replace.
         /// </summary>
         public InputMap<string> Tags
@@ -206,9 +220,15 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class KeyPairState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The creation time of the key pair.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// The finger print of the key pair.
+        /// </summary>
         [Input("fingerPrint")]
         public Input<string>? FingerPrint { get; set; }
 
@@ -219,7 +239,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? KeyFile { get; set; }
 
         /// <summary>
-        /// The key pair's name. It is the only in one Alicloud account.
+        /// The key pair's name. It is the only in one Alicloud account. Deprecated, use `KeyPairName` instead.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -230,6 +250,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("keyNamePrefix")]
         public Input<string>? KeyNamePrefix { get; set; }
 
+        /// <summary>
+        /// The key pair's name. It is the only in one Alicloud account.
+        /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
@@ -250,6 +273,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
         /// &gt; **NOTE:** If `KeyName` and `KeyNamePrefix` are not set, terraform will produce a specified ID to replace.
         /// </summary>
         public InputMap<string> Tags

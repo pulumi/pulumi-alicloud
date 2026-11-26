@@ -1424,7 +1424,9 @@ func (o RocketMQInstanceProductInfoPtrOutput) TraceOn() pulumi.BoolPtrOutput {
 }
 
 type RocketMQInstanceSoftware struct {
-	// Upgrade time period.
+	// The RocketMQ API has deprecated this maintenance-window setting. Omit it from new configurations; existing state remains readable. See [GetInstance](https://help.aliyun.com/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-getinstance).
+	//
+	// Deprecated: The RocketMQ API has deprecated maintainTime. Remove maintainTime from configuration; existing state remains readable.
 	MaintainTime *string `pulumi:"maintainTime"`
 	// Software version.
 	SoftwareVersion *string `pulumi:"softwareVersion"`
@@ -1444,7 +1446,9 @@ type RocketMQInstanceSoftwareInput interface {
 }
 
 type RocketMQInstanceSoftwareArgs struct {
-	// Upgrade time period.
+	// The RocketMQ API has deprecated this maintenance-window setting. Omit it from new configurations; existing state remains readable. See [GetInstance](https://help.aliyun.com/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-getinstance).
+	//
+	// Deprecated: The RocketMQ API has deprecated maintainTime. Remove maintainTime from configuration; existing state remains readable.
 	MaintainTime pulumi.StringPtrInput `pulumi:"maintainTime"`
 	// Software version.
 	SoftwareVersion pulumi.StringPtrInput `pulumi:"softwareVersion"`
@@ -1529,7 +1533,9 @@ func (o RocketMQInstanceSoftwareOutput) ToRocketMQInstanceSoftwarePtrOutputWithC
 	}).(RocketMQInstanceSoftwarePtrOutput)
 }
 
-// Upgrade time period.
+// The RocketMQ API has deprecated this maintenance-window setting. Omit it from new configurations; existing state remains readable. See [GetInstance](https://help.aliyun.com/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-getinstance).
+//
+// Deprecated: The RocketMQ API has deprecated maintainTime. Remove maintainTime from configuration; existing state remains readable.
 func (o RocketMQInstanceSoftwareOutput) MaintainTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RocketMQInstanceSoftware) *string { return v.MaintainTime }).(pulumi.StringPtrOutput)
 }
@@ -1568,7 +1574,9 @@ func (o RocketMQInstanceSoftwarePtrOutput) Elem() RocketMQInstanceSoftwareOutput
 	}).(RocketMQInstanceSoftwareOutput)
 }
 
-// Upgrade time period.
+// The RocketMQ API has deprecated this maintenance-window setting. Omit it from new configurations; existing state remains readable. See [GetInstance](https://help.aliyun.com/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-getinstance).
+//
+// Deprecated: The RocketMQ API has deprecated maintainTime. Remove maintainTime from configuration; existing state remains readable.
 func (o RocketMQInstanceSoftwarePtrOutput) MaintainTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RocketMQInstanceSoftware) *string {
 		if v == nil {

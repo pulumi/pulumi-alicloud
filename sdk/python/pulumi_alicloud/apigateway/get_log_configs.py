@@ -47,6 +47,9 @@ class GetLogConfigsResult:
     @_builtins.property
     @pulumi.getter
     def configs(self) -> Sequence['outputs.GetLogConfigsConfigResult']:
+        """
+        A list of Api Gateway Log Configs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "configs")
 
     @_builtins.property
@@ -65,6 +68,9 @@ class GetLogConfigsResult:
     @_builtins.property
     @pulumi.getter(name="logType")
     def log_type(self) -> Optional[_builtins.str]:
+        """
+        The type the of log.
+        """
         return pulumi.get(self, "log_type")
 
     @_builtins.property
@@ -93,7 +99,7 @@ def get_log_configs(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.185.0+.
+    > **NOTE:** Available since v1.185.0.
 
     ## Example Usage
 
@@ -134,7 +140,7 @@ def get_log_configs_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtin
     """
     This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.185.0+.
+    > **NOTE:** Available since v1.185.0.
 
     ## Example Usage
 

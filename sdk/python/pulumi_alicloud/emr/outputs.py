@@ -72,7 +72,7 @@ class ClusterBootstrapAction(dict):
         :param _builtins.str execution_fail_strategy: bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
         :param _builtins.str execution_moment: bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
         :param _builtins.str execution_target: bootstrap action execution target, you can specify the host group name, e.g. "core_group". If this is not specified, the bootstrap action execution target is whole cluster.
-        :param _builtins.str name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+        :param _builtins.str name: bootstrap action name.
         :param _builtins.str path: bootstrap action path, e.g. "oss://bucket/path".
         """
         if arg is not None:
@@ -124,7 +124,7 @@ class ClusterBootstrapAction(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+        bootstrap action name.
         """
         return pulumi.get(self, "name")
 
@@ -171,6 +171,7 @@ class ClusterConfig(dict):
         :param _builtins.str config_key: Custom configuration service config key, e.g. ’dfs.replication’.
         :param _builtins.str config_value: Custom configuration service config value, e.g. ’3’.
         :param _builtins.str file_name: Custom configuration service file name, e.g. ’hdfs-site’.
+        :param _builtins.str service_name: Custom configuration service name, e.g. ’HDFS’.
         """
         pulumi.set(__self__, "config_key", config_key)
         pulumi.set(__self__, "config_value", config_value)
@@ -204,6 +205,9 @@ class ClusterConfig(dict):
     @_builtins.property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
+        """
+        Custom configuration service name, e.g. ’HDFS’.
+        """
         return pulumi.get(self, "service_name")
 
 
@@ -273,12 +277,13 @@ class ClusterHostGroup(dict):
                  sys_disk_type: Optional[_builtins.str] = None):
         """
         :param _builtins.bool auto_renew: Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
-        :param _builtins.str charge_type: Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+        :param _builtins.str charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
         :param _builtins.int decommission_timeout: Graceful decommission timeout, unit: seconds.
         :param _builtins.str disk_capacity: Data disk capacity.
         :param _builtins.str disk_count: Data disk count.
         :param _builtins.str disk_type: Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
         :param _builtins.bool enable_graceful_decommission: Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
+        :param _builtins.str gpu_driver: GPU driver.
         :param _builtins.str host_group_name: host group name.
         :param _builtins.str host_group_type: host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
         :param _builtins.str instance_list: Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \\".
@@ -333,7 +338,7 @@ class ClusterHostGroup(dict):
     @pulumi.getter(name="chargeType")
     def charge_type(self) -> Optional[_builtins.str]:
         """
-        Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+        Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
         """
         return pulumi.get(self, "charge_type")
 
@@ -380,6 +385,9 @@ class ClusterHostGroup(dict):
     @_builtins.property
     @pulumi.getter(name="gpuDriver")
     def gpu_driver(self) -> Optional[_builtins.str]:
+        """
+        GPU driver.
+        """
         return pulumi.get(self, "gpu_driver")
 
     @_builtins.property
@@ -553,6 +561,7 @@ class ClusterModifyClusterServiceConfig(dict):
                  refresh_host_config: Optional[_builtins.bool] = None):
         """
         :param _builtins.str config_params: Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
+        :param _builtins.str service_name: Cluster service configuration modification name, e.g. ’HDFS’.
         :param _builtins.str comment: Cluster service configuration modification comment, e.g. "Modify tez configuration".
         :param _builtins.str config_type: Cluster service configuration modification type.
         :param _builtins.str custom_config_params: Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
@@ -589,6 +598,9 @@ class ClusterModifyClusterServiceConfig(dict):
     @_builtins.property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
+        """
+        Cluster service configuration modification name, e.g. ’HDFS’.
+        """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
@@ -703,27 +715,29 @@ class GetClustersClusterResult(dict):
         :param _builtins.bool auto_scaling_spot_with_limit_allowed: Whether to allow the use of elastic scaling bidding instances.
         :param Sequence['GetClustersClusterBootstrapActionListArgs'] bootstrap_action_lists: List of boot actions.
         :param _builtins.bool bootstrap_failed: The result of the boot operation.
-        :param _builtins.str cluster_id: The first ID of the resource.
-        :param _builtins.str cluster_name: The ClusterName.
+        :param _builtins.str cluster_id: The ID of the associated cluster.
+        :param _builtins.str cluster_name: The cluster name.
         :param _builtins.str create_resource: Cluster tag, no need to pay attention.
-        :param _builtins.str create_time: The creation time of the resource.
-        :param _builtins.str create_type: How to create a cluster.
-        :param _builtins.str deposit_type: The hosting type of the cluster.
+        :param _builtins.str create_time: Creation time.
+        :param _builtins.str create_type: How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
+        :param _builtins.str deposit_type: The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
         :param _builtins.bool eas_enable: High security cluster.
-        :param _builtins.str expired_time: The expiration time of the cluster.
+        :param _builtins.str expired_time: Timeout time.
         :param _builtins.str extra_info: Additional information for Stack.
+        :param _builtins.bool has_uncompleted_order: Whether the cluster has an uncompleted order.
         :param _builtins.bool high_availability_enable: High availability cluster.
         :param Sequence['GetClustersClusterHostGroupListArgs'] host_group_lists: List of cluster machine groups.
         :param Sequence['GetClustersClusterHostPoolInfoArgs'] host_pool_infos: Machine pool information.
+        :param _builtins.str id: The ID of the Cluster.
         :param _builtins.str image_id: The ID of the image used to create the cluster.
         :param _builtins.bool local_meta_db: Whether to use Hive local Metabase.
-        :param _builtins.str machine_type: The host type of the cluster. The default is ECS.
-        :param _builtins.str meta_store_type: Metadata type:
+        :param _builtins.str machine_type: The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
+        :param _builtins.str meta_store_type: Metadata type.
         :param _builtins.str net_type: Cluster network type.
         :param _builtins.str payment_type: The payment type of the resource.
-        :param _builtins.int period: The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+        :param _builtins.int period: The package year and month time of the machine group. The Valid Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
         :param Sequence['GetClustersClusterRelateClusterInfoArgs'] relate_cluster_infos: The information of the primary cluster associated with the Gateway.
-        :param _builtins.bool resize_disk_enable: Whether to allow disk expansion:
+        :param _builtins.bool resize_disk_enable: Whether to allow disk expansion.
         :param _builtins.int running_time: The time (in seconds) that has been running.
         :param _builtins.str security_group_id: The ID of the security group.
         :param _builtins.str security_group_name: The name of the security group.
@@ -844,7 +858,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> _builtins.str:
         """
-        The first ID of the resource.
+        The ID of the associated cluster.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -852,7 +866,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> _builtins.str:
         """
-        The ClusterName.
+        The cluster name.
         """
         return pulumi.get(self, "cluster_name")
 
@@ -868,7 +882,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         """
-        The creation time of the resource.
+        Creation time.
         """
         return pulumi.get(self, "create_time")
 
@@ -876,7 +890,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="createType")
     def create_type(self) -> _builtins.str:
         """
-        How to create a cluster.
+        How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
         """
         return pulumi.get(self, "create_type")
 
@@ -884,7 +898,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="depositType")
     def deposit_type(self) -> _builtins.str:
         """
-        The hosting type of the cluster.
+        The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
         """
         return pulumi.get(self, "deposit_type")
 
@@ -900,7 +914,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="expiredTime")
     def expired_time(self) -> _builtins.str:
         """
-        The expiration time of the cluster.
+        Timeout time.
         """
         return pulumi.get(self, "expired_time")
 
@@ -915,6 +929,9 @@ class GetClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="hasUncompletedOrder")
     def has_uncompleted_order(self) -> _builtins.bool:
+        """
+        Whether the cluster has an uncompleted order.
+        """
         return pulumi.get(self, "has_uncompleted_order")
 
     @_builtins.property
@@ -944,6 +961,9 @@ class GetClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the Cluster.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -966,7 +986,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> _builtins.str:
         """
-        The host type of the cluster. The default is ECS.
+        The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
         """
         return pulumi.get(self, "machine_type")
 
@@ -974,7 +994,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="metaStoreType")
     def meta_store_type(self) -> _builtins.str:
         """
-        Metadata type:
+        Metadata type.
         """
         return pulumi.get(self, "meta_store_type")
 
@@ -998,7 +1018,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter
     def period(self) -> _builtins.int:
         """
-        The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+        The package year and month time of the machine group. The Valid Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
         """
         return pulumi.get(self, "period")
 
@@ -1014,7 +1034,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="resizeDiskEnable")
     def resize_disk_enable(self) -> _builtins.bool:
         """
-        Whether to allow disk expansion:
+        Whether to allow disk expansion.
         """
         return pulumi.get(self, "resize_disk_enable")
 
@@ -1186,7 +1206,7 @@ class GetClustersClusterBootstrapActionListResult(dict):
                  path: _builtins.str):
         """
         :param _builtins.str arg: Parameters of the boot operation.
-        :param _builtins.str name: The name of the boot operation.
+        :param _builtins.str name: The internal name of the service.
         :param _builtins.str path: Boot operation script path.
         """
         pulumi.set(__self__, "arg", arg)
@@ -1205,7 +1225,7 @@ class GetClustersClusterBootstrapActionListResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the boot operation.
+        The internal name of the service.
         """
         return pulumi.get(self, "name")
 
@@ -1242,16 +1262,16 @@ class GetClustersClusterHostGroupListResult(dict):
         :param _builtins.int cpu_core: The number of CPU cores.
         :param _builtins.int disk_capacity: Data disk capacity.
         :param _builtins.int disk_count: The number of data disks.
-        :param _builtins.str disk_type: System disk type:
-        :param _builtins.str host_group_change_type: The current operation type of the machine Group:
+        :param _builtins.str disk_type: System disk type.
+        :param _builtins.str host_group_change_type: The current operation type of the machine Group.
         :param _builtins.str host_group_id: The ID of the machine group.
         :param _builtins.str host_group_name: The name of the machine group.
-        :param _builtins.str host_group_type: Role of host in cluster:
+        :param _builtins.str host_group_type: Role of host in cluster.
         :param _builtins.str instance_type: Machine Group instance.
         :param _builtins.int memory_capacity: Memory size.
         :param _builtins.int node_count: The number of machine group nodes.
         :param Sequence['GetClustersClusterHostGroupListNodeArgs'] nodes: Machine node.
-        :param _builtins.str period: Package year and month time (days).
+        :param _builtins.str period: The package year and month time of the machine group. The Valid Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
         """
         pulumi.set(__self__, "band_width", band_width)
         pulumi.set(__self__, "charge_type", charge_type)
@@ -1313,7 +1333,7 @@ class GetClustersClusterHostGroupListResult(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> _builtins.str:
         """
-        System disk type:
+        System disk type.
         """
         return pulumi.get(self, "disk_type")
 
@@ -1321,7 +1341,7 @@ class GetClustersClusterHostGroupListResult(dict):
     @pulumi.getter(name="hostGroupChangeType")
     def host_group_change_type(self) -> _builtins.str:
         """
-        The current operation type of the machine Group:
+        The current operation type of the machine Group.
         """
         return pulumi.get(self, "host_group_change_type")
 
@@ -1345,7 +1365,7 @@ class GetClustersClusterHostGroupListResult(dict):
     @pulumi.getter(name="hostGroupType")
     def host_group_type(self) -> _builtins.str:
         """
-        Role of host in cluster:
+        Role of host in cluster.
         """
         return pulumi.get(self, "host_group_type")
 
@@ -1385,7 +1405,7 @@ class GetClustersClusterHostGroupListResult(dict):
     @pulumi.getter
     def period(self) -> _builtins.str:
         """
-        Package year and month time (days).
+        The package year and month time of the machine group. The Valid Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
         """
         return pulumi.get(self, "period")
 
@@ -1411,7 +1431,7 @@ class GetClustersClusterHostGroupListNodeResult(dict):
         :param _builtins.str inner_ip: The Intranet IP of the EMR.
         :param _builtins.str instance_id: The ID of the ECS instance.
         :param _builtins.str pub_ip: Public IP address.
-        :param _builtins.str status: Status.
+        :param _builtins.str status: The cluster status.
         :param _builtins.bool support_ipv6: Whether IPV6 is supported.
         :param _builtins.str zone_id: The zone ID.
         """
@@ -1486,7 +1506,7 @@ class GetClustersClusterHostGroupListNodeResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Status.
+        The cluster status.
         """
         return pulumi.get(self, "status")
 
@@ -1607,9 +1627,9 @@ class GetClustersClusterRelateClusterInfoResult(dict):
                  status: _builtins.str):
         """
         :param _builtins.str cluster_id: The ID of the associated cluster.
-        :param _builtins.str cluster_name: The name of the associated cluster.
-        :param _builtins.str cluster_type: The cluster type of the associated cluster.
-        :param _builtins.str status: The status  of the associated cluster.
+        :param _builtins.str cluster_name: The cluster name.
+        :param _builtins.str cluster_type: Cluster type.
+        :param _builtins.str status: The cluster status.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -1628,7 +1648,7 @@ class GetClustersClusterRelateClusterInfoResult(dict):
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> _builtins.str:
         """
-        The name of the associated cluster.
+        The cluster name.
         """
         return pulumi.get(self, "cluster_name")
 
@@ -1636,7 +1656,7 @@ class GetClustersClusterRelateClusterInfoResult(dict):
     @pulumi.getter(name="clusterType")
     def cluster_type(self) -> _builtins.str:
         """
-        The cluster type of the associated cluster.
+        Cluster type.
         """
         return pulumi.get(self, "cluster_type")
 
@@ -1644,7 +1664,7 @@ class GetClustersClusterRelateClusterInfoResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status  of the associated cluster.
+        The cluster status.
         """
         return pulumi.get(self, "status")
 
@@ -1656,7 +1676,7 @@ class GetClustersClusterSoftwareInfoResult(dict):
                  emr_ver: _builtins.str,
                  softwares: Sequence['outputs.GetClustersClusterSoftwareInfoSoftwareResult']):
         """
-        :param _builtins.str cluster_type: Cluster type:
+        :param _builtins.str cluster_type: Cluster type.
         :param _builtins.str emr_ver: E-MapReduce version number.
         :param Sequence['GetClustersClusterSoftwareInfoSoftwareArgs'] softwares: Service list.
         """
@@ -1668,7 +1688,7 @@ class GetClustersClusterSoftwareInfoResult(dict):
     @pulumi.getter(name="clusterType")
     def cluster_type(self) -> _builtins.str:
         """
-        Cluster type:
+        Cluster type.
         """
         return pulumi.get(self, "cluster_type")
 

@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly int? IkeLifetime;
         /// <summary>
-        /// The identification of the VPN gateway.
+        /// (Optional) The identification of the VPN gateway.
         /// </summary>
         public readonly string? IkeLocalId;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string? IkePfs;
         /// <summary>
-        /// The identification of the customer gateway.
+        /// (Optional) The identification of the customer gateway.
         /// </summary>
         public readonly string? IkeRemoteId;
         /// <summary>

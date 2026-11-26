@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.113.0+.
+ * > **NOTE:** Available since v1.113.0.
  *
  * ## Example Usage
  *
@@ -98,28 +98,55 @@ export interface GetAnycastEipAddressesArgs {
  * A collection of values returned by getAnycastEipAddresses.
  */
 export interface GetAnycastEipAddressesResult {
+    /**
+     * A list of Eipanycast Anycast Eip Addresses. Each element contains the following attributes:
+     */
     readonly addresses: outputs.eipanycast.GetAnycastEipAddressesAddress[];
+    /**
+     * Anycast EIP instance name.
+     */
     readonly anycastEipAddressName?: string;
     readonly bindInstanceIds?: string[];
+    /**
+     * The business status of the Anycast EIP instance. -`Normal`: Normal state. -`FinancialLocked`: The status of arrears locked.
+     */
     readonly businessStatus?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
+     */
     readonly internetChargeType?: string;
+    /**
+     * Anycast EIP instance IP address.
+     */
     readonly ipAddress?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Anycast Eip Address names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+     */
     readonly paymentType?: string;
+    /**
+     * Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+     */
     readonly serviceLocation?: string;
+    /**
+     * IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.113.0+.
+ * > **NOTE:** Available since v1.113.0.
  *
  * ## Example Usage
  *

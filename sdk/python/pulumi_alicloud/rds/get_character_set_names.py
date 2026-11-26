@@ -56,6 +56,9 @@ class GetCharacterSetNamesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        The list of supported character sets.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -82,7 +85,7 @@ def get_character_set_names(engine: Optional[_builtins.str] = None,
     """
     This data source is the character set supported by querying RDS instances.
 
-    > **NOTE:** Available in v1.198.0+.
+    > **NOTE:** Available since v1.198.0+.
 
     ## Example Usage
 
@@ -97,6 +100,7 @@ def get_character_set_names(engine: Optional[_builtins.str] = None,
 
 
     :param _builtins.str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi up`).
     """
     __args__ = dict()
     __args__['engine'] = engine
@@ -115,7 +119,7 @@ def get_character_set_names_output(engine: pulumi.Input[Optional[_builtins.str]]
     """
     This data source is the character set supported by querying RDS instances.
 
-    > **NOTE:** Available in v1.198.0+.
+    > **NOTE:** Available since v1.198.0+.
 
     ## Example Usage
 
@@ -130,6 +134,7 @@ def get_character_set_names_output(engine: pulumi.Input[Optional[_builtins.str]]
 
 
     :param _builtins.str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi up`).
     """
     __args__ = dict()
     __args__['engine'] = engine

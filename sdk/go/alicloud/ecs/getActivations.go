@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Activations of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.177.0+.
+// > **NOTE:** Available since v1.177.0.
 //
 // ## Example Usage
 //
@@ -65,15 +65,17 @@ type GetActivationsArgs struct {
 
 // A collection of values returned by getActivations.
 type GetActivationsResult struct {
+	// A list of Ecs Activations. Each element contains the following attributes:
 	Activations []GetActivationsActivation `pulumi:"activations"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string   `pulumi:"id"`
-	Ids          []string `pulumi:"ids"`
-	InstanceName *string  `pulumi:"instanceName"`
-	OutputFile   *string  `pulumi:"outputFile"`
-	PageNumber   *int     `pulumi:"pageNumber"`
-	PageSize     *int     `pulumi:"pageSize"`
-	TotalCount   int      `pulumi:"totalCount"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The default prefix of the instance name.
+	InstanceName *string `pulumi:"instanceName"`
+	OutputFile   *string `pulumi:"outputFile"`
+	PageNumber   *int    `pulumi:"pageNumber"`
+	PageSize     *int    `pulumi:"pageSize"`
+	TotalCount   int     `pulumi:"totalCount"`
 }
 
 func GetActivationsOutput(ctx *pulumi.Context, args GetActivationsOutputArgs, opts ...pulumi.InvokeOption) GetActivationsResultOutput {
@@ -112,6 +114,7 @@ func (o GetActivationsResultOutput) ToGetActivationsResultOutputWithContext(ctx 
 	return o
 }
 
+// A list of Ecs Activations. Each element contains the following attributes:
 func (o GetActivationsResultOutput) Activations() GetActivationsActivationArrayOutput {
 	return o.ApplyT(func(v GetActivationsResult) []GetActivationsActivation { return v.Activations }).(GetActivationsActivationArrayOutput)
 }
@@ -125,6 +128,7 @@ func (o GetActivationsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetActivationsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The default prefix of the instance name.
 func (o GetActivationsResultOutput) InstanceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetActivationsResult) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
 }

@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
 //
-// > **NOTE:** Available in 1.59.0+
+// > **NOTE:** Available since v1.59.0.
 //
 // ## Example Usage
 //
@@ -95,6 +95,7 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of instance IDs to filter results.
 	Ids []string `pulumi:"ids"`
@@ -111,7 +112,7 @@ type GetInstancesResult struct {
 	Id string `pulumi:"id"`
 	// A list of instance IDs.
 	Ids []string `pulumi:"ids"`
-	// A list of instances. Each element contains the following attributes:
+	// A list of instances. Each element contains the following attributes. See `instances` for the optional argument block.
 	Instances []GetInstancesInstance `pulumi:"instances"`
 	NameRegex *string                `pulumi:"nameRegex"`
 	// A list of instance names.
@@ -126,6 +127,7 @@ func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts .
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesOutputArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of instance IDs to filter results.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -168,7 +170,7 @@ func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-// A list of instances. Each element contains the following attributes:
+// A list of instances. Each element contains the following attributes. See `instances` for the optional argument block.
 func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
 }

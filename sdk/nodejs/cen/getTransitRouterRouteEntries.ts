@@ -7,9 +7,21 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+ * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://www.alibabacloud.com/help/doc-detail/260941.html)
  *
- * > **NOTE:** Available in 1.126.0+
+ * > **NOTE:** Available since v1.126.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const entry = alicloud.cen.getTransitRouterRouteEntries({
+ *     transitRouterRouteTableId: "vtb-*********",
+ * });
+ * export const transitRouterRouteEntryDestinationCidrBlock = transitRouterRouteEntries[0].transitRouterRouteEntryDestinationCidrBlock;
+ * ```
  */
 export function getTransitRouterRouteEntries(args: GetTransitRouterRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterRouteEntriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,11 +45,17 @@ export interface GetTransitRouterRouteEntriesArgs {
      * A list of CEN Transit Router Route Entry IDs.
      */
     ids?: string[];
+    /**
+     * A regex string to filter results by transit router route entry name.
+     */
     nameRegex?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+     */
     status?: string;
     /**
      * A list of ID of the cen transit router route entry.
@@ -79,19 +97,31 @@ export interface GetTransitRouterRouteEntriesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
-    readonly status?: string;
-    readonly transitRouterRouteEntryIds?: string[];
-    readonly transitRouterRouteEntryNames?: string[];
     /**
      * The status of the route entry in CEN.
      */
+    readonly status?: string;
+    readonly transitRouterRouteEntryIds?: string[];
+    readonly transitRouterRouteEntryNames?: string[];
     readonly transitRouterRouteEntryStatus?: string;
     readonly transitRouterRouteTableId: string;
 }
 /**
- * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+ * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://www.alibabacloud.com/help/doc-detail/260941.html)
  *
- * > **NOTE:** Available in 1.126.0+
+ * > **NOTE:** Available since v1.126.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const entry = alicloud.cen.getTransitRouterRouteEntries({
+ *     transitRouterRouteTableId: "vtb-*********",
+ * });
+ * export const transitRouterRouteEntryDestinationCidrBlock = transitRouterRouteEntries[0].transitRouterRouteEntryDestinationCidrBlock;
+ * ```
  */
 export function getTransitRouterRouteEntriesOutput(args: GetTransitRouterRouteEntriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterRouteEntriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -115,11 +145,17 @@ export interface GetTransitRouterRouteEntriesOutputArgs {
      * A list of CEN Transit Router Route Entry IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * A regex string to filter results by transit router route entry name.
+     */
     nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+     */
     status?: pulumi.Input<string | undefined>;
     /**
      * A list of ID of the cen transit router route entry.

@@ -16,30 +16,62 @@ public final class GetRdsParameterGroupsPlainArgs extends com.pulumi.resources.I
 
     public static final GetRdsParameterGroupsPlainArgs Empty = new GetRdsParameterGroupsPlainArgs();
 
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
+    /**
+     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
 
+    /**
+     * A list of Parameter Group IDs.
+     * 
+     */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
+    /**
+     * @return A list of Parameter Group IDs.
+     * 
+     */
     public Optional<List<String>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * A regex string to filter results by Parameter Group name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
+    /**
+     * @return A regex string to filter results by Parameter Group name.
+     * 
+     */
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable String outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -71,25 +103,55 @@ public final class GetRdsParameterGroupsPlainArgs extends com.pulumi.resources.I
             $ = new GetRdsParameterGroupsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             $.enableDetails = enableDetails;
             return this;
         }
 
+        /**
+         * @param ids A list of Parameter Group IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable List<String> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids A list of Parameter Group IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Parameter Group name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable String nameRegex) {
             $.nameRegex = nameRegex;
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
             return this;

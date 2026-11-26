@@ -25,7 +25,7 @@ public final class GetPolicyGroupsGroup {
      */
     private List<GetPolicyGroupsGroupAuthorizeSecurityPolicyRule> authorizeSecurityPolicyRules;
     /**
-     * @return Whether to enable local camera redirection. Valid values: `on`, `off`.
+     * @return (Available in 1.171.0+) Whether to enable local camera redirection. Valid values: `on`, `off`.
      * 
      */
     private String cameraRedirect;
@@ -80,22 +80,22 @@ public final class GetPolicyGroupsGroup {
      */
     private String policyGroupType;
     /**
-     * @return Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+     * @return (Available in 1.171.0+) Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
      * 
      */
     private String recording;
     /**
-     * @return The end time of recording.
+     * @return (Available in 1.171.0+) The end time of recording.
      * 
      */
     private String recordingEndTime;
     /**
-     * @return The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+     * @return (Available in 1.171.0+) The fps of recording. Valid values: `2`, `5`, `10`, `15`.
      * 
      */
     private Integer recordingFps;
     /**
-     * @return The start time of recording.
+     * @return (Available in 1.171.0+) The start time of recording.
      * 
      */
     private String recordingStartTime;
@@ -146,7 +146,7 @@ public final class GetPolicyGroupsGroup {
         return this.authorizeSecurityPolicyRules;
     }
     /**
-     * @return Whether to enable local camera redirection. Valid values: `on`, `off`.
+     * @return (Available in 1.171.0+) Whether to enable local camera redirection. Valid values: `on`, `off`.
      * 
      */
     public String cameraRedirect() {
@@ -223,28 +223,28 @@ public final class GetPolicyGroupsGroup {
         return this.policyGroupType;
     }
     /**
-     * @return Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+     * @return (Available in 1.171.0+) Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
      * 
      */
     public String recording() {
         return this.recording;
     }
     /**
-     * @return The end time of recording.
+     * @return (Available in 1.171.0+) The end time of recording.
      * 
      */
     public String recordingEndTime() {
         return this.recordingEndTime;
     }
     /**
-     * @return The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+     * @return (Available in 1.171.0+) The fps of recording. Valid values: `2`, `5`, `10`, `15`.
      * 
      */
     public Integer recordingFps() {
         return this.recordingFps;
     }
     /**
-     * @return The start time of recording.
+     * @return (Available in 1.171.0+) The start time of recording.
      * 
      */
     public String recordingStartTime() {

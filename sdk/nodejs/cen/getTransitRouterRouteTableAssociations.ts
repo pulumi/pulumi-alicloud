@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+ * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://www.alibabacloud.com/help/doc-detail/261243.html)
  *
- * > **NOTE:** Available in 1.126.0+
+ * > **NOTE:** Available since v1.126.0+
  *
  * ## Example Usage
  *
@@ -108,9 +108,9 @@ export interface GetTransitRouterRouteTableAssociationsResult {
     readonly transitRouterRouteTableId?: string;
 }
 /**
- * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+ * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://www.alibabacloud.com/help/doc-detail/261243.html)
  *
- * > **NOTE:** Available in 1.126.0+
+ * > **NOTE:** Available since v1.126.0+
  *
  * ## Example Usage
  *

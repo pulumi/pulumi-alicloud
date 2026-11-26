@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZnodesResult {
     private @Nullable String acceptLanguage;
+    /**
+     * @return The ID of the Cluster.
+     * 
+     */
     private String clusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,15 +27,31 @@ public final class GetZnodesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Znode names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The Node path.
+     * 
+     */
     private String path;
+    /**
+     * @return A list of Mse Znodes. Each element contains the following attributes:
+     * 
+     */
     private List<GetZnodesZnode> znodes;
 
     private GetZnodesResult() {}
     public Optional<String> acceptLanguage() {
         return Optional.ofNullable(this.acceptLanguage);
     }
+    /**
+     * @return The ID of the Cluster.
+     * 
+     */
     public String clusterId() {
         return this.clusterId;
     }
@@ -48,15 +68,27 @@ public final class GetZnodesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Znode names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The Node path.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return A list of Mse Znodes. Each element contains the following attributes:
+     * 
+     */
     public List<GetZnodesZnode> znodes() {
         return this.znodes;
     }

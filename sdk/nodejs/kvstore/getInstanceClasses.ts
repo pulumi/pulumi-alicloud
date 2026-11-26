@@ -109,6 +109,9 @@ export interface GetInstanceClassesArgs {
      * The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
      */
     shardNumber?: number;
+    /**
+     * The field used to sort the returned instance classes. Valid values: `Price`.
+     */
     sortedBy?: string;
     /**
      * It has been deprecated from 1.68.0.
@@ -266,6 +269,9 @@ export interface GetInstanceClassesOutputArgs {
      * The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
      */
     shardNumber?: pulumi.Input<number | undefined>;
+    /**
+     * The field used to sort the returned instance classes. Valid values: `Price`.
+     */
     sortedBy?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from 1.68.0.

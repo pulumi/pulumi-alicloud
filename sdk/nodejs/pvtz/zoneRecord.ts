@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Terraform will auto Create a Private Zone Record while it uses `alicloud.pvtz.ZoneRecord` to build a Private Zone Record resource.
  *
+ * > **NOTE:** Available since v1.13.0.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -17,12 +19,28 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const zone = new alicloud.pvtz.Zone("zone", {zoneName: "foo.test.com"});
+ * const zone = new alicloud.pvtz.Zone("zone", {zoneName: "terraform-example.com"});
  * const foo = new alicloud.pvtz.ZoneRecord("foo", {
  *     zoneId: zone.id,
  *     rr: "www",
  *     type: "CNAME",
  *     value: "bbb.test.com",
+ *     ttl: 60,
+ * });
+ * ```
+ *
+ * AAAA (IPv6) Record
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const zone = new alicloud.pvtz.Zone("zone", {zoneName: "terraform-example-aaaa.com"});
+ * const foo = new alicloud.pvtz.ZoneRecord("foo", {
+ *     zoneId: zone.id,
+ *     rr: "www",
+ *     type: "AAAA",
+ *     value: "2001:db8::1",
  *     ttl: 60,
  * });
  * ```
@@ -113,9 +131,12 @@ export class ZoneRecord extends pulumi.CustomResource {
      */
     declare public readonly ttl: pulumi.Output<number | undefined>;
     /**
-     * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+     * The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
      */
     declare public readonly type: pulumi.Output<string>;
+    /**
+     * The user client ip of the Private Zone Record.
+     */
     declare public readonly userClientIp: pulumi.Output<string | undefined>;
     /**
      * The value of the Private Zone Record.
@@ -221,9 +242,12 @@ export interface ZoneRecordState {
      */
     ttl?: pulumi.Input<number | undefined>;
     /**
-     * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+     * The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
      */
     type?: pulumi.Input<string | undefined>;
+    /**
+     * The user client ip of the Private Zone Record.
+     */
     userClientIp?: pulumi.Input<string | undefined>;
     /**
      * The value of the Private Zone Record.
@@ -272,9 +296,12 @@ export interface ZoneRecordArgs {
      */
     ttl?: pulumi.Input<number | undefined>;
     /**
-     * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+     * The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
      */
     type: pulumi.Input<string>;
+    /**
+     * The user client ip of the Private Zone Record.
+     */
     userClientIp?: pulumi.Input<string | undefined>;
     /**
      * The value of the Private Zone Record.

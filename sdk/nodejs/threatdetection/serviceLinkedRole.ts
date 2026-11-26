@@ -13,6 +13,10 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.283.0.
  *
+ * > **NOTE:** This resource refuses to adopt a service linked role that already exists, for example one created by the Security Center console or by another tool. Creation fails with the import command to run instead of taking the existing role into state, so that a later `terraform destroy` never deletes a role that Terraform did not create. When importing a role other than `AliyunServiceRoleForSas`, keep `serviceLinkedRole` in the configuration with that same name; because the argument has a default, omitting it plans a replacement of the imported role.
+ *
+ * > **NOTE:** Upgrading from v1.283.0-v2.1.0: if `serviceLinkedRole` was omitted from the configuration, the state entry stores an id that is not a role name. The first apply after upgrading replaces the resource and fails with an import hint. Run the printed `pulumi import` command; if it reports that the resource is already managed by Terraform, run `terraform state rm <ADDRESS>` and then import again.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -78,9 +82,17 @@ export class ServiceLinkedRole extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly roleStatus: pulumi.Output<boolean>;
     /**
-     * The name of the service linked role.
+     * The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+     * - `AliyunServiceRoleForSas`
+     * - `AliyunServiceRoleForSasCspm`
+     * - `AliyunServiceRoleForSasAgentless`
+     * - `AliyunServiceRoleForOssMfd`
+     * - `AliyunServiceRoleForAntiRansomwareMssp`
+     * - `AliyunServiceRoleForSasSecllm`
+     * - `AliyunServiceRoleForSasAI`
+     * - `AliyunLogETLRole`
      */
-    declare public readonly serviceLinkedRole: pulumi.Output<string>;
+    declare public readonly serviceLinkedRole: pulumi.Output<string | undefined>;
 
     /**
      * Create a ServiceLinkedRole resource with the given unique name, arguments, and options.
@@ -116,7 +128,15 @@ export interface ServiceLinkedRoleState {
      */
     roleStatus?: pulumi.Input<boolean | undefined>;
     /**
-     * The name of the service linked role.
+     * The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+     * - `AliyunServiceRoleForSas`
+     * - `AliyunServiceRoleForSasCspm`
+     * - `AliyunServiceRoleForSasAgentless`
+     * - `AliyunServiceRoleForOssMfd`
+     * - `AliyunServiceRoleForAntiRansomwareMssp`
+     * - `AliyunServiceRoleForSasSecllm`
+     * - `AliyunServiceRoleForSasAI`
+     * - `AliyunLogETLRole`
      */
     serviceLinkedRole?: pulumi.Input<string | undefined>;
 }
@@ -126,7 +146,15 @@ export interface ServiceLinkedRoleState {
  */
 export interface ServiceLinkedRoleArgs {
     /**
-     * The name of the service linked role.
+     * The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+     * - `AliyunServiceRoleForSas`
+     * - `AliyunServiceRoleForSasCspm`
+     * - `AliyunServiceRoleForSasAgentless`
+     * - `AliyunServiceRoleForOssMfd`
+     * - `AliyunServiceRoleForAntiRansomwareMssp`
+     * - `AliyunServiceRoleForSasSecllm`
+     * - `AliyunServiceRoleForSasAI`
+     * - `AliyunLogETLRole`
      */
     serviceLinkedRole?: pulumi.Input<string | undefined>;
 }

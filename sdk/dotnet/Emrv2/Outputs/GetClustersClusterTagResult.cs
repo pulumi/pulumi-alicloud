@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     [OutputType]
     public sealed class GetClustersClusterTagResult
     {
+        /// <summary>
+        /// The key of the tag.
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// The value of the tag.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

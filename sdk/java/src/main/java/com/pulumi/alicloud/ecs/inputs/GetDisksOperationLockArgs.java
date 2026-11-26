@@ -15,9 +15,17 @@ public final class GetDisksOperationLockArgs extends com.pulumi.resources.Resour
 
     public static final GetDisksOperationLockArgs Empty = new GetDisksOperationLockArgs();
 
+    /**
+     * The reason of the operation lock.
+     * 
+     */
     @Import(name="lockReason")
     private @Nullable Output<String> lockReason;
 
+    /**
+     * @return The reason of the operation lock.
+     * 
+     */
     public Optional<Output<String>> lockReason() {
         return Optional.ofNullable(this.lockReason);
     }
@@ -46,11 +54,23 @@ public final class GetDisksOperationLockArgs extends com.pulumi.resources.Resour
             $ = new GetDisksOperationLockArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param lockReason The reason of the operation lock.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lockReason(@Nullable Output<String> lockReason) {
             $.lockReason = lockReason;
             return this;
         }
 
+        /**
+         * @param lockReason The reason of the operation lock.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lockReason(String lockReason) {
             return lockReason(Output.of(lockReason));
         }

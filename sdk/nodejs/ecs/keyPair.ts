@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const basic = new alicloud.ecs.KeyPair("basic", {keyName: "terraform-test-key-pair"});
+ * const basic = new alicloud.ecs.KeyPair("basic", {keyName: "terraform-demo-key-pair"});
  * // Using name prefix to build key pair
- * const prefix = new alicloud.ecs.KeyPair("prefix", {keyNamePrefix: "terraform-test-key-pair-prefix"});
+ * const prefix = new alicloud.ecs.KeyPair("prefix", {keyNamePrefix: "terraform-demo-key-pair-prefix"});
  * // Import an existing public key to build a alicloud key pair
  * const publickey = new alicloud.ecs.KeyPair("publickey", {
  *     keyName: "my_public_key",
@@ -76,14 +76,20 @@ export class KeyPair extends pulumi.CustomResource {
         return obj['__pulumiType'] === KeyPair.__pulumiType;
     }
 
+    /**
+     * The creation time of the key pair.
+     */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * The finger print of the key pair.
+     */
     declare public /*out*/ readonly fingerPrint: pulumi.Output<string>;
     /**
      * The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
      */
     declare public readonly keyFile: pulumi.Output<string | undefined>;
     /**
-     * The key pair's name. It is the only in one Alicloud account.
+     * The key pair's name. It is the only in one Alicloud account. Deprecated, use `keyPairName` instead.
      *
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
@@ -92,6 +98,9 @@ export class KeyPair extends pulumi.CustomResource {
      * The key pair name's prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
      */
     declare public readonly keyNamePrefix: pulumi.Output<string | undefined>;
+    /**
+     * The key pair's name. It is the only in one Alicloud account.
+     */
     declare public readonly keyPairName: pulumi.Output<string>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
@@ -103,6 +112,7 @@ export class KeyPair extends pulumi.CustomResource {
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
+     *
      * > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
@@ -150,14 +160,20 @@ export class KeyPair extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KeyPair resources.
  */
 export interface KeyPairState {
+    /**
+     * The creation time of the key pair.
+     */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * The finger print of the key pair.
+     */
     fingerPrint?: pulumi.Input<string | undefined>;
     /**
      * The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
      */
     keyFile?: pulumi.Input<string | undefined>;
     /**
-     * The key pair's name. It is the only in one Alicloud account.
+     * The key pair's name. It is the only in one Alicloud account. Deprecated, use `keyPairName` instead.
      *
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
@@ -166,6 +182,9 @@ export interface KeyPairState {
      * The key pair name's prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
      */
     keyNamePrefix?: pulumi.Input<string | undefined>;
+    /**
+     * The key pair's name. It is the only in one Alicloud account.
+     */
     keyPairName?: pulumi.Input<string | undefined>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
@@ -177,6 +196,7 @@ export interface KeyPairState {
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
+     *
      * > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -191,7 +211,7 @@ export interface KeyPairArgs {
      */
     keyFile?: pulumi.Input<string | undefined>;
     /**
-     * The key pair's name. It is the only in one Alicloud account.
+     * The key pair's name. It is the only in one Alicloud account. Deprecated, use `keyPairName` instead.
      *
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
@@ -200,6 +220,9 @@ export interface KeyPairArgs {
      * The key pair name's prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
      */
     keyNamePrefix?: pulumi.Input<string | undefined>;
+    /**
+     * The key pair's name. It is the only in one Alicloud account.
+     */
     keyPairName?: pulumi.Input<string | undefined>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
@@ -211,6 +234,7 @@ export interface KeyPairArgs {
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
+     *
      * > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;

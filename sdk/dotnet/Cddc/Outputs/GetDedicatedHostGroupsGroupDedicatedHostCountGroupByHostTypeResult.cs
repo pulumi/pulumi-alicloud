@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Cddc.Outputs
     [OutputType]
     public sealed class GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeResult
     {
+        /// <summary>
+        /// Internal placeholder attribute for the Dedicated Host Count Group by Host Type.
+        /// </summary>
         public readonly string PlaceHolder;
 
         [OutputConstructor]

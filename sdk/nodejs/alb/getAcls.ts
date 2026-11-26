@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
@@ -85,7 +85,13 @@ export interface GetAclsArgs {
  */
 export interface GetAclsResult {
     readonly aclIds?: string[];
+    /**
+     * The ACL Name.
+     */
     readonly aclName?: string;
+    /**
+     * A list of Alb Acls. Each element contains the following attributes:
+     */
     readonly acls: outputs.alb.GetAclsAcl[];
     readonly enableDetails?: boolean;
     /**
@@ -94,15 +100,24 @@ export interface GetAclsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Acl names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * Resource Group to Which the Number.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *

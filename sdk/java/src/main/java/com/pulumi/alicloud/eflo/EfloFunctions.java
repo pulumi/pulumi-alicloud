@@ -19,9 +19,9 @@ import java.util.concurrent.CompletableFuture;
 
 public final class EfloFunctions {
     /**
-     * This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
+     * This data source provides Eflo Subnet available to the user.[What is Subnet](https://www.alibabacloud.com/help/doc-detail/604977.html)
      * 
-     * &gt; **NOTE:** Available in 1.204.0+
+     * &gt; **NOTE:** Available since v1.204.0
      * 
      * ## Example Usage
      * 
@@ -65,9 +65,9 @@ public final class EfloFunctions {
         return getSubnets(GetSubnetsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
+     * This data source provides Eflo Subnet available to the user.[What is Subnet](https://www.alibabacloud.com/help/doc-detail/604977.html)
      * 
-     * &gt; **NOTE:** Available in 1.204.0+
+     * &gt; **NOTE:** Available since v1.204.0
      * 
      * ## Example Usage
      * 
@@ -111,9 +111,9 @@ public final class EfloFunctions {
         return getSubnetsPlain(GetSubnetsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
+     * This data source provides Eflo Subnet available to the user.[What is Subnet](https://www.alibabacloud.com/help/doc-detail/604977.html)
      * 
-     * &gt; **NOTE:** Available in 1.204.0+
+     * &gt; **NOTE:** Available since v1.204.0
      * 
      * ## Example Usage
      * 
@@ -157,9 +157,9 @@ public final class EfloFunctions {
         return getSubnets(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
+     * This data source provides Eflo Subnet available to the user.[What is Subnet](https://www.alibabacloud.com/help/doc-detail/604977.html)
      * 
-     * &gt; **NOTE:** Available in 1.204.0+
+     * &gt; **NOTE:** Available since v1.204.0
      * 
      * ## Example Usage
      * 
@@ -203,9 +203,9 @@ public final class EfloFunctions {
         return getSubnetsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
+     * This data source provides Eflo Subnet available to the user.[What is Subnet](https://www.alibabacloud.com/help/doc-detail/604977.html)
      * 
-     * &gt; **NOTE:** Available in 1.204.0+
+     * &gt; **NOTE:** Available since v1.204.0
      * 
      * ## Example Usage
      * 
@@ -249,9 +249,9 @@ public final class EfloFunctions {
         return Deployment.getInstance().invoke("alicloud:eflo/getSubnets:getSubnets", TypeShape.of(GetSubnetsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
+     * This data source provides Eflo Subnet available to the user.[What is Subnet](https://www.alibabacloud.com/help/doc-detail/604977.html)
      * 
-     * &gt; **NOTE:** Available in 1.204.0+
+     * &gt; **NOTE:** Available since v1.204.0
      * 
      * ## Example Usage
      * 
@@ -295,9 +295,9 @@ public final class EfloFunctions {
         return Deployment.getInstance().invoke("alicloud:eflo/getSubnets:getSubnets", TypeShape.of(GetSubnetsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
+     * This data source provides Eflo Subnet available to the user.[What is Subnet](https://www.alibabacloud.com/help/doc-detail/604977.html)
      * 
-     * &gt; **NOTE:** Available in 1.204.0+
+     * &gt; **NOTE:** Available since v1.204.0
      * 
      * ## Example Usage
      * 

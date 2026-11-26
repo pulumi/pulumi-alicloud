@@ -161,11 +161,19 @@ import (
 // ```sh
 // $ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example <vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>
 // ```
+//
+// The four-part ID must match exactly one remote route entry. If primary/backup or other route entries share the same four-part key, the ID cannot disambiguate them and the import returns an error instead of selecting one.
 type PbrRouteEntry struct {
 	pulumi.CustomResourceState
 
+	// The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The next hop of the policy-based route.
 	NextHop pulumi.StringOutput `pulumi:"nextHop"`
+	// The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+	//
+	// > **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+	Priority pulumi.IntOutput `pulumi:"priority"`
 	// Whether to issue the destination route to the VPC.
 	PublishVpc pulumi.BoolOutput `pulumi:"publishVpc"`
 	// The destination CIDR block of the policy-based route.
@@ -228,8 +236,14 @@ func GetPbrRouteEntry(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PbrRouteEntry resources.
 type pbrRouteEntryState struct {
+	// The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+	Description *string `pulumi:"description"`
 	// The next hop of the policy-based route.
 	NextHop *string `pulumi:"nextHop"`
+	// The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+	//
+	// > **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+	Priority *int `pulumi:"priority"`
 	// Whether to issue the destination route to the VPC.
 	PublishVpc *bool `pulumi:"publishVpc"`
 	// The destination CIDR block of the policy-based route.
@@ -245,8 +259,14 @@ type pbrRouteEntryState struct {
 }
 
 type PbrRouteEntryState struct {
+	// The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+	Description pulumi.StringPtrInput
 	// The next hop of the policy-based route.
 	NextHop pulumi.StringPtrInput
+	// The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+	//
+	// > **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+	Priority pulumi.IntPtrInput
 	// Whether to issue the destination route to the VPC.
 	PublishVpc pulumi.BoolPtrInput
 	// The destination CIDR block of the policy-based route.
@@ -272,8 +292,14 @@ func PbrRouteEntryExists(ctx *pulumi.Context,
 }
 
 type pbrRouteEntryArgs struct {
+	// The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+	Description *string `pulumi:"description"`
 	// The next hop of the policy-based route.
 	NextHop string `pulumi:"nextHop"`
+	// The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+	//
+	// > **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+	Priority *int `pulumi:"priority"`
 	// Whether to issue the destination route to the VPC.
 	PublishVpc bool `pulumi:"publishVpc"`
 	// The destination CIDR block of the policy-based route.
@@ -288,8 +314,14 @@ type pbrRouteEntryArgs struct {
 
 // The set of arguments for constructing a PbrRouteEntry resource.
 type PbrRouteEntryArgs struct {
+	// The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+	Description pulumi.StringPtrInput
 	// The next hop of the policy-based route.
 	NextHop pulumi.StringInput
+	// The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+	//
+	// > **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+	Priority pulumi.IntPtrInput
 	// Whether to issue the destination route to the VPC.
 	PublishVpc pulumi.BoolInput
 	// The destination CIDR block of the policy-based route.
@@ -389,9 +421,21 @@ func (o PbrRouteEntryOutput) ToPbrRouteEntryOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+func (o PbrRouteEntryOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PbrRouteEntry) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
 // The next hop of the policy-based route.
 func (o PbrRouteEntryOutput) NextHop() pulumi.StringOutput {
 	return o.ApplyT(func(v *PbrRouteEntry) pulumi.StringOutput { return v.NextHop }).(pulumi.StringOutput)
+}
+
+// The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+//
+// > **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+func (o PbrRouteEntryOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *PbrRouteEntry) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
 // Whether to issue the destination route to the VPC.

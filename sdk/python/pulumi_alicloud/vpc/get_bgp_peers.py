@@ -53,6 +53,9 @@ class GetBgpPeersResult:
     @_builtins.property
     @pulumi.getter(name="bgpGroupId")
     def bgp_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the BGP group.
+        """
         return pulumi.get(self, "bgp_group_id")
 
     @_builtins.property
@@ -76,16 +79,25 @@ class GetBgpPeersResult:
     @_builtins.property
     @pulumi.getter
     def peers(self) -> Sequence['outputs.GetBgpPeersPeerResult']:
+        """
+        A list of Vpc Bgp Peers. Each element contains the following attributes:
+        """
         return pulumi.get(self, "peers")
 
     @_builtins.property
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the router.
+        """
         return pulumi.get(self, "router_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the BGP peer.
+        """
         return pulumi.get(self, "status")
 
 
@@ -113,7 +125,7 @@ def get_bgp_peers(bgp_group_id: Optional[_builtins.str] = None,
     """
     This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.153.0+.
+    > **NOTE:** Available since v1.153.0.
 
     ## Example Usage
 
@@ -169,7 +181,7 @@ def get_bgp_peers_output(bgp_group_id: pulumi.Input[Optional[Optional[_builtins.
     """
     This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.153.0+.
+    > **NOTE:** Available since v1.153.0.
 
     ## Example Usage
 

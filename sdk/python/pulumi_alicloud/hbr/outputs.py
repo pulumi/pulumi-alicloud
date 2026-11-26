@@ -114,11 +114,11 @@ class OtsBackupPlanRule(dict):
                  rule_name: Optional[_builtins.str] = None,
                  schedule: Optional[_builtins.str] = None):
         """
-        :param _builtins.str backup_type: Backup type. Valid values: `COMPLETE`.
-        :param _builtins.bool disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
-        :param _builtins.str retention: Backup retention days, the minimum is 1.
+        :param _builtins.str backup_type: The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param _builtins.bool disabled: Whether to disable the backup task. Valid values: true, false.
+        :param _builtins.str retention: Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
         :param _builtins.str rule_name: The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
-        :param _builtins.str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        :param _builtins.str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
                - `startTime` Backup start time, UNIX time seconds.
         """
         if backup_type is not None:
@@ -136,7 +136,7 @@ class OtsBackupPlanRule(dict):
     @pulumi.getter(name="backupType")
     def backup_type(self) -> Optional[_builtins.str]:
         """
-        Backup type. Valid values: `COMPLETE`.
+        The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "backup_type")
 
@@ -144,7 +144,7 @@ class OtsBackupPlanRule(dict):
     @pulumi.getter
     def disabled(self) -> Optional[_builtins.bool]:
         """
-        Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+        Whether to disable the backup task. Valid values: true, false.
         """
         return pulumi.get(self, "disabled")
 
@@ -152,7 +152,7 @@ class OtsBackupPlanRule(dict):
     @pulumi.getter
     def retention(self) -> Optional[_builtins.str]:
         """
-        Backup retention days, the minimum is 1.
+        Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "retention")
 
@@ -168,7 +168,7 @@ class OtsBackupPlanRule(dict):
     @pulumi.getter
     def schedule(self) -> Optional[_builtins.str]:
         """
-        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
         - `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
@@ -1085,9 +1085,9 @@ class GetBackupJobsJobResult(dict):
         :param _builtins.str bytes_total: The total amount of data sources. Unit byte.
         :param _builtins.str complete_time: The completion time of backup job. UNIX time seconds.
         :param _builtins.str create_time: The creation time of backup job. UNIX time seconds.
-        :param _builtins.str cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
-        :param _builtins.str cross_account_type: The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
-        :param _builtins.int cross_account_user_id: The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        :param _builtins.str cross_account_role_name: (Available in v1.190.0+) The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        :param _builtins.str cross_account_type: (Available in v1.190.0+) The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        :param _builtins.int cross_account_user_id: (Available in v1.190.0+) The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
         :param _builtins.str error_message: Error message.
         :param _builtins.str exclude: Exclude path. String of Json list. Up to 255 characters. e.g. `"[\\"/home/work\\"]"`
         :param _builtins.str file_system_id: The ID of destination file system.
@@ -1097,13 +1097,14 @@ class GetBackupJobsJobResult(dict):
         :param _builtins.str items_done: The number of items restore job recovered.
         :param _builtins.str items_total: The total number of items restore job recovered.
         :param _builtins.str nas_create_time: File system creation time. UNIX time in seconds.
+        :param Sequence['GetBackupJobsJobOtsDetailArgs'] ots_details: The details about the Table store instance.
         :param Sequence[_builtins.str] paths: List of backup path. e.g. `["/home", "/var"]`.
         :param _builtins.str plan_id: The ID of a backup plan.
         :param _builtins.str prefix: The prefix of Oss bucket files.
         :param _builtins.str progress: Backup progress. The value is 100%*100.
-        :param _builtins.str source_type: The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+        :param _builtins.str source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
         :param _builtins.str start_time: The scheduled backup start time. UNIX time seconds.
-        :param _builtins.str status: The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+        :param _builtins.str status: The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
         :param _builtins.str updated_time: The update time of backup job. UNIX time seconds.
         :param _builtins.str vault_id: The ID of backup vault.
         """
@@ -1224,7 +1225,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter(name="crossAccountRoleName")
     def cross_account_role_name(self) -> _builtins.str:
         """
-        The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        (Available in v1.190.0+) The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
         """
         return pulumi.get(self, "cross_account_role_name")
 
@@ -1232,7 +1233,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter(name="crossAccountType")
     def cross_account_type(self) -> _builtins.str:
         """
-        The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        (Available in v1.190.0+) The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
         """
         return pulumi.get(self, "cross_account_type")
 
@@ -1240,7 +1241,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter(name="crossAccountUserId")
     def cross_account_user_id(self) -> _builtins.int:
         """
-        The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        (Available in v1.190.0+) The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
         """
         return pulumi.get(self, "cross_account_user_id")
 
@@ -1319,6 +1320,9 @@ class GetBackupJobsJobResult(dict):
     @_builtins.property
     @pulumi.getter(name="otsDetails")
     def ots_details(self) -> Sequence['outputs.GetBackupJobsJobOtsDetailResult']:
+        """
+        The details about the Table store instance.
+        """
         return pulumi.get(self, "ots_details")
 
     @_builtins.property
@@ -1357,7 +1361,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter(name="sourceType")
     def source_type(self) -> _builtins.str:
         """
-        The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+        The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
         """
         return pulumi.get(self, "source_type")
 
@@ -1373,7 +1377,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+        The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
         """
         return pulumi.get(self, "status")
 
@@ -1398,11 +1402,17 @@ class GetBackupJobsJobResult(dict):
 class GetBackupJobsJobOtsDetailResult(dict):
     def __init__(__self__, *,
                  table_names: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] table_names: The names of the destination tables in the Tablestore instance.
+        """
         pulumi.set(__self__, "table_names", table_names)
 
     @_builtins.property
     @pulumi.getter(name="tableNames")
     def table_names(self) -> Sequence[_builtins.str]:
+        """
+        The names of the destination tables in the Tablestore instance.
+        """
         return pulumi.get(self, "table_names")
 
 
@@ -1443,8 +1453,8 @@ class GetEcsBackupClientsClientResult(dict):
         :param _builtins.str create_time: The creation time of client. Unix time in seconds.
         :param _builtins.str data_network_type: The data plane access point type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
         :param _builtins.str data_proxy_setting: The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
-               * `USE_CONTROL_PROXY` (Default, the same with control plane)
-               * `CUSTOM` (Custom configuration items for the HTTP protocol).
+               - `USE_CONTROL_PROXY` (Default, the same with control plane)
+               - `CUSTOM` (Custom configuration items for the HTTP protocol).
         :param _builtins.str ecs_backup_client_id: The first ID of the resource.
         :param _builtins.str hostname: The hostname of ECS instance.
         :param _builtins.str id: The ID of the Ecs Backup Client.
@@ -1460,7 +1470,7 @@ class GetEcsBackupClientsClientResult(dict):
         :param _builtins.str proxy_password: The password of custom data plane proxy server.
         :param _builtins.str proxy_port: Custom data plane proxy server host port.
         :param _builtins.str proxy_user: The username of custom data plane proxy server.
-        :param _builtins.str status: The status of the resource.
+        :param _builtins.str status: The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
         :param _builtins.str updated_time: The update time of client. Unix Time Seconds.
         :param _builtins.bool use_https: Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         :param _builtins.str zone_id: The ID of Zone.
@@ -1545,8 +1555,8 @@ class GetEcsBackupClientsClientResult(dict):
     def data_proxy_setting(self) -> _builtins.str:
         """
         The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
-        * `USE_CONTROL_PROXY` (Default, the same with control plane)
-        * `CUSTOM` (Custom configuration items for the HTTP protocol).
+        - `USE_CONTROL_PROXY` (Default, the same with control plane)
+        - `CUSTOM` (Custom configuration items for the HTTP protocol).
         """
         return pulumi.get(self, "data_proxy_setting")
 
@@ -1674,7 +1684,7 @@ class GetEcsBackupClientsClientResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
         """
         return pulumi.get(self, "status")
 
@@ -1727,23 +1737,25 @@ class GetEcsBackupPlansPlanResult(dict):
                  vault_id: _builtins.str):
         """
         :param _builtins.str backup_type: Backup type. Valid values: `COMPLETE`.
+        :param _builtins.str create_time: The creation time of the backup plan. UNIX time in seconds.
         :param _builtins.str created_time: The creation time of the backup plan. UNIX time in seconds.
+        :param _builtins.str detail: The detail of the backup plan.
         :param _builtins.bool disabled: Whether to be suspended. Valid values: `true`, `false`.
         :param _builtins.str ecs_backup_plan_id: The ID of ecs backup plan.
         :param _builtins.str ecs_backup_plan_name: The name of the backup plan.
         :param _builtins.str exclude: Exclude path. String of Json list. Up to 255 characters. e.g. `"[\\"/home/work\\"]"`
         :param _builtins.str id: The ID of ecs backup plan.
         :param _builtins.str include: Include path. String of Json list. Up to 255 characters. e.g. `"[\\"/var\\"]"`
-        :param _builtins.str instance_id: The ID of ECS instance.
+        :param _builtins.str instance_id: The ECS instance ID of the EcsBackupPlan used.
         :param _builtins.str options: Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
         :param Sequence[_builtins.str] paths: Backup path. e.g. `["/home", "/var"]`
         :param _builtins.str retention: Backup retention days, the minimum is 1.
         :param _builtins.str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-               * `startTime` Backup start time, UNIX time seconds.
+               - `startTime` Backup start time, UNIX time seconds.
         :param _builtins.str source_type: The type of backup source.
         :param _builtins.str speed_limit: Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         :param _builtins.str updated_time: The update time of the backup plan. UNIX time in seconds.
-        :param _builtins.str vault_id: The ID of Backup vault.
+        :param _builtins.str vault_id: The Vault ID of the EcsBackupPlan used.
         """
         pulumi.set(__self__, "backup_type", backup_type)
         pulumi.set(__self__, "create_time", create_time)
@@ -1776,6 +1788,9 @@ class GetEcsBackupPlansPlanResult(dict):
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
+        """
+        The creation time of the backup plan. UNIX time in seconds.
+        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
@@ -1789,6 +1804,9 @@ class GetEcsBackupPlansPlanResult(dict):
     @_builtins.property
     @pulumi.getter
     def detail(self) -> _builtins.str:
+        """
+        The detail of the backup plan.
+        """
         return pulumi.get(self, "detail")
 
     @_builtins.property
@@ -1843,7 +1861,7 @@ class GetEcsBackupPlansPlanResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
         """
-        The ID of ECS instance.
+        The ECS instance ID of the EcsBackupPlan used.
         """
         return pulumi.get(self, "instance_id")
 
@@ -1876,7 +1894,7 @@ class GetEcsBackupPlansPlanResult(dict):
     def schedule(self) -> _builtins.str:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-        * `startTime` Backup start time, UNIX time seconds.
+        - `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -1908,7 +1926,7 @@ class GetEcsBackupPlansPlanResult(dict):
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> _builtins.str:
         """
-        The ID of Backup vault.
+        The Vault ID of the EcsBackupPlan used.
         """
         return pulumi.get(self, "vault_id")
 
@@ -2105,11 +2123,12 @@ class GetHanaBackupPlansPlanResult(dict):
         :param _builtins.str cluster_id: The ID of the SAP HANA instance.
         :param _builtins.str database_name: The name of the database.
         :param _builtins.str id: The ID of the resource.
+        :param _builtins.str page_total: The total number of pages.
         :param _builtins.str plan_id: The ID of the backup plan.
         :param _builtins.str plan_name: The name of the backup plan.
         :param _builtins.str schedule: The backup policy.
         :param _builtins.str status: The status of the resource.
-        :param _builtins.str vault_id: The ID of the backup vault.
+        :param _builtins.str vault_id: The id of the vault.
         """
         pulumi.set(__self__, "backup_prefix", backup_prefix)
         pulumi.set(__self__, "backup_type", backup_type)
@@ -2166,6 +2185,9 @@ class GetHanaBackupPlansPlanResult(dict):
     @_builtins.property
     @pulumi.getter(name="pageTotal")
     def page_total(self) -> _builtins.str:
+        """
+        The total number of pages.
+        """
         return pulumi.get(self, "page_total")
 
     @_builtins.property
@@ -2204,7 +2226,7 @@ class GetHanaBackupPlansPlanResult(dict):
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> _builtins.str:
         """
-        The ID of the backup vault.
+        The id of the vault.
         """
         return pulumi.get(self, "vault_id")
 
@@ -2233,12 +2255,16 @@ class GetHanaInstancesInstanceResult(dict):
         :param _builtins.str id: The ID of the Hana Instance. The value formats as `<vault_id>:<hana_instance_id>`.
         :param _builtins.int instance_number: The instance number of the SAP HANA system.
         :param _builtins.str resource_group_id: The ID of the resource group.
-        :param _builtins.str status: The status of the SAP HANA instance.
+        :param _builtins.str status: The status of the SAP HANA instance. Valid values:
+               - `INITIALIZING`: The instance is being initialized.
+               - `INITIALIZED`: The instance is registered.
+               - `INVALID_HANA_NODE`: The instance is invalid.
+               - `INITIALIZE_FAILED`: The client fails to be installed on the instance.
         :param _builtins.str status_message: The status information.
         :param _builtins.bool use_ssl: Indicates whether the SAP HANA instance is connected over Secure Sockets Layer (SSL).
         :param _builtins.str user_name: The username of the SYSTEMDB database.
         :param _builtins.bool validate_certificate: Indicates whether the SSL certificate of the SAP HANA instance is verified.
-        :param _builtins.str vault_id: The ID of the backup vault.
+        :param _builtins.str vault_id: The id of the vault.
         """
         pulumi.set(__self__, "alert_setting", alert_setting)
         pulumi.set(__self__, "hana_instance_id", hana_instance_id)
@@ -2314,7 +2340,11 @@ class GetHanaInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the SAP HANA instance.
+        The status of the SAP HANA instance. Valid values:
+        - `INITIALIZING`: The instance is being initialized.
+        - `INITIALIZED`: The instance is registered.
+        - `INVALID_HANA_NODE`: The instance is invalid.
+        - `INITIALIZE_FAILED`: The client fails to be installed on the instance.
         """
         return pulumi.get(self, "status")
 
@@ -2354,7 +2384,7 @@ class GetHanaInstancesInstanceResult(dict):
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> _builtins.str:
         """
-        The ID of the backup vault.
+        The id of the vault.
         """
         return pulumi.get(self, "vault_id")
 
@@ -2381,7 +2411,7 @@ class GetNasBackupPlansPlanResult(dict):
         :param _builtins.str create_time: File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST`.
         :param _builtins.str created_time: The creation time of the backup plan. UNIX time in seconds.
         :param _builtins.bool disabled: Whether to be suspended. Valid values: `true`, `false`.
-        :param _builtins.str file_system_id: The File System ID of Nas.
+        :param _builtins.str file_system_id: The Nas fileSystem instance ID of the EcsBackupPlan used.
         :param _builtins.str id: The ID of Nas backup plan.
         :param _builtins.str nas_backup_plan_id: The ID of Nas backup plan.
         :param _builtins.str nas_backup_plan_name: The name of the resource.
@@ -2389,9 +2419,9 @@ class GetNasBackupPlansPlanResult(dict):
         :param Sequence[_builtins.str] paths: List of backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
         :param _builtins.str retention: Backup retention days, the minimum is 1.
         :param _builtins.str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-               * `startTime` Backup start time, UNIX time seconds.
+               - `startTime` Backup start time, UNIX time seconds.
         :param _builtins.str updated_time: The update time of the backup plan. UNIX time in seconds.
-        :param _builtins.str vault_id: The ID of backup vault.
+        :param _builtins.str vault_id: The backup vault ID of the NasBackupPlan used.
         """
         pulumi.set(__self__, "backup_type", backup_type)
         pulumi.set(__self__, "create_time", create_time)
@@ -2444,7 +2474,7 @@ class GetNasBackupPlansPlanResult(dict):
     @pulumi.getter(name="fileSystemId")
     def file_system_id(self) -> _builtins.str:
         """
-        The File System ID of Nas.
+        The Nas fileSystem instance ID of the EcsBackupPlan used.
         """
         return pulumi.get(self, "file_system_id")
 
@@ -2501,7 +2531,7 @@ class GetNasBackupPlansPlanResult(dict):
     def schedule(self) -> _builtins.str:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-        * `startTime` Backup start time, UNIX time seconds.
+        - `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -2517,7 +2547,7 @@ class GetNasBackupPlansPlanResult(dict):
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> _builtins.str:
         """
-        The ID of backup vault.
+        The backup vault ID of the NasBackupPlan used.
         """
         return pulumi.get(self, "vault_id")
 
@@ -2548,9 +2578,9 @@ class GetOssBackupPlansPlanResult(dict):
         :param _builtins.str prefix: Backup prefix.
         :param _builtins.str retention: Backup retention days, the minimum is 1.
         :param _builtins.str schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
-               * `startTime` Backup start time, UNIX time seconds.
+               - `startTime` Backup start time, UNIX time seconds.
         :param _builtins.str updated_time: The update time of the backup plan. UNIX time in seconds.
-        :param _builtins.str vault_id: The ID of backup vault.
+        :param _builtins.str vault_id: The ID of backup vault the OssBackupPlan used.
         """
         pulumi.set(__self__, "backup_type", backup_type)
         pulumi.set(__self__, "bucket", bucket)
@@ -2642,7 +2672,7 @@ class GetOssBackupPlansPlanResult(dict):
     def schedule(self) -> _builtins.str:
         """
         Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
-        * `startTime` Backup start time, UNIX time seconds.
+        - `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -2658,7 +2688,7 @@ class GetOssBackupPlansPlanResult(dict):
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> _builtins.str:
         """
-        The ID of backup vault.
+        The ID of backup vault the OssBackupPlan used.
         """
         return pulumi.get(self, "vault_id")
 
@@ -2685,13 +2715,13 @@ class GetOtsBackupPlansPlanResult(dict):
         :param _builtins.str id: The ID of ots backup plan.
         :param _builtins.str ots_backup_plan_id: The ID of ots backup plan.
         :param _builtins.str ots_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param Sequence['GetOtsBackupPlansPlanOtsDetailArgs'] ots_details: The details about the Tablestore instance.
         :param _builtins.str retention: The Backup retention days, the minimum is 1.
         :param _builtins.str schedule: The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
-               * `startTime` Backup start time, UNIX time seconds.
+               - `startTime` Backup start time, UNIX time seconds.
         :param _builtins.str source_type: The type of the data source.
         :param _builtins.str updated_time: The update time of the backup plan. UNIX time in seconds.
-               *ots_detail - The details about the Tablestore instance.
-        :param _builtins.str vault_id: The ID of backup vault.
+        :param _builtins.str vault_id: The ID of backup vault the OtsBackupPlan used.
         """
         pulumi.set(__self__, "backup_type", backup_type)
         pulumi.set(__self__, "created_time", created_time)
@@ -2757,6 +2787,9 @@ class GetOtsBackupPlansPlanResult(dict):
     @_builtins.property
     @pulumi.getter(name="otsDetails")
     def ots_details(self) -> Sequence['outputs.GetOtsBackupPlansPlanOtsDetailResult']:
+        """
+        The details about the Tablestore instance.
+        """
         return pulumi.get(self, "ots_details")
 
     @_builtins.property
@@ -2772,7 +2805,7 @@ class GetOtsBackupPlansPlanResult(dict):
     def schedule(self) -> _builtins.str:
         """
         The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
-        * `startTime` Backup start time, UNIX time seconds.
+        - `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -2789,7 +2822,6 @@ class GetOtsBackupPlansPlanResult(dict):
     def updated_time(self) -> _builtins.str:
         """
         The update time of the backup plan. UNIX time in seconds.
-        *ots_detail - The details about the Tablestore instance.
         """
         return pulumi.get(self, "updated_time")
 
@@ -2797,7 +2829,7 @@ class GetOtsBackupPlansPlanResult(dict):
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> _builtins.str:
         """
-        The ID of backup vault.
+        The ID of backup vault the OtsBackupPlan used.
         """
         return pulumi.get(self, "vault_id")
 
@@ -2806,11 +2838,17 @@ class GetOtsBackupPlansPlanResult(dict):
 class GetOtsBackupPlansPlanOtsDetailResult(dict):
     def __init__(__self__, *,
                  table_names: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] table_names: The names of the destination tables in the Tablestore instance.
+        """
         pulumi.set(__self__, "table_names", table_names)
 
     @_builtins.property
     @pulumi.getter(name="tableNames")
     def table_names(self) -> Sequence[_builtins.str]:
+        """
+        The names of the destination tables in the Tablestore instance.
+        """
         return pulumi.get(self, "table_names")
 
 
@@ -2855,7 +2893,7 @@ class GetOtsSnapshotsSnapshotResult(dict):
         :param _builtins.str snapshot_hash: The hash value of the backup snapshot.
         :param _builtins.str snapshot_id: The ID of the backup snapshot.
         :param _builtins.str source_type: The type of the data source. Valid values: `ECS_FILE`,`PARTIAL_COMPLETE`,`FAILED`
-        :param _builtins.str start_time: The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+        :param _builtins.str start_time: The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
         :param _builtins.str status: The status of the backup job. Valid values: `COMPLETE`,`PARTIAL_COMPLETE`,`FAILED`.
         :param _builtins.str table_name: The name of the table in the Table store instance.
         :param _builtins.str updated_time: The time when the backup snapshot was updated. This value is a UNIX timestamp. Unit: seconds.
@@ -3015,7 +3053,7 @@ class GetOtsSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> _builtins.str:
         """
-        The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+        The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
         """
         return pulumi.get(self, "start_time")
 
@@ -3112,28 +3150,32 @@ class GetRestoreJobsJobResult(dict):
         :param _builtins.str bytes_total: The total size of restore job recovered.
         :param _builtins.str complete_time: The completion time of restore Job.
         :param _builtins.str create_time: The creation time of restore job.
+        :param _builtins.str error_file: The error file of the recovery task.
         :param _builtins.str error_message: The error message of recovery task execution.
         :param _builtins.str expire_time: The expiration time of restore job. Unix Time in seconds.
         :param _builtins.str id: The ID of the restore job.
         :param _builtins.str items_done: The number of items restore job recovered.
         :param _builtins.str items_total: The total number of items restore job recovered.
         :param _builtins.str options: Recovery Options.
+        :param _builtins.str parent_id: The parent ID of the restore job.
         :param _builtins.int progress: The recovery progress.
         :param _builtins.str restore_job_id: The ID of restore job.
-        :param _builtins.str restore_type: The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        :param _builtins.str restore_type: The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
         :param _builtins.str snapshot_hash: The hashcode of Snapshot.
         :param _builtins.str snapshot_id: The ID of Snapshot.
         :param _builtins.str source_type: The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
         :param _builtins.str start_time: The start time of restore job. Unix Time in Seconds.
-        :param _builtins.str status: The status of restore job.
-        :param _builtins.str target_bucket: The name of target ofo OSS bucket.
+        :param _builtins.str status: The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
+        :param _builtins.str target_bucket: The name of target OSS bucket.
+        :param _builtins.str target_client_id: The target client ID.
         :param _builtins.str target_create_time: The creation time of destination file system.
-        :param _builtins.str target_file_system_id: The ID of destination file system.
+        :param _builtins.str target_data_source_id: The target data source ID.
+        :param _builtins.str target_file_system_id: Valid while source_type equals `NAS`. The list of destination File System IDs.
         :param _builtins.str target_instance_id: The ID of target ECS instance.
         :param _builtins.str target_path: The target file path of ECS instance.
         :param _builtins.str target_prefix: The file prefix of target OSS object.
         :param _builtins.str updated_time: The update Time of restore job. Unix Time in Seconds.
-        :param _builtins.str vault_id: The ID of backup vault.
+        :param _builtins.str vault_id: The list of backup vault IDs.
         """
         pulumi.set(__self__, "actual_bytes", actual_bytes)
         pulumi.set(__self__, "actual_items", actual_items)
@@ -3219,6 +3261,9 @@ class GetRestoreJobsJobResult(dict):
     @_builtins.property
     @pulumi.getter(name="errorFile")
     def error_file(self) -> _builtins.str:
+        """
+        The error file of the recovery task.
+        """
         return pulumi.get(self, "error_file")
 
     @_builtins.property
@@ -3272,6 +3317,9 @@ class GetRestoreJobsJobResult(dict):
     @_builtins.property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> _builtins.str:
+        """
+        The parent ID of the restore job.
+        """
         return pulumi.get(self, "parent_id")
 
     @_builtins.property
@@ -3294,7 +3342,7 @@ class GetRestoreJobsJobResult(dict):
     @pulumi.getter(name="restoreType")
     def restore_type(self) -> _builtins.str:
         """
-        The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
         """
         return pulumi.get(self, "restore_type")
 
@@ -3334,7 +3382,7 @@ class GetRestoreJobsJobResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of restore job.
+        The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
         """
         return pulumi.get(self, "status")
 
@@ -3342,13 +3390,16 @@ class GetRestoreJobsJobResult(dict):
     @pulumi.getter(name="targetBucket")
     def target_bucket(self) -> _builtins.str:
         """
-        The name of target ofo OSS bucket.
+        The name of target OSS bucket.
         """
         return pulumi.get(self, "target_bucket")
 
     @_builtins.property
     @pulumi.getter(name="targetClientId")
     def target_client_id(self) -> _builtins.str:
+        """
+        The target client ID.
+        """
         return pulumi.get(self, "target_client_id")
 
     @_builtins.property
@@ -3362,13 +3413,16 @@ class GetRestoreJobsJobResult(dict):
     @_builtins.property
     @pulumi.getter(name="targetDataSourceId")
     def target_data_source_id(self) -> _builtins.str:
+        """
+        The target data source ID.
+        """
         return pulumi.get(self, "target_data_source_id")
 
     @_builtins.property
     @pulumi.getter(name="targetFileSystemId")
     def target_file_system_id(self) -> _builtins.str:
         """
-        The ID of destination file system.
+        Valid while source_type equals `NAS`. The list of destination File System IDs.
         """
         return pulumi.get(self, "target_file_system_id")
 
@@ -3408,7 +3462,7 @@ class GetRestoreJobsJobResult(dict):
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> _builtins.str:
         """
-        The ID of backup vault.
+        The list of backup vault IDs.
         """
         return pulumi.get(self, "vault_id")
 
@@ -3701,28 +3755,29 @@ class GetSnapshotsSnapshotResult(dict):
         :param _builtins.str actual_bytes: The actual data volume of the snapshot. Unit byte.
         :param _builtins.str actual_items: The actual number of items in the snapshot. (Currently only file backup is available).
         :param _builtins.str backup_type: Backup type. Possible values: `COMPLETE` (full backup).
-        :param _builtins.str bucket: The name of OSS bucket.
+        :param _builtins.str bucket: The bucket name of OSS. While source_type equals `OSS`, this parameter must be set.
         :param _builtins.str bytes_done: The incremental amount of backup data. Unit byte.
         :param _builtins.str bytes_total: The total amount of data sources. Unit byte.
-        :param _builtins.str client_id: The ID of ECS backup client.
-        :param _builtins.str complete_time: The time when the snapshot completed. UNIX time in seconds.
-        :param _builtins.str create_time: File System Creation Time of Nas. Unix Time Seconds.
+        :param _builtins.str client_id: (ECS_FILE) The ID of ECS backup client.
+        :param _builtins.str complete_time: Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `complete_time_checker` equals `BETWEEN`, this field should be formatted such as `"2021-08-20T14:17:15CST,2021-08-26T14:17:15CST"`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
+        :param _builtins.str create_time: File system creation timestamp of Nas. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         :param _builtins.str created_time: Snapshot creation time. UNIX time in seconds.
-        :param _builtins.str file_system_id: The ID of NAS File system.
+        :param _builtins.str error_file: The error file of the snapshot.
+        :param _builtins.str file_system_id: The File System ID of Nas. While source_type equals `NAS`, this parameter must be set.
         :param _builtins.str id: The ID of the Snapshot.
-        :param _builtins.str instance_id: The ID of ECS instance.
+        :param _builtins.str instance_id: The ID of ECS instance. The ecs backup client must have been installed on the host. While source_type equals `ECS_FILE`, this parameter must be set.
         :param _builtins.str items_done: The number of backup items. (Currently only file backup is available).
         :param _builtins.str items_total: The total number of data source items. (Currently only file backup is available).
         :param _builtins.str job_id: The job ID of backup task.
         :param _builtins.str parent_snapshot_hash: The hashcode of parent backup snapshot.
-        :param _builtins.str path: Backup Path.
-        :param _builtins.str prefix: Backup file prefix.
+        :param _builtins.str path: (ECS_FILE, NAS) Backup Path.
+        :param _builtins.str prefix: (OSS) Backup file prefix.
         :param _builtins.str retention: The number of days to keep.
         :param _builtins.str snapshot_hash: The hashcode of Snapshot.
         :param _builtins.str snapshot_id: The ID of the Snapshot.
-        :param _builtins.str source_type: Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+        :param _builtins.str source_type: Data source type, valid values: `ECS_FILE`, `OSS`, `NAS`.
         :param _builtins.str start_time: The start time of the snapshot. UNIX time in seconds.
-        :param _builtins.str status: The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+        :param _builtins.str status: The status of snapshot, valid values: `COMPLETE`, `PARTIAL_COMPLETE`.
         :param _builtins.str updated_time: The update time of snapshot. UNIX time in seconds.
         """
         pulumi.set(__self__, "actual_bytes", actual_bytes)
@@ -3781,7 +3836,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def bucket(self) -> _builtins.str:
         """
-        The name of OSS bucket.
+        The bucket name of OSS. While source_type equals `OSS`, this parameter must be set.
         """
         return pulumi.get(self, "bucket")
 
@@ -3805,7 +3860,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="clientId")
     def client_id(self) -> _builtins.str:
         """
-        The ID of ECS backup client.
+        (ECS_FILE) The ID of ECS backup client.
         """
         return pulumi.get(self, "client_id")
 
@@ -3813,7 +3868,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="completeTime")
     def complete_time(self) -> _builtins.str:
         """
-        The time when the snapshot completed. UNIX time in seconds.
+        Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `complete_time_checker` equals `BETWEEN`, this field should be formatted such as `"2021-08-20T14:17:15CST,2021-08-26T14:17:15CST"`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
         """
         return pulumi.get(self, "complete_time")
 
@@ -3821,7 +3876,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         """
-        File System Creation Time of Nas. Unix Time Seconds.
+        File system creation timestamp of Nas. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
         return pulumi.get(self, "create_time")
 
@@ -3836,13 +3891,16 @@ class GetSnapshotsSnapshotResult(dict):
     @_builtins.property
     @pulumi.getter(name="errorFile")
     def error_file(self) -> _builtins.str:
+        """
+        The error file of the snapshot.
+        """
         return pulumi.get(self, "error_file")
 
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
     def file_system_id(self) -> _builtins.str:
         """
-        The ID of NAS File system.
+        The File System ID of Nas. While source_type equals `NAS`, this parameter must be set.
         """
         return pulumi.get(self, "file_system_id")
 
@@ -3858,7 +3916,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
         """
-        The ID of ECS instance.
+        The ID of ECS instance. The ecs backup client must have been installed on the host. While source_type equals `ECS_FILE`, this parameter must be set.
         """
         return pulumi.get(self, "instance_id")
 
@@ -3898,7 +3956,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def path(self) -> _builtins.str:
         """
-        Backup Path.
+        (ECS_FILE, NAS) Backup Path.
         """
         return pulumi.get(self, "path")
 
@@ -3906,7 +3964,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def prefix(self) -> _builtins.str:
         """
-        Backup file prefix.
+        (OSS) Backup file prefix.
         """
         return pulumi.get(self, "prefix")
 
@@ -3938,7 +3996,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="sourceType")
     def source_type(self) -> _builtins.str:
         """
-        Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+        Data source type, valid values: `ECS_FILE`, `OSS`, `NAS`.
         """
         return pulumi.get(self, "source_type")
 
@@ -3954,7 +4012,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+        The status of snapshot, valid values: `COMPLETE`, `PARTIAL_COMPLETE`.
         """
         return pulumi.get(self, "status")
 
@@ -4094,25 +4152,20 @@ class GetVaultsVaultResult(dict):
         :param _builtins.str bucket_name: The name of the OSS bucket of the Vault.
         :param _builtins.str bytes_done: The amount of backup data. The unit is Byte.
         :param _builtins.str created_time: The creation time of the Vault. UNIX time in seconds.
-        :param _builtins.bool dedup: Whether to enable the deduplication function for the database backup Vault.
+        :param _builtins.bool dedup: (Internal use) Whether to enable the deduplication function for the database backup Vault.
         :param _builtins.str description: The description of the vault.
         :param _builtins.str id: The ID of vault.
-        :param _builtins.bool index_available: Index available.
-        :param _builtins.str index_level: Index level.
-        :param _builtins.str index_update_time: Index update time.
+        :param _builtins.bool index_available: (Not yet open) Index available.
+        :param _builtins.str index_level: (Not yet open) Index level.
+        :param _builtins.str index_update_time: (Not yet open) Index update time.
         :param _builtins.str latest_replication_time: The time of the last remote backup synchronization.
-        :param _builtins.str payment_type: Billing model, possible values:
-               * `FREE` is not billed
-               * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
-               * `V2` new version of metering mode
-               * `AEGIS` Billing method for cloud security use
-               * `UNI_BACKUP` the backup of deduplication database
-               * `ARCHIVE` archive library.
+        :param _builtins.str payment_type: Billing model, possible values: `FREE` is not billed, `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items, `V2` new version of metering mode, `AEGIS` Billing method for cloud security use, `UNI_BACKUP` the backup of deduplication database, `ARCHIVE` archive library.
         :param _builtins.bool replication: Whether it is a remote backup warehouse. It's a boolean value.
         :param _builtins.str replication_source_region_id: The region ID to which the remote backup Vault belongs.
         :param _builtins.str replication_source_vault_id: The source vault ID of the remote backup Vault.
-        :param _builtins.str retention: Warehouse-level data retention days, only valid for archive libraries.
-        :param _builtins.bool search_enabled: Whether to enable the backup search function.
+        :param _builtins.str retention: (Not yet open) Warehouse-level data retention days, only valid for archive libraries.
+        :param _builtins.bool search_enabled: (Not yet open) Whether to enable the backup search function.
+        :param Sequence[_builtins.str] source_types: The list of data source types supported by the vault.
         :param _builtins.str status: The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
         :param _builtins.str storage_size: Backup vault storage usage. The unit is Byte.
         :param _builtins.str updated_time: The update time of the Vault. UNIX time in seconds.
@@ -4120,7 +4173,9 @@ class GetVaultsVaultResult(dict):
         :param _builtins.str vault_name: The name of vault.
         :param _builtins.str vault_status_message: Error status information of Vault. Only valid for remote backup warehouses. Only the remote backup warehouse is valid.
         :param _builtins.str vault_storage_class: The storage class of vault. Valid values: `STANDARD`.
-        :param _builtins.str vault_type: The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        :param _builtins.str vault_type: VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
+               - `STANDARD` - used in OSS, NAS and ECS File backup.
+               - `OTS_BACKUP` -  used in OTS backup.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "bytes_done", bytes_done)
@@ -4176,7 +4231,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter
     def dedup(self) -> _builtins.bool:
         """
-        Whether to enable the deduplication function for the database backup Vault.
+        (Internal use) Whether to enable the deduplication function for the database backup Vault.
         """
         return pulumi.get(self, "dedup")
 
@@ -4200,7 +4255,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter(name="indexAvailable")
     def index_available(self) -> _builtins.bool:
         """
-        Index available.
+        (Not yet open) Index available.
         """
         return pulumi.get(self, "index_available")
 
@@ -4208,7 +4263,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter(name="indexLevel")
     def index_level(self) -> _builtins.str:
         """
-        Index level.
+        (Not yet open) Index level.
         """
         return pulumi.get(self, "index_level")
 
@@ -4216,7 +4271,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter(name="indexUpdateTime")
     def index_update_time(self) -> _builtins.str:
         """
-        Index update time.
+        (Not yet open) Index update time.
         """
         return pulumi.get(self, "index_update_time")
 
@@ -4232,13 +4287,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> _builtins.str:
         """
-        Billing model, possible values:
-        * `FREE` is not billed
-        * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
-        * `V2` new version of metering mode
-        * `AEGIS` Billing method for cloud security use
-        * `UNI_BACKUP` the backup of deduplication database
-        * `ARCHIVE` archive library.
+        Billing model, possible values: `FREE` is not billed, `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items, `V2` new version of metering mode, `AEGIS` Billing method for cloud security use, `UNI_BACKUP` the backup of deduplication database, `ARCHIVE` archive library.
         """
         return pulumi.get(self, "payment_type")
 
@@ -4270,7 +4319,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter
     def retention(self) -> _builtins.str:
         """
-        Warehouse-level data retention days, only valid for archive libraries.
+        (Not yet open) Warehouse-level data retention days, only valid for archive libraries.
         """
         return pulumi.get(self, "retention")
 
@@ -4278,13 +4327,16 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter(name="searchEnabled")
     def search_enabled(self) -> _builtins.bool:
         """
-        Whether to enable the backup search function.
+        (Not yet open) Whether to enable the backup search function.
         """
         return pulumi.get(self, "search_enabled")
 
     @_builtins.property
     @pulumi.getter(name="sourceTypes")
     def source_types(self) -> Sequence[_builtins.str]:
+        """
+        The list of data source types supported by the vault.
+        """
         return pulumi.get(self, "source_types")
 
     @_builtins.property
@@ -4347,7 +4399,9 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter(name="vaultType")
     def vault_type(self) -> _builtins.str:
         """
-        The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
+        - `STANDARD` - used in OSS, NAS and ECS File backup.
+        - `OTS_BACKUP` -  used in OTS backup.
         """
         return pulumi.get(self, "vault_type")
 

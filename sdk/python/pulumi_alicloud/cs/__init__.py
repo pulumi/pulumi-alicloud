@@ -6,9 +6,11 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .auto_repair_policy import *
 from .autoscaling_config import *
 from .edge_kubernetes import *
 from .get_ack_service import *
+from .get_auto_repair_policies import *
 from .get_cluster_credential import *
 from .get_clusters import *
 from .get_edge_kubernetes_clusters import *

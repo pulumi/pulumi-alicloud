@@ -85,6 +85,9 @@ class GetEventRulesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Event Rule names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -105,11 +108,17 @@ class GetEventRulesResult:
     @_builtins.property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetEventRulesRuleResult']:
+        """
+        A list of Cms Event Rules. Each element contains the following attributes:
+        """
         return pulumi.get(self, "rules")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -142,7 +151,7 @@ def get_event_rules(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Cms Event Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.182.0+.
+    > **NOTE:** Available since v1.182.0+.
 
     ## Example Usage
 
@@ -198,7 +207,7 @@ def get_event_rules_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtin
     """
     This data source provides the Cms Event Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.182.0+.
+    > **NOTE:** Available since v1.182.0+.
 
     ## Example Usage
 

@@ -60,16 +60,32 @@ public final class GetProductAsEndUsersPlainArgs extends com.pulumi.resources.In
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The field that is used to sort the queried data.
+     * 
+     */
     @Import(name="sortBy")
     private @Nullable String sortBy;
 
+    /**
+     * @return The field that is used to sort the queried data.
+     * 
+     */
     public Optional<String> sortBy() {
         return Optional.ofNullable(this.sortBy);
     }
 
+    /**
+     * The sorting method. Valid values: `Asc`, `Desc`.
+     * 
+     */
     @Import(name="sortOrder")
     private @Nullable String sortOrder;
 
+    /**
+     * @return The sorting method. Valid values: `Asc`, `Desc`.
+     * 
+     */
     public Optional<String> sortOrder() {
         return Optional.ofNullable(this.sortOrder);
     }
@@ -145,11 +161,23 @@ public final class GetProductAsEndUsersPlainArgs extends com.pulumi.resources.In
             return this;
         }
 
+        /**
+         * @param sortBy The field that is used to sort the queried data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortBy(@Nullable String sortBy) {
             $.sortBy = sortBy;
             return this;
         }
 
+        /**
+         * @param sortOrder The sorting method. Valid values: `Asc`, `Desc`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortOrder(@Nullable String sortOrder) {
             $.sortOrder = sortOrder;
             return this;

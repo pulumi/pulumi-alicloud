@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.151.0+.
+// > **NOTE:** Available since v1.151.0.
 //
 // ## Example Usage
 //
@@ -87,12 +87,15 @@ type GetTemplateScratchesArgs struct {
 type GetTemplateScratchesResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                  string                        `pulumi:"id"`
-	Ids                 []string                      `pulumi:"ids"`
-	OutputFile          *string                       `pulumi:"outputFile"`
-	Scratches           []GetTemplateScratchesScratch `pulumi:"scratches"`
-	Status              *string                       `pulumi:"status"`
-	TemplateScratchType *string                       `pulumi:"templateScratchType"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Ros Template Scratches. Each element contains the following attributes. See `scratches` below.
+	Scratches []GetTemplateScratchesScratch `pulumi:"scratches"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
+	// The type of the Template Scratch.
+	TemplateScratchType *string `pulumi:"templateScratchType"`
 }
 
 func GetTemplateScratchesOutput(ctx *pulumi.Context, args GetTemplateScratchesOutputArgs, opts ...pulumi.InvokeOption) GetTemplateScratchesResultOutput {
@@ -150,14 +153,17 @@ func (o GetTemplateScratchesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplateScratchesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ros Template Scratches. Each element contains the following attributes. See `scratches` below.
 func (o GetTemplateScratchesResultOutput) Scratches() GetTemplateScratchesScratchArrayOutput {
 	return o.ApplyT(func(v GetTemplateScratchesResult) []GetTemplateScratchesScratch { return v.Scratches }).(GetTemplateScratchesScratchArrayOutput)
 }
 
+// The status of the resource.
 func (o GetTemplateScratchesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplateScratchesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The type of the Template Scratch.
 func (o GetTemplateScratchesResultOutput) TemplateScratchType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplateScratchesResult) *string { return v.TemplateScratchType }).(pulumi.StringPtrOutput)
 }

@@ -84,9 +84,59 @@ import (
 //	}
 //
 // ```
+//
+// ### Advanced backup policies
+//
+// The following example manages a custom advanced data backup rule. Use a separate cluster from a Normal backup policy example: changing `backupPolicyLevel` from `Normal` to `Advanced` is irreversible. The cluster must support advanced backup policies (`advancedPolicyOption` must not be `notSupport`).
+//
+// For a same-region rule such as this example, the provider fills omitted `srcRegion` and `destRegion` with its configured region because the API requires both values. For a cross-region rule (`srcType` or `destType` is `level2Cross`), set both regions explicitly.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := polardb.NewBackupPolicy(ctx, "advanced", &polardb.BackupPolicyArgs{
+//				DbClusterId:                            pulumi.Any(_default.Id),
+//				BackupPolicyLevel:                      pulumi.String("Advanced"),
+//				BackupRetentionPolicyOnClusterDeletion: pulumi.String("NONE"),
+//				AdvancedDataPolicies: polardb.BackupPolicyAdvancedDataPolicyArray{
+//					&polardb.BackupPolicyAdvancedDataPolicyArgs{
+//						RetentionType:  pulumi.String("delay"),
+//						RetentionValue: pulumi.String("7"),
+//						FilterType:     pulumi.String("crontab"),
+//						FilterKey:      pulumi.String("dayOfWeek"),
+//						FilterValue:    pulumi.String("1,2,3,4,5,6,7"),
+//						SrcType:        pulumi.String("db"),
+//						DestType:       pulumi.String("level1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// `policyId` is assigned by the service after creation. To manage an existing custom rule after importing the cluster policy, specify that rule's `policyId` in the `advancedDataPolicies` block. Rules generated automatically by the service are exposed through `autoCreatedAdvancedDataPolicies` and are never modified or deleted by this resource.
+//
+// Optional advanced-rule fields returned by the service retain their current values if removed from Terraform configuration. Removing an attribute is not a way to clear it; the API does not document clearing semantics for omitted fields. To remove a custom rule entirely, remove its `advancedDataPolicies` block.
+//
+// In Advanced mode, the legacy data-backup and log-backup arguments cannot be changed through this resource; configure data backup behavior with `advancedDataPolicies` instead. Removing this Terraform resource deletes only its managed custom advanced rules. It does not delete the cluster backup policy or restore the `Normal` level.
+//
 // ### Removing polardb.Cluster from your configuration
 //
-// The polardb.BackupPolicy resource allows you to manage your polardb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the polardb Console.
+// The `polardb.BackupPolicy` resource manages a cluster policy, but Terraform cannot destroy the policy itself. Removing a Normal policy resource only removes it from Terraform state. Removing an Advanced policy resource deletes its managed custom advanced rules but leaves the cluster policy, its Advanced level, and service-generated rules in place.
 //
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
@@ -100,8 +150,16 @@ import (
 type BackupPolicy struct {
 	pulumi.CustomResourceState
 
+	// Custom advanced data backup policy blocks. Available only when `backupPolicyLevel` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advancedDataPolicies` below.
+	AdvancedDataPolicies BackupPolicyAdvancedDataPolicyArrayOutput `pulumi:"advancedDataPolicies"`
+	// Whether advanced policies are supported or enabled by the cluster.
+	AdvancedPolicyOption pulumi.StringOutput `pulumi:"advancedPolicyOption"`
+	// Service-generated advanced backup rules. Fields have the same names as `advancedDataPolicies`, but are read-only.
+	AutoCreatedAdvancedDataPolicies BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput `pulumi:"autoCreatedAdvancedDataPolicies"`
 	// The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
 	BackupFrequency pulumi.StringOutput `pulumi:"backupFrequency"`
+	// Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+	BackupPolicyLevel pulumi.StringOutput `pulumi:"backupPolicyLevel"`
 	// Cluster backup retention days, Fixed for 7 days, not modified.
 	BackupRetentionPeriod pulumi.StringOutput `pulumi:"backupRetentionPeriod"`
 	// Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
@@ -109,6 +167,7 @@ type BackupPolicy struct {
 	// The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
 	DataLevel1BackupFrequency pulumi.StringOutput `pulumi:"dataLevel1BackupFrequency"`
 	// PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel1BackupPeriods pulumi.StringArrayOutput `pulumi:"dataLevel1BackupPeriods"`
 	// The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
@@ -120,6 +179,7 @@ type BackupPolicy struct {
 	// PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
 	DataLevel2BackupAnotherRegionRetentionPeriod pulumi.IntOutput `pulumi:"dataLevel2BackupAnotherRegionRetentionPeriod"`
 	// PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel2BackupPeriods pulumi.StringArrayOutput `pulumi:"dataLevel2BackupPeriods"`
 	// The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
@@ -131,6 +191,7 @@ type BackupPolicy struct {
 	// The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
 	LogBackupAnotherRegionRegion pulumi.StringPtrOutput `pulumi:"logBackupAnotherRegionRegion"`
 	// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+	//
 	// > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
 	LogBackupAnotherRegionRetentionPeriod pulumi.IntPtrOutput `pulumi:"logBackupAnotherRegionRetentionPeriod"`
 	// The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
@@ -174,8 +235,16 @@ func GetBackupPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BackupPolicy resources.
 type backupPolicyState struct {
+	// Custom advanced data backup policy blocks. Available only when `backupPolicyLevel` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advancedDataPolicies` below.
+	AdvancedDataPolicies []BackupPolicyAdvancedDataPolicy `pulumi:"advancedDataPolicies"`
+	// Whether advanced policies are supported or enabled by the cluster.
+	AdvancedPolicyOption *string `pulumi:"advancedPolicyOption"`
+	// Service-generated advanced backup rules. Fields have the same names as `advancedDataPolicies`, but are read-only.
+	AutoCreatedAdvancedDataPolicies []BackupPolicyAutoCreatedAdvancedDataPolicy `pulumi:"autoCreatedAdvancedDataPolicies"`
 	// The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
 	BackupFrequency *string `pulumi:"backupFrequency"`
+	// Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+	BackupPolicyLevel *string `pulumi:"backupPolicyLevel"`
 	// Cluster backup retention days, Fixed for 7 days, not modified.
 	BackupRetentionPeriod *string `pulumi:"backupRetentionPeriod"`
 	// Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
@@ -183,6 +252,7 @@ type backupPolicyState struct {
 	// The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
 	DataLevel1BackupFrequency *string `pulumi:"dataLevel1BackupFrequency"`
 	// PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel1BackupPeriods []string `pulumi:"dataLevel1BackupPeriods"`
 	// The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
@@ -194,6 +264,7 @@ type backupPolicyState struct {
 	// PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
 	DataLevel2BackupAnotherRegionRetentionPeriod *int `pulumi:"dataLevel2BackupAnotherRegionRetentionPeriod"`
 	// PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel2BackupPeriods []string `pulumi:"dataLevel2BackupPeriods"`
 	// The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
@@ -205,6 +276,7 @@ type backupPolicyState struct {
 	// The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
 	LogBackupAnotherRegionRegion *string `pulumi:"logBackupAnotherRegionRegion"`
 	// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+	//
 	// > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
 	LogBackupAnotherRegionRetentionPeriod *int `pulumi:"logBackupAnotherRegionRetentionPeriod"`
 	// The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
@@ -216,8 +288,16 @@ type backupPolicyState struct {
 }
 
 type BackupPolicyState struct {
+	// Custom advanced data backup policy blocks. Available only when `backupPolicyLevel` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advancedDataPolicies` below.
+	AdvancedDataPolicies BackupPolicyAdvancedDataPolicyArrayInput
+	// Whether advanced policies are supported or enabled by the cluster.
+	AdvancedPolicyOption pulumi.StringPtrInput
+	// Service-generated advanced backup rules. Fields have the same names as `advancedDataPolicies`, but are read-only.
+	AutoCreatedAdvancedDataPolicies BackupPolicyAutoCreatedAdvancedDataPolicyArrayInput
 	// The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
 	BackupFrequency pulumi.StringPtrInput
+	// Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+	BackupPolicyLevel pulumi.StringPtrInput
 	// Cluster backup retention days, Fixed for 7 days, not modified.
 	BackupRetentionPeriod pulumi.StringPtrInput
 	// Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
@@ -225,6 +305,7 @@ type BackupPolicyState struct {
 	// The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
 	DataLevel1BackupFrequency pulumi.StringPtrInput
 	// PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel1BackupPeriods pulumi.StringArrayInput
 	// The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
@@ -236,6 +317,7 @@ type BackupPolicyState struct {
 	// PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
 	DataLevel2BackupAnotherRegionRetentionPeriod pulumi.IntPtrInput
 	// PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel2BackupPeriods pulumi.StringArrayInput
 	// The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
@@ -247,6 +329,7 @@ type BackupPolicyState struct {
 	// The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
 	LogBackupAnotherRegionRegion pulumi.StringPtrInput
 	// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+	//
 	// > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
 	LogBackupAnotherRegionRetentionPeriod pulumi.IntPtrInput
 	// The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
@@ -268,8 +351,12 @@ func BackupPolicyExists(ctx *pulumi.Context,
 }
 
 type backupPolicyArgs struct {
+	// Custom advanced data backup policy blocks. Available only when `backupPolicyLevel` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advancedDataPolicies` below.
+	AdvancedDataPolicies []BackupPolicyAdvancedDataPolicy `pulumi:"advancedDataPolicies"`
 	// The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
 	BackupFrequency *string `pulumi:"backupFrequency"`
+	// Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+	BackupPolicyLevel *string `pulumi:"backupPolicyLevel"`
 	// Cluster backup retention days, Fixed for 7 days, not modified.
 	BackupRetentionPeriod *string `pulumi:"backupRetentionPeriod"`
 	// Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
@@ -277,6 +364,7 @@ type backupPolicyArgs struct {
 	// The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
 	DataLevel1BackupFrequency *string `pulumi:"dataLevel1BackupFrequency"`
 	// PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel1BackupPeriods []string `pulumi:"dataLevel1BackupPeriods"`
 	// The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
@@ -288,6 +376,7 @@ type backupPolicyArgs struct {
 	// PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
 	DataLevel2BackupAnotherRegionRetentionPeriod *int `pulumi:"dataLevel2BackupAnotherRegionRetentionPeriod"`
 	// PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel2BackupPeriods []string `pulumi:"dataLevel2BackupPeriods"`
 	// The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
@@ -297,6 +386,7 @@ type backupPolicyArgs struct {
 	// The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
 	LogBackupAnotherRegionRegion *string `pulumi:"logBackupAnotherRegionRegion"`
 	// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+	//
 	// > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
 	LogBackupAnotherRegionRetentionPeriod *int `pulumi:"logBackupAnotherRegionRetentionPeriod"`
 	// The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
@@ -309,8 +399,12 @@ type backupPolicyArgs struct {
 
 // The set of arguments for constructing a BackupPolicy resource.
 type BackupPolicyArgs struct {
+	// Custom advanced data backup policy blocks. Available only when `backupPolicyLevel` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advancedDataPolicies` below.
+	AdvancedDataPolicies BackupPolicyAdvancedDataPolicyArrayInput
 	// The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
 	BackupFrequency pulumi.StringPtrInput
+	// Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+	BackupPolicyLevel pulumi.StringPtrInput
 	// Cluster backup retention days, Fixed for 7 days, not modified.
 	BackupRetentionPeriod pulumi.StringPtrInput
 	// Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
@@ -318,6 +412,7 @@ type BackupPolicyArgs struct {
 	// The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
 	DataLevel1BackupFrequency pulumi.StringPtrInput
 	// PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel1BackupPeriods pulumi.StringArrayInput
 	// The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
@@ -329,6 +424,7 @@ type BackupPolicyArgs struct {
 	// PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
 	DataLevel2BackupAnotherRegionRetentionPeriod pulumi.IntPtrInput
 	// PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel2BackupPeriods pulumi.StringArrayInput
 	// The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
@@ -338,6 +434,7 @@ type BackupPolicyArgs struct {
 	// The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
 	LogBackupAnotherRegionRegion pulumi.StringPtrInput
 	// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+	//
 	// > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
 	LogBackupAnotherRegionRetentionPeriod pulumi.IntPtrInput
 	// The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
@@ -435,9 +532,31 @@ func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Custom advanced data backup policy blocks. Available only when `backupPolicyLevel` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advancedDataPolicies` below.
+func (o BackupPolicyOutput) AdvancedDataPolicies() BackupPolicyAdvancedDataPolicyArrayOutput {
+	return o.ApplyT(func(v *BackupPolicy) BackupPolicyAdvancedDataPolicyArrayOutput { return v.AdvancedDataPolicies }).(BackupPolicyAdvancedDataPolicyArrayOutput)
+}
+
+// Whether advanced policies are supported or enabled by the cluster.
+func (o BackupPolicyOutput) AdvancedPolicyOption() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.AdvancedPolicyOption }).(pulumi.StringOutput)
+}
+
+// Service-generated advanced backup rules. Fields have the same names as `advancedDataPolicies`, but are read-only.
+func (o BackupPolicyOutput) AutoCreatedAdvancedDataPolicies() BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput {
+	return o.ApplyT(func(v *BackupPolicy) BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput {
+		return v.AutoCreatedAdvancedDataPolicies
+	}).(BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput)
+}
+
 // The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
 func (o BackupPolicyOutput) BackupFrequency() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.BackupFrequency }).(pulumi.StringOutput)
+}
+
+// Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+func (o BackupPolicyOutput) BackupPolicyLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.BackupPolicyLevel }).(pulumi.StringOutput)
 }
 
 // Cluster backup retention days, Fixed for 7 days, not modified.
@@ -456,6 +575,7 @@ func (o BackupPolicyOutput) DataLevel1BackupFrequency() pulumi.StringOutput {
 }
 
 // PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+//
 // > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 func (o BackupPolicyOutput) DataLevel1BackupPeriods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.StringArrayOutput { return v.DataLevel1BackupPeriods }).(pulumi.StringArrayOutput)
@@ -482,6 +602,7 @@ func (o BackupPolicyOutput) DataLevel2BackupAnotherRegionRetentionPeriod() pulum
 }
 
 // PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+//
 // > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 func (o BackupPolicyOutput) DataLevel2BackupPeriods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.StringArrayOutput { return v.DataLevel2BackupPeriods }).(pulumi.StringArrayOutput)
@@ -508,6 +629,7 @@ func (o BackupPolicyOutput) LogBackupAnotherRegionRegion() pulumi.StringPtrOutpu
 }
 
 // The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+//
 // > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
 func (o BackupPolicyOutput) LogBackupAnotherRegionRetentionPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.IntPtrOutput { return v.LogBackupAnotherRegionRetentionPeriod }).(pulumi.IntPtrOutput)

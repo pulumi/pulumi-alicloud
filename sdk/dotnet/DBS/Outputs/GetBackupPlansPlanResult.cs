@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.DBS.Outputs
         /// </summary>
         public readonly string SourceEndpointUserName;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `CheckPass`, `Init`, `Locked`, `Pause`, `Running`, `Stop`, `Wait`.
         /// </summary>
         public readonly string Status;
 

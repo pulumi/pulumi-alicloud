@@ -14,7 +14,7 @@ import (
 
 // Provides a SCDN Domain resource.
 //
-// For information about SCDN Domain and how to use it, see [What is Domain](https://help.aliyun.com/document_detail/63672.html).
+// For information about SCDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/doc-detail/63672.html).
 //
 // > **NOTE:** Available since v1.131.0.
 //
@@ -75,7 +75,7 @@ type Domain struct {
 	//
 	// Deprecated: Attribute bizName has been deprecated and suggest removing it from your template.
 	BizName pulumi.StringPtrOutput `pulumi:"bizName"`
-	// Certificate Information. See the following `Block certInfos`.
+	// Certificate Information. See `certInfos` below for details.
 	CertInfos DomainCertInfoArrayOutput `pulumi:"certInfos"`
 	// The health check url.
 	CheckUrl pulumi.StringPtrOutput `pulumi:"checkUrl"`
@@ -85,7 +85,7 @@ type Domain struct {
 	ForceSet pulumi.StringPtrOutput `pulumi:"forceSet"`
 	// The resource group id.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// the Origin Server Information. See the following `Block sources`.
+	// The Origin Server Information. See `sources` below for details.
 	Sources DomainSourceArrayOutput `pulumi:"sources"`
 	// The status of the resource. Valid values: `offline`, `online`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -131,7 +131,7 @@ type domainState struct {
 	//
 	// Deprecated: Attribute bizName has been deprecated and suggest removing it from your template.
 	BizName *string `pulumi:"bizName"`
-	// Certificate Information. See the following `Block certInfos`.
+	// Certificate Information. See `certInfos` below for details.
 	CertInfos []DomainCertInfo `pulumi:"certInfos"`
 	// The health check url.
 	CheckUrl *string `pulumi:"checkUrl"`
@@ -141,7 +141,7 @@ type domainState struct {
 	ForceSet *string `pulumi:"forceSet"`
 	// The resource group id.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// the Origin Server Information. See the following `Block sources`.
+	// The Origin Server Information. See `sources` below for details.
 	Sources []DomainSource `pulumi:"sources"`
 	// The status of the resource. Valid values: `offline`, `online`.
 	Status *string `pulumi:"status"`
@@ -152,7 +152,7 @@ type DomainState struct {
 	//
 	// Deprecated: Attribute bizName has been deprecated and suggest removing it from your template.
 	BizName pulumi.StringPtrInput
-	// Certificate Information. See the following `Block certInfos`.
+	// Certificate Information. See `certInfos` below for details.
 	CertInfos DomainCertInfoArrayInput
 	// The health check url.
 	CheckUrl pulumi.StringPtrInput
@@ -162,7 +162,7 @@ type DomainState struct {
 	ForceSet pulumi.StringPtrInput
 	// The resource group id.
 	ResourceGroupId pulumi.StringPtrInput
-	// the Origin Server Information. See the following `Block sources`.
+	// The Origin Server Information. See `sources` below for details.
 	Sources DomainSourceArrayInput
 	// The status of the resource. Valid values: `offline`, `online`.
 	Status pulumi.StringPtrInput
@@ -183,7 +183,7 @@ type domainArgs struct {
 	//
 	// Deprecated: Attribute bizName has been deprecated and suggest removing it from your template.
 	BizName *string `pulumi:"bizName"`
-	// Certificate Information. See the following `Block certInfos`.
+	// Certificate Information. See `certInfos` below for details.
 	CertInfos []DomainCertInfo `pulumi:"certInfos"`
 	// The health check url.
 	CheckUrl *string `pulumi:"checkUrl"`
@@ -193,7 +193,7 @@ type domainArgs struct {
 	ForceSet *string `pulumi:"forceSet"`
 	// The resource group id.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// the Origin Server Information. See the following `Block sources`.
+	// The Origin Server Information. See `sources` below for details.
 	Sources []DomainSource `pulumi:"sources"`
 	// The status of the resource. Valid values: `offline`, `online`.
 	Status *string `pulumi:"status"`
@@ -205,7 +205,7 @@ type DomainArgs struct {
 	//
 	// Deprecated: Attribute bizName has been deprecated and suggest removing it from your template.
 	BizName pulumi.StringPtrInput
-	// Certificate Information. See the following `Block certInfos`.
+	// Certificate Information. See `certInfos` below for details.
 	CertInfos DomainCertInfoArrayInput
 	// The health check url.
 	CheckUrl pulumi.StringPtrInput
@@ -215,7 +215,7 @@ type DomainArgs struct {
 	ForceSet pulumi.StringPtrInput
 	// The resource group id.
 	ResourceGroupId pulumi.StringPtrInput
-	// the Origin Server Information. See the following `Block sources`.
+	// The Origin Server Information. See `sources` below for details.
 	Sources DomainSourceArrayInput
 	// The status of the resource. Valid values: `offline`, `online`.
 	Status pulumi.StringPtrInput
@@ -315,7 +315,7 @@ func (o DomainOutput) BizName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.BizName }).(pulumi.StringPtrOutput)
 }
 
-// Certificate Information. See the following `Block certInfos`.
+// Certificate Information. See `certInfos` below for details.
 func (o DomainOutput) CertInfos() DomainCertInfoArrayOutput {
 	return o.ApplyT(func(v *Domain) DomainCertInfoArrayOutput { return v.CertInfos }).(DomainCertInfoArrayOutput)
 }
@@ -340,7 +340,7 @@ func (o DomainOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// the Origin Server Information. See the following `Block sources`.
+// The Origin Server Information. See `sources` below for details.
 func (o DomainOutput) Sources() DomainSourceArrayOutput {
 	return o.ApplyT(func(v *Domain) DomainSourceArrayOutput { return v.Sources }).(DomainSourceArrayOutput)
 }

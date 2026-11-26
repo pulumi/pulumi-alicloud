@@ -88,13 +88,25 @@ export class ImageTransform extends pulumi.CustomResource {
     }
 
     /**
-     * Config Id
+     * Specifies whether to enable adaptive AVIF. Valid values:
+     */
+    declare public readonly autoAvif: pulumi.Output<string | undefined>;
+    /**
+     * Specifies whether to enable adaptive WebP. Valid values:
+     */
+    declare public readonly autoWebp: pulumi.Output<string | undefined>;
+    /**
+     * The configuration ID.
      */
     declare public /*out*/ readonly configId: pulumi.Output<number>;
     /**
-     * Indicates whether the image transformations feature is enabled. Valid values:
+     * (Available since v2.2.0) The configuration type.
      */
-    declare public readonly enable: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly configType: pulumi.Output<string>;
+    /**
+     * Specifies whether to enable image transformation. Valid values:
+     */
+    declare public readonly enable: pulumi.Output<string>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
@@ -102,7 +114,7 @@ export class ImageTransform extends pulumi.CustomResource {
      */
     declare public readonly rule: pulumi.Output<string | undefined>;
     /**
-     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
      */
     declare public readonly ruleEnable: pulumi.Output<string | undefined>;
     /**
@@ -135,7 +147,10 @@ export class ImageTransform extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageTransformState | undefined;
+            resourceInputs["autoAvif"] = state?.autoAvif;
+            resourceInputs["autoWebp"] = state?.autoWebp;
             resourceInputs["configId"] = state?.configId;
+            resourceInputs["configType"] = state?.configType;
             resourceInputs["enable"] = state?.enable;
             resourceInputs["rule"] = state?.rule;
             resourceInputs["ruleEnable"] = state?.ruleEnable;
@@ -145,9 +160,14 @@ export class ImageTransform extends pulumi.CustomResource {
             resourceInputs["siteVersion"] = state?.siteVersion;
         } else {
             const args = argsOrState as ImageTransformArgs | undefined;
+            if (args?.enable === undefined && !opts.urn) {
+                throw new Error("Missing required property 'enable'");
+            }
             if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
+            resourceInputs["autoAvif"] = args?.autoAvif;
+            resourceInputs["autoWebp"] = args?.autoWebp;
             resourceInputs["enable"] = args?.enable;
             resourceInputs["rule"] = args?.rule;
             resourceInputs["ruleEnable"] = args?.ruleEnable;
@@ -156,6 +176,7 @@ export class ImageTransform extends pulumi.CustomResource {
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["siteVersion"] = args?.siteVersion;
             resourceInputs["configId"] = undefined /*out*/;
+            resourceInputs["configType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ImageTransform.__pulumiType, name, resourceInputs, opts);
@@ -167,11 +188,23 @@ export class ImageTransform extends pulumi.CustomResource {
  */
 export interface ImageTransformState {
     /**
-     * Config Id
+     * Specifies whether to enable adaptive AVIF. Valid values:
+     */
+    autoAvif?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to enable adaptive WebP. Valid values:
+     */
+    autoWebp?: pulumi.Input<string | undefined>;
+    /**
+     * The configuration ID.
      */
     configId?: pulumi.Input<number | undefined>;
     /**
-     * Indicates whether the image transformations feature is enabled. Valid values:
+     * (Available since v2.2.0) The configuration type.
+     */
+    configType?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to enable image transformation. Valid values:
      */
     enable?: pulumi.Input<string | undefined>;
     /**
@@ -181,7 +214,7 @@ export interface ImageTransformState {
      */
     rule?: pulumi.Input<string | undefined>;
     /**
-     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
      */
     ruleEnable?: pulumi.Input<string | undefined>;
     /**
@@ -207,9 +240,17 @@ export interface ImageTransformState {
  */
 export interface ImageTransformArgs {
     /**
-     * Indicates whether the image transformations feature is enabled. Valid values:
+     * Specifies whether to enable adaptive AVIF. Valid values:
      */
-    enable?: pulumi.Input<string | undefined>;
+    autoAvif?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to enable adaptive WebP. Valid values:
+     */
+    autoWebp?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to enable image transformation. Valid values:
+     */
+    enable: pulumi.Input<string>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
@@ -217,7 +258,7 @@ export interface ImageTransformArgs {
      */
     rule?: pulumi.Input<string | undefined>;
     /**
-     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
      */
     ruleEnable?: pulumi.Input<string | undefined>;
     /**

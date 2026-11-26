@@ -48,6 +48,10 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string ClusterType;
         /// <summary>
+        /// (Available since v2.3.0) **NOTE:** This field is only available when `EnableDetails` is `True`. The connection information of the cluster.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClustersClusterConnectionResult> Connections;
+        /// <summary>
         /// The current version of the cluster.
         /// </summary>
         public readonly string CurrentVersion;
@@ -142,6 +146,8 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string clusterType,
 
+            ImmutableArray<Outputs.GetClustersClusterConnectionResult> connections,
+
             string currentVersion,
 
             bool deletionProtection,
@@ -186,6 +192,7 @@ namespace Pulumi.AliCloud.CS.Outputs
             ClusterName = clusterName;
             ClusterSpec = clusterSpec;
             ClusterType = clusterType;
+            Connections = connections;
             CurrentVersion = currentVersion;
             DeletionProtection = deletionProtection;
             Id = id;

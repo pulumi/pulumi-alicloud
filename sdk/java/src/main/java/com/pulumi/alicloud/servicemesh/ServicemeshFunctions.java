@@ -357,7 +357,7 @@ public final class ServicemeshFunctions {
     /**
      * This data source provides ASM available versions in the specified region.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -402,7 +402,7 @@ public final class ServicemeshFunctions {
     /**
      * This data source provides ASM available versions in the specified region.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -447,7 +447,7 @@ public final class ServicemeshFunctions {
     /**
      * This data source provides ASM available versions in the specified region.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -492,7 +492,7 @@ public final class ServicemeshFunctions {
     /**
      * This data source provides ASM available versions in the specified region.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -537,7 +537,7 @@ public final class ServicemeshFunctions {
     /**
      * This data source provides ASM available versions in the specified region.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -582,7 +582,7 @@ public final class ServicemeshFunctions {
     /**
      * This data source provides ASM available versions in the specified region.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -627,7 +627,7 @@ public final class ServicemeshFunctions {
     /**
      * This data source provides ASM available versions in the specified region.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 

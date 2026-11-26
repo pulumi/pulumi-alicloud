@@ -26,12 +26,12 @@ public final class GetResourceSharesShare {
      */
     private String resourceShareName;
     /**
-     * @return The owner of resource share.
+     * @return The owner of resource share, Valid values: `Self` and `OtherAccounts`.
      * 
      */
     private String resourceShareOwner;
     /**
-     * @return The status of resource share.
+     * @return The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
      * 
      */
     private String status;
@@ -59,14 +59,14 @@ public final class GetResourceSharesShare {
         return this.resourceShareName;
     }
     /**
-     * @return The owner of resource share.
+     * @return The owner of resource share, Valid values: `Self` and `OtherAccounts`.
      * 
      */
     public String resourceShareOwner() {
         return this.resourceShareOwner;
     }
     /**
-     * @return The status of resource share.
+     * @return The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
      * 
      */
     public String status() {

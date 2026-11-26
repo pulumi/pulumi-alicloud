@@ -171,10 +171,11 @@ class GetGatewayBlockVolumesVolumeResult(dict):
         :param _builtins.str protocol: The Protocol.
         :param _builtins.int size: The Volume size.
         :param _builtins.str state: The Buffer status.
-        :param _builtins.int status: The status of volume.
+        :param _builtins.int status: The status of volume. Valid values:
         :param _builtins.str target: The target.
         :param _builtins.int total_download: The total amount of downloaded data. Unit: `B`.
         :param _builtins.int total_upload: The total amount of uploaded data. Unit: `B`.
+        :param _builtins.int volume_state: The state of volume.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "cache_mode", cache_mode)
@@ -375,7 +376,7 @@ class GetGatewayBlockVolumesVolumeResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.int:
         """
-        The status of volume.
+        The status of volume. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -406,6 +407,9 @@ class GetGatewayBlockVolumesVolumeResult(dict):
     @_builtins.property
     @pulumi.getter(name="volumeState")
     def volume_state(self) -> _builtins.int:
+        """
+        The state of volume.
+        """
         return pulumi.get(self, "volume_state")
 
 
@@ -434,7 +438,7 @@ class GetGatewayCacheDisksDiskResult(dict):
         :param _builtins.bool is_used: Whether it is used.
         :param _builtins.str local_file_path: The cache disk inside the device name.
         :param _builtins.str renew_url: A renewal link of the cache disk.
-        :param _builtins.int status: The status of the resource.
+        :param _builtins.int status: The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
         """
         pulumi.set(__self__, "cache_disk_category", cache_disk_category)
         pulumi.set(__self__, "cache_disk_size_in_gb", cache_disk_size_in_gb)
@@ -532,7 +536,7 @@ class GetGatewayCacheDisksDiskResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.int:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
         """
         return pulumi.get(self, "status")
 
@@ -1297,6 +1301,7 @@ class GetGatewaysGatewayResult(dict):
                  vswitch_id: _builtins.str):
         """
         :param _builtins.str activated_time: gateway .
+        :param _builtins.str buy_url: gateway buy url.
         :param _builtins.str category: gateway category.
         :param _builtins.str create_time: gateway created timestamp in second format.
         :param _builtins.str description: gateway description.
@@ -1314,6 +1319,7 @@ class GetGatewaysGatewayResult(dict):
         :param _builtins.str location: gateway location.
         :param _builtins.str payment_type: gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`, `Subscription`.
         :param _builtins.int public_network_bandwidth: gateway public network bandwidth.
+        :param _builtins.str renew_url: gateway renew url.
         :param _builtins.str status: gateway status.
         :param _builtins.str storage_bundle_id: storage bundle id.
         :param _builtins.str task_id: gateway task id.
@@ -1359,6 +1365,9 @@ class GetGatewaysGatewayResult(dict):
     @_builtins.property
     @pulumi.getter(name="buyUrl")
     def buy_url(self) -> _builtins.str:
+        """
+        gateway buy url.
+        """
         return pulumi.get(self, "buy_url")
 
     @_builtins.property
@@ -1500,6 +1509,9 @@ class GetGatewaysGatewayResult(dict):
     @_builtins.property
     @pulumi.getter(name="renewUrl")
     def renew_url(self) -> _builtins.str:
+        """
+        gateway renew url.
+        """
         return pulumi.get(self, "renew_url")
 
     @_builtins.property
@@ -1589,6 +1601,14 @@ class GetStorageBundlesBundleResult(dict):
                  location: _builtins.str,
                  storage_bundle_id: _builtins.str,
                  storage_bundle_name: _builtins.str):
+        """
+        :param _builtins.str create_time: Storage Bundle created time.
+        :param _builtins.str description: Storage Bundle description.
+        :param _builtins.str id: The ID of the Storage Bundle.
+        :param _builtins.str location: Storage Bundle location.
+        :param _builtins.str storage_bundle_id: The ID of the Storage Bundle.
+        :param _builtins.str storage_bundle_name: The name of the Storage Bundle.
+        """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
@@ -1599,31 +1619,49 @@ class GetStorageBundlesBundleResult(dict):
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
+        """
+        Storage Bundle created time.
+        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        Storage Bundle description.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the Storage Bundle.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def location(self) -> _builtins.str:
+        """
+        Storage Bundle location.
+        """
         return pulumi.get(self, "location")
 
     @_builtins.property
     @pulumi.getter(name="storageBundleId")
     def storage_bundle_id(self) -> _builtins.str:
+        """
+        The ID of the Storage Bundle.
+        """
         return pulumi.get(self, "storage_bundle_id")
 
     @_builtins.property
     @pulumi.getter(name="storageBundleName")
     def storage_bundle_name(self) -> _builtins.str:
+        """
+        The name of the Storage Bundle.
+        """
         return pulumi.get(self, "storage_bundle_name")
 
 

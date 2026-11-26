@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Emr.Inputs
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+        /// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global ChargeType value.
         /// </summary>
         [Input("chargeType")]
         public Input<string>? ChargeType { get; set; }
@@ -54,6 +54,9 @@ namespace Pulumi.AliCloud.Emr.Inputs
         [Input("enableGracefulDecommission")]
         public Input<bool>? EnableGracefulDecommission { get; set; }
 
+        /// <summary>
+        /// GPU driver.
+        /// </summary>
         [Input("gpuDriver")]
         public Input<string>? GpuDriver { get; set; }
 

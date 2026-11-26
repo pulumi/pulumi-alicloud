@@ -93,14 +93,14 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The ids list of AnalyticDB for PostgreSQL instances.
+     * A list of DB Instance IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return The ids list of AnalyticDB for PostgreSQL instances.
+     * @return A list of DB Instance IDs.
      * 
      */
     public Optional<List<String>> ids() {
@@ -182,9 +182,17 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Map<String,String> tags;
 
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Optional<Map<String,String>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -296,7 +304,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param ids The ids list of AnalyticDB for PostgreSQL instances.
+         * @param ids A list of DB Instance IDs.
          * 
          * @return builder
          * 
@@ -307,7 +315,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param ids The ids list of AnalyticDB for PostgreSQL instances.
+         * @param ids A list of DB Instance IDs.
          * 
          * @return builder
          * 
@@ -371,6 +379,12 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Map<String,String> tags) {
             $.tags = tags;
             return this;

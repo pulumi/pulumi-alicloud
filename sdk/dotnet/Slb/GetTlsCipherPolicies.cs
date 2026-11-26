@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -250,10 +250,22 @@ namespace Pulumi.AliCloud.Slb
         public readonly ImmutableArray<string> Ids;
         public readonly bool? IncludeListener;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Tls Cipher Policy names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Slb Tls Cipher Policies. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTlsCipherPoliciesPolicyResult> Policies;
+        /// <summary>
+        /// TLS policy instance state.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
+        /// </summary>
         public readonly string? TlsCipherPolicyName;
 
         [OutputConstructor]

@@ -216,7 +216,7 @@ type GetGatewayBlockVolumesVolume struct {
 	Size int `pulumi:"size"`
 	// The Buffer status.
 	State string `pulumi:"state"`
-	// The status of volume.
+	// The status of volume. Valid values:
 	Status int `pulumi:"status"`
 	// The target.
 	Target string `pulumi:"target"`
@@ -224,6 +224,7 @@ type GetGatewayBlockVolumesVolume struct {
 	TotalDownload int `pulumi:"totalDownload"`
 	// The total amount of uploaded data. Unit: `B`.
 	TotalUpload int `pulumi:"totalUpload"`
+	// The state of volume.
 	VolumeState int `pulumi:"volumeState"`
 }
 
@@ -281,7 +282,7 @@ type GetGatewayBlockVolumesVolumeArgs struct {
 	Size pulumi.IntInput `pulumi:"size"`
 	// The Buffer status.
 	State pulumi.StringInput `pulumi:"state"`
-	// The status of volume.
+	// The status of volume. Valid values:
 	Status pulumi.IntInput `pulumi:"status"`
 	// The target.
 	Target pulumi.StringInput `pulumi:"target"`
@@ -289,6 +290,7 @@ type GetGatewayBlockVolumesVolumeArgs struct {
 	TotalDownload pulumi.IntInput `pulumi:"totalDownload"`
 	// The total amount of uploaded data. Unit: `B`.
 	TotalUpload pulumi.IntInput `pulumi:"totalUpload"`
+	// The state of volume.
 	VolumeState pulumi.IntInput `pulumi:"volumeState"`
 }
 
@@ -448,7 +450,7 @@ func (o GetGatewayBlockVolumesVolumeOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The status of volume.
+// The status of volume. Valid values:
 func (o GetGatewayBlockVolumesVolumeOutput) Status() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) int { return v.Status }).(pulumi.IntOutput)
 }
@@ -468,6 +470,7 @@ func (o GetGatewayBlockVolumesVolumeOutput) TotalUpload() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) int { return v.TotalUpload }).(pulumi.IntOutput)
 }
 
+// The state of volume.
 func (o GetGatewayBlockVolumesVolumeOutput) VolumeState() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) int { return v.VolumeState }).(pulumi.IntOutput)
 }
@@ -513,7 +516,7 @@ type GetGatewayCacheDisksDisk struct {
 	LocalFilePath string `pulumi:"localFilePath"`
 	// A renewal link of the cache disk.
 	RenewUrl string `pulumi:"renewUrl"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
 	Status int `pulumi:"status"`
 }
 
@@ -549,7 +552,7 @@ type GetGatewayCacheDisksDiskArgs struct {
 	LocalFilePath pulumi.StringInput `pulumi:"localFilePath"`
 	// A renewal link of the cache disk.
 	RenewUrl pulumi.StringInput `pulumi:"renewUrl"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
 	Status pulumi.IntInput `pulumi:"status"`
 }
 
@@ -654,7 +657,7 @@ func (o GetGatewayCacheDisksDiskOutput) RenewUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayCacheDisksDisk) string { return v.RenewUrl }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
 func (o GetGatewayCacheDisksDiskOutput) Status() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewayCacheDisksDisk) int { return v.Status }).(pulumi.IntOutput)
 }
@@ -1443,7 +1446,8 @@ func (o GetGatewaySmbUsersUserArrayOutput) Index(i pulumi.IntInput) GetGatewaySm
 type GetGatewaysGateway struct {
 	// gateway .
 	ActivatedTime string `pulumi:"activatedTime"`
-	BuyUrl        string `pulumi:"buyUrl"`
+	// gateway buy url.
+	BuyUrl string `pulumi:"buyUrl"`
 	// gateway category.
 	Category string `pulumi:"category"`
 	// gateway created timestamp in second format.
@@ -1477,8 +1481,9 @@ type GetGatewaysGateway struct {
 	// gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`, `Subscription`.
 	PaymentType string `pulumi:"paymentType"`
 	// gateway public network bandwidth.
-	PublicNetworkBandwidth int    `pulumi:"publicNetworkBandwidth"`
-	RenewUrl               string `pulumi:"renewUrl"`
+	PublicNetworkBandwidth int `pulumi:"publicNetworkBandwidth"`
+	// gateway renew url.
+	RenewUrl string `pulumi:"renewUrl"`
 	// gateway status.
 	Status string `pulumi:"status"`
 	// storage bundle id.
@@ -1507,7 +1512,8 @@ type GetGatewaysGatewayInput interface {
 type GetGatewaysGatewayArgs struct {
 	// gateway .
 	ActivatedTime pulumi.StringInput `pulumi:"activatedTime"`
-	BuyUrl        pulumi.StringInput `pulumi:"buyUrl"`
+	// gateway buy url.
+	BuyUrl pulumi.StringInput `pulumi:"buyUrl"`
 	// gateway category.
 	Category pulumi.StringInput `pulumi:"category"`
 	// gateway created timestamp in second format.
@@ -1541,8 +1547,9 @@ type GetGatewaysGatewayArgs struct {
 	// gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`, `Subscription`.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// gateway public network bandwidth.
-	PublicNetworkBandwidth pulumi.IntInput    `pulumi:"publicNetworkBandwidth"`
-	RenewUrl               pulumi.StringInput `pulumi:"renewUrl"`
+	PublicNetworkBandwidth pulumi.IntInput `pulumi:"publicNetworkBandwidth"`
+	// gateway renew url.
+	RenewUrl pulumi.StringInput `pulumi:"renewUrl"`
 	// gateway status.
 	Status pulumi.StringInput `pulumi:"status"`
 	// storage bundle id.
@@ -1613,6 +1620,7 @@ func (o GetGatewaysGatewayOutput) ActivatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.ActivatedTime }).(pulumi.StringOutput)
 }
 
+// gateway buy url.
 func (o GetGatewaysGatewayOutput) BuyUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.BuyUrl }).(pulumi.StringOutput)
 }
@@ -1702,6 +1710,7 @@ func (o GetGatewaysGatewayOutput) PublicNetworkBandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) int { return v.PublicNetworkBandwidth }).(pulumi.IntOutput)
 }
 
+// gateway renew url.
 func (o GetGatewaysGatewayOutput) RenewUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.RenewUrl }).(pulumi.StringOutput)
 }
@@ -1863,11 +1872,17 @@ func (o GetStocksStockArrayOutput) Index(i pulumi.IntInput) GetStocksStockOutput
 }
 
 type GetStorageBundlesBundle struct {
-	CreateTime        string `pulumi:"createTime"`
-	Description       string `pulumi:"description"`
-	Id                string `pulumi:"id"`
-	Location          string `pulumi:"location"`
-	StorageBundleId   string `pulumi:"storageBundleId"`
+	// Storage Bundle created time.
+	CreateTime string `pulumi:"createTime"`
+	// Storage Bundle description.
+	Description string `pulumi:"description"`
+	// The ID of the Storage Bundle.
+	Id string `pulumi:"id"`
+	// Storage Bundle location.
+	Location string `pulumi:"location"`
+	// The ID of the Storage Bundle.
+	StorageBundleId string `pulumi:"storageBundleId"`
+	// The name of the Storage Bundle.
 	StorageBundleName string `pulumi:"storageBundleName"`
 }
 
@@ -1883,11 +1898,17 @@ type GetStorageBundlesBundleInput interface {
 }
 
 type GetStorageBundlesBundleArgs struct {
-	CreateTime        pulumi.StringInput `pulumi:"createTime"`
-	Description       pulumi.StringInput `pulumi:"description"`
-	Id                pulumi.StringInput `pulumi:"id"`
-	Location          pulumi.StringInput `pulumi:"location"`
-	StorageBundleId   pulumi.StringInput `pulumi:"storageBundleId"`
+	// Storage Bundle created time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Storage Bundle description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Storage Bundle.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Storage Bundle location.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The ID of the Storage Bundle.
+	StorageBundleId pulumi.StringInput `pulumi:"storageBundleId"`
+	// The name of the Storage Bundle.
 	StorageBundleName pulumi.StringInput `pulumi:"storageBundleName"`
 }
 
@@ -1942,26 +1963,32 @@ func (o GetStorageBundlesBundleOutput) ToGetStorageBundlesBundleOutputWithContex
 	return o
 }
 
+// Storage Bundle created time.
 func (o GetStorageBundlesBundleOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStorageBundlesBundle) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Storage Bundle description.
 func (o GetStorageBundlesBundleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStorageBundlesBundle) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The ID of the Storage Bundle.
 func (o GetStorageBundlesBundleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStorageBundlesBundle) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Storage Bundle location.
 func (o GetStorageBundlesBundleOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStorageBundlesBundle) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The ID of the Storage Bundle.
 func (o GetStorageBundlesBundleOutput) StorageBundleId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStorageBundlesBundle) string { return v.StorageBundleId }).(pulumi.StringOutput)
 }
 
+// The name of the Storage Bundle.
 func (o GetStorageBundlesBundleOutput) StorageBundleName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStorageBundlesBundle) string { return v.StorageBundleName }).(pulumi.StringOutput)
 }

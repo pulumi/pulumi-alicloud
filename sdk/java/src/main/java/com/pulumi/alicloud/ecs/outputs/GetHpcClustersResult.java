@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHpcClustersResult {
+    /**
+     * @return A list of Ecs Hpc Clusters. Each element contains the following attributes:
+     * 
+     */
     private List<GetHpcClustersCluster> clusters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,10 +26,18 @@ public final class GetHpcClustersResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Hpc Cluster names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetHpcClustersResult() {}
+    /**
+     * @return A list of Ecs Hpc Clusters. Each element contains the following attributes:
+     * 
+     */
     public List<GetHpcClustersCluster> clusters() {
         return this.clusters;
     }
@@ -42,6 +54,10 @@ public final class GetHpcClustersResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Hpc Cluster names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

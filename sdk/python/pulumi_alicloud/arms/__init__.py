@@ -34,6 +34,7 @@ from .get_prometheus_monitorings import *
 from .get_remote_writes import *
 from .grafana_workspace import *
 from .integration_exporter import *
+from .notification_policy import *
 from .prometheus import *
 from .prometheus_alert_rule import *
 from .prometheus_monitoring import *

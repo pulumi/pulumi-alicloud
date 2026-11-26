@@ -16,6 +16,10 @@ public final class GetNetworksNetwork {
      * 
      */
     private String cidrBlock;
+    /**
+     * @return The description of the CCN instance.
+     * 
+     */
     private String description;
     /**
      * @return ID of the CCN instance.
@@ -41,6 +45,10 @@ public final class GetNetworksNetwork {
     public String cidrBlock() {
         return this.cidrBlock;
     }
+    /**
+     * @return The description of the CCN instance.
+     * 
+     */
     public String description() {
         return this.description;
     }

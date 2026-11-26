@@ -80,11 +80,13 @@ namespace Pulumi.AliCloud.CS
         ///             defaultManagedKubernetes.Id,
         ///         },
         ///         NameRegex = defaultManagedKubernetes.Name,
+        ///         EnableDetails = true,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["alicloudCsManagedKubernetesExampleId"] = @default.Apply(@default =&gt; @default.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id)),
+        ///         ["alicloudCsManagedKubernetesExampleApiServerInternet"] = @default.Apply(@default =&gt; @default.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Connections[0]?.ApiServerInternet)),
         ///     };
         /// });
         /// ```
@@ -161,11 +163,13 @@ namespace Pulumi.AliCloud.CS
         ///             defaultManagedKubernetes.Id,
         ///         },
         ///         NameRegex = defaultManagedKubernetes.Name,
+        ///         EnableDetails = true,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["alicloudCsManagedKubernetesExampleId"] = @default.Apply(@default =&gt; @default.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id)),
+        ///         ["alicloudCsManagedKubernetesExampleApiServerInternet"] = @default.Apply(@default =&gt; @default.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Connections[0]?.ApiServerInternet)),
         ///     };
         /// });
         /// ```
@@ -242,11 +246,13 @@ namespace Pulumi.AliCloud.CS
         ///             defaultManagedKubernetes.Id,
         ///         },
         ///         NameRegex = defaultManagedKubernetes.Name,
+        ///         EnableDetails = true,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["alicloudCsManagedKubernetesExampleId"] = @default.Apply(@default =&gt; @default.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id)),
+        ///         ["alicloudCsManagedKubernetesExampleApiServerInternet"] = @default.Apply(@default =&gt; @default.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Connections[0]?.ApiServerInternet)),
         ///     };
         /// });
         /// ```

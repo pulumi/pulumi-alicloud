@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class AlertSeverityConfiguration {
     /**
-     * @return Severity when this condition is met.
+     * @return Severity when this condition is met. The map supports `condition` (condition for each row) and `countCondition` (count&#39;s condition for the rows met condition above) keys.
      * 
      */
     private Map<String,String> evalCondition;
@@ -25,7 +25,7 @@ public final class AlertSeverityConfiguration {
 
     private AlertSeverityConfiguration() {}
     /**
-     * @return Severity when this condition is met.
+     * @return Severity when this condition is met. The map supports `condition` (condition for each row) and `countCondition` (count&#39;s condition for the rows met condition above) keys.
      * 
      */
     public Map<String,String> evalCondition() {

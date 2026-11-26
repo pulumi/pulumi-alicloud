@@ -15,23 +15,47 @@ public final class OpenApiImageCacheImageRegistryCredentialArgs extends com.pulu
 
     public static final OpenApiImageCacheImageRegistryCredentialArgs Empty = new OpenApiImageCacheImageRegistryCredentialArgs();
 
+    /**
+     * The password of the Image Registry.
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return The password of the Image Registry.
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
 
+    /**
+     * The address of Image Registry without `http://` or `https://`.
+     * 
+     */
     @Import(name="server")
     private @Nullable Output<String> server;
 
+    /**
+     * @return The address of Image Registry without `http://` or `https://`.
+     * 
+     */
     public Optional<Output<String>> server() {
         return Optional.ofNullable(this.server);
     }
 
+    /**
+     * The user name of Image Registry.
+     * 
+     */
     @Import(name="userName")
     private @Nullable Output<String> userName;
 
+    /**
+     * @return The user name of Image Registry.
+     * 
+     */
     public Optional<Output<String>> userName() {
         return Optional.ofNullable(this.userName);
     }
@@ -62,29 +86,65 @@ public final class OpenApiImageCacheImageRegistryCredentialArgs extends com.pulu
             $ = new OpenApiImageCacheImageRegistryCredentialArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param password The password of the Image Registry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password The password of the Image Registry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
+        /**
+         * @param server The address of Image Registry without `http://` or `https://`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder server(@Nullable Output<String> server) {
             $.server = server;
             return this;
         }
 
+        /**
+         * @param server The address of Image Registry without `http://` or `https://`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder server(String server) {
             return server(Output.of(server));
         }
 
+        /**
+         * @param userName The user name of Image Registry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userName(@Nullable Output<String> userName) {
             $.userName = userName;
             return this;
         }
 
+        /**
+         * @param userName The user name of Image Registry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userName(String userName) {
             return userName(Output.of(userName));
         }

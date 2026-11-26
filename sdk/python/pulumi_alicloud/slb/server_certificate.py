@@ -32,6 +32,8 @@ class ServerCertificateArgs:
         """
         The set of arguments for constructing a ServerCertificate resource.
 
+        :param pulumi.Input[_builtins.str] alicloud_certifacte_id: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+        :param pulumi.Input[_builtins.str] alicloud_certifacte_name: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
         :param pulumi.Input[_builtins.str] alicloud_certificate_id: an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
         :param pulumi.Input[_builtins.str] alicloud_certificate_name: the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
         :param pulumi.Input[_builtins.str] alicloud_certificate_region_id: the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
@@ -72,6 +74,9 @@ class ServerCertificateArgs:
     @pulumi.getter(name="alicloudCertifacteId")
     @_utilities.deprecated("""Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""")
     def alicloud_certifacte_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+        """
         return pulumi.get(self, "alicloud_certifacte_id")
 
     @alicloud_certifacte_id.setter
@@ -82,6 +87,9 @@ class ServerCertificateArgs:
     @pulumi.getter(name="alicloudCertifacteName")
     @_utilities.deprecated("""Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""")
     def alicloud_certifacte_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
+        """
         return pulumi.get(self, "alicloud_certifacte_name")
 
     @alicloud_certifacte_name.setter
@@ -201,6 +209,8 @@ class _ServerCertificateState:
         """
         Input properties used for looking up and filtering ServerCertificate resources.
 
+        :param pulumi.Input[_builtins.str] alicloud_certifacte_id: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+        :param pulumi.Input[_builtins.str] alicloud_certifacte_name: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
         :param pulumi.Input[_builtins.str] alicloud_certificate_id: an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
         :param pulumi.Input[_builtins.str] alicloud_certificate_name: the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
         :param pulumi.Input[_builtins.str] alicloud_certificate_region_id: the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
@@ -241,6 +251,9 @@ class _ServerCertificateState:
     @pulumi.getter(name="alicloudCertifacteId")
     @_utilities.deprecated("""Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""")
     def alicloud_certifacte_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+        """
         return pulumi.get(self, "alicloud_certifacte_id")
 
     @alicloud_certifacte_id.setter
@@ -251,6 +264,9 @@ class _ServerCertificateState:
     @pulumi.getter(name="alicloudCertifacteName")
     @_utilities.deprecated("""Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""")
     def alicloud_certifacte_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
+        """
         return pulumi.get(self, "alicloud_certifacte_name")
 
     @alicloud_certifacte_name.setter
@@ -378,6 +394,8 @@ class ServerCertificate(pulumi.CustomResource):
 
         For information about Server Certificate and how to use it, see [Configure Server Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
 
+        > **NOTE:** Available since v1.21.0.
+
         ## Example Usage
 
         * using server_certificate/private content as string example
@@ -434,6 +452,8 @@ class ServerCertificate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] alicloud_certifacte_id: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+        :param pulumi.Input[_builtins.str] alicloud_certifacte_name: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
         :param pulumi.Input[_builtins.str] alicloud_certificate_id: an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
         :param pulumi.Input[_builtins.str] alicloud_certificate_name: the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
         :param pulumi.Input[_builtins.str] alicloud_certificate_region_id: the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
@@ -455,6 +475,8 @@ class ServerCertificate(pulumi.CustomResource):
         For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
 
         For information about Server Certificate and how to use it, see [Configure Server Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
+
+        > **NOTE:** Available since v1.21.0.
 
         ## Example Usage
 
@@ -581,6 +603,8 @@ class ServerCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] alicloud_certifacte_id: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+        :param pulumi.Input[_builtins.str] alicloud_certifacte_name: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
         :param pulumi.Input[_builtins.str] alicloud_certificate_id: an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
         :param pulumi.Input[_builtins.str] alicloud_certificate_name: the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
         :param pulumi.Input[_builtins.str] alicloud_certificate_region_id: the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
@@ -636,12 +660,18 @@ class ServerCertificate(pulumi.CustomResource):
     @pulumi.getter(name="alicloudCertifacteId")
     @_utilities.deprecated("""Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""")
     def alicloud_certifacte_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+        """
         return pulumi.get(self, "alicloud_certifacte_id")
 
     @_builtins.property
     @pulumi.getter(name="alicloudCertifacteName")
     @_utilities.deprecated("""Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""")
     def alicloud_certifacte_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
+        """
         return pulumi.get(self, "alicloud_certifacte_name")
 
     @_builtins.property

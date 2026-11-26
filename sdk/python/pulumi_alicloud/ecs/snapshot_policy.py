@@ -48,7 +48,16 @@ class SnapshotPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
                - A maximum of 24 time points can be selected.
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
-        :param pulumi.Input[_builtins.str] name: The snapshot policy name.
+        :param pulumi.Input[_builtins.str] association_type: The association type of the automatic snapshot policy.
+        :param pulumi.Input[_builtins.str] auto_snapshot_policy_name: The name of the snapshot policy.
+        :param pulumi.Input[_builtins.int] copied_snapshots_retention_days: The retention period of cross-region copied snapshots. Unit: days.
+        :param pulumi.Input['SnapshotPolicyCopyEncryptionConfigurationArgs'] copy_encryption_configuration: The encryption configuration for cross-region copy. See `copy_encryption_configuration` below.
+        :param pulumi.Input[_builtins.bool] enable_cross_region_copy: Specifies whether to enable cross-region copy.
+        :param pulumi.Input[_builtins.str] name: The snapshot policy name. It has been deprecated from provider version 1.236.0, and use field `auto_snapshot_policy_name` instead.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the snapshot policy belongs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_copy_regions: The target regions for cross-region copy.
+        :param pulumi.Input[Sequence[pulumi.Input['SnapshotPolicyTargetTagArgs']]] target_tags: The tags to be added to the snapshot. See `target_tags` below.
         """
         pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
         pulumi.set(__self__, "retention_days", retention_days)
@@ -124,6 +133,9 @@ class SnapshotPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="associationType")
     def association_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The association type of the automatic snapshot policy.
+        """
         return pulumi.get(self, "association_type")
 
     @association_type.setter
@@ -133,6 +145,9 @@ class SnapshotPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyName")
     def auto_snapshot_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the snapshot policy.
+        """
         return pulumi.get(self, "auto_snapshot_policy_name")
 
     @auto_snapshot_policy_name.setter
@@ -142,6 +157,9 @@ class SnapshotPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="copiedSnapshotsRetentionDays")
     def copied_snapshots_retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The retention period of cross-region copied snapshots. Unit: days.
+        """
         return pulumi.get(self, "copied_snapshots_retention_days")
 
     @copied_snapshots_retention_days.setter
@@ -151,6 +169,9 @@ class SnapshotPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="copyEncryptionConfiguration")
     def copy_encryption_configuration(self) -> pulumi.Input[Optional['SnapshotPolicyCopyEncryptionConfigurationArgs']]:
+        """
+        The encryption configuration for cross-region copy. See `copy_encryption_configuration` below.
+        """
         return pulumi.get(self, "copy_encryption_configuration")
 
     @copy_encryption_configuration.setter
@@ -160,6 +181,9 @@ class SnapshotPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="enableCrossRegionCopy")
     def enable_cross_region_copy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable cross-region copy.
+        """
         return pulumi.get(self, "enable_cross_region_copy")
 
     @enable_cross_region_copy.setter
@@ -171,7 +195,7 @@ class SnapshotPolicyArgs:
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""")
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The snapshot policy name.
+        The snapshot policy name. It has been deprecated from provider version 1.236.0, and use field `auto_snapshot_policy_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -182,6 +206,9 @@ class SnapshotPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the resource group to which the snapshot policy belongs.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -191,6 +218,9 @@ class SnapshotPolicyArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -200,6 +230,9 @@ class SnapshotPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="targetCopyRegions")
     def target_copy_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The target regions for cross-region copy.
+        """
         return pulumi.get(self, "target_copy_regions")
 
     @target_copy_regions.setter
@@ -209,6 +242,9 @@ class SnapshotPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="targetTags")
     def target_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotPolicyTargetTagArgs']]]]:
+        """
+        The tags to be added to the snapshot. See `target_tags` below.
+        """
         return pulumi.get(self, "target_tags")
 
     @target_tags.setter
@@ -238,15 +274,27 @@ class _SnapshotPolicyState:
         """
         Input properties used for looking up and filtering SnapshotPolicy resources.
 
-        :param pulumi.Input[_builtins.str] name: The snapshot policy name.
+        :param pulumi.Input[_builtins.str] association_type: The association type of the automatic snapshot policy.
+        :param pulumi.Input[_builtins.str] auto_snapshot_policy_name: The name of the snapshot policy.
+        :param pulumi.Input[_builtins.int] copied_snapshots_retention_days: The retention period of cross-region copied snapshots. Unit: days.
+        :param pulumi.Input['SnapshotPolicyCopyEncryptionConfigurationArgs'] copy_encryption_configuration: The encryption configuration for cross-region copy. See `copy_encryption_configuration` below.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the snapshot policy.
+        :param pulumi.Input[_builtins.bool] enable_cross_region_copy: Specifies whether to enable cross-region copy.
+        :param pulumi.Input[_builtins.str] name: The snapshot policy name. It has been deprecated from provider version 1.236.0, and use field `auto_snapshot_policy_name` instead.
+        :param pulumi.Input[_builtins.str] region_id: The region ID of the snapshot policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repeat_weekdays: The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
                - A maximum of seven time points can be selected.
                - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the snapshot policy belongs.
         :param pulumi.Input[_builtins.int] retention_days: The snapshot retention time, and the unit of measurement is day. Optional values:
                - -1: The automatic snapshots are retained permanently.
                - [1, 65536]: The number of days retained.
                
                Default value: -1.
+        :param pulumi.Input[_builtins.str] status: The status of the snapshot policy.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_copy_regions: The target regions for cross-region copy.
+        :param pulumi.Input[Sequence[pulumi.Input['SnapshotPolicyTargetTagArgs']]] target_tags: The tags to be added to the snapshot. See `target_tags` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
                - A maximum of 24 time points can be selected.
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -290,6 +338,9 @@ class _SnapshotPolicyState:
     @_builtins.property
     @pulumi.getter(name="associationType")
     def association_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The association type of the automatic snapshot policy.
+        """
         return pulumi.get(self, "association_type")
 
     @association_type.setter
@@ -299,6 +350,9 @@ class _SnapshotPolicyState:
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyName")
     def auto_snapshot_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the snapshot policy.
+        """
         return pulumi.get(self, "auto_snapshot_policy_name")
 
     @auto_snapshot_policy_name.setter
@@ -308,6 +362,9 @@ class _SnapshotPolicyState:
     @_builtins.property
     @pulumi.getter(name="copiedSnapshotsRetentionDays")
     def copied_snapshots_retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The retention period of cross-region copied snapshots. Unit: days.
+        """
         return pulumi.get(self, "copied_snapshots_retention_days")
 
     @copied_snapshots_retention_days.setter
@@ -317,6 +374,9 @@ class _SnapshotPolicyState:
     @_builtins.property
     @pulumi.getter(name="copyEncryptionConfiguration")
     def copy_encryption_configuration(self) -> pulumi.Input[Optional['SnapshotPolicyCopyEncryptionConfigurationArgs']]:
+        """
+        The encryption configuration for cross-region copy. See `copy_encryption_configuration` below.
+        """
         return pulumi.get(self, "copy_encryption_configuration")
 
     @copy_encryption_configuration.setter
@@ -326,6 +386,9 @@ class _SnapshotPolicyState:
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The creation time of the snapshot policy.
+        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -335,6 +398,9 @@ class _SnapshotPolicyState:
     @_builtins.property
     @pulumi.getter(name="enableCrossRegionCopy")
     def enable_cross_region_copy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable cross-region copy.
+        """
         return pulumi.get(self, "enable_cross_region_copy")
 
     @enable_cross_region_copy.setter
@@ -346,7 +412,7 @@ class _SnapshotPolicyState:
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""")
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The snapshot policy name.
+        The snapshot policy name. It has been deprecated from provider version 1.236.0, and use field `auto_snapshot_policy_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -357,6 +423,9 @@ class _SnapshotPolicyState:
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The region ID of the snapshot policy.
+        """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
@@ -380,6 +449,9 @@ class _SnapshotPolicyState:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the resource group to which the snapshot policy belongs.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -405,6 +477,9 @@ class _SnapshotPolicyState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The status of the snapshot policy.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -414,6 +489,9 @@ class _SnapshotPolicyState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -423,6 +501,9 @@ class _SnapshotPolicyState:
     @_builtins.property
     @pulumi.getter(name="targetCopyRegions")
     def target_copy_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The target regions for cross-region copy.
+        """
         return pulumi.get(self, "target_copy_regions")
 
     @target_copy_regions.setter
@@ -432,6 +513,9 @@ class _SnapshotPolicyState:
     @_builtins.property
     @pulumi.getter(name="targetTags")
     def target_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotPolicyTargetTagArgs']]]]:
+        """
+        The tags to be added to the snapshot. See `target_tags` below.
+        """
         return pulumi.get(self, "target_tags")
 
     @target_tags.setter
@@ -480,7 +564,7 @@ class SnapshotPolicy(pulumi.CustomResource):
 
         For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
 
-        > **NOTE:** Available in 1.42.0+.
+        > **NOTE:** Available since v1.42.0.
 
         ## Example Usage
 
@@ -489,7 +573,7 @@ class SnapshotPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         sp = alicloud.ecs.SnapshotPolicy("sp",
-            name="tf-testAcc-sp",
+            name="tf-demoAcc-sp",
             repeat_weekdays=[
                 "1",
                 "2",
@@ -516,15 +600,24 @@ class SnapshotPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] name: The snapshot policy name.
+        :param pulumi.Input[_builtins.str] association_type: The association type of the automatic snapshot policy.
+        :param pulumi.Input[_builtins.str] auto_snapshot_policy_name: The name of the snapshot policy.
+        :param pulumi.Input[_builtins.int] copied_snapshots_retention_days: The retention period of cross-region copied snapshots. Unit: days.
+        :param pulumi.Input[Union['SnapshotPolicyCopyEncryptionConfigurationArgs', 'SnapshotPolicyCopyEncryptionConfigurationArgsDict', 'outputs.SnapshotPolicyCopyEncryptionConfiguration']] copy_encryption_configuration: The encryption configuration for cross-region copy. See `copy_encryption_configuration` below.
+        :param pulumi.Input[_builtins.bool] enable_cross_region_copy: Specifies whether to enable cross-region copy.
+        :param pulumi.Input[_builtins.str] name: The snapshot policy name. It has been deprecated from provider version 1.236.0, and use field `auto_snapshot_policy_name` instead.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repeat_weekdays: The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
                - A maximum of seven time points can be selected.
                - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the snapshot policy belongs.
         :param pulumi.Input[_builtins.int] retention_days: The snapshot retention time, and the unit of measurement is day. Optional values:
                - -1: The automatic snapshots are retained permanently.
                - [1, 65536]: The number of days retained.
                
                Default value: -1.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_copy_regions: The target regions for cross-region copy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SnapshotPolicyTargetTagArgs', 'SnapshotPolicyTargetTagArgsDict', 'outputs.SnapshotPolicyTargetTag']]]] target_tags: The tags to be added to the snapshot. See `target_tags` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
                - A maximum of 24 time points can be selected.
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -542,7 +635,7 @@ class SnapshotPolicy(pulumi.CustomResource):
 
         For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
 
-        > **NOTE:** Available in 1.42.0+.
+        > **NOTE:** Available since v1.42.0.
 
         ## Example Usage
 
@@ -551,7 +644,7 @@ class SnapshotPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         sp = alicloud.ecs.SnapshotPolicy("sp",
-            name="tf-testAcc-sp",
+            name="tf-demoAcc-sp",
             repeat_weekdays=[
                 "1",
                 "2",
@@ -668,15 +761,27 @@ class SnapshotPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] name: The snapshot policy name.
+        :param pulumi.Input[_builtins.str] association_type: The association type of the automatic snapshot policy.
+        :param pulumi.Input[_builtins.str] auto_snapshot_policy_name: The name of the snapshot policy.
+        :param pulumi.Input[_builtins.int] copied_snapshots_retention_days: The retention period of cross-region copied snapshots. Unit: days.
+        :param pulumi.Input[Union['SnapshotPolicyCopyEncryptionConfigurationArgs', 'SnapshotPolicyCopyEncryptionConfigurationArgsDict', 'outputs.SnapshotPolicyCopyEncryptionConfiguration']] copy_encryption_configuration: The encryption configuration for cross-region copy. See `copy_encryption_configuration` below.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the snapshot policy.
+        :param pulumi.Input[_builtins.bool] enable_cross_region_copy: Specifies whether to enable cross-region copy.
+        :param pulumi.Input[_builtins.str] name: The snapshot policy name. It has been deprecated from provider version 1.236.0, and use field `auto_snapshot_policy_name` instead.
+        :param pulumi.Input[_builtins.str] region_id: The region ID of the snapshot policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repeat_weekdays: The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
                - A maximum of seven time points can be selected.
                - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the snapshot policy belongs.
         :param pulumi.Input[_builtins.int] retention_days: The snapshot retention time, and the unit of measurement is day. Optional values:
                - -1: The automatic snapshots are retained permanently.
                - [1, 65536]: The number of days retained.
                
                Default value: -1.
+        :param pulumi.Input[_builtins.str] status: The status of the snapshot policy.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_copy_regions: The target regions for cross-region copy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SnapshotPolicyTargetTagArgs', 'SnapshotPolicyTargetTagArgsDict', 'outputs.SnapshotPolicyTargetTag']]]] target_tags: The tags to be added to the snapshot. See `target_tags` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
                - A maximum of 24 time points can be selected.
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -744,31 +849,49 @@ class SnapshotPolicy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="associationType")
     def association_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The association type of the automatic snapshot policy.
+        """
         return pulumi.get(self, "association_type")
 
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyName")
     def auto_snapshot_policy_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of the snapshot policy.
+        """
         return pulumi.get(self, "auto_snapshot_policy_name")
 
     @_builtins.property
     @pulumi.getter(name="copiedSnapshotsRetentionDays")
     def copied_snapshots_retention_days(self) -> pulumi.Output[_builtins.int]:
+        """
+        The retention period of cross-region copied snapshots. Unit: days.
+        """
         return pulumi.get(self, "copied_snapshots_retention_days")
 
     @_builtins.property
     @pulumi.getter(name="copyEncryptionConfiguration")
     def copy_encryption_configuration(self) -> pulumi.Output[Optional['outputs.SnapshotPolicyCopyEncryptionConfiguration']]:
+        """
+        The encryption configuration for cross-region copy. See `copy_encryption_configuration` below.
+        """
         return pulumi.get(self, "copy_encryption_configuration")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The creation time of the snapshot policy.
+        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="enableCrossRegionCopy")
     def enable_cross_region_copy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable cross-region copy.
+        """
         return pulumi.get(self, "enable_cross_region_copy")
 
     @_builtins.property
@@ -776,13 +899,16 @@ class SnapshotPolicy(pulumi.CustomResource):
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The snapshot policy name.
+        The snapshot policy name. It has been deprecated from provider version 1.236.0, and use field `auto_snapshot_policy_name` instead.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The region ID of the snapshot policy.
+        """
         return pulumi.get(self, "region_id")
 
     @_builtins.property
@@ -798,6 +924,9 @@ class SnapshotPolicy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the resource group to which the snapshot policy belongs.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
@@ -815,21 +944,33 @@ class SnapshotPolicy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
+        """
+        The status of the snapshot policy.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="targetCopyRegions")
     def target_copy_regions(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The target regions for cross-region copy.
+        """
         return pulumi.get(self, "target_copy_regions")
 
     @_builtins.property
     @pulumi.getter(name="targetTags")
     def target_tags(self) -> pulumi.Output[Optional[Sequence['outputs.SnapshotPolicyTargetTag']]]:
+        """
+        The tags to be added to the snapshot. See `target_tags` below.
+        """
         return pulumi.get(self, "target_tags")
 
     @_builtins.property

@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetApplicationsApplicationMountDesc {
     /**
-     * @return Container mount path.
+     * @return The Container mount path.
      * 
      */
     private String mountPath;
@@ -23,7 +23,7 @@ public final class GetApplicationsApplicationMountDesc {
 
     private GetApplicationsApplicationMountDesc() {}
     /**
-     * @return Container mount path.
+     * @return The Container mount path.
      * 
      */
     public String mountPath() {

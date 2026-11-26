@@ -108,10 +108,14 @@ import (
 //				Ids: pulumi.StringArray{
 //					defaultManagedKubernetes.ID(),
 //				},
-//				NameRegex: defaultManagedKubernetes.Name,
+//				NameRegex:     defaultManagedKubernetes.Name,
+//				EnableDetails: pulumi.Bool(true),
 //			}, nil)
 //			ctx.Export("alicloudCsManagedKubernetesExampleId", _default.ApplyT(func(_default cs.GetClustersResult) (*string, error) {
 //				return _default.Clusters[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("alicloudCsManagedKubernetesExampleApiServerInternet", _default.ApplyT(func(_default cs.GetClustersResult) (*string, error) {
+//				return _default.Clusters[0].Connections[0].ApiServerInternet, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

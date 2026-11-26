@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
         /// Filters support regular expression for the cluster name or ids.
         /// 
-        /// &gt; **NOTE:**  Available in 1.88.0+.
+        /// &gt; **NOTE:** Available since v1.88.0.
         /// 
         /// &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
         /// Filters support regular expression for the cluster name or ids.
         /// 
-        /// &gt; **NOTE:**  Available in 1.88.0+.
+        /// &gt; **NOTE:** Available since v1.88.0.
         /// 
         /// &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
         /// 
@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
         /// Filters support regular expression for the cluster name or ids.
         /// 
-        /// &gt; **NOTE:**  Available in 1.88.0+.
+        /// &gt; **NOTE:** Available since v1.88.0.
         /// 
         /// &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
         /// 

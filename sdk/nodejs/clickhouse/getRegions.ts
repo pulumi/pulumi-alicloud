@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Click House Regions of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * ## Example Usage
  *
@@ -65,13 +65,19 @@ export interface GetRegionsResult {
      */
     readonly id: string;
     readonly outputFile?: string;
+    /**
+     * The Region ID.
+     */
     readonly regionId?: string;
+    /**
+     * A list of Click House Regions. Each element contains the following attributes:
+     */
     readonly regions: outputs.clickhouse.GetRegionsRegion[];
 }
 /**
  * This data source provides the Click House Regions of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * ## Example Usage
  *

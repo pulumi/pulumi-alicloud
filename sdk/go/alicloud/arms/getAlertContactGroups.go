@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Arms Alert Contact Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.131.0+.
+// > **NOTE:** Available since v1.131.0.
 //
 // ## Example Usage
 //
@@ -71,14 +71,17 @@ type GetAlertContactGroupsArgs struct {
 
 // A collection of values returned by getAlertContactGroups.
 type GetAlertContactGroupsResult struct {
-	AlertContactGroupName *string                      `pulumi:"alertContactGroupName"`
-	ContactId             *string                      `pulumi:"contactId"`
-	ContactName           *string                      `pulumi:"contactName"`
-	Groups                []GetAlertContactGroupsGroup `pulumi:"groups"`
+	// The name of the resource.
+	AlertContactGroupName *string `pulumi:"alertContactGroupName"`
+	ContactId             *string `pulumi:"contactId"`
+	ContactName           *string `pulumi:"contactName"`
+	// A list of Arms Alert Contact Groups. Each element contains the following attributes:
+	Groups []GetAlertContactGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Alert Contact Group names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -123,6 +126,7 @@ func (o GetAlertContactGroupsResultOutput) ToGetAlertContactGroupsResultOutputWi
 	return o
 }
 
+// The name of the resource.
 func (o GetAlertContactGroupsResultOutput) AlertContactGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAlertContactGroupsResult) *string { return v.AlertContactGroupName }).(pulumi.StringPtrOutput)
 }
@@ -135,6 +139,7 @@ func (o GetAlertContactGroupsResultOutput) ContactName() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetAlertContactGroupsResult) *string { return v.ContactName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Arms Alert Contact Groups. Each element contains the following attributes:
 func (o GetAlertContactGroupsResultOutput) Groups() GetAlertContactGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetAlertContactGroupsResult) []GetAlertContactGroupsGroup { return v.Groups }).(GetAlertContactGroupsGroupArrayOutput)
 }
@@ -152,6 +157,7 @@ func (o GetAlertContactGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAlertContactGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Alert Contact Group names.
 func (o GetAlertContactGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAlertContactGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

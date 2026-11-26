@@ -20,113 +20,485 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; **NOTE:** `alicloud.yundun.BastionHostInstance` has been deprecated since v1.132.0 and renamed to `alicloud.bastionhost.Instance`. Use `alicloud.bastionhost.Instance` instead.
+ * 
+ * Cloud Bastion Host instance resource (&#34;Yundun_bastionhost&#34; is the short term of this product).
+ * For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
+ * 
+ * &gt; **NOTE:** The endpoint of bssopenapi used only support &#34;business.aliyuncs.com&#34; at present.
+ * 
+ * &gt; **NOTE:** Available since v1.132.0.
+ * 
+ * &gt; **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.yundun.BastionHostInstance;
+ * import com.pulumi.alicloud.yundun.BastionHostInstanceArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("^default-NODELETING$")
+ *             .cidrBlock("10.4.0.0/16")
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .cidrBlock("10.4.0.0/24")
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .build());
+ * 
+ *         var defaultBastionHostInstance = new BastionHostInstance("defaultBastionHostInstance", BastionHostInstanceArgs.builder()
+ *             .description(name)
+ *             .licenseCode("bhah_ent_50_asset")
+ *             .planCode("cloudbastion")
+ *             .storage("5")
+ *             .bandwidth("5")
+ *             .period(1)
+ *             .vswitchId(defaultGetSwitches.ids()[0])
+ *             .securityGroupIds(defaultSecurityGroup.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.yundun.BastionHostInstance;
+ * import com.pulumi.alicloud.yundun.BastionHostInstanceArgs;
+ * import com.pulumi.alicloud.yundun.inputs.BastionHostInstanceAdAuthServerArgs;
+ * import com.pulumi.alicloud.yundun.inputs.BastionHostInstanceLdapAuthServerArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("^default-NODELETING$")
+ *             .cidrBlock("10.4.0.0/16")
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .cidrBlock("10.4.0.0/24")
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .build());
+ * 
+ *         var defaultBastionHostInstance = new BastionHostInstance("defaultBastionHostInstance", BastionHostInstanceArgs.builder()
+ *             .description(name)
+ *             .licenseCode("bhah_ent_50_asset")
+ *             .planCode("cloudbastion")
+ *             .storage("5")
+ *             .bandwidth("5")
+ *             .period(1)
+ *             .securityGroupIds(defaultSecurityGroup.id())
+ *             .vswitchId(defaultGetSwitches.ids()[0])
+ *             .adAuthServers(BastionHostInstanceAdAuthServerArgs.builder()
+ *                 .server("192.168.1.1")
+ *                 .standbyServer("192.168.1.3")
+ *                 .port(80)
+ *                 .domain("domain")
+ *                 .account("cn=Manager,dc=test,dc=com")
+ *                 .password("YouPassword123")
+ *                 .filter("objectClass=person")
+ *                 .nameMapping("nameAttr")
+ *                 .emailMapping("emailAttr")
+ *                 .mobileMapping("mobileAttr")
+ *                 .isSsl(false)
+ *                 .baseDn("dc=test,dc=com")
+ *                 .build())
+ *             .ldapAuthServers(BastionHostInstanceLdapAuthServerArgs.builder()
+ *                 .server("192.168.1.1")
+ *                 .standbyServer("192.168.1.3")
+ *                 .port(80)
+ *                 .loginNameMapping("uid")
+ *                 .account("cn=Manager,dc=test,dc=com")
+ *                 .password("YouPassword123")
+ *                 .filter("objectClass=person")
+ *                 .nameMapping("nameAttr")
+ *                 .emailMapping("emailAttr")
+ *                 .mobileMapping("mobileAttr")
+ *                 .isSsl(false)
+ *                 .baseDn("dc=test,dc=com")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.yundun.BastionHostInstance` or removing it from your configuration
+ * 
+ * The `alicloud.yundun.BastionHostInstance` resource allows you to manage bastionhost instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration
+ * will remove it from your state file and management, but will not destroy the bastionhost instance.
+ * You can resume managing the subscription bastionhost instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
+ * ## Import
+ * 
+ * Yundun_bastionhost instance can be imported using the id, e.g.
+ * 
+ * ```sh
+ * $ pulumi import alicloud:yundun/bastionHostInstance:BastionHostInstance example bastionhost-exampe123456
+ * ```
+ * 
+ */
 @ResourceType(type="alicloud:yundun/bastionHostInstance:BastionHostInstance")
 public class BastionHostInstance extends com.pulumi.resources.CustomResource {
+    /**
+     * The AD auth server of the Instance. See `adAuthServer` below.
+     * 
+     */
     @Export(name="adAuthServers", refs={List.class,BastionHostInstanceAdAuthServer.class}, tree="[0,1]")
     private Output<List<BastionHostInstanceAdAuthServer>> adAuthServers;
 
+    /**
+     * @return The AD auth server of the Instance. See `adAuthServer` below.
+     * 
+     */
     public Output<List<BastionHostInstanceAdAuthServer>> adAuthServers() {
         return this.adAuthServers;
     }
+    /**
+     * The bandwidth of Cloud Bastionhost instance.
+     * 
+     * &gt; **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+     * 
+     * - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+     * - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
+     * 
+     */
     @Export(name="bandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidth;
 
+    /**
+     * @return The bandwidth of Cloud Bastionhost instance.
+     * 
+     * &gt; **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+     * 
+     * - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+     * - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
+     * 
+     */
     public Output<String> bandwidth() {
         return this.bandwidth;
     }
+    /**
+     * Description of the instance. This name can have a string of 1 to 63 characters.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
+    /**
+     * @return Description of the instance. This name can have a string of 1 to 63 characters.
+     * 
+     */
     public Output<String> description() {
         return this.description;
     }
+    /**
+     * Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+     * 
+     */
     @Export(name="enablePublicAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enablePublicAccess;
 
+    /**
+     * @return Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+     * 
+     */
     public Output<Boolean> enablePublicAccess() {
         return this.enablePublicAccess;
     }
+    /**
+     * The LDAP auth server of the Instance. See `ldapAuthServer` below.
+     * 
+     */
     @Export(name="ldapAuthServers", refs={List.class,BastionHostInstanceLdapAuthServer.class}, tree="[0,1]")
     private Output<List<BastionHostInstanceLdapAuthServer>> ldapAuthServers;
 
+    /**
+     * @return The LDAP auth server of the Instance. See `ldapAuthServer` below.
+     * 
+     */
     public Output<List<BastionHostInstanceLdapAuthServer>> ldapAuthServers() {
         return this.ldapAuthServers;
     }
+    /**
+     * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+     * 
+     */
     @Export(name="licenseCode", refs={String.class}, tree="[0]")
     private Output<String> licenseCode;
 
+    /**
+     * @return The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+     * 
+     */
     public Output<String> licenseCode() {
         return this.licenseCode;
     }
+    /**
+     * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify &#34;period&#34;.
+     * 
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
+    /**
+     * @return Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify &#34;period&#34;.
+     * 
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
+    /**
+     * The plan code of Cloud Bastionhost instance. Valid values:
+     * 
+     */
     @Export(name="planCode", refs={String.class}, tree="[0]")
     private Output<String> planCode;
 
+    /**
+     * @return The plan code of Cloud Bastionhost instance. Valid values:
+     * 
+     */
     public Output<String> planCode() {
         return this.planCode;
     }
+    /**
+     * The public IP address that you want to add to the whitelist.
+     * 
+     * &gt; **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+     * 
+     */
     @Export(name="publicWhiteLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> publicWhiteLists;
 
+    /**
+     * @return The public IP address that you want to add to the whitelist.
+     * 
+     * &gt; **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+     * 
+     */
     public Output<Optional<List<String>>> publicWhiteLists() {
         return Codegen.optional(this.publicWhiteLists);
     }
+    /**
+     * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
+     * 
+     */
     @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> renewPeriod;
 
+    /**
+     * @return Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
+     * 
+     */
     public Output<Optional<Integer>> renewPeriod() {
         return Codegen.optional(this.renewPeriod);
     }
+    /**
+     * The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+     * - `M`: months.
+     * - `Y`: years.
+     * 
+     */
     @Export(name="renewalPeriodUnit", refs={String.class}, tree="[0]")
     private Output<String> renewalPeriodUnit;
 
+    /**
+     * @return The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+     * - `M`: months.
+     * - `Y`: years.
+     * 
+     */
     public Output<String> renewalPeriodUnit() {
         return this.renewalPeriodUnit;
     }
+    /**
+     * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
+     * 
+     */
     @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output<String> renewalStatus;
 
+    /**
+     * @return Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
+     * 
+     */
     public Output<String> renewalStatus() {
         return this.renewalStatus;
     }
+    /**
+     * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+     * 
+     */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
+    /**
+     * @return The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+     * 
+     */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
+    /**
+     * security group IDs configured to Bastionhost.
+     * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+     * So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     * 
+     */
     @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroupIds;
 
+    /**
+     * @return security group IDs configured to Bastionhost.
+     * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+     * So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     * 
+     */
     public Output<List<String>> securityGroupIds() {
         return this.securityGroupIds;
     }
+    /**
+     * Slave VSwitch ID configured to Bastionhost.
+     * 
+     */
     @Export(name="slaveVswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> slaveVswitchId;
 
+    /**
+     * @return Slave VSwitch ID configured to Bastionhost.
+     * 
+     */
     public Output<Optional<String>> slaveVswitchId() {
         return Codegen.optional(this.slaveVswitchId);
     }
+    /**
+     * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+     * 
+     * -&gt;**NOTE:** From version 1.251.0, `storage` can be modified.
+     * 
+     */
     @Export(name="storage", refs={String.class}, tree="[0]")
     private Output<String> storage;
 
+    /**
+     * @return The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+     * 
+     * -&gt;**NOTE:** From version 1.251.0, `storage` can be modified.
+     * 
+     */
     public Output<String> storage() {
         return this.storage;
     }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * VSwitch ID configured to Bastionhost.
+     * 
+     */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
+    /**
+     * @return VSwitch ID configured to Bastionhost.
+     * 
+     */
     public Output<String> vswitchId() {
         return this.vswitchId;
     }

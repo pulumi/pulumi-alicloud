@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.104.0+.
+        /// &gt; **NOTE:** Available since v1.104.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.104.0+.
+        /// &gt; **NOTE:** Available since v1.104.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.104.0+.
+        /// &gt; **NOTE:** Available since v1.104.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -273,21 +273,48 @@ namespace Pulumi.AliCloud.Cms
     [OutputType]
     public sealed class GetGroupMetricRulesResult
     {
+        /// <summary>
+        /// The dimensions that specify the resources to be associated with the alert rule.
+        /// </summary>
         public readonly string? Dimensions;
+        /// <summary>
+        /// Indicates whether the alert rule is enabled.
+        /// </summary>
         public readonly bool? EnableState;
+        /// <summary>
+        /// The ID of the application group.
+        /// </summary>
         public readonly string? GroupId;
+        /// <summary>
+        /// The name of the alert rule.
+        /// </summary>
         public readonly string? GroupMetricRuleName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The name of the metric.
+        /// </summary>
         public readonly string? MetricName;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Group Metric Rule names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// The namespace of the service.
+        /// </summary>
         public readonly string? Namespace;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Cms Group Metric Rules. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupMetricRulesRuleResult> Rules;
+        /// <summary>
+        /// The status of Group Metric Rule..
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

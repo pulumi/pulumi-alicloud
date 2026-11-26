@@ -512,7 +512,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -557,7 +557,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -602,7 +602,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -647,7 +647,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -692,7 +692,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -737,7 +737,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House DBCluster of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -796,7 +796,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House DBCluster of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -855,7 +855,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House DBCluster of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -914,7 +914,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House DBCluster of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -973,7 +973,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House DBCluster of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -1032,7 +1032,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House DBCluster of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -1091,7 +1091,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House DBCluster of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -1150,7 +1150,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1198,7 +1198,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1246,7 +1246,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1294,7 +1294,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1342,7 +1342,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1390,7 +1390,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -1438,7 +1438,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 

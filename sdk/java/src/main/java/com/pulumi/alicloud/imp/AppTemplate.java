@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Apsara Agile Live (IMP) App Template resource.
  * 
- * For information about Apsara Agile Live (IMP) App Template and how to use it, see [What is App Template](https://help.aliyun.com/document_detail/270121.html).
+ * For information about Apsara Agile Live (IMP) App Template and how to use it, see [What is App Template](https://www.alibabacloud.com/help/doc-detail/270121.html).
  * 
- * &gt; **NOTE:** Available in v1.137.0+.
+ * &gt; **NOTE:** Available since v1.137.0.
  * 
  * ## Example Usage
  * 
@@ -105,14 +105,14 @@ public class AppTemplate extends com.pulumi.resources.CustomResource {
         return this.componentLists;
     }
     /**
-     * Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
+     * Configuration list. It have several default configs after the resource is created. See `configList` below.
      * 
      */
     @Export(name="configLists", refs={List.class,AppTemplateConfigList.class}, tree="[0,1]")
     private Output<List<AppTemplateConfigList>> configLists;
 
     /**
-     * @return Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
+     * @return Configuration list. It have several default configs after the resource is created. See `configList` below.
      * 
      */
     public Output<List<AppTemplateConfigList>> configLists() {

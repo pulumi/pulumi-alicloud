@@ -62,6 +62,9 @@ class GetChangeSetsResult:
     @_builtins.property
     @pulumi.getter(name="changeSetName")
     def change_set_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        """
         return pulumi.get(self, "change_set_name")
 
     @_builtins.property
@@ -90,6 +93,9 @@ class GetChangeSetsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Change Set names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -100,16 +106,25 @@ class GetChangeSetsResult:
     @_builtins.property
     @pulumi.getter
     def sets(self) -> Sequence['outputs.GetChangeSetsSetResult']:
+        """
+        A list of Ros Change Sets. Each element contains the following attributes. See `sets` below.
+        """
         return pulumi.get(self, "sets")
 
     @_builtins.property
     @pulumi.getter(name="stackId")
     def stack_id(self) -> _builtins.str:
+        """
+        The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
+        """
         return pulumi.get(self, "stack_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the change set.
+        """
         return pulumi.get(self, "status")
 
 
@@ -142,7 +157,7 @@ def get_change_sets(change_set_name: Optional[_builtins.str] = None,
     """
     This data source provides the Ros Change Sets of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.105.0+.
+    > **NOTE:** Available since v1.105.0.
 
     ## Example Usage
 
@@ -200,7 +215,7 @@ def get_change_sets_output(change_set_name: pulumi.Input[Optional[Optional[_buil
     """
     This data source provides the Ros Change Sets of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.105.0+.
+    > **NOTE:** Available since v1.105.0.
 
     ## Example Usage
 

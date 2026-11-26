@@ -48,6 +48,10 @@ public final class GetBandwidthPackagesPackage {
      * 
      */
     private String description;
+    /**
+     * @return The expiration time of the CEN Bandwidth Package.
+     * 
+     */
     private String expiredTime;
     /**
      * @return Region ID of the interconnected regions.
@@ -170,6 +174,10 @@ public final class GetBandwidthPackagesPackage {
     public String description() {
         return this.description;
     }
+    /**
+     * @return The expiration time of the CEN Bandwidth Package.
+     * 
+     */
     public String expiredTime() {
         return this.expiredTime;
     }

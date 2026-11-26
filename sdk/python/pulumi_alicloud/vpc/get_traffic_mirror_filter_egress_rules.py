@@ -68,16 +68,25 @@ class GetTrafficMirrorFilterEgressRulesResult:
     @_builtins.property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetTrafficMirrorFilterEgressRulesRuleResult']:
+        """
+        A list of Vpc Traffic Mirror Filter Egress Rules. Each element contains the following attributes:
+        """
         return pulumi.get(self, "rules")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="trafficMirrorFilterId")
     def traffic_mirror_filter_id(self) -> _builtins.str:
+        """
+        The ID of the filter associated with the outbound rule.
+        """
         return pulumi.get(self, "traffic_mirror_filter_id")
 
 
@@ -103,7 +112,7 @@ def get_traffic_mirror_filter_egress_rules(ids: Optional[Sequence[_builtins.str]
     """
     This data source provides the Vpc Traffic Mirror Filter Egress Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     ## Example Usage
 
@@ -151,7 +160,7 @@ def get_traffic_mirror_filter_egress_rules_output(ids: pulumi.Input[Optional[Opt
     """
     This data source provides the Vpc Traffic Mirror Filter Egress Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     ## Example Usage
 

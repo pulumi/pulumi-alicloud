@@ -17,9 +17,17 @@ public final class GetOpenApiPricingModulesArgs extends com.pulumi.resources.Inv
 
     public static final GetOpenApiPricingModulesArgs Empty = new GetOpenApiPricingModulesArgs();
 
+    /**
+     * A list of Price Module IDs.
+     * 
+     */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
+    /**
+     * @return A list of Price Module IDs.
+     * 
+     */
     public Optional<Output<List<String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
@@ -132,15 +140,33 @@ public final class GetOpenApiPricingModulesArgs extends com.pulumi.resources.Inv
             $ = new GetOpenApiPricingModulesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids A list of Price Module IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable Output<List<String>> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids A list of Price Module IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(List<String> ids) {
             return ids(Output.of(ids));
         }
 
+        /**
+         * @param ids A list of Price Module IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }

@@ -193,6 +193,8 @@ namespace Pulumi.AliCloud.Eci
     /// ```sh
     /// $ pulumi import alicloud:eci/containerGroup:ContainerGroup example &lt;container_group_id&gt;
     /// ```
+    /// 
+    /// &gt; **NOTE:** `AcrRegistryInfo` (including `ArnService` and `ArnUser`) cannot be read back from the API, so it is not reconstructed on import. Configuring these role ARNs after import requires replacement of the container group; review the plan before applying.
     /// </summary>
     [AliCloudResourceType("alicloud:eci/containerGroup:ContainerGroup")]
     public partial class ContainerGroup : global::Pulumi.CustomResource

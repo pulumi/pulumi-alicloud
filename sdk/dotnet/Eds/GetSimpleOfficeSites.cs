@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// ## Example Usage
         /// 
@@ -207,9 +207,18 @@ namespace Pulumi.AliCloud.Eds
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Simple Office Site names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Ecd Simple Office Sites. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSimpleOfficeSitesSiteResult> Sites;
+        /// <summary>
+        /// Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

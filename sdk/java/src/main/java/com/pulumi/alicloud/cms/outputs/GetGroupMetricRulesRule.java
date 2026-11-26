@@ -35,7 +35,7 @@ public final class GetGroupMetricRulesRule {
      */
     private String emailSubject;
     /**
-     * @return Indicates whether the alert rule is enabled.
+     * @return EnableState.
      * 
      */
     private Boolean enableState;
@@ -100,7 +100,7 @@ public final class GetGroupMetricRulesRule {
      */
     private String sourceType;
     /**
-     * @return The status of Group Metric Rule..
+     * @return The status of Group Metric Rule.
      * 
      */
     private String status;
@@ -140,7 +140,7 @@ public final class GetGroupMetricRulesRule {
         return this.emailSubject;
     }
     /**
-     * @return Indicates whether the alert rule is enabled.
+     * @return EnableState.
      * 
      */
     public Boolean enableState() {
@@ -231,7 +231,7 @@ public final class GetGroupMetricRulesRule {
         return this.sourceType;
     }
     /**
-     * @return The status of Group Metric Rule..
+     * @return The status of Group Metric Rule.
      * 
      */
     public String status() {

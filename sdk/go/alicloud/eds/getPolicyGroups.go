@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.130.0+.
+// > **NOTE:** Available since v1.130.0.
 //
 // ## Example Usage
 //
@@ -94,14 +94,17 @@ type GetPolicyGroupsArgs struct {
 
 // A collection of values returned by getPolicyGroups.
 type GetPolicyGroupsResult struct {
+	// A list of Ecd Policy Groups. Each element contains the following attributes:
 	Groups []GetPolicyGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Policy Group names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of policy.
+	Status *string `pulumi:"status"`
 }
 
 func GetPolicyGroupsOutput(ctx *pulumi.Context, args GetPolicyGroupsOutputArgs, opts ...pulumi.InvokeOption) GetPolicyGroupsResultOutput {
@@ -140,6 +143,7 @@ func (o GetPolicyGroupsResultOutput) ToGetPolicyGroupsResultOutputWithContext(ct
 	return o
 }
 
+// A list of Ecd Policy Groups. Each element contains the following attributes:
 func (o GetPolicyGroupsResultOutput) Groups() GetPolicyGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetPolicyGroupsResult) []GetPolicyGroupsGroup { return v.Groups }).(GetPolicyGroupsGroupArrayOutput)
 }
@@ -157,6 +161,7 @@ func (o GetPolicyGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPolicyGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Policy Group names.
 func (o GetPolicyGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPolicyGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -165,6 +170,7 @@ func (o GetPolicyGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPolicyGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of policy.
 func (o GetPolicyGroupsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPolicyGroupsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

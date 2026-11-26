@@ -131,6 +131,8 @@ def get_rules(frontend_port: Optional[_builtins.int] = None,
     """
     This data source provides the rules associated with a server load balancer listener.
 
+    > **NOTE:** Available since v1.15.0.
+
     ## Example Usage
 
     ```python
@@ -207,6 +209,8 @@ def get_rules_output(frontend_port: pulumi.Input[Optional[_builtins.int]] = None
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRulesResult]:
     """
     This data source provides the rules associated with a server load balancer listener.
+
+    > **NOTE:** Available since v1.15.0.
 
     ## Example Usage
 

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Security Center Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
@@ -57,6 +57,9 @@ export interface GetGroupsArgs {
  * A collection of values returned by getGroups.
  */
 export interface GetGroupsResult {
+    /**
+     * A list of Security Center Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.securitycenter.GetGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -64,13 +67,16 @@ export interface GetGroupsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Security Center Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Mongodb Accounts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.148.0+.
+ * > **NOTE:** Available since v1.148.0.
  *
  * ## Example Usage
  *
@@ -57,19 +57,28 @@ export interface GetAccountsArgs {
  * A collection of values returned by getAccounts.
  */
 export interface GetAccountsResult {
+    /**
+     * The name of the account.
+     */
     readonly accountName?: string;
+    /**
+     * A list of Mongodb Accounts. Each element contains the following attributes:
+     */
     readonly accounts: outputs.mongodb.GetAccountsAccount[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The id of the instance to which the account belongs.
+     */
     readonly instanceId: string;
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Mongodb Accounts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.148.0+.
+ * > **NOTE:** Available since v1.148.0.
  *
  * ## Example Usage
  *

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecd Desktops of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.144.0+.
+// > **NOTE:** Available since v1.144.0.
 //
 // ## Example Usage
 //
@@ -26,32 +26,63 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/eds"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
-//				CidrBlock:         pulumi.String("172.16.0.0/12"),
-//				DesktopAccessType: pulumi.String("Internet"),
-//				OfficeSiteName:    pulumi.String("your_office_site_name"),
-//			})
-//			if err != nil {
-//				return err
+//			cfg := config.New(ctx, "")
+//			name := "terraform_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
-//			_default, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
-//				BundleType: pulumi.StringRef("SYSTEM"),
+//			_default, err := eds.GetImages(ctx, &eds.GetImagesArgs{
+//				ImageType:           pulumi.StringRef("SYSTEM"),
+//				OsType:              pulumi.StringRef("Windows"),
+//				DesktopInstanceType: pulumi.StringRef("eds.hf.4c8g"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			defaultGetDesktopTypes, err := eds.GetDesktopTypes(ctx, &eds.GetDesktopTypesArgs{
+//				InstanceTypeFamily: pulumi.StringRef("eds.hf"),
+//				CpuCount:           pulumi.IntRef(4),
+//				MemorySize:         pulumi.IntRef(8192),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
+//				CidrBlock:         pulumi.String("172.16.0.0/12"),
+//				DesktopAccessType: pulumi.String("Internet"),
+//				OfficeSiteName:    pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBundle, err := eds.NewBundle(ctx, "default", &eds.BundleArgs{
+//				DesktopType: pulumi.String(defaultGetDesktopTypes.Ids[0]),
+//				ImageId:     pulumi.String(_default.Ids[0]),
+//				UserDiskSizeGibs: pulumi.IntArray{
+//					pulumi.Int(110),
+//				},
+//				RootDiskSizeGib:          pulumi.Int(120),
+//				RootDiskPerformanceLevel: pulumi.String("PL1"),
+//				UserDiskPerformanceLevel: pulumi.String("PL1"),
+//				BundleName:               pulumi.String(name),
+//				Description:              pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "default", &eds.EcdPolicyGroupArgs{
-//				PolicyGroupName: pulumi.String("your_policy_group_name"),
+//				PolicyGroupName: pulumi.String(name),
 //				Clipboard:       pulumi.String("readwrite"),
 //				LocalDrive:      pulumi.String("read"),
 //				AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
 //					&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
-//						Description: pulumi.String("example_value"),
+//						Description: pulumi.String(name),
 //						CidrIp:      pulumi.String("1.2.3.4/24"),
 //					},
 //				},
@@ -59,7 +90,7 @@ import (
 //					&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
 //						Type:        pulumi.String("inflow"),
 //						Policy:      pulumi.String("accept"),
-//						Description: pulumi.String("example_value"),
+//						Description: pulumi.String(name),
 //						PortRange:   pulumi.String("80/80"),
 //						IpProtocol:  pulumi.String("TCP"),
 //						Priority:    pulumi.String("1"),
@@ -71,10 +102,8 @@ import (
 //				return err
 //			}
 //			defaultUser, err := eds.NewUser(ctx, "default", &eds.UserArgs{
-//				EndUserId: pulumi.String("your_end_user_id"),
-//				Email:     pulumi.String("your_email"),
-//				Phone:     pulumi.String("your_phone"),
-//				Password:  pulumi.String("your_password"),
+//				EndUserId: pulumi.String(name),
+//				Email:     pulumi.Sprintf("%v@aaa.com", name),
 //			})
 //			if err != nil {
 //				return err
@@ -82,8 +111,8 @@ import (
 //			defaultDesktop, err := eds.NewDesktop(ctx, "default", &eds.DesktopArgs{
 //				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
 //				PolicyGroupId: defaultEcdPolicyGroup.ID(),
-//				BundleId:      pulumi.String(_default.Bundles[0].Id),
-//				DesktopName:   pulumi.String("your_desktop_name"),
+//				BundleId:      defaultBundle.ID(),
+//				DesktopName:   pulumi.String(name),
 //				EndUserIds: pulumi.StringArray{
 //					defaultUser.ID(),
 //				},
@@ -96,14 +125,8 @@ import (
 //					defaultDesktop.ID(),
 //				},
 //			}, nil)
-//			ctx.Export("ecdDesktopId1", ids.ApplyT(func(ids eds.GetDesktopsResult) (*string, error) {
+//			ctx.Export("ecdDesktopsId0", ids.ApplyT(func(ids eds.GetDesktopsResult) (*string, error) {
 //				return ids.Desktops[0].Id, nil
-//			}).(pulumi.StringPtrOutput))
-//			nameRegex := eds.GetDesktopsOutput(ctx, eds.GetDesktopsOutputArgs{
-//				NameRegex: defaultDesktop.DesktopName,
-//			}, nil)
-//			ctx.Export("ecdDesktopId2", nameRegex.ApplyT(func(nameRegex eds.GetDesktopsResult) (*string, error) {
-//				return nameRegex.Desktops[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
@@ -122,9 +145,10 @@ func GetDesktops(ctx *pulumi.Context, args *GetDesktopsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getDesktops.
 type GetDesktopsArgs struct {
-	// The desktop name.
-	DesktopName *string  `pulumi:"desktopName"`
-	EndUserIds  []string `pulumi:"endUserIds"`
+	// The cloud desktop name.
+	DesktopName *string `pulumi:"desktopName"`
+	// The authorized users of the cloud desktop.
+	EndUserIds []string `pulumi:"endUserIds"`
 	// A list of Desktop IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Desktop name.
@@ -133,26 +157,32 @@ type GetDesktopsArgs struct {
 	OfficeSiteId *string `pulumi:"officeSiteId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The policy group id of the Desktop.
+	// The cloud desktop policy ID.
 	PolicyGroupId *string `pulumi:"policyGroupId"`
-	// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+	// The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
 	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getDesktops.
 type GetDesktopsResult struct {
-	DesktopName *string              `pulumi:"desktopName"`
-	Desktops    []GetDesktopsDesktop `pulumi:"desktops"`
-	EndUserIds  []string             `pulumi:"endUserIds"`
+	// The cloud desktop name.
+	DesktopName *string `pulumi:"desktopName"`
+	// A list of Ecd Desktops. Each element contains the following attributes:
+	Desktops []GetDesktopsDesktop `pulumi:"desktops"`
+	// The IDs of the authorized users of the cloud desktop.
+	EndUserIds []string `pulumi:"endUserIds"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string   `pulumi:"id"`
-	Ids           []string `pulumi:"ids"`
-	NameRegex     *string  `pulumi:"nameRegex"`
-	Names         []string `pulumi:"names"`
-	OfficeSiteId  *string  `pulumi:"officeSiteId"`
-	OutputFile    *string  `pulumi:"outputFile"`
-	PolicyGroupId *string  `pulumi:"policyGroupId"`
-	Status        *string  `pulumi:"status"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Desktop names.
+	Names        []string `pulumi:"names"`
+	OfficeSiteId *string  `pulumi:"officeSiteId"`
+	OutputFile   *string  `pulumi:"outputFile"`
+	// The cloud desktop policy ID.
+	PolicyGroupId *string `pulumi:"policyGroupId"`
+	// The cloud desktop status.
+	Status *string `pulumi:"status"`
 }
 
 func GetDesktopsOutput(ctx *pulumi.Context, args GetDesktopsOutputArgs, opts ...pulumi.InvokeOption) GetDesktopsResultOutput {
@@ -162,9 +192,10 @@ func GetDesktopsOutput(ctx *pulumi.Context, args GetDesktopsOutputArgs, opts ...
 
 // A collection of arguments for invoking getDesktops.
 type GetDesktopsOutputArgs struct {
-	// The desktop name.
-	DesktopName pulumi.StringPtrInput   `pulumi:"desktopName"`
-	EndUserIds  pulumi.StringArrayInput `pulumi:"endUserIds"`
+	// The cloud desktop name.
+	DesktopName pulumi.StringPtrInput `pulumi:"desktopName"`
+	// The authorized users of the cloud desktop.
+	EndUserIds pulumi.StringArrayInput `pulumi:"endUserIds"`
 	// A list of Desktop IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Desktop name.
@@ -173,9 +204,9 @@ type GetDesktopsOutputArgs struct {
 	OfficeSiteId pulumi.StringPtrInput `pulumi:"officeSiteId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The policy group id of the Desktop.
+	// The cloud desktop policy ID.
 	PolicyGroupId pulumi.StringPtrInput `pulumi:"policyGroupId"`
-	// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+	// The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -198,14 +229,17 @@ func (o GetDesktopsResultOutput) ToGetDesktopsResultOutputWithContext(ctx contex
 	return o
 }
 
+// The cloud desktop name.
 func (o GetDesktopsResultOutput) DesktopName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDesktopsResult) *string { return v.DesktopName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecd Desktops. Each element contains the following attributes:
 func (o GetDesktopsResultOutput) Desktops() GetDesktopsDesktopArrayOutput {
 	return o.ApplyT(func(v GetDesktopsResult) []GetDesktopsDesktop { return v.Desktops }).(GetDesktopsDesktopArrayOutput)
 }
 
+// The IDs of the authorized users of the cloud desktop.
 func (o GetDesktopsResultOutput) EndUserIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDesktopsResult) []string { return v.EndUserIds }).(pulumi.StringArrayOutput)
 }
@@ -223,6 +257,7 @@ func (o GetDesktopsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDesktopsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Desktop names.
 func (o GetDesktopsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDesktopsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -235,10 +270,12 @@ func (o GetDesktopsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDesktopsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The cloud desktop policy ID.
 func (o GetDesktopsResultOutput) PolicyGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDesktopsResult) *string { return v.PolicyGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The cloud desktop status.
 func (o GetDesktopsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDesktopsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

@@ -65,6 +65,9 @@ class GetTransitRouterPrefixListAssociationsResult:
     @_builtins.property
     @pulumi.getter
     def associations(self) -> Sequence['outputs.GetTransitRouterPrefixListAssociationsAssociationResult']:
+        """
+        A list of Cen Transit Router Prefix List Associations. Each element contains the following attributes:
+        """
         return pulumi.get(self, "associations")
 
     @_builtins.property
@@ -88,6 +91,9 @@ class GetTransitRouterPrefixListAssociationsResult:
     @_builtins.property
     @pulumi.getter(name="ownerUid")
     def owner_uid(self) -> Optional[_builtins.int]:
+        """
+        The ID of the Alibaba Cloud account to which the prefix list belongs.
+        """
         return pulumi.get(self, "owner_uid")
 
     @_builtins.property
@@ -103,21 +109,33 @@ class GetTransitRouterPrefixListAssociationsResult:
     @_builtins.property
     @pulumi.getter(name="prefixListId")
     def prefix_list_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the prefix list.
+        """
         return pulumi.get(self, "prefix_list_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the prefix list.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> _builtins.str:
+        """
+        The ID of the transit router.
+        """
         return pulumi.get(self, "transit_router_id")
 
     @_builtins.property
     @pulumi.getter(name="transitRouterTableId")
     def transit_router_table_id(self) -> _builtins.str:
+        """
+        The ID of the route table of the transit router.
+        """
         return pulumi.get(self, "transit_router_table_id")
 
 
@@ -153,7 +171,7 @@ def get_transit_router_prefix_list_associations(ids: Optional[Sequence[_builtins
     """
     This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.188.0+.
+    > **NOTE:** Available since v1.188.0+.
 
     ## Example Usage
 
@@ -215,7 +233,7 @@ def get_transit_router_prefix_list_associations_output(ids: pulumi.Input[Optiona
     """
     This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.188.0+.
+    > **NOTE:** Available since v1.188.0+.
 
     ## Example Usage
 

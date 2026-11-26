@@ -17,9 +17,21 @@ public final class ImageCopyState extends com.pulumi.resources.ResourceArgs {
 
     public static final ImageCopyState Empty = new ImageCopyState();
 
+    /**
+     * Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
     @Import(name="deleteAutoSnapshot")
     private @Nullable Output<Boolean> deleteAutoSnapshot;
 
+    /**
+     * @return Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
     public Optional<Output<Boolean>> deleteAutoSnapshot() {
         return Optional.ofNullable(this.deleteAutoSnapshot);
     }
@@ -104,6 +116,8 @@ public final class ImageCopyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Attribute &#39;name&#39; has been deprecated, please use `imageName` instead.
+     * 
      * @deprecated Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
      * 
      */
@@ -112,6 +126,8 @@ public final class ImageCopyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
+     * @return Attribute &#39;name&#39; has been deprecated, please use `imageName` instead.
+     * 
      * @deprecated Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
      * 
      */
@@ -198,11 +214,27 @@ public final class ImageCopyState extends com.pulumi.resources.ResourceArgs {
             $ = new ImageCopyState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deleteAutoSnapshot Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteAutoSnapshot(@Nullable Output<Boolean> deleteAutoSnapshot) {
             $.deleteAutoSnapshot = deleteAutoSnapshot;
             return this;
         }
 
+        /**
+         * @param deleteAutoSnapshot Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteAutoSnapshot(Boolean deleteAutoSnapshot) {
             return deleteAutoSnapshot(Output.of(deleteAutoSnapshot));
         }
@@ -317,6 +349,8 @@ public final class ImageCopyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param name Attribute &#39;name&#39; has been deprecated, please use `imageName` instead.
+         * 
          * @return builder
          * 
          * @deprecated Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
@@ -329,6 +363,8 @@ public final class ImageCopyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param name Attribute &#39;name&#39; has been deprecated, please use `imageName` instead.
+         * 
          * @return builder
          * 
          * @deprecated Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.

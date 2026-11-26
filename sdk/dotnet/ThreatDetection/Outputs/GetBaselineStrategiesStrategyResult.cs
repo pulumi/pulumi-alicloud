@@ -45,11 +45,17 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// The ID of the baseline check policy.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The risk sub type name of the baseline check policy.
+        /// </summary>
         public readonly string RiskSubTypeName;
         /// <summary>
         /// The baseline check policy start time.
         /// </summary>
         public readonly string StartTime;
+        /// <summary>
+        /// The target type of the baseline check policy.
+        /// </summary>
         public readonly string TargetType;
 
         [OutputConstructor]

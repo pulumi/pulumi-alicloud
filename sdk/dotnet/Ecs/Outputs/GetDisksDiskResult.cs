@@ -14,23 +14,32 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetDisksDiskResult
     {
         /// <summary>
-        /// Disk attachment time.
+        /// The attached time.
         /// </summary>
         public readonly string AttachedTime;
+        /// <summary>
+        /// The ID of the automatic snapshot policy.
+        /// </summary>
         public readonly string AutoSnapshotPolicyId;
         /// <summary>
-        /// Availability zone of the disk.
+        /// The availability zone. Deprecated; use `ZoneId` instead.
         /// </summary>
         public readonly string AvailabilityZone;
         /// <summary>
-        /// Disk category. Possible values: `Cloud` (basic cloud disk), `CloudEfficiency` (ultra cloud disk), `EphemeralSsd` (local SSD cloud disk), `CloudSsd` (SSD cloud disk), and `CloudEssd` (ESSD cloud disk), `CloudEssdEntry`.
+        /// Disk category. Valid values: `Cloud`, `CloudEfficiency`, `CloudSsd`, `EphemeralSsd`, `CloudEssd`, `CloudAuto`, `CloudEssdEntry`, and `CloudRegionalDiskAuto` (Regional ESSD).
         /// </summary>
         public readonly string Category;
         /// <summary>
         /// Disk creation time.
         /// </summary>
         public readonly string CreationTime;
+        /// <summary>
+        /// Whether to delete the automatic snapshot.
+        /// </summary>
         public readonly bool DeleteAutoSnapshot;
+        /// <summary>
+        /// Whether to delete the disk with the instance.
+        /// </summary>
         public readonly bool DeleteWithInstance;
         /// <summary>
         /// Disk description.
@@ -40,11 +49,29 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Disk detachment time.
         /// </summary>
         public readonly string DetachedTime;
+        /// <summary>
+        /// The device name.
+        /// </summary>
         public readonly string Device;
+        /// <summary>
+        /// The ID of the disk.
+        /// </summary>
         public readonly string DiskId;
+        /// <summary>
+        /// The name of the disk.
+        /// </summary>
         public readonly string DiskName;
+        /// <summary>
+        /// Disk type. Valid values: `System`, `Data`, `All`.
+        /// </summary>
         public readonly string DiskType;
+        /// <summary>
+        /// Whether to enable the automatic snapshot.
+        /// </summary>
         public readonly bool EnableAutoSnapshot;
+        /// <summary>
+        /// Whether to enable the automated snapshot policy.
+        /// </summary>
         public readonly bool EnableAutomatedSnapshotPolicy;
         /// <summary>
         /// Indicate whether the disk is encrypted or not. Possible values: `On` and `Off`.
@@ -54,6 +81,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Disk expiration time.
         /// </summary>
         public readonly string ExpirationTime;
+        /// <summary>
+        /// The expired time of the disk.
+        /// </summary>
         public readonly string ExpiredTime;
         /// <summary>
         /// ID of the disk.
@@ -67,20 +97,53 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Filter the results by the specified ECS instance ID.
         /// </summary>
         public readonly string InstanceId;
+        /// <summary>
+        /// The IOPS of the disk.
+        /// </summary>
         public readonly int Iops;
+        /// <summary>
+        /// The read IOPS.
+        /// </summary>
         public readonly int IopsRead;
+        /// <summary>
+        /// The write IOPS.
+        /// </summary>
         public readonly int IopsWrite;
+        /// <summary>
+        /// The KMS key ID.
+        /// </summary>
         public readonly string KmsKeyId;
+        /// <summary>
+        /// The number of mounted instances.
+        /// </summary>
         public readonly int MountInstanceNum;
+        /// <summary>
+        /// A list of mounted instances.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDisksDiskMountInstanceResult> MountInstances;
         /// <summary>
         /// Disk name.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Operation locks. See `OperationLocks` below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDisksDiskOperationLockResult> OperationLocks;
+        /// <summary>
+        /// The payment type. Valid values: `PayAsYouGo`, `Subscription`.
+        /// </summary>
         public readonly string PaymentType;
+        /// <summary>
+        /// The performance level of the ESSD.
+        /// </summary>
         public readonly string PerformanceLevel;
+        /// <summary>
+        /// Whether the disk is portable.
+        /// </summary>
         public readonly bool Portable;
+        /// <summary>
+        /// The product code.
+        /// </summary>
         public readonly string ProductCode;
         /// <summary>
         /// Region ID the disk belongs to.
@@ -95,15 +158,16 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly int Size;
         /// <summary>
-        /// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+        /// The snapshot ID.
         /// </summary>
         public readonly string SnapshotId;
         /// <summary>
-        /// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+        /// The status of the disk.
         /// </summary>
         public readonly string Status;
         /// <summary>
         /// A map of tags assigned to the disks. It must be in the format:
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -129,6 +193,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Disk type. Possible values: `System` and `Data`.
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The zone ID.
+        /// </summary>
         public readonly string ZoneId;
 
         [OutputConstructor]

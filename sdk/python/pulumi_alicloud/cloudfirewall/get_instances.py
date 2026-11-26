@@ -52,6 +52,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
+        """
+        A list of Cloud Firewall Instances. Each element contains the following attributes:
+        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
@@ -62,6 +65,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[_builtins.str]:
+        """
+        The payment type of the resource. Valid values: `Subscription`.
+        """
         return pulumi.get(self, "payment_type")
 
 

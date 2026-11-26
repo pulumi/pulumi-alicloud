@@ -113,6 +113,11 @@ public final class GetListenersSlbListener {
      */
     private Integer healthyThreshold;
     /**
+     * @return (String, Available since v2.3.0) The listener ID, in the format of `&lt;load_balancer_id&gt;:&lt;protocol&gt;:&lt;frontend_port&gt;`. It is the same as the import ID of `alicloud.slb.Listener`.
+     * 
+     */
+    private String id;
+    /**
      * @return Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
      * 
      */
@@ -152,6 +157,10 @@ public final class GetListenersSlbListener {
      * 
      */
     private String securityStatus;
+    /**
+     * @return ID of the server certificate. Only available when the protocol is `https`.
+     * 
+     */
     private String serverCertificateId;
     /**
      * @return ID of the linked VServer group.
@@ -351,6 +360,13 @@ public final class GetListenersSlbListener {
         return this.healthyThreshold;
     }
     /**
+     * @return (String, Available since v2.3.0) The listener ID, in the format of `&lt;load_balancer_id&gt;:&lt;protocol&gt;:&lt;frontend_port&gt;`. It is the same as the import ID of `alicloud.slb.Listener`.
+     * 
+     */
+    public String id() {
+        return this.id;
+    }
+    /**
      * @return Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
      * 
      */
@@ -406,6 +422,10 @@ public final class GetListenersSlbListener {
     public String securityStatus() {
         return this.securityStatus;
     }
+    /**
+     * @return ID of the server certificate. Only available when the protocol is `https`.
+     * 
+     */
     public String serverCertificateId() {
         return this.serverCertificateId;
     }
@@ -516,6 +536,7 @@ public final class GetListenersSlbListener {
         private String healthCheckType;
         private String healthCheckUri;
         private Integer healthyThreshold;
+        private String id;
         private Integer idleTimeout;
         private String masterSlaveServerGroupId;
         private Integer persistenceTimeout;
@@ -559,6 +580,7 @@ public final class GetListenersSlbListener {
     	      this.healthCheckType = defaults.healthCheckType;
     	      this.healthCheckUri = defaults.healthCheckUri;
     	      this.healthyThreshold = defaults.healthyThreshold;
+    	      this.id = defaults.id;
     	      this.idleTimeout = defaults.idleTimeout;
     	      this.masterSlaveServerGroupId = defaults.masterSlaveServerGroupId;
     	      this.persistenceTimeout = defaults.persistenceTimeout;
@@ -739,6 +761,14 @@ public final class GetListenersSlbListener {
               throw new MissingRequiredPropertyException("GetListenersSlbListener", "healthyThreshold");
             }
             this.healthyThreshold = healthyThreshold;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -923,6 +953,7 @@ public final class GetListenersSlbListener {
             _resultValue.healthCheckType = healthCheckType;
             _resultValue.healthCheckUri = healthCheckUri;
             _resultValue.healthyThreshold = healthyThreshold;
+            _resultValue.id = id;
             _resultValue.idleTimeout = idleTimeout;
             _resultValue.masterSlaveServerGroupId = masterSlaveServerGroupId;
             _resultValue.persistenceTimeout = persistenceTimeout;

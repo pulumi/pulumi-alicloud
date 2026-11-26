@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Cms.Outputs
     [OutputType]
     public sealed class GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByResult
     {
+        /// <summary>
+        /// The alias of the aggregation result.
+        /// </summary>
         public readonly string Alias;
+        /// <summary>
+        /// The name of the key that is used to aggregate logs imported from Log Service.
+        /// </summary>
         public readonly string SlsKeyName;
 
         [OutputConstructor]

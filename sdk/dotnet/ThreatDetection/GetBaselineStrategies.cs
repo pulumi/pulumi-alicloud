@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudThreatDetectionBaselineStrategyExampleId"] = defaultAlicloudThreatDetectionBaselineStrategys.Strategys[0].Id,
+        ///         ["alicloudThreatDetectionBaselineStrategyExampleId"] = @default.Apply(@default =&gt; @default.Apply(getBaselineStrategiesResult =&gt; getBaselineStrategiesResult.Strategies[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudThreatDetectionBaselineStrategyExampleId"] = defaultAlicloudThreatDetectionBaselineStrategys.Strategys[0].Id,
+        ///         ["alicloudThreatDetectionBaselineStrategyExampleId"] = @default.Apply(@default =&gt; @default.Apply(getBaselineStrategiesResult =&gt; getBaselineStrategiesResult.Strategies[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudThreatDetectionBaselineStrategyExampleId"] = defaultAlicloudThreatDetectionBaselineStrategys.Strategys[0].Id,
+        ///         ["alicloudThreatDetectionBaselineStrategyExampleId"] = @default.Apply(@default =&gt; @default.Apply(getBaselineStrategiesResult =&gt; getBaselineStrategiesResult.Strategies[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -183,6 +183,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The IDs of the Baseline Strategy.
+        /// </summary>
         [Input("strategyIds")]
         public string? StrategyIds { get; set; }
 
@@ -224,6 +227,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// The IDs of the Baseline Strategy.
+        /// </summary>
         [Input("strategyIds")]
         public Input<string>? StrategyIds { get; set; }
 
@@ -253,10 +259,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of name of Baseline Strategys.
+        /// A list of name of Baseline Strategies.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Baseline Strategy Entries. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBaselineStrategiesStrategyResult> Strategies;
         public readonly string? StrategyIds;
 

@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
  *
  * > **NOTE:** Available since v1.195.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.bss.getOpenApiProducts({
+ *     nameRegex: "内容分发网络CDN",
+ * });
+ * export const alicloudBssOpenApiProductExampleId = _default.then(_default => _default.products?.[0]?.productCode);
+ * ```
  */
 export function getOpenApiProducts(args?: GetOpenApiProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenApiProductsResult> {
     args = args || {};
@@ -63,6 +75,18 @@ export interface GetOpenApiProductsResult {
  * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
  *
  * > **NOTE:** Available since v1.195.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.bss.getOpenApiProducts({
+ *     nameRegex: "内容分发网络CDN",
+ * });
+ * export const alicloudBssOpenApiProductExampleId = _default.then(_default => _default.products?.[0]?.productCode);
+ * ```
  */
 export function getOpenApiProductsOutput(args?: GetOpenApiProductsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOpenApiProductsResult> {
     args = args || {};

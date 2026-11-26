@@ -369,15 +369,36 @@ class TableDefinedColumn(dict):
 
 @pulumi.output_type
 class TablePrimaryKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoIncrement":
+            suggest = "auto_increment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TablePrimaryKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TablePrimaryKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TablePrimaryKey.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: _builtins.str,
-                 type: _builtins.str):
+                 type: _builtins.str,
+                 auto_increment: Optional[_builtins.bool] = None):
         """
         :param _builtins.str name: Name for primary key.
         :param _builtins.str type: Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+        :param _builtins.bool auto_increment: Specifies whether the primary key column is auto-incremented. Defaults to `false`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `auto_increment`. Changing this field forces a new resource.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
+        if auto_increment is not None:
+            pulumi.set(__self__, "auto_increment", auto_increment)
 
     @_builtins.property
     @pulumi.getter
@@ -394,6 +415,14 @@ class TablePrimaryKey(dict):
         Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
         """
         return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="autoIncrement")
+    def auto_increment(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether the primary key column is auto-incremented. Defaults to `false`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `auto_increment`. Changing this field forces a new resource.
+        """
+        return pulumi.get(self, "auto_increment")
 
 
 @pulumi.output_type
@@ -996,10 +1025,11 @@ class GetTablesTableResult(dict):
                  table_name: _builtins.str,
                  time_to_live: _builtins.int):
         """
+        :param Sequence['GetTablesTableDefinedColumnArgs'] defined_columns: The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
         :param _builtins.str id: ID of the table. The value is `<instance_name>:<table_name>`.
         :param _builtins.str instance_name: The name of OTS instance.
         :param _builtins.int max_version: The maximum number of versions stored in this table.
-        :param Sequence['GetTablesTablePrimaryKeyArgs'] primary_keys: The property of `TableMeta` which indicates the structure information of a table.
+        :param Sequence['GetTablesTablePrimaryKeyArgs'] primary_keys: The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
         :param _builtins.str table_name: The table name of the OTS which could not be changed.
         :param _builtins.int time_to_live: The retention time of data stored in this table.
         """
@@ -1014,6 +1044,9 @@ class GetTablesTableResult(dict):
     @_builtins.property
     @pulumi.getter(name="definedColumns")
     def defined_columns(self) -> Sequence['outputs.GetTablesTableDefinedColumnResult']:
+        """
+        The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
+        """
         return pulumi.get(self, "defined_columns")
 
     @_builtins.property
@@ -1044,7 +1077,7 @@ class GetTablesTableResult(dict):
     @pulumi.getter(name="primaryKeys")
     def primary_keys(self) -> Sequence['outputs.GetTablesTablePrimaryKeyResult']:
         """
-        The property of `TableMeta` which indicates the structure information of a table.
+        The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
         """
         return pulumi.get(self, "primary_keys")
 
@@ -1070,17 +1103,27 @@ class GetTablesTableDefinedColumnResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  type: _builtins.str):
+        """
+        :param _builtins.str name: Name for defined column.
+        :param _builtins.str type: Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        Name for defined column.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
+        """
+        Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
+        """
         return pulumi.get(self, "type")
 
 
@@ -1089,17 +1132,27 @@ class GetTablesTablePrimaryKeyResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  type: _builtins.str):
+        """
+        :param _builtins.str name: Name for defined column.
+        :param _builtins.str type: Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        Name for defined column.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
+        """
+        Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
+        """
         return pulumi.get(self, "type")
 
 

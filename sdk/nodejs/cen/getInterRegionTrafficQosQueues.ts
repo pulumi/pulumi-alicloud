@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Cen Inter Region Traffic Qos Queue available to the user.
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0+
  *
  * ## Example Usage
  *
@@ -87,7 +87,7 @@ export interface GetInterRegionTrafficQosQueuesResult {
 /**
  * This data source provides Cen Inter Region Traffic Qos Queue available to the user.
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0+
  *
  * ## Example Usage
  *

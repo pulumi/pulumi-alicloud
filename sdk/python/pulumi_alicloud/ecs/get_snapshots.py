@@ -89,6 +89,9 @@ class GetSnapshotsResult:
     @_builtins.property
     @pulumi.getter
     def category(self) -> Optional[_builtins.str]:
+        """
+        The category of the snapshot.
+        """
         return pulumi.get(self, "category")
 
     @_builtins.property
@@ -146,6 +149,9 @@ class GetSnapshotsResult:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The resource group ID.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
@@ -156,11 +162,17 @@ class GetSnapshotsResult:
     @_builtins.property
     @pulumi.getter(name="snapshotName")
     def snapshot_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the snapshot.
+        """
         return pulumi.get(self, "snapshot_name")
 
     @_builtins.property
     @pulumi.getter(name="snapshotType")
     def snapshot_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the snapshot.
+        """
         return pulumi.get(self, "snapshot_type")
 
     @_builtins.property
@@ -198,6 +210,9 @@ class GetSnapshotsResult:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
+        """
+        The type of the snapshot.
+        """
         return pulumi.get(self, "type")
 
     @_builtins.property
@@ -260,7 +275,7 @@ def get_snapshots(category: Optional[_builtins.str] = None,
 
     For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
 
-    > **NOTE:**  Available in 1.40.0+.
+    > **NOTE:** Available since v1.40.0.
 
     ## Example Usage
 
@@ -272,42 +287,36 @@ def get_snapshots(category: Optional[_builtins.str] = None,
         name_regex="tf-testAcc-snapshot")
     ```
 
-    ## Argument Reference
 
-    The following arguments are supported:
-
-    * `instance_id` - (Optional) The specified instance ID.
-    * `disk_id` - (Optional) The specified disk ID.
-    * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
-    * `ids` - (Optional)  A list of snapshot IDs.
-    * `name_regex` - (Optional) A regex string to filter results by snapshot name.
-    * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
-      * progressing: The snapshots are being created.
-      * accomplished: The snapshots are ready to use.
-      * failed: The snapshot creation failed.
-      * all: All status.
-    * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
-      * auto: Auto snapshots.
-      * user: Manual snapshots.
-      * all: Auto and manual snapshots.
-    * `source_disk_type` - (Optional) The type of source disk:
-      * System: The snapshots are created for system disks.
-      * Data: The snapshots are created for data disks.
-    * `usage` - (Optional) The usage of the snapshot:
-      * image: The snapshots are used to create custom images.
-      * disk: The snapshots are used to CreateDisk.
-      * mage_disk: The snapshots are used to create custom images and data disks.
-      * none: The snapshots are not used yet.
-    * `tags` - (Optional) A map of tags assigned to snapshots.
-    * `output_file` - (Optional) The name of output file that saves the filter results.
-
-
-    :param _builtins.bool encrypted: Whether the snapshot is encrypted or not.
+    :param _builtins.str category: The category of the snapshot. Valid values: `flash`, `standard`.
+    :param _builtins.bool dry_run: Whether to check validity without making the request.
+    :param _builtins.bool encrypted: Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
     :param Sequence[_builtins.str] ids: A list of snapshot IDs.
-    :param _builtins.str source_disk_type: Source disk attribute. Value range: `System`,`Data`.
-    :param _builtins.str status: The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
-    :param Mapping[str, _builtins.str] tags: A map of tags assigned to the snapshot.
-    :param _builtins.str usage: Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+    :param _builtins.str kms_key_id: The KMS key ID.
+    :param _builtins.str name_regex: A regex string to filter results by snapshot name.
+    :param _builtins.str output_file: The name of output file that saves the filter results.
+    :param _builtins.str resource_group_id: The resource group ID.
+    :param _builtins.str snapshot_link_id: The snapshot link ID.
+    :param _builtins.str snapshot_name: The name of the snapshot.
+    :param _builtins.str snapshot_type: The type of the snapshot. Valid values: `auto`, `user`, `all`.
+    :param _builtins.str source_disk_type: The type of source disk:
+           * System: The snapshots are created for system disks.
+           * Data: The snapshots are created for data disks.
+    :param _builtins.str status: The specified snapshot status. Default value: `all`. Optional values:
+           * progressing: The snapshots are being created.
+           * accomplished: The snapshots are ready to use.
+           * failed: The snapshot creation failed.
+           * all: All status.
+    :param Mapping[str, _builtins.str] tags: A map of tags assigned to snapshots.
+    :param _builtins.str type: The snapshot category. Default value: `all`. Optional values:
+           * auto: Auto snapshots.
+           * user: Manual snapshots.
+           * all: Auto and manual snapshots.
+    :param _builtins.str usage: The usage of the snapshot:
+           * image: The snapshots are used to create custom images.
+           * disk: The snapshots are used to CreateDisk.
+           * mage_disk: The snapshots are used to create custom images and data disks.
+           * none: The snapshots are not used yet.
     """
     __args__ = dict()
     __args__['category'] = category
@@ -373,7 +382,7 @@ def get_snapshots_output(category: pulumi.Input[Optional[Optional[_builtins.str]
 
     For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
 
-    > **NOTE:**  Available in 1.40.0+.
+    > **NOTE:** Available since v1.40.0.
 
     ## Example Usage
 
@@ -385,42 +394,36 @@ def get_snapshots_output(category: pulumi.Input[Optional[Optional[_builtins.str]
         name_regex="tf-testAcc-snapshot")
     ```
 
-    ## Argument Reference
 
-    The following arguments are supported:
-
-    * `instance_id` - (Optional) The specified instance ID.
-    * `disk_id` - (Optional) The specified disk ID.
-    * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
-    * `ids` - (Optional)  A list of snapshot IDs.
-    * `name_regex` - (Optional) A regex string to filter results by snapshot name.
-    * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
-      * progressing: The snapshots are being created.
-      * accomplished: The snapshots are ready to use.
-      * failed: The snapshot creation failed.
-      * all: All status.
-    * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
-      * auto: Auto snapshots.
-      * user: Manual snapshots.
-      * all: Auto and manual snapshots.
-    * `source_disk_type` - (Optional) The type of source disk:
-      * System: The snapshots are created for system disks.
-      * Data: The snapshots are created for data disks.
-    * `usage` - (Optional) The usage of the snapshot:
-      * image: The snapshots are used to create custom images.
-      * disk: The snapshots are used to CreateDisk.
-      * mage_disk: The snapshots are used to create custom images and data disks.
-      * none: The snapshots are not used yet.
-    * `tags` - (Optional) A map of tags assigned to snapshots.
-    * `output_file` - (Optional) The name of output file that saves the filter results.
-
-
-    :param _builtins.bool encrypted: Whether the snapshot is encrypted or not.
+    :param _builtins.str category: The category of the snapshot. Valid values: `flash`, `standard`.
+    :param _builtins.bool dry_run: Whether to check validity without making the request.
+    :param _builtins.bool encrypted: Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
     :param Sequence[_builtins.str] ids: A list of snapshot IDs.
-    :param _builtins.str source_disk_type: Source disk attribute. Value range: `System`,`Data`.
-    :param _builtins.str status: The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
-    :param Mapping[str, _builtins.str] tags: A map of tags assigned to the snapshot.
-    :param _builtins.str usage: Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+    :param _builtins.str kms_key_id: The KMS key ID.
+    :param _builtins.str name_regex: A regex string to filter results by snapshot name.
+    :param _builtins.str output_file: The name of output file that saves the filter results.
+    :param _builtins.str resource_group_id: The resource group ID.
+    :param _builtins.str snapshot_link_id: The snapshot link ID.
+    :param _builtins.str snapshot_name: The name of the snapshot.
+    :param _builtins.str snapshot_type: The type of the snapshot. Valid values: `auto`, `user`, `all`.
+    :param _builtins.str source_disk_type: The type of source disk:
+           * System: The snapshots are created for system disks.
+           * Data: The snapshots are created for data disks.
+    :param _builtins.str status: The specified snapshot status. Default value: `all`. Optional values:
+           * progressing: The snapshots are being created.
+           * accomplished: The snapshots are ready to use.
+           * failed: The snapshot creation failed.
+           * all: All status.
+    :param Mapping[str, _builtins.str] tags: A map of tags assigned to snapshots.
+    :param _builtins.str type: The snapshot category. Default value: `all`. Optional values:
+           * auto: Auto snapshots.
+           * user: Manual snapshots.
+           * all: Auto and manual snapshots.
+    :param _builtins.str usage: The usage of the snapshot:
+           * image: The snapshots are used to create custom images.
+           * disk: The snapshots are used to CreateDisk.
+           * mage_disk: The snapshots are used to create custom images and data disks.
+           * none: The snapshots are not used yet.
     """
     __args__ = dict()
     __args__['category'] = category

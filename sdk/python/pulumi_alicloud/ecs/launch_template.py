@@ -78,11 +78,21 @@ class LaunchTemplateArgs:
         """
         The set of arguments for constructing a LaunchTemplate resource.
 
-        :param pulumi.Input[_builtins.str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
-        :param pulumi.Input[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance.
+        :param pulumi.Input[_builtins.str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the instance.
+        :param pulumi.Input[_builtins.int] auto_renew_period: The auto-renewal period of the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
+        :param pulumi.Input[_builtins.int] default_version_number: The version number of the default launch template version.
+        :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set.
         :param pulumi.Input[_builtins.str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
-        :param pulumi.Input[_builtins.str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        :param pulumi.Input[_builtins.bool] enable_vm_os_config: Whether to enable VM OS configuration.
+        :param pulumi.Input[_builtins.str] host_name: Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        :param pulumi.Input[_builtins.str] http_endpoint: Whether to enable access to instance metadata.
+        :param pulumi.Input[_builtins.int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests.
+        :param pulumi.Input[_builtins.str] http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
         :param pulumi.Input[_builtins.str] image_id: Image ID.
+        :param pulumi.Input['LaunchTemplateImageOptionsArgs'] image_options: The options of images. See `image_options` below.
+        :param pulumi.Input[_builtins.str] image_owner_alias: The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
         :param pulumi.Input[_builtins.str] instance_charge_type: Billing methods. Optional values:
                - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
                - PostPaid: Pay-As-You-Go.
@@ -97,32 +107,42 @@ class LaunchTemplateArgs:
                - none
                - optimized
         :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair.
-               - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+               - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
-        :param pulumi.Input[_builtins.str] name: Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
-        :param pulumi.Input['LaunchTemplateNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance.
+        :param pulumi.Input[_builtins.str] launch_template_name: The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        :param pulumi.Input[_builtins.str] name: It has been deprecated from version 1.120.0. New field `launch_template_name` instead.
+        :param pulumi.Input['LaunchTemplateNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[_builtins.str] network_type: Network type of the instance. Value options: `classic` | `vpc`.
+        :param pulumi.Input[_builtins.bool] password_inherit: Whether to use the password inherited from the image.
+        :param pulumi.Input[_builtins.int] period: The purchase duration of the instance.
+        :param pulumi.Input[_builtins.str] period_unit: The unit of the purchase duration.
+        :param pulumi.Input[_builtins.str] private_ip_address: The private IP address of the instance.
         :param pulumi.Input[_builtins.str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the resource belongs.
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: The list of security group IDs.
+        :param pulumi.Input[_builtins.str] spot_duration: The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
         :param pulumi.Input[_builtins.float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
                - NoSpot: Normal Pay-As-You-Go instance.
                - SpotWithPriceLimit: Sets the maximum price for a spot instance.
                - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
-        :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk. System disk type. Optional values:
-               - cloud: Basic cloud disk.
-               - cloud_efficiency: Ultra cloud disk.
-               - cloud_ssd: SSD cloud Disks.
-               - ephemeral_ssd: local SSD Disks
-               - cloud_essd: ESSD cloud Disks.
-        :param pulumi.Input[_builtins.str] system_disk_description: System disk description. It cannot begin with http:// or https://.
-        :param pulumi.Input[_builtins.str] system_disk_name: System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
-        :param pulumi.Input[_builtins.int] system_disk_size: Size of the system disk, measured in GB. Value range: [20, 500].
+        :param pulumi.Input['LaunchTemplateSystemDiskArgs'] system_disk: The system disk. See `system_disk` below.
+        :param pulumi.Input[_builtins.str] system_disk_category: It has been deprecated from version 1.120.0. New field `system_disk` instead.
+        :param pulumi.Input[_builtins.str] system_disk_description: It has been deprecated from version 1.120.0. New field `system_disk` instead.
+        :param pulumi.Input[_builtins.str] system_disk_name: It has been deprecated from version 1.120.0. New field `system_disk` instead.
+        :param pulumi.Input[_builtins.int] system_disk_size: It has been deprecated from version 1.120.0. New field `system_disk` instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[_builtins.str] userdata: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+        :param pulumi.Input[_builtins.str] template_resource_group_id: The ID of the resource group for the launch template.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] template_tags: A mapping of tags to assign to the launch template.
+        :param pulumi.Input[_builtins.bool] update_default_version_number: Whether to update the default version of the launch template to the latest version automatically.
+        :param pulumi.Input[_builtins.str] user_data: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+        :param pulumi.Input[_builtins.str] userdata: It has been deprecated from version 1.120.0. New field `user_data` instead.
+        :param pulumi.Input[_builtins.str] version_description: The description of the launch template version.
+        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance.
         """
@@ -257,7 +277,7 @@ class LaunchTemplateArgs:
     @pulumi.getter(name="autoReleaseTime")
     def auto_release_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+        Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
         """
         return pulumi.get(self, "auto_release_time")
 
@@ -268,6 +288,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable auto-renewal for the instance.
+        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -277,6 +300,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The auto-renewal period of the instance.
+        """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
@@ -287,7 +313,7 @@ class LaunchTemplateArgs:
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]]]:
         """
-        The list of data disks created with instance.
+        The list of data disks created with instance. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
 
@@ -298,6 +324,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="defaultVersionNumber")
     def default_version_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version number of the default launch template version.
+        """
         return pulumi.get(self, "default_version_number")
 
     @default_version_number.setter
@@ -307,6 +336,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="deploymentSetId")
     def deployment_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the deployment set.
+        """
         return pulumi.get(self, "deployment_set_id")
 
     @deployment_set_id.setter
@@ -328,6 +360,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="enableVmOsConfig")
     def enable_vm_os_config(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable VM OS configuration.
+        """
         return pulumi.get(self, "enable_vm_os_config")
 
     @enable_vm_os_config.setter
@@ -338,7 +373,7 @@ class LaunchTemplateArgs:
     @pulumi.getter(name="hostName")
     def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         """
         return pulumi.get(self, "host_name")
 
@@ -349,6 +384,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="httpEndpoint")
     def http_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether to enable access to instance metadata.
+        """
         return pulumi.get(self, "http_endpoint")
 
     @http_endpoint.setter
@@ -358,6 +396,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="httpPutResponseHopLimit")
     def http_put_response_hop_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The HTTP PUT response hop limit required for instance metadata requests.
+        """
         return pulumi.get(self, "http_put_response_hop_limit")
 
     @http_put_response_hop_limit.setter
@@ -367,6 +408,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="httpTokens")
     def http_tokens(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+        """
         return pulumi.get(self, "http_tokens")
 
     @http_tokens.setter
@@ -388,6 +432,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="imageOptions")
     def image_options(self) -> pulumi.Input[Optional['LaunchTemplateImageOptionsArgs']]:
+        """
+        The options of images. See `image_options` below.
+        """
         return pulumi.get(self, "image_options")
 
     @image_options.setter
@@ -397,6 +444,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="imageOwnerAlias")
     def image_owner_alias(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
+        """
         return pulumi.get(self, "image_owner_alias")
 
     @image_owner_alias.setter
@@ -498,7 +548,7 @@ class LaunchTemplateArgs:
     def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the key pair.
-        - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+        - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
         - The password logon method for Linux instances is set to forbidden upon initialization.
         """
         return pulumi.get(self, "key_pair_name")
@@ -510,6 +560,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="launchTemplateName")
     def launch_template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        """
         return pulumi.get(self, "launch_template_name")
 
     @launch_template_name.setter
@@ -521,7 +574,7 @@ class LaunchTemplateArgs:
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        It has been deprecated from version 1.120.0. New field `launch_template_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -533,7 +586,7 @@ class LaunchTemplateArgs:
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> pulumi.Input[Optional['LaunchTemplateNetworkInterfacesArgs']]:
         """
-        The list of network interfaces created with instance.
+        The list of network interfaces created with instance. See `network_interfaces` below.
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -556,6 +609,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="passwordInherit")
     def password_inherit(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to use the password inherited from the image.
+        """
         return pulumi.get(self, "password_inherit")
 
     @password_inherit.setter
@@ -565,6 +621,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The purchase duration of the instance.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -574,6 +633,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unit of the purchase duration.
+        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -583,6 +645,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="privateIpAddress")
     def private_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The private IP address of the instance.
+        """
         return pulumi.get(self, "private_ip_address")
 
     @private_ip_address.setter
@@ -604,6 +669,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the resource group to which the resource belongs.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -637,6 +705,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of security group IDs.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -646,6 +717,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="spotDuration")
     def spot_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+        """
         return pulumi.get(self, "spot_duration")
 
     @spot_duration.setter
@@ -682,6 +756,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="systemDisk")
     def system_disk(self) -> pulumi.Input[Optional['LaunchTemplateSystemDiskArgs']]:
+        """
+        The system disk. See `system_disk` below.
+        """
         return pulumi.get(self, "system_disk")
 
     @system_disk.setter
@@ -693,12 +770,7 @@ class LaunchTemplateArgs:
     @_utilities.deprecated("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The category of the system disk. System disk type. Optional values:
-        - cloud: Basic cloud disk.
-        - cloud_efficiency: Ultra cloud disk.
-        - cloud_ssd: SSD cloud Disks.
-        - ephemeral_ssd: local SSD Disks
-        - cloud_essd: ESSD cloud Disks.
+        It has been deprecated from version 1.120.0. New field `system_disk` instead.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -711,7 +783,7 @@ class LaunchTemplateArgs:
     @_utilities.deprecated("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        System disk description. It cannot begin with http:// or https://.
+        It has been deprecated from version 1.120.0. New field `system_disk` instead.
         """
         return pulumi.get(self, "system_disk_description")
 
@@ -724,7 +796,7 @@ class LaunchTemplateArgs:
     @_utilities.deprecated("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+        It has been deprecated from version 1.120.0. New field `system_disk` instead.
         """
         return pulumi.get(self, "system_disk_name")
 
@@ -737,7 +809,7 @@ class LaunchTemplateArgs:
     @_utilities.deprecated("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Size of the system disk, measured in GB. Value range: [20, 500].
+        It has been deprecated from version 1.120.0. New field `system_disk` instead.
         """
         return pulumi.get(self, "system_disk_size")
 
@@ -762,6 +834,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="templateResourceGroupId")
     def template_resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the resource group for the launch template.
+        """
         return pulumi.get(self, "template_resource_group_id")
 
     @template_resource_group_id.setter
@@ -771,6 +846,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="templateTags")
     def template_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the launch template.
+        """
         return pulumi.get(self, "template_tags")
 
     @template_tags.setter
@@ -780,6 +858,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="updateDefaultVersionNumber")
     def update_default_version_number(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to update the default version of the launch template to the latest version automatically.
+        """
         return pulumi.get(self, "update_default_version_number")
 
     @update_default_version_number.setter
@@ -789,6 +870,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+        """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -800,7 +884,7 @@ class LaunchTemplateArgs:
     @_utilities.deprecated("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
     def userdata(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+        It has been deprecated from version 1.120.0. New field `user_data` instead.
         """
         return pulumi.get(self, "userdata")
 
@@ -811,6 +895,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="versionDescription")
     def version_description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the launch template version.
+        """
         return pulumi.get(self, "version_description")
 
     @version_description.setter
@@ -820,6 +907,9 @@ class LaunchTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The VPC ID.
+        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -912,11 +1002,21 @@ class _LaunchTemplateState:
         """
         Input properties used for looking up and filtering LaunchTemplate resources.
 
-        :param pulumi.Input[_builtins.str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
-        :param pulumi.Input[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance.
+        :param pulumi.Input[_builtins.str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the instance.
+        :param pulumi.Input[_builtins.int] auto_renew_period: The auto-renewal period of the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
+        :param pulumi.Input[_builtins.int] default_version_number: The version number of the default launch template version.
+        :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set.
         :param pulumi.Input[_builtins.str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
-        :param pulumi.Input[_builtins.str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        :param pulumi.Input[_builtins.bool] enable_vm_os_config: Whether to enable VM OS configuration.
+        :param pulumi.Input[_builtins.str] host_name: Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        :param pulumi.Input[_builtins.str] http_endpoint: Whether to enable access to instance metadata.
+        :param pulumi.Input[_builtins.int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests.
+        :param pulumi.Input[_builtins.str] http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
         :param pulumi.Input[_builtins.str] image_id: Image ID.
+        :param pulumi.Input['LaunchTemplateImageOptionsArgs'] image_options: The options of images. See `image_options` below.
+        :param pulumi.Input[_builtins.str] image_owner_alias: The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
         :param pulumi.Input[_builtins.str] instance_charge_type: Billing methods. Optional values:
                - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
                - PostPaid: Pay-As-You-Go.
@@ -931,32 +1031,43 @@ class _LaunchTemplateState:
                - none
                - optimized
         :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair.
-               - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+               - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
-        :param pulumi.Input[_builtins.str] name: Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
-        :param pulumi.Input['LaunchTemplateNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance.
+        :param pulumi.Input[_builtins.int] latest_version_number: The latest version number of the launch template.
+        :param pulumi.Input[_builtins.str] launch_template_name: The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        :param pulumi.Input[_builtins.str] name: It has been deprecated from version 1.120.0. New field `launch_template_name` instead.
+        :param pulumi.Input['LaunchTemplateNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[_builtins.str] network_type: Network type of the instance. Value options: `classic` | `vpc`.
+        :param pulumi.Input[_builtins.bool] password_inherit: Whether to use the password inherited from the image.
+        :param pulumi.Input[_builtins.int] period: The purchase duration of the instance.
+        :param pulumi.Input[_builtins.str] period_unit: The unit of the purchase duration.
+        :param pulumi.Input[_builtins.str] private_ip_address: The private IP address of the instance.
         :param pulumi.Input[_builtins.str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the resource belongs.
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: The list of security group IDs.
+        :param pulumi.Input[_builtins.str] spot_duration: The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
         :param pulumi.Input[_builtins.float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
                - NoSpot: Normal Pay-As-You-Go instance.
                - SpotWithPriceLimit: Sets the maximum price for a spot instance.
                - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
-        :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk. System disk type. Optional values:
-               - cloud: Basic cloud disk.
-               - cloud_efficiency: Ultra cloud disk.
-               - cloud_ssd: SSD cloud Disks.
-               - ephemeral_ssd: local SSD Disks
-               - cloud_essd: ESSD cloud Disks.
-        :param pulumi.Input[_builtins.str] system_disk_description: System disk description. It cannot begin with http:// or https://.
-        :param pulumi.Input[_builtins.str] system_disk_name: System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
-        :param pulumi.Input[_builtins.int] system_disk_size: Size of the system disk, measured in GB. Value range: [20, 500].
+        :param pulumi.Input['LaunchTemplateSystemDiskArgs'] system_disk: The system disk. See `system_disk` below.
+        :param pulumi.Input[_builtins.str] system_disk_category: It has been deprecated from version 1.120.0. New field `system_disk` instead.
+        :param pulumi.Input[_builtins.str] system_disk_description: It has been deprecated from version 1.120.0. New field `system_disk` instead.
+        :param pulumi.Input[_builtins.str] system_disk_name: It has been deprecated from version 1.120.0. New field `system_disk` instead.
+        :param pulumi.Input[_builtins.int] system_disk_size: It has been deprecated from version 1.120.0. New field `system_disk` instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[_builtins.str] userdata: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+        :param pulumi.Input[_builtins.str] template_resource_group_id: The ID of the resource group for the launch template.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] template_tags: A mapping of tags to assign to the launch template.
+        :param pulumi.Input[_builtins.bool] update_default_version_number: Whether to update the default version of the launch template to the latest version automatically.
+        :param pulumi.Input[_builtins.str] user_data: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+        :param pulumi.Input[_builtins.str] userdata: It has been deprecated from version 1.120.0. New field `user_data` instead.
+        :param pulumi.Input[_builtins.str] version_description: The description of the launch template version.
+        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance.
         """
@@ -1093,7 +1204,7 @@ class _LaunchTemplateState:
     @pulumi.getter(name="autoReleaseTime")
     def auto_release_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+        Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
         """
         return pulumi.get(self, "auto_release_time")
 
@@ -1104,6 +1215,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable auto-renewal for the instance.
+        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -1113,6 +1227,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The auto-renewal period of the instance.
+        """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
@@ -1123,7 +1240,7 @@ class _LaunchTemplateState:
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]]]:
         """
-        The list of data disks created with instance.
+        The list of data disks created with instance. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
 
@@ -1134,6 +1251,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="defaultVersionNumber")
     def default_version_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version number of the default launch template version.
+        """
         return pulumi.get(self, "default_version_number")
 
     @default_version_number.setter
@@ -1143,6 +1263,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="deploymentSetId")
     def deployment_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the deployment set.
+        """
         return pulumi.get(self, "deployment_set_id")
 
     @deployment_set_id.setter
@@ -1164,6 +1287,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="enableVmOsConfig")
     def enable_vm_os_config(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable VM OS configuration.
+        """
         return pulumi.get(self, "enable_vm_os_config")
 
     @enable_vm_os_config.setter
@@ -1174,7 +1300,7 @@ class _LaunchTemplateState:
     @pulumi.getter(name="hostName")
     def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         """
         return pulumi.get(self, "host_name")
 
@@ -1185,6 +1311,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="httpEndpoint")
     def http_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether to enable access to instance metadata.
+        """
         return pulumi.get(self, "http_endpoint")
 
     @http_endpoint.setter
@@ -1194,6 +1323,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="httpPutResponseHopLimit")
     def http_put_response_hop_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The HTTP PUT response hop limit required for instance metadata requests.
+        """
         return pulumi.get(self, "http_put_response_hop_limit")
 
     @http_put_response_hop_limit.setter
@@ -1203,6 +1335,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="httpTokens")
     def http_tokens(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+        """
         return pulumi.get(self, "http_tokens")
 
     @http_tokens.setter
@@ -1224,6 +1359,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="imageOptions")
     def image_options(self) -> pulumi.Input[Optional['LaunchTemplateImageOptionsArgs']]:
+        """
+        The options of images. See `image_options` below.
+        """
         return pulumi.get(self, "image_options")
 
     @image_options.setter
@@ -1233,6 +1371,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="imageOwnerAlias")
     def image_owner_alias(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
+        """
         return pulumi.get(self, "image_owner_alias")
 
     @image_owner_alias.setter
@@ -1334,7 +1475,7 @@ class _LaunchTemplateState:
     def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the key pair.
-        - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+        - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
         - The password logon method for Linux instances is set to forbidden upon initialization.
         """
         return pulumi.get(self, "key_pair_name")
@@ -1346,6 +1487,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="latestVersionNumber")
     def latest_version_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The latest version number of the launch template.
+        """
         return pulumi.get(self, "latest_version_number")
 
     @latest_version_number.setter
@@ -1355,6 +1499,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="launchTemplateName")
     def launch_template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        """
         return pulumi.get(self, "launch_template_name")
 
     @launch_template_name.setter
@@ -1366,7 +1513,7 @@ class _LaunchTemplateState:
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        It has been deprecated from version 1.120.0. New field `launch_template_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -1378,7 +1525,7 @@ class _LaunchTemplateState:
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> pulumi.Input[Optional['LaunchTemplateNetworkInterfacesArgs']]:
         """
-        The list of network interfaces created with instance.
+        The list of network interfaces created with instance. See `network_interfaces` below.
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -1401,6 +1548,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="passwordInherit")
     def password_inherit(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to use the password inherited from the image.
+        """
         return pulumi.get(self, "password_inherit")
 
     @password_inherit.setter
@@ -1410,6 +1560,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The purchase duration of the instance.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -1419,6 +1572,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unit of the purchase duration.
+        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -1428,6 +1584,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="privateIpAddress")
     def private_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The private IP address of the instance.
+        """
         return pulumi.get(self, "private_ip_address")
 
     @private_ip_address.setter
@@ -1449,6 +1608,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the resource group to which the resource belongs.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -1482,6 +1644,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of security group IDs.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -1491,6 +1656,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="spotDuration")
     def spot_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+        """
         return pulumi.get(self, "spot_duration")
 
     @spot_duration.setter
@@ -1527,6 +1695,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="systemDisk")
     def system_disk(self) -> pulumi.Input[Optional['LaunchTemplateSystemDiskArgs']]:
+        """
+        The system disk. See `system_disk` below.
+        """
         return pulumi.get(self, "system_disk")
 
     @system_disk.setter
@@ -1538,12 +1709,7 @@ class _LaunchTemplateState:
     @_utilities.deprecated("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The category of the system disk. System disk type. Optional values:
-        - cloud: Basic cloud disk.
-        - cloud_efficiency: Ultra cloud disk.
-        - cloud_ssd: SSD cloud Disks.
-        - ephemeral_ssd: local SSD Disks
-        - cloud_essd: ESSD cloud Disks.
+        It has been deprecated from version 1.120.0. New field `system_disk` instead.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -1556,7 +1722,7 @@ class _LaunchTemplateState:
     @_utilities.deprecated("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        System disk description. It cannot begin with http:// or https://.
+        It has been deprecated from version 1.120.0. New field `system_disk` instead.
         """
         return pulumi.get(self, "system_disk_description")
 
@@ -1569,7 +1735,7 @@ class _LaunchTemplateState:
     @_utilities.deprecated("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+        It has been deprecated from version 1.120.0. New field `system_disk` instead.
         """
         return pulumi.get(self, "system_disk_name")
 
@@ -1582,7 +1748,7 @@ class _LaunchTemplateState:
     @_utilities.deprecated("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Size of the system disk, measured in GB. Value range: [20, 500].
+        It has been deprecated from version 1.120.0. New field `system_disk` instead.
         """
         return pulumi.get(self, "system_disk_size")
 
@@ -1607,6 +1773,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="templateResourceGroupId")
     def template_resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the resource group for the launch template.
+        """
         return pulumi.get(self, "template_resource_group_id")
 
     @template_resource_group_id.setter
@@ -1616,6 +1785,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="templateTags")
     def template_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the launch template.
+        """
         return pulumi.get(self, "template_tags")
 
     @template_tags.setter
@@ -1625,6 +1797,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="updateDefaultVersionNumber")
     def update_default_version_number(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to update the default version of the launch template to the latest version automatically.
+        """
         return pulumi.get(self, "update_default_version_number")
 
     @update_default_version_number.setter
@@ -1634,6 +1809,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+        """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -1645,7 +1823,7 @@ class _LaunchTemplateState:
     @_utilities.deprecated("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
     def userdata(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+        It has been deprecated from version 1.120.0. New field `user_data` instead.
         """
         return pulumi.get(self, "userdata")
 
@@ -1656,6 +1834,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="versionDescription")
     def version_description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the launch template version.
+        """
         return pulumi.get(self, "version_description")
 
     @version_description.setter
@@ -1665,6 +1846,9 @@ class _LaunchTemplateState:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The VPC ID.
+        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -1770,36 +1954,50 @@ class LaunchTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        images = alicloud.ecs.get_images(owners="system")
-        instances = alicloud.ecs.get_instances()
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            owners="system")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            security_group_name="terraform-example",
+            vpc_id=default_network.id)
         template = alicloud.ecs.LaunchTemplate("template",
-            name="tf-test-template",
+            launch_template_name="tf-template",
             description="test1",
             image_id=images.images[0].id,
-            host_name="tf-test-host",
+            host_name="tf-host",
             instance_charge_type="PrePaid",
             instance_name="tf-instance-name",
-            instance_type=instances.instances[0].instance_type,
+            instance_type="ecs.s6-c1m1.small",
             internet_charge_type="PayByBandwidth",
             internet_max_bandwidth_in=5,
-            internet_max_bandwidth_out=0,
-            io_optimized="none",
-            key_pair_name="test-key-pair",
+            internet_max_bandwidth_out=5,
+            io_optimized="optimized",
+            key_pair_name="tf-key-pair",
             ram_role_name="xxxxx",
             network_type="vpc",
             security_enhancement_strategy="Active",
             spot_price_limit=float(5),
             spot_strategy="SpotWithPriceLimit",
-            security_group_id="sg-zxcvj0lasdf102350asdf9a",
-            system_disk_category="cloud_ssd",
-            system_disk_description="test disk",
-            system_disk_name="hello",
-            system_disk_size=40,
-            resource_group_id="rg-zkdfjahg9zxncv0",
-            userdata="xxxxxxxxxxxxxx",
-            vswitch_id="sw-ljkngaksdjfj0nnasdf",
-            vpc_id="vpc-asdfnbg0as8dfk1nb2",
-            zone_id="beijing-a",
+            security_group_id=default_security_group.id,
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id,
+            user_data="xxxxxxxxxxxxxx",
+            system_disk={
+                "category": "cloud_ssd",
+                "description": "test disk",
+                "name": "hello",
+                "size": 40,
+            },
             tags={
                 "tag1": "hello",
                 "tag2": "world",
@@ -1808,8 +2006,8 @@ class LaunchTemplate(pulumi.CustomResource):
                 "name": "eth0",
                 "description": "hello1",
                 "primary_ip": "10.0.0.2",
-                "security_group_id": "xxxx",
-                "vswitch_id": "xxxxxxx",
+                "security_group_id": default_security_group.id,
+                "vswitch_id": default_switch.id,
             },
             data_disks=[
                 {
@@ -1836,11 +2034,21 @@ class LaunchTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LaunchTemplateDataDiskArgs', 'LaunchTemplateDataDiskArgsDict', 'outputs.LaunchTemplateDataDisk']]]] data_disks: The list of data disks created with instance.
+        :param pulumi.Input[_builtins.str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the instance.
+        :param pulumi.Input[_builtins.int] auto_renew_period: The auto-renewal period of the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LaunchTemplateDataDiskArgs', 'LaunchTemplateDataDiskArgsDict', 'outputs.LaunchTemplateDataDisk']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
+        :param pulumi.Input[_builtins.int] default_version_number: The version number of the default launch template version.
+        :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set.
         :param pulumi.Input[_builtins.str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
-        :param pulumi.Input[_builtins.str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        :param pulumi.Input[_builtins.bool] enable_vm_os_config: Whether to enable VM OS configuration.
+        :param pulumi.Input[_builtins.str] host_name: Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        :param pulumi.Input[_builtins.str] http_endpoint: Whether to enable access to instance metadata.
+        :param pulumi.Input[_builtins.int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests.
+        :param pulumi.Input[_builtins.str] http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
         :param pulumi.Input[_builtins.str] image_id: Image ID.
+        :param pulumi.Input[Union['LaunchTemplateImageOptionsArgs', 'LaunchTemplateImageOptionsArgsDict', 'outputs.LaunchTemplateImageOptions']] image_options: The options of images. See `image_options` below.
+        :param pulumi.Input[_builtins.str] image_owner_alias: The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
         :param pulumi.Input[_builtins.str] instance_charge_type: Billing methods. Optional values:
                - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
                - PostPaid: Pay-As-You-Go.
@@ -1855,32 +2063,42 @@ class LaunchTemplate(pulumi.CustomResource):
                - none
                - optimized
         :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair.
-               - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+               - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
-        :param pulumi.Input[_builtins.str] name: Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
-        :param pulumi.Input[Union['LaunchTemplateNetworkInterfacesArgs', 'LaunchTemplateNetworkInterfacesArgsDict', 'outputs.LaunchTemplateNetworkInterfaces']] network_interfaces: The list of network interfaces created with instance.
+        :param pulumi.Input[_builtins.str] launch_template_name: The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        :param pulumi.Input[_builtins.str] name: It has been deprecated from version 1.120.0. New field `launch_template_name` instead.
+        :param pulumi.Input[Union['LaunchTemplateNetworkInterfacesArgs', 'LaunchTemplateNetworkInterfacesArgsDict', 'outputs.LaunchTemplateNetworkInterfaces']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[_builtins.str] network_type: Network type of the instance. Value options: `classic` | `vpc`.
+        :param pulumi.Input[_builtins.bool] password_inherit: Whether to use the password inherited from the image.
+        :param pulumi.Input[_builtins.int] period: The purchase duration of the instance.
+        :param pulumi.Input[_builtins.str] period_unit: The unit of the purchase duration.
+        :param pulumi.Input[_builtins.str] private_ip_address: The private IP address of the instance.
         :param pulumi.Input[_builtins.str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the resource belongs.
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: The list of security group IDs.
+        :param pulumi.Input[_builtins.str] spot_duration: The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
         :param pulumi.Input[_builtins.float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
                - NoSpot: Normal Pay-As-You-Go instance.
                - SpotWithPriceLimit: Sets the maximum price for a spot instance.
                - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
-        :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk. System disk type. Optional values:
-               - cloud: Basic cloud disk.
-               - cloud_efficiency: Ultra cloud disk.
-               - cloud_ssd: SSD cloud Disks.
-               - ephemeral_ssd: local SSD Disks
-               - cloud_essd: ESSD cloud Disks.
-        :param pulumi.Input[_builtins.str] system_disk_description: System disk description. It cannot begin with http:// or https://.
-        :param pulumi.Input[_builtins.str] system_disk_name: System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
-        :param pulumi.Input[_builtins.int] system_disk_size: Size of the system disk, measured in GB. Value range: [20, 500].
+        :param pulumi.Input[Union['LaunchTemplateSystemDiskArgs', 'LaunchTemplateSystemDiskArgsDict', 'outputs.LaunchTemplateSystemDisk']] system_disk: The system disk. See `system_disk` below.
+        :param pulumi.Input[_builtins.str] system_disk_category: It has been deprecated from version 1.120.0. New field `system_disk` instead.
+        :param pulumi.Input[_builtins.str] system_disk_description: It has been deprecated from version 1.120.0. New field `system_disk` instead.
+        :param pulumi.Input[_builtins.str] system_disk_name: It has been deprecated from version 1.120.0. New field `system_disk` instead.
+        :param pulumi.Input[_builtins.int] system_disk_size: It has been deprecated from version 1.120.0. New field `system_disk` instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[_builtins.str] userdata: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+        :param pulumi.Input[_builtins.str] template_resource_group_id: The ID of the resource group for the launch template.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] template_tags: A mapping of tags to assign to the launch template.
+        :param pulumi.Input[_builtins.bool] update_default_version_number: Whether to update the default version of the launch template to the latest version automatically.
+        :param pulumi.Input[_builtins.str] user_data: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+        :param pulumi.Input[_builtins.str] userdata: It has been deprecated from version 1.120.0. New field `user_data` instead.
+        :param pulumi.Input[_builtins.str] version_description: The description of the launch template version.
+        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance.
         """
@@ -1903,36 +2121,50 @@ class LaunchTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        images = alicloud.ecs.get_images(owners="system")
-        instances = alicloud.ecs.get_instances()
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            owners="system")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            security_group_name="terraform-example",
+            vpc_id=default_network.id)
         template = alicloud.ecs.LaunchTemplate("template",
-            name="tf-test-template",
+            launch_template_name="tf-template",
             description="test1",
             image_id=images.images[0].id,
-            host_name="tf-test-host",
+            host_name="tf-host",
             instance_charge_type="PrePaid",
             instance_name="tf-instance-name",
-            instance_type=instances.instances[0].instance_type,
+            instance_type="ecs.s6-c1m1.small",
             internet_charge_type="PayByBandwidth",
             internet_max_bandwidth_in=5,
-            internet_max_bandwidth_out=0,
-            io_optimized="none",
-            key_pair_name="test-key-pair",
+            internet_max_bandwidth_out=5,
+            io_optimized="optimized",
+            key_pair_name="tf-key-pair",
             ram_role_name="xxxxx",
             network_type="vpc",
             security_enhancement_strategy="Active",
             spot_price_limit=float(5),
             spot_strategy="SpotWithPriceLimit",
-            security_group_id="sg-zxcvj0lasdf102350asdf9a",
-            system_disk_category="cloud_ssd",
-            system_disk_description="test disk",
-            system_disk_name="hello",
-            system_disk_size=40,
-            resource_group_id="rg-zkdfjahg9zxncv0",
-            userdata="xxxxxxxxxxxxxx",
-            vswitch_id="sw-ljkngaksdjfj0nnasdf",
-            vpc_id="vpc-asdfnbg0as8dfk1nb2",
-            zone_id="beijing-a",
+            security_group_id=default_security_group.id,
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id,
+            user_data="xxxxxxxxxxxxxx",
+            system_disk={
+                "category": "cloud_ssd",
+                "description": "test disk",
+                "name": "hello",
+                "size": 40,
+            },
             tags={
                 "tag1": "hello",
                 "tag2": "world",
@@ -1941,8 +2173,8 @@ class LaunchTemplate(pulumi.CustomResource):
                 "name": "eth0",
                 "description": "hello1",
                 "primary_ip": "10.0.0.2",
-                "security_group_id": "xxxx",
-                "vswitch_id": "xxxxxxx",
+                "security_group_id": default_security_group.id,
+                "vswitch_id": default_switch.id,
             },
             data_disks=[
                 {
@@ -2172,11 +2404,21 @@ class LaunchTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LaunchTemplateDataDiskArgs', 'LaunchTemplateDataDiskArgsDict', 'outputs.LaunchTemplateDataDisk']]]] data_disks: The list of data disks created with instance.
+        :param pulumi.Input[_builtins.str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the instance.
+        :param pulumi.Input[_builtins.int] auto_renew_period: The auto-renewal period of the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LaunchTemplateDataDiskArgs', 'LaunchTemplateDataDiskArgsDict', 'outputs.LaunchTemplateDataDisk']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
+        :param pulumi.Input[_builtins.int] default_version_number: The version number of the default launch template version.
+        :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set.
         :param pulumi.Input[_builtins.str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
-        :param pulumi.Input[_builtins.str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        :param pulumi.Input[_builtins.bool] enable_vm_os_config: Whether to enable VM OS configuration.
+        :param pulumi.Input[_builtins.str] host_name: Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        :param pulumi.Input[_builtins.str] http_endpoint: Whether to enable access to instance metadata.
+        :param pulumi.Input[_builtins.int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests.
+        :param pulumi.Input[_builtins.str] http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
         :param pulumi.Input[_builtins.str] image_id: Image ID.
+        :param pulumi.Input[Union['LaunchTemplateImageOptionsArgs', 'LaunchTemplateImageOptionsArgsDict', 'outputs.LaunchTemplateImageOptions']] image_options: The options of images. See `image_options` below.
+        :param pulumi.Input[_builtins.str] image_owner_alias: The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
         :param pulumi.Input[_builtins.str] instance_charge_type: Billing methods. Optional values:
                - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
                - PostPaid: Pay-As-You-Go.
@@ -2191,32 +2433,43 @@ class LaunchTemplate(pulumi.CustomResource):
                - none
                - optimized
         :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair.
-               - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+               - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
-        :param pulumi.Input[_builtins.str] name: Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
-        :param pulumi.Input[Union['LaunchTemplateNetworkInterfacesArgs', 'LaunchTemplateNetworkInterfacesArgsDict', 'outputs.LaunchTemplateNetworkInterfaces']] network_interfaces: The list of network interfaces created with instance.
+        :param pulumi.Input[_builtins.int] latest_version_number: The latest version number of the launch template.
+        :param pulumi.Input[_builtins.str] launch_template_name: The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        :param pulumi.Input[_builtins.str] name: It has been deprecated from version 1.120.0. New field `launch_template_name` instead.
+        :param pulumi.Input[Union['LaunchTemplateNetworkInterfacesArgs', 'LaunchTemplateNetworkInterfacesArgsDict', 'outputs.LaunchTemplateNetworkInterfaces']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[_builtins.str] network_type: Network type of the instance. Value options: `classic` | `vpc`.
+        :param pulumi.Input[_builtins.bool] password_inherit: Whether to use the password inherited from the image.
+        :param pulumi.Input[_builtins.int] period: The purchase duration of the instance.
+        :param pulumi.Input[_builtins.str] period_unit: The unit of the purchase duration.
+        :param pulumi.Input[_builtins.str] private_ip_address: The private IP address of the instance.
         :param pulumi.Input[_builtins.str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the resource belongs.
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: The list of security group IDs.
+        :param pulumi.Input[_builtins.str] spot_duration: The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
         :param pulumi.Input[_builtins.float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
                - NoSpot: Normal Pay-As-You-Go instance.
                - SpotWithPriceLimit: Sets the maximum price for a spot instance.
                - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
-        :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk. System disk type. Optional values:
-               - cloud: Basic cloud disk.
-               - cloud_efficiency: Ultra cloud disk.
-               - cloud_ssd: SSD cloud Disks.
-               - ephemeral_ssd: local SSD Disks
-               - cloud_essd: ESSD cloud Disks.
-        :param pulumi.Input[_builtins.str] system_disk_description: System disk description. It cannot begin with http:// or https://.
-        :param pulumi.Input[_builtins.str] system_disk_name: System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
-        :param pulumi.Input[_builtins.int] system_disk_size: Size of the system disk, measured in GB. Value range: [20, 500].
+        :param pulumi.Input[Union['LaunchTemplateSystemDiskArgs', 'LaunchTemplateSystemDiskArgsDict', 'outputs.LaunchTemplateSystemDisk']] system_disk: The system disk. See `system_disk` below.
+        :param pulumi.Input[_builtins.str] system_disk_category: It has been deprecated from version 1.120.0. New field `system_disk` instead.
+        :param pulumi.Input[_builtins.str] system_disk_description: It has been deprecated from version 1.120.0. New field `system_disk` instead.
+        :param pulumi.Input[_builtins.str] system_disk_name: It has been deprecated from version 1.120.0. New field `system_disk` instead.
+        :param pulumi.Input[_builtins.int] system_disk_size: It has been deprecated from version 1.120.0. New field `system_disk` instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[_builtins.str] userdata: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+        :param pulumi.Input[_builtins.str] template_resource_group_id: The ID of the resource group for the launch template.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] template_tags: A mapping of tags to assign to the launch template.
+        :param pulumi.Input[_builtins.bool] update_default_version_number: Whether to update the default version of the launch template to the latest version automatically.
+        :param pulumi.Input[_builtins.str] user_data: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+        :param pulumi.Input[_builtins.str] userdata: It has been deprecated from version 1.120.0. New field `user_data` instead.
+        :param pulumi.Input[_builtins.str] version_description: The description of the launch template version.
+        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance.
         """
@@ -2401,36 +2654,48 @@ class LaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="autoReleaseTime")
     def auto_release_time(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+        Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
         """
         return pulumi.get(self, "auto_release_time")
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to enable auto-renewal for the instance.
+        """
         return pulumi.get(self, "auto_renew")
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> pulumi.Output[_builtins.int]:
+        """
+        The auto-renewal period of the instance.
+        """
         return pulumi.get(self, "auto_renew_period")
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.LaunchTemplateDataDisk']]]:
         """
-        The list of data disks created with instance.
+        The list of data disks created with instance. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
 
     @_builtins.property
     @pulumi.getter(name="defaultVersionNumber")
     def default_version_number(self) -> pulumi.Output[_builtins.int]:
+        """
+        The version number of the default launch template version.
+        """
         return pulumi.get(self, "default_version_number")
 
     @_builtins.property
     @pulumi.getter(name="deploymentSetId")
     def deployment_set_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the deployment set.
+        """
         return pulumi.get(self, "deployment_set_id")
 
     @_builtins.property
@@ -2444,29 +2709,41 @@ class LaunchTemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="enableVmOsConfig")
     def enable_vm_os_config(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to enable VM OS configuration.
+        """
         return pulumi.get(self, "enable_vm_os_config")
 
     @_builtins.property
     @pulumi.getter(name="hostName")
     def host_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         """
         return pulumi.get(self, "host_name")
 
     @_builtins.property
     @pulumi.getter(name="httpEndpoint")
     def http_endpoint(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether to enable access to instance metadata.
+        """
         return pulumi.get(self, "http_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="httpPutResponseHopLimit")
     def http_put_response_hop_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        The HTTP PUT response hop limit required for instance metadata requests.
+        """
         return pulumi.get(self, "http_put_response_hop_limit")
 
     @_builtins.property
     @pulumi.getter(name="httpTokens")
     def http_tokens(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+        """
         return pulumi.get(self, "http_tokens")
 
     @_builtins.property
@@ -2480,11 +2757,17 @@ class LaunchTemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="imageOptions")
     def image_options(self) -> pulumi.Output['outputs.LaunchTemplateImageOptions']:
+        """
+        The options of images. See `image_options` below.
+        """
         return pulumi.get(self, "image_options")
 
     @_builtins.property
     @pulumi.getter(name="imageOwnerAlias")
     def image_owner_alias(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
+        """
         return pulumi.get(self, "image_owner_alias")
 
     @_builtins.property
@@ -2554,7 +2837,7 @@ class LaunchTemplate(pulumi.CustomResource):
     def key_pair_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The name of the key pair.
-        - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+        - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
         - The password logon method for Linux instances is set to forbidden upon initialization.
         """
         return pulumi.get(self, "key_pair_name")
@@ -2562,11 +2845,17 @@ class LaunchTemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="latestVersionNumber")
     def latest_version_number(self) -> pulumi.Output[_builtins.int]:
+        """
+        The latest version number of the launch template.
+        """
         return pulumi.get(self, "latest_version_number")
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateName")
     def launch_template_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        """
         return pulumi.get(self, "launch_template_name")
 
     @_builtins.property
@@ -2574,7 +2863,7 @@ class LaunchTemplate(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        It has been deprecated from version 1.120.0. New field `launch_template_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -2582,7 +2871,7 @@ class LaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> pulumi.Output[Optional['outputs.LaunchTemplateNetworkInterfaces']]:
         """
-        The list of network interfaces created with instance.
+        The list of network interfaces created with instance. See `network_interfaces` below.
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -2597,21 +2886,33 @@ class LaunchTemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="passwordInherit")
     def password_inherit(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to use the password inherited from the image.
+        """
         return pulumi.get(self, "password_inherit")
 
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Output[_builtins.int]:
+        """
+        The purchase duration of the instance.
+        """
         return pulumi.get(self, "period")
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[_builtins.str]:
+        """
+        The unit of the purchase duration.
+        """
         return pulumi.get(self, "period_unit")
 
     @_builtins.property
     @pulumi.getter(name="privateIpAddress")
     def private_ip_address(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The private IP address of the instance.
+        """
         return pulumi.get(self, "private_ip_address")
 
     @_builtins.property
@@ -2625,6 +2926,9 @@ class LaunchTemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the resource group to which the resource belongs.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
@@ -2646,11 +2950,17 @@ class LaunchTemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The list of security group IDs.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @_builtins.property
     @pulumi.getter(name="spotDuration")
     def spot_duration(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+        """
         return pulumi.get(self, "spot_duration")
 
     @_builtins.property
@@ -2675,6 +2985,9 @@ class LaunchTemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="systemDisk")
     def system_disk(self) -> pulumi.Output['outputs.LaunchTemplateSystemDisk']:
+        """
+        The system disk. See `system_disk` below.
+        """
         return pulumi.get(self, "system_disk")
 
     @_builtins.property
@@ -2682,12 +2995,7 @@ class LaunchTemplate(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_category(self) -> pulumi.Output[_builtins.str]:
         """
-        The category of the system disk. System disk type. Optional values:
-        - cloud: Basic cloud disk.
-        - cloud_efficiency: Ultra cloud disk.
-        - cloud_ssd: SSD cloud Disks.
-        - ephemeral_ssd: local SSD Disks
-        - cloud_essd: ESSD cloud Disks.
+        It has been deprecated from version 1.120.0. New field `system_disk` instead.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -2696,7 +3004,7 @@ class LaunchTemplate(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_description(self) -> pulumi.Output[_builtins.str]:
         """
-        System disk description. It cannot begin with http:// or https://.
+        It has been deprecated from version 1.120.0. New field `system_disk` instead.
         """
         return pulumi.get(self, "system_disk_description")
 
@@ -2705,7 +3013,7 @@ class LaunchTemplate(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_name(self) -> pulumi.Output[_builtins.str]:
         """
-        System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+        It has been deprecated from version 1.120.0. New field `system_disk` instead.
         """
         return pulumi.get(self, "system_disk_name")
 
@@ -2714,7 +3022,7 @@ class LaunchTemplate(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_size(self) -> pulumi.Output[_builtins.int]:
         """
-        Size of the system disk, measured in GB. Value range: [20, 500].
+        It has been deprecated from version 1.120.0. New field `system_disk` instead.
         """
         return pulumi.get(self, "system_disk_size")
 
@@ -2731,21 +3039,33 @@ class LaunchTemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="templateResourceGroupId")
     def template_resource_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the resource group for the launch template.
+        """
         return pulumi.get(self, "template_resource_group_id")
 
     @_builtins.property
     @pulumi.getter(name="templateTags")
     def template_tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A mapping of tags to assign to the launch template.
+        """
         return pulumi.get(self, "template_tags")
 
     @_builtins.property
     @pulumi.getter(name="updateDefaultVersionNumber")
     def update_default_version_number(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to update the default version of the launch template to the latest version automatically.
+        """
         return pulumi.get(self, "update_default_version_number")
 
     @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[_builtins.str]:
+        """
+        User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+        """
         return pulumi.get(self, "user_data")
 
     @_builtins.property
@@ -2753,18 +3073,24 @@ class LaunchTemplate(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
     def userdata(self) -> pulumi.Output[_builtins.str]:
         """
-        User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+        It has been deprecated from version 1.120.0. New field `user_data` instead.
         """
         return pulumi.get(self, "userdata")
 
     @_builtins.property
     @pulumi.getter(name="versionDescription")
     def version_description(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The description of the launch template version.
+        """
         return pulumi.get(self, "version_description")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The VPC ID.
+        """
         return pulumi.get(self, "vpc_id")
 
     @_builtins.property

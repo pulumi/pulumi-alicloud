@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides CEN Transit Router peer attachments available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.128.0+
+        /// &gt; **NOTE:** Available since v1.128.0+
         /// 
         /// ## Example Usage
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides CEN Transit Router peer attachments available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.128.0+
+        /// &gt; **NOTE:** Available since v1.128.0+
         /// 
         /// ## Example Usage
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides CEN Transit Router peer attachments available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.128.0+
+        /// &gt; **NOTE:** Available since v1.128.0+
         /// 
         /// ## Example Usage
         /// 
@@ -219,6 +219,9 @@ namespace Pulumi.AliCloud.Cen
     [OutputType]
     public sealed class GetTransitRouterPeerAttachmentsResult
     {
+        /// <summary>
+        /// A list of CEN Transit Router peer Attachments. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTransitRouterPeerAttachmentsAttachmentResult> Attachments;
         public readonly string CenId;
         /// <summary>

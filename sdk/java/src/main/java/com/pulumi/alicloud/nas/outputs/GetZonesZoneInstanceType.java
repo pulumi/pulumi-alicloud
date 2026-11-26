@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetZonesZoneInstanceType {
     /**
-     * @return File transfer protocol type. Valid values:
+     * @return File transfer protocol type. Valid values: `NFS`, `SMB` and `cpfs`.
      * 
      */
     private String protocolType;
     /**
-     * @return The storage type of the nas zones. Valid values:
+     * @return The storage type of the nas zones. Valid values: `Performance`, `Capacity`, `Standard`, `Advance`, `advance100` and `advance200`.
      * 
      */
     private String storageType;
 
     private GetZonesZoneInstanceType() {}
     /**
-     * @return File transfer protocol type. Valid values:
+     * @return File transfer protocol type. Valid values: `NFS`, `SMB` and `cpfs`.
      * 
      */
     public String protocolType() {
         return this.protocolType;
     }
     /**
-     * @return The storage type of the nas zones. Valid values:
+     * @return The storage type of the nas zones. Valid values: `Performance`, `Capacity`, `Standard`, `Advance`, `advance100` and `advance200`.
      * 
      */
     public String storageType() {

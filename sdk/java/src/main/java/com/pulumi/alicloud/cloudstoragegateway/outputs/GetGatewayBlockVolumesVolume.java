@@ -118,7 +118,7 @@ public final class GetGatewayBlockVolumesVolume {
      */
     private String state;
     /**
-     * @return The status of volume.
+     * @return The status of volume. Valid values:
      * 
      */
     private Integer status;
@@ -137,6 +137,10 @@ public final class GetGatewayBlockVolumesVolume {
      * 
      */
     private Integer totalUpload;
+    /**
+     * @return The state of volume.
+     * 
+     */
     private Integer volumeState;
 
     private GetGatewayBlockVolumesVolume() {}
@@ -288,7 +292,7 @@ public final class GetGatewayBlockVolumesVolume {
         return this.state;
     }
     /**
-     * @return The status of volume.
+     * @return The status of volume. Valid values:
      * 
      */
     public Integer status() {
@@ -315,6 +319,10 @@ public final class GetGatewayBlockVolumesVolume {
     public Integer totalUpload() {
         return this.totalUpload;
     }
+    /**
+     * @return The state of volume.
+     * 
+     */
     public Integer volumeState() {
         return this.volumeState;
     }

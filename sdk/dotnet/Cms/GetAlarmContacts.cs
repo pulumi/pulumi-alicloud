@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// Provides a list of alarm contact owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in v1.99.0+.
+        /// &gt; **NOTE:** Available since v1.99.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// Provides a list of alarm contact owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in v1.99.0+.
+        /// &gt; **NOTE:** Available since v1.99.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// Provides a list of alarm contact owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in v1.99.0+.
+        /// &gt; **NOTE:** Available since v1.99.0+.
         /// 
         /// ## Example Usage
         /// 

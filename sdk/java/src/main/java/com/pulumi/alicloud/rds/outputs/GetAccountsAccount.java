@@ -43,7 +43,7 @@ public final class GetAccountsAccount {
      */
     private String privExceeded;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Available`, `Unavailable`.
      * 
      */
     private String status;
@@ -92,7 +92,7 @@ public final class GetAccountsAccount {
         return this.privExceeded;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Available`, `Unavailable`.
      * 
      */
     public String status() {

@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// 
         /// The following example is the definition of runtime block:
         /// 
-        /// ```
+        /// ```text
         /// runtime = {
         /// name = "containerd"
         /// version = "1.6.28"

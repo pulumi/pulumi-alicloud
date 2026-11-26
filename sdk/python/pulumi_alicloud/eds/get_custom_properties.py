@@ -62,6 +62,9 @@ class GetCustomPropertiesResult:
     @_builtins.property
     @pulumi.getter
     def properties(self) -> Sequence['outputs.GetCustomPropertiesPropertyResult']:
+        """
+        A list of Ecd Custom Properties. Each element contains the following attributes:
+        """
         return pulumi.get(self, "properties")
 
 
@@ -83,7 +86,7 @@ def get_custom_properties(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.176.0+.
+    > **NOTE:** Available since v1.176.0.
 
     ## Example Usage
 
@@ -118,7 +121,7 @@ def get_custom_properties_output(ids: pulumi.Input[Optional[Optional[Sequence[_b
     """
     This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.176.0+.
+    > **NOTE:** Available since v1.176.0.
 
     ## Example Usage
 

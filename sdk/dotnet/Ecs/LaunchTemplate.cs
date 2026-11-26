@@ -26,42 +26,69 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
     ///     var images = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
+    ///         NameRegex = "^ubuntu_18.*64",
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var instances = AliCloud.Ecs.GetInstances.Invoke();
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+    ///     {
+    ///         SecurityGroupName = "terraform-example",
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
     /// 
     ///     var template = new AliCloud.Ecs.LaunchTemplate("template", new()
     ///     {
-    ///         Name = "tf-test-template",
+    ///         LaunchTemplateName = "tf-template",
     ///         Description = "test1",
     ///         ImageId = images.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         HostName = "tf-test-host",
+    ///         HostName = "tf-host",
     ///         InstanceChargeType = "PrePaid",
     ///         InstanceName = "tf-instance-name",
-    ///         InstanceType = instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.InstanceType),
+    ///         InstanceType = "ecs.s6-c1m1.small",
     ///         InternetChargeType = "PayByBandwidth",
     ///         InternetMaxBandwidthIn = 5,
-    ///         InternetMaxBandwidthOut = 0,
-    ///         IoOptimized = "none",
-    ///         KeyPairName = "test-key-pair",
+    ///         InternetMaxBandwidthOut = 5,
+    ///         IoOptimized = "optimized",
+    ///         KeyPairName = "tf-key-pair",
     ///         RamRoleName = "xxxxx",
     ///         NetworkType = "vpc",
     ///         SecurityEnhancementStrategy = "Active",
     ///         SpotPriceLimit = 5.0,
     ///         SpotStrategy = "SpotWithPriceLimit",
-    ///         SecurityGroupId = "sg-zxcvj0lasdf102350asdf9a",
-    ///         SystemDiskCategory = "cloud_ssd",
-    ///         SystemDiskDescription = "test disk",
-    ///         SystemDiskName = "hello",
-    ///         SystemDiskSize = 40,
-    ///         ResourceGroupId = "rg-zkdfjahg9zxncv0",
-    ///         Userdata = "xxxxxxxxxxxxxx",
-    ///         VswitchId = "sw-ljkngaksdjfj0nnasdf",
-    ///         VpcId = "vpc-asdfnbg0as8dfk1nb2",
-    ///         ZoneId = "beijing-a",
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         UserData = "xxxxxxxxxxxxxx",
+    ///         SystemDisk = new AliCloud.Ecs.Inputs.LaunchTemplateSystemDiskArgs
+    ///         {
+    ///             Category = "cloud_ssd",
+    ///             Description = "test disk",
+    ///             Name = "hello",
+    ///             Size = 40,
+    ///         },
     ///         Tags = 
     ///         {
     ///             { "tag1", "hello" },
@@ -72,8 +99,8 @@ namespace Pulumi.AliCloud.Ecs
     ///             Name = "eth0",
     ///             Description = "hello1",
     ///             PrimaryIp = "10.0.0.2",
-    ///             SecurityGroupId = "xxxx",
-    ///             VswitchId = "xxxxxxx",
+    ///             SecurityGroupId = defaultSecurityGroup.Id,
+    ///             VswitchId = defaultSwitch.Id,
     ///         },
     ///         DataDisks = new[]
     ///         {
@@ -107,26 +134,38 @@ namespace Pulumi.AliCloud.Ecs
     public partial class LaunchTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+        /// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
         /// </summary>
         [Output("autoReleaseTime")]
         public Output<string?> AutoReleaseTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to enable auto-renewal for the instance.
+        /// </summary>
         [Output("autoRenew")]
         public Output<bool> AutoRenew { get; private set; } = null!;
 
+        /// <summary>
+        /// The auto-renewal period of the instance.
+        /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The list of data disks created with instance.
+        /// The list of data disks created with instance. See `DataDisks` below.
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.LaunchTemplateDataDisk>> DataDisks { get; private set; } = null!;
 
+        /// <summary>
+        /// The version number of the default launch template version.
+        /// </summary>
         [Output("defaultVersionNumber")]
         public Output<int> DefaultVersionNumber { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the deployment set.
+        /// </summary>
         [Output("deploymentSetId")]
         public Output<string?> DeploymentSetId { get; private set; } = null!;
 
@@ -136,21 +175,33 @@ namespace Pulumi.AliCloud.Ecs
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to enable VM OS configuration.
+        /// </summary>
         [Output("enableVmOsConfig")]
         public Output<bool?> EnableVmOsConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        /// Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         /// </summary>
         [Output("hostName")]
         public Output<string?> HostName { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to enable access to instance metadata.
+        /// </summary>
         [Output("httpEndpoint")]
         public Output<string> HttpEndpoint { get; private set; } = null!;
 
+        /// <summary>
+        /// The HTTP PUT response hop limit required for instance metadata requests.
+        /// </summary>
         [Output("httpPutResponseHopLimit")]
         public Output<int> HttpPutResponseHopLimit { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+        /// </summary>
         [Output("httpTokens")]
         public Output<string> HttpTokens { get; private set; } = null!;
 
@@ -160,9 +211,15 @@ namespace Pulumi.AliCloud.Ecs
         [Output("imageId")]
         public Output<string?> ImageId { get; private set; } = null!;
 
+        /// <summary>
+        /// The options of images. See `ImageOptions` below.
+        /// </summary>
         [Output("imageOptions")]
         public Output<Outputs.LaunchTemplateImageOptions> ImageOptions { get; private set; } = null!;
 
+        /// <summary>
+        /// The image owner alias. Valid values: `System`, `Self`, `Others`, `Marketplace`.
+        /// </summary>
         [Output("imageOwnerAlias")]
         public Output<string?> ImageOwnerAlias { get; private set; } = null!;
 
@@ -216,26 +273,32 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The name of the key pair.
-        /// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+        /// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
         /// - The password logon method for Linux instances is set to forbidden upon initialization.
         /// </summary>
         [Output("keyPairName")]
         public Output<string?> KeyPairName { get; private set; } = null!;
 
+        /// <summary>
+        /// The latest version number of the launch template.
+        /// </summary>
         [Output("latestVersionNumber")]
         public Output<int> LatestVersionNumber { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        /// </summary>
         [Output("launchTemplateName")]
         public Output<string> LaunchTemplateName { get; private set; } = null!;
 
         /// <summary>
-        /// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        /// It has been deprecated from version 1.120.0. New field `LaunchTemplateName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The list of network interfaces created with instance.
+        /// The list of network interfaces created with instance. See `NetworkInterfaces` below.
         /// </summary>
         [Output("networkInterfaces")]
         public Output<Outputs.LaunchTemplateNetworkInterfaces?> NetworkInterfaces { get; private set; } = null!;
@@ -246,15 +309,27 @@ namespace Pulumi.AliCloud.Ecs
         [Output("networkType")]
         public Output<string?> NetworkType { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to use the password inherited from the image.
+        /// </summary>
         [Output("passwordInherit")]
         public Output<bool?> PasswordInherit { get; private set; } = null!;
 
+        /// <summary>
+        /// The purchase duration of the instance.
+        /// </summary>
         [Output("period")]
         public Output<int> Period { get; private set; } = null!;
 
+        /// <summary>
+        /// The unit of the purchase duration.
+        /// </summary>
         [Output("periodUnit")]
         public Output<string> PeriodUnit { get; private set; } = null!;
 
+        /// <summary>
+        /// The private IP address of the instance.
+        /// </summary>
         [Output("privateIpAddress")]
         public Output<string?> PrivateIpAddress { get; private set; } = null!;
 
@@ -264,6 +339,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("ramRoleName")]
         public Output<string?> RamRoleName { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the resource group to which the resource belongs.
+        /// </summary>
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
@@ -279,9 +357,15 @@ namespace Pulumi.AliCloud.Ecs
         [Output("securityGroupId")]
         public Output<string?> SecurityGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// The list of security group IDs.
+        /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
+        /// <summary>
+        /// The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+        /// </summary>
         [Output("spotDuration")]
         public Output<string?> SpotDuration { get; private set; } = null!;
 
@@ -300,34 +384,32 @@ namespace Pulumi.AliCloud.Ecs
         [Output("spotStrategy")]
         public Output<string?> SpotStrategy { get; private set; } = null!;
 
+        /// <summary>
+        /// The system disk. See `SystemDisk` below.
+        /// </summary>
         [Output("systemDisk")]
         public Output<Outputs.LaunchTemplateSystemDisk> SystemDisk { get; private set; } = null!;
 
         /// <summary>
-        /// The category of the system disk. System disk type. Optional values:
-        /// - cloud: Basic cloud disk.
-        /// - cloud_efficiency: Ultra cloud disk.
-        /// - cloud_ssd: SSD cloud Disks.
-        /// - ephemeral_ssd: local SSD Disks
-        /// - cloud_essd: ESSD cloud Disks.
+        /// It has been deprecated from version 1.120.0. New field `SystemDisk` instead.
         /// </summary>
         [Output("systemDiskCategory")]
         public Output<string> SystemDiskCategory { get; private set; } = null!;
 
         /// <summary>
-        /// System disk description. It cannot begin with http:// or https://.
+        /// It has been deprecated from version 1.120.0. New field `SystemDisk` instead.
         /// </summary>
         [Output("systemDiskDescription")]
         public Output<string> SystemDiskDescription { get; private set; } = null!;
 
         /// <summary>
-        /// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+        /// It has been deprecated from version 1.120.0. New field `SystemDisk` instead.
         /// </summary>
         [Output("systemDiskName")]
         public Output<string> SystemDiskName { get; private set; } = null!;
 
         /// <summary>
-        /// Size of the system disk, measured in GB. Value range: [20, 500].
+        /// It has been deprecated from version 1.120.0. New field `SystemDisk` instead.
         /// </summary>
         [Output("systemDiskSize")]
         public Output<int> SystemDiskSize { get; private set; } = null!;
@@ -340,27 +422,45 @@ namespace Pulumi.AliCloud.Ecs
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the resource group for the launch template.
+        /// </summary>
         [Output("templateResourceGroupId")]
         public Output<string?> TemplateResourceGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// A mapping of tags to assign to the launch template.
+        /// </summary>
         [Output("templateTags")]
         public Output<ImmutableDictionary<string, string>?> TemplateTags { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to update the default version of the launch template to the latest version automatically.
+        /// </summary>
         [Output("updateDefaultVersionNumber")]
         public Output<bool?> UpdateDefaultVersionNumber { get; private set; } = null!;
-
-        [Output("userData")]
-        public Output<string> UserData { get; private set; } = null!;
 
         /// <summary>
         /// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
         /// </summary>
+        [Output("userData")]
+        public Output<string> UserData { get; private set; } = null!;
+
+        /// <summary>
+        /// It has been deprecated from version 1.120.0. New field `UserData` instead.
+        /// </summary>
         [Output("userdata")]
         public Output<string> Userdata { get; private set; } = null!;
 
+        /// <summary>
+        /// The description of the launch template version.
+        /// </summary>
         [Output("versionDescription")]
         public Output<string?> VersionDescription { get; private set; } = null!;
 
+        /// <summary>
+        /// The VPC ID.
+        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
@@ -423,14 +523,20 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class LaunchTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+        /// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
         /// </summary>
         [Input("autoReleaseTime")]
         public Input<string>? AutoReleaseTime { get; set; }
 
+        /// <summary>
+        /// Whether to enable auto-renewal for the instance.
+        /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
+        /// <summary>
+        /// The auto-renewal period of the instance.
+        /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
@@ -438,7 +544,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.LaunchTemplateDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// The list of data disks created with instance.
+        /// The list of data disks created with instance. See `DataDisks` below.
         /// </summary>
         public InputList<Inputs.LaunchTemplateDataDiskArgs> DataDisks
         {
@@ -446,9 +552,15 @@ namespace Pulumi.AliCloud.Ecs
             set => _dataDisks = value;
         }
 
+        /// <summary>
+        /// The version number of the default launch template version.
+        /// </summary>
         [Input("defaultVersionNumber")]
         public Input<int>? DefaultVersionNumber { get; set; }
 
+        /// <summary>
+        /// The ID of the deployment set.
+        /// </summary>
         [Input("deploymentSetId")]
         public Input<string>? DeploymentSetId { get; set; }
 
@@ -458,21 +570,33 @@ namespace Pulumi.AliCloud.Ecs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether to enable VM OS configuration.
+        /// </summary>
         [Input("enableVmOsConfig")]
         public Input<bool>? EnableVmOsConfig { get; set; }
 
         /// <summary>
-        /// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        /// Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
 
+        /// <summary>
+        /// Whether to enable access to instance metadata.
+        /// </summary>
         [Input("httpEndpoint")]
         public Input<string>? HttpEndpoint { get; set; }
 
+        /// <summary>
+        /// The HTTP PUT response hop limit required for instance metadata requests.
+        /// </summary>
         [Input("httpPutResponseHopLimit")]
         public Input<int>? HttpPutResponseHopLimit { get; set; }
 
+        /// <summary>
+        /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+        /// </summary>
         [Input("httpTokens")]
         public Input<string>? HttpTokens { get; set; }
 
@@ -482,9 +606,15 @@ namespace Pulumi.AliCloud.Ecs
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
+        /// <summary>
+        /// The options of images. See `ImageOptions` below.
+        /// </summary>
         [Input("imageOptions")]
         public Input<Inputs.LaunchTemplateImageOptionsArgs>? ImageOptions { get; set; }
 
+        /// <summary>
+        /// The image owner alias. Valid values: `System`, `Self`, `Others`, `Marketplace`.
+        /// </summary>
         [Input("imageOwnerAlias")]
         public Input<string>? ImageOwnerAlias { get; set; }
 
@@ -538,23 +668,26 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The name of the key pair.
-        /// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+        /// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
         /// - The password logon method for Linux instances is set to forbidden upon initialization.
         /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
+        /// <summary>
+        /// The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        /// </summary>
         [Input("launchTemplateName")]
         public Input<string>? LaunchTemplateName { get; set; }
 
         /// <summary>
-        /// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        /// It has been deprecated from version 1.120.0. New field `LaunchTemplateName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The list of network interfaces created with instance.
+        /// The list of network interfaces created with instance. See `NetworkInterfaces` below.
         /// </summary>
         [Input("networkInterfaces")]
         public Input<Inputs.LaunchTemplateNetworkInterfacesArgs>? NetworkInterfaces { get; set; }
@@ -565,15 +698,27 @@ namespace Pulumi.AliCloud.Ecs
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
 
+        /// <summary>
+        /// Whether to use the password inherited from the image.
+        /// </summary>
         [Input("passwordInherit")]
         public Input<bool>? PasswordInherit { get; set; }
 
+        /// <summary>
+        /// The purchase duration of the instance.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        /// <summary>
+        /// The unit of the purchase duration.
+        /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
 
+        /// <summary>
+        /// The private IP address of the instance.
+        /// </summary>
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }
 
@@ -583,6 +728,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("ramRoleName")]
         public Input<string>? RamRoleName { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group to which the resource belongs.
+        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
@@ -600,12 +748,19 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// The list of security group IDs.
+        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
 
+        /// <summary>
+        /// The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+        /// </summary>
         [Input("spotDuration")]
         public Input<string>? SpotDuration { get; set; }
 
@@ -624,34 +779,32 @@ namespace Pulumi.AliCloud.Ecs
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
 
+        /// <summary>
+        /// The system disk. See `SystemDisk` below.
+        /// </summary>
         [Input("systemDisk")]
         public Input<Inputs.LaunchTemplateSystemDiskArgs>? SystemDisk { get; set; }
 
         /// <summary>
-        /// The category of the system disk. System disk type. Optional values:
-        /// - cloud: Basic cloud disk.
-        /// - cloud_efficiency: Ultra cloud disk.
-        /// - cloud_ssd: SSD cloud Disks.
-        /// - ephemeral_ssd: local SSD Disks
-        /// - cloud_essd: ESSD cloud Disks.
+        /// It has been deprecated from version 1.120.0. New field `SystemDisk` instead.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
 
         /// <summary>
-        /// System disk description. It cannot begin with http:// or https://.
+        /// It has been deprecated from version 1.120.0. New field `SystemDisk` instead.
         /// </summary>
         [Input("systemDiskDescription")]
         public Input<string>? SystemDiskDescription { get; set; }
 
         /// <summary>
-        /// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+        /// It has been deprecated from version 1.120.0. New field `SystemDisk` instead.
         /// </summary>
         [Input("systemDiskName")]
         public Input<string>? SystemDiskName { get; set; }
 
         /// <summary>
-        /// Size of the system disk, measured in GB. Value range: [20, 500].
+        /// It has been deprecated from version 1.120.0. New field `SystemDisk` instead.
         /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }
@@ -670,32 +823,51 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The ID of the resource group for the launch template.
+        /// </summary>
         [Input("templateResourceGroupId")]
         public Input<string>? TemplateResourceGroupId { get; set; }
 
         [Input("templateTags")]
         private InputMap<string>? _templateTags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the launch template.
+        /// </summary>
         public InputMap<string> TemplateTags
         {
             get => _templateTags ?? (_templateTags = new InputMap<string>());
             set => _templateTags = value;
         }
 
+        /// <summary>
+        /// Whether to update the default version of the launch template to the latest version automatically.
+        /// </summary>
         [Input("updateDefaultVersionNumber")]
         public Input<bool>? UpdateDefaultVersionNumber { get; set; }
-
-        [Input("userData")]
-        public Input<string>? UserData { get; set; }
 
         /// <summary>
         /// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
         /// </summary>
+        [Input("userData")]
+        public Input<string>? UserData { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from version 1.120.0. New field `UserData` instead.
+        /// </summary>
         [Input("userdata")]
         public Input<string>? Userdata { get; set; }
 
+        /// <summary>
+        /// The description of the launch template version.
+        /// </summary>
         [Input("versionDescription")]
         public Input<string>? VersionDescription { get; set; }
 
+        /// <summary>
+        /// The VPC ID.
+        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
@@ -720,14 +892,20 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class LaunchTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+        /// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
         /// </summary>
         [Input("autoReleaseTime")]
         public Input<string>? AutoReleaseTime { get; set; }
 
+        /// <summary>
+        /// Whether to enable auto-renewal for the instance.
+        /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
+        /// <summary>
+        /// The auto-renewal period of the instance.
+        /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
@@ -735,7 +913,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.LaunchTemplateDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
-        /// The list of data disks created with instance.
+        /// The list of data disks created with instance. See `DataDisks` below.
         /// </summary>
         public InputList<Inputs.LaunchTemplateDataDiskGetArgs> DataDisks
         {
@@ -743,9 +921,15 @@ namespace Pulumi.AliCloud.Ecs
             set => _dataDisks = value;
         }
 
+        /// <summary>
+        /// The version number of the default launch template version.
+        /// </summary>
         [Input("defaultVersionNumber")]
         public Input<int>? DefaultVersionNumber { get; set; }
 
+        /// <summary>
+        /// The ID of the deployment set.
+        /// </summary>
         [Input("deploymentSetId")]
         public Input<string>? DeploymentSetId { get; set; }
 
@@ -755,21 +939,33 @@ namespace Pulumi.AliCloud.Ecs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether to enable VM OS configuration.
+        /// </summary>
         [Input("enableVmOsConfig")]
         public Input<bool>? EnableVmOsConfig { get; set; }
 
         /// <summary>
-        /// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        /// Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
 
+        /// <summary>
+        /// Whether to enable access to instance metadata.
+        /// </summary>
         [Input("httpEndpoint")]
         public Input<string>? HttpEndpoint { get; set; }
 
+        /// <summary>
+        /// The HTTP PUT response hop limit required for instance metadata requests.
+        /// </summary>
         [Input("httpPutResponseHopLimit")]
         public Input<int>? HttpPutResponseHopLimit { get; set; }
 
+        /// <summary>
+        /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+        /// </summary>
         [Input("httpTokens")]
         public Input<string>? HttpTokens { get; set; }
 
@@ -779,9 +975,15 @@ namespace Pulumi.AliCloud.Ecs
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
+        /// <summary>
+        /// The options of images. See `ImageOptions` below.
+        /// </summary>
         [Input("imageOptions")]
         public Input<Inputs.LaunchTemplateImageOptionsGetArgs>? ImageOptions { get; set; }
 
+        /// <summary>
+        /// The image owner alias. Valid values: `System`, `Self`, `Others`, `Marketplace`.
+        /// </summary>
         [Input("imageOwnerAlias")]
         public Input<string>? ImageOwnerAlias { get; set; }
 
@@ -835,26 +1037,32 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The name of the key pair.
-        /// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+        /// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
         /// - The password logon method for Linux instances is set to forbidden upon initialization.
         /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
+        /// <summary>
+        /// The latest version number of the launch template.
+        /// </summary>
         [Input("latestVersionNumber")]
         public Input<int>? LatestVersionNumber { get; set; }
 
+        /// <summary>
+        /// The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        /// </summary>
         [Input("launchTemplateName")]
         public Input<string>? LaunchTemplateName { get; set; }
 
         /// <summary>
-        /// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        /// It has been deprecated from version 1.120.0. New field `LaunchTemplateName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The list of network interfaces created with instance.
+        /// The list of network interfaces created with instance. See `NetworkInterfaces` below.
         /// </summary>
         [Input("networkInterfaces")]
         public Input<Inputs.LaunchTemplateNetworkInterfacesGetArgs>? NetworkInterfaces { get; set; }
@@ -865,15 +1073,27 @@ namespace Pulumi.AliCloud.Ecs
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
 
+        /// <summary>
+        /// Whether to use the password inherited from the image.
+        /// </summary>
         [Input("passwordInherit")]
         public Input<bool>? PasswordInherit { get; set; }
 
+        /// <summary>
+        /// The purchase duration of the instance.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        /// <summary>
+        /// The unit of the purchase duration.
+        /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
 
+        /// <summary>
+        /// The private IP address of the instance.
+        /// </summary>
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }
 
@@ -883,6 +1103,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("ramRoleName")]
         public Input<string>? RamRoleName { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group to which the resource belongs.
+        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
@@ -900,12 +1123,19 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// The list of security group IDs.
+        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
 
+        /// <summary>
+        /// The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+        /// </summary>
         [Input("spotDuration")]
         public Input<string>? SpotDuration { get; set; }
 
@@ -924,34 +1154,32 @@ namespace Pulumi.AliCloud.Ecs
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
 
+        /// <summary>
+        /// The system disk. See `SystemDisk` below.
+        /// </summary>
         [Input("systemDisk")]
         public Input<Inputs.LaunchTemplateSystemDiskGetArgs>? SystemDisk { get; set; }
 
         /// <summary>
-        /// The category of the system disk. System disk type. Optional values:
-        /// - cloud: Basic cloud disk.
-        /// - cloud_efficiency: Ultra cloud disk.
-        /// - cloud_ssd: SSD cloud Disks.
-        /// - ephemeral_ssd: local SSD Disks
-        /// - cloud_essd: ESSD cloud Disks.
+        /// It has been deprecated from version 1.120.0. New field `SystemDisk` instead.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
 
         /// <summary>
-        /// System disk description. It cannot begin with http:// or https://.
+        /// It has been deprecated from version 1.120.0. New field `SystemDisk` instead.
         /// </summary>
         [Input("systemDiskDescription")]
         public Input<string>? SystemDiskDescription { get; set; }
 
         /// <summary>
-        /// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+        /// It has been deprecated from version 1.120.0. New field `SystemDisk` instead.
         /// </summary>
         [Input("systemDiskName")]
         public Input<string>? SystemDiskName { get; set; }
 
         /// <summary>
-        /// Size of the system disk, measured in GB. Value range: [20, 500].
+        /// It has been deprecated from version 1.120.0. New field `SystemDisk` instead.
         /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }
@@ -970,32 +1198,51 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The ID of the resource group for the launch template.
+        /// </summary>
         [Input("templateResourceGroupId")]
         public Input<string>? TemplateResourceGroupId { get; set; }
 
         [Input("templateTags")]
         private InputMap<string>? _templateTags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the launch template.
+        /// </summary>
         public InputMap<string> TemplateTags
         {
             get => _templateTags ?? (_templateTags = new InputMap<string>());
             set => _templateTags = value;
         }
 
+        /// <summary>
+        /// Whether to update the default version of the launch template to the latest version automatically.
+        /// </summary>
         [Input("updateDefaultVersionNumber")]
         public Input<bool>? UpdateDefaultVersionNumber { get; set; }
-
-        [Input("userData")]
-        public Input<string>? UserData { get; set; }
 
         /// <summary>
         /// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
         /// </summary>
+        [Input("userData")]
+        public Input<string>? UserData { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from version 1.120.0. New field `UserData` instead.
+        /// </summary>
         [Input("userdata")]
         public Input<string>? Userdata { get; set; }
 
+        /// <summary>
+        /// The description of the launch template version.
+        /// </summary>
         [Input("versionDescription")]
         public Input<string>? VersionDescription { get; set; }
 
+        /// <summary>
+        /// The VPC ID.
+        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 

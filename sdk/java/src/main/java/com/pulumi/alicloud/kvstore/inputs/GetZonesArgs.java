@@ -18,7 +18,6 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-     * * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
      * 
      */
     @Import(name="engine")
@@ -26,7 +25,6 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-     * * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
      * 
      */
     public Optional<Output<String>> engine() {
@@ -78,9 +76,17 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+     * 
+     */
     @Import(name="productType")
     private @Nullable Output<String> productType;
 
+    /**
+     * @return The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+     * 
+     */
     public Optional<Output<String>> productType() {
         return Optional.ofNullable(this.productType);
     }
@@ -115,7 +121,6 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param engine Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-         * * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
          * 
          * @return builder
          * 
@@ -127,7 +132,6 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param engine Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-         * * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
          * 
          * @return builder
          * 
@@ -199,11 +203,23 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
             return outputFile(Output.of(outputFile));
         }
 
+        /**
+         * @param productType The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productType(@Nullable Output<String> productType) {
             $.productType = productType;
             return this;
         }
 
+        /**
+         * @param productType The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productType(String productType) {
             return productType(Output.of(productType));
         }

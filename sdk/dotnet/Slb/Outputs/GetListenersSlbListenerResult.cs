@@ -94,6 +94,10 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly int HealthyThreshold;
         /// <summary>
+        /// (String, Available since v2.3.0) The listener ID, in the format of `&lt;load_balancer_id&gt;:&lt;protocol&gt;:&lt;frontend_port&gt;`. It is the same as the import ID of `alicloud.slb.Listener`.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
         /// </summary>
         public readonly int IdleTimeout;
@@ -125,6 +129,9 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// Security status. Only available when the protocol is `Https`.
         /// </summary>
         public readonly string SecurityStatus;
+        /// <summary>
+        /// ID of the server certificate. Only available when the protocol is `Https`.
+        /// </summary>
         public readonly string ServerCertificateId;
         /// <summary>
         /// ID of the linked VServer group.
@@ -213,6 +220,8 @@ namespace Pulumi.AliCloud.Slb.Outputs
 
             int healthyThreshold,
 
+            string id,
+
             int idleTimeout,
 
             string masterSlaveServerGroupId,
@@ -273,6 +282,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
             HealthCheckType = healthCheckType;
             HealthCheckUri = healthCheckUri;
             HealthyThreshold = healthyThreshold;
+            Id = id;
             IdleTimeout = idleTimeout;
             MasterSlaveServerGroupId = masterSlaveServerGroupId;
             PersistenceTimeout = persistenceTimeout;

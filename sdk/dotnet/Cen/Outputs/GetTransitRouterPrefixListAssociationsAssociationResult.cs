@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string PrefixListId;
         /// <summary>
-        /// The status of the prefix list.
+        /// The status of the prefix list. Valid Value: `Active`, `Updating`.
         /// </summary>
         public readonly string Status;
         /// <summary>

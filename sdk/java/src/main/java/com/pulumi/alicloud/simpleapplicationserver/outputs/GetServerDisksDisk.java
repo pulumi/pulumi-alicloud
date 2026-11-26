@@ -47,7 +47,7 @@ public final class GetServerDisksDisk {
      */
     private String id;
     /**
-     * @return Alibaba Cloud simple application server instance ID.
+     * @return The ID of the simple application server to which the disk is attached.
      * 
      */
     private String instanceId;
@@ -118,7 +118,7 @@ public final class GetServerDisksDisk {
         return this.id;
     }
     /**
-     * @return Alibaba Cloud simple application server instance ID.
+     * @return The ID of the simple application server to which the disk is attached.
      * 
      */
     public String instanceId() {

@@ -63,6 +63,8 @@ __all__ = [
     'JobStatusFailureArgsDict',
     'JobStatusRunningArgs',
     'JobStatusRunningArgsDict',
+    'VvpInstanceDefaultNamespaceResourceSpecArgs',
+    'VvpInstanceDefaultNamespaceResourceSpecArgsDict',
     'VvpInstanceResourceSpecArgs',
     'VvpInstanceResourceSpecArgsDict',
     'VvpInstanceStorageArgs',
@@ -1489,6 +1491,55 @@ class JobStatusRunningArgs:
     @observed_flink_job_status.setter
     def observed_flink_job_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "observed_flink_job_status", value)
+
+
+class VvpInstanceDefaultNamespaceResourceSpecArgsDict(TypedDict):
+    cpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of CPUs.
+    """
+    memory_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The memory size.
+    """
+
+@pulumi.input_type
+class VvpInstanceDefaultNamespaceResourceSpecArgs:
+    def __init__(__self__, *,
+                 cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_gb: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] cpu: The number of CPUs.
+        :param pulumi.Input[_builtins.int] memory_gb: The memory size.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory_gb is not None:
+            pulumi.set(__self__, "memory_gb", memory_gb)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of CPUs.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The memory size.
+        """
+        return pulumi.get(self, "memory_gb")
+
+    @memory_gb.setter
+    def memory_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "memory_gb", value)
 
 
 class VvpInstanceResourceSpecArgsDict(TypedDict):

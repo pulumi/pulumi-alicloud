@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Pai
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enter the development mode.
+        /// Specifies whether to enter development mode. Valid values: `True`, `False`.
         /// </summary>
         [Output("develop")]
         public Output<string?> Develop { get; private set; } = null!;
@@ -94,10 +94,16 @@ namespace Pulumi.AliCloud.Pai
         public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
-        /// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+        /// Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
         /// </summary>
         [Output("serviceConfig")]
         public Output<string> ServiceConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v2.1.0) Unique Service ID
+        /// </summary>
+        [Output("serviceUid")]
+        public Output<string> ServiceUid { get; private set; } = null!;
 
         /// <summary>
         /// Service Current Status.
@@ -106,13 +112,13 @@ namespace Pulumi.AliCloud.Pai
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The custom label.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Workspace id
+        /// The workspace ID.
         /// </summary>
         [Output("workspaceId")]
         public Output<string?> WorkspaceId { get; private set; } = null!;
@@ -164,13 +170,13 @@ namespace Pulumi.AliCloud.Pai
     public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enter the development mode.
+        /// Specifies whether to enter development mode. Valid values: `True`, `False`.
         /// </summary>
         [Input("develop")]
         public Input<string>? Develop { get; set; }
 
         /// <summary>
-        /// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+        /// Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
         /// </summary>
         [Input("serviceConfig", required: true)]
         public Input<string> ServiceConfig { get; set; } = null!;
@@ -185,7 +191,7 @@ namespace Pulumi.AliCloud.Pai
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The custom label.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -194,7 +200,7 @@ namespace Pulumi.AliCloud.Pai
         }
 
         /// <summary>
-        /// Workspace id
+        /// The workspace ID.
         /// </summary>
         [Input("workspaceId")]
         public Input<string>? WorkspaceId { get; set; }
@@ -214,7 +220,7 @@ namespace Pulumi.AliCloud.Pai
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Whether to enter the development mode.
+        /// Specifies whether to enter development mode. Valid values: `True`, `False`.
         /// </summary>
         [Input("develop")]
         public Input<string>? Develop { get; set; }
@@ -226,10 +232,16 @@ namespace Pulumi.AliCloud.Pai
         public Input<string>? RegionId { get; set; }
 
         /// <summary>
-        /// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+        /// Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
         /// </summary>
         [Input("serviceConfig")]
         public Input<string>? ServiceConfig { get; set; }
+
+        /// <summary>
+        /// (Available since v2.1.0) Unique Service ID
+        /// </summary>
+        [Input("serviceUid")]
+        public Input<string>? ServiceUid { get; set; }
 
         /// <summary>
         /// Service Current Status.
@@ -241,7 +253,7 @@ namespace Pulumi.AliCloud.Pai
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The custom label.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -250,7 +262,7 @@ namespace Pulumi.AliCloud.Pai
         }
 
         /// <summary>
-        /// Workspace id
+        /// The workspace ID.
         /// </summary>
         [Input("workspaceId")]
         public Input<string>? WorkspaceId { get; set; }

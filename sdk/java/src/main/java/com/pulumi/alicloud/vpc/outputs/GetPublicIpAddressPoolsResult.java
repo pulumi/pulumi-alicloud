@@ -20,13 +20,33 @@ public final class GetPublicIpAddressPoolsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The Internet service provider.
+     * 
+     */
     private @Nullable String isp;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Public Ip Address Pool names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Vpc Public Ip Address Pools. Each element contains the following attributes:
+     * 
+     */
     private List<GetPublicIpAddressPoolsPool> pools;
     private @Nullable List<String> publicIpAddressPoolIds;
+    /**
+     * @return The name of the Vpc Public Ip Address Pool.
+     * 
+     */
     private @Nullable String publicIpAddressPoolName;
+    /**
+     * @return The status of the Vpc Public Ip Address Pool.
+     * 
+     */
     private @Nullable String status;
 
     private GetPublicIpAddressPoolsResult() {}
@@ -40,27 +60,47 @@ public final class GetPublicIpAddressPoolsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The Internet service provider.
+     * 
+     */
     public Optional<String> isp() {
         return Optional.ofNullable(this.isp);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Public Ip Address Pool names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Vpc Public Ip Address Pools. Each element contains the following attributes:
+     * 
+     */
     public List<GetPublicIpAddressPoolsPool> pools() {
         return this.pools;
     }
     public List<String> publicIpAddressPoolIds() {
         return this.publicIpAddressPoolIds == null ? List.of() : this.publicIpAddressPoolIds;
     }
+    /**
+     * @return The name of the Vpc Public Ip Address Pool.
+     * 
+     */
     public Optional<String> publicIpAddressPoolName() {
         return Optional.ofNullable(this.publicIpAddressPoolName);
     }
+    /**
+     * @return The status of the Vpc Public Ip Address Pool.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

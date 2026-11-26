@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Slb
     /// HTTPS listeners of guaranteed-performance SLB support configuring multiple certificates, allowing you to forward requests with different domain names to different backend servers.
     /// Please refer to the [documentation](https://www.alibabacloud.com/help/doc-detail/85956.htm?spm=a2c63.p38356.b99.40.1c881563Co8p6w) for details.
     /// 
-    /// &gt; **NOTE:** Available in 1.60.0+
+    /// &gt; **NOTE:** Available since v1.60.0
     /// 
     /// &gt; **NOTE:** The instance with shared loadBalancerSpec doesn't support domainExtension.
     /// 
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Slb
     /// 
     ///     var domainExtensionServerCertificate = new AliCloud.Slb.ServerCertificate("domain_extension", new()
     ///     {
-    ///         Name = "tf-testAccSlbServerCertificate",
+    ///         Name = "terraform-example-slb-domain-extension",
     ///         Certificate = @"-----BEGIN CERTIFICATE-----
     /// MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
     /// bjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcxDzANBgNVBAoMBmFsaXl1
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Slb
     ///     var example1 = new AliCloud.Slb.DomainExtension("example1", new()
     ///     {
     ///         LoadBalancerId = instance.Id,
-    ///         FrontendPort = https.FrontendPort,
+    ///         ListenerPort = https.FrontendPort,
     ///         Domain = "www.test.com",
     ///         ServerCertificateId = domainExtensionServerCertificate.Id,
     ///     });
@@ -167,10 +167,16 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+        /// The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `ListenerPort` instead. Exactly one of `ListenerPort` or `FrontendPort` must be specified.
         /// </summary>
         [Output("frontendPort")]
         public Output<int> FrontendPort { get; private set; } = null!;
+
+        /// <summary>
+        /// The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `ListenerPort` or `FrontendPort` must be specified; the constraint is enforced at plan time.
+        /// </summary>
+        [Output("listenerPort")]
+        public Output<int> ListenerPort { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the SLB instance.
@@ -243,10 +249,16 @@ namespace Pulumi.AliCloud.Slb
         public Input<string> Domain { get; set; } = null!;
 
         /// <summary>
-        /// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+        /// The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `ListenerPort` instead. Exactly one of `ListenerPort` or `FrontendPort` must be specified.
         /// </summary>
-        [Input("frontendPort", required: true)]
-        public Input<int> FrontendPort { get; set; } = null!;
+        [Input("frontendPort")]
+        public Input<int>? FrontendPort { get; set; }
+
+        /// <summary>
+        /// The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `ListenerPort` or `FrontendPort` must be specified; the constraint is enforced at plan time.
+        /// </summary>
+        [Input("listenerPort")]
+        public Input<int>? ListenerPort { get; set; }
 
         /// <summary>
         /// The ID of the SLB instance.
@@ -281,10 +293,16 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+        /// The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `ListenerPort` instead. Exactly one of `ListenerPort` or `FrontendPort` must be specified.
         /// </summary>
         [Input("frontendPort")]
         public Input<int>? FrontendPort { get; set; }
+
+        /// <summary>
+        /// The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `ListenerPort` or `FrontendPort` must be specified; the constraint is enforced at plan time.
+        /// </summary>
+        [Input("listenerPort")]
+        public Input<int>? ListenerPort { get; set; }
 
         /// <summary>
         /// The ID of the SLB instance.

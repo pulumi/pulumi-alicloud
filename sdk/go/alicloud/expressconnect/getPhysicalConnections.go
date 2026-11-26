@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Example Usage
 //
@@ -78,15 +78,18 @@ type GetPhysicalConnectionsArgs struct {
 
 // A collection of values returned by getPhysicalConnections.
 type GetPhysicalConnectionsResult struct {
+	// A list of Express Connect Physical Connections. Each element contains the following attributes:
 	Connections []GetPhysicalConnectionsConnection `pulumi:"connections"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                     string   `pulumi:"id"`
 	Ids                    []string `pulumi:"ids"`
 	IncludeReservationData *bool    `pulumi:"includeReservationData"`
 	NameRegex              *string  `pulumi:"nameRegex"`
-	Names                  []string `pulumi:"names"`
-	OutputFile             *string  `pulumi:"outputFile"`
-	Status                 *string  `pulumi:"status"`
+	// A list of Physical Connection names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// Resources on Behalf of a State of the Resource Attribute Field.
+	Status *string `pulumi:"status"`
 }
 
 func GetPhysicalConnectionsOutput(ctx *pulumi.Context, args GetPhysicalConnectionsOutputArgs, opts ...pulumi.InvokeOption) GetPhysicalConnectionsResultOutput {
@@ -127,6 +130,7 @@ func (o GetPhysicalConnectionsResultOutput) ToGetPhysicalConnectionsResultOutput
 	return o
 }
 
+// A list of Express Connect Physical Connections. Each element contains the following attributes:
 func (o GetPhysicalConnectionsResultOutput) Connections() GetPhysicalConnectionsConnectionArrayOutput {
 	return o.ApplyT(func(v GetPhysicalConnectionsResult) []GetPhysicalConnectionsConnection { return v.Connections }).(GetPhysicalConnectionsConnectionArrayOutput)
 }
@@ -148,6 +152,7 @@ func (o GetPhysicalConnectionsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPhysicalConnectionsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Physical Connection names.
 func (o GetPhysicalConnectionsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPhysicalConnectionsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -156,6 +161,7 @@ func (o GetPhysicalConnectionsResultOutput) OutputFile() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetPhysicalConnectionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Resources on Behalf of a State of the Resource Attribute Field.
 func (o GetPhysicalConnectionsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPhysicalConnectionsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDynamicTagGroupsResult {
+    /**
+     * @return A list of Cms Dynamic Tag Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetDynamicTagGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,10 +26,22 @@ public final class GetDynamicTagGroupsResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the resource. Valid values: `RUNNING`, `FINISH`.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The tag key of the tag.
+     * 
+     */
     private @Nullable String tagKey;
 
     private GetDynamicTagGroupsResult() {}
+    /**
+     * @return A list of Cms Dynamic Tag Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetDynamicTagGroupsGroup> groups() {
         return this.groups;
     }
@@ -42,9 +58,17 @@ public final class GetDynamicTagGroupsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the resource. Valid values: `RUNNING`, `FINISH`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The tag key of the tag.
+     * 
+     */
     public Optional<String> tagKey() {
         return Optional.ofNullable(this.tagKey);
     }

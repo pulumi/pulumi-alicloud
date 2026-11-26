@@ -48,23 +48,31 @@ public final class GetAppGroupsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Instance ID.
+     * Instance ID.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The Instance ID.
+     * @return Instance ID.
      * 
      */
     public Optional<Output<String>> instanceId() {
         return Optional.ofNullable(this.instanceId);
     }
 
+    /**
+     * The name of AppGroup.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The name of AppGroup.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -100,14 +108,14 @@ public final class GetAppGroupsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Resource Group ID.
+     * Resource Group Id.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Resource Group ID.
+     * @return Resource Group Id.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -115,14 +123,14 @@ public final class GetAppGroupsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Application type. Valid Values: `standard`, `enhanced`.
+     * The Type of AppGroup. Valid values: `standard`,`enhanced`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Application type. Valid Values: `standard`, `enhanced`.
+     * @return The Type of AppGroup. Valid values: `standard`,`enhanced`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -213,7 +221,7 @@ public final class GetAppGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param instanceId The Instance ID.
+         * @param instanceId Instance ID.
          * 
          * @return builder
          * 
@@ -224,7 +232,7 @@ public final class GetAppGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param instanceId The Instance ID.
+         * @param instanceId Instance ID.
          * 
          * @return builder
          * 
@@ -233,11 +241,23 @@ public final class GetAppGroupsArgs extends com.pulumi.resources.InvokeArgs {
             return instanceId(Output.of(instanceId));
         }
 
+        /**
+         * @param name The name of AppGroup.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of AppGroup.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -285,7 +305,7 @@ public final class GetAppGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId The Resource Group ID.
+         * @param resourceGroupId Resource Group Id.
          * 
          * @return builder
          * 
@@ -296,7 +316,7 @@ public final class GetAppGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId The Resource Group ID.
+         * @param resourceGroupId Resource Group Id.
          * 
          * @return builder
          * 
@@ -306,7 +326,7 @@ public final class GetAppGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param type Application type. Valid Values: `standard`, `enhanced`.
+         * @param type The Type of AppGroup. Valid values: `standard`,`enhanced`.
          * 
          * @return builder
          * 
@@ -317,7 +337,7 @@ public final class GetAppGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param type Application type. Valid Values: `standard`, `enhanced`.
+         * @param type The Type of AppGroup. Valid values: `standard`,`enhanced`.
          * 
          * @return builder
          * 

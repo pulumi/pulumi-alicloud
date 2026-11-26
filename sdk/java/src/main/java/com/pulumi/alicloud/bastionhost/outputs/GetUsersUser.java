@@ -46,7 +46,7 @@ public final class GetUsersUser {
      */
     private String mobileCountryCode;
     /**
-     * @return Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+     * @return Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
      * 
      */
     private String source;
@@ -56,7 +56,7 @@ public final class GetUsersUser {
      */
     private String sourceUserId;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Frozen`, `Normal`.
      * 
      */
     private String status;
@@ -122,7 +122,7 @@ public final class GetUsersUser {
         return this.mobileCountryCode;
     }
     /**
-     * @return Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+     * @return Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
      * 
      */
     public String source() {
@@ -136,7 +136,7 @@ public final class GetUsersUser {
         return this.sourceUserId;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Frozen`, `Normal`.
      * 
      */
     public String status() {

@@ -21,12 +21,12 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cassandra cluster resource supports replica set clusters only. The Cassandra provides stable, reliable, and automatic scalable database services.
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
- * You can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).
+ * You can see detail product introduction in the [Cassandra product documentation](https://www.alibabacloud.com/help/product/49055.htm).
  * 
  * &gt; **NOTE:** Available since v1.88.0.
  * 
  * &gt; **NOTE:**  The following regions support create Vpc network Cassandra cluster.
- * The official website mark more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).
+ * The official website mark more regions. Or you can call [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/157540.html).
  * 
  * &gt; **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
  * 
@@ -182,9 +182,17 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> diskType() {
         return Codegen.optional(this.diskType);
     }
+    /**
+     * Whether to enable public access. System default to `false`.
+     * 
+     */
     @Export(name="enablePublic", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enablePublic;
 
+    /**
+     * @return Whether to enable public access. System default to `false`.
+     * 
+     */
     public Output<Optional<Boolean>> enablePublic() {
         return Codegen.optional(this.enablePublic);
     }
@@ -272,9 +280,17 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Integer> nodeCount() {
         return this.nodeCount;
     }
+    /**
+     * The password of the cluster account.
+     * 
+     */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
+    /**
+     * @return The password of the cluster account.
+     * 
+     */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
@@ -292,21 +308,45 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<String> payType() {
         return this.payType;
     }
+    /**
+     * The purchase period of the cluster. Valid when payType = Subscription.
+     * 
+     */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
+    /**
+     * @return The purchase period of the cluster. Valid when payType = Subscription.
+     * 
+     */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
+    /**
+     * The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
+     * 
+     */
     @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
+    /**
+     * @return The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
+     * 
+     */
     public Output<Optional<String>> periodUnit() {
         return Codegen.optional(this.periodUnit);
     }
+    /**
+     * The public access points of the Cassandra cluster.
+     * 
+     */
     @Export(name="publicPoints", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> publicPoints;
 
+    /**
+     * @return The public access points of the Cassandra cluster.
+     * 
+     */
     public Output<List<String>> publicPoints() {
         return this.publicPoints;
     }
@@ -328,9 +368,17 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<List<String>> securityGroups() {
         return this.securityGroups;
     }
+    /**
+     * The status of the Cassandra cluster.
+     * 
+     */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
+    /**
+     * @return The status of the Cassandra cluster.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }

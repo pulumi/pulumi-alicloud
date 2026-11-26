@@ -125,7 +125,7 @@ def get_data_centers(cluster_id: Optional[_builtins.str] = None,
     The `cassandra_get_data_centers` data source provides a collection of Cassandra Data Centers available in Alicloud account.
     Filters support regular expression for the cluster name or ids.
 
-    > **NOTE:**  Available in 1.88.0+.
+    > **NOTE:** Available since v1.88.0.
 
     > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 
@@ -170,7 +170,7 @@ def get_data_centers_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = 
     The `cassandra_get_data_centers` data source provides a collection of Cassandra Data Centers available in Alicloud account.
     Filters support regular expression for the cluster name or ids.
 
-    > **NOTE:**  Available in 1.88.0+.
+    > **NOTE:** Available since v1.88.0.
 
     > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 

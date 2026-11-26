@@ -181,7 +181,7 @@ class GetDedicatedHostAccountsAccountResult(dict):
                  id: _builtins.str):
         """
         :param _builtins.str account_name: The name of the Dedicated host account.
-        :param _builtins.str dedicated_host_id: The ID of the Dedicated host.
+        :param _builtins.str dedicated_host_id: The ID of the host.
         :param _builtins.str id: The ID of the Dedicated Host Account. The value formats as `<dedicated_host_id>:<account_name>`.
         """
         pulumi.set(__self__, "account_name", account_name)
@@ -200,7 +200,7 @@ class GetDedicatedHostAccountsAccountResult(dict):
     @pulumi.getter(name="dedicatedHostId")
     def dedicated_host_id(self) -> _builtins.str:
         """
-        The ID of the Dedicated host.
+        The ID of the host.
         """
         return pulumi.get(self, "dedicated_host_id")
 
@@ -260,7 +260,7 @@ class GetDedicatedHostGroupsGroupResult(dict):
         :param _builtins.int disk_allocation_ratio: The Disk Allocation Ratio of the Dedicated Host Group.
         :param _builtins.float disk_used_amount: The DiskUsedAmount of the Dedicated Host Group.
         :param _builtins.float disk_utility: The DiskUtility of the Dedicated Host Group.
-        :param _builtins.str engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+        :param _builtins.str engine: Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
         :param _builtins.int host_number: The Total Host Number  of the Dedicated Host Group.
         :param _builtins.str host_replace_policy: The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
         :param _builtins.str id: The ID of the Dedicated Host Group.
@@ -272,7 +272,7 @@ class GetDedicatedHostGroupsGroupResult(dict):
         :param _builtins.float mem_utility: The Mem Utility of the Dedicated Host Group.
         :param _builtins.str text: The Text of the Dedicated Host Group.
         :param _builtins.str vpc_id: The virtual private cloud (VPC) ID of the dedicated cluster.
-        :param Sequence['GetDedicatedHostGroupsGroupZoneIdListArgs'] zone_id_lists: The ZoneIDList of the Dedicated Host Group.
+        :param Sequence['GetDedicatedHostGroupsGroupZoneIdListArgs'] zone_id_lists: The list of zone IDs of the Dedicated Host Group.
         """
         pulumi.set(__self__, "allocation_policy", allocation_policy)
         pulumi.set(__self__, "bastion_instance_id", bastion_instance_id)
@@ -427,7 +427,7 @@ class GetDedicatedHostGroupsGroupResult(dict):
     @pulumi.getter
     def engine(self) -> _builtins.str:
         """
-        Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+        Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
         """
         return pulumi.get(self, "engine")
 
@@ -523,7 +523,7 @@ class GetDedicatedHostGroupsGroupResult(dict):
     @pulumi.getter(name="zoneIdLists")
     def zone_id_lists(self) -> Sequence['outputs.GetDedicatedHostGroupsGroupZoneIdListResult']:
         """
-        The ZoneIDList of the Dedicated Host Group.
+        The list of zone IDs of the Dedicated Host Group.
         """
         return pulumi.get(self, "zone_id_lists")
 
@@ -532,11 +532,17 @@ class GetDedicatedHostGroupsGroupResult(dict):
 class GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeResult(dict):
     def __init__(__self__, *,
                  place_holder: _builtins.str):
+        """
+        :param _builtins.str place_holder: Internal placeholder attribute for the Dedicated Host Count Group by Host Type.
+        """
         pulumi.set(__self__, "place_holder", place_holder)
 
     @_builtins.property
     @pulumi.getter(name="placeHolder")
     def place_holder(self) -> _builtins.str:
+        """
+        Internal placeholder attribute for the Dedicated Host Count Group by Host Type.
+        """
         return pulumi.get(self, "place_holder")
 
 
@@ -545,7 +551,7 @@ class GetDedicatedHostGroupsGroupZoneIdListResult(dict):
     def __init__(__self__, *,
                  zone_id_lists: Sequence[_builtins.str]):
         """
-        :param Sequence[_builtins.str] zone_id_lists: The ZoneIDList of the Dedicated Host Group.
+        :param Sequence[_builtins.str] zone_id_lists: The list of zone IDs of the Dedicated Host Group.
         """
         pulumi.set(__self__, "zone_id_lists", zone_id_lists)
 
@@ -553,7 +559,7 @@ class GetDedicatedHostGroupsGroupZoneIdListResult(dict):
     @pulumi.getter(name="zoneIdLists")
     def zone_id_lists(self) -> Sequence[_builtins.str]:
         """
-        The ZoneIDList of the Dedicated Host Group.
+        The list of zone IDs of the Dedicated Host Group.
         """
         return pulumi.get(self, "zone_id_lists")
 
@@ -592,12 +598,12 @@ class GetDedicatedHostsHostResult(dict):
                  vswitch_id: _builtins.str,
                  zone_id: _builtins.str):
         """
-        :param _builtins.str allocation_status: Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+        :param _builtins.str allocation_status: Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
         :param _builtins.str bastion_instance_id: The ID of the bastion host with which the host is associated.
         :param _builtins.str cpu_allocation_ratio: The numeric value of the CPU over commit ratio of the dedicated cluster.
         :param _builtins.str cpu_used: The number of CPU cores used by the host.
         :param _builtins.str create_time: The time when the host was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
-        :param _builtins.str dedicated_host_group_id: The ID of the dedicated cluster in which the host is created.
+        :param _builtins.str dedicated_host_group_id: The ID of the dedicated cluster.
         :param _builtins.str dedicated_host_id: The ID of the host.
         :param _builtins.str disk_allocation_ratio: The disk usage in percentage.
         :param _builtins.str ecs_class_code: The Elastic Compute Service (ECS) instance type.
@@ -609,19 +615,20 @@ class GetDedicatedHostsHostResult(dict):
         :param _builtins.str host_mem: The memory of the host. Unit: `GB`.
         :param _builtins.str host_name: The name of the host.
         :param _builtins.str host_storage: The total storage capacity of the host. Unit: `GB`.
-        :param _builtins.str host_type: The storage type of the host.
+        :param _builtins.str host_type: The storage type of the host. Valid values: `dhg_local_ssd` or `dhg_cloud_ssd`. `dhg_local_ssd`: specifies that the host uses local SSDs. `dhg_cloud_ssd`: specifies that the host uses enhanced SSDs (ESSDs).
         :param _builtins.str id: The ID of the Dedicated Host. The value formats as `<dedicated_host_group_id>:<dedicated_host_id>`.
         :param _builtins.str image_category: The image type of the host.
         :param _builtins.str ip_address: The IP address of the host.
         :param _builtins.str mem_allocation_ratio: The memory usage in percentage.
         :param _builtins.str memory_used: The amount of memory used by the host. Unit: `GB`.
         :param _builtins.str open_permission: Indicates whether you have the OS permissions on the host. Valid values: `0`: You do not have the OS permissions on the host. `1`: You have the OS permissions on the host.
-        :param _builtins.str status: The state of the host.
+        :param _builtins.str status: The state of the host. Valid values:
+               * `0:` The host is being created.
         :param _builtins.str storage_used: The storage usage of the host. Unit: `GB`.
-        :param Mapping[str, _builtins.str] tags: The tag of the resource.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
         :param _builtins.str vpc_id: The ID of the virtual private cloud (VPC) to which the host is connected.
         :param _builtins.str vswitch_id: The ID of the vSwitch.
-        :param _builtins.str zone_id: The zone ID of the host.
+        :param _builtins.str zone_id: The ID of the zone.
         """
         pulumi.set(__self__, "allocation_status", allocation_status)
         pulumi.set(__self__, "bastion_instance_id", bastion_instance_id)
@@ -658,7 +665,7 @@ class GetDedicatedHostsHostResult(dict):
     @pulumi.getter(name="allocationStatus")
     def allocation_status(self) -> _builtins.str:
         """
-        Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+        Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
         """
         return pulumi.get(self, "allocation_status")
 
@@ -698,7 +705,7 @@ class GetDedicatedHostsHostResult(dict):
     @pulumi.getter(name="dedicatedHostGroupId")
     def dedicated_host_group_id(self) -> _builtins.str:
         """
-        The ID of the dedicated cluster in which the host is created.
+        The ID of the dedicated cluster.
         """
         return pulumi.get(self, "dedicated_host_group_id")
 
@@ -794,7 +801,7 @@ class GetDedicatedHostsHostResult(dict):
     @pulumi.getter(name="hostType")
     def host_type(self) -> _builtins.str:
         """
-        The storage type of the host.
+        The storage type of the host. Valid values: `dhg_local_ssd` or `dhg_cloud_ssd`. `dhg_local_ssd`: specifies that the host uses local SSDs. `dhg_cloud_ssd`: specifies that the host uses enhanced SSDs (ESSDs).
         """
         return pulumi.get(self, "host_type")
 
@@ -850,7 +857,8 @@ class GetDedicatedHostsHostResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The state of the host.
+        The state of the host. Valid values:
+        * `0:` The host is being created.
         """
         return pulumi.get(self, "status")
 
@@ -866,7 +874,7 @@ class GetDedicatedHostsHostResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
-        The tag of the resource.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -890,7 +898,7 @@ class GetDedicatedHostsHostResult(dict):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> _builtins.str:
         """
-        The zone ID of the host.
+        The ID of the zone.
         """
         return pulumi.get(self, "zone_id")
 

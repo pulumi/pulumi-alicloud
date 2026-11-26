@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides VPCs available to the user.
  *
+ * > **NOTE:** Available since v1.2.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -144,6 +146,9 @@ export interface GetNetworksResult {
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * The ID of the resource group to which the VPC belongs.
+     */
     readonly resourceGroupId?: string;
     /**
      * Status of the VPC.
@@ -167,6 +172,8 @@ export interface GetNetworksResult {
 }
 /**
  * This data source provides VPCs available to the user.
+ *
+ * > **NOTE:** Available since v1.2.0.
  *
  * ## Example Usage
  *

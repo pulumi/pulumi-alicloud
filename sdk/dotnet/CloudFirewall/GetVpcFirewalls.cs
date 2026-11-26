@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public static class GetVpcFirewalls
     {
         /// <summary>
-        /// This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+        /// This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://www.alibabacloud.com/help/doc-detail/342932.htm)
         /// 
         /// &gt; **NOTE:** Available since v1.194.0.
         /// 
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///         },
         ///         MemberUid = "1415189284827022",
         ///         Status = "closed",
-        ///         VpcFirewallName = "tf-test",
+        ///         VpcFirewallName = "tf-example",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.CloudFirewall
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcFirewallsResult>("alicloud:cloudfirewall/getVpcFirewalls:getVpcFirewalls", args ?? new GetVpcFirewallsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+        /// This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://www.alibabacloud.com/help/doc-detail/342932.htm)
         /// 
         /// &gt; **NOTE:** Available since v1.194.0.
         /// 
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///         },
         ///         MemberUid = "1415189284827022",
         ///         Status = "closed",
-        ///         VpcFirewallName = "tf-test",
+        ///         VpcFirewallName = "tf-example",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.CloudFirewall
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcFirewallsResult>("alicloud:cloudfirewall/getVpcFirewalls:getVpcFirewalls", args ?? new GetVpcFirewallsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+        /// This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://www.alibabacloud.com/help/doc-detail/342932.htm)
         /// 
         /// &gt; **NOTE:** Available since v1.194.0.
         /// 
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///         },
         ///         MemberUid = "1415189284827022",
         ///         Status = "closed",
-        ///         VpcFirewallName = "tf-test",
+        ///         VpcFirewallName = "tf-example",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The region ID of the peer VPC.
+        /// The region ID.
         /// </summary>
         [Input("regionNo")]
         public string? RegionNo { get; set; }
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public string? VpcFirewallName { get; set; }
 
         /// <summary>
-        /// The ID of the peer VPC instance.
+        /// The ID of the VPC instance.
         /// </summary>
         [Input("vpcId")]
         public string? VpcId { get; set; }
@@ -234,7 +234,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The region ID of the peer VPC.
+        /// The region ID.
         /// </summary>
         [Input("regionNo")]
         public Input<string>? RegionNo { get; set; }
@@ -258,7 +258,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? VpcFirewallName { get; set; }
 
         /// <summary>
-        /// The ID of the peer VPC instance.
+        /// The ID of the VPC instance.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -286,9 +286,6 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? Lang;
-        /// <summary>
-        /// The UID of the Alibaba Cloud member account.
-        /// </summary>
         public readonly string? MemberUid;
         public readonly string? NameRegex;
         /// <summary>

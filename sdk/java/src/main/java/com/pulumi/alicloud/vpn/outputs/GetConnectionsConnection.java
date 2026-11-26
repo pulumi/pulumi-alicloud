@@ -18,12 +18,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConnectionsConnection {
+    /**
+     * @return The creation time of the VPN connection.
+     * 
+     */
     private String createTime;
     /**
      * @return Use the VPN customer gateway ID as the search key.
      * 
      */
     private String customerGatewayId;
+    /**
+     * @return Whether the VPN connection takes effect immediately.
+     * 
+     */
     private Boolean effectImmediately;
     /**
      * @return Wether enable Dpd detection.
@@ -46,12 +54,12 @@ public final class GetConnectionsConnection {
      */
     private String id;
     /**
-     * @return The ikeConfig mapping supports the following:
+     * @return (Optional) The configurations of phase-one negotiation.
      * 
      */
     private @Nullable List<GetConnectionsConnectionIkeConfig> ikeConfigs;
     /**
-     * @return The ipsecConfig mapping supports the following:
+     * @return (Optional) The configurations of phase-two negotiation.
      * 
      */
     private @Nullable List<GetConnectionsConnectionIpsecConfig> ipsecConfigs;
@@ -71,7 +79,7 @@ public final class GetConnectionsConnection {
      */
     private String remoteSubnet;
     /**
-     * @return The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+     * @return The status of the tunnel.
      * 
      */
     private String status;
@@ -80,9 +88,13 @@ public final class GetConnectionsConnection {
      * 
      */
     private List<GetConnectionsConnectionTunnelOptionsSpecification> tunnelOptionsSpecifications;
+    /**
+     * @return (Optional) The health check configuration information.
+     * 
+     */
     private @Nullable List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks;
     /**
-     * @return The vpnBgpConfig mapping supports the following:
+     * @return (Optional) The configuration information for BGP.
      * 
      */
     private @Nullable List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs;
@@ -93,6 +105,10 @@ public final class GetConnectionsConnection {
     private String vpnGatewayId;
 
     private GetConnectionsConnection() {}
+    /**
+     * @return The creation time of the VPN connection.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
@@ -103,6 +119,10 @@ public final class GetConnectionsConnection {
     public String customerGatewayId() {
         return this.customerGatewayId;
     }
+    /**
+     * @return Whether the VPN connection takes effect immediately.
+     * 
+     */
     public Boolean effectImmediately() {
         return this.effectImmediately;
     }
@@ -135,14 +155,14 @@ public final class GetConnectionsConnection {
         return this.id;
     }
     /**
-     * @return The ikeConfig mapping supports the following:
+     * @return (Optional) The configurations of phase-one negotiation.
      * 
      */
     public List<GetConnectionsConnectionIkeConfig> ikeConfigs() {
         return this.ikeConfigs == null ? List.of() : this.ikeConfigs;
     }
     /**
-     * @return The ipsecConfig mapping supports the following:
+     * @return (Optional) The configurations of phase-two negotiation.
      * 
      */
     public List<GetConnectionsConnectionIpsecConfig> ipsecConfigs() {
@@ -170,7 +190,7 @@ public final class GetConnectionsConnection {
         return this.remoteSubnet;
     }
     /**
-     * @return The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+     * @return The status of the tunnel.
      * 
      */
     public String status() {
@@ -183,11 +203,15 @@ public final class GetConnectionsConnection {
     public List<GetConnectionsConnectionTunnelOptionsSpecification> tunnelOptionsSpecifications() {
         return this.tunnelOptionsSpecifications;
     }
+    /**
+     * @return (Optional) The health check configuration information.
+     * 
+     */
     public List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks() {
         return this.vcoHealthChecks == null ? List.of() : this.vcoHealthChecks;
     }
     /**
-     * @return The vpnBgpConfig mapping supports the following:
+     * @return (Optional) The configuration information for BGP.
      * 
      */
     public List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs() {

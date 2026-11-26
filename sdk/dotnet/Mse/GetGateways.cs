@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Mse
         /// <summary>
         /// This data source provides the Mse Gateways of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.157.0+.
+        /// &gt; **NOTE:** Available since v1.157.0.
         /// 
         /// ## Example Usage
         /// 
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Mse
         /// <summary>
         /// This data source provides the Mse Gateways of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.157.0+.
+        /// &gt; **NOTE:** Available since v1.157.0.
         /// 
         /// ## Example Usage
         /// 
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Mse
         /// <summary>
         /// This data source provides the Mse Gateways of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.157.0+.
+        /// &gt; **NOTE:** Available since v1.157.0.
         /// 
         /// ## Example Usage
         /// 
@@ -271,7 +271,13 @@ namespace Pulumi.AliCloud.Mse
     public sealed class GetGatewaysResult
     {
         public readonly bool? EnableDetails;
+        /// <summary>
+        /// The name of the Gateway.
+        /// </summary>
         public readonly string? GatewayName;
+        /// <summary>
+        /// A list of Mse Gateways. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewaysGatewayResult> Gateways;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -279,9 +285,18 @@ namespace Pulumi.AliCloud.Mse
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Gateway names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the gateway.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The ID of the vpc.
+        /// </summary>
         public readonly string? VpcId;
 
         [OutputConstructor]

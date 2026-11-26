@@ -56,11 +56,17 @@ class GetCommandsResult:
     @_builtins.property
     @pulumi.getter(name="commandType")
     def command_type(self) -> Optional[_builtins.str]:
+        """
+        The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
+        """
         return pulumi.get(self, "command_type")
 
     @_builtins.property
     @pulumi.getter
     def commands(self) -> Sequence['outputs.GetCommandsCommandResult']:
+        """
+        A list of Ecd Commands. Each element contains the following attributes:
+        """
         return pulumi.get(self, "commands")
 
     @_builtins.property
@@ -71,6 +77,9 @@ class GetCommandsResult:
     @_builtins.property
     @pulumi.getter(name="desktopId")
     def desktop_id(self) -> Optional[_builtins.str]:
+        """
+        The desktop id of the Desktop.
+        """
         return pulumi.get(self, "desktop_id")
 
     @_builtins.property
@@ -94,6 +103,9 @@ class GetCommandsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -123,7 +135,7 @@ def get_commands(command_type: Optional[_builtins.str] = None,
     """
     This data source provides the Ecd Commands of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.146.0+.
+    > **NOTE:** Available since v1.146.0.
 
     ## Example Usage
 
@@ -206,7 +218,7 @@ def get_commands_output(command_type: pulumi.Input[Optional[Optional[_builtins.s
     """
     This data source provides the Ecd Commands of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.146.0+.
+    > **NOTE:** Available since v1.146.0.
 
     ## Example Usage
 

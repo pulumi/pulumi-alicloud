@@ -5,6 +5,47 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a VPC Subnet resource. `alicloud.vpc.Subnet` is an alias of `alicloud.vpc.Switch`; the two resource types share the same schema and behavior and may be used interchangeably.
+ *
+ * You can use to the existing vpc module  to create a VPC and several VSwitches one-click.
+ *
+ * For information about VPC Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/work-with-vswitches).
+ *
+ * > **NOTE:** Available since v1.0.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const fooNetwork = new alicloud.vpc.Network("foo", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const fooSubnet = new alicloud.vpc.Subnet("foo", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/21",
+ *     vpcId: fooNetwork.id,
+ *     zoneId: foo.then(foo => foo.zones?.[0]?.id),
+ * });
+ * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
+ * ## Import
+ *
+ * VPC Vswitch can be imported using the id, e.g.
+ *
+ * ```sh
+ * $ pulumi import alicloud:vpc/subnet:Subnet example <id>
+ * ```
+ *
  * @deprecated This resource has been deprecated and replaced by the Switch resource.
  */
 export class Subnet extends pulumi.CustomResource {
@@ -48,25 +89,73 @@ export class Subnet extends pulumi.CustomResource {
     }
 
     /**
+     * Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+     *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      */
     declare public readonly availabilityZone: pulumi.Output<string>;
+    /**
+     * The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+     */
     declare public readonly cidrBlock: pulumi.Output<string>;
+    /**
+     * The creation time of the VSwitch.
+     */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+     */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * Whether the IPv6 function is enabled in the switch. Value:
+     */
     declare public readonly enableIpv6: pulumi.Output<boolean>;
+    /**
+     * The IPv6 CIDR block of the VSwitch.
+     */
     declare public /*out*/ readonly ipv6CidrBlock: pulumi.Output<string>;
+    /**
+     * The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `enableIpv6` is `true`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
+     * - When the VPC IPv6 address mask is `52`: `0` to `4095`.
+     * - When the VPC IPv6 address mask is `56`: `0` to `255`.
+     * - When the VPC IPv6 address mask is `60`: `0` to `15`.
+     */
     declare public readonly ipv6CidrBlockMask: pulumi.Output<number>;
+    /**
+     * Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+     */
     declare public readonly isDefault: pulumi.Output<boolean>;
     /**
+     * Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+     *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * The status of the resource.
+     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * The tags of VSwitch.
+     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
+     */
     declare public readonly vpcId: pulumi.Output<string>;
+    /**
+     * The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
     declare public readonly vpcIpv6CidrBlock: pulumi.Output<string | undefined>;
+    /**
+     * The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
+     */
     declare public readonly vswitchName: pulumi.Output<string>;
+    /**
+     * The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
+     */
     declare public readonly zoneId: pulumi.Output<string>;
 
     /**
@@ -128,25 +217,73 @@ export class Subnet extends pulumi.CustomResource {
  */
 export interface SubnetState {
     /**
+     * Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+     *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      */
     availabilityZone?: pulumi.Input<string | undefined>;
+    /**
+     * The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+     */
     cidrBlock?: pulumi.Input<string | undefined>;
+    /**
+     * The creation time of the VSwitch.
+     */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+     */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the IPv6 function is enabled in the switch. Value:
+     */
     enableIpv6?: pulumi.Input<boolean | undefined>;
+    /**
+     * The IPv6 CIDR block of the VSwitch.
+     */
     ipv6CidrBlock?: pulumi.Input<string | undefined>;
+    /**
+     * The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `enableIpv6` is `true`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
+     * - When the VPC IPv6 address mask is `52`: `0` to `4095`.
+     * - When the VPC IPv6 address mask is `56`: `0` to `255`.
+     * - When the VPC IPv6 address mask is `60`: `0` to `15`.
+     */
     ipv6CidrBlockMask?: pulumi.Input<number | undefined>;
+    /**
+     * Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+     */
     isDefault?: pulumi.Input<boolean | undefined>;
     /**
+     * Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+     *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The status of the resource.
+     */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * The tags of VSwitch.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
+     */
     vpcId?: pulumi.Input<string | undefined>;
+    /**
+     * The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
     vpcIpv6CidrBlock?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
+     */
     vswitchName?: pulumi.Input<string | undefined>;
+    /**
+     * The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
+     */
     zoneId?: pulumi.Input<string | undefined>;
 }
 
@@ -155,21 +292,60 @@ export interface SubnetState {
  */
 export interface SubnetArgs {
     /**
+     * Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+     *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      */
     availabilityZone?: pulumi.Input<string | undefined>;
+    /**
+     * The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+     */
     cidrBlock?: pulumi.Input<string | undefined>;
+    /**
+     * The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+     */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the IPv6 function is enabled in the switch. Value:
+     */
     enableIpv6?: pulumi.Input<boolean | undefined>;
+    /**
+     * The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `enableIpv6` is `true`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
+     * - When the VPC IPv6 address mask is `52`: `0` to `4095`.
+     * - When the VPC IPv6 address mask is `56`: `0` to `255`.
+     * - When the VPC IPv6 address mask is `60`: `0` to `15`.
+     */
     ipv6CidrBlockMask?: pulumi.Input<number | undefined>;
+    /**
+     * Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+     */
     isDefault?: pulumi.Input<boolean | undefined>;
     /**
+     * Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+     *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The tags of VSwitch.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
+     */
     vpcId?: pulumi.Input<string | undefined>;
+    /**
+     * The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
     vpcIpv6CidrBlock?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
+     */
     vswitchName?: pulumi.Input<string | undefined>;
+    /**
+     * The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
+     */
     zoneId?: pulumi.Input<string | undefined>;
 }

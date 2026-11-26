@@ -15,6 +15,14 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AddonReleaseEntityRulesArgs',
+    'AddonReleaseEntityRulesArgsDict',
+    'AddonReleaseEntityRulesFieldRuleArgs',
+    'AddonReleaseEntityRulesFieldRuleArgsDict',
+    'AddonReleaseEntityRulesIpMatchRuleArgs',
+    'AddonReleaseEntityRulesIpMatchRuleArgsDict',
+    'AddonReleaseEntityRulesTagArgs',
+    'AddonReleaseEntityRulesTagArgsDict',
     'AlarmCompositeExpressionArgs',
     'AlarmCompositeExpressionArgsDict',
     'AlarmCompositeExpressionExpressionListArgs',
@@ -174,6 +182,342 @@ __all__ = [
     'SlsGroupSlsGroupConfigArgs',
     'SlsGroupSlsGroupConfigArgsDict',
 ]
+
+class AddonReleaseEntityRulesArgsDict(TypedDict):
+    entity_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    A collection of entity types.
+    """
+    field_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AddonReleaseEntityRulesFieldRuleArgsDict']]]]]
+    """
+    The property matching rules. See `field_rules` below.
+    """
+    instance_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    A collection of instance IDs.
+    """
+    ip_match_rule: NotRequired[pulumi.Input[Optional['AddonReleaseEntityRulesIpMatchRuleArgsDict']]]
+    """
+    A collection of IP address matching rules. See `ip_match_rule` below.
+    """
+    region_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    A collection of region IDs.
+    """
+    resource_group_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The resource group ID.
+    """
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AddonReleaseEntityRulesTagArgsDict']]]]]
+    """
+    The tag-based service discovery rules. See `tags` below.
+    """
+
+@pulumi.input_type
+class AddonReleaseEntityRulesArgs:
+    def __init__(__self__, *,
+                 entity_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 field_rules: pulumi.Input[Optional[Sequence[pulumi.Input['AddonReleaseEntityRulesFieldRuleArgs']]]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip_match_rule: pulumi.Input[Optional['AddonReleaseEntityRulesIpMatchRuleArgs']] = None,
+                 region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['AddonReleaseEntityRulesTagArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] entity_types: A collection of entity types.
+        :param pulumi.Input[Sequence[pulumi.Input['AddonReleaseEntityRulesFieldRuleArgs']]] field_rules: The property matching rules. See `field_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: A collection of instance IDs.
+        :param pulumi.Input['AddonReleaseEntityRulesIpMatchRuleArgs'] ip_match_rule: A collection of IP address matching rules. See `ip_match_rule` below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] region_ids: A collection of region IDs.
+        :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
+        :param pulumi.Input[Sequence[pulumi.Input['AddonReleaseEntityRulesTagArgs']]] tags: The tag-based service discovery rules. See `tags` below.
+        """
+        if entity_types is not None:
+            pulumi.set(__self__, "entity_types", entity_types)
+        if field_rules is not None:
+            pulumi.set(__self__, "field_rules", field_rules)
+        if instance_ids is not None:
+            pulumi.set(__self__, "instance_ids", instance_ids)
+        if ip_match_rule is not None:
+            pulumi.set(__self__, "ip_match_rule", ip_match_rule)
+        if region_ids is not None:
+            pulumi.set(__self__, "region_ids", region_ids)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="entityTypes")
+    def entity_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A collection of entity types.
+        """
+        return pulumi.get(self, "entity_types")
+
+    @entity_types.setter
+    def entity_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "entity_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldRules")
+    def field_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AddonReleaseEntityRulesFieldRuleArgs']]]]:
+        """
+        The property matching rules. See `field_rules` below.
+        """
+        return pulumi.get(self, "field_rules")
+
+    @field_rules.setter
+    def field_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AddonReleaseEntityRulesFieldRuleArgs']]]]):
+        pulumi.set(self, "field_rules", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceIds")
+    def instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A collection of instance IDs.
+        """
+        return pulumi.get(self, "instance_ids")
+
+    @instance_ids.setter
+    def instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "instance_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipMatchRule")
+    def ip_match_rule(self) -> pulumi.Input[Optional['AddonReleaseEntityRulesIpMatchRuleArgs']]:
+        """
+        A collection of IP address matching rules. See `ip_match_rule` below.
+        """
+        return pulumi.get(self, "ip_match_rule")
+
+    @ip_match_rule.setter
+    def ip_match_rule(self, value: pulumi.Input[Optional['AddonReleaseEntityRulesIpMatchRuleArgs']]):
+        pulumi.set(self, "ip_match_rule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionIds")
+    def region_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A collection of region IDs.
+        """
+        return pulumi.get(self, "region_ids")
+
+    @region_ids.setter
+    def region_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "region_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource group ID.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AddonReleaseEntityRulesTagArgs']]]]:
+        """
+        The tag-based service discovery rules. See `tags` below.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AddonReleaseEntityRulesTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+class AddonReleaseEntityRulesFieldRuleArgsDict(TypedDict):
+    field_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The key of the property.
+    """
+    field_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    A collection of property values.
+    """
+    op: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+    """
+
+@pulumi.input_type
+class AddonReleaseEntityRulesFieldRuleArgs:
+    def __init__(__self__, *,
+                 field_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 op: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] field_key: The key of the property.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] field_values: A collection of property values.
+        :param pulumi.Input[_builtins.str] op: The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+        """
+        if field_key is not None:
+            pulumi.set(__self__, "field_key", field_key)
+        if field_values is not None:
+            pulumi.set(__self__, "field_values", field_values)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldKey")
+    def field_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The key of the property.
+        """
+        return pulumi.get(self, "field_key")
+
+    @field_key.setter
+    def field_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "field_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldValues")
+    def field_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A collection of property values.
+        """
+        return pulumi.get(self, "field_values")
+
+    @field_values.setter
+    def field_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "field_values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+        """
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "op", value)
+
+
+class AddonReleaseEntityRulesIpMatchRuleArgsDict(TypedDict):
+    ip_cidr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The CIDR block to match against.
+    """
+    ip_field_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The key of the IP address field.
+    """
+
+@pulumi.input_type
+class AddonReleaseEntityRulesIpMatchRuleArgs:
+    def __init__(__self__, *,
+                 ip_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_field_key: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] ip_cidr: The CIDR block to match against.
+        :param pulumi.Input[_builtins.str] ip_field_key: The key of the IP address field.
+        """
+        if ip_cidr is not None:
+            pulumi.set(__self__, "ip_cidr", ip_cidr)
+        if ip_field_key is not None:
+            pulumi.set(__self__, "ip_field_key", ip_field_key)
+
+    @_builtins.property
+    @pulumi.getter(name="ipCidr")
+    def ip_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The CIDR block to match against.
+        """
+        return pulumi.get(self, "ip_cidr")
+
+    @ip_cidr.setter
+    def ip_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ip_cidr", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipFieldKey")
+    def ip_field_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The key of the IP address field.
+        """
+        return pulumi.get(self, "ip_field_key")
+
+    @ip_field_key.setter
+    def ip_field_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ip_field_key", value)
+
+
+class AddonReleaseEntityRulesTagArgsDict(TypedDict):
+    op: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+    """
+    tag_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The key of the tag.
+    """
+    tag_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    A collection of tag values.
+    """
+
+@pulumi.input_type
+class AddonReleaseEntityRulesTagArgs:
+    def __init__(__self__, *,
+                 op: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] op: The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+        :param pulumi.Input[_builtins.str] tag_key: The key of the tag.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tag_values: A collection of tag values.
+        """
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if tag_key is not None:
+            pulumi.set(__self__, "tag_key", tag_key)
+        if tag_values is not None:
+            pulumi.set(__self__, "tag_values", tag_values)
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+        """
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "op", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The key of the tag.
+        """
+        return pulumi.get(self, "tag_key")
+
+    @tag_key.setter
+    def tag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tag_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagValues")
+    def tag_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A collection of tag values.
+        """
+        return pulumi.get(self, "tag_values")
+
+    @tag_values.setter
+    def tag_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tag_values", value)
+
 
 class AlarmCompositeExpressionArgsDict(TypedDict):
     expression_list_join: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -5312,6 +5656,7 @@ class GroupMetricRuleTargetArgsDict(TypedDict):
     arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Alibaba Cloud Resource Name (ARN) of the resource.
+
     > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
     """
     id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -5336,6 +5681,7 @@ class GroupMetricRuleTargetArgs:
                  level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] arn: The Alibaba Cloud Resource Name (ARN) of the resource.
+               
                > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         :param pulumi.Input[_builtins.str] id: The ID of the resource for which alerts are triggered.
         :param pulumi.Input[_builtins.str] json_params: The parameters of the alert callback. The parameters are in the JSON format.
@@ -5355,6 +5701,7 @@ class GroupMetricRuleTargetArgs:
     def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of the resource.
+
         > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         """
         return pulumi.get(self, "arn")
@@ -5871,20 +6218,48 @@ class IntegrationPolicyEntityGroupArgsDict(TypedDict):
     """
     The cluster ID.
     """
+    cluster_namespace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The cluster Namespace.
+
+    > **NOTE:** If `disable_policy_share` is set to `true`, you can create multiple policies for a container cluster, and `cluster_namespace` is required.
+    """
+    disable_policy_share: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+    """
+    entity_user_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the user who owns the cluster.
+    """
 
 @pulumi.input_type
 class IntegrationPolicyEntityGroupArgs:
     def __init__(__self__, *,
                  cluster_entity_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_policy_share: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entity_user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster_entity_type: The cluster entity type.
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID.
+        :param pulumi.Input[_builtins.str] cluster_namespace: The cluster Namespace.
+               
+               > **NOTE:** If `disable_policy_share` is set to `true`, you can create multiple policies for a container cluster, and `cluster_namespace` is required.
+        :param pulumi.Input[_builtins.bool] disable_policy_share: Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] entity_user_id: The ID of the user who owns the cluster.
         """
         if cluster_entity_type is not None:
             pulumi.set(__self__, "cluster_entity_type", cluster_entity_type)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if cluster_namespace is not None:
+            pulumi.set(__self__, "cluster_namespace", cluster_namespace)
+        if disable_policy_share is not None:
+            pulumi.set(__self__, "disable_policy_share", disable_policy_share)
+        if entity_user_id is not None:
+            pulumi.set(__self__, "entity_user_id", entity_user_id)
 
     @_builtins.property
     @pulumi.getter(name="clusterEntityType")
@@ -5909,6 +6284,44 @@ class IntegrationPolicyEntityGroupArgs:
     @cluster_id.setter
     def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterNamespace")
+    def cluster_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The cluster Namespace.
+
+        > **NOTE:** If `disable_policy_share` is set to `true`, you can create multiple policies for a container cluster, and `cluster_namespace` is required.
+        """
+        return pulumi.get(self, "cluster_namespace")
+
+    @cluster_namespace.setter
+    def cluster_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cluster_namespace", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disablePolicyShare")
+    def disable_policy_share(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "disable_policy_share")
+
+    @disable_policy_share.setter
+    def disable_policy_share(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "disable_policy_share", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entityUserId")
+    def entity_user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the user who owns the cluster.
+        """
+        return pulumi.get(self, "entity_user_id")
+
+    @entity_user_id.setter
+    def entity_user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "entity_user_id", value)
 
 
 class MetricRuleBlackListMetricArgsDict(TypedDict):
@@ -5963,16 +6376,19 @@ class MetricRuleTemplateAlertTemplateArgsDict(TypedDict):
     category: pulumi.Input[_builtins.str]
     """
     The abbreviation of the Alibaba Cloud service name.
+
     > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
     """
     metric_name: pulumi.Input[_builtins.str]
     """
     The name of the metric.
+
     > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
     """
     namespace: pulumi.Input[_builtins.str]
     """
     The namespace of the cloud service.
+
     > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
     """
     rule_name: pulumi.Input[_builtins.str]
@@ -5999,10 +6415,13 @@ class MetricRuleTemplateAlertTemplateArgs:
                  webhook: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] category: The abbreviation of the Alibaba Cloud service name.
+               
                > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
         :param pulumi.Input[_builtins.str] metric_name: The name of the metric.
+               
                > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[_builtins.str] namespace: The namespace of the cloud service.
+               
                > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[_builtins.str] rule_name: The name of the alert rule.
         :param pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsArgs'] escalations: The information about the trigger condition based on the alert level. See `escalations` below.
@@ -6022,6 +6441,7 @@ class MetricRuleTemplateAlertTemplateArgs:
     def category(self) -> pulumi.Input[_builtins.str]:
         """
         The abbreviation of the Alibaba Cloud service name.
+
         > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
         """
         return pulumi.get(self, "category")
@@ -6035,6 +6455,7 @@ class MetricRuleTemplateAlertTemplateArgs:
     def metric_name(self) -> pulumi.Input[_builtins.str]:
         """
         The name of the metric.
+
         > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "metric_name")
@@ -6048,6 +6469,7 @@ class MetricRuleTemplateAlertTemplateArgs:
     def namespace(self) -> pulumi.Input[_builtins.str]:
         """
         The namespace of the cloud service.
+
         > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "namespace")

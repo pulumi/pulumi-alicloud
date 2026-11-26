@@ -98,19 +98,19 @@ export class TemplateScratch extends pulumi.CustomResource {
      */
     declare public readonly logicalIdStrategy: pulumi.Output<string>;
     /**
-     * Priority parameter. See the following `Block preferenceParameters`.
+     * Priority parameter. See `preferenceParameters` below.
      */
     declare public readonly preferenceParameters: pulumi.Output<outputs.ros.TemplateScratchPreferenceParameter[]>;
     /**
-     * Source resource grouping. See the following `Block sourceResourceGroup`.
+     * Source resource grouping. See `sourceResourceGroup` below.
      */
     declare public readonly sourceResourceGroup: pulumi.Output<outputs.ros.TemplateScratchSourceResourceGroup | undefined>;
     /**
-     * Source resource. See the following `Block sourceResources`.
+     * Source resource. See `sourceResources` below.
      */
     declare public readonly sourceResources: pulumi.Output<outputs.ros.TemplateScratchSourceResource[] | undefined>;
     /**
-     * Source tag. See the following `Block sourceTag`.
+     * Source tag. See `sourceTag` below.
      */
     declare public readonly sourceTag: pulumi.Output<outputs.ros.TemplateScratchSourceTag | undefined>;
     /**
@@ -181,19 +181,19 @@ export interface TemplateScratchState {
      */
     logicalIdStrategy?: pulumi.Input<string | undefined>;
     /**
-     * Priority parameter. See the following `Block preferenceParameters`.
+     * Priority parameter. See `preferenceParameters` below.
      */
     preferenceParameters?: pulumi.Input<pulumi.Input<inputs.ros.TemplateScratchPreferenceParameter>[] | undefined>;
     /**
-     * Source resource grouping. See the following `Block sourceResourceGroup`.
+     * Source resource grouping. See `sourceResourceGroup` below.
      */
     sourceResourceGroup?: pulumi.Input<inputs.ros.TemplateScratchSourceResourceGroup | undefined>;
     /**
-     * Source resource. See the following `Block sourceResources`.
+     * Source resource. See `sourceResources` below.
      */
     sourceResources?: pulumi.Input<pulumi.Input<inputs.ros.TemplateScratchSourceResource>[] | undefined>;
     /**
-     * Source tag. See the following `Block sourceTag`.
+     * Source tag. See `sourceTag` below.
      */
     sourceTag?: pulumi.Input<inputs.ros.TemplateScratchSourceTag | undefined>;
     /**
@@ -223,19 +223,19 @@ export interface TemplateScratchArgs {
      */
     logicalIdStrategy?: pulumi.Input<string | undefined>;
     /**
-     * Priority parameter. See the following `Block preferenceParameters`.
+     * Priority parameter. See `preferenceParameters` below.
      */
     preferenceParameters?: pulumi.Input<pulumi.Input<inputs.ros.TemplateScratchPreferenceParameter>[] | undefined>;
     /**
-     * Source resource grouping. See the following `Block sourceResourceGroup`.
+     * Source resource grouping. See `sourceResourceGroup` below.
      */
     sourceResourceGroup?: pulumi.Input<inputs.ros.TemplateScratchSourceResourceGroup | undefined>;
     /**
-     * Source resource. See the following `Block sourceResources`.
+     * Source resource. See `sourceResources` below.
      */
     sourceResources?: pulumi.Input<pulumi.Input<inputs.ros.TemplateScratchSourceResource>[] | undefined>;
     /**
-     * Source tag. See the following `Block sourceTag`.
+     * Source tag. See `sourceTag` below.
      */
     sourceTag?: pulumi.Input<inputs.ros.TemplateScratchSourceTag | undefined>;
     /**

@@ -47,11 +47,17 @@ class GetRealTimeLogDeliveriesResult:
     @_builtins.property
     @pulumi.getter
     def deliveries(self) -> Sequence['outputs.GetRealTimeLogDeliveriesDeliveryResult']:
+        """
+        A list of Cdn Real Time Log Deliveries. Each element contains the following attributes:
+        """
         return pulumi.get(self, "deliveries")
 
     @_builtins.property
     @pulumi.getter
     def domain(self) -> _builtins.str:
+        """
+        Real-Time Log Service Domain.
+        """
         return pulumi.get(self, "domain")
 
     @_builtins.property
@@ -70,6 +76,9 @@ class GetRealTimeLogDeliveriesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -93,7 +102,7 @@ def get_real_time_log_deliveries(domain: Optional[_builtins.str] = None,
     """
     This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 
@@ -108,6 +117,7 @@ def get_real_time_log_deliveries(domain: Optional[_builtins.str] = None,
     ```
 
 
+    :param _builtins.str domain: The domain name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str status: The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
     """
@@ -131,7 +141,7 @@ def get_real_time_log_deliveries_output(domain: pulumi.Input[Optional[_builtins.
     """
     This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 
@@ -146,6 +156,7 @@ def get_real_time_log_deliveries_output(domain: pulumi.Input[Optional[_builtins.
     ```
 
 
+    :param _builtins.str domain: The domain name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str status: The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
     """

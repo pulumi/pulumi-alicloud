@@ -14,21 +14,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetShardingNetworkPrivateAddressesResult {
+    /**
+     * @return A list of Mongodb Sharding Network Private Addresses. Each element contains the following attributes:
+     * 
+     */
     private List<GetShardingNetworkPrivateAddressesAddress> addresses;
+    /**
+     * @return The db instance id.
+     * 
+     */
     private String dbInstanceId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+     * 
+     */
     private @Nullable String nodeId;
     private @Nullable String outputFile;
+    /**
+     * @return The role of the node.
+     * 
+     */
     private @Nullable String role;
 
     private GetShardingNetworkPrivateAddressesResult() {}
+    /**
+     * @return A list of Mongodb Sharding Network Private Addresses. Each element contains the following attributes:
+     * 
+     */
     public List<GetShardingNetworkPrivateAddressesAddress> addresses() {
         return this.addresses;
     }
+    /**
+     * @return The db instance id.
+     * 
+     */
     public String dbInstanceId() {
         return this.dbInstanceId;
     }
@@ -39,12 +63,20 @@ public final class GetShardingNetworkPrivateAddressesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+     * 
+     */
     public Optional<String> nodeId() {
         return Optional.ofNullable(this.nodeId);
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The role of the node.
+     * 
+     */
     public Optional<String> role() {
         return Optional.ofNullable(this.role);
     }

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Simple Application Server Custom Images of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.143.0+.
+// > **NOTE:** Available since v1.143.0.
 //
 // ## Example Usage
 //
@@ -75,12 +75,14 @@ type GetServerCustomImagesArgs struct {
 // A collection of values returned by getServerCustomImages.
 type GetServerCustomImagesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                       `pulumi:"id"`
-	Ids        []string                     `pulumi:"ids"`
-	Images     []GetServerCustomImagesImage `pulumi:"images"`
-	NameRegex  *string                      `pulumi:"nameRegex"`
-	Names      []string                     `pulumi:"names"`
-	OutputFile *string                      `pulumi:"outputFile"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Simple Application Server Custom Images. Each element contains the following attributes:
+	Images    []GetServerCustomImagesImage `pulumi:"images"`
+	NameRegex *string                      `pulumi:"nameRegex"`
+	// A list of Custom Image names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 }
 
 func GetServerCustomImagesOutput(ctx *pulumi.Context, args GetServerCustomImagesOutputArgs, opts ...pulumi.InvokeOption) GetServerCustomImagesResultOutput {
@@ -126,6 +128,7 @@ func (o GetServerCustomImagesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerCustomImagesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Simple Application Server Custom Images. Each element contains the following attributes:
 func (o GetServerCustomImagesResultOutput) Images() GetServerCustomImagesImageArrayOutput {
 	return o.ApplyT(func(v GetServerCustomImagesResult) []GetServerCustomImagesImage { return v.Images }).(GetServerCustomImagesImageArrayOutput)
 }
@@ -134,6 +137,7 @@ func (o GetServerCustomImagesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerCustomImagesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Custom Image names.
 func (o GetServerCustomImagesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerCustomImagesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

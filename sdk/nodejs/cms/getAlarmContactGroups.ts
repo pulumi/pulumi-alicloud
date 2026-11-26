@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the CMS Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.101.0+.
+ * > **NOTE:** Available since v1.101.0+.
  *
  * ## Example Usage
  *
@@ -56,6 +56,9 @@ export interface GetAlarmContactGroupsArgs {
  * A collection of values returned by getAlarmContactGroups.
  */
 export interface GetAlarmContactGroupsResult {
+    /**
+     * A list of CMS groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.cms.GetAlarmContactGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -63,13 +66,16 @@ export interface GetAlarmContactGroupsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of CMS Alarm Contact Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the CMS Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.101.0+.
+ * > **NOTE:** Available since v1.101.0+.
  *
  * ## Example Usage
  *

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Eip Addresses of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.126.0+.
+// > **NOTE:** Available since v1.126.0.
 //
 // ## Example Usage
 //
@@ -70,10 +70,12 @@ type GetEipAddressesArgs struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Address IDs.
 	Ids []string `pulumi:"ids"`
-	// The include reservation data. Valid values: `BGP` and `BGP_PRO`.
+	// The include reservation data.
 	IncludeReservationData *bool `pulumi:"includeReservationData"`
 	// The eip address.
 	IpAddress *string `pulumi:"ipAddress"`
+	// Field `ipAddresses` has been deprecated. Please use `ipAddress` instead.
+	//
 	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
@@ -93,16 +95,22 @@ type GetEipAddressesArgs struct {
 	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getEipAddresses.
 type GetEipAddressesResult struct {
-	AddressName            *string                  `pulumi:"addressName"`
+	// The name of the EIP.
+	AddressName *string `pulumi:"addressName"`
+	// A list of Eip Addresses. Each element contains the following attributes:
 	Addresses              []GetEipAddressesAddress `pulumi:"addresses"`
 	AssociatedInstanceId   *string                  `pulumi:"associatedInstanceId"`
 	AssociatedInstanceType *string                  `pulumi:"associatedInstanceType"`
 	DryRun                 *bool                    `pulumi:"dryRun"`
+	// (Deprecated since v1.126.0) A list of EIPs. This field has been deprecated. Please use `addresses` instead. Each element contains the following attributes:
+	//
 	// Deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.
 	Eips          []GetEipAddressesEip `pulumi:"eips"`
 	EnableDetails *bool                `pulumi:"enableDetails"`
@@ -110,19 +118,27 @@ type GetEipAddressesResult struct {
 	Id                     string   `pulumi:"id"`
 	Ids                    []string `pulumi:"ids"`
 	IncludeReservationData *bool    `pulumi:"includeReservationData"`
-	IpAddress              *string  `pulumi:"ipAddress"`
+	// The IP address of the EIP.
+	IpAddress *string `pulumi:"ipAddress"`
 	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
-	IpAddresses       []string          `pulumi:"ipAddresses"`
-	Isp               *string           `pulumi:"isp"`
-	LockReason        *string           `pulumi:"lockReason"`
-	NameRegex         *string           `pulumi:"nameRegex"`
-	Names             []string          `pulumi:"names"`
-	OutputFile        *string           `pulumi:"outputFile"`
-	PaymentType       *string           `pulumi:"paymentType"`
-	ResourceGroupId   *string           `pulumi:"resourceGroupId"`
-	SegmentInstanceId *string           `pulumi:"segmentInstanceId"`
-	Status            *string           `pulumi:"status"`
-	Tags              map[string]string `pulumi:"tags"`
+	IpAddresses []string `pulumi:"ipAddresses"`
+	// The Internet service provider (ISP).
+	Isp        *string `pulumi:"isp"`
+	LockReason *string `pulumi:"lockReason"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of Address names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The billing method of the EIP.
+	PaymentType *string `pulumi:"paymentType"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The IDs of the contiguous EIPs.
+	SegmentInstanceId *string `pulumi:"segmentInstanceId"`
+	// The status of the EIP.
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetEipAddressesOutput(ctx *pulumi.Context, args GetEipAddressesOutputArgs, opts ...pulumi.InvokeOption) GetEipAddressesResultOutput {
@@ -144,10 +160,12 @@ type GetEipAddressesOutputArgs struct {
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Address IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The include reservation data. Valid values: `BGP` and `BGP_PRO`.
+	// The include reservation data.
 	IncludeReservationData pulumi.BoolPtrInput `pulumi:"includeReservationData"`
 	// The eip address.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// Field `ipAddresses` has been deprecated. Please use `ipAddress` instead.
+	//
 	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
 	// The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
@@ -167,6 +185,8 @@ type GetEipAddressesOutputArgs struct {
 	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
@@ -189,10 +209,12 @@ func (o GetEipAddressesResultOutput) ToGetEipAddressesResultOutputWithContext(ct
 	return o
 }
 
+// The name of the EIP.
 func (o GetEipAddressesResultOutput) AddressName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.AddressName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Eip Addresses. Each element contains the following attributes:
 func (o GetEipAddressesResultOutput) Addresses() GetEipAddressesAddressArrayOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) []GetEipAddressesAddress { return v.Addresses }).(GetEipAddressesAddressArrayOutput)
 }
@@ -209,6 +231,8 @@ func (o GetEipAddressesResultOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) *bool { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
+// (Deprecated since v1.126.0) A list of EIPs. This field has been deprecated. Please use `addresses` instead. Each element contains the following attributes:
+//
 // Deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.
 func (o GetEipAddressesResultOutput) Eips() GetEipAddressesEipArrayOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) []GetEipAddressesEip { return v.Eips }).(GetEipAddressesEipArrayOutput)
@@ -231,6 +255,7 @@ func (o GetEipAddressesResultOutput) IncludeReservationData() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v GetEipAddressesResult) *bool { return v.IncludeReservationData }).(pulumi.BoolPtrOutput)
 }
 
+// The IP address of the EIP.
 func (o GetEipAddressesResultOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
@@ -240,6 +265,7 @@ func (o GetEipAddressesResultOutput) IpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
 }
 
+// The Internet service provider (ISP).
 func (o GetEipAddressesResultOutput) Isp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.Isp }).(pulumi.StringPtrOutput)
 }
@@ -252,6 +278,7 @@ func (o GetEipAddressesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Address names.
 func (o GetEipAddressesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -260,22 +287,27 @@ func (o GetEipAddressesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The billing method of the EIP.
 func (o GetEipAddressesResultOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the resource group.
 func (o GetEipAddressesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The IDs of the contiguous EIPs.
 func (o GetEipAddressesResultOutput) SegmentInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.SegmentInstanceId }).(pulumi.StringPtrOutput)
 }
 
+// The status of the EIP.
 func (o GetEipAddressesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A mapping of tags to assign to the resource.
 func (o GetEipAddressesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

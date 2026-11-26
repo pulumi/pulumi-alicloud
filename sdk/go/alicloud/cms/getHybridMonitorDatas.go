@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.177.0+.
+// > **NOTE:** Available since v1.177.0+.
 //
 // ## Example Usage
 //
@@ -74,6 +74,7 @@ type GetHybridMonitorDatasArgs struct {
 
 // A collection of values returned by getHybridMonitorDatas.
 type GetHybridMonitorDatasResult struct {
+	// A list of Cms Hybrid Monitor Datas. Each element contains the following attributes:
 	Datas []GetHybridMonitorDatasData `pulumi:"datas"`
 	End   string                      `pulumi:"end"`
 	// The provider-assigned unique ID for this managed resource.
@@ -125,6 +126,7 @@ func (o GetHybridMonitorDatasResultOutput) ToGetHybridMonitorDatasResultOutputWi
 	return o
 }
 
+// A list of Cms Hybrid Monitor Datas. Each element contains the following attributes:
 func (o GetHybridMonitorDatasResultOutput) Datas() GetHybridMonitorDatasDataArrayOutput {
 	return o.ApplyT(func(v GetHybridMonitorDatasResult) []GetHybridMonitorDatasData { return v.Datas }).(GetHybridMonitorDatasDataArrayOutput)
 }

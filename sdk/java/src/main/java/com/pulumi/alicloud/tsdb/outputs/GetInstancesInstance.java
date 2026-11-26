@@ -77,7 +77,7 @@ public final class GetInstancesInstance {
      */
     private String paymentType;
     /**
-     * @return Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+     * @return Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
      * 
      */
     private String status;
@@ -195,7 +195,7 @@ public final class GetInstancesInstance {
         return this.paymentType;
     }
     /**
-     * @return Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+     * @return Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
      * 
      */
     public String status() {

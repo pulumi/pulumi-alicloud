@@ -14,7 +14,7 @@ import (
 // The `hbase.getInstances` data source provides a collection of HBase instances available in Alicloud account.
 // Filters support regular expression for the instance name, ids or availability_zone.
 //
-// > **NOTE:**  Available in 1.67.0+
+// > **NOTE:** Available since v1.67.0.
 //
 // ## Example Usage
 //
@@ -79,7 +79,7 @@ type GetInstancesResult struct {
 	// The names list of HBase instances
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// A mapping of tags to assign to the resource.
+	// (Optional) A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -153,7 +153,7 @@ func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// A mapping of tags to assign to the resource.
+// (Optional) A mapping of tags to assign to the resource.
 func (o GetInstancesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

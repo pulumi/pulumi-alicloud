@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about ECS Prefix List and how to use it, see [What is Prefix List.](https://www.alibabacloud.com/help/en/doc-detail/207969.html).
  *
- * > **NOTE:** Available in v1.152.0+.
+ * > **NOTE:** Available since v1.152.0.
  *
  * ## Example Usage
  *
@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.ecs.EcsPrefixList("default", {
  *     addressFamily: "IPv4",
  *     maxEntries: 2,
- *     prefixListName: "tftest",
+ *     prefixListName: "tfexample",
  *     description: "description",
  *     entries: [{
  *         cidr: "192.168.0.0/24",
@@ -91,7 +91,7 @@ export class EcsPrefixList extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The Entry. The details see Block `entry`.
+     * The Entry. See `entry` below.
      */
     declare public readonly entries: pulumi.Output<outputs.ecs.EcsPrefixListEntry[]>;
     /**
@@ -159,7 +159,7 @@ export interface EcsPrefixListState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The Entry. The details see Block `entry`.
+     * The Entry. See `entry` below.
      */
     entries?: pulumi.Input<pulumi.Input<inputs.ecs.EcsPrefixListEntry>[] | undefined>;
     /**
@@ -185,7 +185,7 @@ export interface EcsPrefixListArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The Entry. The details see Block `entry`.
+     * The Entry. See `entry` below.
      */
     entries: pulumi.Input<pulumi.Input<inputs.ecs.EcsPrefixListEntry>[]>;
     /**

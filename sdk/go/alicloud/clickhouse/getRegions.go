@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Click House Regions of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.138.0+.
+// > **NOTE:** Available since v1.138.0.
 //
 // ## Example Usage
 //
@@ -72,10 +72,12 @@ type GetRegionsArgs struct {
 type GetRegionsResult struct {
 	Current *bool `pulumi:"current"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string             `pulumi:"id"`
-	OutputFile *string            `pulumi:"outputFile"`
-	RegionId   *string            `pulumi:"regionId"`
-	Regions    []GetRegionsRegion `pulumi:"regions"`
+	Id         string  `pulumi:"id"`
+	OutputFile *string `pulumi:"outputFile"`
+	// The Region ID.
+	RegionId *string `pulumi:"regionId"`
+	// A list of Click House Regions. Each element contains the following attributes:
+	Regions []GetRegionsRegion `pulumi:"regions"`
 }
 
 func GetRegionsOutput(ctx *pulumi.Context, args GetRegionsOutputArgs, opts ...pulumi.InvokeOption) GetRegionsResultOutput {
@@ -125,10 +127,12 @@ func (o GetRegionsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The Region ID.
 func (o GetRegionsResultOutput) RegionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegionsResult) *string { return v.RegionId }).(pulumi.StringPtrOutput)
 }
 
+// A list of Click House Regions. Each element contains the following attributes:
 func (o GetRegionsResultOutput) Regions() GetRegionsRegionArrayOutput {
 	return o.ApplyT(func(v GetRegionsResult) []GetRegionsRegion { return v.Regions }).(GetRegionsRegionArrayOutput)
 }

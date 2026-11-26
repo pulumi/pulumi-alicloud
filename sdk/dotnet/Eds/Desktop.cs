@@ -135,6 +135,12 @@ namespace Pulumi.AliCloud.Eds
         public Output<string?> DesktopName { get; private set; } = null!;
 
         /// <summary>
+        /// The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `DesktopTimers` below.
+        /// </summary>
+        [Output("desktopTimers")]
+        public Output<ImmutableArray<Outputs.DesktopDesktopTimer>> DesktopTimers { get; private set; } = null!;
+
+        /// <summary>
         /// The desktop type of the Desktop.
         /// </summary>
         [Output("desktopType")]
@@ -147,10 +153,12 @@ namespace Pulumi.AliCloud.Eds
         public Output<ImmutableArray<string>> EndUserIds { get; private set; } = null!;
 
         /// <summary>
-        /// The hostname of the Desktop.
+        /// The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+        /// 
+        /// &gt; **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `HostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
         /// </summary>
         [Output("hostName")]
-        public Output<string?> HostName { get; private set; } = null!;
+        public Output<string> HostName { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the Simple Office Site.
@@ -199,6 +207,14 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         [Output("stoppedMode")]
         public Output<string> StoppedMode { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+        /// 
+        /// &gt; **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+        /// </summary>
+        [Output("subnetId")]
+        public Output<string> SubnetId { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -294,6 +310,18 @@ namespace Pulumi.AliCloud.Eds
         [Input("desktopName")]
         public Input<string>? DesktopName { get; set; }
 
+        [Input("desktopTimers")]
+        private InputList<Inputs.DesktopDesktopTimerArgs>? _desktopTimers;
+
+        /// <summary>
+        /// The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `DesktopTimers` below.
+        /// </summary>
+        public InputList<Inputs.DesktopDesktopTimerArgs> DesktopTimers
+        {
+            get => _desktopTimers ?? (_desktopTimers = new InputList<Inputs.DesktopDesktopTimerArgs>());
+            set => _desktopTimers = value;
+        }
+
         /// <summary>
         /// The desktop type of the Desktop.
         /// </summary>
@@ -313,7 +341,9 @@ namespace Pulumi.AliCloud.Eds
         }
 
         /// <summary>
-        /// The hostname of the Desktop.
+        /// The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+        /// 
+        /// &gt; **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `HostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
         /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
@@ -365,6 +395,14 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         [Input("stoppedMode")]
         public Input<string>? StoppedMode { get; set; }
+
+        /// <summary>
+        /// The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+        /// 
+        /// &gt; **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+        /// </summary>
+        [Input("subnetId")]
+        public Input<string>? SubnetId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -428,6 +466,18 @@ namespace Pulumi.AliCloud.Eds
         [Input("desktopName")]
         public Input<string>? DesktopName { get; set; }
 
+        [Input("desktopTimers")]
+        private InputList<Inputs.DesktopDesktopTimerGetArgs>? _desktopTimers;
+
+        /// <summary>
+        /// The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `DesktopTimers` below.
+        /// </summary>
+        public InputList<Inputs.DesktopDesktopTimerGetArgs> DesktopTimers
+        {
+            get => _desktopTimers ?? (_desktopTimers = new InputList<Inputs.DesktopDesktopTimerGetArgs>());
+            set => _desktopTimers = value;
+        }
+
         /// <summary>
         /// The desktop type of the Desktop.
         /// </summary>
@@ -447,7 +497,9 @@ namespace Pulumi.AliCloud.Eds
         }
 
         /// <summary>
-        /// The hostname of the Desktop.
+        /// The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+        /// 
+        /// &gt; **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `HostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
         /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
@@ -499,6 +551,14 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         [Input("stoppedMode")]
         public Input<string>? StoppedMode { get; set; }
+
+        /// <summary>
+        /// The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+        /// 
+        /// &gt; **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+        /// </summary>
+        [Input("subnetId")]
+        public Input<string>? SubnetId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;

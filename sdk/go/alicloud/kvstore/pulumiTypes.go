@@ -13,6 +13,112 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type InstanceAdditionalBandwidth struct {
+	// The additional bandwidth to add. Unit: MB/s. Must be set in every `additionalBandwidth` block; a block without it is rejected. Valid values: non-negative integers. The maximum value is 6 times the default bandwidth of the instance (or shard) specification, capped at 192 MB/s. Set to `0` to release the additional bandwidth purchased for the shard.
+	Bandwidth *int `pulumi:"bandwidth"`
+	// The data shard whose bandwidth is adjusted. Use the shard node name (`r-xxx-db-0`, the `InsName` reported by the `DescribeRoleZoneInfo` operation) or its full topology ID (`r-xxx-db-0#123456`); a suffix such as `db-0` is also accepted when exactly one data shard of the instance ends with it. Required on [cluster](https://www.alibabacloud.com/help/en/redis/user-guide/cluster-instances) and [read/write splitting](https://www.alibabacloud.com/help/en/redis/user-guide/read-write-splitting-based-on-proxy-nodes) instances, and each data shard can be configured at most once. A standard instance takes `bandwidth` alone and must leave this argument unset, because `EnableAdditionalBandwidth` only accepts `NodeId` for the cluster and read/write splitting architectures.
+	NodeId *string `pulumi:"nodeId"`
+}
+
+// InstanceAdditionalBandwidthInput is an input type that accepts InstanceAdditionalBandwidthArgs and InstanceAdditionalBandwidthOutput values.
+// You can construct a concrete instance of `InstanceAdditionalBandwidthInput` via:
+//
+//	InstanceAdditionalBandwidthArgs{...}
+type InstanceAdditionalBandwidthInput interface {
+	pulumi.Input
+
+	ToInstanceAdditionalBandwidthOutput() InstanceAdditionalBandwidthOutput
+	ToInstanceAdditionalBandwidthOutputWithContext(context.Context) InstanceAdditionalBandwidthOutput
+}
+
+type InstanceAdditionalBandwidthArgs struct {
+	// The additional bandwidth to add. Unit: MB/s. Must be set in every `additionalBandwidth` block; a block without it is rejected. Valid values: non-negative integers. The maximum value is 6 times the default bandwidth of the instance (or shard) specification, capped at 192 MB/s. Set to `0` to release the additional bandwidth purchased for the shard.
+	Bandwidth pulumi.IntPtrInput `pulumi:"bandwidth"`
+	// The data shard whose bandwidth is adjusted. Use the shard node name (`r-xxx-db-0`, the `InsName` reported by the `DescribeRoleZoneInfo` operation) or its full topology ID (`r-xxx-db-0#123456`); a suffix such as `db-0` is also accepted when exactly one data shard of the instance ends with it. Required on [cluster](https://www.alibabacloud.com/help/en/redis/user-guide/cluster-instances) and [read/write splitting](https://www.alibabacloud.com/help/en/redis/user-guide/read-write-splitting-based-on-proxy-nodes) instances, and each data shard can be configured at most once. A standard instance takes `bandwidth` alone and must leave this argument unset, because `EnableAdditionalBandwidth` only accepts `NodeId` for the cluster and read/write splitting architectures.
+	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
+}
+
+func (InstanceAdditionalBandwidthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAdditionalBandwidth)(nil)).Elem()
+}
+
+func (i InstanceAdditionalBandwidthArgs) ToInstanceAdditionalBandwidthOutput() InstanceAdditionalBandwidthOutput {
+	return i.ToInstanceAdditionalBandwidthOutputWithContext(context.Background())
+}
+
+func (i InstanceAdditionalBandwidthArgs) ToInstanceAdditionalBandwidthOutputWithContext(ctx context.Context) InstanceAdditionalBandwidthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAdditionalBandwidthOutput)
+}
+
+// InstanceAdditionalBandwidthArrayInput is an input type that accepts InstanceAdditionalBandwidthArray and InstanceAdditionalBandwidthArrayOutput values.
+// You can construct a concrete instance of `InstanceAdditionalBandwidthArrayInput` via:
+//
+//	InstanceAdditionalBandwidthArray{ InstanceAdditionalBandwidthArgs{...} }
+type InstanceAdditionalBandwidthArrayInput interface {
+	pulumi.Input
+
+	ToInstanceAdditionalBandwidthArrayOutput() InstanceAdditionalBandwidthArrayOutput
+	ToInstanceAdditionalBandwidthArrayOutputWithContext(context.Context) InstanceAdditionalBandwidthArrayOutput
+}
+
+type InstanceAdditionalBandwidthArray []InstanceAdditionalBandwidthInput
+
+func (InstanceAdditionalBandwidthArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceAdditionalBandwidth)(nil)).Elem()
+}
+
+func (i InstanceAdditionalBandwidthArray) ToInstanceAdditionalBandwidthArrayOutput() InstanceAdditionalBandwidthArrayOutput {
+	return i.ToInstanceAdditionalBandwidthArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceAdditionalBandwidthArray) ToInstanceAdditionalBandwidthArrayOutputWithContext(ctx context.Context) InstanceAdditionalBandwidthArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAdditionalBandwidthArrayOutput)
+}
+
+type InstanceAdditionalBandwidthOutput struct{ *pulumi.OutputState }
+
+func (InstanceAdditionalBandwidthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAdditionalBandwidth)(nil)).Elem()
+}
+
+func (o InstanceAdditionalBandwidthOutput) ToInstanceAdditionalBandwidthOutput() InstanceAdditionalBandwidthOutput {
+	return o
+}
+
+func (o InstanceAdditionalBandwidthOutput) ToInstanceAdditionalBandwidthOutputWithContext(ctx context.Context) InstanceAdditionalBandwidthOutput {
+	return o
+}
+
+// The additional bandwidth to add. Unit: MB/s. Must be set in every `additionalBandwidth` block; a block without it is rejected. Valid values: non-negative integers. The maximum value is 6 times the default bandwidth of the instance (or shard) specification, capped at 192 MB/s. Set to `0` to release the additional bandwidth purchased for the shard.
+func (o InstanceAdditionalBandwidthOutput) Bandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceAdditionalBandwidth) *int { return v.Bandwidth }).(pulumi.IntPtrOutput)
+}
+
+// The data shard whose bandwidth is adjusted. Use the shard node name (`r-xxx-db-0`, the `InsName` reported by the `DescribeRoleZoneInfo` operation) or its full topology ID (`r-xxx-db-0#123456`); a suffix such as `db-0` is also accepted when exactly one data shard of the instance ends with it. Required on [cluster](https://www.alibabacloud.com/help/en/redis/user-guide/cluster-instances) and [read/write splitting](https://www.alibabacloud.com/help/en/redis/user-guide/read-write-splitting-based-on-proxy-nodes) instances, and each data shard can be configured at most once. A standard instance takes `bandwidth` alone and must leave this argument unset, because `EnableAdditionalBandwidth` only accepts `NodeId` for the cluster and read/write splitting architectures.
+func (o InstanceAdditionalBandwidthOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceAdditionalBandwidth) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
+type InstanceAdditionalBandwidthArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceAdditionalBandwidthArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceAdditionalBandwidth)(nil)).Elem()
+}
+
+func (o InstanceAdditionalBandwidthArrayOutput) ToInstanceAdditionalBandwidthArrayOutput() InstanceAdditionalBandwidthArrayOutput {
+	return o
+}
+
+func (o InstanceAdditionalBandwidthArrayOutput) ToInstanceAdditionalBandwidthArrayOutputWithContext(ctx context.Context) InstanceAdditionalBandwidthArrayOutput {
+	return o
+}
+
+func (o InstanceAdditionalBandwidthArrayOutput) Index(i pulumi.IntInput) InstanceAdditionalBandwidthOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceAdditionalBandwidth {
+		return vs[0].([]InstanceAdditionalBandwidth)[vs[1].(int)]
+	}).(InstanceAdditionalBandwidthOutput)
+}
+
 type InstanceParameter struct {
 	// Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
 	//
@@ -144,7 +250,7 @@ type GetAccountsAccount struct {
 	Id string `pulumi:"id"`
 	// The Id of instance in which account belongs.
 	InstanceId string `pulumi:"instanceId"`
-	// The status of account.
+	// The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
 	Status string `pulumi:"status"`
 }
 
@@ -172,7 +278,7 @@ type GetAccountsAccountArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The Id of instance in which account belongs.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// The status of account.
+	// The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -257,7 +363,7 @@ func (o GetAccountsAccountOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The status of account.
+// The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
 func (o GetAccountsAccountOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -289,8 +395,10 @@ type GetConnectionsConnection struct {
 	DbInstanceNetType string `pulumi:"dbInstanceNetType"`
 	// The expiration time of the classic network address.
 	ExpiredTime string `pulumi:"expiredTime"`
-	Id          string `pulumi:"id"`
-	InstanceId  string `pulumi:"instanceId"`
+	// The ID of the instance.
+	Id string `pulumi:"id"`
+	// The ID of the instance.
+	InstanceId string `pulumi:"instanceId"`
 	// The IP address of the instance.
 	IpAddress string `pulumi:"ipAddress"`
 	// The port number of the instance.
@@ -323,8 +431,10 @@ type GetConnectionsConnectionArgs struct {
 	DbInstanceNetType pulumi.StringInput `pulumi:"dbInstanceNetType"`
 	// The expiration time of the classic network address.
 	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
-	Id          pulumi.StringInput `pulumi:"id"`
-	InstanceId  pulumi.StringInput `pulumi:"instanceId"`
+	// The ID of the instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The IP address of the instance.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
 	// The port number of the instance.
@@ -405,10 +515,12 @@ func (o GetConnectionsConnectionOutput) ExpiredTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) string { return v.ExpiredTime }).(pulumi.StringOutput)
 }
 
+// The ID of the instance.
 func (o GetConnectionsConnectionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The ID of the instance.
 func (o GetConnectionsConnectionOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -466,7 +578,8 @@ func (o GetConnectionsConnectionArrayOutput) Index(i pulumi.IntInput) GetConnect
 type GetInstanceClassesClass struct {
 	// KVStore available instance class.
 	InstanceClass string `pulumi:"instanceClass"`
-	Price         string `pulumi:"price"`
+	// The price of the instance class.
+	Price string `pulumi:"price"`
 }
 
 // GetInstanceClassesClassInput is an input type that accepts GetInstanceClassesClassArgs and GetInstanceClassesClassOutput values.
@@ -483,7 +596,8 @@ type GetInstanceClassesClassInput interface {
 type GetInstanceClassesClassArgs struct {
 	// KVStore available instance class.
 	InstanceClass pulumi.StringInput `pulumi:"instanceClass"`
-	Price         pulumi.StringInput `pulumi:"price"`
+	// The price of the instance class.
+	Price pulumi.StringInput `pulumi:"price"`
 }
 
 func (GetInstanceClassesClassArgs) ElementType() reflect.Type {
@@ -542,6 +656,7 @@ func (o GetInstanceClassesClassOutput) InstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceClassesClass) string { return v.InstanceClass }).(pulumi.StringOutput)
 }
 
+// The price of the instance class.
 func (o GetInstanceClassesClassOutput) Price() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceClassesClass) string { return v.Price }).(pulumi.StringOutput)
 }
@@ -1353,6 +1468,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAdditionalBandwidthInput)(nil)).Elem(), InstanceAdditionalBandwidthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAdditionalBandwidthArrayInput)(nil)).Elem(), InstanceAdditionalBandwidthArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterInput)(nil)).Elem(), InstanceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterArrayInput)(nil)).Elem(), InstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
@@ -1367,6 +1484,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(InstanceAdditionalBandwidthOutput{})
+	pulumi.RegisterOutputType(InstanceAdditionalBandwidthArrayOutput{})
 	pulumi.RegisterOutputType(InstanceParameterOutput{})
 	pulumi.RegisterOutputType(InstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})

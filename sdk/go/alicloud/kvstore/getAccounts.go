@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.102.0+.
+// > **NOTE:** Available since v1.102.0.
 //
 // ## Example Usage
 //
@@ -58,8 +58,9 @@ type GetAccountsArgs struct {
 	// The name of the account.
 	AccountName *string `pulumi:"accountName"`
 	// The Id of instance in which account belongs.
-	InstanceId string  `pulumi:"instanceId"`
-	NameRegex  *string `pulumi:"nameRegex"`
+	InstanceId string `pulumi:"instanceId"`
+	// A regex string to apply to the account name.
+	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
@@ -68,16 +69,22 @@ type GetAccountsArgs struct {
 
 // A collection of values returned by getAccounts.
 type GetAccountsResult struct {
-	AccountName *string              `pulumi:"accountName"`
-	Accounts    []GetAccountsAccount `pulumi:"accounts"`
+	// The name of the account.
+	AccountName *string `pulumi:"accountName"`
+	// A list of Kvstore Accounts. Each element contains the following attributes:
+	Accounts []GetAccountsAccount `pulumi:"accounts"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	InstanceId string   `pulumi:"instanceId"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id string `pulumi:"id"`
+	// A list of Account IDs.
+	Ids []string `pulumi:"ids"`
+	// The Id of instance in which account belongs.
+	InstanceId string  `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of Account names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of account.
+	Status *string `pulumi:"status"`
 }
 
 func GetAccountsOutput(ctx *pulumi.Context, args GetAccountsOutputArgs, opts ...pulumi.InvokeOption) GetAccountsResultOutput {
@@ -90,8 +97,9 @@ type GetAccountsOutputArgs struct {
 	// The name of the account.
 	AccountName pulumi.StringPtrInput `pulumi:"accountName"`
 	// The Id of instance in which account belongs.
-	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// A regex string to apply to the account name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
@@ -117,10 +125,12 @@ func (o GetAccountsResultOutput) ToGetAccountsResultOutputWithContext(ctx contex
 	return o
 }
 
+// The name of the account.
 func (o GetAccountsResultOutput) AccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountsResult) *string { return v.AccountName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Kvstore Accounts. Each element contains the following attributes:
 func (o GetAccountsResultOutput) Accounts() GetAccountsAccountArrayOutput {
 	return o.ApplyT(func(v GetAccountsResult) []GetAccountsAccount { return v.Accounts }).(GetAccountsAccountArrayOutput)
 }
@@ -130,10 +140,12 @@ func (o GetAccountsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Account IDs.
 func (o GetAccountsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAccountsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The Id of instance in which account belongs.
 func (o GetAccountsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -142,6 +154,7 @@ func (o GetAccountsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Account names.
 func (o GetAccountsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAccountsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -150,6 +163,7 @@ func (o GetAccountsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of account.
 func (o GetAccountsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

@@ -16,12 +16,20 @@ public final class GetIndustrialPidLoopsLoop {
      * 
      */
     private String id;
+    /**
+     * @return The configuration of Pid Loop.
+     * 
+     */
     private String pidLoopConfiguration;
     /**
      * @return The dcs type of Pid Loop.
      * 
      */
     private String pidLoopDcsType;
+    /**
+     * @return The description of Pid Loop.
+     * 
+     */
     private String pidLoopDesc;
     /**
      * @return The ID of the Pid Loop.
@@ -62,6 +70,10 @@ public final class GetIndustrialPidLoopsLoop {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The configuration of Pid Loop.
+     * 
+     */
     public String pidLoopConfiguration() {
         return this.pidLoopConfiguration;
     }
@@ -72,6 +84,10 @@ public final class GetIndustrialPidLoopsLoop {
     public String pidLoopDcsType() {
         return this.pidLoopDcsType;
     }
+    /**
+     * @return The description of Pid Loop.
+     * 
+     */
     public String pidLoopDesc() {
         return this.pidLoopDesc;
     }

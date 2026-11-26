@@ -21,8 +21,20 @@ public final class GetTrafficMirrorFilterIngressRulesResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Vpc Traffic Mirror Filter Egress Rules. Each element contains the following attributes:
+     * 
+     */
     private List<GetTrafficMirrorFilterIngressRulesRule> rules;
+    /**
+     * @return The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The ID of the filter associated with the inbound rule.
+     * 
+     */
     private String trafficMirrorFilterId;
 
     private GetTrafficMirrorFilterIngressRulesResult() {}
@@ -39,12 +51,24 @@ public final class GetTrafficMirrorFilterIngressRulesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Vpc Traffic Mirror Filter Egress Rules. Each element contains the following attributes:
+     * 
+     */
     public List<GetTrafficMirrorFilterIngressRulesRule> rules() {
         return this.rules;
     }
+    /**
+     * @return The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The ID of the filter associated with the inbound rule.
+     * 
+     */
     public String trafficMirrorFilterId() {
         return this.trafficMirrorFilterId;
     }

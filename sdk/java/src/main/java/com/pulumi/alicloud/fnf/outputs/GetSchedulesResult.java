@@ -24,8 +24,16 @@ public final class GetSchedulesResult {
     private List<String> ids;
     private @Nullable Integer limit;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Schedule names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Fnf Schedules. Each element contains the following attributes:
+     * 
+     */
     private List<GetSchedulesSchedule> schedules;
 
     private GetSchedulesResult() {}
@@ -48,12 +56,20 @@ public final class GetSchedulesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Schedule names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Fnf Schedules. Each element contains the following attributes:
+     * 
+     */
     public List<GetSchedulesSchedule> schedules() {
         return this.schedules;
     }

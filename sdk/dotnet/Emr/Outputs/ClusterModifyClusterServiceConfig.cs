@@ -45,6 +45,9 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// Cluster service configuration modification refresh host config, ’true’ or ’false’.
         /// </summary>
         public readonly bool? RefreshHostConfig;
+        /// <summary>
+        /// Cluster service configuration modification name, e.g. ’HDFS’.
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

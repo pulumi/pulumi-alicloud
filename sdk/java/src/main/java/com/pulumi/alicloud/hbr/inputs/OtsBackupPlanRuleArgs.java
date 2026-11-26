@@ -17,14 +17,14 @@ public final class OtsBackupPlanRuleArgs extends com.pulumi.resources.ResourceAr
     public static final OtsBackupPlanRuleArgs Empty = new OtsBackupPlanRuleArgs();
 
     /**
-     * Backup type. Valid values: `COMPLETE`.
+     * The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     @Import(name="backupType")
     private @Nullable Output<String> backupType;
 
     /**
-     * @return Backup type. Valid values: `COMPLETE`.
+     * @return The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     public Optional<Output<String>> backupType() {
@@ -32,14 +32,14 @@ public final class OtsBackupPlanRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+     * Whether to disable the backup task. Valid values: true, false.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+     * @return Whether to disable the backup task. Valid values: true, false.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -47,14 +47,14 @@ public final class OtsBackupPlanRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Backup retention days, the minimum is 1.
+     * Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     @Import(name="retention")
     private @Nullable Output<String> retention;
 
     /**
-     * @return Backup retention days, the minimum is 1.
+     * @return Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     public Optional<Output<String>> retention() {
@@ -77,7 +77,7 @@ public final class OtsBackupPlanRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
      * - `startTime` Backup start time, UNIX time seconds.
      * 
      */
@@ -85,7 +85,7 @@ public final class OtsBackupPlanRuleArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> schedule;
 
     /**
-     * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+     * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
      * - `startTime` Backup start time, UNIX time seconds.
      * 
      */
@@ -122,7 +122,7 @@ public final class OtsBackupPlanRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param backupType Backup type. Valid values: `COMPLETE`.
+         * @param backupType The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class OtsBackupPlanRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param backupType Backup type. Valid values: `COMPLETE`.
+         * @param backupType The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class OtsBackupPlanRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disabled Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+         * @param disabled Whether to disable the backup task. Valid values: true, false.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class OtsBackupPlanRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disabled Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+         * @param disabled Whether to disable the backup task. Valid values: true, false.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class OtsBackupPlanRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param retention Backup retention days, the minimum is 1.
+         * @param retention Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class OtsBackupPlanRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param retention Backup retention days, the minimum is 1.
+         * @param retention Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class OtsBackupPlanRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param schedule Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+         * @param schedule Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
          * - `startTime` Backup start time, UNIX time seconds.
          * 
          * @return builder
@@ -218,7 +218,7 @@ public final class OtsBackupPlanRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param schedule Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+         * @param schedule Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
          * - `startTime` Backup start time, UNIX time seconds.
          * 
          * @return builder

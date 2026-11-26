@@ -17,9 +17,17 @@ public final class GetTrafficMarkingPoliciesArgs extends com.pulumi.resources.In
 
     public static final GetTrafficMarkingPoliciesArgs Empty = new GetTrafficMarkingPoliciesArgs();
 
+    /**
+     * The traffic marking policy description.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return The traffic marking policy description.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -128,11 +136,23 @@ public final class GetTrafficMarkingPoliciesArgs extends com.pulumi.resources.In
             $ = new GetTrafficMarkingPoliciesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param description The traffic marking policy description.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description The traffic marking policy description.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }

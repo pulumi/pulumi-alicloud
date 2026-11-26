@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDedicatedHostGroupsResult {
+    /**
+     * @return Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+     * 
+     */
     private @Nullable String engine;
+    /**
+     * @return A list of Cddc Dedicated Host Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetDedicatedHostGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,13 +31,25 @@ public final class GetDedicatedHostGroupsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Dedicated Host Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetDedicatedHostGroupsResult() {}
+    /**
+     * @return Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+     * 
+     */
     public Optional<String> engine() {
         return Optional.ofNullable(this.engine);
     }
+    /**
+     * @return A list of Cddc Dedicated Host Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetDedicatedHostGroupsGroup> groups() {
         return this.groups;
     }
@@ -46,6 +66,10 @@ public final class GetDedicatedHostGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Dedicated Host Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

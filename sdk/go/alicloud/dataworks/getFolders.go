@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Data Works Folders of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.131.0+.
+// > **NOTE:** Available since v1.131.0.
 //
 // ## Example Usage
 //
@@ -77,13 +77,15 @@ type GetFoldersArgs struct {
 
 // A collection of values returned by getFolders.
 type GetFoldersResult struct {
+	// A list of Data Works Folders. Each element contains the following attributes:
 	Folders []GetFoldersFolder `pulumi:"folders"`
 	// The provider-assigned unique ID for this managed resource.
 	Id               string   `pulumi:"id"`
 	Ids              []string `pulumi:"ids"`
 	OutputFile       *string  `pulumi:"outputFile"`
 	ParentFolderPath string   `pulumi:"parentFolderPath"`
-	ProjectId        string   `pulumi:"projectId"`
+	// The ID of the project.
+	ProjectId string `pulumi:"projectId"`
 }
 
 func GetFoldersOutput(ctx *pulumi.Context, args GetFoldersOutputArgs, opts ...pulumi.InvokeOption) GetFoldersResultOutput {
@@ -122,6 +124,7 @@ func (o GetFoldersResultOutput) ToGetFoldersResultOutputWithContext(ctx context.
 	return o
 }
 
+// A list of Data Works Folders. Each element contains the following attributes:
 func (o GetFoldersResultOutput) Folders() GetFoldersFolderArrayOutput {
 	return o.ApplyT(func(v GetFoldersResult) []GetFoldersFolder { return v.Folders }).(GetFoldersFolderArrayOutput)
 }
@@ -143,6 +146,7 @@ func (o GetFoldersResultOutput) ParentFolderPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFoldersResult) string { return v.ParentFolderPath }).(pulumi.StringOutput)
 }
 
+// The ID of the project.
 func (o GetFoldersResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFoldersResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }

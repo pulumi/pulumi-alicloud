@@ -91,6 +91,9 @@ class GetStacksResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Stack names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -101,6 +104,9 @@ class GetStacksResult:
     @_builtins.property
     @pulumi.getter(name="parentStackId")
     def parent_stack_id(self) -> Optional[_builtins.str]:
+        """
+        Parent Stack Id.
+        """
         return pulumi.get(self, "parent_stack_id")
 
     @_builtins.property
@@ -111,21 +117,33 @@ class GetStacksResult:
     @_builtins.property
     @pulumi.getter(name="stackName")
     def stack_name(self) -> Optional[_builtins.str]:
+        """
+        Stack Name.
+        """
         return pulumi.get(self, "stack_name")
 
     @_builtins.property
     @pulumi.getter
     def stacks(self) -> Sequence['outputs.GetStacksStackResult']:
+        """
+        A list of Ros Stacks. Each element contains the following attributes:
+        """
         return pulumi.get(self, "stacks")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of Stack.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Tags of the Stack.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -162,7 +180,7 @@ def get_stacks(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Ros Stacks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.106.0+.
+    > **NOTE:** Available since v1.106.0.
 
     ## Example Usage
 
@@ -227,7 +245,7 @@ def get_stacks_output(enable_details: pulumi.Input[Optional[Optional[_builtins.b
     """
     This data source provides the Ros Stacks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.106.0+.
+    > **NOTE:** Available since v1.106.0.
 
     ## Example Usage
 

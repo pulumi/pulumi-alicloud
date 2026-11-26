@@ -18,8 +18,6 @@ import (
 //
 // > **NOTE:** Available since v1.163.0.
 //
-// > **NOTE:** Deprecated since v1.249.0.
-//
 // > **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource hbr.Policy and alicloud_hbr_policy_binding.
 //
 // ## Example Usage
@@ -86,23 +84,21 @@ import (
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
 //				Name: pulumi.String("hbrexamplerole"),
-//				Document: pulumi.String(`\t\t{
+//				Document: pulumi.String(`    {
+//	      \"Statement\": [
+//	      {
+//	        \"Action\": \"sts:AssumeRole\",
+//	        \"Effect\": \"Allow\",
+//	        \"Principal\": {
+//	          \"Service\": [
+//	            \"crossbackup.hbr.aliyuncs.com\"
+//	          ]
+//	        }
+//	      }
+//	      ],
+//	        \"Version\": \"1\"
+//	    }
 //
-// \t\t\t\"Statement\": [
-// \t\t\t{
-// \t\t\t\t\"Action\": \"sts:AssumeRole\",
-// \t\t\t\t\"Effect\": \"Allow\",
-// \t\t\t\t\"Principal\": {
-// \t\t\t\t\t\"Service\": [
-// \t\t\t\t\t\t\"crossbackup.hbr.aliyuncs.com\"
-// \t\t\t\t\t]
-// \t\t\t\t}
-// \t\t\t}
-// \t\t\t],
-//
-//	\t\t\t\"Version\": \"1\"
-//
-// \t\t}
 // `),
 //
 //				Force: pulumi.Bool(true),
@@ -175,11 +171,11 @@ type OtsBackupPlan struct {
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	OtsBackupPlanName pulumi.StringOutput `pulumi:"otsBackupPlanName"`
-	// The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// The details about the Table store instance. See `otsDetail` below. **Note:** Required while sourceType equals `OTS_TABLE`.
 	OtsDetails OtsBackupPlanOtsDetailArrayOutput `pulumi:"otsDetails"`
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringOutput `pulumi:"retention"`
-	// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// The backup plan rule. See `rules` below. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Rules OtsBackupPlanRuleArrayOutput `pulumi:"rules"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	// - `startTime` Backup start time, UNIX time seconds.
@@ -243,11 +239,11 @@ type otsBackupPlanState struct {
 	InstanceName *string `pulumi:"instanceName"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	OtsBackupPlanName *string `pulumi:"otsBackupPlanName"`
-	// The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// The details about the Table store instance. See `otsDetail` below. **Note:** Required while sourceType equals `OTS_TABLE`.
 	OtsDetails []OtsBackupPlanOtsDetail `pulumi:"otsDetails"`
 	// Backup retention days, the minimum is 1.
 	Retention *string `pulumi:"retention"`
-	// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// The backup plan rule. See `rules` below. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Rules []OtsBackupPlanRule `pulumi:"rules"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	// - `startTime` Backup start time, UNIX time seconds.
@@ -273,11 +269,11 @@ type OtsBackupPlanState struct {
 	InstanceName pulumi.StringPtrInput
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	OtsBackupPlanName pulumi.StringPtrInput
-	// The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// The details about the Table store instance. See `otsDetail` below. **Note:** Required while sourceType equals `OTS_TABLE`.
 	OtsDetails OtsBackupPlanOtsDetailArrayInput
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringPtrInput
-	// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// The backup plan rule. See `rules` below. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Rules OtsBackupPlanRuleArrayInput
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	// - `startTime` Backup start time, UNIX time seconds.
@@ -313,11 +309,11 @@ type otsBackupPlanArgs struct {
 	InstanceName *string `pulumi:"instanceName"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	OtsBackupPlanName string `pulumi:"otsBackupPlanName"`
-	// The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// The details about the Table store instance. See `otsDetail` below. **Note:** Required while sourceType equals `OTS_TABLE`.
 	OtsDetails []OtsBackupPlanOtsDetail `pulumi:"otsDetails"`
 	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
-	// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// The backup plan rule. See `rules` below. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Rules []OtsBackupPlanRule `pulumi:"rules"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	// - `startTime` Backup start time, UNIX time seconds.
@@ -344,11 +340,11 @@ type OtsBackupPlanArgs struct {
 	InstanceName pulumi.StringPtrInput
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	OtsBackupPlanName pulumi.StringInput
-	// The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// The details about the Table store instance. See `otsDetail` below. **Note:** Required while sourceType equals `OTS_TABLE`.
 	OtsDetails OtsBackupPlanOtsDetailArrayInput
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput
-	// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// The backup plan rule. See `rules` below. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Rules OtsBackupPlanRuleArrayInput
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	// - `startTime` Backup start time, UNIX time seconds.
@@ -481,7 +477,7 @@ func (o OtsBackupPlanOutput) OtsBackupPlanName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OtsBackupPlan) pulumi.StringOutput { return v.OtsBackupPlanName }).(pulumi.StringOutput)
 }
 
-// The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+// The details about the Table store instance. See `otsDetail` below. **Note:** Required while sourceType equals `OTS_TABLE`.
 func (o OtsBackupPlanOutput) OtsDetails() OtsBackupPlanOtsDetailArrayOutput {
 	return o.ApplyT(func(v *OtsBackupPlan) OtsBackupPlanOtsDetailArrayOutput { return v.OtsDetails }).(OtsBackupPlanOtsDetailArrayOutput)
 }
@@ -491,7 +487,7 @@ func (o OtsBackupPlanOutput) Retention() pulumi.StringOutput {
 	return o.ApplyT(func(v *OtsBackupPlan) pulumi.StringOutput { return v.Retention }).(pulumi.StringOutput)
 }
 
-// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+// The backup plan rule. See `rules` below. **Note:** Required while sourceType equals `OTS_TABLE`.
 func (o OtsBackupPlanOutput) Rules() OtsBackupPlanRuleArrayOutput {
 	return o.ApplyT(func(v *OtsBackupPlan) OtsBackupPlanRuleArrayOutput { return v.Rules }).(OtsBackupPlanRuleArrayOutput)
 }

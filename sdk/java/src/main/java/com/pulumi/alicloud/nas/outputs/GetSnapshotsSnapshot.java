@@ -72,7 +72,7 @@ public final class GetSnapshotsSnapshot {
      */
     private String sourceFileSystemVersion;
     /**
-     * @return The status of the snapshot.
+     * @return Status. Valid values: `accomplished`, `failed`, `progressing`.
      * 
      */
     private String status;
@@ -163,7 +163,7 @@ public final class GetSnapshotsSnapshot {
         return this.sourceFileSystemVersion;
     }
     /**
-     * @return The status of the snapshot.
+     * @return Status. Valid values: `accomplished`, `failed`, `progressing`.
      * 
      */
     public String status() {

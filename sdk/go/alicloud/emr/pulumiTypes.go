@@ -22,7 +22,7 @@ type ClusterBootstrapAction struct {
 	ExecutionMoment *string `pulumi:"executionMoment"`
 	// bootstrap action execution target, you can specify the host group name, e.g. "coreGroup". If this is not specified, the bootstrap action execution target is whole cluster.
 	ExecutionTarget *string `pulumi:"executionTarget"`
-	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+	// bootstrap action name.
 	Name *string `pulumi:"name"`
 	// bootstrap action path, e.g. "oss://bucket/path".
 	Path *string `pulumi:"path"`
@@ -48,7 +48,7 @@ type ClusterBootstrapActionArgs struct {
 	ExecutionMoment pulumi.StringPtrInput `pulumi:"executionMoment"`
 	// bootstrap action execution target, you can specify the host group name, e.g. "coreGroup". If this is not specified, the bootstrap action execution target is whole cluster.
 	ExecutionTarget pulumi.StringPtrInput `pulumi:"executionTarget"`
-	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+	// bootstrap action name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// bootstrap action path, e.g. "oss://bucket/path".
 	Path pulumi.StringPtrInput `pulumi:"path"`
@@ -125,7 +125,7 @@ func (o ClusterBootstrapActionOutput) ExecutionTarget() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.ExecutionTarget }).(pulumi.StringPtrOutput)
 }
 
-// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+// bootstrap action name.
 func (o ClusterBootstrapActionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -161,7 +161,8 @@ type ClusterConfig struct {
 	// Custom configuration service config value, e.g. ’3’.
 	ConfigValue string `pulumi:"configValue"`
 	// Custom configuration service file name, e.g. ’hdfs-site’.
-	FileName    string `pulumi:"fileName"`
+	FileName string `pulumi:"fileName"`
+	// Custom configuration service name, e.g. ’HDFS’.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -182,7 +183,8 @@ type ClusterConfigArgs struct {
 	// Custom configuration service config value, e.g. ’3’.
 	ConfigValue pulumi.StringInput `pulumi:"configValue"`
 	// Custom configuration service file name, e.g. ’hdfs-site’.
-	FileName    pulumi.StringInput `pulumi:"fileName"`
+	FileName pulumi.StringInput `pulumi:"fileName"`
+	// Custom configuration service name, e.g. ’HDFS’.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -252,6 +254,7 @@ func (o ClusterConfigOutput) FileName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterConfig) string { return v.FileName }).(pulumi.StringOutput)
 }
 
+// Custom configuration service name, e.g. ’HDFS’.
 func (o ClusterConfigOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterConfig) string { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -279,7 +282,7 @@ func (o ClusterConfigArrayOutput) Index(i pulumi.IntInput) ClusterConfigOutput {
 type ClusterHostGroup struct {
 	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 	ChargeType *string `pulumi:"chargeType"`
 	// Graceful decommission timeout, unit: seconds.
 	DecommissionTimeout *int `pulumi:"decommissionTimeout"`
@@ -290,8 +293,9 @@ type ClusterHostGroup struct {
 	// Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
 	DiskType *string `pulumi:"diskType"`
 	// Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
-	EnableGracefulDecommission *bool   `pulumi:"enableGracefulDecommission"`
-	GpuDriver                  *string `pulumi:"gpuDriver"`
+	EnableGracefulDecommission *bool `pulumi:"enableGracefulDecommission"`
+	// GPU driver.
+	GpuDriver *string `pulumi:"gpuDriver"`
 	// host group name.
 	HostGroupName *string `pulumi:"hostGroupName"`
 	// host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
@@ -324,7 +328,7 @@ type ClusterHostGroupInput interface {
 type ClusterHostGroupArgs struct {
 	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew pulumi.BoolPtrInput `pulumi:"autoRenew"`
-	// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 	ChargeType pulumi.StringPtrInput `pulumi:"chargeType"`
 	// Graceful decommission timeout, unit: seconds.
 	DecommissionTimeout pulumi.IntPtrInput `pulumi:"decommissionTimeout"`
@@ -335,8 +339,9 @@ type ClusterHostGroupArgs struct {
 	// Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
-	EnableGracefulDecommission pulumi.BoolPtrInput   `pulumi:"enableGracefulDecommission"`
-	GpuDriver                  pulumi.StringPtrInput `pulumi:"gpuDriver"`
+	EnableGracefulDecommission pulumi.BoolPtrInput `pulumi:"enableGracefulDecommission"`
+	// GPU driver.
+	GpuDriver pulumi.StringPtrInput `pulumi:"gpuDriver"`
 	// host group name.
 	HostGroupName pulumi.StringPtrInput `pulumi:"hostGroupName"`
 	// host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
@@ -411,7 +416,7 @@ func (o ClusterHostGroupOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *bool { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
 
-// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 func (o ClusterHostGroupOutput) ChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.ChargeType }).(pulumi.StringPtrOutput)
 }
@@ -441,6 +446,7 @@ func (o ClusterHostGroupOutput) EnableGracefulDecommission() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v ClusterHostGroup) *bool { return v.EnableGracefulDecommission }).(pulumi.BoolPtrOutput)
 }
 
+// GPU driver.
 func (o ClusterHostGroupOutput) GpuDriver() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.GpuDriver }).(pulumi.StringPtrOutput)
 }
@@ -696,8 +702,9 @@ type ClusterModifyClusterServiceConfig struct {
 	// Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
 	HostInstanceId *string `pulumi:"hostInstanceId"`
 	// Cluster service configuration modification refresh host config, ’true’ or ’false’.
-	RefreshHostConfig *bool  `pulumi:"refreshHostConfig"`
-	ServiceName       string `pulumi:"serviceName"`
+	RefreshHostConfig *bool `pulumi:"refreshHostConfig"`
+	// Cluster service configuration modification name, e.g. ’HDFS’.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // ClusterModifyClusterServiceConfigInput is an input type that accepts ClusterModifyClusterServiceConfigArgs and ClusterModifyClusterServiceConfigOutput values.
@@ -728,7 +735,8 @@ type ClusterModifyClusterServiceConfigArgs struct {
 	HostInstanceId pulumi.StringPtrInput `pulumi:"hostInstanceId"`
 	// Cluster service configuration modification refresh host config, ’true’ or ’false’.
 	RefreshHostConfig pulumi.BoolPtrInput `pulumi:"refreshHostConfig"`
-	ServiceName       pulumi.StringInput  `pulumi:"serviceName"`
+	// Cluster service configuration modification name, e.g. ’HDFS’.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (ClusterModifyClusterServiceConfigArgs) ElementType() reflect.Type {
@@ -848,6 +856,7 @@ func (o ClusterModifyClusterServiceConfigOutput) RefreshHostConfig() pulumi.Bool
 	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) *bool { return v.RefreshHostConfig }).(pulumi.BoolPtrOutput)
 }
 
+// Cluster service configuration modification name, e.g. ’HDFS’.
 func (o ClusterModifyClusterServiceConfigOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) string { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -956,6 +965,7 @@ func (o ClusterModifyClusterServiceConfigPtrOutput) RefreshHostConfig() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Cluster service configuration modification name, e.g. ’HDFS’.
 func (o ClusterModifyClusterServiceConfigPtrOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *string {
 		if v == nil {
@@ -980,49 +990,51 @@ type GetClustersCluster struct {
 	BootstrapActionLists []GetClustersClusterBootstrapActionList `pulumi:"bootstrapActionLists"`
 	// The result of the boot operation.
 	BootstrapFailed bool `pulumi:"bootstrapFailed"`
-	// The first ID of the resource.
+	// The ID of the associated cluster.
 	ClusterId string `pulumi:"clusterId"`
-	// The ClusterName.
+	// The cluster name.
 	ClusterName string `pulumi:"clusterName"`
 	// Cluster tag, no need to pay attention.
 	CreateResource string `pulumi:"createResource"`
-	// The creation time of the resource.
+	// Creation time.
 	CreateTime string `pulumi:"createTime"`
-	// How to create a cluster.
+	// How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
 	CreateType string `pulumi:"createType"`
-	// The hosting type of the cluster.
+	// The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
 	DepositType string `pulumi:"depositType"`
 	// High security cluster.
 	EasEnable bool `pulumi:"easEnable"`
-	// The expiration time of the cluster.
+	// Timeout time.
 	ExpiredTime string `pulumi:"expiredTime"`
 	// Additional information for Stack.
-	ExtraInfo           string `pulumi:"extraInfo"`
-	HasUncompletedOrder bool   `pulumi:"hasUncompletedOrder"`
+	ExtraInfo string `pulumi:"extraInfo"`
+	// Whether the cluster has an uncompleted order.
+	HasUncompletedOrder bool `pulumi:"hasUncompletedOrder"`
 	// High availability cluster.
 	HighAvailabilityEnable bool `pulumi:"highAvailabilityEnable"`
 	// List of cluster machine groups.
 	HostGroupLists []GetClustersClusterHostGroupList `pulumi:"hostGroupLists"`
 	// Machine pool information.
 	HostPoolInfos []GetClustersClusterHostPoolInfo `pulumi:"hostPoolInfos"`
-	Id            string                           `pulumi:"id"`
+	// The ID of the Cluster.
+	Id string `pulumi:"id"`
 	// The ID of the image used to create the cluster.
 	ImageId string `pulumi:"imageId"`
 	// Whether to use Hive local Metabase.
 	LocalMetaDb bool `pulumi:"localMetaDb"`
-	// The host type of the cluster. The default is ECS.
+	// The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
 	MachineType string `pulumi:"machineType"`
-	// Metadata type:
+	// Metadata type.
 	MetaStoreType string `pulumi:"metaStoreType"`
 	// Cluster network type.
 	NetType string `pulumi:"netType"`
 	// The payment type of the resource.
 	PaymentType string `pulumi:"paymentType"`
-	// The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+	// The package year and month time of the machine group. The Valid Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
 	Period int `pulumi:"period"`
 	// The information of the primary cluster associated with the Gateway.
 	RelateClusterInfos []GetClustersClusterRelateClusterInfo `pulumi:"relateClusterInfos"`
-	// Whether to allow disk expansion:
+	// Whether to allow disk expansion.
 	ResizeDiskEnable bool `pulumi:"resizeDiskEnable"`
 	// The time (in seconds) that has been running.
 	RunningTime int `pulumi:"runningTime"`
@@ -1080,49 +1092,51 @@ type GetClustersClusterArgs struct {
 	BootstrapActionLists GetClustersClusterBootstrapActionListArrayInput `pulumi:"bootstrapActionLists"`
 	// The result of the boot operation.
 	BootstrapFailed pulumi.BoolInput `pulumi:"bootstrapFailed"`
-	// The first ID of the resource.
+	// The ID of the associated cluster.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The ClusterName.
+	// The cluster name.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// Cluster tag, no need to pay attention.
 	CreateResource pulumi.StringInput `pulumi:"createResource"`
-	// The creation time of the resource.
+	// Creation time.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// How to create a cluster.
+	// How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
 	CreateType pulumi.StringInput `pulumi:"createType"`
-	// The hosting type of the cluster.
+	// The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
 	DepositType pulumi.StringInput `pulumi:"depositType"`
 	// High security cluster.
 	EasEnable pulumi.BoolInput `pulumi:"easEnable"`
-	// The expiration time of the cluster.
+	// Timeout time.
 	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
 	// Additional information for Stack.
-	ExtraInfo           pulumi.StringInput `pulumi:"extraInfo"`
-	HasUncompletedOrder pulumi.BoolInput   `pulumi:"hasUncompletedOrder"`
+	ExtraInfo pulumi.StringInput `pulumi:"extraInfo"`
+	// Whether the cluster has an uncompleted order.
+	HasUncompletedOrder pulumi.BoolInput `pulumi:"hasUncompletedOrder"`
 	// High availability cluster.
 	HighAvailabilityEnable pulumi.BoolInput `pulumi:"highAvailabilityEnable"`
 	// List of cluster machine groups.
 	HostGroupLists GetClustersClusterHostGroupListArrayInput `pulumi:"hostGroupLists"`
 	// Machine pool information.
 	HostPoolInfos GetClustersClusterHostPoolInfoArrayInput `pulumi:"hostPoolInfos"`
-	Id            pulumi.StringInput                       `pulumi:"id"`
+	// The ID of the Cluster.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the image used to create the cluster.
 	ImageId pulumi.StringInput `pulumi:"imageId"`
 	// Whether to use Hive local Metabase.
 	LocalMetaDb pulumi.BoolInput `pulumi:"localMetaDb"`
-	// The host type of the cluster. The default is ECS.
+	// The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
-	// Metadata type:
+	// Metadata type.
 	MetaStoreType pulumi.StringInput `pulumi:"metaStoreType"`
 	// Cluster network type.
 	NetType pulumi.StringInput `pulumi:"netType"`
 	// The payment type of the resource.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
-	// The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+	// The package year and month time of the machine group. The Valid Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
 	Period pulumi.IntInput `pulumi:"period"`
 	// The information of the primary cluster associated with the Gateway.
 	RelateClusterInfos GetClustersClusterRelateClusterInfoArrayInput `pulumi:"relateClusterInfos"`
-	// Whether to allow disk expansion:
+	// Whether to allow disk expansion.
 	ResizeDiskEnable pulumi.BoolInput `pulumi:"resizeDiskEnable"`
 	// The time (in seconds) that has been running.
 	RunningTime pulumi.IntInput `pulumi:"runningTime"`
@@ -1240,12 +1254,12 @@ func (o GetClustersClusterOutput) BootstrapFailed() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClustersCluster) bool { return v.BootstrapFailed }).(pulumi.BoolOutput)
 }
 
-// The first ID of the resource.
+// The ID of the associated cluster.
 func (o GetClustersClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The ClusterName.
+// The cluster name.
 func (o GetClustersClusterOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterName }).(pulumi.StringOutput)
 }
@@ -1255,17 +1269,17 @@ func (o GetClustersClusterOutput) CreateResource() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.CreateResource }).(pulumi.StringOutput)
 }
 
-// The creation time of the resource.
+// Creation time.
 func (o GetClustersClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// How to create a cluster.
+// How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
 func (o GetClustersClusterOutput) CreateType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.CreateType }).(pulumi.StringOutput)
 }
 
-// The hosting type of the cluster.
+// The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
 func (o GetClustersClusterOutput) DepositType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.DepositType }).(pulumi.StringOutput)
 }
@@ -1275,7 +1289,7 @@ func (o GetClustersClusterOutput) EasEnable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClustersCluster) bool { return v.EasEnable }).(pulumi.BoolOutput)
 }
 
-// The expiration time of the cluster.
+// Timeout time.
 func (o GetClustersClusterOutput) ExpiredTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ExpiredTime }).(pulumi.StringOutput)
 }
@@ -1285,6 +1299,7 @@ func (o GetClustersClusterOutput) ExtraInfo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ExtraInfo }).(pulumi.StringOutput)
 }
 
+// Whether the cluster has an uncompleted order.
 func (o GetClustersClusterOutput) HasUncompletedOrder() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClustersCluster) bool { return v.HasUncompletedOrder }).(pulumi.BoolOutput)
 }
@@ -1304,6 +1319,7 @@ func (o GetClustersClusterOutput) HostPoolInfos() GetClustersClusterHostPoolInfo
 	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterHostPoolInfo { return v.HostPoolInfos }).(GetClustersClusterHostPoolInfoArrayOutput)
 }
 
+// The ID of the Cluster.
 func (o GetClustersClusterOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1318,12 +1334,12 @@ func (o GetClustersClusterOutput) LocalMetaDb() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClustersCluster) bool { return v.LocalMetaDb }).(pulumi.BoolOutput)
 }
 
-// The host type of the cluster. The default is ECS.
+// The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
 func (o GetClustersClusterOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
-// Metadata type:
+// Metadata type.
 func (o GetClustersClusterOutput) MetaStoreType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.MetaStoreType }).(pulumi.StringOutput)
 }
@@ -1338,7 +1354,7 @@ func (o GetClustersClusterOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+// The package year and month time of the machine group. The Valid Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
 func (o GetClustersClusterOutput) Period() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClustersCluster) int { return v.Period }).(pulumi.IntOutput)
 }
@@ -1348,7 +1364,7 @@ func (o GetClustersClusterOutput) RelateClusterInfos() GetClustersClusterRelateC
 	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterRelateClusterInfo { return v.RelateClusterInfos }).(GetClustersClusterRelateClusterInfoArrayOutput)
 }
 
-// Whether to allow disk expansion:
+// Whether to allow disk expansion.
 func (o GetClustersClusterOutput) ResizeDiskEnable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClustersCluster) bool { return v.ResizeDiskEnable }).(pulumi.BoolOutput)
 }
@@ -1649,7 +1665,7 @@ func (o GetClustersClusterAccessInfoZkLinkArrayOutput) Index(i pulumi.IntInput) 
 type GetClustersClusterBootstrapActionList struct {
 	// Parameters of the boot operation.
 	Arg string `pulumi:"arg"`
-	// The name of the boot operation.
+	// The internal name of the service.
 	Name string `pulumi:"name"`
 	// Boot operation script path.
 	Path string `pulumi:"path"`
@@ -1669,7 +1685,7 @@ type GetClustersClusterBootstrapActionListInput interface {
 type GetClustersClusterBootstrapActionListArgs struct {
 	// Parameters of the boot operation.
 	Arg pulumi.StringInput `pulumi:"arg"`
-	// The name of the boot operation.
+	// The internal name of the service.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Boot operation script path.
 	Path pulumi.StringInput `pulumi:"path"`
@@ -1731,7 +1747,7 @@ func (o GetClustersClusterBootstrapActionListOutput) Arg() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterBootstrapActionList) string { return v.Arg }).(pulumi.StringOutput)
 }
 
-// The name of the boot operation.
+// The internal name of the service.
 func (o GetClustersClusterBootstrapActionListOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterBootstrapActionList) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1772,15 +1788,15 @@ type GetClustersClusterHostGroupList struct {
 	DiskCapacity int `pulumi:"diskCapacity"`
 	// The number of data disks.
 	DiskCount int `pulumi:"diskCount"`
-	// System disk type:
+	// System disk type.
 	DiskType string `pulumi:"diskType"`
-	// The current operation type of the machine Group:
+	// The current operation type of the machine Group.
 	HostGroupChangeType string `pulumi:"hostGroupChangeType"`
 	// The ID of the machine group.
 	HostGroupId string `pulumi:"hostGroupId"`
 	// The name of the machine group.
 	HostGroupName string `pulumi:"hostGroupName"`
-	// Role of host in cluster:
+	// Role of host in cluster.
 	HostGroupType string `pulumi:"hostGroupType"`
 	// Machine Group instance.
 	InstanceType string `pulumi:"instanceType"`
@@ -1790,7 +1806,7 @@ type GetClustersClusterHostGroupList struct {
 	NodeCount int `pulumi:"nodeCount"`
 	// Machine node.
 	Nodes []GetClustersClusterHostGroupListNode `pulumi:"nodes"`
-	// Package year and month time (days).
+	// The package year and month time of the machine group. The Valid Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
 	Period string `pulumi:"period"`
 }
 
@@ -1816,15 +1832,15 @@ type GetClustersClusterHostGroupListArgs struct {
 	DiskCapacity pulumi.IntInput `pulumi:"diskCapacity"`
 	// The number of data disks.
 	DiskCount pulumi.IntInput `pulumi:"diskCount"`
-	// System disk type:
+	// System disk type.
 	DiskType pulumi.StringInput `pulumi:"diskType"`
-	// The current operation type of the machine Group:
+	// The current operation type of the machine Group.
 	HostGroupChangeType pulumi.StringInput `pulumi:"hostGroupChangeType"`
 	// The ID of the machine group.
 	HostGroupId pulumi.StringInput `pulumi:"hostGroupId"`
 	// The name of the machine group.
 	HostGroupName pulumi.StringInput `pulumi:"hostGroupName"`
-	// Role of host in cluster:
+	// Role of host in cluster.
 	HostGroupType pulumi.StringInput `pulumi:"hostGroupType"`
 	// Machine Group instance.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
@@ -1834,7 +1850,7 @@ type GetClustersClusterHostGroupListArgs struct {
 	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
 	// Machine node.
 	Nodes GetClustersClusterHostGroupListNodeArrayInput `pulumi:"nodes"`
-	// Package year and month time (days).
+	// The package year and month time of the machine group. The Valid Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
 	Period pulumi.StringInput `pulumi:"period"`
 }
 
@@ -1914,12 +1930,12 @@ func (o GetClustersClusterHostGroupListOutput) DiskCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClustersClusterHostGroupList) int { return v.DiskCount }).(pulumi.IntOutput)
 }
 
-// System disk type:
+// System disk type.
 func (o GetClustersClusterHostGroupListOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterHostGroupList) string { return v.DiskType }).(pulumi.StringOutput)
 }
 
-// The current operation type of the machine Group:
+// The current operation type of the machine Group.
 func (o GetClustersClusterHostGroupListOutput) HostGroupChangeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterHostGroupList) string { return v.HostGroupChangeType }).(pulumi.StringOutput)
 }
@@ -1934,7 +1950,7 @@ func (o GetClustersClusterHostGroupListOutput) HostGroupName() pulumi.StringOutp
 	return o.ApplyT(func(v GetClustersClusterHostGroupList) string { return v.HostGroupName }).(pulumi.StringOutput)
 }
 
-// Role of host in cluster:
+// Role of host in cluster.
 func (o GetClustersClusterHostGroupListOutput) HostGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterHostGroupList) string { return v.HostGroupType }).(pulumi.StringOutput)
 }
@@ -1959,7 +1975,7 @@ func (o GetClustersClusterHostGroupListOutput) Nodes() GetClustersClusterHostGro
 	return o.ApplyT(func(v GetClustersClusterHostGroupList) []GetClustersClusterHostGroupListNode { return v.Nodes }).(GetClustersClusterHostGroupListNodeArrayOutput)
 }
 
-// Package year and month time (days).
+// The package year and month time of the machine group. The Valid Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
 func (o GetClustersClusterHostGroupListOutput) Period() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterHostGroupList) string { return v.Period }).(pulumi.StringOutput)
 }
@@ -1999,7 +2015,7 @@ type GetClustersClusterHostGroupListNode struct {
 	InstanceId string `pulumi:"instanceId"`
 	// Public IP address.
 	PubIp string `pulumi:"pubIp"`
-	// Status.
+	// The cluster status.
 	Status string `pulumi:"status"`
 	// Whether IPV6 is supported.
 	SupportIpv6 bool `pulumi:"supportIpv6"`
@@ -2033,7 +2049,7 @@ type GetClustersClusterHostGroupListNodeArgs struct {
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// Public IP address.
 	PubIp pulumi.StringInput `pulumi:"pubIp"`
-	// Status.
+	// The cluster status.
 	Status pulumi.StringInput `pulumi:"status"`
 	// Whether IPV6 is supported.
 	SupportIpv6 pulumi.BoolInput `pulumi:"supportIpv6"`
@@ -2129,7 +2145,7 @@ func (o GetClustersClusterHostGroupListNodeOutput) PubIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterHostGroupListNode) string { return v.PubIp }).(pulumi.StringOutput)
 }
 
-// Status.
+// The cluster status.
 func (o GetClustersClusterHostGroupListNodeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterHostGroupListNode) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2406,11 +2422,11 @@ func (o GetClustersClusterHostPoolInfoArrayOutput) Index(i pulumi.IntInput) GetC
 type GetClustersClusterRelateClusterInfo struct {
 	// The ID of the associated cluster.
 	ClusterId string `pulumi:"clusterId"`
-	// The name of the associated cluster.
+	// The cluster name.
 	ClusterName string `pulumi:"clusterName"`
-	// The cluster type of the associated cluster.
+	// Cluster type.
 	ClusterType string `pulumi:"clusterType"`
-	// The status  of the associated cluster.
+	// The cluster status.
 	Status string `pulumi:"status"`
 }
 
@@ -2428,11 +2444,11 @@ type GetClustersClusterRelateClusterInfoInput interface {
 type GetClustersClusterRelateClusterInfoArgs struct {
 	// The ID of the associated cluster.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The name of the associated cluster.
+	// The cluster name.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// The cluster type of the associated cluster.
+	// Cluster type.
 	ClusterType pulumi.StringInput `pulumi:"clusterType"`
-	// The status  of the associated cluster.
+	// The cluster status.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2492,17 +2508,17 @@ func (o GetClustersClusterRelateClusterInfoOutput) ClusterId() pulumi.StringOutp
 	return o.ApplyT(func(v GetClustersClusterRelateClusterInfo) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The name of the associated cluster.
+// The cluster name.
 func (o GetClustersClusterRelateClusterInfoOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterRelateClusterInfo) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
-// The cluster type of the associated cluster.
+// Cluster type.
 func (o GetClustersClusterRelateClusterInfoOutput) ClusterType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterRelateClusterInfo) string { return v.ClusterType }).(pulumi.StringOutput)
 }
 
-// The status  of the associated cluster.
+// The cluster status.
 func (o GetClustersClusterRelateClusterInfoOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterRelateClusterInfo) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2528,7 +2544,7 @@ func (o GetClustersClusterRelateClusterInfoArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetClustersClusterSoftwareInfo struct {
-	// Cluster type:
+	// Cluster type.
 	ClusterType string `pulumi:"clusterType"`
 	// E-MapReduce version number.
 	EmrVer string `pulumi:"emrVer"`
@@ -2548,7 +2564,7 @@ type GetClustersClusterSoftwareInfoInput interface {
 }
 
 type GetClustersClusterSoftwareInfoArgs struct {
-	// Cluster type:
+	// Cluster type.
 	ClusterType pulumi.StringInput `pulumi:"clusterType"`
 	// E-MapReduce version number.
 	EmrVer pulumi.StringInput `pulumi:"emrVer"`
@@ -2607,7 +2623,7 @@ func (o GetClustersClusterSoftwareInfoOutput) ToGetClustersClusterSoftwareInfoOu
 	return o
 }
 
-// Cluster type:
+// Cluster type.
 func (o GetClustersClusterSoftwareInfoOutput) ClusterType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterSoftwareInfo) string { return v.ClusterType }).(pulumi.StringOutput)
 }

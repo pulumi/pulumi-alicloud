@@ -106,7 +106,7 @@ def get_domain_extensions(frontend_port: Optional[_builtins.int] = None,
     """
     This data source provides the domain extensions associated with a server load balancer listener.
 
-    > **NOTE:** Available in 1.60.0+
+    > **NOTE:** Available since v1.60.0
 
     ## Example Usage
 
@@ -123,6 +123,7 @@ def get_domain_extensions(frontend_port: Optional[_builtins.int] = None,
     :param _builtins.int frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
     :param Sequence[_builtins.str] ids: IDs of the SLB domain extensions.
     :param _builtins.str load_balancer_id: The ID of the SLB instance.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['frontendPort'] = frontend_port
@@ -147,7 +148,7 @@ def get_domain_extensions_output(frontend_port: pulumi.Input[Optional[_builtins.
     """
     This data source provides the domain extensions associated with a server load balancer listener.
 
-    > **NOTE:** Available in 1.60.0+
+    > **NOTE:** Available since v1.60.0
 
     ## Example Usage
 
@@ -164,6 +165,7 @@ def get_domain_extensions_output(frontend_port: pulumi.Input[Optional[_builtins.
     :param _builtins.int frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
     :param Sequence[_builtins.str] ids: IDs of the SLB domain extensions.
     :param _builtins.str load_balancer_id: The ID of the SLB instance.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['frontendPort'] = frontend_port

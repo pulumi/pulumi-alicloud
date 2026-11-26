@@ -16,9 +16,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServerPlansResult {
+    /**
+     * @return The peak bandwidth. Unit: Mbit/s.
+     * 
+     */
     private @Nullable Integer bandwidth;
+    /**
+     * @return The number of CPU cores.
+     * 
+     */
     private @Nullable Integer core;
+    /**
+     * @return The size of the enhanced SSD (ESSD). Unit: GB.
+     * 
+     */
     private @Nullable Integer diskSize;
+    /**
+     * @return The monthly data transfer quota. Unit: GB.
+     * 
+     */
     private @Nullable Integer flow;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -26,21 +42,45 @@ public final class GetServerPlansResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The memory size. Unit: GB.
+     * 
+     */
     private @Nullable Double memory;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Simple Application Server Plans. Each element contains the following attributes:
+     * 
+     */
     private List<GetServerPlansPlan> plans;
     private @Nullable String platform;
 
     private GetServerPlansResult() {}
+    /**
+     * @return The peak bandwidth. Unit: Mbit/s.
+     * 
+     */
     public Optional<Integer> bandwidth() {
         return Optional.ofNullable(this.bandwidth);
     }
+    /**
+     * @return The number of CPU cores.
+     * 
+     */
     public Optional<Integer> core() {
         return Optional.ofNullable(this.core);
     }
+    /**
+     * @return The size of the enhanced SSD (ESSD). Unit: GB.
+     * 
+     */
     public Optional<Integer> diskSize() {
         return Optional.ofNullable(this.diskSize);
     }
+    /**
+     * @return The monthly data transfer quota. Unit: GB.
+     * 
+     */
     public Optional<Integer> flow() {
         return Optional.ofNullable(this.flow);
     }
@@ -54,12 +94,20 @@ public final class GetServerPlansResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The memory size. Unit: GB.
+     * 
+     */
     public Optional<Double> memory() {
         return Optional.ofNullable(this.memory);
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Simple Application Server Plans. Each element contains the following attributes:
+     * 
+     */
     public List<GetServerPlansPlan> plans() {
         return this.plans;
     }

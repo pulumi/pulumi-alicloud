@@ -17,12 +17,20 @@ public final class GetEcsBackupPlansPlan {
      * 
      */
     private String backupType;
+    /**
+     * @return The creation time of the backup plan. UNIX time in seconds.
+     * 
+     */
     private String createTime;
     /**
      * @return The creation time of the backup plan. UNIX time in seconds.
      * 
      */
     private String createdTime;
+    /**
+     * @return The detail of the backup plan.
+     * 
+     */
     private String detail;
     /**
      * @return Whether to be suspended. Valid values: `true`, `false`.
@@ -55,7 +63,7 @@ public final class GetEcsBackupPlansPlan {
      */
     private String include;
     /**
-     * @return The ID of ECS instance.
+     * @return The ECS instance ID of the EcsBackupPlan used.
      * 
      */
     private String instanceId;
@@ -76,7 +84,7 @@ public final class GetEcsBackupPlansPlan {
     private String retention;
     /**
      * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-     * * `startTime` Backup start time, UNIX time seconds.
+     * - `startTime` Backup start time, UNIX time seconds.
      * 
      */
     private String schedule;
@@ -96,7 +104,7 @@ public final class GetEcsBackupPlansPlan {
      */
     private String updatedTime;
     /**
-     * @return The ID of Backup vault.
+     * @return The Vault ID of the EcsBackupPlan used.
      * 
      */
     private String vaultId;
@@ -109,6 +117,10 @@ public final class GetEcsBackupPlansPlan {
     public String backupType() {
         return this.backupType;
     }
+    /**
+     * @return The creation time of the backup plan. UNIX time in seconds.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
@@ -119,6 +131,10 @@ public final class GetEcsBackupPlansPlan {
     public String createdTime() {
         return this.createdTime;
     }
+    /**
+     * @return The detail of the backup plan.
+     * 
+     */
     public String detail() {
         return this.detail;
     }
@@ -165,7 +181,7 @@ public final class GetEcsBackupPlansPlan {
         return this.include;
     }
     /**
-     * @return The ID of ECS instance.
+     * @return The ECS instance ID of the EcsBackupPlan used.
      * 
      */
     public String instanceId() {
@@ -194,7 +210,7 @@ public final class GetEcsBackupPlansPlan {
     }
     /**
      * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-     * * `startTime` Backup start time, UNIX time seconds.
+     * - `startTime` Backup start time, UNIX time seconds.
      * 
      */
     public String schedule() {
@@ -222,7 +238,7 @@ public final class GetEcsBackupPlansPlan {
         return this.updatedTime;
     }
     /**
-     * @return The ID of Backup vault.
+     * @return The Vault ID of the EcsBackupPlan used.
      * 
      */
     public String vaultId() {

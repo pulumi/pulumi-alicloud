@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Alb Security Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.130.0+.
+ * > **NOTE:** Available since v1.130.0.
  *
  * ## Example Usage
  *
@@ -74,6 +74,9 @@ export interface GetSecurityPoliciesArgs {
      * The status of the resource. Valid values : `Available`, `Configuring`.
      */
     status?: string;
+    /**
+     * A mapping of tags of the resource.
+     */
     tags?: {[key: string]: string};
 }
 
@@ -87,19 +90,34 @@ export interface GetSecurityPoliciesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Security Policy names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Alb Security Policies. Each element contains the following attributes:
+     */
     readonly policies: outputs.alb.GetSecurityPoliciesPolicy[];
+    /**
+     * The ID of the resource group.
+     */
     readonly resourceGroupId?: string;
     readonly securityPolicyIds?: string[];
+    /**
+     * The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+     */
     readonly securityPolicyName?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Alb Security Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.130.0+.
+ * > **NOTE:** Available since v1.130.0.
  *
  * ## Example Usage
  *
@@ -164,5 +182,8 @@ export interface GetSecurityPoliciesOutputArgs {
      * The status of the resource. Valid values : `Available`, `Configuring`.
      */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * A mapping of tags of the resource.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

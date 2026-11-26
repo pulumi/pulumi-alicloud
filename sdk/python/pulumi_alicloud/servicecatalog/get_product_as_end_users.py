@@ -138,6 +138,8 @@ def get_product_as_end_users(ids: Optional[Sequence[_builtins.str]] = None,
     :param Sequence[_builtins.str] ids: A list of Product As End User IDs.
     :param _builtins.str name_regex: A regex string to filter results by product name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str sort_by: The field that is used to sort the queried data.
+    :param _builtins.str sort_order: The sorting method. Valid values: `Asc`, `Desc`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -184,6 +186,8 @@ def get_product_as_end_users_output(ids: pulumi.Input[Optional[Optional[Sequence
     :param Sequence[_builtins.str] ids: A list of Product As End User IDs.
     :param _builtins.str name_regex: A regex string to filter results by product name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str sort_by: The field that is used to sort the queried data.
+    :param _builtins.str sort_order: The sorting method. Valid values: `Asc`, `Desc`.
     """
     __args__ = dict()
     __args__['ids'] = ids

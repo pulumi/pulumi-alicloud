@@ -120,6 +120,7 @@ func (o AlertAnnotationArrayOutput) Index(i pulumi.IntInput) AlertAnnotationOutp
 }
 
 type AlertGroupConfiguration struct {
+	// Group configuration's fields list when type is custom.
 	Fields []string `pulumi:"fields"`
 	// Group configuration type, including no_group, labels_auto, custom.
 	Type string `pulumi:"type"`
@@ -137,6 +138,7 @@ type AlertGroupConfigurationInput interface {
 }
 
 type AlertGroupConfigurationArgs struct {
+	// Group configuration's fields list when type is custom.
 	Fields pulumi.StringArrayInput `pulumi:"fields"`
 	// Group configuration type, including no_group, labels_auto, custom.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -219,6 +221,7 @@ func (o AlertGroupConfigurationOutput) ToAlertGroupConfigurationPtrOutputWithCon
 	}).(AlertGroupConfigurationPtrOutput)
 }
 
+// Group configuration's fields list when type is custom.
 func (o AlertGroupConfigurationOutput) Fields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AlertGroupConfiguration) []string { return v.Fields }).(pulumi.StringArrayOutput)
 }
@@ -252,6 +255,7 @@ func (o AlertGroupConfigurationPtrOutput) Elem() AlertGroupConfigurationOutput {
 	}).(AlertGroupConfigurationOutput)
 }
 
+// Group configuration's fields list when type is custom.
 func (o AlertGroupConfigurationPtrOutput) Fields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AlertGroupConfiguration) []string {
 		if v == nil {
@@ -1007,12 +1011,14 @@ type AlertSchedule struct {
 	CronExpression *string `pulumi:"cronExpression"`
 	// Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
 	DayOfWeek *int `pulumi:"dayOfWeek"`
-	Delay     *int `pulumi:"delay"`
+	// Delay time for schedule.
+	Delay *int `pulumi:"delay"`
 	// Hour of day when type is Weekly/Daily.
 	Hour *int `pulumi:"hour"`
 	// Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
-	Interval       *string `pulumi:"interval"`
-	RunImmediately *bool   `pulumi:"runImmediately"`
+	Interval *string `pulumi:"interval"`
+	// Whether to run the alert immediately.
+	RunImmediately *bool `pulumi:"runImmediately"`
 	// Time zone for schedule.
 	TimeZone *string `pulumi:"timeZone"`
 	// including FixedRate,Hourly,Daily,Weekly,Cron.
@@ -1035,12 +1041,14 @@ type AlertScheduleArgs struct {
 	CronExpression pulumi.StringPtrInput `pulumi:"cronExpression"`
 	// Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
 	DayOfWeek pulumi.IntPtrInput `pulumi:"dayOfWeek"`
-	Delay     pulumi.IntPtrInput `pulumi:"delay"`
+	// Delay time for schedule.
+	Delay pulumi.IntPtrInput `pulumi:"delay"`
 	// Hour of day when type is Weekly/Daily.
 	Hour pulumi.IntPtrInput `pulumi:"hour"`
 	// Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
-	Interval       pulumi.StringPtrInput `pulumi:"interval"`
-	RunImmediately pulumi.BoolPtrInput   `pulumi:"runImmediately"`
+	Interval pulumi.StringPtrInput `pulumi:"interval"`
+	// Whether to run the alert immediately.
+	RunImmediately pulumi.BoolPtrInput `pulumi:"runImmediately"`
 	// Time zone for schedule.
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 	// including FixedRate,Hourly,Daily,Weekly,Cron.
@@ -1134,6 +1142,7 @@ func (o AlertScheduleOutput) DayOfWeek() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AlertSchedule) *int { return v.DayOfWeek }).(pulumi.IntPtrOutput)
 }
 
+// Delay time for schedule.
 func (o AlertScheduleOutput) Delay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AlertSchedule) *int { return v.Delay }).(pulumi.IntPtrOutput)
 }
@@ -1148,6 +1157,7 @@ func (o AlertScheduleOutput) Interval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertSchedule) *string { return v.Interval }).(pulumi.StringPtrOutput)
 }
 
+// Whether to run the alert immediately.
 func (o AlertScheduleOutput) RunImmediately() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AlertSchedule) *bool { return v.RunImmediately }).(pulumi.BoolPtrOutput)
 }
@@ -1206,6 +1216,7 @@ func (o AlertSchedulePtrOutput) DayOfWeek() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Delay time for schedule.
 func (o AlertSchedulePtrOutput) Delay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AlertSchedule) *int {
 		if v == nil {
@@ -1235,6 +1246,7 @@ func (o AlertSchedulePtrOutput) Interval() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to run the alert immediately.
 func (o AlertSchedulePtrOutput) RunImmediately() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AlertSchedule) *bool {
 		if v == nil {
@@ -1265,7 +1277,7 @@ func (o AlertSchedulePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type AlertSeverityConfiguration struct {
-	// Severity when this condition is met.
+	// Severity when this condition is met. The map supports `condition` (condition for each row) and `countCondition` (count's condition for the rows met condition above) keys.
 	EvalCondition map[string]string `pulumi:"evalCondition"`
 	// Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
 	Severity int `pulumi:"severity"`
@@ -1283,7 +1295,7 @@ type AlertSeverityConfigurationInput interface {
 }
 
 type AlertSeverityConfigurationArgs struct {
-	// Severity when this condition is met.
+	// Severity when this condition is met. The map supports `condition` (condition for each row) and `countCondition` (count's condition for the rows met condition above) keys.
 	EvalCondition pulumi.StringMapInput `pulumi:"evalCondition"`
 	// Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
 	Severity pulumi.IntInput `pulumi:"severity"`
@@ -1340,7 +1352,7 @@ func (o AlertSeverityConfigurationOutput) ToAlertSeverityConfigurationOutputWith
 	return o
 }
 
-// Severity when this condition is met.
+// Severity when this condition is met. The map supports `condition` (condition for each row) and `countCondition` (count's condition for the rows met condition above) keys.
 func (o AlertSeverityConfigurationOutput) EvalCondition() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AlertSeverityConfiguration) map[string]string { return v.EvalCondition }).(pulumi.StringMapOutput)
 }
@@ -1883,7 +1895,9 @@ func (o OssExportConfigColumnArrayOutput) Index(i pulumi.IntInput) OssExportConf
 }
 
 type OssShipperParquetConfig struct {
+	// The name of the key.
 	Name string `pulumi:"name"`
+	// Type of configuration name.
 	Type string `pulumi:"type"`
 }
 
@@ -1899,7 +1913,9 @@ type OssShipperParquetConfigInput interface {
 }
 
 type OssShipperParquetConfigArgs struct {
+	// The name of the key.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Type of configuration name.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1954,10 +1970,12 @@ func (o OssShipperParquetConfigOutput) ToOssShipperParquetConfigOutputWithContex
 	return o
 }
 
+// The name of the key.
 func (o OssShipperParquetConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OssShipperParquetConfig) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Type of configuration name.
 func (o OssShipperParquetConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v OssShipperParquetConfig) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2930,13 +2948,13 @@ type GetProjectsProject struct {
 	LastModifyTime string `pulumi:"lastModifyTime"`
 	// The owner of project.
 	Owner string `pulumi:"owner"`
-	// The policy of project.
+	// (Available in 1.198.0+) The policy of project.
 	Policy string `pulumi:"policy"`
 	// The name of the project.
 	ProjectName string `pulumi:"projectName"`
 	// The region of project.
 	Region string `pulumi:"region"`
-	// The status of project.
+	// The status of log project. Valid values `Normal` and `Disable`.
 	Status string `pulumi:"status"`
 }
 
@@ -2960,13 +2978,13 @@ type GetProjectsProjectArgs struct {
 	LastModifyTime pulumi.StringInput `pulumi:"lastModifyTime"`
 	// The owner of project.
 	Owner pulumi.StringInput `pulumi:"owner"`
-	// The policy of project.
+	// (Available in 1.198.0+) The policy of project.
 	Policy pulumi.StringInput `pulumi:"policy"`
 	// The name of the project.
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
 	// The region of project.
 	Region pulumi.StringInput `pulumi:"region"`
-	// The status of project.
+	// The status of log project. Valid values `Normal` and `Disable`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -3041,7 +3059,7 @@ func (o GetProjectsProjectOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Owner }).(pulumi.StringOutput)
 }
 
-// The policy of project.
+// (Available in 1.198.0+) The policy of project.
 func (o GetProjectsProjectOutput) Policy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Policy }).(pulumi.StringOutput)
 }
@@ -3056,7 +3074,7 @@ func (o GetProjectsProjectOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The status of project.
+// The status of log project. Valid values `Normal` and `Disable`.
 func (o GetProjectsProjectOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Status }).(pulumi.StringOutput)
 }

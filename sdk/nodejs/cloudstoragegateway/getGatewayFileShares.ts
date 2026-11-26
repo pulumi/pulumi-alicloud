@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.144.0+.
+ * > **NOTE:** Available since v1.144.0.
  *
  * ## Example Usage
  *
@@ -70,6 +70,9 @@ export interface GetGatewayFileSharesArgs {
  * A collection of values returned by getGatewayFileShares.
  */
 export interface GetGatewayFileSharesResult {
+    /**
+     * The ID of the gateway.
+     */
     readonly gatewayId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -77,14 +80,20 @@ export interface GetGatewayFileSharesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Gateway File Share names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Cloud Storage Gateway Gateway File Shares. Each element contains the following attributes:
+     */
     readonly shares: outputs.cloudstoragegateway.GetGatewayFileSharesShare[];
 }
 /**
  * This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.144.0+.
+ * > **NOTE:** Available since v1.144.0.
  *
  * ## Example Usage
  *

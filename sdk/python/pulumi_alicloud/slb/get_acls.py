@@ -57,7 +57,7 @@ class GetAclsResult:
     @pulumi.getter
     def acls(self) -> Sequence['outputs.GetAclsAclResult']:
         """
-        A list of SLB  acls. Each element contains the following attributes:
+        A list of SLB acls. Each element contains the following attributes:
         """
         return pulumi.get(self, "acls")
 
@@ -107,7 +107,7 @@ class GetAclsResult:
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        A mapping of tags to assign to the resource.
+        (Optional) A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -137,6 +137,8 @@ def get_acls(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the acls in the region.
 
+    > **NOTE:** Available since v1.21.0.
+
     ## Example Usage
 
     ```python
@@ -146,22 +148,6 @@ def get_acls(ids: Optional[Sequence[_builtins.str]] = None,
     sample_ds = alicloud.slb.get_acls()
     pulumi.export("firstSlbAclId", sample_ds.acls[0].id)
     ```
-
-    ## Entry Block
-
-    The entry mapping supports the following:
-
-    * `entry`   - An IP addresses or CIDR blocks.
-    * `comment` - the comment of the entry.
-
-    ## Listener Block
-
-    The Listener mapping supports the following:
-
-    * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
-    * `frontend_port` - the listener port.
-    * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-    * `acl_type`      - the type of acl (such as white/black).
 
 
     :param Sequence[_builtins.str] ids: A list of acls IDs to filter results.
@@ -197,6 +183,8 @@ def get_acls_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]
     """
     This data source provides the acls in the region.
 
+    > **NOTE:** Available since v1.21.0.
+
     ## Example Usage
 
     ```python
@@ -206,22 +194,6 @@ def get_acls_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]
     sample_ds = alicloud.slb.get_acls()
     pulumi.export("firstSlbAclId", sample_ds.acls[0].id)
     ```
-
-    ## Entry Block
-
-    The entry mapping supports the following:
-
-    * `entry`   - An IP addresses or CIDR blocks.
-    * `comment` - the comment of the entry.
-
-    ## Listener Block
-
-    The Listener mapping supports the following:
-
-    * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
-    * `frontend_port` - the listener port.
-    * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-    * `acl_type`      - the type of acl (such as white/black).
 
 
     :param Sequence[_builtins.str] ids: A list of acls IDs to filter results.

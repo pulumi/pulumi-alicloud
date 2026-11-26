@@ -67,6 +67,9 @@ class GetStorageBundlesResult:
     @_builtins.property
     @pulumi.getter
     def bundles(self) -> Sequence['outputs.GetStorageBundlesBundleResult']:
+        """
+        A list of Cloud Storage Gateway Storage Bundles. Each element contains the following attributes:
+        """
         return pulumi.get(self, "bundles")
 
     @_builtins.property
@@ -80,6 +83,9 @@ class GetStorageBundlesResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Storage Bundle IDs.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -90,6 +96,9 @@ class GetStorageBundlesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Storage Bundle names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -110,6 +119,9 @@ class GetStorageBundlesResult:
     @_builtins.property
     @pulumi.getter(name="totalCount")
     def total_count(self) -> _builtins.int:
+        """
+        Total count of Storage Bundle.
+        """
         return pulumi.get(self, "total_count")
 
 
@@ -139,7 +151,30 @@ def get_storage_bundles(backend_bucket_region_id: Optional[_builtins.str] = None
                         page_size: Optional[_builtins.int] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageBundlesResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the Cloud Storage Gateway Storage Bundles of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.132.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cloudstoragegateway.get_storage_bundles(backend_bucket_region_id="cn-hangzhou",
+        name_regex="^my-StorageBundle")
+    pulumi.export("storageBundleId", example.bundles[0].storage_bundle_id)
+    ```
+
+
+    :param _builtins.str backend_bucket_region_id: The region id of the backend bucket.
+    :param Sequence[_builtins.str] ids: A list of Storage Bundle IDs.
+    :param _builtins.str name_regex: A regex string to filter results by Storage Bundle name.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.int page_number: Page number.
+    :param _builtins.int page_size: Page size. Default to 50.
     """
     __args__ = dict()
     __args__['backendBucketRegionId'] = backend_bucket_region_id
@@ -170,7 +205,30 @@ def get_storage_bundles_output(backend_bucket_region_id: pulumi.Input[Optional[_
                                page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStorageBundlesResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the Cloud Storage Gateway Storage Bundles of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.132.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cloudstoragegateway.get_storage_bundles(backend_bucket_region_id="cn-hangzhou",
+        name_regex="^my-StorageBundle")
+    pulumi.export("storageBundleId", example.bundles[0].storage_bundle_id)
+    ```
+
+
+    :param _builtins.str backend_bucket_region_id: The region id of the backend bucket.
+    :param Sequence[_builtins.str] ids: A list of Storage Bundle IDs.
+    :param _builtins.str name_regex: A regex string to filter results by Storage Bundle name.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.int page_number: Page number.
+    :param _builtins.int page_size: Page size. Default to 50.
     """
     __args__ = dict()
     __args__['backendBucketRegionId'] = backend_bucket_region_id

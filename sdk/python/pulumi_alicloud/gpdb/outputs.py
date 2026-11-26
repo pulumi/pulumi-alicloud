@@ -613,7 +613,7 @@ class InstanceIpWhitelist(dict):
         """
         :param _builtins.str ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group.
                If the value contains `hidden`, this white list item will not output.
-        :param _builtins.str ip_group_name: IP whitelist group name.
+        :param _builtins.str ip_group_name: IP whitelist group name. Defaults to `default`, the built-in whitelist group; a group without a name is applied to the `default` group instead of creating a new one.
         :param _builtins.str security_ip_list: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         """
         if ip_group_attribute is not None:
@@ -636,7 +636,7 @@ class InstanceIpWhitelist(dict):
     @pulumi.getter(name="ipGroupName")
     def ip_group_name(self) -> Optional[_builtins.str]:
         """
-        IP whitelist group name.
+        IP whitelist group name. Defaults to `default`, the built-in whitelist group; a group without a name is applied to the `default` group instead of creating a new one.
         """
         return pulumi.get(self, "ip_group_name")
 
@@ -1171,12 +1171,13 @@ class GetDbInstancePlansPlanResult(dict):
         :param _builtins.str db_instance_plan_name: The name of the Plan.
         :param _builtins.str id: The ID of the resource. The value formats as `<db_instance_id>:<plan_id>`.
         :param Sequence['GetDbInstancePlansPlanPlanConfigArgs'] plan_configs: Plan configuration information.
+        :param _builtins.str plan_desc: The description of the Plan.
         :param _builtins.str plan_end_date: The end time of the Plan.
         :param _builtins.str plan_id: The ID of DB Instance Plan.
         :param _builtins.str plan_schedule_type: Plan scheduling type. Valid values: `Postpone`, `Regular`.
         :param _builtins.str plan_start_date: The start time of the Plan.
         :param _builtins.str plan_type: The type of the Plan. Valid values: `PauseResume`, `Resize`.
-        :param _builtins.str status: The Status of the Plan.
+        :param _builtins.str status: Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
         """
         pulumi.set(__self__, "db_instance_plan_name", db_instance_plan_name)
         pulumi.set(__self__, "id", id)
@@ -1216,6 +1217,9 @@ class GetDbInstancePlansPlanResult(dict):
     @_builtins.property
     @pulumi.getter(name="planDesc")
     def plan_desc(self) -> _builtins.str:
+        """
+        The description of the Plan.
+        """
         return pulumi.get(self, "plan_desc")
 
     @_builtins.property
@@ -1262,7 +1266,7 @@ class GetDbInstancePlansPlanResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The Status of the Plan.
+        Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
         """
         return pulumi.get(self, "status")
 
@@ -1535,9 +1539,11 @@ class GetInstancesInstanceResult(dict):
                  zone_id: _builtins.str):
         """
         :param _builtins.str availability_zone: Instance availability zone.
-        :param _builtins.str connection_string: The connection string of the instance.
+        :param _builtins.str charge_type: The billing method of the instance.
+        :param _builtins.str connection_string: The endpoint of the instance.
         :param _builtins.str cpu_cores: The number of CPU cores of the computing node. Unit: Core.
         :param _builtins.str create_time: The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+        :param _builtins.str creation_time: The time when the instance was created.
         :param _builtins.str db_instance_category: The db instance category. Valid values: `HighAvailability`, `Basic`.
         :param _builtins.str db_instance_class: The db instance class.
         :param _builtins.str db_instance_id: The db instance id.
@@ -1558,9 +1564,9 @@ class GetInstancesInstanceResult(dict):
         :param _builtins.str status: The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
         :param _builtins.int storage_size: The storage capacity. Unit: GB. Value: `50` to `4000`.
         :param _builtins.str storage_type: The type of disks. Valid values: `cloud_essd`, `cloud_efficiency`.
-        :param Mapping[str, _builtins.str] tags: The tags of the instance.
-        :param _builtins.str vpc_id: The ID of the VPC。.
-        :param _builtins.str vswitch_id: The vswitch id.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
+        :param _builtins.str vpc_id: The ID of the VPC.
+        :param _builtins.str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
         :param _builtins.str zone_id: The zone ID of the instance.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
@@ -1605,13 +1611,16 @@ class GetInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="chargeType")
     def charge_type(self) -> _builtins.str:
+        """
+        The billing method of the instance.
+        """
         return pulumi.get(self, "charge_type")
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> _builtins.str:
         """
-        The connection string of the instance.
+        The endpoint of the instance.
         """
         return pulumi.get(self, "connection_string")
 
@@ -1634,6 +1643,9 @@ class GetInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> _builtins.str:
+        """
+        The time when the instance was created.
+        """
         return pulumi.get(self, "creation_time")
 
     @_builtins.property
@@ -1800,7 +1812,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
-        The tags of the instance.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -1808,7 +1820,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.str:
         """
-        The ID of the VPC。.
+        The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -1816,7 +1828,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> _builtins.str:
         """
-        The vswitch id.
+        Used to retrieve instances belong to specified `vswitch` resources.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -1837,7 +1849,7 @@ class GetInstancesInstanceIpWhitelistResult(dict):
                  security_ip_list: _builtins.str):
         """
         :param _builtins.str ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
-        :param _builtins.str ip_group_name: IP whitelist group name
+        :param _builtins.str ip_group_name: IP whitelist group name.
         :param _builtins.str security_ip_list: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         """
         pulumi.set(__self__, "ip_group_attribute", ip_group_attribute)
@@ -1856,7 +1868,7 @@ class GetInstancesInstanceIpWhitelistResult(dict):
     @pulumi.getter(name="ipGroupName")
     def ip_group_name(self) -> _builtins.str:
         """
-        IP whitelist group name
+        IP whitelist group name.
         """
         return pulumi.get(self, "ip_group_name")
 

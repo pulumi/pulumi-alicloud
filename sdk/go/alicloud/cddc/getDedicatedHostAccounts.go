@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.148.0+.
+// > **NOTE:** Available since v1.148.0.
 //
 // ## Example Usage
 //
@@ -67,12 +67,15 @@ type GetDedicatedHostAccountsArgs struct {
 
 // A collection of values returned by getDedicatedHostAccounts.
 type GetDedicatedHostAccountsResult struct {
-	Accounts        []GetDedicatedHostAccountsAccount `pulumi:"accounts"`
-	DedicatedHostId *string                           `pulumi:"dedicatedHostId"`
+	// A list of Cddc Dedicated Host Accounts. Each element contains the following attributes:
+	Accounts []GetDedicatedHostAccountsAccount `pulumi:"accounts"`
+	// The ID of the Dedicated host.
+	DedicatedHostId *string `pulumi:"dedicatedHostId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Account names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	PageNumber *int     `pulumi:"pageNumber"`
@@ -117,10 +120,12 @@ func (o GetDedicatedHostAccountsResultOutput) ToGetDedicatedHostAccountsResultOu
 	return o
 }
 
+// A list of Cddc Dedicated Host Accounts. Each element contains the following attributes:
 func (o GetDedicatedHostAccountsResultOutput) Accounts() GetDedicatedHostAccountsAccountArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostAccountsResult) []GetDedicatedHostAccountsAccount { return v.Accounts }).(GetDedicatedHostAccountsAccountArrayOutput)
 }
 
+// The ID of the Dedicated host.
 func (o GetDedicatedHostAccountsResultOutput) DedicatedHostId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDedicatedHostAccountsResult) *string { return v.DedicatedHostId }).(pulumi.StringPtrOutput)
 }
@@ -138,6 +143,7 @@ func (o GetDedicatedHostAccountsResultOutput) NameRegex() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetDedicatedHostAccountsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Account names.
 func (o GetDedicatedHostAccountsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostAccountsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

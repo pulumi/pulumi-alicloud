@@ -71,6 +71,9 @@ class GetNamespacesResult:
     @_builtins.property
     @pulumi.getter
     def namespaces(self) -> Sequence['outputs.GetNamespacesNamespaceResult']:
+        """
+        A list of Cms Namespaces. Each element contains the following attributes:
+        """
         return pulumi.get(self, "namespaces")
 
     @_builtins.property
@@ -113,7 +116,7 @@ def get_namespaces(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Cms Namespaces of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.171.0+.
+    > **NOTE:** Available since v1.171.0.
 
     ## Example Usage
 
@@ -158,7 +161,7 @@ def get_namespaces_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins
     """
     This data source provides the Cms Namespaces of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.171.0+.
+    > **NOTE:** Available since v1.171.0.
 
     ## Example Usage
 

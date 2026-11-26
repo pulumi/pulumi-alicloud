@@ -56,6 +56,9 @@ class GetNasBackupPlansResult:
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
     def file_system_id(self) -> Optional[_builtins.str]:
+        """
+        The File System ID of Nas.
+        """
         return pulumi.get(self, "file_system_id")
 
     @_builtins.property
@@ -79,6 +82,9 @@ class GetNasBackupPlansResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of NasBackupPlan names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -89,11 +95,17 @@ class GetNasBackupPlansResult:
     @_builtins.property
     @pulumi.getter
     def plans(self) -> Sequence['outputs.GetNasBackupPlansPlanResult']:
+        """
+        A list of Hbr NasBackupPlans. Each element contains the following attributes:
+        """
         return pulumi.get(self, "plans")
 
     @_builtins.property
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of backup vault.
+        """
         return pulumi.get(self, "vault_id")
 
 
@@ -122,7 +134,7 @@ def get_nas_backup_plans(file_system_id: Optional[_builtins.str] = None,
     """
     This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 
@@ -170,7 +182,7 @@ def get_nas_backup_plans_output(file_system_id: pulumi.Input[Optional[Optional[_
     """
     This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 

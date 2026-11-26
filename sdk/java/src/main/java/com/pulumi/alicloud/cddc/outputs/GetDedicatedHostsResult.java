@@ -16,10 +16,26 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDedicatedHostsResult {
+    /**
+     * @return Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+     * 
+     */
     private @Nullable String allocationStatus;
+    /**
+     * @return The ID of the dedicated cluster in which the host is created.
+     * 
+     */
     private String dedicatedHostGroupId;
     private @Nullable Boolean enableDetails;
+    /**
+     * @return The storage type of the host.
+     * 
+     */
     private @Nullable String hostType;
+    /**
+     * @return A list of Cddc Dedicated Hosts. Each element contains the following attributes:
+     * 
+     */
     private List<GetDedicatedHostsHost> hosts;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -29,23 +45,51 @@ public final class GetDedicatedHostsResult {
     private List<String> ids;
     private @Nullable String orderId;
     private @Nullable String outputFile;
+    /**
+     * @return The state of the host.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The zone ID of the host.
+     * 
+     */
     private @Nullable String zoneId;
 
     private GetDedicatedHostsResult() {}
+    /**
+     * @return Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+     * 
+     */
     public Optional<String> allocationStatus() {
         return Optional.ofNullable(this.allocationStatus);
     }
+    /**
+     * @return The ID of the dedicated cluster in which the host is created.
+     * 
+     */
     public String dedicatedHostGroupId() {
         return this.dedicatedHostGroupId;
     }
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
+    /**
+     * @return The storage type of the host.
+     * 
+     */
     public Optional<String> hostType() {
         return Optional.ofNullable(this.hostType);
     }
+    /**
+     * @return A list of Cddc Dedicated Hosts. Each element contains the following attributes:
+     * 
+     */
     public List<GetDedicatedHostsHost> hosts() {
         return this.hosts;
     }
@@ -65,12 +109,24 @@ public final class GetDedicatedHostsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The state of the host.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The zone ID of the host.
+     * 
+     */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }

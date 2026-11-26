@@ -74,6 +74,7 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+        /// 
         /// &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
         /// </summary>
         [Output("cidrMask")]
@@ -151,6 +152,7 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+        /// 
         /// &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
         /// </summary>
         [Input("cidrMask")]
@@ -178,6 +180,7 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+        /// 
         /// &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
         /// </summary>
         [Input("cidrMask")]

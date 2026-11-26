@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the ots tables of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.40.0+.
+ * > **NOTE:** Available since v1.40.0.
  *
  * ## Example Usage
  *
@@ -89,7 +89,7 @@ export interface GetTablesResult {
 /**
  * This data source provides the ots tables of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.40.0+.
+ * > **NOTE:** Available since v1.40.0.
  *
  * ## Example Usage
  *

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Scdn
     /// <summary>
     /// Provides a SCDN Domain resource.
     /// 
-    /// For information about SCDN Domain and how to use it, see [What is Domain](https://help.aliyun.com/document_detail/63672.html).
+    /// For information about SCDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/doc-detail/63672.html).
     /// 
     /// &gt; **NOTE:** Available since v1.131.0.
     /// 
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Scdn
         public Output<string?> BizName { get; private set; } = null!;
 
         /// <summary>
-        /// Certificate Information. See the following `Block CertInfos`.
+        /// Certificate Information. See `CertInfos` below for details.
         /// </summary>
         [Output("certInfos")]
         public Output<ImmutableArray<Outputs.DomainCertInfo>> CertInfos { get; private set; } = null!;
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Scdn
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// the Origin Server Information. See the following `Block sources`.
+        /// The Origin Server Information. See `Sources` below for details.
         /// </summary>
         [Output("sources")]
         public Output<ImmutableArray<Outputs.DomainSource>> Sources { get; private set; } = null!;
@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.Scdn
         private InputList<Inputs.DomainCertInfoArgs>? _certInfos;
 
         /// <summary>
-        /// Certificate Information. See the following `Block CertInfos`.
+        /// Certificate Information. See `CertInfos` below for details.
         /// </summary>
         public InputList<Inputs.DomainCertInfoArgs> CertInfos
         {
@@ -204,7 +204,7 @@ namespace Pulumi.AliCloud.Scdn
         private InputList<Inputs.DomainSourceArgs>? _sources;
 
         /// <summary>
-        /// the Origin Server Information. See the following `Block sources`.
+        /// The Origin Server Information. See `Sources` below for details.
         /// </summary>
         public InputList<Inputs.DomainSourceArgs> Sources
         {
@@ -236,7 +236,7 @@ namespace Pulumi.AliCloud.Scdn
         private InputList<Inputs.DomainCertInfoGetArgs>? _certInfos;
 
         /// <summary>
-        /// Certificate Information. See the following `Block CertInfos`.
+        /// Certificate Information. See `CertInfos` below for details.
         /// </summary>
         public InputList<Inputs.DomainCertInfoGetArgs> CertInfos
         {
@@ -272,7 +272,7 @@ namespace Pulumi.AliCloud.Scdn
         private InputList<Inputs.DomainSourceGetArgs>? _sources;
 
         /// <summary>
-        /// the Origin Server Information. See the following `Block sources`.
+        /// The Origin Server Information. See `Sources` below for details.
         /// </summary>
         public InputList<Inputs.DomainSourceGetArgs> Sources
         {

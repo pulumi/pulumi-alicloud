@@ -20,79 +20,181 @@ public final class ApplicationInfoArgs extends com.pulumi.resources.ResourceArgs
 
     public static final ApplicationInfoArgs Empty = new ApplicationInfoArgs();
 
+    /**
+     * This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+     * - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+     * - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+     * 
+     */
     @Import(name="auditMode")
     private @Nullable Output<String> auditMode;
 
+    /**
+     * @return This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+     * - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+     * - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+     * 
+     */
     public Optional<Output<String>> auditMode() {
         return Optional.ofNullable(this.auditMode);
     }
 
+    /**
+     * The desire value of the quota application.
+     * 
+     */
     @Import(name="desireValue", required=true)
     private Output<Double> desireValue;
 
+    /**
+     * @return The desire value of the quota application.
+     * 
+     */
     public Output<Double> desireValue() {
         return this.desireValue;
     }
 
+    /**
+     * QuotaDimensions. See `dimensions` below.
+     * 
+     */
     @Import(name="dimensions")
     private @Nullable Output<List<ApplicationInfoDimensionArgs>> dimensions;
 
+    /**
+     * @return QuotaDimensions. See `dimensions` below.
+     * 
+     */
     public Optional<Output<List<ApplicationInfoDimensionArgs>>> dimensions() {
         return Optional.ofNullable(this.dimensions);
     }
 
+    /**
+     * The effective time of the quota application.
+     * 
+     */
     @Import(name="effectiveTime")
     private @Nullable Output<String> effectiveTime;
 
+    /**
+     * @return The effective time of the quota application.
+     * 
+     */
     public Optional<Output<String>> effectiveTime() {
         return Optional.ofNullable(this.effectiveTime);
     }
 
+    /**
+     * The language of the quota alert notification. Value:
+     * - zh (default): Chinese.
+     * - en: English.
+     * 
+     */
     @Import(name="envLanguage")
     private @Nullable Output<String> envLanguage;
 
+    /**
+     * @return The language of the quota alert notification. Value:
+     * - zh (default): Chinese.
+     * - en: English.
+     * 
+     */
     public Optional<Output<String>> envLanguage() {
         return Optional.ofNullable(this.envLanguage);
     }
 
+    /**
+     * The expired time of the quota application.
+     * 
+     */
     @Import(name="expireTime")
     private @Nullable Output<String> expireTime;
 
+    /**
+     * @return The expired time of the quota application.
+     * 
+     */
     public Optional<Output<String>> expireTime() {
         return Optional.ofNullable(this.expireTime);
     }
 
+    /**
+     * Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+     * 
+     */
     @Import(name="noticeType")
     private @Nullable Output<Integer> noticeType;
 
+    /**
+     * @return Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+     * 
+     */
     public Optional<Output<Integer>> noticeType() {
         return Optional.ofNullable(this.noticeType);
     }
 
+    /**
+     * The product code.
+     * 
+     */
     @Import(name="productCode", required=true)
     private Output<String> productCode;
 
+    /**
+     * @return The product code.
+     * 
+     */
     public Output<String> productCode() {
         return this.productCode;
     }
 
+    /**
+     * The ID of quota action.
+     * 
+     */
     @Import(name="quotaActionCode", required=true)
     private Output<String> quotaActionCode;
 
+    /**
+     * @return The ID of quota action.
+     * 
+     */
     public Output<String> quotaActionCode() {
         return this.quotaActionCode;
     }
 
+    /**
+     * The quota type.
+     * - CommonQuota (default): Generic quota.
+     * - FlowControl:API rate quota.
+     * - WhiteListLabel: Equity quota.
+     * 
+     */
     @Import(name="quotaCategory")
     private @Nullable Output<String> quotaCategory;
 
+    /**
+     * @return The quota type.
+     * - CommonQuota (default): Generic quota.
+     * - FlowControl:API rate quota.
+     * - WhiteListLabel: Equity quota.
+     * 
+     */
     public Optional<Output<String>> quotaCategory() {
         return Optional.ofNullable(this.quotaCategory);
     }
 
+    /**
+     * The reason of the quota application.
+     * 
+     */
     @Import(name="reason", required=true)
     private Output<String> reason;
 
+    /**
+     * @return The reason of the quota application.
+     * 
+     */
     public Output<String> reason() {
         return this.reason;
     }
@@ -131,105 +233,257 @@ public final class ApplicationInfoArgs extends com.pulumi.resources.ResourceArgs
             $ = new ApplicationInfoArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param auditMode This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+         * - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+         * - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+         * 
+         * @return builder
+         * 
+         */
         public Builder auditMode(@Nullable Output<String> auditMode) {
             $.auditMode = auditMode;
             return this;
         }
 
+        /**
+         * @param auditMode This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+         * - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+         * - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+         * 
+         * @return builder
+         * 
+         */
         public Builder auditMode(String auditMode) {
             return auditMode(Output.of(auditMode));
         }
 
+        /**
+         * @param desireValue The desire value of the quota application.
+         * 
+         * @return builder
+         * 
+         */
         public Builder desireValue(Output<Double> desireValue) {
             $.desireValue = desireValue;
             return this;
         }
 
+        /**
+         * @param desireValue The desire value of the quota application.
+         * 
+         * @return builder
+         * 
+         */
         public Builder desireValue(Double desireValue) {
             return desireValue(Output.of(desireValue));
         }
 
+        /**
+         * @param dimensions QuotaDimensions. See `dimensions` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dimensions(@Nullable Output<List<ApplicationInfoDimensionArgs>> dimensions) {
             $.dimensions = dimensions;
             return this;
         }
 
+        /**
+         * @param dimensions QuotaDimensions. See `dimensions` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dimensions(List<ApplicationInfoDimensionArgs> dimensions) {
             return dimensions(Output.of(dimensions));
         }
 
+        /**
+         * @param dimensions QuotaDimensions. See `dimensions` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dimensions(ApplicationInfoDimensionArgs... dimensions) {
             return dimensions(List.of(dimensions));
         }
 
+        /**
+         * @param effectiveTime The effective time of the quota application.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveTime(@Nullable Output<String> effectiveTime) {
             $.effectiveTime = effectiveTime;
             return this;
         }
 
+        /**
+         * @param effectiveTime The effective time of the quota application.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveTime(String effectiveTime) {
             return effectiveTime(Output.of(effectiveTime));
         }
 
+        /**
+         * @param envLanguage The language of the quota alert notification. Value:
+         * - zh (default): Chinese.
+         * - en: English.
+         * 
+         * @return builder
+         * 
+         */
         public Builder envLanguage(@Nullable Output<String> envLanguage) {
             $.envLanguage = envLanguage;
             return this;
         }
 
+        /**
+         * @param envLanguage The language of the quota alert notification. Value:
+         * - zh (default): Chinese.
+         * - en: English.
+         * 
+         * @return builder
+         * 
+         */
         public Builder envLanguage(String envLanguage) {
             return envLanguage(Output.of(envLanguage));
         }
 
+        /**
+         * @param expireTime The expired time of the quota application.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expireTime(@Nullable Output<String> expireTime) {
             $.expireTime = expireTime;
             return this;
         }
 
+        /**
+         * @param expireTime The expired time of the quota application.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expireTime(String expireTime) {
             return expireTime(Output.of(expireTime));
         }
 
+        /**
+         * @param noticeType Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+         * 
+         * @return builder
+         * 
+         */
         public Builder noticeType(@Nullable Output<Integer> noticeType) {
             $.noticeType = noticeType;
             return this;
         }
 
+        /**
+         * @param noticeType Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+         * 
+         * @return builder
+         * 
+         */
         public Builder noticeType(Integer noticeType) {
             return noticeType(Output.of(noticeType));
         }
 
+        /**
+         * @param productCode The product code.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productCode(Output<String> productCode) {
             $.productCode = productCode;
             return this;
         }
 
+        /**
+         * @param productCode The product code.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productCode(String productCode) {
             return productCode(Output.of(productCode));
         }
 
+        /**
+         * @param quotaActionCode The ID of quota action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder quotaActionCode(Output<String> quotaActionCode) {
             $.quotaActionCode = quotaActionCode;
             return this;
         }
 
+        /**
+         * @param quotaActionCode The ID of quota action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder quotaActionCode(String quotaActionCode) {
             return quotaActionCode(Output.of(quotaActionCode));
         }
 
+        /**
+         * @param quotaCategory The quota type.
+         * - CommonQuota (default): Generic quota.
+         * - FlowControl:API rate quota.
+         * - WhiteListLabel: Equity quota.
+         * 
+         * @return builder
+         * 
+         */
         public Builder quotaCategory(@Nullable Output<String> quotaCategory) {
             $.quotaCategory = quotaCategory;
             return this;
         }
 
+        /**
+         * @param quotaCategory The quota type.
+         * - CommonQuota (default): Generic quota.
+         * - FlowControl:API rate quota.
+         * - WhiteListLabel: Equity quota.
+         * 
+         * @return builder
+         * 
+         */
         public Builder quotaCategory(String quotaCategory) {
             return quotaCategory(Output.of(quotaCategory));
         }
 
+        /**
+         * @param reason The reason of the quota application.
+         * 
+         * @return builder
+         * 
+         */
         public Builder reason(Output<String> reason) {
             $.reason = reason;
             return this;
         }
 
+        /**
+         * @param reason The reason of the quota application.
+         * 
+         * @return builder
+         * 
+         */
         public Builder reason(String reason) {
             return reason(Output.of(reason));
         }

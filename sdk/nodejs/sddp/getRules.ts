@@ -68,6 +68,9 @@ export interface GetRulesArgs {
      * Sensitive Data Identification Rules of Type. Valid values:
      */
     customType?: number;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: boolean;
     /**
      * A list of Rule IDs.
@@ -129,6 +132,9 @@ export interface GetRulesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The name of rule.
+     */
     readonly name?: string;
     readonly nameRegex?: string;
     /**
@@ -220,6 +226,9 @@ export interface GetRulesOutputArgs {
      * Sensitive Data Identification Rules of Type. Valid values:
      */
     customType?: pulumi.Input<number | undefined>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Rule IDs.

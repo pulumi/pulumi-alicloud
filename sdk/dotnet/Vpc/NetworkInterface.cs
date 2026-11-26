@@ -83,6 +83,9 @@ namespace Pulumi.AliCloud.Vpc
     [AliCloudResourceType("alicloud:vpc/networkInterface:NetworkInterface")]
     public partial class NetworkInterface : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether to delete the ENI when it is released.
+        /// </summary>
         [Output("deleteOnRelease")]
         public Output<bool> DeleteOnRelease { get; private set; } = null!;
 
@@ -92,63 +95,93 @@ namespace Pulumi.AliCloud.Vpc
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The instance type of the ENI.
+        /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
+        /// <summary>
+        /// The number of IPv4 prefixes to assign to the ENI.
+        /// </summary>
         [Output("ipv4PrefixCount")]
         public Output<int> Ipv4PrefixCount { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of IPv4 prefixes to assign to the ENI.
+        /// </summary>
         [Output("ipv4Prefixes")]
         public Output<ImmutableArray<string>> Ipv4Prefixes { get; private set; } = null!;
 
+        /// <summary>
+        /// The number of IPv6 addresses to assign to the ENI.
+        /// </summary>
         [Output("ipv6AddressCount")]
         public Output<int> Ipv6AddressCount { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of IPv6 addresses to assign to the ENI.
+        /// </summary>
         [Output("ipv6Addresses")]
         public Output<ImmutableArray<string>> Ipv6Addresses { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.54.0+) The MAC address of an ENI.
+        /// (Available since v1.54.0) The MAC address of an ENI.
         /// </summary>
         [Output("mac")]
         public Output<string> Mac { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        /// Deprecated, use `NetworkInterfaceName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the ENI.
+        /// </summary>
         [Output("networkInterfaceName")]
         public Output<string> NetworkInterfaceName { get; private set; } = null!;
 
+        /// <summary>
+        /// The traffic mode of the ENI.
+        /// </summary>
         [Output("networkInterfaceTrafficMode")]
         public Output<string> NetworkInterfaceTrafficMode { get; private set; } = null!;
-
-        [Output("primaryIpAddress")]
-        public Output<string> PrimaryIpAddress { get; private set; } = null!;
 
         /// <summary>
         /// The primary private IP of the ENI.
         /// </summary>
+        [Output("primaryIpAddress")]
+        public Output<string> PrimaryIpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// Deprecated, use `PrimaryIpAddress` instead.
+        /// </summary>
         [Output("privateIp")]
         public Output<string> PrivateIp { get; private set; } = null!;
 
+        /// <summary>
+        /// List of secondary private IPs to assign to the ENI.
+        /// </summary>
         [Output("privateIpAddresses")]
         public Output<ImmutableArray<string>> PrivateIpAddresses { get; private set; } = null!;
 
         /// <summary>
-        /// List of secondary private IPs to assign to the ENI. Don't use both PrivateIps and PrivateIpsCount in the same ENI resource block.
+        /// Deprecated, use `PrivateIpAddresses` instead.
         /// </summary>
         [Output("privateIps")]
         public Output<ImmutableArray<string>> PrivateIps { get; private set; } = null!;
 
         /// <summary>
-        /// Number of secondary private IPs to assign to the ENI. Don't use both PrivateIps and PrivateIpsCount in the same ENI resource block.
+        /// Deprecated, use `SecondaryPrivateIpAddressCount` instead.
         /// </summary>
         [Output("privateIpsCount")]
         public Output<int> PrivateIpsCount { get; private set; } = null!;
 
+        /// <summary>
+        /// The queue number of the ENI.
+        /// </summary>
         [Output("queueNumber")]
         public Output<int> QueueNumber { get; private set; } = null!;
 
@@ -158,21 +191,33 @@ namespace Pulumi.AliCloud.Vpc
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// Number of secondary private IPs to assign to the ENI.
+        /// </summary>
         [Output("secondaryPrivateIpAddressCount")]
         public Output<int> SecondaryPrivateIpAddressCount { get; private set; } = null!;
-
-        [Output("securityGroupIds")]
-        public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
         /// A list of security group ids to associate with.
         /// </summary>
+        [Output("securityGroupIds")]
+        public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
+
+        /// <summary>
+        /// Deprecated, use `SecurityGroupIds` instead.
+        /// </summary>
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to enable SourceDestCheck of the ENI.
+        /// </summary>
         [Output("sourceDestCheck")]
         public Output<bool?> SourceDestCheck { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of the ENI.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -234,6 +279,9 @@ namespace Pulumi.AliCloud.Vpc
 
     public sealed class NetworkInterfaceArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to delete the ENI when it is released.
+        /// </summary>
         [Input("deleteOnRelease")]
         public Input<bool>? DeleteOnRelease { get; set; }
 
@@ -243,25 +291,42 @@ namespace Pulumi.AliCloud.Vpc
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The instance type of the ENI.
+        /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
+        /// <summary>
+        /// The number of IPv4 prefixes to assign to the ENI.
+        /// </summary>
         [Input("ipv4PrefixCount")]
         public Input<int>? Ipv4PrefixCount { get; set; }
 
         [Input("ipv4Prefixes")]
         private InputList<string>? _ipv4Prefixes;
+
+        /// <summary>
+        /// A list of IPv4 prefixes to assign to the ENI.
+        /// </summary>
         public InputList<string> Ipv4Prefixes
         {
             get => _ipv4Prefixes ?? (_ipv4Prefixes = new InputList<string>());
             set => _ipv4Prefixes = value;
         }
 
+        /// <summary>
+        /// The number of IPv6 addresses to assign to the ENI.
+        /// </summary>
         [Input("ipv6AddressCount")]
         public Input<int>? Ipv6AddressCount { get; set; }
 
         [Input("ipv6Addresses")]
         private InputList<string>? _ipv6Addresses;
+
+        /// <summary>
+        /// A list of IPv6 addresses to assign to the ENI.
+        /// </summary>
         public InputList<string> Ipv6Addresses
         {
             get => _ipv6Addresses ?? (_ipv6Addresses = new InputList<string>());
@@ -269,28 +334,41 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        /// Deprecated, use `NetworkInterfaceName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Name of the ENI.
+        /// </summary>
         [Input("networkInterfaceName")]
         public Input<string>? NetworkInterfaceName { get; set; }
 
+        /// <summary>
+        /// The traffic mode of the ENI.
+        /// </summary>
         [Input("networkInterfaceTrafficMode")]
         public Input<string>? NetworkInterfaceTrafficMode { get; set; }
 
+        /// <summary>
+        /// The primary private IP of the ENI.
+        /// </summary>
         [Input("primaryIpAddress")]
         public Input<string>? PrimaryIpAddress { get; set; }
 
         /// <summary>
-        /// The primary private IP of the ENI.
+        /// Deprecated, use `PrimaryIpAddress` instead.
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
 
         [Input("privateIpAddresses")]
         private InputList<string>? _privateIpAddresses;
+
+        /// <summary>
+        /// List of secondary private IPs to assign to the ENI.
+        /// </summary>
         public InputList<string> PrivateIpAddresses
         {
             get => _privateIpAddresses ?? (_privateIpAddresses = new InputList<string>());
@@ -301,7 +379,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _privateIps;
 
         /// <summary>
-        /// List of secondary private IPs to assign to the ENI. Don't use both PrivateIps and PrivateIpsCount in the same ENI resource block.
+        /// Deprecated, use `PrivateIpAddresses` instead.
         /// </summary>
         [Obsolete(@"Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead")]
         public InputList<string> PrivateIps
@@ -311,11 +389,14 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// Number of secondary private IPs to assign to the ENI. Don't use both PrivateIps and PrivateIpsCount in the same ENI resource block.
+        /// Deprecated, use `SecondaryPrivateIpAddressCount` instead.
         /// </summary>
         [Input("privateIpsCount")]
         public Input<int>? PrivateIpsCount { get; set; }
 
+        /// <summary>
+        /// The queue number of the ENI.
+        /// </summary>
         [Input("queueNumber")]
         public Input<int>? QueueNumber { get; set; }
 
@@ -325,11 +406,18 @@ namespace Pulumi.AliCloud.Vpc
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// Number of secondary private IPs to assign to the ENI.
+        /// </summary>
         [Input("secondaryPrivateIpAddressCount")]
         public Input<int>? SecondaryPrivateIpAddressCount { get; set; }
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// A list of security group ids to associate with.
+        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
@@ -340,7 +428,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// A list of security group ids to associate with.
+        /// Deprecated, use `SecurityGroupIds` instead.
         /// </summary>
         [Obsolete(@"Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead")]
         public InputList<string> SecurityGroups
@@ -349,6 +437,9 @@ namespace Pulumi.AliCloud.Vpc
             set => _securityGroups = value;
         }
 
+        /// <summary>
+        /// Whether to enable SourceDestCheck of the ENI.
+        /// </summary>
         [Input("sourceDestCheck")]
         public Input<bool>? SourceDestCheck { get; set; }
 
@@ -378,6 +469,9 @@ namespace Pulumi.AliCloud.Vpc
 
     public sealed class NetworkInterfaceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to delete the ENI when it is released.
+        /// </summary>
         [Input("deleteOnRelease")]
         public Input<bool>? DeleteOnRelease { get; set; }
 
@@ -387,25 +481,42 @@ namespace Pulumi.AliCloud.Vpc
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The instance type of the ENI.
+        /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
+        /// <summary>
+        /// The number of IPv4 prefixes to assign to the ENI.
+        /// </summary>
         [Input("ipv4PrefixCount")]
         public Input<int>? Ipv4PrefixCount { get; set; }
 
         [Input("ipv4Prefixes")]
         private InputList<string>? _ipv4Prefixes;
+
+        /// <summary>
+        /// A list of IPv4 prefixes to assign to the ENI.
+        /// </summary>
         public InputList<string> Ipv4Prefixes
         {
             get => _ipv4Prefixes ?? (_ipv4Prefixes = new InputList<string>());
             set => _ipv4Prefixes = value;
         }
 
+        /// <summary>
+        /// The number of IPv6 addresses to assign to the ENI.
+        /// </summary>
         [Input("ipv6AddressCount")]
         public Input<int>? Ipv6AddressCount { get; set; }
 
         [Input("ipv6Addresses")]
         private InputList<string>? _ipv6Addresses;
+
+        /// <summary>
+        /// A list of IPv6 addresses to assign to the ENI.
+        /// </summary>
         public InputList<string> Ipv6Addresses
         {
             get => _ipv6Addresses ?? (_ipv6Addresses = new InputList<string>());
@@ -413,34 +524,47 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// (Available in 1.54.0+) The MAC address of an ENI.
+        /// (Available since v1.54.0) The MAC address of an ENI.
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        /// Deprecated, use `NetworkInterfaceName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Name of the ENI.
+        /// </summary>
         [Input("networkInterfaceName")]
         public Input<string>? NetworkInterfaceName { get; set; }
 
+        /// <summary>
+        /// The traffic mode of the ENI.
+        /// </summary>
         [Input("networkInterfaceTrafficMode")]
         public Input<string>? NetworkInterfaceTrafficMode { get; set; }
 
+        /// <summary>
+        /// The primary private IP of the ENI.
+        /// </summary>
         [Input("primaryIpAddress")]
         public Input<string>? PrimaryIpAddress { get; set; }
 
         /// <summary>
-        /// The primary private IP of the ENI.
+        /// Deprecated, use `PrimaryIpAddress` instead.
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
 
         [Input("privateIpAddresses")]
         private InputList<string>? _privateIpAddresses;
+
+        /// <summary>
+        /// List of secondary private IPs to assign to the ENI.
+        /// </summary>
         public InputList<string> PrivateIpAddresses
         {
             get => _privateIpAddresses ?? (_privateIpAddresses = new InputList<string>());
@@ -451,7 +575,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _privateIps;
 
         /// <summary>
-        /// List of secondary private IPs to assign to the ENI. Don't use both PrivateIps and PrivateIpsCount in the same ENI resource block.
+        /// Deprecated, use `PrivateIpAddresses` instead.
         /// </summary>
         [Obsolete(@"Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead")]
         public InputList<string> PrivateIps
@@ -461,11 +585,14 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// Number of secondary private IPs to assign to the ENI. Don't use both PrivateIps and PrivateIpsCount in the same ENI resource block.
+        /// Deprecated, use `SecondaryPrivateIpAddressCount` instead.
         /// </summary>
         [Input("privateIpsCount")]
         public Input<int>? PrivateIpsCount { get; set; }
 
+        /// <summary>
+        /// The queue number of the ENI.
+        /// </summary>
         [Input("queueNumber")]
         public Input<int>? QueueNumber { get; set; }
 
@@ -475,11 +602,18 @@ namespace Pulumi.AliCloud.Vpc
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// Number of secondary private IPs to assign to the ENI.
+        /// </summary>
         [Input("secondaryPrivateIpAddressCount")]
         public Input<int>? SecondaryPrivateIpAddressCount { get; set; }
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// A list of security group ids to associate with.
+        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
@@ -490,7 +624,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// A list of security group ids to associate with.
+        /// Deprecated, use `SecurityGroupIds` instead.
         /// </summary>
         [Obsolete(@"Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead")]
         public InputList<string> SecurityGroups
@@ -499,9 +633,15 @@ namespace Pulumi.AliCloud.Vpc
             set => _securityGroups = value;
         }
 
+        /// <summary>
+        /// Whether to enable SourceDestCheck of the ENI.
+        /// </summary>
         [Input("sourceDestCheck")]
         public Input<bool>? SourceDestCheck { get; set; }
 
+        /// <summary>
+        /// The status of the ENI.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

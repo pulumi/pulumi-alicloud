@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.125.0+.
+ * > **NOTE:** Available since v1.125.0.
  *
  * ## Example Usage
  *
@@ -75,15 +75,24 @@ export interface GetReceiversResult {
     readonly ids: string[];
     readonly keyWord?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Receivers names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Direct Mail Receiverses. Each element contains the following attributes:
+     */
     readonly receiverses: outputs.directmail.GetReceiversReceiverse[];
+    /**
+     * The status of the resource.
+     */
     readonly status?: number;
 }
 /**
  * This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.125.0+.
+ * > **NOTE:** Available since v1.125.0.
  *
  * ## Example Usage
  *

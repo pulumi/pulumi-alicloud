@@ -32,7 +32,7 @@ public final class GetEcsDisksDisk {
      */
     private String availabilityZone;
     /**
-     * @return Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
+     * @return Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`.
      * 
      */
     private String category;
@@ -245,7 +245,7 @@ public final class GetEcsDisksDisk {
         return this.availabilityZone;
     }
     /**
-     * @return Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
+     * @return Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`.
      * 
      */
     public String category() {

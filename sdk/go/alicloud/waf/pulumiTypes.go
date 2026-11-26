@@ -14,7 +14,9 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type DomainLogHeader struct {
-	Key   *string `pulumi:"key"`
+	// The key of label.
+	Key *string `pulumi:"key"`
+	// The value of label.
 	Value *string `pulumi:"value"`
 }
 
@@ -30,7 +32,9 @@ type DomainLogHeaderInput interface {
 }
 
 type DomainLogHeaderArgs struct {
-	Key   pulumi.StringPtrInput `pulumi:"key"`
+	// The key of label.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The value of label.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -85,10 +89,12 @@ func (o DomainLogHeaderOutput) ToDomainLogHeaderOutputWithContext(ctx context.Co
 	return o
 }
 
+// The key of label.
 func (o DomainLogHeaderOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainLogHeader) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// The value of label.
 func (o DomainLogHeaderOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainLogHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -125,9 +131,11 @@ type GetCertificatesCertificate struct {
 	// The ID of the Certificate.
 	Id string `pulumi:"id"`
 	// WAF instance ID.
-	InstanceId string   `pulumi:"instanceId"`
-	IsUsing    bool     `pulumi:"isUsing"`
-	Sans       []string `pulumi:"sans"`
+	InstanceId string `pulumi:"instanceId"`
+	// Indicates whether the certificate is in use.
+	IsUsing bool `pulumi:"isUsing"`
+	// The Subject Alternative Names (SAN) of the certificate.
+	Sans []string `pulumi:"sans"`
 }
 
 // GetCertificatesCertificateInput is an input type that accepts GetCertificatesCertificateArgs and GetCertificatesCertificateOutput values.
@@ -153,9 +161,11 @@ type GetCertificatesCertificateArgs struct {
 	// The ID of the Certificate.
 	Id pulumi.StringInput `pulumi:"id"`
 	// WAF instance ID.
-	InstanceId pulumi.StringInput      `pulumi:"instanceId"`
-	IsUsing    pulumi.BoolInput        `pulumi:"isUsing"`
-	Sans       pulumi.StringArrayInput `pulumi:"sans"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Indicates whether the certificate is in use.
+	IsUsing pulumi.BoolInput `pulumi:"isUsing"`
+	// The Subject Alternative Names (SAN) of the certificate.
+	Sans pulumi.StringArrayInput `pulumi:"sans"`
 }
 
 func (GetCertificatesCertificateArgs) ElementType() reflect.Type {
@@ -239,10 +249,12 @@ func (o GetCertificatesCertificateOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// Indicates whether the certificate is in use.
 func (o GetCertificatesCertificateOutput) IsUsing() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCertificatesCertificate) bool { return v.IsUsing }).(pulumi.BoolOutput)
 }
 
+// The Subject Alternative Names (SAN) of the certificate.
 func (o GetCertificatesCertificateOutput) Sans() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCertificatesCertificate) []string { return v.Sans }).(pulumi.StringArrayOutput)
 }
@@ -644,7 +656,8 @@ type GetInstancesInstance struct {
 	// The number of days before the trial period of the WAF instance expires.
 	RemainDay int `pulumi:"remainDay"`
 	// The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
-	Status           int    `pulumi:"status"`
+	Status int `pulumi:"status"`
+	// The billing method of the WAF instance.
 	SubscriptionType string `pulumi:"subscriptionType"`
 	// Indicates whether this is a trial instance.
 	Trial int `pulumi:"trial"`
@@ -673,7 +686,8 @@ type GetInstancesInstanceArgs struct {
 	// The number of days before the trial period of the WAF instance expires.
 	RemainDay pulumi.IntInput `pulumi:"remainDay"`
 	// The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
-	Status           pulumi.IntInput    `pulumi:"status"`
+	Status pulumi.IntInput `pulumi:"status"`
+	// The billing method of the WAF instance.
 	SubscriptionType pulumi.StringInput `pulumi:"subscriptionType"`
 	// Indicates whether this is a trial instance.
 	Trial pulumi.IntInput `pulumi:"trial"`
@@ -760,6 +774,7 @@ func (o GetInstancesInstanceOutput) Status() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.Status }).(pulumi.IntOutput)
 }
 
+// The billing method of the WAF instance.
 func (o GetInstancesInstanceOutput) SubscriptionType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SubscriptionType }).(pulumi.StringOutput)
 }

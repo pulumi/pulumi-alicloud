@@ -144,7 +144,7 @@ def get_instances(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
 
-    > **NOTE:** Available in 1.198.0+
+    > **NOTE:** Available since v1.198.0.
 
     ## Example Usage
 
@@ -193,7 +193,7 @@ def get_instances_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.
     """
     This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
 
-    > **NOTE:** Available in 1.198.0+
+    > **NOTE:** Available since v1.198.0.
 
     ## Example Usage
 

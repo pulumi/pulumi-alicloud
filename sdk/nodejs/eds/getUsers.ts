@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Example Usage
  *
@@ -67,13 +67,19 @@ export interface GetUsersResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
+    /**
+     * A list of Ecd Users. Each element contains the following attributes:
+     */
     readonly users: outputs.eds.GetUsersUser[];
 }
 /**
  * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Example Usage
  *

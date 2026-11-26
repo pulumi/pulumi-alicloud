@@ -36,7 +36,7 @@ public final class GetControlPolicyAttachmentsAttachment {
      */
     private String policyName;
     /**
-     * @return The type of policy.
+     * @return The policy type of control policy. Valid values: `Custom` and `System`.
      * 
      */
     private String policyType;
@@ -78,7 +78,7 @@ public final class GetControlPolicyAttachmentsAttachment {
         return this.policyName;
     }
     /**
-     * @return The type of policy.
+     * @return The policy type of control policy. Valid values: `Custom` and `System`.
      * 
      */
     public String policyType() {

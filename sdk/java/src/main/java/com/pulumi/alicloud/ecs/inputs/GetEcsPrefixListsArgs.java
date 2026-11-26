@@ -32,9 +32,17 @@ public final class GetEcsPrefixListsArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.addressFamily);
     }
 
+    /**
+     * Specifies whether to return detailed information about the prefix list entries. Default: false.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
+    /**
+     * @return Specifies whether to return detailed information about the prefix list entries. Default: false.
+     * 
+     */
     public Optional<Output<Boolean>> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -133,11 +141,23 @@ public final class GetEcsPrefixListsArgs extends com.pulumi.resources.InvokeArgs
             return addressFamily(Output.of(addressFamily));
         }
 
+        /**
+         * @param enableDetails Specifies whether to return detailed information about the prefix list entries. Default: false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
             $.enableDetails = enableDetails;
             return this;
         }
 
+        /**
+         * @param enableDetails Specifies whether to return detailed information about the prefix list entries. Default: false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(Boolean enableDetails) {
             return enableDetails(Output.of(enableDetails));
         }

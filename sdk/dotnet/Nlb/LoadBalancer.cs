@@ -159,12 +159,6 @@ namespace Pulumi.AliCloud.Nlb
     ///                 ZoneId = zone[1],
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             @default,
-    ///         },
     ///     });
     /// 
     /// });

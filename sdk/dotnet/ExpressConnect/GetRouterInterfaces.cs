@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
         /// 
-        /// &gt; **NOTE:** Available in 1.199.0+
+        /// &gt; **NOTE:** Available since v1.199.0
         /// 
         /// ## Example Usage
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
         /// 
-        /// &gt; **NOTE:** Available in 1.199.0+
+        /// &gt; **NOTE:** Available since v1.199.0
         /// 
         /// ## Example Usage
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
         /// 
-        /// &gt; **NOTE:** Available in 1.199.0+
+        /// &gt; **NOTE:** Available since v1.199.0
         /// 
         /// ## Example Usage
         /// 
@@ -119,6 +119,10 @@ namespace Pulumi.AliCloud.ExpressConnect
     {
         [Input("filters")]
         private List<Inputs.GetRouterInterfacesFilterArgs>? _filters;
+
+        /// <summary>
+        /// Custom filter block as described below. See `Filter` below.
+        /// </summary>
         public List<Inputs.GetRouterInterfacesFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetRouterInterfacesFilterArgs>());
@@ -171,6 +175,10 @@ namespace Pulumi.AliCloud.ExpressConnect
     {
         [Input("filters")]
         private InputList<Inputs.GetRouterInterfacesFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// Custom filter block as described below. See `Filter` below.
+        /// </summary>
         public InputList<Inputs.GetRouterInterfacesFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetRouterInterfacesFilterInputArgs>());

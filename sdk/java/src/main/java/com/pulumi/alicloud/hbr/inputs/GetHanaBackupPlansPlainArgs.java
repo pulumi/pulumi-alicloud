@@ -17,9 +17,17 @@ public final class GetHanaBackupPlansPlainArgs extends com.pulumi.resources.Invo
 
     public static final GetHanaBackupPlansPlainArgs Empty = new GetHanaBackupPlansPlainArgs();
 
+    /**
+     * The ID of the SAP HANA instance.
+     * 
+     */
     @Import(name="clusterId", required=true)
     private String clusterId;
 
+    /**
+     * @return The ID of the SAP HANA instance.
+     * 
+     */
     public String clusterId() {
         return this.clusterId;
     }
@@ -144,6 +152,12 @@ public final class GetHanaBackupPlansPlainArgs extends com.pulumi.resources.Invo
             $ = new GetHanaBackupPlansPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param clusterId The ID of the SAP HANA instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterId(String clusterId) {
             $.clusterId = clusterId;
             return this;

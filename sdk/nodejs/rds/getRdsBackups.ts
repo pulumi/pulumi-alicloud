@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Rds Backups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.149.0+.
+ * > **NOTE:** Available since v1.149.0+.
  *
  * ## Example Usage
  *
@@ -76,9 +76,28 @@ export interface GetRdsBackupsArgs {
  * A collection of values returned by getRdsBackups.
  */
 export interface GetRdsBackupsResult {
+    /**
+     * BackupMode.
+     */
     readonly backupMode?: string;
+    /**
+     * Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
+     * * **NoStart**: Not started
+     * * **Checking**: check the backup
+     * * **Preparing**: Prepare a backup
+     * * **Waiting**: Waiting for backup
+     * * **Uploading**: Upload backup
+     * * **Finished**: Complete backup
+     * * **Failed**: backup Failed
+     */
     readonly backupStatus?: string;
+    /**
+     * A list of Rds Backups. Each element contains the following attributes:
+     */
     readonly backups: outputs.rds.GetRdsBackupsBackup[];
+    /**
+     * The db instance id.
+     */
     readonly dbInstanceId: string;
     readonly endTime?: string;
     /**
@@ -92,7 +111,7 @@ export interface GetRdsBackupsResult {
 /**
  * This data source provides the Rds Backups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.149.0+.
+ * > **NOTE:** Available since v1.149.0+.
  *
  * ## Example Usage
  *

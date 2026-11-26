@@ -72,14 +72,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
+     * Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
+     * @return Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`.
      * 
      */
     public Optional<Output<String>> category() {
@@ -583,7 +583,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param category Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
+         * @param category Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`.
          * 
          * @return builder
          * 
@@ -594,7 +594,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param category Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
+         * @param category Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`.
          * 
          * @return builder
          * 

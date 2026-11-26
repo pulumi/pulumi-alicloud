@@ -114,7 +114,7 @@ public final class ScheduledTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+     * Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
      * The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
      * 
      */
@@ -122,7 +122,7 @@ public final class ScheduledTaskArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> recurrenceEndTime;
 
     /**
-     * @return Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+     * @return Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
      * The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
      * 
      */
@@ -132,10 +132,10 @@ public final class ScheduledTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
-     * - Daily: The scheduled task is executed once every specified number of days.
-     * - Weekly: The scheduled task is executed on each specified day of a week.
-     * - Monthly: The scheduled task is executed on each specified day of a month.
-     * - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
+     * - `Daily`: The scheduled task is executed once every specified number of days.
+     * - `Weekly`: The scheduled task is executed on each specified day of a week.
+     * - `Monthly`: The scheduled task is executed on each specified day of a month.
+     * - `Cron`: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
      * 
      */
     @Import(name="recurrenceType")
@@ -143,10 +143,10 @@ public final class ScheduledTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
-     * - Daily: The scheduled task is executed once every specified number of days.
-     * - Weekly: The scheduled task is executed on each specified day of a week.
-     * - Monthly: The scheduled task is executed on each specified day of a month.
-     * - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
+     * - `Daily`: The scheduled task is executed once every specified number of days.
+     * - `Weekly`: The scheduled task is executed on each specified day of a week.
+     * - `Monthly`: The scheduled task is executed on each specified day of a month.
+     * - `Cron`: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
      * 
      */
     public Optional<Output<String>> recurrenceType() {
@@ -155,10 +155,10 @@ public final class ScheduledTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrenceType`
-     * - Daily: You can enter one value. Valid values: 1 to 31.
-     * - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
-     * - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
-     * - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
+     * - `Daily`: You can enter one value. Valid values: `1-31`.
+     * - `Weekly`: You can enter multiple values and separate them with commas (,). For example, the values `0-6` correspond to the days of the week in sequence from Sunday to Saturday.
+     * - `Monthly`: You can enter two values in `A-B` format. Valid values of `A` and `B`: `1-31`. The value of `B` must be greater than or equal to the value of `A`.
+     * - `Cron`: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
      * 
      */
     @Import(name="recurrenceValue")
@@ -166,10 +166,10 @@ public final class ScheduledTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrenceType`
-     * - Daily: You can enter one value. Valid values: 1 to 31.
-     * - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
-     * - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
-     * - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
+     * - `Daily`: You can enter one value. Valid values: `1-31`.
+     * - `Weekly`: You can enter multiple values and separate them with commas (,). For example, the values `0-6` correspond to the days of the week in sequence from Sunday to Saturday.
+     * - `Monthly`: You can enter two values in `A-B` format. Valid values of `A` and `B`: `1-31`. The value of `B` must be greater than or equal to the value of `A`.
+     * - `Cron`: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
      * 
      */
     public Optional<Output<String>> recurrenceValue() {
@@ -405,7 +405,7 @@ public final class ScheduledTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param recurrenceEndTime Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+         * @param recurrenceEndTime Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
          * The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
          * 
          * @return builder
@@ -417,7 +417,7 @@ public final class ScheduledTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param recurrenceEndTime Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+         * @param recurrenceEndTime Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
          * The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
          * 
          * @return builder
@@ -429,10 +429,10 @@ public final class ScheduledTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param recurrenceType Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
-         * - Daily: The scheduled task is executed once every specified number of days.
-         * - Weekly: The scheduled task is executed on each specified day of a week.
-         * - Monthly: The scheduled task is executed on each specified day of a month.
-         * - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
+         * - `Daily`: The scheduled task is executed once every specified number of days.
+         * - `Weekly`: The scheduled task is executed on each specified day of a week.
+         * - `Monthly`: The scheduled task is executed on each specified day of a month.
+         * - `Cron`: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
          * 
          * @return builder
          * 
@@ -444,10 +444,10 @@ public final class ScheduledTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param recurrenceType Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
-         * - Daily: The scheduled task is executed once every specified number of days.
-         * - Weekly: The scheduled task is executed on each specified day of a week.
-         * - Monthly: The scheduled task is executed on each specified day of a month.
-         * - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
+         * - `Daily`: The scheduled task is executed once every specified number of days.
+         * - `Weekly`: The scheduled task is executed on each specified day of a week.
+         * - `Monthly`: The scheduled task is executed on each specified day of a month.
+         * - `Cron`: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
          * 
          * @return builder
          * 
@@ -458,10 +458,10 @@ public final class ScheduledTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param recurrenceValue Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrenceType`
-         * - Daily: You can enter one value. Valid values: 1 to 31.
-         * - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
-         * - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
-         * - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
+         * - `Daily`: You can enter one value. Valid values: `1-31`.
+         * - `Weekly`: You can enter multiple values and separate them with commas (,). For example, the values `0-6` correspond to the days of the week in sequence from Sunday to Saturday.
+         * - `Monthly`: You can enter two values in `A-B` format. Valid values of `A` and `B`: `1-31`. The value of `B` must be greater than or equal to the value of `A`.
+         * - `Cron`: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
          * 
          * @return builder
          * 
@@ -473,10 +473,10 @@ public final class ScheduledTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param recurrenceValue Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrenceType`
-         * - Daily: You can enter one value. Valid values: 1 to 31.
-         * - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
-         * - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
-         * - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
+         * - `Daily`: You can enter one value. Valid values: `1-31`.
+         * - `Weekly`: You can enter multiple values and separate them with commas (,). For example, the values `0-6` correspond to the days of the week in sequence from Sunday to Saturday.
+         * - `Monthly`: You can enter two values in `A-B` format. Valid values of `A` and `B`: `1-31`. The value of `B` must be greater than or equal to the value of `A`.
+         * - `Cron`: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
          * 
          * @return builder
          * 

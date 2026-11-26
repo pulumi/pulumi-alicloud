@@ -23,28 +23,60 @@ class DomainArgs:
     def __init__(__self__, *,
                  domain_name: pulumi.Input[_builtins.str],
                  sources: pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]],
+                 cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_type: pulumi.Input[Optional[_builtins.str]] = None,
                  check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 env: pulumi.Input[Optional[_builtins.str]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_pri: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_pub: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  top_level_domain: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Domain resource.
 
         :param pulumi.Input[_builtins.str] domain_name: The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
-        :param pulumi.Input[_builtins.str] check_url: The URL that is used for health checks.
-        :param pulumi.Input[_builtins.str] scope: This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: The list of origin addresses. See `sources` below.
+        :param pulumi.Input[_builtins.str] cert_id: The ID of the certificate.
+        :param pulumi.Input[_builtins.str] cert_name: The name of the certificate.
+        :param pulumi.Input[_builtins.str] cert_region: The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+        :param pulumi.Input[_builtins.str] cert_type: The type of the certificate. Valid values:
+        :param pulumi.Input[_builtins.str] check_url: The URL for health checks.
+        :param pulumi.Input[_builtins.str] env: Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+        :param pulumi.Input[_builtins.str] scope: This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
+        :param pulumi.Input[_builtins.str] ssl_pri: The content of the private key.
+        :param pulumi.Input[_builtins.str] ssl_protocol: Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
+        :param pulumi.Input[_builtins.str] ssl_pub: The content of the security certificate.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-               * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-               * `Value`: It can be up to 128 characters in length. It can be a null string.
+               - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+               - `Value`: It can be up to 128 characters in length. It can be a null string.
         :param pulumi.Input[_builtins.str] top_level_domain: The top-level domain name.
         """
         pulumi.set(__self__, "domain_name", domain_name)
         pulumi.set(__self__, "sources", sources)
+        if cert_id is not None:
+            pulumi.set(__self__, "cert_id", cert_id)
+        if cert_name is not None:
+            pulumi.set(__self__, "cert_name", cert_name)
+        if cert_region is not None:
+            pulumi.set(__self__, "cert_region", cert_region)
+        if cert_type is not None:
+            pulumi.set(__self__, "cert_type", cert_type)
         if check_url is not None:
             pulumi.set(__self__, "check_url", check_url)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
+        if ssl_pri is not None:
+            pulumi.set(__self__, "ssl_pri", ssl_pri)
+        if ssl_protocol is not None:
+            pulumi.set(__self__, "ssl_protocol", ssl_protocol)
+        if ssl_pub is not None:
+            pulumi.set(__self__, "ssl_pub", ssl_pub)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if top_level_domain is not None:
@@ -66,7 +98,7 @@ class DomainArgs:
     @pulumi.getter
     def sources(self) -> pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]:
         """
-        The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+        The list of origin addresses. See `sources` below.
         """
         return pulumi.get(self, "sources")
 
@@ -75,10 +107,58 @@ class DomainArgs:
         pulumi.set(self, "sources", value)
 
     @_builtins.property
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the certificate.
+        """
+        return pulumi.get(self, "cert_id")
+
+    @cert_id.setter
+    def cert_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cert_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="certName")
+    def cert_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the certificate.
+        """
+        return pulumi.get(self, "cert_name")
+
+    @cert_name.setter
+    def cert_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cert_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="certRegion")
+    def cert_region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+        """
+        return pulumi.get(self, "cert_region")
+
+    @cert_region.setter
+    def cert_region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cert_region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="certType")
+    def cert_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the certificate. Valid values:
+        """
+        return pulumi.get(self, "cert_type")
+
+    @cert_type.setter
+    def cert_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cert_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="checkUrl")
     def check_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The URL that is used for health checks.
+        The URL for health checks.
         """
         return pulumi.get(self, "check_url")
 
@@ -88,9 +168,21 @@ class DomainArgs:
 
     @_builtins.property
     @pulumi.getter
+    def env(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "env", value)
+
+    @_builtins.property
+    @pulumi.getter
     def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+        This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
         """
         return pulumi.get(self, "scope")
 
@@ -99,12 +191,48 @@ class DomainArgs:
         pulumi.set(self, "scope", value)
 
     @_builtins.property
+    @pulumi.getter(name="sslPri")
+    def ssl_pri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The content of the private key.
+        """
+        return pulumi.get(self, "ssl_pri")
+
+    @ssl_pri.setter
+    def ssl_pri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ssl_pri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sslProtocol")
+    def ssl_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
+        """
+        return pulumi.get(self, "ssl_protocol")
+
+    @ssl_protocol.setter
+    def ssl_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ssl_protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sslPub")
+    def ssl_pub(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The content of the security certificate.
+        """
+        return pulumi.get(self, "ssl_pub")
+
+    @ssl_pub.setter
+    def ssl_pub(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ssl_pub", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
-        * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-        * `Value`: It can be up to 128 characters in length. It can be a null string.
+        - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+        - `Value`: It can be up to 128 characters in length. It can be a null string.
         """
         return pulumi.get(self, "tags")
 
@@ -128,15 +256,20 @@ class DomainArgs:
 @pulumi.input_type
 class _DomainState:
     def __init__(__self__, *,
+                 cert_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_type: pulumi.Input[Optional[_builtins.str]] = None,
                  check_url: pulumi.Input[Optional[_builtins.str]] = None,
                  cname: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 env: pulumi.Input[Optional[_builtins.str]] = None,
                  gmt_created: pulumi.Input[Optional[_builtins.str]] = None,
                  gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
                  sources: pulumi.Input[Optional[Sequence[pulumi.Input['DomainSourceArgs']]]] = None,
+                 ssl_pri: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_pub: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -146,26 +279,37 @@ class _DomainState:
         """
         Input properties used for looking up and filtering Domain resources.
 
-        :param pulumi.Input[_builtins.str] cert_name: The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
-        :param pulumi.Input[_builtins.str] check_url: The URL that is used for health checks.
+        :param pulumi.Input[_builtins.str] cert_id: The ID of the certificate.
+        :param pulumi.Input[_builtins.str] cert_name: The name of the certificate.
+        :param pulumi.Input[_builtins.str] cert_region: The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+        :param pulumi.Input[_builtins.str] cert_type: The type of the certificate. Valid values:
+        :param pulumi.Input[_builtins.str] check_url: The URL for health checks.
         :param pulumi.Input[_builtins.str] cname: The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
-        :param pulumi.Input[_builtins.str] description: The description of the domain name for CDN.
+        :param pulumi.Input[_builtins.str] description: The description of the ApsaraVideo VOD accelerated domain name.
         :param pulumi.Input[_builtins.str] domain_name: The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
-        :param pulumi.Input[_builtins.str] gmt_created: The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        :param pulumi.Input[_builtins.str] gmt_modified: The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        :param pulumi.Input[_builtins.str] scope: This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
-        :param pulumi.Input[_builtins.str] ssl_protocol: Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
-        :param pulumi.Input[_builtins.str] ssl_pub: The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
-        :param pulumi.Input[_builtins.str] status: The status of the domain name for CDN. Valid values:
+        :param pulumi.Input[_builtins.str] env: Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+        :param pulumi.Input[_builtins.str] gmt_created: The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
+        :param pulumi.Input[_builtins.str] gmt_modified: The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
+        :param pulumi.Input[_builtins.str] scope: This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: The list of origin addresses. See `sources` below.
+        :param pulumi.Input[_builtins.str] ssl_pri: The content of the private key.
+        :param pulumi.Input[_builtins.str] ssl_protocol: Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
+        :param pulumi.Input[_builtins.str] ssl_pub: The content of the security certificate.
+        :param pulumi.Input[_builtins.str] status: The running status of the accelerated domain name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-               * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-               * `Value`: It can be up to 128 characters in length. It can be a null string.
+               - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+               - `Value`: It can be up to 128 characters in length. It can be a null string.
         :param pulumi.Input[_builtins.str] top_level_domain: The top-level domain name.
         :param pulumi.Input[_builtins.str] weight: The weight of the origin server.
         """
+        if cert_id is not None:
+            pulumi.set(__self__, "cert_id", cert_id)
         if cert_name is not None:
             pulumi.set(__self__, "cert_name", cert_name)
+        if cert_region is not None:
+            pulumi.set(__self__, "cert_region", cert_region)
+        if cert_type is not None:
+            pulumi.set(__self__, "cert_type", cert_type)
         if check_url is not None:
             pulumi.set(__self__, "check_url", check_url)
         if cname is not None:
@@ -174,6 +318,8 @@ class _DomainState:
             pulumi.set(__self__, "description", description)
         if domain_name is not None:
             pulumi.set(__self__, "domain_name", domain_name)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
         if gmt_created is not None:
             pulumi.set(__self__, "gmt_created", gmt_created)
         if gmt_modified is not None:
@@ -182,6 +328,8 @@ class _DomainState:
             pulumi.set(__self__, "scope", scope)
         if sources is not None:
             pulumi.set(__self__, "sources", sources)
+        if ssl_pri is not None:
+            pulumi.set(__self__, "ssl_pri", ssl_pri)
         if ssl_protocol is not None:
             pulumi.set(__self__, "ssl_protocol", ssl_protocol)
         if ssl_pub is not None:
@@ -196,10 +344,22 @@ class _DomainState:
             pulumi.set(__self__, "weight", weight)
 
     @_builtins.property
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the certificate.
+        """
+        return pulumi.get(self, "cert_id")
+
+    @cert_id.setter
+    def cert_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cert_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="certName")
     def cert_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+        The name of the certificate.
         """
         return pulumi.get(self, "cert_name")
 
@@ -208,10 +368,34 @@ class _DomainState:
         pulumi.set(self, "cert_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="certRegion")
+    def cert_region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+        """
+        return pulumi.get(self, "cert_region")
+
+    @cert_region.setter
+    def cert_region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cert_region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="certType")
+    def cert_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the certificate. Valid values:
+        """
+        return pulumi.get(self, "cert_type")
+
+    @cert_type.setter
+    def cert_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cert_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="checkUrl")
     def check_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The URL that is used for health checks.
+        The URL for health checks.
         """
         return pulumi.get(self, "check_url")
 
@@ -235,7 +419,7 @@ class _DomainState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The description of the domain name for CDN.
+        The description of the ApsaraVideo VOD accelerated domain name.
         """
         return pulumi.get(self, "description")
 
@@ -256,10 +440,22 @@ class _DomainState:
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def env(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "env", value)
+
+    @_builtins.property
     @pulumi.getter(name="gmtCreated")
     def gmt_created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
         """
         return pulumi.get(self, "gmt_created")
 
@@ -271,7 +467,7 @@ class _DomainState:
     @pulumi.getter(name="gmtModified")
     def gmt_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
         """
         return pulumi.get(self, "gmt_modified")
 
@@ -283,7 +479,7 @@ class _DomainState:
     @pulumi.getter
     def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+        This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
         """
         return pulumi.get(self, "scope")
 
@@ -295,7 +491,7 @@ class _DomainState:
     @pulumi.getter
     def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainSourceArgs']]]]:
         """
-        The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+        The list of origin addresses. See `sources` below.
         """
         return pulumi.get(self, "sources")
 
@@ -304,10 +500,22 @@ class _DomainState:
         pulumi.set(self, "sources", value)
 
     @_builtins.property
+    @pulumi.getter(name="sslPri")
+    def ssl_pri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The content of the private key.
+        """
+        return pulumi.get(self, "ssl_pri")
+
+    @ssl_pri.setter
+    def ssl_pri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ssl_pri", value)
+
+    @_builtins.property
     @pulumi.getter(name="sslProtocol")
     def ssl_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
+        Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
         """
         return pulumi.get(self, "ssl_protocol")
 
@@ -319,7 +527,7 @@ class _DomainState:
     @pulumi.getter(name="sslPub")
     def ssl_pub(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+        The content of the security certificate.
         """
         return pulumi.get(self, "ssl_pub")
 
@@ -331,7 +539,7 @@ class _DomainState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of the domain name for CDN. Valid values:
+        The running status of the accelerated domain name.
         """
         return pulumi.get(self, "status")
 
@@ -344,8 +552,8 @@ class _DomainState:
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
-        * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-        * `Value`: It can be up to 128 characters in length. It can be a null string.
+        - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+        - `Value`: It can be up to 128 characters in length. It can be a null string.
         """
         return pulumi.get(self, "tags")
 
@@ -384,10 +592,18 @@ class Domain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_type: pulumi.Input[Optional[_builtins.str]] = None,
                  check_url: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 env: pulumi.Input[Optional[_builtins.str]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
                  sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]]] = None,
+                 ssl_pri: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_pub: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  top_level_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -396,7 +612,7 @@ class Domain(pulumi.CustomResource):
 
         For information about VOD Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/product/29932.html).
 
-        > **NOTE:** Available since v1.136.0+.
+        > **NOTE:** Available since v1.136.0.
 
         ## Example Usage
 
@@ -437,13 +653,21 @@ class Domain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] check_url: The URL that is used for health checks.
+        :param pulumi.Input[_builtins.str] cert_id: The ID of the certificate.
+        :param pulumi.Input[_builtins.str] cert_name: The name of the certificate.
+        :param pulumi.Input[_builtins.str] cert_region: The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+        :param pulumi.Input[_builtins.str] cert_type: The type of the certificate. Valid values:
+        :param pulumi.Input[_builtins.str] check_url: The URL for health checks.
         :param pulumi.Input[_builtins.str] domain_name: The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
-        :param pulumi.Input[_builtins.str] scope: This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+        :param pulumi.Input[_builtins.str] env: Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+        :param pulumi.Input[_builtins.str] scope: This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]] sources: The list of origin addresses. See `sources` below.
+        :param pulumi.Input[_builtins.str] ssl_pri: The content of the private key.
+        :param pulumi.Input[_builtins.str] ssl_protocol: Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
+        :param pulumi.Input[_builtins.str] ssl_pub: The content of the security certificate.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-               * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-               * `Value`: It can be up to 128 characters in length. It can be a null string.
+               - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+               - `Value`: It can be up to 128 characters in length. It can be a null string.
         :param pulumi.Input[_builtins.str] top_level_domain: The top-level domain name.
         """
         ...
@@ -457,7 +681,7 @@ class Domain(pulumi.CustomResource):
 
         For information about VOD Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/product/29932.html).
 
-        > **NOTE:** Available since v1.136.0+.
+        > **NOTE:** Available since v1.136.0.
 
         ## Example Usage
 
@@ -511,10 +735,18 @@ class Domain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_type: pulumi.Input[Optional[_builtins.str]] = None,
                  check_url: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 env: pulumi.Input[Optional[_builtins.str]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
                  sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]]] = None,
+                 ssl_pri: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_pub: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  top_level_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -526,25 +758,32 @@ class Domain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DomainArgs.__new__(DomainArgs)
 
+            __props__.__dict__["cert_id"] = cert_id
+            __props__.__dict__["cert_name"] = cert_name
+            __props__.__dict__["cert_region"] = cert_region
+            __props__.__dict__["cert_type"] = cert_type
             __props__.__dict__["check_url"] = check_url
             if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")
             __props__.__dict__["domain_name"] = domain_name
+            __props__.__dict__["env"] = env
             __props__.__dict__["scope"] = scope
             if sources is None and not opts.urn:
                 raise TypeError("Missing required property 'sources'")
             __props__.__dict__["sources"] = sources
+            __props__.__dict__["ssl_pri"] = None if ssl_pri is None else pulumi.Output.secret(ssl_pri)
+            __props__.__dict__["ssl_protocol"] = ssl_protocol
+            __props__.__dict__["ssl_pub"] = ssl_pub
             __props__.__dict__["tags"] = tags
             __props__.__dict__["top_level_domain"] = top_level_domain
-            __props__.__dict__["cert_name"] = None
             __props__.__dict__["cname"] = None
             __props__.__dict__["description"] = None
             __props__.__dict__["gmt_created"] = None
             __props__.__dict__["gmt_modified"] = None
-            __props__.__dict__["ssl_protocol"] = None
-            __props__.__dict__["ssl_pub"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["weight"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["sslPri"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Domain, __self__).__init__(
             'alicloud:vod/domain:Domain',
             resource_name,
@@ -555,15 +794,20 @@ class Domain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            cert_id: pulumi.Input[Optional[_builtins.str]] = None,
             cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_type: pulumi.Input[Optional[_builtins.str]] = None,
             check_url: pulumi.Input[Optional[_builtins.str]] = None,
             cname: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            env: pulumi.Input[Optional[_builtins.str]] = None,
             gmt_created: pulumi.Input[Optional[_builtins.str]] = None,
             gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
             scope: pulumi.Input[Optional[_builtins.str]] = None,
             sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]]] = None,
+            ssl_pri: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_pub: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -577,21 +821,26 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cert_name: The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
-        :param pulumi.Input[_builtins.str] check_url: The URL that is used for health checks.
+        :param pulumi.Input[_builtins.str] cert_id: The ID of the certificate.
+        :param pulumi.Input[_builtins.str] cert_name: The name of the certificate.
+        :param pulumi.Input[_builtins.str] cert_region: The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+        :param pulumi.Input[_builtins.str] cert_type: The type of the certificate. Valid values:
+        :param pulumi.Input[_builtins.str] check_url: The URL for health checks.
         :param pulumi.Input[_builtins.str] cname: The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
-        :param pulumi.Input[_builtins.str] description: The description of the domain name for CDN.
+        :param pulumi.Input[_builtins.str] description: The description of the ApsaraVideo VOD accelerated domain name.
         :param pulumi.Input[_builtins.str] domain_name: The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
-        :param pulumi.Input[_builtins.str] gmt_created: The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        :param pulumi.Input[_builtins.str] gmt_modified: The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        :param pulumi.Input[_builtins.str] scope: This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
-        :param pulumi.Input[_builtins.str] ssl_protocol: Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
-        :param pulumi.Input[_builtins.str] ssl_pub: The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
-        :param pulumi.Input[_builtins.str] status: The status of the domain name for CDN. Valid values:
+        :param pulumi.Input[_builtins.str] env: Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+        :param pulumi.Input[_builtins.str] gmt_created: The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
+        :param pulumi.Input[_builtins.str] gmt_modified: The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
+        :param pulumi.Input[_builtins.str] scope: This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]] sources: The list of origin addresses. See `sources` below.
+        :param pulumi.Input[_builtins.str] ssl_pri: The content of the private key.
+        :param pulumi.Input[_builtins.str] ssl_protocol: Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
+        :param pulumi.Input[_builtins.str] ssl_pub: The content of the security certificate.
+        :param pulumi.Input[_builtins.str] status: The running status of the accelerated domain name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-               * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-               * `Value`: It can be up to 128 characters in length. It can be a null string.
+               - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+               - `Value`: It can be up to 128 characters in length. It can be a null string.
         :param pulumi.Input[_builtins.str] top_level_domain: The top-level domain name.
         :param pulumi.Input[_builtins.str] weight: The weight of the origin server.
         """
@@ -599,15 +848,20 @@ class Domain(pulumi.CustomResource):
 
         __props__ = _DomainState.__new__(_DomainState)
 
+        __props__.__dict__["cert_id"] = cert_id
         __props__.__dict__["cert_name"] = cert_name
+        __props__.__dict__["cert_region"] = cert_region
+        __props__.__dict__["cert_type"] = cert_type
         __props__.__dict__["check_url"] = check_url
         __props__.__dict__["cname"] = cname
         __props__.__dict__["description"] = description
         __props__.__dict__["domain_name"] = domain_name
+        __props__.__dict__["env"] = env
         __props__.__dict__["gmt_created"] = gmt_created
         __props__.__dict__["gmt_modified"] = gmt_modified
         __props__.__dict__["scope"] = scope
         __props__.__dict__["sources"] = sources
+        __props__.__dict__["ssl_pri"] = ssl_pri
         __props__.__dict__["ssl_protocol"] = ssl_protocol
         __props__.__dict__["ssl_pub"] = ssl_pub
         __props__.__dict__["status"] = status
@@ -619,15 +873,20 @@ class Domain(pulumi.CustomResource):
     @staticmethod
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            cert_id: pulumi.Input[Optional[_builtins.str]] = None,
             cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_type: pulumi.Input[Optional[_builtins.str]] = None,
             check_url: pulumi.Input[Optional[_builtins.str]] = None,
             cname: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            env: pulumi.Input[Optional[_builtins.str]] = None,
             gmt_created: pulumi.Input[Optional[_builtins.str]] = None,
             gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
             scope: pulumi.Input[Optional[_builtins.str]] = None,
             sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]]] = None,
+            ssl_pri: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_pub: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -635,15 +894,20 @@ class Domain(pulumi.CustomResource):
             top_level_domain: pulumi.Input[Optional[_builtins.str]] = None,
             weight: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
+        __props__["certId"] = cert_id
         __props__["certName"] = cert_name
+        __props__["certRegion"] = cert_region
+        __props__["certType"] = cert_type
         __props__["checkUrl"] = check_url
         __props__["cname"] = cname
         __props__["description"] = description
         __props__["domainName"] = domain_name
+        __props__["env"] = env
         __props__["gmtCreated"] = gmt_created
         __props__["gmtModified"] = gmt_modified
         __props__["scope"] = scope
         __props__["sources"] = sources
+        __props__["sslPri"] = ssl_pri
         __props__["sslProtocol"] = ssl_protocol
         __props__["sslPub"] = ssl_pub
         __props__["status"] = status
@@ -653,18 +917,42 @@ class Domain(pulumi.CustomResource):
         return pulumi.runtime.exists_resource(None, 'alicloud:vod/domain:Domain', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the certificate.
+        """
+        return pulumi.get(self, "cert_id")
+
+    @_builtins.property
     @pulumi.getter(name="certName")
     def cert_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+        The name of the certificate.
         """
         return pulumi.get(self, "cert_name")
+
+    @_builtins.property
+    @pulumi.getter(name="certRegion")
+    def cert_region(self) -> pulumi.Output[_builtins.str]:
+        """
+        The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+        """
+        return pulumi.get(self, "cert_region")
+
+    @_builtins.property
+    @pulumi.getter(name="certType")
+    def cert_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The type of the certificate. Valid values:
+        """
+        return pulumi.get(self, "cert_type")
 
     @_builtins.property
     @pulumi.getter(name="checkUrl")
     def check_url(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The URL that is used for health checks.
+        The URL for health checks.
         """
         return pulumi.get(self, "check_url")
 
@@ -680,7 +968,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
         """
-        The description of the domain name for CDN.
+        The description of the ApsaraVideo VOD accelerated domain name.
         """
         return pulumi.get(self, "description")
 
@@ -693,10 +981,18 @@ class Domain(pulumi.CustomResource):
         return pulumi.get(self, "domain_name")
 
     @_builtins.property
+    @pulumi.getter
+    def env(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+        """
+        return pulumi.get(self, "env")
+
+    @_builtins.property
     @pulumi.getter(name="gmtCreated")
     def gmt_created(self) -> pulumi.Output[_builtins.str]:
         """
-        The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
         """
         return pulumi.get(self, "gmt_created")
 
@@ -704,7 +1000,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="gmtModified")
     def gmt_modified(self) -> pulumi.Output[_builtins.str]:
         """
-        The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
         """
         return pulumi.get(self, "gmt_modified")
 
@@ -712,7 +1008,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter
     def scope(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+        This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
         """
         return pulumi.get(self, "scope")
 
@@ -720,15 +1016,23 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter
     def sources(self) -> pulumi.Output[Sequence['outputs.DomainSource']]:
         """
-        The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+        The list of origin addresses. See `sources` below.
         """
         return pulumi.get(self, "sources")
+
+    @_builtins.property
+    @pulumi.getter(name="sslPri")
+    def ssl_pri(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The content of the private key.
+        """
+        return pulumi.get(self, "ssl_pri")
 
     @_builtins.property
     @pulumi.getter(name="sslProtocol")
     def ssl_protocol(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
+        Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
         """
         return pulumi.get(self, "ssl_protocol")
 
@@ -736,7 +1040,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="sslPub")
     def ssl_pub(self) -> pulumi.Output[_builtins.str]:
         """
-        The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+        The content of the security certificate.
         """
         return pulumi.get(self, "ssl_pub")
 
@@ -744,7 +1048,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the domain name for CDN. Valid values:
+        The running status of the accelerated domain name.
         """
         return pulumi.get(self, "status")
 
@@ -753,8 +1057,8 @@ class Domain(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
         A mapping of tags to assign to the resource.
-        * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-        * `Value`: It can be up to 128 characters in length. It can be a null string.
+        - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+        - `Value`: It can be up to 128 characters in length. It can be a null string.
         """
         return pulumi.get(self, "tags")
 

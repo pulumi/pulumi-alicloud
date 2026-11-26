@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.142.0+.
+// > **NOTE:** Available since v1.142.0.
 //
 // ## Example Usage
 //
@@ -81,15 +81,19 @@ type GetAccountsArgs struct {
 
 // A collection of values returned by getAccounts.
 type GetAccountsResult struct {
-	Accounts     []GetAccountsAccount `pulumi:"accounts"`
-	DbInstanceId string               `pulumi:"dbInstanceId"`
+	// A list of Gpdb Accounts. Each element contains the following attributes:
+	Accounts []GetAccountsAccount `pulumi:"accounts"`
+	// The ID of the instance.
+	DbInstanceId string `pulumi:"dbInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Account names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+	Status *string `pulumi:"status"`
 }
 
 func GetAccountsOutput(ctx *pulumi.Context, args GetAccountsOutputArgs, opts ...pulumi.InvokeOption) GetAccountsResultOutput {
@@ -130,10 +134,12 @@ func (o GetAccountsResultOutput) ToGetAccountsResultOutputWithContext(ctx contex
 	return o
 }
 
+// A list of Gpdb Accounts. Each element contains the following attributes:
 func (o GetAccountsResultOutput) Accounts() GetAccountsAccountArrayOutput {
 	return o.ApplyT(func(v GetAccountsResult) []GetAccountsAccount { return v.Accounts }).(GetAccountsAccountArrayOutput)
 }
 
+// The ID of the instance.
 func (o GetAccountsResultOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsResult) string { return v.DbInstanceId }).(pulumi.StringOutput)
 }
@@ -151,6 +157,7 @@ func (o GetAccountsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Account names.
 func (o GetAccountsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAccountsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -159,6 +166,7 @@ func (o GetAccountsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
 func (o GetAccountsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

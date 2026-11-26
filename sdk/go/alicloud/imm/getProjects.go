@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Intelligent Media Management Projects of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -66,10 +66,11 @@ type GetProjectsArgs struct {
 // A collection of values returned by getProjects.
 type GetProjectsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string               `pulumi:"id"`
-	Ids        []string             `pulumi:"ids"`
-	OutputFile *string              `pulumi:"outputFile"`
-	Projects   []GetProjectsProject `pulumi:"projects"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Imm Projects. Each element contains the following attributes:
+	Projects []GetProjectsProject `pulumi:"projects"`
 }
 
 func GetProjectsOutput(ctx *pulumi.Context, args GetProjectsOutputArgs, opts ...pulumi.InvokeOption) GetProjectsResultOutput {
@@ -117,6 +118,7 @@ func (o GetProjectsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Imm Projects. Each element contains the following attributes:
 func (o GetProjectsResultOutput) Projects() GetProjectsProjectArrayOutput {
 	return o.ApplyT(func(v GetProjectsResult) []GetProjectsProject { return v.Projects }).(GetProjectsProjectArrayOutput)
 }

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.187.0+.
+// > **NOTE:** Available since v1.187.0.
 //
 // ## Example Usage
 //
@@ -71,23 +71,29 @@ type GetSecurityPoliciesArgs struct {
 	// The names of the TLS security policies.
 	SecurityPolicyNames []string `pulumi:"securityPolicyNames"`
 	// The status of the resource. Valid values: `Available`, `Configuring`.
-	Status *string           `pulumi:"status"`
-	Tags   map[string]string `pulumi:"tags"`
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getSecurityPolicies.
 type GetSecurityPoliciesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                  string                      `pulumi:"id"`
-	Ids                 []string                    `pulumi:"ids"`
-	NameRegex           *string                     `pulumi:"nameRegex"`
-	Names               []string                    `pulumi:"names"`
-	OutputFile          *string                     `pulumi:"outputFile"`
-	Policies            []GetSecurityPoliciesPolicy `pulumi:"policies"`
-	ResourceGroupId     *string                     `pulumi:"resourceGroupId"`
-	SecurityPolicyNames []string                    `pulumi:"securityPolicyNames"`
-	Status              *string                     `pulumi:"status"`
-	Tags                map[string]string           `pulumi:"tags"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Security Policy names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Nlb Security Policies. Each element contains the following attributes:
+	Policies []GetSecurityPoliciesPolicy `pulumi:"policies"`
+	// The ID of the resource group.
+	ResourceGroupId     *string  `pulumi:"resourceGroupId"`
+	SecurityPolicyNames []string `pulumi:"securityPolicyNames"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetSecurityPoliciesOutput(ctx *pulumi.Context, args GetSecurityPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetSecurityPoliciesResultOutput {
@@ -109,7 +115,8 @@ type GetSecurityPoliciesOutputArgs struct {
 	SecurityPolicyNames pulumi.StringArrayInput `pulumi:"securityPolicyNames"`
 	// The status of the resource. Valid values: `Available`, `Configuring`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	Tags   pulumi.StringMapInput `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetSecurityPoliciesOutputArgs) ElementType() reflect.Type {
@@ -144,6 +151,7 @@ func (o GetSecurityPoliciesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Security Policy names.
 func (o GetSecurityPoliciesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -152,10 +160,12 @@ func (o GetSecurityPoliciesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Nlb Security Policies. Each element contains the following attributes:
 func (o GetSecurityPoliciesResultOutput) Policies() GetSecurityPoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesResult) []GetSecurityPoliciesPolicy { return v.Policies }).(GetSecurityPoliciesPolicyArrayOutput)
 }
 
+// The ID of the resource group.
 func (o GetSecurityPoliciesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
@@ -164,10 +174,12 @@ func (o GetSecurityPoliciesResultOutput) SecurityPolicyNames() pulumi.StringArra
 	return o.ApplyT(func(v GetSecurityPoliciesResult) []string { return v.SecurityPolicyNames }).(pulumi.StringArrayOutput)
 }
 
+// The status of the resource.
 func (o GetSecurityPoliciesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A mapping of tags to assign to the resource.
 func (o GetSecurityPoliciesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

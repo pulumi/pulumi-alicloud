@@ -46,13 +46,27 @@ class NetworkInterfaceArgs:
         The set of arguments for constructing a NetworkInterface resource.
 
         :param pulumi.Input[_builtins.str] vswitch_id: The VSwitch to create the ENI in.
+        :param pulumi.Input[_builtins.bool] delete_on_release: Whether to delete the ENI when it is released.
         :param pulumi.Input[_builtins.str] description: Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] name: Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] private_ip: The primary private IP of the ENI.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
-        :param pulumi.Input[_builtins.int] private_ips_count: Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        :param pulumi.Input[_builtins.str] instance_type: The instance type of the ENI.
+        :param pulumi.Input[_builtins.int] ipv4_prefix_count: The number of IPv4 prefixes to assign to the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_prefixes: A list of IPv4 prefixes to assign to the ENI.
+        :param pulumi.Input[_builtins.int] ipv6_address_count: The number of IPv6 addresses to assign to the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_addresses: A list of IPv6 addresses to assign to the ENI.
+        :param pulumi.Input[_builtins.str] name: Deprecated, use `network_interface_name` instead.
+        :param pulumi.Input[_builtins.str] network_interface_name: Name of the ENI.
+        :param pulumi.Input[_builtins.str] network_interface_traffic_mode: The traffic mode of the ENI.
+        :param pulumi.Input[_builtins.str] primary_ip_address: The primary private IP of the ENI.
+        :param pulumi.Input[_builtins.str] private_ip: Deprecated, use `primary_ip_address` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ip_addresses: List of secondary private IPs to assign to the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: Deprecated, use `private_ip_addresses` instead.
+        :param pulumi.Input[_builtins.int] private_ips_count: Deprecated, use `secondary_private_ip_address_count` instead.
+        :param pulumi.Input[_builtins.int] queue_number: The queue number of the ENI.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the network interface belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with.
+        :param pulumi.Input[_builtins.int] secondary_private_ip_address_count: Number of secondary private IPs to assign to the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: A list of security group ids to associate with.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: Deprecated, use `security_group_ids` instead.
+        :param pulumi.Input[_builtins.bool] source_dest_check: Whether to enable SourceDestCheck of the ENI.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
@@ -131,6 +145,9 @@ class NetworkInterfaceArgs:
     @_builtins.property
     @pulumi.getter(name="deleteOnRelease")
     def delete_on_release(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to delete the ENI when it is released.
+        """
         return pulumi.get(self, "delete_on_release")
 
     @delete_on_release.setter
@@ -152,6 +169,9 @@ class NetworkInterfaceArgs:
     @_builtins.property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The instance type of the ENI.
+        """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
@@ -161,6 +181,9 @@ class NetworkInterfaceArgs:
     @_builtins.property
     @pulumi.getter(name="ipv4PrefixCount")
     def ipv4_prefix_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of IPv4 prefixes to assign to the ENI.
+        """
         return pulumi.get(self, "ipv4_prefix_count")
 
     @ipv4_prefix_count.setter
@@ -170,6 +193,9 @@ class NetworkInterfaceArgs:
     @_builtins.property
     @pulumi.getter(name="ipv4Prefixes")
     def ipv4_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of IPv4 prefixes to assign to the ENI.
+        """
         return pulumi.get(self, "ipv4_prefixes")
 
     @ipv4_prefixes.setter
@@ -179,6 +205,9 @@ class NetworkInterfaceArgs:
     @_builtins.property
     @pulumi.getter(name="ipv6AddressCount")
     def ipv6_address_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of IPv6 addresses to assign to the ENI.
+        """
         return pulumi.get(self, "ipv6_address_count")
 
     @ipv6_address_count.setter
@@ -188,6 +217,9 @@ class NetworkInterfaceArgs:
     @_builtins.property
     @pulumi.getter(name="ipv6Addresses")
     def ipv6_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of IPv6 addresses to assign to the ENI.
+        """
         return pulumi.get(self, "ipv6_addresses")
 
     @ipv6_addresses.setter
@@ -199,7 +231,7 @@ class NetworkInterfaceArgs:
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        Deprecated, use `network_interface_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -210,6 +242,9 @@ class NetworkInterfaceArgs:
     @_builtins.property
     @pulumi.getter(name="networkInterfaceName")
     def network_interface_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the ENI.
+        """
         return pulumi.get(self, "network_interface_name")
 
     @network_interface_name.setter
@@ -219,6 +254,9 @@ class NetworkInterfaceArgs:
     @_builtins.property
     @pulumi.getter(name="networkInterfaceTrafficMode")
     def network_interface_traffic_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The traffic mode of the ENI.
+        """
         return pulumi.get(self, "network_interface_traffic_mode")
 
     @network_interface_traffic_mode.setter
@@ -228,6 +266,9 @@ class NetworkInterfaceArgs:
     @_builtins.property
     @pulumi.getter(name="primaryIpAddress")
     def primary_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The primary private IP of the ENI.
+        """
         return pulumi.get(self, "primary_ip_address")
 
     @primary_ip_address.setter
@@ -239,7 +280,7 @@ class NetworkInterfaceArgs:
     @_utilities.deprecated("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
     def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The primary private IP of the ENI.
+        Deprecated, use `primary_ip_address` instead.
         """
         return pulumi.get(self, "private_ip")
 
@@ -250,6 +291,9 @@ class NetworkInterfaceArgs:
     @_builtins.property
     @pulumi.getter(name="privateIpAddresses")
     def private_ip_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of secondary private IPs to assign to the ENI.
+        """
         return pulumi.get(self, "private_ip_addresses")
 
     @private_ip_addresses.setter
@@ -261,7 +305,7 @@ class NetworkInterfaceArgs:
     @_utilities.deprecated("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
     def private_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        Deprecated, use `private_ip_addresses` instead.
         """
         return pulumi.get(self, "private_ips")
 
@@ -274,7 +318,7 @@ class NetworkInterfaceArgs:
     @_utilities.deprecated("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
     def private_ips_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        Deprecated, use `secondary_private_ip_address_count` instead.
         """
         return pulumi.get(self, "private_ips_count")
 
@@ -285,6 +329,9 @@ class NetworkInterfaceArgs:
     @_builtins.property
     @pulumi.getter(name="queueNumber")
     def queue_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The queue number of the ENI.
+        """
         return pulumi.get(self, "queue_number")
 
     @queue_number.setter
@@ -306,6 +353,9 @@ class NetworkInterfaceArgs:
     @_builtins.property
     @pulumi.getter(name="secondaryPrivateIpAddressCount")
     def secondary_private_ip_address_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of secondary private IPs to assign to the ENI.
+        """
         return pulumi.get(self, "secondary_private_ip_address_count")
 
     @secondary_private_ip_address_count.setter
@@ -315,6 +365,9 @@ class NetworkInterfaceArgs:
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of security group ids to associate with.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -326,7 +379,7 @@ class NetworkInterfaceArgs:
     @_utilities.deprecated("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
     def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of security group ids to associate with.
+        Deprecated, use `security_group_ids` instead.
         """
         return pulumi.get(self, "security_groups")
 
@@ -337,6 +390,9 @@ class NetworkInterfaceArgs:
     @_builtins.property
     @pulumi.getter(name="sourceDestCheck")
     def source_dest_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable SourceDestCheck of the ENI.
+        """
         return pulumi.get(self, "source_dest_check")
 
     @source_dest_check.setter
@@ -387,14 +443,29 @@ class _NetworkInterfaceState:
         """
         Input properties used for looking up and filtering NetworkInterface resources.
 
+        :param pulumi.Input[_builtins.bool] delete_on_release: Whether to delete the ENI when it is released.
         :param pulumi.Input[_builtins.str] description: Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] mac: (Available in 1.54.0+) The MAC address of an ENI.
-        :param pulumi.Input[_builtins.str] name: Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] private_ip: The primary private IP of the ENI.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
-        :param pulumi.Input[_builtins.int] private_ips_count: Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        :param pulumi.Input[_builtins.str] instance_type: The instance type of the ENI.
+        :param pulumi.Input[_builtins.int] ipv4_prefix_count: The number of IPv4 prefixes to assign to the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_prefixes: A list of IPv4 prefixes to assign to the ENI.
+        :param pulumi.Input[_builtins.int] ipv6_address_count: The number of IPv6 addresses to assign to the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_addresses: A list of IPv6 addresses to assign to the ENI.
+        :param pulumi.Input[_builtins.str] mac: (Available since v1.54.0) The MAC address of an ENI.
+        :param pulumi.Input[_builtins.str] name: Deprecated, use `network_interface_name` instead.
+        :param pulumi.Input[_builtins.str] network_interface_name: Name of the ENI.
+        :param pulumi.Input[_builtins.str] network_interface_traffic_mode: The traffic mode of the ENI.
+        :param pulumi.Input[_builtins.str] primary_ip_address: The primary private IP of the ENI.
+        :param pulumi.Input[_builtins.str] private_ip: Deprecated, use `primary_ip_address` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ip_addresses: List of secondary private IPs to assign to the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: Deprecated, use `private_ip_addresses` instead.
+        :param pulumi.Input[_builtins.int] private_ips_count: Deprecated, use `secondary_private_ip_address_count` instead.
+        :param pulumi.Input[_builtins.int] queue_number: The queue number of the ENI.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the network interface belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with.
+        :param pulumi.Input[_builtins.int] secondary_private_ip_address_count: Number of secondary private IPs to assign to the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: A list of security group ids to associate with.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: Deprecated, use `security_group_ids` instead.
+        :param pulumi.Input[_builtins.bool] source_dest_check: Whether to enable SourceDestCheck of the ENI.
+        :param pulumi.Input[_builtins.str] status: The status of the ENI.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vswitch_id: The VSwitch to create the ENI in.
         """
@@ -467,6 +538,9 @@ class _NetworkInterfaceState:
     @_builtins.property
     @pulumi.getter(name="deleteOnRelease")
     def delete_on_release(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to delete the ENI when it is released.
+        """
         return pulumi.get(self, "delete_on_release")
 
     @delete_on_release.setter
@@ -488,6 +562,9 @@ class _NetworkInterfaceState:
     @_builtins.property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The instance type of the ENI.
+        """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
@@ -497,6 +574,9 @@ class _NetworkInterfaceState:
     @_builtins.property
     @pulumi.getter(name="ipv4PrefixCount")
     def ipv4_prefix_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of IPv4 prefixes to assign to the ENI.
+        """
         return pulumi.get(self, "ipv4_prefix_count")
 
     @ipv4_prefix_count.setter
@@ -506,6 +586,9 @@ class _NetworkInterfaceState:
     @_builtins.property
     @pulumi.getter(name="ipv4Prefixes")
     def ipv4_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of IPv4 prefixes to assign to the ENI.
+        """
         return pulumi.get(self, "ipv4_prefixes")
 
     @ipv4_prefixes.setter
@@ -515,6 +598,9 @@ class _NetworkInterfaceState:
     @_builtins.property
     @pulumi.getter(name="ipv6AddressCount")
     def ipv6_address_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of IPv6 addresses to assign to the ENI.
+        """
         return pulumi.get(self, "ipv6_address_count")
 
     @ipv6_address_count.setter
@@ -524,6 +610,9 @@ class _NetworkInterfaceState:
     @_builtins.property
     @pulumi.getter(name="ipv6Addresses")
     def ipv6_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of IPv6 addresses to assign to the ENI.
+        """
         return pulumi.get(self, "ipv6_addresses")
 
     @ipv6_addresses.setter
@@ -534,7 +623,7 @@ class _NetworkInterfaceState:
     @pulumi.getter
     def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Available in 1.54.0+) The MAC address of an ENI.
+        (Available since v1.54.0) The MAC address of an ENI.
         """
         return pulumi.get(self, "mac")
 
@@ -547,7 +636,7 @@ class _NetworkInterfaceState:
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        Deprecated, use `network_interface_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -558,6 +647,9 @@ class _NetworkInterfaceState:
     @_builtins.property
     @pulumi.getter(name="networkInterfaceName")
     def network_interface_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the ENI.
+        """
         return pulumi.get(self, "network_interface_name")
 
     @network_interface_name.setter
@@ -567,6 +659,9 @@ class _NetworkInterfaceState:
     @_builtins.property
     @pulumi.getter(name="networkInterfaceTrafficMode")
     def network_interface_traffic_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The traffic mode of the ENI.
+        """
         return pulumi.get(self, "network_interface_traffic_mode")
 
     @network_interface_traffic_mode.setter
@@ -576,6 +671,9 @@ class _NetworkInterfaceState:
     @_builtins.property
     @pulumi.getter(name="primaryIpAddress")
     def primary_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The primary private IP of the ENI.
+        """
         return pulumi.get(self, "primary_ip_address")
 
     @primary_ip_address.setter
@@ -587,7 +685,7 @@ class _NetworkInterfaceState:
     @_utilities.deprecated("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
     def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The primary private IP of the ENI.
+        Deprecated, use `primary_ip_address` instead.
         """
         return pulumi.get(self, "private_ip")
 
@@ -598,6 +696,9 @@ class _NetworkInterfaceState:
     @_builtins.property
     @pulumi.getter(name="privateIpAddresses")
     def private_ip_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of secondary private IPs to assign to the ENI.
+        """
         return pulumi.get(self, "private_ip_addresses")
 
     @private_ip_addresses.setter
@@ -609,7 +710,7 @@ class _NetworkInterfaceState:
     @_utilities.deprecated("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
     def private_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        Deprecated, use `private_ip_addresses` instead.
         """
         return pulumi.get(self, "private_ips")
 
@@ -622,7 +723,7 @@ class _NetworkInterfaceState:
     @_utilities.deprecated("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
     def private_ips_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        Deprecated, use `secondary_private_ip_address_count` instead.
         """
         return pulumi.get(self, "private_ips_count")
 
@@ -633,6 +734,9 @@ class _NetworkInterfaceState:
     @_builtins.property
     @pulumi.getter(name="queueNumber")
     def queue_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The queue number of the ENI.
+        """
         return pulumi.get(self, "queue_number")
 
     @queue_number.setter
@@ -654,6 +758,9 @@ class _NetworkInterfaceState:
     @_builtins.property
     @pulumi.getter(name="secondaryPrivateIpAddressCount")
     def secondary_private_ip_address_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of secondary private IPs to assign to the ENI.
+        """
         return pulumi.get(self, "secondary_private_ip_address_count")
 
     @secondary_private_ip_address_count.setter
@@ -663,6 +770,9 @@ class _NetworkInterfaceState:
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of security group ids to associate with.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -674,7 +784,7 @@ class _NetworkInterfaceState:
     @_utilities.deprecated("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
     def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of security group ids to associate with.
+        Deprecated, use `security_group_ids` instead.
         """
         return pulumi.get(self, "security_groups")
 
@@ -685,6 +795,9 @@ class _NetworkInterfaceState:
     @_builtins.property
     @pulumi.getter(name="sourceDestCheck")
     def source_dest_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable SourceDestCheck of the ENI.
+        """
         return pulumi.get(self, "source_dest_check")
 
     @source_dest_check.setter
@@ -694,6 +807,9 @@ class _NetworkInterfaceState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The status of the ENI.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -807,13 +923,27 @@ class NetworkInterface(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] delete_on_release: Whether to delete the ENI when it is released.
         :param pulumi.Input[_builtins.str] description: Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] name: Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] private_ip: The primary private IP of the ENI.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
-        :param pulumi.Input[_builtins.int] private_ips_count: Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        :param pulumi.Input[_builtins.str] instance_type: The instance type of the ENI.
+        :param pulumi.Input[_builtins.int] ipv4_prefix_count: The number of IPv4 prefixes to assign to the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_prefixes: A list of IPv4 prefixes to assign to the ENI.
+        :param pulumi.Input[_builtins.int] ipv6_address_count: The number of IPv6 addresses to assign to the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_addresses: A list of IPv6 addresses to assign to the ENI.
+        :param pulumi.Input[_builtins.str] name: Deprecated, use `network_interface_name` instead.
+        :param pulumi.Input[_builtins.str] network_interface_name: Name of the ENI.
+        :param pulumi.Input[_builtins.str] network_interface_traffic_mode: The traffic mode of the ENI.
+        :param pulumi.Input[_builtins.str] primary_ip_address: The primary private IP of the ENI.
+        :param pulumi.Input[_builtins.str] private_ip: Deprecated, use `primary_ip_address` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ip_addresses: List of secondary private IPs to assign to the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: Deprecated, use `private_ip_addresses` instead.
+        :param pulumi.Input[_builtins.int] private_ips_count: Deprecated, use `secondary_private_ip_address_count` instead.
+        :param pulumi.Input[_builtins.int] queue_number: The queue number of the ENI.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the network interface belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with.
+        :param pulumi.Input[_builtins.int] secondary_private_ip_address_count: Number of secondary private IPs to assign to the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: A list of security group ids to associate with.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: Deprecated, use `security_group_ids` instead.
+        :param pulumi.Input[_builtins.bool] source_dest_check: Whether to enable SourceDestCheck of the ENI.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vswitch_id: The VSwitch to create the ENI in.
         """
@@ -989,14 +1119,29 @@ class NetworkInterface(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] delete_on_release: Whether to delete the ENI when it is released.
         :param pulumi.Input[_builtins.str] description: Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] mac: (Available in 1.54.0+) The MAC address of an ENI.
-        :param pulumi.Input[_builtins.str] name: Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] private_ip: The primary private IP of the ENI.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
-        :param pulumi.Input[_builtins.int] private_ips_count: Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        :param pulumi.Input[_builtins.str] instance_type: The instance type of the ENI.
+        :param pulumi.Input[_builtins.int] ipv4_prefix_count: The number of IPv4 prefixes to assign to the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_prefixes: A list of IPv4 prefixes to assign to the ENI.
+        :param pulumi.Input[_builtins.int] ipv6_address_count: The number of IPv6 addresses to assign to the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_addresses: A list of IPv6 addresses to assign to the ENI.
+        :param pulumi.Input[_builtins.str] mac: (Available since v1.54.0) The MAC address of an ENI.
+        :param pulumi.Input[_builtins.str] name: Deprecated, use `network_interface_name` instead.
+        :param pulumi.Input[_builtins.str] network_interface_name: Name of the ENI.
+        :param pulumi.Input[_builtins.str] network_interface_traffic_mode: The traffic mode of the ENI.
+        :param pulumi.Input[_builtins.str] primary_ip_address: The primary private IP of the ENI.
+        :param pulumi.Input[_builtins.str] private_ip: Deprecated, use `primary_ip_address` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ip_addresses: List of secondary private IPs to assign to the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: Deprecated, use `private_ip_addresses` instead.
+        :param pulumi.Input[_builtins.int] private_ips_count: Deprecated, use `secondary_private_ip_address_count` instead.
+        :param pulumi.Input[_builtins.int] queue_number: The queue number of the ENI.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the network interface belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with.
+        :param pulumi.Input[_builtins.int] secondary_private_ip_address_count: Number of secondary private IPs to assign to the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: A list of security group ids to associate with.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: Deprecated, use `security_group_ids` instead.
+        :param pulumi.Input[_builtins.bool] source_dest_check: Whether to enable SourceDestCheck of the ENI.
+        :param pulumi.Input[_builtins.str] status: The status of the ENI.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vswitch_id: The VSwitch to create the ENI in.
         """
@@ -1090,6 +1235,9 @@ class NetworkInterface(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deleteOnRelease")
     def delete_on_release(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to delete the ENI when it is released.
+        """
         return pulumi.get(self, "delete_on_release")
 
     @_builtins.property
@@ -1103,33 +1251,48 @@ class NetworkInterface(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The instance type of the ENI.
+        """
         return pulumi.get(self, "instance_type")
 
     @_builtins.property
     @pulumi.getter(name="ipv4PrefixCount")
     def ipv4_prefix_count(self) -> pulumi.Output[_builtins.int]:
+        """
+        The number of IPv4 prefixes to assign to the ENI.
+        """
         return pulumi.get(self, "ipv4_prefix_count")
 
     @_builtins.property
     @pulumi.getter(name="ipv4Prefixes")
     def ipv4_prefixes(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        A list of IPv4 prefixes to assign to the ENI.
+        """
         return pulumi.get(self, "ipv4_prefixes")
 
     @_builtins.property
     @pulumi.getter(name="ipv6AddressCount")
     def ipv6_address_count(self) -> pulumi.Output[_builtins.int]:
+        """
+        The number of IPv6 addresses to assign to the ENI.
+        """
         return pulumi.get(self, "ipv6_address_count")
 
     @_builtins.property
     @pulumi.getter(name="ipv6Addresses")
     def ipv6_addresses(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        A list of IPv6 addresses to assign to the ENI.
+        """
         return pulumi.get(self, "ipv6_addresses")
 
     @_builtins.property
     @pulumi.getter
     def mac(self) -> pulumi.Output[_builtins.str]:
         """
-        (Available in 1.54.0+) The MAC address of an ENI.
+        (Available since v1.54.0) The MAC address of an ENI.
         """
         return pulumi.get(self, "mac")
 
@@ -1138,23 +1301,32 @@ class NetworkInterface(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        Deprecated, use `network_interface_name` instead.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaceName")
     def network_interface_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Name of the ENI.
+        """
         return pulumi.get(self, "network_interface_name")
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaceTrafficMode")
     def network_interface_traffic_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The traffic mode of the ENI.
+        """
         return pulumi.get(self, "network_interface_traffic_mode")
 
     @_builtins.property
     @pulumi.getter(name="primaryIpAddress")
     def primary_ip_address(self) -> pulumi.Output[_builtins.str]:
+        """
+        The primary private IP of the ENI.
+        """
         return pulumi.get(self, "primary_ip_address")
 
     @_builtins.property
@@ -1162,13 +1334,16 @@ class NetworkInterface(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
     def private_ip(self) -> pulumi.Output[_builtins.str]:
         """
-        The primary private IP of the ENI.
+        Deprecated, use `primary_ip_address` instead.
         """
         return pulumi.get(self, "private_ip")
 
     @_builtins.property
     @pulumi.getter(name="privateIpAddresses")
     def private_ip_addresses(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        List of secondary private IPs to assign to the ENI.
+        """
         return pulumi.get(self, "private_ip_addresses")
 
     @_builtins.property
@@ -1176,7 +1351,7 @@ class NetworkInterface(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
     def private_ips(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        Deprecated, use `private_ip_addresses` instead.
         """
         return pulumi.get(self, "private_ips")
 
@@ -1185,13 +1360,16 @@ class NetworkInterface(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
     def private_ips_count(self) -> pulumi.Output[_builtins.int]:
         """
-        Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        Deprecated, use `secondary_private_ip_address_count` instead.
         """
         return pulumi.get(self, "private_ips_count")
 
     @_builtins.property
     @pulumi.getter(name="queueNumber")
     def queue_number(self) -> pulumi.Output[_builtins.int]:
+        """
+        The queue number of the ENI.
+        """
         return pulumi.get(self, "queue_number")
 
     @_builtins.property
@@ -1205,11 +1383,17 @@ class NetworkInterface(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="secondaryPrivateIpAddressCount")
     def secondary_private_ip_address_count(self) -> pulumi.Output[_builtins.int]:
+        """
+        Number of secondary private IPs to assign to the ENI.
+        """
         return pulumi.get(self, "secondary_private_ip_address_count")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        A list of security group ids to associate with.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @_builtins.property
@@ -1217,18 +1401,24 @@ class NetworkInterface(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
     def security_groups(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        A list of security group ids to associate with.
+        Deprecated, use `security_group_ids` instead.
         """
         return pulumi.get(self, "security_groups")
 
     @_builtins.property
     @pulumi.getter(name="sourceDestCheck")
     def source_dest_check(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to enable SourceDestCheck of the ENI.
+        """
         return pulumi.get(self, "source_dest_check")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
+        """
+        The status of the ENI.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property

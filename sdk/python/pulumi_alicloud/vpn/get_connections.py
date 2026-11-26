@@ -81,7 +81,7 @@ class GetConnectionsResult:
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
         """
-        (Optional) IDs of the VPN connections.
+        IDs of the VPN connections.
         """
         return pulumi.get(self, "ids")
 
@@ -94,7 +94,7 @@ class GetConnectionsResult:
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
         """
-        (Optional) names of the VPN connections.
+        Names of the VPN connections.
         """
         return pulumi.get(self, "names")
 

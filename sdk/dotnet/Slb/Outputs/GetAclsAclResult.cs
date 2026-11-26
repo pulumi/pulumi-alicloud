@@ -14,20 +14,23 @@ namespace Pulumi.AliCloud.Slb.Outputs
     public sealed class GetAclsAclResult
     {
         /// <summary>
-        /// A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
+        /// A list of entry (IP addresses or CIDR blocks).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAclsAclEntryListResult> EntryLists;
         /// <summary>
         /// Acl ID.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The IP version of the access control list.
+        /// </summary>
         public readonly string IpVersion;
         /// <summary>
         /// Acl name.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
+        /// A list of listeners attached to the acl.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAclsAclRelatedListenerResult> RelatedListeners;
         /// <summary>

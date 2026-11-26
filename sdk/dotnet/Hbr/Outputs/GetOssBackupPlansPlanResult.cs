@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         public readonly string Retention;
         /// <summary>
         /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
-        /// * `startTime` Backup start time, UNIX time seconds.
+        /// - `startTime` Backup start time, UNIX time seconds.
         /// </summary>
         public readonly string Schedule;
         /// <summary>
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string UpdatedTime;
         /// <summary>
-        /// The ID of backup vault.
+        /// The ID of backup vault the OssBackupPlan used.
         /// </summary>
         public readonly string VaultId;
 

@@ -65,14 +65,14 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configure the service.See the following `Block HoneypotBindList`.
+     * Configure the service.See the following `honeypotBindList` below.
      * 
      */
     @Import(name="honeypotBindLists")
     private @Nullable Output<List<HoneypotProbeHoneypotBindListArgs>> honeypotBindLists;
 
     /**
-     * @return Configure the service.See the following `Block HoneypotBindList`.
+     * @return Configure the service.See the following `honeypotBindList` below.
      * 
      */
     public Optional<Output<List<HoneypotProbeHoneypotBindListArgs>>> honeypotBindLists() {
@@ -282,7 +282,7 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param honeypotBindLists Configure the service.See the following `Block HoneypotBindList`.
+         * @param honeypotBindLists Configure the service.See the following `honeypotBindList` below.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param honeypotBindLists Configure the service.See the following `Block HoneypotBindList`.
+         * @param honeypotBindLists Configure the service.See the following `honeypotBindList` below.
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param honeypotBindLists Configure the service.See the following `Block HoneypotBindList`.
+         * @param honeypotBindLists Configure the service.See the following `honeypotBindList` below.
          * 
          * @return builder
          * 

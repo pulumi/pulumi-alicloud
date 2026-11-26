@@ -13,7 +13,7 @@ import (
 
 // This data source is the character set supported by querying RDS instances.
 //
-// > **NOTE:** Available in v1.198.0+.
+// > **NOTE:** Available since v1.198.0+.
 //
 // ## Example Usage
 //
@@ -55,7 +55,8 @@ func GetCharacterSetNames(ctx *pulumi.Context, args *GetCharacterSetNamesArgs, o
 // A collection of arguments for invoking getCharacterSetNames.
 type GetCharacterSetNamesArgs struct {
 	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
-	Engine     string  `pulumi:"engine"`
+	Engine string `pulumi:"engine"`
+	// File name where to save data source results (after running `pulumi up`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -63,7 +64,8 @@ type GetCharacterSetNamesArgs struct {
 type GetCharacterSetNamesResult struct {
 	Engine string `pulumi:"engine"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The list of supported character sets.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -76,7 +78,8 @@ func GetCharacterSetNamesOutput(ctx *pulumi.Context, args GetCharacterSetNamesOu
 // A collection of arguments for invoking getCharacterSetNames.
 type GetCharacterSetNamesOutputArgs struct {
 	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
-	Engine     pulumi.StringInput    `pulumi:"engine"`
+	Engine pulumi.StringInput `pulumi:"engine"`
+	// File name where to save data source results (after running `pulumi up`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
@@ -108,6 +111,7 @@ func (o GetCharacterSetNamesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCharacterSetNamesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The list of supported character sets.
 func (o GetCharacterSetNamesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCharacterSetNamesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

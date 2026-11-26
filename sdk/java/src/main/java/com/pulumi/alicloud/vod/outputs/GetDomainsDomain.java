@@ -48,7 +48,7 @@ public final class GetDomainsDomain {
      */
     private String sandBox;
     /**
-     * @return The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+     * @return The information about the address of the origin server. Each element contains the following attributes:
      * 
      */
     private List<GetDomainsDomainSource> sources;
@@ -58,7 +58,7 @@ public final class GetDomainsDomain {
      */
     private String sslProtocol;
     /**
-     * @return The status of the resource.
+     * @return The status of the domain name. The value of this parameter is used as a condition to filter domain names.
      * 
      */
     private String status;
@@ -114,7 +114,7 @@ public final class GetDomainsDomain {
         return this.sandBox;
     }
     /**
-     * @return The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+     * @return The information about the address of the origin server. Each element contains the following attributes:
      * 
      */
     public List<GetDomainsDomainSource> sources() {
@@ -128,7 +128,7 @@ public final class GetDomainsDomain {
         return this.sslProtocol;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the domain name. The value of this parameter is used as a condition to filter domain names.
      * 
      */
     public String status() {

@@ -14,6 +14,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHybridMonitorSlsTasksTaskSlsProcessConfig {
+    /**
+     * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
+     * 
+     */
     private List<GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress> expresses;
     /**
      * @return The conditions that are used to filter logs imported from Log Service.
@@ -32,6 +36,10 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfig {
     private List<GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic> statistics;
 
     private GetHybridMonitorSlsTasksTaskSlsProcessConfig() {}
+    /**
+     * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
+     * 
+     */
     public List<GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress> expresses() {
         return this.expresses;
     }

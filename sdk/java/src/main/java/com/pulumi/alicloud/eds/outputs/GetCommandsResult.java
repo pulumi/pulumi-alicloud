@@ -14,9 +14,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCommandsResult {
+    /**
+     * @return The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
+     * 
+     */
     private @Nullable String commandType;
+    /**
+     * @return A list of Ecd Commands. Each element contains the following attributes:
+     * 
+     */
     private List<GetCommandsCommand> commands;
     private @Nullable String contentEncoding;
+    /**
+     * @return The desktop id of the Desktop.
+     * 
+     */
     private @Nullable String desktopId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -25,18 +37,34 @@ public final class GetCommandsResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
+     * 
+     */
     private @Nullable String status;
 
     private GetCommandsResult() {}
+    /**
+     * @return The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
+     * 
+     */
     public Optional<String> commandType() {
         return Optional.ofNullable(this.commandType);
     }
+    /**
+     * @return A list of Ecd Commands. Each element contains the following attributes:
+     * 
+     */
     public List<GetCommandsCommand> commands() {
         return this.commands;
     }
     public Optional<String> contentEncoding() {
         return Optional.ofNullable(this.contentEncoding);
     }
+    /**
+     * @return The desktop id of the Desktop.
+     * 
+     */
     public Optional<String> desktopId() {
         return Optional.ofNullable(this.desktopId);
     }
@@ -53,6 +81,10 @@ public final class GetCommandsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

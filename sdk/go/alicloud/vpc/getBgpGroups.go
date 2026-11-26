@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.152.0+.
+// > **NOTE:** Available since v1.152.0.
 //
 // ## Example Usage
 //
@@ -78,15 +78,19 @@ type GetBgpGroupsArgs struct {
 
 // A collection of values returned by getBgpGroups.
 type GetBgpGroupsResult struct {
+	// A list of Vpc Bgp Groups. Each element contains the following attributes:
 	Groups []GetBgpGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Bgp Group names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	RouterId   *string  `pulumi:"routerId"`
-	Status     *string  `pulumi:"status"`
+	// The ID of the VBR.
+	RouterId *string `pulumi:"routerId"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
 }
 
 func GetBgpGroupsOutput(ctx *pulumi.Context, args GetBgpGroupsOutputArgs, opts ...pulumi.InvokeOption) GetBgpGroupsResultOutput {
@@ -127,6 +131,7 @@ func (o GetBgpGroupsResultOutput) ToGetBgpGroupsResultOutputWithContext(ctx cont
 	return o
 }
 
+// A list of Vpc Bgp Groups. Each element contains the following attributes:
 func (o GetBgpGroupsResultOutput) Groups() GetBgpGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetBgpGroupsResult) []GetBgpGroupsGroup { return v.Groups }).(GetBgpGroupsGroupArrayOutput)
 }
@@ -144,6 +149,7 @@ func (o GetBgpGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBgpGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Bgp Group names.
 func (o GetBgpGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBgpGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -152,10 +158,12 @@ func (o GetBgpGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBgpGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the VBR.
 func (o GetBgpGroupsResultOutput) RouterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBgpGroupsResult) *string { return v.RouterId }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetBgpGroupsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBgpGroupsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

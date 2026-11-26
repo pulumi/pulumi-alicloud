@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetEipAddressesAddress {
     /**
-     * @return The name of the EIP.
+     * @return The eip name.
      * 
      */
     private String addressName;
@@ -29,7 +29,7 @@ public final class GetEipAddressesAddress {
      */
     private List<String> availableRegions;
     /**
-     * @return The maximum bandwidth of the EIP. Unit: Mbit/s.
+     * @return The maximum bandwidth of the EIP.
      * 
      */
     private String bandwidth;
@@ -79,7 +79,7 @@ public final class GetEipAddressesAddress {
      */
     private String hdMonitorStatus;
     /**
-     * @return The ID of the Address.
+     * @return The ID of the EIP.
      * 
      */
     private String id;
@@ -104,12 +104,12 @@ public final class GetEipAddressesAddress {
      */
     private String internetChargeType;
     /**
-     * @return The IP address of the EIP.
+     * @return The eip address.
      * 
      */
     private String ipAddress;
     /**
-     * @return The Internet service provider (ISP).
+     * @return The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
      * 
      */
     private String isp;
@@ -119,7 +119,7 @@ public final class GetEipAddressesAddress {
      */
     private List<String> operationLocks;
     /**
-     * @return The billing method of the EIP.
+     * @return The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
      * 
      */
     private String paymentType;
@@ -154,24 +154,26 @@ public final class GetEipAddressesAddress {
      */
     private Boolean secondLimited;
     /**
-     * @return The IDs of the contiguous EIPs.
+     * @return The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
      * 
      */
     private String segmentInstanceId;
     /**
-     * @return The status of the EIP.
+     * @return The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      * 
      */
     private String status;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     private Map<String,String> tags;
 
     private GetEipAddressesAddress() {}
     /**
-     * @return The name of the EIP.
+     * @return The eip name.
      * 
      */
     public String addressName() {
@@ -192,7 +194,7 @@ public final class GetEipAddressesAddress {
         return this.availableRegions;
     }
     /**
-     * @return The maximum bandwidth of the EIP. Unit: Mbit/s.
+     * @return The maximum bandwidth of the EIP.
      * 
      */
     public String bandwidth() {
@@ -262,7 +264,7 @@ public final class GetEipAddressesAddress {
         return this.hdMonitorStatus;
     }
     /**
-     * @return The ID of the Address.
+     * @return The ID of the EIP.
      * 
      */
     public String id() {
@@ -297,14 +299,14 @@ public final class GetEipAddressesAddress {
         return this.internetChargeType;
     }
     /**
-     * @return The IP address of the EIP.
+     * @return The eip address.
      * 
      */
     public String ipAddress() {
         return this.ipAddress;
     }
     /**
-     * @return The Internet service provider (ISP).
+     * @return The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
      * 
      */
     public String isp() {
@@ -318,7 +320,7 @@ public final class GetEipAddressesAddress {
         return this.operationLocks;
     }
     /**
-     * @return The billing method of the EIP.
+     * @return The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
      * 
      */
     public String paymentType() {
@@ -367,14 +369,14 @@ public final class GetEipAddressesAddress {
         return this.secondLimited;
     }
     /**
-     * @return The IDs of the contiguous EIPs.
+     * @return The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
      * 
      */
     public String segmentInstanceId() {
         return this.segmentInstanceId;
     }
     /**
-     * @return The status of the EIP.
+     * @return The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      * 
      */
     public String status() {
@@ -382,6 +384,8 @@ public final class GetEipAddressesAddress {
     }
     /**
      * @return A mapping of tags to assign to the resource.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Map<String,String> tags() {

@@ -32,9 +32,17 @@ public final class GetTransitRouterRouteEntriesArgs extends com.pulumi.resources
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * A regex string to filter results by transit router route entry name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
+    /**
+     * @return A regex string to filter results by transit router route entry name.
+     * 
+     */
     public Optional<Output<String>> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -54,9 +62,17 @@ public final class GetTransitRouterRouteEntriesArgs extends com.pulumi.resources
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -183,11 +199,23 @@ public final class GetTransitRouterRouteEntriesArgs extends com.pulumi.resources
             return ids(List.of(ids));
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by transit router route entry name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable Output<String> nameRegex) {
             $.nameRegex = nameRegex;
             return this;
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by transit router route entry name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(String nameRegex) {
             return nameRegex(Output.of(nameRegex));
         }
@@ -213,11 +241,23 @@ public final class GetTransitRouterRouteEntriesArgs extends com.pulumi.resources
             return outputFile(Output.of(outputFile));
         }
 
+        /**
+         * @param status The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

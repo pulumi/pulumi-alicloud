@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.160.0+.
+ * > **NOTE:** Available since v1.160.0.
  *
  * ## Example Usage
  *
@@ -69,14 +69,20 @@ export interface GetGreyTagRoutesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of GreyTagRoute names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Sae GreyTagRoutes. Each element contains the following attributes:
+     */
     readonly routes: outputs.sae.GetGreyTagRoutesRoute[];
 }
 /**
  * This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.160.0+.
+ * > **NOTE:** Available since v1.160.0.
  *
  * ## Example Usage
  *

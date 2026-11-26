@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Log.Inputs
     {
         [Input("fields")]
         private InputList<string>? _fields;
+
+        /// <summary>
+        /// Group configuration's fields list when type is custom.
+        /// </summary>
         public InputList<string> Fields
         {
             get => _fields ?? (_fields = new InputList<string>());

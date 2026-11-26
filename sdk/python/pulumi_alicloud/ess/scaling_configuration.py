@@ -159,7 +159,11 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+               
+               > **NOTE:** When `tags` is not set in the configuration, the provider keeps the tags returned by the API, so tags written out of band (for example by the ACK cluster autoscaler) do not produce a diff. Setting `tags = {}` sends an empty tag set to the API, but the Auto Scaling service keeps the existing instance tags, so the diff remains. Tags removed out of band (a non-empty tag document replaces the whole set) are refreshed into the state: a configuration that does not set `tags` does not recreate them, while one that sets `tags` converges back to the declared set.
         :param pulumi.Input[_builtins.str] user_data: User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
+               
+               > **NOTE:** When `user_data` is not set in the configuration, the provider keeps the value returned by the API, so user data written out of band (for example by the ACK cluster autoscaler) does not produce a diff. An empty `user_data` is treated as unset, so the provider does not send a clear request; sending an empty `UserData` value directly to the API does not clear the stored value either.
         """
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         if active is not None:
@@ -982,6 +986,8 @@ class ScalingConfigurationArgs:
         A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
         - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+
+        > **NOTE:** When `tags` is not set in the configuration, the provider keeps the tags returned by the API, so tags written out of band (for example by the ACK cluster autoscaler) do not produce a diff. Setting `tags = {}` sends an empty tag set to the API, but the Auto Scaling service keeps the existing instance tags, so the diff remains. Tags removed out of band (a non-empty tag document replaces the whole set) are refreshed into the state: a configuration that does not set `tags` does not recreate them, while one that sets `tags` converges back to the declared set.
         """
         return pulumi.get(self, "tags")
 
@@ -994,6 +1000,8 @@ class ScalingConfigurationArgs:
     def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
+
+        > **NOTE:** When `user_data` is not set in the configuration, the provider keeps the value returned by the API, so user data written out of band (for example by the ACK cluster autoscaler) does not produce a diff. An empty `user_data` is treated as unset, so the provider does not send a clear request; sending an empty `UserData` value directly to the API does not clear the stored value either.
         """
         return pulumi.get(self, "user_data")
 
@@ -1143,7 +1151,11 @@ class _ScalingConfigurationState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+               
+               > **NOTE:** When `tags` is not set in the configuration, the provider keeps the tags returned by the API, so tags written out of band (for example by the ACK cluster autoscaler) do not produce a diff. Setting `tags = {}` sends an empty tag set to the API, but the Auto Scaling service keeps the existing instance tags, so the diff remains. Tags removed out of band (a non-empty tag document replaces the whole set) are refreshed into the state: a configuration that does not set `tags` does not recreate them, while one that sets `tags` converges back to the declared set.
         :param pulumi.Input[_builtins.str] user_data: User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
+               
+               > **NOTE:** When `user_data` is not set in the configuration, the provider keeps the value returned by the API, so user data written out of band (for example by the ACK cluster autoscaler) does not produce a diff. An empty `user_data` is treated as unset, so the provider does not send a clear request; sending an empty `UserData` value directly to the API does not clear the stored value either.
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
@@ -1967,6 +1979,8 @@ class _ScalingConfigurationState:
         A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
         - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+
+        > **NOTE:** When `tags` is not set in the configuration, the provider keeps the tags returned by the API, so tags written out of band (for example by the ACK cluster autoscaler) do not produce a diff. Setting `tags = {}` sends an empty tag set to the API, but the Auto Scaling service keeps the existing instance tags, so the diff remains. Tags removed out of band (a non-empty tag document replaces the whole set) are refreshed into the state: a configuration that does not set `tags` does not recreate them, while one that sets `tags` converges back to the declared set.
         """
         return pulumi.get(self, "tags")
 
@@ -1979,6 +1993,8 @@ class _ScalingConfigurationState:
     def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
+
+        > **NOTE:** When `user_data` is not set in the configuration, the provider keeps the value returned by the API, so user data written out of band (for example by the ACK cluster autoscaler) does not produce a diff. An empty `user_data` is treated as unset, so the provider does not send a clear request; sending an empty `UserData` value directly to the API does not clear the stored value either.
         """
         return pulumi.get(self, "user_data")
 
@@ -2215,7 +2231,11 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+               
+               > **NOTE:** When `tags` is not set in the configuration, the provider keeps the tags returned by the API, so tags written out of band (for example by the ACK cluster autoscaler) do not produce a diff. Setting `tags = {}` sends an empty tag set to the API, but the Auto Scaling service keeps the existing instance tags, so the diff remains. Tags removed out of band (a non-empty tag document replaces the whole set) are refreshed into the state: a configuration that does not set `tags` does not recreate them, while one that sets `tags` converges back to the declared set.
         :param pulumi.Input[_builtins.str] user_data: User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
+               
+               > **NOTE:** When `user_data` is not set in the configuration, the provider keeps the value returned by the API, so user data written out of band (for example by the ACK cluster autoscaler) does not produce a diff. An empty `user_data` is treated as unset, so the provider does not send a clear request; sending an empty `UserData` value directly to the API does not clear the stored value either.
         """
         ...
     @overload
@@ -2601,7 +2621,11 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+               
+               > **NOTE:** When `tags` is not set in the configuration, the provider keeps the tags returned by the API, so tags written out of band (for example by the ACK cluster autoscaler) do not produce a diff. Setting `tags = {}` sends an empty tag set to the API, but the Auto Scaling service keeps the existing instance tags, so the diff remains. Tags removed out of band (a non-empty tag document replaces the whole set) are refreshed into the state: a configuration that does not set `tags` does not recreate them, while one that sets `tags` converges back to the declared set.
         :param pulumi.Input[_builtins.str] user_data: User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
+               
+               > **NOTE:** When `user_data` is not set in the configuration, the provider keeps the value returned by the API, so user data written out of band (for example by the ACK cluster autoscaler) does not produce a diff. An empty `user_data` is treated as unset, so the provider does not send a clear request; sending an empty `UserData` value directly to the API does not clear the stored value either.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -3259,19 +3283,23 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+    def tags(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
         - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+
+        > **NOTE:** When `tags` is not set in the configuration, the provider keeps the tags returned by the API, so tags written out of band (for example by the ACK cluster autoscaler) do not produce a diff. Setting `tags = {}` sends an empty tag set to the API, but the Auto Scaling service keeps the existing instance tags, so the diff remains. Tags removed out of band (a non-empty tag document replaces the whole set) are refreshed into the state: a configuration that does not set `tags` does not recreate them, while one that sets `tags` converges back to the declared set.
         """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def user_data(self) -> pulumi.Output[_builtins.str]:
         """
         User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
+
+        > **NOTE:** When `user_data` is not set in the configuration, the provider keeps the value returned by the API, so user data written out of band (for example by the ACK cluster autoscaler) does not produce a diff. An empty `user_data` is treated as unset, so the provider does not send a clear request; sending an empty `UserData` value directly to the API does not clear the stored value either.
         """
         return pulumi.get(self, "user_data")
 

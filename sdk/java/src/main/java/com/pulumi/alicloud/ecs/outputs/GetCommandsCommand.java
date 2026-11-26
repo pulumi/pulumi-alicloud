@@ -39,7 +39,7 @@ public final class GetCommandsCommand {
      */
     private String id;
     /**
-     * @return The name of the command
+     * @return The name of the command.
      * 
      */
     private String name;
@@ -54,7 +54,7 @@ public final class GetCommandsCommand {
      */
     private Integer timeout;
     /**
-     * @return The command type.
+     * @return The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
      * 
      */
     private String type;
@@ -101,7 +101,7 @@ public final class GetCommandsCommand {
         return this.id;
     }
     /**
-     * @return The name of the command
+     * @return The name of the command.
      * 
      */
     public String name() {
@@ -122,7 +122,7 @@ public final class GetCommandsCommand {
         return this.timeout;
     }
     /**
-     * @return The command type.
+     * @return The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
      * 
      */
     public String type() {

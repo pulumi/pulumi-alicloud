@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.Cassandra.Outputs
         /// The name of the Cassandra cluster.
         /// </summary>
         public readonly string ClusterName;
+        /// <summary>
+        /// The created time of the cluster.
+        /// </summary>
         public readonly string CreatedTime;
         /// <summary>
         /// The count of data centers

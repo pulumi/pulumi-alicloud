@@ -6,6 +6,8 @@ package com.pulumi.alicloud.expressconnect;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
 import com.pulumi.alicloud.expressconnect.inputs.RouterExpressConnectRouterState;
+import com.pulumi.alicloud.expressconnect.outputs.RouterExpressConnectRouterDisabledRouteEntry;
+import com.pulumi.alicloud.expressconnect.outputs.RouterExpressConnectRouterGrantedInstance;
 import com.pulumi.alicloud.expressconnect.outputs.RouterExpressConnectRouterRegion;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -24,6 +26,8 @@ import javax.annotation.Nullable;
  * For information about Express Connect Router Express Connect Router and how to use it, see [What is Express Connect Router](https://next.api.alibabacloud.com/api/ExpressConnectRouter/2023-09-01/CreateExpressConnectRouter).
  * 
  * &gt; **NOTE:** Available since v1.224.0.
+ * 
+ * &gt; **NOTE:** If you maintain a narrow custom RAM policy that predates v2.3.0, `refresh` and `plan` will surface a `403 NoPermission` error from whichever supplementary action your role lacks, rather than silently leaving the computed field empty. Grant the two actions listed in RAM Permissions below — at resource level (`acs:expressconnectrouter::&lt;accountId&gt;:expressconnectrouter/&lt;EcrId&gt;`) or service level (`*`) — so refresh and plan stay green.
  * 
  * ## Example Usage
  * 
@@ -69,6 +73,15 @@ import javax.annotation.Nullable;
  * You can resume managing the subscription instance via the AlibabaCloud Console.
  * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
+ * ## RAM Permissions
+ * 
+ * The two read-only attributes `disabledRouteEntries` and `grantedInstances` (available since v2.3.0) are populated by the following supplementary Describe actions. Each is an independent RAM permission on the `expressconnectrouter` service and is queried on every `read`/`refresh`/`plan`:
+ * 
+ * * `expressconnectrouter:DescribeDisabledExpressConnectRouterRouteEntries` — lists the route entries currently disabled on the ECR.
+ * * `expressconnectrouter:DescribeInstanceGrantedToExpressConnectRouter` — lists the network instances granted to the ECR.
+ * 
+ * These actions are in addition to the base resource actions (`expressconnectrouter:CreateExpressConnectRouter`, `expressconnectrouter:ModifyExpressConnectRouter`, `expressconnectrouter:DeleteExpressConnectRouter`, `expressconnectrouter:DescribeExpressConnectRouter`, etc.).
  * 
  * ## Import
  * 
@@ -124,6 +137,20 @@ public class RouterExpressConnectRouter extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.description);
     }
     /**
+     * (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabledRouteEntries` below.
+     * 
+     */
+    @Export(name="disabledRouteEntries", refs={List.class,RouterExpressConnectRouterDisabledRouteEntry.class}, tree="[0,1]")
+    private Output<List<RouterExpressConnectRouterDisabledRouteEntry>> disabledRouteEntries;
+
+    /**
+     * @return (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabledRouteEntries` below.
+     * 
+     */
+    public Output<List<RouterExpressConnectRouterDisabledRouteEntry>> disabledRouteEntries() {
+        return this.disabledRouteEntries;
+    }
+    /**
      * Name of the Gateway representing the leased line.
      * 
      */
@@ -136,6 +163,20 @@ public class RouterExpressConnectRouter extends com.pulumi.resources.CustomResou
      */
     public Output<Optional<String>> ecrName() {
         return Codegen.optional(this.ecrName);
+    }
+    /**
+     * (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `grantedInstances` below.
+     * 
+     */
+    @Export(name="grantedInstances", refs={List.class,RouterExpressConnectRouterGrantedInstance.class}, tree="[0,1]")
+    private Output<List<RouterExpressConnectRouterGrantedInstance>> grantedInstances;
+
+    /**
+     * @return (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `grantedInstances` below.
+     * 
+     */
+    public Output<List<RouterExpressConnectRouterGrantedInstance>> grantedInstances() {
+        return this.grantedInstances;
     }
     /**
      * List of regions representing leased line gateways. See `regions` below.

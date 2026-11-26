@@ -54,8 +54,14 @@ export interface GetInstancesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Cloud Firewall Instances. Each element contains the following attributes:
+     */
     readonly instances: outputs.cloudfirewall.GetInstancesInstance[];
     readonly outputFile?: string;
+    /**
+     * The payment type of the resource. Valid values: `Subscription`.
+     */
     readonly paymentType?: string;
 }
 /**

@@ -15,6 +15,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -23,6 +24,8 @@ import javax.annotation.Nullable;
  * For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
  * 
  * &gt; **NOTE:** Available since v1.172.0.
+ * 
+ * &gt; **NOTE:** `startOffset`, `endOffset` and `startOffsetFlag` are only supported for `Stream` tunnels; configuring any of them for a `BaseData` or `BaseAndStream` tunnel is rejected during planning. The OTS stream expiration (maximum 7 days) determines the valid time window for `startOffset`/`endOffset`. Changing any of these arguments replaces the tunnel. `startOffset` and `startOffsetFlag` are mutually exclusive. When importing a `Stream` tunnel, configure the same offsets or the same flag that the tunnel reports; an omitted `startOffsetFlag` and `LATEST` are equivalent, while an imported tunnel that reports `EARLIEST` must be configured with `EARLIEST`. Otherwise the next plan proposes a replacement.
  * 
  * ## Example Usage
  * 
@@ -33,8 +36,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.Integer;
- * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ots.Instance;
  * import com.pulumi.alicloud.ots.InstanceArgs;
  * import com.pulumi.alicloud.ots.Table;
@@ -57,13 +58,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()
- *             .min(10000)
- *             .max(99999)
- *             .build());
- * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .name(String.format("%s-%s", name,default_.get("result")))
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .name(name)
  *             .description(name)
  *             .accessedBy("Any")
  *             .tags(Map.ofEntries(
@@ -73,7 +69,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultTable = new Table("defaultTable", TableArgs.builder()
- *             .instanceName(defaultInstance.name())
+ *             .instanceName(default_.name())
  *             .tableName("tf_example")
  *             .timeToLive(-1)
  *             .maxVersion(1)
@@ -95,10 +91,71 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultTunnel = new Tunnel("defaultTunnel", TunnelArgs.builder()
- *             .instanceName(defaultInstance.name())
+ *             .instanceName(default_.name())
  *             .tableName(defaultTable.tableName())
  *             .tunnelName("tf_example")
  *             .tunnelType("BaseAndStream")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Stream tunnel with incremental data consumption from the earliest available offset:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ots.Instance;
+ * import com.pulumi.alicloud.ots.InstanceArgs;
+ * import com.pulumi.alicloud.ots.Table;
+ * import com.pulumi.alicloud.ots.TableArgs;
+ * import com.pulumi.alicloud.ots.inputs.TablePrimaryKeyArgs;
+ * import com.pulumi.alicloud.ots.Tunnel;
+ * import com.pulumi.alicloud.ots.TunnelArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example-demo");
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .name(name)
+ *             .description(name)
+ *             .accessedBy("Any")
+ *             .build());
+ * 
+ *         var defaultTable = new Table("defaultTable", TableArgs.builder()
+ *             .instanceName(default_.name())
+ *             .tableName("terraform_example_stream")
+ *             .timeToLive(-1)
+ *             .maxVersion(1)
+ *             .primaryKeys(TablePrimaryKeyArgs.builder()
+ *                 .name("pk1")
+ *                 .type("Integer")
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultTunnel = new Tunnel("defaultTunnel", TunnelArgs.builder()
+ *             .instanceName(default_.name())
+ *             .tableName(defaultTable.tableName())
+ *             .tunnelName("terraform_example_stream")
+ *             .tunnelType("Stream")
+ *             .startOffsetFlag("EARLIEST")
  *             .build());
  * 
  *     }
@@ -148,6 +205,20 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `startOffset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+     * 
+     */
+    @Export(name="endOffset", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> endOffset;
+
+    /**
+     * @return The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `startOffset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+     * 
+     */
+    public Output<Optional<String>> endOffset() {
+        return Codegen.optional(this.endOffset);
+    }
+    /**
      * Whether the tunnel has expired.
      * 
      */
@@ -174,6 +245,34 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      */
     public Output<String> instanceName() {
         return this.instanceName;
+    }
+    /**
+     * The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `startOffsetFlag`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+     * 
+     */
+    @Export(name="startOffset", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> startOffset;
+
+    /**
+     * @return The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `startOffsetFlag`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+     * 
+     */
+    public Output<Optional<String>> startOffset() {
+        return Codegen.optional(this.startOffset);
+    }
+    /**
+     * The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `startOffset`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+     * 
+     */
+    @Export(name="startOffsetFlag", refs={String.class}, tree="[0]")
+    private Output<String> startOffsetFlag;
+
+    /**
+     * @return The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `startOffset`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+     * 
+     */
+    public Output<String> startOffsetFlag() {
+        return this.startOffsetFlag;
     }
     /**
      * The name of the OTS table. If changed, a new table would be created.

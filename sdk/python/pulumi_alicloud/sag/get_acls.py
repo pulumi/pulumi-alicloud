@@ -111,7 +111,7 @@ def get_acls(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides Sag Acls available to the user.
 
-    > **NOTE:** Available in 1.60.0+
+    > **NOTE:** Available since v1.60.0+
 
     > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
@@ -123,14 +123,15 @@ def get_acls(ids: Optional[Sequence[_builtins.str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.sag.get_acls(ids=[default_alicloud_sag_acls["id"]],
-        name_regex="^tf-testAcc.*")
-    default_acl = alicloud.sag.Acl("default", name="tf-testAccSagAclName")
+    default_acl = alicloud.sag.Acl("default", name="terraform-example")
+    default = alicloud.sag.get_acls_output(ids=[default_acl.id],
+        name_regex="^terraform-example")
     ```
 
 
     :param Sequence[_builtins.str] ids: A list of Sag Acl IDs.
     :param _builtins.str name_regex: A regex string to filter Sag Acl instances by name.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -153,7 +154,7 @@ def get_acls_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]
     """
     This data source provides Sag Acls available to the user.
 
-    > **NOTE:** Available in 1.60.0+
+    > **NOTE:** Available since v1.60.0+
 
     > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
@@ -165,14 +166,15 @@ def get_acls_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.sag.get_acls(ids=[default_alicloud_sag_acls["id"]],
-        name_regex="^tf-testAcc.*")
-    default_acl = alicloud.sag.Acl("default", name="tf-testAccSagAclName")
+    default_acl = alicloud.sag.Acl("default", name="terraform-example")
+    default = alicloud.sag.get_acls_output(ids=[default_acl.id],
+        name_regex="^terraform-example")
     ```
 
 
     :param Sequence[_builtins.str] ids: A list of Sag Acl IDs.
     :param _builtins.str name_regex: A regex string to filter Sag Acl instances by name.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids

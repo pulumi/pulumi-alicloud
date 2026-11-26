@@ -115,7 +115,7 @@ import (
 //			}
 //			exampleRdsAccount, err := rds.NewRdsAccount(ctx, "example", &rds.RdsAccountArgs{
 //				DbInstanceId:    exampleInstance.ID(),
-//				AccountName:     pulumi.String("test_mysql"),
+//				AccountName:     pulumi.String("example_mysql"),
 //				AccountPassword: pulumi.String("N1cetest"),
 //			})
 //			if err != nil {
@@ -181,11 +181,15 @@ import (
 //
 // ## Import
 //
-// DTS Subscription Job can be imported using the id, e.g.
+// DTS Subscription Job can be imported using its canonical `DtsJobId`, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <id>
+// $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <DtsJobId>
 // ```
+//
+// The import ID must exactly match `DtsJobId` returned by `DescribeDtsJobDetail`. A DTS instance ID (`DtsInstanceID`) is not a job ID, even if the detail API accepts it as a lookup key. Import rejects a different or missing job identity and does not automatically bind to another task.
+//
+// If existing state contains an instance ID, first back up the state and verify the intended job in DTS. Remove only the incorrect local state binding with `terraform state rm`, then explicitly import the verified `DtsJobId`. Do not delete the cloud job to correct its state binding. If the original job has been deleted or rebuilt, verify the replacement separately before importing it.
 type SubscriptionJob struct {
 	pulumi.CustomResourceState
 
@@ -247,6 +251,8 @@ type SubscriptionJob struct {
 	SourceEndpointRegion pulumi.StringOutput `pulumi:"sourceEndpointRegion"`
 	// Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
 	SourceEndpointRole pulumi.StringPtrOutput `pulumi:"sourceEndpointRole"`
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+	SourceEndpointSsl pulumi.StringOutput `pulumi:"sourceEndpointSsl"`
 	// The username of source database instance account.
 	SourceEndpointUserName pulumi.StringPtrOutput `pulumi:"sourceEndpointUserName"`
 	// The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
@@ -369,6 +375,8 @@ type subscriptionJobState struct {
 	SourceEndpointRegion *string `pulumi:"sourceEndpointRegion"`
 	// Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
 	SourceEndpointRole *string `pulumi:"sourceEndpointRole"`
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+	SourceEndpointSsl *string `pulumi:"sourceEndpointSsl"`
 	// The username of source database instance account.
 	SourceEndpointUserName *string `pulumi:"sourceEndpointUserName"`
 	// The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
@@ -450,6 +458,8 @@ type SubscriptionJobState struct {
 	SourceEndpointRegion pulumi.StringPtrInput
 	// Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
 	SourceEndpointRole pulumi.StringPtrInput
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+	SourceEndpointSsl pulumi.StringPtrInput
 	// The username of source database instance account.
 	SourceEndpointUserName pulumi.StringPtrInput
 	// The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
@@ -541,6 +551,8 @@ type subscriptionJobArgs struct {
 	SourceEndpointRegion string `pulumi:"sourceEndpointRegion"`
 	// Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
 	SourceEndpointRole *string `pulumi:"sourceEndpointRole"`
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+	SourceEndpointSsl *string `pulumi:"sourceEndpointSsl"`
 	// The username of source database instance account.
 	SourceEndpointUserName *string `pulumi:"sourceEndpointUserName"`
 	// The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
@@ -623,6 +635,8 @@ type SubscriptionJobArgs struct {
 	SourceEndpointRegion pulumi.StringInput
 	// Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
 	SourceEndpointRole pulumi.StringPtrInput
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+	SourceEndpointSsl pulumi.StringPtrInput
 	// The username of source database instance account.
 	SourceEndpointUserName pulumi.StringPtrInput
 	// The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
@@ -875,6 +889,11 @@ func (o SubscriptionJobOutput) SourceEndpointRegion() pulumi.StringOutput {
 // Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
 func (o SubscriptionJobOutput) SourceEndpointRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SourceEndpointRole }).(pulumi.StringPtrOutput)
+}
+
+// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+func (o SubscriptionJobOutput) SourceEndpointSsl() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringOutput { return v.SourceEndpointSsl }).(pulumi.StringOutput)
 }
 
 // The username of source database instance account.

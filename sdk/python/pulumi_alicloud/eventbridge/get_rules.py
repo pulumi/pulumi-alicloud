@@ -59,6 +59,9 @@ class GetRulesResult:
     @_builtins.property
     @pulumi.getter(name="eventBusName")
     def event_bus_name(self) -> _builtins.str:
+        """
+        The name of event bus.
+        """
         return pulumi.get(self, "event_bus_name")
 
     @_builtins.property
@@ -82,6 +85,9 @@ class GetRulesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Rule names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -97,11 +103,17 @@ class GetRulesResult:
     @_builtins.property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetRulesRuleResult']:
+        """
+        A list of Event Bridge Rules. Each element contains the following attributes:
+        """
         return pulumi.get(self, "rules")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        Rule status, either Enable or Disable.
+        """
         return pulumi.get(self, "status")
 
 
@@ -132,7 +144,7 @@ def get_rules(event_bus_name: Optional[_builtins.str] = None,
     """
     This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.129.0+.
+    > **NOTE:** Available since v1.129.0.
 
     ## Example Usage
 
@@ -186,7 +198,7 @@ def get_rules_output(event_bus_name: pulumi.Input[Optional[_builtins.str]] = Non
     """
     This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.129.0+.
+    > **NOTE:** Available since v1.129.0.
 
     ## Example Usage
 

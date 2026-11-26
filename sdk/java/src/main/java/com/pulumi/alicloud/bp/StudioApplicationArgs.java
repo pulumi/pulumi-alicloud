@@ -65,14 +65,14 @@ public final class StudioApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+     * The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
      * 
      */
     @Import(name="instances")
     private @Nullable Output<List<StudioApplicationInstanceArgs>> instances;
 
     /**
-     * @return The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+     * @return The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
      * 
      */
     public Optional<Output<List<StudioApplicationInstanceArgs>>> instances() {
@@ -218,7 +218,7 @@ public final class StudioApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param instances The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+         * @param instances The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class StudioApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param instances The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+         * @param instances The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class StudioApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param instances The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+         * @param instances The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
          * 
          * @return builder
          * 

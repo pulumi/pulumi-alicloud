@@ -62,6 +62,9 @@ class GetPrometheusAlertRulesResult:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> _builtins.str:
+        """
+        The ID of the cluster.
+        """
         return pulumi.get(self, "cluster_id")
 
     @_builtins.property
@@ -90,6 +93,9 @@ class GetPrometheusAlertRulesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Prometheus Alert Rule names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -100,16 +106,25 @@ class GetPrometheusAlertRulesResult:
     @_builtins.property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetPrometheusAlertRulesRuleResult']:
+        """
+        A list of Arms Prometheus Alert Rules. Each element contains the following attributes:
+        """
         return pulumi.get(self, "rules")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.int]:
+        """
+        The status of the resource. Valid values: `0`, `1` (0=off,1=open).
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
+        """
+        The type of the alert rule.
+        """
         return pulumi.get(self, "type")
 
 
@@ -142,7 +157,7 @@ def get_prometheus_alert_rules(cluster_id: Optional[_builtins.str] = None,
     """
     This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.136.0+.
+    > **NOTE:** Available since v1.136.0.
 
     ## Example Usage
 
@@ -166,6 +181,7 @@ def get_prometheus_alert_rules(cluster_id: Optional[_builtins.str] = None,
 
     :param _builtins.str cluster_id: The ID of the cluster.
     :param Sequence[_builtins.str] ids: A list of Prometheus Alert Rule IDs.
+    :param _builtins.str match_expressions: Match expressions used to filter Prometheus alert rules.
     :param _builtins.str name_regex: A regex string to filter results by Prometheus Alert Rule name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.int status: The status of the resource. Valid values: `0`, `1`.
@@ -204,7 +220,7 @@ def get_prometheus_alert_rules_output(cluster_id: pulumi.Input[Optional[_builtin
     """
     This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.136.0+.
+    > **NOTE:** Available since v1.136.0.
 
     ## Example Usage
 
@@ -228,6 +244,7 @@ def get_prometheus_alert_rules_output(cluster_id: pulumi.Input[Optional[_builtin
 
     :param _builtins.str cluster_id: The ID of the cluster.
     :param Sequence[_builtins.str] ids: A list of Prometheus Alert Rule IDs.
+    :param _builtins.str match_expressions: Match expressions used to filter Prometheus alert rules.
     :param _builtins.str name_regex: A regex string to filter results by Prometheus Alert Rule name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.int status: The status of the resource. Valid values: `0`, `1`.

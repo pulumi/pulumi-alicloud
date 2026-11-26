@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Application Load Balancer (ALB) Listeners of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.133.0+.
+// > **NOTE:** Available since v1.133.0.
 //
 // ## Example Usage
 //
@@ -77,14 +77,17 @@ type GetListenersArgs struct {
 type GetListenersResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id               string                 `pulumi:"id"`
-	Ids              []string               `pulumi:"ids"`
-	ListenerIds      []string               `pulumi:"listenerIds"`
-	ListenerProtocol *string                `pulumi:"listenerProtocol"`
-	Listeners        []GetListenersListener `pulumi:"listeners"`
-	LoadBalancerIds  []string               `pulumi:"loadBalancerIds"`
-	OutputFile       *string                `pulumi:"outputFile"`
-	Status           *string                `pulumi:"status"`
+	Id          string   `pulumi:"id"`
+	Ids         []string `pulumi:"ids"`
+	ListenerIds []string `pulumi:"listenerIds"`
+	// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+	ListenerProtocol *string `pulumi:"listenerProtocol"`
+	// A list of Alb Listeners. Each element contains the following attributes:
+	Listeners       []GetListenersListener `pulumi:"listeners"`
+	LoadBalancerIds []string               `pulumi:"loadBalancerIds"`
+	OutputFile      *string                `pulumi:"outputFile"`
+	// The status of the listener.
+	Status *string `pulumi:"status"`
 }
 
 func GetListenersOutput(ctx *pulumi.Context, args GetListenersOutputArgs, opts ...pulumi.InvokeOption) GetListenersResultOutput {
@@ -146,10 +149,12 @@ func (o GetListenersResultOutput) ListenerIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetListenersResult) []string { return v.ListenerIds }).(pulumi.StringArrayOutput)
 }
 
+// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
 func (o GetListenersResultOutput) ListenerProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.ListenerProtocol }).(pulumi.StringPtrOutput)
 }
 
+// A list of Alb Listeners. Each element contains the following attributes:
 func (o GetListenersResultOutput) Listeners() GetListenersListenerArrayOutput {
 	return o.ApplyT(func(v GetListenersResult) []GetListenersListener { return v.Listeners }).(GetListenersListenerArrayOutput)
 }
@@ -162,6 +167,7 @@ func (o GetListenersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the listener.
 func (o GetListenersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

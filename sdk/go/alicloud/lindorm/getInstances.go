@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Lindorm Instances of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Example Usage
 //
@@ -80,15 +80,18 @@ type GetInstancesArgs struct {
 type GetInstancesResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string                 `pulumi:"id"`
-	Ids           []string               `pulumi:"ids"`
-	Instances     []GetInstancesInstance `pulumi:"instances"`
-	NameRegex     *string                `pulumi:"nameRegex"`
-	Names         []string               `pulumi:"names"`
-	OutputFile    *string                `pulumi:"outputFile"`
-	QueryStr      *string                `pulumi:"queryStr"`
-	Status        *string                `pulumi:"status"`
-	SupportEngine *int                   `pulumi:"supportEngine"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Lindorm Instances. Each element contains the following attributes:
+	Instances []GetInstancesInstance `pulumi:"instances"`
+	NameRegex *string                `pulumi:"nameRegex"`
+	// A list of Instance names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	QueryStr   *string  `pulumi:"queryStr"`
+	// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+	Status        *string `pulumi:"status"`
+	SupportEngine *int    `pulumi:"supportEngine"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -146,6 +149,7 @@ func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Lindorm Instances. Each element contains the following attributes:
 func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
 }
@@ -154,6 +158,7 @@ func (o GetInstancesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Instance names.
 func (o GetInstancesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -166,6 +171,7 @@ func (o GetInstancesResultOutput) QueryStr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.QueryStr }).(pulumi.StringPtrOutput)
 }
 
+// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
 func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

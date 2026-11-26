@@ -64,7 +64,7 @@ public final class GetSystemGroupsGroup {
      */
     private String id;
     /**
-     * @return The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+     * @return The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
      * 
      */
     private String inProtocol;
@@ -161,7 +161,7 @@ public final class GetSystemGroupsGroup {
         return this.id;
     }
     /**
-     * @return The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+     * @return The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
      * 
      */
     public String inProtocol() {

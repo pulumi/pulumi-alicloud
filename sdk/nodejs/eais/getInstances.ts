@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Eais Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.137.0+.
+ * > **NOTE:** Available since v1.137.0.
  *
  * > **DEPRECATED:** This data source has been deprecated since v1.278.0.
  *
@@ -78,17 +78,29 @@ export interface GetInstancesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+     */
     readonly instanceType?: string;
+    /**
+     * A list of EAIS Instances. Each element contains the following attributes:
+     */
     readonly instances: outputs.eais.GetInstancesInstance[];
     readonly nameRegex?: string;
+    /**
+     * A list of Instance names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Eais Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.137.0+.
+ * > **NOTE:** Available since v1.137.0.
  *
  * > **DEPRECATED:** This data source has been deprecated since v1.278.0.
  *

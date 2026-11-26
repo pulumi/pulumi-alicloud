@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Mse
     /// <summary>
     /// Provides a Microservice Engine (MSE) Gateway resource.
     /// 
-    /// For information about Microservice Engine (MSE) Gateway and how to use it, see [What is Gateway](https://help.aliyun.com/document_detail/347638.html).
+    /// For information about Microservice Engine (MSE) Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-addgateway).
     /// 
     /// &gt; **NOTE:** Available since v1.157.0.
     /// 
@@ -129,6 +129,12 @@ namespace Pulumi.AliCloud.Mse
         public Output<int> Replica { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the resource group which the gateway belongs.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// A list of gateway Slb.
         /// </summary>
         [Output("slbLists")]
@@ -151,6 +157,12 @@ namespace Pulumi.AliCloud.Mse
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the vpc.
@@ -247,6 +259,12 @@ namespace Pulumi.AliCloud.Mse
         public Input<int> Replica { get; set; } = null!;
 
         /// <summary>
+        /// The ID of the resource group which the gateway belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// Private network SLB specifications.
         /// </summary>
         [Input("slbSpec")]
@@ -257,6 +275,18 @@ namespace Pulumi.AliCloud.Mse
         /// </summary>
         [Input("spec", required: true)]
         public Input<string> Spec { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The ID of the vpc.
@@ -314,6 +344,12 @@ namespace Pulumi.AliCloud.Mse
         [Input("replica")]
         public Input<int>? Replica { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group which the gateway belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         [Input("slbLists")]
         private InputList<Inputs.GatewaySlbListGetArgs>? _slbLists;
 
@@ -343,6 +379,18 @@ namespace Pulumi.AliCloud.Mse
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The ID of the vpc.

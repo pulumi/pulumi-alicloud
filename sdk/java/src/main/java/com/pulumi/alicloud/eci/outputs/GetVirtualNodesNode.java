@@ -60,17 +60,17 @@ public final class GetVirtualNodesNode {
      */
     private String ramRoleName;
     /**
-     * @return The resource group ID.
+     * @return The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account&#39;s default resource group.
      * 
      */
     private String resourceGroupId;
     /**
-     * @return The security group ID.
+     * @return VNode itself and by VNode created (ECI) the security group used by.
      * 
      */
     private String securityGroupId;
     /**
-     * @return The Status of the virtual node.
+     * @return The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
      * 
      */
     private String status;
@@ -89,9 +89,13 @@ public final class GetVirtualNodesNode {
      * 
      */
     private String virtualNodeName;
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
     private String vpcId;
     /**
-     * @return The vswitch id.
+     * @return The ID of the vSwitch.
      * 
      */
     private String vswitchId;
@@ -166,21 +170,21 @@ public final class GetVirtualNodesNode {
         return this.ramRoleName;
     }
     /**
-     * @return The resource group ID.
+     * @return The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account&#39;s default resource group.
      * 
      */
     public String resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * @return The security group ID.
+     * @return VNode itself and by VNode created (ECI) the security group used by.
      * 
      */
     public String securityGroupId() {
         return this.securityGroupId;
     }
     /**
-     * @return The Status of the virtual node.
+     * @return The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
      * 
      */
     public String status() {
@@ -207,11 +211,15 @@ public final class GetVirtualNodesNode {
     public String virtualNodeName() {
         return this.virtualNodeName;
     }
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
     public String vpcId() {
         return this.vpcId;
     }
     /**
-     * @return The vswitch id.
+     * @return The ID of the vSwitch.
      * 
      */
     public String vswitchId() {

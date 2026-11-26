@@ -17,6 +17,44 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     public static final DatabaseArgs Empty = new DatabaseArgs();
 
     /**
+     * The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+     * 
+     * &gt; **NOTE:** The account must belong to the instance specified by `instanceId` and must exist before the database is created.
+     * 
+     */
+    @Import(name="accountName")
+    private @Nullable Output<String> accountName;
+
+    /**
+     * @return The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+     * 
+     * &gt; **NOTE:** The account must belong to the instance specified by `instanceId` and must exist before the database is created.
+     * 
+     */
+    public Optional<Output<String>> accountName() {
+        return Optional.ofNullable(this.accountName);
+    }
+
+    /**
+     * The privilege granted to the account specified by `accountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+     * 
+     * &gt; **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `accountName` to be set.
+     * 
+     */
+    @Import(name="accountPrivilege")
+    private @Nullable Output<String> accountPrivilege;
+
+    /**
+     * @return The privilege granted to the account specified by `accountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+     * 
+     * &gt; **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `accountName` to be set.
+     * 
+     */
+    public Optional<Output<String>> accountPrivilege() {
+        return Optional.ofNullable(this.accountPrivilege);
+    }
+
+    /**
      * Character set. The value range is limited to the following:
      * - MySQL: [ utf8, gbk, latin1, utf8mb4 ] &#92;(`utf8mb4` only supports versions 5.5 and 5.6&#92;).
      * - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -50,7 +88,23 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `characterSet`, for example `gbkChineseCi` for `gbk` or `utf8mb4GeneralCi` for `utf8mb4`.
+     * 
+     */
+    @Import(name="collationName")
+    private @Nullable Output<String> collationName;
+
+    /**
+     * @return The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `characterSet`, for example `gbkChineseCi` for `gbk` or `utf8mb4GeneralCi` for `utf8mb4`.
+     * 
+     */
+    public Optional<Output<String>> collationName() {
+        return Optional.ofNullable(this.collationName);
+    }
+
+    /**
      * The name of the database.
+     * 
      * &gt; **NOTE:**
      * The name must be 2 to 64 characters in length.
      * The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -64,6 +118,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The name of the database.
+     * 
      * &gt; **NOTE:**
      * The name must be 2 to 64 characters in length.
      * The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -108,6 +163,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+     * 
      * &gt; **NOTE:** The value of &#34;dataBaseName&#34; or &#34;characterSet&#34;  does not support modification.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.266.0. New field &#39;data_base_name&#39; instead.
@@ -119,6 +175,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+     * 
      * &gt; **NOTE:** The value of &#34;dataBaseName&#34; or &#34;characterSet&#34;  does not support modification.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.266.0. New field &#39;data_base_name&#39; instead.
@@ -132,7 +189,10 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     private DatabaseArgs() {}
 
     private DatabaseArgs(DatabaseArgs $) {
+        this.accountName = $.accountName;
+        this.accountPrivilege = $.accountPrivilege;
         this.characterSet = $.characterSet;
+        this.collationName = $.collationName;
         this.dataBaseName = $.dataBaseName;
         this.description = $.description;
         this.instanceId = $.instanceId;
@@ -155,6 +215,56 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DatabaseArgs defaults) {
             $ = new DatabaseArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accountName The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+         * 
+         * &gt; **NOTE:** The account must belong to the instance specified by `instanceId` and must exist before the database is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountName(@Nullable Output<String> accountName) {
+            $.accountName = accountName;
+            return this;
+        }
+
+        /**
+         * @param accountName The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+         * 
+         * &gt; **NOTE:** The account must belong to the instance specified by `instanceId` and must exist before the database is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountName(String accountName) {
+            return accountName(Output.of(accountName));
+        }
+
+        /**
+         * @param accountPrivilege The privilege granted to the account specified by `accountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+         * 
+         * &gt; **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `accountName` to be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountPrivilege(@Nullable Output<String> accountPrivilege) {
+            $.accountPrivilege = accountPrivilege;
+            return this;
+        }
+
+        /**
+         * @param accountPrivilege The privilege granted to the account specified by `accountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+         * 
+         * &gt; **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `accountName` to be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountPrivilege(String accountPrivilege) {
+            return accountPrivilege(Output.of(accountPrivilege));
         }
 
         /**
@@ -197,7 +307,29 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param collationName The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `characterSet`, for example `gbkChineseCi` for `gbk` or `utf8mb4GeneralCi` for `utf8mb4`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder collationName(@Nullable Output<String> collationName) {
+            $.collationName = collationName;
+            return this;
+        }
+
+        /**
+         * @param collationName The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `characterSet`, for example `gbkChineseCi` for `gbk` or `utf8mb4GeneralCi` for `utf8mb4`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder collationName(String collationName) {
+            return collationName(Output.of(collationName));
+        }
+
+        /**
          * @param dataBaseName The name of the database.
+         * 
          * &gt; **NOTE:**
          * The name must be 2 to 64 characters in length.
          * The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -215,6 +347,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataBaseName The name of the database.
+         * 
          * &gt; **NOTE:**
          * The name must be 2 to 64 characters in length.
          * The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -273,6 +406,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+         * 
          * &gt; **NOTE:** The value of &#34;dataBaseName&#34; or &#34;characterSet&#34;  does not support modification.
          * 
          * @return builder
@@ -288,6 +422,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+         * 
          * &gt; **NOTE:** The value of &#34;dataBaseName&#34; or &#34;characterSet&#34;  does not support modification.
          * 
          * @return builder

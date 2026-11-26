@@ -127,14 +127,14 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * The details about the Table store instance. See `otsDetail` below. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     @Import(name="otsDetails")
     private @Nullable Output<List<OtsBackupPlanOtsDetailArgs>> otsDetails;
 
     /**
-     * @return The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * @return The details about the Table store instance. See `otsDetail` below. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     public Optional<Output<List<OtsBackupPlanOtsDetailArgs>>> otsDetails() {
@@ -157,14 +157,14 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * The backup plan rule. See `rules` below. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<OtsBackupPlanRuleArgs>> rules;
 
     /**
-     * @return The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * @return The backup plan rule. See `rules` below. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     public Optional<Output<List<OtsBackupPlanRuleArgs>>> rules() {
@@ -392,7 +392,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param otsDetails The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+         * @param otsDetails The details about the Table store instance. See `otsDetail` below. **Note:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param otsDetails The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+         * @param otsDetails The details about the Table store instance. See `otsDetail` below. **Note:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param otsDetails The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+         * @param otsDetails The details about the Table store instance. See `otsDetail` below. **Note:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+         * @param rules The backup plan rule. See `rules` below. **Note:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+         * @param rules The backup plan rule. See `rules` below. **Note:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+         * @param rules The backup plan rule. See `rules` below. **Note:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 

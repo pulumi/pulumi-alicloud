@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -120,9 +122,15 @@ export class AddonRelease extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Specifies whether to perform a dry run. Valid values: `true`, `false`.
+     * Field `dryRun` has been deprecated from provider version 2.2.0.
+     *
+     * @deprecated Field `dryRun` has been deprecated from provider version 2.2.0.
      */
     declare public readonly dryRun: pulumi.Output<boolean | undefined>;
+    /**
+     * The entity discovery rule model. See `entityRules` below.
+     */
+    declare public readonly entityRules: pulumi.Output<outputs.cms.AddonReleaseEntityRules | undefined>;
     /**
      * The environment type. Valid values: `CS`, `ECS`, `Cloud`.
      */
@@ -160,6 +168,7 @@ export class AddonRelease extends pulumi.CustomResource {
             resourceInputs["config"] = state?.config;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["entityRules"] = state?.entityRules;
             resourceInputs["envType"] = state?.envType;
             resourceInputs["integrationPolicyId"] = state?.integrationPolicyId;
             resourceInputs["regionId"] = state?.regionId;
@@ -181,6 +190,7 @@ export class AddonRelease extends pulumi.CustomResource {
             resourceInputs["aliyunLang"] = args?.aliyunLang;
             resourceInputs["config"] = args?.config;
             resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["entityRules"] = args?.entityRules;
             resourceInputs["envType"] = args?.envType;
             resourceInputs["integrationPolicyId"] = args?.integrationPolicyId;
             resourceInputs["workspace"] = args?.workspace;
@@ -221,9 +231,15 @@ export interface AddonReleaseState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * Specifies whether to perform a dry run. Valid values: `true`, `false`.
+     * Field `dryRun` has been deprecated from provider version 2.2.0.
+     *
+     * @deprecated Field `dryRun` has been deprecated from provider version 2.2.0.
      */
     dryRun?: pulumi.Input<boolean | undefined>;
+    /**
+     * The entity discovery rule model. See `entityRules` below.
+     */
+    entityRules?: pulumi.Input<inputs.cms.AddonReleaseEntityRules | undefined>;
     /**
      * The environment type. Valid values: `CS`, `ECS`, `Cloud`.
      */
@@ -267,9 +283,15 @@ export interface AddonReleaseArgs {
      */
     config?: pulumi.Input<string | undefined>;
     /**
-     * Specifies whether to perform a dry run. Valid values: `true`, `false`.
+     * Field `dryRun` has been deprecated from provider version 2.2.0.
+     *
+     * @deprecated Field `dryRun` has been deprecated from provider version 2.2.0.
      */
     dryRun?: pulumi.Input<boolean | undefined>;
+    /**
+     * The entity discovery rule model. See `entityRules` below.
+     */
+    entityRules?: pulumi.Input<inputs.cms.AddonReleaseEntityRules | undefined>;
     /**
      * The environment type. Valid values: `CS`, `ECS`, `Cloud`.
      */

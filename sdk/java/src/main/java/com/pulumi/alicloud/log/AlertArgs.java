@@ -75,14 +75,14 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Annotations for new alert.
+     * Annotations for new alert. See `annotations` below.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<List<AlertAnnotationArgs>> annotations;
 
     /**
-     * @return Annotations for new alert.
+     * @return Annotations for new alert. See `annotations` below.
      * 
      */
     public Optional<Output<List<AlertAnnotationArgs>>> annotations() {
@@ -147,14 +147,14 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Group configuration for new alert.
+     * Group configuration for new alert. See `groupConfiguration` below.
      * 
      */
     @Import(name="groupConfiguration")
     private @Nullable Output<AlertGroupConfigurationArgs> groupConfiguration;
 
     /**
-     * @return Group configuration for new alert.
+     * @return Group configuration for new alert. See `groupConfiguration` below.
      * 
      */
     public Optional<Output<AlertGroupConfigurationArgs>> groupConfiguration() {
@@ -162,14 +162,14 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Join configuration for different queries.
+     * Join configuration for different queries. See `joinConfigurations` below.
      * 
      */
     @Import(name="joinConfigurations")
     private @Nullable Output<List<AlertJoinConfigurationArgs>> joinConfigurations;
 
     /**
-     * @return Join configuration for different queries.
+     * @return Join configuration for different queries. See `joinConfigurations` below.
      * 
      */
     public Optional<Output<List<AlertJoinConfigurationArgs>>> joinConfigurations() {
@@ -177,14 +177,14 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Labels for new alert.
+     * Labels for new alert. See `labels` below.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<List<AlertLabelArgs>> labels;
 
     /**
-     * @return Labels for new alert.
+     * @return Labels for new alert. See `labels` below.
      * 
      */
     public Optional<Output<List<AlertLabelArgs>>> labels() {
@@ -237,7 +237,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Alarm information notification list, Deprecated from 1.161.0+.
+     * Alarm information notification list, Deprecated from 1.161.0+. See `notificationList` below.
      * 
      * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
      * 
@@ -247,7 +247,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<AlertNotificationListArgs>> notificationLists;
 
     /**
-     * @return Alarm information notification list, Deprecated from 1.161.0+.
+     * @return Alarm information notification list, Deprecated from 1.161.0+. See `notificationList` below.
      * 
      * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
      * 
@@ -279,14 +279,14 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Policy configuration for new alert.
+     * Policy configuration for new alert. See `policyConfiguration` below.
      * 
      */
     @Import(name="policyConfiguration")
     private @Nullable Output<AlertPolicyConfigurationArgs> policyConfiguration;
 
     /**
-     * @return Policy configuration for new alert.
+     * @return Policy configuration for new alert. See `policyConfiguration` below.
      * 
      */
     public Optional<Output<AlertPolicyConfigurationArgs>> policyConfiguration() {
@@ -309,14 +309,14 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Multiple conditions for configured alarm query.
+     * Multiple conditions for configured alarm query. See `queryList` below.
      * 
      */
     @Import(name="queryLists")
     private @Nullable Output<List<AlertQueryListArgs>> queryLists;
 
     /**
-     * @return Multiple conditions for configured alarm query.
+     * @return Multiple conditions for configured alarm query. See `queryList` below.
      * 
      */
     public Optional<Output<List<AlertQueryListArgs>>> queryLists() {
@@ -324,14 +324,14 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * schedule for alert.
+     * schedule for alert. See `schedule` below.
      * 
      */
     @Import(name="schedule")
     private @Nullable Output<AlertScheduleArgs> schedule;
 
     /**
-     * @return schedule for alert.
+     * @return schedule for alert. See `schedule` below.
      * 
      */
     public Optional<Output<AlertScheduleArgs>> schedule() {
@@ -396,14 +396,14 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Severity configuration for new alert.
+     * Severity configuration for new alert. See `severityConfigurations` below.
      * 
      */
     @Import(name="severityConfigurations")
     private @Nullable Output<List<AlertSeverityConfigurationArgs>> severityConfigurations;
 
     /**
-     * @return Severity configuration for new alert.
+     * @return Severity configuration for new alert. See `severityConfigurations` below.
      * 
      */
     public Optional<Output<List<AlertSeverityConfigurationArgs>>> severityConfigurations() {
@@ -411,14 +411,14 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Template configuration for alert, when `type` is `tpl`.
+     * Template configuration for alert, when `type` is `tpl`. See `templateConfiguration` below.
      * 
      */
     @Import(name="templateConfiguration")
     private @Nullable Output<AlertTemplateConfigurationArgs> templateConfiguration;
 
     /**
-     * @return Template configuration for alert, when `type` is `tpl`.
+     * @return Template configuration for alert, when `type` is `tpl`. See `templateConfiguration` below.
      * 
      */
     public Optional<Output<AlertTemplateConfigurationArgs>> templateConfiguration() {
@@ -606,7 +606,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations for new alert.
+         * @param annotations Annotations for new alert. See `annotations` below.
          * 
          * @return builder
          * 
@@ -617,7 +617,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations for new alert.
+         * @param annotations Annotations for new alert. See `annotations` below.
          * 
          * @return builder
          * 
@@ -627,7 +627,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations for new alert.
+         * @param annotations Annotations for new alert. See `annotations` below.
          * 
          * @return builder
          * 
@@ -712,7 +712,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupConfiguration Group configuration for new alert.
+         * @param groupConfiguration Group configuration for new alert. See `groupConfiguration` below.
          * 
          * @return builder
          * 
@@ -723,7 +723,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupConfiguration Group configuration for new alert.
+         * @param groupConfiguration Group configuration for new alert. See `groupConfiguration` below.
          * 
          * @return builder
          * 
@@ -733,7 +733,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param joinConfigurations Join configuration for different queries.
+         * @param joinConfigurations Join configuration for different queries. See `joinConfigurations` below.
          * 
          * @return builder
          * 
@@ -744,7 +744,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param joinConfigurations Join configuration for different queries.
+         * @param joinConfigurations Join configuration for different queries. See `joinConfigurations` below.
          * 
          * @return builder
          * 
@@ -754,7 +754,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param joinConfigurations Join configuration for different queries.
+         * @param joinConfigurations Join configuration for different queries. See `joinConfigurations` below.
          * 
          * @return builder
          * 
@@ -764,7 +764,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels for new alert.
+         * @param labels Labels for new alert. See `labels` below.
          * 
          * @return builder
          * 
@@ -775,7 +775,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels for new alert.
+         * @param labels Labels for new alert. See `labels` below.
          * 
          * @return builder
          * 
@@ -785,7 +785,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels for new alert.
+         * @param labels Labels for new alert. See `labels` below.
          * 
          * @return builder
          * 
@@ -858,7 +858,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationLists Alarm information notification list, Deprecated from 1.161.0+.
+         * @param notificationLists Alarm information notification list, Deprecated from 1.161.0+. See `notificationList` below.
          * 
          * @return builder
          * 
@@ -872,7 +872,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationLists Alarm information notification list, Deprecated from 1.161.0+.
+         * @param notificationLists Alarm information notification list, Deprecated from 1.161.0+. See `notificationList` below.
          * 
          * @return builder
          * 
@@ -885,7 +885,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationLists Alarm information notification list, Deprecated from 1.161.0+.
+         * @param notificationLists Alarm information notification list, Deprecated from 1.161.0+. See `notificationList` below.
          * 
          * @return builder
          * 
@@ -925,7 +925,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyConfiguration Policy configuration for new alert.
+         * @param policyConfiguration Policy configuration for new alert. See `policyConfiguration` below.
          * 
          * @return builder
          * 
@@ -936,7 +936,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyConfiguration Policy configuration for new alert.
+         * @param policyConfiguration Policy configuration for new alert. See `policyConfiguration` below.
          * 
          * @return builder
          * 
@@ -967,7 +967,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryLists Multiple conditions for configured alarm query.
+         * @param queryLists Multiple conditions for configured alarm query. See `queryList` below.
          * 
          * @return builder
          * 
@@ -978,7 +978,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryLists Multiple conditions for configured alarm query.
+         * @param queryLists Multiple conditions for configured alarm query. See `queryList` below.
          * 
          * @return builder
          * 
@@ -988,7 +988,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryLists Multiple conditions for configured alarm query.
+         * @param queryLists Multiple conditions for configured alarm query. See `queryList` below.
          * 
          * @return builder
          * 
@@ -998,7 +998,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule schedule for alert.
+         * @param schedule schedule for alert. See `schedule` below.
          * 
          * @return builder
          * 
@@ -1009,7 +1009,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule schedule for alert.
+         * @param schedule schedule for alert. See `schedule` below.
          * 
          * @return builder
          * 
@@ -1094,7 +1094,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param severityConfigurations Severity configuration for new alert.
+         * @param severityConfigurations Severity configuration for new alert. See `severityConfigurations` below.
          * 
          * @return builder
          * 
@@ -1105,7 +1105,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param severityConfigurations Severity configuration for new alert.
+         * @param severityConfigurations Severity configuration for new alert. See `severityConfigurations` below.
          * 
          * @return builder
          * 
@@ -1115,7 +1115,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param severityConfigurations Severity configuration for new alert.
+         * @param severityConfigurations Severity configuration for new alert. See `severityConfigurations` below.
          * 
          * @return builder
          * 
@@ -1125,7 +1125,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param templateConfiguration Template configuration for alert, when `type` is `tpl`.
+         * @param templateConfiguration Template configuration for alert, when `type` is `tpl`. See `templateConfiguration` below.
          * 
          * @return builder
          * 
@@ -1136,7 +1136,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param templateConfiguration Template configuration for alert, when `type` is `tpl`.
+         * @param templateConfiguration Template configuration for alert, when `type` is `tpl`. See `templateConfiguration` below.
          * 
          * @return builder
          * 

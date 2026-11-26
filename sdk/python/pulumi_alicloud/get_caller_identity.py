@@ -89,7 +89,7 @@ def get_caller_identity(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     """
     This data source provides the identity of the current user.
 
-    > **NOTE:** Available in 1.65.0+.
+    > **NOTE:** Available since v1.65.0.
 
     ## Example Usage
 
@@ -114,7 +114,7 @@ def get_caller_identity_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi
     """
     This data source provides the identity of the current user.
 
-    > **NOTE:** Available in 1.65.0+.
+    > **NOTE:** Available since v1.65.0.
 
     ## Example Usage
 

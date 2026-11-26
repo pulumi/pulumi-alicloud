@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAclsResult {
     /**
-     * @return A list of SLB  acls. Each element contains the following attributes:
+     * @return A list of SLB acls. Each element contains the following attributes:
      * 
      */
     private List<GetAclsAcl> acls;
@@ -43,14 +43,14 @@ public final class GetAclsResult {
      */
     private @Nullable String resourceGroupId;
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return (Optional) A mapping of tags to assign to the resource.
      * 
      */
     private @Nullable Map<String,String> tags;
 
     private GetAclsResult() {}
     /**
-     * @return A list of SLB  acls. Each element contains the following attributes:
+     * @return A list of SLB acls. Each element contains the following attributes:
      * 
      */
     public List<GetAclsAcl> acls() {
@@ -91,7 +91,7 @@ public final class GetAclsResult {
         return Optional.ofNullable(this.resourceGroupId);
     }
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return (Optional) A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {

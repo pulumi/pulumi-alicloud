@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.160.0+.
+// > **NOTE:** Available since v1.160.0.
 //
 // ## Example Usage
 //
@@ -70,12 +70,14 @@ type GetGreyTagRoutesArgs struct {
 type GetGreyTagRoutesResult struct {
 	AppId string `pulumi:"appId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                  `pulumi:"id"`
-	Ids        []string                `pulumi:"ids"`
-	NameRegex  *string                 `pulumi:"nameRegex"`
-	Names      []string                `pulumi:"names"`
-	OutputFile *string                 `pulumi:"outputFile"`
-	Routes     []GetGreyTagRoutesRoute `pulumi:"routes"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of GreyTagRoute names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Sae GreyTagRoutes. Each element contains the following attributes:
+	Routes []GetGreyTagRoutesRoute `pulumi:"routes"`
 }
 
 func GetGreyTagRoutesOutput(ctx *pulumi.Context, args GetGreyTagRoutesOutputArgs, opts ...pulumi.InvokeOption) GetGreyTagRoutesResultOutput {
@@ -131,6 +133,7 @@ func (o GetGreyTagRoutesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of GreyTagRoute names.
 func (o GetGreyTagRoutesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -139,6 +142,7 @@ func (o GetGreyTagRoutesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Sae GreyTagRoutes. Each element contains the following attributes:
 func (o GetGreyTagRoutesResultOutput) Routes() GetGreyTagRoutesRouteArrayOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesResult) []GetGreyTagRoutesRoute { return v.Routes }).(GetGreyTagRoutesRouteArrayOutput)
 }

@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Dds.Outputs
     [OutputType]
     public sealed class GetMongoInstancesInstanceMongoResult
     {
+        /// <summary>
+        /// The instance type of the shard node.
+        /// </summary>
         public readonly string Class;
+        /// <summary>
+        /// The description of the shard node.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The ID of the shard node.
+        /// </summary>
         public readonly string NodeId;
 
         [OutputConstructor]

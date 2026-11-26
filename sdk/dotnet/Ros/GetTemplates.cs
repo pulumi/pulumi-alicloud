@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Templates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.108.0+.
+        /// &gt; **NOTE:** Available since v1.108.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Templates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.108.0+.
+        /// &gt; **NOTE:** Available since v1.108.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Templates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.108.0+.
+        /// &gt; **NOTE:** Available since v1.108.0.
         /// 
         /// ## Example Usage
         /// 
@@ -256,11 +256,26 @@ namespace Pulumi.AliCloud.Ros
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Template names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Share Type.
+        /// </summary>
         public readonly string? ShareType;
+        /// <summary>
+        /// Tags.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        /// </summary>
         public readonly string? TemplateName;
+        /// <summary>
+        /// A list of Ros Templates. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTemplatesTemplateResult> Templates;
 
         [OutputConstructor]

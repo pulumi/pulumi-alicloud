@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cddc Zones of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
  *
  * ## Example Usage
  *
@@ -49,14 +49,20 @@ export interface GetZonesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Cddc Zone IDs.
+     */
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Cddc Zones. Each element contains the following attributes:
+     */
     readonly zones: outputs.cddc.GetZonesZone[];
 }
 /**
  * This data source provides the Cddc Zones of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
  *
  * ## Example Usage
  *

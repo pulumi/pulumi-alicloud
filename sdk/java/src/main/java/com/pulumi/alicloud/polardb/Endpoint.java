@@ -25,7 +25,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** The primary endpoint and the default cluster endpoint can not be created or deleted manually.
  * 
+ * &gt; **NOTE:** A PolarDB cluster has only one default cluster endpoint, and it can be managed either by this resource (after importing it) or by `alicloud.polardb.ClusterEndpoint`. Manage one endpoint address from only one Terraform resource. If the same default cluster endpoint is controlled by both resources, a change to an attribute they share (such as `sccMode`) is sent to that endpoint by both resources: when the two configurations specify different values, the later apply overwrites the earlier one and the other configuration keeps reporting a diff. Different endpoint addresses have different identities and can be managed by different resources: for example, a custom endpoint created by this resource and the default cluster endpoint managed by `alicloud.polardb.ClusterEndpoint` can coexist. `sccMode` (global consistency, high-performance mode) is available only on PolarDB for MySQL Enterprise Edition clusters whose engine minor version is `8.0.2.2.19` or later (MySQL `8.0.2`), `8.0.1.1.29` or later (MySQL `8.0.1`), or `5.7.1.0.26` or later (MySQL `5.7`); on other clusters the setting is not supported. On a cluster that meets these prerequisites, endpoint identity alone does not determine the scope: `sccMode` can be enabled or disabled independently for each endpoint only when PolarProxy is version `2.9.12` or later and the engine minor version is `8.0.2.2.29` or later (MySQL `8.0.2`), `8.0.1.1.48` or later (MySQL `8.0.1`), or `5.7.1.0.38` or later (MySQL `5.7`); in that case different endpoint addresses can control `sccMode` separately. If the additional conditions are not met, `sccMode` is a cluster-level setting: enabling or disabling it on one endpoint also applies it to all other endpoints of the same cluster, so the Terraform resources that manage endpoints of the same cluster must use the same value and cannot expect each endpoint address to control it independently.
+ * 
  * &gt; **NOTE:** The DynamoDB type endpoint does not support deletion. When destroying the Terraform resource, the DynamoDB endpoint will be removed from state but not deleted from the cloud.
+ * 
+ * &gt; **NOTE:** The endpoint&#39;s advanced configuration must stay compatible with global consistency (high-performance mode) and the endpoint&#39;s read/write mode. `ConsistLevel` and `CausalConsistRead` are separate settings. An incompatible combination can be rejected with an `EndpointConfig.Conflict` error; an error requiring `CausalConsistRead=session` does not imply that `ConsistLevel` must be `0`.
  * 
  * ## Example Usage
  * 
@@ -64,6 +68,7 @@ import javax.annotation.Nullable;
  *             .dbVersion("8.0")
  *             .payType("PostPaid")
  *             .category("Normal")
+ *             .dbNodeClass("polar.mysql.x4.medium")
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
@@ -263,6 +268,20 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<String> readWriteMode() {
         return this.readWriteMode;
+    }
+    /**
+     * Specifies whether to enable global consistency (high-performance mode) for the endpoint. Valid values: `on`, `off`. Global consistency (high-performance mode) is supported only on PolarDB for MySQL Enterprise Edition clusters whose engine minor version is `8.0.2.2.19` or later (MySQL `8.0.2`), `8.0.1.1.29` or later (MySQL `8.0.1`), or `5.7.1.0.26` or later (MySQL `5.7`); whether the setting applies to a single endpoint or to the whole cluster depends on the PolarProxy and engine versions described in the resource-level note above. For `endpoint_config.ConsistLevel`, `0` means eventual consistency, `1` means session consistency (the API default), and `2` means global consistency; a `ReadOnly` endpoint supports only `0`. Select the value for the endpoint&#39;s read/write mode and required proxy consistency behavior; `0` is not a universal prerequisite for setting `sccMode` to `on`. If this argument is omitted, the provider does not send `SccMode` when the endpoint is created, and the value reported by the service is read back into the state. Removing this argument from the configuration after it has been set does not send an update request; the value last read from the service is kept in the state.
+     * 
+     */
+    @Export(name="sccMode", refs={String.class}, tree="[0]")
+    private Output<String> sccMode;
+
+    /**
+     * @return Specifies whether to enable global consistency (high-performance mode) for the endpoint. Valid values: `on`, `off`. Global consistency (high-performance mode) is supported only on PolarDB for MySQL Enterprise Edition clusters whose engine minor version is `8.0.2.2.19` or later (MySQL `8.0.2`), `8.0.1.1.29` or later (MySQL `8.0.1`), or `5.7.1.0.26` or later (MySQL `5.7`); whether the setting applies to a single endpoint or to the whole cluster depends on the PolarProxy and engine versions described in the resource-level note above. For `endpoint_config.ConsistLevel`, `0` means eventual consistency, `1` means session consistency (the API default), and `2` means global consistency; a `ReadOnly` endpoint supports only `0`. Select the value for the endpoint&#39;s read/write mode and required proxy consistency behavior; `0` is not a universal prerequisite for setting `sccMode` to `on`. If this argument is omitted, the provider does not send `SccMode` when the endpoint is created, and the value reported by the service is read back into the state. Removing this argument from the configuration after it has been set does not send an update request; the value last read from the service is kept in the state.
+     * 
+     */
+    public Output<String> sccMode() {
+        return this.sccMode;
     }
     /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.

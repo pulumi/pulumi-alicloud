@@ -14,118 +14,110 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LaunchTemplateSystemDisk {
     /**
-     * @return The category of the disk:
-     * - cloud: Basic cloud disk.
-     * - cloud_efficiency: Ultra cloud disk.
-     * - cloud_ssd: SSD cloud Disks.
-     * - ephemeral_ssd: local SSD Disks
-     * - cloud_essd: ESSD cloud Disks.
-     * 
-     * Default to `cloudEfficiency`.
+     * @return The category of the system disk.
      * 
      */
     private @Nullable String category;
     /**
-     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
-     * 
-     * Default to true
+     * @return Whether to release the system disk when the instance is released. Default to `true`.
      * 
      */
     private @Nullable Boolean deleteWithInstance;
     /**
-     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+     * @return System disk description.
      * 
      */
     private @Nullable String description;
     /**
-     * @return Encrypted the data in this disk.
-     * 
-     * Default to false
+     * @return Whether the system disk is encrypted.
      * 
      */
     private @Nullable Boolean encrypted;
+    /**
+     * @return The Iops.
+     * 
+     */
     private @Nullable String iops;
+    /**
+     * @return The ID of the KMS key to use for the system disk.
+     * 
+     */
     private @Nullable String kmsKeyId;
     /**
-     * @return Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+     * @return System disk name.
      * 
      */
     private @Nullable String name;
+    /**
+     * @return The performance level of the ESSD used as the system disk.
+     * 
+     */
     private @Nullable String performanceLevel;
     /**
-     * @return The size of the data disk.
-     * - cloud：[5, 2000]
-     * - cloud_efficiency：[20, 32768]
-     * - cloud_ssd：[20, 32768]
-     * - cloud_essd：[20, 32768]
-     * - ephemeral_ssd: [5, 800]
+     * @return Size of the system disk, measured in GB.
      * 
      */
     private @Nullable Integer size;
 
     private LaunchTemplateSystemDisk() {}
     /**
-     * @return The category of the disk:
-     * - cloud: Basic cloud disk.
-     * - cloud_efficiency: Ultra cloud disk.
-     * - cloud_ssd: SSD cloud Disks.
-     * - ephemeral_ssd: local SSD Disks
-     * - cloud_essd: ESSD cloud Disks.
-     * 
-     * Default to `cloudEfficiency`.
+     * @return The category of the system disk.
      * 
      */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
     /**
-     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
-     * 
-     * Default to true
+     * @return Whether to release the system disk when the instance is released. Default to `true`.
      * 
      */
     public Optional<Boolean> deleteWithInstance() {
         return Optional.ofNullable(this.deleteWithInstance);
     }
     /**
-     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+     * @return System disk description.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Encrypted the data in this disk.
-     * 
-     * Default to false
+     * @return Whether the system disk is encrypted.
      * 
      */
     public Optional<Boolean> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
+    /**
+     * @return The Iops.
+     * 
+     */
     public Optional<String> iops() {
         return Optional.ofNullable(this.iops);
     }
+    /**
+     * @return The ID of the KMS key to use for the system disk.
+     * 
+     */
     public Optional<String> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
     /**
-     * @return Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+     * @return System disk name.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return The performance level of the ESSD used as the system disk.
+     * 
+     */
     public Optional<String> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
     }
     /**
-     * @return The size of the data disk.
-     * - cloud：[5, 2000]
-     * - cloud_efficiency：[20, 32768]
-     * - cloud_ssd：[20, 32768]
-     * - cloud_essd：[20, 32768]
-     * - ephemeral_ssd: [5, 800]
+     * @return Size of the system disk, measured in GB.
      * 
      */
     public Optional<Integer> size() {

@@ -22,11 +22,31 @@ public final class GetStackInstancesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Ros Stack Instances. Each element contains the following attributes:
+     * 
+     */
     private List<GetStackInstancesInstance> instances;
     private @Nullable String outputFile;
+    /**
+     * @return The name of the stack group.
+     * 
+     */
     private String stackGroupName;
+    /**
+     * @return The account to which the stack instance belongs.
+     * 
+     */
     private @Nullable String stackInstanceAccountId;
+    /**
+     * @return The region of the stack instance.
+     * 
+     */
     private @Nullable String stackInstanceRegionId;
+    /**
+     * @return The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
+     * 
+     */
     private @Nullable String status;
 
     private GetStackInstancesResult() {}
@@ -43,21 +63,41 @@ public final class GetStackInstancesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Ros Stack Instances. Each element contains the following attributes:
+     * 
+     */
     public List<GetStackInstancesInstance> instances() {
         return this.instances;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The name of the stack group.
+     * 
+     */
     public String stackGroupName() {
         return this.stackGroupName;
     }
+    /**
+     * @return The account to which the stack instance belongs.
+     * 
+     */
     public Optional<String> stackInstanceAccountId() {
         return Optional.ofNullable(this.stackInstanceAccountId);
     }
+    /**
+     * @return The region of the stack instance.
+     * 
+     */
     public Optional<String> stackInstanceRegionId() {
         return Optional.ofNullable(this.stackInstanceRegionId);
     }
+    /**
+     * @return The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

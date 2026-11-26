@@ -13,6 +13,8 @@ import (
 
 // This data source provides the rules associated with a server load balancer listener.
 //
+// > **NOTE:** Available since v1.15.0.
+//
 // ## Example Usage
 //
 // ```go

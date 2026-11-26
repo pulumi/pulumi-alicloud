@@ -22,6 +22,11 @@ public final class GetVpcEndpointConnectionsConnection {
      */
     private String endpointId;
     /**
+     * @return The endpoint owner id.
+     * 
+     */
+    private Integer endpointOwnerId;
+    /**
      * @return The ID of the Vpc Endpoint Connection.
      * 
      */
@@ -31,6 +36,11 @@ public final class GetVpcEndpointConnectionsConnection {
      * 
      */
     private String status;
+    /**
+     * @return The traffic control mode of the endpoint connection.
+     * 
+     */
+    private String trafficControlMode;
 
     private GetVpcEndpointConnectionsConnection() {}
     /**
@@ -48,6 +58,13 @@ public final class GetVpcEndpointConnectionsConnection {
         return this.endpointId;
     }
     /**
+     * @return The endpoint owner id.
+     * 
+     */
+    public Integer endpointOwnerId() {
+        return this.endpointOwnerId;
+    }
+    /**
      * @return The ID of the Vpc Endpoint Connection.
      * 
      */
@@ -61,6 +78,13 @@ public final class GetVpcEndpointConnectionsConnection {
     public String status() {
         return this.status;
     }
+    /**
+     * @return The traffic control mode of the endpoint connection.
+     * 
+     */
+    public String trafficControlMode() {
+        return this.trafficControlMode;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -73,15 +97,19 @@ public final class GetVpcEndpointConnectionsConnection {
     public static final class Builder {
         private Integer bandwidth;
         private String endpointId;
+        private Integer endpointOwnerId;
         private String id;
         private String status;
+        private String trafficControlMode;
         public Builder() {}
         public Builder(GetVpcEndpointConnectionsConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
     	      this.endpointId = defaults.endpointId;
+    	      this.endpointOwnerId = defaults.endpointOwnerId;
     	      this.id = defaults.id;
     	      this.status = defaults.status;
+    	      this.trafficControlMode = defaults.trafficControlMode;
         }
 
         @CustomType.Setter
@@ -101,6 +129,14 @@ public final class GetVpcEndpointConnectionsConnection {
             return this;
         }
         @CustomType.Setter
+        public Builder endpointOwnerId(Integer endpointOwnerId) {
+            if (endpointOwnerId == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointConnectionsConnection", "endpointOwnerId");
+            }
+            this.endpointOwnerId = endpointOwnerId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetVpcEndpointConnectionsConnection", "id");
@@ -116,12 +152,22 @@ public final class GetVpcEndpointConnectionsConnection {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
+        public Builder trafficControlMode(String trafficControlMode) {
+            if (trafficControlMode == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointConnectionsConnection", "trafficControlMode");
+            }
+            this.trafficControlMode = trafficControlMode;
+            return this;
+        }
         public GetVpcEndpointConnectionsConnection build() {
             final var _resultValue = new GetVpcEndpointConnectionsConnection();
             _resultValue.bandwidth = bandwidth;
             _resultValue.endpointId = endpointId;
+            _resultValue.endpointOwnerId = endpointOwnerId;
             _resultValue.id = id;
             _resultValue.status = status;
+            _resultValue.trafficControlMode = trafficControlMode;
             return _resultValue;
         }
     }

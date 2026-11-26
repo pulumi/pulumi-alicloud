@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.DatabaseGateway
         /// <summary>
         /// This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.DatabaseGateway
         /// <summary>
         /// This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.DatabaseGateway
         /// <summary>
         /// This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -241,6 +241,9 @@ namespace Pulumi.AliCloud.DatabaseGateway
     public sealed class GetGatewaysResult
     {
         public readonly bool? EnableDetails;
+        /// <summary>
+        /// A list of Database Gateway Gateways. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewaysGatewayResult> Gateways;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -248,9 +251,15 @@ namespace Pulumi.AliCloud.DatabaseGateway
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Gateway names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string? SearchKey;
+        /// <summary>
+        /// The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

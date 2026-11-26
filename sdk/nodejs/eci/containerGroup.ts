@@ -123,6 +123,8 @@ import * as utilities from "../utilities";
  * ```sh
  * $ pulumi import alicloud:eci/containerGroup:ContainerGroup example <container_group_id>
  * ```
+ *
+ * > **NOTE:** `acrRegistryInfo` (including `arnService` and `arnUser`) cannot be read back from the API, so it is not reconstructed on import. Configuring these role ARNs after import requires replacement of the container group; review the plan before applying.
  */
 export class ContainerGroup extends pulumi.CustomResource {
     /**

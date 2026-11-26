@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Hbr Restore Jobs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
@@ -94,22 +94,49 @@ export interface GetRestoreJobsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of restore job IDs.
+     */
     readonly ids: string[];
+    /**
+     * A list of Hbr restore jobs. Each element contains the following attributes:
+     */
     readonly jobs: outputs.hbr.GetRestoreJobsJob[];
     readonly outputFile?: string;
     readonly restoreIds?: string[];
+    /**
+     * The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+     */
     readonly restoreType: string;
+    /**
+     * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`, `UDM_ECS_ROLLBACK`.
+     */
     readonly sourceTypes?: string[];
+    /**
+     * The status of restore job.
+     */
     readonly status?: string;
+    /**
+     * The name of target ofo OSS bucket.
+     */
     readonly targetBuckets?: string[];
+    /**
+     * The ID of destination file system.
+     */
     readonly targetFileSystemIds?: string[];
+    /**
+     * The ID of target ECS instance.
+     */
     readonly targetInstanceIds?: string[];
+    /**
+     * The ID of backup vault.
+     */
     readonly vaultIds?: string[];
 }
 /**
  * This data source provides the Hbr Restore Jobs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *

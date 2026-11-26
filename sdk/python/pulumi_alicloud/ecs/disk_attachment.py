@@ -30,6 +30,10 @@ class DiskAttachmentArgs:
 
         :param pulumi.Input[_builtins.str] disk_id: ID of the Disk to be attached.
         :param pulumi.Input[_builtins.str] instance_id: ID of the Instance to attach to.
+        :param pulumi.Input[_builtins.bool] bootable: Whether the disk is bootable.
+        :param pulumi.Input[_builtins.bool] delete_with_instance: Whether to delete the disk with the instance.
+        :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair.
+        :param pulumi.Input[_builtins.str] password: The password of the instance.
         """
         pulumi.set(__self__, "disk_id", disk_id)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -69,6 +73,9 @@ class DiskAttachmentArgs:
     @_builtins.property
     @pulumi.getter
     def bootable(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the disk is bootable.
+        """
         return pulumi.get(self, "bootable")
 
     @bootable.setter
@@ -78,6 +85,9 @@ class DiskAttachmentArgs:
     @_builtins.property
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to delete the disk with the instance.
+        """
         return pulumi.get(self, "delete_with_instance")
 
     @delete_with_instance.setter
@@ -87,6 +97,9 @@ class DiskAttachmentArgs:
     @_builtins.property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the key pair.
+        """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
@@ -96,6 +109,9 @@ class DiskAttachmentArgs:
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The password of the instance.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -116,8 +132,13 @@ class _DiskAttachmentState:
         """
         Input properties used for looking up and filtering DiskAttachment resources.
 
+        :param pulumi.Input[_builtins.bool] bootable: Whether the disk is bootable.
+        :param pulumi.Input[_builtins.bool] delete_with_instance: Whether to delete the disk with the instance.
+        :param pulumi.Input[_builtins.str] device: The device name allocated to the disk.
         :param pulumi.Input[_builtins.str] disk_id: ID of the Disk to be attached.
         :param pulumi.Input[_builtins.str] instance_id: ID of the Instance to attach to.
+        :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair.
+        :param pulumi.Input[_builtins.str] password: The password of the instance.
         """
         if bootable is not None:
             pulumi.set(__self__, "bootable", bootable)
@@ -137,6 +158,9 @@ class _DiskAttachmentState:
     @_builtins.property
     @pulumi.getter
     def bootable(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the disk is bootable.
+        """
         return pulumi.get(self, "bootable")
 
     @bootable.setter
@@ -146,6 +170,9 @@ class _DiskAttachmentState:
     @_builtins.property
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to delete the disk with the instance.
+        """
         return pulumi.get(self, "delete_with_instance")
 
     @delete_with_instance.setter
@@ -155,6 +182,9 @@ class _DiskAttachmentState:
     @_builtins.property
     @pulumi.getter
     def device(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The device name allocated to the disk.
+        """
         return pulumi.get(self, "device")
 
     @device.setter
@@ -188,6 +218,9 @@ class _DiskAttachmentState:
     @_builtins.property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the key pair.
+        """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
@@ -197,6 +230,9 @@ class _DiskAttachmentState:
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The password of the instance.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -232,7 +268,7 @@ class DiskAttachment(pulumi.CustomResource):
 
         # Create a new ECS disk-attachment and use it attach one disk to a new instance.
         ecs_sg = alicloud.ecs.SecurityGroup("ecs_sg",
-            name="terraform-test-group",
+            name="terraform-demo-group",
             description="New security group")
         ecs_disk = alicloud.ecs.Disk("ecs_disk",
             availability_zone="cn-beijing-a",
@@ -268,8 +304,12 @@ class DiskAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] bootable: Whether the disk is bootable.
+        :param pulumi.Input[_builtins.bool] delete_with_instance: Whether to delete the disk with the instance.
         :param pulumi.Input[_builtins.str] disk_id: ID of the Disk to be attached.
         :param pulumi.Input[_builtins.str] instance_id: ID of the Instance to attach to.
+        :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair.
+        :param pulumi.Input[_builtins.str] password: The password of the instance.
         """
         ...
     @overload
@@ -292,7 +332,7 @@ class DiskAttachment(pulumi.CustomResource):
 
         # Create a new ECS disk-attachment and use it attach one disk to a new instance.
         ecs_sg = alicloud.ecs.SecurityGroup("ecs_sg",
-            name="terraform-test-group",
+            name="terraform-demo-group",
             description="New security group")
         ecs_disk = alicloud.ecs.Disk("ecs_disk",
             availability_zone="cn-beijing-a",
@@ -391,8 +431,13 @@ class DiskAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] bootable: Whether the disk is bootable.
+        :param pulumi.Input[_builtins.bool] delete_with_instance: Whether to delete the disk with the instance.
+        :param pulumi.Input[_builtins.str] device: The device name allocated to the disk.
         :param pulumi.Input[_builtins.str] disk_id: ID of the Disk to be attached.
         :param pulumi.Input[_builtins.str] instance_id: ID of the Instance to attach to.
+        :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair.
+        :param pulumi.Input[_builtins.str] password: The password of the instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -430,16 +475,25 @@ class DiskAttachment(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def bootable(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether the disk is bootable.
+        """
         return pulumi.get(self, "bootable")
 
     @_builtins.property
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to delete the disk with the instance.
+        """
         return pulumi.get(self, "delete_with_instance")
 
     @_builtins.property
     @pulumi.getter
     def device(self) -> pulumi.Output[_builtins.str]:
+        """
+        The device name allocated to the disk.
+        """
         return pulumi.get(self, "device")
 
     @_builtins.property
@@ -461,10 +515,16 @@ class DiskAttachment(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The name of the key pair.
+        """
         return pulumi.get(self, "key_pair_name")
 
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The password of the instance.
+        """
         return pulumi.get(self, "password")
 

@@ -63,7 +63,7 @@ class ServerGroupArgs:
                
                - `TCP` (default)
                - `UDP`
-               - `TCPSSL`
+               - `TCP_UDP`
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the new resource group.
                You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
         :param pulumi.Input[_builtins.str] scheduler: The scheduling algorithm. Valid values:
@@ -250,7 +250,7 @@ class ServerGroupArgs:
 
         - `TCP` (default)
         - `UDP`
-        - `TCPSSL`
+        - `TCP_UDP`
         """
         return pulumi.get(self, "protocol")
 
@@ -357,7 +357,7 @@ class _ServerGroupState:
                
                - `TCP` (default)
                - `UDP`
-               - `TCPSSL`
+               - `TCP_UDP`
         :param pulumi.Input[_builtins.str] region_id: The ID of the region where the NLB instance is deployed.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the new resource group.
                You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
@@ -530,7 +530,7 @@ class _ServerGroupState:
 
         - `TCP` (default)
         - `UDP`
-        - `TCPSSL`
+        - `TCP_UDP`
         """
         return pulumi.get(self, "protocol")
 
@@ -756,7 +756,7 @@ class ServerGroup(pulumi.CustomResource):
                
                - `TCP` (default)
                - `UDP`
-               - `TCPSSL`
+               - `TCP_UDP`
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the new resource group.
                You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
         :param pulumi.Input[_builtins.str] scheduler: The scheduling algorithm. Valid values:
@@ -961,7 +961,7 @@ class ServerGroup(pulumi.CustomResource):
                
                - `TCP` (default)
                - `UDP`
-               - `TCPSSL`
+               - `TCP_UDP`
         :param pulumi.Input[_builtins.str] region_id: The ID of the region where the NLB instance is deployed.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the new resource group.
                You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
@@ -1127,7 +1127,7 @@ class ServerGroup(pulumi.CustomResource):
 
         - `TCP` (default)
         - `UDP`
-        - `TCPSSL`
+        - `TCP_UDP`
         """
         return pulumi.get(self, "protocol")
 

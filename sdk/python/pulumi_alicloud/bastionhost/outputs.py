@@ -998,9 +998,9 @@ class GetUsersUserResult(dict):
         :param _builtins.str instance_id: You Want to Query the User the Bastion Host ID of.
         :param _builtins.str mobile: Specify the New of the User That Created a Different Mobile Phone Number from Your.
         :param _builtins.str mobile_country_code: Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN Value: CN: Mainland China (+86) HK: hong Kong, China (+852) Mo: Macau, China (+853) TW: Taiwan, China (+886) ru: Russian (+7) SG: Singapore (+65) My: malaysia (+60) ID: Indonesia (+62) De: Germany (+49) AU: Australia (+61) US: United States (+1) AE: dubai (+971) JP: Japan (+81) Introducing the Long-Range GB: United Kingdom (+44) in: India (+91) KR: South Korea (+82) Ph: philippines (+63) Ch: Switzerland (+41) Se: Sweden (+46).
-        :param _builtins.str source: Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+        :param _builtins.str source: Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
         :param _builtins.str source_user_id: Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
-        :param _builtins.str status: The status of the resource.
+        :param _builtins.str status: The status of the resource. Valid values: `Frozen`, `Normal`.
         :param _builtins.str user_id: The User ID.
         :param _builtins.str user_name: Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
         """
@@ -1077,7 +1077,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter
     def source(self) -> _builtins.str:
         """
-        Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+        Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
         """
         return pulumi.get(self, "source")
 
@@ -1093,7 +1093,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `Frozen`, `Normal`.
         """
         return pulumi.get(self, "status")
 

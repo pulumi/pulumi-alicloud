@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.153.0+.
+        /// &gt; **NOTE:** Available since v1.153.0.
         /// 
         /// ## Example Usage
         /// 
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.153.0+.
+        /// &gt; **NOTE:** Available since v1.153.0.
         /// 
         /// ## Example Usage
         /// 
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.153.0+.
+        /// &gt; **NOTE:** Available since v1.153.0.
         /// 
         /// ## Example Usage
         /// 
@@ -239,9 +239,18 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Vpc Bgp Networks. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBgpNetworksNetworkResult> Networks;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The ID of the vRouter.
+        /// </summary>
         public readonly string? RouterId;
+        /// <summary>
+        /// The state of the advertised BGP network.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.166.0+.
+        /// &gt; **NOTE:** Available since v1.166.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.166.0+.
+        /// &gt; **NOTE:** Available since v1.166.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.166.0+.
+        /// &gt; **NOTE:** Available since v1.166.0.
         /// 
         /// ## Example Usage
         /// 
@@ -218,11 +218,20 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The ID of the network interface.
+        /// </summary>
         public readonly string NetworkInterfaceId;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// A list of Ecs Network Interface Permissions. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsNetworkInterfacePermissionsPermissionResult> Permissions;
+        /// <summary>
+        /// The Status of the Network Interface Permissions.
+        /// </summary>
         public readonly string? Status;
         public readonly int TotalCount;
 

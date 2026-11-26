@@ -64,7 +64,7 @@ class GetTrailsResult:
     @_utilities.deprecated("""Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.""")
     def actiontrails(self) -> Sequence['outputs.GetTrailsActiontrailResult']:
         """
-        Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead."
+        (Deprecated since v1.95.0) Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead. Each element contains the following attributes:
         """
         return pulumi.get(self, "actiontrails")
 
@@ -157,7 +157,7 @@ def get_trails(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.95.0+
+    > **NOTE:** Available since v1.95.0.
 
     ## Example Usage
 
@@ -208,7 +208,7 @@ def get_trails_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str
     """
     This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.95.0+
+    > **NOTE:** Available since v1.95.0.
 
     ## Example Usage
 

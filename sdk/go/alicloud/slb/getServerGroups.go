@@ -13,6 +13,8 @@ import (
 
 // This data source provides the VServer groups related to a server load balancer.
 //
+// > **NOTE:** Available since v1.15.0.
+//
 // ## Example Usage
 //
 // ```go

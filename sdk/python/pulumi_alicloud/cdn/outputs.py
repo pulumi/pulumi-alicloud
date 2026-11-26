@@ -787,7 +787,7 @@ class GetRealTimeLogDeliveriesDeliveryResult(dict):
                  sls_region: _builtins.str,
                  status: _builtins.str):
         """
-        :param _builtins.str domain: Real-Time Log Service Domain.
+        :param _builtins.str domain: The domain name.
         :param _builtins.str id: The ID of the Real Time Log Delivery.
         :param _builtins.str logstore: The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
         :param _builtins.str project: The name of the Log Service project that is used for real-time log delivery.
@@ -805,7 +805,7 @@ class GetRealTimeLogDeliveriesDeliveryResult(dict):
     @pulumi.getter
     def domain(self) -> _builtins.str:
         """
-        Real-Time Log Service Domain.
+        The domain name.
         """
         return pulumi.get(self, "domain")
 

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ebs Regions of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.187.0+.
+ * > **NOTE:** Available since v1.187.0.
  *
  * ## Example Usage
  *
@@ -57,13 +57,19 @@ export interface GetRegionsResult {
      */
     readonly id: string;
     readonly outputFile?: string;
+    /**
+     * The ID of the region.
+     */
     readonly regionId?: string;
+    /**
+     * A list of Ebs Regions. Each element contains the following attributes:
+     */
     readonly regions: outputs.ebs.GetRegionsRegion[];
 }
 /**
  * This data source provides the Ebs Regions of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.187.0+.
+ * > **NOTE:** Available since v1.187.0.
  *
  * ## Example Usage
  *

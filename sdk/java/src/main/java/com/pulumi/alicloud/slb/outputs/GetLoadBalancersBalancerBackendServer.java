@@ -11,21 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancersBalancerBackendServer {
+    /**
+     * @return The description of protocol.
+     * 
+     */
     private String description;
+    /**
+     * @return The server ID.
+     * 
+     */
     private String serverId;
+    /**
+     * @return The type of servers.
+     * 
+     */
     private String type;
+    /**
+     * @return The weight of servers.
+     * 
+     */
     private Integer weight;
 
     private GetLoadBalancersBalancerBackendServer() {}
+    /**
+     * @return The description of protocol.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The server ID.
+     * 
+     */
     public String serverId() {
         return this.serverId;
     }
+    /**
+     * @return The type of servers.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return The weight of servers.
+     * 
+     */
     public Integer weight() {
         return this.weight;
     }

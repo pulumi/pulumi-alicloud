@@ -264,147 +264,147 @@ class DomainSourceArgs:
 class ErEnvConfArgsDict(TypedDict):
     preset_canary_anhui: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryAnhuiArgsDict']]]
     """
-    The configuration of a presetCanaryAnhui environment. See `staging` below.
+    The configuration of a presetCanaryAnhui environment. See `preset_canary_anhui` below.
     """
     preset_canary_beijing: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryBeijingArgsDict']]]
     """
-    The configuration of a presetCanaryBeijing environment. See `staging` below.
+    The configuration of a presetCanaryBeijing environment. See `preset_canary_beijing` below.
     """
     preset_canary_chongqing: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryChongqingArgsDict']]]
     """
-    The configuration of a presetCanaryChongqing environment. See `staging` below.
+    The configuration of a presetCanaryChongqing environment. See `preset_canary_chongqing` below.
     """
     preset_canary_fujian: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryFujianArgsDict']]]
     """
-    The configuration of a presetCanaryFujian environment. See `staging` below.
+    The configuration of a presetCanaryFujian environment. See `preset_canary_fujian` below.
     """
     preset_canary_gansu: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryGansuArgsDict']]]
     """
-    The configuration of a presetCanaryGansu environment. See `staging` below.
+    The configuration of a presetCanaryGansu environment. See `preset_canary_gansu` below.
     """
     preset_canary_guangdong: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryGuangdongArgsDict']]]
     """
-    The configuration of a presetCanaryGuangdong environment. See `staging` below.
+    The configuration of a presetCanaryGuangdong environment. See `preset_canary_guangdong` below.
     """
     preset_canary_guangxi: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryGuangxiArgsDict']]]
     """
-    The configuration of a presetCanaryGuangxi environment. See `staging` below.
+    The configuration of a presetCanaryGuangxi environment. See `preset_canary_guangxi` below.
     """
     preset_canary_guizhou: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryGuizhouArgsDict']]]
     """
-    The configuration of a presetCanaryGuizhou environment. See `staging` below.
+    The configuration of a presetCanaryGuizhou environment. See `preset_canary_guizhou` below.
     """
     preset_canary_hainan: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryHainanArgsDict']]]
     """
-    The configuration of a presetCanaryHainan environment. See `staging` below.
+    The configuration of a presetCanaryHainan environment. See `preset_canary_hainan` below.
     """
     preset_canary_hebei: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryHebeiArgsDict']]]
     """
-    The configuration of a presetCanaryHebei environment. See `staging` below.
+    The configuration of a presetCanaryHebei environment. See `preset_canary_hebei` below.
     """
     preset_canary_heilongjiang: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryHeilongjiangArgsDict']]]
     """
-    The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
+    The configuration of a presetCanaryHeilongjiang environment. See `preset_canary_heilongjiang` below.
     """
     preset_canary_henan: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryHenanArgsDict']]]
     """
-    The configuration of a presetCanaryHenan environment. See `staging` below.
+    The configuration of a presetCanaryHenan environment. See `preset_canary_henan` below.
     """
     preset_canary_hong_kong: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryHongKongArgsDict']]]
     """
-    The configuration of a presetCanaryHongKong environment. See `staging` below.
+    The configuration of a presetCanaryHongKong environment. See `preset_canary_hong_kong` below.
     """
     preset_canary_hubei: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryHubeiArgsDict']]]
     """
-    The configuration of a presetCanaryHubei environment. See `staging` below.
+    The configuration of a presetCanaryHubei environment. See `preset_canary_hubei` below.
     """
     preset_canary_hunan: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryHunanArgsDict']]]
     """
-    The configuration of a presetCanaryHunan environment. See `staging` below.
+    The configuration of a presetCanaryHunan environment. See `preset_canary_hunan` below.
     """
     preset_canary_jiangsu: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryJiangsuArgsDict']]]
     """
-    The configuration of a presetCanaryJiangsu environment. See `staging` below.
+    The configuration of a presetCanaryJiangsu environment. See `preset_canary_jiangsu` below.
     """
     preset_canary_jiangxi: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryJiangxiArgsDict']]]
     """
-    The configuration of a presetCanaryJiangxi environment. See `staging` below.
+    The configuration of a presetCanaryJiangxi environment. See `preset_canary_jiangxi` below.
     """
     preset_canary_jilin: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryJilinArgsDict']]]
     """
-    The configuration of a presetCanaryJilin environment. See `staging` below.
+    The configuration of a presetCanaryJilin environment. See `preset_canary_jilin` below.
     """
     preset_canary_liaoning: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryLiaoningArgsDict']]]
     """
-    The configuration of a presetCanaryLiaoning environment. See `staging` below.
+    The configuration of a presetCanaryLiaoning environment. See `preset_canary_liaoning` below.
     """
     preset_canary_macau: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryMacauArgsDict']]]
     """
-    The configuration of a presetCanaryMacau environment. See `staging` below.
+    The configuration of a presetCanaryMacau environment. See `preset_canary_macau` below.
     """
     preset_canary_neimenggu: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryNeimengguArgsDict']]]
     """
-    The configuration of a presetCanaryNeimenggu environment. See `staging` below.
+    The configuration of a presetCanaryNeimenggu environment. See `preset_canary_neimenggu` below.
     """
     preset_canary_ningxia: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryNingxiaArgsDict']]]
     """
-    The configuration of a presetCanaryNingxia environment. See `staging` below.
+    The configuration of a presetCanaryNingxia environment. See `preset_canary_ningxia` below.
     """
     preset_canary_overseas: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryOverseasArgsDict']]]
     """
-    The configuration of a presetCanaryOverseas environment. See `staging` below.
+    The configuration of a presetCanaryOverseas environment. See `preset_canary_overseas` below.
     """
     preset_canary_qinghai: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryQinghaiArgsDict']]]
     """
-    The configuration of a presetCanaryQinghai environment. See `staging` below.
+    The configuration of a presetCanaryQinghai environment. See `preset_canary_qinghai` below.
     """
     preset_canary_shaanxi: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryShaanxiArgsDict']]]
     """
-    The configuration of a presetCanaryShaanxi environment. See `staging` below.
+    The configuration of a presetCanaryShaanxi environment. See `preset_canary_shaanxi` below.
     """
     preset_canary_shandong: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryShandongArgsDict']]]
     """
-    The configuration of a presetCanaryShandong environment. See `staging` below.
+    The configuration of a presetCanaryShandong environment. See `preset_canary_shandong` below.
     """
     preset_canary_shanghai: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryShanghaiArgsDict']]]
     """
-    The configuration of a presetCanaryShanghai environment. See `staging` below.
+    The configuration of a presetCanaryShanghai environment. See `preset_canary_shanghai` below.
     """
     preset_canary_shanxi: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryShanxiArgsDict']]]
     """
-    The configuration of a presetCanaryShanxi environment. See `staging` below.
+    The configuration of a presetCanaryShanxi environment. See `preset_canary_shanxi` below.
     """
     preset_canary_sichuan: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanarySichuanArgsDict']]]
     """
-    The configuration of a presetCanarySichuan environment. See `staging` below.
+    The configuration of a presetCanarySichuan environment. See `preset_canary_sichuan` below.
     """
     preset_canary_taiwan: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryTaiwanArgsDict']]]
     """
-    The configuration of a presetCanaryTaiwan environment. See `staging` below.
+    The configuration of a presetCanaryTaiwan environment. See `preset_canary_taiwan` below.
     """
     preset_canary_tianjin: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryTianjinArgsDict']]]
     """
-    The configuration of a presetCanaryTianjin environment. See `staging` below.
+    The configuration of a presetCanaryTianjin environment. See `preset_canary_tianjin` below.
     """
     preset_canary_xinjiang: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryXinjiangArgsDict']]]
     """
-    The configuration of a presetCanaryXinjiang environment. See `staging` below.
+    The configuration of a presetCanaryXinjiang environment. See `preset_canary_xinjiang` below.
     """
     preset_canary_xizang: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryXizangArgsDict']]]
     """
-    The configuration of a presetCanaryXizang environment. See `staging` below.
+    The configuration of a presetCanaryXizang environment. See `preset_canary_xizang` below.
     """
     preset_canary_yunnan: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryYunnanArgsDict']]]
     """
-    The configuration of a presetCanaryYunnan environment. See `staging` below.
+    The configuration of a presetCanaryYunnan environment. See `preset_canary_yunnan` below.
     """
     preset_canary_zhejiang: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryZhejiangArgsDict']]]
     """
-    The configuration of a presetCanaryZhejiang environment. See `staging` below.
+    The configuration of a presetCanaryZhejiang environment. See `preset_canary_zhejiang` below.
     """
     production: NotRequired[pulumi.Input[Optional['ErEnvConfProductionArgsDict']]]
     """
-    The configuration of a production environment. See `staging` below.
+    The configuration of a production environment. See `production` below.
     """
     staging: NotRequired[pulumi.Input[Optional['ErEnvConfStagingArgsDict']]]
     """
@@ -452,42 +452,42 @@ class ErEnvConfArgs:
                  production: pulumi.Input[Optional['ErEnvConfProductionArgs']] = None,
                  staging: pulumi.Input[Optional['ErEnvConfStagingArgs']] = None):
         """
-        :param pulumi.Input['ErEnvConfPresetCanaryAnhuiArgs'] preset_canary_anhui: The configuration of a presetCanaryAnhui environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryBeijingArgs'] preset_canary_beijing: The configuration of a presetCanaryBeijing environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryChongqingArgs'] preset_canary_chongqing: The configuration of a presetCanaryChongqing environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryFujianArgs'] preset_canary_fujian: The configuration of a presetCanaryFujian environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryGansuArgs'] preset_canary_gansu: The configuration of a presetCanaryGansu environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryGuangdongArgs'] preset_canary_guangdong: The configuration of a presetCanaryGuangdong environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryGuangxiArgs'] preset_canary_guangxi: The configuration of a presetCanaryGuangxi environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryGuizhouArgs'] preset_canary_guizhou: The configuration of a presetCanaryGuizhou environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryHainanArgs'] preset_canary_hainan: The configuration of a presetCanaryHainan environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryHebeiArgs'] preset_canary_hebei: The configuration of a presetCanaryHebei environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryHeilongjiangArgs'] preset_canary_heilongjiang: The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryHenanArgs'] preset_canary_henan: The configuration of a presetCanaryHenan environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryHongKongArgs'] preset_canary_hong_kong: The configuration of a presetCanaryHongKong environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryHubeiArgs'] preset_canary_hubei: The configuration of a presetCanaryHubei environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryHunanArgs'] preset_canary_hunan: The configuration of a presetCanaryHunan environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryJiangsuArgs'] preset_canary_jiangsu: The configuration of a presetCanaryJiangsu environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryJiangxiArgs'] preset_canary_jiangxi: The configuration of a presetCanaryJiangxi environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryJilinArgs'] preset_canary_jilin: The configuration of a presetCanaryJilin environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryLiaoningArgs'] preset_canary_liaoning: The configuration of a presetCanaryLiaoning environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryMacauArgs'] preset_canary_macau: The configuration of a presetCanaryMacau environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryNeimengguArgs'] preset_canary_neimenggu: The configuration of a presetCanaryNeimenggu environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryNingxiaArgs'] preset_canary_ningxia: The configuration of a presetCanaryNingxia environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryOverseasArgs'] preset_canary_overseas: The configuration of a presetCanaryOverseas environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryQinghaiArgs'] preset_canary_qinghai: The configuration of a presetCanaryQinghai environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryShaanxiArgs'] preset_canary_shaanxi: The configuration of a presetCanaryShaanxi environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryShandongArgs'] preset_canary_shandong: The configuration of a presetCanaryShandong environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryShanghaiArgs'] preset_canary_shanghai: The configuration of a presetCanaryShanghai environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryShanxiArgs'] preset_canary_shanxi: The configuration of a presetCanaryShanxi environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanarySichuanArgs'] preset_canary_sichuan: The configuration of a presetCanarySichuan environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryTaiwanArgs'] preset_canary_taiwan: The configuration of a presetCanaryTaiwan environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryTianjinArgs'] preset_canary_tianjin: The configuration of a presetCanaryTianjin environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryXinjiangArgs'] preset_canary_xinjiang: The configuration of a presetCanaryXinjiang environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryXizangArgs'] preset_canary_xizang: The configuration of a presetCanaryXizang environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryYunnanArgs'] preset_canary_yunnan: The configuration of a presetCanaryYunnan environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfPresetCanaryZhejiangArgs'] preset_canary_zhejiang: The configuration of a presetCanaryZhejiang environment. See `staging` below.
-        :param pulumi.Input['ErEnvConfProductionArgs'] production: The configuration of a production environment. See `staging` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryAnhuiArgs'] preset_canary_anhui: The configuration of a presetCanaryAnhui environment. See `preset_canary_anhui` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryBeijingArgs'] preset_canary_beijing: The configuration of a presetCanaryBeijing environment. See `preset_canary_beijing` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryChongqingArgs'] preset_canary_chongqing: The configuration of a presetCanaryChongqing environment. See `preset_canary_chongqing` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryFujianArgs'] preset_canary_fujian: The configuration of a presetCanaryFujian environment. See `preset_canary_fujian` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryGansuArgs'] preset_canary_gansu: The configuration of a presetCanaryGansu environment. See `preset_canary_gansu` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryGuangdongArgs'] preset_canary_guangdong: The configuration of a presetCanaryGuangdong environment. See `preset_canary_guangdong` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryGuangxiArgs'] preset_canary_guangxi: The configuration of a presetCanaryGuangxi environment. See `preset_canary_guangxi` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryGuizhouArgs'] preset_canary_guizhou: The configuration of a presetCanaryGuizhou environment. See `preset_canary_guizhou` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryHainanArgs'] preset_canary_hainan: The configuration of a presetCanaryHainan environment. See `preset_canary_hainan` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryHebeiArgs'] preset_canary_hebei: The configuration of a presetCanaryHebei environment. See `preset_canary_hebei` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryHeilongjiangArgs'] preset_canary_heilongjiang: The configuration of a presetCanaryHeilongjiang environment. See `preset_canary_heilongjiang` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryHenanArgs'] preset_canary_henan: The configuration of a presetCanaryHenan environment. See `preset_canary_henan` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryHongKongArgs'] preset_canary_hong_kong: The configuration of a presetCanaryHongKong environment. See `preset_canary_hong_kong` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryHubeiArgs'] preset_canary_hubei: The configuration of a presetCanaryHubei environment. See `preset_canary_hubei` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryHunanArgs'] preset_canary_hunan: The configuration of a presetCanaryHunan environment. See `preset_canary_hunan` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryJiangsuArgs'] preset_canary_jiangsu: The configuration of a presetCanaryJiangsu environment. See `preset_canary_jiangsu` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryJiangxiArgs'] preset_canary_jiangxi: The configuration of a presetCanaryJiangxi environment. See `preset_canary_jiangxi` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryJilinArgs'] preset_canary_jilin: The configuration of a presetCanaryJilin environment. See `preset_canary_jilin` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryLiaoningArgs'] preset_canary_liaoning: The configuration of a presetCanaryLiaoning environment. See `preset_canary_liaoning` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryMacauArgs'] preset_canary_macau: The configuration of a presetCanaryMacau environment. See `preset_canary_macau` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryNeimengguArgs'] preset_canary_neimenggu: The configuration of a presetCanaryNeimenggu environment. See `preset_canary_neimenggu` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryNingxiaArgs'] preset_canary_ningxia: The configuration of a presetCanaryNingxia environment. See `preset_canary_ningxia` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryOverseasArgs'] preset_canary_overseas: The configuration of a presetCanaryOverseas environment. See `preset_canary_overseas` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryQinghaiArgs'] preset_canary_qinghai: The configuration of a presetCanaryQinghai environment. See `preset_canary_qinghai` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryShaanxiArgs'] preset_canary_shaanxi: The configuration of a presetCanaryShaanxi environment. See `preset_canary_shaanxi` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryShandongArgs'] preset_canary_shandong: The configuration of a presetCanaryShandong environment. See `preset_canary_shandong` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryShanghaiArgs'] preset_canary_shanghai: The configuration of a presetCanaryShanghai environment. See `preset_canary_shanghai` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryShanxiArgs'] preset_canary_shanxi: The configuration of a presetCanaryShanxi environment. See `preset_canary_shanxi` below.
+        :param pulumi.Input['ErEnvConfPresetCanarySichuanArgs'] preset_canary_sichuan: The configuration of a presetCanarySichuan environment. See `preset_canary_sichuan` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryTaiwanArgs'] preset_canary_taiwan: The configuration of a presetCanaryTaiwan environment. See `preset_canary_taiwan` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryTianjinArgs'] preset_canary_tianjin: The configuration of a presetCanaryTianjin environment. See `preset_canary_tianjin` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryXinjiangArgs'] preset_canary_xinjiang: The configuration of a presetCanaryXinjiang environment. See `preset_canary_xinjiang` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryXizangArgs'] preset_canary_xizang: The configuration of a presetCanaryXizang environment. See `preset_canary_xizang` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryYunnanArgs'] preset_canary_yunnan: The configuration of a presetCanaryYunnan environment. See `preset_canary_yunnan` below.
+        :param pulumi.Input['ErEnvConfPresetCanaryZhejiangArgs'] preset_canary_zhejiang: The configuration of a presetCanaryZhejiang environment. See `preset_canary_zhejiang` below.
+        :param pulumi.Input['ErEnvConfProductionArgs'] production: The configuration of a production environment. See `production` below.
         :param pulumi.Input['ErEnvConfStagingArgs'] staging: The configuration of a staging environment. See `staging` below.
         """
         if preset_canary_anhui is not None:
@@ -569,7 +569,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryAnhui")
     def preset_canary_anhui(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryAnhuiArgs']]:
         """
-        The configuration of a presetCanaryAnhui environment. See `staging` below.
+        The configuration of a presetCanaryAnhui environment. See `preset_canary_anhui` below.
         """
         return pulumi.get(self, "preset_canary_anhui")
 
@@ -581,7 +581,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryBeijing")
     def preset_canary_beijing(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryBeijingArgs']]:
         """
-        The configuration of a presetCanaryBeijing environment. See `staging` below.
+        The configuration of a presetCanaryBeijing environment. See `preset_canary_beijing` below.
         """
         return pulumi.get(self, "preset_canary_beijing")
 
@@ -593,7 +593,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryChongqing")
     def preset_canary_chongqing(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryChongqingArgs']]:
         """
-        The configuration of a presetCanaryChongqing environment. See `staging` below.
+        The configuration of a presetCanaryChongqing environment. See `preset_canary_chongqing` below.
         """
         return pulumi.get(self, "preset_canary_chongqing")
 
@@ -605,7 +605,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryFujian")
     def preset_canary_fujian(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryFujianArgs']]:
         """
-        The configuration of a presetCanaryFujian environment. See `staging` below.
+        The configuration of a presetCanaryFujian environment. See `preset_canary_fujian` below.
         """
         return pulumi.get(self, "preset_canary_fujian")
 
@@ -617,7 +617,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryGansu")
     def preset_canary_gansu(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryGansuArgs']]:
         """
-        The configuration of a presetCanaryGansu environment. See `staging` below.
+        The configuration of a presetCanaryGansu environment. See `preset_canary_gansu` below.
         """
         return pulumi.get(self, "preset_canary_gansu")
 
@@ -629,7 +629,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryGuangdong")
     def preset_canary_guangdong(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryGuangdongArgs']]:
         """
-        The configuration of a presetCanaryGuangdong environment. See `staging` below.
+        The configuration of a presetCanaryGuangdong environment. See `preset_canary_guangdong` below.
         """
         return pulumi.get(self, "preset_canary_guangdong")
 
@@ -641,7 +641,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryGuangxi")
     def preset_canary_guangxi(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryGuangxiArgs']]:
         """
-        The configuration of a presetCanaryGuangxi environment. See `staging` below.
+        The configuration of a presetCanaryGuangxi environment. See `preset_canary_guangxi` below.
         """
         return pulumi.get(self, "preset_canary_guangxi")
 
@@ -653,7 +653,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryGuizhou")
     def preset_canary_guizhou(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryGuizhouArgs']]:
         """
-        The configuration of a presetCanaryGuizhou environment. See `staging` below.
+        The configuration of a presetCanaryGuizhou environment. See `preset_canary_guizhou` below.
         """
         return pulumi.get(self, "preset_canary_guizhou")
 
@@ -665,7 +665,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryHainan")
     def preset_canary_hainan(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryHainanArgs']]:
         """
-        The configuration of a presetCanaryHainan environment. See `staging` below.
+        The configuration of a presetCanaryHainan environment. See `preset_canary_hainan` below.
         """
         return pulumi.get(self, "preset_canary_hainan")
 
@@ -677,7 +677,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryHebei")
     def preset_canary_hebei(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryHebeiArgs']]:
         """
-        The configuration of a presetCanaryHebei environment. See `staging` below.
+        The configuration of a presetCanaryHebei environment. See `preset_canary_hebei` below.
         """
         return pulumi.get(self, "preset_canary_hebei")
 
@@ -689,7 +689,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryHeilongjiang")
     def preset_canary_heilongjiang(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryHeilongjiangArgs']]:
         """
-        The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
+        The configuration of a presetCanaryHeilongjiang environment. See `preset_canary_heilongjiang` below.
         """
         return pulumi.get(self, "preset_canary_heilongjiang")
 
@@ -701,7 +701,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryHenan")
     def preset_canary_henan(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryHenanArgs']]:
         """
-        The configuration of a presetCanaryHenan environment. See `staging` below.
+        The configuration of a presetCanaryHenan environment. See `preset_canary_henan` below.
         """
         return pulumi.get(self, "preset_canary_henan")
 
@@ -713,7 +713,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryHongKong")
     def preset_canary_hong_kong(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryHongKongArgs']]:
         """
-        The configuration of a presetCanaryHongKong environment. See `staging` below.
+        The configuration of a presetCanaryHongKong environment. See `preset_canary_hong_kong` below.
         """
         return pulumi.get(self, "preset_canary_hong_kong")
 
@@ -725,7 +725,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryHubei")
     def preset_canary_hubei(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryHubeiArgs']]:
         """
-        The configuration of a presetCanaryHubei environment. See `staging` below.
+        The configuration of a presetCanaryHubei environment. See `preset_canary_hubei` below.
         """
         return pulumi.get(self, "preset_canary_hubei")
 
@@ -737,7 +737,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryHunan")
     def preset_canary_hunan(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryHunanArgs']]:
         """
-        The configuration of a presetCanaryHunan environment. See `staging` below.
+        The configuration of a presetCanaryHunan environment. See `preset_canary_hunan` below.
         """
         return pulumi.get(self, "preset_canary_hunan")
 
@@ -749,7 +749,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryJiangsu")
     def preset_canary_jiangsu(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryJiangsuArgs']]:
         """
-        The configuration of a presetCanaryJiangsu environment. See `staging` below.
+        The configuration of a presetCanaryJiangsu environment. See `preset_canary_jiangsu` below.
         """
         return pulumi.get(self, "preset_canary_jiangsu")
 
@@ -761,7 +761,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryJiangxi")
     def preset_canary_jiangxi(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryJiangxiArgs']]:
         """
-        The configuration of a presetCanaryJiangxi environment. See `staging` below.
+        The configuration of a presetCanaryJiangxi environment. See `preset_canary_jiangxi` below.
         """
         return pulumi.get(self, "preset_canary_jiangxi")
 
@@ -773,7 +773,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryJilin")
     def preset_canary_jilin(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryJilinArgs']]:
         """
-        The configuration of a presetCanaryJilin environment. See `staging` below.
+        The configuration of a presetCanaryJilin environment. See `preset_canary_jilin` below.
         """
         return pulumi.get(self, "preset_canary_jilin")
 
@@ -785,7 +785,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryLiaoning")
     def preset_canary_liaoning(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryLiaoningArgs']]:
         """
-        The configuration of a presetCanaryLiaoning environment. See `staging` below.
+        The configuration of a presetCanaryLiaoning environment. See `preset_canary_liaoning` below.
         """
         return pulumi.get(self, "preset_canary_liaoning")
 
@@ -797,7 +797,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryMacau")
     def preset_canary_macau(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryMacauArgs']]:
         """
-        The configuration of a presetCanaryMacau environment. See `staging` below.
+        The configuration of a presetCanaryMacau environment. See `preset_canary_macau` below.
         """
         return pulumi.get(self, "preset_canary_macau")
 
@@ -809,7 +809,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryNeimenggu")
     def preset_canary_neimenggu(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryNeimengguArgs']]:
         """
-        The configuration of a presetCanaryNeimenggu environment. See `staging` below.
+        The configuration of a presetCanaryNeimenggu environment. See `preset_canary_neimenggu` below.
         """
         return pulumi.get(self, "preset_canary_neimenggu")
 
@@ -821,7 +821,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryNingxia")
     def preset_canary_ningxia(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryNingxiaArgs']]:
         """
-        The configuration of a presetCanaryNingxia environment. See `staging` below.
+        The configuration of a presetCanaryNingxia environment. See `preset_canary_ningxia` below.
         """
         return pulumi.get(self, "preset_canary_ningxia")
 
@@ -833,7 +833,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryOverseas")
     def preset_canary_overseas(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryOverseasArgs']]:
         """
-        The configuration of a presetCanaryOverseas environment. See `staging` below.
+        The configuration of a presetCanaryOverseas environment. See `preset_canary_overseas` below.
         """
         return pulumi.get(self, "preset_canary_overseas")
 
@@ -845,7 +845,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryQinghai")
     def preset_canary_qinghai(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryQinghaiArgs']]:
         """
-        The configuration of a presetCanaryQinghai environment. See `staging` below.
+        The configuration of a presetCanaryQinghai environment. See `preset_canary_qinghai` below.
         """
         return pulumi.get(self, "preset_canary_qinghai")
 
@@ -857,7 +857,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryShaanxi")
     def preset_canary_shaanxi(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryShaanxiArgs']]:
         """
-        The configuration of a presetCanaryShaanxi environment. See `staging` below.
+        The configuration of a presetCanaryShaanxi environment. See `preset_canary_shaanxi` below.
         """
         return pulumi.get(self, "preset_canary_shaanxi")
 
@@ -869,7 +869,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryShandong")
     def preset_canary_shandong(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryShandongArgs']]:
         """
-        The configuration of a presetCanaryShandong environment. See `staging` below.
+        The configuration of a presetCanaryShandong environment. See `preset_canary_shandong` below.
         """
         return pulumi.get(self, "preset_canary_shandong")
 
@@ -881,7 +881,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryShanghai")
     def preset_canary_shanghai(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryShanghaiArgs']]:
         """
-        The configuration of a presetCanaryShanghai environment. See `staging` below.
+        The configuration of a presetCanaryShanghai environment. See `preset_canary_shanghai` below.
         """
         return pulumi.get(self, "preset_canary_shanghai")
 
@@ -893,7 +893,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryShanxi")
     def preset_canary_shanxi(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryShanxiArgs']]:
         """
-        The configuration of a presetCanaryShanxi environment. See `staging` below.
+        The configuration of a presetCanaryShanxi environment. See `preset_canary_shanxi` below.
         """
         return pulumi.get(self, "preset_canary_shanxi")
 
@@ -905,7 +905,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanarySichuan")
     def preset_canary_sichuan(self) -> pulumi.Input[Optional['ErEnvConfPresetCanarySichuanArgs']]:
         """
-        The configuration of a presetCanarySichuan environment. See `staging` below.
+        The configuration of a presetCanarySichuan environment. See `preset_canary_sichuan` below.
         """
         return pulumi.get(self, "preset_canary_sichuan")
 
@@ -917,7 +917,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryTaiwan")
     def preset_canary_taiwan(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryTaiwanArgs']]:
         """
-        The configuration of a presetCanaryTaiwan environment. See `staging` below.
+        The configuration of a presetCanaryTaiwan environment. See `preset_canary_taiwan` below.
         """
         return pulumi.get(self, "preset_canary_taiwan")
 
@@ -929,7 +929,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryTianjin")
     def preset_canary_tianjin(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryTianjinArgs']]:
         """
-        The configuration of a presetCanaryTianjin environment. See `staging` below.
+        The configuration of a presetCanaryTianjin environment. See `preset_canary_tianjin` below.
         """
         return pulumi.get(self, "preset_canary_tianjin")
 
@@ -941,7 +941,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryXinjiang")
     def preset_canary_xinjiang(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryXinjiangArgs']]:
         """
-        The configuration of a presetCanaryXinjiang environment. See `staging` below.
+        The configuration of a presetCanaryXinjiang environment. See `preset_canary_xinjiang` below.
         """
         return pulumi.get(self, "preset_canary_xinjiang")
 
@@ -953,7 +953,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryXizang")
     def preset_canary_xizang(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryXizangArgs']]:
         """
-        The configuration of a presetCanaryXizang environment. See `staging` below.
+        The configuration of a presetCanaryXizang environment. See `preset_canary_xizang` below.
         """
         return pulumi.get(self, "preset_canary_xizang")
 
@@ -965,7 +965,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryYunnan")
     def preset_canary_yunnan(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryYunnanArgs']]:
         """
-        The configuration of a presetCanaryYunnan environment. See `staging` below.
+        The configuration of a presetCanaryYunnan environment. See `preset_canary_yunnan` below.
         """
         return pulumi.get(self, "preset_canary_yunnan")
 
@@ -977,7 +977,7 @@ class ErEnvConfArgs:
     @pulumi.getter(name="presetCanaryZhejiang")
     def preset_canary_zhejiang(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryZhejiangArgs']]:
         """
-        The configuration of a presetCanaryZhejiang environment. See `staging` below.
+        The configuration of a presetCanaryZhejiang environment. See `preset_canary_zhejiang` below.
         """
         return pulumi.get(self, "preset_canary_zhejiang")
 
@@ -989,7 +989,7 @@ class ErEnvConfArgs:
     @pulumi.getter
     def production(self) -> pulumi.Input[Optional['ErEnvConfProductionArgs']]:
         """
-        The configuration of a production environment. See `staging` below.
+        The configuration of a production environment. See `production` below.
         """
         return pulumi.get(self, "production")
 

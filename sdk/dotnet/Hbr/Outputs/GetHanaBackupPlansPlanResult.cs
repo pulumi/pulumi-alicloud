@@ -33,6 +33,9 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// The ID of the resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The total number of pages.
+        /// </summary>
         public readonly string PageTotal;
         /// <summary>
         /// The ID of the backup plan.
@@ -51,7 +54,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The ID of the backup vault.
+        /// The id of the vault.
         /// </summary>
         public readonly string VaultId;
 

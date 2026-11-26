@@ -200,7 +200,7 @@ func (o DedicatedPropreHostEcsClassListArrayOutput) Index(i pulumi.IntInput) Ded
 type GetDedicatedHostAccountsAccount struct {
 	// The name of the Dedicated host account.
 	AccountName string `pulumi:"accountName"`
-	// The ID of the Dedicated host.
+	// The ID of the host.
 	DedicatedHostId string `pulumi:"dedicatedHostId"`
 	// The ID of the Dedicated Host Account. The value formats as `<dedicated_host_id>:<account_name>`.
 	Id string `pulumi:"id"`
@@ -220,7 +220,7 @@ type GetDedicatedHostAccountsAccountInput interface {
 type GetDedicatedHostAccountsAccountArgs struct {
 	// The name of the Dedicated host account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
-	// The ID of the Dedicated host.
+	// The ID of the host.
 	DedicatedHostId pulumi.StringInput `pulumi:"dedicatedHostId"`
 	// The ID of the Dedicated Host Account. The value formats as `<dedicated_host_id>:<account_name>`.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -282,7 +282,7 @@ func (o GetDedicatedHostAccountsAccountOutput) AccountName() pulumi.StringOutput
 	return o.ApplyT(func(v GetDedicatedHostAccountsAccount) string { return v.AccountName }).(pulumi.StringOutput)
 }
 
-// The ID of the Dedicated host.
+// The ID of the host.
 func (o GetDedicatedHostAccountsAccountOutput) DedicatedHostId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostAccountsAccount) string { return v.DedicatedHostId }).(pulumi.StringOutput)
 }
@@ -343,7 +343,7 @@ type GetDedicatedHostGroupsGroup struct {
 	DiskUsedAmount float64 `pulumi:"diskUsedAmount"`
 	// The DiskUtility of the Dedicated Host Group.
 	DiskUtility float64 `pulumi:"diskUtility"`
-	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+	// Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
 	Engine string `pulumi:"engine"`
 	// The Total Host Number  of the Dedicated Host Group.
 	HostNumber int `pulumi:"hostNumber"`
@@ -367,7 +367,7 @@ type GetDedicatedHostGroupsGroup struct {
 	Text string `pulumi:"text"`
 	// The virtual private cloud (VPC) ID of the dedicated cluster.
 	VpcId string `pulumi:"vpcId"`
-	// The ZoneIDList of the Dedicated Host Group.
+	// The list of zone IDs of the Dedicated Host Group.
 	ZoneIdLists []GetDedicatedHostGroupsGroupZoneIdList `pulumi:"zoneIdLists"`
 }
 
@@ -413,7 +413,7 @@ type GetDedicatedHostGroupsGroupArgs struct {
 	DiskUsedAmount pulumi.Float64Input `pulumi:"diskUsedAmount"`
 	// The DiskUtility of the Dedicated Host Group.
 	DiskUtility pulumi.Float64Input `pulumi:"diskUtility"`
-	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+	// Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
 	Engine pulumi.StringInput `pulumi:"engine"`
 	// The Total Host Number  of the Dedicated Host Group.
 	HostNumber pulumi.IntInput `pulumi:"hostNumber"`
@@ -437,7 +437,7 @@ type GetDedicatedHostGroupsGroupArgs struct {
 	Text pulumi.StringInput `pulumi:"text"`
 	// The virtual private cloud (VPC) ID of the dedicated cluster.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// The ZoneIDList of the Dedicated Host Group.
+	// The list of zone IDs of the Dedicated Host Group.
 	ZoneIdLists GetDedicatedHostGroupsGroupZoneIdListArrayInput `pulumi:"zoneIdLists"`
 }
 
@@ -569,7 +569,7 @@ func (o GetDedicatedHostGroupsGroupOutput) DiskUtility() pulumi.Float64Output {
 	return o.ApplyT(func(v GetDedicatedHostGroupsGroup) float64 { return v.DiskUtility }).(pulumi.Float64Output)
 }
 
-// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+// Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
 func (o GetDedicatedHostGroupsGroupOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostGroupsGroup) string { return v.Engine }).(pulumi.StringOutput)
 }
@@ -629,7 +629,7 @@ func (o GetDedicatedHostGroupsGroupOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostGroupsGroup) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The ZoneIDList of the Dedicated Host Group.
+// The list of zone IDs of the Dedicated Host Group.
 func (o GetDedicatedHostGroupsGroupOutput) ZoneIdLists() GetDedicatedHostGroupsGroupZoneIdListArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostGroupsGroup) []GetDedicatedHostGroupsGroupZoneIdList { return v.ZoneIdLists }).(GetDedicatedHostGroupsGroupZoneIdListArrayOutput)
 }
@@ -655,6 +655,7 @@ func (o GetDedicatedHostGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetDedi
 }
 
 type GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType struct {
+	// Internal placeholder attribute for the Dedicated Host Count Group by Host Type.
 	PlaceHolder string `pulumi:"placeHolder"`
 }
 
@@ -670,6 +671,7 @@ type GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeInput interface
 }
 
 type GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArgs struct {
+	// Internal placeholder attribute for the Dedicated Host Count Group by Host Type.
 	PlaceHolder pulumi.StringInput `pulumi:"placeHolder"`
 }
 
@@ -724,6 +726,7 @@ func (o GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeOutput) ToGe
 	return o
 }
 
+// Internal placeholder attribute for the Dedicated Host Count Group by Host Type.
 func (o GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeOutput) PlaceHolder() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType) string { return v.PlaceHolder }).(pulumi.StringOutput)
 }
@@ -749,7 +752,7 @@ func (o GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayOutput)
 }
 
 type GetDedicatedHostGroupsGroupZoneIdList struct {
-	// The ZoneIDList of the Dedicated Host Group.
+	// The list of zone IDs of the Dedicated Host Group.
 	ZoneIdLists []string `pulumi:"zoneIdLists"`
 }
 
@@ -765,7 +768,7 @@ type GetDedicatedHostGroupsGroupZoneIdListInput interface {
 }
 
 type GetDedicatedHostGroupsGroupZoneIdListArgs struct {
-	// The ZoneIDList of the Dedicated Host Group.
+	// The list of zone IDs of the Dedicated Host Group.
 	ZoneIdLists pulumi.StringArrayInput `pulumi:"zoneIdLists"`
 }
 
@@ -820,7 +823,7 @@ func (o GetDedicatedHostGroupsGroupZoneIdListOutput) ToGetDedicatedHostGroupsGro
 	return o
 }
 
-// The ZoneIDList of the Dedicated Host Group.
+// The list of zone IDs of the Dedicated Host Group.
 func (o GetDedicatedHostGroupsGroupZoneIdListOutput) ZoneIdLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostGroupsGroupZoneIdList) []string { return v.ZoneIdLists }).(pulumi.StringArrayOutput)
 }
@@ -846,7 +849,7 @@ func (o GetDedicatedHostGroupsGroupZoneIdListArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetDedicatedHostsHost struct {
-	// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+	// Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
 	AllocationStatus string `pulumi:"allocationStatus"`
 	// The ID of the bastion host with which the host is associated.
 	BastionInstanceId string `pulumi:"bastionInstanceId"`
@@ -856,7 +859,7 @@ type GetDedicatedHostsHost struct {
 	CpuUsed string `pulumi:"cpuUsed"`
 	// The time when the host was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	CreateTime string `pulumi:"createTime"`
-	// The ID of the dedicated cluster in which the host is created.
+	// The ID of the dedicated cluster.
 	DedicatedHostGroupId string `pulumi:"dedicatedHostGroupId"`
 	// The ID of the host.
 	DedicatedHostId string `pulumi:"dedicatedHostId"`
@@ -880,7 +883,7 @@ type GetDedicatedHostsHost struct {
 	HostName string `pulumi:"hostName"`
 	// The total storage capacity of the host. Unit: `GB`.
 	HostStorage string `pulumi:"hostStorage"`
-	// The storage type of the host.
+	// The storage type of the host. Valid values: `dhgLocalSsd` or `dhgCloudSsd`. `dhgLocalSsd`: specifies that the host uses local SSDs. `dhgCloudSsd`: specifies that the host uses enhanced SSDs (ESSDs).
 	HostType string `pulumi:"hostType"`
 	// The ID of the Dedicated Host. The value formats as `<dedicated_host_group_id>:<dedicated_host_id>`.
 	Id string `pulumi:"id"`
@@ -894,17 +897,18 @@ type GetDedicatedHostsHost struct {
 	MemoryUsed string `pulumi:"memoryUsed"`
 	// Indicates whether you have the OS permissions on the host. Valid values: `0`: You do not have the OS permissions on the host. `1`: You have the OS permissions on the host.
 	OpenPermission string `pulumi:"openPermission"`
-	// The state of the host.
+	// The state of the host. Valid values:
+	// * `0:` The host is being created.
 	Status string `pulumi:"status"`
 	// The storage usage of the host. Unit: `GB`.
 	StorageUsed string `pulumi:"storageUsed"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) to which the host is connected.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of the vSwitch.
 	VswitchId string `pulumi:"vswitchId"`
-	// The zone ID of the host.
+	// The ID of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -920,7 +924,7 @@ type GetDedicatedHostsHostInput interface {
 }
 
 type GetDedicatedHostsHostArgs struct {
-	// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+	// Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
 	AllocationStatus pulumi.StringInput `pulumi:"allocationStatus"`
 	// The ID of the bastion host with which the host is associated.
 	BastionInstanceId pulumi.StringInput `pulumi:"bastionInstanceId"`
@@ -930,7 +934,7 @@ type GetDedicatedHostsHostArgs struct {
 	CpuUsed pulumi.StringInput `pulumi:"cpuUsed"`
 	// The time when the host was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The ID of the dedicated cluster in which the host is created.
+	// The ID of the dedicated cluster.
 	DedicatedHostGroupId pulumi.StringInput `pulumi:"dedicatedHostGroupId"`
 	// The ID of the host.
 	DedicatedHostId pulumi.StringInput `pulumi:"dedicatedHostId"`
@@ -954,7 +958,7 @@ type GetDedicatedHostsHostArgs struct {
 	HostName pulumi.StringInput `pulumi:"hostName"`
 	// The total storage capacity of the host. Unit: `GB`.
 	HostStorage pulumi.StringInput `pulumi:"hostStorage"`
-	// The storage type of the host.
+	// The storage type of the host. Valid values: `dhgLocalSsd` or `dhgCloudSsd`. `dhgLocalSsd`: specifies that the host uses local SSDs. `dhgCloudSsd`: specifies that the host uses enhanced SSDs (ESSDs).
 	HostType pulumi.StringInput `pulumi:"hostType"`
 	// The ID of the Dedicated Host. The value formats as `<dedicated_host_group_id>:<dedicated_host_id>`.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -968,17 +972,18 @@ type GetDedicatedHostsHostArgs struct {
 	MemoryUsed pulumi.StringInput `pulumi:"memoryUsed"`
 	// Indicates whether you have the OS permissions on the host. Valid values: `0`: You do not have the OS permissions on the host. `1`: You have the OS permissions on the host.
 	OpenPermission pulumi.StringInput `pulumi:"openPermission"`
-	// The state of the host.
+	// The state of the host. Valid values:
+	// * `0:` The host is being created.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The storage usage of the host. Unit: `GB`.
 	StorageUsed pulumi.StringInput `pulumi:"storageUsed"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) to which the host is connected.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The ID of the vSwitch.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
-	// The zone ID of the host.
+	// The ID of the zone.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -1033,7 +1038,7 @@ func (o GetDedicatedHostsHostOutput) ToGetDedicatedHostsHostOutputWithContext(ct
 	return o
 }
 
-// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+// Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
 func (o GetDedicatedHostsHostOutput) AllocationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.AllocationStatus }).(pulumi.StringOutput)
 }
@@ -1058,7 +1063,7 @@ func (o GetDedicatedHostsHostOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The ID of the dedicated cluster in which the host is created.
+// The ID of the dedicated cluster.
 func (o GetDedicatedHostsHostOutput) DedicatedHostGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.DedicatedHostGroupId }).(pulumi.StringOutput)
 }
@@ -1118,7 +1123,7 @@ func (o GetDedicatedHostsHostOutput) HostStorage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.HostStorage }).(pulumi.StringOutput)
 }
 
-// The storage type of the host.
+// The storage type of the host. Valid values: `dhgLocalSsd` or `dhgCloudSsd`. `dhgLocalSsd`: specifies that the host uses local SSDs. `dhgCloudSsd`: specifies that the host uses enhanced SSDs (ESSDs).
 func (o GetDedicatedHostsHostOutput) HostType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.HostType }).(pulumi.StringOutput)
 }
@@ -1153,7 +1158,8 @@ func (o GetDedicatedHostsHostOutput) OpenPermission() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.OpenPermission }).(pulumi.StringOutput)
 }
 
-// The state of the host.
+// The state of the host. Valid values:
+// * `0:` The host is being created.
 func (o GetDedicatedHostsHostOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1163,7 +1169,7 @@ func (o GetDedicatedHostsHostOutput) StorageUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.StorageUsed }).(pulumi.StringOutput)
 }
 
-// The tag of the resource.
+// A mapping of tags to assign to the resource.
 func (o GetDedicatedHostsHostOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -1178,7 +1184,7 @@ func (o GetDedicatedHostsHostOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The zone ID of the host.
+// The ID of the zone.
 func (o GetDedicatedHostsHostOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.ZoneId }).(pulumi.StringOutput)
 }

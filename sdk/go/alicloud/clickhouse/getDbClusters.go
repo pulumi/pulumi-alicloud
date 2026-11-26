@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Click House DBCluster of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -84,14 +84,17 @@ type GetDbClustersArgs struct {
 
 // A collection of values returned by getDbClusters.
 type GetDbClustersResult struct {
-	Clusters             []GetDbClustersCluster `pulumi:"clusters"`
-	DbClusterDescription *string                `pulumi:"dbClusterDescription"`
-	EnableDetails        *bool                  `pulumi:"enableDetails"`
+	// A list of Click House DBClusters. Each element contains the following attributes:
+	Clusters []GetDbClustersCluster `pulumi:"clusters"`
+	// The DBCluster description.
+	DbClusterDescription *string `pulumi:"dbClusterDescription"`
+	EnableDetails        *bool   `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string   `pulumi:"id"`
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+	Status *string `pulumi:"status"`
 }
 
 func GetDbClustersOutput(ctx *pulumi.Context, args GetDbClustersOutputArgs, opts ...pulumi.InvokeOption) GetDbClustersResultOutput {
@@ -132,10 +135,12 @@ func (o GetDbClustersResultOutput) ToGetDbClustersResultOutputWithContext(ctx co
 	return o
 }
 
+// A list of Click House DBClusters. Each element contains the following attributes:
 func (o GetDbClustersResultOutput) Clusters() GetDbClustersClusterArrayOutput {
 	return o.ApplyT(func(v GetDbClustersResult) []GetDbClustersCluster { return v.Clusters }).(GetDbClustersClusterArrayOutput)
 }
 
+// The DBCluster description.
 func (o GetDbClustersResultOutput) DbClusterDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDbClustersResult) *string { return v.DbClusterDescription }).(pulumi.StringPtrOutput)
 }
@@ -157,6 +162,7 @@ func (o GetDbClustersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDbClustersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 func (o GetDbClustersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDbClustersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

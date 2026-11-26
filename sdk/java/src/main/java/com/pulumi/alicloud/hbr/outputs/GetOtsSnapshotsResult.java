@@ -22,7 +22,15 @@ public final class GetOtsSnapshotsResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Hbr Ots Snapshots. Each element contains the following attributes:
+     * 
+     */
     private List<GetOtsSnapshotsSnapshot> snapshots;
+    /**
+     * @return The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+     * 
+     */
     private @Nullable String startTime;
 
     private GetOtsSnapshotsResult() {}
@@ -42,9 +50,17 @@ public final class GetOtsSnapshotsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Hbr Ots Snapshots. Each element contains the following attributes:
+     * 
+     */
     public List<GetOtsSnapshotsSnapshot> snapshots() {
         return this.snapshots;
     }
+    /**
+     * @return The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+     * 
+     */
     public Optional<String> startTime() {
         return Optional.ofNullable(this.startTime);
     }

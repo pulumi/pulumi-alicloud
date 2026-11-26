@@ -108,6 +108,9 @@ class AlertGroupConfigurationArgsDict(TypedDict):
     Group configuration type, including no_group, labels_auto, custom.
     """
     fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Group configuration's fields list when type is custom.
+    """
 
 @pulumi.input_type
 class AlertGroupConfigurationArgs:
@@ -116,6 +119,7 @@ class AlertGroupConfigurationArgs:
                  fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] type: Group configuration type, including no_group, labels_auto, custom.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fields: Group configuration's fields list when type is custom.
         """
         pulumi.set(__self__, "type", type)
         if fields is not None:
@@ -136,6 +140,9 @@ class AlertGroupConfigurationArgs:
     @_builtins.property
     @pulumi.getter
     def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Group configuration's fields list when type is custom.
+        """
         return pulumi.get(self, "fields")
 
     @fields.setter
@@ -695,6 +702,9 @@ class AlertScheduleArgsDict(TypedDict):
     Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
     """
     delay: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Delay time for schedule.
+    """
     hour: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Hour of day when type is Weekly/Daily.
@@ -704,6 +714,9 @@ class AlertScheduleArgsDict(TypedDict):
     Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
     """
     run_immediately: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to run the alert immediately.
+    """
     time_zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Time zone for schedule.
@@ -724,8 +737,10 @@ class AlertScheduleArgs:
         :param pulumi.Input[_builtins.str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
         :param pulumi.Input[_builtins.str] cron_expression: Cron expression when type is Cron.
         :param pulumi.Input[_builtins.int] day_of_week: Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
+        :param pulumi.Input[_builtins.int] delay: Delay time for schedule.
         :param pulumi.Input[_builtins.int] hour: Hour of day when type is Weekly/Daily.
         :param pulumi.Input[_builtins.str] interval: Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
+        :param pulumi.Input[_builtins.bool] run_immediately: Whether to run the alert immediately.
         :param pulumi.Input[_builtins.str] time_zone: Time zone for schedule.
         """
         pulumi.set(__self__, "type", type)
@@ -783,6 +798,9 @@ class AlertScheduleArgs:
     @_builtins.property
     @pulumi.getter
     def delay(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Delay time for schedule.
+        """
         return pulumi.get(self, "delay")
 
     @delay.setter
@@ -816,6 +834,9 @@ class AlertScheduleArgs:
     @_builtins.property
     @pulumi.getter(name="runImmediately")
     def run_immediately(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to run the alert immediately.
+        """
         return pulumi.get(self, "run_immediately")
 
     @run_immediately.setter
@@ -838,7 +859,7 @@ class AlertScheduleArgs:
 class AlertSeverityConfigurationArgsDict(TypedDict):
     eval_condition: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
     """
-    Severity when this condition is met.
+    Severity when this condition is met. The map supports `condition` (condition for each row) and `count_condition` (count's condition for the rows met condition above) keys.
     """
     severity: pulumi.Input[_builtins.int]
     """
@@ -851,7 +872,7 @@ class AlertSeverityConfigurationArgs:
                  eval_condition: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]],
                  severity: pulumi.Input[_builtins.int]):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] eval_condition: Severity when this condition is met.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] eval_condition: Severity when this condition is met. The map supports `condition` (condition for each row) and `count_condition` (count's condition for the rows met condition above) keys.
         :param pulumi.Input[_builtins.int] severity: Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
         """
         pulumi.set(__self__, "eval_condition", eval_condition)
@@ -861,7 +882,7 @@ class AlertSeverityConfigurationArgs:
     @pulumi.getter(name="evalCondition")
     def eval_condition(self) -> pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]:
         """
-        Severity when this condition is met.
+        Severity when this condition is met. The map supports `condition` (condition for each row) and `count_condition` (count's condition for the rows met condition above) keys.
         """
         return pulumi.get(self, "eval_condition")
 
@@ -1269,19 +1290,32 @@ class OssExportConfigColumnArgs:
 
 class OssShipperParquetConfigArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
+    """
+    The name of the key.
+    """
     type: pulumi.Input[_builtins.str]
+    """
+    Type of configuration name.
+    """
 
 @pulumi.input_type
 class OssShipperParquetConfigArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the key.
+        :param pulumi.Input[_builtins.str] type: Type of configuration name.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the key.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1291,6 +1325,9 @@ class OssShipperParquetConfigArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Type of configuration name.
+        """
         return pulumi.get(self, "type")
 
     @type.setter

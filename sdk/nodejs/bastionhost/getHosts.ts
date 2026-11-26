@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *
@@ -107,26 +107,47 @@ export interface GetHostsArgs {
 export interface GetHostsResult {
     readonly enableDetails?: boolean;
     readonly hostAddress?: string;
+    /**
+     * Specify the new create a host name of the supports up to 128 characters.
+     */
     readonly hostName?: string;
+    /**
+     * A list of Bastionhost Hosts. Each element contains the following attributes:
+     */
     readonly hosts: outputs.bastionhost.GetHostsHost[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * Specify the new create a host where the Bastion host ID of.
+     */
     readonly instanceId: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Host names.
+     */
     readonly names: string[];
+    /**
+     * Specify the new create the host's operating system. Valid values: Linux Windows.
+     */
     readonly osType?: string;
     readonly outputFile?: string;
+    /**
+     * Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
+     */
     readonly source?: string;
+    /**
+     * Specify the newly created ECS instance ID or dedicated cluster host ID.
+     */
     readonly sourceInstanceId?: string;
     readonly sourceInstanceState?: string;
 }
 /**
  * This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *

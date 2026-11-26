@@ -53,6 +53,9 @@ class GetMailAddressesResult:
     @_builtins.property
     @pulumi.getter
     def addresses(self) -> Sequence['outputs.GetMailAddressesAddressResult']:
+        """
+        A list of Direct Mail Mail Addresses. Each element contains the following attributes:
+        """
         return pulumi.get(self, "addresses")
 
     @_builtins.property
@@ -81,11 +84,17 @@ class GetMailAddressesResult:
     @_builtins.property
     @pulumi.getter
     def sendtype(self) -> Optional[_builtins.str]:
+        """
+        Account type.
+        """
         return pulumi.get(self, "sendtype")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
+        """
         return pulumi.get(self, "status")
 
 
@@ -113,7 +122,7 @@ def get_mail_addresses(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 
@@ -160,7 +169,7 @@ def get_mail_addresses_output(ids: pulumi.Input[Optional[Optional[Sequence[_buil
     """
     This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 

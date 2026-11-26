@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
  *
- * > **NOTE:** Available in v1.196.0+
+ * > **NOTE:** Available since v1.196.0
  *
  * ## Example Usage
  *
@@ -57,7 +57,7 @@ export interface GetInstanceClassInfosArgs {
      */
     dbInstanceId?: string;
     /**
-     * A list of Rds available resource. Each element contains the following attributes:
+     * A list of Rds available resource. See `infos` below.
      */
     infos?: inputs.rds.GetInstanceClassInfosInfo[];
     /**
@@ -100,7 +100,7 @@ export interface GetInstanceClassInfosResult {
 /**
  * This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
  *
- * > **NOTE:** Available in v1.196.0+
+ * > **NOTE:** Available since v1.196.0
  *
  * ## Example Usage
  *
@@ -148,7 +148,7 @@ export interface GetInstanceClassInfosOutputArgs {
      */
     dbInstanceId?: pulumi.Input<string | undefined>;
     /**
-     * A list of Rds available resource. Each element contains the following attributes:
+     * A list of Rds available resource. See `infos` below.
      */
     infos?: pulumi.Input<pulumi.Input<inputs.rds.GetInstanceClassInfosInfoArgs>[] | undefined>;
     /**

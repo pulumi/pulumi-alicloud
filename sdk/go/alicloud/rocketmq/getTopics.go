@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
 //
-// > **NOTE:** Available in 1.53.0+
+// > **NOTE:** Available since v1.53.0.
 //
 // ## Example Usage
 //
@@ -80,6 +80,7 @@ func GetTopics(ctx *pulumi.Context, args *GetTopicsArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getTopics.
 type GetTopicsArgs struct {
+	// Default to `false`. Set it to true can output more details.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of topic IDs to filter results.
 	Ids []string `pulumi:"ids"`
@@ -97,10 +98,11 @@ type GetTopicsArgs struct {
 type GetTopicsResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	InstanceId string   `pulumi:"instanceId"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// ID of the ONS Instance that owns the topic.
+	InstanceId string  `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	// A list of topic names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
@@ -117,6 +119,7 @@ func GetTopicsOutput(ctx *pulumi.Context, args GetTopicsOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getTopics.
 type GetTopicsOutputArgs struct {
+	// Default to `false`. Set it to true can output more details.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of topic IDs to filter results.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -162,6 +165,7 @@ func (o GetTopicsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTopicsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// ID of the ONS Instance that owns the topic.
 func (o GetTopicsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTopicsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }

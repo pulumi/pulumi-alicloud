@@ -23,7 +23,7 @@ public final class GetBgpPeersPeer {
      */
     private Integer bfdMultiHop;
     /**
-     * @return The ID of the BGP group.
+     * @return The ID of the BGP group to which the BGP peer that you want to query belongs.
      * 
      */
     private String bgpGroupId;
@@ -98,12 +98,12 @@ public final class GetBgpPeersPeer {
      */
     private String routeLimit;
     /**
-     * @return The ID of the router.
+     * @return The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
      * 
      */
     private String routerId;
     /**
-     * @return The status of the BGP peer.
+     * @return The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
      * 
      */
     private String status;
@@ -124,7 +124,7 @@ public final class GetBgpPeersPeer {
         return this.bfdMultiHop;
     }
     /**
-     * @return The ID of the BGP group.
+     * @return The ID of the BGP group to which the BGP peer that you want to query belongs.
      * 
      */
     public String bgpGroupId() {
@@ -229,14 +229,14 @@ public final class GetBgpPeersPeer {
         return this.routeLimit;
     }
     /**
-     * @return The ID of the router.
+     * @return The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
      * 
      */
     public String routerId() {
         return this.routerId;
     }
     /**
-     * @return The status of the BGP peer.
+     * @return The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
      * 
      */
     public String status() {

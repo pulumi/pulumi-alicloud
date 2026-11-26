@@ -21,7 +21,15 @@ public final class GetNetworkPackagesResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Ecd Network Packages. Each element contains the following attributes:
+     * 
+     */
     private List<GetNetworkPackagesPackage> packages;
+    /**
+     * @return The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
+     * 
+     */
     private @Nullable String status;
 
     private GetNetworkPackagesResult() {}
@@ -38,9 +46,17 @@ public final class GetNetworkPackagesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Ecd Network Packages. Each element contains the following attributes:
+     * 
+     */
     public List<GetNetworkPackagesPackage> packages() {
         return this.packages;
     }
+    /**
+     * @return The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

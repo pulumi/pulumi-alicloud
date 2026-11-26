@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.193.0+.
+ * > **NOTE:** Available since v1.193.0.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *
@@ -82,8 +82,17 @@ export interface GetAccessAssignmentsArgs {
  * A collection of values returned by getAccessAssignments.
  */
 export interface GetAccessAssignmentsResult {
+    /**
+     * Access configuration ID.
+     */
     readonly accessConfigurationId?: string;
+    /**
+     * A list of Cloud Sso Access Assignments. Each element contains the following attributes:
+     */
     readonly assignments: outputs.cloudsso.GetAccessAssignmentsAssignment[];
+    /**
+     * Directory ID.
+     */
     readonly directoryId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -91,14 +100,23 @@ export interface GetAccessAssignmentsResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * Create the identity type of the access assignment, which can be a user or a user group.
+     */
     readonly principalType?: string;
+    /**
+     * The ID of the target to create the resource range.
+     */
     readonly targetId?: string;
+    /**
+     * The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+     */
     readonly targetType?: string;
 }
 /**
  * This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.193.0+.
+ * > **NOTE:** Available since v1.193.0.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *

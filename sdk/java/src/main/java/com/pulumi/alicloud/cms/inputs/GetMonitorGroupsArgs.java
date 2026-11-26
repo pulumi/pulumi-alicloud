@@ -138,9 +138,17 @@ public final class GetMonitorGroupsArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.selectContactGroups);
     }
 
+    /**
+     * A mapping of tags to filter the Cms Monitor Group.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
+    /**
+     * @return A mapping of tags to filter the Cms Monitor Group.
+     * 
+     */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -371,11 +379,23 @@ public final class GetMonitorGroupsArgs extends com.pulumi.resources.InvokeArgs 
             return selectContactGroups(Output.of(selectContactGroups));
         }
 
+        /**
+         * @param tags A mapping of tags to filter the Cms Monitor Group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags A mapping of tags to filter the Cms Monitor Group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
         }

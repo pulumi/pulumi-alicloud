@@ -32,8 +32,20 @@ public final class GetOpenApiPricingModulesResult {
      */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The product code.
+     * 
+     */
     private String productCode;
+    /**
+     * @return The product type.
+     * 
+     */
     private @Nullable String productType;
+    /**
+     * @return The subscription type.
+     * 
+     */
     private String subscriptionType;
 
     private GetOpenApiPricingModulesResult() {}
@@ -67,12 +79,24 @@ public final class GetOpenApiPricingModulesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The product code.
+     * 
+     */
     public String productCode() {
         return this.productCode;
     }
+    /**
+     * @return The product type.
+     * 
+     */
     public Optional<String> productType() {
         return Optional.ofNullable(this.productType);
     }
+    /**
+     * @return The subscription type.
+     * 
+     */
     public String subscriptionType() {
         return this.subscriptionType;
     }

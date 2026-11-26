@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string ServiceId;
         /// <summary>
-        /// A map of tags assigned to the Cms Monitor Group.
+        /// A mapping of tags to filter the Cms Monitor Group.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly ImmutableArray<string> TemplateIds;
         /// <summary>
-        /// The type of the application group.
+        /// The type of the application group. Valid values: `Custom`, `EhpcCluster`, `Kubernetes`.
         /// </summary>
         public readonly string Type;
 

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.147.0+.
+// > **NOTE:** Available since v1.147.0.
 func GetHostEcsLevelInfos(ctx *pulumi.Context, args *GetHostEcsLevelInfosArgs, opts ...pulumi.InvokeOption) (*GetHostEcsLevelInfosResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHostEcsLevelInfosResult
@@ -42,12 +42,13 @@ type GetHostEcsLevelInfosArgs struct {
 type GetHostEcsLevelInfosResult struct {
 	DbType string `pulumi:"dbType"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string                     `pulumi:"id"`
-	ImageCategory *string                    `pulumi:"imageCategory"`
-	Infos         []GetHostEcsLevelInfosInfo `pulumi:"infos"`
-	OutputFile    *string                    `pulumi:"outputFile"`
-	StorageType   string                     `pulumi:"storageType"`
-	ZoneId        string                     `pulumi:"zoneId"`
+	Id            string  `pulumi:"id"`
+	ImageCategory *string `pulumi:"imageCategory"`
+	// A list of Cddc Dedicated Hosts. Each element contains the following attributes:
+	Infos       []GetHostEcsLevelInfosInfo `pulumi:"infos"`
+	OutputFile  *string                    `pulumi:"outputFile"`
+	StorageType string                     `pulumi:"storageType"`
+	ZoneId      string                     `pulumi:"zoneId"`
 }
 
 func GetHostEcsLevelInfosOutput(ctx *pulumi.Context, args GetHostEcsLevelInfosOutputArgs, opts ...pulumi.InvokeOption) GetHostEcsLevelInfosResultOutput {
@@ -101,6 +102,7 @@ func (o GetHostEcsLevelInfosResultOutput) ImageCategory() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetHostEcsLevelInfosResult) *string { return v.ImageCategory }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cddc Dedicated Hosts. Each element contains the following attributes:
 func (o GetHostEcsLevelInfosResultOutput) Infos() GetHostEcsLevelInfosInfoArrayOutput {
 	return o.ApplyT(func(v GetHostEcsLevelInfosResult) []GetHostEcsLevelInfosInfo { return v.Infos }).(GetHostEcsLevelInfosInfoArrayOutput)
 }

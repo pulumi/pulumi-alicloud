@@ -18,9 +18,17 @@ public final class GetBackupJobsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetBackupJobsArgs Empty = new GetBackupJobsArgs();
 
+    /**
+     * More complex filters can be expressed using one or more `filter` sub-blocks, which take the following arguments. See `filter` below.
+     * 
+     */
     @Import(name="filters")
     private @Nullable Output<List<GetBackupJobsFilterArgs>> filters;
 
+    /**
+     * @return More complex filters can be expressed using one or more `filter` sub-blocks, which take the following arguments. See `filter` below.
+     * 
+     */
     public Optional<Output<List<GetBackupJobsFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -129,15 +137,33 @@ public final class GetBackupJobsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetBackupJobsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters More complex filters can be expressed using one or more `filter` sub-blocks, which take the following arguments. See `filter` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable Output<List<GetBackupJobsFilterArgs>> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters More complex filters can be expressed using one or more `filter` sub-blocks, which take the following arguments. See `filter` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(List<GetBackupJobsFilterArgs> filters) {
             return filters(Output.of(filters));
         }
 
+        /**
+         * @param filters More complex filters can be expressed using one or more `filter` sub-blocks, which take the following arguments. See `filter` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetBackupJobsFilterArgs... filters) {
             return filters(List.of(filters));
         }

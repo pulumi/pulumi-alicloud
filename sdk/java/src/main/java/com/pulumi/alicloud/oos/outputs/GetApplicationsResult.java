@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetApplicationsResult {
+    /**
+     * @return A list of Oos Applications. Each element contains the following attributes:
+     * 
+     */
     private List<GetApplicationsApplication> applications;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,11 +27,23 @@ public final class GetApplicationsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of oss application names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
 
     private GetApplicationsResult() {}
+    /**
+     * @return A list of Oos Applications. Each element contains the following attributes:
+     * 
+     */
     public List<GetApplicationsApplication> applications() {
         return this.applications;
     }
@@ -44,12 +60,20 @@ public final class GetApplicationsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of oss application names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

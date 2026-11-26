@@ -42,20 +42,20 @@ type ScheduledTask struct {
 	MaxValue pulumi.IntPtrOutput `pulumi:"maxValue"`
 	// The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
 	MinValue pulumi.IntPtrOutput `pulumi:"minValue"`
-	// Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+	// Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	// The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
 	RecurrenceEndTime pulumi.StringOutput `pulumi:"recurrenceEndTime"`
 	// Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
-	// - Daily: The scheduled task is executed once every specified number of days.
-	// - Weekly: The scheduled task is executed on each specified day of a week.
-	// - Monthly: The scheduled task is executed on each specified day of a month.
-	// - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
+	// - `Daily`: The scheduled task is executed once every specified number of days.
+	// - `Weekly`: The scheduled task is executed on each specified day of a week.
+	// - `Monthly`: The scheduled task is executed on each specified day of a month.
+	// - `Cron`: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
 	RecurrenceType pulumi.StringOutput `pulumi:"recurrenceType"`
 	// Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrenceType`
-	// - Daily: You can enter one value. Valid values: 1 to 31.
-	// - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
-	// - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
-	// - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
+	// - `Daily`: You can enter one value. Valid values: `1-31`.
+	// - `Weekly`: You can enter multiple values and separate them with commas (,). For example, the values `0-6` correspond to the days of the week in sequence from Sunday to Saturday.
+	// - `Monthly`: You can enter two values in `A-B` format. Valid values of `A` and `B`: `1-31`. The value of `B` must be greater than or equal to the value of `A`.
+	// - `Cron`: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
 	RecurrenceValue pulumi.StringOutput `pulumi:"recurrenceValue"`
 	// The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduledAction` and `scalingGroupId` at the same time.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
@@ -112,20 +112,20 @@ type scheduledTaskState struct {
 	MaxValue *int `pulumi:"maxValue"`
 	// The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
 	MinValue *int `pulumi:"minValue"`
-	// Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+	// Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	// The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
 	RecurrenceEndTime *string `pulumi:"recurrenceEndTime"`
 	// Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
-	// - Daily: The scheduled task is executed once every specified number of days.
-	// - Weekly: The scheduled task is executed on each specified day of a week.
-	// - Monthly: The scheduled task is executed on each specified day of a month.
-	// - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
+	// - `Daily`: The scheduled task is executed once every specified number of days.
+	// - `Weekly`: The scheduled task is executed on each specified day of a week.
+	// - `Monthly`: The scheduled task is executed on each specified day of a month.
+	// - `Cron`: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
 	RecurrenceType *string `pulumi:"recurrenceType"`
 	// Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrenceType`
-	// - Daily: You can enter one value. Valid values: 1 to 31.
-	// - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
-	// - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
-	// - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
+	// - `Daily`: You can enter one value. Valid values: `1-31`.
+	// - `Weekly`: You can enter multiple values and separate them with commas (,). For example, the values `0-6` correspond to the days of the week in sequence from Sunday to Saturday.
+	// - `Monthly`: You can enter two values in `A-B` format. Valid values of `A` and `B`: `1-31`. The value of `B` must be greater than or equal to the value of `A`.
+	// - `Cron`: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
 	RecurrenceValue *string `pulumi:"recurrenceValue"`
 	// The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduledAction` and `scalingGroupId` at the same time.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
@@ -153,20 +153,20 @@ type ScheduledTaskState struct {
 	MaxValue pulumi.IntPtrInput
 	// The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
 	MinValue pulumi.IntPtrInput
-	// Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+	// Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	// The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
 	RecurrenceEndTime pulumi.StringPtrInput
 	// Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
-	// - Daily: The scheduled task is executed once every specified number of days.
-	// - Weekly: The scheduled task is executed on each specified day of a week.
-	// - Monthly: The scheduled task is executed on each specified day of a month.
-	// - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
+	// - `Daily`: The scheduled task is executed once every specified number of days.
+	// - `Weekly`: The scheduled task is executed on each specified day of a week.
+	// - `Monthly`: The scheduled task is executed on each specified day of a month.
+	// - `Cron`: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
 	RecurrenceType pulumi.StringPtrInput
 	// Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrenceType`
-	// - Daily: You can enter one value. Valid values: 1 to 31.
-	// - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
-	// - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
-	// - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
+	// - `Daily`: You can enter one value. Valid values: `1-31`.
+	// - `Weekly`: You can enter multiple values and separate them with commas (,). For example, the values `0-6` correspond to the days of the week in sequence from Sunday to Saturday.
+	// - `Monthly`: You can enter two values in `A-B` format. Valid values of `A` and `B`: `1-31`. The value of `B` must be greater than or equal to the value of `A`.
+	// - `Cron`: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
 	RecurrenceValue pulumi.StringPtrInput
 	// The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduledAction` and `scalingGroupId` at the same time.
 	ScalingGroupId pulumi.StringPtrInput
@@ -204,20 +204,20 @@ type scheduledTaskArgs struct {
 	MaxValue *int `pulumi:"maxValue"`
 	// The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
 	MinValue *int `pulumi:"minValue"`
-	// Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+	// Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	// The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
 	RecurrenceEndTime *string `pulumi:"recurrenceEndTime"`
 	// Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
-	// - Daily: The scheduled task is executed once every specified number of days.
-	// - Weekly: The scheduled task is executed on each specified day of a week.
-	// - Monthly: The scheduled task is executed on each specified day of a month.
-	// - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
+	// - `Daily`: The scheduled task is executed once every specified number of days.
+	// - `Weekly`: The scheduled task is executed on each specified day of a week.
+	// - `Monthly`: The scheduled task is executed on each specified day of a month.
+	// - `Cron`: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
 	RecurrenceType *string `pulumi:"recurrenceType"`
 	// Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrenceType`
-	// - Daily: You can enter one value. Valid values: 1 to 31.
-	// - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
-	// - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
-	// - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
+	// - `Daily`: You can enter one value. Valid values: `1-31`.
+	// - `Weekly`: You can enter multiple values and separate them with commas (,). For example, the values `0-6` correspond to the days of the week in sequence from Sunday to Saturday.
+	// - `Monthly`: You can enter two values in `A-B` format. Valid values of `A` and `B`: `1-31`. The value of `B` must be greater than or equal to the value of `A`.
+	// - `Cron`: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
 	RecurrenceValue *string `pulumi:"recurrenceValue"`
 	// The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduledAction` and `scalingGroupId` at the same time.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
@@ -246,20 +246,20 @@ type ScheduledTaskArgs struct {
 	MaxValue pulumi.IntPtrInput
 	// The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
 	MinValue pulumi.IntPtrInput
-	// Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+	// Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	// The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
 	RecurrenceEndTime pulumi.StringPtrInput
 	// Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
-	// - Daily: The scheduled task is executed once every specified number of days.
-	// - Weekly: The scheduled task is executed on each specified day of a week.
-	// - Monthly: The scheduled task is executed on each specified day of a month.
-	// - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
+	// - `Daily`: The scheduled task is executed once every specified number of days.
+	// - `Weekly`: The scheduled task is executed on each specified day of a week.
+	// - `Monthly`: The scheduled task is executed on each specified day of a month.
+	// - `Cron`: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
 	RecurrenceType pulumi.StringPtrInput
 	// Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrenceType`
-	// - Daily: You can enter one value. Valid values: 1 to 31.
-	// - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
-	// - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
-	// - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
+	// - `Daily`: You can enter one value. Valid values: `1-31`.
+	// - `Weekly`: You can enter multiple values and separate them with commas (,). For example, the values `0-6` correspond to the days of the week in sequence from Sunday to Saturday.
+	// - `Monthly`: You can enter two values in `A-B` format. Valid values of `A` and `B`: `1-31`. The value of `B` must be greater than or equal to the value of `A`.
+	// - `Cron`: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
 	RecurrenceValue pulumi.StringPtrInput
 	// The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduledAction` and `scalingGroupId` at the same time.
 	ScalingGroupId pulumi.StringPtrInput
@@ -391,26 +391,26 @@ func (o ScheduledTaskOutput) MinValue() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ScheduledTask) pulumi.IntPtrOutput { return v.MinValue }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+// Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 // The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
 func (o ScheduledTaskOutput) RecurrenceEndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScheduledTask) pulumi.StringOutput { return v.RecurrenceEndTime }).(pulumi.StringOutput)
 }
 
 // Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
-// - Daily: The scheduled task is executed once every specified number of days.
-// - Weekly: The scheduled task is executed on each specified day of a week.
-// - Monthly: The scheduled task is executed on each specified day of a month.
-// - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
+// - `Daily`: The scheduled task is executed once every specified number of days.
+// - `Weekly`: The scheduled task is executed on each specified day of a week.
+// - `Monthly`: The scheduled task is executed on each specified day of a month.
+// - `Cron`: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
 func (o ScheduledTaskOutput) RecurrenceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScheduledTask) pulumi.StringOutput { return v.RecurrenceType }).(pulumi.StringOutput)
 }
 
 // Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrenceType`
-// - Daily: You can enter one value. Valid values: 1 to 31.
-// - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
-// - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
-// - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
+// - `Daily`: You can enter one value. Valid values: `1-31`.
+// - `Weekly`: You can enter multiple values and separate them with commas (,). For example, the values `0-6` correspond to the days of the week in sequence from Sunday to Saturday.
+// - `Monthly`: You can enter two values in `A-B` format. Valid values of `A` and `B`: `1-31`. The value of `B` must be greater than or equal to the value of `A`.
+// - `Cron`: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
 func (o ScheduledTaskOutput) RecurrenceValue() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScheduledTask) pulumi.StringOutput { return v.RecurrenceValue }).(pulumi.StringOutput)
 }

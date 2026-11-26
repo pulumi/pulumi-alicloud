@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * This data source provides the identity of the current user.
  *
- * > **NOTE:** Available in 1.65.0+.
+ * > **NOTE:** Available since v1.65.0.
  *
  * ## Example Usage
  *
@@ -49,7 +49,7 @@ export interface GetCallerIdentityResult {
 /**
  * This data source provides the identity of the current user.
  *
- * > **NOTE:** Available in 1.65.0+.
+ * > **NOTE:** Available since v1.65.0.
  *
  * ## Example Usage
  *

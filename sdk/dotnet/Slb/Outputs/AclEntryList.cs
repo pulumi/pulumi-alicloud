@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Slb.Outputs
     [OutputType]
     public sealed class AclEntryList
     {
+        /// <summary>
+        /// The comment of the entry.
+        /// </summary>
         public readonly string? Comment;
+        /// <summary>
+        /// The CIDR blocks.
+        /// </summary>
         public readonly string? Entry;
 
         [OutputConstructor]

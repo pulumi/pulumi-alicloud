@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Hbr OtsBackupPlans of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.163.0+.
+// > **NOTE:** Available since v1.163.0.
 //
 // ## Example Usage
 //
@@ -72,15 +72,18 @@ type GetOtsBackupPlansArgs struct {
 // A collection of values returned by getOtsBackupPlans.
 type GetOtsBackupPlansResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                  `pulumi:"id"`
-	Ids        []string                `pulumi:"ids"`
-	NameRegex  *string                 `pulumi:"nameRegex"`
-	Names      []string                `pulumi:"names"`
-	OutputFile *string                 `pulumi:"outputFile"`
-	PlanId     *string                 `pulumi:"planId"`
-	PlanName   *string                 `pulumi:"planName"`
-	Plans      []GetOtsBackupPlansPlan `pulumi:"plans"`
-	VaultId    *string                 `pulumi:"vaultId"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of OtsBackupPlan names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PlanId     *string  `pulumi:"planId"`
+	PlanName   *string  `pulumi:"planName"`
+	// A list of Hbr OtsBackupPlans. Each element contains the following attributes:
+	Plans []GetOtsBackupPlansPlan `pulumi:"plans"`
+	// The ID of backup vault.
+	VaultId *string `pulumi:"vaultId"`
 }
 
 func GetOtsBackupPlansOutput(ctx *pulumi.Context, args GetOtsBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetOtsBackupPlansResultOutput {
@@ -136,6 +139,7 @@ func (o GetOtsBackupPlansResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOtsBackupPlansResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of OtsBackupPlan names.
 func (o GetOtsBackupPlansResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetOtsBackupPlansResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -152,10 +156,12 @@ func (o GetOtsBackupPlansResultOutput) PlanName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOtsBackupPlansResult) *string { return v.PlanName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Hbr OtsBackupPlans. Each element contains the following attributes:
 func (o GetOtsBackupPlansResultOutput) Plans() GetOtsBackupPlansPlanArrayOutput {
 	return o.ApplyT(func(v GetOtsBackupPlansResult) []GetOtsBackupPlansPlan { return v.Plans }).(GetOtsBackupPlansPlanArrayOutput)
 }
 
+// The ID of backup vault.
 func (o GetOtsBackupPlansResultOutput) VaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOtsBackupPlansResult) *string { return v.VaultId }).(pulumi.StringPtrOutput)
 }

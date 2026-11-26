@@ -48,9 +48,17 @@ public class NetworkInterfaceAttachment extends com.pulumi.resources.CustomResou
     public Output<String> instanceId() {
         return this.instanceId;
     }
+    /**
+     * The index of the network card.
+     * 
+     */
     @Export(name="networkCardIndex", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> networkCardIndex;
 
+    /**
+     * @return The index of the network card.
+     * 
+     */
     public Output<Optional<Integer>> networkCardIndex() {
         return Codegen.optional(this.networkCardIndex);
     }
@@ -68,15 +76,31 @@ public class NetworkInterfaceAttachment extends com.pulumi.resources.CustomResou
     public Output<String> networkInterfaceId() {
         return this.networkInterfaceId;
     }
+    /**
+     * The ID of the trunk network instance.
+     * 
+     */
     @Export(name="trunkNetworkInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trunkNetworkInstanceId;
 
+    /**
+     * @return The ID of the trunk network instance.
+     * 
+     */
     public Output<Optional<String>> trunkNetworkInstanceId() {
         return Codegen.optional(this.trunkNetworkInstanceId);
     }
+    /**
+     * Whether to wait for the network configuration to be ready.
+     * 
+     */
     @Export(name="waitForNetworkConfigurationReady", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitForNetworkConfigurationReady;
 
+    /**
+     * @return Whether to wait for the network configuration to be ready.
+     * 
+     */
     public Output<Optional<Boolean>> waitForNetworkConfigurationReady() {
         return Codegen.optional(this.waitForNetworkConfigurationReady);
     }

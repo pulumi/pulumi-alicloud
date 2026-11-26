@@ -30,12 +30,25 @@ class BasicEndpointGroupArgs:
         The set of arguments for constructing a BasicEndpointGroup resource.
 
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the basic GA instance.
-        :param pulumi.Input[_builtins.str] endpoint_group_region: The ID of the region where you want to create the endpoint group.
-        :param pulumi.Input[_builtins.str] basic_endpoint_group_name: The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[_builtins.str] description: The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+        :param pulumi.Input[_builtins.str] endpoint_group_region: The ID of the region to which the endpoint group belongs.
+               
+               You can call the [ListAvailableBusiRegions](https://www.alibabacloud.com/help/en/doc-detail/2253223.html) operation to query the region ID.
+        :param pulumi.Input[_builtins.str] basic_endpoint_group_name: The name of the endpoint group.
+               
+               The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
+        :param pulumi.Input[_builtins.str] description: The description of the endpoint group.
+               
+               The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] endpoint_address: The address of the endpoint.
-        :param pulumi.Input[_builtins.str] endpoint_sub_address: The sub address of the endpoint.
-        :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
+        :param pulumi.Input[_builtins.str] endpoint_sub_address: The secondary address of the endpoint.
+               
+               This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+               - If you set the endpoint type to `ECS`, you can set `endpoint_sub_address` to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+               - If you set the endpoint type to `ENI`, you can set `endpoint_sub_address` to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
+        :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values:
+               - `ENI`: elastic network interface (ENI).
+               - `SLB`: Classic Load Balancer (CLB) instance.
+               - `ECS`: Elastic Compute Service (ECS) instance.
         """
         pulumi.set(__self__, "accelerator_id", accelerator_id)
         pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
@@ -66,7 +79,9 @@ class BasicEndpointGroupArgs:
     @pulumi.getter(name="endpointGroupRegion")
     def endpoint_group_region(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the region where you want to create the endpoint group.
+        The ID of the region to which the endpoint group belongs.
+
+        You can call the [ListAvailableBusiRegions](https://www.alibabacloud.com/help/en/doc-detail/2253223.html) operation to query the region ID.
         """
         return pulumi.get(self, "endpoint_group_region")
 
@@ -78,7 +93,9 @@ class BasicEndpointGroupArgs:
     @pulumi.getter(name="basicEndpointGroupName")
     def basic_endpoint_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        The name of the endpoint group.
+
+        The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "basic_endpoint_group_name")
 
@@ -90,7 +107,9 @@ class BasicEndpointGroupArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+        The description of the endpoint group.
+
+        The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -114,7 +133,11 @@ class BasicEndpointGroupArgs:
     @pulumi.getter(name="endpointSubAddress")
     def endpoint_sub_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The sub address of the endpoint.
+        The secondary address of the endpoint.
+
+        This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+        - If you set the endpoint type to `ECS`, you can set `endpoint_sub_address` to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+        - If you set the endpoint type to `ENI`, you can set `endpoint_sub_address` to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
         """
         return pulumi.get(self, "endpoint_sub_address")
 
@@ -126,7 +149,10 @@ class BasicEndpointGroupArgs:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
+        The type of the endpoint. Valid values:
+        - `ENI`: elastic network interface (ENI).
+        - `SLB`: Classic Load Balancer (CLB) instance.
+        - `ECS`: Elastic Compute Service (ECS) instance.
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -150,12 +176,25 @@ class _BasicEndpointGroupState:
         Input properties used for looking up and filtering BasicEndpointGroup resources.
 
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the basic GA instance.
-        :param pulumi.Input[_builtins.str] basic_endpoint_group_name: The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[_builtins.str] description: The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+        :param pulumi.Input[_builtins.str] basic_endpoint_group_name: The name of the endpoint group.
+               
+               The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
+        :param pulumi.Input[_builtins.str] description: The description of the endpoint group.
+               
+               The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] endpoint_address: The address of the endpoint.
-        :param pulumi.Input[_builtins.str] endpoint_group_region: The ID of the region where you want to create the endpoint group.
-        :param pulumi.Input[_builtins.str] endpoint_sub_address: The sub address of the endpoint.
-        :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
+        :param pulumi.Input[_builtins.str] endpoint_group_region: The ID of the region to which the endpoint group belongs.
+               
+               You can call the [ListAvailableBusiRegions](https://www.alibabacloud.com/help/en/doc-detail/2253223.html) operation to query the region ID.
+        :param pulumi.Input[_builtins.str] endpoint_sub_address: The secondary address of the endpoint.
+               
+               This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+               - If you set the endpoint type to `ECS`, you can set `endpoint_sub_address` to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+               - If you set the endpoint type to `ENI`, you can set `endpoint_sub_address` to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
+        :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values:
+               - `ENI`: elastic network interface (ENI).
+               - `SLB`: Classic Load Balancer (CLB) instance.
+               - `ECS`: Elastic Compute Service (ECS) instance.
         :param pulumi.Input[_builtins.str] status: The status of the Basic Endpoint Group.
         """
         if accelerator_id is not None:
@@ -191,7 +230,9 @@ class _BasicEndpointGroupState:
     @pulumi.getter(name="basicEndpointGroupName")
     def basic_endpoint_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        The name of the endpoint group.
+
+        The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "basic_endpoint_group_name")
 
@@ -203,7 +244,9 @@ class _BasicEndpointGroupState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+        The description of the endpoint group.
+
+        The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -227,7 +270,9 @@ class _BasicEndpointGroupState:
     @pulumi.getter(name="endpointGroupRegion")
     def endpoint_group_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the region where you want to create the endpoint group.
+        The ID of the region to which the endpoint group belongs.
+
+        You can call the [ListAvailableBusiRegions](https://www.alibabacloud.com/help/en/doc-detail/2253223.html) operation to query the region ID.
         """
         return pulumi.get(self, "endpoint_group_region")
 
@@ -239,7 +284,11 @@ class _BasicEndpointGroupState:
     @pulumi.getter(name="endpointSubAddress")
     def endpoint_sub_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The sub address of the endpoint.
+        The secondary address of the endpoint.
+
+        This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+        - If you set the endpoint type to `ECS`, you can set `endpoint_sub_address` to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+        - If you set the endpoint type to `ENI`, you can set `endpoint_sub_address` to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
         """
         return pulumi.get(self, "endpoint_sub_address")
 
@@ -251,7 +300,10 @@ class _BasicEndpointGroupState:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
+        The type of the endpoint. Valid values:
+        - `ENI`: elastic network interface (ENI).
+        - `SLB`: Classic Load Balancer (CLB) instance.
+        - `ECS`: Elastic Compute Service (ECS) instance.
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -305,9 +357,6 @@ class BasicEndpointGroup(pulumi.CustomResource):
         region = config.get("region")
         if region is None:
             region = "cn-hangzhou"
-        endpoint_group_region = config.get("endpointGroupRegion")
-        if endpoint_group_region is None:
-            endpoint_group_region = "cn-beijing"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
@@ -323,18 +372,15 @@ class BasicEndpointGroup(pulumi.CustomResource):
             load_balancer_spec="slb.s2.small",
             address_type="intranet")
         default_basic_accelerator = alicloud.ga.BasicAccelerator("default",
-            duration=1,
+            payment_type="PayAsYouGo",
             basic_accelerator_name="terraform-example",
             description="terraform-example",
-            bandwidth_billing_type="CDT",
-            auto_use_coupon="true",
-            auto_pay=True)
+            bandwidth_billing_type="CDT")
         default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("default",
             accelerator_id=default_basic_accelerator.id,
-            endpoint_group_region=endpoint_group_region,
+            endpoint_group_region=region,
             endpoint_type="SLB",
             endpoint_address=default_application_load_balancer.id,
-            endpoint_sub_address="192.168.0.1",
             basic_endpoint_group_name="terraform-example",
             description="terraform-example")
         ```
@@ -353,12 +399,25 @@ class BasicEndpointGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the basic GA instance.
-        :param pulumi.Input[_builtins.str] basic_endpoint_group_name: The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[_builtins.str] description: The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+        :param pulumi.Input[_builtins.str] basic_endpoint_group_name: The name of the endpoint group.
+               
+               The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
+        :param pulumi.Input[_builtins.str] description: The description of the endpoint group.
+               
+               The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] endpoint_address: The address of the endpoint.
-        :param pulumi.Input[_builtins.str] endpoint_group_region: The ID of the region where you want to create the endpoint group.
-        :param pulumi.Input[_builtins.str] endpoint_sub_address: The sub address of the endpoint.
-        :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
+        :param pulumi.Input[_builtins.str] endpoint_group_region: The ID of the region to which the endpoint group belongs.
+               
+               You can call the [ListAvailableBusiRegions](https://www.alibabacloud.com/help/en/doc-detail/2253223.html) operation to query the region ID.
+        :param pulumi.Input[_builtins.str] endpoint_sub_address: The secondary address of the endpoint.
+               
+               This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+               - If you set the endpoint type to `ECS`, you can set `endpoint_sub_address` to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+               - If you set the endpoint type to `ENI`, you can set `endpoint_sub_address` to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
+        :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values:
+               - `ENI`: elastic network interface (ENI).
+               - `SLB`: Classic Load Balancer (CLB) instance.
+               - `ECS`: Elastic Compute Service (ECS) instance.
         """
         ...
     @overload
@@ -385,9 +444,6 @@ class BasicEndpointGroup(pulumi.CustomResource):
         region = config.get("region")
         if region is None:
             region = "cn-hangzhou"
-        endpoint_group_region = config.get("endpointGroupRegion")
-        if endpoint_group_region is None:
-            endpoint_group_region = "cn-beijing"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
@@ -403,18 +459,15 @@ class BasicEndpointGroup(pulumi.CustomResource):
             load_balancer_spec="slb.s2.small",
             address_type="intranet")
         default_basic_accelerator = alicloud.ga.BasicAccelerator("default",
-            duration=1,
+            payment_type="PayAsYouGo",
             basic_accelerator_name="terraform-example",
             description="terraform-example",
-            bandwidth_billing_type="CDT",
-            auto_use_coupon="true",
-            auto_pay=True)
+            bandwidth_billing_type="CDT")
         default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("default",
             accelerator_id=default_basic_accelerator.id,
-            endpoint_group_region=endpoint_group_region,
+            endpoint_group_region=region,
             endpoint_type="SLB",
             endpoint_address=default_application_load_balancer.id,
-            endpoint_sub_address="192.168.0.1",
             basic_endpoint_group_name="terraform-example",
             description="terraform-example")
         ```
@@ -499,12 +552,25 @@ class BasicEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the basic GA instance.
-        :param pulumi.Input[_builtins.str] basic_endpoint_group_name: The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[_builtins.str] description: The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+        :param pulumi.Input[_builtins.str] basic_endpoint_group_name: The name of the endpoint group.
+               
+               The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
+        :param pulumi.Input[_builtins.str] description: The description of the endpoint group.
+               
+               The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] endpoint_address: The address of the endpoint.
-        :param pulumi.Input[_builtins.str] endpoint_group_region: The ID of the region where you want to create the endpoint group.
-        :param pulumi.Input[_builtins.str] endpoint_sub_address: The sub address of the endpoint.
-        :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
+        :param pulumi.Input[_builtins.str] endpoint_group_region: The ID of the region to which the endpoint group belongs.
+               
+               You can call the [ListAvailableBusiRegions](https://www.alibabacloud.com/help/en/doc-detail/2253223.html) operation to query the region ID.
+        :param pulumi.Input[_builtins.str] endpoint_sub_address: The secondary address of the endpoint.
+               
+               This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+               - If you set the endpoint type to `ECS`, you can set `endpoint_sub_address` to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+               - If you set the endpoint type to `ENI`, you can set `endpoint_sub_address` to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
+        :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values:
+               - `ENI`: elastic network interface (ENI).
+               - `SLB`: Classic Load Balancer (CLB) instance.
+               - `ECS`: Elastic Compute Service (ECS) instance.
         :param pulumi.Input[_builtins.str] status: The status of the Basic Endpoint Group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -555,7 +621,9 @@ class BasicEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="basicEndpointGroupName")
     def basic_endpoint_group_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        The name of the endpoint group.
+
+        The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "basic_endpoint_group_name")
 
@@ -563,7 +631,9 @@ class BasicEndpointGroup(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+        The description of the endpoint group.
+
+        The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -579,7 +649,9 @@ class BasicEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="endpointGroupRegion")
     def endpoint_group_region(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the region where you want to create the endpoint group.
+        The ID of the region to which the endpoint group belongs.
+
+        You can call the [ListAvailableBusiRegions](https://www.alibabacloud.com/help/en/doc-detail/2253223.html) operation to query the region ID.
         """
         return pulumi.get(self, "endpoint_group_region")
 
@@ -587,7 +659,11 @@ class BasicEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="endpointSubAddress")
     def endpoint_sub_address(self) -> pulumi.Output[_builtins.str]:
         """
-        The sub address of the endpoint.
+        The secondary address of the endpoint.
+
+        This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+        - If you set the endpoint type to `ECS`, you can set `endpoint_sub_address` to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+        - If you set the endpoint type to `ENI`, you can set `endpoint_sub_address` to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
         """
         return pulumi.get(self, "endpoint_sub_address")
 
@@ -595,7 +671,10 @@ class BasicEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
+        The type of the endpoint. Valid values:
+        - `ENI`: elastic network interface (ENI).
+        - `SLB`: Classic Load Balancer (CLB) instance.
+        - `ECS`: Elastic Compute Service (ECS) instance.
         """
         return pulumi.get(self, "endpoint_type")
 

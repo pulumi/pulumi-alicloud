@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides CEN Route Entries available to the user.
         /// 
+        /// &gt; **NOTE:** Available since v1.20.0+
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -43,6 +45,8 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides CEN Route Entries available to the user.
         /// 
+        /// &gt; **NOTE:** Available since v1.20.0+
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -71,6 +75,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// This data source provides CEN Route Entries available to the user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.20.0+
         /// 
         /// ## Example Usage
         /// 

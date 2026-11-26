@@ -146,12 +146,36 @@ def get_cluster_credential(cluster_id: Optional[_builtins.str] = None,
     import pulumi_alicloud as alicloud
     import pulumi_std as std
 
-    # Declare the function
-    k8s = alicloud.cs.get_managed_kubernetes_clusters(name_regex="my-cluster",
-        enable_details=False)
-    auth = {str(__key): alicloud.cs.get_cluster_credential(cluster_id=str(__key),
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="10.4.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
+        vswitch_name=name,
+        vpc_id=default_network.id,
+        cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
+            newbits=8,
+            netnum=8).result,
+        zone_id=default.zones[0].id)
+    default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+        name=name,
+        cluster_spec="ack.pro.small",
+        vswitch_ids=[default_switch.id],
+        new_nat_gateway=False,
+        pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+            newbits=8,
+            netnum=37).result,
+        service_cidr=std.cidrsubnet(input="172.18.0.0/16",
+            newbits=4,
+            netnum=7).result,
+        slb_internet_enabled=True)
+    auth = alicloud.cs.get_cluster_credential_output(cluster_id=default_managed_kubernetes.id,
         temporary_duration_minutes=60,
-        output_file="my-auth-json") for __key, __value in enumerate(std.toset(input=k8s.ids).result)}
+        output_file="my-auth-json")
     ```
 
 
@@ -193,12 +217,36 @@ def get_cluster_credential_output(cluster_id: pulumi.Input[Optional[_builtins.st
     import pulumi_alicloud as alicloud
     import pulumi_std as std
 
-    # Declare the function
-    k8s = alicloud.cs.get_managed_kubernetes_clusters(name_regex="my-cluster",
-        enable_details=False)
-    auth = {str(__key): alicloud.cs.get_cluster_credential(cluster_id=str(__key),
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="10.4.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
+        vswitch_name=name,
+        vpc_id=default_network.id,
+        cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
+            newbits=8,
+            netnum=8).result,
+        zone_id=default.zones[0].id)
+    default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+        name=name,
+        cluster_spec="ack.pro.small",
+        vswitch_ids=[default_switch.id],
+        new_nat_gateway=False,
+        pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+            newbits=8,
+            netnum=37).result,
+        service_cidr=std.cidrsubnet(input="172.18.0.0/16",
+            newbits=4,
+            netnum=7).result,
+        slb_internet_enabled=True)
+    auth = alicloud.cs.get_cluster_credential_output(cluster_id=default_managed_kubernetes.id,
         temporary_duration_minutes=60,
-        output_file="my-auth-json") for __key, __value in enumerate(std.toset(input=k8s.ids).result)}
+        output_file="my-auth-json")
     ```
 
 

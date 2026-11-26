@@ -61,13 +61,16 @@ class GetConsumerGroupsResult:
     @_builtins.property
     @pulumi.getter(name="consumerIds")
     def consumer_ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of consumer group ids.
+        """
         return pulumi.get(self, "consumer_ids")
 
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetConsumerGroupsGroupResult']:
         """
-        A list of consumer group. Each element contains the following attributes:
+        A list of consumer group. Each element contains the following attributes. See `groups` for the optional argument block.
         """
         return pulumi.get(self, "groups")
 
@@ -130,7 +133,7 @@ def get_consumer_groups(consumer_id_regex: Optional[_builtins.str] = None,
     """
     This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.56.0+
+    > **NOTE:** Available since v1.56.0.
 
     ## Example Usage
 
@@ -175,7 +178,7 @@ def get_consumer_groups_output(consumer_id_regex: pulumi.Input[Optional[Optional
     """
     This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.56.0+
+    > **NOTE:** Available since v1.56.0.
 
     ## Example Usage
 

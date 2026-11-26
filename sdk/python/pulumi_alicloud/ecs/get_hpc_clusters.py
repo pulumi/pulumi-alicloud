@@ -50,6 +50,9 @@ class GetHpcClustersResult:
     @_builtins.property
     @pulumi.getter
     def clusters(self) -> Sequence['outputs.GetHpcClustersClusterResult']:
+        """
+        A list of Ecs Hpc Clusters. Each element contains the following attributes:
+        """
         return pulumi.get(self, "clusters")
 
     @_builtins.property
@@ -73,6 +76,9 @@ class GetHpcClustersResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Hpc Cluster names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -102,7 +108,7 @@ def get_hpc_clusters(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.116.0+.
+    > **NOTE:** Available since v1.116.0.
 
     ## Example Usage
 
@@ -143,7 +149,7 @@ def get_hpc_clusters_output(ids: pulumi.Input[Optional[Optional[Sequence[_builti
     """
     This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.116.0+.
+    > **NOTE:** Available since v1.116.0.
 
     ## Example Usage
 

@@ -433,6 +433,8 @@ class _ImageState:
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.bool] usable: Indicates whether the image is available. Valid values:
+               * true: The image is available and can be used to create ECS instances.
+               * false: The image is unavailable and cannot be used to create ECS instances.
         """
         if architecture is not None:
             pulumi.set(__self__, "architecture", architecture)
@@ -748,6 +750,8 @@ class _ImageState:
     def usable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the image is available. Valid values:
+        * true: The image is available and can be used to create ECS instances.
+        * false: The image is unavailable and cannot be used to create ECS instances.
         """
         return pulumi.get(self, "usable")
 
@@ -1116,6 +1120,8 @@ class Image(pulumi.CustomResource):
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.bool] usable: Indicates whether the image is available. Valid values:
+               * true: The image is available and can be used to create ECS instances.
+               * false: The image is unavailable and cannot be used to create ECS instances.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1380,6 +1386,8 @@ class Image(pulumi.CustomResource):
     def usable(self) -> pulumi.Output[_builtins.bool]:
         """
         Indicates whether the image is available. Valid values:
+        * true: The image is available and can be used to create ECS instances.
+        * false: The image is unavailable and cannot be used to create ECS instances.
         """
         return pulumi.get(self, "usable")
 

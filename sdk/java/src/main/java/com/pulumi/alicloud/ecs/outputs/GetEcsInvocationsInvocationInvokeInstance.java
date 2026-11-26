@@ -22,6 +22,10 @@ public final class GetEcsInvocationsInvocationInvokeInstance {
      * 
      */
     private Integer dropped;
+    /**
+     * @return The code that indicates why the command failed to be sent or run.
+     * 
+     */
     private String errorCode;
     /**
      * @return Details about the reason why the command failed to be sent or run.
@@ -43,6 +47,10 @@ public final class GetEcsInvocationsInvocationInvokeInstance {
      * 
      */
     private String instanceId;
+    /**
+     * @return **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+     * 
+     */
     private String instanceInvokeStatus;
     /**
      * @return The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
@@ -71,8 +79,6 @@ public final class GetEcsInvocationsInvocationInvokeInstance {
     private String stopTime;
     /**
      * @return Indicates whether the commands are to be automatically run.
-     * * `errorCode	` - The code that indicates why the command failed to be sent or run.
-     * * `instanceInvokeStatus	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
      * 
      */
     private Boolean timed;
@@ -97,6 +103,10 @@ public final class GetEcsInvocationsInvocationInvokeInstance {
     public Integer dropped() {
         return this.dropped;
     }
+    /**
+     * @return The code that indicates why the command failed to be sent or run.
+     * 
+     */
     public String errorCode() {
         return this.errorCode;
     }
@@ -128,6 +138,10 @@ public final class GetEcsInvocationsInvocationInvokeInstance {
     public String instanceId() {
         return this.instanceId;
     }
+    /**
+     * @return **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+     * 
+     */
     public String instanceInvokeStatus() {
         return this.instanceInvokeStatus;
     }
@@ -168,8 +182,6 @@ public final class GetEcsInvocationsInvocationInvokeInstance {
     }
     /**
      * @return Indicates whether the commands are to be automatically run.
-     * * `errorCode	` - The code that indicates why the command failed to be sent or run.
-     * * `instanceInvokeStatus	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
      * 
      */
     public Boolean timed() {

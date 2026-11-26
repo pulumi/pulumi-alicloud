@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// This data source provides Ebs Dedicated Block Storage Cluster available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0.
         /// 
         /// ## Example Usage
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// This data source provides Ebs Dedicated Block Storage Cluster available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0.
         /// 
         /// ## Example Usage
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// This data source provides Ebs Dedicated Block Storage Cluster available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0.
         /// 
         /// ## Example Usage
         /// 

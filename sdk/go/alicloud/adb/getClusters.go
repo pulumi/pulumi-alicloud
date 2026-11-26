@@ -14,11 +14,11 @@ import (
 // The `adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
 // Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
 //
-// > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
-//
-// > **NOTE:** Available in v1.71.0+.
+// > **DEPRECATED:** This data source has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -32,14 +32,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			adbClustersDs, err := adb.GetClusters(ctx, &adb.GetClustersArgs{
-//				DescriptionRegex: pulumi.StringRef("am-\\w+"),
-//				Status:           pulumi.StringRef("Running"),
+//			example, err := adb.GetClusters(ctx, &adb.GetClustersArgs{
+//				DescriptionRegex: pulumi.StringRef("example"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstAdbClusterId", adbClustersDs.Clusters[0].Id)
+//			ctx.Export("firstAdbClusterId", example.Clusters[0].Id)
 //			return nil
 //		})
 //	}
@@ -57,46 +56,47 @@ func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getClusters.
 type GetClustersArgs struct {
-	// The description of the ADB cluster.
+	// The description of DBCluster.
 	Description *string `pulumi:"description"`
-	// A regex string to filter results by cluster description.
+	// A regex string to filter results by DBCluster description.
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
-	EnableDetails    *bool   `pulumi:"enableDetails"`
-	// A list of ADB cluster IDs.
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails *bool `pulumi:"enableDetails"`
+	// A list of DBCluster IDs.
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
-	OutputFile      *string `pulumi:"outputFile"`
-	PageNumber      *int    `pulumi:"pageNumber"`
-	PageSize        *int    `pulumi:"pageSize"`
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
+	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+	// The status of the resource.
 	Status *string `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// A map of tags assigned to the cluster.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getClusters.
 type GetClustersResult struct {
-	// A list of ADB clusters. Each element contains the following attributes:
+	// A list of Adb Db Clusters. Each element contains the following attributes:
 	Clusters []GetClustersCluster `pulumi:"clusters"`
-	// The description of the ADB cluster.
+	// The description of DBCluster.
 	Description      *string `pulumi:"description"`
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
-	// A list of ADB cluster descriptions.
+	// A list of DBCluster descriptions.
 	Descriptions  []string `pulumi:"descriptions"`
 	EnableDetails *bool    `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of ADB cluster IDs.
-	Ids             []string `pulumi:"ids"`
-	OutputFile      *string  `pulumi:"outputFile"`
-	PageNumber      *int     `pulumi:"pageNumber"`
-	PageSize        *int     `pulumi:"pageSize"`
-	ResourceGroupId *string  `pulumi:"resourceGroupId"`
-	// Status of the cluster.
-	Status     *string           `pulumi:"status"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
+	// The tags of the resource.
 	Tags       map[string]string `pulumi:"tags"`
 	TotalCount int               `pulumi:"totalCount"`
 }
@@ -108,23 +108,23 @@ func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...
 
 // A collection of arguments for invoking getClusters.
 type GetClustersOutputArgs struct {
-	// The description of the ADB cluster.
+	// The description of DBCluster.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// A regex string to filter results by cluster description.
+	// A regex string to filter results by DBCluster description.
 	DescriptionRegex pulumi.StringPtrInput `pulumi:"descriptionRegex"`
-	EnableDetails    pulumi.BoolPtrInput   `pulumi:"enableDetails"`
-	// A list of ADB cluster IDs.
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of DBCluster IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
-	OutputFile      pulumi.StringPtrInput `pulumi:"outputFile"`
-	PageNumber      pulumi.IntPtrInput    `pulumi:"pageNumber"`
-	PageSize        pulumi.IntPtrInput    `pulumi:"pageSize"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+	// The status of the resource.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// A map of tags assigned to the cluster.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
@@ -147,12 +147,12 @@ func (o GetClustersResultOutput) ToGetClustersResultOutputWithContext(ctx contex
 	return o
 }
 
-// A list of ADB clusters. Each element contains the following attributes:
+// A list of Adb Db Clusters. Each element contains the following attributes:
 func (o GetClustersResultOutput) Clusters() GetClustersClusterArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []GetClustersCluster { return v.Clusters }).(GetClustersClusterArrayOutput)
 }
 
-// The description of the ADB cluster.
+// The description of DBCluster.
 func (o GetClustersResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -161,7 +161,7 @@ func (o GetClustersResultOutput) DescriptionRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.DescriptionRegex }).(pulumi.StringPtrOutput)
 }
 
-// A list of ADB cluster descriptions.
+// A list of DBCluster descriptions.
 func (o GetClustersResultOutput) Descriptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []string { return v.Descriptions }).(pulumi.StringArrayOutput)
 }
@@ -175,7 +175,6 @@ func (o GetClustersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of ADB cluster IDs.
 func (o GetClustersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -192,15 +191,17 @@ func (o GetClustersResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// The ID of the resource group.
 func (o GetClustersResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-// Status of the cluster.
+// The status of the resource.
 func (o GetClustersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The tags of the resource.
 func (o GetClustersResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClustersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

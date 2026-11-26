@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *
@@ -65,6 +65,9 @@ export interface GetMountPointsArgs {
  * A collection of values returned by getMountPoints.
  */
 export interface GetMountPointsResult {
+    /**
+     * The ID of the File System.
+     */
     readonly fileSystemId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -72,13 +75,19 @@ export interface GetMountPointsResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Dfs Mount Points. Each element contains the following attributes:
+     */
     readonly points: outputs.dfs.GetMountPointsPoint[];
+    /**
+     * The status of the Mount Point. Valid values: `Active`, `Inactive`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *

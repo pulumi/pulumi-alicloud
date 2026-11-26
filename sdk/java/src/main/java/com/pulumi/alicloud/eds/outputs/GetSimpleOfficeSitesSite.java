@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetSimpleOfficeSitesSite {
     /**
-     * @return The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+     * @return (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
      * 
      * @deprecated Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
      * 
@@ -87,7 +87,7 @@ public final class GetSimpleOfficeSitesSite {
      */
     private Boolean enableCrossDesktopAccess;
     /**
-     * @return Whether the Open Internet Access Function.
+     * @return (Deprecated from 1.142.0) Whether the Open Internet Access Function.
      * 
      * @deprecated Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
      * 
@@ -140,7 +140,7 @@ public final class GetSimpleOfficeSitesSite {
      */
     private Boolean ssoStatus;
     /**
-     * @return Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+     * @return Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
      * 
      */
     private String status;
@@ -172,7 +172,7 @@ public final class GetSimpleOfficeSitesSite {
 
     private GetSimpleOfficeSitesSite() {}
     /**
-     * @return The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+     * @return (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
      * 
      * @deprecated Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
      * 
@@ -273,7 +273,7 @@ public final class GetSimpleOfficeSitesSite {
         return this.enableCrossDesktopAccess;
     }
     /**
-     * @return Whether the Open Internet Access Function.
+     * @return (Deprecated from 1.142.0) Whether the Open Internet Access Function.
      * 
      * @deprecated Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
      * 
@@ -346,7 +346,7 @@ public final class GetSimpleOfficeSitesSite {
         return this.ssoStatus;
     }
     /**
-     * @return Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+     * @return Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
      * 
      */
     public String status() {

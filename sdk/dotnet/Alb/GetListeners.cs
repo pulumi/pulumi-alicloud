@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Application Load Balancer (ALB) Listeners of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Application Load Balancer (ALB) Listeners of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Application Load Balancer (ALB) Listeners of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -265,10 +265,19 @@ namespace Pulumi.AliCloud.Alb
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly ImmutableArray<string> ListenerIds;
+        /// <summary>
+        /// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+        /// </summary>
         public readonly string? ListenerProtocol;
+        /// <summary>
+        /// A list of Alb Listeners. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetListenersListenerResult> Listeners;
         public readonly ImmutableArray<string> LoadBalancerIds;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the listener.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

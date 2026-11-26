@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRulesRuleForwardIp {
+    /**
+     * @return The ip of the forwarding destination.
+     * 
+     */
     private String ip;
+    /**
+     * @return The port of the forwarding destination.
+     * 
+     */
     private Integer port;
 
     private GetRulesRuleForwardIp() {}
+    /**
+     * @return The ip of the forwarding destination.
+     * 
+     */
     public String ip() {
         return this.ip;
     }
+    /**
+     * @return The port of the forwarding destination.
+     * 
+     */
     public Integer port() {
         return this.port;
     }

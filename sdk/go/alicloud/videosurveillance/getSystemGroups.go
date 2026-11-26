@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.135.0+.
+// > **NOTE:** Available since v1.135.0.
 //
 // ## Example Usage
 //
@@ -82,13 +82,16 @@ type GetSystemGroupsArgs struct {
 
 // A collection of values returned by getSystemGroups.
 type GetSystemGroupsResult struct {
+	// A list of Video Surveillance System Groups. Each element contains the following attributes:
 	Groups []GetSystemGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	InProtocol *string  `pulumi:"inProtocol"`
-	Name       *string  `pulumi:"name"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+	InProtocol *string `pulumi:"inProtocol"`
+	Name       *string `pulumi:"name"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of Group names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	Status     *string  `pulumi:"status"`
@@ -134,6 +137,7 @@ func (o GetSystemGroupsResultOutput) ToGetSystemGroupsResultOutputWithContext(ct
 	return o
 }
 
+// A list of Video Surveillance System Groups. Each element contains the following attributes:
 func (o GetSystemGroupsResultOutput) Groups() GetSystemGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetSystemGroupsResult) []GetSystemGroupsGroup { return v.Groups }).(GetSystemGroupsGroupArrayOutput)
 }
@@ -147,6 +151,7 @@ func (o GetSystemGroupsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSystemGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
 func (o GetSystemGroupsResultOutput) InProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSystemGroupsResult) *string { return v.InProtocol }).(pulumi.StringPtrOutput)
 }
@@ -159,6 +164,7 @@ func (o GetSystemGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSystemGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Group names.
 func (o GetSystemGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSystemGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

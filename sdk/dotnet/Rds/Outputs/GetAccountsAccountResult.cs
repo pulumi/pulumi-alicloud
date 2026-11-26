@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string PrivExceeded;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Available`, `Unavailable`.
         /// </summary>
         public readonly string Status;
 

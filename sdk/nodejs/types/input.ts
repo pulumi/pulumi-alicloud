@@ -254,7 +254,7 @@ export interface ProviderAssumeRoleWithOidc {
      */
     roleSessionName?: pulumi.Input<string | undefined>;
     /**
-     * The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+     * The validity period of the STS token. Unit: seconds. Valid value range: 900 to 3600. Default value: 3600.
      */
     sessionExpiration?: pulumi.Input<number | undefined>;
 }
@@ -1075,6 +1075,339 @@ export namespace adb {
          * The name of table.
          */
         table?: pulumi.Input<string | undefined>;
+    }
+}
+
+export namespace agentloop {
+    export interface EndpointConnectorHeader {
+        /**
+         * The key of the header.
+         */
+        key?: pulumi.Input<string | undefined>;
+        /**
+         * The value of the header.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface EvaluationTaskEvaluator {
+        /**
+         * The configuration of the evaluator. For inline LLM evaluators it carries the evaluation settings such as `prompt`; for referenced evaluators it is usually omitted and only carries run parameters such as `version`. The backend injects the resolved `version`, which is only tracked when configured.
+         */
+        config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * The name of the registered (built-in or custom) evaluator to reference. When set, it takes precedence over the inline definition.
+         */
+        evaluatorRef?: pulumi.Input<string | undefined>;
+        /**
+         * The filters of the evaluator. Its `query` takes effect together with the `query` of the task-level `dataFilter`.
+         */
+        filters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * The name of the evaluator. It is required when `evaluatorRef` is not set.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the evaluation result. In reference mode it falls back to the metric name of the referenced evaluator.
+         */
+        resultName?: pulumi.Input<string | undefined>;
+        /**
+         * The type of the evaluation result. Valid values: `score`, `binary`, `text`. It is required when `evaluatorRef` is not set; in reference mode it defaults to `score`.
+         */
+        resultType?: pulumi.Input<string | undefined>;
+        /**
+         * The type of the evaluator. Valid values: `LLM`, `AGENT`, `CODE`. Defaults to `LLM`. `CODE` is only supported in reference mode.
+         */
+        type?: pulumi.Input<string | undefined>;
+        /**
+         * The variable mapping of the evaluator. It is required for inline `LLM` and `AGENT` evaluators. In reference mode, each key must be a variable defined by the referenced evaluator.
+         */
+        variableMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    }
+
+    export interface EvaluationTaskRunStrategies {
+        /**
+         * The backfill strategy. See `backfill` below.
+         */
+        backfill?: pulumi.Input<inputs.agentloop.EvaluationTaskRunStrategiesBackfill | undefined>;
+        /**
+         * The continuous strategy. See `continuous` below.
+         */
+        continuous?: pulumi.Input<inputs.agentloop.EvaluationTaskRunStrategiesContinuous | undefined>;
+    }
+
+    export interface EvaluationTaskRunStrategiesBackfill {
+        /**
+         * Whether to enable the continuous strategy. Default value: `true` (matching the API, which treats an omitted value as enabled). `false` disables the strategy but keeps its configuration.
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * The end time of the backfill range, as a Unix timestamp in milliseconds. To start a backfill manually, provide both `startTime` and `endTime`.
+         */
+        endTime?: pulumi.Input<number | undefined>;
+        /**
+         * Whether to run the backfill immediately. Default value: `false`.
+         */
+        immediate?: pulumi.Input<boolean | undefined>;
+        /**
+         * The start time of the backfill range, as a Unix timestamp in milliseconds. To start a backfill manually, provide both `startTime` and `endTime`.
+         */
+        startTime?: pulumi.Input<number | undefined>;
+    }
+
+    export interface EvaluationTaskRunStrategiesContinuous {
+        /**
+         * The data arrival delay, in minutes. Each run is created this many minutes after its window ends, so that the data of the window has fully arrived. Default value: `0`.
+         */
+        dataDelayMinutes?: pulumi.Input<number | undefined>;
+        /**
+         * Whether to enable the continuous strategy. Default value: `true` (matching the API, which treats an omitted value as enabled). `false` disables the strategy but keeps its configuration.
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * The unit of the run interval. Valid values: `HOUR`, `MINUTE`, `DAY`.
+         */
+        intervalUnit: pulumi.Input<string>;
+        /**
+         * The value of the run interval, used together with `intervalUnit`. It must be greater than or equal to `1`.
+         */
+        intervalValue: pulumi.Input<number>;
+    }
+
+    export interface PipelineExecutePolicy {
+        /**
+         * The execute mode of the Pipeline. Valid values: `RunOnce`, `Scheduled`.
+         */
+        mode?: pulumi.Input<string | undefined>;
+        /**
+         * The run-once policy. It is required when `mode` is `RunOnce`. See `runOnce` below.
+         */
+        runOnce?: pulumi.Input<inputs.agentloop.PipelineExecutePolicyRunOnce | undefined>;
+        /**
+         * The scheduled policy. It is required when `mode` is `Scheduled`. See `scheduled` below.
+         */
+        scheduled?: pulumi.Input<inputs.agentloop.PipelineExecutePolicyScheduled | undefined>;
+    }
+
+    export interface PipelineExecutePolicyRunOnce {
+        /**
+         * The start time of the schedule, in Unix milliseconds.
+         */
+        fromTime?: pulumi.Input<number | undefined>;
+        /**
+         * The end time of the run, in Unix seconds. It must be greater than `fromTime`.
+         */
+        toTime?: pulumi.Input<number | undefined>;
+    }
+
+    export interface PipelineExecutePolicyScheduled {
+        /**
+         * The start time of the schedule, in Unix milliseconds.
+         */
+        fromTime?: pulumi.Input<number | undefined>;
+        /**
+         * The run interval. Valid values: `1h`, `6h`, `12h`, `1d`.
+         */
+        interval?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PipelinePipeline {
+        /**
+         * The processing nodes of the Pipeline. See `nodes` below.
+         */
+        nodes: pulumi.Input<pulumi.Input<inputs.agentloop.PipelinePipelineNode>[]>;
+    }
+
+    export interface PipelinePipelineNode {
+        /**
+         * The resource ID in terraform of Pipeline. It formats as `<agent_space>:<pipeline_name>`.
+         */
+        id?: pulumi.Input<string | undefined>;
+        /**
+         * The parameters of the node. The parameters vary depending on the node type. A value that is a valid JSON document (e.g. `jsonencode(["a", "b"])` for an array, `"10"` for a number, `"true"` for a boolean) is sent in its parsed form; any other value is sent verbatim as a string.
+         */
+        parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PipelineSink {
+        /**
+         * The condition sink. It is valid when `type` is `condition`. See `condition` below.
+         */
+        condition?: pulumi.Input<inputs.agentloop.PipelineSinkCondition | undefined>;
+        /**
+         * The name of the target dataset.
+         */
+        dataset?: pulumi.Input<inputs.agentloop.PipelineSinkDataset | undefined>;
+        /**
+         * The type of the sink target. Valid values: `dataset`.
+         */
+        type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PipelineSinkCondition {
+        /**
+         * The default sink target when no route matches. See `defaultSink` below.
+         */
+        defaultSink?: pulumi.Input<inputs.agentloop.PipelineSinkConditionDefaultSink | undefined>;
+        /**
+         * The match mode of the routes. Valid values: `all`.
+         */
+        matchMode?: pulumi.Input<string | undefined>;
+        /**
+         * The condition routes. See `routes` below.
+         */
+        routes?: pulumi.Input<pulumi.Input<inputs.agentloop.PipelineSinkConditionRoute>[] | undefined>;
+    }
+
+    export interface PipelineSinkConditionDefaultSink {
+        dataset?: pulumi.Input<inputs.agentloop.PipelineSinkConditionDefaultSinkDataset | undefined>;
+        type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PipelineSinkConditionDefaultSinkDataset {
+        /**
+         * The name of the Agent Space to which the Pipeline belongs.
+         */
+        agentSpace?: pulumi.Input<string | undefined>;
+        dataset?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PipelineSinkConditionRoute {
+        /**
+         * The filter expression of the route, written in SPL. Only the `where`, `project` and `extend` instructions are supported.
+         */
+        expression?: pulumi.Input<string | undefined>;
+        /**
+         * The resource ID in terraform of Pipeline. It formats as `<agent_space>:<pipeline_name>`.
+         */
+        id?: pulumi.Input<string | undefined>;
+        /**
+         * The data sink of the Pipeline. See `sink` below.
+         */
+        sink?: pulumi.Input<inputs.agentloop.PipelineSinkConditionRouteSink | undefined>;
+    }
+
+    export interface PipelineSinkConditionRouteSink {
+        /**
+         * The name of the target dataset.
+         */
+        dataset?: pulumi.Input<inputs.agentloop.PipelineSinkConditionRouteSinkDataset | undefined>;
+        /**
+         * The type of the sink target. Valid values: `dataset`.
+         */
+        type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PipelineSinkConditionRouteSinkDataset {
+        /**
+         * The name of the Agent Space to which the Pipeline belongs.
+         */
+        agentSpace?: pulumi.Input<string | undefined>;
+        dataset?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PipelineSinkDataset {
+        /**
+         * The name of the Agent Space to which the Pipeline belongs.
+         */
+        agentSpace?: pulumi.Input<string | undefined>;
+        dataset?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PipelineSource {
+        /**
+         * The name of the source dataset. The dataset must belong to the Agent Space of the Pipeline.
+         */
+        dataset?: pulumi.Input<inputs.agentloop.PipelineSourceDataset | undefined>;
+        /**
+         * The input fields of the source. See `inputFields` below.
+         */
+        inputFields?: pulumi.Input<pulumi.Input<inputs.agentloop.PipelineSourceInputField>[] | undefined>;
+        /**
+         * The name of the SLS logstore.
+         */
+        logstore?: pulumi.Input<inputs.agentloop.PipelineSourceLogstore | undefined>;
+        /**
+         * The type of the input field. Valid values: `text`, `long`, `double`, `json`.
+         */
+        type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PipelineSourceDataset {
+        dataset?: pulumi.Input<string | undefined>;
+        /**
+         * The filter expression of the source dataset. It can be updated in place.
+         */
+        filter?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PipelineSourceInputField {
+        /**
+         * The name of the input field.
+         */
+        name?: pulumi.Input<string | undefined>;
+        type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PipelineSourceLogstore {
+        /**
+         * The name of the SLS logstore.
+         */
+        logstore?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the SLS project.
+         */
+        project?: pulumi.Input<string | undefined>;
+        /**
+         * The query statement used to filter the logstore data, written in the SLS query and analysis syntax.
+         */
+        query?: pulumi.Input<string | undefined>;
+    }
+}
+
+export namespace agentloopcontextstore {
+    export interface AgentloopContextStoreConfig {
+        /**
+         * The mapping between business metadata fields and storage fields. The map key is the business field name and the map value (string) is the field name used in storage, for example `userId = "userId"`. An update replaces the whole mapping, and removing a key deletes it from the Context Store. The Get API returns the mapping mixed with internal keys, so this field is kept from the prior state and cannot be recovered by `pulumi import`; the first apply after importing sends the configured mapping again in place.
+         */
+        metadataField?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * The list of service names whose data is imported into the Context Store. It must be a non-empty list when `contextType` is `experience`. An update replaces the whole list and keeps its order.
+         */
+        serviceNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The log data source of the Context Store. See `source` below.
+         */
+        source?: pulumi.Input<inputs.agentloopcontextstore.AgentloopContextStoreConfigSource | undefined>;
+    }
+
+    export interface AgentloopContextStoreConfigSource {
+        /**
+         * The name of the Agent Space to which the Context Store belongs. It must be 2 to 64 characters in length.
+         */
+        agentSpace?: pulumi.Input<string | undefined>;
+        /**
+         * The start time for data backfill, in ISO 8601 UTC format (`yyyy-MM-ddTHH:mm:ssZ`). If not specified, the current time is used.
+         */
+        startTime?: pulumi.Input<string | undefined>;
+    }
+}
+
+export namespace agentloopevaluator {
+    export interface SkillFile {
+        /**
+         * The content of the skill file.
+         */
+        content: pulumi.Input<string>;
+        /**
+         * The name of the skill file.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The remark of the skill file. When the Get API returns no remark (null or an empty string) for a file, the configured value is kept in the state; therefore clearing a remark outside Terraform cannot be detected as drift, and the remark cannot be recovered by `pulumi import`.
+         */
+        remark?: pulumi.Input<string | undefined>;
     }
 }
 
@@ -1934,7 +2267,8 @@ export namespace alb {
          * The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
          *
          * > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-         * **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+         *
+         * > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
          */
         weight?: pulumi.Input<number | undefined>;
     }
@@ -3129,6 +3463,120 @@ export namespace arms {
         ttsRecoverContent: pulumi.Input<string>;
     }
 
+    export interface NotificationPolicyGroupRule {
+        /**
+         * The group interval, in seconds. Defaults to `30`. Available since v2.2.0.
+         */
+        groupInterval?: pulumi.Input<number | undefined>;
+        /**
+         * The group wait time, in seconds. Defaults to `5`. Available since v2.2.0.
+         */
+        groupWait?: pulumi.Input<number | undefined>;
+        /**
+         * The grouping fields. An empty list is sent as an empty grouping array; omit the entire `groupRule` block to use the service's `alertname` grouping. Available since v2.2.0.
+         */
+        groupingFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface NotificationPolicyMatchingRule {
+        /**
+         * The matching conditions. See `matchingConditions` below. Available since v2.2.0.
+         */
+        matchingConditions: pulumi.Input<pulumi.Input<inputs.arms.NotificationPolicyMatchingRuleMatchingCondition>[]>;
+    }
+
+    export interface NotificationPolicyMatchingRuleMatchingCondition {
+        /**
+         * The key of the matching condition. Available since v2.2.0.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The operator of the matching condition. Valid values: `eq`, `neq`, `in`, `nin`, `re`, `nre`. Available since v2.2.0.
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * The value of the matching condition. Available since v2.2.0.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface NotificationPolicyNotifyRule {
+        /**
+         * The notification channels. Valid values: `dingTalk`, `email`, `sms`, `tts`, `webhook`. Available since v2.2.0.
+         */
+        notifyChannels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The end time of the notification window, in `HH:mm` format. Available since v2.2.0.
+         */
+        notifyEndTime?: pulumi.Input<string | undefined>;
+        /**
+         * The notification objects. See `notifyObjects` below. Available since v2.2.0.
+         */
+        notifyObjects?: pulumi.Input<pulumi.Input<inputs.arms.NotificationPolicyNotifyRuleNotifyObject>[] | undefined>;
+        /**
+         * The start time of the notification window, in `HH:mm` format. Available since v2.2.0.
+         */
+        notifyStartTime?: pulumi.Input<string | undefined>;
+    }
+
+    export interface NotificationPolicyNotifyRuleNotifyObject {
+        /**
+         * The notification channels of the notification object (when the object is a contact). When omitted, the effective channels are returned in state. Valid values: `email`, `sms`, `tts`. Available since v2.2.0.
+         */
+        notifyChannels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The ID of the notification object. Available since v2.2.0.
+         */
+        notifyObjectId?: pulumi.Input<number | undefined>;
+        /**
+         * The name of the notification object. Available since v2.2.0.
+         */
+        notifyObjectName?: pulumi.Input<string | undefined>;
+        /**
+         * The type of the notification object. Valid values: `CONTACT`, `CONTACT_GROUP`, `ARMS_CONTACT`, `ARMS_CONTACT_GROUP`, `DING_ROBOT_GROUP`, `CONTACT_SCHEDULE`. Available since v2.2.0.
+         */
+        notifyObjectType?: pulumi.Input<string | undefined>;
+    }
+
+    export interface NotificationPolicyNotifyTemplate {
+        /**
+         * The content of the email alert notification. Available since v2.2.0.
+         */
+        emailContent?: pulumi.Input<string | undefined>;
+        /**
+         * The content of the email recovery notification. Available since v2.2.0.
+         */
+        emailRecoverContent?: pulumi.Input<string | undefined>;
+        /**
+         * The title of the email recovery notification. Available since v2.2.0.
+         */
+        emailRecoverTitle?: pulumi.Input<string | undefined>;
+        /**
+         * The title of the email alert notification. Available since v2.2.0.
+         */
+        emailTitle?: pulumi.Input<string | undefined>;
+        /**
+         * The content of the robot alert notification. Available since v2.2.0.
+         */
+        robotContent?: pulumi.Input<string | undefined>;
+        /**
+         * The content of the SMS alert notification. Available since v2.2.0.
+         */
+        smsContent?: pulumi.Input<string | undefined>;
+        /**
+         * The content of the SMS recovery notification. Available since v2.2.0.
+         */
+        smsRecoverContent?: pulumi.Input<string | undefined>;
+        /**
+         * The content of the TTS alert notification. Available since v2.2.0.
+         */
+        ttsContent?: pulumi.Input<string | undefined>;
+        /**
+         * The content of the TTS recovery notification. Available since v2.2.0.
+         */
+        ttsRecoverContent?: pulumi.Input<string | undefined>;
+    }
+
     export interface PrometheusAlertRuleAnnotation {
         /**
          * The name of the annotation.
@@ -3734,7 +4182,7 @@ export namespace bastionhost {
 export namespace bp {
     export interface StudioApplicationInstance {
         /**
-         * The resource ID in terraform of Application.
+         * The id of the instance.
          */
         id?: pulumi.Input<string | undefined>;
         /**
@@ -5152,6 +5600,78 @@ export namespace cloudstoragegateway {
 }
 
 export namespace cms {
+    export interface AddonReleaseEntityRules {
+        /**
+         * A collection of entity types.
+         */
+        entityTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The property matching rules. See `fieldRules` below.
+         */
+        fieldRules?: pulumi.Input<pulumi.Input<inputs.cms.AddonReleaseEntityRulesFieldRule>[] | undefined>;
+        /**
+         * A collection of instance IDs.
+         */
+        instanceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * A collection of IP address matching rules. See `ipMatchRule` below.
+         */
+        ipMatchRule?: pulumi.Input<inputs.cms.AddonReleaseEntityRulesIpMatchRule | undefined>;
+        /**
+         * A collection of region IDs.
+         */
+        regionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The resource group ID.
+         */
+        resourceGroupId?: pulumi.Input<string | undefined>;
+        /**
+         * The tag-based service discovery rules. See `tags` below.
+         */
+        tags?: pulumi.Input<pulumi.Input<inputs.cms.AddonReleaseEntityRulesTag>[] | undefined>;
+    }
+
+    export interface AddonReleaseEntityRulesFieldRule {
+        /**
+         * The key of the property.
+         */
+        fieldKey?: pulumi.Input<string | undefined>;
+        /**
+         * A collection of property values.
+         */
+        fieldValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+         */
+        op?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AddonReleaseEntityRulesIpMatchRule {
+        /**
+         * The CIDR block to match against.
+         */
+        ipCidr?: pulumi.Input<string | undefined>;
+        /**
+         * The key of the IP address field.
+         */
+        ipFieldKey?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AddonReleaseEntityRulesTag {
+        /**
+         * The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+         */
+        op?: pulumi.Input<string | undefined>;
+        /**
+         * The key of the tag.
+         */
+        tagKey?: pulumi.Input<string | undefined>;
+        /**
+         * A collection of tag values.
+         */
+        tagValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
     export interface AlarmCompositeExpression {
         /**
          * The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
@@ -6214,6 +6734,7 @@ export namespace cms {
     export interface GroupMetricRuleTarget {
         /**
          * The Alibaba Cloud Resource Name (ARN) of the resource.
+         *
          * > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
          */
         arn?: pulumi.Input<string | undefined>;
@@ -6340,6 +6861,20 @@ export namespace cms {
          * The cluster ID.
          */
         clusterId?: pulumi.Input<string | undefined>;
+        /**
+         * The cluster Namespace.
+         *
+         * > **NOTE:** If `disablePolicyShare` is set to `true`, you can create multiple policies for a container cluster, and `clusterNamespace` is required.
+         */
+        clusterNamespace?: pulumi.Input<string | undefined>;
+        /**
+         * Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+         */
+        disablePolicyShare?: pulumi.Input<boolean | undefined>;
+        /**
+         * The ID of the user who owns the cluster.
+         */
+        entityUserId?: pulumi.Input<string | undefined>;
     }
 
     export interface MetricRuleBlackListMetric {
@@ -6356,6 +6891,7 @@ export namespace cms {
     export interface MetricRuleTemplateAlertTemplate {
         /**
          * The abbreviation of the Alibaba Cloud service name.
+         *
          * > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
          */
         category: pulumi.Input<string>;
@@ -6365,11 +6901,13 @@ export namespace cms {
         escalations?: pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplateEscalations | undefined>;
         /**
          * The name of the metric.
+         *
          * > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
          */
         metricName: pulumi.Input<string>;
         /**
          * The namespace of the cloud service.
+         *
          * > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
          */
         namespace: pulumi.Input<string>;
@@ -6933,6 +7471,82 @@ export namespace cr {
 }
 
 export namespace cs {
+    export interface AutoRepairPolicyRule {
+        /**
+         * The incidents that trigger the repair. See `incidents` below.
+         */
+        incidents: pulumi.Input<pulumi.Input<inputs.cs.AutoRepairPolicyRuleIncident>[]>;
+        /**
+         * The repair procedures executed in order when the incidents are detected. See `repairProcedure` below. The procedures must be a subsequence of the built-in template of the incident, and the procedures marked as required in the template must be included. A procedure cannot be repeated, and `QuarantineNode` must be listed before `Evict` and `UnquarantineNode`.
+         */
+        repairProcedures: pulumi.Input<pulumi.Input<inputs.cs.AutoRepairPolicyRuleRepairProcedure>[]>;
+    }
+
+    export interface AutoRepairPolicyRuleIncident {
+        /**
+         * The name of the auto repair policy.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface AutoRepairPolicyRuleRepairProcedure {
+        /**
+         * The configuration of the procedure as a JSON object, for example `jsonencode({ evictTimeout = 300 })` for `Evict`. An empty value and an empty JSON object are equivalent. See the `config` key table in Repair procedure reference for the accepted keys.
+         */
+        config?: pulumi.Input<string | undefined>;
+        /**
+         * The manual approval configuration of the procedure. See `intervention` below.
+         */
+        intervention?: pulumi.Input<inputs.cs.AutoRepairPolicyRuleRepairProcedureIntervention | undefined>;
+        /**
+         * The name of the auto repair policy.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface AutoRepairPolicyRuleRepairProcedureIntervention {
+        /**
+         * The label that marks the request as approved. The value must differ from the value of the inquiring label, for example `approved`. See `approvedLabel` below.
+         *
+         * When manual approval is enabled, the procedure pauses after the inquiring label is written, and all subsequent procedures of the same policy wait until the approved label is written to the node.
+         */
+        approvedLabel?: pulumi.Input<inputs.cs.AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel | undefined>;
+        /**
+         * Whether manual approval is required before the procedure runs. Defaults to `false`.
+         */
+        enable?: pulumi.Input<boolean | undefined>;
+        /**
+         * The label written to the node to request approval. The key identifies the procedure, for example `intervention.autorepair.node.k8s.aliyun.com/<procedure_name>`, with the `hypernode` domain for Lingjun super nodes, and the value is the inquiry value, for example `inquiring`. See `inquiringLabel` below.
+         */
+        inquiringLabel?: pulumi.Input<inputs.cs.AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel | undefined>;
+        /**
+         * The type of the auto repair policy. Valid values: `custom`, `builtin`.
+         */
+        type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel {
+        /**
+         * The key of the label. Both labels must use the same key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The value of the label. It must differ from the value of the inquiring label.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel {
+        /**
+         * The key of the label. Both labels must use the same key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The value of the label. It must differ from the value of the inquiring label.
+         */
+        value: pulumi.Input<string>;
+    }
+
     export interface EdgeKubernetesAddon {
         /**
          * The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
@@ -6942,17 +7556,6 @@ export namespace cs {
          * Disables the automatic installation of a component. Default is `false`.
          *
          * The following example is the definition of addons block, The type of this field is list:
-         *
-         * ```
-         * # install nginx ingress, conflict with SLB ingress
-         * addons {
-         * name = "nginx-ingress-controller"
-         * # use internet
-         * config = "{\"IngressSlbNetworkType\":\"internet",\"IngressSlbSpec\":\"slb.s2.small\"}"
-         * # if use intranet, detail below.
-         * # config = "{\"IngressSlbNetworkType\":\"intranet",\"IngressSlbSpec\":\"slb.s2.small\"}"
-         * }
-         * ```
          */
         disabled?: pulumi.Input<boolean | undefined>;
         /**
@@ -7019,13 +7622,6 @@ export namespace cs {
          * The version of the runtime.
          *
          * The following example is the definition of runtime block:
-         *
-         * ```
-         * runtime = {
-         * name = "containerd"
-         * version = "1.6.28"
-         * }
-         * ```
          */
         version?: pulumi.Input<string | undefined>;
     }
@@ -7094,7 +7690,7 @@ export namespace cs {
          *
          * The following example is the definition of addons block, The type of this field is list:
          *
-         * ```
+         * ```text
          * # install nginx ingress, conflict with SLB ingress
          * addons {
          * name = "nginx-ingress-controller"
@@ -7177,7 +7773,7 @@ export namespace cs {
          * - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
          * - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
          *
-         * ```
+         * ```text
          * ...
          * // Specify delete_options as below when deleting cluster
          * // delete SLB resources created by the Nginx Ingress Service
@@ -7207,7 +7803,7 @@ export namespace cs {
 
     export interface KubernetesMasterNode {
         /**
-         * ID of the node.
+         * (Optional) The id of a node.
          */
         id?: pulumi.Input<string | undefined>;
         /**
@@ -7215,7 +7811,7 @@ export namespace cs {
          */
         name?: pulumi.Input<string | undefined>;
         /**
-         * The private IP address of node.
+         * (Optional) The private ip of a node.
          */
         privateIp?: pulumi.Input<string | undefined>;
     }
@@ -7257,7 +7853,7 @@ export namespace cs {
          *
          * The following example is the definition of runtime block:
          *
-         * ```
+         * ```text
          * runtime = {
          * name = "containerd"
          * version = "1.6.28"
@@ -7285,38 +7881,25 @@ export namespace cs {
          *
          * The `main.tf`:
          *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * import * as alicloud from "@pulumi/alicloud";
-         * import * as std from "@pulumi/std";
+         * ```text
+         * resource "alicloud_cs_managed_kubernetes" "k8s" {
+         * # ... other configuration ...
          *
-         * const k8s = new alicloud.cs.ManagedKubernetes("k8s", {addons: Object.entries(clusterAddons).sort().map(([k, v]) => ({key: k, value: v})).map(entry => ({
-         *     name: output(std.lookup({
-         *         map: entry.value,
-         *         key: "name",
-         *         "default": clusterAddons,
-         *     }).then(invoke => invoke.result)).apply(x =>String(x)),
-         *     config: output(std.lookup({
-         *         map: entry.value,
-         *         key: "config",
-         *         "default": clusterAddons,
-         *     }).then(invoke => invoke.result)).apply(x =>String(x)),
-         *     version: output(std.lookup({
-         *         map: entry.value,
-         *         key: "version",
-         *         "default": clusterAddons,
-         *     }).then(invoke => invoke.result)).apply(x =>String(x)),
-         *     disabled: output(std.lookup({
-         *         map: entry.value,
-         *         key: "disabled",
-         *         "default": clusterAddons,
-         *     }).then(invoke => invoke.result)).apply(x =>x === "true"),
-         * }))});
+         * dynamic "addons" {
+         * for_each = var.cluster_addons
+         * content {
+         * name     = lookup(addons.value, "name", var.cluster_addons)
+         * config   = lookup(addons.value, "config", var.cluster_addons)
+         * version  = lookup(addons.value, "version", var.cluster_addons)
+         * disabled = lookup(addons.value, "disabled", var.cluster_addons)
+         * }
+         * }
+         * }
          * ```
          *
          * The `varibales.tf`:
          *
-         * ```
+         * ```text
          * # Network-flannel is required, Conflicts With Network-terway
          * variable "cluster_addons" {
          * description = "Addon components in kubernetes cluster"
@@ -7582,7 +8165,7 @@ export namespace cs {
          * - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
          * - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
          *
-         * ```
+         * ```text
          * ...
          * // Specify delete_options as below when deleting cluster
          * // delete SLB resources created by the Nginx Ingress Service
@@ -7627,7 +8210,8 @@ export namespace cs {
          * Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
          *
          * for example:
-         * ```
+         *
+         * ```text
          * maintenance_window {
          * enable            = true
          * maintenance_time  = "2024-10-15T12:31:00.000+08:00"
@@ -7651,7 +8235,8 @@ export namespace cs {
          * The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
          *
          * for example:
-         * ```
+         *
+         * ```text
          * operation_policy {
          * cluster_auto_upgrade {
          * enabled = true
@@ -7691,7 +8276,8 @@ export namespace cs {
          * Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
          *
          * for example:
-         * ```
+         *
+         * ```text
          * # Upgrade cluster version with control plane only
          * version = "1.32.1-aliyun.1"
          *
@@ -8056,7 +8642,7 @@ export namespace cs {
 
     export interface NodePoolManagement {
         /**
-         * Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
+         * Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. Setting it to `false` suspends automatic repair without clearing the bound policy: `auto_repair_policy.auto_repair_policy_id` is retained, the policy just stops taking effect, and the policy no longer reports this node pool in `resourceIds` when it is queried. Turning `autoRepair` back on makes the retained policy take effect again. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later and the `ack-node-problem-detector` add-on at version `1.2.41` or later; the service validates the installed versions and the error message contains the required minimum when an add-on is missing or too old. See csKubernetesAddon for installation.
          */
         autoRepair?: pulumi.Input<boolean | undefined>;
         /**
@@ -8103,7 +8689,23 @@ export namespace cs {
 
     export interface NodePoolManagementAutoRepairPolicy {
         /**
+         * The ID of the auto repair policy bound to the node pool. It takes precedence over `restartNode`. The value is only sent when it is non-empty: Terraform treats an empty attribute value as unset, so to suspend automatic repair set `autoRepair` to `false` instead of clearing this field. The binding is retained while auto repair is off and takes effect again when `autoRepair` is turned back on. Once a policy ID has been bound explicitly, removing the argument from the configuration does not unbind the policy. You can use `alicloud.cs.AutoRepairPolicy` to create a custom policy, or reference a builtin policy returned by the `alicloud.cs.getAutoRepairPolicies` data source. The builtin policies are `r-repair-sys-comp-failure` (repair, restarting the node when needed) and `r-repair-sys-comp-failure-without-reboots` (repair without restarting the node). They replace the deprecated `restartNode` switch: `r-repair-sys-comp-failure` is equivalent to `restartNode = true` and `r-repair-sys-comp-failure-without-reboots` to `restartNode = false`. The policy subtype must match the node pool type (`ess` or `lingjun`).
+         */
+        autoRepairPolicyId?: pulumi.Input<string | undefined>;
+        /**
+         * The maximum number of nodes that can be repaired simultaneously. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]` (decimals such as `2.5%` are accepted). Defaults to `1`. An empty value is treated as unset by Terraform and is not sent.
+         */
+        maxParallelRepairingNodes?: pulumi.Input<string | undefined>;
+        /**
+         * The circuit breaker threshold for auto repair. When the number of unhealthy nodes in the node pool reaches this threshold, the node pool stops starting new repair actions. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]`. It must be greater than or equal to `maxParallelRepairingNodes` when both are given in the same form (both a count or both a percentage). Defaults to `100%`. An empty value is treated as unset by Terraform and is not sent.
+         *
+         * > **NOTE:** An auto repair policy can only be bound to a managed node pool of an ACK Pro cluster, and Auto mode node pools do not support auto repair policies. Binding a policy requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later; automatic fault diagnosis additionally requires `ack-node-problem-detector` at version `1.2.41` or later. The service validates the installed versions on every request and rejects requests whose add-on version is below the minimum, so install or upgrade the add-ons with csKubernetesAddon before enabling these features.
+         */
+        maxUnhealthyNodesThreshold?: pulumi.Input<string | undefined>;
+        /**
          * Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+         *
+         * @deprecated Field 'management.auto_repair_policy.restart_node' has been deprecated from provider version 2.3.0. Use 'management.auto_repair_policy.auto_repair_policy_id' instead: set it to 'r-repair-sys-comp-failure' to replace restartNode = true, or to 'r-repair-sys-comp-failure-without-reboots' to replace restartNode = false. When both are set, autoRepairPolicyId takes precedence and restartNode is ignored.
          */
         restartNode?: pulumi.Input<boolean | undefined>;
     }
@@ -8269,33 +8871,6 @@ export namespace cs {
          * Disables the automatic installation of a component. Default is `false`.
          *
          * The following example is the definition of addons block, The type of this field is list:
-         *
-         * ```
-         * # install nginx ingress, conflict with ALB ingress
-         * addons {
-         * name = "nginx-ingress-controller"
-         * # use internet
-         * config = "{\"IngressSlbNetworkType\":\"internet",\"IngressSlbSpec\":\"slb.s2.small\"}"
-         * # if use intranet, detail below.
-         * # config = "{\"IngressSlbNetworkType\":\"intranet",\"IngressSlbSpec\":\"slb.s2.small\"}"
-         * }
-         * # install ALB ingress, conflict with nginx ingress
-         * addons {
-         * name = "alb-ingress-controller"
-         * }
-         * # install metric server
-         * addons {
-         * name = "metrics-server"
-         * }
-         * # install knative
-         * addons {
-         * name = "knative"
-         * }
-         * # install prometheus
-         * addons {
-         * name = "arms-prometheus"
-         * }
-         * ```
          */
         disabled?: pulumi.Input<boolean | undefined>;
         /**
@@ -8320,35 +8895,6 @@ export namespace cs {
          * - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
          * - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
          * - `PrivateZone`: PrivateZone resources created by the cluster, default behavior is to retain, option to delete is available.
-         * ```
-         * ...
-         * // Specify delete_options as below when deleting cluster
-         * // delete SLB resources created by the Nginx Ingress Service
-         * delete_options {
-         * delete_mode = "delete"
-         * resource_type = "SLB"
-         * }
-         * // delete ALB resources created by the ALB Ingress Controller
-         * delete_options {
-         * delete_mode = "delete"
-         * resource_type = "ALB"
-         * }
-         * // delete SLS Project used by the cluster logging feature
-         * delete_options {
-         * delete_mode = "delete"
-         * resource_type = "SLS_Data"
-         * }
-         * // delete SLS Project used for the managed cluster control plane logs
-         * delete_options {
-         * delete_mode = "delete"
-         * resource_type = "SLS_ControlPlane"
-         * }
-         * // delete PrivateZone resources created by the cluster
-         * delete_options {
-         * delete_mode = "delete"
-         * resource_type = "PrivateZone"
-         * }
-         * ```
          */
         resourceType?: pulumi.Input<string | undefined>;
     }
@@ -8370,14 +8916,6 @@ export namespace cs {
          * Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
          *
          * for example:
-         * ```
-         * maintenance_window {
-         * enable            = true
-         * maintenance_time  = "2024-10-15T12:31:00.000+08:00"
-         * duration          = "3h"
-         * weekly_period     = "Monday,Friday"
-         * }
-         * ```
          */
         weeklyPeriod?: pulumi.Input<string | undefined>;
     }
@@ -8394,14 +8932,6 @@ export namespace cs {
          * The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
          *
          * for example:
-         * ```
-         * operation_policy {
-         * cluster_auto_upgrade {
-         * enabled = true
-         * channel = "stable"
-         * }
-         * }
-         * ```
          */
         channel?: pulumi.Input<string | undefined>;
         /**
@@ -8842,147 +9372,147 @@ export namespace dcdn {
 
     export interface ErEnvConf {
         /**
-         * The configuration of a presetCanaryAnhui environment. See `staging` below.
+         * The configuration of a presetCanaryAnhui environment. See `presetCanaryAnhui` below.
          */
         presetCanaryAnhui?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryAnhui | undefined>;
         /**
-         * The configuration of a presetCanaryBeijing environment. See `staging` below.
+         * The configuration of a presetCanaryBeijing environment. See `presetCanaryBeijing` below.
          */
         presetCanaryBeijing?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryBeijing | undefined>;
         /**
-         * The configuration of a presetCanaryChongqing environment. See `staging` below.
+         * The configuration of a presetCanaryChongqing environment. See `presetCanaryChongqing` below.
          */
         presetCanaryChongqing?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryChongqing | undefined>;
         /**
-         * The configuration of a presetCanaryFujian environment. See `staging` below.
+         * The configuration of a presetCanaryFujian environment. See `presetCanaryFujian` below.
          */
         presetCanaryFujian?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryFujian | undefined>;
         /**
-         * The configuration of a presetCanaryGansu environment. See `staging` below.
+         * The configuration of a presetCanaryGansu environment. See `presetCanaryGansu` below.
          */
         presetCanaryGansu?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryGansu | undefined>;
         /**
-         * The configuration of a presetCanaryGuangdong environment. See `staging` below.
+         * The configuration of a presetCanaryGuangdong environment. See `presetCanaryGuangdong` below.
          */
         presetCanaryGuangdong?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryGuangdong | undefined>;
         /**
-         * The configuration of a presetCanaryGuangxi environment. See `staging` below.
+         * The configuration of a presetCanaryGuangxi environment. See `presetCanaryGuangxi` below.
          */
         presetCanaryGuangxi?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryGuangxi | undefined>;
         /**
-         * The configuration of a presetCanaryGuizhou environment. See `staging` below.
+         * The configuration of a presetCanaryGuizhou environment. See `presetCanaryGuizhou` below.
          */
         presetCanaryGuizhou?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryGuizhou | undefined>;
         /**
-         * The configuration of a presetCanaryHainan environment. See `staging` below.
+         * The configuration of a presetCanaryHainan environment. See `presetCanaryHainan` below.
          */
         presetCanaryHainan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHainan | undefined>;
         /**
-         * The configuration of a presetCanaryHebei environment. See `staging` below.
+         * The configuration of a presetCanaryHebei environment. See `presetCanaryHebei` below.
          */
         presetCanaryHebei?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHebei | undefined>;
         /**
-         * The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
+         * The configuration of a presetCanaryHeilongjiang environment. See `presetCanaryHeilongjiang` below.
          */
         presetCanaryHeilongjiang?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHeilongjiang | undefined>;
         /**
-         * The configuration of a presetCanaryHenan environment. See `staging` below.
+         * The configuration of a presetCanaryHenan environment. See `presetCanaryHenan` below.
          */
         presetCanaryHenan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHenan | undefined>;
         /**
-         * The configuration of a presetCanaryHongKong environment. See `staging` below.
+         * The configuration of a presetCanaryHongKong environment. See `presetCanaryHongKong` below.
          */
         presetCanaryHongKong?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHongKong | undefined>;
         /**
-         * The configuration of a presetCanaryHubei environment. See `staging` below.
+         * The configuration of a presetCanaryHubei environment. See `presetCanaryHubei` below.
          */
         presetCanaryHubei?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHubei | undefined>;
         /**
-         * The configuration of a presetCanaryHunan environment. See `staging` below.
+         * The configuration of a presetCanaryHunan environment. See `presetCanaryHunan` below.
          */
         presetCanaryHunan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHunan | undefined>;
         /**
-         * The configuration of a presetCanaryJiangsu environment. See `staging` below.
+         * The configuration of a presetCanaryJiangsu environment. See `presetCanaryJiangsu` below.
          */
         presetCanaryJiangsu?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryJiangsu | undefined>;
         /**
-         * The configuration of a presetCanaryJiangxi environment. See `staging` below.
+         * The configuration of a presetCanaryJiangxi environment. See `presetCanaryJiangxi` below.
          */
         presetCanaryJiangxi?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryJiangxi | undefined>;
         /**
-         * The configuration of a presetCanaryJilin environment. See `staging` below.
+         * The configuration of a presetCanaryJilin environment. See `presetCanaryJilin` below.
          */
         presetCanaryJilin?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryJilin | undefined>;
         /**
-         * The configuration of a presetCanaryLiaoning environment. See `staging` below.
+         * The configuration of a presetCanaryLiaoning environment. See `presetCanaryLiaoning` below.
          */
         presetCanaryLiaoning?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryLiaoning | undefined>;
         /**
-         * The configuration of a presetCanaryMacau environment. See `staging` below.
+         * The configuration of a presetCanaryMacau environment. See `presetCanaryMacau` below.
          */
         presetCanaryMacau?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryMacau | undefined>;
         /**
-         * The configuration of a presetCanaryNeimenggu environment. See `staging` below.
+         * The configuration of a presetCanaryNeimenggu environment. See `presetCanaryNeimenggu` below.
          */
         presetCanaryNeimenggu?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryNeimenggu | undefined>;
         /**
-         * The configuration of a presetCanaryNingxia environment. See `staging` below.
+         * The configuration of a presetCanaryNingxia environment. See `presetCanaryNingxia` below.
          */
         presetCanaryNingxia?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryNingxia | undefined>;
         /**
-         * The configuration of a presetCanaryOverseas environment. See `staging` below.
+         * The configuration of a presetCanaryOverseas environment. See `presetCanaryOverseas` below.
          */
         presetCanaryOverseas?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryOverseas | undefined>;
         /**
-         * The configuration of a presetCanaryQinghai environment. See `staging` below.
+         * The configuration of a presetCanaryQinghai environment. See `presetCanaryQinghai` below.
          */
         presetCanaryQinghai?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryQinghai | undefined>;
         /**
-         * The configuration of a presetCanaryShaanxi environment. See `staging` below.
+         * The configuration of a presetCanaryShaanxi environment. See `presetCanaryShaanxi` below.
          */
         presetCanaryShaanxi?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryShaanxi | undefined>;
         /**
-         * The configuration of a presetCanaryShandong environment. See `staging` below.
+         * The configuration of a presetCanaryShandong environment. See `presetCanaryShandong` below.
          */
         presetCanaryShandong?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryShandong | undefined>;
         /**
-         * The configuration of a presetCanaryShanghai environment. See `staging` below.
+         * The configuration of a presetCanaryShanghai environment. See `presetCanaryShanghai` below.
          */
         presetCanaryShanghai?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryShanghai | undefined>;
         /**
-         * The configuration of a presetCanaryShanxi environment. See `staging` below.
+         * The configuration of a presetCanaryShanxi environment. See `presetCanaryShanxi` below.
          */
         presetCanaryShanxi?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryShanxi | undefined>;
         /**
-         * The configuration of a presetCanarySichuan environment. See `staging` below.
+         * The configuration of a presetCanarySichuan environment. See `presetCanarySichuan` below.
          */
         presetCanarySichuan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanarySichuan | undefined>;
         /**
-         * The configuration of a presetCanaryTaiwan environment. See `staging` below.
+         * The configuration of a presetCanaryTaiwan environment. See `presetCanaryTaiwan` below.
          */
         presetCanaryTaiwan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryTaiwan | undefined>;
         /**
-         * The configuration of a presetCanaryTianjin environment. See `staging` below.
+         * The configuration of a presetCanaryTianjin environment. See `presetCanaryTianjin` below.
          */
         presetCanaryTianjin?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryTianjin | undefined>;
         /**
-         * The configuration of a presetCanaryXinjiang environment. See `staging` below.
+         * The configuration of a presetCanaryXinjiang environment. See `presetCanaryXinjiang` below.
          */
         presetCanaryXinjiang?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryXinjiang | undefined>;
         /**
-         * The configuration of a presetCanaryXizang environment. See `staging` below.
+         * The configuration of a presetCanaryXizang environment. See `presetCanaryXizang` below.
          */
         presetCanaryXizang?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryXizang | undefined>;
         /**
-         * The configuration of a presetCanaryYunnan environment. See `staging` below.
+         * The configuration of a presetCanaryYunnan environment. See `presetCanaryYunnan` below.
          */
         presetCanaryYunnan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryYunnan | undefined>;
         /**
-         * The configuration of a presetCanaryZhejiang environment. See `staging` below.
+         * The configuration of a presetCanaryZhejiang environment. See `presetCanaryZhejiang` below.
          */
         presetCanaryZhejiang?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryZhejiang | undefined>;
         /**
-         * The configuration of a production environment. See `staging` below.
+         * The configuration of a production environment. See `production` below.
          */
         production?: pulumi.Input<inputs.dcdn.ErEnvConfProduction | undefined>;
         /**
@@ -10077,6 +10607,36 @@ export namespace dfs {
 }
 
 export namespace directmail {
+    export interface ConfigSetValidationOption {
+        /**
+         * Whether the address validation feature is enabled. true: enabled (the BASIC_ONLY mode of the ValidateEmail API). false: disabled.
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * The list of address validation main statuses to block. Before sending, the system pre-validates the recipient address; messages whose validation main status matches this list are rejected. Valid values: `INVALID`, `CATCH_ALL`, `DO_NOT_MAIL`, `UNKNOWN`.
+         */
+        forbiddenStatusLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The list of address validation sub-statuses to block, providing finer-grained interception control than the main statuses. Takes effect as a union with ForbiddenStatusList (a hit in either list blocks the message). Valid values: `NO_DNS_ENTRIES`, `MISSPELLED`, `DOES_NOT_ACCEPT_MAIL`, `MAILBOX_NOT_EXISTS`, `SYSTEM_ERROR`, `MX_FORWARD`, `SYNTAX_INVALID`, `ROLE_ACCOUNT`, `SMTP_CONNECT_FAILED`, `DISABLED`, `UNSPECIFIED`, `IP_UNROUTABLE`, `GRAY_LIST`, `MAILBOX_FULL`, `DISPOSABLE`, `TIMEOUT_EXCEEDED`.
+         */
+        forbiddenSubStatusLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface DedicatedIpPoolIp {
+        /**
+         * (Computed, String, Available since v2.2.0) The ID of the purchased instance.
+         */
+        id?: pulumi.Input<string | undefined>;
+        /**
+         * (Computed, String, Available since v2.2.0) The IP address.
+         */
+        ip?: pulumi.Input<string | undefined>;
+        /**
+         * (Computed, String, Available since v2.2.0) The zone ID.
+         */
+        zoneId?: pulumi.Input<string | undefined>;
+    }
+
 }
 
 export namespace dms {
@@ -10298,6 +10858,16 @@ export namespace ecddesktop {
 
 export namespace eci {
     export interface ContainerGroupAcrRegistryInfo {
+        /**
+         * The ARN of a RAM role in the account that owns the container group. ECI assumes this role to obtain the image pull credential. On its own, it restricts which role ECI uses to pull images from an ACR Personal Edition instance, or from an ACR Enterprise Edition instance through its default domain, in the same account. To pull from an ACR Enterprise Edition instance in another account, set it together with `arnUser`. The role must trust `eci.aliyuncs.com` and be granted `AliyunSTSAssumeRoleAccess`. The value can be built with the provider-defined function `arnBuild`, for example `provider::alicloud::arn_build("ram", "", "<account-id>", "role/<role-name>")`.
+         */
+        arnService?: pulumi.Input<string | undefined>;
+        /**
+         * The ARN of a RAM role in the account that owns the ACR Enterprise Edition instance, used for cross-account image pulling. It must be set together with `arnService`. The role must trust the role specified by `arnService` and be granted image pull permissions on the instance, for example `cr:GetAuthorizationToken` and `cr:PullRepository` (the official example grants `AliyunContainerRegistryFullAccess`). When the instance is accessed through a custom domain, `instanceId` is required.
+         *
+         * > **NOTE:** `arnService` and `arnUser` are create-time inputs. They are retained in Terraform state after creation, but cannot be retrieved from an existing container group during import. Configuring them after import requires replacement of the container group. Review the plan before applying configuration to an imported group.
+         */
+        arnUser?: pulumi.Input<string | undefined>;
         /**
          * The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
          */
@@ -10687,6 +11257,7 @@ export namespace eci {
     export interface ContainerGroupVolume {
         /**
          * The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+         *
          * > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
          */
         configFileVolumeConfigFileToPaths?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupVolumeConfigFileVolumeConfigFileToPath>[] | undefined>;
@@ -10756,8 +11327,17 @@ export namespace eci {
     }
 
     export interface OpenApiImageCacheImageRegistryCredential {
+        /**
+         * The password of the Image Registry.
+         */
         password?: pulumi.Input<string | undefined>;
+        /**
+         * The address of Image Registry without `http://` or `https://`.
+         */
         server?: pulumi.Input<string | undefined>;
+        /**
+         * The user name of Image Registry.
+         */
         userName?: pulumi.Input<string | undefined>;
     }
 
@@ -11062,10 +11642,16 @@ export namespace ecs {
     }
 
     export interface GetDisksOperationLock {
+        /**
+         * The reason of the operation lock.
+         */
         lockReason?: string;
     }
 
     export interface GetDisksOperationLockArgs {
+        /**
+         * The reason of the operation lock.
+         */
         lockReason?: pulumi.Input<string | undefined>;
     }
 
@@ -11200,7 +11786,7 @@ export namespace ecs {
          */
         burstingEnabled?: pulumi.Input<boolean | undefined>;
         /**
-         * The category of the disk. Default value: `cloudEfficiency`. Valid values:
+         * The category of the disk. Defaults to `cloudEfficiency`. Valid values:
          */
         category?: pulumi.Input<string | undefined>;
         /**
@@ -11308,59 +11894,58 @@ export namespace ecs {
 
     export interface LaunchTemplateDataDisk {
         /**
-         * The category of the disk:
-         * - cloud: Basic cloud disk.
-         * - cloud_efficiency: Ultra cloud disk.
-         * - cloud_ssd: SSD cloud Disks.
-         * - ephemeral_ssd: local SSD Disks
-         * - cloud_essd: ESSD cloud Disks.
-         *
-         * Default to `cloudEfficiency`.
+         * The category of the disk.
          */
         category?: pulumi.Input<string | undefined>;
         /**
-         * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-         *
-         * Default to true
+         * Delete this data disk when the instance is destroyed. Default to `true`.
          */
         deleteWithInstance?: pulumi.Input<boolean | undefined>;
         /**
          * The description of the data disk.
          */
         description?: pulumi.Input<string | undefined>;
+        /**
+         * The mount point of the data disk.
+         */
         device?: pulumi.Input<string | undefined>;
         /**
-         * Encrypted the data in this disk.
-         *
-         * Default to false
+         * Encrypted the data in this disk. Default to `false`.
          */
         encrypted?: pulumi.Input<boolean | undefined>;
+        /**
+         * The ID of the KMS key used for the data disk.
+         */
         kmsKeyId?: pulumi.Input<string | undefined>;
         /**
          * The name of the data disk.
          */
         name?: pulumi.Input<string | undefined>;
+        /**
+         * The performance level of the ESSD used as the data disk.
+         */
         performanceLevel?: pulumi.Input<string | undefined>;
         /**
          * The size of the data disk.
-         * - cloud：[5, 2000]
-         * - cloud_efficiency：[20, 32768]
-         * - cloud_ssd：[20, 32768]
-         * - cloud_essd：[20, 32768]
-         * - ephemeral_ssd: [5, 800]
          */
         size?: pulumi.Input<number | undefined>;
         /**
-         * The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+         * The snapshot ID used to initialize the data disk.
          */
         snapshotId?: pulumi.Input<string | undefined>;
     }
 
     export interface LaunchTemplateImageOptions {
+        /**
+         * Whether the instance that uses the image supports logons of the ecs-user user.
+         */
         loginAsNonRoot?: pulumi.Input<boolean | undefined>;
     }
 
     export interface LaunchTemplateNetworkInterfaces {
+        /**
+         * Whether to release the ENI when the instance is released.
+         */
         deleteOnRelease?: pulumi.Input<boolean | undefined>;
         /**
          * The ENI description.
@@ -11386,46 +11971,39 @@ export namespace ecs {
 
     export interface LaunchTemplateSystemDisk {
         /**
-         * The category of the disk:
-         * - cloud: Basic cloud disk.
-         * - cloud_efficiency: Ultra cloud disk.
-         * - cloud_ssd: SSD cloud Disks.
-         * - ephemeral_ssd: local SSD Disks
-         * - cloud_essd: ESSD cloud Disks.
-         *
-         * Default to `cloudEfficiency`.
+         * The category of the system disk.
          */
         category?: pulumi.Input<string | undefined>;
         /**
-         * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-         *
-         * Default to true
+         * Whether to release the system disk when the instance is released. Default to `true`.
          */
         deleteWithInstance?: pulumi.Input<boolean | undefined>;
         /**
-         * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+         * System disk description.
          */
         description?: pulumi.Input<string | undefined>;
         /**
-         * Encrypted the data in this disk.
-         *
-         * Default to false
+         * Whether the system disk is encrypted.
          */
         encrypted?: pulumi.Input<boolean | undefined>;
+        /**
+         * The Iops.
+         */
         iops?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the KMS key to use for the system disk.
+         */
         kmsKeyId?: pulumi.Input<string | undefined>;
         /**
-         * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+         * System disk name.
          */
         name?: pulumi.Input<string | undefined>;
+        /**
+         * The performance level of the ESSD used as the system disk.
+         */
         performanceLevel?: pulumi.Input<string | undefined>;
         /**
-         * The size of the data disk.
-         * - cloud：[5, 2000]
-         * - cloud_efficiency：[20, 32768]
-         * - cloud_ssd：[20, 32768]
-         * - cloud_essd：[20, 32768]
-         * - ephemeral_ssd: [5, 800]
+         * Size of the system disk, measured in GB.
          */
         size?: pulumi.Input<number | undefined>;
     }
@@ -11438,12 +12016,24 @@ export namespace ecs {
     }
 
     export interface SnapshotPolicyCopyEncryptionConfiguration {
+        /**
+         * Whether to encrypt the snapshot.
+         */
         encrypted?: pulumi.Input<boolean | undefined>;
+        /**
+         * The KMS key ID used for encryption.
+         */
         kmsKeyId?: pulumi.Input<string | undefined>;
     }
 
     export interface SnapshotPolicyTargetTag {
+        /**
+         * The key of the tag.
+         */
         tagKey?: pulumi.Input<string | undefined>;
+        /**
+         * The value of the tag.
+         */
         tagValue?: pulumi.Input<string | undefined>;
     }
 }
@@ -11519,6 +12109,39 @@ export namespace eds {
         propertyValueId?: pulumi.Input<string | undefined>;
     }
 
+    export interface DesktopDesktopTimer {
+        /**
+         * Whether to allow the end user to configure the scheduled timer task. Default to `false`.
+         */
+        allowClientSetting?: pulumi.Input<boolean | undefined>;
+        /**
+         * The cron expression of the scheduled timer task. The cron expression uses UTC time. For example, to execute at 00:00 Beijing time every day, set the value to `0 0 16 ? * 1,2,3,4,5,6,7`.
+         */
+        cronExpression?: pulumi.Input<string | undefined>;
+        /**
+         * Whether to force the execution of the scheduled timer task.
+         */
+        enforce?: pulumi.Input<boolean | undefined>;
+        /**
+         * The time interval, in minutes.
+         */
+        interval?: pulumi.Input<number | undefined>;
+        /**
+         * The operation type of the scheduled timer task, only valid when `timerType` is `NoConnect`. Valid values: `Hibernate`, `Shutdown`.
+         *
+         * > **NOTE:** `desktopTimers` is a write-only field. Since the DescribeDesktops API does not return timer configurations, Terraform cannot detect drift on this field, and the field is ignored when importing. Removing the block stops Terraform from managing the timers: no update is sent, because `ModifyDesktopTimer` rejects a request that sets neither a timer type nor timer entries, so previously configured timers stay on the cloud desktop.
+         */
+        operationType?: pulumi.Input<string | undefined>;
+        /**
+         * The reset type of the Desktop. Valid values: `RESET_TYPE_BOTH`, `RESET_TYPE_SYSTEM`.
+         */
+        resetType?: pulumi.Input<string | undefined>;
+        /**
+         * The type of the scheduled timer task. Required when a `desktopTimers` block is configured. Valid values: `LoginAutoConnect`, `LogoutShutdown`, `NoConnect`, `NoOperationDisconnect`, `NoOperationReboot`, `NoOperationShutdown`, `TimerBoot`, `TimerReboot`, `TimerReset`, `TimerShutdown`.
+         */
+        timerType?: pulumi.Input<string | undefined>;
+    }
+
     export interface EcdPolicyGroupAuthorizeAccessPolicyRule {
         /**
          * The cidrip of authorize access rule.
@@ -11559,6 +12182,19 @@ export namespace eds {
          * The type of security rules.
          */
         type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface EcdPolicyGroupClientType {
+        /**
+         * The client type. Valid values: `android`, `html5`, `ios`, `macos`, `windows`.
+         */
+        clientType?: pulumi.Input<string | undefined>;
+        /**
+         * Whether to allow the client type to access. Valid values: `off`, `on`.
+         *
+         * > **NOTE:** `clientTypes` manages only the client types listed in the configuration; types that are not listed are not sent to the API and are left to the service. `DescribePolicyGroups` returns every client type, but unconfigured entries are not written back to state, and entries that omit `status` are not read back either, so out-of-band changes to those values are not detected. `pulumi import` does not populate `clientTypes`; apply the configuration again to manage the client types. Removing all `clientTypes` blocks calls `ModifyPolicyGroup` without client-type parameters, which the API treats as allowing every client type.
+         */
+        status?: pulumi.Input<string | undefined>;
     }
 
 }
@@ -12661,6 +13297,29 @@ export namespace elasticsearch {
         spec: pulumi.Input<string>;
     }
 
+    export interface InstanceIndexNodeConfiguration {
+        /**
+         * Number of index nodes.
+         */
+        amount?: pulumi.Input<number | undefined>;
+        /**
+         * Storage capacity per node, in GB.
+         */
+        disk?: pulumi.Input<number | undefined>;
+        /**
+         * Storage type of the node. ESSD (`cloudEssd`) is supported. Changing this forces recreation.
+         */
+        diskType?: pulumi.Input<string | undefined>;
+        /**
+         * Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
+         */
+        performanceLevel?: pulumi.Input<string | undefined>;
+        /**
+         * Node specification. **Note: The parameter is immutable after resource creation.** For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+         */
+        spec: pulumi.Input<string>;
+    }
+
     export interface InstanceKibanaConfiguration {
         /**
          * The number of nodes.
@@ -12693,6 +13352,29 @@ export namespace elasticsearch {
          * Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
          */
         spec?: pulumi.Input<string | undefined>;
+    }
+
+    export interface InstanceSearchNodeConfiguration {
+        /**
+         * Number of search (query) nodes.
+         */
+        amount?: pulumi.Input<number | undefined>;
+        /**
+         * Storage capacity per node, in GB.
+         */
+        disk?: pulumi.Input<number | undefined>;
+        /**
+         * Storage type of the node. ESSD (`cloudEssd`) is supported. Changing this forces recreation.
+         */
+        diskType?: pulumi.Input<string | undefined>;
+        /**
+         * Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
+         */
+        performanceLevel?: pulumi.Input<string | undefined>;
+        /**
+         * Node specification. **Note: The parameter is immutable after resource creation.** For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+         */
+        spec: pulumi.Input<string>;
     }
 
     export interface InstanceWarmNodeConfiguration {
@@ -12740,7 +13422,7 @@ export namespace emr {
          */
         executionTarget?: pulumi.Input<string | undefined>;
         /**
-         * The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+         * bootstrap action name.
          */
         name?: pulumi.Input<string | undefined>;
         /**
@@ -12762,6 +13444,9 @@ export namespace emr {
          * Custom configuration service file name, e.g. ’hdfs-site’.
          */
         fileName: pulumi.Input<string>;
+        /**
+         * Custom configuration service name, e.g. ’HDFS’.
+         */
         serviceName: pulumi.Input<string>;
     }
 
@@ -12771,7 +13456,7 @@ export namespace emr {
          */
         autoRenew?: pulumi.Input<boolean | undefined>;
         /**
-         * Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+         * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
          */
         chargeType?: pulumi.Input<string | undefined>;
         /**
@@ -12794,6 +13479,9 @@ export namespace emr {
          * Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
          */
         enableGracefulDecommission?: pulumi.Input<boolean | undefined>;
+        /**
+         * GPU driver.
+         */
         gpuDriver?: pulumi.Input<string | undefined>;
         /**
          * host group name.
@@ -12877,6 +13565,9 @@ export namespace emr {
          * Cluster service configuration modification refresh host config, ’true’ or ’false’.
          */
         refreshHostConfig?: pulumi.Input<boolean | undefined>;
+        /**
+         * Cluster service configuration modification name, e.g. ’HDFS’.
+         */
         serviceName: pulumi.Input<string>;
     }
 
@@ -15518,7 +16209,7 @@ export namespace ess {
          */
         instanceType?: pulumi.Input<string | undefined>;
         /**
-         * The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+         * The number of randomly generated IPv6 addresses that you want to assign to primary ENI N. Setting it to `0` or removing it from the configuration stops requesting IPv6 addresses: the parameter is left out of the request and the Auto Scaling service drops the previously requested count.
          */
         ipv6AddressCount?: pulumi.Input<number | undefined>;
         /**
@@ -16152,12 +16843,24 @@ export namespace eventbridge {
 
 export namespace expressconnect {
     export interface GetRouterInterfacesFilter {
+        /**
+         * The key of the field to filter by.
+         */
         key?: string;
+        /**
+         * Set of values that are accepted for the given field.
+         */
         values?: string[];
     }
 
     export interface GetRouterInterfacesFilterArgs {
+        /**
+         * The key of the field to filter by.
+         */
         key?: pulumi.Input<string | undefined>;
+        /**
+         * Set of values that are accepted for the given field.
+         */
         values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
@@ -16183,6 +16886,36 @@ export namespace expressconnect {
          * Set of values that are accepted for the given field.
          */
         values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface RouterExpressConnectRouterDisabledRouteEntry {
+        /**
+         * (Computed, String, Available since v2.3.0) The destination CIDR block of the disabled route entry.
+         */
+        destinationCidrBlock?: pulumi.Input<string | undefined>;
+        /**
+         * (Computed, String, Available since v2.3.0) The ID of the next hop instance of the disabled route entry.
+         */
+        nexthopInstanceId?: pulumi.Input<string | undefined>;
+    }
+
+    export interface RouterExpressConnectRouterGrantedInstance {
+        /**
+         * (Computed, String, Available since v2.3.0) The ID of the granted network instance, for example `vpc-xxx` or `vbr-xxx`.
+         */
+        nodeId?: pulumi.Input<string | undefined>;
+        /**
+         * (Computed, String, Available since v2.3.0) The ID of the Alibaba Cloud account that owns the granted network instance.
+         */
+        nodeOwnerUid?: pulumi.Input<string | undefined>;
+        /**
+         * (Computed, String, Available since v2.3.0) The region ID of the granted network instance.
+         */
+        nodeRegionId?: pulumi.Input<string | undefined>;
+        /**
+         * (Computed, String, Available since v2.3.0) The type of the granted network instance. Valid values: `VPC`, `VBR`.
+         */
+        nodeType?: pulumi.Input<string | undefined>;
     }
 
     export interface RouterExpressConnectRouterRegion {
@@ -17161,6 +17894,7 @@ export namespace ga {
         endpoint: pulumi.Input<string>;
         /**
          * The private IP address of the ENI.
+         *
          * > **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
          */
         subAddress?: pulumi.Input<string | undefined>;
@@ -17188,6 +17922,7 @@ export namespace ga {
         vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
+         *
          * > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
          */
         weight: pulumi.Input<number>;
@@ -17207,6 +17942,7 @@ export namespace ga {
     export interface ForwardingRuleRuleAction {
         /**
          * Forwarding configuration. See `forwardGroupConfig` below.
+         *
          * > **NOTE:** From version 1.207.0, We recommend that you do not use `forwardGroupConfig`, and we recommend that you use the `ruleActionType` and `ruleActionValue` to configure forwarding actions.
          */
         forwardGroupConfig?: pulumi.Input<inputs.ga.ForwardingRuleRuleActionForwardGroupConfig | undefined>;
@@ -17241,6 +17977,7 @@ export namespace ga {
     export interface ForwardingRuleRuleCondition {
         /**
          * The configuration of the domain name. See `hostConfig` below.
+         *
          * > **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
          */
         hostConfigs?: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleConditionHostConfig>[] | undefined>;
@@ -17484,7 +18221,7 @@ export namespace gpdb {
          */
         ipGroupAttribute?: pulumi.Input<string | undefined>;
         /**
-         * IP whitelist group name.
+         * IP whitelist group name. Defaults to `default`, the built-in whitelist group; a group without a name is applied to the `default` group instead of creating a new one.
          */
         ipGroupName?: pulumi.Input<string | undefined>;
         /**
@@ -17839,15 +18576,15 @@ export namespace hbr {
 
     export interface OtsBackupPlanRule {
         /**
-         * Backup type. Valid values: `COMPLETE`.
+         * The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
          */
         backupType?: pulumi.Input<string | undefined>;
         /**
-         * Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+         * Whether to disable the backup task. Valid values: true, false.
          */
         disabled?: pulumi.Input<boolean | undefined>;
         /**
-         * Backup retention days, the minimum is 1.
+         * Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
          */
         retention?: pulumi.Input<string | undefined>;
         /**
@@ -17855,7 +18592,7 @@ export namespace hbr {
          */
         ruleName?: pulumi.Input<string | undefined>;
         /**
-         * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+         * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
          * - `startTime` Backup start time, UNIX time seconds.
          */
         schedule?: pulumi.Input<string | undefined>;
@@ -18160,6 +18897,17 @@ export namespace kvcachestorekvcache {
 }
 
 export namespace kvstore {
+    export interface InstanceAdditionalBandwidth {
+        /**
+         * The additional bandwidth to add. Unit: MB/s. Must be set in every `additionalBandwidth` block; a block without it is rejected. Valid values: non-negative integers. The maximum value is 6 times the default bandwidth of the instance (or shard) specification, capped at 192 MB/s. Set to `0` to release the additional bandwidth purchased for the shard.
+         */
+        bandwidth?: pulumi.Input<number | undefined>;
+        /**
+         * The data shard whose bandwidth is adjusted. Use the shard node name (`r-xxx-db-0`, the `InsName` reported by the `DescribeRoleZoneInfo` operation) or its full topology ID (`r-xxx-db-0#123456`); a suffix such as `db-0` is also accepted when exactly one data shard of the instance ends with it. Required on [cluster](https://www.alibabacloud.com/help/en/redis/user-guide/cluster-instances) and [read/write splitting](https://www.alibabacloud.com/help/en/redis/user-guide/read-write-splitting-based-on-proxy-nodes) instances, and each data shard can be configured at most once. A standard instance takes `bandwidth` alone and must leave this argument unset, because `EnableAdditionalBandwidth` only accepts `NodeId` for the cluster and read/write splitting architectures.
+         */
+        nodeId?: pulumi.Input<string | undefined>;
+    }
+
     export interface InstanceParameter {
         /**
          * Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
@@ -18339,6 +19087,9 @@ export namespace log {
     }
 
     export interface AlertGroupConfiguration {
+        /**
+         * Group configuration's fields list when type is custom.
+         */
         fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Group configuration type, including no_group, labels_auto, custom.
@@ -18472,6 +19223,9 @@ export namespace log {
          * Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
          */
         dayOfWeek?: pulumi.Input<number | undefined>;
+        /**
+         * Delay time for schedule.
+         */
         delay?: pulumi.Input<number | undefined>;
         /**
          * Hour of day when type is Weekly/Daily.
@@ -18481,6 +19235,9 @@ export namespace log {
          * Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
          */
         interval?: pulumi.Input<string | undefined>;
+        /**
+         * Whether to run the alert immediately.
+         */
         runImmediately?: pulumi.Input<boolean | undefined>;
         /**
          * Time zone for schedule.
@@ -18494,7 +19251,7 @@ export namespace log {
 
     export interface AlertSeverityConfiguration {
         /**
-         * Severity when this condition is met.
+         * Severity when this condition is met. The map supports `condition` (condition for each row) and `countCondition` (count's condition for the rows met condition above) keys.
          */
         evalCondition: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -18587,7 +19344,13 @@ export namespace log {
     }
 
     export interface OssShipperParquetConfig {
+        /**
+         * The name of the key.
+         */
         name: pulumi.Input<string>;
+        /**
+         * Type of configuration name.
+         */
         type: pulumi.Input<string>;
     }
 
@@ -18746,6 +19509,7 @@ export namespace maxcompute {
         enableDr?: pulumi.Input<boolean | undefined>;
         /**
          * Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+         *
          * > **NOTE :**:
          * To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
          *
@@ -18837,7 +19601,7 @@ export namespace maxcompute {
          */
         usingAcl?: pulumi.Input<boolean | undefined>;
         /**
-         * Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+         * Set whether to use the [Policy permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
          */
         usingPolicy?: pulumi.Input<boolean | undefined>;
     }
@@ -19101,6 +19865,7 @@ export namespace mongodb {
         connectionPort?: pulumi.Input<string | undefined>;
         /**
          * The network type of the instance. Valid values: `VPC`.
+         *
          * > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
          */
         networkType?: pulumi.Input<string | undefined>;
@@ -19489,6 +20254,29 @@ export namespace nas {
         permission?: pulumi.Input<string | undefined>;
     }
 
+    export interface FileSystemAutoUpgradeConfig {
+        /**
+         * The capacity usage threshold. Valid values: 1 to 99. Unit: percent.
+         */
+        capacityUsedRatio?: pulumi.Input<number | undefined>;
+        /**
+         * Whether to enable automatic capacity expansion.
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * The capacity expansion step. Unit: GiB.
+         */
+        step?: pulumi.Input<number | undefined>;
+        /**
+         * The duration threshold. Unit: minutes.
+         *
+         * > **NOTE:** Automatic capacity expansion is a modify-time feature: it is applied through the NAS ModifyFileSystem API after the file system has been created.
+         *
+         * > **NOTE:** This block is Optional and Computed. Removing the entire block from the configuration does **not** disable automatic capacity expansion or send a disable request to the server; the previous server value is retained as a computed value and the plan stays stable. To disable automatic capacity expansion, set `enabled = false` explicitly. When only `enabled` is configured, the other attributes (`capacityUsedRatio`, `step`, `time`) become computed and are read back from the server.
+         */
+        time?: pulumi.Input<number | undefined>;
+    }
+
     export interface FileSystemNfsAcl {
         /**
          * Whether the NFS ACL function is enabled.
@@ -19790,14 +20578,7 @@ export namespace opensearch {
          */
         qps?: pulumi.Input<number | undefined>;
         /**
-         * Specification. Valid values:
-         * * `opensearch.share.junior`: Entry-level.
-         * * `opensearch.share.common`: Shared universal.
-         * * `opensearch.share.compute`: Shared computing.
-         * * `opensearch.share.storage`: Shared storage type.
-         * * `opensearch.private.common`: Exclusive universal type.
-         * * `opensearch.private.compute`: Exclusive computing type.
-         * * `opensearch.private.storage`: Exclusive storage type
+         * Specification. Valid values: `opensearch.share.junior` (Entry-level), `opensearch.share.common` (Shared universal), `opensearch.share.compute` (Shared computing), `opensearch.share.storage` (Shared storage type), `opensearch.private.common` (Exclusive universal type), `opensearch.private.compute` (Exclusive computing type), `opensearch.private.storage` (Exclusive storage type).
          */
         spec: pulumi.Input<string>;
     }
@@ -20872,6 +21653,10 @@ export namespace ots {
 
     export interface TablePrimaryKey {
         /**
+         * Specifies whether the primary key column is auto-incremented. Defaults to `false`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `autoIncrement`. Changing this field forces a new resource.
+         */
+        autoIncrement?: pulumi.Input<boolean | undefined>;
+        /**
          * Name for primary key.
          */
         name: pulumi.Input<string>;
@@ -20928,6 +21713,17 @@ export namespace pai {
         value?: pulumi.Input<string | undefined>;
     }
 
+    export interface WorkspaceExperimentLabel {
+        /**
+         * The key of the experiment label.
+         */
+        key?: pulumi.Input<string | undefined>;
+        /**
+         * The value of the experiment label.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
     export interface WorkspaceModelLabel {
         /**
          * label key
@@ -20976,6 +21772,140 @@ export namespace polardb {
          * The value of the parameter.
          */
         parameterValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface BackupPolicyAdvancedDataPolicy {
+        /**
+         * Whether the service generated the rule.
+         */
+        autoCreated?: pulumi.Input<boolean | undefined>;
+        /**
+         * Backup type supplied by the service.
+         */
+        bakType?: pulumi.Input<string | undefined>;
+        /**
+         * Destination region. Defaults to the provider region for same-region rules; required explicitly for cross-region rules.
+         */
+        destRegion?: pulumi.Input<string | undefined>;
+        /**
+         * `level1`, `level2`, or `level2Cross`.
+         */
+        destType: pulumi.Input<string>;
+        /**
+         * `copy`.
+         */
+        dumpAction?: pulumi.Input<string | undefined>;
+        /**
+         * `dayOfWeek`, `dayOfMonth`, `dayOfYear`, or `backupInterval`; required for `crontab`.
+         */
+        filterKey?: pulumi.Input<string | undefined>;
+        /**
+         * `crontab` or `event`.
+         */
+        filterType: pulumi.Input<string>;
+        /**
+         * Filter expression corresponding to `filterKey`.
+         */
+        filterValue?: pulumi.Input<string | undefined>;
+        /**
+         * Whether to retain only one backup per day. If omitted, the service default is used.
+         */
+        onlyPreserveOneEachDay?: pulumi.Input<boolean | undefined>;
+        /**
+         * Hourly preservation setting supplied by the service.
+         */
+        onlyPreserveOneEachHour?: pulumi.Input<boolean | undefined>;
+        /**
+         * Service-assigned rule ID. Specify it to take over and update an existing custom rule after importing the cluster policy.
+         */
+        policyId?: pulumi.Input<string | undefined>;
+        /**
+         * `never` or `delay`.
+         */
+        retentionType: pulumi.Input<string>;
+        /**
+         * Retention duration in days; required when `retentionType` is `delay`.
+         */
+        retentionValue?: pulumi.Input<string | undefined>;
+        /**
+         * Source region. Defaults to the provider region for same-region rules; required explicitly for cross-region rules.
+         */
+        srcRegion?: pulumi.Input<string | undefined>;
+        /**
+         * `db`, `level1`, `level2`, or `level2Cross`.
+         */
+        srcType: pulumi.Input<string>;
+        /**
+         * Destination storage class.
+         */
+        storageClass?: pulumi.Input<string | undefined>;
+    }
+
+    export interface BackupPolicyAutoCreatedAdvancedDataPolicy {
+        /**
+         * Whether the service generated the rule.
+         */
+        autoCreated?: pulumi.Input<boolean | undefined>;
+        /**
+         * Backup type.
+         */
+        bakType?: pulumi.Input<string | undefined>;
+        /**
+         * Destination region.
+         */
+        destRegion?: pulumi.Input<string | undefined>;
+        /**
+         * Destination type.
+         */
+        destType?: pulumi.Input<string | undefined>;
+        /**
+         * Method for converting level-1 backups to level-2 backups.
+         */
+        dumpAction?: pulumi.Input<string | undefined>;
+        /**
+         * Scheduling key.
+         */
+        filterKey?: pulumi.Input<string | undefined>;
+        /**
+         * Scheduling type.
+         */
+        filterType?: pulumi.Input<string | undefined>;
+        /**
+         * Scheduling expression.
+         */
+        filterValue?: pulumi.Input<string | undefined>;
+        /**
+         * Whether only one backup is retained per day.
+         */
+        onlyPreserveOneEachDay?: pulumi.Input<boolean | undefined>;
+        /**
+         * Hourly preservation setting.
+         */
+        onlyPreserveOneEachHour?: pulumi.Input<boolean | undefined>;
+        /**
+         * Service-assigned rule ID.
+         */
+        policyId?: pulumi.Input<string | undefined>;
+        /**
+         * Retention period type.
+         */
+        retentionType?: pulumi.Input<string | undefined>;
+        /**
+         * Retention duration in days.
+         */
+        retentionValue?: pulumi.Input<string | undefined>;
+        /**
+         * Source region.
+         */
+        srcRegion?: pulumi.Input<string | undefined>;
+        /**
+         * Source type.
+         */
+        srcType?: pulumi.Input<string | undefined>;
+        /**
+         * Destination storage class.
+         */
+        storageClass?: pulumi.Input<string | undefined>;
     }
 
     export interface BatchTaskTaskParam {
@@ -21160,6 +22090,37 @@ export namespace polardb {
          */
         paramValue?: pulumi.Input<string | undefined>;
     }
+
+    export interface PolarFsEndpointAddressItem {
+        /**
+         * (Available since v2.1.0) The connection string.
+         */
+        connectionString?: pulumi.Input<string | undefined>;
+        /**
+         * (Available since v2.1.0) The IP address.
+         */
+        ipAddress?: pulumi.Input<string | undefined>;
+        /**
+         * (Available since v2.1.0) The network type.
+         */
+        netType?: pulumi.Input<string | undefined>;
+        /**
+         * (Available since v2.1.0) The port.
+         */
+        port?: pulumi.Input<string | undefined>;
+        /**
+         * (Available since v2.1.0) The PrivateZone connection string.
+         */
+        privateZoneConnectionString?: pulumi.Input<string | undefined>;
+        /**
+         * The VPC ID.
+         */
+        vpcId?: pulumi.Input<string | undefined>;
+        /**
+         * The vSwitch ID.
+         */
+        vswitchId?: pulumi.Input<string | undefined>;
+    }
 }
 
 export namespace privatelink {
@@ -21249,37 +22210,79 @@ export namespace quickbi {
 
 export namespace quotas {
     export interface ApplicationInfoDimension {
+        /**
+         * The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+         */
         key?: pulumi.Input<string | undefined>;
+        /**
+         * The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+         */
         value?: pulumi.Input<string | undefined>;
     }
 
     export interface GetApplicationInfosDimension {
+        /**
+         * The key of dimensions.
+         */
         key?: string;
+        /**
+         * The value of dimensions.
+         */
         value?: string;
     }
 
     export interface GetApplicationInfosDimensionArgs {
+        /**
+         * The key of dimensions.
+         */
         key?: pulumi.Input<string | undefined>;
+        /**
+         * The value of dimensions.
+         */
         value?: pulumi.Input<string | undefined>;
     }
 
     export interface GetQuotaAlarmsQuotaDimension {
+        /**
+         * The key of quota_dimensions.
+         */
         key?: string;
+        /**
+         * The value of quota_dimensions.
+         */
         value?: string;
     }
 
     export interface GetQuotaAlarmsQuotaDimensionArgs {
+        /**
+         * The key of quota_dimensions.
+         */
         key?: pulumi.Input<string | undefined>;
+        /**
+         * The value of quota_dimensions.
+         */
         value?: pulumi.Input<string | undefined>;
     }
 
     export interface GetQuotaApplicationsDimension {
+        /**
+         * The key of dimensions.
+         */
         key?: string;
+        /**
+         * The value of dimensions.
+         */
         value?: string;
     }
 
     export interface GetQuotaApplicationsDimensionArgs {
+        /**
+         * The key of dimensions.
+         */
         key?: pulumi.Input<string | undefined>;
+        /**
+         * The value of dimensions.
+         */
         value?: pulumi.Input<string | undefined>;
     }
 
@@ -21372,7 +22375,7 @@ export namespace quotas {
          */
         noticeType?: pulumi.Input<number | undefined>;
         /**
-         * Quota calculation period.
+         * Quota calculation period. See `period` below.
          */
         period?: pulumi.Input<inputs.quotas.TemplateApplicationsQuotaApplicationDetailPeriod | undefined>;
         /**
@@ -21393,6 +22396,7 @@ export namespace quotas {
         quotaUnit?: pulumi.Input<string | undefined>;
         /**
          * Reason for quota application.
+         *
          * > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
          */
         reason?: pulumi.Input<string | undefined>;
@@ -21672,30 +22676,30 @@ export namespace rds {
 
     export interface GetCollationTimeZonesCollationTimeZone {
         /**
-         * The code of the instance type.
+         * The description.
          */
         description?: string;
         /**
-         * The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+         * The offset of the UTC time.
          */
         standardTimeOffset?: string;
         /**
-         * The time zone that is available for use in ApsaraDB RDS.
+         * The time zone.
          */
         timeZone?: string;
     }
 
     export interface GetCollationTimeZonesCollationTimeZoneArgs {
         /**
-         * The code of the instance type.
+         * The description.
          */
         description?: pulumi.Input<string | undefined>;
         /**
-         * The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+         * The offset of the UTC time.
          */
         standardTimeOffset?: pulumi.Input<string | undefined>;
         /**
-         * The time zone that is available for use in ApsaraDB RDS.
+         * The time zone.
          */
         timeZone?: pulumi.Input<string | undefined>;
     }
@@ -22339,6 +23343,17 @@ export namespace realtimecompute {
         observedFlinkJobStatus?: pulumi.Input<string | undefined>;
     }
 
+    export interface VvpInstanceDefaultNamespaceResourceSpec {
+        /**
+         * The number of CPUs.
+         */
+        cpu?: pulumi.Input<number | undefined>;
+        /**
+         * The memory size.
+         */
+        memoryGb?: pulumi.Input<number | undefined>;
+    }
+
     export interface VvpInstanceResourceSpec {
         /**
          * CPU number.
@@ -22366,6 +23381,16 @@ export namespace realtimecompute {
 }
 
 export namespace redis {
+    export interface TairInstanceAdditionalBandwidth {
+        /**
+         * The additional bandwidth to add. Unit: MB/s. Must be set in every `additionalBandwidth` block; a block without it is rejected. Valid values: non-negative integers. The maximum value is 6 times the default bandwidth of the instance (or shard) specification, capped at 192 MB/s. Set to `0` to release the additional bandwidth purchased for the shard.
+         */
+        bandwidth?: pulumi.Input<number | undefined>;
+        /**
+         * The data shard whose bandwidth is adjusted. Use the shard node name (`r-xxx-db-0`, the `InsName` reported by the `DescribeRoleZoneInfo` operation) or its full topology ID (`r-xxx-db-0#123456`); a suffix such as `db-0` is also accepted when exactly one data shard of the instance ends with it. Required on cluster and read/write splitting instances, and each data shard can be configured at most once. A standard instance takes `bandwidth` alone and must leave this argument unset, because `EnableAdditionalBandwidth` only accepts `NodeId` for the cluster and read/write splitting architectures.
+         */
+        nodeId?: pulumi.Input<string | undefined>;
+    }
 }
 
 export namespace resourcemanager {
@@ -22731,7 +23756,9 @@ export namespace rocketmq {
 
     export interface RocketMQInstanceSoftware {
         /**
-         * Upgrade time period.
+         * The RocketMQ API has deprecated this maintenance-window setting. Omit it from new configurations; existing state remains readable. See [GetInstance](https://help.aliyun.com/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-getinstance).
+         *
+         * @deprecated The RocketMQ API has deprecated maintainTime. Remove maintainTime from configuration; existing state remains readable.
          */
         maintainTime?: pulumi.Input<string | undefined>;
         /**
@@ -22920,6 +23947,9 @@ export namespace ros {
          * The ID of the Source Resource Group.
          */
         resourceGroupId: pulumi.Input<string>;
+        /**
+         * Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+         */
         resourceTypeFilters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
@@ -22928,6 +23958,9 @@ export namespace ros {
          * Source label. **NOTE:** A maximum of 10 source labels can be configured.
          */
         resourceTags: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+         */
         resourceTypeFilters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 }
@@ -23522,26 +24555,23 @@ export namespace sag {
 export namespace scdn {
     export interface DomainCertInfo {
         /**
-         * If You Enable HTTPS Here Certificate Name.
+         * The certificate name when HTTPS is enabled.
          */
         certName?: pulumi.Input<string | undefined>;
         /**
-         * Certificate Type. Value Range:
-         * * upload: Certificate
-         * * cas: Certificate Authority Certificate.
-         * * free: Free Certificate.
+         * Certificate Type. Valid values:
          */
         certType?: pulumi.Input<string | undefined>;
         /**
-         * Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
+         * Private Key. Required when uploading a certificate.
          */
         sslPri?: pulumi.Input<string | undefined>;
         /**
-         * Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
+         * Whether to enable SSL certificate. Valid values: `on`, `off`.
          */
         sslProtocol?: pulumi.Input<string | undefined>;
         /**
-         * If You Enable HTTPS Here Key.
+         * The public key when HTTPS is enabled.
          */
         sslPub?: pulumi.Input<string | undefined>;
     }
@@ -23563,7 +24593,7 @@ export namespace scdn {
          */
         content: pulumi.Input<string>;
         /**
-         * The source status. Valid values: online, offline.
+         * The source status. Valid values: `online`, `offline`.
          */
         enabled?: pulumi.Input<string | undefined>;
         /**
@@ -23575,10 +24605,7 @@ export namespace scdn {
          */
         priority: pulumi.Input<string>;
         /**
-         * The Origin Server Type. Valid Values:
-         * * ipaddr: IP Source Station
-         * * domain: the Domain Name
-         * * oss: OSS Bucket as a Source Station.
+         * The Origin Server Type. Valid values:
          */
         type: pulumi.Input<string>;
     }
@@ -24260,15 +25287,44 @@ export namespace simpleapplicationserver {
 }
 
 export namespace slb {
-    export interface AclEntryList {
+    export interface AclEntryAttachmentEntry {
+        /**
+         * The comment of the acl entry.
+         */
         comment?: pulumi.Input<string | undefined>;
+        /**
+         * The CIDR block of the acl entry.
+         */
+        entry: pulumi.Input<string>;
+    }
+
+    export interface AclEntryList {
+        /**
+         * The comment of the entry.
+         */
+        comment?: pulumi.Input<string | undefined>;
+        /**
+         * The CIDR blocks.
+         */
         entry?: pulumi.Input<string | undefined>;
     }
 
     export interface BackendServerBackendServer {
+        /**
+         * A list backend server ID (ECS instance ID).
+         */
         serverId: pulumi.Input<string>;
+        /**
+         * ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `serverIp` parameter.
+         */
         serverIp?: pulumi.Input<string | undefined>;
+        /**
+         * Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
+         */
         type?: pulumi.Input<string | undefined>;
+        /**
+         * Weight of the backend server. Valid value range: [0-100].
+         */
         weight: pulumi.Input<number>;
     }
 
@@ -25372,7 +26428,7 @@ export namespace threatdetection {
 
     export interface HoneypotProbeHoneypotBindList {
         /**
-         * List of listening ports.See the following `Block BindPortList`.
+         * List of listening ports.See the following `bindPortList` below.
          */
         bindPortLists?: pulumi.Input<pulumi.Input<inputs.threatdetection.HoneypotProbeHoneypotBindListBindPortList>[] | undefined>;
         /**
@@ -25410,6 +26466,10 @@ export namespace threatdetection {
          */
         agentless?: pulumi.Input<number | undefined>;
         /**
+         * The AI digital human module. Valid values:
+         */
+        aiDigital?: pulumi.Input<number | undefined>;
+        /**
          * Anti-Ransomware Module. Valid values:
          */
         antiRansomware?: pulumi.Input<number | undefined>;
@@ -25422,6 +26482,10 @@ export namespace threatdetection {
          */
         cspm?: pulumi.Input<number | undefined>;
         /**
+         * The Agentic cloud security configuration check module. Valid values:
+         */
+        cspmInstance?: pulumi.Input<number | undefined>;
+        /**
          * Threat Analysis and Response Module. Valid values:
          */
         ctdr?: pulumi.Input<number | undefined>;
@@ -25429,6 +26493,10 @@ export namespace threatdetection {
          * Log Management Module. Valid values:
          */
         ctdrStorage?: pulumi.Input<number | undefined>;
+        /**
+         * The image scan module. Valid values:
+         */
+        imageScan?: pulumi.Input<number | undefined>;
         /**
          * Host and Container Security Module. Valid values:
          */
@@ -25482,15 +26550,15 @@ export namespace vod {
          */
         sourceContent: pulumi.Input<string>;
         /**
-         * The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+         * The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
          */
         sourcePort: pulumi.Input<string>;
         /**
-         * The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+         * The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
          */
         sourcePriority?: pulumi.Input<string | undefined>;
         /**
-         * The type of the origin server. Valid values:
+         * The origin server type. Valid values:
          */
         sourceType: pulumi.Input<string>;
     }
@@ -25843,24 +26911,92 @@ export namespace vpc {
     }
 
     export interface TrafficMirrorFilterEgressRule {
+        /**
+         * Collection strategy for outbound rules. Value:
+         * - accept: collects network traffic.
+         * - drop: No network traffic is collected.
+         */
         action: pulumi.Input<string>;
+        /**
+         * DestinationCidrBlock.
+         */
         destinationCidrBlock?: pulumi.Input<string | undefined>;
+        /**
+         * The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+         *
+         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+         */
         destinationPortRange?: pulumi.Input<string | undefined>;
+        /**
+         * Priority.
+         */
         priority?: pulumi.Input<number | undefined>;
+        /**
+         * The type of protocol used by the outbound network traffic to be mirrored. Value:
+         * - ALL: ALL agreements.
+         * - ICMP: Network Control Message Protocol.
+         * - TCP: Transmission Control Protocol.
+         * - UDP: User Datagram Protocol.
+         */
         protocol: pulumi.Input<string>;
+        /**
+         * The source address of the outbound rule network traffic.
+         */
         sourceCidrBlock?: pulumi.Input<string | undefined>;
+        /**
+         * The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+         *
+         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+         */
         sourcePortRange?: pulumi.Input<string | undefined>;
+        /**
+         * The status of the traffic mirror filter rule.
+         */
         trafficMirrorFilterRuleStatus?: pulumi.Input<string | undefined>;
     }
 
     export interface TrafficMirrorFilterIngressRule {
+        /**
+         * Collection strategy for outbound rules. Value:
+         * - accept: collects network traffic.
+         * - drop: No network traffic is collected.
+         */
         action: pulumi.Input<string>;
+        /**
+         * The destination address of the outbound rule network traffic.
+         */
         destinationCidrBlock?: pulumi.Input<string | undefined>;
+        /**
+         * The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+         *
+         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+         */
         destinationPortRange?: pulumi.Input<string | undefined>;
+        /**
+         * The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
+         */
         priority?: pulumi.Input<number | undefined>;
+        /**
+         * The type of protocol used by the outbound network traffic to be mirrored. Value:
+         * - ALL: ALL agreements.
+         * - ICMP: Network Control Message Protocol.
+         * - TCP: Transmission Control Protocol.
+         * - UDP: User Datagram Protocol.
+         */
         protocol: pulumi.Input<string>;
+        /**
+         * The source address of the outbound rule network traffic.
+         */
         sourceCidrBlock?: pulumi.Input<string | undefined>;
+        /**
+         * The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+         *
+         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+         */
         sourcePortRange?: pulumi.Input<string | undefined>;
+        /**
+         * The status of the traffic mirror filter rule.
+         */
         trafficMirrorFilterRuleStatus?: pulumi.Input<string | undefined>;
     }
 
@@ -26399,7 +27535,13 @@ export namespace vpn {
 
 export namespace waf {
     export interface DomainLogHeader {
+        /**
+         * The key of label.
+         */
         key?: pulumi.Input<string | undefined>;
+        /**
+         * The value of label.
+         */
         value?: pulumi.Input<string | undefined>;
     }
 
@@ -26857,6 +27999,10 @@ export namespace wafv3 {
 
     export interface DomainRedirect {
         /**
+         * The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `backendPorts` below.
+         */
+        backendPorts?: pulumi.Input<pulumi.Input<inputs.wafv3.DomainRedirectBackendPort>[] | undefined>;
+        /**
          * The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
          *
          * - If you specify IP addresses, specify the value in the **\["ip1","ip2",...]** format. You can enter up to 20 IP addresses.
@@ -26906,6 +28052,7 @@ export namespace wafv3 {
         loadbalance: pulumi.Input<string>;
         /**
          * The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+         *
          * > **NOTE:** This parameter is supported only by the Ultimate edition.
          */
         maxBodySize?: pulumi.Input<number | undefined>;
@@ -26942,6 +28089,21 @@ export namespace wafv3 {
         xffProto?: pulumi.Input<boolean | undefined>;
     }
 
+    export interface DomainRedirectBackendPort {
+        /**
+         * The back-to-source port. Valid values: `1` to `65535`. Required together with `listenPort` and `protocol`.
+         */
+        backendPort?: pulumi.Input<number | undefined>;
+        /**
+         * The listening port. Valid values: `1` to `65535`. Required together with `backendPort` and `protocol`.
+         */
+        listenPort?: pulumi.Input<number | undefined>;
+        /**
+         * The protocol type. Valid values: `http` and `https`. Required together with `listenPort` and `backendPort`.
+         */
+        protocol?: pulumi.Input<string | undefined>;
+    }
+
     export interface DomainRedirectRequestHeader {
         /**
          * Specified custom request header fields
@@ -26957,32 +28119,104 @@ export namespace wafv3 {
 
 export namespace yundun {
     export interface BastionHostInstanceAdAuthServer {
+        /**
+         * The username of the account that is used for the AD server.
+         */
         account: pulumi.Input<string>;
+        /**
+         * The Base distinguished name (DN).
+         */
         baseDn: pulumi.Input<string>;
+        /**
+         * The domain on the AD server.
+         */
         domain: pulumi.Input<string>;
+        /**
+         * The field that is used to indicate the email address of a user on the AD server.
+         */
         emailMapping?: pulumi.Input<string | undefined>;
+        /**
+         * The condition that is used to filter users.
+         */
         filter?: pulumi.Input<string | undefined>;
+        /**
+         * Specifies whether to support SSL.
+         */
         isSsl: pulumi.Input<boolean>;
+        /**
+         * The field that is used to indicate the mobile phone number of a user on the AD server.
+         */
         mobileMapping?: pulumi.Input<string | undefined>;
+        /**
+         * The field that is used to indicate the name of a user on the AD server.
+         */
         nameMapping?: pulumi.Input<string | undefined>;
+        /**
+         * The password of the account that is used for the AD server.
+         */
         password?: pulumi.Input<string | undefined>;
+        /**
+         * The port that is used to access the AD server.
+         */
         port: pulumi.Input<number>;
+        /**
+         * The address of the AD server.
+         */
         server: pulumi.Input<string>;
+        /**
+         * The address of the secondary AD server.
+         */
         standbyServer?: pulumi.Input<string | undefined>;
     }
 
     export interface BastionHostInstanceLdapAuthServer {
+        /**
+         * The username of the account that is used for the LDAP server.
+         */
         account: pulumi.Input<string>;
+        /**
+         * The Base distinguished name (DN).
+         */
         baseDn: pulumi.Input<string>;
+        /**
+         * The field that is used to indicate the email address of a user on the LDAP server.
+         */
         emailMapping?: pulumi.Input<string | undefined>;
+        /**
+         * The condition that is used to filter users.
+         */
         filter?: pulumi.Input<string | undefined>;
+        /**
+         * Specifies whether to support SSL.
+         */
         isSsl?: pulumi.Input<boolean | undefined>;
+        /**
+         * The field that is used to indicate the logon name of a user on the LDAP server.
+         */
         loginNameMapping?: pulumi.Input<string | undefined>;
+        /**
+         * The field that is used to indicate the mobile phone number of a user on the LDAP server.
+         */
         mobileMapping?: pulumi.Input<string | undefined>;
+        /**
+         * The field that are used to indicate the name of a user on the LDAP server.
+         */
         nameMapping?: pulumi.Input<string | undefined>;
+        /**
+         * The password of the account that is used for the LDAP server.
+         */
         password?: pulumi.Input<string | undefined>;
+        /**
+         * The port that is used to access the LDAP server.
+         */
         port: pulumi.Input<number>;
+        /**
+         * The address of the LDAP server.
+         */
         server: pulumi.Input<string>;
+        /**
+         * The address of the secondary LDAP server.
+         */
         standbyServer?: pulumi.Input<string | undefined>;
     }
 

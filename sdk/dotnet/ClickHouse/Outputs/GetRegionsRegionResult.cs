@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
     public sealed class GetRegionsRegionResult
     {
         /// <summary>
-        /// The Region ID.
+        /// You can use specified RegionId to find the region and available zones information that supports ClickHouse.
         /// </summary>
         public readonly string RegionId;
         /// <summary>

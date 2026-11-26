@@ -43,12 +43,12 @@ public final class GetEcsSnapshotGroupsGroup {
      */
     private String snapshotGroupName;
     /**
-     * @return The status of the resource.
+     * @return The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
      * 
      */
     private String status;
     /**
-     * @return List of label key-value pairs.
+     * @return A mapping of tags to assign to the snapshot group.
      * 
      */
     private @Nullable Map<String,String> tags;
@@ -97,14 +97,14 @@ public final class GetEcsSnapshotGroupsGroup {
         return this.snapshotGroupName;
     }
     /**
-     * @return The status of the resource.
+     * @return The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return List of label key-value pairs.
+     * @return A mapping of tags to assign to the snapshot group.
      * 
      */
     public Map<String,String> tags() {

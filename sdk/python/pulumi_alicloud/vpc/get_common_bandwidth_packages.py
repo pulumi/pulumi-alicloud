@@ -170,7 +170,7 @@ def get_common_bandwidth_packages(bandwidth_package_name: Optional[_builtins.str
     """
     This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
 
-    > **NOTE:** Available in 1.36.0+.
+    > **NOTE:** Available since v1.36.0+.
 
     ## Example Usage
 
@@ -180,19 +180,11 @@ def get_common_bandwidth_packages(bandwidth_package_name: Optional[_builtins.str
 
     foo_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("foo",
         bandwidth="2",
-        name="tf-testAccCommonBandwidthPackage",
-        description="tf-testAcc-CommonBandwidthPackage")
-    foo = alicloud.vpc.get_common_bandwidth_packages_output(name_regex="^tf-testAcc.*",
+        name="tf-exampleCommonBandwidthPackage",
+        description="tf-exampleCommonBandwidthPackage")
+    foo = alicloud.vpc.get_common_bandwidth_packages_output(name_regex="^tf-example.*",
         ids=[foo_common_bandwith_package.id])
     ```
-
-    ## Public ip addresses Block
-
-      The public ip addresses mapping supports the following:
-
-      * `ip_address`   - The address of the EIP.
-      * `allocation_id` - The ID of the EIP instance.
-      * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
 
 
     :param _builtins.str bandwidth_package_name: The name of bandwidth package.
@@ -240,7 +232,7 @@ def get_common_bandwidth_packages_output(bandwidth_package_name: pulumi.Input[Op
     """
     This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
 
-    > **NOTE:** Available in 1.36.0+.
+    > **NOTE:** Available since v1.36.0+.
 
     ## Example Usage
 
@@ -250,19 +242,11 @@ def get_common_bandwidth_packages_output(bandwidth_package_name: pulumi.Input[Op
 
     foo_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("foo",
         bandwidth="2",
-        name="tf-testAccCommonBandwidthPackage",
-        description="tf-testAcc-CommonBandwidthPackage")
-    foo = alicloud.vpc.get_common_bandwidth_packages_output(name_regex="^tf-testAcc.*",
+        name="tf-exampleCommonBandwidthPackage",
+        description="tf-exampleCommonBandwidthPackage")
+    foo = alicloud.vpc.get_common_bandwidth_packages_output(name_regex="^tf-example.*",
         ids=[foo_common_bandwith_package.id])
     ```
-
-    ## Public ip addresses Block
-
-      The public ip addresses mapping supports the following:
-
-      * `ip_address`   - The address of the EIP.
-      * `allocation_id` - The ID of the EIP instance.
-      * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
 
 
     :param _builtins.str bandwidth_package_name: The name of bandwidth package.

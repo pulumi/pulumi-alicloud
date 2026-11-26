@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDbInstancesResult {
+    /**
+     * @return According to the practical example or notes.
+     * 
+     */
     private @Nullable String dbInstanceDescription;
     private @Nullable Boolean enableDetails;
     /**
@@ -23,11 +27,23 @@ public final class GetDbInstancesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Graph Database Db Instances. Each element contains the following attributes. See `instances` for the optional argument block.
+     * 
+     */
     private List<GetDbInstancesInstance> instances;
     private @Nullable String outputFile;
+    /**
+     * @return Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+     * 
+     */
     private @Nullable String status;
 
     private GetDbInstancesResult() {}
+    /**
+     * @return According to the practical example or notes.
+     * 
+     */
     public Optional<String> dbInstanceDescription() {
         return Optional.ofNullable(this.dbInstanceDescription);
     }
@@ -44,12 +60,20 @@ public final class GetDbInstancesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Graph Database Db Instances. Each element contains the following attributes. See `instances` for the optional argument block.
+     * 
+     */
     public List<GetDbInstancesInstance> instances() {
         return this.instances;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

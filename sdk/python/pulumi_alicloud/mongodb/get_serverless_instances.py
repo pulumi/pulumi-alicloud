@@ -74,11 +74,17 @@ class GetServerlessInstancesResult:
     @_builtins.property
     @pulumi.getter(name="dbInstanceClass")
     def db_instance_class(self) -> Optional[_builtins.str]:
+        """
+        The db instance class.
+        """
         return pulumi.get(self, "db_instance_class")
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceDescription")
     def db_instance_description(self) -> Optional[_builtins.str]:
+        """
+        The db instance description.
+        """
         return pulumi.get(self, "db_instance_description")
 
     @_builtins.property
@@ -102,11 +108,17 @@ class GetServerlessInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetServerlessInstancesInstanceResult']:
+        """
+        A list of Mongodb Serverless Instances. Each element contains the following attributes:
+        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[_builtins.str]:
+        """
+        The network type of the instance.
+        """
         return pulumi.get(self, "network_type")
 
     @_builtins.property
@@ -117,31 +129,49 @@ class GetServerlessInstancesResult:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the instance.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The tag of the resource.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the VPC network.
+        """
         return pulumi.get(self, "vpc_id")
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[_builtins.str]:
+        """
+        The id of the vswitch.
+        """
         return pulumi.get(self, "vswitch_id")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the zone.
+        """
         return pulumi.get(self, "zone_id")
 
 
@@ -183,7 +213,7 @@ def get_serverless_instances(db_instance_class: Optional[_builtins.str] = None,
     """
     This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.148.0+.
+    > **NOTE:** Available since v1.148.0.
 
     ## Example Usage
 
@@ -270,7 +300,7 @@ def get_serverless_instances_output(db_instance_class: pulumi.Input[Optional[Opt
     """
     This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.148.0+.
+    > **NOTE:** Available since v1.148.0.
 
     ## Example Usage
 

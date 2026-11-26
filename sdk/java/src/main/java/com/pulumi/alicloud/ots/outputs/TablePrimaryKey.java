@@ -5,11 +5,19 @@ package com.pulumi.alicloud.ots.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class TablePrimaryKey {
+    /**
+     * @return Specifies whether the primary key column is auto-incremented. Defaults to `false`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `autoIncrement`. Changing this field forces a new resource.
+     * 
+     */
+    private @Nullable Boolean autoIncrement;
     /**
      * @return Name for primary key.
      * 
@@ -22,6 +30,13 @@ public final class TablePrimaryKey {
     private String type;
 
     private TablePrimaryKey() {}
+    /**
+     * @return Specifies whether the primary key column is auto-incremented. Defaults to `false`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `autoIncrement`. Changing this field forces a new resource.
+     * 
+     */
+    public Optional<Boolean> autoIncrement() {
+        return Optional.ofNullable(this.autoIncrement);
+    }
     /**
      * @return Name for primary key.
      * 
@@ -46,15 +61,23 @@ public final class TablePrimaryKey {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean autoIncrement;
         private String name;
         private String type;
         public Builder() {}
         public Builder(TablePrimaryKey defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoIncrement = defaults.autoIncrement;
     	      this.name = defaults.name;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder autoIncrement(@Nullable Boolean autoIncrement) {
+
+            this.autoIncrement = autoIncrement;
+            return this;
+        }
         @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
@@ -73,6 +96,7 @@ public final class TablePrimaryKey {
         }
         public TablePrimaryKey build() {
             final var _resultValue = new TablePrimaryKey();
+            _resultValue.autoIncrement = autoIncrement;
             _resultValue.name = name;
             _resultValue.type = type;
             return _resultValue;

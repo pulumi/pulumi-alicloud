@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DesktopArgs', 'Desktop']
 
@@ -26,6 +28,7 @@ class DesktopArgs:
                  auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  desktop_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_timers: pulumi.Input[Optional[Sequence[pulumi.Input['DesktopDesktopTimerArgs']]]] = None,
                  desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
                  end_user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -35,6 +38,7 @@ class DesktopArgs:
                  root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  stopped_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  user_assign_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  user_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None):
@@ -48,15 +52,21 @@ class DesktopArgs:
         :param pulumi.Input[_builtins.bool] auto_pay: The auto-pay of the Desktop whether to pay automatically. values: `true`, `false`.
         :param pulumi.Input[_builtins.bool] auto_renew: The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `true`, `false`.
         :param pulumi.Input[_builtins.str] desktop_name: The desktop name of the Desktop.
+        :param pulumi.Input[Sequence[pulumi.Input['DesktopDesktopTimerArgs']]] desktop_timers: The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktop_timers` below.
         :param pulumi.Input[_builtins.str] desktop_type: The desktop type of the Desktop.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] end_user_ids: The desktop end user id of the Desktop.
-        :param pulumi.Input[_builtins.str] host_name: The hostname of the Desktop.
+        :param pulumi.Input[_builtins.str] host_name: The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+               
+               > **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `host_name` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the Desktop. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The period of the Desktop.
         :param pulumi.Input[_builtins.str] period_unit: The period unit of the Desktop.
         :param pulumi.Input[_builtins.int] root_disk_size_gib: The root disk size gib of the Desktop.
         :param pulumi.Input[_builtins.str] status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
         :param pulumi.Input[_builtins.str] stopped_mode: The stopped mode of the Desktop.
+        :param pulumi.Input[_builtins.str] subnet_id: The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+               
+               > **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] user_assign_mode: The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
         :param pulumi.Input[_builtins.int] user_disk_size_gib: The user disk size gib of the Desktop.
@@ -72,6 +82,8 @@ class DesktopArgs:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if desktop_name is not None:
             pulumi.set(__self__, "desktop_name", desktop_name)
+        if desktop_timers is not None:
+            pulumi.set(__self__, "desktop_timers", desktop_timers)
         if desktop_type is not None:
             pulumi.set(__self__, "desktop_type", desktop_type)
         if end_user_ids is not None:
@@ -90,6 +102,8 @@ class DesktopArgs:
             pulumi.set(__self__, "status", status)
         if stopped_mode is not None:
             pulumi.set(__self__, "stopped_mode", stopped_mode)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if user_assign_mode is not None:
@@ -182,6 +196,18 @@ class DesktopArgs:
         pulumi.set(self, "desktop_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="desktopTimers")
+    def desktop_timers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DesktopDesktopTimerArgs']]]]:
+        """
+        The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktop_timers` below.
+        """
+        return pulumi.get(self, "desktop_timers")
+
+    @desktop_timers.setter
+    def desktop_timers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DesktopDesktopTimerArgs']]]]):
+        pulumi.set(self, "desktop_timers", value)
+
+    @_builtins.property
     @pulumi.getter(name="desktopType")
     def desktop_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -209,7 +235,9 @@ class DesktopArgs:
     @pulumi.getter(name="hostName")
     def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The hostname of the Desktop.
+        The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+
+        > **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `host_name` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
         """
         return pulumi.get(self, "host_name")
 
@@ -290,6 +318,20 @@ class DesktopArgs:
         pulumi.set(self, "stopped_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+
+        > **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subnet_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -334,6 +376,7 @@ class _DesktopState:
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
                  desktop_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_timers: pulumi.Input[Optional[Sequence[pulumi.Input['DesktopDesktopTimerArgs']]]] = None,
                  desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
                  end_user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -345,6 +388,7 @@ class _DesktopState:
                  root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  stopped_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  user_assign_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  user_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None):
@@ -356,9 +400,12 @@ class _DesktopState:
         :param pulumi.Input[_builtins.bool] auto_renew: The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `true`, `false`.
         :param pulumi.Input[_builtins.str] bundle_id: The bundle id of the Desktop.
         :param pulumi.Input[_builtins.str] desktop_name: The desktop name of the Desktop.
+        :param pulumi.Input[Sequence[pulumi.Input['DesktopDesktopTimerArgs']]] desktop_timers: The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktop_timers` below.
         :param pulumi.Input[_builtins.str] desktop_type: The desktop type of the Desktop.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] end_user_ids: The desktop end user id of the Desktop.
-        :param pulumi.Input[_builtins.str] host_name: The hostname of the Desktop.
+        :param pulumi.Input[_builtins.str] host_name: The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+               
+               > **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `host_name` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
         :param pulumi.Input[_builtins.str] office_site_id: The ID of the Simple Office Site.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the Desktop. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The period of the Desktop.
@@ -367,6 +414,9 @@ class _DesktopState:
         :param pulumi.Input[_builtins.int] root_disk_size_gib: The root disk size gib of the Desktop.
         :param pulumi.Input[_builtins.str] status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
         :param pulumi.Input[_builtins.str] stopped_mode: The stopped mode of the Desktop.
+        :param pulumi.Input[_builtins.str] subnet_id: The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+               
+               > **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] user_assign_mode: The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
         :param pulumi.Input[_builtins.int] user_disk_size_gib: The user disk size gib of the Desktop.
@@ -381,6 +431,8 @@ class _DesktopState:
             pulumi.set(__self__, "bundle_id", bundle_id)
         if desktop_name is not None:
             pulumi.set(__self__, "desktop_name", desktop_name)
+        if desktop_timers is not None:
+            pulumi.set(__self__, "desktop_timers", desktop_timers)
         if desktop_type is not None:
             pulumi.set(__self__, "desktop_type", desktop_type)
         if end_user_ids is not None:
@@ -403,6 +455,8 @@ class _DesktopState:
             pulumi.set(__self__, "status", status)
         if stopped_mode is not None:
             pulumi.set(__self__, "stopped_mode", stopped_mode)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if user_assign_mode is not None:
@@ -471,6 +525,18 @@ class _DesktopState:
         pulumi.set(self, "desktop_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="desktopTimers")
+    def desktop_timers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DesktopDesktopTimerArgs']]]]:
+        """
+        The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktop_timers` below.
+        """
+        return pulumi.get(self, "desktop_timers")
+
+    @desktop_timers.setter
+    def desktop_timers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DesktopDesktopTimerArgs']]]]):
+        pulumi.set(self, "desktop_timers", value)
+
+    @_builtins.property
     @pulumi.getter(name="desktopType")
     def desktop_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -498,7 +564,9 @@ class _DesktopState:
     @pulumi.getter(name="hostName")
     def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The hostname of the Desktop.
+        The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+
+        > **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `host_name` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
         """
         return pulumi.get(self, "host_name")
 
@@ -603,6 +671,20 @@ class _DesktopState:
         pulumi.set(self, "stopped_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+
+        > **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subnet_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -650,6 +732,7 @@ class Desktop(pulumi.CustomResource):
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
                  desktop_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_timers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DesktopDesktopTimerArgs', 'DesktopDesktopTimerArgsDict', 'outputs.DesktopDesktopTimer']]]]] = None,
                  desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
                  end_user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -661,6 +744,7 @@ class Desktop(pulumi.CustomResource):
                  root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  stopped_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  user_assign_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  user_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
@@ -738,9 +822,12 @@ class Desktop(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_renew: The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `true`, `false`.
         :param pulumi.Input[_builtins.str] bundle_id: The bundle id of the Desktop.
         :param pulumi.Input[_builtins.str] desktop_name: The desktop name of the Desktop.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DesktopDesktopTimerArgs', 'DesktopDesktopTimerArgsDict', 'outputs.DesktopDesktopTimer']]]] desktop_timers: The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktop_timers` below.
         :param pulumi.Input[_builtins.str] desktop_type: The desktop type of the Desktop.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] end_user_ids: The desktop end user id of the Desktop.
-        :param pulumi.Input[_builtins.str] host_name: The hostname of the Desktop.
+        :param pulumi.Input[_builtins.str] host_name: The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+               
+               > **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `host_name` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
         :param pulumi.Input[_builtins.str] office_site_id: The ID of the Simple Office Site.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the Desktop. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The period of the Desktop.
@@ -749,6 +836,9 @@ class Desktop(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] root_disk_size_gib: The root disk size gib of the Desktop.
         :param pulumi.Input[_builtins.str] status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
         :param pulumi.Input[_builtins.str] stopped_mode: The stopped mode of the Desktop.
+        :param pulumi.Input[_builtins.str] subnet_id: The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+               
+               > **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] user_assign_mode: The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
         :param pulumi.Input[_builtins.int] user_disk_size_gib: The user disk size gib of the Desktop.
@@ -845,6 +935,7 @@ class Desktop(pulumi.CustomResource):
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
                  desktop_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_timers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DesktopDesktopTimerArgs', 'DesktopDesktopTimerArgsDict', 'outputs.DesktopDesktopTimer']]]]] = None,
                  desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
                  end_user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -856,6 +947,7 @@ class Desktop(pulumi.CustomResource):
                  root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  stopped_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  user_assign_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  user_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
@@ -875,6 +967,7 @@ class Desktop(pulumi.CustomResource):
                 raise TypeError("Missing required property 'bundle_id'")
             __props__.__dict__["bundle_id"] = bundle_id
             __props__.__dict__["desktop_name"] = desktop_name
+            __props__.__dict__["desktop_timers"] = desktop_timers
             __props__.__dict__["desktop_type"] = desktop_type
             __props__.__dict__["end_user_ids"] = end_user_ids
             __props__.__dict__["host_name"] = host_name
@@ -890,6 +983,7 @@ class Desktop(pulumi.CustomResource):
             __props__.__dict__["root_disk_size_gib"] = root_disk_size_gib
             __props__.__dict__["status"] = status
             __props__.__dict__["stopped_mode"] = stopped_mode
+            __props__.__dict__["subnet_id"] = subnet_id
             __props__.__dict__["tags"] = tags
             __props__.__dict__["user_assign_mode"] = user_assign_mode
             __props__.__dict__["user_disk_size_gib"] = user_disk_size_gib
@@ -908,6 +1002,7 @@ class Desktop(pulumi.CustomResource):
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
             bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
             desktop_name: pulumi.Input[Optional[_builtins.str]] = None,
+            desktop_timers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DesktopDesktopTimerArgs', 'DesktopDesktopTimerArgsDict', 'outputs.DesktopDesktopTimer']]]]] = None,
             desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
             end_user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -919,6 +1014,7 @@ class Desktop(pulumi.CustomResource):
             root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             stopped_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             user_assign_mode: pulumi.Input[Optional[_builtins.str]] = None,
             user_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None) -> 'Desktop':
@@ -934,9 +1030,12 @@ class Desktop(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_renew: The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `true`, `false`.
         :param pulumi.Input[_builtins.str] bundle_id: The bundle id of the Desktop.
         :param pulumi.Input[_builtins.str] desktop_name: The desktop name of the Desktop.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DesktopDesktopTimerArgs', 'DesktopDesktopTimerArgsDict', 'outputs.DesktopDesktopTimer']]]] desktop_timers: The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktop_timers` below.
         :param pulumi.Input[_builtins.str] desktop_type: The desktop type of the Desktop.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] end_user_ids: The desktop end user id of the Desktop.
-        :param pulumi.Input[_builtins.str] host_name: The hostname of the Desktop.
+        :param pulumi.Input[_builtins.str] host_name: The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+               
+               > **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `host_name` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
         :param pulumi.Input[_builtins.str] office_site_id: The ID of the Simple Office Site.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the Desktop. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The period of the Desktop.
@@ -945,6 +1044,9 @@ class Desktop(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] root_disk_size_gib: The root disk size gib of the Desktop.
         :param pulumi.Input[_builtins.str] status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
         :param pulumi.Input[_builtins.str] stopped_mode: The stopped mode of the Desktop.
+        :param pulumi.Input[_builtins.str] subnet_id: The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+               
+               > **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] user_assign_mode: The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
         :param pulumi.Input[_builtins.int] user_disk_size_gib: The user disk size gib of the Desktop.
@@ -958,6 +1060,7 @@ class Desktop(pulumi.CustomResource):
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["bundle_id"] = bundle_id
         __props__.__dict__["desktop_name"] = desktop_name
+        __props__.__dict__["desktop_timers"] = desktop_timers
         __props__.__dict__["desktop_type"] = desktop_type
         __props__.__dict__["end_user_ids"] = end_user_ids
         __props__.__dict__["host_name"] = host_name
@@ -969,6 +1072,7 @@ class Desktop(pulumi.CustomResource):
         __props__.__dict__["root_disk_size_gib"] = root_disk_size_gib
         __props__.__dict__["status"] = status
         __props__.__dict__["stopped_mode"] = stopped_mode
+        __props__.__dict__["subnet_id"] = subnet_id
         __props__.__dict__["tags"] = tags
         __props__.__dict__["user_assign_mode"] = user_assign_mode
         __props__.__dict__["user_disk_size_gib"] = user_disk_size_gib
@@ -982,6 +1086,7 @@ class Desktop(pulumi.CustomResource):
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
             bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
             desktop_name: pulumi.Input[Optional[_builtins.str]] = None,
+            desktop_timers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DesktopDesktopTimerArgs', 'DesktopDesktopTimerArgsDict', 'outputs.DesktopDesktopTimer']]]]] = None,
             desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
             end_user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -993,6 +1098,7 @@ class Desktop(pulumi.CustomResource):
             root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             stopped_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             user_assign_mode: pulumi.Input[Optional[_builtins.str]] = None,
             user_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
@@ -1002,6 +1108,7 @@ class Desktop(pulumi.CustomResource):
         __props__["autoRenew"] = auto_renew
         __props__["bundleId"] = bundle_id
         __props__["desktopName"] = desktop_name
+        __props__["desktopTimers"] = desktop_timers
         __props__["desktopType"] = desktop_type
         __props__["endUserIds"] = end_user_ids
         __props__["hostName"] = host_name
@@ -1013,6 +1120,7 @@ class Desktop(pulumi.CustomResource):
         __props__["rootDiskSizeGib"] = root_disk_size_gib
         __props__["status"] = status
         __props__["stoppedMode"] = stopped_mode
+        __props__["subnetId"] = subnet_id
         __props__["tags"] = tags
         __props__["userAssignMode"] = user_assign_mode
         __props__["userDiskSizeGib"] = user_disk_size_gib
@@ -1059,6 +1167,14 @@ class Desktop(pulumi.CustomResource):
         return pulumi.get(self, "desktop_name")
 
     @_builtins.property
+    @pulumi.getter(name="desktopTimers")
+    def desktop_timers(self) -> pulumi.Output[Optional[Sequence['outputs.DesktopDesktopTimer']]]:
+        """
+        The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktop_timers` below.
+        """
+        return pulumi.get(self, "desktop_timers")
+
+    @_builtins.property
     @pulumi.getter(name="desktopType")
     def desktop_type(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1076,9 +1192,11 @@ class Desktop(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="hostName")
-    def host_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def host_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The hostname of the Desktop.
+        The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+
+        > **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `host_name` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
         """
         return pulumi.get(self, "host_name")
 
@@ -1145,6 +1263,16 @@ class Desktop(pulumi.CustomResource):
         The stopped mode of the Desktop.
         """
         return pulumi.get(self, "stopped_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+
+        > **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+        """
+        return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter

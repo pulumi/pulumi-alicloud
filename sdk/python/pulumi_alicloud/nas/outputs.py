@@ -18,6 +18,7 @@ from . import outputs
 __all__ = [
     'AccessPointPosixUser',
     'AccessPointRootPathPermission',
+    'FileSystemAutoUpgradeConfig',
     'FileSystemNfsAcl',
     'FileSystemOptions',
     'FileSystemRecycleBin',
@@ -27,6 +28,7 @@ __all__ = [
     'GetAutoSnapshotPoliciesPolicyResult',
     'GetDataFlowsFlowResult',
     'GetFileSystemsSystemResult',
+    'GetFileSystemsSystemAutoUpgradeConfigResult',
     'GetFilesetsFilesetResult',
     'GetLifecyclePoliciesPolicyResult',
     'GetLogAnalysesAnalysisResult',
@@ -160,6 +162,86 @@ class AccessPointRootPathPermission(dict):
         The Portable Operating System Interface for UNIX (POSIX) permission.
         """
         return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
+class FileSystemAutoUpgradeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "capacityUsedRatio":
+            suggest = "capacity_used_ratio"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileSystemAutoUpgradeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileSystemAutoUpgradeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileSystemAutoUpgradeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 capacity_used_ratio: Optional[_builtins.int] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 step: Optional[_builtins.int] = None,
+                 time: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int capacity_used_ratio: The capacity usage threshold. Valid values: 1 to 99. Unit: percent.
+        :param _builtins.bool enabled: Whether to enable automatic capacity expansion.
+        :param _builtins.int step: The capacity expansion step. Unit: GiB.
+        :param _builtins.int time: The duration threshold. Unit: minutes.
+               
+               > **NOTE:** Automatic capacity expansion is a modify-time feature: it is applied through the NAS ModifyFileSystem API after the file system has been created.
+               
+               > **NOTE:** This block is Optional and Computed. Removing the entire block from the configuration does **not** disable automatic capacity expansion or send a disable request to the server; the previous server value is retained as a computed value and the plan stays stable. To disable automatic capacity expansion, set `enabled = false` explicitly. When only `enabled` is configured, the other attributes (`capacity_used_ratio`, `step`, `time`) become computed and are read back from the server.
+        """
+        if capacity_used_ratio is not None:
+            pulumi.set(__self__, "capacity_used_ratio", capacity_used_ratio)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if step is not None:
+            pulumi.set(__self__, "step", step)
+        if time is not None:
+            pulumi.set(__self__, "time", time)
+
+    @_builtins.property
+    @pulumi.getter(name="capacityUsedRatio")
+    def capacity_used_ratio(self) -> Optional[_builtins.int]:
+        """
+        The capacity usage threshold. Valid values: 1 to 99. Unit: percent.
+        """
+        return pulumi.get(self, "capacity_used_ratio")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable automatic capacity expansion.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def step(self) -> Optional[_builtins.int]:
+        """
+        The capacity expansion step. Unit: GiB.
+        """
+        return pulumi.get(self, "step")
+
+    @_builtins.property
+    @pulumi.getter
+    def time(self) -> Optional[_builtins.int]:
+        """
+        The duration threshold. Unit: minutes.
+
+        > **NOTE:** Automatic capacity expansion is a modify-time feature: it is applied through the NAS ModifyFileSystem API after the file system has been created.
+
+        > **NOTE:** This block is Optional and Computed. Removing the entire block from the configuration does **not** disable automatic capacity expansion or send a disable request to the server; the previous server value is retained as a computed value and the plan stays stable. To disable automatic capacity expansion, set `enabled = false` explicitly. When only `enabled` is configured, the other attributes (`capacity_used_ratio`, `step`, `time`) become computed and are read back from the server.
+        """
+        return pulumi.get(self, "time")
 
 
 @pulumi.output_type
@@ -733,7 +815,7 @@ class GetDataFlowsFlowResult(dict):
         :param _builtins.str id: The resource ID of the data flow. The value formats as `<file_system_id>:<data_flow_id>`.
         :param _builtins.str source_security_type: The security protection type of the source storage.
         :param _builtins.str source_storage: The access path of the source store. Format: `<storage type>://<path>`.
-        :param _builtins.str status: The status of the Data flow.
+        :param _builtins.str status: The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
         :param _builtins.int throughput: The maximum transmission bandwidth of data flow, unit: `MB/s`.
         """
         pulumi.set(__self__, "create_time", create_time)
@@ -842,7 +924,7 @@ class GetDataFlowsFlowResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the Data flow.
+        The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
         """
         return pulumi.get(self, "status")
 
@@ -858,6 +940,7 @@ class GetDataFlowsFlowResult(dict):
 @pulumi.output_type
 class GetFileSystemsSystemResult(dict):
     def __init__(__self__, *,
+                 auto_upgrade_configs: Sequence['outputs.GetFileSystemsSystemAutoUpgradeConfigResult'],
                  capacity: _builtins.int,
                  create_time: _builtins.str,
                  description: _builtins.str,
@@ -871,6 +954,7 @@ class GetFileSystemsSystemResult(dict):
                  storage_type: _builtins.str,
                  zone_id: _builtins.str):
         """
+        :param Sequence['GetFileSystemsSystemAutoUpgradeConfigArgs'] auto_upgrade_configs: (List, Available since v2.1.0) The automatic capacity expansion configuration. Each element contains the following attributes:
         :param _builtins.int capacity: (Optional, Available in v1.140.0+) The capacity of the file system.
         :param _builtins.str create_time: Time of creation.
         :param _builtins.str description: Description of the FileSystem.
@@ -895,6 +979,7 @@ class GetFileSystemsSystemResult(dict):
                * `Capacity` (Available when the `file_system_type` is `standard`)
         :param _builtins.str zone_id: (Optional, Available in v1.140.0+) The id of the zone. Each region consists of multiple isolated locations known as zones. Each zone has an independent power supply and network.
         """
+        pulumi.set(__self__, "auto_upgrade_configs", auto_upgrade_configs)
         pulumi.set(__self__, "capacity", capacity)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
@@ -907,6 +992,14 @@ class GetFileSystemsSystemResult(dict):
         pulumi.set(__self__, "region_id", region_id)
         pulumi.set(__self__, "storage_type", storage_type)
         pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="autoUpgradeConfigs")
+    def auto_upgrade_configs(self) -> Sequence['outputs.GetFileSystemsSystemAutoUpgradeConfigResult']:
+        """
+        (List, Available since v2.1.0) The automatic capacity expansion configuration. Each element contains the following attributes:
+        """
+        return pulumi.get(self, "auto_upgrade_configs")
 
     @_builtins.property
     @pulumi.getter
@@ -1017,6 +1110,57 @@ class GetFileSystemsSystemResult(dict):
 
 
 @pulumi.output_type
+class GetFileSystemsSystemAutoUpgradeConfigResult(dict):
+    def __init__(__self__, *,
+                 capacity_used_ratio: _builtins.int,
+                 enabled: _builtins.bool,
+                 step: _builtins.int,
+                 time: _builtins.int):
+        """
+        :param _builtins.int capacity_used_ratio: (Int, Available since v2.1.0) The capacity usage threshold. Unit: percent.
+        :param _builtins.bool enabled: (Bool, Available since v2.1.0) Whether automatic capacity expansion is enabled.
+        :param _builtins.int step: (Int, Available since v2.1.0) The capacity expansion step. Unit: GiB.
+        :param _builtins.int time: (Int, Available since v2.1.0) The duration threshold. Unit: minutes.
+        """
+        pulumi.set(__self__, "capacity_used_ratio", capacity_used_ratio)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "step", step)
+        pulumi.set(__self__, "time", time)
+
+    @_builtins.property
+    @pulumi.getter(name="capacityUsedRatio")
+    def capacity_used_ratio(self) -> _builtins.int:
+        """
+        (Int, Available since v2.1.0) The capacity usage threshold. Unit: percent.
+        """
+        return pulumi.get(self, "capacity_used_ratio")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        (Bool, Available since v2.1.0) Whether automatic capacity expansion is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def step(self) -> _builtins.int:
+        """
+        (Int, Available since v2.1.0) The capacity expansion step. Unit: GiB.
+        """
+        return pulumi.get(self, "step")
+
+    @_builtins.property
+    @pulumi.getter
+    def time(self) -> _builtins.int:
+        """
+        (Int, Available since v2.1.0) The duration threshold. Unit: minutes.
+        """
+        return pulumi.get(self, "time")
+
+
+@pulumi.output_type
 class GetFilesetsFilesetResult(dict):
     def __init__(__self__, *,
                  create_time: _builtins.str,
@@ -1034,7 +1178,7 @@ class GetFilesetsFilesetResult(dict):
         :param _builtins.str file_system_path: The path of Fileset.
         :param _builtins.str fileset_id: The first ID of the resource.
         :param _builtins.str id: The ID of the Fileset.
-        :param _builtins.str status: The status of the fileset.
+        :param _builtins.str status: The status of the fileset. Valid values: `CREATED`, `CREATING`, `RELEASED`, `RELEASING`.
         :param _builtins.str update_time: The latest update time of Fileset.
         """
         pulumi.set(__self__, "create_time", create_time)
@@ -1098,7 +1242,7 @@ class GetFilesetsFilesetResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the fileset.
+        The status of the fileset. Valid values: `CREATED`, `CREATING`, `RELEASED`, `RELEASING`.
         """
         return pulumi.get(self, "status")
 
@@ -1392,7 +1536,7 @@ class GetSnapshotsSnapshotResult(dict):
         :param _builtins.str source_file_system_id: The ID of the source file system.
         :param _builtins.str source_file_system_size: The capacity of the source file system. Unit: GiB.
         :param _builtins.str source_file_system_version: The version of the source file system.
-        :param _builtins.str status: The status of the snapshot.
+        :param _builtins.str status: Status. Valid values: `accomplished`, `failed`, `progressing`.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
@@ -1508,7 +1652,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the snapshot.
+        Status. Valid values: `accomplished`, `failed`, `progressing`.
         """
         return pulumi.get(self, "status")
 
@@ -1548,8 +1692,8 @@ class GetZonesZoneInstanceTypeResult(dict):
                  protocol_type: _builtins.str,
                  storage_type: _builtins.str):
         """
-        :param _builtins.str protocol_type: File transfer protocol type. Valid values:
-        :param _builtins.str storage_type: The storage type of the nas zones. Valid values:
+        :param _builtins.str protocol_type: File transfer protocol type. Valid values: `NFS`, `SMB` and `cpfs`.
+        :param _builtins.str storage_type: The storage type of the nas zones. Valid values: `Performance`, `Capacity`, `Standard`, `Advance`, `advance_100` and `advance_200`.
         """
         pulumi.set(__self__, "protocol_type", protocol_type)
         pulumi.set(__self__, "storage_type", storage_type)
@@ -1558,7 +1702,7 @@ class GetZonesZoneInstanceTypeResult(dict):
     @pulumi.getter(name="protocolType")
     def protocol_type(self) -> _builtins.str:
         """
-        File transfer protocol type. Valid values:
+        File transfer protocol type. Valid values: `NFS`, `SMB` and `cpfs`.
         """
         return pulumi.get(self, "protocol_type")
 
@@ -1566,7 +1710,7 @@ class GetZonesZoneInstanceTypeResult(dict):
     @pulumi.getter(name="storageType")
     def storage_type(self) -> _builtins.str:
         """
-        The storage type of the nas zones. Valid values:
+        The storage type of the nas zones. Valid values: `Performance`, `Capacity`, `Standard`, `Advance`, `advance_100` and `advance_200`.
         """
         return pulumi.get(self, "storage_type")
 

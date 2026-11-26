@@ -70,12 +70,85 @@ import (
 //
 // ```
 //
+// ### Regional ESSD data disk
+//
+// Regional ESSD (`cloudRegionalDiskAuto`) is region-scoped. Omit `zoneId` and `performanceLevel` when creating it:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewEcsDisk(ctx, "regional", &ecs.EcsDiskArgs{
+//				Category: pulumi.String("cloud_regional_disk_auto"),
+//				Size:     pulumi.Int(20),
+//				DiskName: pulumi.String("regional-essd-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Destroying a disk with `forceDelete`
+//
+// The following example creates a pay-as-you-go disk with `forceDelete = true`; destroying the resource releases the disk:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			forceDelete, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//				AvailableDiskCategory:     pulumi.StringRef("cloud_essd"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEcsDisk(ctx, "force_delete", &ecs.EcsDiskArgs{
+//				ZoneId:      pulumi.String(forceDelete.Zones[0].Id),
+//				DiskName:    pulumi.String("terraform-example"),
+//				Category:    pulumi.String("cloud_essd"),
+//				Size:        pulumi.Int(40),
+//				ForceDelete: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Deleting `ecs.EcsDisk` or removing it from your configuration
 //
-// The `ecs.EcsDisk` resource allows you to manage `paymentType = "Subscription"` and `deleteWithInstance = true` disk,
-// but Terraform cannot destroy it. Deleting the subscription resource or removing it from your configuration will
-// remove it from your state file and management, but will not destroy it.
-// If you want to delete it, you can change it to `PayAsYouGo` and setting `deleteWithInstance = true` and detach it from instance.
+// By default, destroying an `ecs.EcsDisk` resource or removing it from your configuration only removes the disk from your state file and management, without releasing it, when the disk is PrePaid (`paymentType = "Subscription"`) **and** ECS reports `DeleteWithInstance = true` for it, which is the case for a disk released together with its Subscription instance. This is the only state-only path. Every other case, including a PrePaid disk whose `deleteWithInstance` is `false`, calls `DeleteDisk` during destroy; if ECS rejects the release, the destroy fails with the returned error and the disk is kept, rather than being silently removed from the state.
+//
+// Set `forceDelete = true` to release such a disk: during destroy, the provider converts the disk to pay-as-you-go, detaches it with `DeleteWithInstance=false` and releases it once it is available. **`forceDelete` deletes the disk and all data on it, and the release cannot be undone.** `forceDelete` takes priority over the legacy state-only behavior; when it is `false` or not set, the behavior above is unchanged.
+//
+// Multi-attach disks (`multiAttach = "Enabled"`) are not supported by `forceDelete`: the destroy fails with an actionable error and the disk is kept. The PrePaid to pay-as-you-go conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes; the refund of the remaining subscription fee is handled by ECS according to your account settings.
+//
+// If you want to delete a disk without `forceDelete`, convert it to `PayAsYouGo` and detach it from its instance before deleting it.
 //
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
@@ -97,7 +170,7 @@ type EcsDisk struct {
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
 	BurstingEnabled pulumi.BoolPtrOutput `pulumi:"burstingEnabled"`
-	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
+	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
 	Category pulumi.StringPtrOutput `pulumi:"category"`
 	// (Available since v1.237.0) The time when the disk was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -119,9 +192,11 @@ type EcsDisk struct {
 	EncryptAlgorithm pulumi.StringPtrOutput `pulumi:"encryptAlgorithm"`
 	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
 	Encrypted pulumi.BoolOutput `pulumi:"encrypted"`
+	// Specifies whether to release the disk during destroy even when the default behavior cannot release it, for example a `paymentType = "Subscription"` disk. Defaults to `false`. When set to `true`, the provider converts the disk to `PayAsYouGo` (`ModifyDiskChargeType`), detaches it with `DeleteWithInstance=false`, waits until the disk is `Available` and then releases it (`DeleteDisk`). **NOTE:** `forceDelete` deletes the disk and all data on it, and the release cannot be undone. It takes priority over the legacy behavior that only removes a PrePaid disk with `deleteWithInstance = true` from the state. `forceDelete` does not support multi-attach disks (`multiAttach = "Enabled"`); the destroy fails with an actionable error and the disk is kept. The billing method conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes.
+	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// The ID of the instance to which the created subscription disk is automatically attached.
 	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
-	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+	// * For `cloudRegionalDiskAuto`, `zoneId` is not required. For other disk categories, specify exactly one of `zoneId` or `instanceId`.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
 	KmsKeyId pulumi.StringOutput `pulumi:"kmsKeyId"`
@@ -153,6 +228,7 @@ type EcsDisk struct {
 	// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
 	// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
 	// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+	// - If `category` is set to `cloudRegionalDiskAuto`. Valid values: `10` to `65536`.
 	// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
 	// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
 	// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
@@ -173,7 +249,7 @@ type EcsDisk struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
-	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+	// ID of the free zone to which the disk belongs. For `cloudRegionalDiskAuto`, `zoneId` is not required. For other disk categories, specify exactly one of `zoneId` or `instanceId`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -215,7 +291,7 @@ type ecsDiskState struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
 	BurstingEnabled *bool `pulumi:"burstingEnabled"`
-	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
+	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
 	Category *string `pulumi:"category"`
 	// (Available since v1.237.0) The time when the disk was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -237,9 +313,11 @@ type ecsDiskState struct {
 	EncryptAlgorithm *string `pulumi:"encryptAlgorithm"`
 	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
 	Encrypted *bool `pulumi:"encrypted"`
+	// Specifies whether to release the disk during destroy even when the default behavior cannot release it, for example a `paymentType = "Subscription"` disk. Defaults to `false`. When set to `true`, the provider converts the disk to `PayAsYouGo` (`ModifyDiskChargeType`), detaches it with `DeleteWithInstance=false`, waits until the disk is `Available` and then releases it (`DeleteDisk`). **NOTE:** `forceDelete` deletes the disk and all data on it, and the release cannot be undone. It takes priority over the legacy behavior that only removes a PrePaid disk with `deleteWithInstance = true` from the state. `forceDelete` does not support multi-attach disks (`multiAttach = "Enabled"`); the destroy fails with an actionable error and the disk is kept. The billing method conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// The ID of the instance to which the created subscription disk is automatically attached.
 	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
-	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+	// * For `cloudRegionalDiskAuto`, `zoneId` is not required. For other disk categories, specify exactly one of `zoneId` or `instanceId`.
 	InstanceId *string `pulumi:"instanceId"`
 	// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
@@ -271,6 +349,7 @@ type ecsDiskState struct {
 	// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
 	// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
 	// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+	// - If `category` is set to `cloudRegionalDiskAuto`. Valid values: `10` to `65536`.
 	// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
 	// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
 	// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
@@ -291,7 +370,7 @@ type ecsDiskState struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
 	Type *string `pulumi:"type"`
-	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+	// ID of the free zone to which the disk belongs. For `cloudRegionalDiskAuto`, `zoneId` is not required. For other disk categories, specify exactly one of `zoneId` or `instanceId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -304,7 +383,7 @@ type EcsDiskState struct {
 	AvailabilityZone pulumi.StringPtrInput
 	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
 	BurstingEnabled pulumi.BoolPtrInput
-	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
+	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
 	Category pulumi.StringPtrInput
 	// (Available since v1.237.0) The time when the disk was created.
 	CreateTime pulumi.StringPtrInput
@@ -326,9 +405,11 @@ type EcsDiskState struct {
 	EncryptAlgorithm pulumi.StringPtrInput
 	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
 	Encrypted pulumi.BoolPtrInput
+	// Specifies whether to release the disk during destroy even when the default behavior cannot release it, for example a `paymentType = "Subscription"` disk. Defaults to `false`. When set to `true`, the provider converts the disk to `PayAsYouGo` (`ModifyDiskChargeType`), detaches it with `DeleteWithInstance=false`, waits until the disk is `Available` and then releases it (`DeleteDisk`). **NOTE:** `forceDelete` deletes the disk and all data on it, and the release cannot be undone. It takes priority over the legacy behavior that only removes a PrePaid disk with `deleteWithInstance = true` from the state. `forceDelete` does not support multi-attach disks (`multiAttach = "Enabled"`); the destroy fails with an actionable error and the disk is kept. The billing method conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes.
+	ForceDelete pulumi.BoolPtrInput
 	// The ID of the instance to which the created subscription disk is automatically attached.
 	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
-	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+	// * For `cloudRegionalDiskAuto`, `zoneId` is not required. For other disk categories, specify exactly one of `zoneId` or `instanceId`.
 	InstanceId pulumi.StringPtrInput
 	// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
 	KmsKeyId pulumi.StringPtrInput
@@ -360,6 +441,7 @@ type EcsDiskState struct {
 	// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
 	// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
 	// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+	// - If `category` is set to `cloudRegionalDiskAuto`. Valid values: `10` to `65536`.
 	// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
 	// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
 	// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
@@ -380,7 +462,7 @@ type EcsDiskState struct {
 	Tags pulumi.StringMapInput
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
 	Type pulumi.StringPtrInput
-	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+	// ID of the free zone to which the disk belongs. For `cloudRegionalDiskAuto`, `zoneId` is not required. For other disk categories, specify exactly one of `zoneId` or `instanceId`.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -403,7 +485,7 @@ type ecsDiskArgs struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
 	BurstingEnabled *bool `pulumi:"burstingEnabled"`
-	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
+	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
 	Category *string `pulumi:"category"`
 	// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
@@ -423,9 +505,11 @@ type ecsDiskArgs struct {
 	EncryptAlgorithm *string `pulumi:"encryptAlgorithm"`
 	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
 	Encrypted *bool `pulumi:"encrypted"`
+	// Specifies whether to release the disk during destroy even when the default behavior cannot release it, for example a `paymentType = "Subscription"` disk. Defaults to `false`. When set to `true`, the provider converts the disk to `PayAsYouGo` (`ModifyDiskChargeType`), detaches it with `DeleteWithInstance=false`, waits until the disk is `Available` and then releases it (`DeleteDisk`). **NOTE:** `forceDelete` deletes the disk and all data on it, and the release cannot be undone. It takes priority over the legacy behavior that only removes a PrePaid disk with `deleteWithInstance = true` from the state. `forceDelete` does not support multi-attach disks (`multiAttach = "Enabled"`); the destroy fails with an actionable error and the disk is kept. The billing method conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// The ID of the instance to which the created subscription disk is automatically attached.
 	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
-	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+	// * For `cloudRegionalDiskAuto`, `zoneId` is not required. For other disk categories, specify exactly one of `zoneId` or `instanceId`.
 	InstanceId *string `pulumi:"instanceId"`
 	// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
@@ -455,6 +539,7 @@ type ecsDiskArgs struct {
 	// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
 	// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
 	// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+	// - If `category` is set to `cloudRegionalDiskAuto`. Valid values: `10` to `65536`.
 	// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
 	// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
 	// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
@@ -473,7 +558,7 @@ type ecsDiskArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
 	Type *string `pulumi:"type"`
-	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+	// ID of the free zone to which the disk belongs. For `cloudRegionalDiskAuto`, `zoneId` is not required. For other disk categories, specify exactly one of `zoneId` or `instanceId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -487,7 +572,7 @@ type EcsDiskArgs struct {
 	AvailabilityZone pulumi.StringPtrInput
 	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
 	BurstingEnabled pulumi.BoolPtrInput
-	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
+	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
 	Category pulumi.StringPtrInput
 	// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot pulumi.BoolPtrInput
@@ -507,9 +592,11 @@ type EcsDiskArgs struct {
 	EncryptAlgorithm pulumi.StringPtrInput
 	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
 	Encrypted pulumi.BoolPtrInput
+	// Specifies whether to release the disk during destroy even when the default behavior cannot release it, for example a `paymentType = "Subscription"` disk. Defaults to `false`. When set to `true`, the provider converts the disk to `PayAsYouGo` (`ModifyDiskChargeType`), detaches it with `DeleteWithInstance=false`, waits until the disk is `Available` and then releases it (`DeleteDisk`). **NOTE:** `forceDelete` deletes the disk and all data on it, and the release cannot be undone. It takes priority over the legacy behavior that only removes a PrePaid disk with `deleteWithInstance = true` from the state. `forceDelete` does not support multi-attach disks (`multiAttach = "Enabled"`); the destroy fails with an actionable error and the disk is kept. The billing method conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes.
+	ForceDelete pulumi.BoolPtrInput
 	// The ID of the instance to which the created subscription disk is automatically attached.
 	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
-	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+	// * For `cloudRegionalDiskAuto`, `zoneId` is not required. For other disk categories, specify exactly one of `zoneId` or `instanceId`.
 	InstanceId pulumi.StringPtrInput
 	// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
 	KmsKeyId pulumi.StringPtrInput
@@ -539,6 +626,7 @@ type EcsDiskArgs struct {
 	// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
 	// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
 	// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+	// - If `category` is set to `cloudRegionalDiskAuto`. Valid values: `10` to `65536`.
 	// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
 	// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
 	// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
@@ -557,7 +645,7 @@ type EcsDiskArgs struct {
 	Tags pulumi.StringMapInput
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
 	Type pulumi.StringPtrInput
-	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+	// ID of the free zone to which the disk belongs. For `cloudRegionalDiskAuto`, `zoneId` is not required. For other disk categories, specify exactly one of `zoneId` or `instanceId`.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -665,7 +753,7 @@ func (o EcsDiskOutput) BurstingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.BoolPtrOutput { return v.BurstingEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
+// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
 func (o EcsDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -717,9 +805,14 @@ func (o EcsDiskOutput) Encrypted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.BoolOutput { return v.Encrypted }).(pulumi.BoolOutput)
 }
 
+// Specifies whether to release the disk during destroy even when the default behavior cannot release it, for example a `paymentType = "Subscription"` disk. Defaults to `false`. When set to `true`, the provider converts the disk to `PayAsYouGo` (`ModifyDiskChargeType`), detaches it with `DeleteWithInstance=false`, waits until the disk is `Available` and then releases it (`DeleteDisk`). **NOTE:** `forceDelete` deletes the disk and all data on it, and the release cannot be undone. It takes priority over the legacy behavior that only removes a PrePaid disk with `deleteWithInstance = true` from the state. `forceDelete` does not support multi-attach disks (`multiAttach = "Enabled"`); the destroy fails with an actionable error and the disk is kept. The billing method conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes.
+func (o EcsDiskOutput) ForceDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsDisk) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
+}
+
 // The ID of the instance to which the created subscription disk is automatically attached.
 // * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
-// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+// * For `cloudRegionalDiskAuto`, `zoneId` is not required. For other disk categories, specify exactly one of `zoneId` or `instanceId`.
 func (o EcsDiskOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -778,6 +871,7 @@ func (o EcsDiskOutput) ResourceGroupId() pulumi.StringOutput {
 // - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
 // - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
 // - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+// - If `category` is set to `cloudRegionalDiskAuto`. Valid values: `10` to `65536`.
 // - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
 // - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
 // - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
@@ -819,7 +913,7 @@ func (o EcsDiskOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+// ID of the free zone to which the disk belongs. For `cloudRegionalDiskAuto`, `zoneId` is not required. For other disk categories, specify exactly one of `zoneId` or `instanceId`.
 func (o EcsDiskOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

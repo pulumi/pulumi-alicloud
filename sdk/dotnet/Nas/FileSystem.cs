@@ -99,6 +99,12 @@ namespace Pulumi.AliCloud.Nas
     public partial class FileSystem : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `AutoUpgradeConfig` below.
+        /// </summary>
+        [Output("autoUpgradeConfig")]
+        public Output<Outputs.FileSystemAutoUpgradeConfig> AutoUpgradeConfig { get; private set; } = null!;
+
+        /// <summary>
         /// File system capacity.
         /// 
         /// Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -125,6 +131,8 @@ namespace Pulumi.AliCloud.Nas
         /// - 2~128 English or Chinese characters in length.
         /// - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
         /// - Can contain numbers, colons (:), underscores (_), or dashes (-).
+        /// 
+        /// &gt; **NOTE:** For `Standard` file system types, the NAS server writes `Description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -227,6 +235,8 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The ID of the resource group.
+        /// 
+        /// &gt; **NOTE:** For `Standard` file system types, the NAS server writes `ResourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -352,6 +362,12 @@ namespace Pulumi.AliCloud.Nas
     public sealed class FileSystemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `AutoUpgradeConfig` below.
+        /// </summary>
+        [Input("autoUpgradeConfig")]
+        public Input<Inputs.FileSystemAutoUpgradeConfigArgs>? AutoUpgradeConfig { get; set; }
+
+        /// <summary>
         /// File system capacity.
         /// 
         /// Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -372,6 +388,8 @@ namespace Pulumi.AliCloud.Nas
         /// - 2~128 English or Chinese characters in length.
         /// - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
         /// - Can contain numbers, colons (:), underscores (_), or dashes (-).
+        /// 
+        /// &gt; **NOTE:** For `Standard` file system types, the NAS server writes `Description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -474,6 +492,8 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The ID of the resource group.
+        /// 
+        /// &gt; **NOTE:** For `Standard` file system types, the NAS server writes `ResourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -561,6 +581,12 @@ namespace Pulumi.AliCloud.Nas
     public sealed class FileSystemState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `AutoUpgradeConfig` below.
+        /// </summary>
+        [Input("autoUpgradeConfig")]
+        public Input<Inputs.FileSystemAutoUpgradeConfigGetArgs>? AutoUpgradeConfig { get; set; }
+
+        /// <summary>
         /// File system capacity.
         /// 
         /// Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -587,6 +613,8 @@ namespace Pulumi.AliCloud.Nas
         /// - 2~128 English or Chinese characters in length.
         /// - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
         /// - Can contain numbers, colons (:), underscores (_), or dashes (-).
+        /// 
+        /// &gt; **NOTE:** For `Standard` file system types, the NAS server writes `Description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -695,6 +723,8 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The ID of the resource group.
+        /// 
+        /// &gt; **NOTE:** For `Standard` file system types, the NAS server writes `ResourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }

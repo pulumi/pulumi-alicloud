@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.174.0+.
+ * > **NOTE:** Available since v1.174.0+.
  *
  * ## Example Usage
  *
@@ -68,6 +68,9 @@ export interface GetModifyParameterLogsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Rds Modify Parameter Logs. Each element contains the following attributes:
+     */
     readonly logs: outputs.rds.GetModifyParameterLogsLog[];
     readonly outputFile?: string;
     readonly startTime: string;
@@ -75,7 +78,7 @@ export interface GetModifyParameterLogsResult {
 /**
  * This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.174.0+.
+ * > **NOTE:** Available since v1.174.0+.
  *
  * ## Example Usage
  *

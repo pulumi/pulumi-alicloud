@@ -86,9 +86,9 @@ class GetAnycastEipAddressesAddressResult(dict):
         :param _builtins.str id: The ID of the Anycast Eip Address.
         :param _builtins.str internet_charge_type: The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
         :param _builtins.str ip_address: Anycast EIP instance IP address.
-        :param _builtins.str payment_type: The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
-        :param _builtins.str service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
-        :param _builtins.str status: IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+        :param _builtins.str payment_type: The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
+        :param _builtins.str service_location: Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+        :param _builtins.str status: IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
         """
         pulumi.set(__self__, "ali_uid", ali_uid)
         pulumi.set(__self__, "anycast_eip_address_name", anycast_eip_address_name)
@@ -197,7 +197,7 @@ class GetAnycastEipAddressesAddressResult(dict):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> _builtins.str:
         """
-        The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+        The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -205,7 +205,7 @@ class GetAnycastEipAddressesAddressResult(dict):
     @pulumi.getter(name="serviceLocation")
     def service_location(self) -> _builtins.str:
         """
-        Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+        Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
         """
         return pulumi.get(self, "service_location")
 
@@ -213,7 +213,7 @@ class GetAnycastEipAddressesAddressResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+        IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
         """
         return pulumi.get(self, "status")
 

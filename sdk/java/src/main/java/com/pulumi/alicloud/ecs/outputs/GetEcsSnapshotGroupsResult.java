@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsSnapshotGroupsResult {
+    /**
+     * @return A list of Ecs Snapshot Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetEcsSnapshotGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,15 +26,39 @@ public final class GetEcsSnapshotGroupsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     private @Nullable String instanceId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Snapshot Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The name of the snapshot-consistent group.
+     * 
+     */
     private @Nullable String snapshotGroupName;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return (Optional) List of label key-value pairs.
+     * 
+     */
     private @Nullable Map<String,String> tags;
 
     private GetEcsSnapshotGroupsResult() {}
+    /**
+     * @return A list of Ecs Snapshot Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetEcsSnapshotGroupsGroup> groups() {
         return this.groups;
     }
@@ -44,24 +72,44 @@ public final class GetEcsSnapshotGroupsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     public Optional<String> instanceId() {
         return Optional.ofNullable(this.instanceId);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Snapshot Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The name of the snapshot-consistent group.
+     * 
+     */
     public Optional<String> snapshotGroupName() {
         return Optional.ofNullable(this.snapshotGroupName);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return (Optional) List of label key-value pairs.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

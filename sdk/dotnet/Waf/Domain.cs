@@ -159,9 +159,7 @@ namespace Pulumi.AliCloud.Waf
         public Output<string?> LoadBalancing { get; private set; } = null!;
 
         /// <summary>
-        /// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-        /// * key: The key of label
-        /// * value: The value of label
+        /// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `LogHeaders` below.
         /// </summary>
         [Output("logHeaders")]
         public Output<ImmutableArray<Outputs.DomainLogHeader>> LogHeaders { get; private set; } = null!;
@@ -331,9 +329,7 @@ namespace Pulumi.AliCloud.Waf
         private InputList<Inputs.DomainLogHeaderArgs>? _logHeaders;
 
         /// <summary>
-        /// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-        /// * key: The key of label
-        /// * value: The value of label
+        /// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `LogHeaders` below.
         /// </summary>
         public InputList<Inputs.DomainLogHeaderArgs> LogHeaders
         {
@@ -480,9 +476,7 @@ namespace Pulumi.AliCloud.Waf
         private InputList<Inputs.DomainLogHeaderGetArgs>? _logHeaders;
 
         /// <summary>
-        /// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-        /// * key: The key of label
-        /// * value: The value of label
+        /// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `LogHeaders` below.
         /// </summary>
         public InputList<Inputs.DomainLogHeaderGetArgs> LogHeaders
         {

@@ -109,7 +109,7 @@ def get_disk_replica_pairs(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides Ebs Disk Replica Pair available to the user.
 
-    > **NOTE:** Available in 1.196.0+
+    > **NOTE:** Available since v1.196.0.
 
     ## Example Usage
 
@@ -150,7 +150,7 @@ def get_disk_replica_pairs_output(ids: pulumi.Input[Optional[Optional[Sequence[_
     """
     This data source provides Ebs Disk Replica Pair available to the user.
 
-    > **NOTE:** Available in 1.196.0+
+    > **NOTE:** Available since v1.196.0.
 
     ## Example Usage
 

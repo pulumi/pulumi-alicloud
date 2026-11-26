@@ -58,7 +58,7 @@ public final class GetEcsDeploymentSetsSet {
      */
     private List<String> instanceIds;
     /**
-     * @return The deployment strategy.
+     * @return The deployment strategy. Valid values: `Availability`.
      * 
      */
     private String strategy;
@@ -128,7 +128,7 @@ public final class GetEcsDeploymentSetsSet {
         return this.instanceIds;
     }
     /**
-     * @return The deployment strategy.
+     * @return The deployment strategy. Valid values: `Availability`.
      * 
      */
     public String strategy() {

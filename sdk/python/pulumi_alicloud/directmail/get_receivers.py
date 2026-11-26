@@ -79,6 +79,9 @@ class GetReceiversResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Receivers names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -89,11 +92,17 @@ class GetReceiversResult:
     @_builtins.property
     @pulumi.getter
     def receiverses(self) -> Sequence['outputs.GetReceiversReceiverseResult']:
+        """
+        A list of Direct Mail Receiverses. Each element contains the following attributes:
+        """
         return pulumi.get(self, "receiverses")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.int]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -122,7 +131,7 @@ def get_receivers(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.125.0+.
+    > **NOTE:** Available since v1.125.0.
 
     ## Example Usage
 
@@ -171,7 +180,7 @@ def get_receivers_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.
     """
     This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.125.0+.
+    > **NOTE:** Available since v1.125.0.
 
     ## Example Usage
 

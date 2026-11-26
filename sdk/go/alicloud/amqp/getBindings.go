@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Amqp Bindings of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.135.0+.
+// > **NOTE:** Available since v1.135.0.
 //
 // ## Example Usage
 //
@@ -65,13 +65,17 @@ type GetBindingsArgs struct {
 
 // A collection of values returned by getBindings.
 type GetBindingsResult struct {
+	// A list of Amqp Bindings. Each element contains the following attributes:
 	Bindings []GetBindingsBinding `pulumi:"bindings"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string   `pulumi:"id"`
-	Ids             []string `pulumi:"ids"`
-	InstanceId      string   `pulumi:"instanceId"`
-	OutputFile      *string  `pulumi:"outputFile"`
-	VirtualHostName string   `pulumi:"virtualHostName"`
+	Id string `pulumi:"id"`
+	// A list of Binding IDs. Each item value formats as `<instance_id>:<virtual_host_name>:<source_exchange>:<destination_name>`.
+	Ids []string `pulumi:"ids"`
+	// Instance Id.
+	InstanceId string  `pulumi:"instanceId"`
+	OutputFile *string `pulumi:"outputFile"`
+	// Virtualhost Name.
+	VirtualHostName string `pulumi:"virtualHostName"`
 }
 
 func GetBindingsOutput(ctx *pulumi.Context, args GetBindingsOutputArgs, opts ...pulumi.InvokeOption) GetBindingsResultOutput {
@@ -108,6 +112,7 @@ func (o GetBindingsResultOutput) ToGetBindingsResultOutputWithContext(ctx contex
 	return o
 }
 
+// A list of Amqp Bindings. Each element contains the following attributes:
 func (o GetBindingsResultOutput) Bindings() GetBindingsBindingArrayOutput {
 	return o.ApplyT(func(v GetBindingsResult) []GetBindingsBinding { return v.Bindings }).(GetBindingsBindingArrayOutput)
 }
@@ -117,10 +122,12 @@ func (o GetBindingsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBindingsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Binding IDs. Each item value formats as `<instance_id>:<virtual_host_name>:<source_exchange>:<destination_name>`.
 func (o GetBindingsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBindingsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// Instance Id.
 func (o GetBindingsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBindingsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -129,6 +136,7 @@ func (o GetBindingsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBindingsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Virtualhost Name.
 func (o GetBindingsResultOutput) VirtualHostName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBindingsResult) string { return v.VirtualHostName }).(pulumi.StringOutput)
 }

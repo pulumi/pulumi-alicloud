@@ -18,15 +18,15 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly string ClusterId;
         /// <summary>
-        /// The name of the associated cluster.
+        /// The cluster name.
         /// </summary>
         public readonly string ClusterName;
         /// <summary>
-        /// The cluster type of the associated cluster.
+        /// Cluster type.
         /// </summary>
         public readonly string ClusterType;
         /// <summary>
-        /// The status  of the associated cluster.
+        /// The cluster status.
         /// </summary>
         public readonly string Status;
 

@@ -33,14 +33,14 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source status. Valid values: online, offline.
+     * The source status. Valid values: `online`, `offline`.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<String> enabled;
 
     /**
-     * @return The source status. Valid values: online, offline.
+     * @return The source status. Valid values: `online`, `offline`.
      * 
      */
     public Optional<Output<String>> enabled() {
@@ -78,20 +78,14 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Origin Server Type. Valid Values:
-     * * ipaddr: IP Source Station
-     * * domain: the Domain Name
-     * * oss: OSS Bucket as a Source Station.
+     * The Origin Server Type. Valid values:
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The Origin Server Type. Valid Values:
-     * * ipaddr: IP Source Station
-     * * domain: the Domain Name
-     * * oss: OSS Bucket as a Source Station.
+     * @return The Origin Server Type. Valid values:
      * 
      */
     public Output<String> type() {
@@ -148,7 +142,7 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled The source status. Valid values: online, offline.
+         * @param enabled The source status. Valid values: `online`, `offline`.
          * 
          * @return builder
          * 
@@ -159,7 +153,7 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled The source status. Valid values: online, offline.
+         * @param enabled The source status. Valid values: `online`, `offline`.
          * 
          * @return builder
          * 
@@ -211,10 +205,7 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The Origin Server Type. Valid Values:
-         * * ipaddr: IP Source Station
-         * * domain: the Domain Name
-         * * oss: OSS Bucket as a Source Station.
+         * @param type The Origin Server Type. Valid values:
          * 
          * @return builder
          * 
@@ -225,10 +216,7 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The Origin Server Type. Valid Values:
-         * * ipaddr: IP Source Station
-         * * domain: the Domain Name
-         * * oss: OSS Bucket as a Source Station.
+         * @param type The Origin Server Type. Valid values:
          * 
          * @return builder
          * 

@@ -165,6 +165,9 @@ namespace Pulumi.AliCloud.Sddp
         [Input("customType")]
         public int? CustomType { get; set; }
 
+        /// <summary>
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -254,6 +257,9 @@ namespace Pulumi.AliCloud.Sddp
         [Input("customType")]
         public Input<int>? CustomType { get; set; }
 
+        /// <summary>
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -345,6 +351,9 @@ namespace Pulumi.AliCloud.Sddp
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The name of rule.
+        /// </summary>
         public readonly string? Name;
         public readonly string? NameRegex;
         /// <summary>

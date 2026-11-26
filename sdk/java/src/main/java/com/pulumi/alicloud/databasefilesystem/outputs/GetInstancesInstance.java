@@ -90,7 +90,7 @@ public final class GetInstancesInstance {
      */
     private Integer size;
     /**
-     * @return The status of the Database file system.
+     * @return Database file system state. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
      * 
      */
     private String status;
@@ -207,7 +207,7 @@ public final class GetInstancesInstance {
         return this.size;
     }
     /**
-     * @return The status of the Database file system.
+     * @return Database file system state. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
      * 
      */
     public String status() {

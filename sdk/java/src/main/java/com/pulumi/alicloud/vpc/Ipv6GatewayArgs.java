@@ -18,14 +18,14 @@ public final class Ipv6GatewayArgs extends com.pulumi.resources.ResourceArgs {
     public static final Ipv6GatewayArgs Empty = new Ipv6GatewayArgs();
 
     /**
-     * The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+     * The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+     * @return The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -33,14 +33,14 @@ public final class Ipv6GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+     * The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="ipv6GatewayName")
     private @Nullable Output<String> ipv6GatewayName;
 
     /**
-     * @return The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+     * @return The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> ipv6GatewayName() {
@@ -143,7 +143,7 @@ public final class Ipv6GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+         * @param description The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class Ipv6GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+         * @param description The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class Ipv6GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6GatewayName The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+         * @param ipv6GatewayName The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class Ipv6GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6GatewayName The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+         * @param ipv6GatewayName The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 

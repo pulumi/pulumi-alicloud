@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.eds;
 
+import com.pulumi.alicloud.eds.inputs.DesktopDesktopTimerArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -96,6 +97,21 @@ public final class DesktopArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktopTimers` below.
+     * 
+     */
+    @Import(name="desktopTimers")
+    private @Nullable Output<List<DesktopDesktopTimerArgs>> desktopTimers;
+
+    /**
+     * @return The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktopTimers` below.
+     * 
+     */
+    public Optional<Output<List<DesktopDesktopTimerArgs>>> desktopTimers() {
+        return Optional.ofNullable(this.desktopTimers);
+    }
+
+    /**
      * The desktop type of the Desktop.
      * 
      */
@@ -126,14 +142,18 @@ public final class DesktopArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The hostname of the Desktop.
+     * The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+     * 
+     * &gt; **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `hostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
      * 
      */
     @Import(name="hostName")
     private @Nullable Output<String> hostName;
 
     /**
-     * @return The hostname of the Desktop.
+     * @return The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+     * 
+     * &gt; **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `hostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
      * 
      */
     public Optional<Output<String>> hostName() {
@@ -261,6 +281,25 @@ public final class DesktopArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+     * 
+     * &gt; **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+     * 
+     */
+    @Import(name="subnetId")
+    private @Nullable Output<String> subnetId;
+
+    /**
+     * @return The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+     * 
+     * &gt; **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+     * 
+     */
+    public Optional<Output<String>> subnetId() {
+        return Optional.ofNullable(this.subnetId);
+    }
+
+    /**
      * A mapping of tags to assign to the resource.
      * 
      */
@@ -313,6 +352,7 @@ public final class DesktopArgs extends com.pulumi.resources.ResourceArgs {
         this.autoRenew = $.autoRenew;
         this.bundleId = $.bundleId;
         this.desktopName = $.desktopName;
+        this.desktopTimers = $.desktopTimers;
         this.desktopType = $.desktopType;
         this.endUserIds = $.endUserIds;
         this.hostName = $.hostName;
@@ -324,6 +364,7 @@ public final class DesktopArgs extends com.pulumi.resources.ResourceArgs {
         this.rootDiskSizeGib = $.rootDiskSizeGib;
         this.status = $.status;
         this.stoppedMode = $.stoppedMode;
+        this.subnetId = $.subnetId;
         this.tags = $.tags;
         this.userAssignMode = $.userAssignMode;
         this.userDiskSizeGib = $.userDiskSizeGib;
@@ -453,6 +494,37 @@ public final class DesktopArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param desktopTimers The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktopTimers` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desktopTimers(@Nullable Output<List<DesktopDesktopTimerArgs>> desktopTimers) {
+            $.desktopTimers = desktopTimers;
+            return this;
+        }
+
+        /**
+         * @param desktopTimers The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktopTimers` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desktopTimers(List<DesktopDesktopTimerArgs> desktopTimers) {
+            return desktopTimers(Output.of(desktopTimers));
+        }
+
+        /**
+         * @param desktopTimers The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktopTimers` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desktopTimers(DesktopDesktopTimerArgs... desktopTimers) {
+            return desktopTimers(List.of(desktopTimers));
+        }
+
+        /**
          * @param desktopType The desktop type of the Desktop.
          * 
          * @return builder
@@ -505,7 +577,9 @@ public final class DesktopArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostName The hostname of the Desktop.
+         * @param hostName The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+         * 
+         * &gt; **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `hostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
          * 
          * @return builder
          * 
@@ -516,7 +590,9 @@ public final class DesktopArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostName The hostname of the Desktop.
+         * @param hostName The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+         * 
+         * &gt; **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `hostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
          * 
          * @return builder
          * 
@@ -691,6 +767,31 @@ public final class DesktopArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder stoppedMode(String stoppedMode) {
             return stoppedMode(Output.of(stoppedMode));
+        }
+
+        /**
+         * @param subnetId The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+         * 
+         * &gt; **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetId(@Nullable Output<String> subnetId) {
+            $.subnetId = subnetId;
+            return this;
+        }
+
+        /**
+         * @param subnetId The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+         * 
+         * &gt; **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetId(String subnetId) {
+            return subnetId(Output.of(subnetId));
         }
 
         /**

@@ -147,6 +147,8 @@ def get_bandwidth_packages(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides CEN Bandwidth Packages available to the user.
 
+    > **NOTE:** Available since v1.18.0+
+
     ## Example Usage
 
     ```python
@@ -195,6 +197,8 @@ def get_bandwidth_packages_output(ids: pulumi.Input[Optional[Optional[Sequence[_
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBandwidthPackagesResult]:
     """
     This data source provides CEN Bandwidth Packages available to the user.
+
+    > **NOTE:** Available since v1.18.0+
 
     ## Example Usage
 

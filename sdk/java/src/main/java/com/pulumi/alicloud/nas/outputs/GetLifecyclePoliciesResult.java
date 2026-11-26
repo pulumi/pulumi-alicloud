@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLifecyclePoliciesResult {
+    /**
+     * @return The ID of the file system.
+     * 
+     */
     private String fileSystemId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,11 +26,23 @@ public final class GetLifecyclePoliciesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Lifecycle Policy names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Nas Lifecycle Policies. Each element contains the following attributes:
+     * 
+     */
     private List<GetLifecyclePoliciesPolicy> policies;
 
     private GetLifecyclePoliciesResult() {}
+    /**
+     * @return The ID of the file system.
+     * 
+     */
     public String fileSystemId() {
         return this.fileSystemId;
     }
@@ -43,12 +59,20 @@ public final class GetLifecyclePoliciesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Lifecycle Policy names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Nas Lifecycle Policies. Each element contains the following attributes:
+     * 
+     */
     public List<GetLifecyclePoliciesPolicy> policies() {
         return this.policies;
     }

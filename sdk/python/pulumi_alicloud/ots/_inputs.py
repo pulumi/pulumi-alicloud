@@ -450,18 +450,26 @@ class TablePrimaryKeyArgsDict(TypedDict):
     """
     Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
     """
+    auto_increment: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Specifies whether the primary key column is auto-incremented. Defaults to `false`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `auto_increment`. Changing this field forces a new resource.
+    """
 
 @pulumi.input_type
 class TablePrimaryKeyArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 type: pulumi.Input[_builtins.str]):
+                 type: pulumi.Input[_builtins.str],
+                 auto_increment: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Name for primary key.
         :param pulumi.Input[_builtins.str] type: Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+        :param pulumi.Input[_builtins.bool] auto_increment: Specifies whether the primary key column is auto-incremented. Defaults to `false`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `auto_increment`. Changing this field forces a new resource.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
+        if auto_increment is not None:
+            pulumi.set(__self__, "auto_increment", auto_increment)
 
     @_builtins.property
     @pulumi.getter
@@ -486,6 +494,18 @@ class TablePrimaryKeyArgs:
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoIncrement")
+    def auto_increment(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether the primary key column is auto-incremented. Defaults to `false`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `auto_increment`. Changing this field forces a new resource.
+        """
+        return pulumi.get(self, "auto_increment")
+
+    @auto_increment.setter
+    def auto_increment(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "auto_increment", value)
 
 
 class TunnelChannelArgsDict(TypedDict):

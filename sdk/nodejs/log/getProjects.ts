@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Log Projects of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.126.0+.
+ * > **NOTE:** Available since v1.126.0.
  *
  * ## Example Usage
  *
@@ -68,15 +68,24 @@ export interface GetProjectsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of project names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Log Project. Each element contains the following attributes:
+     */
     readonly projects: outputs.log.GetProjectsProject[];
+    /**
+     * The status of project.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Log Projects of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.126.0+.
+ * > **NOTE:** Available since v1.126.0.
  *
  * ## Example Usage
  *

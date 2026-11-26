@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRealTimeLogDeliveriesDelivery {
     /**
-     * @return Real-Time Log Service Domain.
+     * @return The domain name.
      * 
      */
     private String domain;
@@ -43,7 +43,7 @@ public final class GetRealTimeLogDeliveriesDelivery {
 
     private GetRealTimeLogDeliveriesDelivery() {}
     /**
-     * @return Real-Time Log Service Domain.
+     * @return The domain name.
      * 
      */
     public String domain() {

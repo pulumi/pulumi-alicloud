@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides an available area for remote disaster recovery for RDS.
         /// 
-        /// &gt; **NOTE:** Available in v1.193.0+.
+        /// &gt; **NOTE:** Available since v1.193.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides an available area for remote disaster recovery for RDS.
         /// 
-        /// &gt; **NOTE:** Available in v1.193.0+.
+        /// &gt; **NOTE:** Available since v1.193.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides an available area for remote disaster recovery for RDS.
         /// 
-        /// &gt; **NOTE:** Available in v1.193.0+.
+        /// &gt; **NOTE:** Available since v1.193.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -99,6 +99,9 @@ namespace Pulumi.AliCloud.Rds
 
     public sealed class GetCrossRegionsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -110,6 +113,9 @@ namespace Pulumi.AliCloud.Rds
 
     public sealed class GetCrossRegionsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

@@ -108,6 +108,8 @@ def get_regions(current: Optional[_builtins.bool] = None,
     """
     This data source provides Alibaba Cloud regions.
 
+    > **NOTE:** Available since v0.1.0
+
     ## Example Usage
 
     ```python
@@ -146,6 +148,8 @@ def get_regions_output(current: pulumi.Input[Optional[Optional[_builtins.bool]]]
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionsResult]:
     """
     This data source provides Alibaba Cloud regions.
+
+    > **NOTE:** Available since v0.1.0
 
     ## Example Usage
 

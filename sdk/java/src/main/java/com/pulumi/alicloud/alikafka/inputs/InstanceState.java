@@ -38,6 +38,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The configurations of Confluent. See `confluentConfig` below.
+     * 
      * &gt; **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
      * 
      */
@@ -46,6 +47,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The configurations of Confluent. See `confluentConfig` below.
+     * 
      * &gt; **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
      * 
      */
@@ -85,6 +87,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+     * 
      * &gt; **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
      * 
      */
@@ -93,6 +96,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+     * 
      * &gt; **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
      * 
      */
@@ -451,6 +455,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+     * 
      * &gt; **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
      * 
      */
@@ -459,6 +464,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+     * 
      * &gt; **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
      * 
      */
@@ -687,6 +693,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The IDs of the vSwitches with which the instance is associated.
+     * 
      * &gt; **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
      * 
      */
@@ -695,6 +702,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The IDs of the vSwitches with which the instance is associated.
+     * 
      * &gt; **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
      * 
      */
@@ -807,6 +815,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param confluentConfig The configurations of Confluent. See `confluentConfig` below.
+         * 
          * &gt; **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
          * 
          * @return builder
@@ -819,6 +828,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param confluentConfig The configurations of Confluent. See `confluentConfig` below.
+         * 
          * &gt; **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
          * 
          * @return builder
@@ -872,6 +882,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param diskSize The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+         * 
          * &gt; **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
          * 
          * @return builder
@@ -884,6 +895,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param diskSize The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+         * 
          * &gt; **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
          * 
          * @return builder
@@ -1392,6 +1404,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverlessConfig The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+         * 
          * &gt; **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
          * 
          * @return builder
@@ -1404,6 +1417,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverlessConfig The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+         * 
          * &gt; **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
          * 
          * @return builder
@@ -1712,6 +1726,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vswitchIds The IDs of the vSwitches with which the instance is associated.
+         * 
          * &gt; **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
          * 
          * @return builder
@@ -1724,6 +1739,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vswitchIds The IDs of the vSwitches with which the instance is associated.
+         * 
          * &gt; **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
          * 
          * @return builder
@@ -1735,6 +1751,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vswitchIds The IDs of the vSwitches with which the instance is associated.
+         * 
          * &gt; **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
          * 
          * @return builder

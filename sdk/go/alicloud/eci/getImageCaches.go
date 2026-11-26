@@ -13,7 +13,7 @@ import (
 
 // Provides a collection of ECI Image Cache to the specified filters.
 //
-// > **NOTE:** Available in 1.90.0+.
+// > **NOTE:** Available since v1.90.0.
 //
 // ## Example Usage
 //
@@ -28,18 +28,18 @@ import (
 // )
 //
 //	func main() {
-//	   pulumi.Run(func(ctx *pulumi.Context) error {
-//	       example, err := eci.GetImageCaches(ctx, &eci.GetImageCachesArgs{
-//	           Ids: []string{
-//	               "imc-bp1ef0dyp7ldhb1d****",
-//	           },
-//	       }, nil)
-//	       if err != nil {
-//	           return err
-//	       }
-//	       ctx.Export("imageCache", example.Caches[0].Id)
-//	       return nil
-//	   })
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := eci.GetImageCaches(ctx, &eci.GetImageCachesArgs{
+//				Ids: []string{
+//					"imc-bp1ef0dyp7ldhb1d****",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("imageCache", example.Caches[0].Id)
+//			return nil
+//		})
 //	}
 //
 // ```

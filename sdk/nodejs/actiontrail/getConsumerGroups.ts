@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.56.0+
+ * > **NOTE:** Available since v1.56.0.
  *
  * ## Example Usage
  *
@@ -62,9 +62,12 @@ export interface GetConsumerGroupsArgs {
  */
 export interface GetConsumerGroupsResult {
     readonly consumerIdRegex?: string;
+    /**
+     * A list of consumer group ids.
+     */
     readonly consumerIds: string[];
     /**
-     * A list of consumer group. Each element contains the following attributes:
+     * A list of consumer group. Each element contains the following attributes. See `groups` for the optional argument block.
      */
     readonly groups: outputs.actiontrail.GetConsumerGroupsGroup[];
     /**
@@ -85,7 +88,7 @@ export interface GetConsumerGroupsResult {
 /**
  * This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.56.0+
+ * > **NOTE:** Available since v1.56.0.
  *
  * ## Example Usage
  *

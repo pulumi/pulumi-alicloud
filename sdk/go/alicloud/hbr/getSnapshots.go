@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Hbr Snapshots of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.133.0+.
+// > **NOTE:** Available since v1.133.0.
 //
 // ## Example Usage
 //
@@ -110,10 +110,12 @@ type GetSnapshotsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// The ID of ECS instance. The ecs backup client must have been installed on the host. While sourceType equals `ECS_FILE`, this parameter must be set.
 	InstanceId *string `pulumi:"instanceId"`
-	Limit      *int    `pulumi:"limit"`
+	// The limit of snapshots to query.
+	Limit *int `pulumi:"limit"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	Query      *string `pulumi:"query"`
+	// The query string used to filter snapshots.
+	Query *string `pulumi:"query"`
 	// Data source type, valid values: `ECS_FILE`, `OSS`, `NAS`.
 	SourceType string `pulumi:"sourceType"`
 	// The status of snapshot, valid values: `COMPLETE`, `PARTIAL_COMPLETE`.
@@ -124,22 +126,30 @@ type GetSnapshotsArgs struct {
 
 // A collection of values returned by getSnapshots.
 type GetSnapshotsResult struct {
-	Bucket              *string `pulumi:"bucket"`
+	// (OSS) The name of OSS bucket.
+	Bucket *string `pulumi:"bucket"`
+	// The time when the snapshot completed. UNIX time in seconds.
 	CompleteTime        *string `pulumi:"completeTime"`
 	CompleteTimeChecker *string `pulumi:"completeTimeChecker"`
-	CreateTime          *string `pulumi:"createTime"`
-	FileSystemId        *string `pulumi:"fileSystemId"`
+	// (NAS) File System Creation Time of Nas. Unix Time Seconds.
+	CreateTime *string `pulumi:"createTime"`
+	// (NAS) The ID of NAS File system.
+	FileSystemId *string `pulumi:"fileSystemId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
-	InstanceId *string                `pulumi:"instanceId"`
-	Limit      *int                   `pulumi:"limit"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Query      *string                `pulumi:"query"`
-	Snapshots  []GetSnapshotsSnapshot `pulumi:"snapshots"`
-	SourceType string                 `pulumi:"sourceType"`
-	Status     *string                `pulumi:"status"`
-	VaultId    string                 `pulumi:"vaultId"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// (ECS_FILE) The ID of ECS instance.
+	InstanceId *string `pulumi:"instanceId"`
+	Limit      *int    `pulumi:"limit"`
+	OutputFile *string `pulumi:"outputFile"`
+	Query      *string `pulumi:"query"`
+	// A list of Hbr Snapshots. Each element contains the following attributes:
+	Snapshots []GetSnapshotsSnapshot `pulumi:"snapshots"`
+	// Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+	SourceType string `pulumi:"sourceType"`
+	// The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+	Status  *string `pulumi:"status"`
+	VaultId string  `pulumi:"vaultId"`
 }
 
 func GetSnapshotsOutput(ctx *pulumi.Context, args GetSnapshotsOutputArgs, opts ...pulumi.InvokeOption) GetSnapshotsResultOutput {
@@ -163,10 +173,12 @@ type GetSnapshotsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The ID of ECS instance. The ecs backup client must have been installed on the host. While sourceType equals `ECS_FILE`, this parameter must be set.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	Limit      pulumi.IntPtrInput    `pulumi:"limit"`
+	// The limit of snapshots to query.
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	Query      pulumi.StringPtrInput `pulumi:"query"`
+	// The query string used to filter snapshots.
+	Query pulumi.StringPtrInput `pulumi:"query"`
 	// Data source type, valid values: `ECS_FILE`, `OSS`, `NAS`.
 	SourceType pulumi.StringInput `pulumi:"sourceType"`
 	// The status of snapshot, valid values: `COMPLETE`, `PARTIAL_COMPLETE`.
@@ -194,10 +206,12 @@ func (o GetSnapshotsResultOutput) ToGetSnapshotsResultOutputWithContext(ctx cont
 	return o
 }
 
+// (OSS) The name of OSS bucket.
 func (o GetSnapshotsResultOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
 
+// The time when the snapshot completed. UNIX time in seconds.
 func (o GetSnapshotsResultOutput) CompleteTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.CompleteTime }).(pulumi.StringPtrOutput)
 }
@@ -206,10 +220,12 @@ func (o GetSnapshotsResultOutput) CompleteTimeChecker() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.CompleteTimeChecker }).(pulumi.StringPtrOutput)
 }
 
+// (NAS) File System Creation Time of Nas. Unix Time Seconds.
 func (o GetSnapshotsResultOutput) CreateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
+// (NAS) The ID of NAS File system.
 func (o GetSnapshotsResultOutput) FileSystemId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.FileSystemId }).(pulumi.StringPtrOutput)
 }
@@ -223,6 +239,7 @@ func (o GetSnapshotsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// (ECS_FILE) The ID of ECS instance.
 func (o GetSnapshotsResultOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
@@ -239,14 +256,17 @@ func (o GetSnapshotsResultOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
 
+// A list of Hbr Snapshots. Each element contains the following attributes:
 func (o GetSnapshotsResultOutput) Snapshots() GetSnapshotsSnapshotArrayOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) []GetSnapshotsSnapshot { return v.Snapshots }).(GetSnapshotsSnapshotArrayOutput)
 }
 
+// Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
 func (o GetSnapshotsResultOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) string { return v.SourceType }).(pulumi.StringOutput)
 }
 
+// The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
 func (o GetSnapshotsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

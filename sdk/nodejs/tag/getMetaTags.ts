@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Tag Meta Tags of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.169.0+.
+ * > **NOTE:** Available since v1.169.0.
  *
  * ## Example Usage
  *
@@ -56,14 +56,20 @@ export interface GetMetaTagsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the key.
+     */
     readonly keyName?: string;
     readonly outputFile?: string;
+    /**
+     * A list of Meta Tags. Each element contains the following attributes:
+     */
     readonly tags: outputs.tag.GetMetaTagsTag[];
 }
 /**
  * This data source provides the Tag Meta Tags of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.169.0+.
+ * > **NOTE:** Available since v1.169.0.
  *
  * ## Example Usage
  *

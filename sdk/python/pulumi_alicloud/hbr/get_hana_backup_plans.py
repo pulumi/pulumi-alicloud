@@ -65,11 +65,17 @@ class GetHanaBackupPlansResult:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> _builtins.str:
+        """
+        The ID of the SAP HANA instance.
+        """
         return pulumi.get(self, "cluster_id")
 
     @_builtins.property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the database.
+        """
         return pulumi.get(self, "database_name")
 
     @_builtins.property
@@ -93,6 +99,9 @@ class GetHanaBackupPlansResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Hbr Hana Backup Plan names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -113,11 +122,17 @@ class GetHanaBackupPlansResult:
     @_builtins.property
     @pulumi.getter
     def plans(self) -> Sequence['outputs.GetHanaBackupPlansPlanResult']:
+        """
+        A list of Hbr Hana Backup Plans. Each element contains the following attributes:
+        """
         return pulumi.get(self, "plans")
 
     @_builtins.property
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the backup vault.
+        """
         return pulumi.get(self, "vault_id")
 
 
@@ -152,7 +167,7 @@ def get_hana_backup_plans(cluster_id: Optional[_builtins.str] = None,
     """
     This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.179.0+.
+    > **NOTE:** Available since v1.179.0.
 
     ## Example Usage
 
@@ -171,6 +186,7 @@ def get_hana_backup_plans(cluster_id: Optional[_builtins.str] = None,
     ```
 
 
+    :param _builtins.str cluster_id: The ID of the SAP HANA instance.
     :param _builtins.str database_name: The name of the database.
     :param Sequence[_builtins.str] ids: A list of Hana Backup Plan IDs.
     :param _builtins.str name_regex: A regex string to filter results by Hana Backup Plan name.
@@ -213,7 +229,7 @@ def get_hana_backup_plans_output(cluster_id: pulumi.Input[Optional[_builtins.str
     """
     This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.179.0+.
+    > **NOTE:** Available since v1.179.0.
 
     ## Example Usage
 
@@ -232,6 +248,7 @@ def get_hana_backup_plans_output(cluster_id: pulumi.Input[Optional[_builtins.str
     ```
 
 
+    :param _builtins.str cluster_id: The ID of the SAP HANA instance.
     :param _builtins.str database_name: The name of the database.
     :param Sequence[_builtins.str] ids: A list of Hana Backup Plan IDs.
     :param _builtins.str name_regex: A regex string to filter results by Hana Backup Plan name.

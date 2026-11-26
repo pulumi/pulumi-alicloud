@@ -14,46 +14,39 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class LaunchTemplateSystemDisk
     {
         /// <summary>
-        /// The category of the disk:
-        /// - cloud: Basic cloud disk.
-        /// - cloud_efficiency: Ultra cloud disk.
-        /// - cloud_ssd: SSD cloud Disks.
-        /// - ephemeral_ssd: local SSD Disks
-        /// - cloud_essd: ESSD cloud Disks.
-        /// 
-        /// Default to `CloudEfficiency`.
+        /// The category of the system disk.
         /// </summary>
         public readonly string? Category;
         /// <summary>
-        /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, CloudSsd and CloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-        /// 
-        /// Default to true
+        /// Whether to release the system disk when the instance is released. Default to `True`.
         /// </summary>
         public readonly bool? DeleteWithInstance;
         /// <summary>
-        /// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+        /// System disk description.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Encrypted the data in this disk.
-        /// 
-        /// Default to false
+        /// Whether the system disk is encrypted.
         /// </summary>
         public readonly bool? Encrypted;
+        /// <summary>
+        /// The Iops.
+        /// </summary>
         public readonly string? Iops;
+        /// <summary>
+        /// The ID of the KMS key to use for the system disk.
+        /// </summary>
         public readonly string? KmsKeyId;
         /// <summary>
-        /// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        /// System disk name.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The performance level of the ESSD used as the system disk.
+        /// </summary>
         public readonly string? PerformanceLevel;
         /// <summary>
-        /// The size of the data disk.
-        /// - cloud：[5, 2000]
-        /// - cloud_efficiency：[20, 32768]
-        /// - cloud_ssd：[20, 32768]
-        /// - cloud_essd：[20, 32768]
-        /// - ephemeral_ssd: [5, 800]
+        /// Size of the system disk, measured in GB.
         /// </summary>
         public readonly int? Size;
 

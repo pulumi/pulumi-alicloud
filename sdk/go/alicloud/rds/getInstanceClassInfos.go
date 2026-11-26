@@ -13,7 +13,7 @@ import (
 
 // This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
 //
-// > **NOTE:** Available in v1.196.0+
+// > **NOTE:** Available since v1.196.0
 //
 // ## Example Usage
 //
@@ -67,7 +67,7 @@ type GetInstanceClassInfosArgs struct {
 	CommodityCode string `pulumi:"commodityCode"`
 	// The ID of the primary instance.
 	DbInstanceId *string `pulumi:"dbInstanceId"`
-	// A list of Rds available resource. Each element contains the following attributes:
+	// A list of Rds available resource. See `infos` below.
 	Infos []GetInstanceClassInfosInfo `pulumi:"infos"`
 	// FThe type of order that you want to query. Valid values:
 	// * **BUY**: specifies the query orders that are used to purchase instances.
@@ -114,7 +114,7 @@ type GetInstanceClassInfosOutputArgs struct {
 	CommodityCode pulumi.StringInput `pulumi:"commodityCode"`
 	// The ID of the primary instance.
 	DbInstanceId pulumi.StringPtrInput `pulumi:"dbInstanceId"`
-	// A list of Rds available resource. Each element contains the following attributes:
+	// A list of Rds available resource. See `infos` below.
 	Infos GetInstanceClassInfosInfoArrayInput `pulumi:"infos"`
 	// FThe type of order that you want to query. Valid values:
 	// * **BUY**: specifies the query orders that are used to purchase instances.

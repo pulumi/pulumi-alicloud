@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The ID of the source disk. This parameter has a value even after the source disk is released.
+        /// The ID of the disk.
         /// </summary>
         public readonly string DiskId;
         /// <summary>

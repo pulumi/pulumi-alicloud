@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the Rds Backups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.149.0+.
+        /// &gt; **NOTE:** Available since v1.149.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the Rds Backups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.149.0+.
+        /// &gt; **NOTE:** Available since v1.149.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the Rds Backups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.149.0+.
+        /// &gt; **NOTE:** Available since v1.149.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -225,9 +225,28 @@ namespace Pulumi.AliCloud.Rds
     [OutputType]
     public sealed class GetRdsBackupsResult
     {
+        /// <summary>
+        /// BackupMode.
+        /// </summary>
         public readonly string? BackupMode;
+        /// <summary>
+        /// Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
+        /// * **NoStart**: Not started
+        /// * **Checking**: check the backup
+        /// * **Preparing**: Prepare a backup
+        /// * **Waiting**: Waiting for backup
+        /// * **Uploading**: Upload backup
+        /// * **Finished**: Complete backup
+        /// * **Failed**: backup Failed
+        /// </summary>
         public readonly string? BackupStatus;
+        /// <summary>
+        /// A list of Rds Backups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRdsBackupsBackupResult> Backups;
+        /// <summary>
+        /// The db instance id.
+        /// </summary>
         public readonly string DbInstanceId;
         public readonly string? EndTime;
         /// <summary>

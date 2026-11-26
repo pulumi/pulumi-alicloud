@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetConnectionsConnectionVpnBgpConfig {
     /**
-     * @return The authentication keys for BGP routing protocols.
+     * @return (Optional) The authentication keys for BGP routing protocols.
      * 
      */
     private @Nullable String authKey;
@@ -28,17 +28,17 @@ public final class GetConnectionsConnectionVpnBgpConfig {
      */
     private @Nullable String localBgpIp;
     /**
-     * @return The counterpart autonomous system number.
+     * @return The peer ASN.
      * 
      */
     private @Nullable Integer peerAsn;
     /**
-     * @return The BGP address on the other side.
+     * @return The peer BGP IP.
      * 
      */
     private @Nullable String peerBgpIp;
     /**
-     * @return The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+     * @return The status of the tunnel.
      * 
      */
     private @Nullable String status;
@@ -50,7 +50,7 @@ public final class GetConnectionsConnectionVpnBgpConfig {
 
     private GetConnectionsConnectionVpnBgpConfig() {}
     /**
-     * @return The authentication keys for BGP routing protocols.
+     * @return (Optional) The authentication keys for BGP routing protocols.
      * 
      */
     public Optional<String> authKey() {
@@ -71,21 +71,21 @@ public final class GetConnectionsConnectionVpnBgpConfig {
         return Optional.ofNullable(this.localBgpIp);
     }
     /**
-     * @return The counterpart autonomous system number.
+     * @return The peer ASN.
      * 
      */
     public Optional<Integer> peerAsn() {
         return Optional.ofNullable(this.peerAsn);
     }
     /**
-     * @return The BGP address on the other side.
+     * @return The peer BGP IP.
      * 
      */
     public Optional<String> peerBgpIp() {
         return Optional.ofNullable(this.peerBgpIp);
     }
     /**
-     * @return The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+     * @return The status of the tunnel.
      * 
      */
     public Optional<String> status() {

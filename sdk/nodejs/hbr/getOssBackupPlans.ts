@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Hbr OssBackupPlans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.131.0+.
+ * > **NOTE:** Available since v1.131.0.
  *
  * ## Example Usage
  *
@@ -67,6 +67,9 @@ export interface GetOssBackupPlansArgs {
  * A collection of values returned by getOssBackupPlans.
  */
 export interface GetOssBackupPlansResult {
+    /**
+     * The name of OSS bucket.
+     */
     readonly bucket?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -74,15 +77,24 @@ export interface GetOssBackupPlansResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of OssBackupPlan names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Hbr OssBackupPlans. Each element contains the following attributes:
+     */
     readonly plans: outputs.hbr.GetOssBackupPlansPlan[];
+    /**
+     * The ID of backup vault.
+     */
     readonly vaultId?: string;
 }
 /**
  * This data source provides the Hbr OssBackupPlans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.131.0+.
+ * > **NOTE:** Available since v1.131.0.
  *
  * ## Example Usage
  *

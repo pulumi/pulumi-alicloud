@@ -148,7 +148,7 @@ type RestoreJob struct {
 	Include pulumi.StringPtrOutput `pulumi:"include"`
 	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
 	Options pulumi.StringPtrOutput `pulumi:"options"`
-	// The details about the Tablestore instance. See the following `Block otsDetail`.
+	// The details about the Tablestore instance. See `otsDetail` below.
 	OtsDetail RestoreJobOtsDetailOutput `pulumi:"otsDetail"`
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId pulumi.StringOutput `pulumi:"restoreJobId"`
@@ -247,7 +247,7 @@ type restoreJobState struct {
 	Include *string `pulumi:"include"`
 	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
 	Options *string `pulumi:"options"`
-	// The details about the Tablestore instance. See the following `Block otsDetail`.
+	// The details about the Tablestore instance. See `otsDetail` below.
 	OtsDetail *RestoreJobOtsDetail `pulumi:"otsDetail"`
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId *string `pulumi:"restoreJobId"`
@@ -302,7 +302,7 @@ type RestoreJobState struct {
 	Include pulumi.StringPtrInput
 	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
 	Options pulumi.StringPtrInput
-	// The details about the Tablestore instance. See the following `Block otsDetail`.
+	// The details about the Tablestore instance. See `otsDetail` below.
 	OtsDetail RestoreJobOtsDetailPtrInput
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId pulumi.StringPtrInput
@@ -367,7 +367,7 @@ type restoreJobArgs struct {
 	Include *string `pulumi:"include"`
 	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
 	Options *string `pulumi:"options"`
-	// The details about the Tablestore instance. See the following `Block otsDetail`.
+	// The details about the Tablestore instance. See `otsDetail` below.
 	OtsDetail *RestoreJobOtsDetail `pulumi:"otsDetail"`
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId *string `pulumi:"restoreJobId"`
@@ -421,7 +421,7 @@ type RestoreJobArgs struct {
 	Include pulumi.StringPtrInput
 	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
 	Options pulumi.StringPtrInput
-	// The details about the Tablestore instance. See the following `Block otsDetail`.
+	// The details about the Tablestore instance. See `otsDetail` below.
 	OtsDetail RestoreJobOtsDetailPtrInput
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId pulumi.StringPtrInput
@@ -578,7 +578,7 @@ func (o RestoreJobOutput) Options() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.Options }).(pulumi.StringPtrOutput)
 }
 
-// The details about the Tablestore instance. See the following `Block otsDetail`.
+// The details about the Tablestore instance. See `otsDetail` below.
 func (o RestoreJobOutput) OtsDetail() RestoreJobOtsDetailOutput {
 	return o.ApplyT(func(v *RestoreJob) RestoreJobOtsDetailOutput { return v.OtsDetail }).(RestoreJobOtsDetailOutput)
 }

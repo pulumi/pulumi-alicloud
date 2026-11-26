@@ -23,11 +23,27 @@ public final class GetMetricRuleTemplatesResult {
     private String id;
     private List<String> ids;
     private @Nullable String keyword;
+    /**
+     * @return The name of the alert template.
+     * 
+     */
     private @Nullable String metricRuleTemplateName;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Metric Rule Template names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of the alert template.
+     * 
+     */
     private @Nullable String templateId;
+    /**
+     * @return A list of Cms Metric Rule Templates. Each element contains the following attributes:
+     * 
+     */
     private List<GetMetricRuleTemplatesTemplate> templates;
 
     private GetMetricRuleTemplatesResult() {}
@@ -47,21 +63,37 @@ public final class GetMetricRuleTemplatesResult {
     public Optional<String> keyword() {
         return Optional.ofNullable(this.keyword);
     }
+    /**
+     * @return The name of the alert template.
+     * 
+     */
     public Optional<String> metricRuleTemplateName() {
         return Optional.ofNullable(this.metricRuleTemplateName);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Metric Rule Template names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of the alert template.
+     * 
+     */
     public Optional<String> templateId() {
         return Optional.ofNullable(this.templateId);
     }
+    /**
+     * @return A list of Cms Metric Rule Templates. Each element contains the following attributes:
+     * 
+     */
     public List<GetMetricRuleTemplatesTemplate> templates() {
         return this.templates;
     }

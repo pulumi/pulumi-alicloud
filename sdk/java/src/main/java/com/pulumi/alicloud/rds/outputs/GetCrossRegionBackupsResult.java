@@ -15,8 +15,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCrossRegionBackupsResult {
     private @Nullable String backupId;
+    /**
+     * @return An array that consists of details of the cross-region data backup files:
+     * 
+     */
     private List<GetCrossRegionBackupsBackup> backups;
+    /**
+     * @return The ID of the cross-region data backup file.
+     * 
+     */
     private @Nullable String crossBackupId;
+    /**
+     * @return The ID of the destination region where the cross-region data backup file of the instance is stored.
+     * 
+     */
     private @Nullable String crossBackupRegion;
     private String dbInstanceId;
     private @Nullable String endTime;
@@ -25,6 +37,10 @@ public final class GetCrossRegionBackupsResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Cross Region Backup IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable String outputFile;
     private @Nullable String resourceGroupId;
@@ -34,12 +50,24 @@ public final class GetCrossRegionBackupsResult {
     public Optional<String> backupId() {
         return Optional.ofNullable(this.backupId);
     }
+    /**
+     * @return An array that consists of details of the cross-region data backup files:
+     * 
+     */
     public List<GetCrossRegionBackupsBackup> backups() {
         return this.backups;
     }
+    /**
+     * @return The ID of the cross-region data backup file.
+     * 
+     */
     public Optional<String> crossBackupId() {
         return Optional.ofNullable(this.crossBackupId);
     }
+    /**
+     * @return The ID of the destination region where the cross-region data backup file of the instance is stored.
+     * 
+     */
     public Optional<String> crossBackupRegion() {
         return Optional.ofNullable(this.crossBackupRegion);
     }
@@ -56,6 +84,10 @@ public final class GetCrossRegionBackupsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Cross Region Backup IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }

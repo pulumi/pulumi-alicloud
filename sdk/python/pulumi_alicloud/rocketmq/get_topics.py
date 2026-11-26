@@ -77,6 +77,9 @@ class GetTopicsResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        ID of the ONS Instance that owns the topic.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -141,7 +144,7 @@ def get_topics(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.53.0+
+    > **NOTE:** Available since v1.53.0.
 
     ## Example Usage
 
@@ -171,6 +174,7 @@ def get_topics(enable_details: Optional[_builtins.bool] = None,
     ```
 
 
+    :param _builtins.bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[_builtins.str] ids: A list of topic IDs to filter results.
     :param _builtins.str instance_id: ID of the ONS Instance that owns the topics.
     :param _builtins.str name_regex: A regex string to filter results by the topic name.
@@ -207,7 +211,7 @@ def get_topics_output(enable_details: pulumi.Input[Optional[Optional[_builtins.b
     """
     This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.53.0+
+    > **NOTE:** Available since v1.53.0.
 
     ## Example Usage
 
@@ -237,6 +241,7 @@ def get_topics_output(enable_details: pulumi.Input[Optional[Optional[_builtins.b
     ```
 
 
+    :param _builtins.bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[_builtins.str] ids: A list of topic IDs to filter results.
     :param _builtins.str instance_id: ID of the ONS Instance that owns the topics.
     :param _builtins.str name_regex: A regex string to filter results by the topic name.

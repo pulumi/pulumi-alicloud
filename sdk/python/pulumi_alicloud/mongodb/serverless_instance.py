@@ -59,7 +59,7 @@ class ServerlessInstanceArgs:
         :param pulumi.Input[_builtins.int] period: The purchase duration of the instance, in months. Valid values: `1` to `9`, `12`, `24`, `36`, `60`.
         :param pulumi.Input[_builtins.str] period_price_type: The period price type. Valid values: `Day`, `Month`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]] security_ip_groups: An array that consists of the information of IP whitelists.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]] security_ip_groups: An array that consists of the information of IP whitelists. See `security_ip_groups` below.
         :param pulumi.Input[_builtins.str] storage_engine: The storage engine used by the instance. Valid values: `WiredTiger`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
@@ -279,7 +279,7 @@ class ServerlessInstanceArgs:
     @pulumi.getter(name="securityIpGroups")
     def security_ip_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]]:
         """
-        An array that consists of the information of IP whitelists.
+        An array that consists of the information of IP whitelists. See `security_ip_groups` below.
         """
         return pulumi.get(self, "security_ip_groups")
 
@@ -351,7 +351,7 @@ class _ServerlessInstanceState:
         :param pulumi.Input[_builtins.int] period: The purchase duration of the instance, in months. Valid values: `1` to `9`, `12`, `24`, `36`, `60`.
         :param pulumi.Input[_builtins.str] period_price_type: The period price type. Valid values: `Day`, `Month`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]] security_ip_groups: An array that consists of the information of IP whitelists.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]] security_ip_groups: An array that consists of the information of IP whitelists. See `security_ip_groups` below.
         :param pulumi.Input[_builtins.str] status: The instance status. For more information, see the instance Status Table.
         :param pulumi.Input[_builtins.str] storage_engine: The storage engine used by the instance. Valid values: `WiredTiger`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -548,7 +548,7 @@ class _ServerlessInstanceState:
     @pulumi.getter(name="securityIpGroups")
     def security_ip_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]]:
         """
-        An array that consists of the information of IP whitelists.
+        An array that consists of the information of IP whitelists. See `security_ip_groups` below.
         """
         return pulumi.get(self, "security_ip_groups")
 
@@ -659,9 +659,9 @@ class ServerlessInstance(pulumi.CustomResource):
 
         For information about MongoDB Serverless Instance and how to use it, see [What is Serverless Instance](https://www.alibabacloud.com/help/doc-detail/26558.html).
 
-        > **NOTE:** Deprecated since v1.214.0.
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
 
-        > **DEPRECATED:**  This resource has been deprecated from version `1.214.0`.
+        > **DEPRECATED:** This resource has been deprecated from v1.214.0.
 
         ## Example Usage
 
@@ -728,7 +728,7 @@ class ServerlessInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] period: The purchase duration of the instance, in months. Valid values: `1` to `9`, `12`, `24`, `36`, `60`.
         :param pulumi.Input[_builtins.str] period_price_type: The period price type. Valid values: `Day`, `Month`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict', 'outputs.ServerlessInstanceSecurityIpGroup']]]] security_ip_groups: An array that consists of the information of IP whitelists.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict', 'outputs.ServerlessInstanceSecurityIpGroup']]]] security_ip_groups: An array that consists of the information of IP whitelists. See `security_ip_groups` below.
         :param pulumi.Input[_builtins.str] storage_engine: The storage engine used by the instance. Valid values: `WiredTiger`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC network.
@@ -746,9 +746,9 @@ class ServerlessInstance(pulumi.CustomResource):
 
         For information about MongoDB Serverless Instance and how to use it, see [What is Serverless Instance](https://www.alibabacloud.com/help/doc-detail/26558.html).
 
-        > **NOTE:** Deprecated since v1.214.0.
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
 
-        > **DEPRECATED:**  This resource has been deprecated from version `1.214.0`.
+        > **DEPRECATED:** This resource has been deprecated from v1.214.0.
 
         ## Example Usage
 
@@ -926,7 +926,7 @@ class ServerlessInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] period: The purchase duration of the instance, in months. Valid values: `1` to `9`, `12`, `24`, `36`, `60`.
         :param pulumi.Input[_builtins.str] period_price_type: The period price type. Valid values: `Day`, `Month`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict', 'outputs.ServerlessInstanceSecurityIpGroup']]]] security_ip_groups: An array that consists of the information of IP whitelists.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict', 'outputs.ServerlessInstanceSecurityIpGroup']]]] security_ip_groups: An array that consists of the information of IP whitelists. See `security_ip_groups` below.
         :param pulumi.Input[_builtins.str] status: The instance status. For more information, see the instance Status Table.
         :param pulumi.Input[_builtins.str] storage_engine: The storage engine used by the instance. Valid values: `WiredTiger`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -1105,7 +1105,7 @@ class ServerlessInstance(pulumi.CustomResource):
     @pulumi.getter(name="securityIpGroups")
     def security_ip_groups(self) -> pulumi.Output[Optional[Sequence['outputs.ServerlessInstanceSecurityIpGroup']]]:
         """
-        An array that consists of the information of IP whitelists.
+        An array that consists of the information of IP whitelists. See `security_ip_groups` below.
         """
         return pulumi.get(self, "security_ip_groups")
 

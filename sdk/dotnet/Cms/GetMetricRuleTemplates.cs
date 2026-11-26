@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -295,11 +295,23 @@ namespace Pulumi.AliCloud.Cms
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? Keyword;
+        /// <summary>
+        /// The name of the alert template.
+        /// </summary>
         public readonly string? MetricRuleTemplateName;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Metric Rule Template names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The ID of the alert template.
+        /// </summary>
         public readonly string? TemplateId;
+        /// <summary>
+        /// A list of Cms Metric Rule Templates. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetMetricRuleTemplatesTemplateResult> Templates;
 
         [OutputConstructor]

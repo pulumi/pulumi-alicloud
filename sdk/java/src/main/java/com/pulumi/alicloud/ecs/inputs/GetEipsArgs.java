@@ -18,72 +18,120 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetEipsArgs Empty = new GetEipsArgs();
 
+    /**
+     * The eip name.
+     * 
+     */
     @Import(name="addressName")
     private @Nullable Output<String> addressName;
 
+    /**
+     * @return The eip name.
+     * 
+     */
     public Optional<Output<String>> addressName() {
         return Optional.ofNullable(this.addressName);
     }
 
+    /**
+     * The associated instance id.
+     * 
+     */
     @Import(name="associatedInstanceId")
     private @Nullable Output<String> associatedInstanceId;
 
+    /**
+     * @return The associated instance id.
+     * 
+     */
     public Optional<Output<String>> associatedInstanceId() {
         return Optional.ofNullable(this.associatedInstanceId);
     }
 
+    /**
+     * The associated instance type.
+     * 
+     */
     @Import(name="associatedInstanceType")
     private @Nullable Output<String> associatedInstanceType;
 
+    /**
+     * @return The associated instance type.
+     * 
+     */
     public Optional<Output<String>> associatedInstanceType() {
         return Optional.ofNullable(this.associatedInstanceType);
     }
 
+    /**
+     * The dry run.
+     * 
+     */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
+    /**
+     * @return The dry run.
+     * 
+     */
     public Optional<Output<Boolean>> dryRun() {
         return Optional.ofNullable(this.dryRun);
     }
 
+    /**
+     * Default to `true`. Set it to `false` can hide the `tags` to output.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
+    /**
+     * @return Default to `true`. Set it to `false` can hide the `tags` to output.
+     * 
+     */
     public Optional<Output<Boolean>> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
 
     /**
-     * A list of EIP IDs.
+     * A list of Address IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return A list of EIP IDs.
+     * @return A list of Address IDs.
      * 
      */
     public Optional<Output<List<String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * The include reservation data.
+     * 
+     */
     @Import(name="includeReservationData")
     private @Nullable Output<Boolean> includeReservationData;
 
+    /**
+     * @return The include reservation data.
+     * 
+     */
     public Optional<Output<Boolean>> includeReservationData() {
         return Optional.ofNullable(this.includeReservationData);
     }
 
     /**
-     * Public IP Address of the the EIP.
+     * The eip address.
      * 
      */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
     /**
-     * @return Public IP Address of the the EIP.
+     * @return The eip address.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -91,7 +139,7 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A list of EIP public IP addresses.
+     * Field `ipAddresses` has been deprecated. Please use `ipAddress` instead.
      * 
      * @deprecated Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
      * 
@@ -101,7 +149,7 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<List<String>> ipAddresses;
 
     /**
-     * @return A list of EIP public IP addresses.
+     * @return Field `ipAddresses` has been deprecated. Please use `ipAddress` instead.
      * 
      * @deprecated Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
      * 
@@ -111,23 +159,47 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.ipAddresses);
     }
 
+    /**
+     * The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
+     * 
+     */
     @Import(name="isp")
     private @Nullable Output<String> isp;
 
+    /**
+     * @return The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
+     * 
+     */
     public Optional<Output<String>> isp() {
         return Optional.ofNullable(this.isp);
     }
 
+    /**
+     * The lock reason.
+     * 
+     */
     @Import(name="lockReason")
     private @Nullable Output<String> lockReason;
 
+    /**
+     * @return The lock reason.
+     * 
+     */
     public Optional<Output<String>> lockReason() {
         return Optional.ofNullable(this.lockReason);
     }
 
+    /**
+     * A regex string to filter results by Address name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
+    /**
+     * @return A regex string to filter results by Address name.
+     * 
+     */
     public Optional<Output<String>> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -147,44 +219,60 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
+     * 
+     */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
+    /**
+     * @return The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
+     * 
+     */
     public Optional<Output<String>> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }
 
     /**
-     * The Id of resource group which the eips belongs.
+     * The ID of the resource group.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the eips belongs.
+     * @return The ID of the resource group.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
+     * 
+     */
     @Import(name="segmentInstanceId")
     private @Nullable Output<String> segmentInstanceId;
 
+    /**
+     * @return The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
+     * 
+     */
     public Optional<Output<String>> segmentInstanceId() {
         return Optional.ofNullable(this.segmentInstanceId);
     }
 
     /**
-     * EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+     * The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+     * @return The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      * 
      */
     public Optional<Output<String>> status() {
@@ -194,12 +282,16 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * A mapping of tags to assign to the resource.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -247,53 +339,113 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetEipsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param addressName The eip name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addressName(@Nullable Output<String> addressName) {
             $.addressName = addressName;
             return this;
         }
 
+        /**
+         * @param addressName The eip name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addressName(String addressName) {
             return addressName(Output.of(addressName));
         }
 
+        /**
+         * @param associatedInstanceId The associated instance id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder associatedInstanceId(@Nullable Output<String> associatedInstanceId) {
             $.associatedInstanceId = associatedInstanceId;
             return this;
         }
 
+        /**
+         * @param associatedInstanceId The associated instance id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder associatedInstanceId(String associatedInstanceId) {
             return associatedInstanceId(Output.of(associatedInstanceId));
         }
 
+        /**
+         * @param associatedInstanceType The associated instance type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder associatedInstanceType(@Nullable Output<String> associatedInstanceType) {
             $.associatedInstanceType = associatedInstanceType;
             return this;
         }
 
+        /**
+         * @param associatedInstanceType The associated instance type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder associatedInstanceType(String associatedInstanceType) {
             return associatedInstanceType(Output.of(associatedInstanceType));
         }
 
+        /**
+         * @param dryRun The dry run.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dryRun(@Nullable Output<Boolean> dryRun) {
             $.dryRun = dryRun;
             return this;
         }
 
+        /**
+         * @param dryRun The dry run.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dryRun(Boolean dryRun) {
             return dryRun(Output.of(dryRun));
         }
 
+        /**
+         * @param enableDetails Default to `true`. Set it to `false` can hide the `tags` to output.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
             $.enableDetails = enableDetails;
             return this;
         }
 
+        /**
+         * @param enableDetails Default to `true`. Set it to `false` can hide the `tags` to output.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(Boolean enableDetails) {
             return enableDetails(Output.of(enableDetails));
         }
 
         /**
-         * @param ids A list of EIP IDs.
+         * @param ids A list of Address IDs.
          * 
          * @return builder
          * 
@@ -304,7 +456,7 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of EIP IDs.
+         * @param ids A list of Address IDs.
          * 
          * @return builder
          * 
@@ -314,7 +466,7 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of EIP IDs.
+         * @param ids A list of Address IDs.
          * 
          * @return builder
          * 
@@ -323,17 +475,29 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param includeReservationData The include reservation data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeReservationData(@Nullable Output<Boolean> includeReservationData) {
             $.includeReservationData = includeReservationData;
             return this;
         }
 
+        /**
+         * @param includeReservationData The include reservation data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeReservationData(Boolean includeReservationData) {
             return includeReservationData(Output.of(includeReservationData));
         }
 
         /**
-         * @param ipAddress Public IP Address of the the EIP.
+         * @param ipAddress The eip address.
          * 
          * @return builder
          * 
@@ -344,7 +508,7 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ipAddress Public IP Address of the the EIP.
+         * @param ipAddress The eip address.
          * 
          * @return builder
          * 
@@ -354,7 +518,7 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ipAddresses A list of EIP public IP addresses.
+         * @param ipAddresses Field `ipAddresses` has been deprecated. Please use `ipAddress` instead.
          * 
          * @return builder
          * 
@@ -368,7 +532,7 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ipAddresses A list of EIP public IP addresses.
+         * @param ipAddresses Field `ipAddresses` has been deprecated. Please use `ipAddress` instead.
          * 
          * @return builder
          * 
@@ -381,7 +545,7 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ipAddresses A list of EIP public IP addresses.
+         * @param ipAddresses Field `ipAddresses` has been deprecated. Please use `ipAddress` instead.
          * 
          * @return builder
          * 
@@ -393,29 +557,65 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
             return ipAddresses(List.of(ipAddresses));
         }
 
+        /**
+         * @param isp The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isp(@Nullable Output<String> isp) {
             $.isp = isp;
             return this;
         }
 
+        /**
+         * @param isp The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isp(String isp) {
             return isp(Output.of(isp));
         }
 
+        /**
+         * @param lockReason The lock reason.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lockReason(@Nullable Output<String> lockReason) {
             $.lockReason = lockReason;
             return this;
         }
 
+        /**
+         * @param lockReason The lock reason.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lockReason(String lockReason) {
             return lockReason(Output.of(lockReason));
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Address name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable Output<String> nameRegex) {
             $.nameRegex = nameRegex;
             return this;
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Address name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(String nameRegex) {
             return nameRegex(Output.of(nameRegex));
         }
@@ -441,17 +641,29 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
             return outputFile(Output.of(outputFile));
         }
 
+        /**
+         * @param paymentType The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paymentType(@Nullable Output<String> paymentType) {
             $.paymentType = paymentType;
             return this;
         }
 
+        /**
+         * @param paymentType The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paymentType(String paymentType) {
             return paymentType(Output.of(paymentType));
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the eips belongs.
+         * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
          * 
@@ -462,7 +674,7 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the eips belongs.
+         * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
          * 
@@ -471,17 +683,29 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
+        /**
+         * @param segmentInstanceId The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder segmentInstanceId(@Nullable Output<String> segmentInstanceId) {
             $.segmentInstanceId = segmentInstanceId;
             return this;
         }
 
+        /**
+         * @param segmentInstanceId The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder segmentInstanceId(String segmentInstanceId) {
             return segmentInstanceId(Output.of(segmentInstanceId));
         }
 
         /**
-         * @param status EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+         * @param status The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
          * 
          * @return builder
          * 
@@ -492,7 +716,7 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+         * @param status The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
          * 
          * @return builder
          * 
@@ -504,6 +728,8 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param tags A mapping of tags to assign to the resource.
          * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
          * @return builder
          * 
          */
@@ -514,6 +740,8 @@ public final class GetEipsArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

@@ -15,6 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AclEntryAttachmentEntryArgs',
+    'AclEntryAttachmentEntryArgsDict',
     'AclEntryListArgs',
     'AclEntryListArgsDict',
     'BackendServerBackendServerArgs',
@@ -27,15 +29,73 @@ __all__ = [
     'ServerGroupServerArgsDict',
 ]
 
+class AclEntryAttachmentEntryArgsDict(TypedDict):
+    entry: pulumi.Input[_builtins.str]
+    """
+    The CIDR block of the acl entry.
+    """
+    comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The comment of the acl entry.
+    """
+
+@pulumi.input_type
+class AclEntryAttachmentEntryArgs:
+    def __init__(__self__, *,
+                 entry: pulumi.Input[_builtins.str],
+                 comment: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] entry: The CIDR block of the acl entry.
+        :param pulumi.Input[_builtins.str] comment: The comment of the acl entry.
+        """
+        pulumi.set(__self__, "entry", entry)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+
+    @_builtins.property
+    @pulumi.getter
+    def entry(self) -> pulumi.Input[_builtins.str]:
+        """
+        The CIDR block of the acl entry.
+        """
+        return pulumi.get(self, "entry")
+
+    @entry.setter
+    def entry(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "entry", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The comment of the acl entry.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "comment", value)
+
+
 class AclEntryListArgsDict(TypedDict):
     comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The comment of the entry.
+    """
     entry: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The CIDR blocks.
+    """
 
 @pulumi.input_type
 class AclEntryListArgs:
     def __init__(__self__, *,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  entry: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] comment: The comment of the entry.
+        :param pulumi.Input[_builtins.str] entry: The CIDR blocks.
+        """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if entry is not None:
@@ -44,6 +104,9 @@ class AclEntryListArgs:
     @_builtins.property
     @pulumi.getter
     def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The comment of the entry.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -53,6 +116,9 @@ class AclEntryListArgs:
     @_builtins.property
     @pulumi.getter
     def entry(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The CIDR blocks.
+        """
         return pulumi.get(self, "entry")
 
     @entry.setter
@@ -62,9 +128,21 @@ class AclEntryListArgs:
 
 class BackendServerBackendServerArgsDict(TypedDict):
     server_id: pulumi.Input[_builtins.str]
+    """
+    A list backend server ID (ECS instance ID).
+    """
     weight: pulumi.Input[_builtins.int]
+    """
+    Weight of the backend server. Valid value range: [0-100].
+    """
     server_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `server_ip` parameter.
+    """
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
+    """
 
 @pulumi.input_type
 class BackendServerBackendServerArgs:
@@ -73,6 +151,12 @@ class BackendServerBackendServerArgs:
                  weight: pulumi.Input[_builtins.int],
                  server_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] server_id: A list backend server ID (ECS instance ID).
+        :param pulumi.Input[_builtins.int] weight: Weight of the backend server. Valid value range: [0-100].
+        :param pulumi.Input[_builtins.str] server_ip: ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `server_ip` parameter.
+        :param pulumi.Input[_builtins.str] type: Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
+        """
         pulumi.set(__self__, "server_id", server_id)
         pulumi.set(__self__, "weight", weight)
         if server_ip is not None:
@@ -83,6 +167,9 @@ class BackendServerBackendServerArgs:
     @_builtins.property
     @pulumi.getter(name="serverId")
     def server_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        A list backend server ID (ECS instance ID).
+        """
         return pulumi.get(self, "server_id")
 
     @server_id.setter
@@ -92,6 +179,9 @@ class BackendServerBackendServerArgs:
     @_builtins.property
     @pulumi.getter
     def weight(self) -> pulumi.Input[_builtins.int]:
+        """
+        Weight of the backend server. Valid value range: [0-100].
+        """
         return pulumi.get(self, "weight")
 
     @weight.setter
@@ -101,6 +191,9 @@ class BackendServerBackendServerArgs:
     @_builtins.property
     @pulumi.getter(name="serverIp")
     def server_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `server_ip` parameter.
+        """
         return pulumi.get(self, "server_ip")
 
     @server_ip.setter
@@ -110,6 +203,9 @@ class BackendServerBackendServerArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
+        """
         return pulumi.get(self, "type")
 
     @type.setter

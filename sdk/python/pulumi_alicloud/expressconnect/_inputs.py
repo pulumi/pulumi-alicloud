@@ -15,6 +15,10 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'RouterExpressConnectRouterDisabledRouteEntryArgs',
+    'RouterExpressConnectRouterDisabledRouteEntryArgsDict',
+    'RouterExpressConnectRouterGrantedInstanceArgs',
+    'RouterExpressConnectRouterGrantedInstanceArgsDict',
     'RouterExpressConnectRouterRegionArgs',
     'RouterExpressConnectRouterRegionArgsDict',
     'GetRouterInterfacesFilterArgs',
@@ -22,6 +26,144 @@ __all__ = [
     'GetVirtualBorderRoutersFilterArgs',
     'GetVirtualBorderRoutersFilterArgsDict',
 ]
+
+class RouterExpressConnectRouterDisabledRouteEntryArgsDict(TypedDict):
+    destination_cidr_block: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Computed, String, Available since v2.3.0) The destination CIDR block of the disabled route entry.
+    """
+    nexthop_instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Computed, String, Available since v2.3.0) The ID of the next hop instance of the disabled route entry.
+    """
+
+@pulumi.input_type
+class RouterExpressConnectRouterDisabledRouteEntryArgs:
+    def __init__(__self__, *,
+                 destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 nexthop_instance_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] destination_cidr_block: (Computed, String, Available since v2.3.0) The destination CIDR block of the disabled route entry.
+        :param pulumi.Input[_builtins.str] nexthop_instance_id: (Computed, String, Available since v2.3.0) The ID of the next hop instance of the disabled route entry.
+        """
+        if destination_cidr_block is not None:
+            pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
+        if nexthop_instance_id is not None:
+            pulumi.set(__self__, "nexthop_instance_id", nexthop_instance_id)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationCidrBlock")
+    def destination_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Computed, String, Available since v2.3.0) The destination CIDR block of the disabled route entry.
+        """
+        return pulumi.get(self, "destination_cidr_block")
+
+    @destination_cidr_block.setter
+    def destination_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "destination_cidr_block", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nexthopInstanceId")
+    def nexthop_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Computed, String, Available since v2.3.0) The ID of the next hop instance of the disabled route entry.
+        """
+        return pulumi.get(self, "nexthop_instance_id")
+
+    @nexthop_instance_id.setter
+    def nexthop_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "nexthop_instance_id", value)
+
+
+class RouterExpressConnectRouterGrantedInstanceArgsDict(TypedDict):
+    node_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Computed, String, Available since v2.3.0) The ID of the granted network instance, for example `vpc-xxx` or `vbr-xxx`.
+    """
+    node_owner_uid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Computed, String, Available since v2.3.0) The ID of the Alibaba Cloud account that owns the granted network instance.
+    """
+    node_region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Computed, String, Available since v2.3.0) The region ID of the granted network instance.
+    """
+    node_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Computed, String, Available since v2.3.0) The type of the granted network instance. Valid values: `VPC`, `VBR`.
+    """
+
+@pulumi.input_type
+class RouterExpressConnectRouterGrantedInstanceArgs:
+    def __init__(__self__, *,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_owner_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] node_id: (Computed, String, Available since v2.3.0) The ID of the granted network instance, for example `vpc-xxx` or `vbr-xxx`.
+        :param pulumi.Input[_builtins.str] node_owner_uid: (Computed, String, Available since v2.3.0) The ID of the Alibaba Cloud account that owns the granted network instance.
+        :param pulumi.Input[_builtins.str] node_region_id: (Computed, String, Available since v2.3.0) The region ID of the granted network instance.
+        :param pulumi.Input[_builtins.str] node_type: (Computed, String, Available since v2.3.0) The type of the granted network instance. Valid values: `VPC`, `VBR`.
+        """
+        if node_id is not None:
+            pulumi.set(__self__, "node_id", node_id)
+        if node_owner_uid is not None:
+            pulumi.set(__self__, "node_owner_uid", node_owner_uid)
+        if node_region_id is not None:
+            pulumi.set(__self__, "node_region_id", node_region_id)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Computed, String, Available since v2.3.0) The ID of the granted network instance, for example `vpc-xxx` or `vbr-xxx`.
+        """
+        return pulumi.get(self, "node_id")
+
+    @node_id.setter
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "node_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeOwnerUid")
+    def node_owner_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Computed, String, Available since v2.3.0) The ID of the Alibaba Cloud account that owns the granted network instance.
+        """
+        return pulumi.get(self, "node_owner_uid")
+
+    @node_owner_uid.setter
+    def node_owner_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "node_owner_uid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeRegionId")
+    def node_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Computed, String, Available since v2.3.0) The region ID of the granted network instance.
+        """
+        return pulumi.get(self, "node_region_id")
+
+    @node_region_id.setter
+    def node_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "node_region_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Computed, String, Available since v2.3.0) The type of the granted network instance. Valid values: `VPC`, `VBR`.
+        """
+        return pulumi.get(self, "node_type")
+
+    @node_type.setter
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "node_type", value)
+
 
 class RouterExpressConnectRouterRegionArgsDict(TypedDict):
     region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -74,13 +216,23 @@ class RouterExpressConnectRouterRegionArgs:
 
 class GetRouterInterfacesFilterArgsDict(TypedDict):
     key: NotRequired[_builtins.str]
+    """
+    The key of the field to filter by.
+    """
     values: NotRequired[Sequence[_builtins.str]]
+    """
+    Set of values that are accepted for the given field.
+    """
 
 @pulumi.input_type
 class GetRouterInterfacesFilterArgs:
     def __init__(__self__, *,
                  key: Optional[_builtins.str] = None,
                  values: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str key: The key of the field to filter by.
+        :param Sequence[_builtins.str] values: Set of values that are accepted for the given field.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if values is not None:
@@ -89,6 +241,9 @@ class GetRouterInterfacesFilterArgs:
     @_builtins.property
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
+        """
+        The key of the field to filter by.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -98,6 +253,9 @@ class GetRouterInterfacesFilterArgs:
     @_builtins.property
     @pulumi.getter
     def values(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Set of values that are accepted for the given field.
+        """
         return pulumi.get(self, "values")
 
     @values.setter

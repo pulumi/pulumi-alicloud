@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  * This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
  * other public images and the ones available on the image market.
  *
+ * > **NOTE:** Available since v0.1.0
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -163,18 +165,27 @@ export interface GetImagesResult {
      */
     readonly ids: string[];
     readonly imageFamily?: string;
+    /**
+     * The ID of the image.
+     */
     readonly imageId?: string;
     readonly imageName?: string;
     readonly imageOwnerId?: string;
     /**
-     * A `diskDeviceMappings` block as defined below. A list of images.
+     * A list of images. Each element contains the following attributes:
      */
     readonly images: outputs.ecs.GetImagesImage[];
     readonly instanceType?: string;
     readonly isSupportCloudInit?: boolean;
+    /**
+     * Whether the image can be used on I/O optimized instances.
+     */
     readonly isSupportIoOptimized?: boolean;
     readonly mostRecent?: boolean;
     readonly nameRegex?: string;
+    /**
+     * The type of the operating system.
+     */
     readonly osType?: string;
     readonly outputFile?: string;
     readonly owners?: string;
@@ -187,12 +198,20 @@ export interface GetImagesResult {
      * The status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
      */
     readonly status?: string;
+    /**
+     * (Optional) A map of tags assigned to the image.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The usage of the image.
+     */
     readonly usage?: string;
 }
 /**
  * This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
  * other public images and the ones available on the image market.
+ *
+ * > **NOTE:** Available since v0.1.0
  *
  * ## Example Usage
  *

@@ -24,15 +24,19 @@ public final class GetKeyPairsPair {
      */
     private String id;
     /**
-     * @return A list of ECS instances that has been bound this key pair.
+     * @return A list of ECS instances bound to this key pair.
      * 
      */
     private List<GetKeyPairsPairInstance> instances;
     /**
-     * @return Name of the key pair.
+     * @return The key name.
      * 
      */
     private String keyName;
+    /**
+     * @return Name of the key pair.
+     * 
+     */
     private String keyPairName;
     /**
      * @return The Id of resource group which the key pair belongs.
@@ -61,19 +65,23 @@ public final class GetKeyPairsPair {
         return this.id;
     }
     /**
-     * @return A list of ECS instances that has been bound this key pair.
+     * @return A list of ECS instances bound to this key pair.
      * 
      */
     public List<GetKeyPairsPairInstance> instances() {
         return this.instances;
     }
     /**
-     * @return Name of the key pair.
+     * @return The key name.
      * 
      */
     public String keyName() {
         return this.keyName;
     }
+    /**
+     * @return Name of the key pair.
+     * 
+     */
     public String keyPairName() {
         return this.keyPairName;
     }

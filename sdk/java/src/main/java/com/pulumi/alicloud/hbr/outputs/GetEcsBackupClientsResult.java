@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsBackupClientsResult {
+    /**
+     * @return A list of Hbr Ecs Backup Clients. Each element contains the following attributes:
+     * 
+     */
     private List<GetEcsBackupClientsClient> clients;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,9 +27,17 @@ public final class GetEcsBackupClientsResult {
     private List<String> ids;
     private @Nullable List<String> instanceIds;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
 
     private GetEcsBackupClientsResult() {}
+    /**
+     * @return A list of Hbr Ecs Backup Clients. Each element contains the following attributes:
+     * 
+     */
     public List<GetEcsBackupClientsClient> clients() {
         return this.clients;
     }
@@ -45,6 +57,10 @@ public final class GetEcsBackupClientsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

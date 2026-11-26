@@ -41,7 +41,6 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
 export interface GetZonesArgs {
     /**
      * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-     * * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
      */
     engine?: string;
     /**
@@ -56,6 +55,9 @@ export interface GetZonesArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+     */
     productType?: string;
 }
 
@@ -116,7 +118,6 @@ export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOu
 export interface GetZonesOutputArgs {
     /**
      * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-     * * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
      */
     engine?: pulumi.Input<string | undefined>;
     /**
@@ -131,5 +132,8 @@ export interface GetZonesOutputArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+     */
     productType?: pulumi.Input<string | undefined>;
 }

@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType {
+    /**
+     * @return Internal placeholder attribute for the Dedicated Host Count Group by Host Type.
+     * 
+     */
     private String placeHolder;
 
     private GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType() {}
+    /**
+     * @return Internal placeholder attribute for the Dedicated Host Count Group by Host Type.
+     * 
+     */
     public String placeHolder() {
         return this.placeHolder;
     }

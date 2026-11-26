@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:**  Available in 1.86.0+.
+ * > **NOTE:** Available since v1.86.0.
  *
  * ## Example Usage
  *
@@ -88,7 +88,7 @@ export interface GetPoliciesResult {
 /**
  * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:**  Available in 1.86.0+.
+ * > **NOTE:** Available since v1.86.0.
  *
  * ## Example Usage
  *

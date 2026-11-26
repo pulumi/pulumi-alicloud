@@ -84,20 +84,30 @@ type EcdPolicyGroup struct {
 	AuthorizeSecurityPolicyRules EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput `pulumi:"authorizeSecurityPolicyRules"`
 	// Whether to enable local camera redirection. Valid values: `on`, `off`.
 	CameraRedirect pulumi.StringOutput `pulumi:"cameraRedirect"`
+	// The list of client type access rules used to control which clients can access cloud desktops. See `clientTypes` below.
+	ClientTypes EcdPolicyGroupClientTypeArrayOutput `pulumi:"clientTypes"`
 	// The clipboard policy. Valid values: `off`, `read`, `readwrite`.
 	Clipboard pulumi.StringOutput `pulumi:"clipboard"`
 	// The list of domain.
 	DomainList pulumi.StringPtrOutput `pulumi:"domainList"`
+	// Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+	EndUserApplyAdminCoordinate pulumi.StringOutput `pulumi:"endUserApplyAdminCoordinate"`
+	// Whether to allow end users to join user groups. Valid values: `off`, `on`.
+	EndUserGroupCoordinate pulumi.StringOutput `pulumi:"endUserGroupCoordinate"`
 	// The access of html5. Valid values: `off`, `on`.
 	HtmlAccess pulumi.StringOutput `pulumi:"htmlAccess"`
 	// The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
 	HtmlFileTransfer pulumi.StringOutput `pulumi:"htmlFileTransfer"`
-	// Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+	// The network communication protocol. Valid values: `BOTH`, `TCP`.
+	InternetCommunicationProtocol pulumi.StringOutput `pulumi:"internetCommunicationProtocol"`
+	// Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
 	LocalDrive pulumi.StringOutput `pulumi:"localDrive"`
 	// The name of policy group.
 	PolicyGroupName pulumi.StringPtrOutput `pulumi:"policyGroupName"`
 	// Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
 	Recording pulumi.StringOutput `pulumi:"recording"`
+	// The recording duration. Valid values: `10`, `20`, `30`, `60`.
+	RecordingDuration pulumi.IntOutput `pulumi:"recordingDuration"`
 	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
 	RecordingEndTime pulumi.StringPtrOutput `pulumi:"recordingEndTime"`
 	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
@@ -156,20 +166,30 @@ type ecdPolicyGroupState struct {
 	AuthorizeSecurityPolicyRules []EcdPolicyGroupAuthorizeSecurityPolicyRule `pulumi:"authorizeSecurityPolicyRules"`
 	// Whether to enable local camera redirection. Valid values: `on`, `off`.
 	CameraRedirect *string `pulumi:"cameraRedirect"`
+	// The list of client type access rules used to control which clients can access cloud desktops. See `clientTypes` below.
+	ClientTypes []EcdPolicyGroupClientType `pulumi:"clientTypes"`
 	// The clipboard policy. Valid values: `off`, `read`, `readwrite`.
 	Clipboard *string `pulumi:"clipboard"`
 	// The list of domain.
 	DomainList *string `pulumi:"domainList"`
+	// Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+	EndUserApplyAdminCoordinate *string `pulumi:"endUserApplyAdminCoordinate"`
+	// Whether to allow end users to join user groups. Valid values: `off`, `on`.
+	EndUserGroupCoordinate *string `pulumi:"endUserGroupCoordinate"`
 	// The access of html5. Valid values: `off`, `on`.
 	HtmlAccess *string `pulumi:"htmlAccess"`
 	// The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
 	HtmlFileTransfer *string `pulumi:"htmlFileTransfer"`
-	// Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+	// The network communication protocol. Valid values: `BOTH`, `TCP`.
+	InternetCommunicationProtocol *string `pulumi:"internetCommunicationProtocol"`
+	// Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
 	LocalDrive *string `pulumi:"localDrive"`
 	// The name of policy group.
 	PolicyGroupName *string `pulumi:"policyGroupName"`
 	// Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
 	Recording *string `pulumi:"recording"`
+	// The recording duration. Valid values: `10`, `20`, `30`, `60`.
+	RecordingDuration *int `pulumi:"recordingDuration"`
 	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
 	RecordingEndTime *string `pulumi:"recordingEndTime"`
 	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
@@ -199,20 +219,30 @@ type EcdPolicyGroupState struct {
 	AuthorizeSecurityPolicyRules EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayInput
 	// Whether to enable local camera redirection. Valid values: `on`, `off`.
 	CameraRedirect pulumi.StringPtrInput
+	// The list of client type access rules used to control which clients can access cloud desktops. See `clientTypes` below.
+	ClientTypes EcdPolicyGroupClientTypeArrayInput
 	// The clipboard policy. Valid values: `off`, `read`, `readwrite`.
 	Clipboard pulumi.StringPtrInput
 	// The list of domain.
 	DomainList pulumi.StringPtrInput
+	// Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+	EndUserApplyAdminCoordinate pulumi.StringPtrInput
+	// Whether to allow end users to join user groups. Valid values: `off`, `on`.
+	EndUserGroupCoordinate pulumi.StringPtrInput
 	// The access of html5. Valid values: `off`, `on`.
 	HtmlAccess pulumi.StringPtrInput
 	// The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
 	HtmlFileTransfer pulumi.StringPtrInput
-	// Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+	// The network communication protocol. Valid values: `BOTH`, `TCP`.
+	InternetCommunicationProtocol pulumi.StringPtrInput
+	// Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
 	LocalDrive pulumi.StringPtrInput
 	// The name of policy group.
 	PolicyGroupName pulumi.StringPtrInput
 	// Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
 	Recording pulumi.StringPtrInput
+	// The recording duration. Valid values: `10`, `20`, `30`, `60`.
+	RecordingDuration pulumi.IntPtrInput
 	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
 	RecordingEndTime pulumi.StringPtrInput
 	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
@@ -252,20 +282,30 @@ type ecdPolicyGroupArgs struct {
 	AuthorizeSecurityPolicyRules []EcdPolicyGroupAuthorizeSecurityPolicyRule `pulumi:"authorizeSecurityPolicyRules"`
 	// Whether to enable local camera redirection. Valid values: `on`, `off`.
 	CameraRedirect *string `pulumi:"cameraRedirect"`
+	// The list of client type access rules used to control which clients can access cloud desktops. See `clientTypes` below.
+	ClientTypes []EcdPolicyGroupClientType `pulumi:"clientTypes"`
 	// The clipboard policy. Valid values: `off`, `read`, `readwrite`.
 	Clipboard *string `pulumi:"clipboard"`
 	// The list of domain.
 	DomainList *string `pulumi:"domainList"`
+	// Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+	EndUserApplyAdminCoordinate *string `pulumi:"endUserApplyAdminCoordinate"`
+	// Whether to allow end users to join user groups. Valid values: `off`, `on`.
+	EndUserGroupCoordinate *string `pulumi:"endUserGroupCoordinate"`
 	// The access of html5. Valid values: `off`, `on`.
 	HtmlAccess *string `pulumi:"htmlAccess"`
 	// The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
 	HtmlFileTransfer *string `pulumi:"htmlFileTransfer"`
-	// Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+	// The network communication protocol. Valid values: `BOTH`, `TCP`.
+	InternetCommunicationProtocol *string `pulumi:"internetCommunicationProtocol"`
+	// Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
 	LocalDrive *string `pulumi:"localDrive"`
 	// The name of policy group.
 	PolicyGroupName *string `pulumi:"policyGroupName"`
 	// Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
 	Recording *string `pulumi:"recording"`
+	// The recording duration. Valid values: `10`, `20`, `30`, `60`.
+	RecordingDuration *int `pulumi:"recordingDuration"`
 	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
 	RecordingEndTime *string `pulumi:"recordingEndTime"`
 	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
@@ -294,20 +334,30 @@ type EcdPolicyGroupArgs struct {
 	AuthorizeSecurityPolicyRules EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayInput
 	// Whether to enable local camera redirection. Valid values: `on`, `off`.
 	CameraRedirect pulumi.StringPtrInput
+	// The list of client type access rules used to control which clients can access cloud desktops. See `clientTypes` below.
+	ClientTypes EcdPolicyGroupClientTypeArrayInput
 	// The clipboard policy. Valid values: `off`, `read`, `readwrite`.
 	Clipboard pulumi.StringPtrInput
 	// The list of domain.
 	DomainList pulumi.StringPtrInput
+	// Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+	EndUserApplyAdminCoordinate pulumi.StringPtrInput
+	// Whether to allow end users to join user groups. Valid values: `off`, `on`.
+	EndUserGroupCoordinate pulumi.StringPtrInput
 	// The access of html5. Valid values: `off`, `on`.
 	HtmlAccess pulumi.StringPtrInput
 	// The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
 	HtmlFileTransfer pulumi.StringPtrInput
-	// Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+	// The network communication protocol. Valid values: `BOTH`, `TCP`.
+	InternetCommunicationProtocol pulumi.StringPtrInput
+	// Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
 	LocalDrive pulumi.StringPtrInput
 	// The name of policy group.
 	PolicyGroupName pulumi.StringPtrInput
 	// Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
 	Recording pulumi.StringPtrInput
+	// The recording duration. Valid values: `10`, `20`, `30`, `60`.
+	RecordingDuration pulumi.IntPtrInput
 	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
 	RecordingEndTime pulumi.StringPtrInput
 	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
@@ -434,6 +484,11 @@ func (o EcdPolicyGroupOutput) CameraRedirect() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.CameraRedirect }).(pulumi.StringOutput)
 }
 
+// The list of client type access rules used to control which clients can access cloud desktops. See `clientTypes` below.
+func (o EcdPolicyGroupOutput) ClientTypes() EcdPolicyGroupClientTypeArrayOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) EcdPolicyGroupClientTypeArrayOutput { return v.ClientTypes }).(EcdPolicyGroupClientTypeArrayOutput)
+}
+
 // The clipboard policy. Valid values: `off`, `read`, `readwrite`.
 func (o EcdPolicyGroupOutput) Clipboard() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.Clipboard }).(pulumi.StringOutput)
@@ -442,6 +497,16 @@ func (o EcdPolicyGroupOutput) Clipboard() pulumi.StringOutput {
 // The list of domain.
 func (o EcdPolicyGroupOutput) DomainList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringPtrOutput { return v.DomainList }).(pulumi.StringPtrOutput)
+}
+
+// Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+func (o EcdPolicyGroupOutput) EndUserApplyAdminCoordinate() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.EndUserApplyAdminCoordinate }).(pulumi.StringOutput)
+}
+
+// Whether to allow end users to join user groups. Valid values: `off`, `on`.
+func (o EcdPolicyGroupOutput) EndUserGroupCoordinate() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.EndUserGroupCoordinate }).(pulumi.StringOutput)
 }
 
 // The access of html5. Valid values: `off`, `on`.
@@ -454,7 +519,12 @@ func (o EcdPolicyGroupOutput) HtmlFileTransfer() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.HtmlFileTransfer }).(pulumi.StringOutput)
 }
 
-// Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+// The network communication protocol. Valid values: `BOTH`, `TCP`.
+func (o EcdPolicyGroupOutput) InternetCommunicationProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.InternetCommunicationProtocol }).(pulumi.StringOutput)
+}
+
+// Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
 func (o EcdPolicyGroupOutput) LocalDrive() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.LocalDrive }).(pulumi.StringOutput)
 }
@@ -467,6 +537,11 @@ func (o EcdPolicyGroupOutput) PolicyGroupName() pulumi.StringPtrOutput {
 // Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
 func (o EcdPolicyGroupOutput) Recording() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.Recording }).(pulumi.StringOutput)
+}
+
+// The recording duration. Valid values: `10`, `20`, `30`, `60`.
+func (o EcdPolicyGroupOutput) RecordingDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.IntOutput { return v.RecordingDuration }).(pulumi.IntOutput)
 }
 
 // The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.

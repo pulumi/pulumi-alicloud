@@ -27,7 +27,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -76,7 +76,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -125,7 +125,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -174,7 +174,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -223,7 +223,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -272,7 +272,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -321,7 +321,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -370,7 +370,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -416,7 +416,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -462,7 +462,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -508,7 +508,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -554,7 +554,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -600,7 +600,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -646,7 +646,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -692,7 +692,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -739,7 +739,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -786,7 +786,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -833,7 +833,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -880,7 +880,7 @@ public final class EventbridgeFunctions {
     /**
      * This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 

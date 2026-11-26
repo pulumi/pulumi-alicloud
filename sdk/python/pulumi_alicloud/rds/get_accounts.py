@@ -56,6 +56,9 @@ class GetAccountsResult:
     @_builtins.property
     @pulumi.getter
     def accounts(self) -> Sequence['outputs.GetAccountsAccountResult']:
+        """
+        A list of Rds Accounts. Each element contains the following attributes:
+        """
         return pulumi.get(self, "accounts")
 
     @_builtins.property
@@ -74,6 +77,9 @@ class GetAccountsResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Account IDs.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -84,6 +90,9 @@ class GetAccountsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Account names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -94,6 +103,9 @@ class GetAccountsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -122,7 +134,7 @@ def get_accounts(db_instance_id: Optional[_builtins.str] = None,
     """
     This data source provides the Rds Accounts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.120.0+.
+    > **NOTE:** Available since v1.120.0+.
 
     ## Example Usage
 
@@ -139,7 +151,7 @@ def get_accounts(db_instance_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str db_instance_id: The db instance id.
-    :param Sequence[_builtins.str] ids: A list of Account IDs.
+    :param Sequence[_builtins.str] ids: A list of rds account IDs.
     :param _builtins.str name_regex: A regex string to filter results by Account name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str status: The status of the resource. Valid values: `Available`, `Unavailable`.
@@ -171,7 +183,7 @@ def get_accounts_output(db_instance_id: pulumi.Input[Optional[_builtins.str]] = 
     """
     This data source provides the Rds Accounts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.120.0+.
+    > **NOTE:** Available since v1.120.0+.
 
     ## Example Usage
 
@@ -188,7 +200,7 @@ def get_accounts_output(db_instance_id: pulumi.Input[Optional[_builtins.str]] = 
 
 
     :param _builtins.str db_instance_id: The db instance id.
-    :param Sequence[_builtins.str] ids: A list of Account IDs.
+    :param Sequence[_builtins.str] ids: A list of rds account IDs.
     :param _builtins.str name_regex: A regex string to filter results by Account name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str status: The status of the resource. Valid values: `Available`, `Unavailable`.

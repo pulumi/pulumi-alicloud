@@ -42,6 +42,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.str] is_logical: Whether to logically delete. Default value: true. Value: (ture/false),
                
                > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
+        :param pulumi.Input[_builtins.str] product_type: The product type of the MaxCompute project.
         :param pulumi.Input[_builtins.str] project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         :param pulumi.Input['ProjectPropertiesArgs'] properties: Project base attributes See `properties` below.
         :param pulumi.Input['ProjectSecurityPropertiesArgs'] security_properties: Security-related attributes See `security_properties` below.
@@ -126,6 +127,9 @@ class ProjectArgs:
     @_builtins.property
     @pulumi.getter(name="productType")
     def product_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The product type of the MaxCompute project.
+        """
         return pulumi.get(self, "product_type")
 
     @product_type.setter
@@ -235,6 +239,7 @@ class _ProjectState:
                
                > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
         :param pulumi.Input[_builtins.str] owner: Project owner
+        :param pulumi.Input[_builtins.str] product_type: The product type of the MaxCompute project.
         :param pulumi.Input[_builtins.str] project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         :param pulumi.Input['ProjectPropertiesArgs'] properties: Project base attributes See `properties` below.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
@@ -353,6 +358,9 @@ class _ProjectState:
     @_builtins.property
     @pulumi.getter(name="productType")
     def product_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The product type of the MaxCompute project.
+        """
         return pulumi.get(self, "product_type")
 
     @product_type.setter
@@ -521,6 +529,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] is_logical: Whether to logically delete. Default value: true. Value: (ture/false),
                
                > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
+        :param pulumi.Input[_builtins.str] product_type: The product type of the MaxCompute project.
         :param pulumi.Input[_builtins.str] project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         :param pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict', 'outputs.ProjectProperties']] properties: Project base attributes See `properties` below.
         :param pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict', 'outputs.ProjectSecurityProperties']] security_properties: Security-related attributes See `security_properties` below.
@@ -663,6 +672,7 @@ class Project(pulumi.CustomResource):
                
                > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
         :param pulumi.Input[_builtins.str] owner: Project owner
+        :param pulumi.Input[_builtins.str] product_type: The product type of the MaxCompute project.
         :param pulumi.Input[_builtins.str] project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         :param pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict', 'outputs.ProjectProperties']] properties: Project base attributes See `properties` below.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
@@ -783,6 +793,9 @@ class Project(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="productType")
     def product_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The product type of the MaxCompute project.
+        """
         return pulumi.get(self, "product_type")
 
     @_builtins.property

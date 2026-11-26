@@ -13,217 +13,217 @@ namespace Pulumi.AliCloud.Dcdn.Inputs
     public sealed class ErEnvConfArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration of a presetCanaryAnhui environment. See `Staging` below.
+        /// The configuration of a presetCanaryAnhui environment. See `PresetCanaryAnhui` below.
         /// </summary>
         [Input("presetCanaryAnhui")]
         public Input<Inputs.ErEnvConfPresetCanaryAnhuiArgs>? PresetCanaryAnhui { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryBeijing environment. See `Staging` below.
+        /// The configuration of a presetCanaryBeijing environment. See `PresetCanaryBeijing` below.
         /// </summary>
         [Input("presetCanaryBeijing")]
         public Input<Inputs.ErEnvConfPresetCanaryBeijingArgs>? PresetCanaryBeijing { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryChongqing environment. See `Staging` below.
+        /// The configuration of a presetCanaryChongqing environment. See `PresetCanaryChongqing` below.
         /// </summary>
         [Input("presetCanaryChongqing")]
         public Input<Inputs.ErEnvConfPresetCanaryChongqingArgs>? PresetCanaryChongqing { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryFujian environment. See `Staging` below.
+        /// The configuration of a presetCanaryFujian environment. See `PresetCanaryFujian` below.
         /// </summary>
         [Input("presetCanaryFujian")]
         public Input<Inputs.ErEnvConfPresetCanaryFujianArgs>? PresetCanaryFujian { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryGansu environment. See `Staging` below.
+        /// The configuration of a presetCanaryGansu environment. See `PresetCanaryGansu` below.
         /// </summary>
         [Input("presetCanaryGansu")]
         public Input<Inputs.ErEnvConfPresetCanaryGansuArgs>? PresetCanaryGansu { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryGuangdong environment. See `Staging` below.
+        /// The configuration of a presetCanaryGuangdong environment. See `PresetCanaryGuangdong` below.
         /// </summary>
         [Input("presetCanaryGuangdong")]
         public Input<Inputs.ErEnvConfPresetCanaryGuangdongArgs>? PresetCanaryGuangdong { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryGuangxi environment. See `Staging` below.
+        /// The configuration of a presetCanaryGuangxi environment. See `PresetCanaryGuangxi` below.
         /// </summary>
         [Input("presetCanaryGuangxi")]
         public Input<Inputs.ErEnvConfPresetCanaryGuangxiArgs>? PresetCanaryGuangxi { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryGuizhou environment. See `Staging` below.
+        /// The configuration of a presetCanaryGuizhou environment. See `PresetCanaryGuizhou` below.
         /// </summary>
         [Input("presetCanaryGuizhou")]
         public Input<Inputs.ErEnvConfPresetCanaryGuizhouArgs>? PresetCanaryGuizhou { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryHainan environment. See `Staging` below.
+        /// The configuration of a presetCanaryHainan environment. See `PresetCanaryHainan` below.
         /// </summary>
         [Input("presetCanaryHainan")]
         public Input<Inputs.ErEnvConfPresetCanaryHainanArgs>? PresetCanaryHainan { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryHebei environment. See `Staging` below.
+        /// The configuration of a presetCanaryHebei environment. See `PresetCanaryHebei` below.
         /// </summary>
         [Input("presetCanaryHebei")]
         public Input<Inputs.ErEnvConfPresetCanaryHebeiArgs>? PresetCanaryHebei { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryHeilongjiang environment. See `Staging` below.
+        /// The configuration of a presetCanaryHeilongjiang environment. See `PresetCanaryHeilongjiang` below.
         /// </summary>
         [Input("presetCanaryHeilongjiang")]
         public Input<Inputs.ErEnvConfPresetCanaryHeilongjiangArgs>? PresetCanaryHeilongjiang { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryHenan environment. See `Staging` below.
+        /// The configuration of a presetCanaryHenan environment. See `PresetCanaryHenan` below.
         /// </summary>
         [Input("presetCanaryHenan")]
         public Input<Inputs.ErEnvConfPresetCanaryHenanArgs>? PresetCanaryHenan { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryHongKong environment. See `Staging` below.
+        /// The configuration of a presetCanaryHongKong environment. See `PresetCanaryHongKong` below.
         /// </summary>
         [Input("presetCanaryHongKong")]
         public Input<Inputs.ErEnvConfPresetCanaryHongKongArgs>? PresetCanaryHongKong { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryHubei environment. See `Staging` below.
+        /// The configuration of a presetCanaryHubei environment. See `PresetCanaryHubei` below.
         /// </summary>
         [Input("presetCanaryHubei")]
         public Input<Inputs.ErEnvConfPresetCanaryHubeiArgs>? PresetCanaryHubei { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryHunan environment. See `Staging` below.
+        /// The configuration of a presetCanaryHunan environment. See `PresetCanaryHunan` below.
         /// </summary>
         [Input("presetCanaryHunan")]
         public Input<Inputs.ErEnvConfPresetCanaryHunanArgs>? PresetCanaryHunan { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryJiangsu environment. See `Staging` below.
+        /// The configuration of a presetCanaryJiangsu environment. See `PresetCanaryJiangsu` below.
         /// </summary>
         [Input("presetCanaryJiangsu")]
         public Input<Inputs.ErEnvConfPresetCanaryJiangsuArgs>? PresetCanaryJiangsu { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryJiangxi environment. See `Staging` below.
+        /// The configuration of a presetCanaryJiangxi environment. See `PresetCanaryJiangxi` below.
         /// </summary>
         [Input("presetCanaryJiangxi")]
         public Input<Inputs.ErEnvConfPresetCanaryJiangxiArgs>? PresetCanaryJiangxi { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryJilin environment. See `Staging` below.
+        /// The configuration of a presetCanaryJilin environment. See `PresetCanaryJilin` below.
         /// </summary>
         [Input("presetCanaryJilin")]
         public Input<Inputs.ErEnvConfPresetCanaryJilinArgs>? PresetCanaryJilin { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryLiaoning environment. See `Staging` below.
+        /// The configuration of a presetCanaryLiaoning environment. See `PresetCanaryLiaoning` below.
         /// </summary>
         [Input("presetCanaryLiaoning")]
         public Input<Inputs.ErEnvConfPresetCanaryLiaoningArgs>? PresetCanaryLiaoning { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryMacau environment. See `Staging` below.
+        /// The configuration of a presetCanaryMacau environment. See `PresetCanaryMacau` below.
         /// </summary>
         [Input("presetCanaryMacau")]
         public Input<Inputs.ErEnvConfPresetCanaryMacauArgs>? PresetCanaryMacau { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryNeimenggu environment. See `Staging` below.
+        /// The configuration of a presetCanaryNeimenggu environment. See `PresetCanaryNeimenggu` below.
         /// </summary>
         [Input("presetCanaryNeimenggu")]
         public Input<Inputs.ErEnvConfPresetCanaryNeimengguArgs>? PresetCanaryNeimenggu { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryNingxia environment. See `Staging` below.
+        /// The configuration of a presetCanaryNingxia environment. See `PresetCanaryNingxia` below.
         /// </summary>
         [Input("presetCanaryNingxia")]
         public Input<Inputs.ErEnvConfPresetCanaryNingxiaArgs>? PresetCanaryNingxia { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryOverseas environment. See `Staging` below.
+        /// The configuration of a presetCanaryOverseas environment. See `PresetCanaryOverseas` below.
         /// </summary>
         [Input("presetCanaryOverseas")]
         public Input<Inputs.ErEnvConfPresetCanaryOverseasArgs>? PresetCanaryOverseas { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryQinghai environment. See `Staging` below.
+        /// The configuration of a presetCanaryQinghai environment. See `PresetCanaryQinghai` below.
         /// </summary>
         [Input("presetCanaryQinghai")]
         public Input<Inputs.ErEnvConfPresetCanaryQinghaiArgs>? PresetCanaryQinghai { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryShaanxi environment. See `Staging` below.
+        /// The configuration of a presetCanaryShaanxi environment. See `PresetCanaryShaanxi` below.
         /// </summary>
         [Input("presetCanaryShaanxi")]
         public Input<Inputs.ErEnvConfPresetCanaryShaanxiArgs>? PresetCanaryShaanxi { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryShandong environment. See `Staging` below.
+        /// The configuration of a presetCanaryShandong environment. See `PresetCanaryShandong` below.
         /// </summary>
         [Input("presetCanaryShandong")]
         public Input<Inputs.ErEnvConfPresetCanaryShandongArgs>? PresetCanaryShandong { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryShanghai environment. See `Staging` below.
+        /// The configuration of a presetCanaryShanghai environment. See `PresetCanaryShanghai` below.
         /// </summary>
         [Input("presetCanaryShanghai")]
         public Input<Inputs.ErEnvConfPresetCanaryShanghaiArgs>? PresetCanaryShanghai { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryShanxi environment. See `Staging` below.
+        /// The configuration of a presetCanaryShanxi environment. See `PresetCanaryShanxi` below.
         /// </summary>
         [Input("presetCanaryShanxi")]
         public Input<Inputs.ErEnvConfPresetCanaryShanxiArgs>? PresetCanaryShanxi { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanarySichuan environment. See `Staging` below.
+        /// The configuration of a presetCanarySichuan environment. See `PresetCanarySichuan` below.
         /// </summary>
         [Input("presetCanarySichuan")]
         public Input<Inputs.ErEnvConfPresetCanarySichuanArgs>? PresetCanarySichuan { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryTaiwan environment. See `Staging` below.
+        /// The configuration of a presetCanaryTaiwan environment. See `PresetCanaryTaiwan` below.
         /// </summary>
         [Input("presetCanaryTaiwan")]
         public Input<Inputs.ErEnvConfPresetCanaryTaiwanArgs>? PresetCanaryTaiwan { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryTianjin environment. See `Staging` below.
+        /// The configuration of a presetCanaryTianjin environment. See `PresetCanaryTianjin` below.
         /// </summary>
         [Input("presetCanaryTianjin")]
         public Input<Inputs.ErEnvConfPresetCanaryTianjinArgs>? PresetCanaryTianjin { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryXinjiang environment. See `Staging` below.
+        /// The configuration of a presetCanaryXinjiang environment. See `PresetCanaryXinjiang` below.
         /// </summary>
         [Input("presetCanaryXinjiang")]
         public Input<Inputs.ErEnvConfPresetCanaryXinjiangArgs>? PresetCanaryXinjiang { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryXizang environment. See `Staging` below.
+        /// The configuration of a presetCanaryXizang environment. See `PresetCanaryXizang` below.
         /// </summary>
         [Input("presetCanaryXizang")]
         public Input<Inputs.ErEnvConfPresetCanaryXizangArgs>? PresetCanaryXizang { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryYunnan environment. See `Staging` below.
+        /// The configuration of a presetCanaryYunnan environment. See `PresetCanaryYunnan` below.
         /// </summary>
         [Input("presetCanaryYunnan")]
         public Input<Inputs.ErEnvConfPresetCanaryYunnanArgs>? PresetCanaryYunnan { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryZhejiang environment. See `Staging` below.
+        /// The configuration of a presetCanaryZhejiang environment. See `PresetCanaryZhejiang` below.
         /// </summary>
         [Input("presetCanaryZhejiang")]
         public Input<Inputs.ErEnvConfPresetCanaryZhejiangArgs>? PresetCanaryZhejiang { get; set; }
 
         /// <summary>
-        /// The configuration of a production environment. See `Staging` below.
+        /// The configuration of a production environment. See `Production` below.
         /// </summary>
         [Input("production")]
         public Input<Inputs.ErEnvConfProductionArgs>? Production { get; set; }

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.140.0+.
+// > **NOTE:** Available since v1.140.0.
 //
 // > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 //
@@ -83,13 +83,16 @@ type GetAccessConfigurationsArgs struct {
 
 // A collection of values returned by getAccessConfigurations.
 type GetAccessConfigurationsResult struct {
+	// A list of Cloud Sso Access Configurations. Each element contains the following attributes:
 	Configurations []GetAccessConfigurationsConfiguration `pulumi:"configurations"`
-	DirectoryId    string                                 `pulumi:"directoryId"`
-	EnableDetails  *bool                                  `pulumi:"enableDetails"`
+	// The ID of the Directory.
+	DirectoryId   string `pulumi:"directoryId"`
+	EnableDetails *bool  `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Access Configuration names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -132,10 +135,12 @@ func (o GetAccessConfigurationsResultOutput) ToGetAccessConfigurationsResultOutp
 	return o
 }
 
+// A list of Cloud Sso Access Configurations. Each element contains the following attributes:
 func (o GetAccessConfigurationsResultOutput) Configurations() GetAccessConfigurationsConfigurationArrayOutput {
 	return o.ApplyT(func(v GetAccessConfigurationsResult) []GetAccessConfigurationsConfiguration { return v.Configurations }).(GetAccessConfigurationsConfigurationArrayOutput)
 }
 
+// The ID of the Directory.
 func (o GetAccessConfigurationsResultOutput) DirectoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessConfigurationsResult) string { return v.DirectoryId }).(pulumi.StringOutput)
 }
@@ -157,6 +162,7 @@ func (o GetAccessConfigurationsResultOutput) NameRegex() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetAccessConfigurationsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Access Configuration names.
 func (o GetAccessConfigurationsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAccessConfigurationsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

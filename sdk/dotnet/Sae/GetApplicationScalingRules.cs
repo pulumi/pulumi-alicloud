@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.159.0+.
+        /// &gt; **NOTE:** Available since v1.159.0.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.159.0+.
+        /// &gt; **NOTE:** Available since v1.159.0.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.159.0+.
+        /// &gt; **NOTE:** Available since v1.159.0.
         /// 
         /// ## Example Usage
         /// 
@@ -192,6 +192,9 @@ namespace Pulumi.AliCloud.Sae
     [OutputType]
     public sealed class GetApplicationScalingRulesResult
     {
+        /// <summary>
+        /// The ID of the Application.
+        /// </summary>
         public readonly string AppId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -199,6 +202,9 @@ namespace Pulumi.AliCloud.Sae
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Sae Application Scaling Rules. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationScalingRulesRuleResult> Rules;
 
         [OutputConstructor]

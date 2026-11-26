@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testAccServiceCatalogProvisionedProduct"
+//			name := "tf-accServiceCatalogProvisionedProduct"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -91,7 +91,7 @@ type ProvisionedProduct struct {
 	OwnerPrincipalId pulumi.StringOutput `pulumi:"ownerPrincipalId"`
 	// The RAM entity type of the owner
 	OwnerPrincipalType pulumi.StringOutput `pulumi:"ownerPrincipalType"`
-	// Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+	// Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
 	Parameters ProvisionedProductParameterArrayOutput `pulumi:"parameters"`
 	// Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
 	PortfolioId pulumi.StringPtrOutput `pulumi:"portfolioId"`
@@ -179,7 +179,7 @@ type provisionedProductState struct {
 	OwnerPrincipalId *string `pulumi:"ownerPrincipalId"`
 	// The RAM entity type of the owner
 	OwnerPrincipalType *string `pulumi:"ownerPrincipalType"`
-	// Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+	// Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
 	Parameters []ProvisionedProductParameter `pulumi:"parameters"`
 	// Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
 	PortfolioId *string `pulumi:"portfolioId"`
@@ -226,7 +226,7 @@ type ProvisionedProductState struct {
 	OwnerPrincipalId pulumi.StringPtrInput
 	// The RAM entity type of the owner
 	OwnerPrincipalType pulumi.StringPtrInput
-	// Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+	// Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
 	Parameters ProvisionedProductParameterArrayInput
 	// Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
 	PortfolioId pulumi.StringPtrInput
@@ -269,7 +269,7 @@ func ProvisionedProductExists(ctx *pulumi.Context,
 }
 
 type provisionedProductArgs struct {
-	// Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+	// Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
 	Parameters []ProvisionedProductParameter `pulumi:"parameters"`
 	// Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
 	PortfolioId *string `pulumi:"portfolioId"`
@@ -289,7 +289,7 @@ type provisionedProductArgs struct {
 
 // The set of arguments for constructing a ProvisionedProduct resource.
 type ProvisionedProductArgs struct {
-	// Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+	// Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
 	Parameters ProvisionedProductParameterArrayInput
 	// Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
 	PortfolioId pulumi.StringPtrInput
@@ -429,7 +429,7 @@ func (o ProvisionedProductOutput) OwnerPrincipalType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProvisionedProduct) pulumi.StringOutput { return v.OwnerPrincipalType }).(pulumi.StringOutput)
 }
 
-// Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+// Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
 func (o ProvisionedProductOutput) Parameters() ProvisionedProductParameterArrayOutput {
 	return o.ApplyT(func(v *ProvisionedProduct) ProvisionedProductParameterArrayOutput { return v.Parameters }).(ProvisionedProductParameterArrayOutput)
 }

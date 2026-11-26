@@ -55,7 +55,7 @@ public final class TemplateApplicationsQuotaApplicationDetail {
      */
     private @Nullable Integer noticeType;
     /**
-     * @return Quota calculation period.
+     * @return Quota calculation period. See `period` below.
      * 
      */
     private @Nullable TemplateApplicationsQuotaApplicationDetailPeriod period;
@@ -81,6 +81,7 @@ public final class TemplateApplicationsQuotaApplicationDetail {
     private @Nullable String quotaUnit;
     /**
      * @return Reason for quota application.
+     * 
      * &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      * 
      */
@@ -150,7 +151,7 @@ public final class TemplateApplicationsQuotaApplicationDetail {
         return Optional.ofNullable(this.noticeType);
     }
     /**
-     * @return Quota calculation period.
+     * @return Quota calculation period. See `period` below.
      * 
      */
     public Optional<TemplateApplicationsQuotaApplicationDetailPeriod> period() {
@@ -186,6 +187,7 @@ public final class TemplateApplicationsQuotaApplicationDetail {
     }
     /**
      * @return Reason for quota application.
+     * 
      * &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      * 
      */

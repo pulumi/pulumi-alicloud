@@ -22,12 +22,32 @@ public final class GetSubscriptionJobsResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Subscription Job IDs.
+     * 
+     */
     private List<String> ids;
+    /**
+     * @return A list of Dts Subscription Jobs. Each element contains the following attributes:
+     * 
+     */
     private List<GetSubscriptionJobsJob> jobs;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Subscription Job names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
 
     private GetSubscriptionJobsResult() {}
@@ -41,24 +61,44 @@ public final class GetSubscriptionJobsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Subscription Job IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Dts Subscription Jobs. Each element contains the following attributes:
+     * 
+     */
     public List<GetSubscriptionJobsJob> jobs() {
         return this.jobs;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Subscription Job names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

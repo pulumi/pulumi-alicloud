@@ -11,9 +11,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+// This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://www.alibabacloud.com/help/doc-detail/260941.html)
 //
-// > **NOTE:** Available in 1.126.0+
+// > **NOTE:** Available since v1.126.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cen.GetTransitRouterRouteEntries(ctx, &cen.GetTransitRouterRouteEntriesArgs{
+//				TransitRouterRouteTableId: "vtb-*********",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("transitRouterRouteEntryDestinationCidrBlock", pulumi.Any(transitRouterRouteEntries[0].TransitRouterRouteEntryDestinationCidrBlock))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTransitRouterRouteEntries(ctx *pulumi.Context, args *GetTransitRouterRouteEntriesArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterRouteEntriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouterRouteEntriesResult
@@ -27,11 +54,13 @@ func GetTransitRouterRouteEntries(ctx *pulumi.Context, args *GetTransitRouterRou
 // A collection of arguments for invoking getTransitRouterRouteEntries.
 type GetTransitRouterRouteEntriesArgs struct {
 	// A list of CEN Transit Router Route Entry IDs.
-	Ids       []string `pulumi:"ids"`
-	NameRegex *string  `pulumi:"nameRegex"`
+	Ids []string `pulumi:"ids"`
+	// A regex string to filter results by transit router route entry name.
+	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	Status     *string `pulumi:"status"`
+	// The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+	Status *string `pulumi:"status"`
 	// A list of ID of the cen transit router route entry.
 	TransitRouterRouteEntryIds []string `pulumi:"transitRouterRouteEntryIds"`
 	// A list of name of the cen transit router route entry.
@@ -52,14 +81,14 @@ type GetTransitRouterRouteEntriesResult struct {
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of CEN Transit Router Route Entry Names.
-	Names                        []string `pulumi:"names"`
-	OutputFile                   *string  `pulumi:"outputFile"`
-	Status                       *string  `pulumi:"status"`
-	TransitRouterRouteEntryIds   []string `pulumi:"transitRouterRouteEntryIds"`
-	TransitRouterRouteEntryNames []string `pulumi:"transitRouterRouteEntryNames"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// The status of the route entry in CEN.
-	TransitRouterRouteEntryStatus *string `pulumi:"transitRouterRouteEntryStatus"`
-	TransitRouterRouteTableId     string  `pulumi:"transitRouterRouteTableId"`
+	Status                        *string  `pulumi:"status"`
+	TransitRouterRouteEntryIds    []string `pulumi:"transitRouterRouteEntryIds"`
+	TransitRouterRouteEntryNames  []string `pulumi:"transitRouterRouteEntryNames"`
+	TransitRouterRouteEntryStatus *string  `pulumi:"transitRouterRouteEntryStatus"`
+	TransitRouterRouteTableId     string   `pulumi:"transitRouterRouteTableId"`
 }
 
 func GetTransitRouterRouteEntriesOutput(ctx *pulumi.Context, args GetTransitRouterRouteEntriesOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterRouteEntriesResultOutput {
@@ -70,11 +99,13 @@ func GetTransitRouterRouteEntriesOutput(ctx *pulumi.Context, args GetTransitRout
 // A collection of arguments for invoking getTransitRouterRouteEntries.
 type GetTransitRouterRouteEntriesOutputArgs struct {
 	// A list of CEN Transit Router Route Entry IDs.
-	Ids       pulumi.StringArrayInput `pulumi:"ids"`
-	NameRegex pulumi.StringPtrInput   `pulumi:"nameRegex"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by transit router route entry name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	Status     pulumi.StringPtrInput `pulumi:"status"`
+	// The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A list of ID of the cen transit router route entry.
 	TransitRouterRouteEntryIds pulumi.StringArrayInput `pulumi:"transitRouterRouteEntryIds"`
 	// A list of name of the cen transit router route entry.
@@ -132,6 +163,7 @@ func (o GetTransitRouterRouteEntriesResultOutput) OutputFile() pulumi.StringPtrO
 	return o.ApplyT(func(v GetTransitRouterRouteEntriesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the route entry in CEN.
 func (o GetTransitRouterRouteEntriesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteEntriesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -144,7 +176,6 @@ func (o GetTransitRouterRouteEntriesResultOutput) TransitRouterRouteEntryNames()
 	return o.ApplyT(func(v GetTransitRouterRouteEntriesResult) []string { return v.TransitRouterRouteEntryNames }).(pulumi.StringArrayOutput)
 }
 
-// The status of the route entry in CEN.
 func (o GetTransitRouterRouteEntriesResultOutput) TransitRouterRouteEntryStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteEntriesResult) *string { return v.TransitRouterRouteEntryStatus }).(pulumi.StringPtrOutput)
 }

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Simple Application Server Firewall Rules of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.143.0+.
+// > **NOTE:** Available since v1.143.0.
 //
 // ## Example Usage
 //
@@ -70,11 +70,13 @@ type GetServerFirewallRulesArgs struct {
 // A collection of values returned by getServerFirewallRules.
 type GetServerFirewallRulesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                       `pulumi:"id"`
-	Ids        []string                     `pulumi:"ids"`
-	InstanceId string                       `pulumi:"instanceId"`
-	OutputFile *string                      `pulumi:"outputFile"`
-	Rules      []GetServerFirewallRulesRule `pulumi:"rules"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// Alibaba Cloud simple application server instance ID.
+	InstanceId string  `pulumi:"instanceId"`
+	OutputFile *string `pulumi:"outputFile"`
+	// A list of Simple Application Server Firewall Rules. Each element contains the following attributes:
+	Rules []GetServerFirewallRulesRule `pulumi:"rules"`
 }
 
 func GetServerFirewallRulesOutput(ctx *pulumi.Context, args GetServerFirewallRulesOutputArgs, opts ...pulumi.InvokeOption) GetServerFirewallRulesResultOutput {
@@ -120,6 +122,7 @@ func (o GetServerFirewallRulesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerFirewallRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// Alibaba Cloud simple application server instance ID.
 func (o GetServerFirewallRulesResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerFirewallRulesResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -128,6 +131,7 @@ func (o GetServerFirewallRulesResultOutput) OutputFile() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetServerFirewallRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Simple Application Server Firewall Rules. Each element contains the following attributes:
 func (o GetServerFirewallRulesResultOutput) Rules() GetServerFirewallRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetServerFirewallRulesResult) []GetServerFirewallRulesRule { return v.Rules }).(GetServerFirewallRulesRuleArrayOutput)
 }

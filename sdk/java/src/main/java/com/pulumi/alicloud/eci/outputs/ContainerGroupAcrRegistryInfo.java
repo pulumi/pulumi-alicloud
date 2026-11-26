@@ -13,6 +13,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerGroupAcrRegistryInfo {
     /**
+     * @return The ARN of a RAM role in the account that owns the container group. ECI assumes this role to obtain the image pull credential. On its own, it restricts which role ECI uses to pull images from an ACR Personal Edition instance, or from an ACR Enterprise Edition instance through its default domain, in the same account. To pull from an ACR Enterprise Edition instance in another account, set it together with `arnUser`. The role must trust `eci.aliyuncs.com` and be granted `AliyunSTSAssumeRoleAccess`. The value can be built with the provider-defined function `arnBuild`, for example `provider::alicloud::arn_build(&#34;ram&#34;, &#34;&#34;, &#34;&lt;account-id&gt;&#34;, &#34;role/&lt;role-name&gt;&#34;)`.
+     * 
+     */
+    private @Nullable String arnService;
+    /**
+     * @return The ARN of a RAM role in the account that owns the ACR Enterprise Edition instance, used for cross-account image pulling. It must be set together with `arnService`. The role must trust the role specified by `arnService` and be granted image pull permissions on the instance, for example `cr:GetAuthorizationToken` and `cr:PullRepository` (the official example grants `AliyunContainerRegistryFullAccess`). When the instance is accessed through a custom domain, `instanceId` is required.
+     * 
+     * &gt; **NOTE:** `arnService` and `arnUser` are create-time inputs. They are retained in Terraform state after creation, but cannot be retrieved from an existing container group during import. Configuring them after import requires replacement of the container group. Review the plan before applying configuration to an imported group.
+     * 
+     */
+    private @Nullable String arnUser;
+    /**
      * @return The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
      * 
      */
@@ -34,6 +46,22 @@ public final class ContainerGroupAcrRegistryInfo {
     private @Nullable String regionId;
 
     private ContainerGroupAcrRegistryInfo() {}
+    /**
+     * @return The ARN of a RAM role in the account that owns the container group. ECI assumes this role to obtain the image pull credential. On its own, it restricts which role ECI uses to pull images from an ACR Personal Edition instance, or from an ACR Enterprise Edition instance through its default domain, in the same account. To pull from an ACR Enterprise Edition instance in another account, set it together with `arnUser`. The role must trust `eci.aliyuncs.com` and be granted `AliyunSTSAssumeRoleAccess`. The value can be built with the provider-defined function `arnBuild`, for example `provider::alicloud::arn_build(&#34;ram&#34;, &#34;&#34;, &#34;&lt;account-id&gt;&#34;, &#34;role/&lt;role-name&gt;&#34;)`.
+     * 
+     */
+    public Optional<String> arnService() {
+        return Optional.ofNullable(this.arnService);
+    }
+    /**
+     * @return The ARN of a RAM role in the account that owns the ACR Enterprise Edition instance, used for cross-account image pulling. It must be set together with `arnService`. The role must trust the role specified by `arnService` and be granted image pull permissions on the instance, for example `cr:GetAuthorizationToken` and `cr:PullRepository` (the official example grants `AliyunContainerRegistryFullAccess`). When the instance is accessed through a custom domain, `instanceId` is required.
+     * 
+     * &gt; **NOTE:** `arnService` and `arnUser` are create-time inputs. They are retained in Terraform state after creation, but cannot be retrieved from an existing container group during import. Configuring them after import requires replacement of the container group. Review the plan before applying configuration to an imported group.
+     * 
+     */
+    public Optional<String> arnUser() {
+        return Optional.ofNullable(this.arnUser);
+    }
     /**
      * @return The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
      * 
@@ -72,6 +100,8 @@ public final class ContainerGroupAcrRegistryInfo {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String arnService;
+        private @Nullable String arnUser;
         private @Nullable List<String> domains;
         private @Nullable String instanceId;
         private @Nullable String instanceName;
@@ -79,12 +109,26 @@ public final class ContainerGroupAcrRegistryInfo {
         public Builder() {}
         public Builder(ContainerGroupAcrRegistryInfo defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.arnService = defaults.arnService;
+    	      this.arnUser = defaults.arnUser;
     	      this.domains = defaults.domains;
     	      this.instanceId = defaults.instanceId;
     	      this.instanceName = defaults.instanceName;
     	      this.regionId = defaults.regionId;
         }
 
+        @CustomType.Setter
+        public Builder arnService(@Nullable String arnService) {
+
+            this.arnService = arnService;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder arnUser(@Nullable String arnUser) {
+
+            this.arnUser = arnUser;
+            return this;
+        }
         @CustomType.Setter
         public Builder domains(@Nullable List<String> domains) {
 
@@ -114,6 +158,8 @@ public final class ContainerGroupAcrRegistryInfo {
         }
         public ContainerGroupAcrRegistryInfo build() {
             final var _resultValue = new ContainerGroupAcrRegistryInfo();
+            _resultValue.arnService = arnService;
+            _resultValue.arnUser = arnUser;
             _resultValue.domains = domains;
             _resultValue.instanceId = instanceId;
             _resultValue.instanceName = instanceName;

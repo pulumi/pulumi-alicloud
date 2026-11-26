@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Inputs
         public Input<string>? RoleSessionName { get; set; }
 
         /// <summary>
-        /// The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+        /// The validity period of the STS token. Unit: seconds. Valid value range: 900 to 3600. Default value: 3600.
         /// </summary>
         [Input("sessionExpiration")]
         public Input<int>? SessionExpiration { get; set; }

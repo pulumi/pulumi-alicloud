@@ -20,10 +20,22 @@ public final class GetKeyPairsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The Private Key of the Fingerprint.
+     * 
+     */
     private @Nullable String keyPairFingerPrint;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Key Pair names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Ecp Key Pairs. Each element contains the following attributes:
+     * 
+     */
     private List<GetKeyPairsPair> pairs;
 
     private GetKeyPairsResult() {}
@@ -37,18 +49,30 @@ public final class GetKeyPairsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The Private Key of the Fingerprint.
+     * 
+     */
     public Optional<String> keyPairFingerPrint() {
         return Optional.ofNullable(this.keyPairFingerPrint);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Key Pair names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Ecp Key Pairs. Each element contains the following attributes:
+     * 
+     */
     public List<GetKeyPairsPair> pairs() {
         return this.pairs;
     }

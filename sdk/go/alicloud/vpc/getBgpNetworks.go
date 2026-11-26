@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.153.0+.
+// > **NOTE:** Available since v1.153.0.
 //
 // ## Example Usage
 //
@@ -84,12 +84,15 @@ type GetBgpNetworksArgs struct {
 // A collection of values returned by getBgpNetworks.
 type GetBgpNetworksResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                  `pulumi:"id"`
-	Ids        []string                `pulumi:"ids"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Vpc Bgp Networks. Each element contains the following attributes:
 	Networks   []GetBgpNetworksNetwork `pulumi:"networks"`
 	OutputFile *string                 `pulumi:"outputFile"`
-	RouterId   *string                 `pulumi:"routerId"`
-	Status     *string                 `pulumi:"status"`
+	// The ID of the vRouter.
+	RouterId *string `pulumi:"routerId"`
+	// The state of the advertised BGP network.
+	Status *string `pulumi:"status"`
 }
 
 func GetBgpNetworksOutput(ctx *pulumi.Context, args GetBgpNetworksOutputArgs, opts ...pulumi.InvokeOption) GetBgpNetworksResultOutput {
@@ -137,6 +140,7 @@ func (o GetBgpNetworksResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBgpNetworksResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Vpc Bgp Networks. Each element contains the following attributes:
 func (o GetBgpNetworksResultOutput) Networks() GetBgpNetworksNetworkArrayOutput {
 	return o.ApplyT(func(v GetBgpNetworksResult) []GetBgpNetworksNetwork { return v.Networks }).(GetBgpNetworksNetworkArrayOutput)
 }
@@ -145,10 +149,12 @@ func (o GetBgpNetworksResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBgpNetworksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the vRouter.
 func (o GetBgpNetworksResultOutput) RouterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBgpNetworksResult) *string { return v.RouterId }).(pulumi.StringPtrOutput)
 }
 
+// The state of the advertised BGP network.
 func (o GetBgpNetworksResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBgpNetworksResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

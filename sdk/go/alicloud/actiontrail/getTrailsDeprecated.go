@@ -13,7 +13,9 @@ import (
 
 // > **DEPRECATED:**  This datasource has been renamed to actiontrail.getTrails from version 1.95.0.
 //
-// This data source provides a list of action trail of the current Alibaba Cloud user.
+// This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+//
+// > **NOTE:** Available since v1.95.0.
 //
 // ## Example Usage
 //
@@ -29,13 +31,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			trails, err := actiontrail.GetTrailsDeprecated(ctx, &actiontrail.GetTrailsDeprecatedArgs{
+//			_default, err := actiontrail.GetTrails(ctx, &actiontrail.GetTrailsArgs{
 //				NameRegex: pulumi.StringRef("tf-testacc-actiontrail"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstTrailName", trails.Actiontrails[0].Name)
+//			ctx.Export("trailName", _default.Trails[0].Id)
 //			return nil
 //		})
 //	}
@@ -55,33 +57,40 @@ func GetTrailsDeprecated(ctx *pulumi.Context, args *GetTrailsDeprecatedArgs, opt
 
 // A collection of arguments for invoking getTrailsDeprecated.
 type GetTrailsDeprecatedArgs struct {
-	Ids                      []string `pulumi:"ids"`
-	IncludeOrganizationTrail *bool    `pulumi:"includeOrganizationTrail"`
-	IncludeShadowTrails      *bool    `pulumi:"includeShadowTrails"`
-	// A regex string to filter results action trail name.
+	// A list of ActionTrail Trail IDs. It is the same as trail name.
+	Ids []string `pulumi:"ids"`
+	// Whether to show organization tracking. Default to `false`.
+	IncludeOrganizationTrail *bool `pulumi:"includeOrganizationTrail"`
+	// Whether to show shadow tracking. Default to `false`.
+	IncludeShadowTrails *bool `pulumi:"includeShadowTrails"`
+	// A regex string to filter results by trail name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	Status     *string `pulumi:"status"`
+	// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getTrailsDeprecated.
 type GetTrailsDeprecatedResult struct {
-	// A list of actiontrails. Each element contains the following attributes:
+	// (Deprecated since v1.95.0) Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead. Each element contains the following attributes:
 	//
 	// Deprecated: Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.
 	Actiontrails []GetTrailsDeprecatedActiontrail `pulumi:"actiontrails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                       string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of ActionTrail Trail ids. It is the same as trail name.
 	Ids                      []string `pulumi:"ids"`
 	IncludeOrganizationTrail *bool    `pulumi:"includeOrganizationTrail"`
 	IncludeShadowTrails      *bool    `pulumi:"includeShadowTrails"`
 	NameRegex                *string  `pulumi:"nameRegex"`
 	// A list of trail names.
-	Names      []string                   `pulumi:"names"`
-	OutputFile *string                    `pulumi:"outputFile"`
-	Status     *string                    `pulumi:"status"`
-	Trails     []GetTrailsDeprecatedTrail `pulumi:"trails"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The status of the ActionTrail Trail.
+	Status *string `pulumi:"status"`
+	// A list of ActionTrail Trails. Each element contains the following attributes:
+	Trails []GetTrailsDeprecatedTrail `pulumi:"trails"`
 }
 
 func GetTrailsDeprecatedOutput(ctx *pulumi.Context, args GetTrailsDeprecatedOutputArgs, opts ...pulumi.InvokeOption) GetTrailsDeprecatedResultOutput {
@@ -91,14 +100,18 @@ func GetTrailsDeprecatedOutput(ctx *pulumi.Context, args GetTrailsDeprecatedOutp
 
 // A collection of arguments for invoking getTrailsDeprecated.
 type GetTrailsDeprecatedOutputArgs struct {
-	Ids                      pulumi.StringArrayInput `pulumi:"ids"`
-	IncludeOrganizationTrail pulumi.BoolPtrInput     `pulumi:"includeOrganizationTrail"`
-	IncludeShadowTrails      pulumi.BoolPtrInput     `pulumi:"includeShadowTrails"`
-	// A regex string to filter results action trail name.
+	// A list of ActionTrail Trail IDs. It is the same as trail name.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Whether to show organization tracking. Default to `false`.
+	IncludeOrganizationTrail pulumi.BoolPtrInput `pulumi:"includeOrganizationTrail"`
+	// Whether to show shadow tracking. Default to `false`.
+	IncludeShadowTrails pulumi.BoolPtrInput `pulumi:"includeShadowTrails"`
+	// A regex string to filter results by trail name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	Status     pulumi.StringPtrInput `pulumi:"status"`
+	// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (GetTrailsDeprecatedOutputArgs) ElementType() reflect.Type {
@@ -120,7 +133,7 @@ func (o GetTrailsDeprecatedResultOutput) ToGetTrailsDeprecatedResultOutputWithCo
 	return o
 }
 
-// A list of actiontrails. Each element contains the following attributes:
+// (Deprecated since v1.95.0) Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead. Each element contains the following attributes:
 //
 // Deprecated: Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.
 func (o GetTrailsDeprecatedResultOutput) Actiontrails() GetTrailsDeprecatedActiontrailArrayOutput {
@@ -132,6 +145,7 @@ func (o GetTrailsDeprecatedResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of ActionTrail Trail ids. It is the same as trail name.
 func (o GetTrailsDeprecatedResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -157,10 +171,12 @@ func (o GetTrailsDeprecatedResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the ActionTrail Trail.
 func (o GetTrailsDeprecatedResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A list of ActionTrail Trails. Each element contains the following attributes:
 func (o GetTrailsDeprecatedResultOutput) Trails() GetTrailsDeprecatedTrailArrayOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedResult) []GetTrailsDeprecatedTrail { return v.Trails }).(GetTrailsDeprecatedTrailArrayOutput)
 }

@@ -56,6 +56,9 @@ class GetOssBackupPlansResult:
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> Optional[_builtins.str]:
+        """
+        The name of OSS bucket.
+        """
         return pulumi.get(self, "bucket")
 
     @_builtins.property
@@ -79,6 +82,9 @@ class GetOssBackupPlansResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of OssBackupPlan names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -89,11 +95,17 @@ class GetOssBackupPlansResult:
     @_builtins.property
     @pulumi.getter
     def plans(self) -> Sequence['outputs.GetOssBackupPlansPlanResult']:
+        """
+        A list of Hbr OssBackupPlans. Each element contains the following attributes:
+        """
         return pulumi.get(self, "plans")
 
     @_builtins.property
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of backup vault.
+        """
         return pulumi.get(self, "vault_id")
 
 
@@ -122,7 +134,7 @@ def get_oss_backup_plans(bucket: Optional[_builtins.str] = None,
     """
     This data source provides the Hbr OssBackupPlans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.131.0+.
+    > **NOTE:** Available since v1.131.0.
 
     ## Example Usage
 
@@ -170,7 +182,7 @@ def get_oss_backup_plans_output(bucket: pulumi.Input[Optional[Optional[_builtins
     """
     This data source provides the Hbr OssBackupPlans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.131.0+.
+    > **NOTE:** Available since v1.131.0.
 
     ## Example Usage
 

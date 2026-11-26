@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Express Connect Virtual Physical Connection available to the user.
  *
- * > **NOTE:** Available in 1.196.0+
+ * > **NOTE:** Available since v1.196.0
  *
  * ## Example Usage
  *
@@ -59,6 +59,9 @@ export interface GetVirtualPhysicalConnectionsArgs {
      * A list of Virtual Physical Connection IDs.
      */
     ids?: string[];
+    /**
+     * Whether the virtual physical connection is confirmed.
+     */
     isConfirmed?: boolean;
     /**
      * A regex string to filter results by Group Metric Rule name.
@@ -138,7 +141,7 @@ export interface GetVirtualPhysicalConnectionsResult {
 /**
  * This data source provides Express Connect Virtual Physical Connection available to the user.
  *
- * > **NOTE:** Available in 1.196.0+
+ * > **NOTE:** Available since v1.196.0
  *
  * ## Example Usage
  *
@@ -188,6 +191,9 @@ export interface GetVirtualPhysicalConnectionsOutputArgs {
      * A list of Virtual Physical Connection IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether the virtual physical connection is confirmed.
+     */
     isConfirmed?: pulumi.Input<boolean | undefined>;
     /**
      * A regex string to filter results by Group Metric Rule name.

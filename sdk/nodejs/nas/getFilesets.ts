@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Nas Filesets of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.153.0+.
+ * > **NOTE:** Available since v1.153.0+.
  *
  * ## Example Usage
  *
@@ -65,7 +65,13 @@ export interface GetFilesetsArgs {
  * A collection of values returned by getFilesets.
  */
 export interface GetFilesetsResult {
+    /**
+     * The ID of the file system.
+     */
     readonly fileSystemId: string;
+    /**
+     * A list of Nas Filesets. Each element contains the following attributes:
+     */
     readonly filesets: outputs.nas.GetFilesetsFileset[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -73,12 +79,15 @@ export interface GetFilesetsResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the fileset.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Nas Filesets of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.153.0+.
+ * > **NOTE:** Available since v1.153.0+.
  *
  * ## Example Usage
  *

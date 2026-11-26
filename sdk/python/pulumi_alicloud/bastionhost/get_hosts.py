@@ -84,11 +84,17 @@ class GetHostsResult:
     @_builtins.property
     @pulumi.getter(name="hostName")
     def host_name(self) -> Optional[_builtins.str]:
+        """
+        Specify the new create a host name of the supports up to 128 characters.
+        """
         return pulumi.get(self, "host_name")
 
     @_builtins.property
     @pulumi.getter
     def hosts(self) -> Sequence['outputs.GetHostsHostResult']:
+        """
+        A list of Bastionhost Hosts. Each element contains the following attributes:
+        """
         return pulumi.get(self, "hosts")
 
     @_builtins.property
@@ -107,6 +113,9 @@ class GetHostsResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        Specify the new create a host where the Bastion host ID of.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -117,11 +126,17 @@ class GetHostsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Host names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
     @pulumi.getter(name="osType")
     def os_type(self) -> Optional[_builtins.str]:
+        """
+        Specify the new create the host's operating system. Valid values: Linux Windows.
+        """
         return pulumi.get(self, "os_type")
 
     @_builtins.property
@@ -132,11 +147,17 @@ class GetHostsResult:
     @_builtins.property
     @pulumi.getter
     def source(self) -> Optional[_builtins.str]:
+        """
+        Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
+        """
         return pulumi.get(self, "source")
 
     @_builtins.property
     @pulumi.getter(name="sourceInstanceId")
     def source_instance_id(self) -> Optional[_builtins.str]:
+        """
+        Specify the newly created ECS instance ID or dedicated cluster host ID.
+        """
         return pulumi.get(self, "source_instance_id")
 
     @_builtins.property
@@ -182,7 +203,7 @@ def get_hosts(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 
@@ -261,7 +282,7 @@ def get_hosts_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bo
     """
     This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 

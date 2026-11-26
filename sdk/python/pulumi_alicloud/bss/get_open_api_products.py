@@ -110,6 +110,16 @@ def get_open_api_products(ids: Optional[Sequence[_builtins.str]] = None,
 
     > **NOTE:** Available since v1.195.0.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.bss.get_open_api_products(name_regex="内容分发网络CDN")
+    pulumi.export("alicloudBssOpenApiProductExampleId", default.products[0].product_code)
+    ```
+
 
     :param Sequence[_builtins.str] ids: A list of product IDs.
     :param _builtins.str name_regex: A regex string to filter results by Product name.
@@ -137,6 +147,16 @@ def get_open_api_products_output(ids: pulumi.Input[Optional[Optional[Sequence[_b
     This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
 
     > **NOTE:** Available since v1.195.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.bss.get_open_api_products(name_regex="内容分发网络CDN")
+    pulumi.export("alicloudBssOpenApiProductExampleId", default.products[0].product_code)
+    ```
 
 
     :param Sequence[_builtins.str] ids: A list of product IDs.

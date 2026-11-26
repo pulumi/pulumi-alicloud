@@ -227,10 +227,10 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
 
         ## Import
 
-        CEN transit router route table propagation can be imported using the id, e.g.
+        CEN transit router route table propagation can be imported using the id, which consists of transit_router_attachment_id and transit_router_route_table_id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation default tr-********:tr-attach-********
+        $ pulumi import alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation default <transit_router_attachment_id>:<transit_router_route_table_id>
         ```
 
 
@@ -313,10 +313,10 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
 
         ## Import
 
-        CEN transit router route table propagation can be imported using the id, e.g.
+        CEN transit router route table propagation can be imported using the id, which consists of transit_router_attachment_id and transit_router_route_table_id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation default tr-********:tr-attach-********
+        $ pulumi import alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation default <transit_router_attachment_id>:<transit_router_route_table_id>
         ```
 
 

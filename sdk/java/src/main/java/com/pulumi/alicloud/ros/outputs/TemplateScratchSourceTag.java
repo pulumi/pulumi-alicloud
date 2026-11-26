@@ -18,6 +18,10 @@ public final class TemplateScratchSourceTag {
      * 
      */
     private Map<String,String> resourceTags;
+    /**
+     * @return Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+     * 
+     */
     private @Nullable List<String> resourceTypeFilters;
 
     private TemplateScratchSourceTag() {}
@@ -28,6 +32,10 @@ public final class TemplateScratchSourceTag {
     public Map<String,String> resourceTags() {
         return this.resourceTags;
     }
+    /**
+     * @return Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+     * 
+     */
     public List<String> resourceTypeFilters() {
         return this.resourceTypeFilters == null ? List.of() : this.resourceTypeFilters;
     }

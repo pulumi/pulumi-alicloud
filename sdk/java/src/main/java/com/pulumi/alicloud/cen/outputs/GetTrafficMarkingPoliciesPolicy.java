@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetTrafficMarkingPoliciesPolicy {
     /**
-     * @return The description of the Traffic Marking Policy.
+     * @return The traffic marking policy description.
      * 
      */
     private String description;
@@ -32,7 +32,7 @@ public final class GetTrafficMarkingPoliciesPolicy {
      */
     private Integer priority;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
      * 
      */
     private String status;
@@ -54,7 +54,7 @@ public final class GetTrafficMarkingPoliciesPolicy {
 
     private GetTrafficMarkingPoliciesPolicy() {}
     /**
-     * @return The description of the Traffic Marking Policy.
+     * @return The traffic marking policy description.
      * 
      */
     public String description() {
@@ -82,7 +82,7 @@ public final class GetTrafficMarkingPoliciesPolicy {
         return this.priority;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
      * 
      */
     public String status() {

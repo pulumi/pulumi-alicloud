@@ -91,7 +91,7 @@ public final class GetDedicatedHostGroupsGroup {
      */
     private Double diskUtility;
     /**
-     * @return Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+     * @return Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
      * 
      */
     private String engine;
@@ -151,7 +151,7 @@ public final class GetDedicatedHostGroupsGroup {
      */
     private String vpcId;
     /**
-     * @return The ZoneIDList of the Dedicated Host Group.
+     * @return The list of zone IDs of the Dedicated Host Group.
      * 
      */
     private List<GetDedicatedHostGroupsGroupZoneIdList> zoneIdLists;
@@ -263,7 +263,7 @@ public final class GetDedicatedHostGroupsGroup {
         return this.diskUtility;
     }
     /**
-     * @return Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+     * @return Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
      * 
      */
     public String engine() {
@@ -347,7 +347,7 @@ public final class GetDedicatedHostGroupsGroup {
         return this.vpcId;
     }
     /**
-     * @return The ZoneIDList of the Dedicated Host Group.
+     * @return The list of zone IDs of the Dedicated Host Group.
      * 
      */
     public List<GetDedicatedHostGroupsGroupZoneIdList> zoneIdLists() {

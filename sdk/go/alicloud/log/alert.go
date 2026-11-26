@@ -17,7 +17,7 @@ import (
 //
 // For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
 //
-// > **NOTE:** Available in 1.78.0
+// > **NOTE:** Available since v1.78.0.
 //
 // ## Example Usage
 //
@@ -375,7 +375,7 @@ type Alert struct {
 	AlertDisplayname pulumi.StringOutput `pulumi:"alertDisplayname"`
 	// Name of logstore for configuring alarm service.
 	AlertName pulumi.StringOutput `pulumi:"alertName"`
-	// Annotations for new alert.
+	// Annotations for new alert. See `annotations` below.
 	Annotations AlertAnnotationArrayOutput `pulumi:"annotations"`
 	// whether to add automatic annotation, default is false.
 	AutoAnnotation pulumi.BoolPtrOutput `pulumi:"autoAnnotation"`
@@ -387,11 +387,11 @@ type Alert struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
 	Dashboard pulumi.StringPtrOutput `pulumi:"dashboard"`
-	// Group configuration for new alert.
+	// Group configuration for new alert. See `groupConfiguration` below.
 	GroupConfiguration AlertGroupConfigurationPtrOutput `pulumi:"groupConfiguration"`
-	// Join configuration for different queries.
+	// Join configuration for different queries. See `joinConfigurations` below.
 	JoinConfigurations AlertJoinConfigurationArrayOutput `pulumi:"joinConfigurations"`
-	// Labels for new alert.
+	// Labels for new alert. See `labels` below.
 	Labels AlertLabelArrayOutput `pulumi:"labels"`
 	// Timestamp, notifications before closing again.
 	MuteUntil pulumi.IntOutput `pulumi:"muteUntil"`
@@ -399,7 +399,7 @@ type Alert struct {
 	NoDataFire pulumi.BoolPtrOutput `pulumi:"noDataFire"`
 	// when no data happens, the severity of new alert.
 	NoDataSeverity pulumi.IntPtrOutput `pulumi:"noDataSeverity"`
-	// Alarm information notification list, Deprecated from 1.161.0+.
+	// Alarm information notification list, Deprecated from 1.161.0+. See `notificationList` below.
 	//
 	// Deprecated: Deprecated from 1.161.0+, use policyConfiguration for notification
 	NotificationLists AlertNotificationListArrayOutput `pulumi:"notificationLists"`
@@ -407,13 +407,13 @@ type Alert struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use threshold
 	NotifyThreshold pulumi.IntPtrOutput `pulumi:"notifyThreshold"`
-	// Policy configuration for new alert.
+	// Policy configuration for new alert. See `policyConfiguration` below.
 	PolicyConfiguration AlertPolicyConfigurationPtrOutput `pulumi:"policyConfiguration"`
 	// The project name.
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
-	// Multiple conditions for configured alarm query.
+	// Multiple conditions for configured alarm query. See `queryList` below.
 	QueryLists AlertQueryListArrayOutput `pulumi:"queryLists"`
-	// schedule for alert.
+	// schedule for alert. See `schedule` below.
 	Schedule AlertSchedulePtrOutput `pulumi:"schedule"`
 	// Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
 	//
@@ -425,9 +425,9 @@ type Alert struct {
 	ScheduleType pulumi.StringOutput `pulumi:"scheduleType"`
 	// when new alert is resolved, whether to notify, default is false.
 	SendResolved pulumi.BoolPtrOutput `pulumi:"sendResolved"`
-	// Severity configuration for new alert.
+	// Severity configuration for new alert. See `severityConfigurations` below.
 	SeverityConfigurations AlertSeverityConfigurationArrayOutput `pulumi:"severityConfigurations"`
-	// Template configuration for alert, when `type` is `tpl`.
+	// Template configuration for alert, when `type` is `tpl`. See `templateConfiguration` below.
 	TemplateConfiguration AlertTemplateConfigurationPtrOutput `pulumi:"templateConfiguration"`
 	// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
 	Threshold pulumi.IntOutput `pulumi:"threshold"`
@@ -486,7 +486,7 @@ type alertState struct {
 	AlertDisplayname *string `pulumi:"alertDisplayname"`
 	// Name of logstore for configuring alarm service.
 	AlertName *string `pulumi:"alertName"`
-	// Annotations for new alert.
+	// Annotations for new alert. See `annotations` below.
 	Annotations []AlertAnnotation `pulumi:"annotations"`
 	// whether to add automatic annotation, default is false.
 	AutoAnnotation *bool `pulumi:"autoAnnotation"`
@@ -498,11 +498,11 @@ type alertState struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
 	Dashboard *string `pulumi:"dashboard"`
-	// Group configuration for new alert.
+	// Group configuration for new alert. See `groupConfiguration` below.
 	GroupConfiguration *AlertGroupConfiguration `pulumi:"groupConfiguration"`
-	// Join configuration for different queries.
+	// Join configuration for different queries. See `joinConfigurations` below.
 	JoinConfigurations []AlertJoinConfiguration `pulumi:"joinConfigurations"`
-	// Labels for new alert.
+	// Labels for new alert. See `labels` below.
 	Labels []AlertLabel `pulumi:"labels"`
 	// Timestamp, notifications before closing again.
 	MuteUntil *int `pulumi:"muteUntil"`
@@ -510,7 +510,7 @@ type alertState struct {
 	NoDataFire *bool `pulumi:"noDataFire"`
 	// when no data happens, the severity of new alert.
 	NoDataSeverity *int `pulumi:"noDataSeverity"`
-	// Alarm information notification list, Deprecated from 1.161.0+.
+	// Alarm information notification list, Deprecated from 1.161.0+. See `notificationList` below.
 	//
 	// Deprecated: Deprecated from 1.161.0+, use policyConfiguration for notification
 	NotificationLists []AlertNotificationList `pulumi:"notificationLists"`
@@ -518,13 +518,13 @@ type alertState struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use threshold
 	NotifyThreshold *int `pulumi:"notifyThreshold"`
-	// Policy configuration for new alert.
+	// Policy configuration for new alert. See `policyConfiguration` below.
 	PolicyConfiguration *AlertPolicyConfiguration `pulumi:"policyConfiguration"`
 	// The project name.
 	ProjectName *string `pulumi:"projectName"`
-	// Multiple conditions for configured alarm query.
+	// Multiple conditions for configured alarm query. See `queryList` below.
 	QueryLists []AlertQueryList `pulumi:"queryLists"`
-	// schedule for alert.
+	// schedule for alert. See `schedule` below.
 	Schedule *AlertSchedule `pulumi:"schedule"`
 	// Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
 	//
@@ -536,9 +536,9 @@ type alertState struct {
 	ScheduleType *string `pulumi:"scheduleType"`
 	// when new alert is resolved, whether to notify, default is false.
 	SendResolved *bool `pulumi:"sendResolved"`
-	// Severity configuration for new alert.
+	// Severity configuration for new alert. See `severityConfigurations` below.
 	SeverityConfigurations []AlertSeverityConfiguration `pulumi:"severityConfigurations"`
-	// Template configuration for alert, when `type` is `tpl`.
+	// Template configuration for alert, when `type` is `tpl`. See `templateConfiguration` below.
 	TemplateConfiguration *AlertTemplateConfiguration `pulumi:"templateConfiguration"`
 	// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
 	Threshold *int `pulumi:"threshold"`
@@ -559,7 +559,7 @@ type AlertState struct {
 	AlertDisplayname pulumi.StringPtrInput
 	// Name of logstore for configuring alarm service.
 	AlertName pulumi.StringPtrInput
-	// Annotations for new alert.
+	// Annotations for new alert. See `annotations` below.
 	Annotations AlertAnnotationArrayInput
 	// whether to add automatic annotation, default is false.
 	AutoAnnotation pulumi.BoolPtrInput
@@ -571,11 +571,11 @@ type AlertState struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
 	Dashboard pulumi.StringPtrInput
-	// Group configuration for new alert.
+	// Group configuration for new alert. See `groupConfiguration` below.
 	GroupConfiguration AlertGroupConfigurationPtrInput
-	// Join configuration for different queries.
+	// Join configuration for different queries. See `joinConfigurations` below.
 	JoinConfigurations AlertJoinConfigurationArrayInput
-	// Labels for new alert.
+	// Labels for new alert. See `labels` below.
 	Labels AlertLabelArrayInput
 	// Timestamp, notifications before closing again.
 	MuteUntil pulumi.IntPtrInput
@@ -583,7 +583,7 @@ type AlertState struct {
 	NoDataFire pulumi.BoolPtrInput
 	// when no data happens, the severity of new alert.
 	NoDataSeverity pulumi.IntPtrInput
-	// Alarm information notification list, Deprecated from 1.161.0+.
+	// Alarm information notification list, Deprecated from 1.161.0+. See `notificationList` below.
 	//
 	// Deprecated: Deprecated from 1.161.0+, use policyConfiguration for notification
 	NotificationLists AlertNotificationListArrayInput
@@ -591,13 +591,13 @@ type AlertState struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use threshold
 	NotifyThreshold pulumi.IntPtrInput
-	// Policy configuration for new alert.
+	// Policy configuration for new alert. See `policyConfiguration` below.
 	PolicyConfiguration AlertPolicyConfigurationPtrInput
 	// The project name.
 	ProjectName pulumi.StringPtrInput
-	// Multiple conditions for configured alarm query.
+	// Multiple conditions for configured alarm query. See `queryList` below.
 	QueryLists AlertQueryListArrayInput
-	// schedule for alert.
+	// schedule for alert. See `schedule` below.
 	Schedule AlertSchedulePtrInput
 	// Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
 	//
@@ -609,9 +609,9 @@ type AlertState struct {
 	ScheduleType pulumi.StringPtrInput
 	// when new alert is resolved, whether to notify, default is false.
 	SendResolved pulumi.BoolPtrInput
-	// Severity configuration for new alert.
+	// Severity configuration for new alert. See `severityConfigurations` below.
 	SeverityConfigurations AlertSeverityConfigurationArrayInput
-	// Template configuration for alert, when `type` is `tpl`.
+	// Template configuration for alert, when `type` is `tpl`. See `templateConfiguration` below.
 	TemplateConfiguration AlertTemplateConfigurationPtrInput
 	// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
 	Threshold pulumi.IntPtrInput
@@ -642,7 +642,7 @@ type alertArgs struct {
 	AlertDisplayname string `pulumi:"alertDisplayname"`
 	// Name of logstore for configuring alarm service.
 	AlertName string `pulumi:"alertName"`
-	// Annotations for new alert.
+	// Annotations for new alert. See `annotations` below.
 	Annotations []AlertAnnotation `pulumi:"annotations"`
 	// whether to add automatic annotation, default is false.
 	AutoAnnotation *bool `pulumi:"autoAnnotation"`
@@ -654,11 +654,11 @@ type alertArgs struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
 	Dashboard *string `pulumi:"dashboard"`
-	// Group configuration for new alert.
+	// Group configuration for new alert. See `groupConfiguration` below.
 	GroupConfiguration *AlertGroupConfiguration `pulumi:"groupConfiguration"`
-	// Join configuration for different queries.
+	// Join configuration for different queries. See `joinConfigurations` below.
 	JoinConfigurations []AlertJoinConfiguration `pulumi:"joinConfigurations"`
-	// Labels for new alert.
+	// Labels for new alert. See `labels` below.
 	Labels []AlertLabel `pulumi:"labels"`
 	// Timestamp, notifications before closing again.
 	MuteUntil *int `pulumi:"muteUntil"`
@@ -666,7 +666,7 @@ type alertArgs struct {
 	NoDataFire *bool `pulumi:"noDataFire"`
 	// when no data happens, the severity of new alert.
 	NoDataSeverity *int `pulumi:"noDataSeverity"`
-	// Alarm information notification list, Deprecated from 1.161.0+.
+	// Alarm information notification list, Deprecated from 1.161.0+. See `notificationList` below.
 	//
 	// Deprecated: Deprecated from 1.161.0+, use policyConfiguration for notification
 	NotificationLists []AlertNotificationList `pulumi:"notificationLists"`
@@ -674,13 +674,13 @@ type alertArgs struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use threshold
 	NotifyThreshold *int `pulumi:"notifyThreshold"`
-	// Policy configuration for new alert.
+	// Policy configuration for new alert. See `policyConfiguration` below.
 	PolicyConfiguration *AlertPolicyConfiguration `pulumi:"policyConfiguration"`
 	// The project name.
 	ProjectName string `pulumi:"projectName"`
-	// Multiple conditions for configured alarm query.
+	// Multiple conditions for configured alarm query. See `queryList` below.
 	QueryLists []AlertQueryList `pulumi:"queryLists"`
-	// schedule for alert.
+	// schedule for alert. See `schedule` below.
 	Schedule *AlertSchedule `pulumi:"schedule"`
 	// Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
 	//
@@ -692,9 +692,9 @@ type alertArgs struct {
 	ScheduleType *string `pulumi:"scheduleType"`
 	// when new alert is resolved, whether to notify, default is false.
 	SendResolved *bool `pulumi:"sendResolved"`
-	// Severity configuration for new alert.
+	// Severity configuration for new alert. See `severityConfigurations` below.
 	SeverityConfigurations []AlertSeverityConfiguration `pulumi:"severityConfigurations"`
-	// Template configuration for alert, when `type` is `tpl`.
+	// Template configuration for alert, when `type` is `tpl`. See `templateConfiguration` below.
 	TemplateConfiguration *AlertTemplateConfiguration `pulumi:"templateConfiguration"`
 	// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
 	Threshold *int `pulumi:"threshold"`
@@ -716,7 +716,7 @@ type AlertArgs struct {
 	AlertDisplayname pulumi.StringInput
 	// Name of logstore for configuring alarm service.
 	AlertName pulumi.StringInput
-	// Annotations for new alert.
+	// Annotations for new alert. See `annotations` below.
 	Annotations AlertAnnotationArrayInput
 	// whether to add automatic annotation, default is false.
 	AutoAnnotation pulumi.BoolPtrInput
@@ -728,11 +728,11 @@ type AlertArgs struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
 	Dashboard pulumi.StringPtrInput
-	// Group configuration for new alert.
+	// Group configuration for new alert. See `groupConfiguration` below.
 	GroupConfiguration AlertGroupConfigurationPtrInput
-	// Join configuration for different queries.
+	// Join configuration for different queries. See `joinConfigurations` below.
 	JoinConfigurations AlertJoinConfigurationArrayInput
-	// Labels for new alert.
+	// Labels for new alert. See `labels` below.
 	Labels AlertLabelArrayInput
 	// Timestamp, notifications before closing again.
 	MuteUntil pulumi.IntPtrInput
@@ -740,7 +740,7 @@ type AlertArgs struct {
 	NoDataFire pulumi.BoolPtrInput
 	// when no data happens, the severity of new alert.
 	NoDataSeverity pulumi.IntPtrInput
-	// Alarm information notification list, Deprecated from 1.161.0+.
+	// Alarm information notification list, Deprecated from 1.161.0+. See `notificationList` below.
 	//
 	// Deprecated: Deprecated from 1.161.0+, use policyConfiguration for notification
 	NotificationLists AlertNotificationListArrayInput
@@ -748,13 +748,13 @@ type AlertArgs struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use threshold
 	NotifyThreshold pulumi.IntPtrInput
-	// Policy configuration for new alert.
+	// Policy configuration for new alert. See `policyConfiguration` below.
 	PolicyConfiguration AlertPolicyConfigurationPtrInput
 	// The project name.
 	ProjectName pulumi.StringInput
-	// Multiple conditions for configured alarm query.
+	// Multiple conditions for configured alarm query. See `queryList` below.
 	QueryLists AlertQueryListArrayInput
-	// schedule for alert.
+	// schedule for alert. See `schedule` below.
 	Schedule AlertSchedulePtrInput
 	// Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
 	//
@@ -766,9 +766,9 @@ type AlertArgs struct {
 	ScheduleType pulumi.StringPtrInput
 	// when new alert is resolved, whether to notify, default is false.
 	SendResolved pulumi.BoolPtrInput
-	// Severity configuration for new alert.
+	// Severity configuration for new alert. See `severityConfigurations` below.
 	SeverityConfigurations AlertSeverityConfigurationArrayInput
-	// Template configuration for alert, when `type` is `tpl`.
+	// Template configuration for alert, when `type` is `tpl`. See `templateConfiguration` below.
 	TemplateConfiguration AlertTemplateConfigurationPtrInput
 	// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
 	Threshold pulumi.IntPtrInput
@@ -884,7 +884,7 @@ func (o AlertOutput) AlertName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.AlertName }).(pulumi.StringOutput)
 }
 
-// Annotations for new alert.
+// Annotations for new alert. See `annotations` below.
 func (o AlertOutput) Annotations() AlertAnnotationArrayOutput {
 	return o.ApplyT(func(v *Alert) AlertAnnotationArrayOutput { return v.Annotations }).(AlertAnnotationArrayOutput)
 }
@@ -908,17 +908,17 @@ func (o AlertOutput) Dashboard() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.Dashboard }).(pulumi.StringPtrOutput)
 }
 
-// Group configuration for new alert.
+// Group configuration for new alert. See `groupConfiguration` below.
 func (o AlertOutput) GroupConfiguration() AlertGroupConfigurationPtrOutput {
 	return o.ApplyT(func(v *Alert) AlertGroupConfigurationPtrOutput { return v.GroupConfiguration }).(AlertGroupConfigurationPtrOutput)
 }
 
-// Join configuration for different queries.
+// Join configuration for different queries. See `joinConfigurations` below.
 func (o AlertOutput) JoinConfigurations() AlertJoinConfigurationArrayOutput {
 	return o.ApplyT(func(v *Alert) AlertJoinConfigurationArrayOutput { return v.JoinConfigurations }).(AlertJoinConfigurationArrayOutput)
 }
 
-// Labels for new alert.
+// Labels for new alert. See `labels` below.
 func (o AlertOutput) Labels() AlertLabelArrayOutput {
 	return o.ApplyT(func(v *Alert) AlertLabelArrayOutput { return v.Labels }).(AlertLabelArrayOutput)
 }
@@ -938,7 +938,7 @@ func (o AlertOutput) NoDataSeverity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.IntPtrOutput { return v.NoDataSeverity }).(pulumi.IntPtrOutput)
 }
 
-// Alarm information notification list, Deprecated from 1.161.0+.
+// Alarm information notification list, Deprecated from 1.161.0+. See `notificationList` below.
 //
 // Deprecated: Deprecated from 1.161.0+, use policyConfiguration for notification
 func (o AlertOutput) NotificationLists() AlertNotificationListArrayOutput {
@@ -952,7 +952,7 @@ func (o AlertOutput) NotifyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.IntPtrOutput { return v.NotifyThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Policy configuration for new alert.
+// Policy configuration for new alert. See `policyConfiguration` below.
 func (o AlertOutput) PolicyConfiguration() AlertPolicyConfigurationPtrOutput {
 	return o.ApplyT(func(v *Alert) AlertPolicyConfigurationPtrOutput { return v.PolicyConfiguration }).(AlertPolicyConfigurationPtrOutput)
 }
@@ -962,12 +962,12 @@ func (o AlertOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
 }
 
-// Multiple conditions for configured alarm query.
+// Multiple conditions for configured alarm query. See `queryList` below.
 func (o AlertOutput) QueryLists() AlertQueryListArrayOutput {
 	return o.ApplyT(func(v *Alert) AlertQueryListArrayOutput { return v.QueryLists }).(AlertQueryListArrayOutput)
 }
 
-// schedule for alert.
+// schedule for alert. See `schedule` below.
 func (o AlertOutput) Schedule() AlertSchedulePtrOutput {
 	return o.ApplyT(func(v *Alert) AlertSchedulePtrOutput { return v.Schedule }).(AlertSchedulePtrOutput)
 }
@@ -991,12 +991,12 @@ func (o AlertOutput) SendResolved() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.BoolPtrOutput { return v.SendResolved }).(pulumi.BoolPtrOutput)
 }
 
-// Severity configuration for new alert.
+// Severity configuration for new alert. See `severityConfigurations` below.
 func (o AlertOutput) SeverityConfigurations() AlertSeverityConfigurationArrayOutput {
 	return o.ApplyT(func(v *Alert) AlertSeverityConfigurationArrayOutput { return v.SeverityConfigurations }).(AlertSeverityConfigurationArrayOutput)
 }
 
-// Template configuration for alert, when `type` is `tpl`.
+// Template configuration for alert, when `type` is `tpl`. See `templateConfiguration` below.
 func (o AlertOutput) TemplateConfiguration() AlertTemplateConfigurationPtrOutput {
 	return o.ApplyT(func(v *Alert) AlertTemplateConfigurationPtrOutput { return v.TemplateConfiguration }).(AlertTemplateConfigurationPtrOutput)
 }

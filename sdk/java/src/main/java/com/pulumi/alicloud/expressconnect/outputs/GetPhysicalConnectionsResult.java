@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPhysicalConnectionsResult {
+    /**
+     * @return A list of Express Connect Physical Connections. Each element contains the following attributes:
+     * 
+     */
     private List<GetPhysicalConnectionsConnection> connections;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,11 +28,23 @@ public final class GetPhysicalConnectionsResult {
     private List<String> ids;
     private @Nullable Boolean includeReservationData;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Physical Connection names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return Resources on Behalf of a State of the Resource Attribute Field.
+     * 
+     */
     private @Nullable String status;
 
     private GetPhysicalConnectionsResult() {}
+    /**
+     * @return A list of Express Connect Physical Connections. Each element contains the following attributes:
+     * 
+     */
     public List<GetPhysicalConnectionsConnection> connections() {
         return this.connections;
     }
@@ -48,12 +64,20 @@ public final class GetPhysicalConnectionsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Physical Connection names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Resources on Behalf of a State of the Resource Attribute Field.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

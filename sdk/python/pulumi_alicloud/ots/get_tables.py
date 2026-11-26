@@ -124,7 +124,7 @@ def get_tables(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the ots tables of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.40.0+.
+    > **NOTE:** Available since v1.40.0.
 
     ## Example Usage
 
@@ -168,7 +168,7 @@ def get_tables_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str
     """
     This data source provides the ots tables of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.40.0+.
+    > **NOTE:** Available since v1.40.0.
 
     ## Example Usage
 

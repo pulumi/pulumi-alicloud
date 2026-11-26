@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// The Status of the Network Interface Permissions.
+        /// The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
         /// </summary>
         public readonly string Status;
 

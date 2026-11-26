@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.187.0+.
+// > **NOTE:** Available since v1.187.0.
 //
 // ## Example Usage
 //
@@ -79,17 +79,22 @@ type GetPluginsArgs struct {
 // A collection of values returned by getPlugins.
 type GetPluginsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string             `pulumi:"id"`
-	Ids        []string           `pulumi:"ids"`
-	NameRegex  *string            `pulumi:"nameRegex"`
-	Names      []string           `pulumi:"names"`
-	OutputFile *string            `pulumi:"outputFile"`
-	PageNumber *int               `pulumi:"pageNumber"`
-	PageSize   *int               `pulumi:"pageSize"`
-	PluginName *string            `pulumi:"pluginName"`
-	PluginType *string            `pulumi:"pluginType"`
-	Plugins    []GetPluginsPlugin `pulumi:"plugins"`
-	Tags       map[string]string  `pulumi:"tags"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Plugin names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
+	// The name of the plug-in that you want to create.
+	PluginName *string `pulumi:"pluginName"`
+	// The type of the plug-in.
+	PluginType *string `pulumi:"pluginType"`
+	// A list of Api Gateway Plugins. Each element contains the following attributes:
+	Plugins []GetPluginsPlugin `pulumi:"plugins"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetPluginsOutput(ctx *pulumi.Context, args GetPluginsOutputArgs, opts ...pulumi.InvokeOption) GetPluginsResultOutput {
@@ -147,6 +152,7 @@ func (o GetPluginsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPluginsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Plugin names.
 func (o GetPluginsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPluginsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -163,18 +169,22 @@ func (o GetPluginsResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPluginsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// The name of the plug-in that you want to create.
 func (o GetPluginsResultOutput) PluginName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPluginsResult) *string { return v.PluginName }).(pulumi.StringPtrOutput)
 }
 
+// The type of the plug-in.
 func (o GetPluginsResultOutput) PluginType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPluginsResult) *string { return v.PluginType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Api Gateway Plugins. Each element contains the following attributes:
 func (o GetPluginsResultOutput) Plugins() GetPluginsPluginArrayOutput {
 	return o.ApplyT(func(v GetPluginsResult) []GetPluginsPlugin { return v.Plugins }).(GetPluginsPluginArrayOutput)
 }
 
+// The tag of the resource.
 func (o GetPluginsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetPluginsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

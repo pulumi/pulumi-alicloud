@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a ECS auto provisioning group resource which is a solution that uses preemptive instances and payAsYouGo instances to rapidly deploy clusters.
  * 
- * &gt; **NOTE:** Available in 1.79.0+
+ * &gt; **NOTE:** Available since v1.79.0
  * 
  * ## Example Usage
  * 
@@ -200,14 +200,14 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.excessCapacityTerminationPolicy);
     }
     /**
-     * DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+     * DataDisk mappings to attach to ecs instance. See `launchTemplateConfig` below for details.
      * 
      */
     @Export(name="launchTemplateConfigs", refs={List.class,AutoProvisioningGroupLaunchTemplateConfig.class}, tree="[0,1]")
     private Output<List<AutoProvisioningGroupLaunchTemplateConfig>> launchTemplateConfigs;
 
     /**
-     * @return DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+     * @return DataDisk mappings to attach to ecs instance. See `launchTemplateConfig` below for details.
      * 
      */
     public Output<List<AutoProvisioningGroupLaunchTemplateConfig>> launchTemplateConfigs() {

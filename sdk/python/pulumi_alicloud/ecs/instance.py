@@ -21,6 +21,7 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
+                 additional_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allocate_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -64,6 +65,7 @@ class InstanceArgs:
                  maintenance_action: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_notify: pulumi.Input[Optional[_builtins.bool]] = None,
                  maintenance_time: pulumi.Input[Optional['InstanceMaintenanceTimeArgs']] = None,
+                 managed_host_id: pulumi.Input[Optional[_builtins.str]] = None,
                  network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
                  network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
                  network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -111,6 +113,9 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_attributes: A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+               
+               > **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `managed_host_id` is refreshed from the response only when `managed_host_id` is configured.
         :param pulumi.Input[_builtins.bool] allocate_public_ip: Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the `PostPaid` instance.
                The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
@@ -121,6 +126,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input['InstanceCpuOptionsArgs'] cpu_options: The options of cpu. See `cpu_options` below.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+               
                > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
@@ -164,6 +170,7 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
         :param pulumi.Input[_builtins.bool] is_outdated: Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
         :param pulumi.Input[_builtins.str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `key_name` can be modified. If you want to use `key_name`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+               
                > **NOTE:** When modifying `key_name`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
@@ -176,6 +183,9 @@ class InstanceArgs:
                * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
         :param pulumi.Input[_builtins.bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
         :param pulumi.Input['InstanceMaintenanceTimeArgs'] maintenance_time: The time of maintenance. See `maintenance_time` below.
+        :param pulumi.Input[_builtins.str] managed_host_id: The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `managed_host_id` and `dedicated_host_id` parameters.
+               
+               > **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `additional_attributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `managed_host_id` is configured.
         :param pulumi.Input[_builtins.int] network_card_index: The index of the network card for Primary ENI.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the Primary ENI.
                
@@ -248,7 +258,7 @@ class InstanceArgs:
                * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `system_disk_auto_snapshot_policy_id`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
         :param pulumi.Input[_builtins.bool] system_disk_bursting_enabled: Specifies whether to enable the performance burst feature for the system disk. Valid values:
-        :param pulumi.Input[_builtins.str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
+        :param pulumi.Input[_builtins.str] system_disk_category: Valid values: `all`, `local_disk`, `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`, `cloud_essd_xc0`, `cloud_essd_xc1`. only is used to some none I/O optimized instance. `cloud_auto` is Available since v1.184.0. `cloud_essd_xc0` and `cloud_essd_xc1` are Available since v2.2.0 and only supported in government cloud (政务云) regions.
         :param pulumi.Input[_builtins.str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
         :param pulumi.Input[_builtins.bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
@@ -271,6 +281,8 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
         """
+        if additional_attributes is not None:
+            pulumi.set(__self__, "additional_attributes", additional_attributes)
         if allocate_public_ip is not None:
             warnings.warn("""Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.""", DeprecationWarning)
             pulumi.log.warn("""allocate_public_ip is deprecated: Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.""")
@@ -363,6 +375,8 @@ class InstanceArgs:
             pulumi.set(__self__, "maintenance_notify", maintenance_notify)
         if maintenance_time is not None:
             pulumi.set(__self__, "maintenance_time", maintenance_time)
+        if managed_host_id is not None:
+            pulumi.set(__self__, "managed_host_id", managed_host_id)
         if network_card_index is not None:
             pulumi.set(__self__, "network_card_index", network_card_index)
         if network_interface_id is not None:
@@ -456,6 +470,20 @@ class InstanceArgs:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @_builtins.property
+    @pulumi.getter(name="additionalAttributes")
+    def additional_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+
+        > **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `managed_host_id` is refreshed from the response only when `managed_host_id` is configured.
+        """
+        return pulumi.get(self, "additional_attributes")
+
+    @additional_attributes.setter
+    def additional_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "additional_attributes", value)
+
+    @_builtins.property
     @pulumi.getter(name="allocatePublicIp")
     @_utilities.deprecated("""Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.""")
     def allocate_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
@@ -525,6 +553,7 @@ class InstanceArgs:
     def credit_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+
         > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         """
         return pulumi.get(self, "credit_specification")
@@ -888,6 +917,7 @@ class InstanceArgs:
     def key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `key_name` can be modified. If you want to use `key_name`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+
         > **NOTE:** When modifying `key_name`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         """
         return pulumi.get(self, "key_name")
@@ -994,6 +1024,20 @@ class InstanceArgs:
     @maintenance_time.setter
     def maintenance_time(self, value: pulumi.Input[Optional['InstanceMaintenanceTimeArgs']]):
         pulumi.set(self, "maintenance_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managedHostId")
+    def managed_host_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `managed_host_id` and `dedicated_host_id` parameters.
+
+        > **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `additional_attributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `managed_host_id` is configured.
+        """
+        return pulumi.get(self, "managed_host_id")
+
+    @managed_host_id.setter
+    def managed_host_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "managed_host_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkCardIndex")
@@ -1391,7 +1435,7 @@ class InstanceArgs:
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
+        Valid values: `all`, `local_disk`, `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`, `cloud_essd_xc0`, `cloud_essd_xc1`. only is used to some none I/O optimized instance. `cloud_auto` is Available since v1.184.0. `cloud_essd_xc0` and `cloud_essd_xc1` are Available since v2.2.0 and only supported in government cloud (政务云) regions.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -1578,6 +1622,7 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 additional_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allocate_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1625,6 +1670,7 @@ class _InstanceState:
                  maintenance_action: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_notify: pulumi.Input[Optional[_builtins.bool]] = None,
                  maintenance_time: pulumi.Input[Optional['InstanceMaintenanceTimeArgs']] = None,
+                 managed_host_id: pulumi.Input[Optional[_builtins.str]] = None,
                  memory: pulumi.Input[Optional[_builtins.int]] = None,
                  network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
                  network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1679,6 +1725,9 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_attributes: A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+               
+               > **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `managed_host_id` is refreshed from the response only when `managed_host_id` is configured.
         :param pulumi.Input[_builtins.bool] allocate_public_ip: Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the `PostPaid` instance.
                The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
@@ -1691,6 +1740,7 @@ class _InstanceState:
         :param pulumi.Input['InstanceCpuOptionsArgs'] cpu_options: The options of cpu. See `cpu_options` below.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.232.0) The time when the instance was created.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+               
                > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
@@ -1736,6 +1786,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
         :param pulumi.Input[_builtins.bool] is_outdated: Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
         :param pulumi.Input[_builtins.str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `key_name` can be modified. If you want to use `key_name`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+               
                > **NOTE:** When modifying `key_name`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
@@ -1748,6 +1799,9 @@ class _InstanceState:
                * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
         :param pulumi.Input[_builtins.bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
         :param pulumi.Input['InstanceMaintenanceTimeArgs'] maintenance_time: The time of maintenance. See `maintenance_time` below.
+        :param pulumi.Input[_builtins.str] managed_host_id: The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `managed_host_id` and `dedicated_host_id` parameters.
+               
+               > **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `additional_attributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `managed_host_id` is configured.
         :param pulumi.Input[_builtins.int] memory: The memory size of the instance. Unit: MiB.
         :param pulumi.Input[_builtins.int] network_card_index: The index of the network card for Primary ENI.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the Primary ENI.
@@ -1826,7 +1880,7 @@ class _InstanceState:
                * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `system_disk_auto_snapshot_policy_id`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
         :param pulumi.Input[_builtins.bool] system_disk_bursting_enabled: Specifies whether to enable the performance burst feature for the system disk. Valid values:
-        :param pulumi.Input[_builtins.str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
+        :param pulumi.Input[_builtins.str] system_disk_category: Valid values: `all`, `local_disk`, `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`, `cloud_essd_xc0`, `cloud_essd_xc1`. only is used to some none I/O optimized instance. `cloud_auto` is Available since v1.184.0. `cloud_essd_xc0` and `cloud_essd_xc1` are Available since v2.2.0 and only supported in government cloud (政务云) regions.
         :param pulumi.Input[_builtins.str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
         :param pulumi.Input[_builtins.bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
@@ -1850,6 +1904,8 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
         """
+        if additional_attributes is not None:
+            pulumi.set(__self__, "additional_attributes", additional_attributes)
         if allocate_public_ip is not None:
             warnings.warn("""Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.""", DeprecationWarning)
             pulumi.log.warn("""allocate_public_ip is deprecated: Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.""")
@@ -1950,6 +2006,8 @@ class _InstanceState:
             pulumi.set(__self__, "maintenance_notify", maintenance_notify)
         if maintenance_time is not None:
             pulumi.set(__self__, "maintenance_time", maintenance_time)
+        if managed_host_id is not None:
+            pulumi.set(__self__, "managed_host_id", managed_host_id)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
         if network_card_index is not None:
@@ -2057,6 +2115,20 @@ class _InstanceState:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @_builtins.property
+    @pulumi.getter(name="additionalAttributes")
+    def additional_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+
+        > **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `managed_host_id` is refreshed from the response only when `managed_host_id` is configured.
+        """
+        return pulumi.get(self, "additional_attributes")
+
+    @additional_attributes.setter
+    def additional_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "additional_attributes", value)
+
+    @_builtins.property
     @pulumi.getter(name="allocatePublicIp")
     @_utilities.deprecated("""Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.""")
     def allocate_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
@@ -2150,6 +2222,7 @@ class _InstanceState:
     def credit_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+
         > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         """
         return pulumi.get(self, "credit_specification")
@@ -2537,6 +2610,7 @@ class _InstanceState:
     def key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `key_name` can be modified. If you want to use `key_name`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+
         > **NOTE:** When modifying `key_name`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         """
         return pulumi.get(self, "key_name")
@@ -2643,6 +2717,20 @@ class _InstanceState:
     @maintenance_time.setter
     def maintenance_time(self, value: pulumi.Input[Optional['InstanceMaintenanceTimeArgs']]):
         pulumi.set(self, "maintenance_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managedHostId")
+    def managed_host_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `managed_host_id` and `dedicated_host_id` parameters.
+
+        > **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `additional_attributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `managed_host_id` is configured.
+        """
+        return pulumi.get(self, "managed_host_id")
+
+    @managed_host_id.setter
+    def managed_host_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "managed_host_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -3112,7 +3200,7 @@ class _InstanceState:
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
+        Valid values: `all`, `local_disk`, `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`, `cloud_essd_xc0`, `cloud_essd_xc1`. only is used to some none I/O optimized instance. `cloud_auto` is Available since v1.184.0. `cloud_essd_xc0` and `cloud_essd_xc1` are Available since v2.2.0 and only supported in government cloud (政务云) regions.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -3314,6 +3402,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allocate_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -3357,6 +3446,7 @@ class Instance(pulumi.CustomResource):
                  maintenance_action: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_notify: pulumi.Input[Optional[_builtins.bool]] = None,
                  maintenance_time: pulumi.Input[Optional[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict', 'outputs.InstanceMaintenanceTime']]] = None,
+                 managed_host_id: pulumi.Input[Optional[_builtins.str]] = None,
                  network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
                  network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
                  network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3421,7 +3511,7 @@ class Instance(pulumi.CustomResource):
             name = "terraform-example"
         instance_type = config.get("instanceType")
         if instance_type is None:
-            instance_type = "ecs.n4.large"
+            instance_type = "ecs.g7.large"
         image_id = config.get("imageId")
         if image_id is None:
             image_id = "ubuntu_18_04_64_20G_alibase_20190624.vhd"
@@ -3438,7 +3528,7 @@ class Instance(pulumi.CustomResource):
             description="Hello KMS",
             pending_window_in_days=7,
             status="Enabled")
-        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        default = alicloud.get_zones(available_disk_category="cloud_essd",
             available_resource_creation="VSwitch",
             available_instance_type=instance_type)
         vswitch = alicloud.vpc.Switch("vswitch",
@@ -3450,7 +3540,7 @@ class Instance(pulumi.CustomResource):
             availability_zone=default.zones[0].id,
             security_groups=[__item.id for __item in [group]],
             instance_type=instance_type,
-            system_disk_category="cloud_efficiency",
+            system_disk_category="cloud_essd",
             system_disk_name=name,
             system_disk_description="test_foo_system_disk_description",
             image_id=image_id,
@@ -3460,7 +3550,7 @@ class Instance(pulumi.CustomResource):
             data_disks=[{
                 "name": "disk2",
                 "size": 20,
-                "category": "cloud_efficiency",
+                "category": "cloud_essd",
                 "description": "disk2",
                 "encrypted": True,
                 "kms_key_id": key.id,
@@ -3485,6 +3575,9 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_attributes: A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+               
+               > **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `managed_host_id` is refreshed from the response only when `managed_host_id` is configured.
         :param pulumi.Input[_builtins.bool] allocate_public_ip: Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the `PostPaid` instance.
                The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
@@ -3495,6 +3588,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict', 'outputs.InstanceCpuOptions']] cpu_options: The options of cpu. See `cpu_options` below.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+               
                > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict', 'outputs.InstanceDataDisk']]]] data_disks: The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
@@ -3538,6 +3632,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
         :param pulumi.Input[_builtins.bool] is_outdated: Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
         :param pulumi.Input[_builtins.str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `key_name` can be modified. If you want to use `key_name`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+               
                > **NOTE:** When modifying `key_name`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
@@ -3550,6 +3645,9 @@ class Instance(pulumi.CustomResource):
                * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
         :param pulumi.Input[_builtins.bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
         :param pulumi.Input[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict', 'outputs.InstanceMaintenanceTime']] maintenance_time: The time of maintenance. See `maintenance_time` below.
+        :param pulumi.Input[_builtins.str] managed_host_id: The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `managed_host_id` and `dedicated_host_id` parameters.
+               
+               > **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `additional_attributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `managed_host_id` is configured.
         :param pulumi.Input[_builtins.int] network_card_index: The index of the network card for Primary ENI.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the Primary ENI.
                
@@ -3622,7 +3720,7 @@ class Instance(pulumi.CustomResource):
                * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `system_disk_auto_snapshot_policy_id`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
         :param pulumi.Input[_builtins.bool] system_disk_bursting_enabled: Specifies whether to enable the performance burst feature for the system disk. Valid values:
-        :param pulumi.Input[_builtins.str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
+        :param pulumi.Input[_builtins.str] system_disk_category: Valid values: `all`, `local_disk`, `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`, `cloud_essd_xc0`, `cloud_essd_xc1`. only is used to some none I/O optimized instance. `cloud_auto` is Available since v1.184.0. `cloud_essd_xc0` and `cloud_essd_xc1` are Available since v2.2.0 and only supported in government cloud (政务云) regions.
         :param pulumi.Input[_builtins.str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
         :param pulumi.Input[_builtins.bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
@@ -3670,7 +3768,7 @@ class Instance(pulumi.CustomResource):
             name = "terraform-example"
         instance_type = config.get("instanceType")
         if instance_type is None:
-            instance_type = "ecs.n4.large"
+            instance_type = "ecs.g7.large"
         image_id = config.get("imageId")
         if image_id is None:
             image_id = "ubuntu_18_04_64_20G_alibase_20190624.vhd"
@@ -3687,7 +3785,7 @@ class Instance(pulumi.CustomResource):
             description="Hello KMS",
             pending_window_in_days=7,
             status="Enabled")
-        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        default = alicloud.get_zones(available_disk_category="cloud_essd",
             available_resource_creation="VSwitch",
             available_instance_type=instance_type)
         vswitch = alicloud.vpc.Switch("vswitch",
@@ -3699,7 +3797,7 @@ class Instance(pulumi.CustomResource):
             availability_zone=default.zones[0].id,
             security_groups=[__item.id for __item in [group]],
             instance_type=instance_type,
-            system_disk_category="cloud_efficiency",
+            system_disk_category="cloud_essd",
             system_disk_name=name,
             system_disk_description="test_foo_system_disk_description",
             image_id=image_id,
@@ -3709,7 +3807,7 @@ class Instance(pulumi.CustomResource):
             data_disks=[{
                 "name": "disk2",
                 "size": 20,
-                "category": "cloud_efficiency",
+                "category": "cloud_essd",
                 "description": "disk2",
                 "encrypted": True,
                 "kms_key_id": key.id,
@@ -3747,6 +3845,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allocate_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -3790,6 +3889,7 @@ class Instance(pulumi.CustomResource):
                  maintenance_action: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_notify: pulumi.Input[Optional[_builtins.bool]] = None,
                  maintenance_time: pulumi.Input[Optional[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict', 'outputs.InstanceMaintenanceTime']]] = None,
+                 managed_host_id: pulumi.Input[Optional[_builtins.str]] = None,
                  network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
                  network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
                  network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3843,6 +3943,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["additional_attributes"] = additional_attributes
             __props__.__dict__["allocate_public_ip"] = allocate_public_ip
             __props__.__dict__["auto_release_time"] = auto_release_time
             __props__.__dict__["auto_renew_period"] = auto_renew_period
@@ -3886,6 +3987,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["maintenance_action"] = maintenance_action
             __props__.__dict__["maintenance_notify"] = maintenance_notify
             __props__.__dict__["maintenance_time"] = maintenance_time
+            __props__.__dict__["managed_host_id"] = managed_host_id
             __props__.__dict__["network_card_index"] = network_card_index
             __props__.__dict__["network_interface_id"] = network_interface_id
             __props__.__dict__["network_interface_traffic_mode"] = network_interface_traffic_mode
@@ -3953,6 +4055,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            additional_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             allocate_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
             auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -4000,6 +4103,7 @@ class Instance(pulumi.CustomResource):
             maintenance_action: pulumi.Input[Optional[_builtins.str]] = None,
             maintenance_notify: pulumi.Input[Optional[_builtins.bool]] = None,
             maintenance_time: pulumi.Input[Optional[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict', 'outputs.InstanceMaintenanceTime']]] = None,
+            managed_host_id: pulumi.Input[Optional[_builtins.str]] = None,
             memory: pulumi.Input[Optional[_builtins.int]] = None,
             network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
             network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4058,6 +4162,9 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_attributes: A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+               
+               > **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `managed_host_id` is refreshed from the response only when `managed_host_id` is configured.
         :param pulumi.Input[_builtins.bool] allocate_public_ip: Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the `PostPaid` instance.
                The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
@@ -4070,6 +4177,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict', 'outputs.InstanceCpuOptions']] cpu_options: The options of cpu. See `cpu_options` below.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.232.0) The time when the instance was created.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+               
                > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict', 'outputs.InstanceDataDisk']]]] data_disks: The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
@@ -4115,6 +4223,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
         :param pulumi.Input[_builtins.bool] is_outdated: Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
         :param pulumi.Input[_builtins.str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `key_name` can be modified. If you want to use `key_name`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+               
                > **NOTE:** When modifying `key_name`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
@@ -4127,6 +4236,9 @@ class Instance(pulumi.CustomResource):
                * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
         :param pulumi.Input[_builtins.bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
         :param pulumi.Input[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict', 'outputs.InstanceMaintenanceTime']] maintenance_time: The time of maintenance. See `maintenance_time` below.
+        :param pulumi.Input[_builtins.str] managed_host_id: The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `managed_host_id` and `dedicated_host_id` parameters.
+               
+               > **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `additional_attributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `managed_host_id` is configured.
         :param pulumi.Input[_builtins.int] memory: The memory size of the instance. Unit: MiB.
         :param pulumi.Input[_builtins.int] network_card_index: The index of the network card for Primary ENI.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the Primary ENI.
@@ -4205,7 +4317,7 @@ class Instance(pulumi.CustomResource):
                * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `system_disk_auto_snapshot_policy_id`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
         :param pulumi.Input[_builtins.bool] system_disk_bursting_enabled: Specifies whether to enable the performance burst feature for the system disk. Valid values:
-        :param pulumi.Input[_builtins.str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
+        :param pulumi.Input[_builtins.str] system_disk_category: Valid values: `all`, `local_disk`, `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`, `cloud_essd_xc0`, `cloud_essd_xc1`. only is used to some none I/O optimized instance. `cloud_auto` is Available since v1.184.0. `cloud_essd_xc0` and `cloud_essd_xc1` are Available since v2.2.0 and only supported in government cloud (政务云) regions.
         :param pulumi.Input[_builtins.str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
         :param pulumi.Input[_builtins.bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
@@ -4233,6 +4345,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["additional_attributes"] = additional_attributes
         __props__.__dict__["allocate_public_ip"] = allocate_public_ip
         __props__.__dict__["auto_release_time"] = auto_release_time
         __props__.__dict__["auto_renew_period"] = auto_renew_period
@@ -4280,6 +4393,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["maintenance_action"] = maintenance_action
         __props__.__dict__["maintenance_notify"] = maintenance_notify
         __props__.__dict__["maintenance_time"] = maintenance_time
+        __props__.__dict__["managed_host_id"] = managed_host_id
         __props__.__dict__["memory"] = memory
         __props__.__dict__["network_card_index"] = network_card_index
         __props__.__dict__["network_interface_id"] = network_interface_id
@@ -4336,6 +4450,7 @@ class Instance(pulumi.CustomResource):
     @staticmethod
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            additional_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             allocate_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
             auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -4383,6 +4498,7 @@ class Instance(pulumi.CustomResource):
             maintenance_action: pulumi.Input[Optional[_builtins.str]] = None,
             maintenance_notify: pulumi.Input[Optional[_builtins.bool]] = None,
             maintenance_time: pulumi.Input[Optional[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict', 'outputs.InstanceMaintenanceTime']]] = None,
+            managed_host_id: pulumi.Input[Optional[_builtins.str]] = None,
             memory: pulumi.Input[Optional[_builtins.int]] = None,
             network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
             network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4435,6 +4551,7 @@ class Instance(pulumi.CustomResource):
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
+        __props__["additionalAttributes"] = additional_attributes
         __props__["allocatePublicIp"] = allocate_public_ip
         __props__["autoReleaseTime"] = auto_release_time
         __props__["autoRenewPeriod"] = auto_renew_period
@@ -4482,6 +4599,7 @@ class Instance(pulumi.CustomResource):
         __props__["maintenanceAction"] = maintenance_action
         __props__["maintenanceNotify"] = maintenance_notify
         __props__["maintenanceTime"] = maintenance_time
+        __props__["managedHostId"] = managed_host_id
         __props__["memory"] = memory
         __props__["networkCardIndex"] = network_card_index
         __props__["networkInterfaceId"] = network_interface_id
@@ -4534,6 +4652,16 @@ class Instance(pulumi.CustomResource):
         __props__["vpcId"] = vpc_id
         __props__["vswitchId"] = vswitch_id
         return pulumi.runtime.exists_resource(None, 'alicloud:ecs/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
+    @_builtins.property
+    @pulumi.getter(name="additionalAttributes")
+    def additional_attributes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+
+        > **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `managed_host_id` is refreshed from the response only when `managed_host_id` is configured.
+        """
+        return pulumi.get(self, "additional_attributes")
 
     @_builtins.property
     @pulumi.getter(name="allocatePublicIp")
@@ -4601,6 +4729,7 @@ class Instance(pulumi.CustomResource):
     def credit_specification(self) -> pulumi.Output[_builtins.str]:
         """
         Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+
         > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         """
         return pulumi.get(self, "credit_specification")
@@ -4864,6 +4993,7 @@ class Instance(pulumi.CustomResource):
     def key_name(self) -> pulumi.Output[_builtins.str]:
         """
         The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `key_name` can be modified. If you want to use `key_name`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+
         > **NOTE:** When modifying `key_name`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         """
         return pulumi.get(self, "key_name")
@@ -4934,6 +5064,16 @@ class Instance(pulumi.CustomResource):
         The time of maintenance. See `maintenance_time` below.
         """
         return pulumi.get(self, "maintenance_time")
+
+    @_builtins.property
+    @pulumi.getter(name="managedHostId")
+    def managed_host_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `managed_host_id` and `dedicated_host_id` parameters.
+
+        > **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `additional_attributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `managed_host_id` is configured.
+        """
+        return pulumi.get(self, "managed_host_id")
 
     @_builtins.property
     @pulumi.getter
@@ -5263,7 +5403,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> pulumi.Output[_builtins.str]:
         """
-        Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
+        Valid values: `all`, `local_disk`, `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`, `cloud_essd_xc0`, `cloud_essd_xc1`. only is used to some none I/O optimized instance. `cloud_auto` is Available since v1.184.0. `cloud_essd_xc0` and `cloud_essd_xc1` are Available since v2.2.0 and only supported in government cloud (政务云) regions.
         """
         return pulumi.get(self, "system_disk_category")
 

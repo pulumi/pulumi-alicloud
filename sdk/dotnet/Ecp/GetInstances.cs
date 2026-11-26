@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecp
         /// <summary>
         /// This data source provides the Ecp Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.158.0+.
+        /// &gt; **NOTE:** Available since v1.158.0.
         /// 
         /// ## Example Usage
         /// 
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Ecp
         /// <summary>
         /// This data source provides the Ecp Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.158.0+.
+        /// &gt; **NOTE:** Available since v1.158.0.
         /// 
         /// ## Example Usage
         /// 
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Ecp
         /// <summary>
         /// This data source provides the Ecp Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.158.0+.
+        /// &gt; **NOTE:** Available since v1.158.0.
         /// 
         /// ## Example Usage
         /// 
@@ -279,6 +279,9 @@ namespace Pulumi.AliCloud.Ecp
 
     public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specifies whether to fetch the VNC login address of the instance. Default value: `False`.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -352,6 +355,9 @@ namespace Pulumi.AliCloud.Ecp
         [Input("status")]
         public string? Status { get; set; }
 
+        /// <summary>
+        /// The zone ID of the ECP instance.
+        /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
 
@@ -363,6 +369,9 @@ namespace Pulumi.AliCloud.Ecp
 
     public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specifies whether to fetch the VNC login address of the instance. Default value: `False`.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -436,6 +445,9 @@ namespace Pulumi.AliCloud.Ecp
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// The zone ID of the ECP instance.
+        /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
@@ -455,17 +467,47 @@ namespace Pulumi.AliCloud.Ecp
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The ID Of The Image.
+        /// </summary>
         public readonly string? ImageId;
+        /// <summary>
+        /// Instance Name.
+        /// </summary>
         public readonly string? InstanceName;
+        /// <summary>
+        /// Instance Type.
+        /// </summary>
         public readonly string? InstanceType;
+        /// <summary>
+        /// A list of Ecp Instances. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
+        /// <summary>
+        /// The Key Name.
+        /// </summary>
         public readonly string? KeyPairName;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Instance names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The payment type of the instance.
+        /// </summary>
         public readonly string? PaymentType;
+        /// <summary>
+        /// Resolution.
+        /// </summary>
         public readonly string? Resolution;
+        /// <summary>
+        /// Instance Status.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The zone ID of the instance.
+        /// </summary>
         public readonly string? ZoneId;
 
         [OutputConstructor]

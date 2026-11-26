@@ -34,6 +34,10 @@ namespace Pulumi.AliCloud.ExpressConnect.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// (String) The description of the association. Available since v2.3.0.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
         /// The ID of the Express Connect Router instance.
         /// </summary>
         public readonly string EcrId;
@@ -70,6 +74,8 @@ namespace Pulumi.AliCloud.ExpressConnect.Outputs
 
             string createTime,
 
+            string description,
+
             string ecrId,
 
             string id,
@@ -87,6 +93,7 @@ namespace Pulumi.AliCloud.ExpressConnect.Outputs
             AssociationId = associationId;
             AssociationNodeType = associationNodeType;
             CreateTime = createTime;
+            Description = description;
             EcrId = ecrId;
             Id = id;
             ModifyTime = modifyTime;

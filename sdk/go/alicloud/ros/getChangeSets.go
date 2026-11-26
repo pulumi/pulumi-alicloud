@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ros Change Sets of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.105.0+.
+// > **NOTE:** Available since v1.105.0.
 //
 // ## Example Usage
 //
@@ -77,17 +77,22 @@ type GetChangeSetsArgs struct {
 
 // A collection of values returned by getChangeSets.
 type GetChangeSetsResult struct {
+	// The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
 	ChangeSetName *string `pulumi:"changeSetName"`
 	EnableDetails *bool   `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string             `pulumi:"id"`
-	Ids        []string           `pulumi:"ids"`
-	NameRegex  *string            `pulumi:"nameRegex"`
-	Names      []string           `pulumi:"names"`
-	OutputFile *string            `pulumi:"outputFile"`
-	Sets       []GetChangeSetsSet `pulumi:"sets"`
-	StackId    string             `pulumi:"stackId"`
-	Status     *string            `pulumi:"status"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Change Set names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Ros Change Sets. Each element contains the following attributes. See `sets` below.
+	Sets []GetChangeSetsSet `pulumi:"sets"`
+	// The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
+	StackId string `pulumi:"stackId"`
+	// The status of the change set.
+	Status *string `pulumi:"status"`
 }
 
 func GetChangeSetsOutput(ctx *pulumi.Context, args GetChangeSetsOutputArgs, opts ...pulumi.InvokeOption) GetChangeSetsResultOutput {
@@ -132,6 +137,7 @@ func (o GetChangeSetsResultOutput) ToGetChangeSetsResultOutputWithContext(ctx co
 	return o
 }
 
+// The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
 func (o GetChangeSetsResultOutput) ChangeSetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetChangeSetsResult) *string { return v.ChangeSetName }).(pulumi.StringPtrOutput)
 }
@@ -153,6 +159,7 @@ func (o GetChangeSetsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetChangeSetsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Change Set names.
 func (o GetChangeSetsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetChangeSetsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -161,14 +168,17 @@ func (o GetChangeSetsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetChangeSetsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ros Change Sets. Each element contains the following attributes. See `sets` below.
 func (o GetChangeSetsResultOutput) Sets() GetChangeSetsSetArrayOutput {
 	return o.ApplyT(func(v GetChangeSetsResult) []GetChangeSetsSet { return v.Sets }).(GetChangeSetsSetArrayOutput)
 }
 
+// The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
 func (o GetChangeSetsResultOutput) StackId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetChangeSetsResult) string { return v.StackId }).(pulumi.StringOutput)
 }
 
+// The status of the change set.
 func (o GetChangeSetsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetChangeSetsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

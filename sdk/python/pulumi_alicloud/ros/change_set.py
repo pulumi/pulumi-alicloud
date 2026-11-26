@@ -47,7 +47,7 @@ class ChangeSetArgs:
         :param pulumi.Input[_builtins.str] description: The description of the change set. The description can be up to 1,024 bytes in length.
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_urls: The notification urls.
-        :param pulumi.Input[Sequence[pulumi.Input['ChangeSetParameterArgs']]] parameters: Parameters.
+        :param pulumi.Input[Sequence[pulumi.Input['ChangeSetParameterArgs']]] parameters: Parameters. See `parameters` below.
         :param pulumi.Input[_builtins.str] ram_role_name: The ram role name.
         :param pulumi.Input[_builtins.str] replacement_option: The replacement option.
         :param pulumi.Input[_builtins.str] stack_id: The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
@@ -161,7 +161,7 @@ class ChangeSetArgs:
     @pulumi.getter
     def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ChangeSetParameterArgs']]]]:
         """
-        Parameters.
+        Parameters. See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -344,7 +344,7 @@ class _ChangeSetState:
         :param pulumi.Input[_builtins.str] description: The description of the change set. The description can be up to 1,024 bytes in length.
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_urls: The notification urls.
-        :param pulumi.Input[Sequence[pulumi.Input['ChangeSetParameterArgs']]] parameters: Parameters.
+        :param pulumi.Input[Sequence[pulumi.Input['ChangeSetParameterArgs']]] parameters: Parameters. See `parameters` below.
         :param pulumi.Input[_builtins.str] ram_role_name: The ram role name.
         :param pulumi.Input[_builtins.str] replacement_option: The replacement option.
         :param pulumi.Input[_builtins.str] stack_id: The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
@@ -462,7 +462,7 @@ class _ChangeSetState:
     @pulumi.getter
     def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ChangeSetParameterArgs']]]]:
         """
-        Parameters.
+        Parameters. See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -697,7 +697,7 @@ class ChangeSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the change set. The description can be up to 1,024 bytes in length.
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_urls: The notification urls.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ChangeSetParameterArgs', 'ChangeSetParameterArgsDict', 'outputs.ChangeSetParameter']]]] parameters: Parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ChangeSetParameterArgs', 'ChangeSetParameterArgsDict', 'outputs.ChangeSetParameter']]]] parameters: Parameters. See `parameters` below.
         :param pulumi.Input[_builtins.str] ram_role_name: The ram role name.
         :param pulumi.Input[_builtins.str] replacement_option: The replacement option.
         :param pulumi.Input[_builtins.str] stack_id: The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
@@ -859,7 +859,7 @@ class ChangeSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the change set. The description can be up to 1,024 bytes in length.
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_urls: The notification urls.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ChangeSetParameterArgs', 'ChangeSetParameterArgsDict', 'outputs.ChangeSetParameter']]]] parameters: Parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ChangeSetParameterArgs', 'ChangeSetParameterArgsDict', 'outputs.ChangeSetParameter']]]] parameters: Parameters. See `parameters` below.
         :param pulumi.Input[_builtins.str] ram_role_name: The ram role name.
         :param pulumi.Input[_builtins.str] replacement_option: The replacement option.
         :param pulumi.Input[_builtins.str] stack_id: The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
@@ -987,7 +987,7 @@ class ChangeSet(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Sequence['outputs.ChangeSetParameter']]:
         """
-        Parameters.
+        Parameters. See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 

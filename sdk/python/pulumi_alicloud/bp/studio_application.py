@@ -35,7 +35,7 @@ class StudioApplicationArgs:
         :param pulumi.Input[_builtins.str] template_id: The id of the template.
         :param pulumi.Input[_builtins.str] area_id: The id of the area.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] configuration: The configuration of the application.
-        :param pulumi.Input[Sequence[pulumi.Input['StudioApplicationInstanceArgs']]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+        :param pulumi.Input[Sequence[pulumi.Input['StudioApplicationInstanceArgs']]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The id of the resource group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] variables: The variables of the application.
         """
@@ -104,7 +104,7 @@ class StudioApplicationArgs:
     @pulumi.getter
     def instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StudioApplicationInstanceArgs']]]]:
         """
-        The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+        The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
         """
         return pulumi.get(self, "instances")
 
@@ -154,7 +154,7 @@ class _StudioApplicationState:
         :param pulumi.Input[_builtins.str] application_name: The name of the application.
         :param pulumi.Input[_builtins.str] area_id: The id of the area.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] configuration: The configuration of the application.
-        :param pulumi.Input[Sequence[pulumi.Input['StudioApplicationInstanceArgs']]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+        :param pulumi.Input[Sequence[pulumi.Input['StudioApplicationInstanceArgs']]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The id of the resource group.
         :param pulumi.Input[_builtins.str] status: The status of the Application.
         :param pulumi.Input[_builtins.str] template_id: The id of the template.
@@ -217,7 +217,7 @@ class _StudioApplicationState:
     @pulumi.getter
     def instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StudioApplicationInstanceArgs']]]]:
         """
-        The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+        The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
         """
         return pulumi.get(self, "instances")
 
@@ -291,7 +291,7 @@ class StudioApplication(pulumi.CustomResource):
         """
         Provides a Cloud Architect Design Tools Application resource.
 
-        For information about Cloud Architect Design Tools Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/428263.html).
+        For information about Cloud Architect Design Tools Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/cadt/developer-reference/api-bpstudio-2021-09-31-createapplication).
 
         > **NOTE:** Available since v1.192.0.
 
@@ -315,8 +315,8 @@ class StudioApplication(pulumi.CustomResource):
             resource_group_id=default.groups[0].id,
             area_id="cn-hangzhou",
             instances=[{
-                "id": "data.alicloud_instances.default.instances.0.id",
-                "node_name": "data.alicloud_instances.default.instances.0.name",
+                "id": default_get_instances.instances[0].id,
+                "node_name": default_get_instances.instances[0].name,
                 "node_type": "ecs",
             }],
             configuration={
@@ -343,7 +343,7 @@ class StudioApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] application_name: The name of the application.
         :param pulumi.Input[_builtins.str] area_id: The id of the area.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] configuration: The configuration of the application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict', 'outputs.StudioApplicationInstance']]]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict', 'outputs.StudioApplicationInstance']]]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The id of the resource group.
         :param pulumi.Input[_builtins.str] template_id: The id of the template.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] variables: The variables of the application.
@@ -357,7 +357,7 @@ class StudioApplication(pulumi.CustomResource):
         """
         Provides a Cloud Architect Design Tools Application resource.
 
-        For information about Cloud Architect Design Tools Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/428263.html).
+        For information about Cloud Architect Design Tools Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/cadt/developer-reference/api-bpstudio-2021-09-31-createapplication).
 
         > **NOTE:** Available since v1.192.0.
 
@@ -381,8 +381,8 @@ class StudioApplication(pulumi.CustomResource):
             resource_group_id=default.groups[0].id,
             area_id="cn-hangzhou",
             instances=[{
-                "id": "data.alicloud_instances.default.instances.0.id",
-                "node_name": "data.alicloud_instances.default.instances.0.name",
+                "id": default_get_instances.instances[0].id,
+                "node_name": default_get_instances.instances[0].name,
                 "node_type": "ecs",
             }],
             configuration={
@@ -475,7 +475,7 @@ class StudioApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] application_name: The name of the application.
         :param pulumi.Input[_builtins.str] area_id: The id of the area.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] configuration: The configuration of the application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict', 'outputs.StudioApplicationInstance']]]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict', 'outputs.StudioApplicationInstance']]]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The id of the resource group.
         :param pulumi.Input[_builtins.str] status: The status of the Application.
         :param pulumi.Input[_builtins.str] template_id: The id of the template.
@@ -545,7 +545,7 @@ class StudioApplication(pulumi.CustomResource):
     @pulumi.getter
     def instances(self) -> pulumi.Output[Optional[Sequence['outputs.StudioApplicationInstance']]]:
         """
-        The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+        The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
         """
         return pulumi.get(self, "instances")
 

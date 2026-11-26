@@ -16,9 +16,17 @@ public final class LaunchTemplateNetworkInterfacesArgs extends com.pulumi.resour
 
     public static final LaunchTemplateNetworkInterfacesArgs Empty = new LaunchTemplateNetworkInterfacesArgs();
 
+    /**
+     * Whether to release the ENI when the instance is released.
+     * 
+     */
     @Import(name="deleteOnRelease")
     private @Nullable Output<Boolean> deleteOnRelease;
 
+    /**
+     * @return Whether to release the ENI when the instance is released.
+     * 
+     */
     public Optional<Output<Boolean>> deleteOnRelease() {
         return Optional.ofNullable(this.deleteOnRelease);
     }
@@ -127,11 +135,23 @@ public final class LaunchTemplateNetworkInterfacesArgs extends com.pulumi.resour
             $ = new LaunchTemplateNetworkInterfacesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deleteOnRelease Whether to release the ENI when the instance is released.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteOnRelease(@Nullable Output<Boolean> deleteOnRelease) {
             $.deleteOnRelease = deleteOnRelease;
             return this;
         }
 
+        /**
+         * @param deleteOnRelease Whether to release the ENI when the instance is released.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteOnRelease(Boolean deleteOnRelease) {
             return deleteOnRelease(Output.of(deleteOnRelease));
         }

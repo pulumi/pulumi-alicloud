@@ -70,11 +70,17 @@ class GetAclsResult:
     @_builtins.property
     @pulumi.getter(name="aclName")
     def acl_name(self) -> Optional[_builtins.str]:
+        """
+        The ACL Name.
+        """
         return pulumi.get(self, "acl_name")
 
     @_builtins.property
     @pulumi.getter
     def acls(self) -> Sequence['outputs.GetAclsAclResult']:
+        """
+        A list of Alb Acls. Each element contains the following attributes:
+        """
         return pulumi.get(self, "acls")
 
     @_builtins.property
@@ -103,6 +109,9 @@ class GetAclsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Acl names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -113,11 +122,17 @@ class GetAclsResult:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        Resource Group to Which the Number.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        """
         return pulumi.get(self, "status")
 
 
@@ -152,7 +167,7 @@ def get_acls(acl_ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 
@@ -214,7 +229,7 @@ def get_acls_output(acl_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.s
     """
     This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 

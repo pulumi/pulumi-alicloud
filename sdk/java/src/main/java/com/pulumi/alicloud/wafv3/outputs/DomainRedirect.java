@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.wafv3.outputs;
 
+import com.pulumi.alicloud.wafv3.outputs.DomainRedirectBackendPort;
 import com.pulumi.alicloud.wafv3.outputs.DomainRedirectRequestHeader;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -16,6 +17,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainRedirect {
+    /**
+     * @return The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `backendPorts` below.
+     * 
+     */
+    private @Nullable List<DomainRedirectBackendPort> backendPorts;
     /**
      * @return The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
      * 
@@ -76,6 +82,7 @@ public final class DomainRedirect {
     private String loadbalance;
     /**
      * @return The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+     * 
      * &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
      * 
      */
@@ -120,6 +127,13 @@ public final class DomainRedirect {
     private @Nullable Boolean xffProto;
 
     private DomainRedirect() {}
+    /**
+     * @return The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `backendPorts` below.
+     * 
+     */
+    public List<DomainRedirectBackendPort> backendPorts() {
+        return this.backendPorts == null ? List.of() : this.backendPorts;
+    }
     /**
      * @return The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
      * 
@@ -200,6 +214,7 @@ public final class DomainRedirect {
     }
     /**
      * @return The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+     * 
      * &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
      * 
      */
@@ -268,6 +283,7 @@ public final class DomainRedirect {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<DomainRedirectBackendPort> backendPorts;
         private @Nullable List<String> backends;
         private @Nullable List<String> backupBackends;
         private @Nullable Integer connectTimeout;
@@ -289,6 +305,7 @@ public final class DomainRedirect {
         public Builder() {}
         public Builder(DomainRedirect defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.backendPorts = defaults.backendPorts;
     	      this.backends = defaults.backends;
     	      this.backupBackends = defaults.backupBackends;
     	      this.connectTimeout = defaults.connectTimeout;
@@ -309,6 +326,15 @@ public final class DomainRedirect {
     	      this.xffProto = defaults.xffProto;
         }
 
+        @CustomType.Setter
+        public Builder backendPorts(@Nullable List<DomainRedirectBackendPort> backendPorts) {
+
+            this.backendPorts = backendPorts;
+            return this;
+        }
+        public Builder backendPorts(DomainRedirectBackendPort... backendPorts) {
+            return backendPorts(List.of(backendPorts));
+        }
         @CustomType.Setter
         public Builder backends(@Nullable List<String> backends) {
 
@@ -430,6 +456,7 @@ public final class DomainRedirect {
         }
         public DomainRedirect build() {
             final var _resultValue = new DomainRedirect();
+            _resultValue.backendPorts = backendPorts;
             _resultValue.backends = backends;
             _resultValue.backupBackends = backupBackends;
             _resultValue.connectTimeout = connectTimeout;

@@ -23,6 +23,10 @@ public final class GetServerBackupPlansResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of HBR server backup plan. Each element contains the following attributes:
+     * 
+     */
     private List<GetServerBackupPlansPlan> plans;
 
     private GetServerBackupPlansResult() {}
@@ -42,6 +46,10 @@ public final class GetServerBackupPlansResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of HBR server backup plan. Each element contains the following attributes:
+     * 
+     */
     public List<GetServerBackupPlansPlan> plans() {
         return this.plans;
     }

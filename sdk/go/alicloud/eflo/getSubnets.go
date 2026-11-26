@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
+// This data source provides Eflo Subnet available to the user.[What is Subnet](https://www.alibabacloud.com/help/doc-detail/604977.html)
 //
-// > **NOTE:** Available in 1.204.0+
+// > **NOTE:** Available since v1.204.0
 //
 // ## Example Usage
 //
@@ -56,6 +56,7 @@ func GetSubnets(ctx *pulumi.Context, args *GetSubnetsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getSubnets.
 type GetSubnetsArgs struct {
+	// A list of Subnet IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Group Metric Rule name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -85,7 +86,8 @@ type GetSubnetsArgs struct {
 // A collection of values returned by getSubnets.
 type GetSubnetsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id        string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of Subnet IDs.
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of name of Subnets.
@@ -118,6 +120,7 @@ func GetSubnetsOutput(ctx *pulumi.Context, args GetSubnetsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getSubnets.
 type GetSubnetsOutputArgs struct {
+	// A list of Subnet IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Group Metric Rule name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
@@ -168,6 +171,7 @@ func (o GetSubnetsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Subnet IDs.
 func (o GetSubnetsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSubnetsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

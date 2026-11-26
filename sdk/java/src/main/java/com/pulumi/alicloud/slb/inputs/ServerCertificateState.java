@@ -17,6 +17,8 @@ public final class ServerCertificateState extends com.pulumi.resources.ResourceA
     public static final ServerCertificateState Empty = new ServerCertificateState();
 
     /**
+     * Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
+     * 
      * @deprecated Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
      * 
      */
@@ -25,6 +27,8 @@ public final class ServerCertificateState extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> alicloudCertifacteId;
 
     /**
+     * @return Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
+     * 
      * @deprecated Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
      * 
      */
@@ -34,6 +38,8 @@ public final class ServerCertificateState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
+     * 
      * @deprecated Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
      * 
      */
@@ -42,6 +48,8 @@ public final class ServerCertificateState extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> alicloudCertifacteName;
 
     /**
+     * @return Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
+     * 
      * @deprecated Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
      * 
      */
@@ -204,6 +212,8 @@ public final class ServerCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param alicloudCertifacteId Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
+         * 
          * @return builder
          * 
          * @deprecated Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
@@ -216,6 +226,8 @@ public final class ServerCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param alicloudCertifacteId Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
+         * 
          * @return builder
          * 
          * @deprecated Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
@@ -227,6 +239,8 @@ public final class ServerCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param alicloudCertifacteName Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
+         * 
          * @return builder
          * 
          * @deprecated Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
@@ -239,6 +253,8 @@ public final class ServerCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param alicloudCertifacteName Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
+         * 
          * @return builder
          * 
          * @deprecated Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.

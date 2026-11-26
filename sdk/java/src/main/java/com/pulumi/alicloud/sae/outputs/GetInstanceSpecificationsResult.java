@@ -21,6 +21,10 @@ public final class GetInstanceSpecificationsResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Sae Instance Specifications. Each element contains the following attributes:
+     * 
+     */
     private List<GetInstanceSpecificationsSpecification> specifications;
 
     private GetInstanceSpecificationsResult() {}
@@ -37,6 +41,10 @@ public final class GetInstanceSpecificationsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Sae Instance Specifications. Each element contains the following attributes:
+     * 
+     */
     public List<GetInstanceSpecificationsSpecification> specifications() {
         return this.specifications;
     }

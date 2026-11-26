@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -201,6 +201,9 @@ namespace Pulumi.AliCloud.Hbr
     [OutputType]
     public sealed class GetNasBackupPlansResult
     {
+        /// <summary>
+        /// The File System ID of Nas.
+        /// </summary>
         public readonly string? FileSystemId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -208,9 +211,18 @@ namespace Pulumi.AliCloud.Hbr
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of NasBackupPlan names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Hbr NasBackupPlans. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNasBackupPlansPlanResult> Plans;
+        /// <summary>
+        /// The ID of backup vault.
+        /// </summary>
         public readonly string? VaultId;
 
         [OutputConstructor]

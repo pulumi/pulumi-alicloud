@@ -21,10 +21,26 @@ public final class GetNasFileSystemsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Nas File System names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return The ID of office site.
+     * 
+     */
     private @Nullable String officeSiteId;
     private @Nullable String outputFile;
+    /**
+     * @return The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A list of Ecd Nas File Systems. Each element contains the following attributes:
+     * 
+     */
     private List<GetNasFileSystemsSystem> systems;
 
     private GetNasFileSystemsResult() {}
@@ -41,18 +57,34 @@ public final class GetNasFileSystemsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Nas File System names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return The ID of office site.
+     * 
+     */
     public Optional<String> officeSiteId() {
         return Optional.ofNullable(this.officeSiteId);
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A list of Ecd Nas File Systems. Each element contains the following attributes:
+     * 
+     */
     public List<GetNasFileSystemsSystem> systems() {
         return this.systems;
     }

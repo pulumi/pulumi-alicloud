@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.176.0+.
+// > **NOTE:** Available since v1.176.0.
 //
 // ## Example Usage
 //
@@ -66,9 +66,10 @@ type GetCustomPropertiesArgs struct {
 // A collection of values returned by getCustomProperties.
 type GetCustomPropertiesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                        `pulumi:"id"`
-	Ids        []string                      `pulumi:"ids"`
-	OutputFile *string                       `pulumi:"outputFile"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Ecd Custom Properties. Each element contains the following attributes:
 	Properties []GetCustomPropertiesProperty `pulumi:"properties"`
 }
 
@@ -117,6 +118,7 @@ func (o GetCustomPropertiesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCustomPropertiesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecd Custom Properties. Each element contains the following attributes:
 func (o GetCustomPropertiesResultOutput) Properties() GetCustomPropertiesPropertyArrayOutput {
 	return o.ApplyT(func(v GetCustomPropertiesResult) []GetCustomPropertiesProperty { return v.Properties }).(GetCustomPropertiesPropertyArrayOutput)
 }

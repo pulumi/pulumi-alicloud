@@ -179,14 +179,14 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+     * Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
      * 
      */
     @Import(name="spotStrategy")
     private @Nullable Output<String> spotStrategy;
 
     /**
-     * @return - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+     * @return Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
      * 
      */
     public Optional<Output<String>> spotStrategy() {
@@ -450,7 +450,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param spotStrategy - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+         * @param spotStrategy Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
          * 
          * @return builder
          * 
@@ -461,7 +461,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param spotStrategy - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+         * @param spotStrategy Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
          * 
          * @return builder
          * 

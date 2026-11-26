@@ -1533,7 +1533,7 @@ class GetLogConfigsConfigResult(dict):
                  sls_project: _builtins.str):
         """
         :param _builtins.str id: The ID of the Log Config.
-        :param _builtins.str log_type: The type the of log.
+        :param _builtins.str log_type: The type the of log. Valid values: `PROVIDER`.
         :param _builtins.str region_id: The region ID of the Log Config.
         :param _builtins.str sls_log_store: The name of the Log Store.
         :param _builtins.str sls_project: The name of the Project.
@@ -1556,7 +1556,7 @@ class GetLogConfigsConfigResult(dict):
     @pulumi.getter(name="logType")
     def log_type(self) -> _builtins.str:
         """
-        The type the of log.
+        The type the of log. Valid values: `PROVIDER`.
         """
         return pulumi.get(self, "log_type")
 
@@ -1710,9 +1710,9 @@ class GetPluginsPluginResult(dict):
         :param _builtins.str modified_time: The ModifiedTime of the resource.
         :param _builtins.str plugin_data: The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
         :param _builtins.str plugin_id: The first ID of the resource.
-        :param _builtins.str plugin_name: The name of the plug-in that you want to create.
-        :param _builtins.str plugin_type: The type of the plug-in.
-        :param Mapping[str, _builtins.str] tags: The tag of the resource.
+        :param _builtins.str plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+        :param _builtins.str plugin_type: The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
@@ -1776,7 +1776,7 @@ class GetPluginsPluginResult(dict):
     @pulumi.getter(name="pluginName")
     def plugin_name(self) -> _builtins.str:
         """
-        The name of the plug-in that you want to create.
+        The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
         """
         return pulumi.get(self, "plugin_name")
 
@@ -1784,7 +1784,7 @@ class GetPluginsPluginResult(dict):
     @pulumi.getter(name="pluginType")
     def plugin_type(self) -> _builtins.str:
         """
-        The type of the plug-in.
+        The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
         """
         return pulumi.get(self, "plugin_type")
 
@@ -1792,7 +1792,7 @@ class GetPluginsPluginResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
-        The tag of the resource.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 

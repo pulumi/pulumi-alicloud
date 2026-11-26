@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
-        /// The configuration for custom container runtime. It contains following attributes:
+        /// (Optional, MaxItems: 1) The configuration for custom container runtime. The data source Read backfills this block from the server response when the function uses a custom container; it contains the following attributes:
         /// </summary>
         public readonly Outputs.GetFunctionsFunctionCustomContainerConfigResult? CustomContainerConfig;
         /// <summary>

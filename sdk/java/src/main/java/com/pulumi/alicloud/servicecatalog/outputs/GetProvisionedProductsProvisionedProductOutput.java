@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProvisionedProductsProvisionedProductOutput {
+    /**
+     * @return Description of the output value defined in the template.
+     * 
+     */
     private String description;
+    /**
+     * @return The name of the output value defined in the template.
+     * 
+     */
     private String outputKey;
+    /**
+     * @return The content of the output value defined in the template.
+     * 
+     */
     private String outputValue;
 
     private GetProvisionedProductsProvisionedProductOutput() {}
+    /**
+     * @return Description of the output value defined in the template.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The name of the output value defined in the template.
+     * 
+     */
     public String outputKey() {
         return this.outputKey;
     }
+    /**
+     * @return The content of the output value defined in the template.
+     * 
+     */
     public String outputValue() {
         return this.outputValue;
     }

@@ -18,14 +18,14 @@ public final class GetQuotasPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetQuotasPlainArgs Empty = new GetQuotasPlainArgs();
 
     /**
-     * The dimensions.
+     * The dimensions. See `dimensions` below.
      * 
      */
     @Import(name="dimensions")
     private @Nullable List<GetQuotasDimension> dimensions;
 
     /**
-     * @return The dimensions.
+     * @return The dimensions. See `dimensions` below.
      * 
      */
     public Optional<List<GetQuotasDimension>> dimensions() {
@@ -201,7 +201,7 @@ public final class GetQuotasPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param dimensions The dimensions.
+         * @param dimensions The dimensions. See `dimensions` below.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class GetQuotasPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param dimensions The dimensions.
+         * @param dimensions The dimensions. See `dimensions` below.
          * 
          * @return builder
          * 

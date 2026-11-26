@@ -52,26 +52,45 @@ class ClusterArgs:
         """
         The set of arguments for constructing a Cluster resource.
 
-        :param pulumi.Input[_builtins.str] db_cluster_category: Cluster category. Value options: `Basic`, `Cluster`.
-        :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
-        :param pulumi.Input[_builtins.str] db_cluster_version: Cluster version. Value options: `3.0`, Default to `3.0`.
-        :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node.
-        :param pulumi.Input[_builtins.int] db_node_count: The db_node_count of cluster node.
-        :param pulumi.Input[_builtins.int] db_node_storage: The db_node_storage of cluster node.
-        :param pulumi.Input[_builtins.str] description: The description of cluster.
-        :param pulumi.Input[_builtins.str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        :param pulumi.Input[_builtins.str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
+        :param pulumi.Input[_builtins.str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
+        :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
+        :param pulumi.Input[_builtins.str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
+        :param pulumi.Input[_builtins.str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        :param pulumi.Input[_builtins.str] db_cluster_version: The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
+        :param pulumi.Input[_builtins.str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+        :param pulumi.Input[_builtins.int] db_node_count: The db node count.
+        :param pulumi.Input[_builtins.int] db_node_storage: The db node storage.
+        :param pulumi.Input[_builtins.str] description: The description of DBCluster.
+        :param pulumi.Input[_builtins.bool] disk_encryption: Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] disk_performance_level: The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+        :param pulumi.Input[_builtins.int] elastic_io_resource: The elastic io resource.
+        :param pulumi.Input[_builtins.str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+               - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+               - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+               - `16Core128GB`: (Available since v1.237.0)If you set `elastic_io_resource_size` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+        :param pulumi.Input[_builtins.bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] kernel_version: The minor version to which you want to update.
+        :param pulumi.Input[_builtins.str] kms_id: The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        :param pulumi.Input[_builtins.str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
+        :param pulumi.Input[_builtins.str] modify_type: The modify type.
         :param pulumi.Input[_builtins.str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
-        :param pulumi.Input[_builtins.int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        :param pulumi.Input[_builtins.int] period: The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+               
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         :param pulumi.Input[_builtins.str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[_builtins.int] switch_mode: The time when to perform the update. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
                
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
-        :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
-        :param pulumi.Input[_builtins.str] zone_id: The Zone to launch the DB cluster.
+        :param pulumi.Input[_builtins.str] vpc_id: The vpc ID of the resource.
+        :param pulumi.Input[_builtins.str] vswitch_id: The vswitch id.
+        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the resource.
         """
         pulumi.set(__self__, "db_cluster_category", db_cluster_category)
         pulumi.set(__self__, "mode", mode)
@@ -142,7 +161,7 @@ class ClusterArgs:
     @pulumi.getter(name="dbClusterCategory")
     def db_cluster_category(self) -> pulumi.Input[_builtins.str]:
         """
-        Cluster category. Value options: `Basic`, `Cluster`.
+        The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         """
         return pulumi.get(self, "db_cluster_category")
 
@@ -153,6 +172,9 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        The mode of the cluster. Valid values: `reserver`, `flexible`.
+        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -163,7 +185,7 @@ class ClusterArgs:
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         """
         return pulumi.get(self, "auto_renew_period")
 
@@ -174,6 +196,9 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="computeResource")
     def compute_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
+        """
         return pulumi.get(self, "compute_resource")
 
     @compute_resource.setter
@@ -184,6 +209,9 @@ class ClusterArgs:
     @pulumi.getter(name="dbClusterClass")
     @_utilities.deprecated("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
     def db_cluster_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        """
         return pulumi.get(self, "db_cluster_class")
 
     @db_cluster_class.setter
@@ -194,7 +222,7 @@ class ClusterArgs:
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Cluster version. Value options: `3.0`, Default to `3.0`.
+        The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -206,7 +234,7 @@ class ClusterArgs:
     @pulumi.getter(name="dbNodeClass")
     def db_node_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The db_node_class of cluster node.
+        The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         """
         return pulumi.get(self, "db_node_class")
 
@@ -218,7 +246,7 @@ class ClusterArgs:
     @pulumi.getter(name="dbNodeCount")
     def db_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The db_node_count of cluster node.
+        The db node count.
         """
         return pulumi.get(self, "db_node_count")
 
@@ -230,7 +258,7 @@ class ClusterArgs:
     @pulumi.getter(name="dbNodeStorage")
     def db_node_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The db_node_storage of cluster node.
+        The db node storage.
         """
         return pulumi.get(self, "db_node_storage")
 
@@ -242,7 +270,7 @@ class ClusterArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The description of cluster.
+        The description of DBCluster.
         """
         return pulumi.get(self, "description")
 
@@ -253,6 +281,9 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="diskEncryption")
     def disk_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "disk_encryption")
 
     @disk_encryption.setter
@@ -262,6 +293,9 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="diskPerformanceLevel")
     def disk_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+        """
         return pulumi.get(self, "disk_performance_level")
 
     @disk_performance_level.setter
@@ -271,6 +305,9 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="elasticIoResource")
     def elastic_io_resource(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The elastic io resource.
+        """
         return pulumi.get(self, "elastic_io_resource")
 
     @elastic_io_resource.setter
@@ -280,6 +317,12 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="elasticIoResourceSize")
     def elastic_io_resource_size(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+        - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+        - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+        - `16Core128GB`: (Available since v1.237.0)If you set `elastic_io_resource_size` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+        """
         return pulumi.get(self, "elastic_io_resource_size")
 
     @elastic_io_resource_size.setter
@@ -289,6 +332,9 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="enableSsl")
     def enable_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "enable_ssl")
 
     @enable_ssl.setter
@@ -298,6 +344,9 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="kernelVersion")
     def kernel_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The minor version to which you want to update.
+        """
         return pulumi.get(self, "kernel_version")
 
     @kernel_version.setter
@@ -307,6 +356,9 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        """
         return pulumi.get(self, "kms_id")
 
     @kms_id.setter
@@ -317,7 +369,7 @@ class ClusterArgs:
     @pulumi.getter(name="maintainTime")
     def maintain_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         """
         return pulumi.get(self, "maintain_time")
 
@@ -328,6 +380,9 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The modify type.
+        """
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
@@ -351,7 +406,7 @@ class ClusterArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         """
         return pulumi.get(self, "payment_type")
 
@@ -363,7 +418,9 @@ class ClusterArgs:
     @pulumi.getter
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         """
         return pulumi.get(self, "period")
 
@@ -386,6 +443,9 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -407,6 +467,9 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="switchMode")
     def switch_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The time when to perform the update. Valid values:
+        """
         return pulumi.get(self, "switch_mode")
 
     @switch_mode.setter
@@ -432,6 +495,9 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The vpc ID of the resource.
+        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -442,7 +508,7 @@ class ClusterArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The virtual switch ID to launch DB instances in one VPC.
+        The vswitch id.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -454,7 +520,7 @@ class ClusterArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Zone to launch the DB cluster.
+        The zone ID of the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -502,28 +568,48 @@ class _ClusterState:
         """
         Input properties used for looking up and filtering Cluster resources.
 
-        :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
-        :param pulumi.Input[_builtins.str] connection_string: (Available since v1.93.0) The connection string of the ADB cluster.
-        :param pulumi.Input[_builtins.str] db_cluster_category: Cluster category. Value options: `Basic`, `Cluster`.
-        :param pulumi.Input[_builtins.str] db_cluster_version: Cluster version. Value options: `3.0`, Default to `3.0`.
-        :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node.
-        :param pulumi.Input[_builtins.int] db_node_count: The db_node_count of cluster node.
-        :param pulumi.Input[_builtins.int] db_node_storage: The db_node_storage of cluster node.
-        :param pulumi.Input[_builtins.str] description: The description of cluster.
-        :param pulumi.Input[_builtins.str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
+        :param pulumi.Input[_builtins.str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
+        :param pulumi.Input[_builtins.str] connection_string: The connection string of the cluster.
+        :param pulumi.Input[_builtins.str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
+        :param pulumi.Input[_builtins.str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        :param pulumi.Input[_builtins.str] db_cluster_version: The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
+        :param pulumi.Input[_builtins.str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+        :param pulumi.Input[_builtins.int] db_node_count: The db node count.
+        :param pulumi.Input[_builtins.int] db_node_storage: The db node storage.
+        :param pulumi.Input[_builtins.str] description: The description of DBCluster.
+        :param pulumi.Input[_builtins.bool] disk_encryption: Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] disk_performance_level: The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+        :param pulumi.Input[_builtins.int] elastic_io_resource: The elastic io resource.
+        :param pulumi.Input[_builtins.str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+               - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+               - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+               - `16Core128GB`: (Available since v1.237.0)If you set `elastic_io_resource_size` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+        :param pulumi.Input[_builtins.bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] kernel_version: The minor version to which you want to update.
+        :param pulumi.Input[_builtins.str] kms_id: The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        :param pulumi.Input[_builtins.str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
+        :param pulumi.Input[_builtins.str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
+        :param pulumi.Input[_builtins.str] modify_type: The modify type.
         :param pulumi.Input[_builtins.str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
-        :param pulumi.Input[_builtins.int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        :param pulumi.Input[_builtins.int] period: The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+               
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         :param pulumi.Input[_builtins.str] port: (Available since v1.196.0) The connection port of the ADB cluster.
         :param pulumi.Input[_builtins.str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[_builtins.str] status: The status of the resource.
+        :param pulumi.Input[_builtins.int] switch_mode: The time when to perform the update. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
                
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
-        :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
-        :param pulumi.Input[_builtins.str] zone_id: The Zone to launch the DB cluster.
+        :param pulumi.Input[_builtins.str] vpc_id: The vpc ID of the resource.
+        :param pulumi.Input[_builtins.str] vswitch_id: The vswitch id.
+        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the resource.
         """
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
@@ -602,7 +688,7 @@ class _ClusterState:
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         """
         return pulumi.get(self, "auto_renew_period")
 
@@ -613,6 +699,9 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="computeResource")
     def compute_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
+        """
         return pulumi.get(self, "compute_resource")
 
     @compute_resource.setter
@@ -623,7 +712,7 @@ class _ClusterState:
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Available since v1.93.0) The connection string of the ADB cluster.
+        The connection string of the cluster.
         """
         return pulumi.get(self, "connection_string")
 
@@ -635,7 +724,7 @@ class _ClusterState:
     @pulumi.getter(name="dbClusterCategory")
     def db_cluster_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Cluster category. Value options: `Basic`, `Cluster`.
+        The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         """
         return pulumi.get(self, "db_cluster_category")
 
@@ -647,6 +736,9 @@ class _ClusterState:
     @pulumi.getter(name="dbClusterClass")
     @_utilities.deprecated("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
     def db_cluster_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        """
         return pulumi.get(self, "db_cluster_class")
 
     @db_cluster_class.setter
@@ -657,7 +749,7 @@ class _ClusterState:
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Cluster version. Value options: `3.0`, Default to `3.0`.
+        The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -669,7 +761,7 @@ class _ClusterState:
     @pulumi.getter(name="dbNodeClass")
     def db_node_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The db_node_class of cluster node.
+        The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         """
         return pulumi.get(self, "db_node_class")
 
@@ -681,7 +773,7 @@ class _ClusterState:
     @pulumi.getter(name="dbNodeCount")
     def db_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The db_node_count of cluster node.
+        The db node count.
         """
         return pulumi.get(self, "db_node_count")
 
@@ -693,7 +785,7 @@ class _ClusterState:
     @pulumi.getter(name="dbNodeStorage")
     def db_node_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The db_node_storage of cluster node.
+        The db node storage.
         """
         return pulumi.get(self, "db_node_storage")
 
@@ -705,7 +797,7 @@ class _ClusterState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The description of cluster.
+        The description of DBCluster.
         """
         return pulumi.get(self, "description")
 
@@ -716,6 +808,9 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="diskEncryption")
     def disk_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "disk_encryption")
 
     @disk_encryption.setter
@@ -725,6 +820,9 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="diskPerformanceLevel")
     def disk_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+        """
         return pulumi.get(self, "disk_performance_level")
 
     @disk_performance_level.setter
@@ -734,6 +832,9 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="elasticIoResource")
     def elastic_io_resource(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The elastic io resource.
+        """
         return pulumi.get(self, "elastic_io_resource")
 
     @elastic_io_resource.setter
@@ -743,6 +844,12 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="elasticIoResourceSize")
     def elastic_io_resource_size(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+        - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+        - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+        - `16Core128GB`: (Available since v1.237.0)If you set `elastic_io_resource_size` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+        """
         return pulumi.get(self, "elastic_io_resource_size")
 
     @elastic_io_resource_size.setter
@@ -752,6 +859,9 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="enableSsl")
     def enable_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "enable_ssl")
 
     @enable_ssl.setter
@@ -761,6 +871,9 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="kernelVersion")
     def kernel_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The minor version to which you want to update.
+        """
         return pulumi.get(self, "kernel_version")
 
     @kernel_version.setter
@@ -770,6 +883,9 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        """
         return pulumi.get(self, "kms_id")
 
     @kms_id.setter
@@ -780,7 +896,7 @@ class _ClusterState:
     @pulumi.getter(name="maintainTime")
     def maintain_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         """
         return pulumi.get(self, "maintain_time")
 
@@ -791,6 +907,9 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The mode of the cluster. Valid values: `reserver`, `flexible`.
+        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -800,6 +919,9 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The modify type.
+        """
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
@@ -823,7 +945,7 @@ class _ClusterState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         """
         return pulumi.get(self, "payment_type")
 
@@ -835,7 +957,9 @@ class _ClusterState:
     @pulumi.getter
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         """
         return pulumi.get(self, "period")
 
@@ -870,6 +994,9 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -891,6 +1018,9 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -900,6 +1030,9 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="switchMode")
     def switch_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The time when to perform the update. Valid values:
+        """
         return pulumi.get(self, "switch_mode")
 
     @switch_mode.setter
@@ -925,6 +1058,9 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The vpc ID of the resource.
+        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -935,7 +1071,7 @@ class _ClusterState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The virtual switch ID to launch DB instances in one VPC.
+        The vswitch id.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -947,7 +1083,7 @@ class _ClusterState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Zone to launch the DB cluster.
+        The zone ID of the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -998,8 +1134,6 @@ class Cluster(pulumi.CustomResource):
         environment in the cloud. An ADB cluster can contain multiple user-created
         databases.
 
-        > **NOTE:** Deprecated since v1.121.0.
-
         > **DEPRECATED:** This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
 
         ## Example Usage
@@ -1038,6 +1172,10 @@ class Cluster(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
+        ### Removing adb.Cluster from your configuration
+
+        The adb.Cluster resource allows you to manage your adb cluster, but Terraform cannot destroy it if your cluster type is pre paid(post paid type can destroy normally). Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster. You can resume managing the cluster via the adb Console.
 
         ## Import
 
@@ -1050,26 +1188,45 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
-        :param pulumi.Input[_builtins.str] db_cluster_category: Cluster category. Value options: `Basic`, `Cluster`.
-        :param pulumi.Input[_builtins.str] db_cluster_version: Cluster version. Value options: `3.0`, Default to `3.0`.
-        :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node.
-        :param pulumi.Input[_builtins.int] db_node_count: The db_node_count of cluster node.
-        :param pulumi.Input[_builtins.int] db_node_storage: The db_node_storage of cluster node.
-        :param pulumi.Input[_builtins.str] description: The description of cluster.
-        :param pulumi.Input[_builtins.str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
+        :param pulumi.Input[_builtins.str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
+        :param pulumi.Input[_builtins.str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
+        :param pulumi.Input[_builtins.str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        :param pulumi.Input[_builtins.str] db_cluster_version: The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
+        :param pulumi.Input[_builtins.str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+        :param pulumi.Input[_builtins.int] db_node_count: The db node count.
+        :param pulumi.Input[_builtins.int] db_node_storage: The db node storage.
+        :param pulumi.Input[_builtins.str] description: The description of DBCluster.
+        :param pulumi.Input[_builtins.bool] disk_encryption: Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] disk_performance_level: The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+        :param pulumi.Input[_builtins.int] elastic_io_resource: The elastic io resource.
+        :param pulumi.Input[_builtins.str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+               - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+               - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+               - `16Core128GB`: (Available since v1.237.0)If you set `elastic_io_resource_size` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+        :param pulumi.Input[_builtins.bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] kernel_version: The minor version to which you want to update.
+        :param pulumi.Input[_builtins.str] kms_id: The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        :param pulumi.Input[_builtins.str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
+        :param pulumi.Input[_builtins.str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
+        :param pulumi.Input[_builtins.str] modify_type: The modify type.
         :param pulumi.Input[_builtins.str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
-        :param pulumi.Input[_builtins.int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        :param pulumi.Input[_builtins.int] period: The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+               
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         :param pulumi.Input[_builtins.str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[_builtins.int] switch_mode: The time when to perform the update. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
                
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
-        :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
-        :param pulumi.Input[_builtins.str] zone_id: The Zone to launch the DB cluster.
+        :param pulumi.Input[_builtins.str] vpc_id: The vpc ID of the resource.
+        :param pulumi.Input[_builtins.str] vswitch_id: The vswitch id.
+        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the resource.
         """
         ...
     @overload
@@ -1081,8 +1238,6 @@ class Cluster(pulumi.CustomResource):
         Provides a ADB cluster resource. An ADB cluster is an isolated database
         environment in the cloud. An ADB cluster can contain multiple user-created
         databases.
-
-        > **NOTE:** Deprecated since v1.121.0.
 
         > **DEPRECATED:** This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
 
@@ -1122,6 +1277,10 @@ class Cluster(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
+        ### Removing adb.Cluster from your configuration
+
+        The adb.Cluster resource allows you to manage your adb cluster, but Terraform cannot destroy it if your cluster type is pre paid(post paid type can destroy normally). Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster. You can resume managing the cluster via the adb Console.
 
         ## Import
 
@@ -1273,28 +1432,48 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
-        :param pulumi.Input[_builtins.str] connection_string: (Available since v1.93.0) The connection string of the ADB cluster.
-        :param pulumi.Input[_builtins.str] db_cluster_category: Cluster category. Value options: `Basic`, `Cluster`.
-        :param pulumi.Input[_builtins.str] db_cluster_version: Cluster version. Value options: `3.0`, Default to `3.0`.
-        :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node.
-        :param pulumi.Input[_builtins.int] db_node_count: The db_node_count of cluster node.
-        :param pulumi.Input[_builtins.int] db_node_storage: The db_node_storage of cluster node.
-        :param pulumi.Input[_builtins.str] description: The description of cluster.
-        :param pulumi.Input[_builtins.str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
+        :param pulumi.Input[_builtins.str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
+        :param pulumi.Input[_builtins.str] connection_string: The connection string of the cluster.
+        :param pulumi.Input[_builtins.str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
+        :param pulumi.Input[_builtins.str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        :param pulumi.Input[_builtins.str] db_cluster_version: The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
+        :param pulumi.Input[_builtins.str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+        :param pulumi.Input[_builtins.int] db_node_count: The db node count.
+        :param pulumi.Input[_builtins.int] db_node_storage: The db node storage.
+        :param pulumi.Input[_builtins.str] description: The description of DBCluster.
+        :param pulumi.Input[_builtins.bool] disk_encryption: Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] disk_performance_level: The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+        :param pulumi.Input[_builtins.int] elastic_io_resource: The elastic io resource.
+        :param pulumi.Input[_builtins.str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+               - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+               - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+               - `16Core128GB`: (Available since v1.237.0)If you set `elastic_io_resource_size` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+        :param pulumi.Input[_builtins.bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] kernel_version: The minor version to which you want to update.
+        :param pulumi.Input[_builtins.str] kms_id: The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        :param pulumi.Input[_builtins.str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
+        :param pulumi.Input[_builtins.str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
+        :param pulumi.Input[_builtins.str] modify_type: The modify type.
         :param pulumi.Input[_builtins.str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
-        :param pulumi.Input[_builtins.int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        :param pulumi.Input[_builtins.int] period: The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+               
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         :param pulumi.Input[_builtins.str] port: (Available since v1.196.0) The connection port of the ADB cluster.
         :param pulumi.Input[_builtins.str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[_builtins.str] status: The status of the resource.
+        :param pulumi.Input[_builtins.int] switch_mode: The time when to perform the update. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
                
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
-        :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
-        :param pulumi.Input[_builtins.str] zone_id: The Zone to launch the DB cluster.
+        :param pulumi.Input[_builtins.str] vpc_id: The vpc ID of the resource.
+        :param pulumi.Input[_builtins.str] vswitch_id: The vswitch id.
+        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1411,20 +1590,23 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> pulumi.Output[_builtins.int]:
         """
-        Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @_builtins.property
     @pulumi.getter(name="computeResource")
     def compute_resource(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
+        """
         return pulumi.get(self, "compute_resource")
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> pulumi.Output[_builtins.str]:
         """
-        (Available since v1.93.0) The connection string of the ADB cluster.
+        The connection string of the cluster.
         """
         return pulumi.get(self, "connection_string")
 
@@ -1432,7 +1614,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="dbClusterCategory")
     def db_cluster_category(self) -> pulumi.Output[_builtins.str]:
         """
-        Cluster category. Value options: `Basic`, `Cluster`.
+        The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         """
         return pulumi.get(self, "db_cluster_category")
 
@@ -1440,13 +1622,16 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="dbClusterClass")
     @_utilities.deprecated("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
     def db_cluster_class(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        """
         return pulumi.get(self, "db_cluster_class")
 
     @_builtins.property
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Cluster version. Value options: `3.0`, Default to `3.0`.
+        The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -1454,7 +1639,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="dbNodeClass")
     def db_node_class(self) -> pulumi.Output[_builtins.str]:
         """
-        The db_node_class of cluster node.
+        The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         """
         return pulumi.get(self, "db_node_class")
 
@@ -1462,7 +1647,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="dbNodeCount")
     def db_node_count(self) -> pulumi.Output[_builtins.int]:
         """
-        The db_node_count of cluster node.
+        The db node count.
         """
         return pulumi.get(self, "db_node_count")
 
@@ -1470,7 +1655,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="dbNodeStorage")
     def db_node_storage(self) -> pulumi.Output[_builtins.int]:
         """
-        The db_node_storage of cluster node.
+        The db node storage.
         """
         return pulumi.get(self, "db_node_storage")
 
@@ -1478,61 +1663,91 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
         """
-        The description of cluster.
+        The description of DBCluster.
         """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="diskEncryption")
     def disk_encryption(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "disk_encryption")
 
     @_builtins.property
     @pulumi.getter(name="diskPerformanceLevel")
     def disk_performance_level(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+        """
         return pulumi.get(self, "disk_performance_level")
 
     @_builtins.property
     @pulumi.getter(name="elasticIoResource")
     def elastic_io_resource(self) -> pulumi.Output[_builtins.int]:
+        """
+        The elastic io resource.
+        """
         return pulumi.get(self, "elastic_io_resource")
 
     @_builtins.property
     @pulumi.getter(name="elasticIoResourceSize")
     def elastic_io_resource_size(self) -> pulumi.Output[_builtins.str]:
+        """
+        The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+        - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+        - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+        - `16Core128GB`: (Available since v1.237.0)If you set `elastic_io_resource_size` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+        """
         return pulumi.get(self, "elastic_io_resource_size")
 
     @_builtins.property
     @pulumi.getter(name="enableSsl")
     def enable_ssl(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "enable_ssl")
 
     @_builtins.property
     @pulumi.getter(name="kernelVersion")
     def kernel_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        The minor version to which you want to update.
+        """
         return pulumi.get(self, "kernel_version")
 
     @_builtins.property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        """
         return pulumi.get(self, "kms_id")
 
     @_builtins.property
     @pulumi.getter(name="maintainTime")
     def maintain_time(self) -> pulumi.Output[_builtins.str]:
         """
-        Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         """
         return pulumi.get(self, "maintain_time")
 
     @_builtins.property
     @pulumi.getter
     def mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The mode of the cluster. Valid values: `reserver`, `flexible`.
+        """
         return pulumi.get(self, "mode")
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The modify type.
+        """
         return pulumi.get(self, "modify_type")
 
     @_builtins.property
@@ -1548,7 +1763,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         """
         return pulumi.get(self, "payment_type")
 
@@ -1556,7 +1771,9 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         """
         return pulumi.get(self, "period")
 
@@ -1579,6 +1796,9 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
@@ -1592,11 +1812,17 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="switchMode")
     def switch_mode(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The time when to perform the update. Valid values:
+        """
         return pulumi.get(self, "switch_mode")
 
     @_builtins.property
@@ -1614,13 +1840,16 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The vpc ID of the resource.
+        """
         return pulumi.get(self, "vpc_id")
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The virtual switch ID to launch DB instances in one VPC.
+        The vswitch id.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -1628,7 +1857,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The Zone to launch the DB cluster.
+        The zone ID of the resource.
         """
         return pulumi.get(self, "zone_id")
 

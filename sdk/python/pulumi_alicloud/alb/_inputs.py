@@ -3762,7 +3762,8 @@ class ServerGroupServerArgsDict(TypedDict):
     The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
 
     > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-    **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+
+    > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
     """
 
 @pulumi.input_type
@@ -3805,7 +3806,8 @@ class ServerGroupServerArgs:
         :param pulumi.Input[_builtins.int] weight: The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
                
                > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-               **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+               
+               > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
         """
         pulumi.set(__self__, "server_id", server_id)
         pulumi.set(__self__, "server_type", server_type)
@@ -3943,7 +3945,8 @@ class ServerGroupServerArgs:
         The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
 
         > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-        **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+
+        > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
         """
         return pulumi.get(self, "weight")
 

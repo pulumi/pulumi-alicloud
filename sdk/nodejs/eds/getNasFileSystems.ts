@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.141.0+.
+ * > **NOTE:** Available since v1.141.0.
  *
  * ## Example Usage
  *
@@ -86,16 +86,28 @@ export interface GetNasFileSystemsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Nas File System names.
+     */
     readonly names: string[];
+    /**
+     * The ID of office site.
+     */
     readonly officeSiteId?: string;
     readonly outputFile?: string;
+    /**
+     * The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+     */
     readonly status?: string;
+    /**
+     * A list of Ecd Nas File Systems. Each element contains the following attributes:
+     */
     readonly systems: outputs.eds.GetNasFileSystemsSystem[];
 }
 /**
  * This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.141.0+.
+ * > **NOTE:** Available since v1.141.0.
  *
  * ## Example Usage
  *

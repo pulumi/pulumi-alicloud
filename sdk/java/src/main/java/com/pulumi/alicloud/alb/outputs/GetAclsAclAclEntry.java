@@ -21,7 +21,7 @@ public final class GetAclsAclAclEntry {
      */
     private String entry;
     /**
-     * @return The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
+     * @return The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
      * 
      */
     private String status;
@@ -42,7 +42,7 @@ public final class GetAclsAclAclEntry {
         return this.entry;
     }
     /**
-     * @return The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
+     * @return The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
      * 
      */
     public String status() {

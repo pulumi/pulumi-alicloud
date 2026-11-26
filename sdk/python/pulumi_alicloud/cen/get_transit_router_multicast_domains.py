@@ -147,7 +147,7 @@ def get_transit_router_multicast_domains(ids: Optional[Sequence[_builtins.str]] 
     """
     This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.195.0+.
+    > **NOTE:** Available since v1.195.0+.
 
     ## Example Usage
 
@@ -203,7 +203,7 @@ def get_transit_router_multicast_domains_output(ids: pulumi.Input[Optional[Optio
     """
     This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.195.0+.
+    > **NOTE:** Available since v1.195.0+.
 
     ## Example Usage
 

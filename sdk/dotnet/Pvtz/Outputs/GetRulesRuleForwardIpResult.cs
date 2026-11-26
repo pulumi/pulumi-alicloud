@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
     [OutputType]
     public sealed class GetRulesRuleForwardIpResult
     {
+        /// <summary>
+        /// The ip of the forwarding destination.
+        /// </summary>
         public readonly string Ip;
+        /// <summary>
+        /// The port of the forwarding destination.
+        /// </summary>
         public readonly int Port;
 
         [OutputConstructor]

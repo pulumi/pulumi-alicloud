@@ -9,60 +9,301 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Yundun
 {
+    /// <summary>
+    /// &gt; **NOTE:** `alicloud.yundun.BastionHostInstance` has been deprecated since v1.132.0 and renamed to `alicloud.bastionhost.Instance`. Use `alicloud.bastionhost.Instance` instead.
+    /// 
+    /// Cloud Bastion Host instance resource ("Yundun_bastionhost" is the short term of this product).
+    /// For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
+    /// 
+    /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+    /// 
+    /// &gt; **NOTE:** Available since v1.132.0.
+    /// 
+    /// &gt; **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultBastionHostInstance = new AliCloud.Yundun.BastionHostInstance("default", new()
+    ///     {
+    ///         Description = name,
+    ///         LicenseCode = "bhah_ent_50_asset",
+    ///         PlanCode = "cloudbastion",
+    ///         Storage = "5",
+    ///         Bandwidth = "5",
+    ///         Period = 1,
+    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultBastionHostInstance = new AliCloud.Yundun.BastionHostInstance("default", new()
+    ///     {
+    ///         Description = name,
+    ///         LicenseCode = "bhah_ent_50_asset",
+    ///         PlanCode = "cloudbastion",
+    ///         Storage = "5",
+    ///         Bandwidth = "5",
+    ///         Period = 1,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         AdAuthServers = new[]
+    ///         {
+    ///             new AliCloud.Yundun.Inputs.BastionHostInstanceAdAuthServerArgs
+    ///             {
+    ///                 Server = "192.168.1.1",
+    ///                 StandbyServer = "192.168.1.3",
+    ///                 Port = 80,
+    ///                 Domain = "domain",
+    ///                 Account = "cn=Manager,dc=test,dc=com",
+    ///                 Password = "YouPassword123",
+    ///                 Filter = "objectClass=person",
+    ///                 NameMapping = "nameAttr",
+    ///                 EmailMapping = "emailAttr",
+    ///                 MobileMapping = "mobileAttr",
+    ///                 IsSsl = false,
+    ///                 BaseDn = "dc=test,dc=com",
+    ///             },
+    ///         },
+    ///         LdapAuthServers = new[]
+    ///         {
+    ///             new AliCloud.Yundun.Inputs.BastionHostInstanceLdapAuthServerArgs
+    ///             {
+    ///                 Server = "192.168.1.1",
+    ///                 StandbyServer = "192.168.1.3",
+    ///                 Port = 80,
+    ///                 LoginNameMapping = "uid",
+    ///                 Account = "cn=Manager,dc=test,dc=com",
+    ///                 Password = "YouPassword123",
+    ///                 Filter = "objectClass=person",
+    ///                 NameMapping = "nameAttr",
+    ///                 EmailMapping = "emailAttr",
+    ///                 MobileMapping = "mobileAttr",
+    ///                 IsSsl = false,
+    ///                 BaseDn = "dc=test,dc=com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.yundun.BastionHostInstance` or removing it from your configuration
+    /// 
+    /// The `alicloud.yundun.BastionHostInstance` resource allows you to manage bastionhost instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration
+    /// will remove it from your state file and management, but will not destroy the bastionhost instance.
+    /// You can resume managing the subscription bastionhost instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
+    /// ## Import
+    /// 
+    /// Yundun_bastionhost instance can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import alicloud:yundun/bastionHostInstance:BastionHostInstance example bastionhost-exampe123456
+    /// ```
+    /// </summary>
     [AliCloudResourceType("alicloud:yundun/bastionHostInstance:BastionHostInstance")]
     public partial class BastionHostInstance : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The AD auth server of the Instance. See `AdAuthServer` below.
+        /// </summary>
         [Output("adAuthServers")]
         public Output<ImmutableArray<Outputs.BastionHostInstanceAdAuthServer>> AdAuthServers { get; private set; } = null!;
 
+        /// <summary>
+        /// The bandwidth of Cloud Bastionhost instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.263.0, `Bandwidth` can be modified.
+        /// 
+        /// - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+        /// - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
+        /// </summary>
         [Output("bandwidth")]
         public Output<string> Bandwidth { get; private set; } = null!;
 
+        /// <summary>
+        /// Description of the instance. This name can have a string of 1 to 63 characters.
+        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `True`, `False`.
+        /// </summary>
         [Output("enablePublicAccess")]
         public Output<bool> EnablePublicAccess { get; private set; } = null!;
 
+        /// <summary>
+        /// The LDAP auth server of the Instance. See `LdapAuthServer` below.
+        /// </summary>
         [Output("ldapAuthServers")]
         public Output<ImmutableArray<Outputs.BastionHostInstanceLdapAuthServer>> LdapAuthServers { get; private set; } = null!;
 
+        /// <summary>
+        /// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        /// </summary>
         [Output("licenseCode")]
         public Output<string> LicenseCode { get; private set; } = null!;
 
+        /// <summary>
+        /// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+        /// 
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
+        /// <summary>
+        /// The plan code of Cloud Bastionhost instance. Valid values:
+        /// </summary>
         [Output("planCode")]
         public Output<string> PlanCode { get; private set; } = null!;
 
+        /// <summary>
+        /// The public IP address that you want to add to the whitelist.
+        /// 
+        /// &gt; **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `AdAuthServer` or `LdapAuthServer` to configure auth server, then ignore any changes to that `Password` caused externally (e.g. Application Autoscaling).
+        /// </summary>
         [Output("publicWhiteLists")]
         public Output<ImmutableArray<string>> PublicWhiteLists { get; private set; } = null!;
 
+        /// <summary>
+        /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `RenewPeriod` is required under the condition that `RenewalStatus` is `AutoRenewal`. From version 1.193.0, `RenewPeriod` can be modified.
+        /// </summary>
         [Output("renewPeriod")]
         public Output<int?> RenewPeriod { get; private set; } = null!;
 
+        /// <summary>
+        /// The unit of the auto-renewal period. Valid values:  **NOTE:** The `RenewalPeriodUnit` is required under the condition that `RenewalStatus` is `AutoRenewal`.
+        /// - `M`: months.
+        /// - `Y`: years.
+        /// </summary>
         [Output("renewalPeriodUnit")]
         public Output<string> RenewalPeriodUnit { get; private set; } = null!;
 
+        /// <summary>
+        /// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `RenewalStatus` can be modified.
+        /// </summary>
         [Output("renewalStatus")]
         public Output<string> RenewalStatus { get; private set; } = null!;
 
+        /// <summary>
+        /// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// security group IDs configured to Bastionhost.
+        /// **NOTE:** There is a potential diff error because of the order of `SecurityGroupIds` values indefinite.
+        /// So, from version 1.160.0, `SecurityGroupIds` type has been updated as `Set` from `List`,
+        /// and you can use tolist to convert it to a list.
+        /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
+        /// <summary>
+        /// Slave VSwitch ID configured to Bastionhost.
+        /// </summary>
         [Output("slaveVswitchId")]
         public Output<string?> SlaveVswitchId { get; private set; } = null!;
 
+        /// <summary>
+        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+        /// 
+        /// -&gt;**NOTE:** From version 1.251.0, `Storage` can be modified.
+        /// </summary>
         [Output("storage")]
         public Output<string> Storage { get; private set; } = null!;
 
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// VSwitch ID configured to Bastionhost.
+        /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
 
@@ -114,80 +355,155 @@ namespace Pulumi.AliCloud.Yundun
     {
         [Input("adAuthServers")]
         private InputList<Inputs.BastionHostInstanceAdAuthServerArgs>? _adAuthServers;
+
+        /// <summary>
+        /// The AD auth server of the Instance. See `AdAuthServer` below.
+        /// </summary>
         public InputList<Inputs.BastionHostInstanceAdAuthServerArgs> AdAuthServers
         {
             get => _adAuthServers ?? (_adAuthServers = new InputList<Inputs.BastionHostInstanceAdAuthServerArgs>());
             set => _adAuthServers = value;
         }
 
+        /// <summary>
+        /// The bandwidth of Cloud Bastionhost instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.263.0, `Bandwidth` can be modified.
+        /// 
+        /// - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+        /// - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
+        /// </summary>
         [Input("bandwidth", required: true)]
         public Input<string> Bandwidth { get; set; } = null!;
 
+        /// <summary>
+        /// Description of the instance. This name can have a string of 1 to 63 characters.
+        /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
+        /// <summary>
+        /// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `True`, `False`.
+        /// </summary>
         [Input("enablePublicAccess")]
         public Input<bool>? EnablePublicAccess { get; set; }
 
         [Input("ldapAuthServers")]
         private InputList<Inputs.BastionHostInstanceLdapAuthServerArgs>? _ldapAuthServers;
+
+        /// <summary>
+        /// The LDAP auth server of the Instance. See `LdapAuthServer` below.
+        /// </summary>
         public InputList<Inputs.BastionHostInstanceLdapAuthServerArgs> LdapAuthServers
         {
             get => _ldapAuthServers ?? (_ldapAuthServers = new InputList<Inputs.BastionHostInstanceLdapAuthServerArgs>());
             set => _ldapAuthServers = value;
         }
 
+        /// <summary>
+        /// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        /// </summary>
         [Input("licenseCode", required: true)]
         public Input<string> LicenseCode { get; set; } = null!;
 
+        /// <summary>
+        /// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+        /// 
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        /// <summary>
+        /// The plan code of Cloud Bastionhost instance. Valid values:
+        /// </summary>
         [Input("planCode", required: true)]
         public Input<string> PlanCode { get; set; } = null!;
 
         [Input("publicWhiteLists")]
         private InputList<string>? _publicWhiteLists;
+
+        /// <summary>
+        /// The public IP address that you want to add to the whitelist.
+        /// 
+        /// &gt; **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `AdAuthServer` or `LdapAuthServer` to configure auth server, then ignore any changes to that `Password` caused externally (e.g. Application Autoscaling).
+        /// </summary>
         public InputList<string> PublicWhiteLists
         {
             get => _publicWhiteLists ?? (_publicWhiteLists = new InputList<string>());
             set => _publicWhiteLists = value;
         }
 
+        /// <summary>
+        /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `RenewPeriod` is required under the condition that `RenewalStatus` is `AutoRenewal`. From version 1.193.0, `RenewPeriod` can be modified.
+        /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
+        /// <summary>
+        /// The unit of the auto-renewal period. Valid values:  **NOTE:** The `RenewalPeriodUnit` is required under the condition that `RenewalStatus` is `AutoRenewal`.
+        /// - `M`: months.
+        /// - `Y`: years.
+        /// </summary>
         [Input("renewalPeriodUnit")]
         public Input<string>? RenewalPeriodUnit { get; set; }
 
+        /// <summary>
+        /// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `RenewalStatus` can be modified.
+        /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
 
+        /// <summary>
+        /// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         [Input("securityGroupIds", required: true)]
         private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// security group IDs configured to Bastionhost.
+        /// **NOTE:** There is a potential diff error because of the order of `SecurityGroupIds` values indefinite.
+        /// So, from version 1.160.0, `SecurityGroupIds` type has been updated as `Set` from `List`,
+        /// and you can use tolist to convert it to a list.
+        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
 
+        /// <summary>
+        /// Slave VSwitch ID configured to Bastionhost.
+        /// </summary>
         [Input("slaveVswitchId")]
         public Input<string>? SlaveVswitchId { get; set; }
 
+        /// <summary>
+        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+        /// 
+        /// -&gt;**NOTE:** From version 1.251.0, `Storage` can be modified.
+        /// </summary>
         [Input("storage", required: true)]
         public Input<string> Storage { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
+        /// <summary>
+        /// VSwitch ID configured to Bastionhost.
+        /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
 
@@ -201,80 +517,155 @@ namespace Pulumi.AliCloud.Yundun
     {
         [Input("adAuthServers")]
         private InputList<Inputs.BastionHostInstanceAdAuthServerGetArgs>? _adAuthServers;
+
+        /// <summary>
+        /// The AD auth server of the Instance. See `AdAuthServer` below.
+        /// </summary>
         public InputList<Inputs.BastionHostInstanceAdAuthServerGetArgs> AdAuthServers
         {
             get => _adAuthServers ?? (_adAuthServers = new InputList<Inputs.BastionHostInstanceAdAuthServerGetArgs>());
             set => _adAuthServers = value;
         }
 
+        /// <summary>
+        /// The bandwidth of Cloud Bastionhost instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.263.0, `Bandwidth` can be modified.
+        /// 
+        /// - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+        /// - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
+        /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
 
+        /// <summary>
+        /// Description of the instance. This name can have a string of 1 to 63 characters.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `True`, `False`.
+        /// </summary>
         [Input("enablePublicAccess")]
         public Input<bool>? EnablePublicAccess { get; set; }
 
         [Input("ldapAuthServers")]
         private InputList<Inputs.BastionHostInstanceLdapAuthServerGetArgs>? _ldapAuthServers;
+
+        /// <summary>
+        /// The LDAP auth server of the Instance. See `LdapAuthServer` below.
+        /// </summary>
         public InputList<Inputs.BastionHostInstanceLdapAuthServerGetArgs> LdapAuthServers
         {
             get => _ldapAuthServers ?? (_ldapAuthServers = new InputList<Inputs.BastionHostInstanceLdapAuthServerGetArgs>());
             set => _ldapAuthServers = value;
         }
 
+        /// <summary>
+        /// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        /// </summary>
         [Input("licenseCode")]
         public Input<string>? LicenseCode { get; set; }
 
+        /// <summary>
+        /// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+        /// 
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        /// <summary>
+        /// The plan code of Cloud Bastionhost instance. Valid values:
+        /// </summary>
         [Input("planCode")]
         public Input<string>? PlanCode { get; set; }
 
         [Input("publicWhiteLists")]
         private InputList<string>? _publicWhiteLists;
+
+        /// <summary>
+        /// The public IP address that you want to add to the whitelist.
+        /// 
+        /// &gt; **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `AdAuthServer` or `LdapAuthServer` to configure auth server, then ignore any changes to that `Password` caused externally (e.g. Application Autoscaling).
+        /// </summary>
         public InputList<string> PublicWhiteLists
         {
             get => _publicWhiteLists ?? (_publicWhiteLists = new InputList<string>());
             set => _publicWhiteLists = value;
         }
 
+        /// <summary>
+        /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `RenewPeriod` is required under the condition that `RenewalStatus` is `AutoRenewal`. From version 1.193.0, `RenewPeriod` can be modified.
+        /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
+        /// <summary>
+        /// The unit of the auto-renewal period. Valid values:  **NOTE:** The `RenewalPeriodUnit` is required under the condition that `RenewalStatus` is `AutoRenewal`.
+        /// - `M`: months.
+        /// - `Y`: years.
+        /// </summary>
         [Input("renewalPeriodUnit")]
         public Input<string>? RenewalPeriodUnit { get; set; }
 
+        /// <summary>
+        /// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `RenewalStatus` can be modified.
+        /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
 
+        /// <summary>
+        /// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// security group IDs configured to Bastionhost.
+        /// **NOTE:** There is a potential diff error because of the order of `SecurityGroupIds` values indefinite.
+        /// So, from version 1.160.0, `SecurityGroupIds` type has been updated as `Set` from `List`,
+        /// and you can use tolist to convert it to a list.
+        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
 
+        /// <summary>
+        /// Slave VSwitch ID configured to Bastionhost.
+        /// </summary>
         [Input("slaveVswitchId")]
         public Input<string>? SlaveVswitchId { get; set; }
 
+        /// <summary>
+        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+        /// 
+        /// -&gt;**NOTE:** From version 1.251.0, `Storage` can be modified.
+        /// </summary>
         [Input("storage")]
         public Input<string>? Storage { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
+        /// <summary>
+        /// VSwitch ID configured to Bastionhost.
+        /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 

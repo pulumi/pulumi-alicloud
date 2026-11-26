@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <summary>
         /// This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.53.0+
+        /// &gt; **NOTE:** Available since v1.53.0.
         /// 
         /// ## Example Usage
         /// 
@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <summary>
         /// This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.53.0+
+        /// &gt; **NOTE:** Available since v1.53.0.
         /// 
         /// ## Example Usage
         /// 
@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <summary>
         /// This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.53.0+
+        /// &gt; **NOTE:** Available since v1.53.0.
         /// 
         /// ## Example Usage
         /// 
@@ -162,6 +162,9 @@ namespace Pulumi.AliCloud.RocketMQ
 
     public sealed class GetTopicsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `False`. Set it to true can output more details.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -215,6 +218,9 @@ namespace Pulumi.AliCloud.RocketMQ
 
     public sealed class GetTopicsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `False`. Set it to true can output more details.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -276,6 +282,9 @@ namespace Pulumi.AliCloud.RocketMQ
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// ID of the ONS Instance that owns the topic.
+        /// </summary>
         public readonly string InstanceId;
         public readonly string? NameRegex;
         /// <summary>

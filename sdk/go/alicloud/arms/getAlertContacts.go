@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Arms Alert Contacts of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.129.0+.
+// > **NOTE:** Available since v1.129.0.
 //
 // ## Example Usage
 //
@@ -76,16 +76,21 @@ type GetAlertContactsArgs struct {
 
 // A collection of values returned by getAlertContacts.
 type GetAlertContactsResult struct {
-	AlertContactName *string                   `pulumi:"alertContactName"`
-	Contacts         []GetAlertContactsContact `pulumi:"contacts"`
-	Email            *string                   `pulumi:"email"`
+	// The name of the alert contact.
+	AlertContactName *string `pulumi:"alertContactName"`
+	// A list of Arms Alert Contacts. Each element contains the following attributes:
+	Contacts []GetAlertContactsContact `pulumi:"contacts"`
+	// The email address of the alert contact.
+	Email *string `pulumi:"email"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Alert Contact names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	PhoneNum   *string  `pulumi:"phoneNum"`
+	// The mobile number of the alert contact.
+	PhoneNum *string `pulumi:"phoneNum"`
 }
 
 func GetAlertContactsOutput(ctx *pulumi.Context, args GetAlertContactsOutputArgs, opts ...pulumi.InvokeOption) GetAlertContactsResultOutput {
@@ -128,14 +133,17 @@ func (o GetAlertContactsResultOutput) ToGetAlertContactsResultOutputWithContext(
 	return o
 }
 
+// The name of the alert contact.
 func (o GetAlertContactsResultOutput) AlertContactName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAlertContactsResult) *string { return v.AlertContactName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Arms Alert Contacts. Each element contains the following attributes:
 func (o GetAlertContactsResultOutput) Contacts() GetAlertContactsContactArrayOutput {
 	return o.ApplyT(func(v GetAlertContactsResult) []GetAlertContactsContact { return v.Contacts }).(GetAlertContactsContactArrayOutput)
 }
 
+// The email address of the alert contact.
 func (o GetAlertContactsResultOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAlertContactsResult) *string { return v.Email }).(pulumi.StringPtrOutput)
 }
@@ -153,6 +161,7 @@ func (o GetAlertContactsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAlertContactsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Alert Contact names.
 func (o GetAlertContactsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAlertContactsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -161,6 +170,7 @@ func (o GetAlertContactsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAlertContactsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The mobile number of the alert contact.
 func (o GetAlertContactsResultOutput) PhoneNum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAlertContactsResult) *string { return v.PhoneNum }).(pulumi.StringPtrOutput)
 }

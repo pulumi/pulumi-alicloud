@@ -205,14 +205,14 @@ public final class ServerlessInstanceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * An array that consists of the information of IP whitelists.
+     * An array that consists of the information of IP whitelists. See `securityIpGroups` below.
      * 
      */
     @Import(name="securityIpGroups")
     private @Nullable Output<List<ServerlessInstanceSecurityIpGroupArgs>> securityIpGroups;
 
     /**
-     * @return An array that consists of the information of IP whitelists.
+     * @return An array that consists of the information of IP whitelists. See `securityIpGroups` below.
      * 
      */
     public Optional<Output<List<ServerlessInstanceSecurityIpGroupArgs>>> securityIpGroups() {
@@ -608,7 +608,7 @@ public final class ServerlessInstanceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param securityIpGroups An array that consists of the information of IP whitelists.
+         * @param securityIpGroups An array that consists of the information of IP whitelists. See `securityIpGroups` below.
          * 
          * @return builder
          * 
@@ -619,7 +619,7 @@ public final class ServerlessInstanceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param securityIpGroups An array that consists of the information of IP whitelists.
+         * @param securityIpGroups An array that consists of the information of IP whitelists. See `securityIpGroups` below.
          * 
          * @return builder
          * 
@@ -629,7 +629,7 @@ public final class ServerlessInstanceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param securityIpGroups An array that consists of the information of IP whitelists.
+         * @param securityIpGroups An array that consists of the information of IP whitelists. See `securityIpGroups` below.
          * 
          * @return builder
          * 

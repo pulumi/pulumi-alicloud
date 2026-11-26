@@ -22,6 +22,10 @@ public final class GetNamespacesResult {
     private String id;
     private List<String> ids;
     private @Nullable String keyword;
+    /**
+     * @return A list of Cms Namespaces. Each element contains the following attributes:
+     * 
+     */
     private List<GetNamespacesNamespace> namespaces;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
@@ -41,6 +45,10 @@ public final class GetNamespacesResult {
     public Optional<String> keyword() {
         return Optional.ofNullable(this.keyword);
     }
+    /**
+     * @return A list of Cms Namespaces. Each element contains the following attributes:
+     * 
+     */
     public List<GetNamespacesNamespace> namespaces() {
         return this.namespaces;
     }

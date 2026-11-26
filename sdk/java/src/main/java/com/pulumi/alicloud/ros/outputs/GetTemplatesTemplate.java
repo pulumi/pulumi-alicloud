@@ -27,7 +27,7 @@ public final class GetTemplatesTemplate {
      */
     private String id;
     /**
-     * @return Share Type.
+     * @return Share Type. Valid Values: `Private`, `Shared`
      * 
      */
     private String shareType;
@@ -42,7 +42,7 @@ public final class GetTemplatesTemplate {
      */
     private String stackId;
     /**
-     * @return Tags.
+     * @return Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{&#34;key1&#34;:&#34;value1&#34;}`.
      * 
      */
     private Map<String,String> tags;
@@ -90,7 +90,7 @@ public final class GetTemplatesTemplate {
         return this.id;
     }
     /**
-     * @return Share Type.
+     * @return Share Type. Valid Values: `Private`, `Shared`
      * 
      */
     public String shareType() {
@@ -111,7 +111,7 @@ public final class GetTemplatesTemplate {
         return this.stackId;
     }
     /**
-     * @return Tags.
+     * @return Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{&#34;key1&#34;:&#34;value1&#34;}`.
      * 
      */
     public Map<String,String> tags() {

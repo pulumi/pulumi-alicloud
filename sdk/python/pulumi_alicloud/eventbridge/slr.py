@@ -22,12 +22,17 @@ class SlrArgs:
                  product_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Slr resource.
+
+        :param pulumi.Input[_builtins.str] product_name: The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
         """
         pulumi.set(__self__, "product_name", product_name)
 
     @_builtins.property
     @pulumi.getter(name="productName")
     def product_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+        """
         return pulumi.get(self, "product_name")
 
     @product_name.setter
@@ -41,6 +46,8 @@ class _SlrState:
                  product_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Slr resources.
+
+        :param pulumi.Input[_builtins.str] product_name: The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
         """
         if product_name is not None:
             pulumi.set(__self__, "product_name", product_name)
@@ -48,6 +55,9 @@ class _SlrState:
     @_builtins.property
     @pulumi.getter(name="productName")
     def product_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+        """
         return pulumi.get(self, "product_name")
 
     @product_name.setter
@@ -64,10 +74,39 @@ class Slr(pulumi.CustomResource):
                  product_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a Slr resource with the given unique name, props, and options.
+        Provides a Event Bridge Service Linked Role resource.
+
+        `eventbridge.Slr` is an alias of `eventbridge.ServiceLinkedRole`. The two resource types share the same schema, CRUD behavior and service-linked-role lifecycle; use either name interchangeably.
+
+        For information about Event Bridge Service Linked Role and how to use it, see [What is Service Linked Role](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+
+        > **NOTE:** Available since v1.129.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.eventbridge.Slr("default", product_name="AliyunServiceRoleForEventBridgeSourceRocketMQ")
+        ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
+        ## Import
+
+        Event Bridge Service Linked Role can be imported using the id, e.g.
+
+        ```sh
+        $ pulumi import alicloud:eventbridge/slr:Slr example <product_name>
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] product_name: The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
         """
         ...
     @overload
@@ -76,7 +115,35 @@ class Slr(pulumi.CustomResource):
                  args: SlrArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Slr resource with the given unique name, props, and options.
+        Provides a Event Bridge Service Linked Role resource.
+
+        `eventbridge.Slr` is an alias of `eventbridge.ServiceLinkedRole`. The two resource types share the same schema, CRUD behavior and service-linked-role lifecycle; use either name interchangeably.
+
+        For information about Event Bridge Service Linked Role and how to use it, see [What is Service Linked Role](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+
+        > **NOTE:** Available since v1.129.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.eventbridge.Slr("default", product_name="AliyunServiceRoleForEventBridgeSourceRocketMQ")
+        ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
+        ## Import
+
+        Event Bridge Service Linked Role can be imported using the id, e.g.
+
+        ```sh
+        $ pulumi import alicloud:eventbridge/slr:Slr example <product_name>
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param SlrArgs args: The arguments to use to populate this resource's properties.
@@ -124,6 +191,7 @@ class Slr(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] product_name: The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -143,5 +211,8 @@ class Slr(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="productName")
     def product_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+        """
         return pulumi.get(self, "product_name")
 

@@ -56,6 +56,9 @@ class GetGatewayBlockVolumesResult:
     @_builtins.property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> _builtins.str:
+        """
+        The Gateway ID.
+        """
         return pulumi.get(self, "gateway_id")
 
     @_builtins.property
@@ -79,6 +82,9 @@ class GetGatewayBlockVolumesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Gateway Block Volume names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -89,11 +95,17 @@ class GetGatewayBlockVolumesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.int]:
+        """
+        The status of volume.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def volumes(self) -> Sequence['outputs.GetGatewayBlockVolumesVolumeResult']:
+        """
+        A list of Cloud Storage Gateway Gateway Block Volumes. Each element contains the following attributes:
+        """
         return pulumi.get(self, "volumes")
 
 
@@ -122,7 +134,7 @@ def get_gateway_block_volumes(gateway_id: Optional[_builtins.str] = None,
     """
     This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.144.0+.
+    > **NOTE:** Available since v1.144.0.
 
     ## Example Usage
 
@@ -177,7 +189,7 @@ def get_gateway_block_volumes_output(gateway_id: pulumi.Input[Optional[_builtins
     """
     This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.144.0+.
+    > **NOTE:** Available since v1.144.0.
 
     ## Example Usage
 

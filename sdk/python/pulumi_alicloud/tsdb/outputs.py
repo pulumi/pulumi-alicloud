@@ -54,7 +54,7 @@ class GetInstancesInstanceResult(dict):
         :param _builtins.str memory_size: The memory size of instance.
         :param _builtins.str network_type: Instance network type.
         :param _builtins.str payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
-        :param _builtins.str status: Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+        :param _builtins.str status: Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
         :param _builtins.str vpc_connection_address: The vpc connection address of instance.
         :param _builtins.str vpc_id: The ID of the virtual private cloud (VPC) that is connected to the instance.
         :param _builtins.str vswitch_id: The vswitch id.
@@ -187,7 +187,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+        Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
         """
         return pulumi.get(self, "status")
 

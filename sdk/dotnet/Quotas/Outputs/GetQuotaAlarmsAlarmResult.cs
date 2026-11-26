@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Quotas.Outputs
         /// </summary>
         public readonly string QuotaAlarmName;
         /// <summary>
-        /// The Quota Dimensions.
+        /// The Quota Dimensions. See `QuotaDimensions` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetQuotaAlarmsAlarmQuotaDimensionResult> QuotaDimensions;
         /// <summary>

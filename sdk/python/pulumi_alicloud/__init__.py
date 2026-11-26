@@ -34,6 +34,12 @@ if typing.TYPE_CHECKING:
     actiontrail = __actiontrail
     import pulumi_alicloud.adb as __adb
     adb = __adb
+    import pulumi_alicloud.agentloop as __agentloop
+    agentloop = __agentloop
+    import pulumi_alicloud.agentloopcontextstore as __agentloopcontextstore
+    agentloopcontextstore = __agentloopcontextstore
+    import pulumi_alicloud.agentloopevaluator as __agentloopevaluator
+    agentloopevaluator = __agentloopevaluator
     import pulumi_alicloud.alb as __alb
     alb = __alb
     import pulumi_alicloud.alidnscloudgtm as __alidnscloudgtm
@@ -334,6 +340,9 @@ else:
     ackone = _utilities.lazy_import('pulumi_alicloud.ackone')
     actiontrail = _utilities.lazy_import('pulumi_alicloud.actiontrail')
     adb = _utilities.lazy_import('pulumi_alicloud.adb')
+    agentloop = _utilities.lazy_import('pulumi_alicloud.agentloop')
+    agentloopcontextstore = _utilities.lazy_import('pulumi_alicloud.agentloopcontextstore')
+    agentloopevaluator = _utilities.lazy_import('pulumi_alicloud.agentloopevaluator')
     alb = _utilities.lazy_import('pulumi_alicloud.alb')
     alidnscloudgtm = _utilities.lazy_import('pulumi_alicloud.alidnscloudgtm')
     alidnscloudgtmaddress = _utilities.lazy_import('pulumi_alicloud.alidnscloudgtmaddress')
@@ -604,6 +613,86 @@ _utilities.register(
   "fqn": "pulumi_alicloud.adb",
   "classes": {
    "alicloud:adb/resourceGroup:ResourceGroup": "ResourceGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "agentloop/agentSpace",
+  "fqn": "pulumi_alicloud.agentloop",
+  "classes": {
+   "alicloud:agentloop/agentSpace:AgentSpace": "AgentSpace"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "agentloop/dataset",
+  "fqn": "pulumi_alicloud.agentloop",
+  "classes": {
+   "alicloud:agentloop/dataset:Dataset": "Dataset"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "agentloop/endpointConnector",
+  "fqn": "pulumi_alicloud.agentloop",
+  "classes": {
+   "alicloud:agentloop/endpointConnector:EndpointConnector": "EndpointConnector"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "agentloop/evaluationTask",
+  "fqn": "pulumi_alicloud.agentloop",
+  "classes": {
+   "alicloud:agentloop/evaluationTask:EvaluationTask": "EvaluationTask"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "agentloop/optimizeTask",
+  "fqn": "pulumi_alicloud.agentloop",
+  "classes": {
+   "alicloud:agentloop/optimizeTask:OptimizeTask": "OptimizeTask"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "agentloop/pipeline",
+  "fqn": "pulumi_alicloud.agentloop",
+  "classes": {
+   "alicloud:agentloop/pipeline:Pipeline": "Pipeline"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "agentloopcontextstore/agentloopContextStore",
+  "fqn": "pulumi_alicloud.agentloopcontextstore",
+  "classes": {
+   "alicloud:agentloopcontextstore/agentloopContextStore:AgentloopContextStore": "AgentloopContextStore"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "agentloopcontextstore/apiKey",
+  "fqn": "pulumi_alicloud.agentloopcontextstore",
+  "classes": {
+   "alicloud:agentloopcontextstore/apiKey:ApiKey": "ApiKey"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "agentloopevaluator/agentloopEvaluator",
+  "fqn": "pulumi_alicloud.agentloopevaluator",
+  "classes": {
+   "alicloud:agentloopevaluator/agentloopEvaluator:AgentloopEvaluator": "AgentloopEvaluator"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "agentloopevaluator/skill",
+  "fqn": "pulumi_alicloud.agentloopevaluator",
+  "classes": {
+   "alicloud:agentloopevaluator/skill:Skill": "Skill"
   }
  },
  {
@@ -1252,6 +1341,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.arms",
   "classes": {
    "alicloud:arms/integrationExporter:IntegrationExporter": "IntegrationExporter"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "arms/notificationPolicy",
+  "fqn": "pulumi_alicloud.arms",
+  "classes": {
+   "alicloud:arms/notificationPolicy:NotificationPolicy": "NotificationPolicy"
   }
  },
  {
@@ -2808,6 +2905,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cs/autoRepairPolicy",
+  "fqn": "pulumi_alicloud.cs",
+  "classes": {
+   "alicloud:cs/autoRepairPolicy:AutoRepairPolicy": "AutoRepairPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cs/autoscalingConfig",
   "fqn": "pulumi_alicloud.cs",
   "classes": {
@@ -3284,6 +3389,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.dfs",
   "classes": {
    "alicloud:dfs/vscMountPoint:VscMountPoint": "VscMountPoint"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "directmail/configSet",
+  "fqn": "pulumi_alicloud.directmail",
+  "classes": {
+   "alicloud:directmail/configSet:ConfigSet": "ConfigSet"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "directmail/dedicatedIpPool",
+  "fqn": "pulumi_alicloud.directmail",
+  "classes": {
+   "alicloud:directmail/dedicatedIpPool:DedicatedIpPool": "DedicatedIpPool"
   }
  },
  {
@@ -5028,6 +5149,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.esa",
   "classes": {
    "alicloud:esa/siteDeliveryTask:SiteDeliveryTask": "SiteDeliveryTask"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/siteEnvironment",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/siteEnvironment:SiteEnvironment": "SiteEnvironment"
   }
  },
  {
@@ -7648,6 +7777,62 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "polardb/gatewayBudgetPolicy",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/gatewayBudgetPolicy:GatewayBudgetPolicy": "GatewayBudgetPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/gatewayConsumer",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/gatewayConsumer:GatewayConsumer": "GatewayConsumer"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/gatewayConsumerGroup",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/gatewayConsumerGroup:GatewayConsumerGroup": "GatewayConsumerGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/gatewayCostRule",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/gatewayCostRule:GatewayCostRule": "GatewayCostRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/gatewayModelApi",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/gatewayModelApi:GatewayModelApi": "GatewayModelApi"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/gatewayModelService",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/gatewayModelService:GatewayModelService": "GatewayModelService"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/gatewayRateLimitPolicy",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/gatewayRateLimitPolicy:GatewayRateLimitPolicy": "GatewayRateLimitPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "polardb/globalDatabaseNetwork",
   "fqn": "pulumi_alicloud.polardb",
   "classes": {
@@ -7668,6 +7853,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.polardb",
   "classes": {
    "alicloud:polardb/parameterGroup:ParameterGroup": "ParameterGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/polarFs",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/polarFs:PolarFs": "PolarFs"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/polarFsEndpoint",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/polarFsEndpoint:PolarFsEndpoint": "PolarFsEndpoint"
   }
  },
  {

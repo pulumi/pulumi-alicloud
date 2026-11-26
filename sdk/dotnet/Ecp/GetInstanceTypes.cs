@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecp
         /// <summary>
         /// This data source provides the available instance types with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.158.0+.
+        /// &gt; **NOTE:** Available since v1.158.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Ecp
         /// <summary>
         /// This data source provides the available instance types with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.158.0+.
+        /// &gt; **NOTE:** Available since v1.158.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Ecp
         /// <summary>
         /// This data source provides the available instance types with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.158.0+.
+        /// &gt; **NOTE:** Available since v1.158.0.
         /// 
         /// ## Example Usage
         /// 
@@ -136,6 +136,9 @@ namespace Pulumi.AliCloud.Ecp
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of ecp Instance types. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTypesInstanceTypeResult> InstanceTypes;
         public readonly string? OutputFile;
 

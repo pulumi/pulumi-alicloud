@@ -41,7 +41,7 @@ public final class GetAccessAssignmentsAssignment {
      */
     private String principalName;
     /**
-     * @return Create the identity type of the access assignment, which can be a user or a user group.
+     * @return Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
      * 
      */
     private String principalType;
@@ -61,7 +61,7 @@ public final class GetAccessAssignmentsAssignment {
      */
     private String targetPathName;
     /**
-     * @return The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+     * @return The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
      * 
      */
     private String targetType;
@@ -110,7 +110,7 @@ public final class GetAccessAssignmentsAssignment {
         return this.principalName;
     }
     /**
-     * @return Create the identity type of the access assignment, which can be a user or a user group.
+     * @return Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
      * 
      */
     public String principalType() {
@@ -138,7 +138,7 @@ public final class GetAccessAssignmentsAssignment {
         return this.targetPathName;
     }
     /**
-     * @return The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+     * @return The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
      * 
      */
     public String targetType() {

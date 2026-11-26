@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
  *
  * ## Example Usage
  *
@@ -132,10 +132,22 @@ export interface GetDedicatedHostsArgs {
  * A collection of values returned by getDedicatedHosts.
  */
 export interface GetDedicatedHostsResult {
+    /**
+     * Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+     */
     readonly allocationStatus?: string;
+    /**
+     * The ID of the dedicated cluster in which the host is created.
+     */
     readonly dedicatedHostGroupId: string;
     readonly enableDetails?: boolean;
+    /**
+     * The storage type of the host.
+     */
     readonly hostType?: string;
+    /**
+     * A list of Cddc Dedicated Hosts. Each element contains the following attributes:
+     */
     readonly hosts: outputs.cddc.GetDedicatedHostsHost[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -144,14 +156,23 @@ export interface GetDedicatedHostsResult {
     readonly ids: string[];
     readonly orderId?: string;
     readonly outputFile?: string;
+    /**
+     * The state of the host.
+     */
     readonly status?: string;
+    /**
+     * The tag of the resource.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The zone ID of the host.
+     */
     readonly zoneId?: string;
 }
 /**
  * This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
  *
  * ## Example Usage
  *

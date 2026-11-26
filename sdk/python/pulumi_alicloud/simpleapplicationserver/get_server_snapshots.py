@@ -59,6 +59,9 @@ class GetServerSnapshotsResult:
     @_builtins.property
     @pulumi.getter(name="diskId")
     def disk_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the source disk. This parameter has a value even after the source disk is released.
+        """
         return pulumi.get(self, "disk_id")
 
     @_builtins.property
@@ -87,6 +90,9 @@ class GetServerSnapshotsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Snapshot names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -97,11 +103,17 @@ class GetServerSnapshotsResult:
     @_builtins.property
     @pulumi.getter
     def snapshots(self) -> Sequence['outputs.GetServerSnapshotsSnapshotResult']:
+        """
+        A list of Simple Application Server Snapshots. Each element contains the following attributes:
+        """
         return pulumi.get(self, "snapshots")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -132,7 +144,7 @@ def get_server_snapshots(disk_id: Optional[_builtins.str] = None,
     """
     This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.143.0+.
+    > **NOTE:** Available since v1.143.0.
 
     ## Example Usage
 
@@ -192,7 +204,7 @@ def get_server_snapshots_output(disk_id: pulumi.Input[Optional[Optional[_builtin
     """
     This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.143.0+.
+    > **NOTE:** Available since v1.143.0.
 
     ## Example Usage
 

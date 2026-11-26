@@ -1176,6 +1176,26 @@ class TrafficMirrorFilterEgressRule(dict):
                  source_cidr_block: Optional[_builtins.str] = None,
                  source_port_range: Optional[_builtins.str] = None,
                  traffic_mirror_filter_rule_status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str action: Collection strategy for outbound rules. Value:
+               - accept: collects network traffic.
+               - drop: No network traffic is collected.
+        :param _builtins.str protocol: The type of protocol used by the outbound network traffic to be mirrored. Value:
+               - ALL: ALL agreements.
+               - ICMP: Network Control Message Protocol.
+               - TCP: Transmission Control Protocol.
+               - UDP: User Datagram Protocol.
+        :param _builtins.str destination_cidr_block: DestinationCidrBlock.
+        :param _builtins.str destination_port_range: The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+               
+               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        :param _builtins.int priority: Priority.
+        :param _builtins.str source_cidr_block: The source address of the outbound rule network traffic.
+        :param _builtins.str source_port_range: The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+               
+               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        :param _builtins.str traffic_mirror_filter_rule_status: The status of the traffic mirror filter rule.
+        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "protocol", protocol)
         if destination_cidr_block is not None:
@@ -1194,41 +1214,75 @@ class TrafficMirrorFilterEgressRule(dict):
     @_builtins.property
     @pulumi.getter
     def action(self) -> _builtins.str:
+        """
+        Collection strategy for outbound rules. Value:
+        - accept: collects network traffic.
+        - drop: No network traffic is collected.
+        """
         return pulumi.get(self, "action")
 
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> _builtins.str:
+        """
+        The type of protocol used by the outbound network traffic to be mirrored. Value:
+        - ALL: ALL agreements.
+        - ICMP: Network Control Message Protocol.
+        - TCP: Transmission Control Protocol.
+        - UDP: User Datagram Protocol.
+        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter(name="destinationCidrBlock")
     def destination_cidr_block(self) -> Optional[_builtins.str]:
+        """
+        DestinationCidrBlock.
+        """
         return pulumi.get(self, "destination_cidr_block")
 
     @_builtins.property
     @pulumi.getter(name="destinationPortRange")
     def destination_port_range(self) -> Optional[_builtins.str]:
+        """
+        The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+
+        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        """
         return pulumi.get(self, "destination_port_range")
 
     @_builtins.property
     @pulumi.getter
     def priority(self) -> Optional[_builtins.int]:
+        """
+        Priority.
+        """
         return pulumi.get(self, "priority")
 
     @_builtins.property
     @pulumi.getter(name="sourceCidrBlock")
     def source_cidr_block(self) -> Optional[_builtins.str]:
+        """
+        The source address of the outbound rule network traffic.
+        """
         return pulumi.get(self, "source_cidr_block")
 
     @_builtins.property
     @pulumi.getter(name="sourcePortRange")
     def source_port_range(self) -> Optional[_builtins.str]:
+        """
+        The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+
+        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        """
         return pulumi.get(self, "source_port_range")
 
     @_builtins.property
     @pulumi.getter(name="trafficMirrorFilterRuleStatus")
     def traffic_mirror_filter_rule_status(self) -> Optional[_builtins.str]:
+        """
+        The status of the traffic mirror filter rule.
+        """
         return pulumi.get(self, "traffic_mirror_filter_rule_status")
 
 
@@ -1268,6 +1322,26 @@ class TrafficMirrorFilterIngressRule(dict):
                  source_cidr_block: Optional[_builtins.str] = None,
                  source_port_range: Optional[_builtins.str] = None,
                  traffic_mirror_filter_rule_status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str action: Collection strategy for outbound rules. Value:
+               - accept: collects network traffic.
+               - drop: No network traffic is collected.
+        :param _builtins.str protocol: The type of protocol used by the outbound network traffic to be mirrored. Value:
+               - ALL: ALL agreements.
+               - ICMP: Network Control Message Protocol.
+               - TCP: Transmission Control Protocol.
+               - UDP: User Datagram Protocol.
+        :param _builtins.str destination_cidr_block: The destination address of the outbound rule network traffic.
+        :param _builtins.str destination_port_range: The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+               
+               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        :param _builtins.int priority: The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
+        :param _builtins.str source_cidr_block: The source address of the outbound rule network traffic.
+        :param _builtins.str source_port_range: The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+               
+               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        :param _builtins.str traffic_mirror_filter_rule_status: The status of the traffic mirror filter rule.
+        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "protocol", protocol)
         if destination_cidr_block is not None:
@@ -1286,41 +1360,75 @@ class TrafficMirrorFilterIngressRule(dict):
     @_builtins.property
     @pulumi.getter
     def action(self) -> _builtins.str:
+        """
+        Collection strategy for outbound rules. Value:
+        - accept: collects network traffic.
+        - drop: No network traffic is collected.
+        """
         return pulumi.get(self, "action")
 
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> _builtins.str:
+        """
+        The type of protocol used by the outbound network traffic to be mirrored. Value:
+        - ALL: ALL agreements.
+        - ICMP: Network Control Message Protocol.
+        - TCP: Transmission Control Protocol.
+        - UDP: User Datagram Protocol.
+        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter(name="destinationCidrBlock")
     def destination_cidr_block(self) -> Optional[_builtins.str]:
+        """
+        The destination address of the outbound rule network traffic.
+        """
         return pulumi.get(self, "destination_cidr_block")
 
     @_builtins.property
     @pulumi.getter(name="destinationPortRange")
     def destination_port_range(self) -> Optional[_builtins.str]:
+        """
+        The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+
+        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        """
         return pulumi.get(self, "destination_port_range")
 
     @_builtins.property
     @pulumi.getter
     def priority(self) -> Optional[_builtins.int]:
+        """
+        The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
+        """
         return pulumi.get(self, "priority")
 
     @_builtins.property
     @pulumi.getter(name="sourceCidrBlock")
     def source_cidr_block(self) -> Optional[_builtins.str]:
+        """
+        The source address of the outbound rule network traffic.
+        """
         return pulumi.get(self, "source_cidr_block")
 
     @_builtins.property
     @pulumi.getter(name="sourcePortRange")
     def source_port_range(self) -> Optional[_builtins.str]:
+        """
+        The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+
+        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        """
         return pulumi.get(self, "source_port_range")
 
     @_builtins.property
     @pulumi.getter(name="trafficMirrorFilterRuleStatus")
     def traffic_mirror_filter_rule_status(self) -> Optional[_builtins.str]:
+        """
+        The status of the traffic mirror filter rule.
+        """
         return pulumi.get(self, "traffic_mirror_filter_rule_status")
 
 
@@ -1581,8 +1689,8 @@ class GetBgpGroupsGroupResult(dict):
         :param _builtins.int local_asn: The local AS number.
         :param _builtins.int peer_asn: The autonomous system (AS) number of the BGP peer.
         :param _builtins.str route_limit: Routing limits.
-        :param _builtins.str router_id: The ID of the VBR.
-        :param _builtins.str status: The status of the resource.
+        :param _builtins.str router_id: The ID of the virtual border router (VBR) that is associated with the BGP group.
+        :param _builtins.str status: The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
         """
         pulumi.set(__self__, "auth_key", auth_key)
         pulumi.set(__self__, "bgp_group_name", bgp_group_name)
@@ -1690,7 +1798,7 @@ class GetBgpGroupsGroupResult(dict):
     @pulumi.getter(name="routerId")
     def router_id(self) -> _builtins.str:
         """
-        The ID of the VBR.
+        The ID of the virtual border router (VBR) that is associated with the BGP group.
         """
         return pulumi.get(self, "router_id")
 
@@ -1698,7 +1806,7 @@ class GetBgpGroupsGroupResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
         """
         return pulumi.get(self, "status")
 
@@ -1713,8 +1821,8 @@ class GetBgpNetworksNetworkResult(dict):
         """
         :param _builtins.str dst_cidr_block: Advertised BGP networks.
         :param _builtins.str id: The ID of the Bgp Network. The value formats as `<router_id>:<dst_cidr_block>`.
-        :param _builtins.str router_id: The ID of the vRouter.
-        :param _builtins.str status: The state of the advertised BGP network.
+        :param _builtins.str router_id: The ID of the router to which the route table belongs.
+        :param _builtins.str status: The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
         """
         pulumi.set(__self__, "dst_cidr_block", dst_cidr_block)
         pulumi.set(__self__, "id", id)
@@ -1741,7 +1849,7 @@ class GetBgpNetworksNetworkResult(dict):
     @pulumi.getter(name="routerId")
     def router_id(self) -> _builtins.str:
         """
-        The ID of the vRouter.
+        The ID of the router to which the route table belongs.
         """
         return pulumi.get(self, "router_id")
 
@@ -1749,7 +1857,7 @@ class GetBgpNetworksNetworkResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The state of the advertised BGP network.
+        The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
         """
         return pulumi.get(self, "status")
 
@@ -1779,7 +1887,7 @@ class GetBgpPeersPeerResult(dict):
         """
         :param _builtins.str auth_key: The authentication key of the BGP group.
         :param _builtins.int bfd_multi_hop: The BFD hop count.
-        :param _builtins.str bgp_group_id: The ID of the BGP group.
+        :param _builtins.str bgp_group_id: The ID of the BGP group to which the BGP peer that you want to query belongs.
         :param _builtins.str bgp_peer_id: The ID of the BGP neighbor.
         :param _builtins.str bgp_peer_name: The name of the BGP neighbor.
         :param _builtins.str bgp_status: The status of the BGP connection.
@@ -1794,8 +1902,8 @@ class GetBgpPeersPeerResult(dict):
         :param _builtins.str peer_asn: The autonomous system (AS) number of the BGP peer.
         :param _builtins.str peer_ip_address: The IP address of the BGP neighbor.
         :param _builtins.str route_limit: The limit on routes.
-        :param _builtins.str router_id: The ID of the router.
-        :param _builtins.str status: The status of the BGP peer.
+        :param _builtins.str router_id: The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
+        :param _builtins.str status: The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
         """
         pulumi.set(__self__, "auth_key", auth_key)
         pulumi.set(__self__, "bfd_multi_hop", bfd_multi_hop)
@@ -1837,7 +1945,7 @@ class GetBgpPeersPeerResult(dict):
     @pulumi.getter(name="bgpGroupId")
     def bgp_group_id(self) -> _builtins.str:
         """
-        The ID of the BGP group.
+        The ID of the BGP group to which the BGP peer that you want to query belongs.
         """
         return pulumi.get(self, "bgp_group_id")
 
@@ -1957,7 +2065,7 @@ class GetBgpPeersPeerResult(dict):
     @pulumi.getter(name="routerId")
     def router_id(self) -> _builtins.str:
         """
-        The ID of the router.
+        The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
         """
         return pulumi.get(self, "router_id")
 
@@ -1965,7 +2073,7 @@ class GetBgpPeersPeerResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the BGP peer.
+        The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
         """
         return pulumi.get(self, "status")
 
@@ -2009,7 +2117,7 @@ class GetCommonBandwidthPackagesPackageResult(dict):
         :param _builtins.str isp: ISP of the Common Bandwidth Package.
         :param _builtins.str name: Name of the Common Bandwidth Package.
         :param _builtins.str payment_type: The payment type of bandwidth package.
-        :param Sequence['GetCommonBandwidthPackagesPackagePublicIpAddressArgs'] public_ip_addresses: Public ip addresses that in the Common Bandwidth Pakcage.
+        :param Sequence['GetCommonBandwidthPackagesPackagePublicIpAddressArgs'] public_ip_addresses: The public_ip_addresses mapping supports the following:
         :param _builtins.int ratio: The ratio of bandwidth package.
         :param _builtins.str reservation_active_time: The active time of reservation.
         :param _builtins.str reservation_bandwidth: The bandwidth of reservation.
@@ -2150,7 +2258,7 @@ class GetCommonBandwidthPackagesPackageResult(dict):
     @pulumi.getter(name="publicIpAddresses")
     def public_ip_addresses(self) -> Sequence['outputs.GetCommonBandwidthPackagesPackagePublicIpAddressResult']:
         """
-        Public ip addresses that in the Common Bandwidth Pakcage.
+        The public_ip_addresses mapping supports the following:
         """
         return pulumi.get(self, "public_ip_addresses")
 
@@ -2225,6 +2333,11 @@ class GetCommonBandwidthPackagesPackagePublicIpAddressResult(dict):
                  allocation_id: _builtins.str,
                  bandwidth_package_ip_relation_status: _builtins.str,
                  ip_address: _builtins.str):
+        """
+        :param _builtins.str allocation_id: The ID of the EIP instance.
+        :param _builtins.str bandwidth_package_ip_relation_status: The IP relation status of bandwidth package.
+        :param _builtins.str ip_address: The address of the EIP.
+        """
         pulumi.set(__self__, "allocation_id", allocation_id)
         pulumi.set(__self__, "bandwidth_package_ip_relation_status", bandwidth_package_ip_relation_status)
         pulumi.set(__self__, "ip_address", ip_address)
@@ -2232,16 +2345,25 @@ class GetCommonBandwidthPackagesPackagePublicIpAddressResult(dict):
     @_builtins.property
     @pulumi.getter(name="allocationId")
     def allocation_id(self) -> _builtins.str:
+        """
+        The ID of the EIP instance.
+        """
         return pulumi.get(self, "allocation_id")
 
     @_builtins.property
     @pulumi.getter(name="bandwidthPackageIpRelationStatus")
     def bandwidth_package_ip_relation_status(self) -> _builtins.str:
+        """
+        The IP relation status of bandwidth package.
+        """
         return pulumi.get(self, "bandwidth_package_ip_relation_status")
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> _builtins.str:
+        """
+        The address of the EIP.
+        """
         return pulumi.get(self, "ip_address")
 
 
@@ -4584,12 +4706,12 @@ class GetNatIpCidrsCidrResult(dict):
         :param _builtins.str create_time: The time when the CIDR block was created.
         :param _builtins.str id: The ID of the Nat Ip Cidr.
         :param _builtins.bool is_default: Whether it is the default NAT IP ADDRESS. Valid values:`true` or `false`.`true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
-        :param _builtins.str nat_gateway_id: The ID of the VPC NAT gateway.
+        :param _builtins.str nat_gateway_id: NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
         :param _builtins.str nat_ip_cidr: The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
-        :param _builtins.str nat_ip_cidr_description: NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+        :param _builtins.str nat_ip_cidr_description: NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the `http://` Or `https://` at the beginning.
         :param _builtins.str nat_ip_cidr_id: NAT IP ADDRESS instance ID.
-        :param _builtins.str nat_ip_cidr_name: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
-        :param _builtins.str status: The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+        :param _builtins.str nat_ip_cidr_name: The name of the CIDR block that you want to query. Support up to `20`.
+        :param _builtins.str status: The status of the NAT IP address. Valid values:`Available`.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "id", id)
@@ -4629,7 +4751,7 @@ class GetNatIpCidrsCidrResult(dict):
     @pulumi.getter(name="natGatewayId")
     def nat_gateway_id(self) -> _builtins.str:
         """
-        The ID of the VPC NAT gateway.
+        NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
         """
         return pulumi.get(self, "nat_gateway_id")
 
@@ -4645,7 +4767,7 @@ class GetNatIpCidrsCidrResult(dict):
     @pulumi.getter(name="natIpCidrDescription")
     def nat_ip_cidr_description(self) -> _builtins.str:
         """
-        NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+        NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the `http://` Or `https://` at the beginning.
         """
         return pulumi.get(self, "nat_ip_cidr_description")
 
@@ -4661,7 +4783,7 @@ class GetNatIpCidrsCidrResult(dict):
     @pulumi.getter(name="natIpCidrName")
     def nat_ip_cidr_name(self) -> _builtins.str:
         """
-        NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+        The name of the CIDR block that you want to query. Support up to `20`.
         """
         return pulumi.get(self, "nat_ip_cidr_name")
 
@@ -4669,7 +4791,7 @@ class GetNatIpCidrsCidrResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+        The status of the NAT IP address. Valid values:`Available`.
         """
         return pulumi.get(self, "status")
 
@@ -4689,12 +4811,12 @@ class GetNatIpsIpResult(dict):
         """
         :param _builtins.str id: The ID of the Nat Ip.
         :param _builtins.bool is_default: Indicates whether the BGP Group is the default NAT IP ADDRESS. Valid values: `true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
-        :param _builtins.str nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+        :param _builtins.str nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
         :param _builtins.str nat_ip: The NAT IP address that is queried.
-        :param _builtins.str nat_ip_cidr: The CIDR block to which the NAT IP address belongs.
+        :param _builtins.str nat_ip_cidr: NAT IP ADDRESS of the address segment.
         :param _builtins.str nat_ip_description: The description of the NAT IP address.
         :param _builtins.str nat_ip_id: The ID of the NAT IP address.
-        :param _builtins.str nat_ip_name: The name of the NAT IP address.
+        :param _builtins.str nat_ip_name: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
         :param _builtins.str status: The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
         """
         pulumi.set(__self__, "id", id)
@@ -4727,7 +4849,7 @@ class GetNatIpsIpResult(dict):
     @pulumi.getter(name="natGatewayId")
     def nat_gateway_id(self) -> _builtins.str:
         """
-        The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+        The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
         """
         return pulumi.get(self, "nat_gateway_id")
 
@@ -4743,7 +4865,7 @@ class GetNatIpsIpResult(dict):
     @pulumi.getter(name="natIpCidr")
     def nat_ip_cidr(self) -> _builtins.str:
         """
-        The CIDR block to which the NAT IP address belongs.
+        NAT IP ADDRESS of the address segment.
         """
         return pulumi.get(self, "nat_ip_cidr")
 
@@ -4767,7 +4889,7 @@ class GetNatIpsIpResult(dict):
     @pulumi.getter(name="natIpName")
     def nat_ip_name(self) -> _builtins.str:
         """
-        The name of the NAT IP address.
+        NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
         """
         return pulumi.get(self, "nat_ip_name")
 
@@ -5772,11 +5894,11 @@ class GetPublicIpAddressPoolsPoolResult(dict):
         :param _builtins.str description: The description of the Vpc Public Ip Address Pool.
         :param _builtins.str id: The ID of the Vpc Public Ip Address Pool.
         :param _builtins.bool ip_address_remaining: Indicates whether the Vpc Public Ip Address Pool has idle IP addresses.
-        :param _builtins.str isp: The Internet service provider.
+        :param _builtins.str isp: The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
         :param _builtins.str public_ip_address_pool_id: The ID of the Vpc Public Ip Address Pool.
-        :param _builtins.str public_ip_address_pool_name: The name of the Vpc Public Ip Address Pool.
+        :param _builtins.str public_ip_address_pool_name: The name of the VPC Public IP address pool.
         :param _builtins.str region_id: The region ID of the Vpc Public Ip Address Pool.
-        :param _builtins.str status: The status of the Vpc Public Ip Address Pool.
+        :param _builtins.str status: The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
         :param _builtins.int total_ip_num: The total number of IP addresses in the Vpc Public Ip Address Pool.
         :param _builtins.int used_ip_num: The number of occupied IP addresses in the Vpc Public Ip Address Pool.
         :param _builtins.str user_type: The user type.
@@ -5830,7 +5952,7 @@ class GetPublicIpAddressPoolsPoolResult(dict):
     @pulumi.getter
     def isp(self) -> _builtins.str:
         """
-        The Internet service provider.
+        The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
         """
         return pulumi.get(self, "isp")
 
@@ -5846,7 +5968,7 @@ class GetPublicIpAddressPoolsPoolResult(dict):
     @pulumi.getter(name="publicIpAddressPoolName")
     def public_ip_address_pool_name(self) -> _builtins.str:
         """
-        The name of the Vpc Public Ip Address Pool.
+        The name of the VPC Public IP address pool.
         """
         return pulumi.get(self, "public_ip_address_pool_name")
 
@@ -5862,7 +5984,7 @@ class GetPublicIpAddressPoolsPoolResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the Vpc Public Ip Address Pool.
+        The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
         """
         return pulumi.get(self, "status")
 
@@ -7117,7 +7239,7 @@ class GetTrafficMirrorFilterEgressRulesRuleResult(dict):
         :param _builtins.str source_cidr_block: The source CIDR block of the outbound traffic.
         :param _builtins.str source_port_range: The source port range of the outbound traffic.
         :param _builtins.str status: The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
-        :param _builtins.str traffic_mirror_filter_id: The ID of the filter associated with the outbound rule.
+        :param _builtins.str traffic_mirror_filter_id: The ID of the Traffic Mirror Filter.
         :param _builtins.str traffic_mirror_filter_rule_id: The first ID of the resource.
         """
         pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
@@ -7208,7 +7330,7 @@ class GetTrafficMirrorFilterEgressRulesRuleResult(dict):
     @pulumi.getter(name="trafficMirrorFilterId")
     def traffic_mirror_filter_id(self) -> _builtins.str:
         """
-        The ID of the filter associated with the outbound rule.
+        The ID of the Traffic Mirror Filter.
         """
         return pulumi.get(self, "traffic_mirror_filter_id")
 
@@ -7245,7 +7367,7 @@ class GetTrafficMirrorFilterIngressRulesRuleResult(dict):
         :param _builtins.str source_cidr_block: The source CIDR block of the inbound traffic.
         :param _builtins.str source_port_range: The source port range of the inbound traffic.
         :param _builtins.str status: The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
-        :param _builtins.str traffic_mirror_filter_id: The ID of the filter associated with the inbound rule.
+        :param _builtins.str traffic_mirror_filter_id: The ID of the Traffic Mirror Filter.
         :param _builtins.str traffic_mirror_filter_rule_id: The first ID of the resource.
         """
         pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
@@ -7336,7 +7458,7 @@ class GetTrafficMirrorFilterIngressRulesRuleResult(dict):
     @pulumi.getter(name="trafficMirrorFilterId")
     def traffic_mirror_filter_id(self) -> _builtins.str:
         """
-        The ID of the filter associated with the inbound rule.
+        The ID of the Traffic Mirror Filter.
         """
         return pulumi.get(self, "traffic_mirror_filter_id")
 
@@ -7429,16 +7551,16 @@ class GetTrafficMirrorSessionsSessionResult(dict):
                  traffic_mirror_target_type: _builtins.str,
                  virtual_network_id: _builtins.int):
         """
-        :param _builtins.bool enabled: Indicates whether traffic mirror sessions are enabled. default to `false`.
+        :param _builtins.bool enabled: Specifies whether to enable traffic mirror sessions. default to `false`.
         :param _builtins.str id: The ID of the Traffic Mirror Session.
         :param _builtins.int packet_length: The maximum transmission unit (MTU).
-        :param _builtins.int priority: The priority of the traffic mirror session. A smaller value indicates a higher priority.
+        :param _builtins.int priority: The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
         :param _builtins.str status: The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
         :param _builtins.str traffic_mirror_filter_id: The ID of the filter.
         :param _builtins.str traffic_mirror_session_business_status: The state of the traffic mirror session. Valid values: `Normal` or `FinancialLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments.
         :param _builtins.str traffic_mirror_session_description: The description of the traffic mirror session.
         :param _builtins.str traffic_mirror_session_id: The first ID of the resource.
-        :param _builtins.str traffic_mirror_session_name: The name of the traffic mirror session.
+        :param _builtins.str traffic_mirror_session_name: The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
         :param Sequence[_builtins.str] traffic_mirror_source_ids: The ID of the mirror source.
         :param _builtins.str traffic_mirror_target_id: The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
         :param _builtins.str traffic_mirror_target_type: The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
@@ -7463,7 +7585,7 @@ class GetTrafficMirrorSessionsSessionResult(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Indicates whether traffic mirror sessions are enabled. default to `false`.
+        Specifies whether to enable traffic mirror sessions. default to `false`.
         """
         return pulumi.get(self, "enabled")
 
@@ -7487,7 +7609,7 @@ class GetTrafficMirrorSessionsSessionResult(dict):
     @pulumi.getter
     def priority(self) -> _builtins.int:
         """
-        The priority of the traffic mirror session. A smaller value indicates a higher priority.
+        The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
         """
         return pulumi.get(self, "priority")
 
@@ -7535,7 +7657,7 @@ class GetTrafficMirrorSessionsSessionResult(dict):
     @pulumi.getter(name="trafficMirrorSessionName")
     def traffic_mirror_session_name(self) -> _builtins.str:
         """
-        The name of the traffic mirror session.
+        The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "traffic_mirror_session_name")
 

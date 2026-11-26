@@ -67,6 +67,21 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
     }
 
     /**
+     * The owner ID of the endpoint.
+     * 
+     */
+    @Import(name="endpointOwnerId")
+    private @Nullable Output<Integer> endpointOwnerId;
+
+    /**
+     * @return The owner ID of the endpoint.
+     * 
+     */
+    public Optional<Output<Integer>> endpointOwnerId() {
+        return Optional.ofNullable(this.endpointOwnerId);
+    }
+
+    /**
      * The endpoint service ID.
      * 
      */
@@ -96,14 +111,31 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+     * 
+     */
+    @Import(name="trafficControlMode")
+    private @Nullable Output<String> trafficControlMode;
+
+    /**
+     * @return The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+     * 
+     */
+    public Optional<Output<String>> trafficControlMode() {
+        return Optional.ofNullable(this.trafficControlMode);
+    }
+
     private VpcEndpointServiceConnectionState() {}
 
     private VpcEndpointServiceConnectionState(VpcEndpointServiceConnectionState $) {
         this.bandwidth = $.bandwidth;
         this.dryRun = $.dryRun;
         this.endpointId = $.endpointId;
+        this.endpointOwnerId = $.endpointOwnerId;
         this.serviceId = $.serviceId;
         this.status = $.status;
+        this.trafficControlMode = $.trafficControlMode;
     }
 
     public static Builder builder() {
@@ -192,6 +224,27 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
         }
 
         /**
+         * @param endpointOwnerId The owner ID of the endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointOwnerId(@Nullable Output<Integer> endpointOwnerId) {
+            $.endpointOwnerId = endpointOwnerId;
+            return this;
+        }
+
+        /**
+         * @param endpointOwnerId The owner ID of the endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointOwnerId(Integer endpointOwnerId) {
+            return endpointOwnerId(Output.of(endpointOwnerId));
+        }
+
+        /**
          * @param serviceId The endpoint service ID.
          * 
          * @return builder
@@ -231,6 +284,27 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param trafficControlMode The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficControlMode(@Nullable Output<String> trafficControlMode) {
+            $.trafficControlMode = trafficControlMode;
+            return this;
+        }
+
+        /**
+         * @param trafficControlMode The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficControlMode(String trafficControlMode) {
+            return trafficControlMode(Output.of(trafficControlMode));
         }
 
         public VpcEndpointServiceConnectionState build() {

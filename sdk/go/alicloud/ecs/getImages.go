@@ -14,6 +14,8 @@ import (
 // This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
 // other public images and the ones available on the image market.
 //
+// > **NOTE:** Available since v0.1.0
+//
 // ## Example Usage
 //
 // ```go
@@ -112,28 +114,33 @@ type GetImagesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of image IDs.
-	Ids          []string `pulumi:"ids"`
-	ImageFamily  *string  `pulumi:"imageFamily"`
-	ImageId      *string  `pulumi:"imageId"`
-	ImageName    *string  `pulumi:"imageName"`
-	ImageOwnerId *string  `pulumi:"imageOwnerId"`
-	// A `diskDeviceMappings` block as defined below. A list of images.
-	Images               []GetImagesImage `pulumi:"images"`
-	InstanceType         *string          `pulumi:"instanceType"`
-	IsSupportCloudInit   *bool            `pulumi:"isSupportCloudInit"`
-	IsSupportIoOptimized *bool            `pulumi:"isSupportIoOptimized"`
-	MostRecent           *bool            `pulumi:"mostRecent"`
-	NameRegex            *string          `pulumi:"nameRegex"`
-	OsType               *string          `pulumi:"osType"`
-	OutputFile           *string          `pulumi:"outputFile"`
-	Owners               *string          `pulumi:"owners"`
-	ResourceGroupId      *string          `pulumi:"resourceGroupId"`
+	Ids         []string `pulumi:"ids"`
+	ImageFamily *string  `pulumi:"imageFamily"`
+	// The ID of the image.
+	ImageId      *string `pulumi:"imageId"`
+	ImageName    *string `pulumi:"imageName"`
+	ImageOwnerId *string `pulumi:"imageOwnerId"`
+	// A list of images. Each element contains the following attributes:
+	Images             []GetImagesImage `pulumi:"images"`
+	InstanceType       *string          `pulumi:"instanceType"`
+	IsSupportCloudInit *bool            `pulumi:"isSupportCloudInit"`
+	// Whether the image can be used on I/O optimized instances.
+	IsSupportIoOptimized *bool   `pulumi:"isSupportIoOptimized"`
+	MostRecent           *bool   `pulumi:"mostRecent"`
+	NameRegex            *string `pulumi:"nameRegex"`
+	// The type of the operating system.
+	OsType          *string `pulumi:"osType"`
+	OutputFile      *string `pulumi:"outputFile"`
+	Owners          *string `pulumi:"owners"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The snapshot ID.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// The status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
-	Status *string           `pulumi:"status"`
-	Tags   map[string]string `pulumi:"tags"`
-	Usage  *string           `pulumi:"usage"`
+	Status *string `pulumi:"status"`
+	// (Optional) A map of tags assigned to the image.
+	Tags map[string]string `pulumi:"tags"`
+	// The usage of the image.
+	Usage *string `pulumi:"usage"`
 }
 
 func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulumi.InvokeOption) GetImagesResultOutput {
@@ -239,6 +246,7 @@ func (o GetImagesResultOutput) ImageFamily() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.ImageFamily }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the image.
 func (o GetImagesResultOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.ImageId }).(pulumi.StringPtrOutput)
 }
@@ -251,7 +259,7 @@ func (o GetImagesResultOutput) ImageOwnerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.ImageOwnerId }).(pulumi.StringPtrOutput)
 }
 
-// A `diskDeviceMappings` block as defined below. A list of images.
+// A list of images. Each element contains the following attributes:
 func (o GetImagesResultOutput) Images() GetImagesImageArrayOutput {
 	return o.ApplyT(func(v GetImagesResult) []GetImagesImage { return v.Images }).(GetImagesImageArrayOutput)
 }
@@ -264,6 +272,7 @@ func (o GetImagesResultOutput) IsSupportCloudInit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *bool { return v.IsSupportCloudInit }).(pulumi.BoolPtrOutput)
 }
 
+// Whether the image can be used on I/O optimized instances.
 func (o GetImagesResultOutput) IsSupportIoOptimized() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *bool { return v.IsSupportIoOptimized }).(pulumi.BoolPtrOutput)
 }
@@ -276,6 +285,7 @@ func (o GetImagesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// The type of the operating system.
 func (o GetImagesResultOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.OsType }).(pulumi.StringPtrOutput)
 }
@@ -302,10 +312,12 @@ func (o GetImagesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// (Optional) A map of tags assigned to the image.
 func (o GetImagesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetImagesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The usage of the image.
 func (o GetImagesResultOutput) Usage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.Usage }).(pulumi.StringPtrOutput)
 }

@@ -45,6 +45,28 @@ class GetMongoInstancesInstanceResult(dict):
                  status: _builtins.str,
                  storage: _builtins.int,
                  tags: Mapping[str, _builtins.str]):
+        """
+        :param _builtins.str availability_zone: The zone ID.
+        :param _builtins.str charge_type: The billing method of the instance.
+        :param _builtins.str creation_time: The time when the instance was created.
+        :param _builtins.str engine: The database engine.
+        :param _builtins.str engine_version: The database engine version.
+        :param _builtins.str expiration_time: The time when the instance expires.
+        :param _builtins.str id: The instance ID.
+        :param _builtins.str instance_class: The instance type.
+        :param _builtins.str instance_type: The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
+        :param _builtins.str lock_mode: The lock status of the instance.
+        :param Sequence['GetMongoInstancesInstanceMongoArgs'] mongos: The mongo nodes of the instance. **Note:** `mongos` takes effect only if `instance_type` is set to `sharding`.
+        :param _builtins.str name: The name of the instance.
+        :param _builtins.str network_type: The network type of the instance.
+        :param _builtins.str region_id: The region ID of the instance.
+        :param _builtins.str replication: The number of nodes in the instance.
+        :param Sequence['GetMongoInstancesInstanceRestoreRangeArgs'] restore_ranges: (Available since v1.271.0) A list of time ranges available for point-in-time recovery. **Note:** `restore_ranges` takes effect only if `enable_details` is set to `true`.
+        :param Sequence['GetMongoInstancesInstanceShardArgs'] shards: The information of the shard node. **Note:** `shards` takes effect only if `instance_type` is set to `sharding`.
+        :param _builtins.str status: The instance status.
+        :param _builtins.int storage: The storage space of the shard node.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
+        """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "charge_type", charge_type)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -69,101 +91,161 @@ class GetMongoInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
+        """
+        The zone ID.
+        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter(name="chargeType")
     def charge_type(self) -> _builtins.str:
+        """
+        The billing method of the instance.
+        """
         return pulumi.get(self, "charge_type")
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> _builtins.str:
+        """
+        The time when the instance was created.
+        """
         return pulumi.get(self, "creation_time")
 
     @_builtins.property
     @pulumi.getter
     def engine(self) -> _builtins.str:
+        """
+        The database engine.
+        """
         return pulumi.get(self, "engine")
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> _builtins.str:
+        """
+        The database engine version.
+        """
         return pulumi.get(self, "engine_version")
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")
     def expiration_time(self) -> _builtins.str:
+        """
+        The time when the instance expires.
+        """
         return pulumi.get(self, "expiration_time")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The instance ID.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> _builtins.str:
+        """
+        The instance type.
+        """
         return pulumi.get(self, "instance_class")
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> _builtins.str:
+        """
+        The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
+        """
         return pulumi.get(self, "instance_type")
 
     @_builtins.property
     @pulumi.getter(name="lockMode")
     def lock_mode(self) -> _builtins.str:
+        """
+        The lock status of the instance.
+        """
         return pulumi.get(self, "lock_mode")
 
     @_builtins.property
     @pulumi.getter
     def mongos(self) -> Sequence['outputs.GetMongoInstancesInstanceMongoResult']:
+        """
+        The mongo nodes of the instance. **Note:** `mongos` takes effect only if `instance_type` is set to `sharding`.
+        """
         return pulumi.get(self, "mongos")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        The name of the instance.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="networkType")
     def network_type(self) -> _builtins.str:
+        """
+        The network type of the instance.
+        """
         return pulumi.get(self, "network_type")
 
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> _builtins.str:
+        """
+        The region ID of the instance.
+        """
         return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter
     def replication(self) -> _builtins.str:
+        """
+        The number of nodes in the instance.
+        """
         return pulumi.get(self, "replication")
 
     @_builtins.property
     @pulumi.getter(name="restoreRanges")
     def restore_ranges(self) -> Sequence['outputs.GetMongoInstancesInstanceRestoreRangeResult']:
+        """
+        (Available since v1.271.0) A list of time ranges available for point-in-time recovery. **Note:** `restore_ranges` takes effect only if `enable_details` is set to `true`.
+        """
         return pulumi.get(self, "restore_ranges")
 
     @_builtins.property
     @pulumi.getter
     def shards(self) -> Sequence['outputs.GetMongoInstancesInstanceShardResult']:
+        """
+        The information of the shard node. **Note:** `shards` takes effect only if `instance_type` is set to `sharding`.
+        """
         return pulumi.get(self, "shards")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
+        """
+        The instance status.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def storage(self) -> _builtins.int:
+        """
+        The storage space of the shard node.
+        """
         return pulumi.get(self, "storage")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -173,6 +255,11 @@ class GetMongoInstancesInstanceMongoResult(dict):
                  class_: _builtins.str,
                  description: _builtins.str,
                  node_id: _builtins.str):
+        """
+        :param _builtins.str class_: The instance type of the shard node.
+        :param _builtins.str description: The description of the shard node.
+        :param _builtins.str node_id: The ID of the shard node.
+        """
         pulumi.set(__self__, "class_", class_)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "node_id", node_id)
@@ -180,16 +267,25 @@ class GetMongoInstancesInstanceMongoResult(dict):
     @_builtins.property
     @pulumi.getter(name="class")
     def class_(self) -> _builtins.str:
+        """
+        The instance type of the shard node.
+        """
         return pulumi.get(self, "class_")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        The description of the shard node.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
     def node_id(self) -> _builtins.str:
+        """
+        The ID of the shard node.
+        """
         return pulumi.get(self, "node_id")
 
 
@@ -199,6 +295,11 @@ class GetMongoInstancesInstanceRestoreRangeResult(dict):
                  restore_begin_time: _builtins.str,
                  restore_end_time: _builtins.str,
                  restore_type: _builtins.str):
+        """
+        :param _builtins.str restore_begin_time: The beginning of the recoverable time range.
+        :param _builtins.str restore_end_time: The end of the recoverable time range.
+        :param _builtins.str restore_type: The restoration method.
+        """
         pulumi.set(__self__, "restore_begin_time", restore_begin_time)
         pulumi.set(__self__, "restore_end_time", restore_end_time)
         pulumi.set(__self__, "restore_type", restore_type)
@@ -206,16 +307,25 @@ class GetMongoInstancesInstanceRestoreRangeResult(dict):
     @_builtins.property
     @pulumi.getter(name="restoreBeginTime")
     def restore_begin_time(self) -> _builtins.str:
+        """
+        The beginning of the recoverable time range.
+        """
         return pulumi.get(self, "restore_begin_time")
 
     @_builtins.property
     @pulumi.getter(name="restoreEndTime")
     def restore_end_time(self) -> _builtins.str:
+        """
+        The end of the recoverable time range.
+        """
         return pulumi.get(self, "restore_end_time")
 
     @_builtins.property
     @pulumi.getter(name="restoreType")
     def restore_type(self) -> _builtins.str:
+        """
+        The restoration method.
+        """
         return pulumi.get(self, "restore_type")
 
 
@@ -226,6 +336,12 @@ class GetMongoInstancesInstanceShardResult(dict):
                  description: _builtins.str,
                  node_id: _builtins.str,
                  storage: _builtins.int):
+        """
+        :param _builtins.str class_: The instance type of the shard node.
+        :param _builtins.str description: The description of the shard node.
+        :param _builtins.str node_id: The ID of the shard node.
+        :param _builtins.int storage: The storage space of the shard node.
+        """
         pulumi.set(__self__, "class_", class_)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "node_id", node_id)
@@ -234,21 +350,33 @@ class GetMongoInstancesInstanceShardResult(dict):
     @_builtins.property
     @pulumi.getter(name="class")
     def class_(self) -> _builtins.str:
+        """
+        The instance type of the shard node.
+        """
         return pulumi.get(self, "class_")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        The description of the shard node.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
     def node_id(self) -> _builtins.str:
+        """
+        The ID of the shard node.
+        """
         return pulumi.get(self, "node_id")
 
     @_builtins.property
     @pulumi.getter
     def storage(self) -> _builtins.int:
+        """
+        The storage space of the shard node.
+        """
         return pulumi.get(self, "storage")
 
 

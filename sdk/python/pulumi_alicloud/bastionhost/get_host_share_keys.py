@@ -74,11 +74,17 @@ class GetHostShareKeysResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        The ID of the Bastion instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def keys(self) -> Sequence['outputs.GetHostShareKeysKeyResult']:
+        """
+        A list of Bastionhost Host Share Keys. Each element contains the following attributes:
+        """
         return pulumi.get(self, "keys")
 
     @_builtins.property
@@ -89,6 +95,9 @@ class GetHostShareKeysResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Host Share Key names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -122,7 +131,7 @@ def get_host_share_keys(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Bastionhost Host Share Keys of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.165.0+.
+    > **NOTE:** Available since v1.165.0.
 
     ## Example Usage
 
@@ -177,7 +186,7 @@ def get_host_share_keys_output(enable_details: pulumi.Input[Optional[Optional[_b
     """
     This data source provides the Bastionhost Host Share Keys of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.165.0+.
+    > **NOTE:** Available since v1.165.0.
 
     ## Example Usage
 

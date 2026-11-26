@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides AccessRule available to the user.
  *
- * > **NOTE**: Available in 1.35.0+
+ * > **NOTE:** Available since v1.35.0+
  *
  * ## Example Usage
  *
@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const foo = alicloud.nas.getAccessRules({
- *     accessGroupName: "tf-testAccAccessGroupsdatasource",
+ *     accessGroupName: "tf-example",
  *     sourceCidrIp: "168.1.1.0/16",
  *     rwAccess: "RDWR",
  *     userAccess: "no_squash",
@@ -102,7 +102,7 @@ export interface GetAccessRulesResult {
 /**
  * This data source provides AccessRule available to the user.
  *
- * > **NOTE**: Available in 1.35.0+
+ * > **NOTE:** Available since v1.35.0+
  *
  * ## Example Usage
  *
@@ -111,7 +111,7 @@ export interface GetAccessRulesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const foo = alicloud.nas.getAccessRules({
- *     accessGroupName: "tf-testAccAccessGroupsdatasource",
+ *     accessGroupName: "tf-example",
  *     sourceCidrIp: "168.1.1.0/16",
  *     rwAccess: "RDWR",
  *     userAccess: "no_squash",

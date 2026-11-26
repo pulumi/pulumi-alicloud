@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.107.0+.
+ * > **NOTE:** Available since v1.107.0.
  *
  * ## Example Usage
  *
@@ -69,6 +69,9 @@ export interface GetStackGroupsArgs {
  */
 export interface GetStackGroupsResult {
     readonly enableDetails?: boolean;
+    /**
+     * A list of Ros Stack Groups. Each element contains the following attributes. See `groups` below.
+     */
     readonly groups: outputs.ros.GetStackGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -76,14 +79,20 @@ export interface GetStackGroupsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Stack Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of Stack Group.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.107.0+.
+ * > **NOTE:** Available since v1.107.0.
  *
  * ## Example Usage
  *

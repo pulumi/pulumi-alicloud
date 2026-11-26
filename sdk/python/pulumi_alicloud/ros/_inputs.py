@@ -818,6 +818,9 @@ class TemplateScratchSourceResourceGroupArgsDict(TypedDict):
     The ID of the Source Resource Group.
     """
     resource_type_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+    """
 
 @pulumi.input_type
 class TemplateScratchSourceResourceGroupArgs:
@@ -826,6 +829,7 @@ class TemplateScratchSourceResourceGroupArgs:
                  resource_type_filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Source Resource Group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_type_filters: Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
         """
         pulumi.set(__self__, "resource_group_id", resource_group_id)
         if resource_type_filters is not None:
@@ -846,6 +850,9 @@ class TemplateScratchSourceResourceGroupArgs:
     @_builtins.property
     @pulumi.getter(name="resourceTypeFilters")
     def resource_type_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+        """
         return pulumi.get(self, "resource_type_filters")
 
     @resource_type_filters.setter
@@ -859,6 +866,9 @@ class TemplateScratchSourceTagArgsDict(TypedDict):
     Source label. **NOTE:** A maximum of 10 source labels can be configured.
     """
     resource_type_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+    """
 
 @pulumi.input_type
 class TemplateScratchSourceTagArgs:
@@ -867,6 +877,7 @@ class TemplateScratchSourceTagArgs:
                  resource_type_filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_tags: Source label. **NOTE:** A maximum of 10 source labels can be configured.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_type_filters: Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
         """
         pulumi.set(__self__, "resource_tags", resource_tags)
         if resource_type_filters is not None:
@@ -887,6 +898,9 @@ class TemplateScratchSourceTagArgs:
     @_builtins.property
     @pulumi.getter(name="resourceTypeFilters")
     def resource_type_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+        """
         return pulumi.get(self, "resource_type_filters")
 
     @resource_type_filters.setter

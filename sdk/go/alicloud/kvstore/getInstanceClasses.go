@@ -93,8 +93,9 @@ type GetInstanceClassesArgs struct {
 	// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
 	SeriesType *string `pulumi:"seriesType"`
 	// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
-	ShardNumber *int    `pulumi:"shardNumber"`
-	SortedBy    *string `pulumi:"sortedBy"`
+	ShardNumber *int `pulumi:"shardNumber"`
+	// The field used to sort the returned instance classes. Valid values: `Price`.
+	SortedBy *string `pulumi:"sortedBy"`
 	// It has been deprecated from 1.68.0.
 	//
 	// Deprecated: The parameter 'storage_type' has been deprecated from 1.68.0.
@@ -167,8 +168,9 @@ type GetInstanceClassesOutputArgs struct {
 	// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
 	SeriesType pulumi.StringPtrInput `pulumi:"seriesType"`
 	// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
-	ShardNumber pulumi.IntPtrInput    `pulumi:"shardNumber"`
-	SortedBy    pulumi.StringPtrInput `pulumi:"sortedBy"`
+	ShardNumber pulumi.IntPtrInput `pulumi:"shardNumber"`
+	// The field used to sort the returned instance classes. Valid values: `Price`.
+	SortedBy pulumi.StringPtrInput `pulumi:"sortedBy"`
 	// It has been deprecated from 1.68.0.
 	//
 	// Deprecated: The parameter 'storage_type' has been deprecated from 1.68.0.

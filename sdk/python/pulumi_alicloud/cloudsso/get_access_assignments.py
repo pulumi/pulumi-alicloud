@@ -59,16 +59,25 @@ class GetAccessAssignmentsResult:
     @_builtins.property
     @pulumi.getter(name="accessConfigurationId")
     def access_configuration_id(self) -> Optional[_builtins.str]:
+        """
+        Access configuration ID.
+        """
         return pulumi.get(self, "access_configuration_id")
 
     @_builtins.property
     @pulumi.getter
     def assignments(self) -> Sequence['outputs.GetAccessAssignmentsAssignmentResult']:
+        """
+        A list of Cloud Sso Access Assignments. Each element contains the following attributes:
+        """
         return pulumi.get(self, "assignments")
 
     @_builtins.property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> _builtins.str:
+        """
+        Directory ID.
+        """
         return pulumi.get(self, "directory_id")
 
     @_builtins.property
@@ -92,16 +101,25 @@ class GetAccessAssignmentsResult:
     @_builtins.property
     @pulumi.getter(name="principalType")
     def principal_type(self) -> Optional[_builtins.str]:
+        """
+        Create the identity type of the access assignment, which can be a user or a user group.
+        """
         return pulumi.get(self, "principal_type")
 
     @_builtins.property
     @pulumi.getter(name="targetId")
     def target_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the target to create the resource range.
+        """
         return pulumi.get(self, "target_id")
 
     @_builtins.property
     @pulumi.getter(name="targetType")
     def target_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+        """
         return pulumi.get(self, "target_type")
 
 
@@ -133,7 +151,7 @@ def get_access_assignments(access_configuration_id: Optional[_builtins.str] = No
     """
     This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.193.0+.
+    > **NOTE:** Available since v1.193.0.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
@@ -194,7 +212,7 @@ def get_access_assignments_output(access_configuration_id: pulumi.Input[Optional
     """
     This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.193.0+.
+    > **NOTE:** Available since v1.193.0.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 

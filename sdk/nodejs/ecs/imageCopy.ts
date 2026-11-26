@@ -72,12 +72,6 @@ import * as utilities from "../utilities";
  *
  * 📚 Need more examples? VIEW MORE EXAMPLES
  *
- * ## Attributes Reference0
- *
- *  The following attributes are exported:
- *
- * * `id` - ID of the image.
- *
  * ## Import
  *
  * image can be imported using the id, e.g.
@@ -125,6 +119,11 @@ export class ImageCopy extends pulumi.CustomResource {
         return obj['__pulumiType'] === ImageCopy.__pulumiType;
     }
 
+    /**
+     * Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
     declare public readonly deleteAutoSnapshot: pulumi.Output<boolean | undefined>;
     /**
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
@@ -149,6 +148,8 @@ export class ImageCopy extends pulumi.CustomResource {
      */
     declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
     /**
+     * Attribute 'name' has been deprecated, please use `imageName` instead.
+     *
      * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -216,6 +217,11 @@ export class ImageCopy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ImageCopy resources.
  */
 export interface ImageCopyState {
+    /**
+     * Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
     deleteAutoSnapshot?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
@@ -240,6 +246,8 @@ export interface ImageCopyState {
      */
     kmsKeyId?: pulumi.Input<string | undefined>;
     /**
+     * Attribute 'name' has been deprecated, please use `imageName` instead.
+     *
      * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
      */
     name?: pulumi.Input<string | undefined>;
@@ -261,6 +269,11 @@ export interface ImageCopyState {
  * The set of arguments for constructing a ImageCopy resource.
  */
 export interface ImageCopyArgs {
+    /**
+     * Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
     deleteAutoSnapshot?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
@@ -285,6 +298,8 @@ export interface ImageCopyArgs {
      */
     kmsKeyId?: pulumi.Input<string | undefined>;
     /**
+     * Attribute 'name' has been deprecated, please use `imageName` instead.
+     *
      * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
      */
     name?: pulumi.Input<string | undefined>;

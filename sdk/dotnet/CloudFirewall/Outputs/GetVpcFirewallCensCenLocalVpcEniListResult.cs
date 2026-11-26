@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
     [OutputType]
     public sealed class GetVpcFirewallCensCenLocalVpcEniListResult
     {
+        /// <summary>
+        /// The ID of the ENI.
+        /// </summary>
         public readonly string EniId;
+        /// <summary>
+        /// The private IP address of the ENI.
+        /// </summary>
         public readonly string EniPrivateIpAddress;
 
         [OutputConstructor]

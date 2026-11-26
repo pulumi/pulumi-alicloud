@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// <summary>
         /// This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// <summary>
         /// This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// <summary>
         /// This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -249,15 +249,24 @@ namespace Pulumi.AliCloud.VideoSurveillance
     [OutputType]
     public sealed class GetSystemGroupsResult
     {
+        /// <summary>
+        /// A list of Video Surveillance System Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSystemGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The use of the access protocol support `Gb28181`,`Rtmp`(Real Time Messaging Protocol).
+        /// </summary>
         public readonly string? InProtocol;
         public readonly string? Name;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string? Status;

@@ -127,12 +127,16 @@ type Desktop struct {
 	BundleId pulumi.StringOutput `pulumi:"bundleId"`
 	// The desktop name of the Desktop.
 	DesktopName pulumi.StringPtrOutput `pulumi:"desktopName"`
+	// The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktopTimers` below.
+	DesktopTimers DesktopDesktopTimerArrayOutput `pulumi:"desktopTimers"`
 	// The desktop type of the Desktop.
 	DesktopType pulumi.StringOutput `pulumi:"desktopType"`
 	// The desktop end user id of the Desktop.
 	EndUserIds pulumi.StringArrayOutput `pulumi:"endUserIds"`
-	// The hostname of the Desktop.
-	HostName pulumi.StringPtrOutput `pulumi:"hostName"`
+	// The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+	//
+	// > **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `hostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
+	HostName pulumi.StringOutput `pulumi:"hostName"`
 	// The ID of the Simple Office Site.
 	OfficeSiteId pulumi.StringOutput `pulumi:"officeSiteId"`
 	// The payment type of the Desktop. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
@@ -149,6 +153,10 @@ type Desktop struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The stopped mode of the Desktop.
 	StoppedMode pulumi.StringOutput `pulumi:"stoppedMode"`
+	// The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+	//
+	// > **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
@@ -206,11 +214,15 @@ type desktopState struct {
 	BundleId *string `pulumi:"bundleId"`
 	// The desktop name of the Desktop.
 	DesktopName *string `pulumi:"desktopName"`
+	// The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktopTimers` below.
+	DesktopTimers []DesktopDesktopTimer `pulumi:"desktopTimers"`
 	// The desktop type of the Desktop.
 	DesktopType *string `pulumi:"desktopType"`
 	// The desktop end user id of the Desktop.
 	EndUserIds []string `pulumi:"endUserIds"`
-	// The hostname of the Desktop.
+	// The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+	//
+	// > **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `hostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
 	HostName *string `pulumi:"hostName"`
 	// The ID of the Simple Office Site.
 	OfficeSiteId *string `pulumi:"officeSiteId"`
@@ -228,6 +240,10 @@ type desktopState struct {
 	Status *string `pulumi:"status"`
 	// The stopped mode of the Desktop.
 	StoppedMode *string `pulumi:"stoppedMode"`
+	// The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+	//
+	// > **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+	SubnetId *string `pulumi:"subnetId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
@@ -247,11 +263,15 @@ type DesktopState struct {
 	BundleId pulumi.StringPtrInput
 	// The desktop name of the Desktop.
 	DesktopName pulumi.StringPtrInput
+	// The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktopTimers` below.
+	DesktopTimers DesktopDesktopTimerArrayInput
 	// The desktop type of the Desktop.
 	DesktopType pulumi.StringPtrInput
 	// The desktop end user id of the Desktop.
 	EndUserIds pulumi.StringArrayInput
-	// The hostname of the Desktop.
+	// The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+	//
+	// > **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `hostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
 	HostName pulumi.StringPtrInput
 	// The ID of the Simple Office Site.
 	OfficeSiteId pulumi.StringPtrInput
@@ -269,6 +289,10 @@ type DesktopState struct {
 	Status pulumi.StringPtrInput
 	// The stopped mode of the Desktop.
 	StoppedMode pulumi.StringPtrInput
+	// The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+	//
+	// > **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+	SubnetId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 	// The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
@@ -298,11 +322,15 @@ type desktopArgs struct {
 	BundleId string `pulumi:"bundleId"`
 	// The desktop name of the Desktop.
 	DesktopName *string `pulumi:"desktopName"`
+	// The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktopTimers` below.
+	DesktopTimers []DesktopDesktopTimer `pulumi:"desktopTimers"`
 	// The desktop type of the Desktop.
 	DesktopType *string `pulumi:"desktopType"`
 	// The desktop end user id of the Desktop.
 	EndUserIds []string `pulumi:"endUserIds"`
-	// The hostname of the Desktop.
+	// The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+	//
+	// > **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `hostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
 	HostName *string `pulumi:"hostName"`
 	// The ID of the Simple Office Site.
 	OfficeSiteId string `pulumi:"officeSiteId"`
@@ -320,6 +348,10 @@ type desktopArgs struct {
 	Status *string `pulumi:"status"`
 	// The stopped mode of the Desktop.
 	StoppedMode *string `pulumi:"stoppedMode"`
+	// The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+	//
+	// > **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+	SubnetId *string `pulumi:"subnetId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
@@ -340,11 +372,15 @@ type DesktopArgs struct {
 	BundleId pulumi.StringInput
 	// The desktop name of the Desktop.
 	DesktopName pulumi.StringPtrInput
+	// The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktopTimers` below.
+	DesktopTimers DesktopDesktopTimerArrayInput
 	// The desktop type of the Desktop.
 	DesktopType pulumi.StringPtrInput
 	// The desktop end user id of the Desktop.
 	EndUserIds pulumi.StringArrayInput
-	// The hostname of the Desktop.
+	// The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+	//
+	// > **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `hostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
 	HostName pulumi.StringPtrInput
 	// The ID of the Simple Office Site.
 	OfficeSiteId pulumi.StringInput
@@ -362,6 +398,10 @@ type DesktopArgs struct {
 	Status pulumi.StringPtrInput
 	// The stopped mode of the Desktop.
 	StoppedMode pulumi.StringPtrInput
+	// The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+	//
+	// > **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+	SubnetId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 	// The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
@@ -482,6 +522,11 @@ func (o DesktopOutput) DesktopName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Desktop) pulumi.StringPtrOutput { return v.DesktopName }).(pulumi.StringPtrOutput)
 }
 
+// The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktopTimers` below.
+func (o DesktopOutput) DesktopTimers() DesktopDesktopTimerArrayOutput {
+	return o.ApplyT(func(v *Desktop) DesktopDesktopTimerArrayOutput { return v.DesktopTimers }).(DesktopDesktopTimerArrayOutput)
+}
+
 // The desktop type of the Desktop.
 func (o DesktopOutput) DesktopType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Desktop) pulumi.StringOutput { return v.DesktopType }).(pulumi.StringOutput)
@@ -492,9 +537,11 @@ func (o DesktopOutput) EndUserIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Desktop) pulumi.StringArrayOutput { return v.EndUserIds }).(pulumi.StringArrayOutput)
 }
 
-// The hostname of the Desktop.
-func (o DesktopOutput) HostName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Desktop) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+// The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+//
+// > **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `hostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
+func (o DesktopOutput) HostName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
 }
 
 // The ID of the Simple Office Site.
@@ -535,6 +582,13 @@ func (o DesktopOutput) Status() pulumi.StringOutput {
 // The stopped mode of the Desktop.
 func (o DesktopOutput) StoppedMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Desktop) pulumi.StringOutput { return v.StoppedMode }).(pulumi.StringOutput)
+}
+
+// The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+//
+// > **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+func (o DesktopOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }
 
 // A mapping of tags to assign to the resource.

@@ -147,7 +147,7 @@ def get_ascripts(ascript_name: Optional[_builtins.str] = None,
     """
     This data source provides Alb Ascript available to the user.
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -157,13 +157,14 @@ def get_ascripts(ascript_name: Optional[_builtins.str] = None,
 
     default = alicloud.alb.get_ascripts(ids=[default_alicloud_alb_ascript["id"]],
         name_regex=default_alicloud_alb_ascript["name"],
-        ascript_name="test",
+        ascript_name="example",
         listener_id=listener_id)
     pulumi.export("alicloudAlbAscriptExampleId", default.ascripts[0].id)
     ```
 
 
     :param _builtins.str ascript_name: Script name.
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of AScript IDs.
     :param _builtins.str listener_id: Listener ID of script attribution
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
@@ -199,7 +200,7 @@ def get_ascripts_output(ascript_name: pulumi.Input[Optional[Optional[_builtins.s
     """
     This data source provides Alb Ascript available to the user.
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -209,13 +210,14 @@ def get_ascripts_output(ascript_name: pulumi.Input[Optional[Optional[_builtins.s
 
     default = alicloud.alb.get_ascripts(ids=[default_alicloud_alb_ascript["id"]],
         name_regex=default_alicloud_alb_ascript["name"],
-        ascript_name="test",
+        ascript_name="example",
         listener_id=listener_id)
     pulumi.export("alicloudAlbAscriptExampleId", default.ascripts[0].id)
     ```
 
 
     :param _builtins.str ascript_name: Script name.
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of AScript IDs.
     :param _builtins.str listener_id: Listener ID of script attribution
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.

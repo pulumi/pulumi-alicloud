@@ -42,6 +42,8 @@ import javax.annotation.Nullable;
  * 
  * For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/70015.htm).
  * 
+ * &gt; **NOTE:** Available since v1.20.0.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -78,13 +80,6 @@ import javax.annotation.Nullable;
  * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
- * ## Entry Block
- * 
- * The entry mapping supports the following:
- * 
- * * `entry` - (Optional, Computed) The CIDR blocks.
- * * `comment` - (Optional, Computed) The comment of the entry.
- * 
  * ## Import
  * 
  * Server Load balancer access control list can be imported using the id, e.g.
@@ -97,7 +92,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:slb/acl:Acl")
 public class Acl extends com.pulumi.resources.CustomResource {
     /**
-     * A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** &#34;Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.&#34;,
+     * A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. See `entryList` below. **NOTE:** &#34;Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.&#34;,
      * 
      * @deprecated Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.
      * 
@@ -107,7 +102,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
     private Output<List<AclEntryList>> entryLists;
 
     /**
-     * @return A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** &#34;Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.&#34;,
+     * @return A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. See `entryList` below. **NOTE:** &#34;Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.&#34;,
      * 
      */
     public Output<List<AclEntryList>> entryLists() {

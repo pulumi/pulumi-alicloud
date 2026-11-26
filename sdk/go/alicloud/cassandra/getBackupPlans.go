@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.128.0+.
+// > **NOTE:** Available since v1.128.0.
 //
 // > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 //
@@ -65,12 +65,15 @@ type GetBackupPlansArgs struct {
 
 // A collection of values returned by getBackupPlans.
 type GetBackupPlansResult struct {
+	// The ID of the cluster for the backup.
 	ClusterId string `pulumi:"clusterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string               `pulumi:"id"`
-	Ids        []string             `pulumi:"ids"`
-	OutputFile *string              `pulumi:"outputFile"`
-	Plans      []GetBackupPlansPlan `pulumi:"plans"`
+	Id string `pulumi:"id"`
+	// A list of Backup Plan IDs.
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Cassandra Backup Plans. Each element contains the following attributes:
+	Plans []GetBackupPlansPlan `pulumi:"plans"`
 }
 
 func GetBackupPlansOutput(ctx *pulumi.Context, args GetBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetBackupPlansResultOutput {
@@ -105,6 +108,7 @@ func (o GetBackupPlansResultOutput) ToGetBackupPlansResultOutputWithContext(ctx 
 	return o
 }
 
+// The ID of the cluster for the backup.
 func (o GetBackupPlansResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupPlansResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -114,6 +118,7 @@ func (o GetBackupPlansResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupPlansResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Backup Plan IDs.
 func (o GetBackupPlansResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBackupPlansResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -122,6 +127,7 @@ func (o GetBackupPlansResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBackupPlansResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cassandra Backup Plans. Each element contains the following attributes:
 func (o GetBackupPlansResultOutput) Plans() GetBackupPlansPlanArrayOutput {
 	return o.ApplyT(func(v GetBackupPlansResult) []GetBackupPlansPlan { return v.Plans }).(GetBackupPlansPlanArrayOutput)
 }

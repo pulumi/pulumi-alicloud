@@ -20,9 +20,21 @@ public final class GetBgpNetworksResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Vpc Bgp Networks. Each element contains the following attributes:
+     * 
+     */
     private List<GetBgpNetworksNetwork> networks;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of the vRouter.
+     * 
+     */
     private @Nullable String routerId;
+    /**
+     * @return The state of the advertised BGP network.
+     * 
+     */
     private @Nullable String status;
 
     private GetBgpNetworksResult() {}
@@ -36,15 +48,27 @@ public final class GetBgpNetworksResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Vpc Bgp Networks. Each element contains the following attributes:
+     * 
+     */
     public List<GetBgpNetworksNetwork> networks() {
         return this.networks;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of the vRouter.
+     * 
+     */
     public Optional<String> routerId() {
         return Optional.ofNullable(this.routerId);
     }
+    /**
+     * @return The state of the advertised BGP network.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

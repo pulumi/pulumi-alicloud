@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.FNF
         /// <summary>
         /// This data source provides the FnF Executions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.149.0+.
+        /// &gt; **NOTE:** Available since v1.149.0.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.FNF
         /// <summary>
         /// This data source provides the FnF Executions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.149.0+.
+        /// &gt; **NOTE:** Available since v1.149.0.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.FNF
         /// <summary>
         /// This data source provides the FnF Executions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.149.0+.
+        /// &gt; **NOTE:** Available since v1.149.0.
         /// 
         /// ## Example Usage
         /// 
@@ -229,7 +229,13 @@ namespace Pulumi.AliCloud.FNF
     public sealed class GetExecutionsResult
     {
         public readonly bool? EnableDetails;
+        /// <summary>
+        /// A list of Fn F Executions. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetExecutionsExecutionResult> Executions;
+        /// <summary>
+        /// The name of the flow.
+        /// </summary>
         public readonly string FlowName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -237,8 +243,14 @@ namespace Pulumi.AliCloud.FNF
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Execution names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

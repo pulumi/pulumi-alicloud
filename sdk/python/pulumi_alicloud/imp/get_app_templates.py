@@ -71,6 +71,9 @@ class GetAppTemplatesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of App Template names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -81,11 +84,17 @@ class GetAppTemplatesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        Application template usage status.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def templates(self) -> Sequence['outputs.GetAppTemplatesTemplateResult']:
+        """
+        A list of Imp App Templates. Each element contains the following attributes:
+        """
         return pulumi.get(self, "templates")
 
 
@@ -112,7 +121,7 @@ def get_app_templates(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Imp App Templates of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.137.0+.
+    > **NOTE:** Available since v1.137.0.
 
     ## Example Usage
 
@@ -158,7 +167,7 @@ def get_app_templates_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
     """
     This data source provides the Imp App Templates of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.137.0+.
+    > **NOTE:** Available since v1.137.0.
 
     ## Example Usage
 

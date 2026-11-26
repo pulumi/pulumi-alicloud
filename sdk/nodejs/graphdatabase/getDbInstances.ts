@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *
@@ -77,6 +77,9 @@ export interface GetDbInstancesArgs {
  * A collection of values returned by getDbInstances.
  */
 export interface GetDbInstancesResult {
+    /**
+     * According to the practical example or notes.
+     */
     readonly dbInstanceDescription?: string;
     readonly enableDetails?: boolean;
     /**
@@ -84,14 +87,20 @@ export interface GetDbInstancesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Graph Database Db Instances. Each element contains the following attributes. See `instances` for the optional argument block.
+     */
     readonly instances: outputs.graphdatabase.GetDbInstancesInstance[];
     readonly outputFile?: string;
+    /**
+     * Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *

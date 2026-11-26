@@ -60,6 +60,9 @@ class GetMonitorGroupInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetMonitorGroupInstancesInstanceResult']:
+        """
+        Instance information added to the Cms Group.
+        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
@@ -91,7 +94,29 @@ def get_monitor_group_instances(ids: Optional[_builtins.str] = None,
                                 output_file: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMonitorGroupInstancesResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the Cms Monitor Group Instanceses of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.115.0.
+
+    > **NOTE:** This data source is the legacy alias of `cms.MonitorGroupInstances` and shares the same implementation.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example_monitor_group = alicloud.cms.MonitorGroup("example", monitor_group_name="tf-example-accmonitorgroup")
+    example = alicloud.cms.get_monitor_group_instances_output(ids=example_monitor_group.id)
+    pulumi.export("firstCmsMonitorGroupInstances", example.instances[0].instances)
+    ```
+
+
+    :param _builtins.str ids: A list of Monitor Group Instances IDs.
+    :param _builtins.str keyword: The keyword.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -111,7 +136,29 @@ def get_monitor_group_instances_output(ids: pulumi.Input[Optional[_builtins.str]
                                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMonitorGroupInstancesResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the Cms Monitor Group Instanceses of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.115.0.
+
+    > **NOTE:** This data source is the legacy alias of `cms.MonitorGroupInstances` and shares the same implementation.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example_monitor_group = alicloud.cms.MonitorGroup("example", monitor_group_name="tf-example-accmonitorgroup")
+    example = alicloud.cms.get_monitor_group_instances_output(ids=example_monitor_group.id)
+    pulumi.export("firstCmsMonitorGroupInstances", example.instances[0].instances)
+    ```
+
+
+    :param _builtins.str ids: A list of Monitor Group Instances IDs.
+    :param _builtins.str keyword: The keyword.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids

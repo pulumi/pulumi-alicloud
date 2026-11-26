@@ -3,12 +3,14 @@
 
 package com.pulumi.alicloud.redis;
 
+import com.pulumi.alicloud.redis.inputs.TairInstanceAdditionalBandwidthArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,6 +20,21 @@ import javax.annotation.Nullable;
 public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TairInstanceArgs Empty = new TairInstanceArgs();
+
+    /**
+     * The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node&#39;s `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+     * 
+     */
+    @Import(name="additionalBandwidths")
+    private @Nullable Output<List<TairInstanceAdditionalBandwidthArgs>> additionalBandwidths;
+
+    /**
+     * @return The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node&#39;s `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+     * 
+     */
+    public Optional<Output<List<TairInstanceAdditionalBandwidthArgs>>> additionalBandwidths() {
+        return Optional.ofNullable(this.additionalBandwidths);
+    }
 
     /**
      * Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
@@ -66,6 +83,21 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> backupId() {
         return Optional.ofNullable(this.backupId);
+    }
+
+    /**
+     * Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is write-only and cannot be read back; Terraform keeps the configured value in the state.
+     * 
+     */
+    @Import(name="bandwidthBurst")
+    private @Nullable Output<Boolean> bandwidthBurst;
+
+    /**
+     * @return Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is write-only and cannot be read back; Terraform keeps the configured value in the state.
+     * 
+     */
+    public Optional<Output<Boolean>> bandwidthBurst() {
+        return Optional.ofNullable(this.bandwidthBurst);
     }
 
     /**
@@ -347,14 +379,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
+     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the &lt;https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;, valid values: yes, no. The default value is no.
      * 
      */
     @Import(name="paramNoLooseSentinelEnabled")
     private @Nullable Output<String> paramNoLooseSentinelEnabled;
 
     /**
-     * @return sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
+     * @return sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the &lt;https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;, valid values: yes, no. The default value is no.
      * 
      */
     public Optional<Output<String>> paramNoLooseSentinelEnabled() {
@@ -362,14 +394,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+     * Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see &lt;https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;
      * 
      */
     @Import(name="paramNoLooseSentinelPasswordFreeAccess")
     private @Nullable Output<String> paramNoLooseSentinelPasswordFreeAccess;
 
     /**
-     * @return Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+     * @return Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see &lt;https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;
      * 
      */
     public Optional<Output<String>> paramNoLooseSentinelPasswordFreeAccess() {
@@ -377,14 +409,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+     * After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See &lt;https://help.aliyun.com/zh/redis/user-guide/parameter-support&gt; for details
      * 
      */
     @Import(name="paramNoLooseSentinelPasswordFreeCommands")
     private @Nullable Output<String> paramNoLooseSentinelPasswordFreeCommands;
 
     /**
-     * @return After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+     * @return After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See &lt;https://help.aliyun.com/zh/redis/user-guide/parameter-support&gt; for details
      * 
      */
     public Optional<Output<String>> paramNoLooseSentinelPasswordFreeCommands() {
@@ -394,7 +426,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The value is semisync or async. The default value is async.
      * 
-     * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+     * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to &lt;https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance&gt;.
      * 
      */
     @Import(name="paramReplMode")
@@ -403,7 +435,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The value is semisync or async. The default value is async.
      * 
-     * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+     * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to &lt;https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance&gt;.
      * 
      */
     public Optional<Output<String>> paramReplMode() {
@@ -411,14 +443,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+     * The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: &lt;https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance&gt;.
      * 
      */
     @Import(name="paramSemisyncReplTimeout")
     private @Nullable Output<String> paramSemisyncReplTimeout;
 
     /**
-     * @return The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+     * @return The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: &lt;https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance&gt;.
      * 
      */
     public Optional<Output<String>> paramSemisyncReplTimeout() {
@@ -426,14 +458,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+     * sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see &lt;https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;. The value is 0 or 1. The default value is 0.
      * 
      */
     @Import(name="paramSentinelCompatEnable")
     private @Nullable Output<String> paramSentinelCompatEnable;
 
     /**
-     * @return sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+     * @return sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see &lt;https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;. The value is 0 or 1. The default value is 0.
      * 
      */
     public Optional<Output<String>> paramSentinelCompatEnable() {
@@ -453,6 +485,38 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+     * 
+     */
+    @Import(name="passwordWo")
+    private @Nullable Output<String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+     * 
+     */
+    public Optional<Output<String>> passwordWo() {
+        return Optional.ofNullable(this.passwordWo);
+    }
+
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+     * 
+     */
+    @Import(name="passwordWoVersion")
+    private @Nullable Output<Integer> passwordWoVersion;
+
+    /**
+     * @return The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+     * 
+     */
+    public Optional<Output<Integer>> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
     }
 
     /**
@@ -536,6 +600,21 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> recoverConfigMode() {
         return Optional.ofNullable(this.recoverConfigMode);
+    }
+
+    /**
+     * The number of replica nodes in the primary zone. This parameter is available only when you create a cloud-native cluster instance in the multi-replica mode. Valid values: `1` to `4`. If you create a multi-zone instance, you can use this parameter together with the `slaveReplicaCount` parameter to customize the numbers of replica nodes in the primary and secondary zones. The sum of the values of this parameter and the `slaveReplicaCount` parameter cannot exceed `4`. Removing this parameter from the configuration keeps the current value instead of resetting it; set a new value explicitly to change the number of replica nodes.
+     * 
+     */
+    @Import(name="replicaCount")
+    private @Nullable Output<Integer> replicaCount;
+
+    /**
+     * @return The number of replica nodes in the primary zone. This parameter is available only when you create a cloud-native cluster instance in the multi-replica mode. Valid values: `1` to `4`. If you create a multi-zone instance, you can use this parameter together with the `slaveReplicaCount` parameter to customize the numbers of replica nodes in the primary and secondary zones. The sum of the values of this parameter and the `slaveReplicaCount` parameter cannot exceed `4`. Removing this parameter from the configuration keeps the current value instead of resetting it; set a new value explicitly to change the number of replica nodes.
+     * 
+     */
+    public Optional<Output<Integer>> replicaCount() {
+        return Optional.ofNullable(this.replicaCount);
     }
 
     /**
@@ -675,6 +754,21 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The number of replica nodes in the secondary zone. If you create a multi-zone instance, the sum of the values of this parameter and the `replicaCount` parameter cannot exceed `4`. The value `0` is not supported in this configuration: `CreateTairInstance` rejects it with `InvalidParameter`, and `ModifyInstanceSpec` rejects it with `SlaveReplicaCountCanNotBeZero` (the API suggests `MigrateToOtherZone` instead). Removing this parameter from the configuration keeps the current value instead of resetting it; set a new value explicitly to change the number of replica nodes in the secondary zone.
+     * 
+     */
+    @Import(name="slaveReplicaCount")
+    private @Nullable Output<Integer> slaveReplicaCount;
+
+    /**
+     * @return The number of replica nodes in the secondary zone. If you create a multi-zone instance, the sum of the values of this parameter and the `replicaCount` parameter cannot exceed `4`. The value `0` is not supported in this configuration: `CreateTairInstance` rejects it with `InvalidParameter`, and `ModifyInstanceSpec` rejects it with `SlaveReplicaCountCanNotBeZero` (the API suggests `MigrateToOtherZone` instead). Removing this parameter from the configuration keeps the current value instead of resetting it; set a new value explicitly to change the number of replica nodes in the secondary zone.
+     * 
+     */
+    public Optional<Output<Integer>> slaveReplicaCount() {
+        return Optional.ofNullable(this.slaveReplicaCount);
+    }
+
+    /**
      * If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
      * 
      */
@@ -732,14 +826,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+     * Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see &lt;https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type&gt;. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
      * 
      */
     @Import(name="storageSizeGb")
     private @Nullable Output<Integer> storageSizeGb;
 
     /**
-     * @return Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+     * @return Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see &lt;https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type&gt;. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
      * 
      */
     public Optional<Output<Integer>> storageSizeGb() {
@@ -858,9 +952,11 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     private TairInstanceArgs() {}
 
     private TairInstanceArgs(TairInstanceArgs $) {
+        this.additionalBandwidths = $.additionalBandwidths;
         this.autoRenew = $.autoRenew;
         this.autoRenewPeriod = $.autoRenewPeriod;
         this.backupId = $.backupId;
+        this.bandwidthBurst = $.bandwidthBurst;
         this.clusterBackupId = $.clusterBackupId;
         this.config = $.config;
         this.connectionStringPrefix = $.connectionStringPrefix;
@@ -884,11 +980,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.paramSemisyncReplTimeout = $.paramSemisyncReplTimeout;
         this.paramSentinelCompatEnable = $.paramSentinelCompatEnable;
         this.password = $.password;
+        this.passwordWo = $.passwordWo;
+        this.passwordWoVersion = $.passwordWoVersion;
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.port = $.port;
         this.readOnlyCount = $.readOnlyCount;
         this.recoverConfigMode = $.recoverConfigMode;
+        this.replicaCount = $.replicaCount;
         this.resourceGroupId = $.resourceGroupId;
         this.roleArn = $.roleArn;
         this.secondaryZoneId = $.secondaryZoneId;
@@ -897,6 +996,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.securityIps = $.securityIps;
         this.shardCount = $.shardCount;
         this.slaveReadOnlyCount = $.slaveReadOnlyCount;
+        this.slaveReplicaCount = $.slaveReplicaCount;
         this.srcDbInstanceId = $.srcDbInstanceId;
         this.sslEnabled = $.sslEnabled;
         this.storagePerformanceLevel = $.storagePerformanceLevel;
@@ -926,6 +1026,37 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TairInstanceArgs defaults) {
             $ = new TairInstanceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalBandwidths The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node&#39;s `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBandwidths(@Nullable Output<List<TairInstanceAdditionalBandwidthArgs>> additionalBandwidths) {
+            $.additionalBandwidths = additionalBandwidths;
+            return this;
+        }
+
+        /**
+         * @param additionalBandwidths The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node&#39;s `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBandwidths(List<TairInstanceAdditionalBandwidthArgs> additionalBandwidths) {
+            return additionalBandwidths(Output.of(additionalBandwidths));
+        }
+
+        /**
+         * @param additionalBandwidths The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node&#39;s `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBandwidths(TairInstanceAdditionalBandwidthArgs... additionalBandwidths) {
+            return additionalBandwidths(List.of(additionalBandwidths));
         }
 
         /**
@@ -993,6 +1124,27 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder backupId(String backupId) {
             return backupId(Output.of(backupId));
+        }
+
+        /**
+         * @param bandwidthBurst Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is write-only and cannot be read back; Terraform keeps the configured value in the state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthBurst(@Nullable Output<Boolean> bandwidthBurst) {
+            $.bandwidthBurst = bandwidthBurst;
+            return this;
+        }
+
+        /**
+         * @param bandwidthBurst Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is write-only and cannot be read back; Terraform keeps the configured value in the state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthBurst(Boolean bandwidthBurst) {
+            return bandwidthBurst(Output.of(bandwidthBurst));
         }
 
         /**
@@ -1370,7 +1522,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramNoLooseSentinelEnabled sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
+         * @param paramNoLooseSentinelEnabled sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the &lt;https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;, valid values: yes, no. The default value is no.
          * 
          * @return builder
          * 
@@ -1381,7 +1533,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramNoLooseSentinelEnabled sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
+         * @param paramNoLooseSentinelEnabled sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the &lt;https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;, valid values: yes, no. The default value is no.
          * 
          * @return builder
          * 
@@ -1391,7 +1543,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramNoLooseSentinelPasswordFreeAccess Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+         * @param paramNoLooseSentinelPasswordFreeAccess Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see &lt;https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;
          * 
          * @return builder
          * 
@@ -1402,7 +1554,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramNoLooseSentinelPasswordFreeAccess Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+         * @param paramNoLooseSentinelPasswordFreeAccess Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see &lt;https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;
          * 
          * @return builder
          * 
@@ -1412,7 +1564,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramNoLooseSentinelPasswordFreeCommands After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+         * @param paramNoLooseSentinelPasswordFreeCommands After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See &lt;https://help.aliyun.com/zh/redis/user-guide/parameter-support&gt; for details
          * 
          * @return builder
          * 
@@ -1423,7 +1575,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramNoLooseSentinelPasswordFreeCommands After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+         * @param paramNoLooseSentinelPasswordFreeCommands After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See &lt;https://help.aliyun.com/zh/redis/user-guide/parameter-support&gt; for details
          * 
          * @return builder
          * 
@@ -1435,7 +1587,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param paramReplMode The value is semisync or async. The default value is async.
          * 
-         * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+         * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to &lt;https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance&gt;.
          * 
          * @return builder
          * 
@@ -1448,7 +1600,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param paramReplMode The value is semisync or async. The default value is async.
          * 
-         * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+         * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to &lt;https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance&gt;.
          * 
          * @return builder
          * 
@@ -1458,7 +1610,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramSemisyncReplTimeout The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+         * @param paramSemisyncReplTimeout The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: &lt;https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance&gt;.
          * 
          * @return builder
          * 
@@ -1469,7 +1621,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramSemisyncReplTimeout The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+         * @param paramSemisyncReplTimeout The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: &lt;https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance&gt;.
          * 
          * @return builder
          * 
@@ -1479,7 +1631,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramSentinelCompatEnable sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+         * @param paramSentinelCompatEnable sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see &lt;https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;. The value is 0 or 1. The default value is 0.
          * 
          * @return builder
          * 
@@ -1490,7 +1642,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramSentinelCompatEnable sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+         * @param paramSentinelCompatEnable sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see &lt;https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;. The value is 0 or 1. The default value is 0.
          * 
          * @return builder
          * 
@@ -1518,6 +1670,50 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(@Nullable Output<String> passwordWo) {
+            $.passwordWo = passwordWo;
+            return this;
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(String passwordWo) {
+            return passwordWo(Output.of(passwordWo));
+        }
+
+        /**
+         * @param passwordWoVersion The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(@Nullable Output<Integer> passwordWoVersion) {
+            $.passwordWoVersion = passwordWoVersion;
+            return this;
+        }
+
+        /**
+         * @param passwordWoVersion The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(Integer passwordWoVersion) {
+            return passwordWoVersion(Output.of(passwordWoVersion));
         }
 
         /**
@@ -1631,6 +1827,27 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder recoverConfigMode(String recoverConfigMode) {
             return recoverConfigMode(Output.of(recoverConfigMode));
+        }
+
+        /**
+         * @param replicaCount The number of replica nodes in the primary zone. This parameter is available only when you create a cloud-native cluster instance in the multi-replica mode. Valid values: `1` to `4`. If you create a multi-zone instance, you can use this parameter together with the `slaveReplicaCount` parameter to customize the numbers of replica nodes in the primary and secondary zones. The sum of the values of this parameter and the `slaveReplicaCount` parameter cannot exceed `4`. Removing this parameter from the configuration keeps the current value instead of resetting it; set a new value explicitly to change the number of replica nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaCount(@Nullable Output<Integer> replicaCount) {
+            $.replicaCount = replicaCount;
+            return this;
+        }
+
+        /**
+         * @param replicaCount The number of replica nodes in the primary zone. This parameter is available only when you create a cloud-native cluster instance in the multi-replica mode. Valid values: `1` to `4`. If you create a multi-zone instance, you can use this parameter together with the `slaveReplicaCount` parameter to customize the numbers of replica nodes in the primary and secondary zones. The sum of the values of this parameter and the `slaveReplicaCount` parameter cannot exceed `4`. Removing this parameter from the configuration keeps the current value instead of resetting it; set a new value explicitly to change the number of replica nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaCount(Integer replicaCount) {
+            return replicaCount(Output.of(replicaCount));
         }
 
         /**
@@ -1818,6 +2035,27 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param slaveReplicaCount The number of replica nodes in the secondary zone. If you create a multi-zone instance, the sum of the values of this parameter and the `replicaCount` parameter cannot exceed `4`. The value `0` is not supported in this configuration: `CreateTairInstance` rejects it with `InvalidParameter`, and `ModifyInstanceSpec` rejects it with `SlaveReplicaCountCanNotBeZero` (the API suggests `MigrateToOtherZone` instead). Removing this parameter from the configuration keeps the current value instead of resetting it; set a new value explicitly to change the number of replica nodes in the secondary zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slaveReplicaCount(@Nullable Output<Integer> slaveReplicaCount) {
+            $.slaveReplicaCount = slaveReplicaCount;
+            return this;
+        }
+
+        /**
+         * @param slaveReplicaCount The number of replica nodes in the secondary zone. If you create a multi-zone instance, the sum of the values of this parameter and the `replicaCount` parameter cannot exceed `4`. The value `0` is not supported in this configuration: `CreateTairInstance` rejects it with `InvalidParameter`, and `ModifyInstanceSpec` rejects it with `SlaveReplicaCountCanNotBeZero` (the API suggests `MigrateToOtherZone` instead). Removing this parameter from the configuration keeps the current value instead of resetting it; set a new value explicitly to change the number of replica nodes in the secondary zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slaveReplicaCount(Integer slaveReplicaCount) {
+            return slaveReplicaCount(Output.of(slaveReplicaCount));
+        }
+
+        /**
          * @param srcDbInstanceId If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
          * 
          * @return builder
@@ -1893,7 +2131,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageSizeGb Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+         * @param storageSizeGb Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see &lt;https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type&gt;. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
          * 
          * @return builder
          * 
@@ -1904,7 +2142,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageSizeGb Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+         * @param storageSizeGb Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see &lt;https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type&gt;. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
          * 
          * @return builder
          * 

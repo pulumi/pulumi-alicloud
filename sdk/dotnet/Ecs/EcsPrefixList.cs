@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Prefix List and how to use it, see [What is Prefix List.](https://www.alibabacloud.com/help/en/doc-detail/207969.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.152.0+.
+    /// &gt; **NOTE:** Available since v1.152.0.
     /// 
     /// ## Example Usage
     /// 
@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Ecs
     ///     {
     ///         AddressFamily = "IPv4",
     ///         MaxEntries = 2,
-    ///         PrefixListName = "tftest",
+    ///         PrefixListName = "tfexample",
     ///         Description = "description",
     ///         Entries = new[]
     ///         {
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The Entry. The details see Block `Entry`.
+        /// The Entry. See `Entry` below.
         /// </summary>
         [Output("entries")]
         public Output<ImmutableArray<Outputs.EcsPrefixListEntry>> Entries { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.EcsPrefixListEntryArgs>? _entries;
 
         /// <summary>
-        /// The Entry. The details see Block `Entry`.
+        /// The Entry. See `Entry` below.
         /// </summary>
         public InputList<Inputs.EcsPrefixListEntryArgs> Entries
         {
@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.EcsPrefixListEntryGetArgs>? _entries;
 
         /// <summary>
-        /// The Entry. The details see Block `Entry`.
+        /// The Entry. See `Entry` below.
         /// </summary>
         public InputList<Inputs.EcsPrefixListEntryGetArgs> Entries
         {

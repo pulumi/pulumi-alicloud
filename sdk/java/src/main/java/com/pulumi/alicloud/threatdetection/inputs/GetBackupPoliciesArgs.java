@@ -17,9 +17,17 @@ public final class GetBackupPoliciesArgs extends com.pulumi.resources.InvokeArgs
 
     public static final GetBackupPoliciesArgs Empty = new GetBackupPoliciesArgs();
 
+    /**
+     * The page number. Must be greater than 0.
+     * 
+     */
     @Import(name="currentPage")
     private @Nullable Output<Integer> currentPage;
 
+    /**
+     * @return The page number. Must be greater than 0.
+     * 
+     */
     public Optional<Output<Integer>> currentPage() {
         return Optional.ofNullable(this.currentPage);
     }
@@ -152,11 +160,23 @@ public final class GetBackupPoliciesArgs extends com.pulumi.resources.InvokeArgs
             $ = new GetBackupPoliciesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param currentPage The page number. Must be greater than 0.
+         * 
+         * @return builder
+         * 
+         */
         public Builder currentPage(@Nullable Output<Integer> currentPage) {
             $.currentPage = currentPage;
             return this;
         }
 
+        /**
+         * @param currentPage The page number. Must be greater than 0.
+         * 
+         * @return builder
+         * 
+         */
         public Builder currentPage(Integer currentPage) {
             return currentPage(Output.of(currentPage));
         }

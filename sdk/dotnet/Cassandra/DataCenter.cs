@@ -12,14 +12,14 @@ namespace Pulumi.AliCloud.Cassandra
     /// <summary>
     /// Provides a Cassandra dataCenter resource supports replica set dataCenters only. The Cassandra provides stable, reliable, and automatic scalable database services.
     /// It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-    /// You can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).
+    /// You can see detail product introduction in the [Cassandra product documentation](https://www.alibabacloud.com/help/product/49055.htm).
     /// 
     /// &gt; **NOTE:** Available since v1.88.0.
     /// 
     /// &gt; **NOTE:**  Create a cassandra dataCenter need a clusterId,so need create a cassandra cluster first.
     /// 
     /// &gt; **NOTE:**  The following regions support create Vpc network Cassandra cluster.
-    /// The official website mark  more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).
+    /// The official website mark more regions. Or you can call [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/157540.html).
     /// 
     /// &gt; **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
     /// 
@@ -104,6 +104,9 @@ namespace Pulumi.AliCloud.Cassandra
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the Cassandra dataCenter.
+        /// </summary>
         [Output("dataCenterId")]
         public Output<string> DataCenterId { get; private set; } = null!;
 
@@ -127,6 +130,9 @@ namespace Pulumi.AliCloud.Cassandra
         [Output("diskType")]
         public Output<string?> DiskType { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to enable public access. System default to `False`.
+        /// </summary>
         [Output("enablePublic")]
         public Output<bool?> EnablePublic { get; private set; } = null!;
 
@@ -148,15 +154,27 @@ namespace Pulumi.AliCloud.Cassandra
         [Output("payType")]
         public Output<string> PayType { get; private set; } = null!;
 
+        /// <summary>
+        /// The purchase period of the dataCenter. Valid when PayType = Subscription.
+        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
+        /// <summary>
+        /// The unit of the purchase period. Valid values are `Month`, `Year`. Valid when PayType = Subscription.
+        /// </summary>
         [Output("periodUnit")]
         public Output<string?> PeriodUnit { get; private set; } = null!;
 
+        /// <summary>
+        /// The public access points of the Cassandra dataCenter.
+        /// </summary>
         [Output("publicPoints")]
         public Output<ImmutableArray<string>> PublicPoints { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of the Cassandra dataCenter.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -258,6 +276,9 @@ namespace Pulumi.AliCloud.Cassandra
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
+        /// <summary>
+        /// Whether to enable public access. System default to `False`.
+        /// </summary>
         [Input("enablePublic")]
         public Input<bool>? EnablePublic { get; set; }
 
@@ -279,9 +300,15 @@ namespace Pulumi.AliCloud.Cassandra
         [Input("payType", required: true)]
         public Input<string> PayType { get; set; } = null!;
 
+        /// <summary>
+        /// The purchase period of the dataCenter. Valid when PayType = Subscription.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        /// <summary>
+        /// The unit of the purchase period. Valid values are `Month`, `Year`. Valid when PayType = Subscription.
+        /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
 
@@ -325,6 +352,9 @@ namespace Pulumi.AliCloud.Cassandra
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
+        /// <summary>
+        /// The ID of the Cassandra dataCenter.
+        /// </summary>
         [Input("dataCenterId")]
         public Input<string>? DataCenterId { get; set; }
 
@@ -348,6 +378,9 @@ namespace Pulumi.AliCloud.Cassandra
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
+        /// <summary>
+        /// Whether to enable public access. System default to `False`.
+        /// </summary>
         [Input("enablePublic")]
         public Input<bool>? EnablePublic { get; set; }
 
@@ -369,20 +402,33 @@ namespace Pulumi.AliCloud.Cassandra
         [Input("payType")]
         public Input<string>? PayType { get; set; }
 
+        /// <summary>
+        /// The purchase period of the dataCenter. Valid when PayType = Subscription.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        /// <summary>
+        /// The unit of the purchase period. Valid values are `Month`, `Year`. Valid when PayType = Subscription.
+        /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
 
         [Input("publicPoints")]
         private InputList<string>? _publicPoints;
+
+        /// <summary>
+        /// The public access points of the Cassandra dataCenter.
+        /// </summary>
         public InputList<string> PublicPoints
         {
             get => _publicPoints ?? (_publicPoints = new InputList<string>());
             set => _publicPoints = value;
         }
 
+        /// <summary>
+        /// The status of the Cassandra dataCenter.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

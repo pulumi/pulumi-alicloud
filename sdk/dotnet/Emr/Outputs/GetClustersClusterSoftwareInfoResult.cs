@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
     public sealed class GetClustersClusterSoftwareInfoResult
     {
         /// <summary>
-        /// Cluster type:
+        /// Cluster type.
         /// </summary>
         public readonly string ClusterType;
         /// <summary>

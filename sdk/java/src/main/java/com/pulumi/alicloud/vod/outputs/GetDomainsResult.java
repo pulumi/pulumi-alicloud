@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDomainsResult {
     private @Nullable String domainSearchType;
+    /**
+     * @return A list of Vod Domains. Each element contains the following attributes:
+     * 
+     */
     private List<GetDomainsDomain> domains;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,8 +28,16 @@ public final class GetDomainsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Domain names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
     private @Nullable Map<String,String> tags;
 
@@ -33,6 +45,10 @@ public final class GetDomainsResult {
     public Optional<String> domainSearchType() {
         return Optional.ofNullable(this.domainSearchType);
     }
+    /**
+     * @return A list of Vod Domains. Each element contains the following attributes:
+     * 
+     */
     public List<GetDomainsDomain> domains() {
         return this.domains;
     }
@@ -49,12 +65,20 @@ public final class GetDomainsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Domain names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

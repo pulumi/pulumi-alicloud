@@ -14,9 +14,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAnycastEipAddressesResult {
+    /**
+     * @return A list of Eipanycast Anycast Eip Addresses. Each element contains the following attributes:
+     * 
+     */
     private List<GetAnycastEipAddressesAddress> addresses;
+    /**
+     * @return Anycast EIP instance name.
+     * 
+     */
     private @Nullable String anycastEipAddressName;
     private @Nullable List<String> bindInstanceIds;
+    /**
+     * @return The business status of the Anycast EIP instance. -`Normal`: Normal state. -`FinancialLocked`: The status of arrears locked.
+     * 
+     */
     private @Nullable String businessStatus;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,25 +36,61 @@ public final class GetAnycastEipAddressesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
+     * 
+     */
     private @Nullable String internetChargeType;
+    /**
+     * @return Anycast EIP instance IP address.
+     * 
+     */
     private @Nullable String ipAddress;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Anycast Eip Address names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The payment model of Anycast EIP instance. &#34;PostPaid&#34;: Refers to the post-paid mode.
+     * 
+     */
     private @Nullable String paymentType;
+    /**
+     * @return Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
+     * 
+     */
     private @Nullable String serviceLocation;
+    /**
+     * @return IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+     * 
+     */
     private @Nullable String status;
 
     private GetAnycastEipAddressesResult() {}
+    /**
+     * @return A list of Eipanycast Anycast Eip Addresses. Each element contains the following attributes:
+     * 
+     */
     public List<GetAnycastEipAddressesAddress> addresses() {
         return this.addresses;
     }
+    /**
+     * @return Anycast EIP instance name.
+     * 
+     */
     public Optional<String> anycastEipAddressName() {
         return Optional.ofNullable(this.anycastEipAddressName);
     }
     public List<String> bindInstanceIds() {
         return this.bindInstanceIds == null ? List.of() : this.bindInstanceIds;
     }
+    /**
+     * @return The business status of the Anycast EIP instance. -`Normal`: Normal state. -`FinancialLocked`: The status of arrears locked.
+     * 
+     */
     public Optional<String> businessStatus() {
         return Optional.ofNullable(this.businessStatus);
     }
@@ -56,27 +104,51 @@ public final class GetAnycastEipAddressesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
+     * 
+     */
     public Optional<String> internetChargeType() {
         return Optional.ofNullable(this.internetChargeType);
     }
+    /**
+     * @return Anycast EIP instance IP address.
+     * 
+     */
     public Optional<String> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Anycast Eip Address names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The payment model of Anycast EIP instance. &#34;PostPaid&#34;: Refers to the post-paid mode.
+     * 
+     */
     public Optional<String> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }
+    /**
+     * @return Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
+     * 
+     */
     public Optional<String> serviceLocation() {
         return Optional.ofNullable(this.serviceLocation);
     }
+    /**
+     * @return IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

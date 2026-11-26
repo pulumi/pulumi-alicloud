@@ -28,6 +28,10 @@ public final class GetHoneypotProbesProbe {
      * 
      */
     private String displayName;
+    /**
+     * @return A list of honeypot bind. Available when `enableDetails` is on.
+     * 
+     */
     private List<GetHoneypotProbesProbeHoneypotBindList> honeypotBindLists;
     /**
      * @return The first ID of the resource
@@ -92,6 +96,10 @@ public final class GetHoneypotProbesProbe {
     public String displayName() {
         return this.displayName;
     }
+    /**
+     * @return A list of honeypot bind. Available when `enableDetails` is on.
+     * 
+     */
     public List<GetHoneypotProbesProbeHoneypotBindList> honeypotBindLists() {
         return this.honeypotBindLists;
     }

@@ -59,21 +59,40 @@ class GetRdsBackupsResult:
     @_builtins.property
     @pulumi.getter(name="backupMode")
     def backup_mode(self) -> Optional[_builtins.str]:
+        """
+        BackupMode.
+        """
         return pulumi.get(self, "backup_mode")
 
     @_builtins.property
     @pulumi.getter(name="backupStatus")
     def backup_status(self) -> Optional[_builtins.str]:
+        """
+        Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
+        * **NoStart**: Not started
+        * **Checking**: check the backup
+        * **Preparing**: Prepare a backup
+        * **Waiting**: Waiting for backup
+        * **Uploading**: Upload backup
+        * **Finished**: Complete backup
+        * **Failed**: backup Failed
+        """
         return pulumi.get(self, "backup_status")
 
     @_builtins.property
     @pulumi.getter
     def backups(self) -> Sequence['outputs.GetRdsBackupsBackupResult']:
+        """
+        A list of Rds Backups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "backups")
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> _builtins.str:
+        """
+        The db instance id.
+        """
         return pulumi.get(self, "db_instance_id")
 
     @_builtins.property
@@ -133,7 +152,7 @@ def get_rds_backups(backup_mode: Optional[_builtins.str] = None,
     """
     This data source provides the Rds Backups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.149.0+.
+    > **NOTE:** Available since v1.149.0+.
 
     ## Example Usage
 
@@ -188,7 +207,7 @@ def get_rds_backups_output(backup_mode: pulumi.Input[Optional[Optional[_builtins
     """
     This data source provides the Rds Backups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.149.0+.
+    > **NOTE:** Available since v1.149.0+.
 
     ## Example Usage
 

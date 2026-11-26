@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Rds Accounts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0+.
  *
  * ## Example Usage
  *
@@ -46,7 +46,7 @@ export interface GetAccountsArgs {
      */
     dbInstanceId: string;
     /**
-     * A list of Account IDs.
+     * A list of rds account IDs.
      */
     ids?: string[];
     /**
@@ -67,22 +67,34 @@ export interface GetAccountsArgs {
  * A collection of values returned by getAccounts.
  */
 export interface GetAccountsResult {
+    /**
+     * A list of Rds Accounts. Each element contains the following attributes:
+     */
     readonly accounts: outputs.rds.GetAccountsAccount[];
     readonly dbInstanceId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Account IDs.
+     */
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Account names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Rds Accounts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0+.
  *
  * ## Example Usage
  *
@@ -119,7 +131,7 @@ export interface GetAccountsOutputArgs {
      */
     dbInstanceId: pulumi.Input<string>;
     /**
-     * A list of Account IDs.
+     * A list of rds account IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

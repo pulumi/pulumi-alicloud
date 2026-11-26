@@ -41,7 +41,7 @@ public final class GetTopicsResult {
      */
     private @Nullable String topic;
     /**
-     * @return A list of topics. Each element contains the following attributes:
+     * @return A list of topics. Each element contains the following attributes. See `topics` for the optional argument block.
      * 
      */
     private List<GetTopicsTopic> topics;
@@ -92,7 +92,7 @@ public final class GetTopicsResult {
         return Optional.ofNullable(this.topic);
     }
     /**
-     * @return A list of topics. Each element contains the following attributes:
+     * @return A list of topics. Each element contains the following attributes. See `topics` for the optional argument block.
      * 
      */
     public List<GetTopicsTopic> topics() {

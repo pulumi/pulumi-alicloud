@@ -21,7 +21,7 @@ public final class IotFunctions {
     /**
      * This data source provides the Iot Device Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -65,7 +65,7 @@ public final class IotFunctions {
     /**
      * This data source provides the Iot Device Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -109,7 +109,7 @@ public final class IotFunctions {
     /**
      * This data source provides the Iot Device Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -153,7 +153,7 @@ public final class IotFunctions {
     /**
      * This data source provides the Iot Device Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -197,7 +197,7 @@ public final class IotFunctions {
     /**
      * This data source provides the Iot Device Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -241,7 +241,7 @@ public final class IotFunctions {
     /**
      * This data source provides the Iot Device Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -285,7 +285,7 @@ public final class IotFunctions {
     /**
      * This data source provides the Iot Device Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 

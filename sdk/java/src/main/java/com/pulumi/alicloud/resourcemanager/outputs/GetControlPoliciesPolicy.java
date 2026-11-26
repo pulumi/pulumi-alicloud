@@ -47,7 +47,7 @@ public final class GetControlPoliciesPolicy {
      */
     private String policyId;
     /**
-     * @return The type of policy.
+     * @return The policy type of control policy. Valid values `System` and `Custom`.
      * 
      */
     private String policyType;
@@ -103,7 +103,7 @@ public final class GetControlPoliciesPolicy {
         return this.policyId;
     }
     /**
-     * @return The type of policy.
+     * @return The policy type of control policy. Valid values `System` and `Custom`.
      * 
      */
     public String policyType() {

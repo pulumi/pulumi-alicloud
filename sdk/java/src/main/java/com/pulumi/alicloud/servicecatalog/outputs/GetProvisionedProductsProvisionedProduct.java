@@ -11,7 +11,6 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProvisionedProductsProvisionedProduct {
@@ -20,6 +19,10 @@ public final class GetProvisionedProductsProvisionedProduct {
      * 
      */
     private String createTime;
+    /**
+     * @return The ID of the provisioned product.
+     * 
+     */
     private String id;
     /**
      * @return The ID of the last instance operation task
@@ -36,6 +39,10 @@ public final class GetProvisionedProductsProvisionedProduct {
      * 
      */
     private String lastTaskId;
+    /**
+     * @return The output value of the template.
+     * 
+     */
     private List<GetProvisionedProductsProvisionedProductOutput> outputs;
     /**
      * @return The RAM entity ID of the owner
@@ -47,9 +54,13 @@ public final class GetProvisionedProductsProvisionedProduct {
      * 
      */
     private String ownerPrincipalType;
+    /**
+     * @return The template parameters entered by the user.
+     * 
+     */
     private List<GetProvisionedProductsProvisionedProductParameter> parameters;
     /**
-     * @return Product mix ID.&gt; When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+     * @return Product mix ID.
      * 
      */
     private String portfolioId;
@@ -84,12 +95,12 @@ public final class GetProvisionedProductsProvisionedProduct {
      */
     private String provisionedProductId;
     /**
-     * @return The name of the instance.The length is 1~128 characters.
+     * @return The name of the instance.
      * 
      */
     private String provisionedProductName;
     /**
-     * @return Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+     * @return Instance type.
      * 
      */
     private String provisionedProductType;
@@ -99,7 +110,7 @@ public final class GetProvisionedProductsProvisionedProduct {
      */
     private String stackId;
     /**
-     * @return The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+     * @return The ID of the region to which the resource stack belongs.
      * 
      */
     private String stackRegionId;
@@ -113,7 +124,11 @@ public final class GetProvisionedProductsProvisionedProduct {
      * 
      */
     private String statusMessage;
-    private @Nullable Map<String,String> tags;
+    /**
+     * @return A mapping of tags of the provisioned product.
+     * 
+     */
+    private Map<String,String> tags;
 
     private GetProvisionedProductsProvisionedProduct() {}
     /**
@@ -123,6 +138,10 @@ public final class GetProvisionedProductsProvisionedProduct {
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return The ID of the provisioned product.
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -147,6 +166,10 @@ public final class GetProvisionedProductsProvisionedProduct {
     public String lastTaskId() {
         return this.lastTaskId;
     }
+    /**
+     * @return The output value of the template.
+     * 
+     */
     public List<GetProvisionedProductsProvisionedProductOutput> outputs() {
         return this.outputs;
     }
@@ -164,11 +187,15 @@ public final class GetProvisionedProductsProvisionedProduct {
     public String ownerPrincipalType() {
         return this.ownerPrincipalType;
     }
+    /**
+     * @return The template parameters entered by the user.
+     * 
+     */
     public List<GetProvisionedProductsProvisionedProductParameter> parameters() {
         return this.parameters;
     }
     /**
-     * @return Product mix ID.&gt; When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+     * @return Product mix ID.
      * 
      */
     public String portfolioId() {
@@ -217,14 +244,14 @@ public final class GetProvisionedProductsProvisionedProduct {
         return this.provisionedProductId;
     }
     /**
-     * @return The name of the instance.The length is 1~128 characters.
+     * @return The name of the instance.
      * 
      */
     public String provisionedProductName() {
         return this.provisionedProductName;
     }
     /**
-     * @return Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+     * @return Instance type.
      * 
      */
     public String provisionedProductType() {
@@ -238,7 +265,7 @@ public final class GetProvisionedProductsProvisionedProduct {
         return this.stackId;
     }
     /**
-     * @return The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+     * @return The ID of the region to which the resource stack belongs.
      * 
      */
     public String stackRegionId() {
@@ -258,8 +285,12 @@ public final class GetProvisionedProductsProvisionedProduct {
     public String statusMessage() {
         return this.statusMessage;
     }
+    /**
+     * @return A mapping of tags of the provisioned product.
+     * 
+     */
     public Map<String,String> tags() {
-        return this.tags == null ? Map.of() : this.tags;
+        return this.tags;
     }
 
     public static Builder builder() {
@@ -293,7 +324,7 @@ public final class GetProvisionedProductsProvisionedProduct {
         private String stackRegionId;
         private String status;
         private String statusMessage;
-        private @Nullable Map<String,String> tags;
+        private Map<String,String> tags;
         public Builder() {}
         public Builder(GetProvisionedProductsProvisionedProduct defaults) {
     	      Objects.requireNonNull(defaults);
@@ -505,8 +536,10 @@ public final class GetProvisionedProductsProvisionedProduct {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,String> tags) {
-
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "tags");
+            }
             this.tags = tags;
             return this;
         }

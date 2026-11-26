@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Open Search App Group and how to use it, see [What is App Group](https://www.aliyun.com/product/opensearch).
  * 
- * &gt; **NOTE:** Available in v1.136.0+.
+ * &gt; **NOTE:** Available since v1.136.0.
  * 
  * ## Example Usage
  * 
@@ -167,14 +167,14 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
         return this.orderType;
     }
     /**
-     * Order cycle information. The details see Block order.
+     * Order cycle information. See `order` below.
      * 
      */
     @Export(name="orders", refs={List.class,AppGroupOrder.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AppGroupOrder>> orders;
 
     /**
-     * @return Order cycle information. The details see Block order.
+     * @return Order cycle information. See `order` below.
      * 
      */
     public Output<Optional<List<AppGroupOrder>>> orders() {
@@ -195,14 +195,14 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
         return this.paymentType;
     }
     /**
-     * Quota information.  The details see Block quota.
+     * Quota information. See `quota` below.
      * 
      */
     @Export(name="quota", refs={AppGroupQuota.class}, tree="[0]")
     private Output<AppGroupQuota> quota;
 
     /**
-     * @return Quota information.  The details see Block quota.
+     * @return Quota information. See `quota` below.
      * 
      */
     public Output<AppGroupQuota> quota() {

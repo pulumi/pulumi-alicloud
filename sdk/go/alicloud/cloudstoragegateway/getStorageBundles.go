@@ -11,6 +11,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source provides the Cloud Storage Gateway Storage Bundles of the current Alibaba Cloud user.
+//
+// > **NOTE:** Available since v1.132.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/cloudstoragegateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := cloudstoragegateway.GetStorageBundles(ctx, &cloudstoragegateway.GetStorageBundlesArgs{
+//				BackendBucketRegionId: "cn-hangzhou",
+//				NameRegex:             pulumi.StringRef("^my-StorageBundle"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("storageBundleId", example.Bundles[0].StorageBundleId)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetStorageBundles(ctx *pulumi.Context, args *GetStorageBundlesArgs, opts ...pulumi.InvokeOption) (*GetStorageBundlesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStorageBundlesResult
@@ -23,27 +56,37 @@ func GetStorageBundles(ctx *pulumi.Context, args *GetStorageBundlesArgs, opts ..
 
 // A collection of arguments for invoking getStorageBundles.
 type GetStorageBundlesArgs struct {
-	BackendBucketRegionId string   `pulumi:"backendBucketRegionId"`
-	Ids                   []string `pulumi:"ids"`
-	NameRegex             *string  `pulumi:"nameRegex"`
-	OutputFile            *string  `pulumi:"outputFile"`
-	PageNumber            *int     `pulumi:"pageNumber"`
-	PageSize              *int     `pulumi:"pageSize"`
+	// The region id of the backend bucket.
+	BackendBucketRegionId string `pulumi:"backendBucketRegionId"`
+	// A list of Storage Bundle IDs.
+	Ids []string `pulumi:"ids"`
+	// A regex string to filter results by Storage Bundle name.
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	// Page number.
+	PageNumber *int `pulumi:"pageNumber"`
+	// Page size. Default to 50.
+	PageSize *int `pulumi:"pageSize"`
 }
 
 // A collection of values returned by getStorageBundles.
 type GetStorageBundlesResult struct {
-	BackendBucketRegionId string                    `pulumi:"backendBucketRegionId"`
-	Bundles               []GetStorageBundlesBundle `pulumi:"bundles"`
+	BackendBucketRegionId string `pulumi:"backendBucketRegionId"`
+	// A list of Cloud Storage Gateway Storage Bundles. Each element contains the following attributes:
+	Bundles []GetStorageBundlesBundle `pulumi:"bundles"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id string `pulumi:"id"`
+	// A list of Storage Bundle IDs.
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Storage Bundle names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	PageNumber *int     `pulumi:"pageNumber"`
 	PageSize   *int     `pulumi:"pageSize"`
-	TotalCount int      `pulumi:"totalCount"`
+	// Total count of Storage Bundle.
+	TotalCount int `pulumi:"totalCount"`
 }
 
 func GetStorageBundlesOutput(ctx *pulumi.Context, args GetStorageBundlesOutputArgs, opts ...pulumi.InvokeOption) GetStorageBundlesResultOutput {
@@ -53,12 +96,18 @@ func GetStorageBundlesOutput(ctx *pulumi.Context, args GetStorageBundlesOutputAr
 
 // A collection of arguments for invoking getStorageBundles.
 type GetStorageBundlesOutputArgs struct {
-	BackendBucketRegionId pulumi.StringInput      `pulumi:"backendBucketRegionId"`
-	Ids                   pulumi.StringArrayInput `pulumi:"ids"`
-	NameRegex             pulumi.StringPtrInput   `pulumi:"nameRegex"`
-	OutputFile            pulumi.StringPtrInput   `pulumi:"outputFile"`
-	PageNumber            pulumi.IntPtrInput      `pulumi:"pageNumber"`
-	PageSize              pulumi.IntPtrInput      `pulumi:"pageSize"`
+	// The region id of the backend bucket.
+	BackendBucketRegionId pulumi.StringInput `pulumi:"backendBucketRegionId"`
+	// A list of Storage Bundle IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Storage Bundle name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Page number.
+	PageNumber pulumi.IntPtrInput `pulumi:"pageNumber"`
+	// Page size. Default to 50.
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 }
 
 func (GetStorageBundlesOutputArgs) ElementType() reflect.Type {
@@ -84,6 +133,7 @@ func (o GetStorageBundlesResultOutput) BackendBucketRegionId() pulumi.StringOutp
 	return o.ApplyT(func(v GetStorageBundlesResult) string { return v.BackendBucketRegionId }).(pulumi.StringOutput)
 }
 
+// A list of Cloud Storage Gateway Storage Bundles. Each element contains the following attributes:
 func (o GetStorageBundlesResultOutput) Bundles() GetStorageBundlesBundleArrayOutput {
 	return o.ApplyT(func(v GetStorageBundlesResult) []GetStorageBundlesBundle { return v.Bundles }).(GetStorageBundlesBundleArrayOutput)
 }
@@ -93,6 +143,7 @@ func (o GetStorageBundlesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStorageBundlesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Storage Bundle IDs.
 func (o GetStorageBundlesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetStorageBundlesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -101,6 +152,7 @@ func (o GetStorageBundlesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStorageBundlesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Storage Bundle names.
 func (o GetStorageBundlesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetStorageBundlesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -117,6 +169,7 @@ func (o GetStorageBundlesResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetStorageBundlesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// Total count of Storage Bundle.
 func (o GetStorageBundlesResultOutput) TotalCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetStorageBundlesResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }

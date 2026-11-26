@@ -4,6 +4,10 @@
 package com.pulumi.alicloud.sae;
 
 import com.pulumi.alicloud.Utilities;
+import com.pulumi.alicloud.sae.inputs.GetApplicationGroupsArgs;
+import com.pulumi.alicloud.sae.inputs.GetApplicationGroupsPlainArgs;
+import com.pulumi.alicloud.sae.inputs.GetApplicationInstancesArgs;
+import com.pulumi.alicloud.sae.inputs.GetApplicationInstancesPlainArgs;
 import com.pulumi.alicloud.sae.inputs.GetApplicationScalingRulesArgs;
 import com.pulumi.alicloud.sae.inputs.GetApplicationScalingRulesPlainArgs;
 import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
@@ -20,6 +24,8 @@ import com.pulumi.alicloud.sae.inputs.GetNamespacesArgs;
 import com.pulumi.alicloud.sae.inputs.GetNamespacesPlainArgs;
 import com.pulumi.alicloud.sae.inputs.GetServiceArgs;
 import com.pulumi.alicloud.sae.inputs.GetServicePlainArgs;
+import com.pulumi.alicloud.sae.outputs.GetApplicationGroupsResult;
+import com.pulumi.alicloud.sae.outputs.GetApplicationInstancesResult;
 import com.pulumi.alicloud.sae.outputs.GetApplicationScalingRulesResult;
 import com.pulumi.alicloud.sae.outputs.GetApplicationsResult;
 import com.pulumi.alicloud.sae.outputs.GetConfigMapsResult;
@@ -37,9 +43,559 @@ import java.util.concurrent.CompletableFuture;
 
 public final class SaeFunctions {
     /**
+     * This data source provides the Sae Application Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .appName("default-NODELETING-image")
+     *             .build());
+     * 
+     *         final var defaultGetApplicationGroups = SaeFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .appId(default_.applications()[0].id())
+     *             .build());
+     * 
+     *         ctx.export("saeApplicationGroupsId0", defaultGetApplicationGroups.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetApplicationGroupsResult> getApplicationGroups(GetApplicationGroupsArgs args) {
+        return getApplicationGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Sae Application Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .appName("default-NODELETING-image")
+     *             .build());
+     * 
+     *         final var defaultGetApplicationGroups = SaeFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .appId(default_.applications()[0].id())
+     *             .build());
+     * 
+     *         ctx.export("saeApplicationGroupsId0", defaultGetApplicationGroups.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetApplicationGroupsResult> getApplicationGroupsPlain(GetApplicationGroupsPlainArgs args) {
+        return getApplicationGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Sae Application Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .appName("default-NODELETING-image")
+     *             .build());
+     * 
+     *         final var defaultGetApplicationGroups = SaeFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .appId(default_.applications()[0].id())
+     *             .build());
+     * 
+     *         ctx.export("saeApplicationGroupsId0", defaultGetApplicationGroups.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetApplicationGroupsResult> getApplicationGroups(GetApplicationGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sae/getApplicationGroups:getApplicationGroups", TypeShape.of(GetApplicationGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Sae Application Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .appName("default-NODELETING-image")
+     *             .build());
+     * 
+     *         final var defaultGetApplicationGroups = SaeFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .appId(default_.applications()[0].id())
+     *             .build());
+     * 
+     *         ctx.export("saeApplicationGroupsId0", defaultGetApplicationGroups.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetApplicationGroupsResult> getApplicationGroups(GetApplicationGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sae/getApplicationGroups:getApplicationGroups", TypeShape.of(GetApplicationGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Sae Application Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .appName("default-NODELETING-image")
+     *             .build());
+     * 
+     *         final var defaultGetApplicationGroups = SaeFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .appId(default_.applications()[0].id())
+     *             .build());
+     * 
+     *         ctx.export("saeApplicationGroupsId0", defaultGetApplicationGroups.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetApplicationGroupsResult> getApplicationGroupsPlain(GetApplicationGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:sae/getApplicationGroups:getApplicationGroups", TypeShape.of(GetApplicationGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Sae Application Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationGroupsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .appName("default-NODELETING-image")
+     *             .build());
+     * 
+     *         final var defaultGetApplicationGroups = SaeFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .appId(default_.applications()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetApplicationInstances = SaeFunctions.getApplicationInstances(GetApplicationInstancesArgs.builder()
+     *             .appId(defaultGetApplicationGroups.appId())
+     *             .groupId(defaultGetApplicationGroups.groups()[0].id())
+     *             .build());
+     * 
+     *         ctx.export("saeApplicationInstancesId0", defaultGetApplicationInstances.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetApplicationInstancesResult> getApplicationInstances(GetApplicationInstancesArgs args) {
+        return getApplicationInstances(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Sae Application Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationGroupsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .appName("default-NODELETING-image")
+     *             .build());
+     * 
+     *         final var defaultGetApplicationGroups = SaeFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .appId(default_.applications()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetApplicationInstances = SaeFunctions.getApplicationInstances(GetApplicationInstancesArgs.builder()
+     *             .appId(defaultGetApplicationGroups.appId())
+     *             .groupId(defaultGetApplicationGroups.groups()[0].id())
+     *             .build());
+     * 
+     *         ctx.export("saeApplicationInstancesId0", defaultGetApplicationInstances.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetApplicationInstancesResult> getApplicationInstancesPlain(GetApplicationInstancesPlainArgs args) {
+        return getApplicationInstancesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Sae Application Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationGroupsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .appName("default-NODELETING-image")
+     *             .build());
+     * 
+     *         final var defaultGetApplicationGroups = SaeFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .appId(default_.applications()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetApplicationInstances = SaeFunctions.getApplicationInstances(GetApplicationInstancesArgs.builder()
+     *             .appId(defaultGetApplicationGroups.appId())
+     *             .groupId(defaultGetApplicationGroups.groups()[0].id())
+     *             .build());
+     * 
+     *         ctx.export("saeApplicationInstancesId0", defaultGetApplicationInstances.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetApplicationInstancesResult> getApplicationInstances(GetApplicationInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sae/getApplicationInstances:getApplicationInstances", TypeShape.of(GetApplicationInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Sae Application Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationGroupsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .appName("default-NODELETING-image")
+     *             .build());
+     * 
+     *         final var defaultGetApplicationGroups = SaeFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .appId(default_.applications()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetApplicationInstances = SaeFunctions.getApplicationInstances(GetApplicationInstancesArgs.builder()
+     *             .appId(defaultGetApplicationGroups.appId())
+     *             .groupId(defaultGetApplicationGroups.groups()[0].id())
+     *             .build());
+     * 
+     *         ctx.export("saeApplicationInstancesId0", defaultGetApplicationInstances.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetApplicationInstancesResult> getApplicationInstances(GetApplicationInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sae/getApplicationInstances:getApplicationInstances", TypeShape.of(GetApplicationInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Sae Application Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationGroupsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .appName("default-NODELETING-image")
+     *             .build());
+     * 
+     *         final var defaultGetApplicationGroups = SaeFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .appId(default_.applications()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetApplicationInstances = SaeFunctions.getApplicationInstances(GetApplicationInstancesArgs.builder()
+     *             .appId(defaultGetApplicationGroups.appId())
+     *             .groupId(defaultGetApplicationGroups.groups()[0].id())
+     *             .build());
+     * 
+     *         ctx.export("saeApplicationInstancesId0", defaultGetApplicationInstances.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetApplicationInstancesResult> getApplicationInstancesPlain(GetApplicationInstancesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:sae/getApplicationInstances:getApplicationInstances", TypeShape.of(GetApplicationInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -87,7 +643,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -135,7 +691,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -183,7 +739,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -231,7 +787,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -279,7 +835,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -318,13 +874,13 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testacc");
+     *         final var name = config.get("name").orElse("tf-accapp");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
-     *             .vpcName("tf_testacc")
+     *             .vpcName("tf_accapp")
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
@@ -343,7 +899,7 @@ public final class SaeFunctions {
      * 
      *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
      *             .appDescription("tf-testaccDescription")
-     *             .appName("tf-testaccAppName131")
+     *             .appName("tf-accappName131")
      *             .namespaceId(defaultNamespace.id())
      *             .imageUrl("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5")
      *             .packageType("Image")
@@ -371,7 +927,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -410,13 +966,13 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testacc");
+     *         final var name = config.get("name").orElse("tf-accapp");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
-     *             .vpcName("tf_testacc")
+     *             .vpcName("tf_accapp")
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
@@ -435,7 +991,7 @@ public final class SaeFunctions {
      * 
      *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
      *             .appDescription("tf-testaccDescription")
-     *             .appName("tf-testaccAppName131")
+     *             .appName("tf-accappName131")
      *             .namespaceId(defaultNamespace.id())
      *             .imageUrl("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5")
      *             .packageType("Image")
@@ -463,7 +1019,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -502,13 +1058,13 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testacc");
+     *         final var name = config.get("name").orElse("tf-accapp");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
-     *             .vpcName("tf_testacc")
+     *             .vpcName("tf_accapp")
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
@@ -527,7 +1083,7 @@ public final class SaeFunctions {
      * 
      *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
      *             .appDescription("tf-testaccDescription")
-     *             .appName("tf-testaccAppName131")
+     *             .appName("tf-accappName131")
      *             .namespaceId(defaultNamespace.id())
      *             .imageUrl("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5")
      *             .packageType("Image")
@@ -555,7 +1111,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -594,13 +1150,13 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testacc");
+     *         final var name = config.get("name").orElse("tf-accapp");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
-     *             .vpcName("tf_testacc")
+     *             .vpcName("tf_accapp")
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
@@ -619,7 +1175,7 @@ public final class SaeFunctions {
      * 
      *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
      *             .appDescription("tf-testaccDescription")
-     *             .appName("tf-testaccAppName131")
+     *             .appName("tf-accappName131")
      *             .namespaceId(defaultNamespace.id())
      *             .imageUrl("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5")
      *             .packageType("Image")
@@ -647,7 +1203,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -686,13 +1242,13 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testacc");
+     *         final var name = config.get("name").orElse("tf-accapp");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
-     *             .vpcName("tf_testacc")
+     *             .vpcName("tf_accapp")
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
@@ -711,7 +1267,7 @@ public final class SaeFunctions {
      * 
      *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
      *             .appDescription("tf-testaccDescription")
-     *             .appName("tf-testaccAppName131")
+     *             .appName("tf-accappName131")
      *             .namespaceId(defaultNamespace.id())
      *             .imageUrl("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5")
      *             .packageType("Image")
@@ -739,7 +1295,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -778,13 +1334,13 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testacc");
+     *         final var name = config.get("name").orElse("tf-accapp");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
-     *             .vpcName("tf_testacc")
+     *             .vpcName("tf_accapp")
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
@@ -803,7 +1359,7 @@ public final class SaeFunctions {
      * 
      *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
      *             .appDescription("tf-testaccDescription")
-     *             .appName("tf-testaccAppName131")
+     *             .appName("tf-accappName131")
      *             .namespaceId(defaultNamespace.id())
      *             .imageUrl("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5")
      *             .packageType("Image")
@@ -831,7 +1387,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -870,13 +1426,13 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testacc");
+     *         final var name = config.get("name").orElse("tf-accapp");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
-     *             .vpcName("tf_testacc")
+     *             .vpcName("tf_accapp")
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
@@ -895,7 +1451,7 @@ public final class SaeFunctions {
      * 
      *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
      *             .appDescription("tf-testaccDescription")
-     *             .appName("tf-testaccAppName131")
+     *             .appName("tf-accappName131")
      *             .namespaceId(defaultNamespace.id())
      *             .imageUrl("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5")
      *             .packageType("Image")
@@ -923,7 +1479,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Config Maps of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -992,7 +1548,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Config Maps of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -1061,7 +1617,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Config Maps of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -1130,7 +1686,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Config Maps of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -1199,7 +1755,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Config Maps of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.130.0+.
+     * &gt; **NOTE:** Available since v1.130.0.
      * 
      * ## Example Usage
      * 
@@ -1268,7 +1824,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.160.0+.
+     * &gt; **NOTE:** Available since v1.160.0.
      * 
      * ## Example Usage
      * 
@@ -1314,7 +1870,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.160.0+.
+     * &gt; **NOTE:** Available since v1.160.0.
      * 
      * ## Example Usage
      * 
@@ -1360,7 +1916,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.160.0+.
+     * &gt; **NOTE:** Available since v1.160.0.
      * 
      * ## Example Usage
      * 
@@ -1406,7 +1962,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.160.0+.
+     * &gt; **NOTE:** Available since v1.160.0.
      * 
      * ## Example Usage
      * 
@@ -1452,7 +2008,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.160.0+.
+     * &gt; **NOTE:** Available since v1.160.0.
      * 
      * ## Example Usage
      * 
@@ -1498,7 +2054,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Ingresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * ## Example Usage
      * 
@@ -1616,7 +2172,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Ingresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * ## Example Usage
      * 
@@ -1734,7 +2290,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Ingresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * ## Example Usage
      * 
@@ -1852,7 +2408,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Ingresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * ## Example Usage
      * 
@@ -1970,7 +2526,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Ingresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * ## Example Usage
      * 
@@ -2088,7 +2644,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -2132,7 +2688,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -2176,7 +2732,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -2220,7 +2776,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -2264,7 +2820,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -2308,7 +2864,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -2352,7 +2908,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -2396,7 +2952,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -2441,7 +2997,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -2486,7 +3042,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -2531,7 +3087,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -2576,7 +3132,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -2621,7 +3177,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -2666,7 +3222,7 @@ public final class SaeFunctions {
     /**
      * This data source provides the Sae Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 

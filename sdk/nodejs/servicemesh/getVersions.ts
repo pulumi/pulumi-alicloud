@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides ASM available versions in the specified region.
  *
- * > **NOTE:** Available in v1.161.0+.
+ * > **NOTE:** Available since v1.161.0.
  *
  * ## Example Usage
  *
@@ -46,7 +46,7 @@ export interface GetVersionsArgs {
      */
     edition?: string;
     /**
-     * A list of ASM versions. Its element formats as `<edition>:<version>`.
+     * The ASM versions available for the ASM instance of the current edition. Its element formats as `<edition>:<version>`.
      */
     ids?: string[];
     /**
@@ -59,19 +59,28 @@ export interface GetVersionsArgs {
  * A collection of values returned by getVersions.
  */
 export interface GetVersionsResult {
+    /**
+     * The edition of the ASM instance.
+     */
     readonly edition?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of ASM versions. Its element formats as `<edition>:<version>`.
+     */
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Service Mesh Service Meshes. Each element contains the following attributes:
+     */
     readonly versions: outputs.servicemesh.GetVersionsVersion[];
 }
 /**
  * This data source provides ASM available versions in the specified region.
  *
- * > **NOTE:** Available in v1.161.0+.
+ * > **NOTE:** Available since v1.161.0.
  *
  * ## Example Usage
  *
@@ -108,7 +117,7 @@ export interface GetVersionsOutputArgs {
      */
     edition?: pulumi.Input<string | undefined>;
     /**
-     * A list of ASM versions. Its element formats as `<edition>:<version>`.
+     * The ASM versions available for the ASM instance of the current edition. Its element formats as `<edition>:<version>`.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

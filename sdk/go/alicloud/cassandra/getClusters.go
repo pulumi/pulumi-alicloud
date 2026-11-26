@@ -14,7 +14,7 @@ import (
 // The `cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
 // Filters support regular expression for the cluster name, ids or tags.
 //
-// > **NOTE:**  Available in 1.88.0+.
+// > **NOTE:** Available since v1.88.0.
 //
 // > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 //
@@ -77,7 +77,7 @@ type GetClustersResult struct {
 	// The name list of Cassandra clusters.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// A mapping of tags to assign to the resource.
+	// (Optional) A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -145,7 +145,7 @@ func (o GetClustersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// A mapping of tags to assign to the resource.
+// (Optional) A mapping of tags to assign to the resource.
 func (o GetClustersResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClustersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

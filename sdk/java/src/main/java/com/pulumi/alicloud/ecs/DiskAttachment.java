@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new ECS disk-attachment and use it attach one disk to a new instance.
  *         var ecsSg = new SecurityGroup("ecsSg", SecurityGroupArgs.builder()
- *             .name("terraform-test-group")
+ *             .name("terraform-demo-group")
  *             .description("New security group")
  *             .build());
  * 
@@ -97,21 +97,45 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/diskAttachment:DiskAttachment")
 public class DiskAttachment extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether the disk is bootable.
+     * 
+     */
     @Export(name="bootable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> bootable;
 
+    /**
+     * @return Whether the disk is bootable.
+     * 
+     */
     public Output<Optional<Boolean>> bootable() {
         return Codegen.optional(this.bootable);
     }
+    /**
+     * Whether to delete the disk with the instance.
+     * 
+     */
     @Export(name="deleteWithInstance", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteWithInstance;
 
+    /**
+     * @return Whether to delete the disk with the instance.
+     * 
+     */
     public Output<Optional<Boolean>> deleteWithInstance() {
         return Codegen.optional(this.deleteWithInstance);
     }
+    /**
+     * The device name allocated to the disk.
+     * 
+     */
     @Export(name="device", refs={String.class}, tree="[0]")
     private Output<String> device;
 
+    /**
+     * @return The device name allocated to the disk.
+     * 
+     */
     public Output<String> device() {
         return this.device;
     }
@@ -143,15 +167,31 @@ public class DiskAttachment extends com.pulumi.resources.CustomResource {
     public Output<String> instanceId() {
         return this.instanceId;
     }
+    /**
+     * The name of the key pair.
+     * 
+     */
     @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyPairName;
 
+    /**
+     * @return The name of the key pair.
+     * 
+     */
     public Output<Optional<String>> keyPairName() {
         return Codegen.optional(this.keyPairName);
     }
+    /**
+     * The password of the instance.
+     * 
+     */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
+    /**
+     * @return The password of the instance.
+     * 
+     */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }

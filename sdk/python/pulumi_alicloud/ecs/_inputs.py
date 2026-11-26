@@ -1811,7 +1811,7 @@ class InstanceDataDiskArgsDict(TypedDict):
     """
     category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The category of the disk. Default value: `cloud_efficiency`. Valid values:
+    The category of the disk. Defaults to `cloud_efficiency`. Valid values:
     """
     delete_with_instance: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -1880,7 +1880,7 @@ class InstanceDataDiskArgs:
                - ephemeral_ssd: [5, 800]
         :param pulumi.Input[_builtins.str] auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature for the system disk. Valid values:
-        :param pulumi.Input[_builtins.str] category: The category of the disk. Default value: `cloud_efficiency`. Valid values:
+        :param pulumi.Input[_builtins.str] category: The category of the disk. Defaults to `cloud_efficiency`. Valid values:
         :param pulumi.Input[_builtins.bool] delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
         :param pulumi.Input[_builtins.str] description: The description of the data disk.
         :param pulumi.Input[_builtins.str] device: The mount point of the data disk.
@@ -1967,7 +1967,7 @@ class InstanceDataDiskArgs:
     @pulumi.getter
     def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The category of the disk. Default value: `cloud_efficiency`. Valid values:
+        The category of the disk. Defaults to `cloud_efficiency`. Valid values:
         """
         return pulumi.get(self, "category")
 
@@ -2325,50 +2325,43 @@ class InstanceNetworkInterfacesArgs:
 class LaunchTemplateDataDiskArgsDict(TypedDict):
     category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The category of the disk:
-    - cloud: Basic cloud disk.
-    - cloud_efficiency: Ultra cloud disk.
-    - cloud_ssd: SSD cloud Disks.
-    - ephemeral_ssd: local SSD Disks
-    - cloud_essd: ESSD cloud Disks.
-
-    Default to `cloud_efficiency`.
+    The category of the disk.
     """
     delete_with_instance: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-
-    Default to true
+    Delete this data disk when the instance is destroyed. Default to `true`.
     """
     description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of the data disk.
     """
     device: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The mount point of the data disk.
+    """
     encrypted: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Encrypted the data in this disk.
-
-    Default to false
+    Encrypted the data in this disk. Default to `false`.
     """
     kms_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the KMS key used for the data disk.
+    """
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the data disk.
     """
     performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The performance level of the ESSD used as the data disk.
+    """
     size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The size of the data disk.
-    - cloud：[5, 2000]
-    - cloud_efficiency：[20, 32768]
-    - cloud_ssd：[20, 32768]
-    - cloud_essd：[20, 32768]
-    - ephemeral_ssd: [5, 800]
     """
     snapshot_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+    The snapshot ID used to initialize the data disk.
     """
 
 @pulumi.input_type
@@ -2385,29 +2378,16 @@ class LaunchTemplateDataDiskArgs:
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] category: The category of the disk:
-               - cloud: Basic cloud disk.
-               - cloud_efficiency: Ultra cloud disk.
-               - cloud_ssd: SSD cloud Disks.
-               - ephemeral_ssd: local SSD Disks
-               - cloud_essd: ESSD cloud Disks.
-               
-               Default to `cloud_efficiency`.
-        :param pulumi.Input[_builtins.bool] delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-               
-               Default to true
+        :param pulumi.Input[_builtins.str] category: The category of the disk.
+        :param pulumi.Input[_builtins.bool] delete_with_instance: Delete this data disk when the instance is destroyed. Default to `true`.
         :param pulumi.Input[_builtins.str] description: The description of the data disk.
-        :param pulumi.Input[_builtins.bool] encrypted: Encrypted the data in this disk.
-               
-               Default to false
+        :param pulumi.Input[_builtins.str] device: The mount point of the data disk.
+        :param pulumi.Input[_builtins.bool] encrypted: Encrypted the data in this disk. Default to `false`.
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key used for the data disk.
         :param pulumi.Input[_builtins.str] name: The name of the data disk.
+        :param pulumi.Input[_builtins.str] performance_level: The performance level of the ESSD used as the data disk.
         :param pulumi.Input[_builtins.int] size: The size of the data disk.
-               - cloud：[5, 2000]
-               - cloud_efficiency：[20, 32768]
-               - cloud_ssd：[20, 32768]
-               - cloud_essd：[20, 32768]
-               - ephemeral_ssd: [5, 800]
-        :param pulumi.Input[_builtins.str] snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+        :param pulumi.Input[_builtins.str] snapshot_id: The snapshot ID used to initialize the data disk.
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -2434,14 +2414,7 @@ class LaunchTemplateDataDiskArgs:
     @pulumi.getter
     def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The category of the disk:
-        - cloud: Basic cloud disk.
-        - cloud_efficiency: Ultra cloud disk.
-        - cloud_ssd: SSD cloud Disks.
-        - ephemeral_ssd: local SSD Disks
-        - cloud_essd: ESSD cloud Disks.
-
-        Default to `cloud_efficiency`.
+        The category of the disk.
         """
         return pulumi.get(self, "category")
 
@@ -2453,9 +2426,7 @@ class LaunchTemplateDataDiskArgs:
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-
-        Default to true
+        Delete this data disk when the instance is destroyed. Default to `true`.
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -2478,6 +2449,9 @@ class LaunchTemplateDataDiskArgs:
     @_builtins.property
     @pulumi.getter
     def device(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The mount point of the data disk.
+        """
         return pulumi.get(self, "device")
 
     @device.setter
@@ -2488,9 +2462,7 @@ class LaunchTemplateDataDiskArgs:
     @pulumi.getter
     def encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Encrypted the data in this disk.
-
-        Default to false
+        Encrypted the data in this disk. Default to `false`.
         """
         return pulumi.get(self, "encrypted")
 
@@ -2501,6 +2473,9 @@ class LaunchTemplateDataDiskArgs:
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the KMS key used for the data disk.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -2522,6 +2497,9 @@ class LaunchTemplateDataDiskArgs:
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The performance level of the ESSD used as the data disk.
+        """
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
@@ -2533,11 +2511,6 @@ class LaunchTemplateDataDiskArgs:
     def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the data disk.
-        - cloud：[5, 2000]
-        - cloud_efficiency：[20, 32768]
-        - cloud_ssd：[20, 32768]
-        - cloud_essd：[20, 32768]
-        - ephemeral_ssd: [5, 800]
         """
         return pulumi.get(self, "size")
 
@@ -2549,7 +2522,7 @@ class LaunchTemplateDataDiskArgs:
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+        The snapshot ID used to initialize the data disk.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -2560,17 +2533,26 @@ class LaunchTemplateDataDiskArgs:
 
 class LaunchTemplateImageOptionsArgsDict(TypedDict):
     login_as_non_root: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the instance that uses the image supports logons of the ecs-user user.
+    """
 
 @pulumi.input_type
 class LaunchTemplateImageOptionsArgs:
     def __init__(__self__, *,
                  login_as_non_root: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] login_as_non_root: Whether the instance that uses the image supports logons of the ecs-user user.
+        """
         if login_as_non_root is not None:
             pulumi.set(__self__, "login_as_non_root", login_as_non_root)
 
     @_builtins.property
     @pulumi.getter(name="loginAsNonRoot")
     def login_as_non_root(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the instance that uses the image supports logons of the ecs-user user.
+        """
         return pulumi.get(self, "login_as_non_root")
 
     @login_as_non_root.setter
@@ -2580,6 +2562,9 @@ class LaunchTemplateImageOptionsArgs:
 
 class LaunchTemplateNetworkInterfacesArgsDict(TypedDict):
     delete_on_release: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to release the ENI when the instance is released.
+    """
     description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ENI description.
@@ -2611,6 +2596,7 @@ class LaunchTemplateNetworkInterfacesArgs:
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.bool] delete_on_release: Whether to release the ENI when the instance is released.
         :param pulumi.Input[_builtins.str] description: The ENI description.
         :param pulumi.Input[_builtins.str] name: ENI name.
         :param pulumi.Input[_builtins.str] primary_ip: The primary private IP address of the ENI.
@@ -2633,6 +2619,9 @@ class LaunchTemplateNetworkInterfacesArgs:
     @_builtins.property
     @pulumi.getter(name="deleteOnRelease")
     def delete_on_release(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to release the ENI when the instance is released.
+        """
         return pulumi.get(self, "delete_on_release")
 
     @delete_on_release.setter
@@ -2703,46 +2692,39 @@ class LaunchTemplateNetworkInterfacesArgs:
 class LaunchTemplateSystemDiskArgsDict(TypedDict):
     category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The category of the disk:
-    - cloud: Basic cloud disk.
-    - cloud_efficiency: Ultra cloud disk.
-    - cloud_ssd: SSD cloud Disks.
-    - ephemeral_ssd: local SSD Disks
-    - cloud_essd: ESSD cloud Disks.
-
-    Default to `cloud_efficiency`.
+    The category of the system disk.
     """
     delete_with_instance: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-
-    Default to true
+    Whether to release the system disk when the instance is released. Default to `true`.
     """
     description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+    System disk description.
     """
     encrypted: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Encrypted the data in this disk.
-
-    Default to false
+    Whether the system disk is encrypted.
     """
     iops: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Iops.
+    """
     kms_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the KMS key to use for the system disk.
+    """
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+    System disk name.
     """
     performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The performance level of the ESSD used as the system disk.
+    """
     size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    The size of the data disk.
-    - cloud：[5, 2000]
-    - cloud_efficiency：[20, 32768]
-    - cloud_ssd：[20, 32768]
-    - cloud_essd：[20, 32768]
-    - ephemeral_ssd: [5, 800]
+    Size of the system disk, measured in GB.
     """
 
 @pulumi.input_type
@@ -2758,28 +2740,15 @@ class LaunchTemplateSystemDiskArgs:
                  performance_level: pulumi.Input[Optional[_builtins.str]] = None,
                  size: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] category: The category of the disk:
-               - cloud: Basic cloud disk.
-               - cloud_efficiency: Ultra cloud disk.
-               - cloud_ssd: SSD cloud Disks.
-               - ephemeral_ssd: local SSD Disks
-               - cloud_essd: ESSD cloud Disks.
-               
-               Default to `cloud_efficiency`.
-        :param pulumi.Input[_builtins.bool] delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-               
-               Default to true
-        :param pulumi.Input[_builtins.str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
-        :param pulumi.Input[_builtins.bool] encrypted: Encrypted the data in this disk.
-               
-               Default to false
-        :param pulumi.Input[_builtins.str] name: Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
-        :param pulumi.Input[_builtins.int] size: The size of the data disk.
-               - cloud：[5, 2000]
-               - cloud_efficiency：[20, 32768]
-               - cloud_ssd：[20, 32768]
-               - cloud_essd：[20, 32768]
-               - ephemeral_ssd: [5, 800]
+        :param pulumi.Input[_builtins.str] category: The category of the system disk.
+        :param pulumi.Input[_builtins.bool] delete_with_instance: Whether to release the system disk when the instance is released. Default to `true`.
+        :param pulumi.Input[_builtins.str] description: System disk description.
+        :param pulumi.Input[_builtins.bool] encrypted: Whether the system disk is encrypted.
+        :param pulumi.Input[_builtins.str] iops: The Iops.
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key to use for the system disk.
+        :param pulumi.Input[_builtins.str] name: System disk name.
+        :param pulumi.Input[_builtins.str] performance_level: The performance level of the ESSD used as the system disk.
+        :param pulumi.Input[_builtins.int] size: Size of the system disk, measured in GB.
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -2804,14 +2773,7 @@ class LaunchTemplateSystemDiskArgs:
     @pulumi.getter
     def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The category of the disk:
-        - cloud: Basic cloud disk.
-        - cloud_efficiency: Ultra cloud disk.
-        - cloud_ssd: SSD cloud Disks.
-        - ephemeral_ssd: local SSD Disks
-        - cloud_essd: ESSD cloud Disks.
-
-        Default to `cloud_efficiency`.
+        The category of the system disk.
         """
         return pulumi.get(self, "category")
 
@@ -2823,9 +2785,7 @@ class LaunchTemplateSystemDiskArgs:
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-
-        Default to true
+        Whether to release the system disk when the instance is released. Default to `true`.
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -2837,7 +2797,7 @@ class LaunchTemplateSystemDiskArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+        System disk description.
         """
         return pulumi.get(self, "description")
 
@@ -2849,9 +2809,7 @@ class LaunchTemplateSystemDiskArgs:
     @pulumi.getter
     def encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Encrypted the data in this disk.
-
-        Default to false
+        Whether the system disk is encrypted.
         """
         return pulumi.get(self, "encrypted")
 
@@ -2862,6 +2820,9 @@ class LaunchTemplateSystemDiskArgs:
     @_builtins.property
     @pulumi.getter
     def iops(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Iops.
+        """
         return pulumi.get(self, "iops")
 
     @iops.setter
@@ -2871,6 +2832,9 @@ class LaunchTemplateSystemDiskArgs:
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the KMS key to use for the system disk.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -2881,7 +2845,7 @@ class LaunchTemplateSystemDiskArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        System disk name.
         """
         return pulumi.get(self, "name")
 
@@ -2892,6 +2856,9 @@ class LaunchTemplateSystemDiskArgs:
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The performance level of the ESSD used as the system disk.
+        """
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
@@ -2902,12 +2869,7 @@ class LaunchTemplateSystemDiskArgs:
     @pulumi.getter
     def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The size of the data disk.
-        - cloud：[5, 2000]
-        - cloud_efficiency：[20, 32768]
-        - cloud_ssd：[20, 32768]
-        - cloud_essd：[20, 32768]
-        - ephemeral_ssd: [5, 800]
+        Size of the system disk, measured in GB.
         """
         return pulumi.get(self, "size")
 
@@ -2947,13 +2909,23 @@ class ReservedInstanceOperationLockArgs:
 
 class SnapshotPolicyCopyEncryptionConfigurationArgsDict(TypedDict):
     encrypted: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to encrypt the snapshot.
+    """
     kms_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The KMS key ID used for encryption.
+    """
 
 @pulumi.input_type
 class SnapshotPolicyCopyEncryptionConfigurationArgs:
     def __init__(__self__, *,
                  encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
                  kms_key_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] encrypted: Whether to encrypt the snapshot.
+        :param pulumi.Input[_builtins.str] kms_key_id: The KMS key ID used for encryption.
+        """
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
         if kms_key_id is not None:
@@ -2962,6 +2934,9 @@ class SnapshotPolicyCopyEncryptionConfigurationArgs:
     @_builtins.property
     @pulumi.getter
     def encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to encrypt the snapshot.
+        """
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
@@ -2971,6 +2946,9 @@ class SnapshotPolicyCopyEncryptionConfigurationArgs:
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The KMS key ID used for encryption.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -2980,13 +2958,23 @@ class SnapshotPolicyCopyEncryptionConfigurationArgs:
 
 class SnapshotPolicyTargetTagArgsDict(TypedDict):
     tag_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The key of the tag.
+    """
     tag_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The value of the tag.
+    """
 
 @pulumi.input_type
 class SnapshotPolicyTargetTagArgs:
     def __init__(__self__, *,
                  tag_key: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] tag_key: The key of the tag.
+        :param pulumi.Input[_builtins.str] tag_value: The value of the tag.
+        """
         if tag_key is not None:
             pulumi.set(__self__, "tag_key", tag_key)
         if tag_value is not None:
@@ -2995,6 +2983,9 @@ class SnapshotPolicyTargetTagArgs:
     @_builtins.property
     @pulumi.getter(name="tagKey")
     def tag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The key of the tag.
+        """
         return pulumi.get(self, "tag_key")
 
     @tag_key.setter
@@ -3004,6 +2995,9 @@ class SnapshotPolicyTargetTagArgs:
     @_builtins.property
     @pulumi.getter(name="tagValue")
     def tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The value of the tag.
+        """
         return pulumi.get(self, "tag_value")
 
     @tag_value.setter
@@ -3042,17 +3036,26 @@ class GetDedicatedHostsOperationLockArgs:
 
 class GetDisksOperationLockArgsDict(TypedDict):
     lock_reason: NotRequired[_builtins.str]
+    """
+    The reason of the operation lock.
+    """
 
 @pulumi.input_type
 class GetDisksOperationLockArgs:
     def __init__(__self__, *,
                  lock_reason: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str lock_reason: The reason of the operation lock.
+        """
         if lock_reason is not None:
             pulumi.set(__self__, "lock_reason", lock_reason)
 
     @_builtins.property
     @pulumi.getter(name="lockReason")
     def lock_reason(self) -> Optional[_builtins.str]:
+        """
+        The reason of the operation lock.
+        """
         return pulumi.get(self, "lock_reason")
 
     @lock_reason.setter

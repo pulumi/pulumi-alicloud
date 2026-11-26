@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Hbr Restore Jobs of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.133.0+.
+// > **NOTE:** Available since v1.133.0.
 //
 // ## Example Usage
 //
@@ -89,18 +89,27 @@ type GetRestoreJobsArgs struct {
 // A collection of values returned by getRestoreJobs.
 type GetRestoreJobsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                  string              `pulumi:"id"`
-	Ids                 []string            `pulumi:"ids"`
-	Jobs                []GetRestoreJobsJob `pulumi:"jobs"`
-	OutputFile          *string             `pulumi:"outputFile"`
-	RestoreIds          []string            `pulumi:"restoreIds"`
-	RestoreType         string              `pulumi:"restoreType"`
-	SourceTypes         []string            `pulumi:"sourceTypes"`
-	Status              *string             `pulumi:"status"`
-	TargetBuckets       []string            `pulumi:"targetBuckets"`
-	TargetFileSystemIds []string            `pulumi:"targetFileSystemIds"`
-	TargetInstanceIds   []string            `pulumi:"targetInstanceIds"`
-	VaultIds            []string            `pulumi:"vaultIds"`
+	Id string `pulumi:"id"`
+	// A list of restore job IDs.
+	Ids []string `pulumi:"ids"`
+	// A list of Hbr restore jobs. Each element contains the following attributes:
+	Jobs       []GetRestoreJobsJob `pulumi:"jobs"`
+	OutputFile *string             `pulumi:"outputFile"`
+	RestoreIds []string            `pulumi:"restoreIds"`
+	// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	RestoreType string `pulumi:"restoreType"`
+	// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`, `UDM_ECS_ROLLBACK`.
+	SourceTypes []string `pulumi:"sourceTypes"`
+	// The status of restore job.
+	Status *string `pulumi:"status"`
+	// The name of target ofo OSS bucket.
+	TargetBuckets []string `pulumi:"targetBuckets"`
+	// The ID of destination file system.
+	TargetFileSystemIds []string `pulumi:"targetFileSystemIds"`
+	// The ID of target ECS instance.
+	TargetInstanceIds []string `pulumi:"targetInstanceIds"`
+	// The ID of backup vault.
+	VaultIds []string `pulumi:"vaultIds"`
 }
 
 func GetRestoreJobsOutput(ctx *pulumi.Context, args GetRestoreJobsOutputArgs, opts ...pulumi.InvokeOption) GetRestoreJobsResultOutput {
@@ -154,10 +163,12 @@ func (o GetRestoreJobsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of restore job IDs.
 func (o GetRestoreJobsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRestoreJobsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Hbr restore jobs. Each element contains the following attributes:
 func (o GetRestoreJobsResultOutput) Jobs() GetRestoreJobsJobArrayOutput {
 	return o.ApplyT(func(v GetRestoreJobsResult) []GetRestoreJobsJob { return v.Jobs }).(GetRestoreJobsJobArrayOutput)
 }
@@ -170,30 +181,37 @@ func (o GetRestoreJobsResultOutput) RestoreIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRestoreJobsResult) []string { return v.RestoreIds }).(pulumi.StringArrayOutput)
 }
 
+// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
 func (o GetRestoreJobsResultOutput) RestoreType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsResult) string { return v.RestoreType }).(pulumi.StringOutput)
 }
 
+// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`, `UDM_ECS_ROLLBACK`.
 func (o GetRestoreJobsResultOutput) SourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRestoreJobsResult) []string { return v.SourceTypes }).(pulumi.StringArrayOutput)
 }
 
+// The status of restore job.
 func (o GetRestoreJobsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRestoreJobsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The name of target ofo OSS bucket.
 func (o GetRestoreJobsResultOutput) TargetBuckets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRestoreJobsResult) []string { return v.TargetBuckets }).(pulumi.StringArrayOutput)
 }
 
+// The ID of destination file system.
 func (o GetRestoreJobsResultOutput) TargetFileSystemIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRestoreJobsResult) []string { return v.TargetFileSystemIds }).(pulumi.StringArrayOutput)
 }
 
+// The ID of target ECS instance.
 func (o GetRestoreJobsResultOutput) TargetInstanceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRestoreJobsResult) []string { return v.TargetInstanceIds }).(pulumi.StringArrayOutput)
 }
 
+// The ID of backup vault.
 func (o GetRestoreJobsResultOutput) VaultIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRestoreJobsResult) []string { return v.VaultIds }).(pulumi.StringArrayOutput)
 }

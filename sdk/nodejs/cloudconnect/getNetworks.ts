@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Cloud Connect Networks available to the user.
  *
- * > **NOTE:** Available in 1.59.0+
+ * > **NOTE:** Available since v1.59.0+
  *
  * > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  *
@@ -19,15 +19,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = alicloud.cloudconnect.getNetworks({
- *     ids: [defaultAlicloudCloudConnectNetworks.id],
- *     nameRegex: "^tf-testAcc.*",
- * });
  * const defaultNetwork = new alicloud.cloudconnect.Network("default", {
- *     name: "tf-testAccCloudConnectNetworkName",
- *     description: "tf-testAccCloudConnectNetworkDescription",
+ *     name: "terraform-example",
+ *     description: "terraform-example",
  *     cidrBlock: "192.168.0.0/24",
  *     isDefault: true,
+ * });
+ * const _default = alicloud.cloudconnect.getNetworksOutput({
+ *     ids: [defaultNetwork.id],
+ *     nameRegex: "^terraform-example",
  * });
  * ```
  */
@@ -53,6 +53,9 @@ export interface GetNetworksArgs {
      * A regex string to filter CCN instances by name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -82,7 +85,7 @@ export interface GetNetworksResult {
 /**
  * This data source provides Cloud Connect Networks available to the user.
  *
- * > **NOTE:** Available in 1.59.0+
+ * > **NOTE:** Available since v1.59.0+
  *
  * > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  *
@@ -92,15 +95,15 @@ export interface GetNetworksResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = alicloud.cloudconnect.getNetworks({
- *     ids: [defaultAlicloudCloudConnectNetworks.id],
- *     nameRegex: "^tf-testAcc.*",
- * });
  * const defaultNetwork = new alicloud.cloudconnect.Network("default", {
- *     name: "tf-testAccCloudConnectNetworkName",
- *     description: "tf-testAccCloudConnectNetworkDescription",
+ *     name: "terraform-example",
+ *     description: "terraform-example",
  *     cidrBlock: "192.168.0.0/24",
  *     isDefault: true,
+ * });
+ * const _default = alicloud.cloudconnect.getNetworksOutput({
+ *     ids: [defaultNetwork.id],
+ *     nameRegex: "^terraform-example",
  * });
  * ```
  */
@@ -126,5 +129,8 @@ export interface GetNetworksOutputArgs {
      * A regex string to filter CCN instances by name.
      */
     nameRegex?: pulumi.Input<string | undefined>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string | undefined>;
 }

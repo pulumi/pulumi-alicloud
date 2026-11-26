@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class SnapshotPolicyCopyEncryptionConfiguration
     {
+        /// <summary>
+        /// Whether to encrypt the snapshot.
+        /// </summary>
         public readonly bool? Encrypted;
+        /// <summary>
+        /// The KMS key ID used for encryption.
+        /// </summary>
         public readonly string? KmsKeyId;
 
         [OutputConstructor]

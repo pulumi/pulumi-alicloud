@@ -11,12 +11,210 @@ namespace Pulumi.AliCloud.Dds
 {
     public static class GetMongoInstances
     {
+        /// <summary>
+        /// This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.13.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.MongoDB.GetZones.Invoke();
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "default-NODELETING",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     var defaultGetSecurityGroups = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.MongoDB.Instance("default", new()
+        ///     {
+        ///         EngineVersion = "4.4",
+        ///         DbInstanceClass = "mdb.shard.2x.xlarge.d",
+        ///         DbInstanceStorage = 20,
+        ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         Name = name,
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Instance" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Dds.GetMongoInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultInstance.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongodbInstancesId0"] = ids.Apply(getMongoInstancesResult =&gt; getMongoInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetMongoInstancesResult> InvokeAsync(GetMongoInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMongoInstancesResult>("alicloud:dds/getMongoInstances:getMongoInstances", args ?? new GetMongoInstancesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.13.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.MongoDB.GetZones.Invoke();
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "default-NODELETING",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     var defaultGetSecurityGroups = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.MongoDB.Instance("default", new()
+        ///     {
+        ///         EngineVersion = "4.4",
+        ///         DbInstanceClass = "mdb.shard.2x.xlarge.d",
+        ///         DbInstanceStorage = 20,
+        ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         Name = name,
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Instance" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Dds.GetMongoInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultInstance.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongodbInstancesId0"] = ids.Apply(getMongoInstancesResult =&gt; getMongoInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetMongoInstancesResult> Invoke(GetMongoInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMongoInstancesResult>("alicloud:dds/getMongoInstances:getMongoInstances", args ?? new GetMongoInstancesInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.13.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.MongoDB.GetZones.Invoke();
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "default-NODELETING",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     var defaultGetSecurityGroups = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.MongoDB.Instance("default", new()
+        ///     {
+        ///         EngineVersion = "4.4",
+        ///         DbInstanceClass = "mdb.shard.2x.xlarge.d",
+        ///         DbInstanceStorage = 20,
+        ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         Name = name,
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Instance" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Dds.GetMongoInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultInstance.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongodbInstancesId0"] = ids.Apply(getMongoInstancesResult =&gt; getMongoInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetMongoInstancesResult> Invoke(GetMongoInstancesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMongoInstancesResult>("alicloud:dds/getMongoInstances:getMongoInstances", args ?? new GetMongoInstancesInvokeArgs(), options.WithDefaults());
     }
@@ -24,37 +222,66 @@ namespace Pulumi.AliCloud.Dds
 
     public sealed class GetMongoInstancesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The zone ID.
+        /// </summary>
         [Input("availabilityZone")]
         public string? AvailabilityZone { get; set; }
 
+        /// <summary>
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of Instance IDs.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The instance type.
+        /// </summary>
         [Input("instanceClass")]
         public string? InstanceClass { get; set; }
 
+        /// <summary>
+        /// The instance architecture. Default value: `Replicate`. Valid values: `Replicate`, `Sharding`.
+        /// </summary>
         [Input("instanceType")]
         public string? InstanceType { get; set; }
 
+        /// <summary>
+        /// A regex string to filter results by Instance name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// The name of file that can save the collection of instances after running `pulumi preview`.
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The instance status.
+        /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -69,37 +296,66 @@ namespace Pulumi.AliCloud.Dds
 
     public sealed class GetMongoInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The zone ID.
+        /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
+        /// <summary>
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Instance IDs.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The instance type.
+        /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
 
+        /// <summary>
+        /// The instance architecture. Default value: `Replicate`. Valid values: `Replicate`, `Sharding`.
+        /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
+        /// <summary>
+        /// A regex string to filter results by Instance name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// The name of file that can save the collection of instances after running `pulumi preview`.
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// The instance status.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -116,6 +372,9 @@ namespace Pulumi.AliCloud.Dds
     [OutputType]
     public sealed class GetMongoInstancesResult
     {
+        /// <summary>
+        /// The zone ID of the instance.
+        /// </summary>
         public readonly string? AvailabilityZone;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -123,13 +382,31 @@ namespace Pulumi.AliCloud.Dds
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The instance type.
+        /// </summary>
         public readonly string? InstanceClass;
+        /// <summary>
+        /// The instance architecture.
+        /// </summary>
         public readonly string? InstanceType;
+        /// <summary>
+        /// A list of Instances. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetMongoInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
+        /// <summary>
+        /// (Available since v1.42.0) A list of Instance names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The instance status.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// (Available since v1.66.0) The details of the resource tags.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]

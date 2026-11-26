@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost User Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost User Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost User Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -237,16 +237,28 @@ namespace Pulumi.AliCloud.BastionHost
     [OutputType]
     public sealed class GetUserGroupsResult
     {
+        /// <summary>
+        /// A list of Bastionhost User Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetUserGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// Specify the New Group of the Bastion Host of Instance Id.
+        /// </summary>
         public readonly string InstanceId;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of User Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Specify the New Group Name. Supports up to 128 Characters.
+        /// </summary>
         public readonly string? UserGroupName;
 
         [OutputConstructor]

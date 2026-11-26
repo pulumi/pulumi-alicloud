@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the function of verifying whether an IP is a CDN node.
  *
- * > **NOTE:** Available in v1.153.0+.
+ * > **NOTE:** Available since v1.153.0.
  *
  * ## Example Usage
  *
@@ -43,21 +43,36 @@ export interface GetIpInfoArgs {
  * A collection of values returned by getIpInfo.
  */
 export interface GetIpInfoResult {
+    /**
+     * Whether it belongs to an Alibaba Cloud CDN node.Valid values: `True`, `False`.
+     */
     readonly cdnIp: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ip: string;
+    /**
+     * The operator's Chinese name, e.g. `电信`.
+     */
     readonly isp: string;
+    /**
+     * The operator's English name, e.g. `telecom`.
+     */
     readonly ispEname: string;
+    /**
+     * Chinese name of the region, e.g. `中国-贵州省-贵阳市`.
+     */
     readonly region: string;
+    /**
+     * English name of the region, e.g. `China-Guizhou-guiyang`.
+     */
     readonly regionEname: string;
 }
 /**
  * This data source provides the function of verifying whether an IP is a CDN node.
  *
- * > **NOTE:** Available in v1.153.0+.
+ * > **NOTE:** Available since v1.153.0.
  *
  * ## Example Usage
  *

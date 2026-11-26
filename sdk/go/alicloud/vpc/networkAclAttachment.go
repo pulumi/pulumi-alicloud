@@ -97,7 +97,7 @@ type NetworkAclAttachment struct {
 
 	// The id of the network acl, the field can't be changed.
 	NetworkAclId pulumi.StringOutput `pulumi:"networkAclId"`
-	// List of the resources associated with the network acl. The details see Block Resources.
+	// List of the resources associated with the network acl. See `resources` below.
 	Resources NetworkAclAttachmentResourceArrayOutput `pulumi:"resources"`
 }
 
@@ -139,14 +139,14 @@ func GetNetworkAclAttachment(ctx *pulumi.Context,
 type networkAclAttachmentState struct {
 	// The id of the network acl, the field can't be changed.
 	NetworkAclId *string `pulumi:"networkAclId"`
-	// List of the resources associated with the network acl. The details see Block Resources.
+	// List of the resources associated with the network acl. See `resources` below.
 	Resources []NetworkAclAttachmentResource `pulumi:"resources"`
 }
 
 type NetworkAclAttachmentState struct {
 	// The id of the network acl, the field can't be changed.
 	NetworkAclId pulumi.StringPtrInput
-	// List of the resources associated with the network acl. The details see Block Resources.
+	// List of the resources associated with the network acl. See `resources` below.
 	Resources NetworkAclAttachmentResourceArrayInput
 }
 
@@ -163,7 +163,7 @@ func NetworkAclAttachmentExists(ctx *pulumi.Context,
 type networkAclAttachmentArgs struct {
 	// The id of the network acl, the field can't be changed.
 	NetworkAclId string `pulumi:"networkAclId"`
-	// List of the resources associated with the network acl. The details see Block Resources.
+	// List of the resources associated with the network acl. See `resources` below.
 	Resources []NetworkAclAttachmentResource `pulumi:"resources"`
 }
 
@@ -171,7 +171,7 @@ type networkAclAttachmentArgs struct {
 type NetworkAclAttachmentArgs struct {
 	// The id of the network acl, the field can't be changed.
 	NetworkAclId pulumi.StringInput
-	// List of the resources associated with the network acl. The details see Block Resources.
+	// List of the resources associated with the network acl. See `resources` below.
 	Resources NetworkAclAttachmentResourceArrayInput
 }
 
@@ -267,7 +267,7 @@ func (o NetworkAclAttachmentOutput) NetworkAclId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkAclAttachment) pulumi.StringOutput { return v.NetworkAclId }).(pulumi.StringOutput)
 }
 
-// List of the resources associated with the network acl. The details see Block Resources.
+// List of the resources associated with the network acl. See `resources` below.
 func (o NetworkAclAttachmentOutput) Resources() NetworkAclAttachmentResourceArrayOutput {
 	return o.ApplyT(func(v *NetworkAclAttachment) NetworkAclAttachmentResourceArrayOutput { return v.Resources }).(NetworkAclAttachmentResourceArrayOutput)
 }

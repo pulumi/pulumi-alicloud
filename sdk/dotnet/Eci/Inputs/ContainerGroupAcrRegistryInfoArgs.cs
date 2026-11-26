@@ -12,6 +12,20 @@ namespace Pulumi.AliCloud.Eci.Inputs
 
     public sealed class ContainerGroupAcrRegistryInfoArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ARN of a RAM role in the account that owns the container group. ECI assumes this role to obtain the image pull credential. On its own, it restricts which role ECI uses to pull images from an ACR Personal Edition instance, or from an ACR Enterprise Edition instance through its default domain, in the same account. To pull from an ACR Enterprise Edition instance in another account, set it together with `ArnUser`. The role must trust `eci.aliyuncs.com` and be granted `AliyunSTSAssumeRoleAccess`. The value can be built with the provider-defined function `ArnBuild`, for example `provider::alicloud::arn_build("ram", "", "&lt;account-id&gt;", "role/&lt;role-name&gt;")`.
+        /// </summary>
+        [Input("arnService")]
+        public Input<string>? ArnService { get; set; }
+
+        /// <summary>
+        /// The ARN of a RAM role in the account that owns the ACR Enterprise Edition instance, used for cross-account image pulling. It must be set together with `ArnService`. The role must trust the role specified by `ArnService` and be granted image pull permissions on the instance, for example `cr:GetAuthorizationToken` and `cr:PullRepository` (the official example grants `AliyunContainerRegistryFullAccess`). When the instance is accessed through a custom domain, `InstanceId` is required.
+        /// 
+        /// &gt; **NOTE:** `ArnService` and `ArnUser` are create-time inputs. They are retained in Terraform state after creation, but cannot be retrieved from an existing container group during import. Configuring them after import requires replacement of the container group. Review the plan before applying configuration to an imported group.
+        /// </summary>
+        [Input("arnUser")]
+        public Input<string>? ArnUser { get; set; }
+
         [Input("domains")]
         private InputList<string>? _domains;
 

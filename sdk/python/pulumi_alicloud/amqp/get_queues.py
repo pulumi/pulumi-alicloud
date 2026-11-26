@@ -69,6 +69,9 @@ class GetQueuesResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        The ID of the instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -79,6 +82,9 @@ class GetQueuesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Queue names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -89,11 +95,17 @@ class GetQueuesResult:
     @_builtins.property
     @pulumi.getter
     def queues(self) -> Sequence['outputs.GetQueuesQueueResult']:
+        """
+        A list of Amqp Queues. Each element contains the following attributes:
+        """
         return pulumi.get(self, "queues")
 
     @_builtins.property
     @pulumi.getter(name="virtualHostName")
     def virtual_host_name(self) -> _builtins.str:
+        """
+        The name of the virtual host.
+        """
         return pulumi.get(self, "virtual_host_name")
 
 
@@ -122,7 +134,7 @@ def get_queues(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Amqp Queues of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.127.0+.
+    > **NOTE:** Available since v1.127.0.
 
     ## Example Usage
 
@@ -179,7 +191,7 @@ def get_queues_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str
     """
     This data source provides the Amqp Queues of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.127.0+.
+    > **NOTE:** Available since v1.127.0.
 
     ## Example Usage
 

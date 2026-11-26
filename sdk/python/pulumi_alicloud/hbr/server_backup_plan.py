@@ -33,7 +33,7 @@ class ServerBackupPlanArgs:
         """
         The set of arguments for constructing a ServerBackupPlan resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input['ServerBackupPlanDetailArgs']]] details: ECS server backup plan details.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerBackupPlanDetailArgs']]] details: ECS server backup plan details. See `detail` below.
         :param pulumi.Input[_builtins.str] ecs_server_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[_builtins.str] instance_id: The ID of ECS instance.
         :param pulumi.Input[_builtins.int] retention: Backup retention days, the minimum is 1.
@@ -62,7 +62,7 @@ class ServerBackupPlanArgs:
     @pulumi.getter
     def details(self) -> pulumi.Input[Sequence[pulumi.Input['ServerBackupPlanDetailArgs']]]:
         """
-        ECS server backup plan details.
+        ECS server backup plan details. See `detail` below.
         """
         return pulumi.get(self, "details")
 
@@ -186,7 +186,7 @@ class _ServerBackupPlanState:
         :param pulumi.Input[_builtins.str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
         :param pulumi.Input[_builtins.str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         :param pulumi.Input[_builtins.int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
-        :param pulumi.Input[Sequence[pulumi.Input['ServerBackupPlanDetailArgs']]] details: ECS server backup plan details.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerBackupPlanDetailArgs']]] details: ECS server backup plan details. See `detail` below.
         :param pulumi.Input[_builtins.bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] ecs_server_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[_builtins.str] instance_id: The ID of ECS instance.
@@ -253,7 +253,7 @@ class _ServerBackupPlanState:
     @pulumi.getter
     def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServerBackupPlanDetailArgs']]]]:
         """
-        ECS server backup plan details.
+        ECS server backup plan details. See `detail` below.
         """
         return pulumi.get(self, "details")
 
@@ -346,8 +346,6 @@ class ServerBackupPlan(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.142.0.
 
-        > **NOTE:** Deprecated since v1.249.0.
-
         > **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource hbr.Policy and alicloud_hbr_policy_binding.
 
         ## Example Usage
@@ -411,7 +409,7 @@ class ServerBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
         :param pulumi.Input[_builtins.str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         :param pulumi.Input[_builtins.int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerBackupPlanDetailArgs', 'ServerBackupPlanDetailArgsDict', 'outputs.ServerBackupPlanDetail']]]] details: ECS server backup plan details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerBackupPlanDetailArgs', 'ServerBackupPlanDetailArgsDict', 'outputs.ServerBackupPlanDetail']]]] details: ECS server backup plan details. See `detail` below.
         :param pulumi.Input[_builtins.bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] ecs_server_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[_builtins.str] instance_id: The ID of ECS instance.
@@ -431,8 +429,6 @@ class ServerBackupPlan(pulumi.CustomResource):
         For information about Hybrid Backup Recovery (HBR) Server Backup Plan and how to use it, see [What is Server Backup Plan](https://www.alibabacloud.com/help/doc-detail/211140.htm).
 
         > **NOTE:** Available since v1.142.0.
-
-        > **NOTE:** Deprecated since v1.249.0.
 
         > **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource hbr.Policy and alicloud_hbr_policy_binding.
 
@@ -573,7 +569,7 @@ class ServerBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
         :param pulumi.Input[_builtins.str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         :param pulumi.Input[_builtins.int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerBackupPlanDetailArgs', 'ServerBackupPlanDetailArgsDict', 'outputs.ServerBackupPlanDetail']]]] details: ECS server backup plan details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerBackupPlanDetailArgs', 'ServerBackupPlanDetailArgsDict', 'outputs.ServerBackupPlanDetail']]]] details: ECS server backup plan details. See `detail` below.
         :param pulumi.Input[_builtins.bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] ecs_server_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[_builtins.str] instance_id: The ID of ECS instance.
@@ -648,7 +644,7 @@ class ServerBackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def details(self) -> pulumi.Output[Sequence['outputs.ServerBackupPlanDetail']]:
         """
-        ECS server backup plan details.
+        ECS server backup plan details. See `detail` below.
         """
         return pulumi.get(self, "details")
 

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.148.0+.
+// > **NOTE:** Available since v1.148.0.
 //
 // ## Example Usage
 //
@@ -97,21 +97,31 @@ type GetServerlessInstancesArgs struct {
 
 // A collection of values returned by getServerlessInstances.
 type GetServerlessInstancesResult struct {
-	DbInstanceClass       *string `pulumi:"dbInstanceClass"`
+	// The db instance class.
+	DbInstanceClass *string `pulumi:"dbInstanceClass"`
+	// The db instance description.
 	DbInstanceDescription *string `pulumi:"dbInstanceDescription"`
 	EnableDetails         *bool   `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                           `pulumi:"id"`
-	Ids             []string                         `pulumi:"ids"`
-	Instances       []GetServerlessInstancesInstance `pulumi:"instances"`
-	NetworkType     *string                          `pulumi:"networkType"`
-	OutputFile      *string                          `pulumi:"outputFile"`
-	ResourceGroupId *string                          `pulumi:"resourceGroupId"`
-	Status          *string                          `pulumi:"status"`
-	Tags            map[string]string                `pulumi:"tags"`
-	VpcId           *string                          `pulumi:"vpcId"`
-	VswitchId       *string                          `pulumi:"vswitchId"`
-	ZoneId          *string                          `pulumi:"zoneId"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Mongodb Serverless Instances. Each element contains the following attributes:
+	Instances []GetServerlessInstancesInstance `pulumi:"instances"`
+	// The network type of the instance.
+	NetworkType *string `pulumi:"networkType"`
+	OutputFile  *string `pulumi:"outputFile"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The status of the instance.
+	Status *string `pulumi:"status"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The ID of the VPC network.
+	VpcId *string `pulumi:"vpcId"`
+	// The id of the vswitch.
+	VswitchId *string `pulumi:"vswitchId"`
+	// The ID of the zone.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func GetServerlessInstancesOutput(ctx *pulumi.Context, args GetServerlessInstancesOutputArgs, opts ...pulumi.InvokeOption) GetServerlessInstancesResultOutput {
@@ -166,10 +176,12 @@ func (o GetServerlessInstancesResultOutput) ToGetServerlessInstancesResultOutput
 	return o
 }
 
+// The db instance class.
 func (o GetServerlessInstancesResultOutput) DbInstanceClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerlessInstancesResult) *string { return v.DbInstanceClass }).(pulumi.StringPtrOutput)
 }
 
+// The db instance description.
 func (o GetServerlessInstancesResultOutput) DbInstanceDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerlessInstancesResult) *string { return v.DbInstanceDescription }).(pulumi.StringPtrOutput)
 }
@@ -187,10 +199,12 @@ func (o GetServerlessInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerlessInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Mongodb Serverless Instances. Each element contains the following attributes:
 func (o GetServerlessInstancesResultOutput) Instances() GetServerlessInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetServerlessInstancesResult) []GetServerlessInstancesInstance { return v.Instances }).(GetServerlessInstancesInstanceArrayOutput)
 }
 
+// The network type of the instance.
 func (o GetServerlessInstancesResultOutput) NetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerlessInstancesResult) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
 }
@@ -199,26 +213,32 @@ func (o GetServerlessInstancesResultOutput) OutputFile() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetServerlessInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the resource group.
 func (o GetServerlessInstancesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerlessInstancesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The status of the instance.
 func (o GetServerlessInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerlessInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The tag of the resource.
 func (o GetServerlessInstancesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServerlessInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The ID of the VPC network.
 func (o GetServerlessInstancesResultOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerlessInstancesResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
+// The id of the vswitch.
 func (o GetServerlessInstancesResultOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerlessInstancesResult) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the zone.
 func (o GetServerlessInstancesResultOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerlessInstancesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

@@ -18,7 +18,7 @@ public final class EaisFunctions {
     /**
      * This data source provides the Eais Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * &gt; **DEPRECATED:** This data source has been deprecated since v1.278.0.
      * 
@@ -70,7 +70,7 @@ public final class EaisFunctions {
     /**
      * This data source provides the Eais Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * &gt; **DEPRECATED:** This data source has been deprecated since v1.278.0.
      * 
@@ -122,7 +122,7 @@ public final class EaisFunctions {
     /**
      * This data source provides the Eais Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * &gt; **DEPRECATED:** This data source has been deprecated since v1.278.0.
      * 
@@ -174,7 +174,7 @@ public final class EaisFunctions {
     /**
      * This data source provides the Eais Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * &gt; **DEPRECATED:** This data source has been deprecated since v1.278.0.
      * 
@@ -226,7 +226,7 @@ public final class EaisFunctions {
     /**
      * This data source provides the Eais Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * &gt; **DEPRECATED:** This data source has been deprecated since v1.278.0.
      * 
@@ -278,7 +278,7 @@ public final class EaisFunctions {
     /**
      * This data source provides the Eais Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * &gt; **DEPRECATED:** This data source has been deprecated since v1.278.0.
      * 
@@ -330,7 +330,7 @@ public final class EaisFunctions {
     /**
      * This data source provides the Eais Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
      * 
      * &gt; **DEPRECATED:** This data source has been deprecated since v1.278.0.
      * 

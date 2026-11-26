@@ -65,6 +65,9 @@ class GetBackupPlansResult:
     @_builtins.property
     @pulumi.getter(name="backupPlanName")
     def backup_plan_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the resource.
+        """
         return pulumi.get(self, "backup_plan_name")
 
     @_builtins.property
@@ -93,6 +96,9 @@ class GetBackupPlansResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Backup Plan names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -113,11 +119,17 @@ class GetBackupPlansResult:
     @_builtins.property
     @pulumi.getter
     def plans(self) -> Sequence['outputs.GetBackupPlansPlanResult']:
+        """
+        A list of Dbs Backup Plans. Each element contains the following attributes:
+        """
         return pulumi.get(self, "plans")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -152,7 +164,7 @@ def get_backup_plans(backup_plan_name: Optional[_builtins.str] = None,
     """
     This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.185.0+.
+    > **NOTE:** Available since v1.185.0.
 
     ## Example Usage
 
@@ -212,7 +224,7 @@ def get_backup_plans_output(backup_plan_name: pulumi.Input[Optional[Optional[_bu
     """
     This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.185.0+.
+    > **NOTE:** Available since v1.185.0.
 
     ## Example Usage
 

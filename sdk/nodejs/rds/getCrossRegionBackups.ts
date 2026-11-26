@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.196.0+.
+ * > **NOTE:** Available since v1.196.0+.
  *
  * ## Example Usage
  *
@@ -91,8 +91,17 @@ export interface GetCrossRegionBackupsArgs {
  */
 export interface GetCrossRegionBackupsResult {
     readonly backupId?: string;
+    /**
+     * An array that consists of details of the cross-region data backup files:
+     */
     readonly backups: outputs.rds.GetCrossRegionBackupsBackup[];
+    /**
+     * The ID of the cross-region data backup file.
+     */
     readonly crossBackupId?: string;
+    /**
+     * The ID of the destination region where the cross-region data backup file of the instance is stored.
+     */
     readonly crossBackupRegion?: string;
     readonly dbInstanceId: string;
     readonly endTime?: string;
@@ -100,6 +109,9 @@ export interface GetCrossRegionBackupsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Cross Region Backup IDs.
+     */
     readonly ids: string[];
     readonly outputFile?: string;
     readonly resourceGroupId?: string;
@@ -108,7 +120,7 @@ export interface GetCrossRegionBackupsResult {
 /**
  * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.196.0+.
+ * > **NOTE:** Available since v1.196.0+.
  *
  * ## Example Usage
  *

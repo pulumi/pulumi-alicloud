@@ -207,6 +207,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration of index nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `Spec` parameter is immutable after resource creation.** See `IndexNodeConfiguration` below.
+        /// </summary>
+        [Output("indexNodeConfiguration")]
+        public Output<Outputs.InstanceIndexNodeConfiguration> IndexNodeConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// Edition type:
         /// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
         /// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
@@ -315,6 +321,19 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `PasswordWoVersion` changes and is never stored in the state or plan.
+        /// </summary>
+        [Output("passwordWo")]
+        public Output<string?> PasswordWo { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `PasswordWo` changes.
+        /// </summary>
+        [Output("passwordWoVersion")]
+        public Output<int?> PasswordWoVersion { get; private set; } = null!;
+
+        /// <summary>
         /// The billing method of the instance. Supported values:
         /// - `PayAsYouGo`: Pay-as-you-go
         /// - `Subscription`: Subscription
@@ -342,6 +361,8 @@ namespace Pulumi.AliCloud.ElasticSearch
 
         /// <summary>
         /// The access protocol. Supported protocols: HTTP and HTTPS.
+        /// 
+        /// &gt; **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `Protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `ClientNodeConfiguration` (or the deprecated `ClientNodeSpec` and `ClientNodeAmount`) together with `Protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
@@ -384,10 +405,16 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> RenewalDurationUnit { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group to which the instance belongs.
+        /// The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration of search (query) nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `Spec` parameter is immutable after resource creation.** See `SearchNodeConfiguration` below.
+        /// </summary>
+        [Output("searchNodeConfiguration")]
+        public Output<Outputs.InstanceSearchNodeConfiguration> SearchNodeConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// YML configuration file settings for the instance.
@@ -510,6 +537,7 @@ namespace Pulumi.AliCloud.ElasticSearch
                 AdditionalSecretOutputs =
                 {
                     "password",
+                    "passwordWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -641,6 +669,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<bool>? Force { get; set; }
 
         /// <summary>
+        /// Configuration of index nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `Spec` parameter is immutable after resource creation.** See `IndexNodeConfiguration` below.
+        /// </summary>
+        [Input("indexNodeConfiguration")]
+        public Input<Inputs.InstanceIndexNodeConfigurationArgs>? IndexNodeConfiguration { get; set; }
+
+        /// <summary>
         /// Edition type:
         /// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
         /// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
@@ -758,6 +792,29 @@ namespace Pulumi.AliCloud.ElasticSearch
             }
         }
 
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `PasswordWoVersion` changes and is never stored in the state or plan.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `PasswordWo` changes.
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
+
         /// <summary>
         /// The billing method of the instance. Supported values:
         /// - `PayAsYouGo`: Pay-as-you-go
@@ -786,6 +843,8 @@ namespace Pulumi.AliCloud.ElasticSearch
 
         /// <summary>
         /// The access protocol. Supported protocols: HTTP and HTTPS.
+        /// 
+        /// &gt; **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `Protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `ClientNodeConfiguration` (or the deprecated `ClientNodeSpec` and `ClientNodeAmount`) together with `Protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -822,10 +881,16 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? RenewalDurationUnit { get; set; }
 
         /// <summary>
-        /// The ID of the resource group to which the instance belongs.
+        /// The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Configuration of search (query) nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `Spec` parameter is immutable after resource creation.** See `SearchNodeConfiguration` below.
+        /// </summary>
+        [Input("searchNodeConfiguration")]
+        public Input<Inputs.InstanceSearchNodeConfigurationArgs>? SearchNodeConfiguration { get; set; }
 
         [Input("settingConfig")]
         private InputMap<string>? _settingConfig;
@@ -1061,6 +1126,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<bool>? Force { get; set; }
 
         /// <summary>
+        /// Configuration of index nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `Spec` parameter is immutable after resource creation.** See `IndexNodeConfiguration` below.
+        /// </summary>
+        [Input("indexNodeConfiguration")]
+        public Input<Inputs.InstanceIndexNodeConfigurationGetArgs>? IndexNodeConfiguration { get; set; }
+
+        /// <summary>
         /// Edition type:
         /// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
         /// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
@@ -1196,6 +1267,29 @@ namespace Pulumi.AliCloud.ElasticSearch
             }
         }
 
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `PasswordWoVersion` changes and is never stored in the state or plan.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `PasswordWo` changes.
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
+
         /// <summary>
         /// The billing method of the instance. Supported values:
         /// - `PayAsYouGo`: Pay-as-you-go
@@ -1230,6 +1324,8 @@ namespace Pulumi.AliCloud.ElasticSearch
 
         /// <summary>
         /// The access protocol. Supported protocols: HTTP and HTTPS.
+        /// 
+        /// &gt; **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `Protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `ClientNodeConfiguration` (or the deprecated `ClientNodeSpec` and `ClientNodeAmount`) together with `Protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -1278,10 +1374,16 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? RenewalDurationUnit { get; set; }
 
         /// <summary>
-        /// The ID of the resource group to which the instance belongs.
+        /// The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Configuration of search (query) nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `Spec` parameter is immutable after resource creation.** See `SearchNodeConfiguration` below.
+        /// </summary>
+        [Input("searchNodeConfiguration")]
+        public Input<Inputs.InstanceSearchNodeConfigurationGetArgs>? SearchNodeConfiguration { get; set; }
 
         [Input("settingConfig")]
         private InputMap<string>? _settingConfig;

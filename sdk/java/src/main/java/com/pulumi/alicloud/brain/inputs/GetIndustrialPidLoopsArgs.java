@@ -18,9 +18,17 @@ public final class GetIndustrialPidLoopsArgs extends com.pulumi.resources.Invoke
 
     public static final GetIndustrialPidLoopsArgs Empty = new GetIndustrialPidLoopsArgs();
 
+    /**
+     * Whether to detail the Pid Loops. Default to `false`. When it is set to `true`, the data source will query the Pid Loop details by `GetLoop`.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
+    /**
+     * @return Whether to detail the Pid Loops. Default to `false`. When it is set to `true`, the data source will query the Pid Loop details by `GetLoop`.
+     * 
+     */
     public Optional<Output<Boolean>> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -145,11 +153,23 @@ public final class GetIndustrialPidLoopsArgs extends com.pulumi.resources.Invoke
             $ = new GetIndustrialPidLoopsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableDetails Whether to detail the Pid Loops. Default to `false`. When it is set to `true`, the data source will query the Pid Loop details by `GetLoop`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
             $.enableDetails = enableDetails;
             return this;
         }
 
+        /**
+         * @param enableDetails Whether to detail the Pid Loops. Default to `false`. When it is set to `true`, the data source will query the Pid Loop details by `GetLoop`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(Boolean enableDetails) {
             return enableDetails(Output.of(enableDetails));
         }

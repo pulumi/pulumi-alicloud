@@ -118,10 +118,16 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to perform a dry run. Valid values: `True`, `False`.
+        /// Field `DryRun` has been deprecated from provider version 2.2.0.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
+
+        /// <summary>
+        /// The entity discovery rule model. See `EntityRules` below.
+        /// </summary>
+        [Output("entityRules")]
+        public Output<Outputs.AddonReleaseEntityRules?> EntityRules { get; private set; } = null!;
 
         /// <summary>
         /// The environment type. Valid values: `CS`, `ECS`, `Cloud`.
@@ -224,10 +230,16 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Config { get; set; }
 
         /// <summary>
-        /// Specifies whether to perform a dry run. Valid values: `True`, `False`.
+        /// Field `DryRun` has been deprecated from provider version 2.2.0.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// The entity discovery rule model. See `EntityRules` below.
+        /// </summary>
+        [Input("entityRules")]
+        public Input<Inputs.AddonReleaseEntityRulesArgs>? EntityRules { get; set; }
 
         /// <summary>
         /// The environment type. Valid values: `CS`, `ECS`, `Cloud`.
@@ -292,10 +304,16 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to perform a dry run. Valid values: `True`, `False`.
+        /// Field `DryRun` has been deprecated from provider version 2.2.0.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// The entity discovery rule model. See `EntityRules` below.
+        /// </summary>
+        [Input("entityRules")]
+        public Input<Inputs.AddonReleaseEntityRulesGetArgs>? EntityRules { get; set; }
 
         /// <summary>
         /// The environment type. Valid values: `CS`, `ECS`, `Cloud`.

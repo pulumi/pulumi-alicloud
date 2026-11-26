@@ -53,11 +53,17 @@ class GetDbClustersResult:
     @_builtins.property
     @pulumi.getter
     def clusters(self) -> Sequence['outputs.GetDbClustersClusterResult']:
+        """
+        A list of Click House DBClusters. Each element contains the following attributes:
+        """
         return pulumi.get(self, "clusters")
 
     @_builtins.property
     @pulumi.getter(name="dbClusterDescription")
     def db_cluster_description(self) -> Optional[_builtins.str]:
+        """
+        The DBCluster description.
+        """
         return pulumi.get(self, "db_cluster_description")
 
     @_builtins.property
@@ -86,6 +92,9 @@ class GetDbClustersResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -113,7 +122,7 @@ def get_db_clusters(db_cluster_description: Optional[_builtins.str] = None,
     """
     This data source provides the Click House DBCluster of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 
@@ -170,7 +179,7 @@ def get_db_clusters_output(db_cluster_description: pulumi.Input[Optional[Optiona
     """
     This data source provides the Click House DBCluster of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 

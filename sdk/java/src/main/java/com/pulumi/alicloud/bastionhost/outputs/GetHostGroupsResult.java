@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHostGroupsResult {
+    /**
+     * @return A list of Bastionhost Host Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetHostGroupsGroup> groups;
+    /**
+     * @return Specify the New Host Group Name, Supports up to 128 Characters.
+     * 
+     */
     private @Nullable String hostGroupName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,15 +30,31 @@ public final class GetHostGroupsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return Specify the New Host Group Where the Bastion Host ID of.
+     * 
+     */
     private String instanceId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Host Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetHostGroupsResult() {}
+    /**
+     * @return A list of Bastionhost Host Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetHostGroupsGroup> groups() {
         return this.groups;
     }
+    /**
+     * @return Specify the New Host Group Name, Supports up to 128 Characters.
+     * 
+     */
     public Optional<String> hostGroupName() {
         return Optional.ofNullable(this.hostGroupName);
     }
@@ -44,12 +68,20 @@ public final class GetHostGroupsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return Specify the New Host Group Where the Bastion Host ID of.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Host Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

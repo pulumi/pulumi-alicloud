@@ -53,6 +53,10 @@ public final class GetNetworksResult {
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return The ID of the resource group to which the VPC belongs.
+     * 
+     */
     private @Nullable String resourceGroupId;
     /**
      * @return Status of the VPC.
@@ -139,6 +143,10 @@ public final class GetNetworksResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return The ID of the resource group to which the VPC belongs.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }

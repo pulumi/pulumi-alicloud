@@ -11,12 +11,111 @@ namespace Pulumi.AliCloud.Rds
 {
     public static class GetRdsParameterGroups
     {
+        /// <summary>
+        /// This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.119.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Rds.GetRdsParameterGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRdsParameterGroupId"] = example.Apply(getRdsParameterGroupsResult =&gt; getRdsParameterGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetRdsParameterGroupsResult> InvokeAsync(GetRdsParameterGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRdsParameterGroupsResult>("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args ?? new GetRdsParameterGroupsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.119.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Rds.GetRdsParameterGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRdsParameterGroupId"] = example.Apply(getRdsParameterGroupsResult =&gt; getRdsParameterGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetRdsParameterGroupsResult> Invoke(GetRdsParameterGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRdsParameterGroupsResult>("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args ?? new GetRdsParameterGroupsInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.119.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Rds.GetRdsParameterGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRdsParameterGroupId"] = example.Apply(getRdsParameterGroupsResult =&gt; getRdsParameterGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetRdsParameterGroupsResult> Invoke(GetRdsParameterGroupsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRdsParameterGroupsResult>("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args ?? new GetRdsParameterGroupsInvokeArgs(), options.WithDefaults());
     }
@@ -24,20 +123,33 @@ namespace Pulumi.AliCloud.Rds
 
     public sealed class GetRdsParameterGroupsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of Parameter Group IDs.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by Parameter Group name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -49,20 +161,33 @@ namespace Pulumi.AliCloud.Rds
 
     public sealed class GetRdsParameterGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Parameter Group IDs.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by Parameter Group name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
@@ -77,6 +202,9 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetRdsParameterGroupsResult
     {
         public readonly bool? EnableDetails;
+        /// <summary>
+        /// A list of Rds Parameter Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRdsParameterGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -84,6 +212,9 @@ namespace Pulumi.AliCloud.Rds
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Parameter Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

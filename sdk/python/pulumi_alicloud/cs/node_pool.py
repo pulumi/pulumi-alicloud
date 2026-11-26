@@ -153,6 +153,8 @@ class NodePoolArgs:
         :param pulumi.Input[_builtins.str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\]
         :param pulumi.Input[_builtins.bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.str] key_name: The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -734,6 +736,8 @@ class NodePoolArgs:
     def keep_instance_name(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "keep_instance_name")
 
@@ -1585,6 +1589,8 @@ class _NodePoolState:
         :param pulumi.Input[_builtins.str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\]
         :param pulumi.Input[_builtins.bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.str] key_name: The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -2173,6 +2179,8 @@ class _NodePoolState:
     def keep_instance_name(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "keep_instance_name")
 
@@ -3124,6 +3132,10 @@ class NodePool(pulumi.CustomResource):
             key_name=default_key_pair.key_pair_name,
             desired_size="0")
         # Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
+        # The management features below require the node-lifecycle-controller add-on at version
+        # v2.3.13-b581b592 or later and the ack-node-problem-detector add-on at version 1.2.41 or later.
+        # The service validates the installed versions and rejects the request when an add-on is
+        # missing or too old, so install or upgrade them with alicloud_cs_kubernetes_addon first.
         maintenance = alicloud.cs.NodePool("maintenance",
             node_pool_name="maintenance",
             cluster_id=default_managed_kubernetes.id,
@@ -3137,7 +3149,7 @@ class NodePool(pulumi.CustomResource):
                 "enable": True,
                 "auto_repair": True,
                 "auto_repair_policy": {
-                    "restart_node": True,
+                    "auto_repair_policy_id": "r-repair-sys-comp-failure",
                 },
                 "auto_upgrade": True,
                 "auto_upgrade_policy": {
@@ -3710,6 +3722,8 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\]
         :param pulumi.Input[_builtins.bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.str] key_name: The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -3928,6 +3942,10 @@ class NodePool(pulumi.CustomResource):
             key_name=default_key_pair.key_pair_name,
             desired_size="0")
         # Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
+        # The management features below require the node-lifecycle-controller add-on at version
+        # v2.3.13-b581b592 or later and the ack-node-problem-detector add-on at version 1.2.41 or later.
+        # The service validates the installed versions and rejects the request when an add-on is
+        # missing or too old, so install or upgrade them with alicloud_cs_kubernetes_addon first.
         maintenance = alicloud.cs.NodePool("maintenance",
             node_pool_name="maintenance",
             cluster_id=default_managed_kubernetes.id,
@@ -3941,7 +3959,7 @@ class NodePool(pulumi.CustomResource):
                 "enable": True,
                 "auto_repair": True,
                 "auto_repair_policy": {
-                    "restart_node": True,
+                    "auto_repair_policy_id": "r-repair-sys-comp-failure",
                 },
                 "auto_upgrade": True,
                 "auto_upgrade_policy": {
@@ -4804,6 +4822,8 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\]
         :param pulumi.Input[_builtins.bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.str] key_name: The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -5375,6 +5395,8 @@ class NodePool(pulumi.CustomResource):
     def keep_instance_name(self) -> pulumi.Output[_builtins.bool]:
         """
         Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "keep_instance_name")
 

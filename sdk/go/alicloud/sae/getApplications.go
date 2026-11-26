@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Sae Applications of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.161.0+.
+// > **NOTE:** Available since v1.161.0.
 //
 // ## Example Usage
 //
@@ -35,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testacc"
+//			name := "tf-accapp"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -46,7 +46,7 @@ import (
 //				return err
 //			}
 //			vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("tf_testacc"),
+//				VpcName:   pulumi.String("tf_accapp"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
@@ -71,7 +71,7 @@ import (
 //			}
 //			defaultApplication, err := sae.NewApplication(ctx, "default", &sae.ApplicationArgs{
 //				AppDescription: pulumi.String("tf-testaccDescription"),
-//				AppName:        pulumi.String("tf-testaccAppName131"),
+//				AppName:        pulumi.String("tf-accappName131"),
 //				NamespaceId:    defaultNamespace.ID(),
 //				ImageUrl:       pulumi.String("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5"),
 //				PackageType:    pulumi.String("Image"),
@@ -133,19 +133,23 @@ type GetApplicationsArgs struct {
 
 // A collection of values returned by getApplications.
 type GetApplicationsResult struct {
-	AppName       *string                      `pulumi:"appName"`
+	// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
+	AppName *string `pulumi:"appName"`
+	// A list of Sae Applications. Each element contains the following attributes:
 	Applications  []GetApplicationsApplication `pulumi:"applications"`
 	EnableDetails *bool                        `pulumi:"enableDetails"`
 	FieldType     *string                      `pulumi:"fieldType"`
 	FieldValue    *string                      `pulumi:"fieldValue"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string   `pulumi:"id"`
-	Ids         []string `pulumi:"ids"`
-	NamespaceId *string  `pulumi:"namespaceId"`
-	OrderBy     *string  `pulumi:"orderBy"`
-	OutputFile  *string  `pulumi:"outputFile"`
-	Reverse     *bool    `pulumi:"reverse"`
-	Status      *string  `pulumi:"status"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
+	NamespaceId *string `pulumi:"namespaceId"`
+	OrderBy     *string `pulumi:"orderBy"`
+	OutputFile  *string `pulumi:"outputFile"`
+	Reverse     *bool   `pulumi:"reverse"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
 }
 
 func GetApplicationsOutput(ctx *pulumi.Context, args GetApplicationsOutputArgs, opts ...pulumi.InvokeOption) GetApplicationsResultOutput {
@@ -196,10 +200,12 @@ func (o GetApplicationsResultOutput) ToGetApplicationsResultOutputWithContext(ct
 	return o
 }
 
+// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
 func (o GetApplicationsResultOutput) AppName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationsResult) *string { return v.AppName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Sae Applications. Each element contains the following attributes:
 func (o GetApplicationsResultOutput) Applications() GetApplicationsApplicationArrayOutput {
 	return o.ApplyT(func(v GetApplicationsResult) []GetApplicationsApplication { return v.Applications }).(GetApplicationsApplicationArrayOutput)
 }
@@ -225,6 +231,7 @@ func (o GetApplicationsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApplicationsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
 func (o GetApplicationsResultOutput) NamespaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationsResult) *string { return v.NamespaceId }).(pulumi.StringPtrOutput)
 }
@@ -241,6 +248,7 @@ func (o GetApplicationsResultOutput) Reverse() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetApplicationsResult) *bool { return v.Reverse }).(pulumi.BoolPtrOutput)
 }
 
+// The status of the resource.
 func (o GetApplicationsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

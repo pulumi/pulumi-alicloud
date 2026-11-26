@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eais
         /// <summary>
         /// This data source provides the Eais Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// &gt; **NOTE:** Available since v1.137.0.
         /// 
         /// &gt; **DEPRECATED:** This data source has been deprecated since v1.278.0.
         /// 
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Eais
         /// <summary>
         /// This data source provides the Eais Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// &gt; **NOTE:** Available since v1.137.0.
         /// 
         /// &gt; **DEPRECATED:** This data source has been deprecated since v1.278.0.
         /// 
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.Eais
         /// <summary>
         /// This data source provides the Eais Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// &gt; **NOTE:** Available since v1.137.0.
         /// 
         /// &gt; **DEPRECATED:** This data source has been deprecated since v1.278.0.
         /// 
@@ -239,11 +239,23 @@ namespace Pulumi.AliCloud.Eais
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        /// </summary>
         public readonly string? InstanceType;
+        /// <summary>
+        /// A list of EAIS Instances. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Instance names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

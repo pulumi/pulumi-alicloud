@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.145.0+.
+// > **NOTE:** Available since v1.145.0.
 //
 // ## Example Usage
 //
@@ -81,24 +81,33 @@ type GetVirtualNodesArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The name of the virtual node.
 	VirtualNodeName *string `pulumi:"virtualNodeName"`
-	VswitchId       *string `pulumi:"vswitchId"`
+	// The ID of the vSwitch.
+	VswitchId *string `pulumi:"vswitchId"`
 }
 
 // A collection of values returned by getVirtualNodes.
 type GetVirtualNodesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                `pulumi:"id"`
-	Ids             []string              `pulumi:"ids"`
-	NameRegex       *string               `pulumi:"nameRegex"`
-	Names           []string              `pulumi:"names"`
-	Nodes           []GetVirtualNodesNode `pulumi:"nodes"`
-	OutputFile      *string               `pulumi:"outputFile"`
-	ResourceGroupId *string               `pulumi:"resourceGroupId"`
-	SecurityGroupId *string               `pulumi:"securityGroupId"`
-	Status          *string               `pulumi:"status"`
-	Tags            map[string]string     `pulumi:"tags"`
-	VirtualNodeName *string               `pulumi:"virtualNodeName"`
-	VswitchId       *string               `pulumi:"vswitchId"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Virtual Node names.
+	Names []string `pulumi:"names"`
+	// A list of Eci Virtual Nodes. Each element contains the following attributes:
+	Nodes      []GetVirtualNodesNode `pulumi:"nodes"`
+	OutputFile *string               `pulumi:"outputFile"`
+	// The resource group ID.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The security group ID.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The Status of the virtual node.
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The name of the virtual node.
+	VirtualNodeName *string `pulumi:"virtualNodeName"`
+	// The vswitch id.
+	VswitchId *string `pulumi:"vswitchId"`
 }
 
 func GetVirtualNodesOutput(ctx *pulumi.Context, args GetVirtualNodesOutputArgs, opts ...pulumi.InvokeOption) GetVirtualNodesResultOutput {
@@ -124,7 +133,8 @@ type GetVirtualNodesOutputArgs struct {
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The name of the virtual node.
 	VirtualNodeName pulumi.StringPtrInput `pulumi:"virtualNodeName"`
-	VswitchId       pulumi.StringPtrInput `pulumi:"vswitchId"`
+	// The ID of the vSwitch.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
 
 func (GetVirtualNodesOutputArgs) ElementType() reflect.Type {
@@ -159,10 +169,12 @@ func (o GetVirtualNodesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVirtualNodesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Virtual Node names.
 func (o GetVirtualNodesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVirtualNodesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
+// A list of Eci Virtual Nodes. Each element contains the following attributes:
 func (o GetVirtualNodesResultOutput) Nodes() GetVirtualNodesNodeArrayOutput {
 	return o.ApplyT(func(v GetVirtualNodesResult) []GetVirtualNodesNode { return v.Nodes }).(GetVirtualNodesNodeArrayOutput)
 }
@@ -171,26 +183,32 @@ func (o GetVirtualNodesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVirtualNodesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The resource group ID.
 func (o GetVirtualNodesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVirtualNodesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The security group ID.
 func (o GetVirtualNodesResultOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVirtualNodesResult) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The Status of the virtual node.
 func (o GetVirtualNodesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVirtualNodesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A mapping of tags to assign to the resource.
 func (o GetVirtualNodesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetVirtualNodesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The name of the virtual node.
 func (o GetVirtualNodesResultOutput) VirtualNodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVirtualNodesResult) *string { return v.VirtualNodeName }).(pulumi.StringPtrOutput)
 }
 
+// The vswitch id.
 func (o GetVirtualNodesResultOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVirtualNodesResult) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }

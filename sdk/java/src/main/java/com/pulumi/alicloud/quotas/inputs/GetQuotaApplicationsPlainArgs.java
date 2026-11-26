@@ -19,14 +19,14 @@ public final class GetQuotaApplicationsPlainArgs extends com.pulumi.resources.In
     public static final GetQuotaApplicationsPlainArgs Empty = new GetQuotaApplicationsPlainArgs();
 
     /**
-     * The quota dimensions.
+     * The quota dimensions. See `dimensions` below.
      * 
      */
     @Import(name="dimensions")
     private @Nullable List<GetQuotaApplicationsDimension> dimensions;
 
     /**
-     * @return The quota dimensions.
+     * @return The quota dimensions. See `dimensions` below.
      * 
      */
     public Optional<List<GetQuotaApplicationsDimension>> dimensions() {
@@ -63,9 +63,17 @@ public final class GetQuotaApplicationsPlainArgs extends com.pulumi.resources.In
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * The key word.
+     * 
+     */
     @Import(name="keyWord")
     private @Nullable String keyWord;
 
+    /**
+     * @return The key word.
+     * 
+     */
     public Optional<String> keyWord() {
         return Optional.ofNullable(this.keyWord);
     }
@@ -178,7 +186,7 @@ public final class GetQuotaApplicationsPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param dimensions The quota dimensions.
+         * @param dimensions The quota dimensions. See `dimensions` below.
          * 
          * @return builder
          * 
@@ -189,7 +197,7 @@ public final class GetQuotaApplicationsPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param dimensions The quota dimensions.
+         * @param dimensions The quota dimensions. See `dimensions` below.
          * 
          * @return builder
          * 
@@ -230,6 +238,12 @@ public final class GetQuotaApplicationsPlainArgs extends com.pulumi.resources.In
             return ids(List.of(ids));
         }
 
+        /**
+         * @param keyWord The key word.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyWord(@Nullable String keyWord) {
             $.keyWord = keyWord;
             return this;

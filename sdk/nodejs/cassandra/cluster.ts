@@ -7,12 +7,12 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cassandra cluster resource supports replica set clusters only. The Cassandra provides stable, reliable, and automatic scalable database services.
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
- * You can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).
+ * You can see detail product introduction in the [Cassandra product documentation](https://www.alibabacloud.com/help/product/49055.htm).
  *
  * > **NOTE:** Available since v1.88.0.
  *
  * > **NOTE:**  The following regions support create Vpc network Cassandra cluster.
- * The official website mark more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).
+ * The official website mark more regions. Or you can call [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/157540.html).
  *
  * > **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
  *
@@ -120,6 +120,9 @@ export class Cluster extends pulumi.CustomResource {
      * The disk type of Cassandra dataCenter-1. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      */
     declare public readonly diskType: pulumi.Output<string | undefined>;
+    /**
+     * Whether to enable public access. System default to `false`.
+     */
     declare public readonly enablePublic: pulumi.Output<boolean | undefined>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
@@ -145,13 +148,25 @@ export class Cluster extends pulumi.CustomResource {
      * The node count of Cassandra dataCenter-1 default to 2.
      */
     declare public readonly nodeCount: pulumi.Output<number>;
+    /**
+     * The password of the cluster account.
+     */
     declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
      */
     declare public readonly payType: pulumi.Output<string>;
+    /**
+     * The purchase period of the cluster. Valid when payType = Subscription.
+     */
     declare public readonly period: pulumi.Output<number | undefined>;
+    /**
+     * The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
+     */
     declare public readonly periodUnit: pulumi.Output<string | undefined>;
+    /**
+     * The public access points of the Cassandra cluster.
+     */
     declare public /*out*/ readonly publicPoints: pulumi.Output<string[]>;
     /**
      * A list of security group ids to associate with.
@@ -159,6 +174,9 @@ export class Cluster extends pulumi.CustomResource {
      * > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      */
     declare public readonly securityGroups: pulumi.Output<string[]>;
+    /**
+     * The status of the Cassandra cluster.
+     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
@@ -287,6 +305,9 @@ export interface ClusterState {
      * The disk type of Cassandra dataCenter-1. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      */
     diskType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to enable public access. System default to `false`.
+     */
     enablePublic?: pulumi.Input<boolean | undefined>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
@@ -312,13 +333,25 @@ export interface ClusterState {
      * The node count of Cassandra dataCenter-1 default to 2.
      */
     nodeCount?: pulumi.Input<number | undefined>;
+    /**
+     * The password of the cluster account.
+     */
     password?: pulumi.Input<string | undefined>;
     /**
      * The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
      */
     payType?: pulumi.Input<string | undefined>;
+    /**
+     * The purchase period of the cluster. Valid when payType = Subscription.
+     */
     period?: pulumi.Input<number | undefined>;
+    /**
+     * The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
+     */
     periodUnit?: pulumi.Input<string | undefined>;
+    /**
+     * The public access points of the Cassandra cluster.
+     */
     publicPoints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of security group ids to associate with.
@@ -326,6 +359,9 @@ export interface ClusterState {
      * > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The status of the Cassandra cluster.
+     */
     status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
@@ -371,6 +407,9 @@ export interface ClusterArgs {
      * The disk type of Cassandra dataCenter-1. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      */
     diskType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to enable public access. System default to `false`.
+     */
     enablePublic?: pulumi.Input<boolean | undefined>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
@@ -396,12 +435,21 @@ export interface ClusterArgs {
      * The node count of Cassandra dataCenter-1 default to 2.
      */
     nodeCount: pulumi.Input<number>;
+    /**
+     * The password of the cluster account.
+     */
     password?: pulumi.Input<string | undefined>;
     /**
      * The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
      */
     payType: pulumi.Input<string>;
+    /**
+     * The purchase period of the cluster. Valid when payType = Subscription.
+     */
     period?: pulumi.Input<number | undefined>;
+    /**
+     * The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
+     */
     periodUnit?: pulumi.Input<string | undefined>;
     /**
      * A list of security group ids to associate with.

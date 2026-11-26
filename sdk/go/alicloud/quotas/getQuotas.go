@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Quotas Quotas of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.115.0+.
+// > **NOTE:** Available since v1.115.0.
 //
 // ## Example Usage
 //
@@ -56,7 +56,7 @@ func GetQuotas(ctx *pulumi.Context, args *GetQuotasArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getQuotas.
 type GetQuotasArgs struct {
-	// The dimensions.
+	// The dimensions. See `dimensions` below.
 	Dimensions []GetQuotasDimension `pulumi:"dimensions"`
 	// The group code.
 	GroupCode *string `pulumi:"groupCode"`
@@ -83,18 +83,22 @@ type GetQuotasResult struct {
 	Dimensions []GetQuotasDimension `pulumi:"dimensions"`
 	GroupCode  *string              `pulumi:"groupCode"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string           `pulumi:"id"`
-	Ids             []string         `pulumi:"ids"`
-	KeyWord         *string          `pulumi:"keyWord"`
-	NameRegex       *string          `pulumi:"nameRegex"`
-	Names           []string         `pulumi:"names"`
-	OutputFile      *string          `pulumi:"outputFile"`
-	ProductCode     string           `pulumi:"productCode"`
-	QuotaActionCode *string          `pulumi:"quotaActionCode"`
-	QuotaCategory   *string          `pulumi:"quotaCategory"`
-	Quotas          []GetQuotasQuota `pulumi:"quotas"`
-	SortField       *string          `pulumi:"sortField"`
-	SortOrder       *string          `pulumi:"sortOrder"`
+	Id string `pulumi:"id"`
+	// A list of Quota IDs.
+	Ids       []string `pulumi:"ids"`
+	KeyWord   *string  `pulumi:"keyWord"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Quota names.
+	Names       []string `pulumi:"names"`
+	OutputFile  *string  `pulumi:"outputFile"`
+	ProductCode string   `pulumi:"productCode"`
+	// The quota action code.
+	QuotaActionCode *string `pulumi:"quotaActionCode"`
+	QuotaCategory   *string `pulumi:"quotaCategory"`
+	// A list of Quotas Quotas. Each element contains the following attributes:
+	Quotas    []GetQuotasQuota `pulumi:"quotas"`
+	SortField *string          `pulumi:"sortField"`
+	SortOrder *string          `pulumi:"sortOrder"`
 }
 
 func GetQuotasOutput(ctx *pulumi.Context, args GetQuotasOutputArgs, opts ...pulumi.InvokeOption) GetQuotasResultOutput {
@@ -104,7 +108,7 @@ func GetQuotasOutput(ctx *pulumi.Context, args GetQuotasOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getQuotas.
 type GetQuotasOutputArgs struct {
-	// The dimensions.
+	// The dimensions. See `dimensions` below.
 	Dimensions GetQuotasDimensionArrayInput `pulumi:"dimensions"`
 	// The group code.
 	GroupCode pulumi.StringPtrInput `pulumi:"groupCode"`
@@ -158,6 +162,7 @@ func (o GetQuotasResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetQuotasResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Quota IDs.
 func (o GetQuotasResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetQuotasResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -170,6 +175,7 @@ func (o GetQuotasResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotasResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Quota names.
 func (o GetQuotasResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetQuotasResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -182,6 +188,7 @@ func (o GetQuotasResultOutput) ProductCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetQuotasResult) string { return v.ProductCode }).(pulumi.StringOutput)
 }
 
+// The quota action code.
 func (o GetQuotasResultOutput) QuotaActionCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotasResult) *string { return v.QuotaActionCode }).(pulumi.StringPtrOutput)
 }
@@ -190,6 +197,7 @@ func (o GetQuotasResultOutput) QuotaCategory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotasResult) *string { return v.QuotaCategory }).(pulumi.StringPtrOutput)
 }
 
+// A list of Quotas Quotas. Each element contains the following attributes:
 func (o GetQuotasResultOutput) Quotas() GetQuotasQuotaArrayOutput {
 	return o.ApplyT(func(v GetQuotasResult) []GetQuotasQuota { return v.Quotas }).(GetQuotasQuotaArrayOutput)
 }

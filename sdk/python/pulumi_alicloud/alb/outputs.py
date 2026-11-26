@@ -3080,7 +3080,8 @@ class ServerGroupServer(dict):
         :param _builtins.int weight: The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
                
                > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-               **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+               
+               > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
         """
         pulumi.set(__self__, "server_id", server_id)
         pulumi.set(__self__, "server_type", server_type)
@@ -3186,7 +3187,8 @@ class ServerGroupServer(dict):
         The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
 
         > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-        **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+
+        > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
         """
         return pulumi.get(self, "weight")
 
@@ -3413,7 +3415,7 @@ class GetAclsAclResult(dict):
         :param _builtins.str address_ip_version: Address Protocol Version.
         :param _builtins.str id: The ID of the Acl.
         :param _builtins.str resource_group_id: Resource Group to Which the Number.
-        :param _builtins.str status: The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        :param _builtins.str status: The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         """
         pulumi.set(__self__, "acl_entries", acl_entries)
         pulumi.set(__self__, "acl_id", acl_id)
@@ -3475,7 +3477,7 @@ class GetAclsAclResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         """
         return pulumi.get(self, "status")
 
@@ -3489,7 +3491,7 @@ class GetAclsAclAclEntryResult(dict):
         """
         :param _builtins.str description: Access Control Entries Note Description Length Is Limited to 1 to 256 Characters, Letters, digital, the Dash (-), a Forward Slash (/), Half a Period (.) and Underscores (_), Support Chinese Characters.
         :param _builtins.str entry: The resource ID in terraform of Acl.
-        :param _builtins.str status: The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
+        :param _builtins.str status: The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "entry", entry)
@@ -3515,7 +3517,7 @@ class GetAclsAclAclEntryResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
+        The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         """
         return pulumi.get(self, "status")
 
@@ -3540,7 +3542,9 @@ class GetAscriptsAscriptResult(dict):
         :param _builtins.bool enabled: Whether scripts are enabled.
         :param _builtins.bool ext_attribute_enabled: Whether extension parameters are enabled.
         :param Sequence['GetAscriptsAscriptExtAttributeArgs'] ext_attributes: Extended attribute list.
+        :param _builtins.str id: The ID of the AScript.
         :param _builtins.str listener_id: Listener ID of script attribution
+        :param _builtins.str load_balancer_id: The ID of the load balancer to which the listener belongs.
         :param _builtins.str position: Script execution location.
         :param _builtins.str script_content: Script content.
         :param _builtins.str status: Script status.
@@ -3600,6 +3604,9 @@ class GetAscriptsAscriptResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the AScript.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -3613,6 +3620,9 @@ class GetAscriptsAscriptResult(dict):
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> _builtins.str:
+        """
+        The ID of the load balancer to which the listener belongs.
+        """
         return pulumi.get(self, "load_balancer_id")
 
     @_builtins.property
@@ -3688,12 +3698,12 @@ class GetHealthCheckTemplatesTemplateResult(dict):
                  unhealthy_threshold: _builtins.int):
         """
         :param Sequence[_builtins.str] health_check_codes: The HTTP status code that indicates a successful health check.
-        :param _builtins.int health_check_connect_port: The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`  0 `. This default value indicates that the backend server is used for health checks.
+        :param _builtins.int health_check_connect_port: The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`0`. This default value indicates that the backend server is used for health checks.
         :param _builtins.str health_check_host: The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.
         :param _builtins.str health_check_http_version: The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`.
         :param _builtins.int health_check_interval: The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
         :param _builtins.str health_check_method: The health check method.  Valid values: `GET` and `HEAD`.  Default value: `HEAD`.
-        :param _builtins.str health_check_path: The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `  _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/) `.
+        :param _builtins.str health_check_path: The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `_ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/)`.
         :param _builtins.str health_check_protocol: The protocol that is used for health checks.  Valid values: HTTP and TCP.  Default value: HTTP.
         :param _builtins.str health_check_template_id: The ID of the resource.
         :param _builtins.str health_check_template_name: The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
@@ -3729,7 +3739,7 @@ class GetHealthCheckTemplatesTemplateResult(dict):
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> _builtins.int:
         """
-        The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`  0 `. This default value indicates that the backend server is used for health checks.
+        The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`0`. This default value indicates that the backend server is used for health checks.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -3769,7 +3779,7 @@ class GetHealthCheckTemplatesTemplateResult(dict):
     @pulumi.getter(name="healthCheckPath")
     def health_check_path(self) -> _builtins.str:
         """
-        The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `  _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/) `.
+        The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `_ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/)`.
         """
         return pulumi.get(self, "health_check_path")
 
@@ -3856,16 +3866,12 @@ class GetListenersListenerResult(dict):
                  xforwarded_for_configs: Sequence['outputs.GetListenersListenerXforwardedForConfigResult']):
         """
         :param _builtins.bool access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
-               
-               > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
         :param Sequence['GetListenersListenerAccessLogTracingConfigArgs'] access_log_tracing_configs: Xtrace Configuration Information.
         :param Sequence['GetListenersListenerAclConfigArgs'] acl_configs: The configurations of the access control lists (ACLs).
         :param Sequence['GetListenersListenerCertificateArgs'] certificates: The Certificate List.
         :param Sequence['GetListenersListenerDefaultActionArgs'] default_actions: The Default Rule Action List.
         :param _builtins.bool gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: `True` Or `False`. Default Value: `True`.
         :param _builtins.bool http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
-               
-               > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         :param _builtins.str id: The ID of the Listener.
         :param _builtins.int idle_timeout: Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
         :param _builtins.str listener_description: Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
@@ -3878,8 +3884,6 @@ class GetListenersListenerResult(dict):
         :param Sequence['GetListenersListenerQuicConfigArgs'] quic_configs: Configuration Associated with the QuIC Listening.
         :param _builtins.int request_timeout: The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param _builtins.str security_policy_id: Security Policy.
-               
-               > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         :param _builtins.str status: The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
         :param Sequence['GetListenersListenerXforwardedForConfigArgs'] xforwarded_for_configs: xforwardfor Related Attribute Configuration.
         """
@@ -3910,8 +3914,6 @@ class GetListenersListenerResult(dict):
     def access_log_record_customized_headers_enabled(self) -> _builtins.bool:
         """
         Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
-
-        > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
         """
         return pulumi.get(self, "access_log_record_customized_headers_enabled")
 
@@ -3960,8 +3962,6 @@ class GetListenersListenerResult(dict):
     def http2_enabled(self) -> _builtins.bool:
         """
         Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
-
-        > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         """
         return pulumi.get(self, "http2_enabled")
 
@@ -4058,8 +4058,6 @@ class GetListenersListenerResult(dict):
     def security_policy_id(self) -> _builtins.str:
         """
         Security Policy.
-
-        > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         """
         return pulumi.get(self, "security_policy_id")
 
@@ -4088,14 +4086,8 @@ class GetListenersListenerAccessLogTracingConfigResult(dict):
                  tracing_type: _builtins.str):
         """
         :param _builtins.bool tracing_enabled: Xtrace Function. Value: True Or False. Default Value: False.
-               
-               > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
         :param _builtins.int tracing_sample: Xtrace Sampling Rate. Value: **1~10000**.
-               
-               > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
         :param _builtins.str tracing_type: Xtrace Type Value Is **Zipkin**.
-               
-               > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
         """
         pulumi.set(__self__, "tracing_enabled", tracing_enabled)
         pulumi.set(__self__, "tracing_sample", tracing_sample)
@@ -4106,8 +4098,6 @@ class GetListenersListenerAccessLogTracingConfigResult(dict):
     def tracing_enabled(self) -> _builtins.bool:
         """
         Xtrace Function. Value: True Or False. Default Value: False.
-
-        > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
         """
         return pulumi.get(self, "tracing_enabled")
 
@@ -4116,8 +4106,6 @@ class GetListenersListenerAccessLogTracingConfigResult(dict):
     def tracing_sample(self) -> _builtins.int:
         """
         Xtrace Sampling Rate. Value: **1~10000**.
-
-        > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
         """
         return pulumi.get(self, "tracing_sample")
 
@@ -4126,8 +4114,6 @@ class GetListenersListenerAccessLogTracingConfigResult(dict):
     def tracing_type(self) -> _builtins.str:
         """
         Xtrace Type Value Is **Zipkin**.
-
-        > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
         """
         return pulumi.get(self, "tracing_type")
 
@@ -4168,7 +4154,7 @@ class GetListenersListenerAclConfigAclRelationResult(dict):
                  status: _builtins.str):
         """
         :param _builtins.str acl_id: Snooping Binding of the Access Policy Group ID List.
-        :param _builtins.str status: The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+        :param _builtins.str status: The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
         """
         pulumi.set(__self__, "acl_id", acl_id)
         pulumi.set(__self__, "status", status)
@@ -4185,7 +4171,7 @@ class GetListenersListenerAclConfigAclRelationResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+        The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
         """
         return pulumi.get(self, "status")
 
@@ -5824,8 +5810,8 @@ class GetSecurityPoliciesPolicyResult(dict):
         :param _builtins.str id: The ID of the Security Policy.
         :param _builtins.str resource_group_id: The ID of the resource group.
         :param _builtins.str security_policy_id: The first ID of the resource.
-        :param _builtins.str security_policy_name: The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
-        :param _builtins.str status: The status of the resource.
+        :param _builtins.str security_policy_name: The name of the resource.
+        :param _builtins.str status: The status of the resource. Valid values : `Available`, `Configuring`.
         :param Sequence[_builtins.str] tls_versions: The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
         """
         pulumi.set(__self__, "ciphers", ciphers)
@@ -5872,7 +5858,7 @@ class GetSecurityPoliciesPolicyResult(dict):
     @pulumi.getter(name="securityPolicyName")
     def security_policy_name(self) -> _builtins.str:
         """
-        The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+        The name of the resource.
         """
         return pulumi.get(self, "security_policy_name")
 
@@ -5880,7 +5866,7 @@ class GetSecurityPoliciesPolicyResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the resource. Valid values : `Available`, `Configuring`.
         """
         return pulumi.get(self, "status")
 

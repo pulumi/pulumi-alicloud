@@ -239,8 +239,10 @@ def get_clusters(cluster_id: Optional[_builtins.str] = None,
         security_group_id=default_security_group.id,
         cluster_spec="ack.pro.small")
     default = alicloud.cs.get_clusters_output(ids=[default_managed_kubernetes.id],
-        name_regex=default_managed_kubernetes.name)
+        name_regex=default_managed_kubernetes.name,
+        enable_details=True)
     pulumi.export("alicloudCsManagedKubernetesExampleId", default.clusters[0].id)
+    pulumi.export("alicloudCsManagedKubernetesExampleApiServerInternet", default.clusters[0].connections[0].api_server_internet)
     ```
 
 
@@ -360,8 +362,10 @@ def get_clusters_output(cluster_id: pulumi.Input[Optional[Optional[_builtins.str
         security_group_id=default_security_group.id,
         cluster_spec="ack.pro.small")
     default = alicloud.cs.get_clusters_output(ids=[default_managed_kubernetes.id],
-        name_regex=default_managed_kubernetes.name)
+        name_regex=default_managed_kubernetes.name,
+        enable_details=True)
     pulumi.export("alicloudCsManagedKubernetesExampleId", default.clusters[0].id)
+    pulumi.export("alicloudCsManagedKubernetesExampleApiServerInternet", default.clusters[0].connections[0].api_server_internet)
     ```
 
 

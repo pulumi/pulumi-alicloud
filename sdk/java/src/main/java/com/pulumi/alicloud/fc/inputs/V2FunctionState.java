@@ -352,6 +352,7 @@ public final class V2FunctionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * List of layers.
+     * 
      * &gt; **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
      * 
      */
@@ -360,6 +361,7 @@ public final class V2FunctionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return List of layers.
+     * 
      * &gt; **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
      * 
      */
@@ -929,6 +931,7 @@ public final class V2FunctionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param layers List of layers.
+         * 
          * &gt; **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
          * 
          * @return builder
@@ -941,6 +944,7 @@ public final class V2FunctionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param layers List of layers.
+         * 
          * &gt; **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
          * 
          * @return builder
@@ -952,6 +956,7 @@ public final class V2FunctionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param layers List of layers.
+         * 
          * &gt; **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
          * 
          * @return builder

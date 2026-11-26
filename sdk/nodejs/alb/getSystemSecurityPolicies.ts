@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.183.0+.
+ * > **NOTE:** Available since v1.183.0.
  *
  * ## Example Usage
  *
@@ -47,6 +47,9 @@ export interface GetSystemSecurityPoliciesArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * A mapping of tags of the resource.
+     */
     tags?: {[key: string]: string};
 }
 
@@ -72,7 +75,7 @@ export interface GetSystemSecurityPoliciesResult {
 /**
  * This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.183.0+.
+ * > **NOTE:** Available since v1.183.0.
  *
  * ## Example Usage
  *
@@ -110,5 +113,8 @@ export interface GetSystemSecurityPoliciesOutputArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * A mapping of tags of the resource.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

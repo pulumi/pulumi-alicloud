@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.174.0+.
+// > **NOTE:** Available since v1.174.0.
 //
 // ## Example Usage
 //
@@ -69,14 +69,17 @@ type GetAdConnectorDirectoriesArgs struct {
 
 // A collection of values returned by getAdConnectorDirectories.
 type GetAdConnectorDirectoriesResult struct {
+	// A list of Ecd Ad Connector Directories. Each element contains the following attributes:
 	Directories []GetAdConnectorDirectoriesDirectory `pulumi:"directories"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Ecd Ad Connector Directory names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of directory.
+	Status *string `pulumi:"status"`
 }
 
 func GetAdConnectorDirectoriesOutput(ctx *pulumi.Context, args GetAdConnectorDirectoriesOutputArgs, opts ...pulumi.InvokeOption) GetAdConnectorDirectoriesResultOutput {
@@ -115,6 +118,7 @@ func (o GetAdConnectorDirectoriesResultOutput) ToGetAdConnectorDirectoriesResult
 	return o
 }
 
+// A list of Ecd Ad Connector Directories. Each element contains the following attributes:
 func (o GetAdConnectorDirectoriesResultOutput) Directories() GetAdConnectorDirectoriesDirectoryArrayOutput {
 	return o.ApplyT(func(v GetAdConnectorDirectoriesResult) []GetAdConnectorDirectoriesDirectory { return v.Directories }).(GetAdConnectorDirectoriesDirectoryArrayOutput)
 }
@@ -132,6 +136,7 @@ func (o GetAdConnectorDirectoriesResultOutput) NameRegex() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetAdConnectorDirectoriesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecd Ad Connector Directory names.
 func (o GetAdConnectorDirectoriesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAdConnectorDirectoriesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -140,6 +145,7 @@ func (o GetAdConnectorDirectoriesResultOutput) OutputFile() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetAdConnectorDirectoriesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of directory.
 func (o GetAdConnectorDirectoriesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAdConnectorDirectoriesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

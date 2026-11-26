@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.116.0+.
+        /// &gt; **NOTE:** Available since v1.116.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.116.0+.
+        /// &gt; **NOTE:** Available since v1.116.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.116.0+.
+        /// &gt; **NOTE:** Available since v1.116.0.
         /// 
         /// ## Example Usage
         /// 
@@ -189,6 +189,9 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetHpcClustersResult
     {
+        /// <summary>
+        /// A list of Ecs Hpc Clusters. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHpcClustersClusterResult> Clusters;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -196,6 +199,9 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Hpc Cluster names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

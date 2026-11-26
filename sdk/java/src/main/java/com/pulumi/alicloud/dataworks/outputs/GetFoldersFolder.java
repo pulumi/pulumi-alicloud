@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFoldersFolder {
+    /**
+     * @return The ID of the Folder.
+     * 
+     */
     private String folderId;
     /**
      * @return Folder Path.
@@ -28,6 +32,10 @@ public final class GetFoldersFolder {
     private String projectId;
 
     private GetFoldersFolder() {}
+    /**
+     * @return The ID of the Folder.
+     * 
+     */
     public String folderId() {
         return this.folderId;
     }

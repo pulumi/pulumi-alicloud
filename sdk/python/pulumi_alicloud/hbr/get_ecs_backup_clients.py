@@ -50,6 +50,9 @@ class GetEcsBackupClientsResult:
     @_builtins.property
     @pulumi.getter
     def clients(self) -> Sequence['outputs.GetEcsBackupClientsClientResult']:
+        """
+        A list of Hbr Ecs Backup Clients. Each element contains the following attributes:
+        """
         return pulumi.get(self, "clients")
 
     @_builtins.property
@@ -78,6 +81,9 @@ class GetEcsBackupClientsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -103,7 +109,7 @@ def get_ecs_backup_clients(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 
@@ -149,7 +155,7 @@ def get_ecs_backup_clients_output(ids: pulumi.Input[Optional[Optional[Sequence[_
     """
     This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 

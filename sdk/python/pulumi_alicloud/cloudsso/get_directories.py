@@ -53,6 +53,9 @@ class GetDirectoriesResult:
     @_builtins.property
     @pulumi.getter
     def directories(self) -> Sequence['outputs.GetDirectoriesDirectoryResult']:
+        """
+        A list of Cloud Sso Directories. Each element contains the following attributes:
+        """
         return pulumi.get(self, "directories")
 
     @_builtins.property
@@ -81,6 +84,9 @@ class GetDirectoriesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Directory names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -112,7 +118,7 @@ def get_directories(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
@@ -160,7 +166,7 @@ def get_directories_output(enable_details: pulumi.Input[Optional[Optional[_built
     """
     This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 

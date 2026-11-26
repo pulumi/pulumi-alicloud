@@ -58,14 +58,14 @@ public final class StackInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ParameterOverrides. See the following `Block parameterOverrides`.
+     * ParameterOverrides. See `parameterOverrides` below.
      * 
      */
     @Import(name="parameterOverrides")
     private @Nullable Output<List<StackInstanceParameterOverrideArgs>> parameterOverrides;
 
     /**
-     * @return ParameterOverrides. See the following `Block parameterOverrides`.
+     * @return ParameterOverrides. See `parameterOverrides` below.
      * 
      */
     public Optional<Output<List<StackInstanceParameterOverrideArgs>>> parameterOverrides() {
@@ -229,7 +229,7 @@ public final class StackInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameterOverrides ParameterOverrides. See the following `Block parameterOverrides`.
+         * @param parameterOverrides ParameterOverrides. See `parameterOverrides` below.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class StackInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameterOverrides ParameterOverrides. See the following `Block parameterOverrides`.
+         * @param parameterOverrides ParameterOverrides. See `parameterOverrides` below.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class StackInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameterOverrides ParameterOverrides. See the following `Block parameterOverrides`.
+         * @param parameterOverrides ParameterOverrides. See `parameterOverrides` below.
          * 
          * @return builder
          * 

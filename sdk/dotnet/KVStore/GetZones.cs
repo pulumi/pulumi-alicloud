@@ -98,7 +98,6 @@ namespace Pulumi.AliCloud.KVStore
     {
         /// <summary>
         /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-        /// * ProductType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
         /// </summary>
         [Input("engine")]
         public string? Engine { get; set; }
@@ -121,6 +120,9 @@ namespace Pulumi.AliCloud.KVStore
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+        /// </summary>
         [Input("productType")]
         public string? ProductType { get; set; }
 
@@ -134,7 +136,6 @@ namespace Pulumi.AliCloud.KVStore
     {
         /// <summary>
         /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-        /// * ProductType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -157,6 +158,9 @@ namespace Pulumi.AliCloud.KVStore
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+        /// </summary>
         [Input("productType")]
         public Input<string>? ProductType { get; set; }
 

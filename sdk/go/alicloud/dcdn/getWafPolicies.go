@@ -54,8 +54,9 @@ func GetWafPolicies(ctx *pulumi.Context, args *GetWafPoliciesArgs, opts ...pulum
 // A collection of arguments for invoking getWafPolicies.
 type GetWafPoliciesArgs struct {
 	// A list of Waf Policy IDs.
-	Ids       []string `pulumi:"ids"`
-	NameRegex *string  `pulumi:"nameRegex"`
+	Ids []string `pulumi:"ids"`
+	// A regex string to filter results by the name of the Waf Policy.
+	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"wafGroup","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
@@ -67,9 +68,11 @@ type GetWafPoliciesArgs struct {
 // A collection of values returned by getWafPolicies.
 type GetWafPoliciesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id string `pulumi:"id"`
+	// A list of Waf Policy IDs.
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Waf Policy names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of Dcdn Waf Policies. Each element contains the following attributes:
@@ -87,8 +90,9 @@ func GetWafPoliciesOutput(ctx *pulumi.Context, args GetWafPoliciesOutputArgs, op
 // A collection of arguments for invoking getWafPolicies.
 type GetWafPoliciesOutputArgs struct {
 	// A list of Waf Policy IDs.
-	Ids       pulumi.StringArrayInput `pulumi:"ids"`
-	NameRegex pulumi.StringPtrInput   `pulumi:"nameRegex"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by the name of the Waf Policy.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"wafGroup","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
@@ -121,6 +125,7 @@ func (o GetWafPoliciesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWafPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Waf Policy IDs.
 func (o GetWafPoliciesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWafPoliciesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -129,6 +134,7 @@ func (o GetWafPoliciesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPoliciesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Waf Policy names.
 func (o GetWafPoliciesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWafPoliciesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

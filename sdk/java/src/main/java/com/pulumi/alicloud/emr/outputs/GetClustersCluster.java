@@ -56,12 +56,12 @@ public final class GetClustersCluster {
      */
     private Boolean bootstrapFailed;
     /**
-     * @return The first ID of the resource.
+     * @return The ID of the associated cluster.
      * 
      */
     private String clusterId;
     /**
-     * @return The ClusterName.
+     * @return The cluster name.
      * 
      */
     private String clusterName;
@@ -71,17 +71,17 @@ public final class GetClustersCluster {
      */
     private String createResource;
     /**
-     * @return The creation time of the resource.
+     * @return Creation time.
      * 
      */
     private String createTime;
     /**
-     * @return How to create a cluster.
+     * @return How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
      * 
      */
     private String createType;
     /**
-     * @return The hosting type of the cluster.
+     * @return The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
      * 
      */
     private String depositType;
@@ -91,7 +91,7 @@ public final class GetClustersCluster {
      */
     private Boolean easEnable;
     /**
-     * @return The expiration time of the cluster.
+     * @return Timeout time.
      * 
      */
     private String expiredTime;
@@ -100,6 +100,10 @@ public final class GetClustersCluster {
      * 
      */
     private String extraInfo;
+    /**
+     * @return Whether the cluster has an uncompleted order.
+     * 
+     */
     private Boolean hasUncompletedOrder;
     /**
      * @return High availability cluster.
@@ -116,6 +120,10 @@ public final class GetClustersCluster {
      * 
      */
     private List<GetClustersClusterHostPoolInfo> hostPoolInfos;
+    /**
+     * @return The ID of the Cluster.
+     * 
+     */
     private String id;
     /**
      * @return The ID of the image used to create the cluster.
@@ -128,12 +136,12 @@ public final class GetClustersCluster {
      */
     private Boolean localMetaDb;
     /**
-     * @return The host type of the cluster. The default is ECS.
+     * @return The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
      * 
      */
     private String machineType;
     /**
-     * @return Metadata type:
+     * @return Metadata type.
      * 
      */
     private String metaStoreType;
@@ -148,7 +156,7 @@ public final class GetClustersCluster {
      */
     private String paymentType;
     /**
-     * @return The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+     * @return The package year and month time of the machine group. The Valid Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
      * 
      */
     private Integer period;
@@ -158,7 +166,7 @@ public final class GetClustersCluster {
      */
     private List<GetClustersClusterRelateClusterInfo> relateClusterInfos;
     /**
-     * @return Whether to allow disk expansion:
+     * @return Whether to allow disk expansion.
      * 
      */
     private Boolean resizeDiskEnable;
@@ -284,14 +292,14 @@ public final class GetClustersCluster {
         return this.bootstrapFailed;
     }
     /**
-     * @return The first ID of the resource.
+     * @return The ID of the associated cluster.
      * 
      */
     public String clusterId() {
         return this.clusterId;
     }
     /**
-     * @return The ClusterName.
+     * @return The cluster name.
      * 
      */
     public String clusterName() {
@@ -305,21 +313,21 @@ public final class GetClustersCluster {
         return this.createResource;
     }
     /**
-     * @return The creation time of the resource.
+     * @return Creation time.
      * 
      */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return How to create a cluster.
+     * @return How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
      * 
      */
     public String createType() {
         return this.createType;
     }
     /**
-     * @return The hosting type of the cluster.
+     * @return The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
      * 
      */
     public String depositType() {
@@ -333,7 +341,7 @@ public final class GetClustersCluster {
         return this.easEnable;
     }
     /**
-     * @return The expiration time of the cluster.
+     * @return Timeout time.
      * 
      */
     public String expiredTime() {
@@ -346,6 +354,10 @@ public final class GetClustersCluster {
     public String extraInfo() {
         return this.extraInfo;
     }
+    /**
+     * @return Whether the cluster has an uncompleted order.
+     * 
+     */
     public Boolean hasUncompletedOrder() {
         return this.hasUncompletedOrder;
     }
@@ -370,6 +382,10 @@ public final class GetClustersCluster {
     public List<GetClustersClusterHostPoolInfo> hostPoolInfos() {
         return this.hostPoolInfos;
     }
+    /**
+     * @return The ID of the Cluster.
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -388,14 +404,14 @@ public final class GetClustersCluster {
         return this.localMetaDb;
     }
     /**
-     * @return The host type of the cluster. The default is ECS.
+     * @return The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
      * 
      */
     public String machineType() {
         return this.machineType;
     }
     /**
-     * @return Metadata type:
+     * @return Metadata type.
      * 
      */
     public String metaStoreType() {
@@ -416,7 +432,7 @@ public final class GetClustersCluster {
         return this.paymentType;
     }
     /**
-     * @return The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+     * @return The package year and month time of the machine group. The Valid Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
      * 
      */
     public Integer period() {
@@ -430,7 +446,7 @@ public final class GetClustersCluster {
         return this.relateClusterInfos;
     }
     /**
-     * @return Whether to allow disk expansion:
+     * @return Whether to allow disk expansion.
      * 
      */
     public Boolean resizeDiskEnable() {

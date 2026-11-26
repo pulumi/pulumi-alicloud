@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.140.0+.
+// > **NOTE:** Available since v1.140.0.
 //
 // ## Example Usage
 //
@@ -69,12 +69,14 @@ type GetAccessRulesArgs struct {
 
 // A collection of values returned by getAccessRules.
 type GetAccessRulesResult struct {
+	// The resource ID of the Access Group.
 	AccessGroupId string `pulumi:"accessGroupId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string               `pulumi:"id"`
-	Ids        []string             `pulumi:"ids"`
-	OutputFile *string              `pulumi:"outputFile"`
-	Rules      []GetAccessRulesRule `pulumi:"rules"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Dfs Access Rules. Each element contains the following attributes:
+	Rules []GetAccessRulesRule `pulumi:"rules"`
 }
 
 func GetAccessRulesOutput(ctx *pulumi.Context, args GetAccessRulesOutputArgs, opts ...pulumi.InvokeOption) GetAccessRulesResultOutput {
@@ -111,6 +113,7 @@ func (o GetAccessRulesResultOutput) ToGetAccessRulesResultOutputWithContext(ctx 
 	return o
 }
 
+// The resource ID of the Access Group.
 func (o GetAccessRulesResultOutput) AccessGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessRulesResult) string { return v.AccessGroupId }).(pulumi.StringOutput)
 }
@@ -128,6 +131,7 @@ func (o GetAccessRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Dfs Access Rules. Each element contains the following attributes:
 func (o GetAccessRulesResultOutput) Rules() GetAccessRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetAccessRulesResult) []GetAccessRulesRule { return v.Rules }).(GetAccessRulesRuleArrayOutput)
 }

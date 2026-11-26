@@ -53,9 +53,9 @@ class DomainSource(dict):
                  source_priority: Optional[_builtins.str] = None):
         """
         :param _builtins.str source_content: The address of the origin server. You can specify an IP address or a domain name.
-        :param _builtins.str source_port: The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
-        :param _builtins.str source_type: The type of the origin server. Valid values:
-        :param _builtins.str source_priority: The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+        :param _builtins.str source_port: The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+        :param _builtins.str source_type: The origin server type. Valid values:
+        :param _builtins.str source_priority: The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
         """
         pulumi.set(__self__, "source_content", source_content)
         pulumi.set(__self__, "source_port", source_port)
@@ -75,7 +75,7 @@ class DomainSource(dict):
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> _builtins.str:
         """
-        The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+        The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
         """
         return pulumi.get(self, "source_port")
 
@@ -83,7 +83,7 @@ class DomainSource(dict):
     @pulumi.getter(name="sourceType")
     def source_type(self) -> _builtins.str:
         """
-        The type of the origin server. Valid values:
+        The origin server type. Valid values:
         """
         return pulumi.get(self, "source_type")
 
@@ -91,7 +91,7 @@ class DomainSource(dict):
     @pulumi.getter(name="sourcePriority")
     def source_priority(self) -> Optional[_builtins.str]:
         """
-        The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+        The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
         """
         return pulumi.get(self, "source_priority")
 
@@ -117,9 +117,9 @@ class GetDomainsDomainResult(dict):
         :param _builtins.str gmt_modified: The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param _builtins.str id: The ID of the Domain. Its value is same as Queue Name.
         :param _builtins.str sand_box: Indicates whether the domain name for CDN is in a sandbox environment.
-        :param Sequence['GetDomainsDomainSourceArgs'] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+        :param Sequence['GetDomainsDomainSourceArgs'] sources: The information about the address of the origin server. Each element contains the following attributes:
         :param _builtins.str ssl_protocol: Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
-        :param _builtins.str status: The status of the resource.
+        :param _builtins.str status: The status of the domain name. The value of this parameter is used as a condition to filter domain names.
         """
         pulumi.set(__self__, "cname", cname)
         pulumi.set(__self__, "description", description)
@@ -192,7 +192,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter
     def sources(self) -> Sequence['outputs.GetDomainsDomainSourceResult']:
         """
-        The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+        The information about the address of the origin server. Each element contains the following attributes:
         """
         return pulumi.get(self, "sources")
 
@@ -208,7 +208,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the domain name. The value of this parameter is used as a condition to filter domain names.
         """
         return pulumi.get(self, "status")
 
@@ -220,6 +220,12 @@ class GetDomainsDomainSourceResult(dict):
                  source_port: _builtins.str,
                  source_priority: _builtins.str,
                  source_type: _builtins.str):
+        """
+        :param _builtins.str source_content: The address of the origin server. You can specify an IP address or a domain name.
+        :param _builtins.str source_port: The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+        :param _builtins.str source_priority: The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+        :param _builtins.str source_type: The origin server type. Valid values: `ipaddr`, `domain`, `oss`.
+        """
         pulumi.set(__self__, "source_content", source_content)
         pulumi.set(__self__, "source_port", source_port)
         pulumi.set(__self__, "source_priority", source_priority)
@@ -228,21 +234,33 @@ class GetDomainsDomainSourceResult(dict):
     @_builtins.property
     @pulumi.getter(name="sourceContent")
     def source_content(self) -> _builtins.str:
+        """
+        The address of the origin server. You can specify an IP address or a domain name.
+        """
         return pulumi.get(self, "source_content")
 
     @_builtins.property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> _builtins.str:
+        """
+        The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+        """
         return pulumi.get(self, "source_port")
 
     @_builtins.property
     @pulumi.getter(name="sourcePriority")
     def source_priority(self) -> _builtins.str:
+        """
+        The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+        """
         return pulumi.get(self, "source_priority")
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> _builtins.str:
+        """
+        The origin server type. Valid values: `ipaddr`, `domain`, `oss`.
+        """
         return pulumi.get(self, "source_type")
 
 

@@ -22,17 +22,57 @@ public final class GetInstancesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The ID Of The Image.
+     * 
+     */
     private @Nullable String imageId;
+    /**
+     * @return Instance Name.
+     * 
+     */
     private @Nullable String instanceName;
+    /**
+     * @return Instance Type.
+     * 
+     */
     private @Nullable String instanceType;
+    /**
+     * @return A list of Ecp Instances. Each element contains the following attributes:
+     * 
+     */
     private List<GetInstancesInstance> instances;
+    /**
+     * @return The Key Name.
+     * 
+     */
     private @Nullable String keyPairName;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Instance names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The payment type of the instance.
+     * 
+     */
     private @Nullable String paymentType;
+    /**
+     * @return Resolution.
+     * 
+     */
     private @Nullable String resolution;
+    /**
+     * @return Instance Status.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The zone ID of the instance.
+     * 
+     */
     private @Nullable String zoneId;
 
     private GetInstancesResult() {}
@@ -49,39 +89,79 @@ public final class GetInstancesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The ID Of The Image.
+     * 
+     */
     public Optional<String> imageId() {
         return Optional.ofNullable(this.imageId);
     }
+    /**
+     * @return Instance Name.
+     * 
+     */
     public Optional<String> instanceName() {
         return Optional.ofNullable(this.instanceName);
     }
+    /**
+     * @return Instance Type.
+     * 
+     */
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
+    /**
+     * @return A list of Ecp Instances. Each element contains the following attributes:
+     * 
+     */
     public List<GetInstancesInstance> instances() {
         return this.instances;
     }
+    /**
+     * @return The Key Name.
+     * 
+     */
     public Optional<String> keyPairName() {
         return Optional.ofNullable(this.keyPairName);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Instance names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The payment type of the instance.
+     * 
+     */
     public Optional<String> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }
+    /**
+     * @return Resolution.
+     * 
+     */
     public Optional<String> resolution() {
         return Optional.ofNullable(this.resolution);
     }
+    /**
+     * @return Instance Status.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The zone ID of the instance.
+     * 
+     */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }

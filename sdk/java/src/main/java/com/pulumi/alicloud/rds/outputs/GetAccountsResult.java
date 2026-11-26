@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountsResult {
+    /**
+     * @return A list of Rds Accounts. Each element contains the following attributes:
+     * 
+     */
     private List<GetAccountsAccount> accounts;
     private String dbInstanceId;
     /**
@@ -21,13 +25,29 @@ public final class GetAccountsResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Account IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Account names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
 
     private GetAccountsResult() {}
+    /**
+     * @return A list of Rds Accounts. Each element contains the following attributes:
+     * 
+     */
     public List<GetAccountsAccount> accounts() {
         return this.accounts;
     }
@@ -41,18 +61,30 @@ public final class GetAccountsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Account IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Account names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

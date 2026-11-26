@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Invocations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.168.0+.
+        /// &gt; **NOTE:** Available since v1.168.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Invocations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.168.0+.
+        /// &gt; **NOTE:** Available since v1.168.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Invocations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.168.0+.
+        /// &gt; **NOTE:** Available since v1.168.0.
         /// 
         /// ## Example Usage
         /// 
@@ -222,6 +222,9 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetEcsInvocationsResult
     {
+        /// <summary>
+        /// The ID of the command.
+        /// </summary>
         public readonly string? CommandId;
         public readonly string? ContentEncoding;
         /// <summary>
@@ -229,7 +232,13 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Ecs Invocations. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsInvocationsInvocationResult> Invocations;
+        /// <summary>
+        /// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `InvocationStatus` response parameter for the overall execution state.
+        /// </summary>
         public readonly string? InvokeStatus;
         public readonly string? OutputFile;
         public readonly int? PageNumber;

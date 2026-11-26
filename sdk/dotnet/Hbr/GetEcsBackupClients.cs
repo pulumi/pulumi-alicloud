@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -240,6 +240,9 @@ namespace Pulumi.AliCloud.Hbr
     [OutputType]
     public sealed class GetEcsBackupClientsResult
     {
+        /// <summary>
+        /// A list of Hbr Ecs Backup Clients. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsBackupClientsClientResult> Clients;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -248,6 +251,9 @@ namespace Pulumi.AliCloud.Hbr
         public readonly ImmutableArray<string> Ids;
         public readonly ImmutableArray<string> InstanceIds;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

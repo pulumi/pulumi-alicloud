@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in v1.92.0+.
+ * > **NOTE:** Available since v1.92.0.
  *
  * ## Example Usage
  *
@@ -117,10 +117,22 @@ export interface GetTemplatesArgs {
  * A collection of values returned by getTemplates.
  */
 export interface GetTemplatesResult {
+    /**
+     * The category of the template.
+     */
     readonly category?: string;
+    /**
+     * The user who created the template.
+     */
     readonly createdBy?: string;
+    /**
+     * The time when the template was created.
+     */
     readonly createdDate?: string;
     readonly createdDateAfter?: string;
+    /**
+     * Whether the template has a trigger.
+     */
     readonly hasTrigger?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -136,11 +148,23 @@ export interface GetTemplatesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The sharing type of the template.
+     */
     readonly shareType?: string;
     readonly sortField?: string;
     readonly sortOrder?: string;
+    /**
+     * The tag of the resource.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The format of the template.
+     */
     readonly templateFormat?: string;
+    /**
+     * The type of the OOS Template.
+     */
     readonly templateType?: string;
     /**
      * A list of OOS Templates. Each element contains the following attributes:
@@ -150,7 +174,7 @@ export interface GetTemplatesResult {
 /**
  * This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in v1.92.0+.
+ * > **NOTE:** Available since v1.92.0.
  *
  * ## Example Usage
  *

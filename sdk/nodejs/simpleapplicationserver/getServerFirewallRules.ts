@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Simple Application Server Firewall Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *
@@ -65,14 +65,20 @@ export interface GetServerFirewallRulesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * Alibaba Cloud simple application server instance ID.
+     */
     readonly instanceId: string;
     readonly outputFile?: string;
+    /**
+     * A list of Simple Application Server Firewall Rules. Each element contains the following attributes:
+     */
     readonly rules: outputs.simpleapplicationserver.GetServerFirewallRulesRule[];
 }
 /**
  * This data source provides the Simple Application Server Firewall Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *

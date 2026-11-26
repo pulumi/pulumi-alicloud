@@ -25,7 +25,15 @@ public final class GetConnectionsConnection {
      * 
      */
     private String expiredTime;
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     private String id;
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     private String instanceId;
     /**
      * @return The IP address of the instance.
@@ -80,9 +88,17 @@ public final class GetConnectionsConnection {
     public String expiredTime() {
         return this.expiredTime;
     }
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }

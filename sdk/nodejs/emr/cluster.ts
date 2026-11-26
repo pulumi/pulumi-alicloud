@@ -94,7 +94,7 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * const defaultCluster = new alicloud.emr.Cluster("default", {
- *     name: "terraform-create-cluster-test",
+ *     name: "terraform-create-cluster",
  *     emrVer: _default.then(_default => _default.mainVersions?.[0]?.emrVersion),
  *     clusterType: _default.then(_default => _default.mainVersions?.[0]?.clusterTypes?.[0]),
  *     hostGroups: [
@@ -145,6 +145,7 @@ import * as utilities from "../utilities";
  * ```
  *
  * ### 2. Scale Up
+ *
  * The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
  *
  * In the case of scaling up cluster, we should add the nodeCount of some host group.
@@ -231,7 +232,7 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * const defaultCluster = new alicloud.emr.Cluster("default", {
- *     name: "terraform-resize-cluster-test",
+ *     name: "terraform-resize-cluster",
  *     emrVer: _default.then(_default => _default.mainVersions?.[0]?.emrVersion),
  *     clusterType: _default.then(_default => _default.mainVersions?.[0]?.clusterTypes?.[0]),
  *     hostGroups: [
@@ -366,7 +367,7 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * const defaultCluster = new alicloud.emr.Cluster("default", {
- *     name: "terraform-resize-cluster-test",
+ *     name: "terraform-resize-cluster",
  *     emrVer: _default.then(_default => _default.mainVersions?.[0]?.emrVersion),
  *     clusterType: _default.then(_default => _default.mainVersions?.[0]?.clusterTypes?.[0]),
  *     hostGroups: [
@@ -491,7 +492,7 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * const gateway = new alicloud.emr.Cluster("gateway", {
- *     name: "terraform-gateway-cluster-test",
+ *     name: "terraform-gateway-cluster",
  *     emrVer: _default.then(_default => _default.mainVersions?.[0]?.emrVersion),
  *     clusterType: "GATEWAY",
  *     hostGroups: [{
@@ -568,7 +569,7 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
-     * Boot action parameters.
+     * Boot action parameters. See `bootstrapAction` below.
      */
     declare public readonly bootstrapActions: pulumi.Output<outputs.emr.ClusterBootstrapAction[] | undefined>;
     /**
@@ -580,7 +581,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly clusterType: pulumi.Output<string>;
     /**
-     * The custom configurations of emr-cluster service.
+     * The custom configurations of emr-cluster service. See `configs` below.
      */
     declare public readonly configs: pulumi.Output<outputs.emr.ClusterConfig[] | undefined>;
     /**
@@ -600,7 +601,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly highAvailabilityEnable: pulumi.Output<boolean | undefined>;
     /**
-     * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+     * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `hostGroup` below.
      */
     declare public readonly hostGroups: pulumi.Output<outputs.emr.ClusterHostGroup[] | undefined>;
     /**
@@ -616,7 +617,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly masterPwd: pulumi.Output<string | undefined>;
     /**
-     * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+     * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `metaStoreConf` below.
      */
     declare public readonly metaStoreConf: pulumi.Output<outputs.emr.ClusterMetaStoreConf | undefined>;
     /**
@@ -624,7 +625,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly metaStoreType: pulumi.Output<string>;
     /**
-     * The configurations of emr-cluster service modification after cluster created.
+     * The configurations of emr-cluster service modification after cluster created. See `modifyClusterServiceConfig` below.
      */
     declare public readonly modifyClusterServiceConfig: pulumi.Output<outputs.emr.ClusterModifyClusterServiceConfig | undefined>;
     /**
@@ -765,7 +766,7 @@ export class Cluster extends pulumi.CustomResource {
  */
 export interface ClusterState {
     /**
-     * Boot action parameters.
+     * Boot action parameters. See `bootstrapAction` below.
      */
     bootstrapActions?: pulumi.Input<pulumi.Input<inputs.emr.ClusterBootstrapAction>[] | undefined>;
     /**
@@ -777,7 +778,7 @@ export interface ClusterState {
      */
     clusterType?: pulumi.Input<string | undefined>;
     /**
-     * The custom configurations of emr-cluster service.
+     * The custom configurations of emr-cluster service. See `configs` below.
      */
     configs?: pulumi.Input<pulumi.Input<inputs.emr.ClusterConfig>[] | undefined>;
     /**
@@ -797,7 +798,7 @@ export interface ClusterState {
      */
     highAvailabilityEnable?: pulumi.Input<boolean | undefined>;
     /**
-     * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+     * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `hostGroup` below.
      */
     hostGroups?: pulumi.Input<pulumi.Input<inputs.emr.ClusterHostGroup>[] | undefined>;
     /**
@@ -813,7 +814,7 @@ export interface ClusterState {
      */
     masterPwd?: pulumi.Input<string | undefined>;
     /**
-     * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+     * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `metaStoreConf` below.
      */
     metaStoreConf?: pulumi.Input<inputs.emr.ClusterMetaStoreConf | undefined>;
     /**
@@ -821,7 +822,7 @@ export interface ClusterState {
      */
     metaStoreType?: pulumi.Input<string | undefined>;
     /**
-     * The configurations of emr-cluster service modification after cluster created.
+     * The configurations of emr-cluster service modification after cluster created. See `modifyClusterServiceConfig` below.
      */
     modifyClusterServiceConfig?: pulumi.Input<inputs.emr.ClusterModifyClusterServiceConfig | undefined>;
     /**
@@ -879,7 +880,7 @@ export interface ClusterState {
  */
 export interface ClusterArgs {
     /**
-     * Boot action parameters.
+     * Boot action parameters. See `bootstrapAction` below.
      */
     bootstrapActions?: pulumi.Input<pulumi.Input<inputs.emr.ClusterBootstrapAction>[] | undefined>;
     /**
@@ -891,7 +892,7 @@ export interface ClusterArgs {
      */
     clusterType: pulumi.Input<string>;
     /**
-     * The custom configurations of emr-cluster service.
+     * The custom configurations of emr-cluster service. See `configs` below.
      */
     configs?: pulumi.Input<pulumi.Input<inputs.emr.ClusterConfig>[] | undefined>;
     /**
@@ -911,7 +912,7 @@ export interface ClusterArgs {
      */
     highAvailabilityEnable?: pulumi.Input<boolean | undefined>;
     /**
-     * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+     * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `hostGroup` below.
      */
     hostGroups?: pulumi.Input<pulumi.Input<inputs.emr.ClusterHostGroup>[] | undefined>;
     /**
@@ -927,7 +928,7 @@ export interface ClusterArgs {
      */
     masterPwd?: pulumi.Input<string | undefined>;
     /**
-     * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+     * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `metaStoreConf` below.
      */
     metaStoreConf?: pulumi.Input<inputs.emr.ClusterMetaStoreConf | undefined>;
     /**
@@ -935,7 +936,7 @@ export interface ClusterArgs {
      */
     metaStoreType?: pulumi.Input<string | undefined>;
     /**
-     * The configurations of emr-cluster service modification after cluster created.
+     * The configurations of emr-cluster service modification after cluster created. See `modifyClusterServiceConfig` below.
      */
     modifyClusterServiceConfig?: pulumi.Input<inputs.emr.ClusterModifyClusterServiceConfig | undefined>;
     /**

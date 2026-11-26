@@ -20,6 +20,10 @@ public final class GetRegionsResult {
      */
     private String id;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Ros Regions. Each element contains the following attributes:
+     * 
+     */
     private List<GetRegionsRegion> regions;
 
     private GetRegionsResult() {}
@@ -33,6 +37,10 @@ public final class GetRegionsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Ros Regions. Each element contains the following attributes:
+     * 
+     */
     public List<GetRegionsRegion> regions() {
         return this.regions;
     }

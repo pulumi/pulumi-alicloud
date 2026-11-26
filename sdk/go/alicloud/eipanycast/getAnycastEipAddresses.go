@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.113.0+.
+// > **NOTE:** Available since v1.113.0.
 //
 // ## Example Usage
 //
@@ -84,21 +84,30 @@ type GetAnycastEipAddressesArgs struct {
 
 // A collection of values returned by getAnycastEipAddresses.
 type GetAnycastEipAddressesResult struct {
-	Addresses             []GetAnycastEipAddressesAddress `pulumi:"addresses"`
-	AnycastEipAddressName *string                         `pulumi:"anycastEipAddressName"`
-	BindInstanceIds       []string                        `pulumi:"bindInstanceIds"`
-	BusinessStatus        *string                         `pulumi:"businessStatus"`
+	// A list of Eipanycast Anycast Eip Addresses. Each element contains the following attributes:
+	Addresses []GetAnycastEipAddressesAddress `pulumi:"addresses"`
+	// Anycast EIP instance name.
+	AnycastEipAddressName *string  `pulumi:"anycastEipAddressName"`
+	BindInstanceIds       []string `pulumi:"bindInstanceIds"`
+	// The business status of the Anycast EIP instance. -`Normal`: Normal state. -`FinancialLocked`: The status of arrears locked.
+	BusinessStatus *string `pulumi:"businessStatus"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                 string   `pulumi:"id"`
-	Ids                []string `pulumi:"ids"`
-	InternetChargeType *string  `pulumi:"internetChargeType"`
-	IpAddress          *string  `pulumi:"ipAddress"`
-	NameRegex          *string  `pulumi:"nameRegex"`
-	Names              []string `pulumi:"names"`
-	OutputFile         *string  `pulumi:"outputFile"`
-	PaymentType        *string  `pulumi:"paymentType"`
-	ServiceLocation    *string  `pulumi:"serviceLocation"`
-	Status             *string  `pulumi:"status"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
+	InternetChargeType *string `pulumi:"internetChargeType"`
+	// Anycast EIP instance IP address.
+	IpAddress *string `pulumi:"ipAddress"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// A list of Anycast Eip Address names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+	PaymentType *string `pulumi:"paymentType"`
+	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+	ServiceLocation *string `pulumi:"serviceLocation"`
+	// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+	Status *string `pulumi:"status"`
 }
 
 func GetAnycastEipAddressesOutput(ctx *pulumi.Context, args GetAnycastEipAddressesOutputArgs, opts ...pulumi.InvokeOption) GetAnycastEipAddressesResultOutput {
@@ -151,10 +160,12 @@ func (o GetAnycastEipAddressesResultOutput) ToGetAnycastEipAddressesResultOutput
 	return o
 }
 
+// A list of Eipanycast Anycast Eip Addresses. Each element contains the following attributes:
 func (o GetAnycastEipAddressesResultOutput) Addresses() GetAnycastEipAddressesAddressArrayOutput {
 	return o.ApplyT(func(v GetAnycastEipAddressesResult) []GetAnycastEipAddressesAddress { return v.Addresses }).(GetAnycastEipAddressesAddressArrayOutput)
 }
 
+// Anycast EIP instance name.
 func (o GetAnycastEipAddressesResultOutput) AnycastEipAddressName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAnycastEipAddressesResult) *string { return v.AnycastEipAddressName }).(pulumi.StringPtrOutput)
 }
@@ -163,6 +174,7 @@ func (o GetAnycastEipAddressesResultOutput) BindInstanceIds() pulumi.StringArray
 	return o.ApplyT(func(v GetAnycastEipAddressesResult) []string { return v.BindInstanceIds }).(pulumi.StringArrayOutput)
 }
 
+// The business status of the Anycast EIP instance. -`Normal`: Normal state. -`FinancialLocked`: The status of arrears locked.
 func (o GetAnycastEipAddressesResultOutput) BusinessStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAnycastEipAddressesResult) *string { return v.BusinessStatus }).(pulumi.StringPtrOutput)
 }
@@ -176,10 +188,12 @@ func (o GetAnycastEipAddressesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAnycastEipAddressesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
 func (o GetAnycastEipAddressesResultOutput) InternetChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAnycastEipAddressesResult) *string { return v.InternetChargeType }).(pulumi.StringPtrOutput)
 }
 
+// Anycast EIP instance IP address.
 func (o GetAnycastEipAddressesResultOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAnycastEipAddressesResult) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
@@ -188,6 +202,7 @@ func (o GetAnycastEipAddressesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAnycastEipAddressesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Anycast Eip Address names.
 func (o GetAnycastEipAddressesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAnycastEipAddressesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -196,14 +211,17 @@ func (o GetAnycastEipAddressesResultOutput) OutputFile() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetAnycastEipAddressesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
 func (o GetAnycastEipAddressesResultOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAnycastEipAddressesResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
 }
 
+// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
 func (o GetAnycastEipAddressesResultOutput) ServiceLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAnycastEipAddressesResult) *string { return v.ServiceLocation }).(pulumi.StringPtrOutput)
 }
 
+// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
 func (o GetAnycastEipAddressesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAnycastEipAddressesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

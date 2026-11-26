@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a SCDN Accelerated Domain resource.
  * 
- * For information about domain config and how to use it, see [Batch set config](https://help.aliyun.com/document_detail/92912.html)
+ * For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/doc-detail/92912.html)
  * 
- * &gt; **NOTE:** Available in v1.131.0+.
+ * &gt; **NOTE:** Available since v1.131.0.
  * 
  * &gt; **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
  * 
@@ -125,14 +125,14 @@ public class DomainConfig extends com.pulumi.resources.CustomResource {
         return this.domainName;
     }
     /**
-     * The args of the domain config.
+     * The args of the domain config. See `functionArgs` below for details.
      * 
      */
     @Export(name="functionArgs", refs={List.class,DomainConfigFunctionArg.class}, tree="[0,1]")
     private Output<List<DomainConfigFunctionArg>> functionArgs;
 
     /**
-     * @return The args of the domain config.
+     * @return The args of the domain config. See `functionArgs` below for details.
      * 
      */
     public Output<List<DomainConfigFunctionArg>> functionArgs() {

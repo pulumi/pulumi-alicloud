@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetExchangesResult {
+    /**
+     * @return A list of Amqp Exchanges. Each element contains the following attributes:
+     * 
+     */
     private List<GetExchangesExchange> exchanges;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -21,13 +25,29 @@ public final class GetExchangesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     private String instanceId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Exchange names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The name of virtual host where an exchange resides.
+     * 
+     */
     private String virtualHostName;
 
     private GetExchangesResult() {}
+    /**
+     * @return A list of Amqp Exchanges. Each element contains the following attributes:
+     * 
+     */
     public List<GetExchangesExchange> exchanges() {
         return this.exchanges;
     }
@@ -41,18 +61,30 @@ public final class GetExchangesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Exchange names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The name of virtual host where an exchange resides.
+     * 
+     */
     public String virtualHostName() {
         return this.virtualHostName;
     }

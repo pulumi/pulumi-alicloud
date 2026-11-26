@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// <summary>
         /// Provides a collection of DCDN Domains to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available since 1.94.0.
+        /// &gt; **NOTE:** Available since v1.94.0.
         /// 
         /// ## Example Usage
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// <summary>
         /// Provides a collection of DCDN Domains to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available since 1.94.0.
+        /// &gt; **NOTE:** Available since v1.94.0.
         /// 
         /// ## Example Usage
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// <summary>
         /// Provides a collection of DCDN Domains to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available since 1.94.0.
+        /// &gt; **NOTE:** Available since v1.94.0.
         /// 
         /// ## Example Usage
         /// 
@@ -174,6 +174,9 @@ namespace Pulumi.AliCloud.Dcdn
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The security token.
+        /// </summary>
         [Input("securityToken")]
         public string? SecurityToken { get; set; }
 
@@ -251,6 +254,9 @@ namespace Pulumi.AliCloud.Dcdn
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The security token.
+        /// </summary>
         [Input("securityToken")]
         public Input<string>? SecurityToken { get; set; }
 

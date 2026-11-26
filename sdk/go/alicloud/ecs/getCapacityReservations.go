@@ -13,7 +13,7 @@ import (
 
 // This data source provides Ecs Capacity Reservation available to the user.
 //
-// > **NOTE:** Available in 1.195.0+
+// > **NOTE:** Available since v1.195.0
 //
 // ## Example Usage
 //
@@ -58,6 +58,7 @@ func GetCapacityReservations(ctx *pulumi.Context, args *GetCapacityReservationsA
 
 // A collection of arguments for invoking getCapacityReservations.
 type GetCapacityReservationsArgs struct {
+	// A list of Capacity Reservation IDs.
 	CapacityReservationIds []string `pulumi:"capacityReservationIds"`
 	// A list of Capacity Reservation IDs.
 	Ids []string `pulumi:"ids"`
@@ -102,7 +103,7 @@ type GetCapacityReservationsResult struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the capacity reservation.
 	Status *string `pulumi:"status"`
-	// A mapping of tags to assign to the Capacity Reservation.
+	// (Optional) A mapping of tags to assign to the Capacity Reservation.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -113,6 +114,7 @@ func GetCapacityReservationsOutput(ctx *pulumi.Context, args GetCapacityReservat
 
 // A collection of arguments for invoking getCapacityReservations.
 type GetCapacityReservationsOutputArgs struct {
+	// A list of Capacity Reservation IDs.
 	CapacityReservationIds pulumi.StringArrayInput `pulumi:"capacityReservationIds"`
 	// A list of Capacity Reservation IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -210,7 +212,7 @@ func (o GetCapacityReservationsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCapacityReservationsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// A mapping of tags to assign to the Capacity Reservation.
+// (Optional) A mapping of tags to assign to the Capacity Reservation.
 func (o GetCapacityReservationsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCapacityReservationsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

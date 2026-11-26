@@ -66,7 +66,7 @@ class GetTrailsDeprecatedResult:
     @_utilities.deprecated("""Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.""")
     def actiontrails(self) -> Sequence['outputs.GetTrailsDeprecatedActiontrailResult']:
         """
-        A list of actiontrails. Each element contains the following attributes:
+        (Deprecated since v1.95.0) Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead. Each element contains the following attributes:
         """
         return pulumi.get(self, "actiontrails")
 
@@ -81,6 +81,9 @@ class GetTrailsDeprecatedResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of ActionTrail Trail ids. It is the same as trail name.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -114,11 +117,17 @@ class GetTrailsDeprecatedResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the ActionTrail Trail.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def trails(self) -> Sequence['outputs.GetTrailsDeprecatedTrailResult']:
+        """
+        A list of ActionTrail Trails. Each element contains the following attributes:
+        """
         return pulumi.get(self, "trails")
 
 
@@ -150,7 +159,9 @@ def get_trails_deprecated(ids: Optional[Sequence[_builtins.str]] = None,
     """
     > **DEPRECATED:**  This datasource has been renamed to actiontrail_get_trails from version 1.95.0.
 
-    This data source provides a list of action trail of the current Alibaba Cloud user.
+    This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available since v1.95.0.
 
     ## Example Usage
 
@@ -158,13 +169,17 @@ def get_trails_deprecated(ids: Optional[Sequence[_builtins.str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    trails = alicloud.actiontrail.get_trails_deprecated(name_regex="tf-testacc-actiontrail")
-    pulumi.export("firstTrailName", trails.actiontrails[0].name)
+    default = alicloud.actiontrail.get_trails(name_regex="tf-testacc-actiontrail")
+    pulumi.export("trailName", default.trails[0].id)
     ```
 
 
-    :param _builtins.str name_regex: A regex string to filter results action trail name.
+    :param Sequence[_builtins.str] ids: A list of ActionTrail Trail IDs. It is the same as trail name.
+    :param _builtins.bool include_organization_trail: Whether to show organization tracking. Default to `false`.
+    :param _builtins.bool include_shadow_trails: Whether to show shadow tracking. Default to `false`.
+    :param _builtins.str name_regex: A regex string to filter results by trail name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str status: Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
     """
     pulumi.log.warn("""get_trails_deprecated is deprecated: DataSource has been renamed to `getTrails`""")
     __args__ = dict()
@@ -198,7 +213,9 @@ def get_trails_deprecated_output(ids: pulumi.Input[Optional[Optional[Sequence[_b
     """
     > **DEPRECATED:**  This datasource has been renamed to actiontrail_get_trails from version 1.95.0.
 
-    This data source provides a list of action trail of the current Alibaba Cloud user.
+    This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available since v1.95.0.
 
     ## Example Usage
 
@@ -206,13 +223,17 @@ def get_trails_deprecated_output(ids: pulumi.Input[Optional[Optional[Sequence[_b
     import pulumi
     import pulumi_alicloud as alicloud
 
-    trails = alicloud.actiontrail.get_trails_deprecated(name_regex="tf-testacc-actiontrail")
-    pulumi.export("firstTrailName", trails.actiontrails[0].name)
+    default = alicloud.actiontrail.get_trails(name_regex="tf-testacc-actiontrail")
+    pulumi.export("trailName", default.trails[0].id)
     ```
 
 
-    :param _builtins.str name_regex: A regex string to filter results action trail name.
+    :param Sequence[_builtins.str] ids: A list of ActionTrail Trail IDs. It is the same as trail name.
+    :param _builtins.bool include_organization_trail: Whether to show organization tracking. Default to `false`.
+    :param _builtins.bool include_shadow_trails: Whether to show shadow tracking. Default to `false`.
+    :param _builtins.str name_regex: A regex string to filter results by trail name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str status: Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
     """
     pulumi.log.warn("""get_trails_deprecated is deprecated: DataSource has been renamed to `getTrails`""")
     __args__ = dict()

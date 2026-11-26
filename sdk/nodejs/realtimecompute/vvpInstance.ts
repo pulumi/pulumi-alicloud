@@ -9,9 +9,11 @@ import * as utilities from "../utilities";
 /**
  * Provides a Realtime Compute Vvp Instance resource.
  *
- * For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://next.api.alibabacloud.com/api/foasconsole/2019-06-01/CreateInstance).
+ * For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://api.aliyun.com/api/foasconsole/2021-10-28/CreateInstance?RegionId=cn-hangzhou).
  *
  * > **NOTE:** Available since v1.214.0.
+ *
+ * > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
  *
  * ## Example Usage
  *
@@ -51,7 +53,6 @@ import * as utilities from "../utilities";
  *     },
  *     vvpInstanceName: `${name}-${defaultInteger.result}`,
  *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
- *     zoneId: zoneId,
  *     vswitchIds: [defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0])],
  *     paymentType: "PayAsYouGo",
  * });
@@ -121,6 +122,10 @@ export class VvpInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * The default namespace resource configuration. See `defaultNamespaceResourceSpec` below.
+     */
+    declare public readonly defaultNamespaceResourceSpec: pulumi.Output<outputs.realtimecompute.VvpInstanceDefaultNamespaceResourceSpec | undefined>;
+    /**
      * The number of subscription periods. If the payment type is PRE, this parameter is required.
      */
     declare public readonly duration: pulumi.Output<number | undefined>;
@@ -177,7 +182,9 @@ export class VvpInstance extends pulumi.CustomResource {
      */
     declare public readonly vvpInstanceName: pulumi.Output<string>;
     /**
-     * The zone ID of the resource.
+     * The zone ID of the resource. Field `zoneId` has been deprecated from version 2.3.0.
+     *
+     * @deprecated Field `zoneId` has been deprecated from version 2.3.0.
      */
     declare public readonly zoneId: pulumi.Output<string>;
 
@@ -196,6 +203,7 @@ export class VvpInstance extends pulumi.CustomResource {
             const state = argsOrState as VvpInstanceState | undefined;
             resourceInputs["autoRenewDuration"] = state?.autoRenewDuration;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["defaultNamespaceResourceSpec"] = state?.defaultNamespaceResourceSpec;
             resourceInputs["duration"] = state?.duration;
             resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["pricingCycle"] = state?.pricingCycle;
@@ -228,10 +236,8 @@ export class VvpInstance extends pulumi.CustomResource {
             if (args?.vvpInstanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vvpInstanceName'");
             }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
-            }
             resourceInputs["autoRenewDuration"] = args?.autoRenewDuration;
+            resourceInputs["defaultNamespaceResourceSpec"] = args?.defaultNamespaceResourceSpec;
             resourceInputs["duration"] = args?.duration;
             resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["pricingCycle"] = args?.pricingCycle;
@@ -266,6 +272,10 @@ export interface VvpInstanceState {
      * The creation time of the resource.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * The default namespace resource configuration. See `defaultNamespaceResourceSpec` below.
+     */
+    defaultNamespaceResourceSpec?: pulumi.Input<inputs.realtimecompute.VvpInstanceDefaultNamespaceResourceSpec | undefined>;
     /**
      * The number of subscription periods. If the payment type is PRE, this parameter is required.
      */
@@ -323,7 +333,9 @@ export interface VvpInstanceState {
      */
     vvpInstanceName?: pulumi.Input<string | undefined>;
     /**
-     * The zone ID of the resource.
+     * The zone ID of the resource. Field `zoneId` has been deprecated from version 2.3.0.
+     *
+     * @deprecated Field `zoneId` has been deprecated from version 2.3.0.
      */
     zoneId?: pulumi.Input<string | undefined>;
 }
@@ -336,6 +348,10 @@ export interface VvpInstanceArgs {
      * The auto-renewal period of the subscription instance. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
      */
     autoRenewDuration?: pulumi.Input<number | undefined>;
+    /**
+     * The default namespace resource configuration. See `defaultNamespaceResourceSpec` below.
+     */
+    defaultNamespaceResourceSpec?: pulumi.Input<inputs.realtimecompute.VvpInstanceDefaultNamespaceResourceSpec | undefined>;
     /**
      * The number of subscription periods. If the payment type is PRE, this parameter is required.
      */
@@ -385,7 +401,9 @@ export interface VvpInstanceArgs {
      */
     vvpInstanceName: pulumi.Input<string>;
     /**
-     * The zone ID of the resource.
+     * The zone ID of the resource. Field `zoneId` has been deprecated from version 2.3.0.
+     *
+     * @deprecated Field `zoneId` has been deprecated from version 2.3.0.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

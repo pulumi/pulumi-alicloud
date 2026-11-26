@@ -95,6 +95,7 @@ namespace Pulumi.AliCloud.PrivateLink
     ///         EndpointId = exampleVpcEndpoint.Id,
     ///         ServiceId = exampleVpcEndpoint.ServiceId,
     ///         Bandwidth = 1024,
+    ///         TrafficControlMode = "BandwidthLimit",
     ///     });
     /// 
     /// });
@@ -134,6 +135,12 @@ namespace Pulumi.AliCloud.PrivateLink
         public Output<string> EndpointId { get; private set; } = null!;
 
         /// <summary>
+        /// The owner ID of the endpoint.
+        /// </summary>
+        [Output("endpointOwnerId")]
+        public Output<int> EndpointOwnerId { get; private set; } = null!;
+
+        /// <summary>
         /// The endpoint service ID.
         /// </summary>
         [Output("serviceId")]
@@ -144,6 +151,12 @@ namespace Pulumi.AliCloud.PrivateLink
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `Bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `Bandwidth` parameter is ignored.
+        /// </summary>
+        [Output("trafficControlMode")]
+        public Output<string> TrafficControlMode { get; private set; } = null!;
 
 
         /// <summary>
@@ -217,6 +230,12 @@ namespace Pulumi.AliCloud.PrivateLink
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
 
+        /// <summary>
+        /// The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `Bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `Bandwidth` parameter is ignored.
+        /// </summary>
+        [Input("trafficControlMode")]
+        public Input<string>? TrafficControlMode { get; set; }
+
         public VpcEndpointServiceConnectionArgs()
         {
         }
@@ -246,6 +265,12 @@ namespace Pulumi.AliCloud.PrivateLink
         public Input<string>? EndpointId { get; set; }
 
         /// <summary>
+        /// The owner ID of the endpoint.
+        /// </summary>
+        [Input("endpointOwnerId")]
+        public Input<int>? EndpointOwnerId { get; set; }
+
+        /// <summary>
         /// The endpoint service ID.
         /// </summary>
         [Input("serviceId")]
@@ -256,6 +281,12 @@ namespace Pulumi.AliCloud.PrivateLink
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `Bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `Bandwidth` parameter is ignored.
+        /// </summary>
+        [Input("trafficControlMode")]
+        public Input<string>? TrafficControlMode { get; set; }
 
         public VpcEndpointServiceConnectionState()
         {

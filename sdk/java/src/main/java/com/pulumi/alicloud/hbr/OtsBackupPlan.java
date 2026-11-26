@@ -26,8 +26,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.163.0.
  * 
- * &gt; **NOTE:** Deprecated since v1.249.0.
- * 
  * &gt; **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource alicloud.hbr.Policy and alicloud_hbr_policy_binding.
  * 
  * ## Example Usage
@@ -105,20 +103,20 @@ import javax.annotation.Nullable;
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name("hbrexamplerole")
  *             .document("""
- * }&#92;{@code t}&#92;{@code t}{{@code
- * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Statement}&#92;{@code ": [
- * }&#92;{@code t}&#92;{@code t}&#92;{@code t}{{@code
- * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
- * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
- * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Principal}&#92;{@code ": }{{@code
- * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Service}&#92;{@code ": [
- * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "crossbackup.hbr.aliyuncs.com}&#92;{@code "
- * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t]
- * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
- * }&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
- * }&#92;{@code t}&#92;{@code t}&#92;{@code t],
- *   }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
- * }&#92;{@code t}&#92;{@code t}}{@code
+ *     }{{@code
+ *       }&#92;{@code "Statement}&#92;{@code ": [
+ *       }{{@code
+ *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+ *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *         }&#92;{@code "Principal}&#92;{@code ": }{{@code
+ *           }&#92;{@code "Service}&#92;{@code ": [
+ *             }&#92;{@code "crossbackup.hbr.aliyuncs.com}&#92;{@code "
+ *           ]
+ *         }}{@code
+ *       }}{@code
+ *       ],
+ *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ *     }}{@code
  *             """)
  *             .force(true)
  *             .build());
@@ -263,14 +261,14 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
         return this.otsBackupPlanName;
     }
     /**
-     * The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * The details about the Table store instance. See `otsDetail` below. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     @Export(name="otsDetails", refs={List.class,OtsBackupPlanOtsDetail.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OtsBackupPlanOtsDetail>> otsDetails;
 
     /**
-     * @return The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * @return The details about the Table store instance. See `otsDetail` below. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     public Output<Optional<List<OtsBackupPlanOtsDetail>>> otsDetails() {
@@ -291,14 +289,14 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
         return this.retention;
     }
     /**
-     * The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * The backup plan rule. See `rules` below. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     @Export(name="rules", refs={List.class,OtsBackupPlanRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OtsBackupPlanRule>> rules;
 
     /**
-     * @return The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * @return The backup plan rule. See `rules` below. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     public Output<Optional<List<OtsBackupPlanRule>>> rules() {

@@ -18,6 +18,11 @@ public final class GetKubernetesVersionMetadata {
      */
     private List<GetKubernetesVersionMetadataRuntime> runtimes;
     /**
+     * @return Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+     * 
+     */
+    private String supportPolicy;
+    /**
      * @return The runtime version.
      * 
      */
@@ -30,6 +35,13 @@ public final class GetKubernetesVersionMetadata {
      */
     public List<GetKubernetesVersionMetadataRuntime> runtimes() {
         return this.runtimes;
+    }
+    /**
+     * @return Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+     * 
+     */
+    public String supportPolicy() {
+        return this.supportPolicy;
     }
     /**
      * @return The runtime version.
@@ -49,11 +61,13 @@ public final class GetKubernetesVersionMetadata {
     @CustomType.Builder
     public static final class Builder {
         private List<GetKubernetesVersionMetadataRuntime> runtimes;
+        private String supportPolicy;
         private String version;
         public Builder() {}
         public Builder(GetKubernetesVersionMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.runtimes = defaults.runtimes;
+    	      this.supportPolicy = defaults.supportPolicy;
     	      this.version = defaults.version;
         }
 
@@ -69,6 +83,14 @@ public final class GetKubernetesVersionMetadata {
             return runtimes(List.of(runtimes));
         }
         @CustomType.Setter
+        public Builder supportPolicy(String supportPolicy) {
+            if (supportPolicy == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesVersionMetadata", "supportPolicy");
+            }
+            this.supportPolicy = supportPolicy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder version(String version) {
             if (version == null) {
               throw new MissingRequiredPropertyException("GetKubernetesVersionMetadata", "version");
@@ -79,6 +101,7 @@ public final class GetKubernetesVersionMetadata {
         public GetKubernetesVersionMetadata build() {
             final var _resultValue = new GetKubernetesVersionMetadata();
             _resultValue.runtimes = runtimes;
+            _resultValue.supportPolicy = supportPolicy;
             _resultValue.version = version;
             return _resultValue;
         }

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the available zones with the Network Load Balancer (NLB) Instance of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.191.0+.
+ * > **NOTE:** Available since v1.191.0.
  *
  * ## Example Usage
  *
@@ -49,14 +49,20 @@ export interface GetZonesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of nlb instance zone IDs.
+     */
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of nlb Instance zones. Each element contains the following attributes:
+     */
     readonly zones: outputs.nlb.GetZonesZone[];
 }
 /**
  * This data source provides the available zones with the Network Load Balancer (NLB) Instance of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.191.0+.
+ * > **NOTE:** Available since v1.191.0.
  *
  * ## Example Usage
  *

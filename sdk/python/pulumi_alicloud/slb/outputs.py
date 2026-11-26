@@ -16,6 +16,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AclEntryAttachmentEntry',
     'AclEntryList',
     'BackendServerBackendServer',
     'ListenerXForwardedFor',
@@ -52,10 +53,44 @@ __all__ = [
 ]
 
 @pulumi.output_type
+class AclEntryAttachmentEntry(dict):
+    def __init__(__self__, *,
+                 entry: _builtins.str,
+                 comment: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str entry: The CIDR block of the acl entry.
+        :param _builtins.str comment: The comment of the acl entry.
+        """
+        pulumi.set(__self__, "entry", entry)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+
+    @_builtins.property
+    @pulumi.getter
+    def entry(self) -> _builtins.str:
+        """
+        The CIDR block of the acl entry.
+        """
+        return pulumi.get(self, "entry")
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        The comment of the acl entry.
+        """
+        return pulumi.get(self, "comment")
+
+
+@pulumi.output_type
 class AclEntryList(dict):
     def __init__(__self__, *,
                  comment: Optional[_builtins.str] = None,
                  entry: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: The comment of the entry.
+        :param _builtins.str entry: The CIDR blocks.
+        """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if entry is not None:
@@ -64,11 +99,17 @@ class AclEntryList(dict):
     @_builtins.property
     @pulumi.getter
     def comment(self) -> Optional[_builtins.str]:
+        """
+        The comment of the entry.
+        """
         return pulumi.get(self, "comment")
 
     @_builtins.property
     @pulumi.getter
     def entry(self) -> Optional[_builtins.str]:
+        """
+        The CIDR blocks.
+        """
         return pulumi.get(self, "entry")
 
 
@@ -98,6 +139,12 @@ class BackendServerBackendServer(dict):
                  weight: _builtins.int,
                  server_ip: Optional[_builtins.str] = None,
                  type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str server_id: A list backend server ID (ECS instance ID).
+        :param _builtins.int weight: Weight of the backend server. Valid value range: [0-100].
+        :param _builtins.str server_ip: ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `server_ip` parameter.
+        :param _builtins.str type: Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
+        """
         pulumi.set(__self__, "server_id", server_id)
         pulumi.set(__self__, "weight", weight)
         if server_ip is not None:
@@ -108,21 +155,33 @@ class BackendServerBackendServer(dict):
     @_builtins.property
     @pulumi.getter(name="serverId")
     def server_id(self) -> _builtins.str:
+        """
+        A list backend server ID (ECS instance ID).
+        """
         return pulumi.get(self, "server_id")
 
     @_builtins.property
     @pulumi.getter
     def weight(self) -> _builtins.int:
+        """
+        Weight of the backend server. Valid value range: [0-100].
+        """
         return pulumi.get(self, "weight")
 
     @_builtins.property
     @pulumi.getter(name="serverIp")
     def server_ip(self) -> Optional[_builtins.str]:
+        """
+        ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `server_ip` parameter.
+        """
         return pulumi.get(self, "server_ip")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
+        """
+        Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
+        """
         return pulumi.get(self, "type")
 
 
@@ -369,10 +428,11 @@ class GetAclsAclResult(dict):
                  resource_group_id: _builtins.str,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param Sequence['GetAclsAclEntryListArgs'] entry_lists: A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
+        :param Sequence['GetAclsAclEntryListArgs'] entry_lists: A list of entry (IP addresses or CIDR blocks).
         :param _builtins.str id: Acl ID.
+        :param _builtins.str ip_version: The IP version of the access control list.
         :param _builtins.str name: Acl name.
-        :param Sequence['GetAclsAclRelatedListenerArgs'] related_listeners: A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
+        :param Sequence['GetAclsAclRelatedListenerArgs'] related_listeners: A list of listeners attached to the acl.
         :param _builtins.str resource_group_id: The Id of resource group which acl belongs.
         :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
         """
@@ -389,7 +449,7 @@ class GetAclsAclResult(dict):
     @pulumi.getter(name="entryLists")
     def entry_lists(self) -> Sequence['outputs.GetAclsAclEntryListResult']:
         """
-        A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
+        A list of entry (IP addresses or CIDR blocks).
         """
         return pulumi.get(self, "entry_lists")
 
@@ -404,6 +464,9 @@ class GetAclsAclResult(dict):
     @_builtins.property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> _builtins.str:
+        """
+        The IP version of the access control list.
+        """
         return pulumi.get(self, "ip_version")
 
     @_builtins.property
@@ -418,7 +481,7 @@ class GetAclsAclResult(dict):
     @pulumi.getter(name="relatedListeners")
     def related_listeners(self) -> Sequence['outputs.GetAclsAclRelatedListenerResult']:
         """
-        A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
+        A list of listeners attached to the acl.
         """
         return pulumi.get(self, "related_listeners")
 
@@ -444,17 +507,27 @@ class GetAclsAclEntryListResult(dict):
     def __init__(__self__, *,
                  comment: _builtins.str,
                  entry: _builtins.str):
+        """
+        :param _builtins.str comment: The comment of the entry.
+        :param _builtins.str entry: An IP address or CIDR block.
+        """
         pulumi.set(__self__, "comment", comment)
         pulumi.set(__self__, "entry", entry)
 
     @_builtins.property
     @pulumi.getter
     def comment(self) -> _builtins.str:
+        """
+        The comment of the entry.
+        """
         return pulumi.get(self, "comment")
 
     @_builtins.property
     @pulumi.getter
     def entry(self) -> _builtins.str:
+        """
+        An IP address or CIDR block.
+        """
         return pulumi.get(self, "entry")
 
 
@@ -465,6 +538,12 @@ class GetAclsAclRelatedListenerResult(dict):
                  frontend_port: _builtins.int,
                  load_balancer_id: _builtins.str,
                  protocol: _builtins.str):
+        """
+        :param _builtins.str acl_type: The type of the acl (such as white/black).
+        :param _builtins.int frontend_port: The listener port.
+        :param _builtins.str load_balancer_id: The id of load balancer instance the listener belongs to.
+        :param _builtins.str protocol: The listener protocol (such as tcp/udp/http/https, etc).
+        """
         pulumi.set(__self__, "acl_type", acl_type)
         pulumi.set(__self__, "frontend_port", frontend_port)
         pulumi.set(__self__, "load_balancer_id", load_balancer_id)
@@ -473,21 +552,33 @@ class GetAclsAclRelatedListenerResult(dict):
     @_builtins.property
     @pulumi.getter(name="aclType")
     def acl_type(self) -> _builtins.str:
+        """
+        The type of the acl (such as white/black).
+        """
         return pulumi.get(self, "acl_type")
 
     @_builtins.property
     @pulumi.getter(name="frontendPort")
     def frontend_port(self) -> _builtins.int:
+        """
+        The listener port.
+        """
         return pulumi.get(self, "frontend_port")
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> _builtins.str:
+        """
+        The id of load balancer instance the listener belongs to.
+        """
         return pulumi.get(self, "load_balancer_id")
 
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> _builtins.str:
+        """
+        The listener protocol (such as tcp/udp/http/https, etc).
+        """
         return pulumi.get(self, "protocol")
 
 
@@ -541,7 +632,7 @@ class GetApplicationLoadBalancersBalancerResult(dict):
         :param _builtins.int end_time_stamp: The end time stamp of the SLB.
         :param _builtins.str id: ID of the SLB.
         :param _builtins.str internet_charge_type: The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
-        :param Sequence['GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArgs'] listener_ports_and_protocals: The listener ports and protocal of the SLB.
+        :param Sequence['GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArgs'] listener_ports_and_protocals: The listener ports and protocol of the SLB.
         :param Sequence['GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArgs'] listener_ports_and_protocols: The listener ports and protocol of the SLB.
         :param _builtins.str load_balancer_id: Thd ID of the SLB.
         :param _builtins.str load_balancer_name: The name of the SLB.
@@ -704,7 +795,7 @@ class GetApplicationLoadBalancersBalancerResult(dict):
     @pulumi.getter(name="listenerPortsAndProtocals")
     def listener_ports_and_protocals(self) -> Sequence['outputs.GetApplicationLoadBalancersBalancerListenerPortsAndProtocalResult']:
         """
-        The listener ports and protocal of the SLB.
+        The listener ports and protocol of the SLB.
         """
         return pulumi.get(self, "listener_ports_and_protocals")
 
@@ -919,7 +1010,7 @@ class GetApplicationLoadBalancersBalancerListenerPortsAndProtocalResult(dict):
                  listener_protocal: _builtins.str):
         """
         :param _builtins.int listener_port: The listener port.
-        :param _builtins.str listener_protocal: The listener protoal.
+        :param _builtins.str listener_protocal: The listener protocol.
         """
         pulumi.set(__self__, "listener_port", listener_port)
         pulumi.set(__self__, "listener_protocal", listener_protocal)
@@ -936,7 +1027,7 @@ class GetApplicationLoadBalancersBalancerListenerPortsAndProtocalResult(dict):
     @pulumi.getter(name="listenerProtocal")
     def listener_protocal(self) -> _builtins.str:
         """
-        The listener protoal.
+        The listener protocol.
         """
         return pulumi.get(self, "listener_protocal")
 
@@ -1413,6 +1504,7 @@ class GetListenersSlbListenerResult(dict):
                  health_check_type: _builtins.str,
                  health_check_uri: _builtins.str,
                  healthy_threshold: _builtins.int,
+                 id: _builtins.str,
                  idle_timeout: _builtins.int,
                  master_slave_server_group_id: _builtins.str,
                  persistence_timeout: _builtins.int,
@@ -1454,6 +1546,7 @@ class GetListenersSlbListenerResult(dict):
         :param _builtins.str health_check_type: Health check method. Possible values are `tcp` and `http`. Only available when the protocol is `tcp`.
         :param _builtins.str health_check_uri: URI used for health check. Only available when the protocol is `http`, `https` or `tcp` (in this case health_check_type must be `http`).
         :param _builtins.int healthy_threshold: Number of consecutive successes of health check performed on the same ECS instance (from failure to success).
+        :param _builtins.str id: (String, Available since v2.3.0) The listener ID, in the format of `<load_balancer_id>:<protocol>:<frontend_port>`. It is the same as the import ID of `slb.Listener`.
         :param _builtins.int idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
         :param _builtins.str master_slave_server_group_id: ID of the active/standby server group.
         :param _builtins.int persistence_timeout: Timeout value of the TCP connection in seconds. If the value is 0, the session persistence function is disabled. Only available when the protocol is `tcp`.
@@ -1462,6 +1555,7 @@ class GetListenersSlbListenerResult(dict):
         :param _builtins.int request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         :param _builtins.str scheduler: Algorithm used to distribute traffic. Possible values: `wrr` (weighted round robin), `wlc` (weighted least connection) and `rr` (round robin).
         :param _builtins.str security_status: Security status. Only available when the protocol is `https`.
+        :param _builtins.str server_certificate_id: ID of the server certificate. Only available when the protocol is `https`.
         :param _builtins.str server_group_id: ID of the linked VServer group.
         :param _builtins.str ssl_certificate_id: ID of the server certificate. Only available when the protocol is `https`.
         :param _builtins.str status: Listener status.
@@ -1494,6 +1588,7 @@ class GetListenersSlbListenerResult(dict):
         pulumi.set(__self__, "health_check_type", health_check_type)
         pulumi.set(__self__, "health_check_uri", health_check_uri)
         pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "idle_timeout", idle_timeout)
         pulumi.set(__self__, "master_slave_server_group_id", master_slave_server_group_id)
         pulumi.set(__self__, "persistence_timeout", persistence_timeout)
@@ -1676,6 +1771,14 @@ class GetListenersSlbListenerResult(dict):
         return pulumi.get(self, "healthy_threshold")
 
     @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (String, Available since v2.3.0) The listener ID, in the format of `<load_balancer_id>:<protocol>:<frontend_port>`. It is the same as the import ID of `slb.Listener`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> _builtins.int:
         """
@@ -1742,6 +1845,9 @@ class GetListenersSlbListenerResult(dict):
     @_builtins.property
     @pulumi.getter(name="serverCertificateId")
     def server_certificate_id(self) -> _builtins.str:
+        """
+        ID of the server certificate. Only available when the protocol is `https`.
+        """
         return pulumi.get(self, "server_certificate_id")
 
     @_builtins.property
@@ -1871,20 +1977,36 @@ class GetLoadBalancersBalancerResult(dict):
                  vswitch_id: _builtins.str):
         """
         :param _builtins.str address: Service address of the SLBs.
+        :param _builtins.str address_ip_version: The address ip version. Valid values `ipv4` and `ipv6`.
+        :param _builtins.str address_type: The address type of the SLB. Valid values `internet` and `intranet`.
+        :param _builtins.int auto_release_time: The auto release time.
+        :param Sequence['GetLoadBalancersBalancerBackendServerArgs'] backend_servers: The backend servers of the SLB.
+        :param _builtins.int bandwidth: The bandwidth of the SLB.
+        :param _builtins.str create_time: The creation time of the SLB, mapped from the API `CreateTime` field.
+        :param _builtins.int create_time_stamp: The create time stamp of the SLB.
+        :param _builtins.str delete_protection: Whether the SLB should delete protection.
+        :param _builtins.str end_time: The end time of the SLB.
+        :param _builtins.int end_time_stamp: The end time stamp of the SLB.
         :param _builtins.str id: ID of the SLB.
+        :param _builtins.str internet_charge_type: The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+        :param Sequence['GetLoadBalancersBalancerListenerPortsAndProtocalArgs'] listener_ports_and_protocals: The listener ports and protocol of the SLB.
+        :param Sequence['GetLoadBalancersBalancerListenerPortsAndProtocolArgs'] listener_ports_and_protocols: The listener ports and protocol of the SLB.
+        :param _builtins.str load_balancer_id: Thd ID of the SLB.
+        :param _builtins.str load_balancer_name: The name of the SLB.
+        :param _builtins.str load_balancer_spec: The specification of the SLB.
+        :param _builtins.str master_zone_id: The master zone id of the SLB.
+        :param _builtins.str modification_protection_reason: The reason of modification protection.
+        :param _builtins.str modification_protection_status: The status of modification protection.
         :param _builtins.str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.
+        :param _builtins.str payment_type: The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+        :param _builtins.str region_id_alias: Region ID the SLB belongs to.
+        :param _builtins.str renewal_cyc_unit: The renewal cyc unit of the SLB.
+        :param _builtins.int renewal_duration: The renewal duration of the SLB.
+        :param _builtins.str renewal_status: The renewal status of the SLB.
         :param _builtins.str resource_group_id: The Id of resource group which SLB belongs.
-        :param _builtins.str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
+        :param _builtins.str slave_zone_id: The slave zone id of the SLB.
+        :param _builtins.str status: The status of the SLB. Valid values: `active`, `inactive` and `locked`.
         :param Mapping[str, _builtins.str] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-               ```python
-               import pulumi
-               import pulumi_alicloud as alicloud
-               
-               tagged_instances = alicloud.slb.get_load_balancers(tags={
-                   "tagKey1": "tagValue1",
-                   "tagKey2": "tagValue2",
-               })
-               ```
         :param _builtins.str vpc_id: ID of the VPC linked to the SLBs.
         :param _builtins.str vswitch_id: ID of the vSwitch linked to the SLBs.
         """
@@ -1933,51 +2055,81 @@ class GetLoadBalancersBalancerResult(dict):
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> _builtins.str:
+        """
+        The address ip version. Valid values `ipv4` and `ipv6`.
+        """
         return pulumi.get(self, "address_ip_version")
 
     @_builtins.property
     @pulumi.getter(name="addressType")
     def address_type(self) -> _builtins.str:
+        """
+        The address type of the SLB. Valid values `internet` and `intranet`.
+        """
         return pulumi.get(self, "address_type")
 
     @_builtins.property
     @pulumi.getter(name="autoReleaseTime")
     def auto_release_time(self) -> _builtins.int:
+        """
+        The auto release time.
+        """
         return pulumi.get(self, "auto_release_time")
 
     @_builtins.property
     @pulumi.getter(name="backendServers")
     def backend_servers(self) -> Sequence['outputs.GetLoadBalancersBalancerBackendServerResult']:
+        """
+        The backend servers of the SLB.
+        """
         return pulumi.get(self, "backend_servers")
 
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> _builtins.int:
+        """
+        The bandwidth of the SLB.
+        """
         return pulumi.get(self, "bandwidth")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
+        """
+        The creation time of the SLB, mapped from the API `CreateTime` field.
+        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="createTimeStamp")
     def create_time_stamp(self) -> _builtins.int:
+        """
+        The create time stamp of the SLB.
+        """
         return pulumi.get(self, "create_time_stamp")
 
     @_builtins.property
     @pulumi.getter(name="deleteProtection")
     def delete_protection(self) -> _builtins.str:
+        """
+        Whether the SLB should delete protection.
+        """
         return pulumi.get(self, "delete_protection")
 
     @_builtins.property
     @pulumi.getter(name="endTime")
     def end_time(self) -> _builtins.str:
+        """
+        The end time of the SLB.
+        """
         return pulumi.get(self, "end_time")
 
     @_builtins.property
     @pulumi.getter(name="endTimeStamp")
     def end_time_stamp(self) -> _builtins.int:
+        """
+        The end time stamp of the SLB.
+        """
         return pulumi.get(self, "end_time_stamp")
 
     @_builtins.property
@@ -1991,46 +2143,73 @@ class GetLoadBalancersBalancerResult(dict):
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> _builtins.str:
+        """
+        The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+        """
         return pulumi.get(self, "internet_charge_type")
 
     @_builtins.property
     @pulumi.getter(name="listenerPortsAndProtocals")
     def listener_ports_and_protocals(self) -> Sequence['outputs.GetLoadBalancersBalancerListenerPortsAndProtocalResult']:
+        """
+        The listener ports and protocol of the SLB.
+        """
         return pulumi.get(self, "listener_ports_and_protocals")
 
     @_builtins.property
     @pulumi.getter(name="listenerPortsAndProtocols")
     def listener_ports_and_protocols(self) -> Sequence['outputs.GetLoadBalancersBalancerListenerPortsAndProtocolResult']:
+        """
+        The listener ports and protocol of the SLB.
+        """
         return pulumi.get(self, "listener_ports_and_protocols")
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> _builtins.str:
+        """
+        Thd ID of the SLB.
+        """
         return pulumi.get(self, "load_balancer_id")
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> _builtins.str:
+        """
+        The name of the SLB.
+        """
         return pulumi.get(self, "load_balancer_name")
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerSpec")
     def load_balancer_spec(self) -> _builtins.str:
+        """
+        The specification of the SLB.
+        """
         return pulumi.get(self, "load_balancer_spec")
 
     @_builtins.property
     @pulumi.getter(name="masterZoneId")
     def master_zone_id(self) -> _builtins.str:
+        """
+        The master zone id of the SLB.
+        """
         return pulumi.get(self, "master_zone_id")
 
     @_builtins.property
     @pulumi.getter(name="modificationProtectionReason")
     def modification_protection_reason(self) -> _builtins.str:
+        """
+        The reason of modification protection.
+        """
         return pulumi.get(self, "modification_protection_reason")
 
     @_builtins.property
     @pulumi.getter(name="modificationProtectionStatus")
     def modification_protection_status(self) -> _builtins.str:
+        """
+        The status of modification protection.
+        """
         return pulumi.get(self, "modification_protection_status")
 
     @_builtins.property
@@ -2044,26 +2223,41 @@ class GetLoadBalancersBalancerResult(dict):
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> _builtins.str:
+        """
+        The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+        """
         return pulumi.get(self, "payment_type")
 
     @_builtins.property
     @pulumi.getter(name="regionIdAlias")
     def region_id_alias(self) -> _builtins.str:
+        """
+        Region ID the SLB belongs to.
+        """
         return pulumi.get(self, "region_id_alias")
 
     @_builtins.property
     @pulumi.getter(name="renewalCycUnit")
     def renewal_cyc_unit(self) -> _builtins.str:
+        """
+        The renewal cyc unit of the SLB.
+        """
         return pulumi.get(self, "renewal_cyc_unit")
 
     @_builtins.property
     @pulumi.getter(name="renewalDuration")
     def renewal_duration(self) -> _builtins.int:
+        """
+        The renewal duration of the SLB.
+        """
         return pulumi.get(self, "renewal_duration")
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> _builtins.str:
+        """
+        The renewal status of the SLB.
+        """
         return pulumi.get(self, "renewal_status")
 
     @_builtins.property
@@ -2077,13 +2271,16 @@ class GetLoadBalancersBalancerResult(dict):
     @_builtins.property
     @pulumi.getter(name="slaveZoneId")
     def slave_zone_id(self) -> _builtins.str:
+        """
+        The slave zone id of the SLB.
+        """
         return pulumi.get(self, "slave_zone_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        SLB current status. Possible values: `inactive`, `active` and `locked`.
+        The status of the SLB. Valid values: `active`, `inactive` and `locked`.
         """
         return pulumi.get(self, "status")
 
@@ -2092,15 +2289,6 @@ class GetLoadBalancersBalancerResult(dict):
     def tags(self) -> Mapping[str, _builtins.str]:
         """
         A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        tagged_instances = alicloud.slb.get_load_balancers(tags={
-            "tagKey1": "tagValue1",
-            "tagKey2": "tagValue2",
-        })
-        ```
         """
         return pulumi.get(self, "tags")
 
@@ -2128,6 +2316,12 @@ class GetLoadBalancersBalancerBackendServerResult(dict):
                  server_id: _builtins.str,
                  type: _builtins.str,
                  weight: _builtins.int):
+        """
+        :param _builtins.str description: The description of protocol.
+        :param _builtins.str server_id: The server ID.
+        :param _builtins.str type: The type of servers.
+        :param _builtins.int weight: The weight of servers.
+        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "server_id", server_id)
         pulumi.set(__self__, "type", type)
@@ -2136,21 +2330,33 @@ class GetLoadBalancersBalancerBackendServerResult(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        The description of protocol.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="serverId")
     def server_id(self) -> _builtins.str:
+        """
+        The server ID.
+        """
         return pulumi.get(self, "server_id")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
+        """
+        The type of servers.
+        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def weight(self) -> _builtins.int:
+        """
+        The weight of servers.
+        """
         return pulumi.get(self, "weight")
 
 
@@ -2159,17 +2365,27 @@ class GetLoadBalancersBalancerListenerPortsAndProtocalResult(dict):
     def __init__(__self__, *,
                  listener_port: _builtins.int,
                  listener_protocal: _builtins.str):
+        """
+        :param _builtins.int listener_port: The listener port.
+        :param _builtins.str listener_protocal: The listener protocol.
+        """
         pulumi.set(__self__, "listener_port", listener_port)
         pulumi.set(__self__, "listener_protocal", listener_protocal)
 
     @_builtins.property
     @pulumi.getter(name="listenerPort")
     def listener_port(self) -> _builtins.int:
+        """
+        The listener port.
+        """
         return pulumi.get(self, "listener_port")
 
     @_builtins.property
     @pulumi.getter(name="listenerProtocal")
     def listener_protocal(self) -> _builtins.str:
+        """
+        The listener protocol.
+        """
         return pulumi.get(self, "listener_protocal")
 
 
@@ -2181,6 +2397,13 @@ class GetLoadBalancersBalancerListenerPortsAndProtocolResult(dict):
                  listener_forward: _builtins.str,
                  listener_port: _builtins.int,
                  listener_protocol: _builtins.str):
+        """
+        :param _builtins.str description: The description of protocol.
+        :param _builtins.int forward_port: The forward port.
+        :param _builtins.str listener_forward: The listener forward.
+        :param _builtins.int listener_port: The listener port.
+        :param _builtins.str listener_protocol: The listener protocol.
+        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "forward_port", forward_port)
         pulumi.set(__self__, "listener_forward", listener_forward)
@@ -2190,26 +2413,41 @@ class GetLoadBalancersBalancerListenerPortsAndProtocolResult(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        The description of protocol.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="forwardPort")
     def forward_port(self) -> _builtins.int:
+        """
+        The forward port.
+        """
         return pulumi.get(self, "forward_port")
 
     @_builtins.property
     @pulumi.getter(name="listenerForward")
     def listener_forward(self) -> _builtins.str:
+        """
+        The listener forward.
+        """
         return pulumi.get(self, "listener_forward")
 
     @_builtins.property
     @pulumi.getter(name="listenerPort")
     def listener_port(self) -> _builtins.int:
+        """
+        The listener port.
+        """
         return pulumi.get(self, "listener_port")
 
     @_builtins.property
     @pulumi.getter(name="listenerProtocol")
     def listener_protocol(self) -> _builtins.str:
+        """
+        The listener protocol.
+        """
         return pulumi.get(self, "listener_protocol")
 
 
@@ -2231,25 +2469,16 @@ class GetLoadBalancersSlbResult(dict):
                  vswitch_id: _builtins.str):
         """
         :param _builtins.str address: Service address of the SLBs.
-        :param _builtins.str creation_time: SLB creation time.
+        :param _builtins.str creation_time: The creation time of the SLB.
         :param _builtins.str id: ID of the SLB.
-        :param _builtins.bool internet: SLB addressType: internet if `true`, intranet if `false`. Must be `false` when `network_type` is `vpc`.
-        :param _builtins.str master_availability_zone: Master availability zone of the SLBs.
-        :param _builtins.str name: SLB name.
+        :param _builtins.bool internet: Whether the SLB is internet-facing.
+        :param _builtins.str master_availability_zone: Master availability zone of the SLB.
+        :param _builtins.str name: The name of the SLB.
         :param _builtins.str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.
         :param _builtins.str region_id: Region ID the SLB belongs to.
-        :param _builtins.str slave_availability_zone: Slave availability zone of the SLBs.
-        :param _builtins.str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
+        :param _builtins.str slave_availability_zone: Slave availability zone of the SLB.
+        :param _builtins.str status: The status of the SLB. Valid values: `active`, `inactive` and `locked`.
         :param Mapping[str, _builtins.str] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-               ```python
-               import pulumi
-               import pulumi_alicloud as alicloud
-               
-               tagged_instances = alicloud.slb.get_load_balancers(tags={
-                   "tagKey1": "tagValue1",
-                   "tagKey2": "tagValue2",
-               })
-               ```
         :param _builtins.str vpc_id: ID of the VPC linked to the SLBs.
         :param _builtins.str vswitch_id: ID of the vSwitch linked to the SLBs.
         """
@@ -2279,7 +2508,7 @@ class GetLoadBalancersSlbResult(dict):
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> _builtins.str:
         """
-        SLB creation time.
+        The creation time of the SLB.
         """
         return pulumi.get(self, "creation_time")
 
@@ -2295,7 +2524,7 @@ class GetLoadBalancersSlbResult(dict):
     @pulumi.getter
     def internet(self) -> _builtins.bool:
         """
-        SLB addressType: internet if `true`, intranet if `false`. Must be `false` when `network_type` is `vpc`.
+        Whether the SLB is internet-facing.
         """
         return pulumi.get(self, "internet")
 
@@ -2303,7 +2532,7 @@ class GetLoadBalancersSlbResult(dict):
     @pulumi.getter(name="masterAvailabilityZone")
     def master_availability_zone(self) -> _builtins.str:
         """
-        Master availability zone of the SLBs.
+        Master availability zone of the SLB.
         """
         return pulumi.get(self, "master_availability_zone")
 
@@ -2311,7 +2540,7 @@ class GetLoadBalancersSlbResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        SLB name.
+        The name of the SLB.
         """
         return pulumi.get(self, "name")
 
@@ -2335,7 +2564,7 @@ class GetLoadBalancersSlbResult(dict):
     @pulumi.getter(name="slaveAvailabilityZone")
     def slave_availability_zone(self) -> _builtins.str:
         """
-        Slave availability zone of the SLBs.
+        Slave availability zone of the SLB.
         """
         return pulumi.get(self, "slave_availability_zone")
 
@@ -2343,7 +2572,7 @@ class GetLoadBalancersSlbResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        SLB current status. Possible values: `inactive`, `active` and `locked`.
+        The status of the SLB. Valid values: `active`, `inactive` and `locked`.
         """
         return pulumi.get(self, "status")
 
@@ -2352,15 +2581,6 @@ class GetLoadBalancersSlbResult(dict):
     def tags(self) -> Mapping[str, _builtins.str]:
         """
         A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        tagged_instances = alicloud.slb.get_load_balancers(tags={
-            "tagKey1": "tagValue1",
-            "tagKey2": "tagValue2",
-        })
-        ```
         """
         return pulumi.get(self, "tags")
 
@@ -2782,7 +3002,7 @@ class GetTlsCipherPoliciesPolicyResult(dict):
         :param _builtins.str create_time: The creation time timestamp.
         :param _builtins.str id: The ID of the Tls Cipher Policy.
         :param Sequence['GetTlsCipherPoliciesPolicyRelateListenerArgs'] relate_listeners: Array of Relate Listeners.
-        :param _builtins.str status: TLS policy instance state.
+        :param _builtins.str status: TLS policy instance state. Valid values: `configuring`, `normal`.
         :param _builtins.str tls_cipher_policy_id: The ID of TLS cipher policy.
         :param _builtins.str tls_cipher_policy_name: TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
         :param Sequence[_builtins.str] tls_versions: The version of TLS protocol.
@@ -2832,7 +3052,7 @@ class GetTlsCipherPoliciesPolicyResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        TLS policy instance state.
+        TLS policy instance state. Valid values: `configuring`, `normal`.
         """
         return pulumi.get(self, "status")
 

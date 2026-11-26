@@ -223,7 +223,7 @@ class GetInstancesInstanceResult(dict):
         :param _builtins.str performance_level: The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         :param _builtins.str raid_stripe_unit_number: The number of strip . When `enable_raid` parameter is set to `true` will transfer. This parameter is valid When `enable_raid` parameter is set to `true`.
         :param _builtins.int size: The size Of the Database file system. Unit: GiB.
-        :param _builtins.str status: The status of the Database file system.
+        :param _builtins.str status: Database file system state. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
         :param _builtins.str zone_id: The Zone ID of the Database file system.
         """
         pulumi.set(__self__, "attach_node_number", attach_node_number)
@@ -368,7 +368,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the Database file system.
+        Database file system state. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
         """
         return pulumi.get(self, "status")
 
@@ -430,7 +430,7 @@ class GetSnapshotsSnapshotResult(dict):
         :param _builtins.str snapshot_name: The name of the snapshot.
         :param _builtins.str snapshot_type: The creation of the snapshot.
         :param _builtins.int source_fs_size: Source database file system capacity.
-        :param _builtins.str status: The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+        :param _builtins.str status: The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
         """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "create_time", create_time)
@@ -555,7 +555,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+        The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
         """
         return pulumi.get(self, "status")
 

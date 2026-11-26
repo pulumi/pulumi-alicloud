@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in 1.98.0+
+ * > **NOTE:** Available since v1.98.0
  *
  * ## Example Usage
  *
@@ -77,7 +77,7 @@ export interface GetCustomDomainsResult {
 /**
  * This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in 1.98.0+
+ * > **NOTE:** Available since v1.98.0
  *
  * ## Example Usage
  *

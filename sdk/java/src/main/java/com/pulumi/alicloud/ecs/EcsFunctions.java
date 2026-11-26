@@ -117,7 +117,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Activations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.177.0+.
+     * &gt; **NOTE:** Available since v1.177.0.
      * 
      * ## Example Usage
      * 
@@ -161,7 +161,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Activations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.177.0+.
+     * &gt; **NOTE:** Available since v1.177.0.
      * 
      * ## Example Usage
      * 
@@ -205,7 +205,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Activations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.177.0+.
+     * &gt; **NOTE:** Available since v1.177.0.
      * 
      * ## Example Usage
      * 
@@ -249,7 +249,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Activations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.177.0+.
+     * &gt; **NOTE:** Available since v1.177.0.
      * 
      * ## Example Usage
      * 
@@ -293,7 +293,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Activations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.177.0+.
+     * &gt; **NOTE:** Available since v1.177.0.
      * 
      * ## Example Usage
      * 
@@ -337,7 +337,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Activations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.177.0+.
+     * &gt; **NOTE:** Available since v1.177.0.
      * 
      * ## Example Usage
      * 
@@ -381,7 +381,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Activations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.177.0+.
+     * &gt; **NOTE:** Available since v1.177.0.
      * 
      * ## Example Usage
      * 
@@ -747,7 +747,7 @@ public final class EcsFunctions {
     /**
      * This data source provides Ecs Capacity Reservation available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0
      * 
      * ## Example Usage
      * 
@@ -793,7 +793,7 @@ public final class EcsFunctions {
     /**
      * This data source provides Ecs Capacity Reservation available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0
      * 
      * ## Example Usage
      * 
@@ -839,7 +839,7 @@ public final class EcsFunctions {
     /**
      * This data source provides Ecs Capacity Reservation available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0
      * 
      * ## Example Usage
      * 
@@ -885,7 +885,7 @@ public final class EcsFunctions {
     /**
      * This data source provides Ecs Capacity Reservation available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0
      * 
      * ## Example Usage
      * 
@@ -931,7 +931,7 @@ public final class EcsFunctions {
     /**
      * This data source provides Ecs Capacity Reservation available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0
      * 
      * ## Example Usage
      * 
@@ -977,7 +977,7 @@ public final class EcsFunctions {
     /**
      * This data source provides Ecs Capacity Reservation available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0
      * 
      * ## Example Usage
      * 
@@ -1023,7 +1023,7 @@ public final class EcsFunctions {
     /**
      * This data source provides Ecs Capacity Reservation available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0
      * 
      * ## Example Usage
      * 
@@ -1069,7 +1069,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Commands of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.116.0+.
+     * &gt; **NOTE:** Available since v1.116.0.
      * 
      * ## Example Usage
      * 
@@ -1115,7 +1115,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Commands of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.116.0+.
+     * &gt; **NOTE:** Available since v1.116.0.
      * 
      * ## Example Usage
      * 
@@ -1161,7 +1161,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Commands of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.116.0+.
+     * &gt; **NOTE:** Available since v1.116.0.
      * 
      * ## Example Usage
      * 
@@ -1207,7 +1207,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Commands of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.116.0+.
+     * &gt; **NOTE:** Available since v1.116.0.
      * 
      * ## Example Usage
      * 
@@ -1253,7 +1253,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Commands of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.116.0+.
+     * &gt; **NOTE:** Available since v1.116.0.
      * 
      * ## Example Usage
      * 
@@ -1299,7 +1299,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Commands of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.116.0+.
+     * &gt; **NOTE:** Available since v1.116.0.
      * 
      * ## Example Usage
      * 
@@ -1345,7 +1345,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Commands of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.116.0+.
+     * &gt; **NOTE:** Available since v1.116.0.
      * 
      * ## Example Usage
      * 
@@ -2112,7 +2112,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -2177,7 +2177,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -2242,7 +2242,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -2307,7 +2307,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -2372,7 +2372,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -2437,7 +2437,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -2502,7 +2502,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -2567,7 +2567,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -2617,7 +2617,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -2667,7 +2667,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -2717,7 +2717,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -2767,7 +2767,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -2817,7 +2817,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -2867,7 +2867,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -3351,7 +3351,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Image Components of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -3401,7 +3401,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Image Components of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -3451,7 +3451,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Image Components of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -3501,7 +3501,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Image Components of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -3551,7 +3551,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Image Components of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -3601,7 +3601,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Image Components of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -3651,7 +3651,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Image Components of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -3701,7 +3701,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.163.0+.
+     * &gt; **NOTE:** Available since v1.163.0.
      * 
      * ## Example Usage
      * 
@@ -3751,7 +3751,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.163.0+.
+     * &gt; **NOTE:** Available since v1.163.0.
      * 
      * ## Example Usage
      * 
@@ -3801,7 +3801,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.163.0+.
+     * &gt; **NOTE:** Available since v1.163.0.
      * 
      * ## Example Usage
      * 
@@ -3851,7 +3851,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.163.0+.
+     * &gt; **NOTE:** Available since v1.163.0.
      * 
      * ## Example Usage
      * 
@@ -3901,7 +3901,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.163.0+.
+     * &gt; **NOTE:** Available since v1.163.0.
      * 
      * ## Example Usage
      * 
@@ -3951,7 +3951,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.163.0+.
+     * &gt; **NOTE:** Available since v1.163.0.
      * 
      * ## Example Usage
      * 
@@ -4001,7 +4001,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.163.0+.
+     * &gt; **NOTE:** Available since v1.163.0.
      * 
      * ## Example Usage
      * 
@@ -4051,7 +4051,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Invocations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.168.0+.
+     * &gt; **NOTE:** Available since v1.168.0.
      * 
      * ## Example Usage
      * 
@@ -4096,7 +4096,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Invocations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.168.0+.
+     * &gt; **NOTE:** Available since v1.168.0.
      * 
      * ## Example Usage
      * 
@@ -4141,7 +4141,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Invocations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.168.0+.
+     * &gt; **NOTE:** Available since v1.168.0.
      * 
      * ## Example Usage
      * 
@@ -4186,7 +4186,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Invocations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.168.0+.
+     * &gt; **NOTE:** Available since v1.168.0.
      * 
      * ## Example Usage
      * 
@@ -4231,7 +4231,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Invocations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.168.0+.
+     * &gt; **NOTE:** Available since v1.168.0.
      * 
      * ## Example Usage
      * 
@@ -4276,7 +4276,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Invocations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.168.0+.
+     * &gt; **NOTE:** Available since v1.168.0.
      * 
      * ## Example Usage
      * 
@@ -4321,7 +4321,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Invocations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.168.0+.
+     * &gt; **NOTE:** Available since v1.168.0.
      * 
      * ## Example Usage
      * 
@@ -5885,7 +5885,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.166.0+.
+     * &gt; **NOTE:** Available since v1.166.0.
      * 
      * ## Example Usage
      * 
@@ -5931,7 +5931,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.166.0+.
+     * &gt; **NOTE:** Available since v1.166.0.
      * 
      * ## Example Usage
      * 
@@ -5977,7 +5977,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.166.0+.
+     * &gt; **NOTE:** Available since v1.166.0.
      * 
      * ## Example Usage
      * 
@@ -6023,7 +6023,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.166.0+.
+     * &gt; **NOTE:** Available since v1.166.0.
      * 
      * ## Example Usage
      * 
@@ -6069,7 +6069,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.166.0+.
+     * &gt; **NOTE:** Available since v1.166.0.
      * 
      * ## Example Usage
      * 
@@ -6430,7 +6430,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.152.0+.
+     * &gt; **NOTE:** Available since v1.152.0.
      * 
      * ## Example Usage
      * 
@@ -6476,7 +6476,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.152.0+.
+     * &gt; **NOTE:** Available since v1.152.0.
      * 
      * ## Example Usage
      * 
@@ -6522,7 +6522,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.152.0+.
+     * &gt; **NOTE:** Available since v1.152.0.
      * 
      * ## Example Usage
      * 
@@ -6568,7 +6568,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.152.0+.
+     * &gt; **NOTE:** Available since v1.152.0.
      * 
      * ## Example Usage
      * 
@@ -6614,7 +6614,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.152.0+.
+     * &gt; **NOTE:** Available since v1.152.0.
      * 
      * ## Example Usage
      * 
@@ -6660,7 +6660,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.152.0+.
+     * &gt; **NOTE:** Available since v1.152.0.
      * 
      * ## Example Usage
      * 
@@ -6706,7 +6706,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.152.0+.
+     * &gt; **NOTE:** Available since v1.152.0.
      * 
      * ## Example Usage
      * 
@@ -6752,7 +6752,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.160.0+.
+     * &gt; **NOTE:** Available since v1.160.0.
      * 
      * ## Example Usage
      * 
@@ -6812,7 +6812,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.160.0+.
+     * &gt; **NOTE:** Available since v1.160.0.
      * 
      * ## Example Usage
      * 
@@ -6872,7 +6872,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.160.0+.
+     * &gt; **NOTE:** Available since v1.160.0.
      * 
      * ## Example Usage
      * 
@@ -6932,7 +6932,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.160.0+.
+     * &gt; **NOTE:** Available since v1.160.0.
      * 
      * ## Example Usage
      * 
@@ -6992,7 +6992,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.160.0+.
+     * &gt; **NOTE:** Available since v1.160.0.
      * 
      * ## Example Usage
      * 
@@ -7052,7 +7052,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.160.0+.
+     * &gt; **NOTE:** Available since v1.160.0.
      * 
      * ## Example Usage
      * 
@@ -7112,7 +7112,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.160.0+.
+     * &gt; **NOTE:** Available since v1.160.0.
      * 
      * ## Example Usage
      * 
@@ -8194,7 +8194,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.155.0+.
+     * &gt; **NOTE:** Available since v1.155.0.
      * 
      * ## Example Usage
      * 
@@ -8243,7 +8243,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.155.0+.
+     * &gt; **NOTE:** Available since v1.155.0.
      * 
      * ## Example Usage
      * 
@@ -8292,7 +8292,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.155.0+.
+     * &gt; **NOTE:** Available since v1.155.0.
      * 
      * ## Example Usage
      * 
@@ -8341,7 +8341,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.155.0+.
+     * &gt; **NOTE:** Available since v1.155.0.
      * 
      * ## Example Usage
      * 
@@ -8390,7 +8390,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.155.0+.
+     * &gt; **NOTE:** Available since v1.155.0.
      * 
      * ## Example Usage
      * 
@@ -8439,7 +8439,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.155.0+.
+     * &gt; **NOTE:** Available since v1.155.0.
      * 
      * ## Example Usage
      * 
@@ -8488,7 +8488,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.155.0+.
+     * &gt; **NOTE:** Available since v1.155.0.
      * 
      * ## Example Usage
      * 
@@ -8537,7 +8537,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Eip Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -8583,7 +8583,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Eip Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -8629,7 +8629,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Eip Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -8675,7 +8675,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Eip Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -8721,7 +8721,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Eip Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -8767,7 +8767,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Eip Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -8813,7 +8813,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Eip Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -8888,7 +8888,7 @@ public final class EcsFunctions {
      *         final var eipsDs = EcsFunctions.getEips(GetEipsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstEipId", eipsDs.eips()[0].id());
+     *         ctx.export("firstEipId", eipsDs.addresses()[0].id());
      *     }
      * }
      * }
@@ -8933,7 +8933,7 @@ public final class EcsFunctions {
      *         final var eipsDs = EcsFunctions.getEips(GetEipsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstEipId", eipsDs.eips()[0].id());
+     *         ctx.export("firstEipId", eipsDs.addresses()[0].id());
      *     }
      * }
      * }
@@ -8978,7 +8978,7 @@ public final class EcsFunctions {
      *         final var eipsDs = EcsFunctions.getEips(GetEipsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstEipId", eipsDs.eips()[0].id());
+     *         ctx.export("firstEipId", eipsDs.addresses()[0].id());
      *     }
      * }
      * }
@@ -9023,7 +9023,7 @@ public final class EcsFunctions {
      *         final var eipsDs = EcsFunctions.getEips(GetEipsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstEipId", eipsDs.eips()[0].id());
+     *         ctx.export("firstEipId", eipsDs.addresses()[0].id());
      *     }
      * }
      * }
@@ -9068,7 +9068,7 @@ public final class EcsFunctions {
      *         final var eipsDs = EcsFunctions.getEips(GetEipsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstEipId", eipsDs.eips()[0].id());
+     *         ctx.export("firstEipId", eipsDs.addresses()[0].id());
      *     }
      * }
      * }
@@ -9113,7 +9113,7 @@ public final class EcsFunctions {
      *         final var eipsDs = EcsFunctions.getEips(GetEipsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstEipId", eipsDs.eips()[0].id());
+     *         ctx.export("firstEipId", eipsDs.addresses()[0].id());
      *     }
      * }
      * }
@@ -9158,7 +9158,7 @@ public final class EcsFunctions {
      *         final var eipsDs = EcsFunctions.getEips(GetEipsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstEipId", eipsDs.eips()[0].id());
+     *         ctx.export("firstEipId", eipsDs.addresses()[0].id());
      *     }
      * }
      * }
@@ -9174,7 +9174,7 @@ public final class EcsFunctions {
     /**
      * This data source provides Ecs Elasticity Assurance available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -9217,7 +9217,7 @@ public final class EcsFunctions {
     /**
      * This data source provides Ecs Elasticity Assurance available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -9260,7 +9260,7 @@ public final class EcsFunctions {
     /**
      * This data source provides Ecs Elasticity Assurance available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -9303,7 +9303,7 @@ public final class EcsFunctions {
     /**
      * This data source provides Ecs Elasticity Assurance available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -9346,7 +9346,7 @@ public final class EcsFunctions {
     /**
      * This data source provides Ecs Elasticity Assurance available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -9389,7 +9389,7 @@ public final class EcsFunctions {
     /**
      * This data source provides Ecs Elasticity Assurance available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -9432,7 +9432,7 @@ public final class EcsFunctions {
     /**
      * This data source provides Ecs Elasticity Assurance available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -9475,7 +9475,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.116.0+.
+     * &gt; **NOTE:** Available since v1.116.0.
      * 
      * ## Example Usage
      * 
@@ -9521,7 +9521,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.116.0+.
+     * &gt; **NOTE:** Available since v1.116.0.
      * 
      * ## Example Usage
      * 
@@ -9567,7 +9567,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.116.0+.
+     * &gt; **NOTE:** Available since v1.116.0.
      * 
      * ## Example Usage
      * 
@@ -9613,7 +9613,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.116.0+.
+     * &gt; **NOTE:** Available since v1.116.0.
      * 
      * ## Example Usage
      * 
@@ -9659,7 +9659,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.116.0+.
+     * &gt; **NOTE:** Available since v1.116.0.
      * 
      * ## Example Usage
      * 
@@ -9705,7 +9705,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.116.0+.
+     * &gt; **NOTE:** Available since v1.116.0.
      * 
      * ## Example Usage
      * 
@@ -9751,7 +9751,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.116.0+.
+     * &gt; **NOTE:** Available since v1.116.0.
      * 
      * ## Example Usage
      * 
@@ -9798,6 +9798,8 @@ public final class EcsFunctions {
      * This data source provides available image resources. It contains user&#39;s private images, system images provided by Alibaba Cloud,
      * other public images and the ones available on the image market.
      * 
+     * &gt; **NOTE:** Available since v0.1.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -9840,6 +9842,8 @@ public final class EcsFunctions {
     /**
      * This data source provides available image resources. It contains user&#39;s private images, system images provided by Alibaba Cloud,
      * other public images and the ones available on the image market.
+     * 
+     * &gt; **NOTE:** Available since v0.1.0
      * 
      * ## Example Usage
      * 
@@ -9884,6 +9888,8 @@ public final class EcsFunctions {
      * This data source provides available image resources. It contains user&#39;s private images, system images provided by Alibaba Cloud,
      * other public images and the ones available on the image market.
      * 
+     * &gt; **NOTE:** Available since v0.1.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -9926,6 +9932,8 @@ public final class EcsFunctions {
     /**
      * This data source provides available image resources. It contains user&#39;s private images, system images provided by Alibaba Cloud,
      * other public images and the ones available on the image market.
+     * 
+     * &gt; **NOTE:** Available since v0.1.0
      * 
      * ## Example Usage
      * 
@@ -9970,6 +9978,8 @@ public final class EcsFunctions {
      * This data source provides available image resources. It contains user&#39;s private images, system images provided by Alibaba Cloud,
      * other public images and the ones available on the image market.
      * 
+     * &gt; **NOTE:** Available since v0.1.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -10013,6 +10023,8 @@ public final class EcsFunctions {
      * This data source provides available image resources. It contains user&#39;s private images, system images provided by Alibaba Cloud,
      * other public images and the ones available on the image market.
      * 
+     * &gt; **NOTE:** Available since v0.1.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -10055,6 +10067,8 @@ public final class EcsFunctions {
     /**
      * This data source provides available image resources. It contains user&#39;s private images, system images provided by Alibaba Cloud,
      * other public images and the ones available on the image market.
+     * 
+     * &gt; **NOTE:** Available since v0.1.0
      * 
      * ## Example Usage
      * 
@@ -10318,7 +10332,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the ECS instance type families of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in 1.54.0+
+     * &gt; **NOTE:** Available since v1.54.0
      * 
      * ## Example Usage
      * 
@@ -10362,7 +10376,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the ECS instance type families of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in 1.54.0+
+     * &gt; **NOTE:** Available since v1.54.0
      * 
      * ## Example Usage
      * 
@@ -10406,7 +10420,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the ECS instance type families of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in 1.54.0+
+     * &gt; **NOTE:** Available since v1.54.0
      * 
      * ## Example Usage
      * 
@@ -10450,7 +10464,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the ECS instance type families of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in 1.54.0+
+     * &gt; **NOTE:** Available since v1.54.0
      * 
      * ## Example Usage
      * 
@@ -10494,7 +10508,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the ECS instance type families of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in 1.54.0+
+     * &gt; **NOTE:** Available since v1.54.0
      * 
      * ## Example Usage
      * 
@@ -10538,7 +10552,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the ECS instance type families of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in 1.54.0+
+     * &gt; **NOTE:** Available since v1.54.0
      * 
      * ## Example Usage
      * 
@@ -10582,7 +10596,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the ECS instance type families of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in 1.54.0+
+     * &gt; **NOTE:** Available since v1.54.0
      * 
      * ## Example Usage
      * 
@@ -12183,23 +12197,6 @@ public final class EcsFunctions {
      * }
      * </pre>
      * 
-     * ## Argument Reference
-     * 
-     * The following arguments are supported:
-     * 
-     * * `ids` - (Optional)  A list of ENI IDs.
-     * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
-     * * `vpcId` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
-     * * `privateIp` - (Optional) The primary private IP address of the ENI.
-     * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
-     * * `name` - (Optional) The name of the ENIs.
-     * * `type` - (Optional) The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
-     * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
-     * * `tags` - (Optional) A map of tags assigned to ENIs.
-     * * `outputFile` - (Optional) The name of output file that saves the filter results.
-     * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
-     * 
      */
     public static Output<GetNetworkInterfacesResult> getNetworkInterfaces() {
         return getNetworkInterfaces(GetNetworkInterfacesArgs.Empty, InvokeOptions.Empty);
@@ -12314,23 +12311,6 @@ public final class EcsFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Argument Reference
-     * 
-     * The following arguments are supported:
-     * 
-     * * `ids` - (Optional)  A list of ENI IDs.
-     * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
-     * * `vpcId` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
-     * * `privateIp` - (Optional) The primary private IP address of the ENI.
-     * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
-     * * `name` - (Optional) The name of the ENIs.
-     * * `type` - (Optional) The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
-     * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
-     * * `tags` - (Optional) A map of tags assigned to ENIs.
-     * * `outputFile` - (Optional) The name of output file that saves the filter results.
-     * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
      * 
      */
     public static CompletableFuture<GetNetworkInterfacesResult> getNetworkInterfacesPlain() {
@@ -12447,23 +12427,6 @@ public final class EcsFunctions {
      * }
      * </pre>
      * 
-     * ## Argument Reference
-     * 
-     * The following arguments are supported:
-     * 
-     * * `ids` - (Optional)  A list of ENI IDs.
-     * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
-     * * `vpcId` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
-     * * `privateIp` - (Optional) The primary private IP address of the ENI.
-     * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
-     * * `name` - (Optional) The name of the ENIs.
-     * * `type` - (Optional) The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
-     * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
-     * * `tags` - (Optional) A map of tags assigned to ENIs.
-     * * `outputFile` - (Optional) The name of output file that saves the filter results.
-     * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
-     * 
      */
     public static Output<GetNetworkInterfacesResult> getNetworkInterfaces(GetNetworkInterfacesArgs args) {
         return getNetworkInterfaces(args, InvokeOptions.Empty);
@@ -12578,23 +12541,6 @@ public final class EcsFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Argument Reference
-     * 
-     * The following arguments are supported:
-     * 
-     * * `ids` - (Optional)  A list of ENI IDs.
-     * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
-     * * `vpcId` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
-     * * `privateIp` - (Optional) The primary private IP address of the ENI.
-     * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
-     * * `name` - (Optional) The name of the ENIs.
-     * * `type` - (Optional) The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
-     * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
-     * * `tags` - (Optional) A map of tags assigned to ENIs.
-     * * `outputFile` - (Optional) The name of output file that saves the filter results.
-     * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
      * 
      */
     public static CompletableFuture<GetNetworkInterfacesResult> getNetworkInterfacesPlain(GetNetworkInterfacesPlainArgs args) {
@@ -12711,23 +12657,6 @@ public final class EcsFunctions {
      * }
      * </pre>
      * 
-     * ## Argument Reference
-     * 
-     * The following arguments are supported:
-     * 
-     * * `ids` - (Optional)  A list of ENI IDs.
-     * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
-     * * `vpcId` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
-     * * `privateIp` - (Optional) The primary private IP address of the ENI.
-     * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
-     * * `name` - (Optional) The name of the ENIs.
-     * * `type` - (Optional) The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
-     * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
-     * * `tags` - (Optional) A map of tags assigned to ENIs.
-     * * `outputFile` - (Optional) The name of output file that saves the filter results.
-     * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
-     * 
      */
     public static Output<GetNetworkInterfacesResult> getNetworkInterfaces(GetNetworkInterfacesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", TypeShape.of(GetNetworkInterfacesResult.class), args, Utilities.withVersion(options));
@@ -12843,23 +12772,6 @@ public final class EcsFunctions {
      * }
      * </pre>
      * 
-     * ## Argument Reference
-     * 
-     * The following arguments are supported:
-     * 
-     * * `ids` - (Optional)  A list of ENI IDs.
-     * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
-     * * `vpcId` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
-     * * `privateIp` - (Optional) The primary private IP address of the ENI.
-     * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
-     * * `name` - (Optional) The name of the ENIs.
-     * * `type` - (Optional) The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
-     * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
-     * * `tags` - (Optional) A map of tags assigned to ENIs.
-     * * `outputFile` - (Optional) The name of output file that saves the filter results.
-     * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
-     * 
      */
     public static Output<GetNetworkInterfacesResult> getNetworkInterfaces(GetNetworkInterfacesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", TypeShape.of(GetNetworkInterfacesResult.class), args, Utilities.withVersion(options));
@@ -12974,23 +12886,6 @@ public final class EcsFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Argument Reference
-     * 
-     * The following arguments are supported:
-     * 
-     * * `ids` - (Optional)  A list of ENI IDs.
-     * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
-     * * `vpcId` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
-     * * `privateIp` - (Optional) The primary private IP address of the ENI.
-     * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
-     * * `name` - (Optional) The name of the ENIs.
-     * * `type` - (Optional) The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
-     * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
-     * * `tags` - (Optional) A map of tags assigned to ENIs.
-     * * `outputFile` - (Optional) The name of output file that saves the filter results.
-     * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
      * 
      */
     public static CompletableFuture<GetNetworkInterfacesResult> getNetworkInterfacesPlain(GetNetworkInterfacesPlainArgs args, InvokeOptions options) {
@@ -13319,6 +13214,8 @@ public final class EcsFunctions {
     /**
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.9.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -13369,6 +13266,8 @@ public final class EcsFunctions {
     }
     /**
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.9.0
      * 
      * ## Example Usage
      * 
@@ -13421,6 +13320,8 @@ public final class EcsFunctions {
     /**
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.9.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -13471,6 +13372,8 @@ public final class EcsFunctions {
     }
     /**
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.9.0
      * 
      * ## Example Usage
      * 
@@ -13523,6 +13426,8 @@ public final class EcsFunctions {
     /**
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.9.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -13574,6 +13479,8 @@ public final class EcsFunctions {
     /**
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.9.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -13624,6 +13531,8 @@ public final class EcsFunctions {
     }
     /**
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.9.0
      * 
      * ## Example Usage
      * 
@@ -13680,7 +13589,7 @@ public final class EcsFunctions {
      * 
      * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
      * 
-     * &gt; **NOTE:**  Available in 1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 
@@ -13715,35 +13624,6 @@ public final class EcsFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Argument Reference
-     * 
-     * The following arguments are supported:
-     * 
-     * * `instanceId` - (Optional) The specified instance ID.
-     * * `diskId` - (Optional) The specified disk ID.
-     * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
-     * * `ids` - (Optional)  A list of snapshot IDs.
-     * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
-     * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
-     *   * progressing: The snapshots are being created.
-     *   * accomplished: The snapshots are ready to use.
-     *   * failed: The snapshot creation failed.
-     *   * all: All status.
-     * * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
-     *   * auto: Auto snapshots.
-     *   * user: Manual snapshots.
-     *   * all: Auto and manual snapshots.
-     * * `sourceDiskType` - (Optional) The type of source disk:
-     *   * System: The snapshots are created for system disks.
-     *   * Data: The snapshots are created for data disks.
-     * * `usage` - (Optional) The usage of the snapshot:
-     *   * image: The snapshots are used to create custom images.
-     *   * disk: The snapshots are used to CreateDisk.
-     *   * mage_disk: The snapshots are used to create custom images and data disks.
-     *   * none: The snapshots are not used yet.
-     * * `tags` - (Optional) A map of tags assigned to snapshots.
-     * * `outputFile` - (Optional) The name of output file that saves the filter results.
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots() {
@@ -13756,7 +13636,7 @@ public final class EcsFunctions {
      * 
      * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
      * 
-     * &gt; **NOTE:**  Available in 1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 
@@ -13791,35 +13671,6 @@ public final class EcsFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Argument Reference
-     * 
-     * The following arguments are supported:
-     * 
-     * * `instanceId` - (Optional) The specified instance ID.
-     * * `diskId` - (Optional) The specified disk ID.
-     * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
-     * * `ids` - (Optional)  A list of snapshot IDs.
-     * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
-     * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
-     *   * progressing: The snapshots are being created.
-     *   * accomplished: The snapshots are ready to use.
-     *   * failed: The snapshot creation failed.
-     *   * all: All status.
-     * * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
-     *   * auto: Auto snapshots.
-     *   * user: Manual snapshots.
-     *   * all: Auto and manual snapshots.
-     * * `sourceDiskType` - (Optional) The type of source disk:
-     *   * System: The snapshots are created for system disks.
-     *   * Data: The snapshots are created for data disks.
-     * * `usage` - (Optional) The usage of the snapshot:
-     *   * image: The snapshots are used to create custom images.
-     *   * disk: The snapshots are used to CreateDisk.
-     *   * mage_disk: The snapshots are used to create custom images and data disks.
-     *   * none: The snapshots are not used yet.
-     * * `tags` - (Optional) A map of tags assigned to snapshots.
-     * * `outputFile` - (Optional) The name of output file that saves the filter results.
      * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain() {
@@ -13832,7 +13683,7 @@ public final class EcsFunctions {
      * 
      * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
      * 
-     * &gt; **NOTE:**  Available in 1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 
@@ -13867,35 +13718,6 @@ public final class EcsFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Argument Reference
-     * 
-     * The following arguments are supported:
-     * 
-     * * `instanceId` - (Optional) The specified instance ID.
-     * * `diskId` - (Optional) The specified disk ID.
-     * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
-     * * `ids` - (Optional)  A list of snapshot IDs.
-     * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
-     * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
-     *   * progressing: The snapshots are being created.
-     *   * accomplished: The snapshots are ready to use.
-     *   * failed: The snapshot creation failed.
-     *   * all: All status.
-     * * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
-     *   * auto: Auto snapshots.
-     *   * user: Manual snapshots.
-     *   * all: Auto and manual snapshots.
-     * * `sourceDiskType` - (Optional) The type of source disk:
-     *   * System: The snapshots are created for system disks.
-     *   * Data: The snapshots are created for data disks.
-     * * `usage` - (Optional) The usage of the snapshot:
-     *   * image: The snapshots are used to create custom images.
-     *   * disk: The snapshots are used to CreateDisk.
-     *   * mage_disk: The snapshots are used to create custom images and data disks.
-     *   * none: The snapshots are not used yet.
-     * * `tags` - (Optional) A map of tags assigned to snapshots.
-     * * `outputFile` - (Optional) The name of output file that saves the filter results.
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args) {
@@ -13908,7 +13730,7 @@ public final class EcsFunctions {
      * 
      * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
      * 
-     * &gt; **NOTE:**  Available in 1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 
@@ -13943,35 +13765,6 @@ public final class EcsFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Argument Reference
-     * 
-     * The following arguments are supported:
-     * 
-     * * `instanceId` - (Optional) The specified instance ID.
-     * * `diskId` - (Optional) The specified disk ID.
-     * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
-     * * `ids` - (Optional)  A list of snapshot IDs.
-     * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
-     * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
-     *   * progressing: The snapshots are being created.
-     *   * accomplished: The snapshots are ready to use.
-     *   * failed: The snapshot creation failed.
-     *   * all: All status.
-     * * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
-     *   * auto: Auto snapshots.
-     *   * user: Manual snapshots.
-     *   * all: Auto and manual snapshots.
-     * * `sourceDiskType` - (Optional) The type of source disk:
-     *   * System: The snapshots are created for system disks.
-     *   * Data: The snapshots are created for data disks.
-     * * `usage` - (Optional) The usage of the snapshot:
-     *   * image: The snapshots are used to create custom images.
-     *   * disk: The snapshots are used to CreateDisk.
-     *   * mage_disk: The snapshots are used to create custom images and data disks.
-     *   * none: The snapshots are not used yet.
-     * * `tags` - (Optional) A map of tags assigned to snapshots.
-     * * `outputFile` - (Optional) The name of output file that saves the filter results.
      * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain(GetSnapshotsPlainArgs args) {
@@ -13984,7 +13777,7 @@ public final class EcsFunctions {
      * 
      * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
      * 
-     * &gt; **NOTE:**  Available in 1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 
@@ -14019,35 +13812,6 @@ public final class EcsFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Argument Reference
-     * 
-     * The following arguments are supported:
-     * 
-     * * `instanceId` - (Optional) The specified instance ID.
-     * * `diskId` - (Optional) The specified disk ID.
-     * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
-     * * `ids` - (Optional)  A list of snapshot IDs.
-     * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
-     * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
-     *   * progressing: The snapshots are being created.
-     *   * accomplished: The snapshots are ready to use.
-     *   * failed: The snapshot creation failed.
-     *   * all: All status.
-     * * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
-     *   * auto: Auto snapshots.
-     *   * user: Manual snapshots.
-     *   * all: Auto and manual snapshots.
-     * * `sourceDiskType` - (Optional) The type of source disk:
-     *   * System: The snapshots are created for system disks.
-     *   * Data: The snapshots are created for data disks.
-     * * `usage` - (Optional) The usage of the snapshot:
-     *   * image: The snapshots are used to create custom images.
-     *   * disk: The snapshots are used to CreateDisk.
-     *   * mage_disk: The snapshots are used to create custom images and data disks.
-     *   * none: The snapshots are not used yet.
-     * * `tags` - (Optional) A map of tags assigned to snapshots.
-     * * `outputFile` - (Optional) The name of output file that saves the filter results.
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args, InvokeOptions options) {
@@ -14060,7 +13824,7 @@ public final class EcsFunctions {
      * 
      * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
      * 
-     * &gt; **NOTE:**  Available in 1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 
@@ -14095,35 +13859,6 @@ public final class EcsFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Argument Reference
-     * 
-     * The following arguments are supported:
-     * 
-     * * `instanceId` - (Optional) The specified instance ID.
-     * * `diskId` - (Optional) The specified disk ID.
-     * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
-     * * `ids` - (Optional)  A list of snapshot IDs.
-     * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
-     * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
-     *   * progressing: The snapshots are being created.
-     *   * accomplished: The snapshots are ready to use.
-     *   * failed: The snapshot creation failed.
-     *   * all: All status.
-     * * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
-     *   * auto: Auto snapshots.
-     *   * user: Manual snapshots.
-     *   * all: Auto and manual snapshots.
-     * * `sourceDiskType` - (Optional) The type of source disk:
-     *   * System: The snapshots are created for system disks.
-     *   * Data: The snapshots are created for data disks.
-     * * `usage` - (Optional) The usage of the snapshot:
-     *   * image: The snapshots are used to create custom images.
-     *   * disk: The snapshots are used to CreateDisk.
-     *   * mage_disk: The snapshots are used to create custom images and data disks.
-     *   * none: The snapshots are not used yet.
-     * * `tags` - (Optional) A map of tags assigned to snapshots.
-     * * `outputFile` - (Optional) The name of output file that saves the filter results.
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args, InvokeOutputOptions options) {
@@ -14136,7 +13871,7 @@ public final class EcsFunctions {
      * 
      * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
      * 
-     * &gt; **NOTE:**  Available in 1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 
@@ -14171,35 +13906,6 @@ public final class EcsFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Argument Reference
-     * 
-     * The following arguments are supported:
-     * 
-     * * `instanceId` - (Optional) The specified instance ID.
-     * * `diskId` - (Optional) The specified disk ID.
-     * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
-     * * `ids` - (Optional)  A list of snapshot IDs.
-     * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
-     * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
-     *   * progressing: The snapshots are being created.
-     *   * accomplished: The snapshots are ready to use.
-     *   * failed: The snapshot creation failed.
-     *   * all: All status.
-     * * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
-     *   * auto: Auto snapshots.
-     *   * user: Manual snapshots.
-     *   * all: Auto and manual snapshots.
-     * * `sourceDiskType` - (Optional) The type of source disk:
-     *   * System: The snapshots are created for system disks.
-     *   * Data: The snapshots are created for data disks.
-     * * `usage` - (Optional) The usage of the snapshot:
-     *   * image: The snapshots are used to create custom images.
-     *   * disk: The snapshots are used to CreateDisk.
-     *   * mage_disk: The snapshots are used to create custom images and data disks.
-     *   * none: The snapshots are not used yet.
-     * * `tags` - (Optional) A map of tags assigned to snapshots.
-     * * `outputFile` - (Optional) The name of output file that saves the filter results.
      * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain(GetSnapshotsPlainArgs args, InvokeOptions options) {

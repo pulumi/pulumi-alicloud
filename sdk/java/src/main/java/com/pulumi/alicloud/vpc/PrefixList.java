@@ -56,14 +56,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-testacc-example");
+ *         final var name = config.get("name").orElse("tf-prefixlist-example");
  *         var defaultRg = new ResourceGroup("defaultRg", ResourceGroupArgs.builder()
- *             .displayName("tf-testacc-chenyi")
+ *             .displayName("tf-prefixlist-default-rg")
  *             .resourceGroupName(name)
  *             .build());
  * 
  *         var changeRg = new ResourceGroup("changeRg", ResourceGroupArgs.builder()
- *             .displayName("tf-testacc-chenyi-change")
+ *             .displayName("tf-prefixlist-change-rg")
  *             .resourceGroupName(String.format("%s1", name))
  *             .build());
  * 
@@ -112,14 +112,14 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The CIDR address block list of the prefix list.See the following `Block Entrys`.
+     * The CIDR address block list of the prefix list. See `entrys` below.
      * 
      */
     @Export(name="entrys", refs={List.class,PrefixListEntry.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PrefixListEntry>> entrys;
 
     /**
-     * @return The CIDR address block list of the prefix list.See the following `Block Entrys`.
+     * @return The CIDR address block list of the prefix list. See `entrys` below.
      * 
      */
     public Output<Optional<List<PrefixListEntry>>> entrys() {

@@ -18,31 +18,35 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly int Cpu;
         /// <summary>
-        /// The creation time of the Desktop.
+        /// The creation time of the cloud desktop.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The desktop id of the Desktop.
+        /// The cloud desktop ID.
         /// </summary>
         public readonly string DesktopId;
         /// <summary>
-        /// The desktop name of the Desktop.
+        /// The cloud desktop name.
         /// </summary>
         public readonly string DesktopName;
         /// <summary>
-        /// The desktop type of the Desktop.
+        /// The specifications of the cloud desktop.
         /// </summary>
         public readonly string DesktopType;
         /// <summary>
-        /// The directory id of the Desktop.
+        /// The directory ID.
         /// </summary>
         public readonly string DirectoryId;
         /// <summary>
-        /// The desktop end user id of the Desktop.
+        /// (Available since v2.3.0) The disk information.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDesktopsDesktopDiskResult> Disks;
+        /// <summary>
+        /// The authorized users of the cloud desktop.
         /// </summary>
         public readonly ImmutableArray<string> EndUserIds;
         /// <summary>
-        /// The expired time of the Desktop.
+        /// The expiration time of the subscription cloud desktop.
         /// </summary>
         public readonly string ExpiredTime;
         /// <summary>
@@ -50,27 +54,27 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The image id of the Desktop.
+        /// The image ID.
         /// </summary>
         public readonly string ImageId;
         /// <summary>
-        /// The memory of the Desktop.
+        /// The memory size.
         /// </summary>
         public readonly string Memory;
         /// <summary>
-        /// The network interface id of the Desktop.
+        /// The ID of the secondary elastic network interface (ENI) created by the cloud desktop service for a RAM or AD user.
         /// </summary>
         public readonly string NetworkInterfaceId;
         /// <summary>
-        /// The payment type of the Desktop.
+        /// The billing method of the cloud desktop.
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
-        /// The policy group id of the Desktop.
+        /// The cloud desktop policy ID.
         /// </summary>
         public readonly string PolicyGroupId;
         /// <summary>
-        /// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+        /// The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -91,6 +95,8 @@ namespace Pulumi.AliCloud.Eds.Outputs
             string desktopType,
 
             string directoryId,
+
+            ImmutableArray<Outputs.GetDesktopsDesktopDiskResult> disks,
 
             ImmutableArray<string> endUserIds,
 
@@ -118,6 +124,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
             DesktopName = desktopName;
             DesktopType = desktopType;
             DirectoryId = directoryId;
+            Disks = disks;
             EndUserIds = endUserIds;
             ExpiredTime = expiredTime;
             Id = id;

@@ -7,14 +7,14 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cassandra dataCenter resource supports replica set dataCenters only. The Cassandra provides stable, reliable, and automatic scalable database services.
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
- * You can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).
+ * You can see detail product introduction in the [Cassandra product documentation](https://www.alibabacloud.com/help/product/49055.htm).
  *
  * > **NOTE:** Available since v1.88.0.
  *
  * > **NOTE:**  Create a cassandra dataCenter need a clusterId,so need create a cassandra cluster first.
  *
  * > **NOTE:**  The following regions support create Vpc network Cassandra cluster.
- * The official website mark  more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).
+ * The official website mark more regions. Or you can call [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/157540.html).
  *
  * > **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
  *
@@ -120,6 +120,9 @@ export class DataCenter extends pulumi.CustomResource {
      * Cassandra cluster id of dataCenter-2 belongs to.
      */
     declare public readonly clusterId: pulumi.Output<string>;
+    /**
+     * The ID of the Cassandra dataCenter.
+     */
     declare public /*out*/ readonly dataCenterId: pulumi.Output<string>;
     /**
      * Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
@@ -135,6 +138,9 @@ export class DataCenter extends pulumi.CustomResource {
      * The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      */
     declare public readonly diskType: pulumi.Output<string | undefined>;
+    /**
+     * Whether to enable public access. System default to `false`.
+     */
     declare public readonly enablePublic: pulumi.Output<boolean | undefined>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
@@ -148,9 +154,21 @@ export class DataCenter extends pulumi.CustomResource {
      * The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
      */
     declare public readonly payType: pulumi.Output<string>;
+    /**
+     * The purchase period of the dataCenter. Valid when payType = Subscription.
+     */
     declare public readonly period: pulumi.Output<number | undefined>;
+    /**
+     * The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
+     */
     declare public readonly periodUnit: pulumi.Output<string | undefined>;
+    /**
+     * The public access points of the Cassandra dataCenter.
+     */
     declare public /*out*/ readonly publicPoints: pulumi.Output<string[]>;
+    /**
+     * The status of the Cassandra dataCenter.
+     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
@@ -249,6 +267,9 @@ export interface DataCenterState {
      * Cassandra cluster id of dataCenter-2 belongs to.
      */
     clusterId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the Cassandra dataCenter.
+     */
     dataCenterId?: pulumi.Input<string | undefined>;
     /**
      * Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
@@ -264,6 +285,9 @@ export interface DataCenterState {
      * The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      */
     diskType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to enable public access. System default to `false`.
+     */
     enablePublic?: pulumi.Input<boolean | undefined>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
@@ -277,9 +301,21 @@ export interface DataCenterState {
      * The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
      */
     payType?: pulumi.Input<string | undefined>;
+    /**
+     * The purchase period of the dataCenter. Valid when payType = Subscription.
+     */
     period?: pulumi.Input<number | undefined>;
+    /**
+     * The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
+     */
     periodUnit?: pulumi.Input<string | undefined>;
+    /**
+     * The public access points of the Cassandra dataCenter.
+     */
     publicPoints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The status of the Cassandra dataCenter.
+     */
     status?: pulumi.Input<string | undefined>;
     /**
      * The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
@@ -323,6 +359,9 @@ export interface DataCenterArgs {
      * The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      */
     diskType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to enable public access. System default to `false`.
+     */
     enablePublic?: pulumi.Input<boolean | undefined>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
@@ -336,7 +375,13 @@ export interface DataCenterArgs {
      * The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
      */
     payType: pulumi.Input<string>;
+    /**
+     * The purchase period of the dataCenter. Valid when payType = Subscription.
+     */
     period?: pulumi.Input<number | undefined>;
+    /**
+     * The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
+     */
     periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cdn
         /// <summary>
         /// This data source provides the function of verifying whether an IP is a CDN node.
         /// 
-        /// &gt; **NOTE:** Available in v1.153.0+.
+        /// &gt; **NOTE:** Available since v1.153.0.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Cdn
         /// <summary>
         /// This data source provides the function of verifying whether an IP is a CDN node.
         /// 
-        /// &gt; **NOTE:** Available in v1.153.0+.
+        /// &gt; **NOTE:** Available since v1.153.0.
         /// 
         /// ## Example Usage
         /// 
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Cdn
         /// <summary>
         /// This data source provides the function of verifying whether an IP is a CDN node.
         /// 
-        /// &gt; **NOTE:** Available in v1.153.0+.
+        /// &gt; **NOTE:** Available since v1.153.0.
         /// 
         /// ## Example Usage
         /// 
@@ -129,15 +129,30 @@ namespace Pulumi.AliCloud.Cdn
     [OutputType]
     public sealed class GetIpInfoResult
     {
+        /// <summary>
+        /// Whether it belongs to an Alibaba Cloud CDN node.Valid values: `True`, `False`.
+        /// </summary>
         public readonly string CdnIp;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Ip;
+        /// <summary>
+        /// The operator's Chinese name, e.g. `电信`.
+        /// </summary>
         public readonly string Isp;
+        /// <summary>
+        /// The operator's English name, e.g. `Telecom`.
+        /// </summary>
         public readonly string IspEname;
+        /// <summary>
+        /// Chinese name of the region, e.g. `中国-贵州省-贵阳市`.
+        /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// English name of the region, e.g. `China-Guizhou-guiyang`.
+        /// </summary>
         public readonly string RegionEname;
 
         [OutputConstructor]

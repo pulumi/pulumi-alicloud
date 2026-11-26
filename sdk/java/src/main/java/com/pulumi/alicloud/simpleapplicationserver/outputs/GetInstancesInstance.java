@@ -56,7 +56,7 @@ public final class GetInstancesInstance {
      */
     private String instanceName;
     /**
-     * @return The billing method of the simple application server.
+     * @return The paymen type of the resource. Valid values: `Subscription`.
      * 
      */
     private String paymentType;
@@ -71,7 +71,7 @@ public final class GetInstancesInstance {
      */
     private String publicIpAddress;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
      * 
      */
     private String status;
@@ -141,7 +141,7 @@ public final class GetInstancesInstance {
         return this.instanceName;
     }
     /**
-     * @return The billing method of the simple application server.
+     * @return The paymen type of the resource. Valid values: `Subscription`.
      * 
      */
     public String paymentType() {
@@ -162,7 +162,7 @@ public final class GetInstancesInstance {
         return this.publicIpAddress;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
      * 
      */
     public String status() {

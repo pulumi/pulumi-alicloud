@@ -29,16 +29,16 @@ namespace Pulumi.AliCloud.Vpc
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testacc-example";
+    ///     var name = config.Get("name") ?? "tf-prefixlist-example";
     ///     var defaultRg = new AliCloud.ResourceManager.ResourceGroup("defaultRg", new()
     ///     {
-    ///         DisplayName = "tf-testacc-chenyi",
+    ///         DisplayName = "tf-prefixlist-default-rg",
     ///         ResourceGroupName = name,
     ///     });
     /// 
     ///     var changeRg = new AliCloud.ResourceManager.ResourceGroup("changeRg", new()
     ///     {
-    ///         DisplayName = "tf-testacc-chenyi-change",
+    ///         DisplayName = "tf-prefixlist-change-rg",
     ///         ResourceGroupName = $"{name}1",
     ///     });
     /// 
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The CIDR address block list of the prefix list.See the following `Block Entrys`.
+        /// The CIDR address block list of the prefix list. See `Entrys` below.
         /// </summary>
         [Output("entrys")]
         public Output<ImmutableArray<Outputs.PrefixListEntry>> Entrys { get; private set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.PrefixListEntryArgs>? _entrys;
 
         /// <summary>
-        /// The CIDR address block list of the prefix list.See the following `Block Entrys`.
+        /// The CIDR address block list of the prefix list. See `Entrys` below.
         /// </summary>
         public InputList<Inputs.PrefixListEntryArgs> Entrys
         {
@@ -265,7 +265,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.PrefixListEntryGetArgs>? _entrys;
 
         /// <summary>
-        /// The CIDR address block list of the prefix list.See the following `Block Entrys`.
+        /// The CIDR address block list of the prefix list. See `Entrys` below.
         /// </summary>
         public InputList<Inputs.PrefixListEntryGetArgs> Entrys
         {

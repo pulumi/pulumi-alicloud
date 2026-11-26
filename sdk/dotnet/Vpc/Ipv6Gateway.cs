@@ -29,28 +29,28 @@ namespace Pulumi.AliCloud.Vpc
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testacc-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultVpc = new AliCloud.Vpc.Network("defaultVpc", new()
     ///     {
-    ///         Description = "tf-testacc",
+    ///         Description = "terraform-example",
     ///         EnableIpv6 = true,
     ///     });
     /// 
     ///     var defaultRg = new AliCloud.ResourceManager.ResourceGroup("defaultRg", new()
     ///     {
-    ///         DisplayName = "tf-testacc-ipv6gateway503",
+    ///         DisplayName = "terraform-example-ipv6gateway503",
     ///         ResourceGroupName = $"{name}1",
     ///     });
     /// 
     ///     var changeRg = new AliCloud.ResourceManager.ResourceGroup("changeRg", new()
     ///     {
-    ///         DisplayName = "tf-testacc-ipv6gateway311",
+    ///         DisplayName = "terraform-example-ipv6gateway311",
     ///         ResourceGroupName = $"{name}2",
     ///     });
     /// 
     ///     var @default = new AliCloud.Vpc.Ipv6Gateway("default", new()
     ///     {
-    ///         Description = "test",
+    ///         Description = "terraform-example",
     ///         Ipv6GatewayName = name,
     ///         VpcId = defaultVpc.Id,
     ///         ResourceGroupId = defaultRg.Id,
@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+        /// The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Ipv6GatewayId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        /// The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("ipv6GatewayName")]
         public Output<string?> Ipv6GatewayName { get; private set; } = null!;
@@ -191,13 +191,13 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class Ipv6GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+        /// The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        /// The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("ipv6GatewayName")]
         public Input<string>? Ipv6GatewayName { get; set; }
@@ -253,7 +253,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+        /// The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -277,7 +277,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Ipv6GatewayId { get; set; }
 
         /// <summary>
-        /// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        /// The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("ipv6GatewayName")]
         public Input<string>? Ipv6GatewayName { get; set; }

@@ -109,14 +109,14 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The include reservation data. Valid values: `BGP` and `BGP_PRO`.
+     * The include reservation data.
      * 
      */
     @Import(name="includeReservationData")
     private @Nullable Output<Boolean> includeReservationData;
 
     /**
-     * @return The include reservation data. Valid values: `BGP` and `BGP_PRO`.
+     * @return The include reservation data.
      * 
      */
     public Optional<Output<Boolean>> includeReservationData() {
@@ -139,6 +139,8 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Field `ipAddresses` has been deprecated. Please use `ipAddress` instead.
+     * 
      * @deprecated Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
      * 
      */
@@ -147,6 +149,8 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<List<String>> ipAddresses;
 
     /**
+     * @return Field `ipAddresses` has been deprecated. Please use `ipAddress` instead.
+     * 
      * @deprecated Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
      * 
      */
@@ -278,12 +282,16 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * A mapping of tags to assign to the resource.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -468,7 +476,7 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param includeReservationData The include reservation data. Valid values: `BGP` and `BGP_PRO`.
+         * @param includeReservationData The include reservation data.
          * 
          * @return builder
          * 
@@ -479,7 +487,7 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param includeReservationData The include reservation data. Valid values: `BGP` and `BGP_PRO`.
+         * @param includeReservationData The include reservation data.
          * 
          * @return builder
          * 
@@ -510,6 +518,8 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param ipAddresses Field `ipAddresses` has been deprecated. Please use `ipAddress` instead.
+         * 
          * @return builder
          * 
          * @deprecated Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
@@ -522,6 +532,8 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param ipAddresses Field `ipAddresses` has been deprecated. Please use `ipAddress` instead.
+         * 
          * @return builder
          * 
          * @deprecated Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
@@ -533,6 +545,8 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param ipAddresses Field `ipAddresses` has been deprecated. Please use `ipAddress` instead.
+         * 
          * @return builder
          * 
          * @deprecated Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
@@ -714,6 +728,8 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param tags A mapping of tags to assign to the resource.
          * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
          * @return builder
          * 
          */
@@ -724,6 +740,8 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

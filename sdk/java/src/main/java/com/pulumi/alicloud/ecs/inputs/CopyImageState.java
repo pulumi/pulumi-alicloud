@@ -17,49 +17,107 @@ public final class CopyImageState extends com.pulumi.resources.ResourceArgs {
 
     public static final CopyImageState Empty = new CopyImageState();
 
+    /**
+     * Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
     @Import(name="deleteAutoSnapshot")
     private @Nullable Output<Boolean> deleteAutoSnapshot;
 
+    /**
+     * @return Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
     public Optional<Output<Boolean>> deleteAutoSnapshot() {
         return Optional.ofNullable(this.deleteAutoSnapshot);
     }
 
+    /**
+     * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Indicates whether to encrypt the image.
+     * 
+     */
     @Import(name="encrypted")
     private @Nullable Output<Boolean> encrypted;
 
+    /**
+     * @return Indicates whether to encrypt the image.
+     * 
+     */
     public Optional<Output<Boolean>> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
 
+    /**
+     * Indicates whether to force delete the custom image, Default is `false`.
+     * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+     * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+     * 
+     */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
+    /**
+     * @return Indicates whether to force delete the custom image, Default is `false`.
+     * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+     * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+     * 
+     */
     public Optional<Output<Boolean>> force() {
         return Optional.ofNullable(this.force);
     }
 
+    /**
+     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     * 
+     */
     @Import(name="imageName")
     private @Nullable Output<String> imageName;
 
+    /**
+     * @return The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     * 
+     */
     public Optional<Output<String>> imageName() {
         return Optional.ofNullable(this.imageName);
     }
 
+    /**
+     * Key ID used to encrypt the image.
+     * 
+     */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
 
+    /**
+     * @return Key ID used to encrypt the image.
+     * 
+     */
     public Optional<Output<String>> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
 
     /**
+     * Attribute &#39;name&#39; has been deprecated, please use `imageName` instead.
+     * 
      * @deprecated Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
      * 
      */
@@ -68,6 +126,8 @@ public final class CopyImageState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
+     * @return Attribute &#39;name&#39; has been deprecated, please use `imageName` instead.
+     * 
      * @deprecated Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
      * 
      */
@@ -76,23 +136,47 @@ public final class CopyImageState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The source image ID.
+     * 
+     */
     @Import(name="sourceImageId")
     private @Nullable Output<String> sourceImageId;
 
+    /**
+     * @return The source image ID.
+     * 
+     */
     public Optional<Output<String>> sourceImageId() {
         return Optional.ofNullable(this.sourceImageId);
     }
 
+    /**
+     * The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+     * 
+     */
     @Import(name="sourceRegionId")
     private @Nullable Output<String> sourceRegionId;
 
+    /**
+     * @return The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+     * 
+     */
     public Optional<Output<String>> sourceRegionId() {
         return Optional.ofNullable(this.sourceRegionId);
     }
 
+    /**
+     * The tag value of an image. The value of N ranges from 1 to 20.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
+    /**
+     * @return The tag value of an image. The value of N ranges from 1 to 20.
+     * 
+     */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -130,61 +214,143 @@ public final class CopyImageState extends com.pulumi.resources.ResourceArgs {
             $ = new CopyImageState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deleteAutoSnapshot Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteAutoSnapshot(@Nullable Output<Boolean> deleteAutoSnapshot) {
             $.deleteAutoSnapshot = deleteAutoSnapshot;
             return this;
         }
 
+        /**
+         * @param deleteAutoSnapshot Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteAutoSnapshot(Boolean deleteAutoSnapshot) {
             return deleteAutoSnapshot(Output.of(deleteAutoSnapshot));
         }
 
+        /**
+         * @param description The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param encrypted Indicates whether to encrypt the image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encrypted(@Nullable Output<Boolean> encrypted) {
             $.encrypted = encrypted;
             return this;
         }
 
+        /**
+         * @param encrypted Indicates whether to encrypt the image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encrypted(Boolean encrypted) {
             return encrypted(Output.of(encrypted));
         }
 
+        /**
+         * @param force Indicates whether to force delete the custom image, Default is `false`.
+         * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+         * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder force(@Nullable Output<Boolean> force) {
             $.force = force;
             return this;
         }
 
+        /**
+         * @param force Indicates whether to force delete the custom image, Default is `false`.
+         * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+         * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder force(Boolean force) {
             return force(Output.of(force));
         }
 
+        /**
+         * @param imageName The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageName(@Nullable Output<String> imageName) {
             $.imageName = imageName;
             return this;
         }
 
+        /**
+         * @param imageName The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageName(String imageName) {
             return imageName(Output.of(imageName));
         }
 
+        /**
+         * @param kmsKeyId Key ID used to encrypt the image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
             $.kmsKeyId = kmsKeyId;
             return this;
         }
 
+        /**
+         * @param kmsKeyId Key ID used to encrypt the image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(String kmsKeyId) {
             return kmsKeyId(Output.of(kmsKeyId));
         }
 
         /**
+         * @param name Attribute &#39;name&#39; has been deprecated, please use `imageName` instead.
+         * 
          * @return builder
          * 
          * @deprecated Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
@@ -197,6 +363,8 @@ public final class CopyImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param name Attribute &#39;name&#39; has been deprecated, please use `imageName` instead.
+         * 
          * @return builder
          * 
          * @deprecated Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
@@ -207,29 +375,65 @@ public final class CopyImageState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param sourceImageId The source image ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceImageId(@Nullable Output<String> sourceImageId) {
             $.sourceImageId = sourceImageId;
             return this;
         }
 
+        /**
+         * @param sourceImageId The source image ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceImageId(String sourceImageId) {
             return sourceImageId(Output.of(sourceImageId));
         }
 
+        /**
+         * @param sourceRegionId The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceRegionId(@Nullable Output<String> sourceRegionId) {
             $.sourceRegionId = sourceRegionId;
             return this;
         }
 
+        /**
+         * @param sourceRegionId The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceRegionId(String sourceRegionId) {
             return sourceRegionId(Output.of(sourceRegionId));
         }
 
+        /**
+         * @param tags The tag value of an image. The value of N ranges from 1 to 20.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags The tag value of an image. The value of N ranges from 1 to 20.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
         }

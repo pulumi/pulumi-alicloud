@@ -14,16 +14,32 @@ public final class GetApplicationInfosDimension extends com.pulumi.resources.Inv
 
     public static final GetApplicationInfosDimension Empty = new GetApplicationInfosDimension();
 
+    /**
+     * The key of dimensions.
+     * 
+     */
     @Import(name="key")
     private @Nullable String key;
 
+    /**
+     * @return The key of dimensions.
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * The value of dimensions.
+     * 
+     */
     @Import(name="value")
     private @Nullable String value;
 
+    /**
+     * @return The value of dimensions.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }
@@ -53,11 +69,23 @@ public final class GetApplicationInfosDimension extends com.pulumi.resources.Inv
             $ = new GetApplicationInfosDimension(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key The key of dimensions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable String key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param value The value of dimensions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable String value) {
             $.value = value;
             return this;

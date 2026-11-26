@@ -15,16 +15,32 @@ public final class SnapshotPolicyTargetTagArgs extends com.pulumi.resources.Reso
 
     public static final SnapshotPolicyTargetTagArgs Empty = new SnapshotPolicyTargetTagArgs();
 
+    /**
+     * The key of the tag.
+     * 
+     */
     @Import(name="tagKey")
     private @Nullable Output<String> tagKey;
 
+    /**
+     * @return The key of the tag.
+     * 
+     */
     public Optional<Output<String>> tagKey() {
         return Optional.ofNullable(this.tagKey);
     }
 
+    /**
+     * The value of the tag.
+     * 
+     */
     @Import(name="tagValue")
     private @Nullable Output<String> tagValue;
 
+    /**
+     * @return The value of the tag.
+     * 
+     */
     public Optional<Output<String>> tagValue() {
         return Optional.ofNullable(this.tagValue);
     }
@@ -54,20 +70,44 @@ public final class SnapshotPolicyTargetTagArgs extends com.pulumi.resources.Reso
             $ = new SnapshotPolicyTargetTagArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param tagKey The key of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tagKey(@Nullable Output<String> tagKey) {
             $.tagKey = tagKey;
             return this;
         }
 
+        /**
+         * @param tagKey The key of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tagKey(String tagKey) {
             return tagKey(Output.of(tagKey));
         }
 
+        /**
+         * @param tagValue The value of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tagValue(@Nullable Output<String> tagValue) {
             $.tagValue = tagValue;
             return this;
         }
 
+        /**
+         * @param tagValue The value of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tagValue(String tagValue) {
             return tagValue(Output.of(tagValue));
         }

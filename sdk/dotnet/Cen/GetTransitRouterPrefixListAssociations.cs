@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.188.0+.
+        /// &gt; **NOTE:** Available since v1.188.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.188.0+.
+        /// &gt; **NOTE:** Available since v1.188.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.188.0+.
+        /// &gt; **NOTE:** Available since v1.188.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -240,6 +240,9 @@ namespace Pulumi.AliCloud.Cen
     [OutputType]
     public sealed class GetTransitRouterPrefixListAssociationsResult
     {
+        /// <summary>
+        /// A list of Cen Transit Router Prefix List Associations. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTransitRouterPrefixListAssociationsAssociationResult> Associations;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -247,12 +250,27 @@ namespace Pulumi.AliCloud.Cen
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The ID of the Alibaba Cloud account to which the prefix list belongs.
+        /// </summary>
         public readonly int? OwnerUid;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// The ID of the prefix list.
+        /// </summary>
         public readonly string? PrefixListId;
+        /// <summary>
+        /// The status of the prefix list.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The ID of the transit router.
+        /// </summary>
         public readonly string TransitRouterId;
+        /// <summary>
+        /// The ID of the route table of the transit router.
+        /// </summary>
         public readonly string TransitRouterTableId;
 
         [OutputConstructor]

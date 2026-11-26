@@ -11,10 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetDisksDiskMountInstance {
     /**
-     * @return Disk attachment time.
+     * @return The attached time.
      * 
      */
     private String attachedTime;
+    /**
+     * @return The device name.
+     * 
+     */
     private String device;
     /**
      * @return Filter the results by the specified ECS instance ID.
@@ -24,12 +28,16 @@ public final class GetDisksDiskMountInstance {
 
     private GetDisksDiskMountInstance() {}
     /**
-     * @return Disk attachment time.
+     * @return The attached time.
      * 
      */
     public String attachedTime() {
         return this.attachedTime;
     }
+    /**
+     * @return The device name.
+     * 
+     */
     public String device() {
         return this.device;
     }

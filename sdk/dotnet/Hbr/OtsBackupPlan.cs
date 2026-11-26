@@ -16,8 +16,6 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// &gt; **NOTE:** Available since v1.163.0.
     /// 
-    /// &gt; **NOTE:** Deprecated since v1.249.0.
-    /// 
     /// &gt; **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource alicloud.hbr.Policy and alicloud_hbr_policy_binding.
     /// 
     /// ## Example Usage
@@ -77,20 +75,20 @@ namespace Pulumi.AliCloud.Hbr
     ///     var defaultRole = new AliCloud.Ram.Role("default", new()
     ///     {
     ///         Name = "hbrexamplerole",
-    ///         Document = @"\t\t{
-    /// \t\t\t\""Statement\"": [
-    /// \t\t\t{
-    /// \t\t\t\t\""Action\"": \""sts:AssumeRole\"",
-    /// \t\t\t\t\""Effect\"": \""Allow\"",
-    /// \t\t\t\t\""Principal\"": {
-    /// \t\t\t\t\t\""Service\"": [
-    /// \t\t\t\t\t\t\""crossbackup.hbr.aliyuncs.com\""
-    /// \t\t\t\t\t]
-    /// \t\t\t\t}
-    /// \t\t\t}
-    /// \t\t\t],
-    ///   \t\t\t\""Version\"": \""1\""
-    /// \t\t}
+    ///         Document = @"    {
+    ///       \""Statement\"": [
+    ///       {
+    ///         \""Action\"": \""sts:AssumeRole\"",
+    ///         \""Effect\"": \""Allow\"",
+    ///         \""Principal\"": {
+    ///           \""Service\"": [
+    ///             \""crossbackup.hbr.aliyuncs.com\""
+    ///           ]
+    ///         }
+    ///       }
+    ///       ],
+    ///         \""Version\"": \""1\""
+    ///     }
     /// ",
     ///         Force = true,
     ///     });
@@ -189,7 +187,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> OtsBackupPlanName { get; private set; } = null!;
 
         /// <summary>
-        /// The details about the Table store instance. See the following `Block OtsDetail`. **Note:** Required while SourceType equals `OTS_TABLE`.
+        /// The details about the Table store instance. See `OtsDetail` below. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         [Output("otsDetails")]
         public Output<ImmutableArray<Outputs.OtsBackupPlanOtsDetail>> OtsDetails { get; private set; } = null!;
@@ -201,7 +199,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> Retention { get; private set; } = null!;
 
         /// <summary>
-        /// The backup plan rule. See the following `Block rules`. **Note:** Required while SourceType equals `OTS_TABLE`.
+        /// The backup plan rule. See `Rules` below. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.OtsBackupPlanRule>> Rules { get; private set; } = null!;
@@ -311,7 +309,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<Inputs.OtsBackupPlanOtsDetailArgs>? _otsDetails;
 
         /// <summary>
-        /// The details about the Table store instance. See the following `Block OtsDetail`. **Note:** Required while SourceType equals `OTS_TABLE`.
+        /// The details about the Table store instance. See `OtsDetail` below. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         public InputList<Inputs.OtsBackupPlanOtsDetailArgs> OtsDetails
         {
@@ -329,7 +327,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<Inputs.OtsBackupPlanRuleArgs>? _rules;
 
         /// <summary>
-        /// The backup plan rule. See the following `Block rules`. **Note:** Required while SourceType equals `OTS_TABLE`.
+        /// The backup plan rule. See `Rules` below. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         public InputList<Inputs.OtsBackupPlanRuleArgs> Rules
         {
@@ -404,7 +402,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<Inputs.OtsBackupPlanOtsDetailGetArgs>? _otsDetails;
 
         /// <summary>
-        /// The details about the Table store instance. See the following `Block OtsDetail`. **Note:** Required while SourceType equals `OTS_TABLE`.
+        /// The details about the Table store instance. See `OtsDetail` below. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         public InputList<Inputs.OtsBackupPlanOtsDetailGetArgs> OtsDetails
         {
@@ -422,7 +420,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<Inputs.OtsBackupPlanRuleGetArgs>? _rules;
 
         /// <summary>
-        /// The backup plan rule. See the following `Block rules`. **Note:** Required while SourceType equals `OTS_TABLE`.
+        /// The backup plan rule. See `Rules` below. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         public InputList<Inputs.OtsBackupPlanRuleGetArgs> Rules
         {

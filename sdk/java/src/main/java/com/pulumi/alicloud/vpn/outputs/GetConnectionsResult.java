@@ -30,13 +30,13 @@ public final class GetConnectionsResult {
      */
     private String id;
     /**
-     * @return (Optional) IDs of the VPN connections.
+     * @return IDs of the VPN connections.
      * 
      */
     private List<String> ids;
     private @Nullable String nameRegex;
     /**
-     * @return (Optional) names of the VPN connections.
+     * @return Names of the VPN connections.
      * 
      */
     private List<String> names;
@@ -70,7 +70,7 @@ public final class GetConnectionsResult {
         return this.id;
     }
     /**
-     * @return (Optional) IDs of the VPN connections.
+     * @return IDs of the VPN connections.
      * 
      */
     public List<String> ids() {
@@ -80,7 +80,7 @@ public final class GetConnectionsResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return (Optional) names of the VPN connections.
+     * @return Names of the VPN connections.
      * 
      */
     public List<String> names() {

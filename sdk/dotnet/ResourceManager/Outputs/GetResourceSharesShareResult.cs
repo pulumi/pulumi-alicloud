@@ -26,11 +26,11 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string ResourceShareName;
         /// <summary>
-        /// The owner of resource share.
+        /// The owner of resource share, Valid values: `Self` and `OtherAccounts`.
         /// </summary>
         public readonly string ResourceShareOwner;
         /// <summary>
-        /// The status of resource share.
+        /// The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
         /// </summary>
         public readonly string Status;
 

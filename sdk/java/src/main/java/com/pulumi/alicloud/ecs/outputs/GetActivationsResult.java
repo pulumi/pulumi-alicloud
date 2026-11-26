@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetActivationsResult {
+    /**
+     * @return A list of Ecs Activations. Each element contains the following attributes:
+     * 
+     */
     private List<GetActivationsActivation> activations;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,6 +26,10 @@ public final class GetActivationsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The default prefix of the instance name.
+     * 
+     */
     private @Nullable String instanceName;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
@@ -29,6 +37,10 @@ public final class GetActivationsResult {
     private Integer totalCount;
 
     private GetActivationsResult() {}
+    /**
+     * @return A list of Ecs Activations. Each element contains the following attributes:
+     * 
+     */
     public List<GetActivationsActivation> activations() {
         return this.activations;
     }
@@ -42,6 +54,10 @@ public final class GetActivationsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The default prefix of the instance name.
+     * 
+     */
     public Optional<String> instanceName() {
         return Optional.ofNullable(this.instanceName);
     }

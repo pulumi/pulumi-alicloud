@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Sae Applications of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.161.0+.
+ * > **NOTE:** Available since v1.161.0.
  *
  * ## Example Usage
  *
@@ -20,12 +20,12 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testacc";
+ * const name = config.get("name") || "tf-accapp";
  * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const vpc = new alicloud.vpc.Network("vpc", {
- *     vpcName: "tf_testacc",
+ *     vpcName: "tf_accapp",
  *     cidrBlock: "172.16.0.0/12",
  * });
  * const vsw = new alicloud.vpc.Switch("vsw", {
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultApplication = new alicloud.sae.Application("default", {
  *     appDescription: "tf-testaccDescription",
- *     appName: "tf-testaccAppName131",
+ *     appName: "tf-accappName131",
  *     namespaceId: defaultNamespace.id,
  *     imageUrl: "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
  *     packageType: "Image",
@@ -124,7 +124,13 @@ export interface GetApplicationsArgs {
  * A collection of values returned by getApplications.
  */
 export interface GetApplicationsResult {
+    /**
+     * Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
+     */
     readonly appName?: string;
+    /**
+     * A list of Sae Applications. Each element contains the following attributes:
+     */
     readonly applications: outputs.sae.GetApplicationsApplication[];
     readonly enableDetails?: boolean;
     readonly fieldType?: string;
@@ -134,16 +140,22 @@ export interface GetApplicationsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
+     */
     readonly namespaceId?: string;
     readonly orderBy?: string;
     readonly outputFile?: string;
     readonly reverse?: boolean;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Sae Applications of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.161.0+.
+ * > **NOTE:** Available since v1.161.0.
  *
  * ## Example Usage
  *
@@ -154,12 +166,12 @@ export interface GetApplicationsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testacc";
+ * const name = config.get("name") || "tf-accapp";
  * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const vpc = new alicloud.vpc.Network("vpc", {
- *     vpcName: "tf_testacc",
+ *     vpcName: "tf_accapp",
  *     cidrBlock: "172.16.0.0/12",
  * });
  * const vsw = new alicloud.vpc.Switch("vsw", {
@@ -175,7 +187,7 @@ export interface GetApplicationsResult {
  * });
  * const defaultApplication = new alicloud.sae.Application("default", {
  *     appDescription: "tf-testaccDescription",
- *     appName: "tf-testaccAppName131",
+ *     appName: "tf-accappName131",
  *     namespaceId: defaultNamespace.id,
  *     imageUrl: "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
  *     packageType: "Image",

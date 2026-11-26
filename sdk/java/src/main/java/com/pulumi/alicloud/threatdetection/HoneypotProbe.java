@@ -129,14 +129,14 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
-     * Configure the service.See the following `Block HoneypotBindList`.
+     * Configure the service.See the following `honeypotBindList` below.
      * 
      */
     @Export(name="honeypotBindLists", refs={List.class,HoneypotProbeHoneypotBindList.class}, tree="[0,1]")
     private Output</* @Nullable */ List<HoneypotProbeHoneypotBindList>> honeypotBindLists;
 
     /**
-     * @return Configure the service.See the following `Block HoneypotBindList`.
+     * @return Configure the service.See the following `honeypotBindList` below.
      * 
      */
     public Output<Optional<List<HoneypotProbeHoneypotBindList>>> honeypotBindLists() {

@@ -206,6 +206,8 @@ type Image struct {
 	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Indicates whether the image is available. Valid values:
+	// * true: The image is available and can be used to create ECS instances.
+	// * false: The image is unavailable and cannot be used to create ECS instances.
 	Usable pulumi.BoolOutput `pulumi:"usable"`
 }
 
@@ -304,6 +306,8 @@ type imageState struct {
 	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags map[string]string `pulumi:"tags"`
 	// Indicates whether the image is available. Valid values:
+	// * true: The image is available and can be used to create ECS instances.
+	// * false: The image is unavailable and cannot be used to create ECS instances.
 	Usable *bool `pulumi:"usable"`
 }
 
@@ -373,6 +377,8 @@ type ImageState struct {
 	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.StringMapInput
 	// Indicates whether the image is available. Valid values:
+	// * true: The image is available and can be used to create ECS instances.
+	// * false: The image is unavailable and cannot be used to create ECS instances.
 	Usable pulumi.BoolPtrInput
 }
 
@@ -725,6 +731,8 @@ func (o ImageOutput) Tags() pulumi.StringMapOutput {
 }
 
 // Indicates whether the image is available. Valid values:
+// * true: The image is available and can be used to create ECS instances.
+// * false: The image is unavailable and cannot be used to create ECS instances.
 func (o ImageOutput) Usable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Image) pulumi.BoolOutput { return v.Usable }).(pulumi.BoolOutput)
 }

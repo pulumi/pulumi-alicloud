@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.107.0+.
+// > **NOTE:** Available since v1.107.0.
 //
 // ## Example Usage
 //
@@ -72,15 +72,18 @@ type GetStackGroupsArgs struct {
 
 // A collection of values returned by getStackGroups.
 type GetStackGroupsResult struct {
-	EnableDetails *bool                 `pulumi:"enableDetails"`
-	Groups        []GetStackGroupsGroup `pulumi:"groups"`
+	EnableDetails *bool `pulumi:"enableDetails"`
+	// A list of Ros Stack Groups. Each element contains the following attributes. See `groups` below.
+	Groups []GetStackGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Stack Group names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of Stack Group.
+	Status *string `pulumi:"status"`
 }
 
 func GetStackGroupsOutput(ctx *pulumi.Context, args GetStackGroupsOutputArgs, opts ...pulumi.InvokeOption) GetStackGroupsResultOutput {
@@ -125,6 +128,7 @@ func (o GetStackGroupsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetStackGroupsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
+// A list of Ros Stack Groups. Each element contains the following attributes. See `groups` below.
 func (o GetStackGroupsResultOutput) Groups() GetStackGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetStackGroupsResult) []GetStackGroupsGroup { return v.Groups }).(GetStackGroupsGroupArrayOutput)
 }
@@ -142,6 +146,7 @@ func (o GetStackGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStackGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Stack Group names.
 func (o GetStackGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetStackGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -150,6 +155,7 @@ func (o GetStackGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStackGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of Stack Group.
 func (o GetStackGroupsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStackGroupsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

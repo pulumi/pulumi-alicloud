@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancersBalancerListenerPortsAndProtocal {
+    /**
+     * @return The listener port.
+     * 
+     */
     private Integer listenerPort;
+    /**
+     * @return The listener protocol.
+     * 
+     */
     private String listenerProtocal;
 
     private GetLoadBalancersBalancerListenerPortsAndProtocal() {}
+    /**
+     * @return The listener port.
+     * 
+     */
     public Integer listenerPort() {
         return this.listenerPort;
     }
+    /**
+     * @return The listener protocol.
+     * 
+     */
     public String listenerProtocal() {
         return this.listenerProtocal;
     }

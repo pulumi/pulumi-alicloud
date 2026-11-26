@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Tag
         /// <summary>
         /// This data source provides the Tag Meta Tags of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.169.0+.
+        /// &gt; **NOTE:** Available since v1.169.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Tag
         /// <summary>
         /// This data source provides the Tag Meta Tags of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.169.0+.
+        /// &gt; **NOTE:** Available since v1.169.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Tag
         /// <summary>
         /// This data source provides the Tag Meta Tags of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.169.0+.
+        /// &gt; **NOTE:** Available since v1.169.0.
         /// 
         /// ## Example Usage
         /// 
@@ -157,8 +157,14 @@ namespace Pulumi.AliCloud.Tag
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the key.
+        /// </summary>
         public readonly string? KeyName;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Meta Tags. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetMetaTagsTagResult> Tags;
 
         [OutputConstructor]

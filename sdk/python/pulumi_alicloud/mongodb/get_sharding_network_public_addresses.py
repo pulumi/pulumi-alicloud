@@ -50,11 +50,17 @@ class GetShardingNetworkPublicAddressesResult:
     @_builtins.property
     @pulumi.getter
     def addresses(self) -> Sequence['outputs.GetShardingNetworkPublicAddressesAddressResult']:
+        """
+        A list of Mongodb Sharding Network Addresses. Each element contains the following attributes:
+        """
         return pulumi.get(self, "addresses")
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> _builtins.str:
+        """
+        The db instance id.
+        """
         return pulumi.get(self, "db_instance_id")
 
     @_builtins.property
@@ -68,6 +74,9 @@ class GetShardingNetworkPublicAddressesResult:
     @_builtins.property
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+        """
         return pulumi.get(self, "node_id")
 
     @_builtins.property
@@ -78,6 +87,9 @@ class GetShardingNetworkPublicAddressesResult:
     @_builtins.property
     @pulumi.getter
     def role(self) -> Optional[_builtins.str]:
+        """
+        The role of the node.
+        """
         return pulumi.get(self, "role")
 
 
@@ -103,7 +115,7 @@ def get_sharding_network_public_addresses(db_instance_id: Optional[_builtins.str
     """
     This data source provides the Mongodb Sharding Network Public Addresses of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.149.0+.
+    > **NOTE:** Available since v1.149.0.
 
     ## Example Usage
 
@@ -148,7 +160,7 @@ def get_sharding_network_public_addresses_output(db_instance_id: pulumi.Input[Op
     """
     This data source provides the Mongodb Sharding Network Public Addresses of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.149.0+.
+    > **NOTE:** Available since v1.149.0.
 
     ## Example Usage
 

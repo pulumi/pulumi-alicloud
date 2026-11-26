@@ -47,26 +47,21 @@ class OssShipperArgs:
         :param pulumi.Input[_builtins.int] buffer_size: Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
         :param pulumi.Input[_builtins.str] format: Storage format, only supports three types: `json`, `parquet`, `csv`.
                **According to the different format, please select the following parameters**
-               - format = `json`
-                 `json_enable_tag` - (Optional) Whether to deliver the label.
-               - format = `csv`
-                 `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-                 `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-                 `csv_config_nullidentifier` - (Optional) Invalid field content.
-                 `csv_config_quote` - (Optional) Escape character under csv configuration.
-                 `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-                 `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
-               - format = `parquet`
-                 `parquet_config` - (Optional) Configure to use parquet storage format.
-                 `name` - (Required) The name of the key.
-                 `type` - (Required) Type of configuration name.
         :param pulumi.Input[_builtins.str] logstore_name: The name of the log logstore.
         :param pulumi.Input[_builtins.str] oss_bucket: The name of the oss bucket.
         :param pulumi.Input[_builtins.str] path_format: The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
         :param pulumi.Input[_builtins.str] project_name: The name of the log project. It is the only in one Alicloud account.
         :param pulumi.Input[_builtins.str] shipper_name: Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
         :param pulumi.Input[_builtins.str] compress_type: OSS data storage compression method, support: none, snappy. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] csv_config_columns: Field configuration in csv configuration format.
+        :param pulumi.Input[_builtins.str] csv_config_delimiter: Separator configuration in csv configuration format.
+        :param pulumi.Input[_builtins.bool] csv_config_header: Indicates whether to write the field name to the CSV file, the default value is `false`.
+        :param pulumi.Input[_builtins.str] csv_config_linefeed: lineFeed in csv configuration.
+        :param pulumi.Input[_builtins.str] csv_config_nullidentifier: Invalid field content.
+        :param pulumi.Input[_builtins.str] csv_config_quote: Escape character under csv configuration.
+        :param pulumi.Input[_builtins.bool] json_enable_tag: Whether to deliver the label.
         :param pulumi.Input[_builtins.str] oss_prefix: The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
+        :param pulumi.Input[Sequence[pulumi.Input['OssShipperParquetConfigArgs']]] parquet_configs: Configure to use parquet storage format. See `parquet_config` below.
         :param pulumi.Input[_builtins.str] role_arn: Used for access control, the OSS Bucket owner creates the role mark, such as `acs:ram::13234:role/logrole`
         """
         pulumi.set(__self__, "buffer_interval", buffer_interval)
@@ -130,19 +125,6 @@ class OssShipperArgs:
         """
         Storage format, only supports three types: `json`, `parquet`, `csv`.
         **According to the different format, please select the following parameters**
-        - format = `json`
-          `json_enable_tag` - (Optional) Whether to deliver the label.
-        - format = `csv`
-          `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-          `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-          `csv_config_nullidentifier` - (Optional) Invalid field content.
-          `csv_config_quote` - (Optional) Escape character under csv configuration.
-          `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-          `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
-        - format = `parquet`
-          `parquet_config` - (Optional) Configure to use parquet storage format.
-          `name` - (Required) The name of the key.
-          `type` - (Required) Type of configuration name.
         """
         return pulumi.get(self, "format")
 
@@ -225,6 +207,9 @@ class OssShipperArgs:
     @_builtins.property
     @pulumi.getter(name="csvConfigColumns")
     def csv_config_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Field configuration in csv configuration format.
+        """
         return pulumi.get(self, "csv_config_columns")
 
     @csv_config_columns.setter
@@ -234,6 +219,9 @@ class OssShipperArgs:
     @_builtins.property
     @pulumi.getter(name="csvConfigDelimiter")
     def csv_config_delimiter(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Separator configuration in csv configuration format.
+        """
         return pulumi.get(self, "csv_config_delimiter")
 
     @csv_config_delimiter.setter
@@ -243,6 +231,9 @@ class OssShipperArgs:
     @_builtins.property
     @pulumi.getter(name="csvConfigHeader")
     def csv_config_header(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether to write the field name to the CSV file, the default value is `false`.
+        """
         return pulumi.get(self, "csv_config_header")
 
     @csv_config_header.setter
@@ -252,6 +243,9 @@ class OssShipperArgs:
     @_builtins.property
     @pulumi.getter(name="csvConfigLinefeed")
     def csv_config_linefeed(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        lineFeed in csv configuration.
+        """
         return pulumi.get(self, "csv_config_linefeed")
 
     @csv_config_linefeed.setter
@@ -261,6 +255,9 @@ class OssShipperArgs:
     @_builtins.property
     @pulumi.getter(name="csvConfigNullidentifier")
     def csv_config_nullidentifier(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Invalid field content.
+        """
         return pulumi.get(self, "csv_config_nullidentifier")
 
     @csv_config_nullidentifier.setter
@@ -270,6 +267,9 @@ class OssShipperArgs:
     @_builtins.property
     @pulumi.getter(name="csvConfigQuote")
     def csv_config_quote(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Escape character under csv configuration.
+        """
         return pulumi.get(self, "csv_config_quote")
 
     @csv_config_quote.setter
@@ -279,6 +279,9 @@ class OssShipperArgs:
     @_builtins.property
     @pulumi.getter(name="jsonEnableTag")
     def json_enable_tag(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to deliver the label.
+        """
         return pulumi.get(self, "json_enable_tag")
 
     @json_enable_tag.setter
@@ -300,6 +303,9 @@ class OssShipperArgs:
     @_builtins.property
     @pulumi.getter(name="parquetConfigs")
     def parquet_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OssShipperParquetConfigArgs']]]]:
+        """
+        Configure to use parquet storage format. See `parquet_config` below.
+        """
         return pulumi.get(self, "parquet_configs")
 
     @parquet_configs.setter
@@ -347,24 +353,19 @@ class _OssShipperState:
         :param pulumi.Input[_builtins.int] buffer_interval: How often is it delivered every interval.
         :param pulumi.Input[_builtins.int] buffer_size: Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
         :param pulumi.Input[_builtins.str] compress_type: OSS data storage compression method, support: none, snappy. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] csv_config_columns: Field configuration in csv configuration format.
+        :param pulumi.Input[_builtins.str] csv_config_delimiter: Separator configuration in csv configuration format.
+        :param pulumi.Input[_builtins.bool] csv_config_header: Indicates whether to write the field name to the CSV file, the default value is `false`.
+        :param pulumi.Input[_builtins.str] csv_config_linefeed: lineFeed in csv configuration.
+        :param pulumi.Input[_builtins.str] csv_config_nullidentifier: Invalid field content.
+        :param pulumi.Input[_builtins.str] csv_config_quote: Escape character under csv configuration.
         :param pulumi.Input[_builtins.str] format: Storage format, only supports three types: `json`, `parquet`, `csv`.
                **According to the different format, please select the following parameters**
-               - format = `json`
-                 `json_enable_tag` - (Optional) Whether to deliver the label.
-               - format = `csv`
-                 `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-                 `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-                 `csv_config_nullidentifier` - (Optional) Invalid field content.
-                 `csv_config_quote` - (Optional) Escape character under csv configuration.
-                 `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-                 `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
-               - format = `parquet`
-                 `parquet_config` - (Optional) Configure to use parquet storage format.
-                 `name` - (Required) The name of the key.
-                 `type` - (Required) Type of configuration name.
+        :param pulumi.Input[_builtins.bool] json_enable_tag: Whether to deliver the label.
         :param pulumi.Input[_builtins.str] logstore_name: The name of the log logstore.
         :param pulumi.Input[_builtins.str] oss_bucket: The name of the oss bucket.
         :param pulumi.Input[_builtins.str] oss_prefix: The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
+        :param pulumi.Input[Sequence[pulumi.Input['OssShipperParquetConfigArgs']]] parquet_configs: Configure to use parquet storage format. See `parquet_config` below.
         :param pulumi.Input[_builtins.str] path_format: The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
         :param pulumi.Input[_builtins.str] project_name: The name of the log project. It is the only in one Alicloud account.
         :param pulumi.Input[_builtins.str] role_arn: Used for access control, the OSS Bucket owner creates the role mark, such as `acs:ram::13234:role/logrole`
@@ -448,6 +449,9 @@ class _OssShipperState:
     @_builtins.property
     @pulumi.getter(name="csvConfigColumns")
     def csv_config_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Field configuration in csv configuration format.
+        """
         return pulumi.get(self, "csv_config_columns")
 
     @csv_config_columns.setter
@@ -457,6 +461,9 @@ class _OssShipperState:
     @_builtins.property
     @pulumi.getter(name="csvConfigDelimiter")
     def csv_config_delimiter(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Separator configuration in csv configuration format.
+        """
         return pulumi.get(self, "csv_config_delimiter")
 
     @csv_config_delimiter.setter
@@ -466,6 +473,9 @@ class _OssShipperState:
     @_builtins.property
     @pulumi.getter(name="csvConfigHeader")
     def csv_config_header(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether to write the field name to the CSV file, the default value is `false`.
+        """
         return pulumi.get(self, "csv_config_header")
 
     @csv_config_header.setter
@@ -475,6 +485,9 @@ class _OssShipperState:
     @_builtins.property
     @pulumi.getter(name="csvConfigLinefeed")
     def csv_config_linefeed(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        lineFeed in csv configuration.
+        """
         return pulumi.get(self, "csv_config_linefeed")
 
     @csv_config_linefeed.setter
@@ -484,6 +497,9 @@ class _OssShipperState:
     @_builtins.property
     @pulumi.getter(name="csvConfigNullidentifier")
     def csv_config_nullidentifier(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Invalid field content.
+        """
         return pulumi.get(self, "csv_config_nullidentifier")
 
     @csv_config_nullidentifier.setter
@@ -493,6 +509,9 @@ class _OssShipperState:
     @_builtins.property
     @pulumi.getter(name="csvConfigQuote")
     def csv_config_quote(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Escape character under csv configuration.
+        """
         return pulumi.get(self, "csv_config_quote")
 
     @csv_config_quote.setter
@@ -505,19 +524,6 @@ class _OssShipperState:
         """
         Storage format, only supports three types: `json`, `parquet`, `csv`.
         **According to the different format, please select the following parameters**
-        - format = `json`
-          `json_enable_tag` - (Optional) Whether to deliver the label.
-        - format = `csv`
-          `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-          `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-          `csv_config_nullidentifier` - (Optional) Invalid field content.
-          `csv_config_quote` - (Optional) Escape character under csv configuration.
-          `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-          `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
-        - format = `parquet`
-          `parquet_config` - (Optional) Configure to use parquet storage format.
-          `name` - (Required) The name of the key.
-          `type` - (Required) Type of configuration name.
         """
         return pulumi.get(self, "format")
 
@@ -528,6 +534,9 @@ class _OssShipperState:
     @_builtins.property
     @pulumi.getter(name="jsonEnableTag")
     def json_enable_tag(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to deliver the label.
+        """
         return pulumi.get(self, "json_enable_tag")
 
     @json_enable_tag.setter
@@ -573,6 +582,9 @@ class _OssShipperState:
     @_builtins.property
     @pulumi.getter(name="parquetConfigs")
     def parquet_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OssShipperParquetConfigArgs']]]]:
+        """
+        Configure to use parquet storage format. See `parquet_config` below.
+        """
         return pulumi.get(self, "parquet_configs")
 
     @parquet_configs.setter
@@ -718,24 +730,19 @@ class OssShipper(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] buffer_interval: How often is it delivered every interval.
         :param pulumi.Input[_builtins.int] buffer_size: Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
         :param pulumi.Input[_builtins.str] compress_type: OSS data storage compression method, support: none, snappy. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] csv_config_columns: Field configuration in csv configuration format.
+        :param pulumi.Input[_builtins.str] csv_config_delimiter: Separator configuration in csv configuration format.
+        :param pulumi.Input[_builtins.bool] csv_config_header: Indicates whether to write the field name to the CSV file, the default value is `false`.
+        :param pulumi.Input[_builtins.str] csv_config_linefeed: lineFeed in csv configuration.
+        :param pulumi.Input[_builtins.str] csv_config_nullidentifier: Invalid field content.
+        :param pulumi.Input[_builtins.str] csv_config_quote: Escape character under csv configuration.
         :param pulumi.Input[_builtins.str] format: Storage format, only supports three types: `json`, `parquet`, `csv`.
                **According to the different format, please select the following parameters**
-               - format = `json`
-                 `json_enable_tag` - (Optional) Whether to deliver the label.
-               - format = `csv`
-                 `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-                 `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-                 `csv_config_nullidentifier` - (Optional) Invalid field content.
-                 `csv_config_quote` - (Optional) Escape character under csv configuration.
-                 `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-                 `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
-               - format = `parquet`
-                 `parquet_config` - (Optional) Configure to use parquet storage format.
-                 `name` - (Required) The name of the key.
-                 `type` - (Required) Type of configuration name.
+        :param pulumi.Input[_builtins.bool] json_enable_tag: Whether to deliver the label.
         :param pulumi.Input[_builtins.str] logstore_name: The name of the log logstore.
         :param pulumi.Input[_builtins.str] oss_bucket: The name of the oss bucket.
         :param pulumi.Input[_builtins.str] oss_prefix: The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OssShipperParquetConfigArgs', 'OssShipperParquetConfigArgsDict', 'outputs.OssShipperParquetConfig']]]] parquet_configs: Configure to use parquet storage format. See `parquet_config` below.
         :param pulumi.Input[_builtins.str] path_format: The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
         :param pulumi.Input[_builtins.str] project_name: The name of the log project. It is the only in one Alicloud account.
         :param pulumi.Input[_builtins.str] role_arn: Used for access control, the OSS Bucket owner creates the role mark, such as `acs:ram::13234:role/logrole`
@@ -923,24 +930,19 @@ class OssShipper(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] buffer_interval: How often is it delivered every interval.
         :param pulumi.Input[_builtins.int] buffer_size: Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
         :param pulumi.Input[_builtins.str] compress_type: OSS data storage compression method, support: none, snappy. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] csv_config_columns: Field configuration in csv configuration format.
+        :param pulumi.Input[_builtins.str] csv_config_delimiter: Separator configuration in csv configuration format.
+        :param pulumi.Input[_builtins.bool] csv_config_header: Indicates whether to write the field name to the CSV file, the default value is `false`.
+        :param pulumi.Input[_builtins.str] csv_config_linefeed: lineFeed in csv configuration.
+        :param pulumi.Input[_builtins.str] csv_config_nullidentifier: Invalid field content.
+        :param pulumi.Input[_builtins.str] csv_config_quote: Escape character under csv configuration.
         :param pulumi.Input[_builtins.str] format: Storage format, only supports three types: `json`, `parquet`, `csv`.
                **According to the different format, please select the following parameters**
-               - format = `json`
-                 `json_enable_tag` - (Optional) Whether to deliver the label.
-               - format = `csv`
-                 `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-                 `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-                 `csv_config_nullidentifier` - (Optional) Invalid field content.
-                 `csv_config_quote` - (Optional) Escape character under csv configuration.
-                 `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-                 `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
-               - format = `parquet`
-                 `parquet_config` - (Optional) Configure to use parquet storage format.
-                 `name` - (Required) The name of the key.
-                 `type` - (Required) Type of configuration name.
+        :param pulumi.Input[_builtins.bool] json_enable_tag: Whether to deliver the label.
         :param pulumi.Input[_builtins.str] logstore_name: The name of the log logstore.
         :param pulumi.Input[_builtins.str] oss_bucket: The name of the oss bucket.
         :param pulumi.Input[_builtins.str] oss_prefix: The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OssShipperParquetConfigArgs', 'OssShipperParquetConfigArgsDict', 'outputs.OssShipperParquetConfig']]]] parquet_configs: Configure to use parquet storage format. See `parquet_config` below.
         :param pulumi.Input[_builtins.str] path_format: The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
         :param pulumi.Input[_builtins.str] project_name: The name of the log project. It is the only in one Alicloud account.
         :param pulumi.Input[_builtins.str] role_arn: Used for access control, the OSS Bucket owner creates the role mark, such as `acs:ram::13234:role/logrole`
@@ -1042,31 +1044,49 @@ class OssShipper(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="csvConfigColumns")
     def csv_config_columns(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Field configuration in csv configuration format.
+        """
         return pulumi.get(self, "csv_config_columns")
 
     @_builtins.property
     @pulumi.getter(name="csvConfigDelimiter")
     def csv_config_delimiter(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Separator configuration in csv configuration format.
+        """
         return pulumi.get(self, "csv_config_delimiter")
 
     @_builtins.property
     @pulumi.getter(name="csvConfigHeader")
     def csv_config_header(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Indicates whether to write the field name to the CSV file, the default value is `false`.
+        """
         return pulumi.get(self, "csv_config_header")
 
     @_builtins.property
     @pulumi.getter(name="csvConfigLinefeed")
     def csv_config_linefeed(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        lineFeed in csv configuration.
+        """
         return pulumi.get(self, "csv_config_linefeed")
 
     @_builtins.property
     @pulumi.getter(name="csvConfigNullidentifier")
     def csv_config_nullidentifier(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Invalid field content.
+        """
         return pulumi.get(self, "csv_config_nullidentifier")
 
     @_builtins.property
     @pulumi.getter(name="csvConfigQuote")
     def csv_config_quote(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Escape character under csv configuration.
+        """
         return pulumi.get(self, "csv_config_quote")
 
     @_builtins.property
@@ -1075,25 +1095,15 @@ class OssShipper(pulumi.CustomResource):
         """
         Storage format, only supports three types: `json`, `parquet`, `csv`.
         **According to the different format, please select the following parameters**
-        - format = `json`
-          `json_enable_tag` - (Optional) Whether to deliver the label.
-        - format = `csv`
-          `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-          `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-          `csv_config_nullidentifier` - (Optional) Invalid field content.
-          `csv_config_quote` - (Optional) Escape character under csv configuration.
-          `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-          `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
-        - format = `parquet`
-          `parquet_config` - (Optional) Configure to use parquet storage format.
-          `name` - (Required) The name of the key.
-          `type` - (Required) Type of configuration name.
         """
         return pulumi.get(self, "format")
 
     @_builtins.property
     @pulumi.getter(name="jsonEnableTag")
     def json_enable_tag(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to deliver the label.
+        """
         return pulumi.get(self, "json_enable_tag")
 
     @_builtins.property
@@ -1123,6 +1133,9 @@ class OssShipper(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="parquetConfigs")
     def parquet_configs(self) -> pulumi.Output[Optional[Sequence['outputs.OssShipperParquetConfig']]]:
+        """
+        Configure to use parquet storage format. See `parquet_config` below.
+        """
         return pulumi.get(self, "parquet_configs")
 
     @_builtins.property

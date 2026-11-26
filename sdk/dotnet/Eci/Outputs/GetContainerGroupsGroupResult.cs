@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetContainerGroupsGroupContainerResult> Containers;
         /// <summary>
-        /// The amount of CPU resources allocated to the container group.
+        /// The amount of CPU resources allocated to the container.
         /// </summary>
         public readonly double Cpu;
         public readonly int Discount;
@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string SecurityGroupId;
         /// <summary>
-        /// The status of container.
+        /// The status list. For more information, see the description of ContainerGroup arrays.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string SucceededTime;
         /// <summary>
-        /// The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
@@ -123,11 +123,11 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// The vswitch id.
+        /// The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
         /// </summary>
         public readonly string VswitchId;
         /// <summary>
-        /// The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+        /// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
         /// </summary>
         public readonly string ZoneId;
 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// <summary>
         /// This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// <summary>
         /// This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// <summary>
         /// This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
@@ -243,7 +243,13 @@ namespace Pulumi.AliCloud.CloudSso
     [OutputType]
     public sealed class GetAccessConfigurationsResult
     {
+        /// <summary>
+        /// A list of Cloud Sso Access Configurations. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAccessConfigurationsConfigurationResult> Configurations;
+        /// <summary>
+        /// The ID of the Directory.
+        /// </summary>
         public readonly string DirectoryId;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -252,6 +258,9 @@ namespace Pulumi.AliCloud.CloudSso
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Access Configuration names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

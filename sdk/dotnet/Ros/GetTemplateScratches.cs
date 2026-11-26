@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.151.0+.
+        /// &gt; **NOTE:** Available since v1.151.0.
         /// 
         /// ## Example Usage
         /// 
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.151.0+.
+        /// &gt; **NOTE:** Available since v1.151.0.
         /// 
         /// ## Example Usage
         /// 
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.151.0+.
+        /// &gt; **NOTE:** Available since v1.151.0.
         /// 
         /// ## Example Usage
         /// 
@@ -253,8 +253,17 @@ namespace Pulumi.AliCloud.Ros
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Ros Template Scratches. Each element contains the following attributes. See `Scratches` below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTemplateScratchesScratchResult> Scratches;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The type of the Template Scratch.
+        /// </summary>
         public readonly string? TemplateScratchType;
 
         [OutputConstructor]

@@ -32,7 +32,7 @@ public final class GetImagesImage {
      */
     private String description;
     /**
-     * @return A `diskDeviceMappings` block as defined below. Description of the system with disks and snapshots under the image.
+     * @return A list of disk device mappings. Each element contains the following attributes:
      * 
      */
     private List<GetImagesImageDiskDeviceMapping> diskDeviceMappings;
@@ -56,7 +56,15 @@ public final class GetImagesImage {
      * 
      */
     private String imageVersion;
+    /**
+     * @return Whether the image is copied.
+     * 
+     */
     private Boolean isCopied;
+    /**
+     * @return Whether the image is shared by the current user.
+     * 
+     */
     private String isSelfShared;
     /**
      * @return Whether the user has subscribed to the terms of service for the image product corresponding to the ProductCode.
@@ -68,6 +76,10 @@ public final class GetImagesImage {
      * 
      */
     private Boolean isSupportIoOptimized;
+    /**
+     * @return The name of the image.
+     * 
+     */
     private String name;
     /**
      * @return The display Chinese name of the OS.
@@ -84,6 +96,10 @@ public final class GetImagesImage {
      * 
      */
     private String osType;
+    /**
+     * @return The platform of the image.
+     * 
+     */
     private String platform;
     /**
      * @return The product code of the image on the image market.
@@ -100,6 +116,10 @@ public final class GetImagesImage {
      * 
      */
     private Integer size;
+    /**
+     * @return The state of the image.
+     * 
+     */
     private String state;
     /**
      * @return The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
@@ -146,7 +166,7 @@ public final class GetImagesImage {
         return this.description;
     }
     /**
-     * @return A `diskDeviceMappings` block as defined below. Description of the system with disks and snapshots under the image.
+     * @return A list of disk device mappings. Each element contains the following attributes:
      * 
      */
     public List<GetImagesImageDiskDeviceMapping> diskDeviceMappings() {
@@ -180,9 +200,17 @@ public final class GetImagesImage {
     public String imageVersion() {
         return this.imageVersion;
     }
+    /**
+     * @return Whether the image is copied.
+     * 
+     */
     public Boolean isCopied() {
         return this.isCopied;
     }
+    /**
+     * @return Whether the image is shared by the current user.
+     * 
+     */
     public String isSelfShared() {
         return this.isSelfShared;
     }
@@ -200,6 +228,10 @@ public final class GetImagesImage {
     public Boolean isSupportIoOptimized() {
         return this.isSupportIoOptimized;
     }
+    /**
+     * @return The name of the image.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -224,6 +256,10 @@ public final class GetImagesImage {
     public String osType() {
         return this.osType;
     }
+    /**
+     * @return The platform of the image.
+     * 
+     */
     public String platform() {
         return this.platform;
     }
@@ -248,6 +284,10 @@ public final class GetImagesImage {
     public Integer size() {
         return this.size;
     }
+    /**
+     * @return The state of the image.
+     * 
+     */
     public String state() {
         return this.state;
     }

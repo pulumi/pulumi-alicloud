@@ -98,6 +98,9 @@ class GetProductVersionsResult:
     @_builtins.property
     @pulumi.getter(name="productId")
     def product_id(self) -> _builtins.str:
+        """
+        Product ID.
+        """
         return pulumi.get(self, "product_id")
 
     @_builtins.property
@@ -112,6 +115,9 @@ class GetProductVersionsResult:
     @pulumi.getter
     @_utilities.deprecated("""Field 'versions' has been deprecated from provider version 1.197.0.""")
     def versions(self) -> Sequence['outputs.GetProductVersionsVersionResult']:
+        """
+        (Deprecated since v1.197.0) A list of Product Version Entries. Each element contains the following attributes:
+        """
         return pulumi.get(self, "versions")
 
 
@@ -141,7 +147,7 @@ def get_product_versions(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
 
-    > **NOTE:** Available in 1.196.0+
+    > **NOTE:** Available since v1.196.0+
 
     ## Example Usage
 
@@ -155,6 +161,7 @@ def get_product_versions(enable_details: Optional[_builtins.bool] = None,
     ```
 
 
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of Product Version IDs.
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -188,7 +195,7 @@ def get_product_versions_output(enable_details: pulumi.Input[Optional[Optional[_
     """
     This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
 
-    > **NOTE:** Available in 1.196.0+
+    > **NOTE:** Available since v1.196.0+
 
     ## Example Usage
 
@@ -202,6 +209,7 @@ def get_product_versions_output(enable_details: pulumi.Input[Optional[Optional[_
     ```
 
 
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of Product Version IDs.
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).

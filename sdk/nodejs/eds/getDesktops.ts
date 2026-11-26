@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecd Desktops of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.144.0+.
+ * > **NOTE:** Available since v1.144.0.
  *
  * ## Example Usage
  *
@@ -19,26 +19,45 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform_example";
+ * const _default = alicloud.eds.getImages({
+ *     imageType: "SYSTEM",
+ *     osType: "Windows",
+ *     desktopInstanceType: "eds.hf.4c8g",
+ * });
+ * const defaultGetDesktopTypes = alicloud.eds.getDesktopTypes({
+ *     instanceTypeFamily: "eds.hf",
+ *     cpuCount: 4,
+ *     memorySize: 8192,
+ * });
  * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("default", {
  *     cidrBlock: "172.16.0.0/12",
  *     desktopAccessType: "Internet",
- *     officeSiteName: "your_office_site_name",
+ *     officeSiteName: name,
  * });
- * const _default = alicloud.eds.getBundles({
- *     bundleType: "SYSTEM",
+ * const defaultBundle = new alicloud.eds.Bundle("default", {
+ *     desktopType: defaultGetDesktopTypes.then(defaultGetDesktopTypes => defaultGetDesktopTypes.ids?.[0]),
+ *     imageId: _default.then(_default => _default.ids?.[0]),
+ *     userDiskSizeGibs: [110],
+ *     rootDiskSizeGib: 120,
+ *     rootDiskPerformanceLevel: "PL1",
+ *     userDiskPerformanceLevel: "PL1",
+ *     bundleName: name,
+ *     description: name,
  * });
  * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("default", {
- *     policyGroupName: "your_policy_group_name",
+ *     policyGroupName: name,
  *     clipboard: "readwrite",
  *     localDrive: "read",
  *     authorizeAccessPolicyRules: [{
- *         description: "example_value",
+ *         description: name,
  *         cidrIp: "1.2.3.4/24",
  *     }],
  *     authorizeSecurityPolicyRules: [{
  *         type: "inflow",
  *         policy: "accept",
- *         description: "example_value",
+ *         description: name,
  *         portRange: "80/80",
  *         ipProtocol: "TCP",
  *         priority: "1",
@@ -46,26 +65,20 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const defaultUser = new alicloud.eds.User("default", {
- *     endUserId: "your_end_user_id",
- *     email: "your_email",
- *     phone: "your_phone",
- *     password: "your_password",
+ *     endUserId: name,
+ *     email: `${name}@aaa.com`,
  * });
  * const defaultDesktop = new alicloud.eds.Desktop("default", {
  *     officeSiteId: defaultSimpleOfficeSite.id,
  *     policyGroupId: defaultEcdPolicyGroup.id,
- *     bundleId: _default.then(_default => _default.bundles?.[0]?.id),
- *     desktopName: "your_desktop_name",
+ *     bundleId: defaultBundle.id,
+ *     desktopName: name,
  *     endUserIds: [defaultUser.id],
  * });
  * const ids = alicloud.eds.getDesktopsOutput({
  *     ids: [defaultDesktop.id],
  * });
- * export const ecdDesktopId1 = ids.apply(ids => ids.desktops?.[0]?.id);
- * const nameRegex = alicloud.eds.getDesktopsOutput({
- *     nameRegex: defaultDesktop.desktopName,
- * });
- * export const ecdDesktopId2 = nameRegex.apply(nameRegex => nameRegex.desktops?.[0]?.id);
+ * export const ecdDesktopsId0 = ids.apply(ids => ids.desktops?.[0]?.id);
  * ```
  */
 export function getDesktops(args?: GetDesktopsArgs, opts?: pulumi.InvokeOptions): Promise<GetDesktopsResult> {
@@ -88,9 +101,12 @@ export function getDesktops(args?: GetDesktopsArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetDesktopsArgs {
     /**
-     * The desktop name.
+     * The cloud desktop name.
      */
     desktopName?: string;
+    /**
+     * The authorized users of the cloud desktop.
+     */
     endUserIds?: string[];
     /**
      * A list of Desktop IDs.
@@ -109,11 +125,11 @@ export interface GetDesktopsArgs {
      */
     outputFile?: string;
     /**
-     * The policy group id of the Desktop.
+     * The cloud desktop policy ID.
      */
     policyGroupId?: string;
     /**
-     * The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+     * The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
      */
     status?: string;
 }
@@ -122,8 +138,17 @@ export interface GetDesktopsArgs {
  * A collection of values returned by getDesktops.
  */
 export interface GetDesktopsResult {
+    /**
+     * The cloud desktop name.
+     */
     readonly desktopName?: string;
+    /**
+     * A list of Ecd Desktops. Each element contains the following attributes:
+     */
     readonly desktops: outputs.eds.GetDesktopsDesktop[];
+    /**
+     * The IDs of the authorized users of the cloud desktop.
+     */
     readonly endUserIds?: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -131,16 +156,25 @@ export interface GetDesktopsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Desktop names.
+     */
     readonly names: string[];
     readonly officeSiteId?: string;
     readonly outputFile?: string;
+    /**
+     * The cloud desktop policy ID.
+     */
     readonly policyGroupId?: string;
+    /**
+     * The cloud desktop status.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Ecd Desktops of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.144.0+.
+ * > **NOTE:** Available since v1.144.0.
  *
  * ## Example Usage
  *
@@ -150,26 +184,45 @@ export interface GetDesktopsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform_example";
+ * const _default = alicloud.eds.getImages({
+ *     imageType: "SYSTEM",
+ *     osType: "Windows",
+ *     desktopInstanceType: "eds.hf.4c8g",
+ * });
+ * const defaultGetDesktopTypes = alicloud.eds.getDesktopTypes({
+ *     instanceTypeFamily: "eds.hf",
+ *     cpuCount: 4,
+ *     memorySize: 8192,
+ * });
  * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("default", {
  *     cidrBlock: "172.16.0.0/12",
  *     desktopAccessType: "Internet",
- *     officeSiteName: "your_office_site_name",
+ *     officeSiteName: name,
  * });
- * const _default = alicloud.eds.getBundles({
- *     bundleType: "SYSTEM",
+ * const defaultBundle = new alicloud.eds.Bundle("default", {
+ *     desktopType: defaultGetDesktopTypes.then(defaultGetDesktopTypes => defaultGetDesktopTypes.ids?.[0]),
+ *     imageId: _default.then(_default => _default.ids?.[0]),
+ *     userDiskSizeGibs: [110],
+ *     rootDiskSizeGib: 120,
+ *     rootDiskPerformanceLevel: "PL1",
+ *     userDiskPerformanceLevel: "PL1",
+ *     bundleName: name,
+ *     description: name,
  * });
  * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("default", {
- *     policyGroupName: "your_policy_group_name",
+ *     policyGroupName: name,
  *     clipboard: "readwrite",
  *     localDrive: "read",
  *     authorizeAccessPolicyRules: [{
- *         description: "example_value",
+ *         description: name,
  *         cidrIp: "1.2.3.4/24",
  *     }],
  *     authorizeSecurityPolicyRules: [{
  *         type: "inflow",
  *         policy: "accept",
- *         description: "example_value",
+ *         description: name,
  *         portRange: "80/80",
  *         ipProtocol: "TCP",
  *         priority: "1",
@@ -177,26 +230,20 @@ export interface GetDesktopsResult {
  *     }],
  * });
  * const defaultUser = new alicloud.eds.User("default", {
- *     endUserId: "your_end_user_id",
- *     email: "your_email",
- *     phone: "your_phone",
- *     password: "your_password",
+ *     endUserId: name,
+ *     email: `${name}@aaa.com`,
  * });
  * const defaultDesktop = new alicloud.eds.Desktop("default", {
  *     officeSiteId: defaultSimpleOfficeSite.id,
  *     policyGroupId: defaultEcdPolicyGroup.id,
- *     bundleId: _default.then(_default => _default.bundles?.[0]?.id),
- *     desktopName: "your_desktop_name",
+ *     bundleId: defaultBundle.id,
+ *     desktopName: name,
  *     endUserIds: [defaultUser.id],
  * });
  * const ids = alicloud.eds.getDesktopsOutput({
  *     ids: [defaultDesktop.id],
  * });
- * export const ecdDesktopId1 = ids.apply(ids => ids.desktops?.[0]?.id);
- * const nameRegex = alicloud.eds.getDesktopsOutput({
- *     nameRegex: defaultDesktop.desktopName,
- * });
- * export const ecdDesktopId2 = nameRegex.apply(nameRegex => nameRegex.desktops?.[0]?.id);
+ * export const ecdDesktopsId0 = ids.apply(ids => ids.desktops?.[0]?.id);
  * ```
  */
 export function getDesktopsOutput(args?: GetDesktopsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDesktopsResult> {
@@ -219,9 +266,12 @@ export function getDesktopsOutput(args?: GetDesktopsOutputArgs, opts?: pulumi.In
  */
 export interface GetDesktopsOutputArgs {
     /**
-     * The desktop name.
+     * The cloud desktop name.
      */
     desktopName?: pulumi.Input<string | undefined>;
+    /**
+     * The authorized users of the cloud desktop.
+     */
     endUserIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of Desktop IDs.
@@ -240,11 +290,11 @@ export interface GetDesktopsOutputArgs {
      */
     outputFile?: pulumi.Input<string | undefined>;
     /**
-     * The policy group id of the Desktop.
+     * The cloud desktop policy ID.
      */
     policyGroupId?: pulumi.Input<string | undefined>;
     /**
-     * The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+     * The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
      */
     status?: pulumi.Input<string | undefined>;
 }

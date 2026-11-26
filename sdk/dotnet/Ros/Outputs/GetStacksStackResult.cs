@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Ros.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetStacksStackParameterResult> Parameters;
         /// <summary>
-        /// Parent Stack Id.
+        /// ParentStackId.
         /// </summary>
         public readonly string ParentStackId;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Ros.Outputs
         /// </summary>
         public readonly string StackId;
         /// <summary>
-        /// Stack Name.
+        /// StackName.
         /// </summary>
         public readonly string StackName;
         /// <summary>

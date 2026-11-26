@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.Nlb
         /// 
         /// - `TCP` (default)
         /// - `UDP`
-        /// - `TCPSSL`
+        /// - `TCP_UDP`
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
@@ -319,7 +319,7 @@ namespace Pulumi.AliCloud.Nlb
         /// 
         /// - `TCP` (default)
         /// - `UDP`
-        /// - `TCPSSL`
+        /// - `TCP_UDP`
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -447,7 +447,7 @@ namespace Pulumi.AliCloud.Nlb
         /// 
         /// - `TCP` (default)
         /// - `UDP`
-        /// - `TCPSSL`
+        /// - `TCP_UDP`
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

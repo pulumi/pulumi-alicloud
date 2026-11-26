@@ -188,7 +188,7 @@ def get_honeypot_presets(current_page: Optional[_builtins.int] = None,
     """
     This data source provides Threat Detection Honeypot Preset available to the user.
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -199,15 +199,18 @@ def get_honeypot_presets(current_page: Optional[_builtins.int] = None,
     default = alicloud.threatdetection.get_honeypot_presets(ids=[default_alicloud_threat_detection_honeypot_preset["id"]],
         honeypot_image_name="shiro",
         node_id="example_value",
-        preset_name="apiapec_test")
+        preset_name="apiapec_example")
     pulumi.export("alicloudThreatDetectionHoneypotPresetExampleId", default.presets[0].id)
     ```
 
 
+    :param _builtins.int current_page: The current page number.
     :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param _builtins.str honeypot_image_name: Honeypot mirror name
     :param Sequence[_builtins.str] ids: A list of Honeypot Preset IDs.
+    :param _builtins.str lang: The language.
     :param _builtins.str node_id: Unique id of management node
+    :param _builtins.str node_name: The name of the management node.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str preset_name: Honeypot template custom name
     """
@@ -255,7 +258,7 @@ def get_honeypot_presets_output(current_page: pulumi.Input[Optional[Optional[_bu
     """
     This data source provides Threat Detection Honeypot Preset available to the user.
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -266,15 +269,18 @@ def get_honeypot_presets_output(current_page: pulumi.Input[Optional[Optional[_bu
     default = alicloud.threatdetection.get_honeypot_presets(ids=[default_alicloud_threat_detection_honeypot_preset["id"]],
         honeypot_image_name="shiro",
         node_id="example_value",
-        preset_name="apiapec_test")
+        preset_name="apiapec_example")
     pulumi.export("alicloudThreatDetectionHoneypotPresetExampleId", default.presets[0].id)
     ```
 
 
+    :param _builtins.int current_page: The current page number.
     :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param _builtins.str honeypot_image_name: Honeypot mirror name
     :param Sequence[_builtins.str] ids: A list of Honeypot Preset IDs.
+    :param _builtins.str lang: The language.
     :param _builtins.str node_id: Unique id of management node
+    :param _builtins.str node_name: The name of the management node.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str preset_name: Honeypot template custom name
     """

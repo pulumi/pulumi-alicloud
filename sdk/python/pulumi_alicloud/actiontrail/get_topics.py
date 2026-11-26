@@ -123,7 +123,7 @@ class GetTopicsResult:
     @pulumi.getter
     def topics(self) -> Sequence['outputs.GetTopicsTopicResult']:
         """
-        A list of topics. Each element contains the following attributes:
+        A list of topics. Each element contains the following attributes. See `topics` for the optional argument block.
         """
         return pulumi.get(self, "topics")
 
@@ -163,7 +163,7 @@ def get_topics(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.56.0+
+    > **NOTE:** Available since v1.56.0.
 
     ## Example Usage
 
@@ -218,7 +218,7 @@ def get_topics_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str
     """
     This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.56.0+
+    > **NOTE:** Available since v1.56.0.
 
     ## Example Usage
 

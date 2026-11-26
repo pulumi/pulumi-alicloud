@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.53.0+
+ * > **NOTE:** Available since v1.53.0.
  *
  * ## Example Usage
  *
@@ -63,13 +63,16 @@ export interface GetGroupsArgs {
      */
     groupType?: string;
     /**
-     * A list of group names.
+     * A list of group IDs to filter results.
      */
     ids?: string[];
     /**
      * ID of the ONS Instance that owns the groups.
      */
     instanceId: string;
+    /**
+     * A regex string to filter results by the group name.
+     */
     nameRegex?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -102,8 +105,14 @@ export interface GetGroupsResult {
      * A list of group names.
      */
     readonly ids: string[];
+    /**
+     * ID of the ONS Instance that owns the group.
+     */
     readonly instanceId: string;
     readonly nameRegex?: string;
+    /**
+     * A list of group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     /**
@@ -114,7 +123,7 @@ export interface GetGroupsResult {
 /**
  * This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.53.0+
+ * > **NOTE:** Available since v1.53.0.
  *
  * ## Example Usage
  *
@@ -168,13 +177,16 @@ export interface GetGroupsOutputArgs {
      */
     groupType?: pulumi.Input<string | undefined>;
     /**
-     * A list of group names.
+     * A list of group IDs to filter results.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the ONS Instance that owns the groups.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by the group name.
+     */
     nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).

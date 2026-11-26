@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRdsParameterGroupsGroupParamDetail {
+    /**
+     * @return The value of a parameter.
+     * 
+     */
     private String paramName;
+    /**
+     * @return The name of a parameter.
+     * 
+     */
     private String paramValue;
 
     private GetRdsParameterGroupsGroupParamDetail() {}
+    /**
+     * @return The value of a parameter.
+     * 
+     */
     public String paramName() {
         return this.paramName;
     }
+    /**
+     * @return The name of a parameter.
+     * 
+     */
     public String paramValue() {
         return this.paramValue;
     }

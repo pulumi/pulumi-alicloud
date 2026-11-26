@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Api Gateway Models of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.187.0+.
+// > **NOTE:** Available since v1.187.0.
 //
 // ## Example Usage
 //

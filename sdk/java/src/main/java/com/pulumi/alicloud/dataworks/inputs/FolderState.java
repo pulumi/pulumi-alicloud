@@ -15,9 +15,17 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
 
     public static final FolderState Empty = new FolderState();
 
+    /**
+     * The ID of the Folder.
+     * 
+     */
     @Import(name="folderId")
     private @Nullable Output<String> folderId;
 
+    /**
+     * @return The ID of the Folder.
+     * 
+     */
     public Optional<Output<String>> folderId() {
         return Optional.ofNullable(this.folderId);
     }
@@ -52,9 +60,17 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * The project identifier.
+     * 
+     */
     @Import(name="projectIdentifier")
     private @Nullable Output<String> projectIdentifier;
 
+    /**
+     * @return The project identifier.
+     * 
+     */
     public Optional<Output<String>> projectIdentifier() {
         return Optional.ofNullable(this.projectIdentifier);
     }
@@ -86,11 +102,23 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
             $ = new FolderState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param folderId The ID of the Folder.
+         * 
+         * @return builder
+         * 
+         */
         public Builder folderId(@Nullable Output<String> folderId) {
             $.folderId = folderId;
             return this;
         }
 
+        /**
+         * @param folderId The ID of the Folder.
+         * 
+         * @return builder
+         * 
+         */
         public Builder folderId(String folderId) {
             return folderId(Output.of(folderId));
         }
@@ -137,11 +165,23 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
             return projectId(Output.of(projectId));
         }
 
+        /**
+         * @param projectIdentifier The project identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectIdentifier(@Nullable Output<String> projectIdentifier) {
             $.projectIdentifier = projectIdentifier;
             return this;
         }
 
+        /**
+         * @param projectIdentifier The project identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectIdentifier(String projectIdentifier) {
             return projectIdentifier(Output.of(projectIdentifier));
         }

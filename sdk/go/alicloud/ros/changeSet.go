@@ -80,7 +80,7 @@ type ChangeSet struct {
 	DisableRollback pulumi.BoolPtrOutput `pulumi:"disableRollback"`
 	// The notification urls.
 	NotificationUrls pulumi.StringArrayOutput `pulumi:"notificationUrls"`
-	// Parameters.
+	// Parameters. See `parameters` below.
 	Parameters ChangeSetParameterArrayOutput `pulumi:"parameters"`
 	// The ram role name.
 	RamRoleName pulumi.StringPtrOutput `pulumi:"ramRoleName"`
@@ -153,7 +153,7 @@ type changeSetState struct {
 	DisableRollback *bool `pulumi:"disableRollback"`
 	// The notification urls.
 	NotificationUrls []string `pulumi:"notificationUrls"`
-	// Parameters.
+	// Parameters. See `parameters` below.
 	Parameters []ChangeSetParameter `pulumi:"parameters"`
 	// The ram role name.
 	RamRoleName *string `pulumi:"ramRoleName"`
@@ -194,7 +194,7 @@ type ChangeSetState struct {
 	DisableRollback pulumi.BoolPtrInput
 	// The notification urls.
 	NotificationUrls pulumi.StringArrayInput
-	// Parameters.
+	// Parameters. See `parameters` below.
 	Parameters ChangeSetParameterArrayInput
 	// The ram role name.
 	RamRoleName pulumi.StringPtrInput
@@ -245,7 +245,7 @@ type changeSetArgs struct {
 	DisableRollback *bool `pulumi:"disableRollback"`
 	// The notification urls.
 	NotificationUrls []string `pulumi:"notificationUrls"`
-	// Parameters.
+	// Parameters. See `parameters` below.
 	Parameters []ChangeSetParameter `pulumi:"parameters"`
 	// The ram role name.
 	RamRoleName *string `pulumi:"ramRoleName"`
@@ -285,7 +285,7 @@ type ChangeSetArgs struct {
 	DisableRollback pulumi.BoolPtrInput
 	// The notification urls.
 	NotificationUrls pulumi.StringArrayInput
-	// Parameters.
+	// Parameters. See `parameters` below.
 	Parameters ChangeSetParameterArrayInput
 	// The ram role name.
 	RamRoleName pulumi.StringPtrInput
@@ -425,7 +425,7 @@ func (o ChangeSetOutput) NotificationUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ChangeSet) pulumi.StringArrayOutput { return v.NotificationUrls }).(pulumi.StringArrayOutput)
 }
 
-// Parameters.
+// Parameters. See `parameters` below.
 func (o ChangeSetOutput) Parameters() ChangeSetParameterArrayOutput {
 	return o.ApplyT(func(v *ChangeSet) ChangeSetParameterArrayOutput { return v.Parameters }).(ChangeSetParameterArrayOutput)
 }

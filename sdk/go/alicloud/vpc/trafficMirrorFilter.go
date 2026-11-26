@@ -41,14 +41,14 @@ import (
 //				name = param
 //			}
 //			default3iXhoa, err := resourcemanager.NewResourceGroup(ctx, "default3iXhoa", &resourcemanager.ResourceGroupArgs{
-//				DisplayName:       pulumi.String("testname03"),
+//				DisplayName:       pulumi.String("example03"),
 //				ResourceGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = resourcemanager.NewResourceGroup(ctx, "defaultdNz2qk", &resourcemanager.ResourceGroupArgs{
-//				DisplayName:       pulumi.String("testname04"),
+//				DisplayName:       pulumi.String("example04"),
 //				ResourceGroupName: pulumi.Sprintf("%v1", name),
 //			})
 //			if err != nil {
@@ -106,9 +106,9 @@ type TrafficMirrorFilter struct {
 	// - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
 	// - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// Information about the outbound rule. See the following `Block EgressRules`.
+	// Information about the outbound rule. See `egressRules` below.
 	EgressRules TrafficMirrorFilterEgressRuleTypeArrayOutput `pulumi:"egressRules"`
-	// Inward direction rule information. See the following `Block IngressRules`.
+	// Inward direction rule information. See `ingressRules` below.
 	IngressRules TrafficMirrorFilterIngressRuleTypeArrayOutput `pulumi:"ingressRules"`
 	// The ID of the resource group to which the VPC belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -156,9 +156,9 @@ type trafficMirrorFilterState struct {
 	// - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
 	// - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
 	DryRun *bool `pulumi:"dryRun"`
-	// Information about the outbound rule. See the following `Block EgressRules`.
+	// Information about the outbound rule. See `egressRules` below.
 	EgressRules []TrafficMirrorFilterEgressRuleType `pulumi:"egressRules"`
-	// Inward direction rule information. See the following `Block IngressRules`.
+	// Inward direction rule information. See `ingressRules` below.
 	IngressRules []TrafficMirrorFilterIngressRuleType `pulumi:"ingressRules"`
 	// The ID of the resource group to which the VPC belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -177,9 +177,9 @@ type TrafficMirrorFilterState struct {
 	// - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
 	// - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
 	DryRun pulumi.BoolPtrInput
-	// Information about the outbound rule. See the following `Block EgressRules`.
+	// Information about the outbound rule. See `egressRules` below.
 	EgressRules TrafficMirrorFilterEgressRuleTypeArrayInput
-	// Inward direction rule information. See the following `Block IngressRules`.
+	// Inward direction rule information. See `ingressRules` below.
 	IngressRules TrafficMirrorFilterIngressRuleTypeArrayInput
 	// The ID of the resource group to which the VPC belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -208,9 +208,9 @@ type trafficMirrorFilterArgs struct {
 	// - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
 	// - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
 	DryRun *bool `pulumi:"dryRun"`
-	// Information about the outbound rule. See the following `Block EgressRules`.
+	// Information about the outbound rule. See `egressRules` below.
 	EgressRules []TrafficMirrorFilterEgressRuleType `pulumi:"egressRules"`
-	// Inward direction rule information. See the following `Block IngressRules`.
+	// Inward direction rule information. See `ingressRules` below.
 	IngressRules []TrafficMirrorFilterIngressRuleType `pulumi:"ingressRules"`
 	// The ID of the resource group to which the VPC belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -228,9 +228,9 @@ type TrafficMirrorFilterArgs struct {
 	// - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
 	// - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
 	DryRun pulumi.BoolPtrInput
-	// Information about the outbound rule. See the following `Block EgressRules`.
+	// Information about the outbound rule. See `egressRules` below.
 	EgressRules TrafficMirrorFilterEgressRuleTypeArrayInput
-	// Inward direction rule information. See the following `Block IngressRules`.
+	// Inward direction rule information. See `ingressRules` below.
 	IngressRules TrafficMirrorFilterIngressRuleTypeArrayInput
 	// The ID of the resource group to which the VPC belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -336,12 +336,12 @@ func (o TrafficMirrorFilterOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TrafficMirrorFilter) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// Information about the outbound rule. See the following `Block EgressRules`.
+// Information about the outbound rule. See `egressRules` below.
 func (o TrafficMirrorFilterOutput) EgressRules() TrafficMirrorFilterEgressRuleTypeArrayOutput {
 	return o.ApplyT(func(v *TrafficMirrorFilter) TrafficMirrorFilterEgressRuleTypeArrayOutput { return v.EgressRules }).(TrafficMirrorFilterEgressRuleTypeArrayOutput)
 }
 
-// Inward direction rule information. See the following `Block IngressRules`.
+// Inward direction rule information. See `ingressRules` below.
 func (o TrafficMirrorFilterOutput) IngressRules() TrafficMirrorFilterIngressRuleTypeArrayOutput {
 	return o.ApplyT(func(v *TrafficMirrorFilter) TrafficMirrorFilterIngressRuleTypeArrayOutput { return v.IngressRules }).(TrafficMirrorFilterIngressRuleTypeArrayOutput)
 }

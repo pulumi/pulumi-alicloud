@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.141.0+.
+// > **NOTE:** Available since v1.141.0.
 //
 // ## Example Usage
 //
@@ -82,12 +82,15 @@ type GetTrafficMirrorFilterIngressRulesArgs struct {
 // A collection of values returned by getTrafficMirrorFilterIngressRules.
 type GetTrafficMirrorFilterIngressRulesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                    string                                   `pulumi:"id"`
-	Ids                   []string                                 `pulumi:"ids"`
-	OutputFile            *string                                  `pulumi:"outputFile"`
-	Rules                 []GetTrafficMirrorFilterIngressRulesRule `pulumi:"rules"`
-	Status                *string                                  `pulumi:"status"`
-	TrafficMirrorFilterId string                                   `pulumi:"trafficMirrorFilterId"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Vpc Traffic Mirror Filter Egress Rules. Each element contains the following attributes:
+	Rules []GetTrafficMirrorFilterIngressRulesRule `pulumi:"rules"`
+	// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+	Status *string `pulumi:"status"`
+	// The ID of the filter associated with the inbound rule.
+	TrafficMirrorFilterId string `pulumi:"trafficMirrorFilterId"`
 }
 
 func GetTrafficMirrorFilterIngressRulesOutput(ctx *pulumi.Context, args GetTrafficMirrorFilterIngressRulesOutputArgs, opts ...pulumi.InvokeOption) GetTrafficMirrorFilterIngressRulesResultOutput {
@@ -139,16 +142,19 @@ func (o GetTrafficMirrorFilterIngressRulesResultOutput) OutputFile() pulumi.Stri
 	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Vpc Traffic Mirror Filter Egress Rules. Each element contains the following attributes:
 func (o GetTrafficMirrorFilterIngressRulesResultOutput) Rules() GetTrafficMirrorFilterIngressRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesResult) []GetTrafficMirrorFilterIngressRulesRule {
 		return v.Rules
 	}).(GetTrafficMirrorFilterIngressRulesRuleArrayOutput)
 }
 
+// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
 func (o GetTrafficMirrorFilterIngressRulesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the filter associated with the inbound rule.
 func (o GetTrafficMirrorFilterIngressRulesResultOutput) TrafficMirrorFilterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesResult) string { return v.TrafficMirrorFilterId }).(pulumi.StringOutput)
 }

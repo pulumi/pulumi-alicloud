@@ -91,14 +91,14 @@ public final class GetVpcFirewallsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The region ID of the peer VPC.
+     * The region ID.
      * 
      */
     @Import(name="regionNo")
     private @Nullable String regionNo;
 
     /**
-     * @return The region ID of the peer VPC.
+     * @return The region ID.
      * 
      */
     public Optional<String> regionNo() {
@@ -151,14 +151,14 @@ public final class GetVpcFirewallsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The ID of the peer VPC instance.
+     * The ID of the VPC instance.
      * 
      */
     @Import(name="vpcId")
     private @Nullable String vpcId;
 
     /**
-     * @return The ID of the peer VPC instance.
+     * @return The ID of the VPC instance.
      * 
      */
     public Optional<String> vpcId() {
@@ -264,7 +264,7 @@ public final class GetVpcFirewallsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param regionNo The region ID of the peer VPC.
+         * @param regionNo The region ID.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class GetVpcFirewallsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param vpcId The ID of the peer VPC instance.
+         * @param vpcId The ID of the VPC instance.
          * 
          * @return builder
          * 

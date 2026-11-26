@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.179.0+.
+ * > **NOTE:** Available since v1.179.0+.
  *
  * ## Example Usage
  *
@@ -66,16 +66,22 @@ export interface GetHybridMonitorFcTasksResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The index warehouse where the host belongs.
+     */
     readonly namespace?: string;
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * A list of Cms Hybrid Monitor Fc Tasks. Each element contains the following attributes:
+     */
     readonly tasks: outputs.cms.GetHybridMonitorFcTasksTask[];
 }
 /**
  * This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.179.0+.
+ * > **NOTE:** Available since v1.179.0+.
  *
  * ## Example Usage
  *

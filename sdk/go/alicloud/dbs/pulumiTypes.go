@@ -66,7 +66,7 @@ type GetBackupPlansPlan struct {
 	SourceEndpointSid string `pulumi:"sourceEndpointSid"`
 	// The source endpoint username.
 	SourceEndpointUserName string `pulumi:"sourceEndpointUserName"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `checkPass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
 	Status string `pulumi:"status"`
 }
 
@@ -134,7 +134,7 @@ type GetBackupPlansPlanArgs struct {
 	SourceEndpointSid pulumi.StringInput `pulumi:"sourceEndpointSid"`
 	// The source endpoint username.
 	SourceEndpointUserName pulumi.StringInput `pulumi:"sourceEndpointUserName"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `checkPass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -319,7 +319,7 @@ func (o GetBackupPlansPlanOutput) SourceEndpointUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupPlansPlan) string { return v.SourceEndpointUserName }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `checkPass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
 func (o GetBackupPlansPlanOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupPlansPlan) string { return v.Status }).(pulumi.StringOutput)
 }

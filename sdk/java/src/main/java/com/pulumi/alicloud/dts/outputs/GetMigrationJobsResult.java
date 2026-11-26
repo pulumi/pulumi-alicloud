@@ -22,8 +22,16 @@ public final class GetMigrationJobsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Dts Migration Jobs. Each element contains the following attributes:
+     * 
+     */
     private List<GetMigrationJobsJob> jobs;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Migration Job names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
@@ -41,12 +49,20 @@ public final class GetMigrationJobsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Dts Migration Jobs. Each element contains the following attributes:
+     * 
+     */
     public List<GetMigrationJobsJob> jobs() {
         return this.jobs;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Migration Job names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

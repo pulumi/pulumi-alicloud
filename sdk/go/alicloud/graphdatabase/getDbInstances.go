@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.136.0+.
+// > **NOTE:** Available since v1.136.0.
 //
 // ## Example Usage
 //
@@ -91,14 +91,17 @@ type GetDbInstancesArgs struct {
 
 // A collection of values returned by getDbInstances.
 type GetDbInstancesResult struct {
+	// According to the practical example or notes.
 	DbInstanceDescription *string `pulumi:"dbInstanceDescription"`
 	EnableDetails         *bool   `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                   `pulumi:"id"`
-	Ids        []string                 `pulumi:"ids"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Graph Database Db Instances. Each element contains the following attributes. See `instances` for the optional argument block.
 	Instances  []GetDbInstancesInstance `pulumi:"instances"`
 	OutputFile *string                  `pulumi:"outputFile"`
-	Status     *string                  `pulumi:"status"`
+	// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+	Status *string `pulumi:"status"`
 }
 
 func GetDbInstancesOutput(ctx *pulumi.Context, args GetDbInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDbInstancesResultOutput {
@@ -139,6 +142,7 @@ func (o GetDbInstancesResultOutput) ToGetDbInstancesResultOutputWithContext(ctx 
 	return o
 }
 
+// According to the practical example or notes.
 func (o GetDbInstancesResultOutput) DbInstanceDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDbInstancesResult) *string { return v.DbInstanceDescription }).(pulumi.StringPtrOutput)
 }
@@ -156,6 +160,7 @@ func (o GetDbInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDbInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Graph Database Db Instances. Each element contains the following attributes. See `instances` for the optional argument block.
 func (o GetDbInstancesResultOutput) Instances() GetDbInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetDbInstancesResult) []GetDbInstancesInstance { return v.Instances }).(GetDbInstancesInstanceArrayOutput)
 }
@@ -164,6 +169,7 @@ func (o GetDbInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDbInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
 func (o GetDbInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDbInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

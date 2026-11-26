@@ -68,6 +68,9 @@ class GetHistoryDeliveryJobsResult:
     @_builtins.property
     @pulumi.getter
     def jobs(self) -> Sequence['outputs.GetHistoryDeliveryJobsJobResult']:
+        """
+        A list of Actiontrail History Delivery Jobs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "jobs")
 
     @_builtins.property
@@ -78,6 +81,9 @@ class GetHistoryDeliveryJobsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.int]:
+        """
+        The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+        """
         return pulumi.get(self, "status")
 
 
@@ -103,7 +109,7 @@ def get_history_delivery_jobs(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.139.0+.
+    > **NOTE:** Available since v1.139.0.
 
     ## Example Usage
 
@@ -121,6 +127,7 @@ def get_history_delivery_jobs(enable_details: Optional[_builtins.bool] = None,
     ```
 
 
+    :param _builtins.bool enable_details: Whether to enable details for the jobs. Default value: `false`.
     :param Sequence[_builtins.str] ids: A list of History Delivery Job IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.int status: The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
@@ -148,7 +155,7 @@ def get_history_delivery_jobs_output(enable_details: pulumi.Input[Optional[Optio
     """
     This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.139.0+.
+    > **NOTE:** Available since v1.139.0.
 
     ## Example Usage
 
@@ -166,6 +173,7 @@ def get_history_delivery_jobs_output(enable_details: pulumi.Input[Optional[Optio
     ```
 
 
+    :param _builtins.bool enable_details: Whether to enable details for the jobs. Default value: `false`.
     :param Sequence[_builtins.str] ids: A list of History Delivery Job IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.int status: The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.

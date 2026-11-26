@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// <summary>
         /// This data source provides the Simple Application Server Custom Images of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// <summary>
         /// This data source provides the Simple Application Server Custom Images of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// <summary>
         /// This data source provides the Simple Application Server Custom Images of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -209,8 +209,14 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Simple Application Server Custom Images. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServerCustomImagesImageResult> Images;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Custom Image names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

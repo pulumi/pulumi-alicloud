@@ -1544,20 +1544,23 @@ func (o GetProductVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetProduc
 type GetProvisionedProductsProduct struct {
 	// The creation time of the product instance
 	CreateTime string `pulumi:"createTime"`
-	Id         string `pulumi:"id"`
+	// The ID of the provisioned product.
+	Id string `pulumi:"id"`
 	// The ID of the last instance operation task
 	LastProvisioningTaskId string `pulumi:"lastProvisioningTaskId"`
 	// The ID of the last successful instance operation task
 	LastSuccessfulProvisioningTaskId string `pulumi:"lastSuccessfulProvisioningTaskId"`
 	// The ID of the last task
-	LastTaskId string                                    `pulumi:"lastTaskId"`
-	Outputs    []GetProvisionedProductsProductOutputType `pulumi:"outputs"`
+	LastTaskId string `pulumi:"lastTaskId"`
+	// The output value of the template.
+	Outputs []GetProvisionedProductsProductOutputType `pulumi:"outputs"`
 	// The RAM entity ID of the owner
 	OwnerPrincipalId string `pulumi:"ownerPrincipalId"`
 	// The RAM entity type of the owner
-	OwnerPrincipalType string                                   `pulumi:"ownerPrincipalType"`
-	Parameters         []GetProvisionedProductsProductParameter `pulumi:"parameters"`
-	// Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+	OwnerPrincipalType string `pulumi:"ownerPrincipalType"`
+	// The template parameters entered by the user.
+	Parameters []GetProvisionedProductsProductParameter `pulumi:"parameters"`
+	// Product mix ID.
 	PortfolioId string `pulumi:"portfolioId"`
 	// Product ID.
 	ProductId string `pulumi:"productId"`
@@ -1571,19 +1574,20 @@ type GetProvisionedProductsProduct struct {
 	ProvisionedProductArn string `pulumi:"provisionedProductArn"`
 	// The ID of the instance.
 	ProvisionedProductId string `pulumi:"provisionedProductId"`
-	// The name of the instance.The length is 1~128 characters.
+	// The name of the instance.
 	ProvisionedProductName string `pulumi:"provisionedProductName"`
-	// Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+	// Instance type.
 	ProvisionedProductType string `pulumi:"provisionedProductType"`
 	// The ID of the ROS stack
 	StackId string `pulumi:"stackId"`
-	// The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+	// The ID of the region to which the resource stack belongs.
 	StackRegionId string `pulumi:"stackRegionId"`
 	// Instance status
 	Status string `pulumi:"status"`
 	// The status message of the product instance
-	StatusMessage string            `pulumi:"statusMessage"`
-	Tags          map[string]string `pulumi:"tags"`
+	StatusMessage string `pulumi:"statusMessage"`
+	// A mapping of tags of the provisioned product.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetProvisionedProductsProductInput is an input type that accepts GetProvisionedProductsProductArgs and GetProvisionedProductsProductOutput values.
@@ -1600,20 +1604,23 @@ type GetProvisionedProductsProductInput interface {
 type GetProvisionedProductsProductArgs struct {
 	// The creation time of the product instance
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	Id         pulumi.StringInput `pulumi:"id"`
+	// The ID of the provisioned product.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the last instance operation task
 	LastProvisioningTaskId pulumi.StringInput `pulumi:"lastProvisioningTaskId"`
 	// The ID of the last successful instance operation task
 	LastSuccessfulProvisioningTaskId pulumi.StringInput `pulumi:"lastSuccessfulProvisioningTaskId"`
 	// The ID of the last task
-	LastTaskId pulumi.StringInput                                `pulumi:"lastTaskId"`
-	Outputs    GetProvisionedProductsProductOutputTypeArrayInput `pulumi:"outputs"`
+	LastTaskId pulumi.StringInput `pulumi:"lastTaskId"`
+	// The output value of the template.
+	Outputs GetProvisionedProductsProductOutputTypeArrayInput `pulumi:"outputs"`
 	// The RAM entity ID of the owner
 	OwnerPrincipalId pulumi.StringInput `pulumi:"ownerPrincipalId"`
 	// The RAM entity type of the owner
-	OwnerPrincipalType pulumi.StringInput                               `pulumi:"ownerPrincipalType"`
-	Parameters         GetProvisionedProductsProductParameterArrayInput `pulumi:"parameters"`
-	// Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+	OwnerPrincipalType pulumi.StringInput `pulumi:"ownerPrincipalType"`
+	// The template parameters entered by the user.
+	Parameters GetProvisionedProductsProductParameterArrayInput `pulumi:"parameters"`
+	// Product mix ID.
 	PortfolioId pulumi.StringInput `pulumi:"portfolioId"`
 	// Product ID.
 	ProductId pulumi.StringInput `pulumi:"productId"`
@@ -1627,19 +1634,20 @@ type GetProvisionedProductsProductArgs struct {
 	ProvisionedProductArn pulumi.StringInput `pulumi:"provisionedProductArn"`
 	// The ID of the instance.
 	ProvisionedProductId pulumi.StringInput `pulumi:"provisionedProductId"`
-	// The name of the instance.The length is 1~128 characters.
+	// The name of the instance.
 	ProvisionedProductName pulumi.StringInput `pulumi:"provisionedProductName"`
-	// Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+	// Instance type.
 	ProvisionedProductType pulumi.StringInput `pulumi:"provisionedProductType"`
 	// The ID of the ROS stack
 	StackId pulumi.StringInput `pulumi:"stackId"`
-	// The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+	// The ID of the region to which the resource stack belongs.
 	StackRegionId pulumi.StringInput `pulumi:"stackRegionId"`
 	// Instance status
 	Status pulumi.StringInput `pulumi:"status"`
 	// The status message of the product instance
-	StatusMessage pulumi.StringInput    `pulumi:"statusMessage"`
-	Tags          pulumi.StringMapInput `pulumi:"tags"`
+	StatusMessage pulumi.StringInput `pulumi:"statusMessage"`
+	// A mapping of tags of the provisioned product.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetProvisionedProductsProductArgs) ElementType() reflect.Type {
@@ -1698,6 +1706,7 @@ func (o GetProvisionedProductsProductOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProduct) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The ID of the provisioned product.
 func (o GetProvisionedProductsProductOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProduct) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1717,6 +1726,7 @@ func (o GetProvisionedProductsProductOutput) LastTaskId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProduct) string { return v.LastTaskId }).(pulumi.StringOutput)
 }
 
+// The output value of the template.
 func (o GetProvisionedProductsProductOutput) Outputs() GetProvisionedProductsProductOutputTypeArrayOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProduct) []GetProvisionedProductsProductOutputType { return v.Outputs }).(GetProvisionedProductsProductOutputTypeArrayOutput)
 }
@@ -1731,11 +1741,12 @@ func (o GetProvisionedProductsProductOutput) OwnerPrincipalType() pulumi.StringO
 	return o.ApplyT(func(v GetProvisionedProductsProduct) string { return v.OwnerPrincipalType }).(pulumi.StringOutput)
 }
 
+// The template parameters entered by the user.
 func (o GetProvisionedProductsProductOutput) Parameters() GetProvisionedProductsProductParameterArrayOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProduct) []GetProvisionedProductsProductParameter { return v.Parameters }).(GetProvisionedProductsProductParameterArrayOutput)
 }
 
-// Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+// Product mix ID.
 func (o GetProvisionedProductsProductOutput) PortfolioId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProduct) string { return v.PortfolioId }).(pulumi.StringOutput)
 }
@@ -1770,12 +1781,12 @@ func (o GetProvisionedProductsProductOutput) ProvisionedProductId() pulumi.Strin
 	return o.ApplyT(func(v GetProvisionedProductsProduct) string { return v.ProvisionedProductId }).(pulumi.StringOutput)
 }
 
-// The name of the instance.The length is 1~128 characters.
+// The name of the instance.
 func (o GetProvisionedProductsProductOutput) ProvisionedProductName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProduct) string { return v.ProvisionedProductName }).(pulumi.StringOutput)
 }
 
-// Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+// Instance type.
 func (o GetProvisionedProductsProductOutput) ProvisionedProductType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProduct) string { return v.ProvisionedProductType }).(pulumi.StringOutput)
 }
@@ -1785,7 +1796,7 @@ func (o GetProvisionedProductsProductOutput) StackId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProduct) string { return v.StackId }).(pulumi.StringOutput)
 }
 
-// The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+// The ID of the region to which the resource stack belongs.
 func (o GetProvisionedProductsProductOutput) StackRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProduct) string { return v.StackRegionId }).(pulumi.StringOutput)
 }
@@ -1800,6 +1811,7 @@ func (o GetProvisionedProductsProductOutput) StatusMessage() pulumi.StringOutput
 	return o.ApplyT(func(v GetProvisionedProductsProduct) string { return v.StatusMessage }).(pulumi.StringOutput)
 }
 
+// A mapping of tags of the provisioned product.
 func (o GetProvisionedProductsProductOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProduct) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -1825,8 +1837,11 @@ func (o GetProvisionedProductsProductArrayOutput) Index(i pulumi.IntInput) GetPr
 }
 
 type GetProvisionedProductsProductOutputType struct {
+	// Description of the output value defined in the template.
 	Description string `pulumi:"description"`
-	OutputKey   string `pulumi:"outputKey"`
+	// The name of the output value defined in the template.
+	OutputKey string `pulumi:"outputKey"`
+	// The content of the output value defined in the template.
 	OutputValue string `pulumi:"outputValue"`
 }
 
@@ -1842,8 +1857,11 @@ type GetProvisionedProductsProductOutputTypeInput interface {
 }
 
 type GetProvisionedProductsProductOutputTypeArgs struct {
+	// Description of the output value defined in the template.
 	Description pulumi.StringInput `pulumi:"description"`
-	OutputKey   pulumi.StringInput `pulumi:"outputKey"`
+	// The name of the output value defined in the template.
+	OutputKey pulumi.StringInput `pulumi:"outputKey"`
+	// The content of the output value defined in the template.
 	OutputValue pulumi.StringInput `pulumi:"outputValue"`
 }
 
@@ -1898,14 +1916,17 @@ func (o GetProvisionedProductsProductOutputTypeOutput) ToGetProvisionedProductsP
 	return o
 }
 
+// Description of the output value defined in the template.
 func (o GetProvisionedProductsProductOutputTypeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProductOutputType) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The name of the output value defined in the template.
 func (o GetProvisionedProductsProductOutputTypeOutput) OutputKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProductOutputType) string { return v.OutputKey }).(pulumi.StringOutput)
 }
 
+// The content of the output value defined in the template.
 func (o GetProvisionedProductsProductOutputTypeOutput) OutputValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProductOutputType) string { return v.OutputValue }).(pulumi.StringOutput)
 }
@@ -1931,7 +1952,9 @@ func (o GetProvisionedProductsProductOutputTypeArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetProvisionedProductsProductParameter struct {
-	ParameterKey   string `pulumi:"parameterKey"`
+	// The name of the parameter defined in the template.
+	ParameterKey string `pulumi:"parameterKey"`
+	// The Template parameter value entered by the user.
 	ParameterValue string `pulumi:"parameterValue"`
 }
 
@@ -1947,7 +1970,9 @@ type GetProvisionedProductsProductParameterInput interface {
 }
 
 type GetProvisionedProductsProductParameterArgs struct {
-	ParameterKey   pulumi.StringInput `pulumi:"parameterKey"`
+	// The name of the parameter defined in the template.
+	ParameterKey pulumi.StringInput `pulumi:"parameterKey"`
+	// The Template parameter value entered by the user.
 	ParameterValue pulumi.StringInput `pulumi:"parameterValue"`
 }
 
@@ -2002,10 +2027,12 @@ func (o GetProvisionedProductsProductParameterOutput) ToGetProvisionedProductsPr
 	return o
 }
 
+// The name of the parameter defined in the template.
 func (o GetProvisionedProductsProductParameterOutput) ParameterKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProductParameter) string { return v.ParameterKey }).(pulumi.StringOutput)
 }
 
+// The Template parameter value entered by the user.
 func (o GetProvisionedProductsProductParameterOutput) ParameterValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProductParameter) string { return v.ParameterValue }).(pulumi.StringOutput)
 }
@@ -2033,20 +2060,23 @@ func (o GetProvisionedProductsProductParameterArrayOutput) Index(i pulumi.IntInp
 type GetProvisionedProductsProvisionedProduct struct {
 	// The creation time of the product instance
 	CreateTime string `pulumi:"createTime"`
-	Id         string `pulumi:"id"`
+	// The ID of the provisioned product.
+	Id string `pulumi:"id"`
 	// The ID of the last instance operation task
 	LastProvisioningTaskId string `pulumi:"lastProvisioningTaskId"`
 	// The ID of the last successful instance operation task
 	LastSuccessfulProvisioningTaskId string `pulumi:"lastSuccessfulProvisioningTaskId"`
 	// The ID of the last task
-	LastTaskId string                                               `pulumi:"lastTaskId"`
-	Outputs    []GetProvisionedProductsProvisionedProductOutputType `pulumi:"outputs"`
+	LastTaskId string `pulumi:"lastTaskId"`
+	// The output value of the template.
+	Outputs []GetProvisionedProductsProvisionedProductOutputType `pulumi:"outputs"`
 	// The RAM entity ID of the owner
 	OwnerPrincipalId string `pulumi:"ownerPrincipalId"`
 	// The RAM entity type of the owner
-	OwnerPrincipalType string                                              `pulumi:"ownerPrincipalType"`
-	Parameters         []GetProvisionedProductsProvisionedProductParameter `pulumi:"parameters"`
-	// Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+	OwnerPrincipalType string `pulumi:"ownerPrincipalType"`
+	// The template parameters entered by the user.
+	Parameters []GetProvisionedProductsProvisionedProductParameter `pulumi:"parameters"`
+	// Product mix ID.
 	PortfolioId string `pulumi:"portfolioId"`
 	// Product ID.
 	ProductId string `pulumi:"productId"`
@@ -2060,19 +2090,20 @@ type GetProvisionedProductsProvisionedProduct struct {
 	ProvisionedProductArn string `pulumi:"provisionedProductArn"`
 	// The ID of the instance.
 	ProvisionedProductId string `pulumi:"provisionedProductId"`
-	// The name of the instance.The length is 1~128 characters.
+	// The name of the instance.
 	ProvisionedProductName string `pulumi:"provisionedProductName"`
-	// Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+	// Instance type.
 	ProvisionedProductType string `pulumi:"provisionedProductType"`
 	// The ID of the ROS stack
 	StackId string `pulumi:"stackId"`
-	// The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+	// The ID of the region to which the resource stack belongs.
 	StackRegionId string `pulumi:"stackRegionId"`
 	// Instance status
 	Status string `pulumi:"status"`
 	// The status message of the product instance
-	StatusMessage string            `pulumi:"statusMessage"`
-	Tags          map[string]string `pulumi:"tags"`
+	StatusMessage string `pulumi:"statusMessage"`
+	// A mapping of tags of the provisioned product.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetProvisionedProductsProvisionedProductInput is an input type that accepts GetProvisionedProductsProvisionedProductArgs and GetProvisionedProductsProvisionedProductOutput values.
@@ -2089,20 +2120,23 @@ type GetProvisionedProductsProvisionedProductInput interface {
 type GetProvisionedProductsProvisionedProductArgs struct {
 	// The creation time of the product instance
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	Id         pulumi.StringInput `pulumi:"id"`
+	// The ID of the provisioned product.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the last instance operation task
 	LastProvisioningTaskId pulumi.StringInput `pulumi:"lastProvisioningTaskId"`
 	// The ID of the last successful instance operation task
 	LastSuccessfulProvisioningTaskId pulumi.StringInput `pulumi:"lastSuccessfulProvisioningTaskId"`
 	// The ID of the last task
-	LastTaskId pulumi.StringInput                                           `pulumi:"lastTaskId"`
-	Outputs    GetProvisionedProductsProvisionedProductOutputTypeArrayInput `pulumi:"outputs"`
+	LastTaskId pulumi.StringInput `pulumi:"lastTaskId"`
+	// The output value of the template.
+	Outputs GetProvisionedProductsProvisionedProductOutputTypeArrayInput `pulumi:"outputs"`
 	// The RAM entity ID of the owner
 	OwnerPrincipalId pulumi.StringInput `pulumi:"ownerPrincipalId"`
 	// The RAM entity type of the owner
-	OwnerPrincipalType pulumi.StringInput                                          `pulumi:"ownerPrincipalType"`
-	Parameters         GetProvisionedProductsProvisionedProductParameterArrayInput `pulumi:"parameters"`
-	// Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+	OwnerPrincipalType pulumi.StringInput `pulumi:"ownerPrincipalType"`
+	// The template parameters entered by the user.
+	Parameters GetProvisionedProductsProvisionedProductParameterArrayInput `pulumi:"parameters"`
+	// Product mix ID.
 	PortfolioId pulumi.StringInput `pulumi:"portfolioId"`
 	// Product ID.
 	ProductId pulumi.StringInput `pulumi:"productId"`
@@ -2116,19 +2150,20 @@ type GetProvisionedProductsProvisionedProductArgs struct {
 	ProvisionedProductArn pulumi.StringInput `pulumi:"provisionedProductArn"`
 	// The ID of the instance.
 	ProvisionedProductId pulumi.StringInput `pulumi:"provisionedProductId"`
-	// The name of the instance.The length is 1~128 characters.
+	// The name of the instance.
 	ProvisionedProductName pulumi.StringInput `pulumi:"provisionedProductName"`
-	// Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+	// Instance type.
 	ProvisionedProductType pulumi.StringInput `pulumi:"provisionedProductType"`
 	// The ID of the ROS stack
 	StackId pulumi.StringInput `pulumi:"stackId"`
-	// The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+	// The ID of the region to which the resource stack belongs.
 	StackRegionId pulumi.StringInput `pulumi:"stackRegionId"`
 	// Instance status
 	Status pulumi.StringInput `pulumi:"status"`
 	// The status message of the product instance
-	StatusMessage pulumi.StringInput    `pulumi:"statusMessage"`
-	Tags          pulumi.StringMapInput `pulumi:"tags"`
+	StatusMessage pulumi.StringInput `pulumi:"statusMessage"`
+	// A mapping of tags of the provisioned product.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetProvisionedProductsProvisionedProductArgs) ElementType() reflect.Type {
@@ -2187,6 +2222,7 @@ func (o GetProvisionedProductsProvisionedProductOutput) CreateTime() pulumi.Stri
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The ID of the provisioned product.
 func (o GetProvisionedProductsProvisionedProductOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -2206,6 +2242,7 @@ func (o GetProvisionedProductsProvisionedProductOutput) LastTaskId() pulumi.Stri
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.LastTaskId }).(pulumi.StringOutput)
 }
 
+// The output value of the template.
 func (o GetProvisionedProductsProvisionedProductOutput) Outputs() GetProvisionedProductsProvisionedProductOutputTypeArrayOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) []GetProvisionedProductsProvisionedProductOutputType {
 		return v.Outputs
@@ -2222,13 +2259,14 @@ func (o GetProvisionedProductsProvisionedProductOutput) OwnerPrincipalType() pul
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.OwnerPrincipalType }).(pulumi.StringOutput)
 }
 
+// The template parameters entered by the user.
 func (o GetProvisionedProductsProvisionedProductOutput) Parameters() GetProvisionedProductsProvisionedProductParameterArrayOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) []GetProvisionedProductsProvisionedProductParameter {
 		return v.Parameters
 	}).(GetProvisionedProductsProvisionedProductParameterArrayOutput)
 }
 
-// Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+// Product mix ID.
 func (o GetProvisionedProductsProvisionedProductOutput) PortfolioId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.PortfolioId }).(pulumi.StringOutput)
 }
@@ -2263,12 +2301,12 @@ func (o GetProvisionedProductsProvisionedProductOutput) ProvisionedProductId() p
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.ProvisionedProductId }).(pulumi.StringOutput)
 }
 
-// The name of the instance.The length is 1~128 characters.
+// The name of the instance.
 func (o GetProvisionedProductsProvisionedProductOutput) ProvisionedProductName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.ProvisionedProductName }).(pulumi.StringOutput)
 }
 
-// Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+// Instance type.
 func (o GetProvisionedProductsProvisionedProductOutput) ProvisionedProductType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.ProvisionedProductType }).(pulumi.StringOutput)
 }
@@ -2278,7 +2316,7 @@ func (o GetProvisionedProductsProvisionedProductOutput) StackId() pulumi.StringO
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.StackId }).(pulumi.StringOutput)
 }
 
-// The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+// The ID of the region to which the resource stack belongs.
 func (o GetProvisionedProductsProvisionedProductOutput) StackRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.StackRegionId }).(pulumi.StringOutput)
 }
@@ -2293,6 +2331,7 @@ func (o GetProvisionedProductsProvisionedProductOutput) StatusMessage() pulumi.S
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.StatusMessage }).(pulumi.StringOutput)
 }
 
+// A mapping of tags of the provisioned product.
 func (o GetProvisionedProductsProvisionedProductOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -2318,8 +2357,11 @@ func (o GetProvisionedProductsProvisionedProductArrayOutput) Index(i pulumi.IntI
 }
 
 type GetProvisionedProductsProvisionedProductOutputType struct {
+	// Description of the output value defined in the template.
 	Description string `pulumi:"description"`
-	OutputKey   string `pulumi:"outputKey"`
+	// The name of the output value defined in the template.
+	OutputKey string `pulumi:"outputKey"`
+	// The content of the output value defined in the template.
 	OutputValue string `pulumi:"outputValue"`
 }
 
@@ -2335,8 +2377,11 @@ type GetProvisionedProductsProvisionedProductOutputTypeInput interface {
 }
 
 type GetProvisionedProductsProvisionedProductOutputTypeArgs struct {
+	// Description of the output value defined in the template.
 	Description pulumi.StringInput `pulumi:"description"`
-	OutputKey   pulumi.StringInput `pulumi:"outputKey"`
+	// The name of the output value defined in the template.
+	OutputKey pulumi.StringInput `pulumi:"outputKey"`
+	// The content of the output value defined in the template.
 	OutputValue pulumi.StringInput `pulumi:"outputValue"`
 }
 
@@ -2391,14 +2436,17 @@ func (o GetProvisionedProductsProvisionedProductOutputTypeOutput) ToGetProvision
 	return o
 }
 
+// Description of the output value defined in the template.
 func (o GetProvisionedProductsProvisionedProductOutputTypeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProductOutputType) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The name of the output value defined in the template.
 func (o GetProvisionedProductsProvisionedProductOutputTypeOutput) OutputKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProductOutputType) string { return v.OutputKey }).(pulumi.StringOutput)
 }
 
+// The content of the output value defined in the template.
 func (o GetProvisionedProductsProvisionedProductOutputTypeOutput) OutputValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProductOutputType) string { return v.OutputValue }).(pulumi.StringOutput)
 }
@@ -2424,7 +2472,9 @@ func (o GetProvisionedProductsProvisionedProductOutputTypeArrayOutput) Index(i p
 }
 
 type GetProvisionedProductsProvisionedProductParameter struct {
-	ParameterKey   string `pulumi:"parameterKey"`
+	// The name of the parameter defined in the template.
+	ParameterKey string `pulumi:"parameterKey"`
+	// The Template parameter value entered by the user.
 	ParameterValue string `pulumi:"parameterValue"`
 }
 
@@ -2440,7 +2490,9 @@ type GetProvisionedProductsProvisionedProductParameterInput interface {
 }
 
 type GetProvisionedProductsProvisionedProductParameterArgs struct {
-	ParameterKey   pulumi.StringInput `pulumi:"parameterKey"`
+	// The name of the parameter defined in the template.
+	ParameterKey pulumi.StringInput `pulumi:"parameterKey"`
+	// The Template parameter value entered by the user.
 	ParameterValue pulumi.StringInput `pulumi:"parameterValue"`
 }
 
@@ -2495,10 +2547,12 @@ func (o GetProvisionedProductsProvisionedProductParameterOutput) ToGetProvisione
 	return o
 }
 
+// The name of the parameter defined in the template.
 func (o GetProvisionedProductsProvisionedProductParameterOutput) ParameterKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProductParameter) string { return v.ParameterKey }).(pulumi.StringOutput)
 }
 
+// The Template parameter value entered by the user.
 func (o GetProvisionedProductsProvisionedProductParameterOutput) ParameterValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProductParameter) string { return v.ParameterValue }).(pulumi.StringOutput)
 }

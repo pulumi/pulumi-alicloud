@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// This data source provides Alibaba Cloud regions.
         /// 
+        /// &gt; **NOTE:** Available since v0.1.0
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -42,6 +44,8 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// This data source provides Alibaba Cloud regions.
         /// 
+        /// &gt; **NOTE:** Available since v0.1.0
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -69,6 +73,8 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// This data source provides Alibaba Cloud regions.
+        /// 
+        /// &gt; **NOTE:** Available since v0.1.0
         /// 
         /// ## Example Usage
         /// 

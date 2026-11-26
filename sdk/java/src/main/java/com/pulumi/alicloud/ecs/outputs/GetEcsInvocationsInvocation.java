@@ -19,7 +19,7 @@ public final class GetEcsInvocationsInvocation {
      */
     private String commandContent;
     /**
-     * @return The ID of the command.
+     * @return The execution ID of the command.
      * 
      */
     private String commandId;
@@ -54,7 +54,7 @@ public final class GetEcsInvocationsInvocation {
      */
     private String invocationId;
     /**
-     * @return The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances.
+     * @return The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
      * 
      */
     private String invocationStatus;
@@ -64,7 +64,7 @@ public final class GetEcsInvocationsInvocation {
      */
     private List<GetEcsInvocationsInvocationInvokeInstance> invokeInstances;
     /**
-     * @return The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+     * @return The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
      * 
      */
     private String invokeStatus;
@@ -98,7 +98,7 @@ public final class GetEcsInvocationsInvocation {
         return this.commandContent;
     }
     /**
-     * @return The ID of the command.
+     * @return The execution ID of the command.
      * 
      */
     public String commandId() {
@@ -147,7 +147,7 @@ public final class GetEcsInvocationsInvocation {
         return this.invocationId;
     }
     /**
-     * @return The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances.
+     * @return The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
      * 
      */
     public String invocationStatus() {
@@ -161,7 +161,7 @@ public final class GetEcsInvocationsInvocation {
         return this.invokeInstances;
     }
     /**
-     * @return The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+     * @return The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
      * 
      */
     public String invokeStatus() {

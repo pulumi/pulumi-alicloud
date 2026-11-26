@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Ros.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Parameters.
+        /// Parameters. See `Parameters` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetChangeSetsSetParameterResult> Parameters;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Ros.Outputs
         /// </summary>
         public readonly string StackName;
         /// <summary>
-        /// The status of the change set.
+        /// The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
         /// </summary>
         public readonly string Status;
         /// <summary>

@@ -15,16 +15,32 @@ public final class ApplicationInfoDimensionArgs extends com.pulumi.resources.Res
 
     public static final ApplicationInfoDimensionArgs Empty = new ApplicationInfoDimensionArgs();
 
+    /**
+     * The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+     * 
+     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
+    /**
+     * @return The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+     * 
+     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -54,20 +70,44 @@ public final class ApplicationInfoDimensionArgs extends com.pulumi.resources.Res
             $ = new ApplicationInfoDimensionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param value The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

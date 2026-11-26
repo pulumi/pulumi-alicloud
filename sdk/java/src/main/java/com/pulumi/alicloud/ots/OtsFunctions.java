@@ -790,11 +790,11 @@ public final class OtsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:ots/getSearchIndexes:getSearchIndexes", TypeShape.of(GetSearchIndexesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the ots secondary index of the current Alibaba Cloud user.
+     * This data source provides the ots secondary indexes of the current Alibaba Cloud user.
      * 
      * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -838,11 +838,11 @@ public final class OtsFunctions {
         return getSecondaryIndexes(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the ots secondary index of the current Alibaba Cloud user.
+     * This data source provides the ots secondary indexes of the current Alibaba Cloud user.
      * 
      * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -886,11 +886,11 @@ public final class OtsFunctions {
         return getSecondaryIndexesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the ots secondary index of the current Alibaba Cloud user.
+     * This data source provides the ots secondary indexes of the current Alibaba Cloud user.
      * 
      * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -934,11 +934,11 @@ public final class OtsFunctions {
         return Deployment.getInstance().invoke("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", TypeShape.of(GetSecondaryIndexesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the ots secondary index of the current Alibaba Cloud user.
+     * This data source provides the ots secondary indexes of the current Alibaba Cloud user.
      * 
      * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -982,11 +982,11 @@ public final class OtsFunctions {
         return Deployment.getInstance().invoke("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", TypeShape.of(GetSecondaryIndexesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the ots secondary index of the current Alibaba Cloud user.
+     * This data source provides the ots secondary indexes of the current Alibaba Cloud user.
      * 
      * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -1340,7 +1340,7 @@ public final class OtsFunctions {
     /**
      * This data source provides the ots tables of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 
@@ -1385,7 +1385,7 @@ public final class OtsFunctions {
     /**
      * This data source provides the ots tables of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 
@@ -1430,7 +1430,7 @@ public final class OtsFunctions {
     /**
      * This data source provides the ots tables of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 
@@ -1475,7 +1475,7 @@ public final class OtsFunctions {
     /**
      * This data source provides the ots tables of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 
@@ -1520,7 +1520,7 @@ public final class OtsFunctions {
     /**
      * This data source provides the ots tables of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 

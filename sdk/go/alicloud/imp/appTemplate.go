@@ -14,9 +14,9 @@ import (
 
 // Provides a Apsara Agile Live (IMP) App Template resource.
 //
-// For information about Apsara Agile Live (IMP) App Template and how to use it, see [What is App Template](https://help.aliyun.com/document_detail/270121.html).
+// For information about Apsara Agile Live (IMP) App Template and how to use it, see [What is App Template](https://www.alibabacloud.com/help/doc-detail/270121.html).
 //
-// > **NOTE:** Available in v1.137.0+.
+// > **NOTE:** Available since v1.137.0.
 //
 // ## Example Usage
 //
@@ -68,7 +68,7 @@ type AppTemplate struct {
 	AppTemplateName pulumi.StringOutput `pulumi:"appTemplateName"`
 	// List of components. Its element valid values: ["component.live","component.liveRecord","component.liveBeauty","component.rtc","component.rtcRecord","component.im","component.whiteboard","component.liveSecurity","component.chatSecurity"].
 	ComponentLists pulumi.StringArrayOutput `pulumi:"componentLists"`
-	// Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
+	// Configuration list. It have several default configs after the resource is created. See `configList` below.
 	ConfigLists AppTemplateConfigListArrayOutput `pulumi:"configLists"`
 	// Integration mode. Valid values:
 	// * paasSDK: Integrated SDK.
@@ -120,7 +120,7 @@ type appTemplateState struct {
 	AppTemplateName *string `pulumi:"appTemplateName"`
 	// List of components. Its element valid values: ["component.live","component.liveRecord","component.liveBeauty","component.rtc","component.rtcRecord","component.im","component.whiteboard","component.liveSecurity","component.chatSecurity"].
 	ComponentLists []string `pulumi:"componentLists"`
-	// Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
+	// Configuration list. It have several default configs after the resource is created. See `configList` below.
 	ConfigLists []AppTemplateConfigList `pulumi:"configLists"`
 	// Integration mode. Valid values:
 	// * paasSDK: Integrated SDK.
@@ -137,7 +137,7 @@ type AppTemplateState struct {
 	AppTemplateName pulumi.StringPtrInput
 	// List of components. Its element valid values: ["component.live","component.liveRecord","component.liveBeauty","component.rtc","component.rtcRecord","component.im","component.whiteboard","component.liveSecurity","component.chatSecurity"].
 	ComponentLists pulumi.StringArrayInput
-	// Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
+	// Configuration list. It have several default configs after the resource is created. See `configList` below.
 	ConfigLists AppTemplateConfigListArrayInput
 	// Integration mode. Valid values:
 	// * paasSDK: Integrated SDK.
@@ -164,7 +164,7 @@ type appTemplateArgs struct {
 	AppTemplateName string `pulumi:"appTemplateName"`
 	// List of components. Its element valid values: ["component.live","component.liveRecord","component.liveBeauty","component.rtc","component.rtcRecord","component.im","component.whiteboard","component.liveSecurity","component.chatSecurity"].
 	ComponentLists []string `pulumi:"componentLists"`
-	// Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
+	// Configuration list. It have several default configs after the resource is created. See `configList` below.
 	ConfigLists []AppTemplateConfigList `pulumi:"configLists"`
 	// Integration mode. Valid values:
 	// * paasSDK: Integrated SDK.
@@ -180,7 +180,7 @@ type AppTemplateArgs struct {
 	AppTemplateName pulumi.StringInput
 	// List of components. Its element valid values: ["component.live","component.liveRecord","component.liveBeauty","component.rtc","component.rtcRecord","component.im","component.whiteboard","component.liveSecurity","component.chatSecurity"].
 	ComponentLists pulumi.StringArrayInput
-	// Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
+	// Configuration list. It have several default configs after the resource is created. See `configList` below.
 	ConfigLists AppTemplateConfigListArrayInput
 	// Integration mode. Valid values:
 	// * paasSDK: Integrated SDK.
@@ -287,7 +287,7 @@ func (o AppTemplateOutput) ComponentLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppTemplate) pulumi.StringArrayOutput { return v.ComponentLists }).(pulumi.StringArrayOutput)
 }
 
-// Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
+// Configuration list. It have several default configs after the resource is created. See `configList` below.
 func (o AppTemplateOutput) ConfigLists() AppTemplateConfigListArrayOutput {
 	return o.ApplyT(func(v *AppTemplate) AppTemplateConfigListArrayOutput { return v.ConfigLists }).(AppTemplateConfigListArrayOutput)
 }

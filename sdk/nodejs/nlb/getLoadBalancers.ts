@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.191.0+.
+ * > **NOTE:** Available since v1.191.0.
  *
  * ## Example Usage
  *
@@ -98,6 +98,9 @@ export interface GetLoadBalancersArgs {
      * The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
      */
     status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: {[key: string]: string};
     /**
      * The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify at most 10 IDs.
@@ -113,31 +116,64 @@ export interface GetLoadBalancersArgs {
  * A collection of values returned by getLoadBalancers.
  */
 export interface GetLoadBalancersResult {
+    /**
+     * The IP version.
+     */
     readonly addressIpVersion?: string;
+    /**
+     * The type of IPv4 address used by the NLB instance.
+     */
     readonly addressType?: string;
+    /**
+     * A list of Nlb Load Balancers. Each element contains the following attributes:
+     */
     readonly balancers: outputs.nlb.GetLoadBalancersBalancer[];
+    /**
+     * The domain name of the NLB instance.
+     */
     readonly dnsName?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The type of IPv6 address used by the NLB instance.
+     */
     readonly ipv6AddressType?: string;
+    /**
+     * The business status of the NLB instance.
+     */
     readonly loadBalancerBusinessStatus?: string;
     readonly loadBalancerNames?: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Load Balancer names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The ID of the resource group.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * The status of the NLB instance.
+     */
     readonly status?: string;
+    /**
+     * The tag of the resource.
+     */
     readonly tags?: {[key: string]: string};
     readonly vpcIds?: string[];
+    /**
+     * The name of the zone.
+     */
     readonly zoneId?: string;
 }
 /**
  * This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.191.0+.
+ * > **NOTE:** Available since v1.191.0.
  *
  * ## Example Usage
  *
@@ -226,6 +262,9 @@ export interface GetLoadBalancersOutputArgs {
      * The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
      */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify at most 10 IDs.

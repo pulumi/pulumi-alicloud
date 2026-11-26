@@ -153,10 +153,12 @@ type Network struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The description of the route table.
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
-	SystemRouteTableDescription pulumi.StringPtrOutput `pulumi:"systemRouteTableDescription"`
+	SystemRouteTableDescription pulumi.StringOutput `pulumi:"systemRouteTableDescription"`
 	// The name of the route table.
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
-	SystemRouteTableName pulumi.StringPtrOutput `pulumi:"systemRouteTableName"`
+	//
+	// > **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
+	SystemRouteTableName pulumi.StringOutput `pulumi:"systemRouteTableName"`
 	// Whether the system route table receives propagation routes.
 	SystemRouteTableRoutePropagationEnable pulumi.BoolOutput `pulumi:"systemRouteTableRoutePropagationEnable"`
 	// The tags of Vpc.
@@ -281,6 +283,8 @@ type networkState struct {
 	SystemRouteTableDescription *string `pulumi:"systemRouteTableDescription"`
 	// The name of the route table.
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
+	// > **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
 	SystemRouteTableName *string `pulumi:"systemRouteTableName"`
 	// Whether the system route table receives propagation routes.
 	SystemRouteTableRoutePropagationEnable *bool `pulumi:"systemRouteTableRoutePropagationEnable"`
@@ -377,6 +381,8 @@ type NetworkState struct {
 	SystemRouteTableDescription pulumi.StringPtrInput
 	// The name of the route table.
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
+	// > **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
 	SystemRouteTableName pulumi.StringPtrInput
 	// Whether the system route table receives propagation routes.
 	SystemRouteTableRoutePropagationEnable pulumi.BoolPtrInput
@@ -467,6 +473,8 @@ type networkArgs struct {
 	SystemRouteTableDescription *string `pulumi:"systemRouteTableDescription"`
 	// The name of the route table.
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
+	// > **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
 	SystemRouteTableName *string `pulumi:"systemRouteTableName"`
 	// Whether the system route table receives propagation routes.
 	SystemRouteTableRoutePropagationEnable *bool `pulumi:"systemRouteTableRoutePropagationEnable"`
@@ -548,6 +556,8 @@ type NetworkArgs struct {
 	SystemRouteTableDescription pulumi.StringPtrInput
 	// The name of the route table.
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
+	// > **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
 	SystemRouteTableName pulumi.StringPtrInput
 	// Whether the system route table receives propagation routes.
 	SystemRouteTableRoutePropagationEnable pulumi.BoolPtrInput
@@ -796,14 +806,16 @@ func (o NetworkOutput) Status() pulumi.StringOutput {
 
 // The description of the route table.
 // The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
-func (o NetworkOutput) SystemRouteTableDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.SystemRouteTableDescription }).(pulumi.StringPtrOutput)
+func (o NetworkOutput) SystemRouteTableDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.SystemRouteTableDescription }).(pulumi.StringOutput)
 }
 
 // The name of the route table.
 // The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
-func (o NetworkOutput) SystemRouteTableName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.SystemRouteTableName }).(pulumi.StringPtrOutput)
+//
+// > **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
+func (o NetworkOutput) SystemRouteTableName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.SystemRouteTableName }).(pulumi.StringOutput)
 }
 
 // Whether the system route table receives propagation routes.

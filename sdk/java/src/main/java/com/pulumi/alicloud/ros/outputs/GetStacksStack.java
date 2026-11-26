@@ -46,7 +46,7 @@ public final class GetStacksStack {
      */
     private List<GetStacksStackParameter> parameters;
     /**
-     * @return Parent Stack Id.
+     * @return ParentStackId.
      * 
      */
     private String parentStackId;
@@ -71,7 +71,7 @@ public final class GetStacksStack {
      */
     private String stackId;
     /**
-     * @return Stack Name.
+     * @return StackName.
      * 
      */
     private String stackName;
@@ -150,7 +150,7 @@ public final class GetStacksStack {
         return this.parameters;
     }
     /**
-     * @return Parent Stack Id.
+     * @return ParentStackId.
      * 
      */
     public String parentStackId() {
@@ -185,7 +185,7 @@ public final class GetStacksStack {
         return this.stackId;
     }
     /**
-     * @return Stack Name.
+     * @return StackName.
      * 
      */
     public String stackName() {

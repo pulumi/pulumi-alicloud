@@ -38,7 +38,7 @@ class GetExecutionsExecutionResult(dict):
         :param _builtins.str input: The Input information for this execution.
         :param _builtins.str output: The output of the execution.
         :param _builtins.str started_time: The started time of the execution.
-        :param _builtins.str status: The status of the resource.
+        :param _builtins.str status: The status of the resource. Valid values: `Running`, `Stopped`, `Succeeded`, `Failed`, `TimedOut`.
         :param _builtins.str stopped_time: The stopped time of the execution.
         """
         pulumi.set(__self__, "execution_name", execution_name)
@@ -102,7 +102,7 @@ class GetExecutionsExecutionResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `Running`, `Stopped`, `Succeeded`, `Failed`, `TimedOut`.
         """
         return pulumi.get(self, "status")
 

@@ -19,8 +19,16 @@ public final class GetZonesResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of TSDB instance zone IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of TSDB Instance zones. Each element contains the following attributes:
+     * 
+     */
     private List<GetZonesZone> zones;
 
     private GetZonesResult() {}
@@ -31,12 +39,20 @@ public final class GetZonesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of TSDB instance zone IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of TSDB Instance zones. Each element contains the following attributes:
+     * 
+     */
     public List<GetZonesZone> zones() {
         return this.zones;
     }

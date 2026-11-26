@@ -135,11 +135,11 @@ def get_secondary_indexes(ids: Optional[Sequence[_builtins.str]] = None,
                           table_name: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecondaryIndexesResult:
     """
-    This data source provides the ots secondary index of the current Alibaba Cloud user.
+    This data source provides the ots secondary indexes of the current Alibaba Cloud user.
 
     For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
 
-    > **NOTE:** Available in v1.187.0+.
+    > **NOTE:** Available since v1.187.0.
 
     ## Example Usage
 
@@ -186,11 +186,11 @@ def get_secondary_indexes_output(ids: pulumi.Input[Optional[Optional[Sequence[_b
                                  table_name: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecondaryIndexesResult]:
     """
-    This data source provides the ots secondary index of the current Alibaba Cloud user.
+    This data source provides the ots secondary indexes of the current Alibaba Cloud user.
 
     For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
 
-    > **NOTE:** Available in v1.187.0+.
+    > **NOTE:** Available since v1.187.0.
 
     ## Example Usage
 

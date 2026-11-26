@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStateConfigurationsResult {
+    /**
+     * @return A list of Oos State Configurations. Each element contains the following attributes:
+     * 
+     */
     private List<GetStateConfigurationsConfiguration> configurations;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,10 +27,22 @@ public final class GetStateConfigurationsResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
 
     private GetStateConfigurationsResult() {}
+    /**
+     * @return A list of Oos State Configurations. Each element contains the following attributes:
+     * 
+     */
     public List<GetStateConfigurationsConfiguration> configurations() {
         return this.configurations;
     }
@@ -43,9 +59,17 @@ public final class GetStateConfigurationsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

@@ -15,16 +15,32 @@ public final class AclEntryListArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AclEntryListArgs Empty = new AclEntryListArgs();
 
+    /**
+     * The comment of the entry.
+     * 
+     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
+    /**
+     * @return The comment of the entry.
+     * 
+     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * The CIDR blocks.
+     * 
+     */
     @Import(name="entry")
     private @Nullable Output<String> entry;
 
+    /**
+     * @return The CIDR blocks.
+     * 
+     */
     public Optional<Output<String>> entry() {
         return Optional.ofNullable(this.entry);
     }
@@ -54,20 +70,44 @@ public final class AclEntryListArgs extends com.pulumi.resources.ResourceArgs {
             $ = new AclEntryListArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param comment The comment of the entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
+        /**
+         * @param comment The comment of the entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
 
+        /**
+         * @param entry The CIDR blocks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder entry(@Nullable Output<String> entry) {
             $.entry = entry;
             return this;
         }
 
+        /**
+         * @param entry The CIDR blocks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder entry(String entry) {
             return entry(Output.of(entry));
         }

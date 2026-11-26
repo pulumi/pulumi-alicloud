@@ -82,14 +82,14 @@ public final class StackArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+     * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<StackParameterArgs>> parameters;
 
     /**
-     * @return The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+     * @return The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
      * 
      */
     public Optional<Output<List<StackParameterArgs>>> parameters() {
@@ -459,7 +459,7 @@ public final class StackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+         * @param parameters The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
          * 
          * @return builder
          * 
@@ -470,7 +470,7 @@ public final class StackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+         * @param parameters The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class StackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+         * @param parameters The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
          * 
          * @return builder
          * 

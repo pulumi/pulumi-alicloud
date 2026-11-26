@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
         /// 
-        /// &gt; **NOTE:**  Available in 1.40.0+.
+        /// &gt; **NOTE:** Available since v1.40.0.
         /// 
         /// ## Example Usage
         /// 
@@ -41,35 +41,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// });
         /// ```
-        /// 
-        /// ## Argument Reference
-        /// 
-        /// The following arguments are supported:
-        /// 
-        /// * `InstanceId` - (Optional) The specified instance ID.
-        /// * `DiskId` - (Optional) The specified disk ID.
-        /// * `Encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `True`: Encrypted snapshots. `False`: No encryption attribute limit. Default value: `False`.
-        /// * `Ids` - (Optional)  A list of snapshot IDs.
-        /// * `NameRegex` - (Optional) A regex string to filter results by snapshot name.
-        /// * `Status` - (Optional) The specified snapshot status. Default value: `All`. Optional values:
-        ///   * progressing: The snapshots are being created.
-        ///   * accomplished: The snapshots are ready to use.
-        ///   * failed: The snapshot creation failed.
-        ///   * all: All status.
-        /// * `Type` - (Optional) The snapshot category. Default value: `All`. Optional values:
-        ///   * auto: Auto snapshots.
-        ///   * user: Manual snapshots.
-        ///   * all: Auto and manual snapshots.
-        /// * `SourceDiskType` - (Optional) The type of source disk:
-        ///   * System: The snapshots are created for system disks.
-        ///   * Data: The snapshots are created for data disks.
-        /// * `Usage` - (Optional) The usage of the snapshot:
-        ///   * image: The snapshots are used to create custom images.
-        ///   * disk: The snapshots are used to CreateDisk.
-        ///   * mage_disk: The snapshots are used to create custom images and data disks.
-        ///   * none: The snapshots are not used yet.
-        /// * `Tags` - (Optional) A map of tags assigned to snapshots.
-        /// * `OutputFile` - (Optional) The name of output file that saves the filter results.
         /// </summary>
         public static Task<GetSnapshotsResult> InvokeAsync(GetSnapshotsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:ecs/getSnapshots:getSnapshots", args ?? new GetSnapshotsArgs(), options.WithDefaults());
@@ -81,7 +52,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
         /// 
-        /// &gt; **NOTE:**  Available in 1.40.0+.
+        /// &gt; **NOTE:** Available since v1.40.0.
         /// 
         /// ## Example Usage
         /// 
@@ -104,35 +75,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// });
         /// ```
-        /// 
-        /// ## Argument Reference
-        /// 
-        /// The following arguments are supported:
-        /// 
-        /// * `InstanceId` - (Optional) The specified instance ID.
-        /// * `DiskId` - (Optional) The specified disk ID.
-        /// * `Encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `True`: Encrypted snapshots. `False`: No encryption attribute limit. Default value: `False`.
-        /// * `Ids` - (Optional)  A list of snapshot IDs.
-        /// * `NameRegex` - (Optional) A regex string to filter results by snapshot name.
-        /// * `Status` - (Optional) The specified snapshot status. Default value: `All`. Optional values:
-        ///   * progressing: The snapshots are being created.
-        ///   * accomplished: The snapshots are ready to use.
-        ///   * failed: The snapshot creation failed.
-        ///   * all: All status.
-        /// * `Type` - (Optional) The snapshot category. Default value: `All`. Optional values:
-        ///   * auto: Auto snapshots.
-        ///   * user: Manual snapshots.
-        ///   * all: Auto and manual snapshots.
-        /// * `SourceDiskType` - (Optional) The type of source disk:
-        ///   * System: The snapshots are created for system disks.
-        ///   * Data: The snapshots are created for data disks.
-        /// * `Usage` - (Optional) The usage of the snapshot:
-        ///   * image: The snapshots are used to create custom images.
-        ///   * disk: The snapshots are used to CreateDisk.
-        ///   * mage_disk: The snapshots are used to create custom images and data disks.
-        ///   * none: The snapshots are not used yet.
-        /// * `Tags` - (Optional) A map of tags assigned to snapshots.
-        /// * `OutputFile` - (Optional) The name of output file that saves the filter results.
         /// </summary>
         public static Output<GetSnapshotsResult> Invoke(GetSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:ecs/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithDefaults());
@@ -144,7 +86,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
         /// 
-        /// &gt; **NOTE:**  Available in 1.40.0+.
+        /// &gt; **NOTE:** Available since v1.40.0.
         /// 
         /// ## Example Usage
         /// 
@@ -167,35 +109,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// });
         /// ```
-        /// 
-        /// ## Argument Reference
-        /// 
-        /// The following arguments are supported:
-        /// 
-        /// * `InstanceId` - (Optional) The specified instance ID.
-        /// * `DiskId` - (Optional) The specified disk ID.
-        /// * `Encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `True`: Encrypted snapshots. `False`: No encryption attribute limit. Default value: `False`.
-        /// * `Ids` - (Optional)  A list of snapshot IDs.
-        /// * `NameRegex` - (Optional) A regex string to filter results by snapshot name.
-        /// * `Status` - (Optional) The specified snapshot status. Default value: `All`. Optional values:
-        ///   * progressing: The snapshots are being created.
-        ///   * accomplished: The snapshots are ready to use.
-        ///   * failed: The snapshot creation failed.
-        ///   * all: All status.
-        /// * `Type` - (Optional) The snapshot category. Default value: `All`. Optional values:
-        ///   * auto: Auto snapshots.
-        ///   * user: Manual snapshots.
-        ///   * all: Auto and manual snapshots.
-        /// * `SourceDiskType` - (Optional) The type of source disk:
-        ///   * System: The snapshots are created for system disks.
-        ///   * Data: The snapshots are created for data disks.
-        /// * `Usage` - (Optional) The usage of the snapshot:
-        ///   * image: The snapshots are used to create custom images.
-        ///   * disk: The snapshots are used to CreateDisk.
-        ///   * mage_disk: The snapshots are used to create custom images and data disks.
-        ///   * none: The snapshots are not used yet.
-        /// * `Tags` - (Optional) A map of tags assigned to snapshots.
-        /// * `OutputFile` - (Optional) The name of output file that saves the filter results.
         /// </summary>
         public static Output<GetSnapshotsResult> Invoke(GetSnapshotsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:ecs/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithDefaults());
@@ -204,14 +117,20 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class GetSnapshotsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The category of the snapshot. Valid values: `Flash`, `Standard`.
+        /// </summary>
         [Input("category")]
         public string? Category { get; set; }
 
+        /// <summary>
+        /// Whether to check validity without making the request.
+        /// </summary>
         [Input("dryRun")]
         public bool? DryRun { get; set; }
 
         /// <summary>
-        /// Whether the snapshot is encrypted or not.
+        /// Queries the encrypted snapshots. Optional values: `True`: Encrypted snapshots. `False`: No encryption attribute limit. Default value: `False`.
         /// </summary>
         [Input("encrypted")]
         public bool? Encrypted { get; set; }
@@ -228,35 +147,62 @@ namespace Pulumi.AliCloud.Ecs
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The KMS key ID.
+        /// </summary>
         [Input("kmsKeyId")]
         public string? KmsKeyId { get; set; }
 
+        /// <summary>
+        /// A regex string to filter results by snapshot name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// The name of output file that saves the filter results.
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The resource group ID.
+        /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The snapshot link ID.
+        /// </summary>
         [Input("snapshotLinkId")]
         public string? SnapshotLinkId { get; set; }
 
+        /// <summary>
+        /// The name of the snapshot.
+        /// </summary>
         [Input("snapshotName")]
         public string? SnapshotName { get; set; }
 
+        /// <summary>
+        /// The type of the snapshot. Valid values: `Auto`, `User`, `All`.
+        /// </summary>
         [Input("snapshotType")]
         public string? SnapshotType { get; set; }
 
         /// <summary>
-        /// Source disk attribute. Value range: `System`,`Data`.
+        /// The type of source disk:
+        /// * System: The snapshots are created for system disks.
+        /// * Data: The snapshots are created for data disks.
         /// </summary>
         [Input("sourceDiskType")]
         public string? SourceDiskType { get; set; }
 
         /// <summary>
-        /// The snapshot status. Value range: `Progressing`, `Accomplished` and `Failed`.
+        /// The specified snapshot status. Default value: `All`. Optional values:
+        /// * progressing: The snapshots are being created.
+        /// * accomplished: The snapshots are ready to use.
+        /// * failed: The snapshot creation failed.
+        /// * all: All status.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -265,7 +211,7 @@ namespace Pulumi.AliCloud.Ecs
         private Dictionary<string, string>? _tags;
 
         /// <summary>
-        /// A map of tags assigned to the snapshot.
+        /// A map of tags assigned to snapshots.
         /// </summary>
         public Dictionary<string, string> Tags
         {
@@ -273,11 +219,21 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The snapshot category. Default value: `All`. Optional values:
+        /// * auto: Auto snapshots.
+        /// * user: Manual snapshots.
+        /// * all: Auto and manual snapshots.
+        /// </summary>
         [Input("type")]
         public string? Type { get; set; }
 
         /// <summary>
-        /// Whether the snapshots are used to create resources or not. Value range: `Image`, `Disk`, `ImageDisk` and `None`.
+        /// The usage of the snapshot:
+        /// * image: The snapshots are used to create custom images.
+        /// * disk: The snapshots are used to CreateDisk.
+        /// * mage_disk: The snapshots are used to create custom images and data disks.
+        /// * none: The snapshots are not used yet.
         /// </summary>
         [Input("usage")]
         public string? Usage { get; set; }
@@ -290,14 +246,20 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class GetSnapshotsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The category of the snapshot. Valid values: `Flash`, `Standard`.
+        /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
+        /// <summary>
+        /// Whether to check validity without making the request.
+        /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Whether the snapshot is encrypted or not.
+        /// Queries the encrypted snapshots. Optional values: `True`: Encrypted snapshots. `False`: No encryption attribute limit. Default value: `False`.
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
@@ -314,35 +276,62 @@ namespace Pulumi.AliCloud.Ecs
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The KMS key ID.
+        /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
+        /// <summary>
+        /// A regex string to filter results by snapshot name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// The name of output file that saves the filter results.
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// The resource group ID.
+        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The snapshot link ID.
+        /// </summary>
         [Input("snapshotLinkId")]
         public Input<string>? SnapshotLinkId { get; set; }
 
+        /// <summary>
+        /// The name of the snapshot.
+        /// </summary>
         [Input("snapshotName")]
         public Input<string>? SnapshotName { get; set; }
 
+        /// <summary>
+        /// The type of the snapshot. Valid values: `Auto`, `User`, `All`.
+        /// </summary>
         [Input("snapshotType")]
         public Input<string>? SnapshotType { get; set; }
 
         /// <summary>
-        /// Source disk attribute. Value range: `System`,`Data`.
+        /// The type of source disk:
+        /// * System: The snapshots are created for system disks.
+        /// * Data: The snapshots are created for data disks.
         /// </summary>
         [Input("sourceDiskType")]
         public Input<string>? SourceDiskType { get; set; }
 
         /// <summary>
-        /// The snapshot status. Value range: `Progressing`, `Accomplished` and `Failed`.
+        /// The specified snapshot status. Default value: `All`. Optional values:
+        /// * progressing: The snapshots are being created.
+        /// * accomplished: The snapshots are ready to use.
+        /// * failed: The snapshot creation failed.
+        /// * all: All status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -351,7 +340,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A map of tags assigned to the snapshot.
+        /// A map of tags assigned to snapshots.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -359,11 +348,21 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The snapshot category. Default value: `All`. Optional values:
+        /// * auto: Auto snapshots.
+        /// * user: Manual snapshots.
+        /// * all: Auto and manual snapshots.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Whether the snapshots are used to create resources or not. Value range: `Image`, `Disk`, `ImageDisk` and `None`.
+        /// The usage of the snapshot:
+        /// * image: The snapshots are used to create custom images.
+        /// * disk: The snapshots are used to CreateDisk.
+        /// * mage_disk: The snapshots are used to create custom images and data disks.
+        /// * none: The snapshots are not used yet.
         /// </summary>
         [Input("usage")]
         public Input<string>? Usage { get; set; }
@@ -378,6 +377,9 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetSnapshotsResult
     {
+        /// <summary>
+        /// The category of the snapshot.
+        /// </summary>
         public readonly string? Category;
         public readonly bool? DryRun;
         /// <summary>
@@ -399,9 +401,18 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The resource group ID.
+        /// </summary>
         public readonly string? ResourceGroupId;
         public readonly string? SnapshotLinkId;
+        /// <summary>
+        /// The name of the snapshot.
+        /// </summary>
         public readonly string? SnapshotName;
+        /// <summary>
+        /// The type of the snapshot.
+        /// </summary>
         public readonly string? SnapshotType;
         /// <summary>
         /// A list of snapshots. Each element contains the following attributes:
@@ -419,6 +430,9 @@ namespace Pulumi.AliCloud.Ecs
         /// A map of tags assigned to the snapshot.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The type of the snapshot.
+        /// </summary>
         public readonly string? Type;
         /// <summary>
         /// Whether the snapshots are used to create resources or not. Value range: `Image`, `Disk`, `ImageDisk` and `None`.

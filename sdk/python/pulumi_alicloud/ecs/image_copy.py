@@ -34,6 +34,9 @@ class ImageCopyArgs:
 
         :param pulumi.Input[_builtins.str] source_image_id: The source image ID.
         :param pulumi.Input[_builtins.str] source_region_id: The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+        :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.str] description: The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
         :param pulumi.Input[_builtins.bool] encrypted: Indicates whether to encrypt the image.
         :param pulumi.Input[_builtins.bool] force: Indicates whether to force delete the custom image, Default is `false`.
@@ -41,6 +44,7 @@ class ImageCopyArgs:
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         :param pulumi.Input[_builtins.str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         :param pulumi.Input[_builtins.str] kms_key_id: Key ID used to encrypt the image.
+        :param pulumi.Input[_builtins.str] name: Attribute 'name' has been deprecated, please use `image_name` instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag value of an image. The value of N ranges from 1 to 20.
         """
         pulumi.set(__self__, "source_image_id", source_image_id)
@@ -92,6 +96,11 @@ class ImageCopyArgs:
     @_builtins.property
     @pulumi.getter(name="deleteAutoSnapshot")
     def delete_auto_snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
         return pulumi.get(self, "delete_auto_snapshot")
 
     @delete_auto_snapshot.setter
@@ -164,6 +173,9 @@ class ImageCopyArgs:
     @pulumi.getter
     @_utilities.deprecated("""Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""")
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Attribute 'name' has been deprecated, please use `image_name` instead.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -199,6 +211,9 @@ class _ImageCopyState:
         """
         Input properties used for looking up and filtering ImageCopy resources.
 
+        :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.str] description: The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
         :param pulumi.Input[_builtins.bool] encrypted: Indicates whether to encrypt the image.
         :param pulumi.Input[_builtins.bool] force: Indicates whether to force delete the custom image, Default is `false`.
@@ -206,6 +221,7 @@ class _ImageCopyState:
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         :param pulumi.Input[_builtins.str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         :param pulumi.Input[_builtins.str] kms_key_id: Key ID used to encrypt the image.
+        :param pulumi.Input[_builtins.str] name: Attribute 'name' has been deprecated, please use `image_name` instead.
         :param pulumi.Input[_builtins.str] source_image_id: The source image ID.
         :param pulumi.Input[_builtins.str] source_region_id: The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag value of an image. The value of N ranges from 1 to 20.
@@ -237,6 +253,11 @@ class _ImageCopyState:
     @_builtins.property
     @pulumi.getter(name="deleteAutoSnapshot")
     def delete_auto_snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
         return pulumi.get(self, "delete_auto_snapshot")
 
     @delete_auto_snapshot.setter
@@ -309,6 +330,9 @@ class _ImageCopyState:
     @pulumi.getter
     @_utilities.deprecated("""Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""")
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Attribute 'name' has been deprecated, please use `image_name` instead.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -425,12 +449,6 @@ class ImageCopy(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
-        ## Attributes Reference0
-
-         The following attributes are exported:
-
-        * `id` - ID of the image.
-
         ## Import
 
         image can be imported using the id, e.g.
@@ -442,6 +460,9 @@ class ImageCopy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.str] description: The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
         :param pulumi.Input[_builtins.bool] encrypted: Indicates whether to encrypt the image.
         :param pulumi.Input[_builtins.bool] force: Indicates whether to force delete the custom image, Default is `false`.
@@ -449,6 +470,7 @@ class ImageCopy(pulumi.CustomResource):
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         :param pulumi.Input[_builtins.str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         :param pulumi.Input[_builtins.str] kms_key_id: Key ID used to encrypt the image.
+        :param pulumi.Input[_builtins.str] name: Attribute 'name' has been deprecated, please use `image_name` instead.
         :param pulumi.Input[_builtins.str] source_image_id: The source image ID.
         :param pulumi.Input[_builtins.str] source_region_id: The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag value of an image. The value of N ranges from 1 to 20.
@@ -514,12 +536,6 @@ class ImageCopy(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
-
-        ## Attributes Reference0
-
-         The following attributes are exported:
-
-        * `id` - ID of the image.
 
         ## Import
 
@@ -605,6 +621,9 @@ class ImageCopy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.str] description: The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
         :param pulumi.Input[_builtins.bool] encrypted: Indicates whether to encrypt the image.
         :param pulumi.Input[_builtins.bool] force: Indicates whether to force delete the custom image, Default is `false`.
@@ -612,6 +631,7 @@ class ImageCopy(pulumi.CustomResource):
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         :param pulumi.Input[_builtins.str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         :param pulumi.Input[_builtins.str] kms_key_id: Key ID used to encrypt the image.
+        :param pulumi.Input[_builtins.str] name: Attribute 'name' has been deprecated, please use `image_name` instead.
         :param pulumi.Input[_builtins.str] source_image_id: The source image ID.
         :param pulumi.Input[_builtins.str] source_region_id: The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag value of an image. The value of N ranges from 1 to 20.
@@ -661,6 +681,11 @@ class ImageCopy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deleteAutoSnapshot")
     def delete_auto_snapshot(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
         return pulumi.get(self, "delete_auto_snapshot")
 
     @_builtins.property
@@ -709,6 +734,9 @@ class ImageCopy(pulumi.CustomResource):
     @pulumi.getter
     @_utilities.deprecated("""Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""")
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Attribute 'name' has been deprecated, please use `image_name` instead.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property

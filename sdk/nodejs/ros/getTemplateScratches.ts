@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.151.0+.
+ * > **NOTE:** Available since v1.151.0.
  *
  * ## Example Usage
  *
@@ -82,14 +82,23 @@ export interface GetTemplateScratchesResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Ros Template Scratches. Each element contains the following attributes. See `scratches` below.
+     */
     readonly scratches: outputs.ros.GetTemplateScratchesScratch[];
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
+    /**
+     * The type of the Template Scratch.
+     */
     readonly templateScratchType?: string;
 }
 /**
  * This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.151.0+.
+ * > **NOTE:** Available since v1.151.0.
  *
  * ## Example Usage
  *

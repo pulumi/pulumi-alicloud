@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOssBackupPlansResult {
+    /**
+     * @return The name of OSS bucket.
+     * 
+     */
     private @Nullable String bucket;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,12 +26,28 @@ public final class GetOssBackupPlansResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of OssBackupPlan names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Hbr OssBackupPlans. Each element contains the following attributes:
+     * 
+     */
     private List<GetOssBackupPlansPlan> plans;
+    /**
+     * @return The ID of backup vault.
+     * 
+     */
     private @Nullable String vaultId;
 
     private GetOssBackupPlansResult() {}
+    /**
+     * @return The name of OSS bucket.
+     * 
+     */
     public Optional<String> bucket() {
         return Optional.ofNullable(this.bucket);
     }
@@ -44,15 +64,27 @@ public final class GetOssBackupPlansResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of OssBackupPlan names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Hbr OssBackupPlans. Each element contains the following attributes:
+     * 
+     */
     public List<GetOssBackupPlansPlan> plans() {
         return this.plans;
     }
+    /**
+     * @return The ID of backup vault.
+     * 
+     */
     public Optional<String> vaultId() {
         return Optional.ofNullable(this.vaultId);
     }

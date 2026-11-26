@@ -67,11 +67,17 @@ class GetEcsImagePipelineResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Image Pipeline ids.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the image template.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -82,6 +88,9 @@ class GetEcsImagePipelineResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Image Pipeline names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -92,16 +101,25 @@ class GetEcsImagePipelineResult:
     @_builtins.property
     @pulumi.getter
     def pipelines(self) -> Sequence['outputs.GetEcsImagePipelinePipelineResult']:
+        """
+        A list of Ecs Image Pipelines. Each element contains the following attributes:
+        """
         return pulumi.get(self, "pipelines")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the resource group to which the image template belongs.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Optional) A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -132,7 +150,7 @@ def get_ecs_image_pipeline(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.163.0+.
+    > **NOTE:** Available since v1.163.0.
 
     ## Example Usage
 
@@ -149,7 +167,7 @@ def get_ecs_image_pipeline(ids: Optional[Sequence[_builtins.str]] = None,
     ```
 
 
-    :param Sequence[_builtins.str] ids: A list of Image Pipeline ids.
+    :param Sequence[_builtins.str] ids: A list of Image Pipeline IDs.
     :param _builtins.str name: The name of the image template.
     :param _builtins.str name_regex: A regex string to filter results by Image Pipeline name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -186,7 +204,7 @@ def get_ecs_image_pipeline_output(ids: pulumi.Input[Optional[Optional[Sequence[_
     """
     This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.163.0+.
+    > **NOTE:** Available since v1.163.0.
 
     ## Example Usage
 
@@ -203,7 +221,7 @@ def get_ecs_image_pipeline_output(ids: pulumi.Input[Optional[Optional[Sequence[_
     ```
 
 
-    :param Sequence[_builtins.str] ids: A list of Image Pipeline ids.
+    :param Sequence[_builtins.str] ids: A list of Image Pipeline IDs.
     :param _builtins.str name: The name of the image template.
     :param _builtins.str name_regex: A regex string to filter results by Image Pipeline name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).

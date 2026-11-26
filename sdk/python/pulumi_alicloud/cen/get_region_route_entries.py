@@ -96,6 +96,8 @@ def get_region_route_entries(instance_id: Optional[_builtins.str] = None,
     """
     This data source provides CEN Regional Route Entries available to the user.
 
+    > **NOTE:** Available since v1.22.0+
+
     ## Example Usage
 
     ```python
@@ -109,6 +111,7 @@ def get_region_route_entries(instance_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str instance_id: ID of the CEN instance.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str region_id: ID of the region.
     """
     __args__ = dict()
@@ -131,6 +134,8 @@ def get_region_route_entries_output(instance_id: pulumi.Input[Optional[_builtins
     """
     This data source provides CEN Regional Route Entries available to the user.
 
+    > **NOTE:** Available since v1.22.0+
+
     ## Example Usage
 
     ```python
@@ -144,6 +149,7 @@ def get_region_route_entries_output(instance_id: pulumi.Input[Optional[_builtins
 
 
     :param _builtins.str instance_id: ID of the CEN instance.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str region_id: ID of the region.
     """
     __args__ = dict()

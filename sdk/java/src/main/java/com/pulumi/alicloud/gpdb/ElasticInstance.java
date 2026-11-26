@@ -19,9 +19,7 @@ import javax.annotation.Nullable;
 
 /**
  * Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.&#92;
- * For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
- * 
- * &gt; **NOTE:** Deprecated since v1.147.0.
+ * For more detail product introduction, see [AnalyticDB for PostgreSQL documentation](https://www.alibabacloud.com/help/doc-detail/141368.htm).
  * 
  * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.147.0`. Please use new resource alicloud_gpdb_instance.
  * 

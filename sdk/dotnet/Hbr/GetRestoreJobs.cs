@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Restore Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Restore Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Restore Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -340,16 +340,43 @@ namespace Pulumi.AliCloud.Hbr
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of restore job IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Hbr restore jobs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRestoreJobsJobResult> Jobs;
         public readonly string? OutputFile;
         public readonly ImmutableArray<string> RestoreIds;
+        /// <summary>
+        /// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        /// </summary>
         public readonly string RestoreType;
+        /// <summary>
+        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`, `UDM_ECS_ROLLBACK`.
+        /// </summary>
         public readonly ImmutableArray<string> SourceTypes;
+        /// <summary>
+        /// The status of restore job.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The name of target ofo OSS bucket.
+        /// </summary>
         public readonly ImmutableArray<string> TargetBuckets;
+        /// <summary>
+        /// The ID of destination file system.
+        /// </summary>
         public readonly ImmutableArray<string> TargetFileSystemIds;
+        /// <summary>
+        /// The ID of target ECS instance.
+        /// </summary>
         public readonly ImmutableArray<string> TargetInstanceIds;
+        /// <summary>
+        /// The ID of backup vault.
+        /// </summary>
         public readonly ImmutableArray<string> VaultIds;
 
         [OutputConstructor]

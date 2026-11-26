@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly ImmutableArray<string> InstanceIds;
         /// <summary>
-        /// The deployment strategy.
+        /// The deployment strategy. Valid values: `Availability`.
         /// </summary>
         public readonly string Strategy;
 

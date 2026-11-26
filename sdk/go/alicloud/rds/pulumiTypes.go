@@ -2546,7 +2546,7 @@ type GetAccountsAccount struct {
 	Id string `pulumi:"id"`
 	// Whether the maximum number of databases managed by the account is exceeded.
 	PrivExceeded string `pulumi:"privExceeded"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Available`, `Unavailable`.
 	Status string `pulumi:"status"`
 }
 
@@ -2574,7 +2574,7 @@ type GetAccountsAccountArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Whether the maximum number of databases managed by the account is exceeded.
 	PrivExceeded pulumi.StringInput `pulumi:"privExceeded"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Available`, `Unavailable`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2659,7 +2659,7 @@ func (o GetAccountsAccountOutput) PrivExceeded() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.PrivExceeded }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `Available`, `Unavailable`.
 func (o GetAccountsAccountOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2800,11 +2800,11 @@ func (o GetAccountsAccountDatabasePrivilegeArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetCollationTimeZonesCollationTimeZone struct {
-	// The code of the instance type.
+	// The description.
 	Description *string `pulumi:"description"`
-	// The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+	// The offset of the UTC time.
 	StandardTimeOffset *string `pulumi:"standardTimeOffset"`
-	// The time zone that is available for use in ApsaraDB RDS.
+	// The time zone.
 	TimeZone *string `pulumi:"timeZone"`
 }
 
@@ -2820,11 +2820,11 @@ type GetCollationTimeZonesCollationTimeZoneInput interface {
 }
 
 type GetCollationTimeZonesCollationTimeZoneArgs struct {
-	// The code of the instance type.
+	// The description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+	// The offset of the UTC time.
 	StandardTimeOffset pulumi.StringPtrInput `pulumi:"standardTimeOffset"`
-	// The time zone that is available for use in ApsaraDB RDS.
+	// The time zone.
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 }
 
@@ -2879,17 +2879,17 @@ func (o GetCollationTimeZonesCollationTimeZoneOutput) ToGetCollationTimeZonesCol
 	return o
 }
 
-// The code of the instance type.
+// The description.
 func (o GetCollationTimeZonesCollationTimeZoneOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCollationTimeZonesCollationTimeZone) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+// The offset of the UTC time.
 func (o GetCollationTimeZonesCollationTimeZoneOutput) StandardTimeOffset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCollationTimeZonesCollationTimeZone) *string { return v.StandardTimeOffset }).(pulumi.StringPtrOutput)
 }
 
-// The time zone that is available for use in ApsaraDB RDS.
+// The time zone.
 func (o GetCollationTimeZonesCollationTimeZoneOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCollationTimeZonesCollationTimeZone) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
@@ -2946,7 +2946,9 @@ type GetCrossRegionBackupsBackup struct {
 	CrossBackupDownloadLink string `pulumi:"crossBackupDownloadLink"`
 	// The ID of the cross-region data backup file.
 	CrossBackupId string `pulumi:"crossBackupId"`
-	// The ID of the destination region where the cross-region data backup file of the instance is stored.
+	// The ID of the destination region where the cross-region data backup file is stored.
+	//
+	// > **NOTE:** Note You must specify the `crossBackupId` parameter. Alternatively, you must specify the `startTime` and `endTime` parameters.
 	CrossBackupRegion string `pulumi:"crossBackupRegion"`
 	// The name of the compressed package that contains the cross-region data backup file.
 	CrossBackupSetFile string `pulumi:"crossBackupSetFile"`
@@ -3015,7 +3017,9 @@ type GetCrossRegionBackupsBackupArgs struct {
 	CrossBackupDownloadLink pulumi.StringInput `pulumi:"crossBackupDownloadLink"`
 	// The ID of the cross-region data backup file.
 	CrossBackupId pulumi.StringInput `pulumi:"crossBackupId"`
-	// The ID of the destination region where the cross-region data backup file of the instance is stored.
+	// The ID of the destination region where the cross-region data backup file is stored.
+	//
+	// > **NOTE:** Note You must specify the `crossBackupId` parameter. Alternatively, you must specify the `startTime` and `endTime` parameters.
 	CrossBackupRegion pulumi.StringInput `pulumi:"crossBackupRegion"`
 	// The name of the compressed package that contains the cross-region data backup file.
 	CrossBackupSetFile pulumi.StringInput `pulumi:"crossBackupSetFile"`
@@ -3153,7 +3157,9 @@ func (o GetCrossRegionBackupsBackupOutput) CrossBackupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.CrossBackupId }).(pulumi.StringOutput)
 }
 
-// The ID of the destination region where the cross-region data backup file of the instance is stored.
+// The ID of the destination region where the cross-region data backup file is stored.
+//
+// > **NOTE:** Note You must specify the `crossBackupId` parameter. Alternatively, you must specify the `startTime` and `endTime` parameters.
 func (o GetCrossRegionBackupsBackupOutput) CrossBackupRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.CrossBackupRegion }).(pulumi.StringOutput)
 }
@@ -5208,20 +5214,13 @@ type GetRdsBackupsBackup struct {
 	BackupIntranetDownloadUrl string `pulumi:"backupIntranetDownloadUrl"`
 	// BackupMethod.
 	BackupMethod string `pulumi:"backupMethod"`
-	// BackupMode.
+	// BackupMode. Valid values: `Automated` and `Manual`.
 	BackupMode string `pulumi:"backupMode"`
 	// BackupSize.
 	BackupSize string `pulumi:"backupSize"`
 	// BackupStartTime.
 	BackupStartTime string `pulumi:"backupStartTime"`
-	// Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-	// * **NoStart**: Not started
-	// * **Checking**: check the backup
-	// * **Preparing**: Prepare a backup
-	// * **Waiting**: Waiting for backup
-	// * **Uploading**: Upload backup
-	// * **Finished**: Complete backup
-	// * **Failed**: backup Failed
+	// Backup task status. Valid values: `Automated` and `Manual`.
 	BackupStatus string `pulumi:"backupStatus"`
 	// BackupType.
 	BackupType string `pulumi:"backupType"`
@@ -5282,20 +5281,13 @@ type GetRdsBackupsBackupArgs struct {
 	BackupIntranetDownloadUrl pulumi.StringInput `pulumi:"backupIntranetDownloadUrl"`
 	// BackupMethod.
 	BackupMethod pulumi.StringInput `pulumi:"backupMethod"`
-	// BackupMode.
+	// BackupMode. Valid values: `Automated` and `Manual`.
 	BackupMode pulumi.StringInput `pulumi:"backupMode"`
 	// BackupSize.
 	BackupSize pulumi.StringInput `pulumi:"backupSize"`
 	// BackupStartTime.
 	BackupStartTime pulumi.StringInput `pulumi:"backupStartTime"`
-	// Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-	// * **NoStart**: Not started
-	// * **Checking**: check the backup
-	// * **Preparing**: Prepare a backup
-	// * **Waiting**: Waiting for backup
-	// * **Uploading**: Upload backup
-	// * **Finished**: Complete backup
-	// * **Failed**: backup Failed
+	// Backup task status. Valid values: `Automated` and `Manual`.
 	BackupStatus pulumi.StringInput `pulumi:"backupStatus"`
 	// BackupType.
 	BackupType pulumi.StringInput `pulumi:"backupType"`
@@ -5413,7 +5405,7 @@ func (o GetRdsBackupsBackupOutput) BackupMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.BackupMethod }).(pulumi.StringOutput)
 }
 
-// BackupMode.
+// BackupMode. Valid values: `Automated` and `Manual`.
 func (o GetRdsBackupsBackupOutput) BackupMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.BackupMode }).(pulumi.StringOutput)
 }
@@ -5428,14 +5420,7 @@ func (o GetRdsBackupsBackupOutput) BackupStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.BackupStartTime }).(pulumi.StringOutput)
 }
 
-// Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-// * **NoStart**: Not started
-// * **Checking**: check the backup
-// * **Preparing**: Prepare a backup
-// * **Waiting**: Waiting for backup
-// * **Uploading**: Upload backup
-// * **Finished**: Complete backup
-// * **Failed**: backup Failed
+// Backup task status. Valid values: `Automated` and `Manual`.
 func (o GetRdsBackupsBackupOutput) BackupStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.BackupStatus }).(pulumi.StringOutput)
 }
@@ -5525,16 +5510,29 @@ func (o GetRdsBackupsBackupArrayOutput) Index(i pulumi.IntInput) GetRdsBackupsBa
 }
 
 type GetRdsParameterGroupsGroup struct {
-	Engine             string                                  `pulumi:"engine"`
-	EngineVersion      string                                  `pulumi:"engineVersion"`
-	ForceRestart       int                                     `pulumi:"forceRestart"`
-	Id                 string                                  `pulumi:"id"`
-	ParamCounts        int                                     `pulumi:"paramCounts"`
-	ParamDetails       []GetRdsParameterGroupsGroupParamDetail `pulumi:"paramDetails"`
-	ParameterGroupDesc string                                  `pulumi:"parameterGroupDesc"`
-	ParameterGroupId   string                                  `pulumi:"parameterGroupId"`
-	ParameterGroupName string                                  `pulumi:"parameterGroupName"`
-	ParameterGroupType int                                     `pulumi:"parameterGroupType"`
+	// The database engine.
+	Engine string `pulumi:"engine"`
+	// The version of the database engine.
+	EngineVersion string `pulumi:"engineVersion"`
+	// Indicates whether applying the parameter template requires the instance to be restarted. Valid values: `0`: A restart is not required. `1`: A restart is required.
+	ForceRestart int `pulumi:"forceRestart"`
+	// The ID of the Parameter Group.
+	Id string `pulumi:"id"`
+	// The number of parameters in the parameter template.
+	ParamCounts int `pulumi:"paramCounts"`
+	// Parameter list.
+	ParamDetails []GetRdsParameterGroupsGroupParamDetail `pulumi:"paramDetails"`
+	// The description of the parameter template.
+	ParameterGroupDesc string `pulumi:"parameterGroupDesc"`
+	// The ParameterGroupId of the Parameter Group.
+	ParameterGroupId string `pulumi:"parameterGroupId"`
+	// The name of the parameter template.
+	ParameterGroupName string `pulumi:"parameterGroupName"`
+	// The type of the parameter template. Valid values:
+	// `0`: indicates a default parameter template.
+	// `1`: indicates a custom parameter template.
+	// `2`: an automatic backup parameter template. After you apply this type of template to an RDS instance, the system automatically backs up the parameter settings of that instance and saves the data backup as a template.
+	ParameterGroupType int `pulumi:"parameterGroupType"`
 }
 
 // GetRdsParameterGroupsGroupInput is an input type that accepts GetRdsParameterGroupsGroupArgs and GetRdsParameterGroupsGroupOutput values.
@@ -5549,16 +5547,29 @@ type GetRdsParameterGroupsGroupInput interface {
 }
 
 type GetRdsParameterGroupsGroupArgs struct {
-	Engine             pulumi.StringInput                              `pulumi:"engine"`
-	EngineVersion      pulumi.StringInput                              `pulumi:"engineVersion"`
-	ForceRestart       pulumi.IntInput                                 `pulumi:"forceRestart"`
-	Id                 pulumi.StringInput                              `pulumi:"id"`
-	ParamCounts        pulumi.IntInput                                 `pulumi:"paramCounts"`
-	ParamDetails       GetRdsParameterGroupsGroupParamDetailArrayInput `pulumi:"paramDetails"`
-	ParameterGroupDesc pulumi.StringInput                              `pulumi:"parameterGroupDesc"`
-	ParameterGroupId   pulumi.StringInput                              `pulumi:"parameterGroupId"`
-	ParameterGroupName pulumi.StringInput                              `pulumi:"parameterGroupName"`
-	ParameterGroupType pulumi.IntInput                                 `pulumi:"parameterGroupType"`
+	// The database engine.
+	Engine pulumi.StringInput `pulumi:"engine"`
+	// The version of the database engine.
+	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
+	// Indicates whether applying the parameter template requires the instance to be restarted. Valid values: `0`: A restart is not required. `1`: A restart is required.
+	ForceRestart pulumi.IntInput `pulumi:"forceRestart"`
+	// The ID of the Parameter Group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The number of parameters in the parameter template.
+	ParamCounts pulumi.IntInput `pulumi:"paramCounts"`
+	// Parameter list.
+	ParamDetails GetRdsParameterGroupsGroupParamDetailArrayInput `pulumi:"paramDetails"`
+	// The description of the parameter template.
+	ParameterGroupDesc pulumi.StringInput `pulumi:"parameterGroupDesc"`
+	// The ParameterGroupId of the Parameter Group.
+	ParameterGroupId pulumi.StringInput `pulumi:"parameterGroupId"`
+	// The name of the parameter template.
+	ParameterGroupName pulumi.StringInput `pulumi:"parameterGroupName"`
+	// The type of the parameter template. Valid values:
+	// `0`: indicates a default parameter template.
+	// `1`: indicates a custom parameter template.
+	// `2`: an automatic backup parameter template. After you apply this type of template to an RDS instance, the system automatically backs up the parameter settings of that instance and saves the data backup as a template.
+	ParameterGroupType pulumi.IntInput `pulumi:"parameterGroupType"`
 }
 
 func (GetRdsParameterGroupsGroupArgs) ElementType() reflect.Type {
@@ -5612,42 +5623,55 @@ func (o GetRdsParameterGroupsGroupOutput) ToGetRdsParameterGroupsGroupOutputWith
 	return o
 }
 
+// The database engine.
 func (o GetRdsParameterGroupsGroupOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRdsParameterGroupsGroup) string { return v.Engine }).(pulumi.StringOutput)
 }
 
+// The version of the database engine.
 func (o GetRdsParameterGroupsGroupOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRdsParameterGroupsGroup) string { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
+// Indicates whether applying the parameter template requires the instance to be restarted. Valid values: `0`: A restart is not required. `1`: A restart is required.
 func (o GetRdsParameterGroupsGroupOutput) ForceRestart() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRdsParameterGroupsGroup) int { return v.ForceRestart }).(pulumi.IntOutput)
 }
 
+// The ID of the Parameter Group.
 func (o GetRdsParameterGroupsGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRdsParameterGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The number of parameters in the parameter template.
 func (o GetRdsParameterGroupsGroupOutput) ParamCounts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRdsParameterGroupsGroup) int { return v.ParamCounts }).(pulumi.IntOutput)
 }
 
+// Parameter list.
 func (o GetRdsParameterGroupsGroupOutput) ParamDetails() GetRdsParameterGroupsGroupParamDetailArrayOutput {
 	return o.ApplyT(func(v GetRdsParameterGroupsGroup) []GetRdsParameterGroupsGroupParamDetail { return v.ParamDetails }).(GetRdsParameterGroupsGroupParamDetailArrayOutput)
 }
 
+// The description of the parameter template.
 func (o GetRdsParameterGroupsGroupOutput) ParameterGroupDesc() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRdsParameterGroupsGroup) string { return v.ParameterGroupDesc }).(pulumi.StringOutput)
 }
 
+// The ParameterGroupId of the Parameter Group.
 func (o GetRdsParameterGroupsGroupOutput) ParameterGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRdsParameterGroupsGroup) string { return v.ParameterGroupId }).(pulumi.StringOutput)
 }
 
+// The name of the parameter template.
 func (o GetRdsParameterGroupsGroupOutput) ParameterGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRdsParameterGroupsGroup) string { return v.ParameterGroupName }).(pulumi.StringOutput)
 }
 
+// The type of the parameter template. Valid values:
+// `0`: indicates a default parameter template.
+// `1`: indicates a custom parameter template.
+// `2`: an automatic backup parameter template. After you apply this type of template to an RDS instance, the system automatically backs up the parameter settings of that instance and saves the data backup as a template.
 func (o GetRdsParameterGroupsGroupOutput) ParameterGroupType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRdsParameterGroupsGroup) int { return v.ParameterGroupType }).(pulumi.IntOutput)
 }
@@ -5673,7 +5697,9 @@ func (o GetRdsParameterGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetRdsPa
 }
 
 type GetRdsParameterGroupsGroupParamDetail struct {
-	ParamName  string `pulumi:"paramName"`
+	// The value of a parameter.
+	ParamName string `pulumi:"paramName"`
+	// The name of a parameter.
 	ParamValue string `pulumi:"paramValue"`
 }
 
@@ -5689,7 +5715,9 @@ type GetRdsParameterGroupsGroupParamDetailInput interface {
 }
 
 type GetRdsParameterGroupsGroupParamDetailArgs struct {
-	ParamName  pulumi.StringInput `pulumi:"paramName"`
+	// The value of a parameter.
+	ParamName pulumi.StringInput `pulumi:"paramName"`
+	// The name of a parameter.
 	ParamValue pulumi.StringInput `pulumi:"paramValue"`
 }
 
@@ -5744,10 +5772,12 @@ func (o GetRdsParameterGroupsGroupParamDetailOutput) ToGetRdsParameterGroupsGrou
 	return o
 }
 
+// The value of a parameter.
 func (o GetRdsParameterGroupsGroupParamDetailOutput) ParamName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRdsParameterGroupsGroupParamDetail) string { return v.ParamName }).(pulumi.StringOutput)
 }
 
+// The name of a parameter.
 func (o GetRdsParameterGroupsGroupParamDetailOutput) ParamValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRdsParameterGroupsGroupParamDetail) string { return v.ParamValue }).(pulumi.StringOutput)
 }

@@ -19,6 +19,8 @@ __all__ = [
     'AccessPointPosixUserArgsDict',
     'AccessPointRootPathPermissionArgs',
     'AccessPointRootPathPermissionArgsDict',
+    'FileSystemAutoUpgradeConfigArgs',
+    'FileSystemAutoUpgradeConfigArgsDict',
     'FileSystemNfsAclArgs',
     'FileSystemNfsAclArgsDict',
     'FileSystemOptionsArgs',
@@ -165,6 +167,107 @@ class AccessPointRootPathPermissionArgs:
     @permission.setter
     def permission(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permission", value)
+
+
+class FileSystemAutoUpgradeConfigArgsDict(TypedDict):
+    capacity_used_ratio: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The capacity usage threshold. Valid values: 1 to 99. Unit: percent.
+    """
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to enable automatic capacity expansion.
+    """
+    step: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The capacity expansion step. Unit: GiB.
+    """
+    time: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The duration threshold. Unit: minutes.
+
+    > **NOTE:** Automatic capacity expansion is a modify-time feature: it is applied through the NAS ModifyFileSystem API after the file system has been created.
+
+    > **NOTE:** This block is Optional and Computed. Removing the entire block from the configuration does **not** disable automatic capacity expansion or send a disable request to the server; the previous server value is retained as a computed value and the plan stays stable. To disable automatic capacity expansion, set `enabled = false` explicitly. When only `enabled` is configured, the other attributes (`capacity_used_ratio`, `step`, `time`) become computed and are read back from the server.
+    """
+
+@pulumi.input_type
+class FileSystemAutoUpgradeConfigArgs:
+    def __init__(__self__, *,
+                 capacity_used_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 step: pulumi.Input[Optional[_builtins.int]] = None,
+                 time: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] capacity_used_ratio: The capacity usage threshold. Valid values: 1 to 99. Unit: percent.
+        :param pulumi.Input[_builtins.bool] enabled: Whether to enable automatic capacity expansion.
+        :param pulumi.Input[_builtins.int] step: The capacity expansion step. Unit: GiB.
+        :param pulumi.Input[_builtins.int] time: The duration threshold. Unit: minutes.
+               
+               > **NOTE:** Automatic capacity expansion is a modify-time feature: it is applied through the NAS ModifyFileSystem API after the file system has been created.
+               
+               > **NOTE:** This block is Optional and Computed. Removing the entire block from the configuration does **not** disable automatic capacity expansion or send a disable request to the server; the previous server value is retained as a computed value and the plan stays stable. To disable automatic capacity expansion, set `enabled = false` explicitly. When only `enabled` is configured, the other attributes (`capacity_used_ratio`, `step`, `time`) become computed and are read back from the server.
+        """
+        if capacity_used_ratio is not None:
+            pulumi.set(__self__, "capacity_used_ratio", capacity_used_ratio)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if step is not None:
+            pulumi.set(__self__, "step", step)
+        if time is not None:
+            pulumi.set(__self__, "time", time)
+
+    @_builtins.property
+    @pulumi.getter(name="capacityUsedRatio")
+    def capacity_used_ratio(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The capacity usage threshold. Valid values: 1 to 99. Unit: percent.
+        """
+        return pulumi.get(self, "capacity_used_ratio")
+
+    @capacity_used_ratio.setter
+    def capacity_used_ratio(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "capacity_used_ratio", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable automatic capacity expansion.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def step(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The capacity expansion step. Unit: GiB.
+        """
+        return pulumi.get(self, "step")
+
+    @step.setter
+    def step(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "step", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def time(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The duration threshold. Unit: minutes.
+
+        > **NOTE:** Automatic capacity expansion is a modify-time feature: it is applied through the NAS ModifyFileSystem API after the file system has been created.
+
+        > **NOTE:** This block is Optional and Computed. Removing the entire block from the configuration does **not** disable automatic capacity expansion or send a disable request to the server; the previous server value is retained as a computed value and the plan stays stable. To disable automatic capacity expansion, set `enabled = false` explicitly. When only `enabled` is configured, the other attributes (`capacity_used_ratio`, `step`, `time`) become computed and are read back from the server.
+        """
+        return pulumi.get(self, "time")
+
+    @time.setter
+    def time(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "time", value)
 
 
 class FileSystemNfsAclArgsDict(TypedDict):

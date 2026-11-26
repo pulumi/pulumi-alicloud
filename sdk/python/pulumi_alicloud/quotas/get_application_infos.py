@@ -66,11 +66,17 @@ class GetApplicationInfosResult:
     @_builtins.property
     @pulumi.getter
     def applications(self) -> Sequence['outputs.GetApplicationInfosApplicationResult']:
+        """
+        A list of Quotas Quota Applications. Each element contains the following attributes:
+        """
         return pulumi.get(self, "applications")
 
     @_builtins.property
     @pulumi.getter
     def dimensions(self) -> Optional[Sequence['outputs.GetApplicationInfosDimensionResult']]:
+        """
+        The quota dimensions. See `dimensions` below.
+        """
         return pulumi.get(self, "dimensions")
 
     @_builtins.property
@@ -104,11 +110,17 @@ class GetApplicationInfosResult:
     @_builtins.property
     @pulumi.getter(name="productCode")
     def product_code(self) -> _builtins.str:
+        """
+        The product code.
+        """
         return pulumi.get(self, "product_code")
 
     @_builtins.property
     @pulumi.getter(name="quotaActionCode")
     def quota_action_code(self) -> Optional[_builtins.str]:
+        """
+        The ID of quota action.
+        """
         return pulumi.get(self, "quota_action_code")
 
     @_builtins.property
@@ -119,6 +131,9 @@ class GetApplicationInfosResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the quota application.
+        """
         return pulumi.get(self, "status")
 
 
@@ -152,7 +167,47 @@ def get_application_infos(dimensions: Optional[Sequence[Union['GetApplicationInf
                           status: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApplicationInfosResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.117.0.
+
+    This is an alias of `quotas_get_quota_applications`.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_quota_application = alicloud.quotas.QuotaApplication("default",
+        product_code="vpc",
+        notice_type=3,
+        effective_time="2023-05-22T16:00:00Z",
+        expire_time="2024-09-15T00:08:32Z",
+        desire_value=float(1),
+        reason="",
+        quota_action_code="vpc_whitelist/ha_vip_whitelist",
+        audit_mode="Sync",
+        env_language="zh",
+        quota_category="WhiteListLabel")
+    default = alicloud.quotas.get_application_infos_output(product_code="vpc",
+        enable_details=True,
+        quota_category=default_quota_application.quota_category,
+        ids=[default_quota_application.id])
+    ```
+
+
+    :param Sequence[Union['GetApplicationInfosDimensionArgs', 'GetApplicationInfosDimensionArgsDict', 'outputs.GetApplicationInfosDimensionResult']] dimensions: The quota dimensions. See `dimensions` below.
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[_builtins.str] ids: A list of Application Info IDs.
+    :param _builtins.str key_word: The key word.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str product_code: The product code.
+    :param _builtins.str quota_action_code: The ID of quota action.
+    :param _builtins.str quota_category: The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
+    :param _builtins.str status: The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
     """
     __args__ = dict()
     __args__['dimensions'] = dimensions
@@ -190,7 +245,47 @@ def get_application_infos_output(dimensions: pulumi.Input[Optional[Optional[Sequ
                                  status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationInfosResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.117.0.
+
+    This is an alias of `quotas_get_quota_applications`.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_quota_application = alicloud.quotas.QuotaApplication("default",
+        product_code="vpc",
+        notice_type=3,
+        effective_time="2023-05-22T16:00:00Z",
+        expire_time="2024-09-15T00:08:32Z",
+        desire_value=float(1),
+        reason="",
+        quota_action_code="vpc_whitelist/ha_vip_whitelist",
+        audit_mode="Sync",
+        env_language="zh",
+        quota_category="WhiteListLabel")
+    default = alicloud.quotas.get_application_infos_output(product_code="vpc",
+        enable_details=True,
+        quota_category=default_quota_application.quota_category,
+        ids=[default_quota_application.id])
+    ```
+
+
+    :param Sequence[Union['GetApplicationInfosDimensionArgs', 'GetApplicationInfosDimensionArgsDict', 'outputs.GetApplicationInfosDimensionResult']] dimensions: The quota dimensions. See `dimensions` below.
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[_builtins.str] ids: A list of Application Info IDs.
+    :param _builtins.str key_word: The key word.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str product_code: The product code.
+    :param _builtins.str quota_action_code: The ID of quota action.
+    :param _builtins.str quota_category: The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
+    :param _builtins.str status: The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
     """
     __args__ = dict()
     __args__['dimensions'] = dimensions

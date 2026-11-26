@@ -41,7 +41,7 @@ public final class GetGroupsGroup {
      */
     private String id;
     /**
-     * @return The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+     * @return The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
      * 
      */
     private String provisionType;
@@ -90,7 +90,7 @@ public final class GetGroupsGroup {
         return this.id;
     }
     /**
-     * @return The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+     * @return The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
      * 
      */
     public String provisionType() {

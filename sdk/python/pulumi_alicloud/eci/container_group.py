@@ -1205,6 +1205,8 @@ class ContainerGroup(pulumi.CustomResource):
         $ pulumi import alicloud:eci/containerGroup:ContainerGroup example <container_group_id>
         ```
 
+        > **NOTE:** `acr_registry_info` (including `arn_service` and `arn_user`) cannot be read back from the API, so it is not reconstructed on import. Configuring these role ARNs after import requires replacement of the container group; review the plan before applying.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1363,6 +1365,8 @@ class ContainerGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eci/containerGroup:ContainerGroup example <container_group_id>
         ```
+
+        > **NOTE:** `acr_registry_info` (including `arn_service` and `arn_user`) cannot be read back from the API, so it is not reconstructed on import. Configuring these role ARNs after import requires replacement of the container group; review the plan before applying.
 
 
         :param str resource_name: The name of the resource.

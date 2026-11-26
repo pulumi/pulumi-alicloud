@@ -35,13 +35,13 @@ class AppGroupArgs:
 
         :param pulumi.Input[_builtins.str] app_group_name: Application Group Name.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
-        :param pulumi.Input['AppGroupQuotaArgs'] quota: Quota information.  The details see Block quota.
+        :param pulumi.Input['AppGroupQuotaArgs'] quota: Quota information. See `quota` below.
         :param pulumi.Input[_builtins.str] type: Application type. Valid Values: `standard`, `enhanced`.
         :param pulumi.Input[_builtins.str] charge_way: Billing model. Valid values:`compute_resource` and `qps`.
         :param pulumi.Input[_builtins.str] current_version: The version of Application Group Name.
         :param pulumi.Input[_builtins.str] description: The description of the resource.
         :param pulumi.Input[_builtins.str] order_type: Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
-        :param pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]] orders: Order cycle information. The details see Block order.
+        :param pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]] orders: Order cycle information. See `order` below.
         """
         pulumi.set(__self__, "app_group_name", app_group_name)
         pulumi.set(__self__, "payment_type", payment_type)
@@ -86,7 +86,7 @@ class AppGroupArgs:
     @pulumi.getter
     def quota(self) -> pulumi.Input['AppGroupQuotaArgs']:
         """
-        Quota information.  The details see Block quota.
+        Quota information. See `quota` below.
         """
         return pulumi.get(self, "quota")
 
@@ -158,7 +158,7 @@ class AppGroupArgs:
     @pulumi.getter
     def orders(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppGroupOrderArgs']]]]:
         """
-        Order cycle information. The details see Block order.
+        Order cycle information. See `order` below.
         """
         return pulumi.get(self, "orders")
 
@@ -190,9 +190,9 @@ class _AppGroupState:
         :param pulumi.Input[_builtins.str] description: The description of the resource.
         :param pulumi.Input[_builtins.str] instance_id: The instance id.
         :param pulumi.Input[_builtins.str] order_type: Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
-        :param pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]] orders: Order cycle information. The details see Block order.
+        :param pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]] orders: Order cycle information. See `order` below.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
-        :param pulumi.Input['AppGroupQuotaArgs'] quota: Quota information.  The details see Block quota.
+        :param pulumi.Input['AppGroupQuotaArgs'] quota: Quota information. See `quota` below.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
         :param pulumi.Input[_builtins.str] type: Application type. Valid Values: `standard`, `enhanced`.
         """
@@ -295,7 +295,7 @@ class _AppGroupState:
     @pulumi.getter
     def orders(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppGroupOrderArgs']]]]:
         """
-        Order cycle information. The details see Block order.
+        Order cycle information. See `order` below.
         """
         return pulumi.get(self, "orders")
 
@@ -319,7 +319,7 @@ class _AppGroupState:
     @pulumi.getter
     def quota(self) -> pulumi.Input[Optional['AppGroupQuotaArgs']]:
         """
-        Quota information.  The details see Block quota.
+        Quota information. See `quota` below.
         """
         return pulumi.get(self, "quota")
 
@@ -373,7 +373,7 @@ class AppGroup(pulumi.CustomResource):
 
         For information about Open Search App Group and how to use it, see [What is App Group](https://www.aliyun.com/product/opensearch).
 
-        > **NOTE:** Available in v1.136.0+.
+        > **NOTE:** Available since v1.136.0.
 
         ## Example Usage
 
@@ -416,9 +416,9 @@ class AppGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] current_version: The version of Application Group Name.
         :param pulumi.Input[_builtins.str] description: The description of the resource.
         :param pulumi.Input[_builtins.str] order_type: Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict', 'outputs.AppGroupOrder']]]] orders: Order cycle information. The details see Block order.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict', 'outputs.AppGroupOrder']]]] orders: Order cycle information. See `order` below.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
-        :param pulumi.Input[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict', 'outputs.AppGroupQuota']] quota: Quota information.  The details see Block quota.
+        :param pulumi.Input[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict', 'outputs.AppGroupQuota']] quota: Quota information. See `quota` below.
         :param pulumi.Input[_builtins.str] type: Application type. Valid Values: `standard`, `enhanced`.
         """
         ...
@@ -432,7 +432,7 @@ class AppGroup(pulumi.CustomResource):
 
         For information about Open Search App Group and how to use it, see [What is App Group](https://www.aliyun.com/product/opensearch).
 
-        > **NOTE:** Available in v1.136.0+.
+        > **NOTE:** Available since v1.136.0.
 
         ## Example Usage
 
@@ -554,9 +554,9 @@ class AppGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the resource.
         :param pulumi.Input[_builtins.str] instance_id: The instance id.
         :param pulumi.Input[_builtins.str] order_type: Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict', 'outputs.AppGroupOrder']]]] orders: Order cycle information. The details see Block order.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict', 'outputs.AppGroupOrder']]]] orders: Order cycle information. See `order` below.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
-        :param pulumi.Input[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict', 'outputs.AppGroupQuota']] quota: Quota information.  The details see Block quota.
+        :param pulumi.Input[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict', 'outputs.AppGroupQuota']] quota: Quota information. See `quota` below.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
         :param pulumi.Input[_builtins.str] type: Application type. Valid Values: `standard`, `enhanced`.
         """
@@ -657,7 +657,7 @@ class AppGroup(pulumi.CustomResource):
     @pulumi.getter
     def orders(self) -> pulumi.Output[Optional[Sequence['outputs.AppGroupOrder']]]:
         """
-        Order cycle information. The details see Block order.
+        Order cycle information. See `order` below.
         """
         return pulumi.get(self, "orders")
 
@@ -673,7 +673,7 @@ class AppGroup(pulumi.CustomResource):
     @pulumi.getter
     def quota(self) -> pulumi.Output['outputs.AppGroupQuota']:
         """
-        Quota information.  The details see Block quota.
+        Quota information. See `quota` below.
         """
         return pulumi.get(self, "quota")
 

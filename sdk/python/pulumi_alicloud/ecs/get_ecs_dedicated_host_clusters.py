@@ -62,6 +62,9 @@ class GetEcsDedicatedHostClustersResult:
     @_builtins.property
     @pulumi.getter
     def clusters(self) -> Sequence['outputs.GetEcsDedicatedHostClustersClusterResult']:
+        """
+        A list of Ecs Dedicated Host Clusters. Each element contains the following attributes:
+        """
         return pulumi.get(self, "clusters")
 
     @_builtins.property
@@ -72,6 +75,9 @@ class GetEcsDedicatedHostClustersResult:
     @_builtins.property
     @pulumi.getter(name="dedicatedHostClusterName")
     def dedicated_host_cluster_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the dedicated host cluster.
+        """
         return pulumi.get(self, "dedicated_host_cluster_name")
 
     @_builtins.property
@@ -95,6 +101,9 @@ class GetEcsDedicatedHostClustersResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Dedicated Host Cluster names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -105,11 +114,17 @@ class GetEcsDedicatedHostClustersResult:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
+        """
+        The zone ID of the dedicated host cluster.
+        """
         return pulumi.get(self, "zone_id")
 
 
@@ -142,7 +157,7 @@ def get_ecs_dedicated_host_clusters(dedicated_host_cluster_ids: Optional[Sequenc
     """
     This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.146.0+.
+    > **NOTE:** Available since v1.146.0.
 
     ## Example Usage
 
@@ -206,7 +221,7 @@ def get_ecs_dedicated_host_clusters_output(dedicated_host_cluster_ids: pulumi.In
     """
     This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.146.0+.
+    > **NOTE:** Available since v1.146.0.
 
     ## Example Usage
 

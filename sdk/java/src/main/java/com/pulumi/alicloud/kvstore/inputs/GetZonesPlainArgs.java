@@ -17,7 +17,6 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-     * * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
      * 
      */
     @Import(name="engine")
@@ -25,7 +24,6 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-     * * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
      * 
      */
     public Optional<String> engine() {
@@ -77,9 +75,17 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+     * 
+     */
     @Import(name="productType")
     private @Nullable String productType;
 
+    /**
+     * @return The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+     * 
+     */
     public Optional<String> productType() {
         return Optional.ofNullable(this.productType);
     }
@@ -114,7 +120,6 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param engine Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-         * * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
          * 
          * @return builder
          * 
@@ -157,6 +162,12 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param productType The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productType(@Nullable String productType) {
             $.productType = productType;
             return this;

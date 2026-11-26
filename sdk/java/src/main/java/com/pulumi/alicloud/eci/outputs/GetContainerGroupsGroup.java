@@ -37,7 +37,7 @@ public final class GetContainerGroupsGroup {
      */
     private List<GetContainerGroupsGroupContainer> containers;
     /**
-     * @return The amount of CPU resources allocated to the container group.
+     * @return The amount of CPU resources allocated to the container.
      * 
      */
     private Double cpu;
@@ -133,7 +133,7 @@ public final class GetContainerGroupsGroup {
      */
     private String securityGroupId;
     /**
-     * @return The status of container.
+     * @return The status list. For more information, see the description of ContainerGroup arrays.
      * 
      */
     private String status;
@@ -143,7 +143,7 @@ public final class GetContainerGroupsGroup {
      */
     private String succeededTime;
     /**
-     * @return The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     private Map<String,String> tags;
@@ -158,12 +158,12 @@ public final class GetContainerGroupsGroup {
      */
     private String vpcId;
     /**
-     * @return The vswitch id.
+     * @return The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
      * 
      */
     private String vswitchId;
     /**
-     * @return The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+     * @return The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
      * 
      */
     private String zoneId;
@@ -191,7 +191,7 @@ public final class GetContainerGroupsGroup {
         return this.containers;
     }
     /**
-     * @return The amount of CPU resources allocated to the container group.
+     * @return The amount of CPU resources allocated to the container.
      * 
      */
     public Double cpu() {
@@ -327,7 +327,7 @@ public final class GetContainerGroupsGroup {
         return this.securityGroupId;
     }
     /**
-     * @return The status of container.
+     * @return The status list. For more information, see the description of ContainerGroup arrays.
      * 
      */
     public String status() {
@@ -341,7 +341,7 @@ public final class GetContainerGroupsGroup {
         return this.succeededTime;
     }
     /**
-     * @return The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {
@@ -362,14 +362,14 @@ public final class GetContainerGroupsGroup {
         return this.vpcId;
     }
     /**
-     * @return The vswitch id.
+     * @return The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
      * 
      */
     public String vswitchId() {
         return this.vswitchId;
     }
     /**
-     * @return The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+     * @return The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
      * 
      */
     public String zoneId() {

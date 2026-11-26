@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -38,6 +38,9 @@ export function getRealTimeLogDeliveries(args: GetRealTimeLogDeliveriesArgs, opt
  * A collection of arguments for invoking getRealTimeLogDeliveries.
  */
 export interface GetRealTimeLogDeliveriesArgs {
+    /**
+     * The domain name.
+     */
     domain: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -53,19 +56,28 @@ export interface GetRealTimeLogDeliveriesArgs {
  * A collection of values returned by getRealTimeLogDeliveries.
  */
 export interface GetRealTimeLogDeliveriesResult {
+    /**
+     * A list of Cdn Real Time Log Deliveries. Each element contains the following attributes:
+     */
     readonly deliveries: outputs.cdn.GetRealTimeLogDeliveriesDelivery[];
+    /**
+     * Real-Time Log Service Domain.
+     */
     readonly domain: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly outputFile?: string;
+    /**
+     * The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -94,6 +106,9 @@ export function getRealTimeLogDeliveriesOutput(args: GetRealTimeLogDeliveriesOut
  * A collection of arguments for invoking getRealTimeLogDeliveries.
  */
 export interface GetRealTimeLogDeliveriesOutputArgs {
+    /**
+     * The domain name.
+     */
     domain: pulumi.Input<string>;
     /**
      * File name where to save data source results (after running `pulumi preview`).

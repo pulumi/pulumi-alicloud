@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAlarmContactGroupsResult {
+    /**
+     * @return A list of CMS groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetAlarmContactGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,10 +26,18 @@ public final class GetAlarmContactGroupsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of CMS Alarm Contact Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetAlarmContactGroupsResult() {}
+    /**
+     * @return A list of CMS groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetAlarmContactGroupsGroup> groups() {
         return this.groups;
     }
@@ -42,6 +54,10 @@ public final class GetAlarmContactGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of CMS Alarm Contact Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

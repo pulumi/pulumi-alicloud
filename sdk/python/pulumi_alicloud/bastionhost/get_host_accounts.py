@@ -62,16 +62,25 @@ class GetHostAccountsResult:
     @_builtins.property
     @pulumi.getter
     def accounts(self) -> Sequence['outputs.GetHostAccountsAccountResult']:
+        """
+        A list of Bastionhost Host Accounts. Each element contains the following attributes:
+        """
         return pulumi.get(self, "accounts")
 
     @_builtins.property
     @pulumi.getter(name="hostAccountName")
     def host_account_name(self) -> Optional[_builtins.str]:
+        """
+        Specify the new hosting account's name, support the longest 128 characters.
+        """
         return pulumi.get(self, "host_account_name")
 
     @_builtins.property
     @pulumi.getter(name="hostId")
     def host_id(self) -> _builtins.str:
+        """
+        Specifies the database where you want to create your hosting account's host ID.
+        """
         return pulumi.get(self, "host_id")
 
     @_builtins.property
@@ -90,6 +99,9 @@ class GetHostAccountsResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        Specifies the database where you want to create your hosting account's host bastion host ID of.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -100,6 +112,9 @@ class GetHostAccountsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Host Account names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -110,6 +125,9 @@ class GetHostAccountsResult:
     @_builtins.property
     @pulumi.getter(name="protocolName")
     def protocol_name(self) -> Optional[_builtins.str]:
+        """
+        Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
+        """
         return pulumi.get(self, "protocol_name")
 
 
@@ -142,7 +160,7 @@ def get_host_accounts(host_account_name: Optional[_builtins.str] = None,
     """
     This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 
@@ -207,7 +225,7 @@ def get_host_accounts_output(host_account_name: pulumi.Input[Optional[Optional[_
     """
     This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 

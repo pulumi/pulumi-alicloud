@@ -50,6 +50,9 @@ class GetFoldersResult:
     @_builtins.property
     @pulumi.getter
     def folders(self) -> Sequence['outputs.GetFoldersFolderResult']:
+        """
+        A list of Data Works Folders. Each element contains the following attributes:
+        """
         return pulumi.get(self, "folders")
 
     @_builtins.property
@@ -78,6 +81,9 @@ class GetFoldersResult:
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> _builtins.str:
+        """
+        The ID of the project.
+        """
         return pulumi.get(self, "project_id")
 
 
@@ -103,7 +109,7 @@ def get_folders(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Data Works Folders of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.131.0+.
+    > **NOTE:** Available since v1.131.0.
 
     ## Example Usage
 
@@ -151,7 +157,7 @@ def get_folders_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.st
     """
     This data source provides the Data Works Folders of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.131.0+.
+    > **NOTE:** Available since v1.131.0.
 
     ## Example Usage
 

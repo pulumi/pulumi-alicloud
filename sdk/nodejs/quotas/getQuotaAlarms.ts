@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.116.0+.
+ * > **NOTE:** Available since v1.116.0.
  *
  * ## Example Usage
  *
@@ -74,7 +74,7 @@ export interface GetQuotaAlarmsArgs {
      */
     quotaAlarmName?: string;
     /**
-     * The Quota Dimensions.
+     * The Quota Dimensions. See `quotaDimensions` below.
      */
     quotaDimensions?: inputs.quotas.GetQuotaAlarmsQuotaDimension[];
 }
@@ -83,6 +83,9 @@ export interface GetQuotaAlarmsArgs {
  * A collection of values returned by getQuotaAlarms.
  */
 export interface GetQuotaAlarmsResult {
+    /**
+     * A list of Quotas Quota Alarms. Each element contains the following attributes:
+     */
     readonly alarms: outputs.quotas.GetQuotaAlarmsAlarm[];
     readonly enableDetails?: boolean;
     /**
@@ -91,17 +94,32 @@ export interface GetQuotaAlarmsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Quota Alarm names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The Product Code.
+     */
     readonly productCode?: string;
+    /**
+     * The Quota Action Code.
+     */
     readonly quotaActionCode?: string;
+    /**
+     * The name of Quota Alarm.
+     */
     readonly quotaAlarmName?: string;
+    /**
+     * The Quota Dimensions. See `quotaDimensions` below.
+     */
     readonly quotaDimensions?: outputs.quotas.GetQuotaAlarmsQuotaDimension[];
 }
 /**
  * This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.116.0+.
+ * > **NOTE:** Available since v1.116.0.
  *
  * ## Example Usage
  *
@@ -166,7 +184,7 @@ export interface GetQuotaAlarmsOutputArgs {
      */
     quotaAlarmName?: pulumi.Input<string | undefined>;
     /**
-     * The Quota Dimensions.
+     * The Quota Dimensions. See `quotaDimensions` below.
      */
     quotaDimensions?: pulumi.Input<pulumi.Input<inputs.quotas.GetQuotaAlarmsQuotaDimensionArgs>[] | undefined>;
 }

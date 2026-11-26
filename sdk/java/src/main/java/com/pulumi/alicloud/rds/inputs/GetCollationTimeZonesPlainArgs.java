@@ -17,16 +17,14 @@ public final class GetCollationTimeZonesPlainArgs extends com.pulumi.resources.I
     public static final GetCollationTimeZonesPlainArgs Empty = new GetCollationTimeZonesPlainArgs();
 
     /**
-     * An array that consists of the character set collations and time zones that are available for
-     * use in ApsaraDB RDS.
+     * An array that consists of the character set collations and time zones. See `collationTimeZones` below.
      * 
      */
     @Import(name="collationTimeZones")
     private @Nullable List<GetCollationTimeZonesCollationTimeZone> collationTimeZones;
 
     /**
-     * @return An array that consists of the character set collations and time zones that are available for
-     * use in ApsaraDB RDS.
+     * @return An array that consists of the character set collations and time zones. See `collationTimeZones` below.
      * 
      */
     public Optional<List<GetCollationTimeZonesCollationTimeZone>> collationTimeZones() {
@@ -74,8 +72,7 @@ public final class GetCollationTimeZonesPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param collationTimeZones An array that consists of the character set collations and time zones that are available for
-         * use in ApsaraDB RDS.
+         * @param collationTimeZones An array that consists of the character set collations and time zones. See `collationTimeZones` below.
          * 
          * @return builder
          * 
@@ -86,8 +83,7 @@ public final class GetCollationTimeZonesPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param collationTimeZones An array that consists of the character set collations and time zones that are available for
-         * use in ApsaraDB RDS.
+         * @param collationTimeZones An array that consists of the character set collations and time zones. See `collationTimeZones` below.
          * 
          * @return builder
          * 

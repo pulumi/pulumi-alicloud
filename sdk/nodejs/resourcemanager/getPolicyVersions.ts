@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
  *
- * > **NOTE:**  Available in 1.85.0+.
+ * > **NOTE:** Available since v1.85.0.
  *
  * ## Example Usage
  *
@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = alicloud.resourcemanager.getPolicyVersions({
- *     policyName: "tftest",
+ *     policyName: "tf-example",
  *     policyType: "Custom",
  * });
  * export const firstPolicyVersionId = _default.then(_default => _default.versions?.[0]?.id);
@@ -85,7 +85,7 @@ export interface GetPolicyVersionsResult {
 /**
  * This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
  *
- * > **NOTE:**  Available in 1.85.0+.
+ * > **NOTE:** Available since v1.85.0.
  *
  * ## Example Usage
  *
@@ -94,7 +94,7 @@ export interface GetPolicyVersionsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = alicloud.resourcemanager.getPolicyVersions({
- *     policyName: "tftest",
+ *     policyName: "tf-example",
  *     policyType: "Custom",
  * });
  * export const firstPolicyVersionId = _default.then(_default => _default.versions?.[0]?.id);

@@ -22,14 +22,30 @@ public final class GetQuotasResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Quota IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable String keyWord;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Quota names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private String productCode;
+    /**
+     * @return The quota action code.
+     * 
+     */
     private @Nullable String quotaActionCode;
     private @Nullable String quotaCategory;
+    /**
+     * @return A list of Quotas Quotas. Each element contains the following attributes:
+     * 
+     */
     private List<GetQuotasQuota> quotas;
     private @Nullable String sortField;
     private @Nullable String sortOrder;
@@ -48,6 +64,10 @@ public final class GetQuotasResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Quota IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
@@ -57,6 +77,10 @@ public final class GetQuotasResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Quota names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -66,12 +90,20 @@ public final class GetQuotasResult {
     public String productCode() {
         return this.productCode;
     }
+    /**
+     * @return The quota action code.
+     * 
+     */
     public Optional<String> quotaActionCode() {
         return Optional.ofNullable(this.quotaActionCode);
     }
     public Optional<String> quotaCategory() {
         return Optional.ofNullable(this.quotaCategory);
     }
+    /**
+     * @return A list of Quotas Quotas. Each element contains the following attributes:
+     * 
+     */
     public List<GetQuotasQuota> quotas() {
         return this.quotas;
     }

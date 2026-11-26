@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.kvstore;
 
+import com.pulumi.alicloud.kvstore.inputs.InstanceAdditionalBandwidthArgs;
 import com.pulumi.alicloud.kvstore.inputs.InstanceParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -19,6 +20,21 @@ import javax.annotation.Nullable;
 public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceArgs Empty = new InstanceArgs();
+
+    /**
+     * The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node&#39;s `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+     * 
+     */
+    @Import(name="additionalBandwidths")
+    private @Nullable Output<List<InstanceAdditionalBandwidthArgs>> additionalBandwidths;
+
+    /**
+     * @return The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node&#39;s `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+     * 
+     */
+    public Optional<Output<List<InstanceAdditionalBandwidthArgs>>> additionalBandwidths() {
+        return Optional.ofNullable(this.additionalBandwidths);
+    }
 
     /**
      * Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
@@ -144,6 +160,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> bandwidth() {
         return Optional.ofNullable(this.bandwidth);
+    }
+
+    /**
+     * Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
+     * 
+     */
+    @Import(name="bandwidthBurst")
+    private @Nullable Output<Boolean> bandwidthBurst;
+
+    /**
+     * @return Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
+     * 
+     */
+    public Optional<Output<Boolean>> bandwidthBurst() {
+        return Optional.ofNullable(this.bandwidthBurst);
     }
 
     /**
@@ -420,6 +451,37 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The list of Global Security Group Ids.
+     * 
+     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     * 
+     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     * 
+     * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     * 
+     * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     * 
+     */
+    @Import(name="globalSecurityGroupLists")
+    private @Nullable Output<List<String>> globalSecurityGroupLists;
+
+    /**
+     * @return The list of Global Security Group Ids.
+     * 
+     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     * 
+     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     * 
+     * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     * 
+     * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     * 
+     */
+    public Optional<Output<List<String>>> globalSecurityGroupLists() {
+        return Optional.ofNullable(this.globalSecurityGroupLists);
+    }
+
+    /**
      * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      * 
      * @deprecated Field &#39;instance_charge_type&#39; has been deprecated from version 1.101.0. Use &#39;payment_type&#39; instead.
@@ -654,6 +716,38 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+     * 
+     */
+    @Import(name="passwordWo")
+    private @Nullable Output<String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+     * 
+     */
+    public Optional<Output<String>> passwordWo() {
+        return Optional.ofNullable(this.passwordWo);
+    }
+
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+     * 
+     */
+    @Import(name="passwordWoVersion")
+    private @Nullable Output<Integer> passwordWoVersion;
+
+    /**
+     * @return The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+     * 
+     */
+    public Optional<Output<Integer>> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
+    }
+
+    /**
      * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
      * 
      */
@@ -820,6 +914,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+     * 
      * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      * 
      */
@@ -828,6 +923,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+     * 
      * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      * 
      */
@@ -912,6 +1008,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     * 
      * &gt; **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      * 
      */
@@ -920,6 +1017,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     * 
      * &gt; **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      * 
      */
@@ -929,6 +1027,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * 
      * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
      * 
      */
@@ -937,6 +1036,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * 
      * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
      * 
      */
@@ -1058,6 +1158,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
+        this.additionalBandwidths = $.additionalBandwidths;
         this.autoRenew = $.autoRenew;
         this.autoRenewPeriod = $.autoRenewPeriod;
         this.autoUseCoupon = $.autoUseCoupon;
@@ -1066,6 +1167,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.backupPeriods = $.backupPeriods;
         this.backupTime = $.backupTime;
         this.bandwidth = $.bandwidth;
+        this.bandwidthBurst = $.bandwidthBurst;
         this.businessInfo = $.businessInfo;
         this.capacity = $.capacity;
         this.config = $.config;
@@ -1083,6 +1185,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.forceUpgrade = $.forceUpgrade;
         this.globalInstance = $.globalInstance;
         this.globalInstanceId = $.globalInstanceId;
+        this.globalSecurityGroupLists = $.globalSecurityGroupLists;
         this.instanceChargeType = $.instanceChargeType;
         this.instanceClass = $.instanceClass;
         this.instanceName = $.instanceName;
@@ -1097,6 +1200,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.orderType = $.orderType;
         this.parameters = $.parameters;
         this.password = $.password;
+        this.passwordWo = $.passwordWo;
+        this.passwordWoVersion = $.passwordWoVersion;
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.port = $.port;
@@ -1141,6 +1246,37 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceArgs defaults) {
             $ = new InstanceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalBandwidths The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node&#39;s `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBandwidths(@Nullable Output<List<InstanceAdditionalBandwidthArgs>> additionalBandwidths) {
+            $.additionalBandwidths = additionalBandwidths;
+            return this;
+        }
+
+        /**
+         * @param additionalBandwidths The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node&#39;s `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBandwidths(List<InstanceAdditionalBandwidthArgs> additionalBandwidths) {
+            return additionalBandwidths(Output.of(additionalBandwidths));
+        }
+
+        /**
+         * @param additionalBandwidths The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node&#39;s `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBandwidths(InstanceAdditionalBandwidthArgs... additionalBandwidths) {
+            return additionalBandwidths(List.of(additionalBandwidths));
         }
 
         /**
@@ -1325,6 +1461,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder bandwidth(Integer bandwidth) {
             return bandwidth(Output.of(bandwidth));
+        }
+
+        /**
+         * @param bandwidthBurst Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthBurst(@Nullable Output<Boolean> bandwidthBurst) {
+            $.bandwidthBurst = bandwidthBurst;
+            return this;
+        }
+
+        /**
+         * @param bandwidthBurst Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthBurst(Boolean bandwidthBurst) {
+            return bandwidthBurst(Output.of(bandwidthBurst));
         }
 
         /**
@@ -1703,6 +1860,61 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param globalSecurityGroupLists The list of Global Security Group Ids.
+         * 
+         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+         * 
+         * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+         * 
+         * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+         * 
+         * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSecurityGroupLists(@Nullable Output<List<String>> globalSecurityGroupLists) {
+            $.globalSecurityGroupLists = globalSecurityGroupLists;
+            return this;
+        }
+
+        /**
+         * @param globalSecurityGroupLists The list of Global Security Group Ids.
+         * 
+         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+         * 
+         * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+         * 
+         * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+         * 
+         * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSecurityGroupLists(List<String> globalSecurityGroupLists) {
+            return globalSecurityGroupLists(Output.of(globalSecurityGroupLists));
+        }
+
+        /**
+         * @param globalSecurityGroupLists The list of Global Security Group Ids.
+         * 
+         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+         * 
+         * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+         * 
+         * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+         * 
+         * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSecurityGroupLists(String... globalSecurityGroupLists) {
+            return globalSecurityGroupLists(List.of(globalSecurityGroupLists));
+        }
+
+        /**
          * @param instanceChargeType It has been deprecated from provider version 1.101.0 and `paymentType` instead.
          * 
          * @return builder
@@ -2034,6 +2246,50 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(@Nullable Output<String> passwordWo) {
+            $.passwordWo = passwordWo;
+            return this;
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(String passwordWo) {
+            return passwordWo(Output.of(passwordWo));
+        }
+
+        /**
+         * @param passwordWoVersion The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(@Nullable Output<Integer> passwordWoVersion) {
+            $.passwordWoVersion = passwordWoVersion;
+            return this;
+        }
+
+        /**
+         * @param passwordWoVersion The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(Integer passwordWoVersion) {
+            return passwordWoVersion(Output.of(passwordWoVersion));
+        }
+
+        /**
          * @param paymentType The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
          * 
          * @return builder
@@ -2266,6 +2522,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secondaryZoneId The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+         * 
          * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
          * 
          * @return builder
@@ -2278,6 +2535,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secondaryZoneId The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+         * 
          * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
          * 
          * @return builder
@@ -2404,6 +2662,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param slaveReadOnlyCount The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+         * 
          * &gt; **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
          * 
          * @return builder
@@ -2416,6 +2675,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param slaveReadOnlyCount The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+         * 
          * &gt; **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
          * 
          * @return builder
@@ -2427,6 +2687,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param slaveReplicaCount The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+         * 
          * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
          * 
          * @return builder
@@ -2439,6 +2700,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param slaveReplicaCount The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+         * 
          * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
          * 
          * @return builder

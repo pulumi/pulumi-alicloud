@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -259,7 +259,13 @@ namespace Pulumi.AliCloud.Alb
     public sealed class GetAclsResult
     {
         public readonly ImmutableArray<string> AclIds;
+        /// <summary>
+        /// The ACL Name.
+        /// </summary>
         public readonly string? AclName;
+        /// <summary>
+        /// A list of Alb Acls. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAclsAclResult> Acls;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -268,9 +274,18 @@ namespace Pulumi.AliCloud.Alb
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Acl names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Resource Group to Which the Number.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

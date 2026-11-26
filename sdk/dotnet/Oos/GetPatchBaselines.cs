@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oos
         /// <summary>
         /// This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// </summary>
         public static Task<GetPatchBaselinesResult> InvokeAsync(GetPatchBaselinesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPatchBaselinesResult>("alicloud:oos/getPatchBaselines:getPatchBaselines", args ?? new GetPatchBaselinesArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Oos
         /// <summary>
         /// This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// </summary>
         public static Output<GetPatchBaselinesResult> Invoke(GetPatchBaselinesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPatchBaselinesResult>("alicloud:oos/getPatchBaselines:getPatchBaselines", args ?? new GetPatchBaselinesInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Oos
         /// <summary>
         /// This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// </summary>
         public static Output<GetPatchBaselinesResult> Invoke(GetPatchBaselinesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPatchBaselinesResult>("alicloud:oos/getPatchBaselines:getPatchBaselines", args ?? new GetPatchBaselinesInvokeArgs(), options.WithDefaults());
@@ -141,6 +141,9 @@ namespace Pulumi.AliCloud.Oos
     [OutputType]
     public sealed class GetPatchBaselinesResult
     {
+        /// <summary>
+        /// A list of Oos Patch Baselines. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPatchBaselinesBaselineResult> Baselines;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -149,9 +152,18 @@ namespace Pulumi.AliCloud.Oos
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Patch Baseline names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// Operating system type.
+        /// </summary>
         public readonly string? OperationSystem;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Patch baseline sharing type.
+        /// </summary>
         public readonly string? ShareType;
 
         [OutputConstructor]

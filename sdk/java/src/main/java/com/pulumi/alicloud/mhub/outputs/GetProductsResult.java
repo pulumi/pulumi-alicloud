@@ -21,8 +21,16 @@ public final class GetProductsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Product names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Mhub Products. Each element contains the following attributes:
+     * 
+     */
     private List<GetProductsProduct> products;
 
     private GetProductsResult() {}
@@ -39,12 +47,20 @@ public final class GetProductsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Product names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Mhub Products. Each element contains the following attributes:
+     * 
+     */
     public List<GetProductsProduct> products() {
         return this.products;
     }

@@ -56,11 +56,17 @@ class GetAccessConfigurationsResult:
     @_builtins.property
     @pulumi.getter
     def configurations(self) -> Sequence['outputs.GetAccessConfigurationsConfigurationResult']:
+        """
+        A list of Cloud Sso Access Configurations. Each element contains the following attributes:
+        """
         return pulumi.get(self, "configurations")
 
     @_builtins.property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> _builtins.str:
+        """
+        The ID of the Directory.
+        """
         return pulumi.get(self, "directory_id")
 
     @_builtins.property
@@ -89,6 +95,9 @@ class GetAccessConfigurationsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Access Configuration names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -122,7 +131,7 @@ def get_access_configurations(directory_id: Optional[_builtins.str] = None,
     """
     This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
@@ -179,7 +188,7 @@ def get_access_configurations_output(directory_id: pulumi.Input[Optional[_builti
     """
     This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 

@@ -14,8 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDesktopsResult {
+    /**
+     * @return The cloud desktop name.
+     * 
+     */
     private @Nullable String desktopName;
+    /**
+     * @return A list of Ecd Desktops. Each element contains the following attributes:
+     * 
+     */
     private List<GetDesktopsDesktop> desktops;
+    /**
+     * @return The IDs of the authorized users of the cloud desktop.
+     * 
+     */
     private @Nullable List<String> endUserIds;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,19 +36,43 @@ public final class GetDesktopsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Desktop names.
+     * 
+     */
     private List<String> names;
     private @Nullable String officeSiteId;
     private @Nullable String outputFile;
+    /**
+     * @return The cloud desktop policy ID.
+     * 
+     */
     private @Nullable String policyGroupId;
+    /**
+     * @return The cloud desktop status.
+     * 
+     */
     private @Nullable String status;
 
     private GetDesktopsResult() {}
+    /**
+     * @return The cloud desktop name.
+     * 
+     */
     public Optional<String> desktopName() {
         return Optional.ofNullable(this.desktopName);
     }
+    /**
+     * @return A list of Ecd Desktops. Each element contains the following attributes:
+     * 
+     */
     public List<GetDesktopsDesktop> desktops() {
         return this.desktops;
     }
+    /**
+     * @return The IDs of the authorized users of the cloud desktop.
+     * 
+     */
     public List<String> endUserIds() {
         return this.endUserIds == null ? List.of() : this.endUserIds;
     }
@@ -53,6 +89,10 @@ public final class GetDesktopsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Desktop names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -62,9 +102,17 @@ public final class GetDesktopsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The cloud desktop policy ID.
+     * 
+     */
     public Optional<String> policyGroupId() {
         return Optional.ofNullable(this.policyGroupId);
     }
+    /**
+     * @return The cloud desktop status.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

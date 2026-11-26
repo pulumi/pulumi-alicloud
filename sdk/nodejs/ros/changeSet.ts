@@ -105,7 +105,7 @@ export class ChangeSet extends pulumi.CustomResource {
      */
     declare public readonly notificationUrls: pulumi.Output<string[] | undefined>;
     /**
-     * Parameters.
+     * Parameters. See `parameters` below.
      */
     declare public readonly parameters: pulumi.Output<outputs.ros.ChangeSetParameter[]>;
     /**
@@ -248,7 +248,7 @@ export interface ChangeSetState {
      */
     notificationUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Parameters.
+     * Parameters. See `parameters` below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.ros.ChangeSetParameter>[] | undefined>;
     /**
@@ -330,7 +330,7 @@ export interface ChangeSetArgs {
      */
     notificationUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Parameters.
+     * Parameters. See `parameters` below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.ros.ChangeSetParameter>[] | undefined>;
     /**

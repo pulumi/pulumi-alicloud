@@ -68,6 +68,9 @@ class GetProductsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Product names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -78,6 +81,9 @@ class GetProductsResult:
     @_builtins.property
     @pulumi.getter
     def products(self) -> Sequence['outputs.GetProductsProductResult']:
+        """
+        A list of Mhub Products. Each element contains the following attributes:
+        """
         return pulumi.get(self, "products")
 
 
@@ -102,7 +108,7 @@ def get_products(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Mhub Products of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.138.0+.
+    > **NOTE:** Available since v1.138.0.
 
     ## Example Usage
 
@@ -149,7 +155,7 @@ def get_products_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.s
     """
     This data source provides the Mhub Products of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.138.0+.
+    > **NOTE:** Available since v1.138.0.
 
     ## Example Usage
 

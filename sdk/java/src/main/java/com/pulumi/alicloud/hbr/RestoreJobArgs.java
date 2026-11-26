@@ -109,14 +109,14 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The details about the Tablestore instance. See the following `Block otsDetail`.
+     * The details about the Tablestore instance. See `otsDetail` below.
      * 
      */
     @Import(name="otsDetail")
     private @Nullable Output<RestoreJobOtsDetailArgs> otsDetail;
 
     /**
-     * @return The details about the Tablestore instance. See the following `Block otsDetail`.
+     * @return The details about the Tablestore instance. See `otsDetail` below.
      * 
      */
     public Optional<Output<RestoreJobOtsDetailArgs>> otsDetail() {
@@ -568,7 +568,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param otsDetail The details about the Tablestore instance. See the following `Block otsDetail`.
+         * @param otsDetail The details about the Tablestore instance. See `otsDetail` below.
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param otsDetail The details about the Tablestore instance. See the following `Block otsDetail`.
+         * @param otsDetail The details about the Tablestore instance. See `otsDetail` below.
          * 
          * @return builder
          * 

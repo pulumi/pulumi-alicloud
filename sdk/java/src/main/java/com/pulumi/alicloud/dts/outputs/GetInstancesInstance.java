@@ -23,7 +23,7 @@ public final class GetInstancesInstance {
      */
     private String destinationEndpointEngineName;
     /**
-     * @return The destination instance region.
+     * @return The target instance region.
      * 
      */
     private String destinationRegion;
@@ -42,6 +42,10 @@ public final class GetInstancesInstance {
      * 
      */
     private String instanceClass;
+    /**
+     * @return The name of the instance.
+     * 
+     */
     private String instanceName;
     /**
      * @return The payment type of the resource.
@@ -69,7 +73,7 @@ public final class GetInstancesInstance {
      */
     private String status;
     /**
-     * @return The tag value corresponding to the tag key.
+     * @return (Optional) The tag value corresponding to the tag key.
      * 
      */
     private @Nullable Map<String,String> tags;
@@ -95,7 +99,7 @@ public final class GetInstancesInstance {
         return this.destinationEndpointEngineName;
     }
     /**
-     * @return The destination instance region.
+     * @return The target instance region.
      * 
      */
     public String destinationRegion() {
@@ -122,6 +126,10 @@ public final class GetInstancesInstance {
     public String instanceClass() {
         return this.instanceClass;
     }
+    /**
+     * @return The name of the instance.
+     * 
+     */
     public String instanceName() {
         return this.instanceName;
     }
@@ -161,7 +169,7 @@ public final class GetInstancesInstance {
         return this.status;
     }
     /**
-     * @return The tag value corresponding to the tag key.
+     * @return (Optional) The tag value corresponding to the tag key.
      * 
      */
     public Map<String,String> tags() {

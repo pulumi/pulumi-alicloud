@@ -138,9 +138,15 @@ namespace Pulumi.AliCloud.ServiceCatalog
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The field that is used to sort the queried data.
+        /// </summary>
         [Input("sortBy")]
         public string? SortBy { get; set; }
 
+        /// <summary>
+        /// The sorting method. Valid values: `Asc`, `Desc`.
+        /// </summary>
         [Input("sortOrder")]
         public string? SortOrder { get; set; }
 
@@ -176,9 +182,15 @@ namespace Pulumi.AliCloud.ServiceCatalog
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// The field that is used to sort the queried data.
+        /// </summary>
         [Input("sortBy")]
         public Input<string>? SortBy { get; set; }
 
+        /// <summary>
+        /// The sorting method. Valid values: `Asc`, `Desc`.
+        /// </summary>
         [Input("sortOrder")]
         public Input<string>? SortOrder { get; set; }
 

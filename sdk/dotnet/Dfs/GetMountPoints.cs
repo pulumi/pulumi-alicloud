@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dfs
         /// <summary>
         /// This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Dfs
         /// <summary>
         /// This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Dfs
         /// <summary>
         /// This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// ## Example Usage
         /// 
@@ -204,6 +204,9 @@ namespace Pulumi.AliCloud.Dfs
     [OutputType]
     public sealed class GetMountPointsResult
     {
+        /// <summary>
+        /// The ID of the File System.
+        /// </summary>
         public readonly string FileSystemId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -211,7 +214,13 @@ namespace Pulumi.AliCloud.Dfs
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Dfs Mount Points. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetMountPointsPointResult> Points;
+        /// <summary>
+        /// The status of the Mount Point. Valid values: `Active`, `Inactive`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

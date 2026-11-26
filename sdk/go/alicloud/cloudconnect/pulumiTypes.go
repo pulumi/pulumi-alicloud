@@ -15,7 +15,8 @@ var _ = internal.GetEnvOrDefault
 
 type GetNetworksNetwork struct {
 	// CidrBlock of the CCN instance.
-	CidrBlock   string `pulumi:"cidrBlock"`
+	CidrBlock string `pulumi:"cidrBlock"`
+	// The description of the CCN instance.
 	Description string `pulumi:"description"`
 	// ID of the CCN instance.
 	Id string `pulumi:"id"`
@@ -38,7 +39,8 @@ type GetNetworksNetworkInput interface {
 
 type GetNetworksNetworkArgs struct {
 	// CidrBlock of the CCN instance.
-	CidrBlock   pulumi.StringInput `pulumi:"cidrBlock"`
+	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	// The description of the CCN instance.
 	Description pulumi.StringInput `pulumi:"description"`
 	// ID of the CCN instance.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -104,6 +106,7 @@ func (o GetNetworksNetworkOutput) CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworksNetwork) string { return v.CidrBlock }).(pulumi.StringOutput)
 }
 
+// The description of the CCN instance.
 func (o GetNetworksNetworkOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworksNetwork) string { return v.Description }).(pulumi.StringOutput)
 }

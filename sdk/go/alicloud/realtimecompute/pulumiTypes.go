@@ -3936,6 +3936,162 @@ func (o JobStatusRunningPtrOutput) ObservedFlinkJobStatus() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+type VvpInstanceDefaultNamespaceResourceSpec struct {
+	// The number of CPUs.
+	Cpu *int `pulumi:"cpu"`
+	// The memory size.
+	MemoryGb *int `pulumi:"memoryGb"`
+}
+
+// VvpInstanceDefaultNamespaceResourceSpecInput is an input type that accepts VvpInstanceDefaultNamespaceResourceSpecArgs and VvpInstanceDefaultNamespaceResourceSpecOutput values.
+// You can construct a concrete instance of `VvpInstanceDefaultNamespaceResourceSpecInput` via:
+//
+//	VvpInstanceDefaultNamespaceResourceSpecArgs{...}
+type VvpInstanceDefaultNamespaceResourceSpecInput interface {
+	pulumi.Input
+
+	ToVvpInstanceDefaultNamespaceResourceSpecOutput() VvpInstanceDefaultNamespaceResourceSpecOutput
+	ToVvpInstanceDefaultNamespaceResourceSpecOutputWithContext(context.Context) VvpInstanceDefaultNamespaceResourceSpecOutput
+}
+
+type VvpInstanceDefaultNamespaceResourceSpecArgs struct {
+	// The number of CPUs.
+	Cpu pulumi.IntPtrInput `pulumi:"cpu"`
+	// The memory size.
+	MemoryGb pulumi.IntPtrInput `pulumi:"memoryGb"`
+}
+
+func (VvpInstanceDefaultNamespaceResourceSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VvpInstanceDefaultNamespaceResourceSpec)(nil)).Elem()
+}
+
+func (i VvpInstanceDefaultNamespaceResourceSpecArgs) ToVvpInstanceDefaultNamespaceResourceSpecOutput() VvpInstanceDefaultNamespaceResourceSpecOutput {
+	return i.ToVvpInstanceDefaultNamespaceResourceSpecOutputWithContext(context.Background())
+}
+
+func (i VvpInstanceDefaultNamespaceResourceSpecArgs) ToVvpInstanceDefaultNamespaceResourceSpecOutputWithContext(ctx context.Context) VvpInstanceDefaultNamespaceResourceSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VvpInstanceDefaultNamespaceResourceSpecOutput)
+}
+
+func (i VvpInstanceDefaultNamespaceResourceSpecArgs) ToVvpInstanceDefaultNamespaceResourceSpecPtrOutput() VvpInstanceDefaultNamespaceResourceSpecPtrOutput {
+	return i.ToVvpInstanceDefaultNamespaceResourceSpecPtrOutputWithContext(context.Background())
+}
+
+func (i VvpInstanceDefaultNamespaceResourceSpecArgs) ToVvpInstanceDefaultNamespaceResourceSpecPtrOutputWithContext(ctx context.Context) VvpInstanceDefaultNamespaceResourceSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VvpInstanceDefaultNamespaceResourceSpecOutput).ToVvpInstanceDefaultNamespaceResourceSpecPtrOutputWithContext(ctx)
+}
+
+// VvpInstanceDefaultNamespaceResourceSpecPtrInput is an input type that accepts VvpInstanceDefaultNamespaceResourceSpecArgs, VvpInstanceDefaultNamespaceResourceSpecPtr and VvpInstanceDefaultNamespaceResourceSpecPtrOutput values.
+// You can construct a concrete instance of `VvpInstanceDefaultNamespaceResourceSpecPtrInput` via:
+//
+//	        VvpInstanceDefaultNamespaceResourceSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type VvpInstanceDefaultNamespaceResourceSpecPtrInput interface {
+	pulumi.Input
+
+	ToVvpInstanceDefaultNamespaceResourceSpecPtrOutput() VvpInstanceDefaultNamespaceResourceSpecPtrOutput
+	ToVvpInstanceDefaultNamespaceResourceSpecPtrOutputWithContext(context.Context) VvpInstanceDefaultNamespaceResourceSpecPtrOutput
+}
+
+type vvpInstanceDefaultNamespaceResourceSpecPtrType VvpInstanceDefaultNamespaceResourceSpecArgs
+
+func VvpInstanceDefaultNamespaceResourceSpecPtr(v *VvpInstanceDefaultNamespaceResourceSpecArgs) VvpInstanceDefaultNamespaceResourceSpecPtrInput {
+	return (*vvpInstanceDefaultNamespaceResourceSpecPtrType)(v)
+}
+
+func (*vvpInstanceDefaultNamespaceResourceSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VvpInstanceDefaultNamespaceResourceSpec)(nil)).Elem()
+}
+
+func (i *vvpInstanceDefaultNamespaceResourceSpecPtrType) ToVvpInstanceDefaultNamespaceResourceSpecPtrOutput() VvpInstanceDefaultNamespaceResourceSpecPtrOutput {
+	return i.ToVvpInstanceDefaultNamespaceResourceSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *vvpInstanceDefaultNamespaceResourceSpecPtrType) ToVvpInstanceDefaultNamespaceResourceSpecPtrOutputWithContext(ctx context.Context) VvpInstanceDefaultNamespaceResourceSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VvpInstanceDefaultNamespaceResourceSpecPtrOutput)
+}
+
+type VvpInstanceDefaultNamespaceResourceSpecOutput struct{ *pulumi.OutputState }
+
+func (VvpInstanceDefaultNamespaceResourceSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VvpInstanceDefaultNamespaceResourceSpec)(nil)).Elem()
+}
+
+func (o VvpInstanceDefaultNamespaceResourceSpecOutput) ToVvpInstanceDefaultNamespaceResourceSpecOutput() VvpInstanceDefaultNamespaceResourceSpecOutput {
+	return o
+}
+
+func (o VvpInstanceDefaultNamespaceResourceSpecOutput) ToVvpInstanceDefaultNamespaceResourceSpecOutputWithContext(ctx context.Context) VvpInstanceDefaultNamespaceResourceSpecOutput {
+	return o
+}
+
+func (o VvpInstanceDefaultNamespaceResourceSpecOutput) ToVvpInstanceDefaultNamespaceResourceSpecPtrOutput() VvpInstanceDefaultNamespaceResourceSpecPtrOutput {
+	return o.ToVvpInstanceDefaultNamespaceResourceSpecPtrOutputWithContext(context.Background())
+}
+
+func (o VvpInstanceDefaultNamespaceResourceSpecOutput) ToVvpInstanceDefaultNamespaceResourceSpecPtrOutputWithContext(ctx context.Context) VvpInstanceDefaultNamespaceResourceSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VvpInstanceDefaultNamespaceResourceSpec) *VvpInstanceDefaultNamespaceResourceSpec {
+		return &v
+	}).(VvpInstanceDefaultNamespaceResourceSpecPtrOutput)
+}
+
+// The number of CPUs.
+func (o VvpInstanceDefaultNamespaceResourceSpecOutput) Cpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VvpInstanceDefaultNamespaceResourceSpec) *int { return v.Cpu }).(pulumi.IntPtrOutput)
+}
+
+// The memory size.
+func (o VvpInstanceDefaultNamespaceResourceSpecOutput) MemoryGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VvpInstanceDefaultNamespaceResourceSpec) *int { return v.MemoryGb }).(pulumi.IntPtrOutput)
+}
+
+type VvpInstanceDefaultNamespaceResourceSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (VvpInstanceDefaultNamespaceResourceSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VvpInstanceDefaultNamespaceResourceSpec)(nil)).Elem()
+}
+
+func (o VvpInstanceDefaultNamespaceResourceSpecPtrOutput) ToVvpInstanceDefaultNamespaceResourceSpecPtrOutput() VvpInstanceDefaultNamespaceResourceSpecPtrOutput {
+	return o
+}
+
+func (o VvpInstanceDefaultNamespaceResourceSpecPtrOutput) ToVvpInstanceDefaultNamespaceResourceSpecPtrOutputWithContext(ctx context.Context) VvpInstanceDefaultNamespaceResourceSpecPtrOutput {
+	return o
+}
+
+func (o VvpInstanceDefaultNamespaceResourceSpecPtrOutput) Elem() VvpInstanceDefaultNamespaceResourceSpecOutput {
+	return o.ApplyT(func(v *VvpInstanceDefaultNamespaceResourceSpec) VvpInstanceDefaultNamespaceResourceSpec {
+		if v != nil {
+			return *v
+		}
+		var ret VvpInstanceDefaultNamespaceResourceSpec
+		return ret
+	}).(VvpInstanceDefaultNamespaceResourceSpecOutput)
+}
+
+// The number of CPUs.
+func (o VvpInstanceDefaultNamespaceResourceSpecPtrOutput) Cpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VvpInstanceDefaultNamespaceResourceSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.IntPtrOutput)
+}
+
+// The memory size.
+func (o VvpInstanceDefaultNamespaceResourceSpecPtrOutput) MemoryGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VvpInstanceDefaultNamespaceResourceSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryGb
+	}).(pulumi.IntPtrOutput)
+}
+
 type VvpInstanceResourceSpec struct {
 	// CPU number.
 	Cpu *int `pulumi:"cpu"`
@@ -4877,6 +5033,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusFailurePtrInput)(nil)).Elem(), JobStatusFailureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusRunningInput)(nil)).Elem(), JobStatusRunningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusRunningPtrInput)(nil)).Elem(), JobStatusRunningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VvpInstanceDefaultNamespaceResourceSpecInput)(nil)).Elem(), VvpInstanceDefaultNamespaceResourceSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VvpInstanceDefaultNamespaceResourceSpecPtrInput)(nil)).Elem(), VvpInstanceDefaultNamespaceResourceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VvpInstanceResourceSpecInput)(nil)).Elem(), VvpInstanceResourceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VvpInstanceResourceSpecPtrInput)(nil)).Elem(), VvpInstanceResourceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VvpInstanceStorageInput)(nil)).Elem(), VvpInstanceStorageArgs{})
@@ -4937,6 +5095,8 @@ func init() {
 	pulumi.RegisterOutputType(JobStatusFailurePtrOutput{})
 	pulumi.RegisterOutputType(JobStatusRunningOutput{})
 	pulumi.RegisterOutputType(JobStatusRunningPtrOutput{})
+	pulumi.RegisterOutputType(VvpInstanceDefaultNamespaceResourceSpecOutput{})
+	pulumi.RegisterOutputType(VvpInstanceDefaultNamespaceResourceSpecPtrOutput{})
 	pulumi.RegisterOutputType(VvpInstanceResourceSpecOutput{})
 	pulumi.RegisterOutputType(VvpInstanceResourceSpecPtrOutput{})
 	pulumi.RegisterOutputType(VvpInstanceStorageOutput{})

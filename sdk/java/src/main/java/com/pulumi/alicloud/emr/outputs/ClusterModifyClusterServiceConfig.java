@@ -54,6 +54,10 @@ public final class ClusterModifyClusterServiceConfig {
      * 
      */
     private @Nullable Boolean refreshHostConfig;
+    /**
+     * @return Cluster service configuration modification name, e.g. ’HDFS’.
+     * 
+     */
     private String serviceName;
 
     private ClusterModifyClusterServiceConfig() {}
@@ -113,6 +117,10 @@ public final class ClusterModifyClusterServiceConfig {
     public Optional<Boolean> refreshHostConfig() {
         return Optional.ofNullable(this.refreshHostConfig);
     }
+    /**
+     * @return Cluster service configuration modification name, e.g. ’HDFS’.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -67,6 +67,9 @@ export interface GetMailAddressesArgs {
  * A collection of values returned by getMailAddresses.
  */
 export interface GetMailAddressesResult {
+    /**
+     * A list of Direct Mail Mail Addresses. Each element contains the following attributes:
+     */
     readonly addresses: outputs.directmail.GetMailAddressesAddress[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -75,13 +78,19 @@ export interface GetMailAddressesResult {
     readonly ids: string[];
     readonly keyWord?: string;
     readonly outputFile?: string;
+    /**
+     * Account type.
+     */
     readonly sendtype?: string;
+    /**
+     * Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *

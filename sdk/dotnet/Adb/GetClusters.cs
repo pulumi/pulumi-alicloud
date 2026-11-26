@@ -15,11 +15,11 @@ namespace Pulumi.AliCloud.Adb
         /// The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
         /// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
         /// 
-        /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
-        /// 
-        /// &gt; **NOTE:** Available in v1.71.0+.
+        /// &gt; **DEPRECATED:** This data source has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -29,15 +29,14 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var adbClustersDs = AliCloud.Adb.GetClusters.Invoke(new()
+        ///     var example = AliCloud.Adb.GetClusters.Invoke(new()
         ///     {
-        ///         DescriptionRegex = "am-\\w+",
-        ///         Status = "Running",
+        ///         DescriptionRegex = "example",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstAdbClusterId"] = adbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///         ["firstAdbClusterId"] = example.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -49,11 +48,11 @@ namespace Pulumi.AliCloud.Adb
         /// The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
         /// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
         /// 
-        /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
-        /// 
-        /// &gt; **NOTE:** Available in v1.71.0+.
+        /// &gt; **DEPRECATED:** This data source has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -63,15 +62,14 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var adbClustersDs = AliCloud.Adb.GetClusters.Invoke(new()
+        ///     var example = AliCloud.Adb.GetClusters.Invoke(new()
         ///     {
-        ///         DescriptionRegex = "am-\\w+",
-        ///         Status = "Running",
+        ///         DescriptionRegex = "example",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstAdbClusterId"] = adbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///         ["firstAdbClusterId"] = example.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -83,11 +81,11 @@ namespace Pulumi.AliCloud.Adb
         /// The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
         /// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
         /// 
-        /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
-        /// 
-        /// &gt; **NOTE:** Available in v1.71.0+.
+        /// &gt; **DEPRECATED:** This data source has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -97,15 +95,14 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var adbClustersDs = AliCloud.Adb.GetClusters.Invoke(new()
+        ///     var example = AliCloud.Adb.GetClusters.Invoke(new()
         ///     {
-        ///         DescriptionRegex = "am-\\w+",
-        ///         Status = "Running",
+        ///         DescriptionRegex = "example",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstAdbClusterId"] = adbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///         ["firstAdbClusterId"] = example.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -118,17 +115,20 @@ namespace Pulumi.AliCloud.Adb
     public sealed class GetClustersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The description of the ADB cluster.
+        /// The description of DBCluster.
         /// </summary>
         [Input("description")]
         public string? Description { get; set; }
 
         /// <summary>
-        /// A regex string to filter results by cluster description.
+        /// A regex string to filter results by DBCluster description.
         /// </summary>
         [Input("descriptionRegex")]
         public string? DescriptionRegex { get; set; }
 
+        /// <summary>
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Adb
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of ADB cluster IDs.
+        /// A list of DBCluster IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -156,11 +156,14 @@ namespace Pulumi.AliCloud.Adb
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -169,9 +172,7 @@ namespace Pulumi.AliCloud.Adb
         private Dictionary<string, string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// A map of tags assigned to the cluster.
         /// </summary>
         public Dictionary<string, string> Tags
         {
@@ -188,17 +189,20 @@ namespace Pulumi.AliCloud.Adb
     public sealed class GetClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The description of the ADB cluster.
+        /// The description of DBCluster.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A regex string to filter results by cluster description.
+        /// A regex string to filter results by DBCluster description.
         /// </summary>
         [Input("descriptionRegex")]
         public Input<string>? DescriptionRegex { get; set; }
 
+        /// <summary>
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -206,7 +210,7 @@ namespace Pulumi.AliCloud.Adb
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of ADB cluster IDs.
+        /// A list of DBCluster IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -226,11 +230,14 @@ namespace Pulumi.AliCloud.Adb
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -239,9 +246,7 @@ namespace Pulumi.AliCloud.Adb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// A map of tags assigned to the cluster.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -260,16 +265,16 @@ namespace Pulumi.AliCloud.Adb
     public sealed class GetClustersResult
     {
         /// <summary>
-        /// A list of ADB clusters. Each element contains the following attributes:
+        /// A list of Adb Db Clusters. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClustersClusterResult> Clusters;
         /// <summary>
-        /// The description of the ADB cluster.
+        /// The description of DBCluster.
         /// </summary>
         public readonly string? Description;
         public readonly string? DescriptionRegex;
         /// <summary>
-        /// A list of ADB cluster descriptions.
+        /// A list of DBCluster descriptions.
         /// </summary>
         public readonly ImmutableArray<string> Descriptions;
         public readonly bool? EnableDetails;
@@ -277,18 +282,21 @@ namespace Pulumi.AliCloud.Adb
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A list of ADB cluster IDs.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         public readonly string? ResourceGroupId;
         /// <summary>
-        /// Status of the cluster.
+        /// The status of the resource.
         /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The tags of the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         public readonly int TotalCount;
 

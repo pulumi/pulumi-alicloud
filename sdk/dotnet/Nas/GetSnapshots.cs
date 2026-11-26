@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides the Nas Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.152.0+.
+        /// &gt; **NOTE:** Available since v1.152.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides the Nas Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.152.0+.
+        /// &gt; **NOTE:** Available since v1.152.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides the Nas Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.152.0+.
+        /// &gt; **NOTE:** Available since v1.152.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -229,10 +229,22 @@ namespace Pulumi.AliCloud.Nas
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Snapshot names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The name of the snapshot.
+        /// </summary>
         public readonly string? SnapshotName;
+        /// <summary>
+        /// A list of Nas Snapshots. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSnapshotsSnapshotResult> Snapshots;
+        /// <summary>
+        /// The status of the snapshot.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

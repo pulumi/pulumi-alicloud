@@ -50,6 +50,9 @@ class GetGatewaySmbUsersResult:
     @_builtins.property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> _builtins.str:
+        """
+        The Gateway ID.
+        """
         return pulumi.get(self, "gateway_id")
 
     @_builtins.property
@@ -78,6 +81,9 @@ class GetGatewaySmbUsersResult:
     @_builtins.property
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetGatewaySmbUsersUserResult']:
+        """
+        A list of Cloud Storage Gateway SMB Users. Each element contains the following attributes:
+        """
         return pulumi.get(self, "users")
 
 
@@ -103,7 +109,7 @@ def get_gateway_smb_users(gateway_id: Optional[_builtins.str] = None,
     """
     This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.142.0+.
+    > **NOTE:** Available since v1.142.0.
 
     ## Example Usage
 
@@ -165,7 +171,7 @@ def get_gateway_smb_users_output(gateway_id: pulumi.Input[Optional[_builtins.str
     """
     This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.142.0+.
+    > **NOTE:** Available since v1.142.0.
 
     ## Example Usage
 

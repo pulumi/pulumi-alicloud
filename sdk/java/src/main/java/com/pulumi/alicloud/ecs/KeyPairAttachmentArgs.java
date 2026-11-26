@@ -69,9 +69,17 @@ public final class KeyPairAttachmentArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.keyName);
     }
 
+    /**
+     * The name of key pair used to bind.
+     * 
+     */
     @Import(name="keyPairName")
     private @Nullable Output<String> keyPairName;
 
+    /**
+     * @return The name of key pair used to bind.
+     * 
+     */
     public Optional<Output<String>> keyPairName() {
         return Optional.ofNullable(this.keyPairName);
     }
@@ -182,11 +190,23 @@ public final class KeyPairAttachmentArgs extends com.pulumi.resources.ResourceAr
             return keyName(Output.of(keyName));
         }
 
+        /**
+         * @param keyPairName The name of key pair used to bind.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyPairName(@Nullable Output<String> keyPairName) {
             $.keyPairName = keyPairName;
             return this;
         }
 
+        /**
+         * @param keyPairName The name of key pair used to bind.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyPairName(String keyPairName) {
             return keyPairName(Output.of(keyPairName));
         }

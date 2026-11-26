@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SnapshotPolicyCopyEncryptionConfiguration {
+    /**
+     * @return Whether to encrypt the snapshot.
+     * 
+     */
     private @Nullable Boolean encrypted;
+    /**
+     * @return The KMS key ID used for encryption.
+     * 
+     */
     private @Nullable String kmsKeyId;
 
     private SnapshotPolicyCopyEncryptionConfiguration() {}
+    /**
+     * @return Whether to encrypt the snapshot.
+     * 
+     */
     public Optional<Boolean> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
+    /**
+     * @return The KMS key ID used for encryption.
+     * 
+     */
     public Optional<String> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }

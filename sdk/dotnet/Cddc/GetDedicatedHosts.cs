@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cddc
         /// <summary>
         /// This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
         /// 
         /// ## Example Usage
         /// 
@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.Cddc
         /// <summary>
         /// This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
         /// 
         /// ## Example Usage
         /// 
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Cddc
         /// <summary>
         /// This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
         /// 
         /// ## Example Usage
         /// 
@@ -434,10 +434,22 @@ namespace Pulumi.AliCloud.Cddc
     [OutputType]
     public sealed class GetDedicatedHostsResult
     {
+        /// <summary>
+        /// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+        /// </summary>
         public readonly string? AllocationStatus;
+        /// <summary>
+        /// The ID of the dedicated cluster in which the host is created.
+        /// </summary>
         public readonly string DedicatedHostGroupId;
         public readonly bool? EnableDetails;
+        /// <summary>
+        /// The storage type of the host.
+        /// </summary>
         public readonly string? HostType;
+        /// <summary>
+        /// A list of Cddc Dedicated Hosts. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDedicatedHostsHostResult> Hosts;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -446,8 +458,17 @@ namespace Pulumi.AliCloud.Cddc
         public readonly ImmutableArray<string> Ids;
         public readonly string? OrderId;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The state of the host.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The zone ID of the host.
+        /// </summary>
         public readonly string? ZoneId;
 
         [OutputConstructor]

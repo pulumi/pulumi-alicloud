@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Oos Applications of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.145.0+.
+ * > **NOTE:** Available since v1.145.0.
  *
  * ## Example Usage
  *
@@ -64,6 +64,9 @@ export interface GetApplicationsArgs {
  * A collection of values returned by getApplications.
  */
 export interface GetApplicationsResult {
+    /**
+     * A list of Oos Applications. Each element contains the following attributes:
+     */
     readonly applications: outputs.oos.GetApplicationsApplication[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -71,14 +74,20 @@ export interface GetApplicationsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of oss application names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The tag of the resource.
+     */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Oos Applications of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.145.0+.
+ * > **NOTE:** Available since v1.145.0.
  *
  * ## Example Usage
  *

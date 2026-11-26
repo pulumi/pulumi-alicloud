@@ -98,6 +98,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
+     * 
      * &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
      * 
      */
@@ -106,6 +107,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
+     * 
      * &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
      * 
      */
@@ -115,6 +117,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+     * 
      * &gt; **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
      * 
      */
@@ -123,6 +126,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+     * 
      * &gt; **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
      * 
      */
@@ -132,6 +136,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+     * 
      * &gt; **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
      * 
      */
@@ -140,6 +145,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+     * 
      * &gt; **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
      * 
      */
@@ -212,6 +218,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
      * - `TCP` or `tcp`: TCP protocol.
      * - `HTTP` or `http`: HTTP protocol.
      * - `HTTPS` or `https`: HTTPS protocol.
+     * 
      * &gt; **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      * 
      */
@@ -223,6 +230,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
      * - `TCP` or `tcp`: TCP protocol.
      * - `HTTP` or `http`: HTTP protocol.
      * - `HTTPS` or `https`: HTTPS protocol.
+     * 
      * &gt; **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      * 
      */
@@ -262,6 +270,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
+     * 
      * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      * 
      */
@@ -270,6 +279,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
+     * 
      * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      * 
      */
@@ -507,6 +517,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param endpointGroupType The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
+         * 
          * &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
          * 
          * @return builder
@@ -519,6 +530,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param endpointGroupType The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
+         * 
          * &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
          * 
          * @return builder
@@ -530,6 +542,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param endpointProtocolVersion The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+         * 
          * &gt; **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
          * 
          * @return builder
@@ -542,6 +555,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param endpointProtocolVersion The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+         * 
          * &gt; **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
          * 
          * @return builder
@@ -553,6 +567,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param endpointRequestProtocol The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+         * 
          * &gt; **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
          * 
          * @return builder
@@ -565,6 +580,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param endpointRequestProtocol The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+         * 
          * &gt; **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
          * 
          * @return builder
@@ -663,6 +679,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
          * - `TCP` or `tcp`: TCP protocol.
          * - `HTTP` or `http`: HTTP protocol.
          * - `HTTPS` or `https`: HTTPS protocol.
+         * 
          * &gt; **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
          * 
          * @return builder
@@ -678,6 +695,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
          * - `TCP` or `tcp`: TCP protocol.
          * - `HTTP` or `http`: HTTP protocol.
          * - `HTTPS` or `https`: HTTPS protocol.
+         * 
          * &gt; **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
          * 
          * @return builder
@@ -731,6 +749,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param portOverrides Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
+         * 
          * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
          * 
          * @return builder
@@ -743,6 +762,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param portOverrides Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
+         * 
          * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
          * 
          * @return builder

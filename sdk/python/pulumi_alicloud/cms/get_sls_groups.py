@@ -59,6 +59,9 @@ class GetSlsGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetSlsGroupsGroupResult']:
+        """
+        A list of Cms Sls Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -87,6 +90,9 @@ class GetSlsGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Sls Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -132,7 +138,7 @@ def get_sls_groups(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.171.0+.
+    > **NOTE:** Available since v1.171.0.
 
     ## Example Usage
 
@@ -184,7 +190,7 @@ def get_sls_groups_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins
     """
     This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.171.0+.
+    > **NOTE:** Available since v1.171.0.
 
     ## Example Usage
 

@@ -120,8 +120,6 @@ import * as utilities from "../utilities";
  *             zoneId: zone[1],
  *         },
  *     ],
- * }, {
- *     dependsOn: [_default],
  * });
  * ```
  *

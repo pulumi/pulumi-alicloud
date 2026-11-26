@@ -30,7 +30,7 @@ public final class CdnFunctions {
     /**
      * This data source provides the Cdn blocked regions.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -74,7 +74,7 @@ public final class CdnFunctions {
     /**
      * This data source provides the Cdn blocked regions.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -118,7 +118,7 @@ public final class CdnFunctions {
     /**
      * This data source provides the Cdn blocked regions.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -162,7 +162,7 @@ public final class CdnFunctions {
     /**
      * This data source provides the Cdn blocked regions.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -206,7 +206,7 @@ public final class CdnFunctions {
     /**
      * This data source provides the Cdn blocked regions.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -655,7 +655,7 @@ public final class CdnFunctions {
     /**
      * This data source provides the function of verifying whether an IP is a CDN node.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -699,7 +699,7 @@ public final class CdnFunctions {
     /**
      * This data source provides the function of verifying whether an IP is a CDN node.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -743,7 +743,7 @@ public final class CdnFunctions {
     /**
      * This data source provides the function of verifying whether an IP is a CDN node.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -787,7 +787,7 @@ public final class CdnFunctions {
     /**
      * This data source provides the function of verifying whether an IP is a CDN node.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -831,7 +831,7 @@ public final class CdnFunctions {
     /**
      * This data source provides the function of verifying whether an IP is a CDN node.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -875,7 +875,7 @@ public final class CdnFunctions {
     /**
      * This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -920,7 +920,7 @@ public final class CdnFunctions {
     /**
      * This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -965,7 +965,7 @@ public final class CdnFunctions {
     /**
      * This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -1010,7 +1010,7 @@ public final class CdnFunctions {
     /**
      * This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -1055,7 +1055,7 @@ public final class CdnFunctions {
     /**
      * This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 

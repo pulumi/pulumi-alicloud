@@ -18,29 +18,45 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSnapshotsArgs Empty = new GetSnapshotsArgs();
 
+    /**
+     * The category of the snapshot. Valid values: `flash`, `standard`.
+     * 
+     */
     @Import(name="category")
     private @Nullable Output<String> category;
 
+    /**
+     * @return The category of the snapshot. Valid values: `flash`, `standard`.
+     * 
+     */
     public Optional<Output<String>> category() {
         return Optional.ofNullable(this.category);
     }
 
+    /**
+     * Whether to check validity without making the request.
+     * 
+     */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
+    /**
+     * @return Whether to check validity without making the request.
+     * 
+     */
     public Optional<Output<Boolean>> dryRun() {
         return Optional.ofNullable(this.dryRun);
     }
 
     /**
-     * Whether the snapshot is encrypted or not.
+     * Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
      * 
      */
     @Import(name="encrypted")
     private @Nullable Output<Boolean> encrypted;
 
     /**
-     * @return Whether the snapshot is encrypted or not.
+     * @return Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> encrypted() {
@@ -62,64 +78,124 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * The KMS key ID.
+     * 
+     */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
 
+    /**
+     * @return The KMS key ID.
+     * 
+     */
     public Optional<Output<String>> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
 
+    /**
+     * A regex string to filter results by snapshot name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
+    /**
+     * @return A regex string to filter results by snapshot name.
+     * 
+     */
     public Optional<Output<String>> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
 
+    /**
+     * The name of output file that saves the filter results.
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable Output<String> outputFile;
 
+    /**
+     * @return The name of output file that saves the filter results.
+     * 
+     */
     public Optional<Output<String>> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The resource group ID.
+     * 
+     */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
+    /**
+     * @return The resource group ID.
+     * 
+     */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * The snapshot link ID.
+     * 
+     */
     @Import(name="snapshotLinkId")
     private @Nullable Output<String> snapshotLinkId;
 
+    /**
+     * @return The snapshot link ID.
+     * 
+     */
     public Optional<Output<String>> snapshotLinkId() {
         return Optional.ofNullable(this.snapshotLinkId);
     }
 
+    /**
+     * The name of the snapshot.
+     * 
+     */
     @Import(name="snapshotName")
     private @Nullable Output<String> snapshotName;
 
+    /**
+     * @return The name of the snapshot.
+     * 
+     */
     public Optional<Output<String>> snapshotName() {
         return Optional.ofNullable(this.snapshotName);
     }
 
+    /**
+     * The type of the snapshot. Valid values: `auto`, `user`, `all`.
+     * 
+     */
     @Import(name="snapshotType")
     private @Nullable Output<String> snapshotType;
 
+    /**
+     * @return The type of the snapshot. Valid values: `auto`, `user`, `all`.
+     * 
+     */
     public Optional<Output<String>> snapshotType() {
         return Optional.ofNullable(this.snapshotType);
     }
 
     /**
-     * Source disk attribute. Value range: `System`,`Data`.
+     * The type of source disk:
+     * * System: The snapshots are created for system disks.
+     * * Data: The snapshots are created for data disks.
      * 
      */
     @Import(name="sourceDiskType")
     private @Nullable Output<String> sourceDiskType;
 
     /**
-     * @return Source disk attribute. Value range: `System`,`Data`.
+     * @return The type of source disk:
+     * * System: The snapshots are created for system disks.
+     * * Data: The snapshots are created for data disks.
      * 
      */
     public Optional<Output<String>> sourceDiskType() {
@@ -127,14 +203,22 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+     * The specified snapshot status. Default value: `all`. Optional values:
+     * * progressing: The snapshots are being created.
+     * * accomplished: The snapshots are ready to use.
+     * * failed: The snapshot creation failed.
+     * * all: All status.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+     * @return The specified snapshot status. Default value: `all`. Optional values:
+     * * progressing: The snapshots are being created.
+     * * accomplished: The snapshots are ready to use.
+     * * failed: The snapshot creation failed.
+     * * all: All status.
      * 
      */
     public Optional<Output<String>> status() {
@@ -142,36 +226,58 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A map of tags assigned to the snapshot.
+     * A map of tags assigned to snapshots.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A map of tags assigned to the snapshot.
+     * @return A map of tags assigned to snapshots.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The snapshot category. Default value: `all`. Optional values:
+     * * auto: Auto snapshots.
+     * * user: Manual snapshots.
+     * * all: Auto and manual snapshots.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return The snapshot category. Default value: `all`. Optional values:
+     * * auto: Auto snapshots.
+     * * user: Manual snapshots.
+     * * all: Auto and manual snapshots.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
     /**
-     * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+     * The usage of the snapshot:
+     * * image: The snapshots are used to create custom images.
+     * * disk: The snapshots are used to CreateDisk.
+     * * mage_disk: The snapshots are used to create custom images and data disks.
+     * * none: The snapshots are not used yet.
      * 
      */
     @Import(name="usage")
     private @Nullable Output<String> usage;
 
     /**
-     * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+     * @return The usage of the snapshot:
+     * * image: The snapshots are used to create custom images.
+     * * disk: The snapshots are used to CreateDisk.
+     * * mage_disk: The snapshots are used to create custom images and data disks.
+     * * none: The snapshots are not used yet.
      * 
      */
     public Optional<Output<String>> usage() {
@@ -217,26 +323,50 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetSnapshotsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param category The category of the snapshot. Valid values: `flash`, `standard`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder category(@Nullable Output<String> category) {
             $.category = category;
             return this;
         }
 
+        /**
+         * @param category The category of the snapshot. Valid values: `flash`, `standard`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder category(String category) {
             return category(Output.of(category));
         }
 
+        /**
+         * @param dryRun Whether to check validity without making the request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dryRun(@Nullable Output<Boolean> dryRun) {
             $.dryRun = dryRun;
             return this;
         }
 
+        /**
+         * @param dryRun Whether to check validity without making the request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dryRun(Boolean dryRun) {
             return dryRun(Output.of(dryRun));
         }
 
         /**
-         * @param encrypted Whether the snapshot is encrypted or not.
+         * @param encrypted Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
          * 
          * @return builder
          * 
@@ -247,7 +377,7 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param encrypted Whether the snapshot is encrypted or not.
+         * @param encrypted Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
          * 
          * @return builder
          * 
@@ -287,71 +417,157 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param kmsKeyId The KMS key ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
             $.kmsKeyId = kmsKeyId;
             return this;
         }
 
+        /**
+         * @param kmsKeyId The KMS key ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(String kmsKeyId) {
             return kmsKeyId(Output.of(kmsKeyId));
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by snapshot name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable Output<String> nameRegex) {
             $.nameRegex = nameRegex;
             return this;
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by snapshot name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(String nameRegex) {
             return nameRegex(Output.of(nameRegex));
         }
 
+        /**
+         * @param outputFile The name of output file that saves the filter results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable Output<String> outputFile) {
             $.outputFile = outputFile;
             return this;
         }
 
+        /**
+         * @param outputFile The name of output file that saves the filter results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
         }
 
+        /**
+         * @param resourceGroupId The resource group ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
             $.resourceGroupId = resourceGroupId;
             return this;
         }
 
+        /**
+         * @param resourceGroupId The resource group ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
+        /**
+         * @param snapshotLinkId The snapshot link ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotLinkId(@Nullable Output<String> snapshotLinkId) {
             $.snapshotLinkId = snapshotLinkId;
             return this;
         }
 
+        /**
+         * @param snapshotLinkId The snapshot link ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotLinkId(String snapshotLinkId) {
             return snapshotLinkId(Output.of(snapshotLinkId));
         }
 
+        /**
+         * @param snapshotName The name of the snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotName(@Nullable Output<String> snapshotName) {
             $.snapshotName = snapshotName;
             return this;
         }
 
+        /**
+         * @param snapshotName The name of the snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotName(String snapshotName) {
             return snapshotName(Output.of(snapshotName));
         }
 
+        /**
+         * @param snapshotType The type of the snapshot. Valid values: `auto`, `user`, `all`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotType(@Nullable Output<String> snapshotType) {
             $.snapshotType = snapshotType;
             return this;
         }
 
+        /**
+         * @param snapshotType The type of the snapshot. Valid values: `auto`, `user`, `all`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotType(String snapshotType) {
             return snapshotType(Output.of(snapshotType));
         }
 
         /**
-         * @param sourceDiskType Source disk attribute. Value range: `System`,`Data`.
+         * @param sourceDiskType The type of source disk:
+         * * System: The snapshots are created for system disks.
+         * * Data: The snapshots are created for data disks.
          * 
          * @return builder
          * 
@@ -362,7 +578,9 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sourceDiskType Source disk attribute. Value range: `System`,`Data`.
+         * @param sourceDiskType The type of source disk:
+         * * System: The snapshots are created for system disks.
+         * * Data: The snapshots are created for data disks.
          * 
          * @return builder
          * 
@@ -372,7 +590,11 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+         * @param status The specified snapshot status. Default value: `all`. Optional values:
+         * * progressing: The snapshots are being created.
+         * * accomplished: The snapshots are ready to use.
+         * * failed: The snapshot creation failed.
+         * * all: All status.
          * 
          * @return builder
          * 
@@ -383,7 +605,11 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+         * @param status The specified snapshot status. Default value: `all`. Optional values:
+         * * progressing: The snapshots are being created.
+         * * accomplished: The snapshots are ready to use.
+         * * failed: The snapshot creation failed.
+         * * all: All status.
          * 
          * @return builder
          * 
@@ -393,7 +619,7 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags A map of tags assigned to the snapshot.
+         * @param tags A map of tags assigned to snapshots.
          * 
          * @return builder
          * 
@@ -404,7 +630,7 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags A map of tags assigned to the snapshot.
+         * @param tags A map of tags assigned to snapshots.
          * 
          * @return builder
          * 
@@ -413,17 +639,39 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param type The snapshot category. Default value: `all`. Optional values:
+         * * auto: Auto snapshots.
+         * * user: Manual snapshots.
+         * * all: Auto and manual snapshots.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The snapshot category. Default value: `all`. Optional values:
+         * * auto: Auto snapshots.
+         * * user: Manual snapshots.
+         * * all: Auto and manual snapshots.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }
 
         /**
-         * @param usage Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+         * @param usage The usage of the snapshot:
+         * * image: The snapshots are used to create custom images.
+         * * disk: The snapshots are used to CreateDisk.
+         * * mage_disk: The snapshots are used to create custom images and data disks.
+         * * none: The snapshots are not used yet.
          * 
          * @return builder
          * 
@@ -434,7 +682,11 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param usage Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+         * @param usage The usage of the snapshot:
+         * * image: The snapshots are used to create custom images.
+         * * disk: The snapshots are used to CreateDisk.
+         * * mage_disk: The snapshots are used to create custom images and data disks.
+         * * none: The snapshots are not used yet.
          * 
          * @return builder
          * 

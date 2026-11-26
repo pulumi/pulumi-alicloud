@@ -69,7 +69,8 @@ type GetRulesArgs struct {
 	// The Content Classification.
 	ContentCategory *string `pulumi:"contentCategory"`
 	// Sensitive Data Identification Rules of Type. Valid values:
-	CustomType    *int  `pulumi:"customType"`
+	CustomType *int `pulumi:"customType"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Rule IDs.
 	Ids []string `pulumi:"ids"`
@@ -101,10 +102,11 @@ type GetRulesResult struct {
 	CustomType    *int  `pulumi:"customType"`
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string   `pulumi:"id"`
-	Ids       []string `pulumi:"ids"`
-	Name      *string  `pulumi:"name"`
-	NameRegex *string  `pulumi:"nameRegex"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The name of rule.
+	Name      *string `pulumi:"name"`
+	NameRegex *string `pulumi:"nameRegex"`
 	// A list of Rule names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
@@ -133,7 +135,8 @@ type GetRulesOutputArgs struct {
 	// The Content Classification.
 	ContentCategory pulumi.StringPtrInput `pulumi:"contentCategory"`
 	// Sensitive Data Identification Rules of Type. Valid values:
-	CustomType    pulumi.IntPtrInput  `pulumi:"customType"`
+	CustomType pulumi.IntPtrInput `pulumi:"customType"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Rule IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -202,6 +205,7 @@ func (o GetRulesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The name of rule.
 func (o GetRulesResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

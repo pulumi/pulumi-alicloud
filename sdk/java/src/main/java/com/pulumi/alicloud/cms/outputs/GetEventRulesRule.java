@@ -49,7 +49,7 @@ public final class GetEventRulesRule {
      */
     private Integer silenceTime;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `DISABLED`, `ENABLED`.
      * 
      */
     private String status;
@@ -105,7 +105,7 @@ public final class GetEventRulesRule {
         return this.silenceTime;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `DISABLED`, `ENABLED`.
      * 
      */
     public String status() {

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Scdn
         /// <summary>
         /// This data source provides the Scdn Domains of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.131.0+.
+        /// &gt; **NOTE:** Available since v1.131.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Scdn
         /// <summary>
         /// This data source provides the Scdn Domains of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.131.0+.
+        /// &gt; **NOTE:** Available since v1.131.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Scdn
         /// <summary>
         /// This data source provides the Scdn Domains of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.131.0+.
+        /// &gt; **NOTE:** Available since v1.131.0.
         /// 
         /// ## Example Usage
         /// 
@@ -213,6 +213,9 @@ namespace Pulumi.AliCloud.Scdn
     [OutputType]
     public sealed class GetDomainsResult
     {
+        /// <summary>
+        /// A list of Scdn Domains. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainsDomainResult> Domains;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -221,9 +224,18 @@ namespace Pulumi.AliCloud.Scdn
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Domain names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The Resource Group ID.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

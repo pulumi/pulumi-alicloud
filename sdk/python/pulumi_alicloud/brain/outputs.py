@@ -35,7 +35,9 @@ class GetIndustrialPidLoopsLoopResult(dict):
                  status: _builtins.str):
         """
         :param _builtins.str id: The ID of the Pid Loop.
+        :param _builtins.str pid_loop_configuration: The configuration of Pid Loop.
         :param _builtins.str pid_loop_dcs_type: The dcs type of Pid Loop.
+        :param _builtins.str pid_loop_desc: The description of Pid Loop.
         :param _builtins.str pid_loop_id: The ID of the Pid Loop.
         :param _builtins.bool pid_loop_is_crucial: Whether is crucial Pid Loop.
         :param _builtins.str pid_loop_name: The name of Pid Loop.
@@ -65,6 +67,9 @@ class GetIndustrialPidLoopsLoopResult(dict):
     @_builtins.property
     @pulumi.getter(name="pidLoopConfiguration")
     def pid_loop_configuration(self) -> _builtins.str:
+        """
+        The configuration of Pid Loop.
+        """
         return pulumi.get(self, "pid_loop_configuration")
 
     @_builtins.property
@@ -78,6 +83,9 @@ class GetIndustrialPidLoopsLoopResult(dict):
     @_builtins.property
     @pulumi.getter(name="pidLoopDesc")
     def pid_loop_desc(self) -> _builtins.str:
+        """
+        The description of Pid Loop.
+        """
         return pulumi.get(self, "pid_loop_desc")
 
     @_builtins.property

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// This data source provides the Ebs Regions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// &gt; **NOTE:** Available since v1.187.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// This data source provides the Ebs Regions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// &gt; **NOTE:** Available since v1.187.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// This data source provides the Ebs Regions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// &gt; **NOTE:** Available since v1.187.0.
         /// 
         /// ## Example Usage
         /// 
@@ -158,7 +158,13 @@ namespace Pulumi.AliCloud.Ebs
         /// </summary>
         public readonly string Id;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The ID of the region.
+        /// </summary>
         public readonly string? RegionId;
+        /// <summary>
+        /// A list of Ebs Regions. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionsRegionResult> Regions;
 
         [OutputConstructor]

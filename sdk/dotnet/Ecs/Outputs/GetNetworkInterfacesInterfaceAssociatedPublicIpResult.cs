@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class GetNetworkInterfacesInterfaceAssociatedPublicIpResult
     {
+        /// <summary>
+        /// The public IP address.
+        /// </summary>
         public readonly string PublicIpAddress;
 
         [OutputConstructor]

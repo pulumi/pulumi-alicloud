@@ -66,6 +66,9 @@ class GetKeyPairsResult:
     @_builtins.property
     @pulumi.getter(name="keyPairFingerPrint")
     def key_pair_finger_print(self) -> Optional[_builtins.str]:
+        """
+        The Private Key of the Fingerprint.
+        """
         return pulumi.get(self, "key_pair_finger_print")
 
     @_builtins.property
@@ -76,6 +79,9 @@ class GetKeyPairsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Key Pair names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -86,6 +92,9 @@ class GetKeyPairsResult:
     @_builtins.property
     @pulumi.getter
     def pairs(self) -> Sequence['outputs.GetKeyPairsPairResult']:
+        """
+        A list of Ecp Key Pairs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "pairs")
 
 
@@ -112,7 +121,7 @@ def get_key_pairs(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ecp Key Pairs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.130.0+.
+    > **NOTE:** Available since v1.130.0.
 
     ## Example Usage
 
@@ -158,7 +167,7 @@ def get_key_pairs_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.
     """
     This data source provides the Ecp Key Pairs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.130.0+.
+    > **NOTE:** Available since v1.130.0.
 
     ## Example Usage
 

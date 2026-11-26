@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **DEPRECATION NOTICE:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs.ManagedKubernetes` instead.
+// > **DEPRECATED:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs.ManagedKubernetes` instead.
 //
 // This resource will help you to manage a Edge Kubernetes Cluster in Alibaba Cloud Kubernetes Service, see [What is edge kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-an-ack-edge-cluster).
 //
@@ -248,7 +248,7 @@ type EdgeKubernetes struct {
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	//
-	// *Removed params*
+	// Removed params
 	//
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert pulumi.StringPtrOutput `pulumi:"clusterCaCert"`
@@ -273,7 +273,7 @@ type EdgeKubernetes struct {
 	// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	// ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 	//
-	// *Worker params*
+	// Worker params
 	LoadBalancerSpec pulumi.StringOutput `pulumi:"loadBalancerSpec"`
 	// A list of one element containing information about the associated log store. See `logConfig` below.
 	//
@@ -309,9 +309,10 @@ type EdgeKubernetes struct {
 	ServiceCidr pulumi.StringPtrOutput `pulumi:"serviceCidr"`
 	// Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
 	//
-	// *Network params*
+	// Network params
 	SkipSetCertificateAuthority pulumi.BoolPtrOutput `pulumi:"skipSetCertificateAuthority"`
-	SlbId                       pulumi.StringOutput  `pulumi:"slbId"`
+	// The ID of APIServer load balancer.
+	SlbId pulumi.StringOutput `pulumi:"slbId"`
 	// The public ip of load balancer.
 	SlbInternet pulumi.StringOutput `pulumi:"slbInternet"`
 	// Whether to create internet load balancer for API Server. Default to true.
@@ -336,7 +337,7 @@ type EdgeKubernetes struct {
 	WorkerDiskSize pulumi.IntPtrOutput `pulumi:"workerDiskSize"`
 	// Worker node system disk auto snapshot policy.
 	//
-	// *Computed params*
+	// Computed params
 	//
 	// You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kube_config.
 	WorkerDiskSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"workerDiskSnapshotPolicyId"`
@@ -418,7 +419,7 @@ type edgeKubernetesState struct {
 	ClientKey *string `pulumi:"clientKey"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	//
-	// *Removed params*
+	// Removed params
 	//
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
@@ -443,7 +444,7 @@ type edgeKubernetesState struct {
 	// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	// ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 	//
-	// *Worker params*
+	// Worker params
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// A list of one element containing information about the associated log store. See `logConfig` below.
 	//
@@ -479,9 +480,10 @@ type edgeKubernetesState struct {
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
 	//
-	// *Network params*
-	SkipSetCertificateAuthority *bool   `pulumi:"skipSetCertificateAuthority"`
-	SlbId                       *string `pulumi:"slbId"`
+	// Network params
+	SkipSetCertificateAuthority *bool `pulumi:"skipSetCertificateAuthority"`
+	// The ID of APIServer load balancer.
+	SlbId *string `pulumi:"slbId"`
 	// The public ip of load balancer.
 	SlbInternet *string `pulumi:"slbInternet"`
 	// Whether to create internet load balancer for API Server. Default to true.
@@ -506,7 +508,7 @@ type edgeKubernetesState struct {
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
 	// Worker node system disk auto snapshot policy.
 	//
-	// *Computed params*
+	// Computed params
 	//
 	// You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kube_config.
 	WorkerDiskSnapshotPolicyId *string `pulumi:"workerDiskSnapshotPolicyId"`
@@ -543,7 +545,7 @@ type EdgeKubernetesState struct {
 	ClientKey pulumi.StringPtrInput
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	//
-	// *Removed params*
+	// Removed params
 	//
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert pulumi.StringPtrInput
@@ -568,7 +570,7 @@ type EdgeKubernetesState struct {
 	// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	// ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 	//
-	// *Worker params*
+	// Worker params
 	LoadBalancerSpec pulumi.StringPtrInput
 	// A list of one element containing information about the associated log store. See `logConfig` below.
 	//
@@ -604,9 +606,10 @@ type EdgeKubernetesState struct {
 	ServiceCidr pulumi.StringPtrInput
 	// Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
 	//
-	// *Network params*
+	// Network params
 	SkipSetCertificateAuthority pulumi.BoolPtrInput
-	SlbId                       pulumi.StringPtrInput
+	// The ID of APIServer load balancer.
+	SlbId pulumi.StringPtrInput
 	// The public ip of load balancer.
 	SlbInternet pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
@@ -631,7 +634,7 @@ type EdgeKubernetesState struct {
 	WorkerDiskSize pulumi.IntPtrInput
 	// Worker node system disk auto snapshot policy.
 	//
-	// *Computed params*
+	// Computed params
 	//
 	// You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kube_config.
 	WorkerDiskSnapshotPolicyId pulumi.StringPtrInput
@@ -674,7 +677,7 @@ type edgeKubernetesArgs struct {
 	ClientKey *string `pulumi:"clientKey"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	//
-	// *Removed params*
+	// Removed params
 	//
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
@@ -697,7 +700,7 @@ type edgeKubernetesArgs struct {
 	// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	// ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 	//
-	// *Worker params*
+	// Worker params
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// A list of one element containing information about the associated log store. See `logConfig` below.
 	//
@@ -731,7 +734,7 @@ type edgeKubernetesArgs struct {
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
 	//
-	// *Network params*
+	// Network params
 	SkipSetCertificateAuthority *bool `pulumi:"skipSetCertificateAuthority"`
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
@@ -751,7 +754,7 @@ type edgeKubernetesArgs struct {
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
 	// Worker node system disk auto snapshot policy.
 	//
-	// *Computed params*
+	// Computed params
 	//
 	// You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kube_config.
 	WorkerDiskSnapshotPolicyId *string `pulumi:"workerDiskSnapshotPolicyId"`
@@ -781,7 +784,7 @@ type EdgeKubernetesArgs struct {
 	ClientKey pulumi.StringPtrInput
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	//
-	// *Removed params*
+	// Removed params
 	//
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert pulumi.StringPtrInput
@@ -804,7 +807,7 @@ type EdgeKubernetesArgs struct {
 	// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	// ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 	//
-	// *Worker params*
+	// Worker params
 	LoadBalancerSpec pulumi.StringPtrInput
 	// A list of one element containing information about the associated log store. See `logConfig` below.
 	//
@@ -838,7 +841,7 @@ type EdgeKubernetesArgs struct {
 	ServiceCidr pulumi.StringPtrInput
 	// Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
 	//
-	// *Network params*
+	// Network params
 	SkipSetCertificateAuthority pulumi.BoolPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled pulumi.BoolPtrInput
@@ -858,7 +861,7 @@ type EdgeKubernetesArgs struct {
 	WorkerDiskSize pulumi.IntPtrInput
 	// Worker node system disk auto snapshot policy.
 	//
-	// *Computed params*
+	// Computed params
 	//
 	// You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kube_config.
 	WorkerDiskSnapshotPolicyId pulumi.StringPtrInput
@@ -992,7 +995,7 @@ func (o EdgeKubernetesOutput) ClientKey() pulumi.StringPtrOutput {
 
 // From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 //
-// *Removed params*
+// # Removed params
 //
 // Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 func (o EdgeKubernetesOutput) ClusterCaCert() pulumi.StringPtrOutput {
@@ -1041,7 +1044,7 @@ func (o EdgeKubernetesOutput) KubeConfig() pulumi.StringPtrOutput {
 // The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 // ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 //
-// *Worker params*
+// Worker params
 func (o EdgeKubernetesOutput) LoadBalancerSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.LoadBalancerSpec }).(pulumi.StringOutput)
 }
@@ -1125,11 +1128,12 @@ func (o EdgeKubernetesOutput) ServiceCidr() pulumi.StringPtrOutput {
 
 // Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
 //
-// *Network params*
+// Network params
 func (o EdgeKubernetesOutput) SkipSetCertificateAuthority() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.BoolPtrOutput { return v.SkipSetCertificateAuthority }).(pulumi.BoolPtrOutput)
 }
 
+// The ID of APIServer load balancer.
 func (o EdgeKubernetesOutput) SlbId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.SlbId }).(pulumi.StringOutput)
 }
@@ -1191,7 +1195,7 @@ func (o EdgeKubernetesOutput) WorkerDiskSize() pulumi.IntPtrOutput {
 
 // Worker node system disk auto snapshot policy.
 //
-// *Computed params*
+// # Computed params
 //
 // You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kube_config.
 func (o EdgeKubernetesOutput) WorkerDiskSnapshotPolicyId() pulumi.StringPtrOutput {

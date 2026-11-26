@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.181.0+.
+// > **NOTE:** Available since v1.181.0.
 //
 // ## Example Usage
 //
@@ -69,14 +69,16 @@ type GetDelegatedAdministratorsArgs struct {
 
 // A collection of values returned by getDelegatedAdministrators.
 type GetDelegatedAdministratorsResult struct {
+	// A list of Resource Manager Delegated Administrators. Each element contains the following attributes:
 	Administrators []GetDelegatedAdministratorsAdministrator `pulumi:"administrators"`
 	// The provider-assigned unique ID for this managed resource.
-	Id               string   `pulumi:"id"`
-	Ids              []string `pulumi:"ids"`
-	OutputFile       *string  `pulumi:"outputFile"`
-	PageNumber       *int     `pulumi:"pageNumber"`
-	PageSize         *int     `pulumi:"pageSize"`
-	ServicePrincipal *string  `pulumi:"servicePrincipal"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
+	// The identity of the trusted service.
+	ServicePrincipal *string `pulumi:"servicePrincipal"`
 }
 
 func GetDelegatedAdministratorsOutput(ctx *pulumi.Context, args GetDelegatedAdministratorsOutputArgs, opts ...pulumi.InvokeOption) GetDelegatedAdministratorsResultOutput {
@@ -115,6 +117,7 @@ func (o GetDelegatedAdministratorsResultOutput) ToGetDelegatedAdministratorsResu
 	return o
 }
 
+// A list of Resource Manager Delegated Administrators. Each element contains the following attributes:
 func (o GetDelegatedAdministratorsResultOutput) Administrators() GetDelegatedAdministratorsAdministratorArrayOutput {
 	return o.ApplyT(func(v GetDelegatedAdministratorsResult) []GetDelegatedAdministratorsAdministrator {
 		return v.Administrators
@@ -142,6 +145,7 @@ func (o GetDelegatedAdministratorsResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDelegatedAdministratorsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// The identity of the trusted service.
 func (o GetDelegatedAdministratorsResultOutput) ServicePrincipal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDelegatedAdministratorsResult) *string { return v.ServicePrincipal }).(pulumi.StringPtrOutput)
 }

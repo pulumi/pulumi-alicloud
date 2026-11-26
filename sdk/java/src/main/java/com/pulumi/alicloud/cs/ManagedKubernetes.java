@@ -492,6 +492,46 @@ import javax.annotation.Nullable;
  * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
+ * ### Extended version support
+ * 
+ * Set `supportPolicy = &#34;Extended&#34;` on an ACK Pro cluster to enable extended version support. The same argument can be added to an existing cluster to update its policy without recreating it.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cs.CsFunctions;
+ * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var extended = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+ *             .clusterType("ManagedKubernetes")
+ *             .profile("Default")
+ *             .supportPolicy("Extended")
+ *             .kubernetesVersion(kubernetesVersion)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Query results depend on ACK&#39;s current version lifecycle and regional availability. Use the exact version you intend to deploy rather than a fixed index into the metadata list.
+ * 
  * ## Import
  * 
  * Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -613,8 +653,6 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
-     * *Removed params*
-     * 
      * @deprecated Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
      */
@@ -624,8 +662,6 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
 
     /**
      * @return From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-     * 
-     * *Removed params*
      * 
      */
     public Output<Optional<String>> clusterCaCert() {
@@ -1211,6 +1247,20 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.slbIntranet;
     }
     /**
+     * Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+     * 
+     */
+    @Export(name="supportPolicy", refs={String.class}, tree="[0]")
+    private Output<String> supportPolicy;
+
+    /**
+     * @return Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+     * 
+     */
+    public Output<String> supportPolicy() {
+        return this.supportPolicy;
+    }
+    /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
      * 
      */
@@ -1253,7 +1303,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** This parameter only applies during resource update.
      * 
-     * *Network params*
+     * Network params
      * 
      */
     @Export(name="upgradePolicy", refs={ManagedKubernetesUpgradePolicy.class}, tree="[0]")
@@ -1264,7 +1314,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** This parameter only applies during resource update.
      * 
-     * *Network params*
+     * Network params
      * 
      */
     public Output<Optional<ManagedKubernetesUpgradePolicy>> upgradePolicy() {

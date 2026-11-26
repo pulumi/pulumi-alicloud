@@ -19,6 +19,12 @@ namespace Pulumi.AliCloud.ThreatDetection.Inputs
         public Input<int>? Agentless { get; set; }
 
         /// <summary>
+        /// The AI digital human module. Valid values:
+        /// </summary>
+        [Input("aiDigital")]
+        public Input<int>? AiDigital { get; set; }
+
+        /// <summary>
         /// Anti-Ransomware Module. Valid values:
         /// </summary>
         [Input("antiRansomware")]
@@ -37,6 +43,12 @@ namespace Pulumi.AliCloud.ThreatDetection.Inputs
         public Input<int>? Cspm { get; set; }
 
         /// <summary>
+        /// The Agentic cloud security configuration check module. Valid values:
+        /// </summary>
+        [Input("cspmInstance")]
+        public Input<int>? CspmInstance { get; set; }
+
+        /// <summary>
         /// Threat Analysis and Response Module. Valid values:
         /// </summary>
         [Input("ctdr")]
@@ -47,6 +59,12 @@ namespace Pulumi.AliCloud.ThreatDetection.Inputs
         /// </summary>
         [Input("ctdrStorage")]
         public Input<int>? CtdrStorage { get; set; }
+
+        /// <summary>
+        /// The image scan module. Valid values:
+        /// </summary>
+        [Input("imageScan")]
+        public Input<int>? ImageScan { get; set; }
 
         /// <summary>
         /// Host and Container Security Module. Valid values:

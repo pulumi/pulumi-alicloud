@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Dfs File Systems of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.140.0+.
+// > **NOTE:** Available since v1.140.0.
 //
 // ## Example Usage
 //
@@ -75,12 +75,14 @@ type GetFileSystemsArgs struct {
 // A collection of values returned by getFileSystems.
 type GetFileSystemsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
-	NameRegex  *string                `pulumi:"nameRegex"`
-	Names      []string               `pulumi:"names"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Systems    []GetFileSystemsSystem `pulumi:"systems"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of File System names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Dfs File Systems. Each element contains the following attributes:
+	Systems []GetFileSystemsSystem `pulumi:"systems"`
 }
 
 func GetFileSystemsOutput(ctx *pulumi.Context, args GetFileSystemsOutputArgs, opts ...pulumi.InvokeOption) GetFileSystemsResultOutput {
@@ -130,6 +132,7 @@ func (o GetFileSystemsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFileSystemsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of File System names.
 func (o GetFileSystemsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFileSystemsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -138,6 +141,7 @@ func (o GetFileSystemsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFileSystemsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Dfs File Systems. Each element contains the following attributes:
 func (o GetFileSystemsResultOutput) Systems() GetFileSystemsSystemArrayOutput {
 	return o.ApplyT(func(v GetFileSystemsResult) []GetFileSystemsSystem { return v.Systems }).(GetFileSystemsSystemArrayOutput)
 }

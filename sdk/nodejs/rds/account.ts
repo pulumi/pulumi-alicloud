@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * });
  * const account = new alicloud.rds.Account("account", {
  *     instanceId: instance.id,
- *     name: "tftestnormal",
+ *     name: "tfaccountnormal",
  *     password: "Test12345",
  * });
  * ```
@@ -95,25 +95,47 @@ export class Account extends pulumi.CustomResource {
         return obj['__pulumiType'] === Account.__pulumiType;
     }
 
+    /**
+     * The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+     */
     declare public readonly accountDescription: pulumi.Output<string>;
+    /**
+     * The name of the account. It conflicts with `name` and is ignored when `name` is set.
+     */
     declare public readonly accountName: pulumi.Output<string>;
+    /**
+     * The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
+     */
     declare public readonly accountPassword: pulumi.Output<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It conflicts with `password` and `kmsEncryptedPassword`, and must be specified together with `accountPasswordWoVersion`.
      */
     declare public readonly accountPasswordWo: pulumi.Output<string | undefined>;
+    /**
+     * The version of the write-only password. It must be specified together with `accountPasswordWo`.
+     */
     declare public readonly accountPasswordWoVersion: pulumi.Output<number | undefined>;
+    /**
+     * The account type. Valid values: Normal/Super/Sysadmin.
+     */
     declare public readonly accountType: pulumi.Output<string>;
+    /**
+     * Whether to apply password policy.
+     */
     declare public readonly checkPolicy: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the instance.
+     */
     declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
-     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
      *
      * @deprecated Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
      */
     declare public readonly description: pulumi.Output<string>;
     /**
-     * The Id of instance in which account belongs.
+     * The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
      *
      * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
@@ -127,25 +149,31 @@ export class Account extends pulumi.CustomResource {
      */
     declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `accountName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
      *
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
     declare public readonly password: pulumi.Output<string | undefined>;
+    /**
+     * Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+     */
     declare public readonly resetPermissionFlag: pulumi.Output<boolean | undefined>;
+    /**
+     * The status of the resource. Valid values: `Available`, `Unavailable`.
+     */
     declare public readonly status: pulumi.Output<string>;
     /**
      * Privilege type of account. The SQLServer engine does not support create high privilege accounts.
      * - Normal: Common privilege.
      * - Super: High privilege.
      *
-     * Default to Normal.
+     * Default to Normal. The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
@@ -212,25 +240,47 @@ export class Account extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Account resources.
  */
 export interface AccountState {
+    /**
+     * The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+     */
     accountDescription?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the account. It conflicts with `name` and is ignored when `name` is set.
+     */
     accountName?: pulumi.Input<string | undefined>;
+    /**
+     * The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
+     */
     accountPassword?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It conflicts with `password` and `kmsEncryptedPassword`, and must be specified together with `accountPasswordWoVersion`.
      */
     accountPasswordWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only password. It must be specified together with `accountPasswordWo`.
+     */
     accountPasswordWoVersion?: pulumi.Input<number | undefined>;
+    /**
+     * The account type. Valid values: Normal/Super/Sysadmin.
+     */
     accountType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to apply password policy.
+     */
     checkPolicy?: pulumi.Input<boolean | undefined>;
+    /**
+     * The ID of the instance.
+     */
     dbInstanceId?: pulumi.Input<string | undefined>;
     /**
-     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
      *
      * @deprecated Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The Id of instance in which account belongs.
+     * The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
      *
      * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
@@ -244,25 +294,31 @@ export interface AccountState {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `accountName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
      *
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
     password?: pulumi.Input<string | undefined>;
+    /**
+     * Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+     */
     resetPermissionFlag?: pulumi.Input<boolean | undefined>;
+    /**
+     * The status of the resource. Valid values: `Available`, `Unavailable`.
+     */
     status?: pulumi.Input<string | undefined>;
     /**
      * Privilege type of account. The SQLServer engine does not support create high privilege accounts.
      * - Normal: Common privilege.
      * - Super: High privilege.
      *
-     * Default to Normal.
+     * Default to Normal. The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
@@ -273,25 +329,47 @@ export interface AccountState {
  * The set of arguments for constructing a Account resource.
  */
 export interface AccountArgs {
+    /**
+     * The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+     */
     accountDescription?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the account. It conflicts with `name` and is ignored when `name` is set.
+     */
     accountName?: pulumi.Input<string | undefined>;
+    /**
+     * The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
+     */
     accountPassword?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It conflicts with `password` and `kmsEncryptedPassword`, and must be specified together with `accountPasswordWoVersion`.
      */
     accountPasswordWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only password. It must be specified together with `accountPasswordWo`.
+     */
     accountPasswordWoVersion?: pulumi.Input<number | undefined>;
+    /**
+     * The account type. Valid values: Normal/Super/Sysadmin.
+     */
     accountType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to apply password policy.
+     */
     checkPolicy?: pulumi.Input<boolean | undefined>;
+    /**
+     * The ID of the instance.
+     */
     dbInstanceId?: pulumi.Input<string | undefined>;
     /**
-     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
      *
      * @deprecated Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The Id of instance in which account belongs.
+     * The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
      *
      * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
@@ -305,25 +383,31 @@ export interface AccountArgs {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `accountName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
      *
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
     password?: pulumi.Input<string | undefined>;
+    /**
+     * Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+     */
     resetPermissionFlag?: pulumi.Input<boolean | undefined>;
+    /**
+     * The status of the resource. Valid values: `Available`, `Unavailable`.
+     */
     status?: pulumi.Input<string | undefined>;
     /**
      * Privilege type of account. The SQLServer engine does not support create high privilege accounts.
      * - Normal: Common privilege.
      * - Super: High privilege.
      *
-     * Default to Normal.
+     * Default to Normal. The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */

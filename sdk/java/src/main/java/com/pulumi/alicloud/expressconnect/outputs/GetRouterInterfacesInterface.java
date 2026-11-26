@@ -77,6 +77,10 @@ public final class GetRouterInterfacesInterface {
      * 
      */
     private String healthCheckTargetIp;
+    /**
+     * @return The ID of the router interface.
+     * 
+     */
     private String id;
     /**
      * @return The Access point ID to which the other end belongs.
@@ -291,6 +295,10 @@ public final class GetRouterInterfacesInterface {
     public String healthCheckTargetIp() {
         return this.healthCheckTargetIp;
     }
+    /**
+     * @return The ID of the router interface.
+     * 
+     */
     public String id() {
         return this.id;
     }

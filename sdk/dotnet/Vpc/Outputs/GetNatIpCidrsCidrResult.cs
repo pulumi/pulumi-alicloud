@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly bool IsDefault;
         /// <summary>
-        /// The ID of the VPC NAT gateway.
+        /// NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
         /// </summary>
         public readonly string NatGatewayId;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string NatIpCidr;
         /// <summary>
-        /// NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+        /// NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the `http://` Or `https://` at the beginning.
         /// </summary>
         public readonly string NatIpCidrDescription;
         /// <summary>
@@ -42,11 +42,11 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string NatIpCidrId;
         /// <summary>
-        /// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+        /// The name of the CIDR block that you want to query. Support up to `20`.
         /// </summary>
         public readonly string NatIpCidrName;
         /// <summary>
-        /// The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+        /// The status of the NAT IP address. Valid values:`Available`.
         /// </summary>
         public readonly string Status;
 

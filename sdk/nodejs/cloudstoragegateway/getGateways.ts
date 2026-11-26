@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *
@@ -72,6 +72,9 @@ export interface GetGatewaysArgs {
  * A collection of values returned by getGateways.
  */
 export interface GetGatewaysResult {
+    /**
+     * A list of Cloud Storage Gateway Gateways. Each element contains the following attributes:
+     */
     readonly gateways: outputs.cloudstoragegateway.GetGatewaysGateway[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -79,18 +82,27 @@ export interface GetGatewaysResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Gateway names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * gateway status.
+     */
     readonly status?: string;
+    /**
+     * storage bundle id.
+     */
     readonly storageBundleId: string;
     readonly totalCount: number;
 }
 /**
  * This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *

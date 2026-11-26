@@ -17,14 +17,14 @@ public final class GetEcsImagePipelinePlainArgs extends com.pulumi.resources.Inv
     public static final GetEcsImagePipelinePlainArgs Empty = new GetEcsImagePipelinePlainArgs();
 
     /**
-     * A list of Image Pipeline ids.
+     * A list of Image Pipeline IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return A list of Image Pipeline ids.
+     * @return A list of Image Pipeline IDs.
      * 
      */
     public Optional<List<String>> ids() {
@@ -136,7 +136,7 @@ public final class GetEcsImagePipelinePlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param ids A list of Image Pipeline ids.
+         * @param ids A list of Image Pipeline IDs.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class GetEcsImagePipelinePlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param ids A list of Image Pipeline ids.
+         * @param ids A list of Image Pipeline IDs.
          * 
          * @return builder
          * 

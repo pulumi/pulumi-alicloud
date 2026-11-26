@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFilesetsResult {
+    /**
+     * @return The ID of the file system.
+     * 
+     */
     private String fileSystemId;
+    /**
+     * @return A list of Nas Filesets. Each element contains the following attributes:
+     * 
+     */
     private List<GetFilesetsFileset> filesets;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,12 +31,24 @@ public final class GetFilesetsResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the fileset.
+     * 
+     */
     private @Nullable String status;
 
     private GetFilesetsResult() {}
+    /**
+     * @return The ID of the file system.
+     * 
+     */
     public String fileSystemId() {
         return this.fileSystemId;
     }
+    /**
+     * @return A list of Nas Filesets. Each element contains the following attributes:
+     * 
+     */
     public List<GetFilesetsFileset> filesets() {
         return this.filesets;
     }
@@ -45,6 +65,10 @@ public final class GetFilesetsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the fileset.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

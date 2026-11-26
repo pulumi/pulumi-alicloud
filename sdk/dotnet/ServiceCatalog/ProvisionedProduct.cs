@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testAccServiceCatalogProvisionedProduct";
+    ///     var name = config.Get("name") ?? "tf-accServiceCatalogProvisionedProduct";
     ///     var @default = new AliCloud.ServiceCatalog.ProvisionedProduct("default", new()
     ///     {
     ///         ProvisionedProductName = name,
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         public Output<string> OwnerPrincipalType { get; private set; } = null!;
 
         /// <summary>
-        /// Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+        /// Template parameters entered by the user.The maximum value of N is 200.See `Parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.ProvisionedProductParameter>> Parameters { get; private set; } = null!;
@@ -249,7 +249,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         private InputList<Inputs.ProvisionedProductParameterArgs>? _parameters;
 
         /// <summary>
-        /// Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+        /// Template parameters entered by the user.The maximum value of N is 200.See `Parameters` below.
         /// </summary>
         public InputList<Inputs.ProvisionedProductParameterArgs> Parameters
         {
@@ -365,7 +365,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         private InputList<Inputs.ProvisionedProductParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+        /// Template parameters entered by the user.The maximum value of N is 200.See `Parameters` below.
         /// </summary>
         public InputList<Inputs.ProvisionedProductParameterGetArgs> Parameters
         {

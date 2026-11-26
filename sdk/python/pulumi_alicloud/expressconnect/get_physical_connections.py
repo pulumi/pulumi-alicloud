@@ -56,6 +56,9 @@ class GetPhysicalConnectionsResult:
     @_builtins.property
     @pulumi.getter
     def connections(self) -> Sequence['outputs.GetPhysicalConnectionsConnectionResult']:
+        """
+        A list of Express Connect Physical Connections. Each element contains the following attributes:
+        """
         return pulumi.get(self, "connections")
 
     @_builtins.property
@@ -84,6 +87,9 @@ class GetPhysicalConnectionsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Physical Connection names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -94,6 +100,9 @@ class GetPhysicalConnectionsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        Resources on Behalf of a State of the Resource Attribute Field.
+        """
         return pulumi.get(self, "status")
 
 
@@ -122,7 +131,7 @@ def get_physical_connections(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 
@@ -172,7 +181,7 @@ def get_physical_connections_output(ids: pulumi.Input[Optional[Optional[Sequence
     """
     This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 

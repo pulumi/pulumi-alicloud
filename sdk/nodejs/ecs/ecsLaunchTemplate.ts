@@ -25,9 +25,6 @@ import * as utilities from "../utilities";
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: _default.zones?.[0]?.id,
- * }));
  * const defaultGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
  *     owners: "system",
@@ -53,7 +50,7 @@ import * as utilities from "../utilities";
  *     hostName: "terraform-example",
  *     instanceChargeType: "PrePaid",
  *     instanceName: "terraform-example",
- *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
+ *     instanceType: "ecs.s6-c1m1.small",
  *     internetChargeType: "PayByBandwidth",
  *     internetMaxBandwidthIn: 5,
  *     internetMaxBandwidthOut: 5,

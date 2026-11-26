@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides CEN Regional Route Entries available to the user.
         /// 
+        /// &gt; **NOTE:** Available since v1.22.0+
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -43,6 +45,8 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides CEN Regional Route Entries available to the user.
         /// 
+        /// &gt; **NOTE:** Available since v1.22.0+
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -71,6 +75,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// This data source provides CEN Regional Route Entries available to the user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.22.0+
         /// 
         /// ## Example Usage
         /// 
@@ -108,6 +114,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -131,6 +140,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

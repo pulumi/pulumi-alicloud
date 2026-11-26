@@ -19,9 +19,17 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
 
     public static final GetSecurityGroupsArgs Empty = new GetSecurityGroupsArgs();
 
+    /**
+     * Default to true. Set it to false to only output `id` in the `groups` block.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
+    /**
+     * @return Default to true. Set it to false to only output `id` in the `groups` block.
+     * 
+     */
     public Optional<Output<Boolean>> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -102,6 +110,7 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
 
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -142,6 +151,7 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
 
     /**
      * @return A map of tags assigned to the ECS instances. It must be in the format:
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -228,11 +238,23 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
             $ = new GetSecurityGroupsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableDetails Default to true. Set it to false to only output `id` in the `groups` block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
             $.enableDetails = enableDetails;
             return this;
         }
 
+        /**
+         * @param enableDetails Default to true. Set it to false to only output `id` in the `groups` block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(Boolean enableDetails) {
             return enableDetails(Output.of(enableDetails));
         }
@@ -351,6 +373,7 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param tags A map of tags assigned to the ECS instances. It must be in the format:
+         * 
          * <pre>
          * {@code
          * package generated_program;
@@ -395,6 +418,7 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param tags A map of tags assigned to the ECS instances. It must be in the format:
+         * 
          * <pre>
          * {@code
          * package generated_program;

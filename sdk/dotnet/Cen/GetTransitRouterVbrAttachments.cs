@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cen
     public static class GetTransitRouterVbrAttachments
     {
         /// <summary>
-        /// This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
+        /// This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://www.alibabacloud.com/help/doc-detail/261226.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0+
         /// 
         /// ## Example Usage
         /// 
@@ -42,9 +42,9 @@ namespace Pulumi.AliCloud.Cen
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterVbrAttachmentsResult>("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", args ?? new GetTransitRouterVbrAttachmentsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
+        /// This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://www.alibabacloud.com/help/doc-detail/261226.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0+
         /// 
         /// ## Example Usage
         /// 
@@ -72,9 +72,9 @@ namespace Pulumi.AliCloud.Cen
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterVbrAttachmentsResult>("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", args ?? new GetTransitRouterVbrAttachmentsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
+        /// This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://www.alibabacloud.com/help/doc-detail/261226.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0+
         /// 
         /// ## Example Usage
         /// 

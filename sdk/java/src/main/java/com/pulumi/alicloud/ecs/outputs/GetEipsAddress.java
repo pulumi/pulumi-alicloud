@@ -13,200 +13,370 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEipsAddress {
+    /**
+     * @return The eip name.
+     * 
+     */
     private String addressName;
+    /**
+     * @return The ID of the EIP.
+     * 
+     */
     private String allocationId;
+    /**
+     * @return The ID of the region to which the EIP belongs.
+     * 
+     */
     private List<String> availableRegions;
     /**
-     * @return EIP internet max bandwidth in Mbps.
+     * @return The maximum bandwidth of the EIP.
      * 
      */
     private String bandwidth;
+    /**
+     * @return The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
+     * 
+     */
     private String bandwidthPackageBandwidth;
+    /**
+     * @return The ID of the EIP bandwidth plan.
+     * 
+     */
     private String bandwidthPackageId;
+    /**
+     * @return The type of the bandwidth. Only CommonBandwidthPackage (an EIP bandwidth plan) is returned.
+     * 
+     */
     private String bandwidthPackageType;
+    /**
+     * @return The time when the EIP was created.
+     * 
+     */
     private String createTime;
     /**
-     * @return (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+     * @return Indicates whether deletion protection is enabled.
      * 
      */
     private Boolean deletionProtection;
+    /**
+     * @return The description of the EIP.
+     * 
+     */
     private String description;
+    /**
+     * @return The expiration date. The time follows the ISO 8601 standard and is displayed in UTC. Format: YYYY-MM-DDThh:mmZ.
+     * 
+     */
     private String expiredTime;
+    /**
+     * @return Indicates whether renewal data is included. This parameter returns true only when the parameter IncludeReservationData is set to true, and some orders have not taken effect.
+     * 
+     */
     private String hasReservationData;
+    /**
+     * @return Indicates whether fine-grained monitoring is enabled for the EIP.
+     * 
+     */
     private String hdMonitorStatus;
     /**
-     * @return ID of the EIP.
+     * @return The ID of the EIP.
      * 
      */
     private String id;
     /**
-     * @return The ID of the instance that is being bound.
+     * @return The ID of the instance with which the EIP is associated.
      * 
      */
     private String instanceId;
+    /**
+     * @return The region ID of the associated resource.
+     * 
+     */
     private String instanceRegionId;
     /**
-     * @return The instance type of that the EIP is bound.
+     * @return The type of the instance with which the EIP is associated.
      * 
      */
     private String instanceType;
     /**
-     * @return EIP internet charge type.
+     * @return The metering method of the EIP.
      * 
      */
     private String internetChargeType;
     /**
-     * @return Public IP Address of the the EIP.
+     * @return The eip address.
      * 
      */
     private String ipAddress;
+    /**
+     * @return The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
+     * 
+     */
     private String isp;
+    /**
+     * @return The details about the locked EIP.
+     * 
+     */
     private List<String> operationLocks;
+    /**
+     * @return The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
+     * 
+     */
     private String paymentType;
+    /**
+     * @return The time when the renewal takes effect.
+     * 
+     */
     private String reservationActiveTime;
+    /**
+     * @return The bandwidth after the renewal takes effect.
+     * 
+     */
     private String reservationBandwidth;
+    /**
+     * @return The metering method of the renewal.
+     * 
+     */
     private String reservationInternetChargeType;
+    /**
+     * @return The type of the renewal order.
+     * 
+     */
     private String reservationOrderType;
     /**
-     * @return The Id of resource group which the eips belongs.
+     * @return The ID of the resource group.
      * 
      */
     private String resourceGroupId;
+    /**
+     * @return Indicates whether level-2 throttling is configured.
+     * 
+     */
     private Boolean secondLimited;
+    /**
+     * @return The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
+     * 
+     */
     private String segmentInstanceId;
     /**
-     * @return EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+     * @return The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      * 
      */
     private String status;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     private Map<String,String> tags;
 
     private GetEipsAddress() {}
+    /**
+     * @return The eip name.
+     * 
+     */
     public String addressName() {
         return this.addressName;
     }
+    /**
+     * @return The ID of the EIP.
+     * 
+     */
     public String allocationId() {
         return this.allocationId;
     }
+    /**
+     * @return The ID of the region to which the EIP belongs.
+     * 
+     */
     public List<String> availableRegions() {
         return this.availableRegions;
     }
     /**
-     * @return EIP internet max bandwidth in Mbps.
+     * @return The maximum bandwidth of the EIP.
      * 
      */
     public String bandwidth() {
         return this.bandwidth;
     }
+    /**
+     * @return The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
+     * 
+     */
     public String bandwidthPackageBandwidth() {
         return this.bandwidthPackageBandwidth;
     }
+    /**
+     * @return The ID of the EIP bandwidth plan.
+     * 
+     */
     public String bandwidthPackageId() {
         return this.bandwidthPackageId;
     }
+    /**
+     * @return The type of the bandwidth. Only CommonBandwidthPackage (an EIP bandwidth plan) is returned.
+     * 
+     */
     public String bandwidthPackageType() {
         return this.bandwidthPackageType;
     }
+    /**
+     * @return The time when the EIP was created.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+     * @return Indicates whether deletion protection is enabled.
      * 
      */
     public Boolean deletionProtection() {
         return this.deletionProtection;
     }
+    /**
+     * @return The description of the EIP.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The expiration date. The time follows the ISO 8601 standard and is displayed in UTC. Format: YYYY-MM-DDThh:mmZ.
+     * 
+     */
     public String expiredTime() {
         return this.expiredTime;
     }
+    /**
+     * @return Indicates whether renewal data is included. This parameter returns true only when the parameter IncludeReservationData is set to true, and some orders have not taken effect.
+     * 
+     */
     public String hasReservationData() {
         return this.hasReservationData;
     }
+    /**
+     * @return Indicates whether fine-grained monitoring is enabled for the EIP.
+     * 
+     */
     public String hdMonitorStatus() {
         return this.hdMonitorStatus;
     }
     /**
-     * @return ID of the EIP.
+     * @return The ID of the EIP.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The ID of the instance that is being bound.
+     * @return The ID of the instance with which the EIP is associated.
      * 
      */
     public String instanceId() {
         return this.instanceId;
     }
+    /**
+     * @return The region ID of the associated resource.
+     * 
+     */
     public String instanceRegionId() {
         return this.instanceRegionId;
     }
     /**
-     * @return The instance type of that the EIP is bound.
+     * @return The type of the instance with which the EIP is associated.
      * 
      */
     public String instanceType() {
         return this.instanceType;
     }
     /**
-     * @return EIP internet charge type.
+     * @return The metering method of the EIP.
      * 
      */
     public String internetChargeType() {
         return this.internetChargeType;
     }
     /**
-     * @return Public IP Address of the the EIP.
+     * @return The eip address.
      * 
      */
     public String ipAddress() {
         return this.ipAddress;
     }
+    /**
+     * @return The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
+     * 
+     */
     public String isp() {
         return this.isp;
     }
+    /**
+     * @return The details about the locked EIP.
+     * 
+     */
     public List<String> operationLocks() {
         return this.operationLocks;
     }
+    /**
+     * @return The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
+     * 
+     */
     public String paymentType() {
         return this.paymentType;
     }
+    /**
+     * @return The time when the renewal takes effect.
+     * 
+     */
     public String reservationActiveTime() {
         return this.reservationActiveTime;
     }
+    /**
+     * @return The bandwidth after the renewal takes effect.
+     * 
+     */
     public String reservationBandwidth() {
         return this.reservationBandwidth;
     }
+    /**
+     * @return The metering method of the renewal.
+     * 
+     */
     public String reservationInternetChargeType() {
         return this.reservationInternetChargeType;
     }
+    /**
+     * @return The type of the renewal order.
+     * 
+     */
     public String reservationOrderType() {
         return this.reservationOrderType;
     }
     /**
-     * @return The Id of resource group which the eips belongs.
+     * @return The ID of the resource group.
      * 
      */
     public String resourceGroupId() {
         return this.resourceGroupId;
     }
+    /**
+     * @return Indicates whether level-2 throttling is configured.
+     * 
+     */
     public Boolean secondLimited() {
         return this.secondLimited;
     }
+    /**
+     * @return The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
+     * 
+     */
     public String segmentInstanceId() {
         return this.segmentInstanceId;
     }
     /**
-     * @return EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+     * @return The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      * 
      */
     public String status() {
@@ -214,6 +384,8 @@ public final class GetEipsAddress {
     }
     /**
      * @return A mapping of tags to assign to the resource.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Map<String,String> tags() {

@@ -65,6 +65,9 @@ namespace Pulumi.AliCloud.ExpressConnect.Outputs
         /// The IP address for health screening purposes.
         /// </summary>
         public readonly string HealthCheckTargetIp;
+        /// <summary>
+        /// The ID of the router interface.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The Access point ID to which the other end belongs.

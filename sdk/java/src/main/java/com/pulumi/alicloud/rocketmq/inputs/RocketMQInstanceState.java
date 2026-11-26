@@ -96,11 +96,21 @@ public final class RocketMQInstanceState extends com.pulumi.resources.ResourceAr
     /**
      * Commodity code
      * 
+     * Domestic station (China) values:
+     * 
      * ons_rmqsub_public_cn: Package year and month instance
      * 
      * ons_rmqpost_public_cn: Pay-As-You-Go instance
      * 
-     * Next: Serverless instances
+     * ons_rmqsrvlesspost_public_cn: Serverless instance
+     * 
+     * International station values:
+     * 
+     * ons_rmqsub_public_intl: Package year and month instance
+     * 
+     * ons_rmqpost_public_intl: Pay-As-You-Go instance
+     * 
+     * ons_rmqsrvlesspost_public_intl: Serverless instance
      * 
      */
     @Import(name="commodityCode")
@@ -109,11 +119,21 @@ public final class RocketMQInstanceState extends com.pulumi.resources.ResourceAr
     /**
      * @return Commodity code
      * 
+     * Domestic station (China) values:
+     * 
      * ons_rmqsub_public_cn: Package year and month instance
      * 
      * ons_rmqpost_public_cn: Pay-As-You-Go instance
      * 
-     * Next: Serverless instances
+     * ons_rmqsrvlesspost_public_cn: Serverless instance
+     * 
+     * International station values:
+     * 
+     * ons_rmqsub_public_intl: Package year and month instance
+     * 
+     * ons_rmqpost_public_intl: Pay-As-You-Go instance
+     * 
+     * ons_rmqsrvlesspost_public_intl: Serverless instance
      * 
      */
     public Optional<Output<String>> commodityCode() {
@@ -569,11 +589,21 @@ public final class RocketMQInstanceState extends com.pulumi.resources.ResourceAr
         /**
          * @param commodityCode Commodity code
          * 
+         * Domestic station (China) values:
+         * 
          * ons_rmqsub_public_cn: Package year and month instance
          * 
          * ons_rmqpost_public_cn: Pay-As-You-Go instance
          * 
-         * Next: Serverless instances
+         * ons_rmqsrvlesspost_public_cn: Serverless instance
+         * 
+         * International station values:
+         * 
+         * ons_rmqsub_public_intl: Package year and month instance
+         * 
+         * ons_rmqpost_public_intl: Pay-As-You-Go instance
+         * 
+         * ons_rmqsrvlesspost_public_intl: Serverless instance
          * 
          * @return builder
          * 
@@ -586,11 +616,21 @@ public final class RocketMQInstanceState extends com.pulumi.resources.ResourceAr
         /**
          * @param commodityCode Commodity code
          * 
+         * Domestic station (China) values:
+         * 
          * ons_rmqsub_public_cn: Package year and month instance
          * 
          * ons_rmqpost_public_cn: Pay-As-You-Go instance
          * 
-         * Next: Serverless instances
+         * ons_rmqsrvlesspost_public_cn: Serverless instance
+         * 
+         * International station values:
+         * 
+         * ons_rmqsub_public_intl: Package year and month instance
+         * 
+         * ons_rmqpost_public_intl: Pay-As-You-Go instance
+         * 
+         * ons_rmqsrvlesspost_public_intl: Serverless instance
          * 
          * @return builder
          * 

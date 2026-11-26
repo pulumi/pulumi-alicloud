@@ -76,6 +76,9 @@ class GetGreyTagRoutesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of GreyTagRoute names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -86,6 +89,9 @@ class GetGreyTagRoutesResult:
     @_builtins.property
     @pulumi.getter
     def routes(self) -> Sequence['outputs.GetGreyTagRoutesRouteResult']:
+        """
+        A list of Sae GreyTagRoutes. Each element contains the following attributes:
+        """
         return pulumi.get(self, "routes")
 
 
@@ -112,7 +118,7 @@ def get_grey_tag_routes(app_id: Optional[_builtins.str] = None,
     """
     This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.160.0+.
+    > **NOTE:** Available since v1.160.0.
 
     ## Example Usage
 
@@ -157,7 +163,7 @@ def get_grey_tag_routes_output(app_id: pulumi.Input[Optional[_builtins.str]] = N
     """
     This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.160.0+.
+    > **NOTE:** Available since v1.160.0.
 
     ## Example Usage
 

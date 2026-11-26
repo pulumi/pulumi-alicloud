@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vod
         /// <summary>
         /// This data source provides the Vod Domains of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Vod
         /// <summary>
         /// This data source provides the Vod Domains of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.Vod
         /// <summary>
         /// This data source provides the Vod Domains of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -314,6 +314,9 @@ namespace Pulumi.AliCloud.Vod
     public sealed class GetDomainsResult
     {
         public readonly string? DomainSearchType;
+        /// <summary>
+        /// A list of Vod Domains. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainsDomainResult> Domains;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -321,8 +324,14 @@ namespace Pulumi.AliCloud.Vod
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Domain names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
         public readonly ImmutableDictionary<string, string>? Tags;
 

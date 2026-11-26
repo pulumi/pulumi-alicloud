@@ -12,7 +12,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetVpcFirewallsFirewallLocalVpc {
+    /**
+     * @return The ID of the ENI.
+     * 
+     */
     private String eniId;
+    /**
+     * @return The private IP address of the ENI.
+     * 
+     */
     private String eniPrivateIpAddress;
     /**
      * @return The network segment list of the local VPC.
@@ -20,13 +28,17 @@ public final class GetVpcFirewallsFirewallLocalVpc {
      */
     private List<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList> localVpcCidrTableLists;
     /**
-     * @return The region ID of the peer VPC.
+     * @return The region ID.
      * 
      */
     private String regionNo;
+    /**
+     * @return The ID of the router interface.
+     * 
+     */
     private String routerInterfaceId;
     /**
-     * @return The ID of the peer VPC instance.
+     * @return The ID of the VPC instance.
      * 
      */
     private String vpcId;
@@ -37,9 +49,17 @@ public final class GetVpcFirewallsFirewallLocalVpc {
     private String vpcName;
 
     private GetVpcFirewallsFirewallLocalVpc() {}
+    /**
+     * @return The ID of the ENI.
+     * 
+     */
     public String eniId() {
         return this.eniId;
     }
+    /**
+     * @return The private IP address of the ENI.
+     * 
+     */
     public String eniPrivateIpAddress() {
         return this.eniPrivateIpAddress;
     }
@@ -51,17 +71,21 @@ public final class GetVpcFirewallsFirewallLocalVpc {
         return this.localVpcCidrTableLists;
     }
     /**
-     * @return The region ID of the peer VPC.
+     * @return The region ID.
      * 
      */
     public String regionNo() {
         return this.regionNo;
     }
+    /**
+     * @return The ID of the router interface.
+     * 
+     */
     public String routerInterfaceId() {
         return this.routerInterfaceId;
     }
     /**
-     * @return The ID of the peer VPC instance.
+     * @return The ID of the VPC instance.
      * 
      */
     public String vpcId() {

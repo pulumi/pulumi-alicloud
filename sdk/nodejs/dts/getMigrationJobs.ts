@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.157.0+.
+ * > **NOTE:** Available since v1.157.0.
  *
  * ## Example Usage
  *
@@ -68,15 +68,21 @@ export interface GetMigrationJobsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Dts Migration Jobs. Each element contains the following attributes:
+     */
     readonly jobs: outputs.dts.GetMigrationJobsJob[];
     readonly nameRegex?: string;
+    /**
+     * A list of Migration Job names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.157.0+.
+ * > **NOTE:** Available since v1.157.0.
  *
  * ## Example Usage
  *

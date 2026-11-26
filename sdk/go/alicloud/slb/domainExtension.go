@@ -15,7 +15,7 @@ import (
 // HTTPS listeners of guaranteed-performance SLB support configuring multiple certificates, allowing you to forward requests with different domain names to different backend servers.
 // Please refer to the [documentation](https://www.alibabacloud.com/help/doc-detail/85956.htm?spm=a2c63.p38356.b99.40.1c881563Co8p6w) for details.
 //
-// > **NOTE:** Available in 1.60.0+
+// > **NOTE:** Available since v1.60.0
 //
 // > **NOTE:** The instance with shared loadBalancerSpec doesn't support domainExtension.
 //
@@ -72,7 +72,7 @@ import (
 //				return err
 //			}
 //			domainExtensionServerCertificate, err := slb.NewServerCertificate(ctx, "domain_extension", &slb.ServerCertificateArgs{
-//				Name: pulumi.String("tf-testAccSlbServerCertificate"),
+//				Name: pulumi.String("terraform-example-slb-domain-extension"),
 //				ServerCertificate: pulumi.String(`-----BEGIN CERTIFICATE-----
 //
 // MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
@@ -154,7 +154,7 @@ import (
 //			}
 //			_, err = slb.NewDomainExtension(ctx, "example1", &slb.DomainExtensionArgs{
 //				LoadBalancerId:      instance.ID(),
-//				FrontendPort:        https.FrontendPort,
+//				ListenerPort:        https.FrontendPort,
 //				Domain:              pulumi.String("www.test.com"),
 //				ServerCertificateId: domainExtensionServerCertificate.ID(),
 //			})
@@ -183,8 +183,12 @@ type DomainExtension struct {
 	DeleteProtectionValidation pulumi.BoolPtrOutput `pulumi:"deleteProtectionValidation"`
 	// The domain name.
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+	// The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listenerPort` instead. Exactly one of `listenerPort` or `frontendPort` must be specified.
+	//
+	// Deprecated: Field 'frontend_port' has been deprecated from provider version 2.3.0. New field 'listener_port' instead.
 	FrontendPort pulumi.IntOutput `pulumi:"frontendPort"`
+	// The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listenerPort` or `frontendPort` must be specified; the constraint is enforced at plan time.
+	ListenerPort pulumi.IntOutput `pulumi:"listenerPort"`
 	// The ID of the SLB instance.
 	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
 	// The ID of the certificate used by the domain name.
@@ -200,9 +204,6 @@ func NewDomainExtension(ctx *pulumi.Context,
 
 	if args.Domain == nil {
 		return nil, errors.New("invalid value for required argument 'Domain'")
-	}
-	if args.FrontendPort == nil {
-		return nil, errors.New("invalid value for required argument 'FrontendPort'")
 	}
 	if args.LoadBalancerId == nil {
 		return nil, errors.New("invalid value for required argument 'LoadBalancerId'")
@@ -237,8 +238,12 @@ type domainExtensionState struct {
 	DeleteProtectionValidation *bool `pulumi:"deleteProtectionValidation"`
 	// The domain name.
 	Domain *string `pulumi:"domain"`
-	// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+	// The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listenerPort` instead. Exactly one of `listenerPort` or `frontendPort` must be specified.
+	//
+	// Deprecated: Field 'frontend_port' has been deprecated from provider version 2.3.0. New field 'listener_port' instead.
 	FrontendPort *int `pulumi:"frontendPort"`
+	// The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listenerPort` or `frontendPort` must be specified; the constraint is enforced at plan time.
+	ListenerPort *int `pulumi:"listenerPort"`
 	// The ID of the SLB instance.
 	LoadBalancerId *string `pulumi:"loadBalancerId"`
 	// The ID of the certificate used by the domain name.
@@ -250,8 +255,12 @@ type DomainExtensionState struct {
 	DeleteProtectionValidation pulumi.BoolPtrInput
 	// The domain name.
 	Domain pulumi.StringPtrInput
-	// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+	// The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listenerPort` instead. Exactly one of `listenerPort` or `frontendPort` must be specified.
+	//
+	// Deprecated: Field 'frontend_port' has been deprecated from provider version 2.3.0. New field 'listener_port' instead.
 	FrontendPort pulumi.IntPtrInput
+	// The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listenerPort` or `frontendPort` must be specified; the constraint is enforced at plan time.
+	ListenerPort pulumi.IntPtrInput
 	// The ID of the SLB instance.
 	LoadBalancerId pulumi.StringPtrInput
 	// The ID of the certificate used by the domain name.
@@ -273,8 +282,12 @@ type domainExtensionArgs struct {
 	DeleteProtectionValidation *bool `pulumi:"deleteProtectionValidation"`
 	// The domain name.
 	Domain string `pulumi:"domain"`
-	// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
-	FrontendPort int `pulumi:"frontendPort"`
+	// The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listenerPort` instead. Exactly one of `listenerPort` or `frontendPort` must be specified.
+	//
+	// Deprecated: Field 'frontend_port' has been deprecated from provider version 2.3.0. New field 'listener_port' instead.
+	FrontendPort *int `pulumi:"frontendPort"`
+	// The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listenerPort` or `frontendPort` must be specified; the constraint is enforced at plan time.
+	ListenerPort *int `pulumi:"listenerPort"`
 	// The ID of the SLB instance.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
 	// The ID of the certificate used by the domain name.
@@ -287,8 +300,12 @@ type DomainExtensionArgs struct {
 	DeleteProtectionValidation pulumi.BoolPtrInput
 	// The domain name.
 	Domain pulumi.StringInput
-	// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
-	FrontendPort pulumi.IntInput
+	// The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listenerPort` instead. Exactly one of `listenerPort` or `frontendPort` must be specified.
+	//
+	// Deprecated: Field 'frontend_port' has been deprecated from provider version 2.3.0. New field 'listener_port' instead.
+	FrontendPort pulumi.IntPtrInput
+	// The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listenerPort` or `frontendPort` must be specified; the constraint is enforced at plan time.
+	ListenerPort pulumi.IntPtrInput
 	// The ID of the SLB instance.
 	LoadBalancerId pulumi.StringInput
 	// The ID of the certificate used by the domain name.
@@ -392,9 +409,16 @@ func (o DomainExtensionOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainExtension) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+// The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listenerPort` instead. Exactly one of `listenerPort` or `frontendPort` must be specified.
+//
+// Deprecated: Field 'frontend_port' has been deprecated from provider version 2.3.0. New field 'listener_port' instead.
 func (o DomainExtensionOutput) FrontendPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *DomainExtension) pulumi.IntOutput { return v.FrontendPort }).(pulumi.IntOutput)
+}
+
+// The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listenerPort` or `frontendPort` must be specified; the constraint is enforced at plan time.
+func (o DomainExtensionOutput) ListenerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *DomainExtension) pulumi.IntOutput { return v.ListenerPort }).(pulumi.IntOutput)
 }
 
 // The ID of the SLB instance.

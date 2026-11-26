@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.155.0+.
+ * > **NOTE:** Available since v1.155.0.
  *
  * ## Example Usage
  *
@@ -70,15 +70,24 @@ export interface GetEcsStorageCapacityUnitsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Storage Capacity Unit names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of Storage Capacity Unit.
+     */
     readonly status?: string;
+    /**
+     * A list of Ecs Storage Capacity Units. Each element contains the following attributes:
+     */
     readonly units: outputs.ecs.GetEcsStorageCapacityUnitsUnit[];
 }
 /**
  * This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.155.0+.
+ * > **NOTE:** Available since v1.155.0.
  *
  * ## Example Usage
  *

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.179.0+.
+ * > **NOTE:** Available since v1.179.0.
  *
  * ## Example Usage
  *
@@ -47,6 +47,9 @@ export function getHanaBackupPlans(args: GetHanaBackupPlansArgs, opts?: pulumi.I
  * A collection of arguments for invoking getHanaBackupPlans.
  */
 export interface GetHanaBackupPlansArgs {
+    /**
+     * The ID of the SAP HANA instance.
+     */
     clusterId: string;
     /**
      * The name of the database.
@@ -76,7 +79,13 @@ export interface GetHanaBackupPlansArgs {
  * A collection of values returned by getHanaBackupPlans.
  */
 export interface GetHanaBackupPlansResult {
+    /**
+     * The ID of the SAP HANA instance.
+     */
     readonly clusterId: string;
+    /**
+     * The name of the database.
+     */
     readonly databaseName?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -84,17 +93,26 @@ export interface GetHanaBackupPlansResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Hbr Hana Backup Plan names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * A list of Hbr Hana Backup Plans. Each element contains the following attributes:
+     */
     readonly plans: outputs.hbr.GetHanaBackupPlansPlan[];
+    /**
+     * The ID of the backup vault.
+     */
     readonly vaultId?: string;
 }
 /**
  * This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.179.0+.
+ * > **NOTE:** Available since v1.179.0.
  *
  * ## Example Usage
  *
@@ -132,6 +150,9 @@ export function getHanaBackupPlansOutput(args: GetHanaBackupPlansOutputArgs, opt
  * A collection of arguments for invoking getHanaBackupPlans.
  */
 export interface GetHanaBackupPlansOutputArgs {
+    /**
+     * The ID of the SAP HANA instance.
+     */
     clusterId: pulumi.Input<string>;
     /**
      * The name of the database.

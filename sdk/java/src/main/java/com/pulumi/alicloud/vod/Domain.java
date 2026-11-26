@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For information about VOD Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/product/29932.html).
  * 
- * &gt; **NOTE:** Available since v1.136.0+.
+ * &gt; **NOTE:** Available since v1.136.0.
  * 
  * ## Example Usage
  * 
@@ -91,28 +91,70 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vod/domain:Domain")
 public class Domain extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+     * The ID of the certificate.
+     * 
+     */
+    @Export(name="certId", refs={String.class}, tree="[0]")
+    private Output<String> certId;
+
+    /**
+     * @return The ID of the certificate.
+     * 
+     */
+    public Output<String> certId() {
+        return this.certId;
+    }
+    /**
+     * The name of the certificate.
      * 
      */
     @Export(name="certName", refs={String.class}, tree="[0]")
     private Output<String> certName;
 
     /**
-     * @return The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+     * @return The name of the certificate.
      * 
      */
     public Output<String> certName() {
         return this.certName;
     }
     /**
-     * The URL that is used for health checks.
+     * The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+     * 
+     */
+    @Export(name="certRegion", refs={String.class}, tree="[0]")
+    private Output<String> certRegion;
+
+    /**
+     * @return The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+     * 
+     */
+    public Output<String> certRegion() {
+        return this.certRegion;
+    }
+    /**
+     * The type of the certificate. Valid values:
+     * 
+     */
+    @Export(name="certType", refs={String.class}, tree="[0]")
+    private Output<String> certType;
+
+    /**
+     * @return The type of the certificate. Valid values:
+     * 
+     */
+    public Output<String> certType() {
+        return this.certType;
+    }
+    /**
+     * The URL for health checks.
      * 
      */
     @Export(name="checkUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> checkUrl;
 
     /**
-     * @return The URL that is used for health checks.
+     * @return The URL for health checks.
      * 
      */
     public Output<Optional<String>> checkUrl() {
@@ -133,14 +175,14 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return this.cname;
     }
     /**
-     * The description of the domain name for CDN.
+     * The description of the ApsaraVideo VOD accelerated domain name.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return The description of the domain name for CDN.
+     * @return The description of the ApsaraVideo VOD accelerated domain name.
      * 
      */
     public Output<String> description() {
@@ -161,98 +203,126 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return this.domainName;
     }
     /**
-     * The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+     * 
+     */
+    @Export(name="env", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> env;
+
+    /**
+     * @return Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+     * 
+     */
+    public Output<Optional<String>> env() {
+        return Codegen.optional(this.env);
+    }
+    /**
+     * The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
      * 
      */
     @Export(name="gmtCreated", refs={String.class}, tree="[0]")
     private Output<String> gmtCreated;
 
     /**
-     * @return The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * @return The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
      * 
      */
     public Output<String> gmtCreated() {
         return this.gmtCreated;
     }
     /**
-     * The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
      * 
      */
     @Export(name="gmtModified", refs={String.class}, tree="[0]")
     private Output<String> gmtModified;
 
     /**
-     * @return The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * @return The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
      * 
      */
     public Output<String> gmtModified() {
         return this.gmtModified;
     }
     /**
-     * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+     * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
      * 
      */
     @Export(name="scope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scope;
 
     /**
-     * @return This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+     * @return This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
      * 
      */
     public Output<Optional<String>> scope() {
         return Codegen.optional(this.scope);
     }
     /**
-     * The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+     * The list of origin addresses. See `sources` below.
      * 
      */
     @Export(name="sources", refs={List.class,DomainSource.class}, tree="[0,1]")
     private Output<List<DomainSource>> sources;
 
     /**
-     * @return The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+     * @return The list of origin addresses. See `sources` below.
      * 
      */
     public Output<List<DomainSource>> sources() {
         return this.sources;
     }
     /**
-     * Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
+     * The content of the private key.
+     * 
+     */
+    @Export(name="sslPri", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sslPri;
+
+    /**
+     * @return The content of the private key.
+     * 
+     */
+    public Output<Optional<String>> sslPri() {
+        return Codegen.optional(this.sslPri);
+    }
+    /**
+     * Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
      * 
      */
     @Export(name="sslProtocol", refs={String.class}, tree="[0]")
     private Output<String> sslProtocol;
 
     /**
-     * @return Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
+     * @return Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
      * 
      */
     public Output<String> sslProtocol() {
         return this.sslProtocol;
     }
     /**
-     * The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+     * The content of the security certificate.
      * 
      */
     @Export(name="sslPub", refs={String.class}, tree="[0]")
     private Output<String> sslPub;
 
     /**
-     * @return The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+     * @return The content of the security certificate.
      * 
      */
     public Output<String> sslPub() {
         return this.sslPub;
     }
     /**
-     * The status of the domain name for CDN. Valid values:
+     * The running status of the accelerated domain name.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the domain name for CDN. Valid values:
+     * @return The running status of the accelerated domain name.
      * 
      */
     public Output<String> status() {
@@ -260,8 +330,8 @@ public class Domain extends com.pulumi.resources.CustomResource {
     }
     /**
      * A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
+     * - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+     * - `Value`: It can be up to 128 characters in length. It can be a null string.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -269,8 +339,8 @@ public class Domain extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
+     * - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+     * - `Value`: It can be up to 128 characters in length. It can be a null string.
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
@@ -344,6 +414,9 @@ public class Domain extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "sslPri"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

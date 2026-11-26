@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMountPointsResult {
+    /**
+     * @return The ID of the File System.
+     * 
+     */
     private String fileSystemId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,10 +26,22 @@ public final class GetMountPointsResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Dfs Mount Points. Each element contains the following attributes:
+     * 
+     */
     private List<GetMountPointsPoint> points;
+    /**
+     * @return The status of the Mount Point. Valid values: `Active`, `Inactive`.
+     * 
+     */
     private @Nullable String status;
 
     private GetMountPointsResult() {}
+    /**
+     * @return The ID of the File System.
+     * 
+     */
     public String fileSystemId() {
         return this.fileSystemId;
     }
@@ -42,9 +58,17 @@ public final class GetMountPointsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Dfs Mount Points. Each element contains the following attributes:
+     * 
+     */
     public List<GetMountPointsPoint> points() {
         return this.points;
     }
+    /**
+     * @return The status of the Mount Point. Valid values: `Active`, `Inactive`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

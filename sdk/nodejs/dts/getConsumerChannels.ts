@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  *
  * ## Example Usage
  *
@@ -54,6 +54,9 @@ export interface GetConsumerChannelsArgs {
  * A collection of values returned by getConsumerChannels.
  */
 export interface GetConsumerChannelsResult {
+    /**
+     * A list of Dts Consumer Channels. Each element contains the following attributes:
+     */
     readonly channels: outputs.dts.GetConsumerChannelsChannel[];
     readonly dtsInstanceId: string;
     /**
@@ -66,7 +69,7 @@ export interface GetConsumerChannelsResult {
 /**
  * This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  *
  * ## Example Usage
  *

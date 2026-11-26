@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Nlb.Outputs
     public sealed class GetLoadBalancersBalancerResult
     {
         /// <summary>
-        /// The IP version.
+        /// The IP version. Valid values: `Ipv4`, `DualStack`.
         /// </summary>
         public readonly string AddressIpVersion;
         /// <summary>
-        /// The type of IPv4 address used by the NLB instance.
+        /// The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
         /// </summary>
         public readonly string AddressType;
         /// <summary>
@@ -42,11 +42,11 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The type of IPv6 address used by the NLB instance.
+        /// The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
         /// </summary>
         public readonly string Ipv6AddressType;
         /// <summary>
-        /// The business status of the NLB instance.
+        /// The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
         /// </summary>
         public readonly string LoadBalancerBusinessStatus;
         /// <summary>
@@ -74,11 +74,11 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
         /// <summary>
-        /// The status of the NLB instance.
+        /// The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>

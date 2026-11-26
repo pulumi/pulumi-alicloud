@@ -13,7 +13,7 @@ import (
 
 // This data source provides the HBR Replication Vault Regions of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.152.0+.
+// > **NOTE:** Available since v1.152.0.
 //
 // ## Example Usage
 //
@@ -60,9 +60,10 @@ type GetReplicationVaultRegionsArgs struct {
 // A collection of values returned by getReplicationVaultRegions.
 type GetReplicationVaultRegionsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                             `pulumi:"id"`
-	OutputFile *string                            `pulumi:"outputFile"`
-	Regions    []GetReplicationVaultRegionsRegion `pulumi:"regions"`
+	Id         string  `pulumi:"id"`
+	OutputFile *string `pulumi:"outputFile"`
+	// A list of Ros Regions. Each element contains the following attributes:
+	Regions []GetReplicationVaultRegionsRegion `pulumi:"regions"`
 }
 
 func GetReplicationVaultRegionsOutput(ctx *pulumi.Context, args GetReplicationVaultRegionsOutputArgs, opts ...pulumi.InvokeOption) GetReplicationVaultRegionsResultOutput {
@@ -104,6 +105,7 @@ func (o GetReplicationVaultRegionsResultOutput) OutputFile() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetReplicationVaultRegionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ros Regions. Each element contains the following attributes:
 func (o GetReplicationVaultRegionsResultOutput) Regions() GetReplicationVaultRegionsRegionArrayOutput {
 	return o.ApplyT(func(v GetReplicationVaultRegionsResult) []GetReplicationVaultRegionsRegion { return v.Regions }).(GetReplicationVaultRegionsRegionArrayOutput)
 }

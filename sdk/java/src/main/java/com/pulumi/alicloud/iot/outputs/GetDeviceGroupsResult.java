@@ -16,7 +16,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDeviceGroupsResult {
     private @Nullable Boolean enableDetails;
+    /**
+     * @return The GroupName of the device group.
+     * 
+     */
     private @Nullable String groupName;
+    /**
+     * @return A list of Iot Device Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetDeviceGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -33,9 +41,17 @@ public final class GetDeviceGroupsResult {
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
+    /**
+     * @return The GroupName of the device group.
+     * 
+     */
     public Optional<String> groupName() {
         return Optional.ofNullable(this.groupName);
     }
+    /**
+     * @return A list of Iot Device Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetDeviceGroupsGroup> groups() {
         return this.groups;
     }

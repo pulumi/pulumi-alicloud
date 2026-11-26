@@ -107,11 +107,17 @@ namespace Pulumi.AliCloud.PolarDB
         /// Details about the parameters. See `Parameters` below.
         /// 
         /// &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.ParameterGroupParameter>> Parameters { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group in which to create the parameter template. You can use the ID of an `alicloud.resourcemanager.ResourceGroup` resource, for example, `alicloud_resource_manager_resource_group.example.id`. This argument is only used when creating the parameter template. The PolarDB API does not return it, so it cannot be read back or used to detect drift, and importing an existing parameter template does not restore it. Configuring it for an imported parameter template forces a replacement.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string?> ResourceGroupId { get; private set; } = null!;
 
 
         /// <summary>
@@ -203,14 +209,20 @@ namespace Pulumi.AliCloud.PolarDB
         /// Details about the parameters. See `Parameters` below.
         /// 
         /// &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputList<Inputs.ParameterGroupParameterArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.ParameterGroupParameterArgs>());
             set => _parameters = value;
         }
+
+        /// <summary>
+        /// The ID of the resource group in which to create the parameter template. You can use the ID of an `alicloud.resourcemanager.ResourceGroup` resource, for example, `alicloud_resource_manager_resource_group.example.id`. This argument is only used when creating the parameter template. The PolarDB API does not return it, so it cannot be read back or used to detect drift, and importing an existing parameter template does not restore it. Configuring it for an imported parameter template forces a replacement.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         public ParameterGroupArgs()
         {
@@ -270,14 +282,20 @@ namespace Pulumi.AliCloud.PolarDB
         /// Details about the parameters. See `Parameters` below.
         /// 
         /// &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputList<Inputs.ParameterGroupParameterGetArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.ParameterGroupParameterGetArgs>());
             set => _parameters = value;
         }
+
+        /// <summary>
+        /// The ID of the resource group in which to create the parameter template. You can use the ID of an `alicloud.resourcemanager.ResourceGroup` resource, for example, `alicloud_resource_manager_resource_group.example.id`. This argument is only used when creating the parameter template. The PolarDB API does not return it, so it cannot be read back or used to detect drift, and importing an existing parameter template does not restore it. Configuring it for an imported parameter template forces a replacement.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         public ParameterGroupState()
         {

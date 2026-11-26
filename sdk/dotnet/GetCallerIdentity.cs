@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// This data source provides the identity of the current user.
         /// 
-        /// &gt; **NOTE:** Available in 1.65.0+.
+        /// &gt; **NOTE:** Available since v1.65.0.
         /// 
         /// ## Example Usage
         /// 
@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// This data source provides the identity of the current user.
         /// 
-        /// &gt; **NOTE:** Available in 1.65.0+.
+        /// &gt; **NOTE:** Available since v1.65.0.
         /// 
         /// ## Example Usage
         /// 
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// This data source provides the identity of the current user.
         /// 
-        /// &gt; **NOTE:** Available in 1.65.0+.
+        /// &gt; **NOTE:** Available since v1.65.0.
         /// 
         /// ## Example Usage
         /// 

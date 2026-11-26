@@ -73,7 +73,7 @@ class EdgeKubernetesArgs:
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
                
-               *Removed params*
+               Removed params
         :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
                * ack.standard : Standard edge clusters.
                * ack.pro.small : Professional edge clusters.
@@ -85,7 +85,7 @@ class EdgeKubernetesArgs:
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
                ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
                
-               *Worker params*
+               Worker params
         :param pulumi.Input['EdgeKubernetesLogConfigArgs'] log_config: A list of one element containing information about the associated log store. See `log_config` below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[_builtins.str] name_prefix: The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
@@ -102,7 +102,7 @@ class EdgeKubernetesArgs:
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
                
-               *Network params*
+               Network params
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work node.
         :param pulumi.Input[_builtins.str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
@@ -113,7 +113,7 @@ class EdgeKubernetesArgs:
         :param pulumi.Input[_builtins.int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[_builtins.str] worker_disk_snapshot_policy_id: Worker node system disk auto snapshot policy.
                
-               *Computed params*
+               Computed params
                
                You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kube_config.
         :param pulumi.Input[_builtins.str] worker_instance_charge_type: Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
@@ -304,7 +304,7 @@ class EdgeKubernetesArgs:
         """
         From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 
-        *Removed params*
+        Removed params
         """
         return pulumi.get(self, "cluster_ca_cert")
 
@@ -394,7 +394,7 @@ class EdgeKubernetesArgs:
         The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
 
-        *Worker params*
+        Worker params
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -577,7 +577,7 @@ class EdgeKubernetesArgs:
         """
         Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
 
-        *Network params*
+        Network params
         """
         return pulumi.get(self, "skip_set_certificate_authority")
 
@@ -687,7 +687,7 @@ class EdgeKubernetesArgs:
         """
         Worker node system disk auto snapshot policy.
 
-        *Computed params*
+        Computed params
 
         You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kube_config.
         """
@@ -772,7 +772,7 @@ class _EdgeKubernetesState:
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
                
-               *Removed params*
+               Removed params
         :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
                * ack.standard : Standard edge clusters.
                * ack.pro.small : Professional edge clusters.
@@ -785,7 +785,7 @@ class _EdgeKubernetesState:
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
                ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
                
-               *Worker params*
+               Worker params
         :param pulumi.Input['EdgeKubernetesLogConfigArgs'] log_config: A list of one element containing information about the associated log store. See `log_config` below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[_builtins.str] name_prefix: The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
@@ -803,7 +803,8 @@ class _EdgeKubernetesState:
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
                
-               *Network params*
+               Network params
+        :param pulumi.Input[_builtins.str] slb_id: The ID of APIServer load balancer.
         :param pulumi.Input[_builtins.str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[_builtins.str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
@@ -817,7 +818,7 @@ class _EdgeKubernetesState:
         :param pulumi.Input[_builtins.int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[_builtins.str] worker_disk_snapshot_policy_id: Worker node system disk auto snapshot policy.
                
-               *Computed params*
+               Computed params
                
                You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kube_config.
         :param pulumi.Input[_builtins.str] worker_instance_charge_type: Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
@@ -1014,7 +1015,7 @@ class _EdgeKubernetesState:
         """
         From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 
-        *Removed params*
+        Removed params
         """
         return pulumi.get(self, "cluster_ca_cert")
 
@@ -1116,7 +1117,7 @@ class _EdgeKubernetesState:
         The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
 
-        *Worker params*
+        Worker params
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -1311,7 +1312,7 @@ class _EdgeKubernetesState:
         """
         Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
 
-        *Network params*
+        Network params
         """
         return pulumi.get(self, "skip_set_certificate_authority")
 
@@ -1322,6 +1323,9 @@ class _EdgeKubernetesState:
     @_builtins.property
     @pulumi.getter(name="slbId")
     def slb_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of APIServer load balancer.
+        """
         return pulumi.get(self, "slb_id")
 
     @slb_id.setter
@@ -1466,7 +1470,7 @@ class _EdgeKubernetesState:
         """
         Worker node system disk auto snapshot policy.
 
-        *Computed params*
+        Computed params
 
         You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kube_config.
         """
@@ -1597,7 +1601,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                  worker_vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        > **DEPRECATION NOTICE:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs.ManagedKubernetes` instead.
+        > **DEPRECATED:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs.ManagedKubernetes` instead.
 
         This resource will help you to manage a Edge Kubernetes Cluster in Alibaba Cloud Kubernetes Service, see [What is edge kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-an-ack-edge-cluster).
 
@@ -1732,7 +1736,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
                
-               *Removed params*
+               Removed params
         :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
                * ack.standard : Standard edge clusters.
                * ack.pro.small : Professional edge clusters.
@@ -1744,7 +1748,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
                ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
                
-               *Worker params*
+               Worker params
         :param pulumi.Input[Union['EdgeKubernetesLogConfigArgs', 'EdgeKubernetesLogConfigArgsDict', 'outputs.EdgeKubernetesLogConfig']] log_config: A list of one element containing information about the associated log store. See `log_config` below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[_builtins.str] name_prefix: The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
@@ -1761,7 +1765,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
                
-               *Network params*
+               Network params
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work node.
         :param pulumi.Input[_builtins.str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
@@ -1772,7 +1776,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[_builtins.str] worker_disk_snapshot_policy_id: Worker node system disk auto snapshot policy.
                
-               *Computed params*
+               Computed params
                
                You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kube_config.
         :param pulumi.Input[_builtins.str] worker_instance_charge_type: Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
@@ -1787,7 +1791,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                  args: EdgeKubernetesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **DEPRECATION NOTICE:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs.ManagedKubernetes` instead.
+        > **DEPRECATED:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs.ManagedKubernetes` instead.
 
         This resource will help you to manage a Edge Kubernetes Cluster in Alibaba Cloud Kubernetes Service, see [What is edge kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-an-ack-edge-cluster).
 
@@ -2108,7 +2112,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
                
-               *Removed params*
+               Removed params
         :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
                * ack.standard : Standard edge clusters.
                * ack.pro.small : Professional edge clusters.
@@ -2121,7 +2125,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
                ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
                
-               *Worker params*
+               Worker params
         :param pulumi.Input[Union['EdgeKubernetesLogConfigArgs', 'EdgeKubernetesLogConfigArgsDict', 'outputs.EdgeKubernetesLogConfig']] log_config: A list of one element containing information about the associated log store. See `log_config` below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[_builtins.str] name_prefix: The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
@@ -2139,7 +2143,8 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
                
-               *Network params*
+               Network params
+        :param pulumi.Input[_builtins.str] slb_id: The ID of APIServer load balancer.
         :param pulumi.Input[_builtins.str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[_builtins.str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
@@ -2153,7 +2158,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[_builtins.str] worker_disk_snapshot_policy_id: Worker node system disk auto snapshot policy.
                
-               *Computed params*
+               Computed params
                
                You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kube_config.
         :param pulumi.Input[_builtins.str] worker_instance_charge_type: Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
@@ -2372,7 +2377,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         """
         From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 
-        *Removed params*
+        Removed params
         """
         return pulumi.get(self, "cluster_ca_cert")
 
@@ -2442,7 +2447,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
 
-        *Worker params*
+        Worker params
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -2573,13 +2578,16 @@ class EdgeKubernetes(pulumi.CustomResource):
         """
         Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
 
-        *Network params*
+        Network params
         """
         return pulumi.get(self, "skip_set_certificate_authority")
 
     @_builtins.property
     @pulumi.getter(name="slbId")
     def slb_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of APIServer load balancer.
+        """
         return pulumi.get(self, "slb_id")
 
     @_builtins.property
@@ -2676,7 +2684,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         """
         Worker node system disk auto snapshot policy.
 
-        *Computed params*
+        Computed params
 
         You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kube_config.
         """

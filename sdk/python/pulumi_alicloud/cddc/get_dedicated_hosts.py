@@ -68,11 +68,17 @@ class GetDedicatedHostsResult:
     @_builtins.property
     @pulumi.getter(name="allocationStatus")
     def allocation_status(self) -> Optional[_builtins.str]:
+        """
+        Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+        """
         return pulumi.get(self, "allocation_status")
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostGroupId")
     def dedicated_host_group_id(self) -> _builtins.str:
+        """
+        The ID of the dedicated cluster in which the host is created.
+        """
         return pulumi.get(self, "dedicated_host_group_id")
 
     @_builtins.property
@@ -83,11 +89,17 @@ class GetDedicatedHostsResult:
     @_builtins.property
     @pulumi.getter(name="hostType")
     def host_type(self) -> Optional[_builtins.str]:
+        """
+        The storage type of the host.
+        """
         return pulumi.get(self, "host_type")
 
     @_builtins.property
     @pulumi.getter
     def hosts(self) -> Sequence['outputs.GetDedicatedHostsHostResult']:
+        """
+        A list of Cddc Dedicated Hosts. Each element contains the following attributes:
+        """
         return pulumi.get(self, "hosts")
 
     @_builtins.property
@@ -116,16 +128,25 @@ class GetDedicatedHostsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The state of the host.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The tag of the resource.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
+        """
+        The zone ID of the host.
+        """
         return pulumi.get(self, "zone_id")
 
 
@@ -163,7 +184,7 @@ def get_dedicated_hosts(allocation_status: Optional[_builtins.str] = None,
     """
     This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.147.0+.
+    > **NOTE:** Available since v1.147.0.
 
     ## Example Usage
 
@@ -263,7 +284,7 @@ def get_dedicated_hosts_output(allocation_status: pulumi.Input[Optional[Optional
     """
     This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.147.0+.
+    > **NOTE:** Available since v1.147.0.
 
     ## Example Usage
 

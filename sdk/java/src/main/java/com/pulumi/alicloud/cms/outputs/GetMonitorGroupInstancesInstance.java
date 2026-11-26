@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMonitorGroupInstancesInstance {
+    /**
+     * @return Instance information added to the Cms Group.
+     * 
+     */
     private List<GetMonitorGroupInstancesInstanceInstance> instances;
 
     private GetMonitorGroupInstancesInstance() {}
+    /**
+     * @return Instance information added to the Cms Group.
+     * 
+     */
     public List<GetMonitorGroupInstancesInstanceInstance> instances() {
         return this.instances;
     }

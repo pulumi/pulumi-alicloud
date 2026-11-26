@@ -49,7 +49,7 @@ class StackArgs:
         :param pulumi.Input[_builtins.str] deletion_protection: Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default to: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_urls: The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
-        :param pulumi.Input[Sequence[pulumi.Input['StackParameterArgs']]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        :param pulumi.Input[Sequence[pulumi.Input['StackParameterArgs']]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
         :param pulumi.Input[_builtins.str] ram_role_name: The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
         :param pulumi.Input[_builtins.str] replacement_option: Specifies whether to enable replacement update after a resource attribute that does not support modification update is changed. Modification update keeps the physical ID of the resource unchanged. However, the resource is deleted and then recreated, and its physical ID is changed if replacement update is enabled.
         :param pulumi.Input[_builtins.bool] retain_all_resources: The retain all resources.
@@ -169,7 +169,7 @@ class StackArgs:
     @pulumi.getter
     def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StackParameterArgs']]]]:
         """
-        The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -377,7 +377,7 @@ class _StackState:
         :param pulumi.Input[_builtins.str] deletion_protection: Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default to: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_urls: The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
-        :param pulumi.Input[Sequence[pulumi.Input['StackParameterArgs']]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        :param pulumi.Input[Sequence[pulumi.Input['StackParameterArgs']]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
         :param pulumi.Input[_builtins.str] ram_role_name: The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
         :param pulumi.Input[_builtins.str] replacement_option: Specifies whether to enable replacement update after a resource attribute that does not support modification update is changed. Modification update keeps the physical ID of the resource unchanged. However, the resource is deleted and then recreated, and its physical ID is changed if replacement update is enabled.
         :param pulumi.Input[_builtins.bool] retain_all_resources: The retain all resources.
@@ -490,7 +490,7 @@ class _StackState:
     @pulumi.getter
     def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StackParameterArgs']]]]:
         """
-        The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -734,18 +734,18 @@ class Stack(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ros.Stack("example",
-            stack_name="tf-testaccstack",
+            stack_name="tfaccstack",
             template_body=\"\"\"    {
-            \\t\\"ROSTemplateFormatVersion\\": \\"2015-09-01\\"
+              \\"ROSTemplateFormatVersion\\": \\"2015-09-01\\"
             }
         \"\"\",
             stack_policy_body=\"\"\"    {
-            \\t\\"Statement\\": [{
-            \\t\\t\\"Action\\": \\"Update:Delete\\",
-            \\t\\t\\"Resource\\": \\"*\\",
-            \\t\\t\\"Effect\\": \\"Allow\\",
-            \\t\\t\\"Principal\\": \\"*\\"
-            \\t}]
+              \\"Statement\\": [{
+                \\"Action\\": \\"Update:Delete\\",
+                \\"Resource\\": \\"*\\",
+                \\"Effect\\": \\"Allow\\",
+                \\"Principal\\": \\"*\\"
+              }]
             }
         \"\"\")
         ```
@@ -767,7 +767,7 @@ class Stack(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deletion_protection: Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default to: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_urls: The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict', 'outputs.StackParameter']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict', 'outputs.StackParameter']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
         :param pulumi.Input[_builtins.str] ram_role_name: The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
         :param pulumi.Input[_builtins.str] replacement_option: Specifies whether to enable replacement update after a resource attribute that does not support modification update is changed. Modification update keeps the physical ID of the resource unchanged. However, the resource is deleted and then recreated, and its physical ID is changed if replacement update is enabled.
         :param pulumi.Input[_builtins.bool] retain_all_resources: The retain all resources.
@@ -806,18 +806,18 @@ class Stack(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ros.Stack("example",
-            stack_name="tf-testaccstack",
+            stack_name="tfaccstack",
             template_body=\"\"\"    {
-            \\t\\"ROSTemplateFormatVersion\\": \\"2015-09-01\\"
+              \\"ROSTemplateFormatVersion\\": \\"2015-09-01\\"
             }
         \"\"\",
             stack_policy_body=\"\"\"    {
-            \\t\\"Statement\\": [{
-            \\t\\t\\"Action\\": \\"Update:Delete\\",
-            \\t\\t\\"Resource\\": \\"*\\",
-            \\t\\t\\"Effect\\": \\"Allow\\",
-            \\t\\t\\"Principal\\": \\"*\\"
-            \\t}]
+              \\"Statement\\": [{
+                \\"Action\\": \\"Update:Delete\\",
+                \\"Resource\\": \\"*\\",
+                \\"Effect\\": \\"Allow\\",
+                \\"Principal\\": \\"*\\"
+              }]
             }
         \"\"\")
         ```
@@ -942,7 +942,7 @@ class Stack(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deletion_protection: Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default to: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_urls: The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict', 'outputs.StackParameter']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict', 'outputs.StackParameter']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
         :param pulumi.Input[_builtins.str] ram_role_name: The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
         :param pulumi.Input[_builtins.str] replacement_option: Specifies whether to enable replacement update after a resource attribute that does not support modification update is changed. Modification update keeps the physical ID of the resource unchanged. However, the resource is deleted and then recreated, and its physical ID is changed if replacement update is enabled.
         :param pulumi.Input[_builtins.bool] retain_all_resources: The retain all resources.
@@ -1071,7 +1071,7 @@ class Stack(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Optional[Sequence['outputs.StackParameter']]]:
         """
-        The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 

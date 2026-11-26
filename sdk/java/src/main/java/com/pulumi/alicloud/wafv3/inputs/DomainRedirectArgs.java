@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.wafv3.inputs;
 
+import com.pulumi.alicloud.wafv3.inputs.DomainRedirectBackendPortArgs;
 import com.pulumi.alicloud.wafv3.inputs.DomainRedirectRequestHeaderArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -19,6 +20,21 @@ import javax.annotation.Nullable;
 public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DomainRedirectArgs Empty = new DomainRedirectArgs();
+
+    /**
+     * The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `backendPorts` below.
+     * 
+     */
+    @Import(name="backendPorts")
+    private @Nullable Output<List<DomainRedirectBackendPortArgs>> backendPorts;
+
+    /**
+     * @return The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `backendPorts` below.
+     * 
+     */
+    public Optional<Output<List<DomainRedirectBackendPortArgs>>> backendPorts() {
+        return Optional.ofNullable(this.backendPorts);
+    }
 
     /**
      * The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
@@ -188,6 +204,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+     * 
      * &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
      * 
      */
@@ -196,6 +213,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+     * 
      * &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
      * 
      */
@@ -317,6 +335,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     private DomainRedirectArgs() {}
 
     private DomainRedirectArgs(DomainRedirectArgs $) {
+        this.backendPorts = $.backendPorts;
         this.backends = $.backends;
         this.backupBackends = $.backupBackends;
         this.connectTimeout = $.connectTimeout;
@@ -353,6 +372,37 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder(DomainRedirectArgs defaults) {
             $ = new DomainRedirectArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param backendPorts The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `backendPorts` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendPorts(@Nullable Output<List<DomainRedirectBackendPortArgs>> backendPorts) {
+            $.backendPorts = backendPorts;
+            return this;
+        }
+
+        /**
+         * @param backendPorts The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `backendPorts` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendPorts(List<DomainRedirectBackendPortArgs> backendPorts) {
+            return backendPorts(Output.of(backendPorts));
+        }
+
+        /**
+         * @param backendPorts The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `backendPorts` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendPorts(DomainRedirectBackendPortArgs... backendPorts) {
+            return backendPorts(List.of(backendPorts));
         }
 
         /**
@@ -606,6 +656,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param maxBodySize The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+         * 
          * &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
          * 
          * @return builder
@@ -618,6 +669,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param maxBodySize The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+         * 
          * &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
          * 
          * @return builder

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.179.0+.
+ * > **NOTE:** Available since v1.179.0+.
  *
  * ## Example Usage
  *
@@ -72,16 +72,22 @@ export interface GetHybridMonitorSlsTasksResult {
     readonly id: string;
     readonly ids: string[];
     readonly keyword?: string;
+    /**
+     * The namespace to which the host belongs.
+     */
     readonly namespace?: string;
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * A list of Cms Hybrid Monitor Sls Tasks. Each element contains the following attributes:
+     */
     readonly tasks: outputs.cms.GetHybridMonitorSlsTasksTask[];
 }
 /**
  * This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.179.0+.
+ * > **NOTE:** Available since v1.179.0+.
  *
  * ## Example Usage
  *

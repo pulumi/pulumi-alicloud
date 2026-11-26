@@ -45,6 +45,8 @@ class CollectionPolicyArgs:
         :param pulumi.Input[_builtins.bool] centralize_enabled: Specifies whether to enable centralized forwarding. Default value: false.
         :param pulumi.Input['CollectionPolicyDataConfigArgs'] data_config: This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `data_config` below.
         :param pulumi.Input['CollectionPolicyResourceDirectoryArgs'] resource_directory: Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
+               
+               > **NOTE:** The SLS API does not support removing `resource_directory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
         """
         pulumi.set(__self__, "data_code", data_code)
         pulumi.set(__self__, "enabled", enabled)
@@ -164,6 +166,8 @@ class CollectionPolicyArgs:
     def resource_directory(self) -> pulumi.Input[Optional['CollectionPolicyResourceDirectoryArgs']]:
         """
         Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
+
+        > **NOTE:** The SLS API does not support removing `resource_directory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
         """
         return pulumi.get(self, "resource_directory")
 
@@ -199,6 +203,8 @@ class _CollectionPolicyState:
                - Its length must be between 3 and 63 characters.
         :param pulumi.Input[_builtins.str] product_code: Product code.
         :param pulumi.Input['CollectionPolicyResourceDirectoryArgs'] resource_directory: Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
+               
+               > **NOTE:** The SLS API does not support removing `resource_directory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
         """
         if centralize_config is not None:
             pulumi.set(__self__, "centralize_config", centralize_config)
@@ -323,6 +329,8 @@ class _CollectionPolicyState:
     def resource_directory(self) -> pulumi.Input[Optional['CollectionPolicyResourceDirectoryArgs']]:
         """
         Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
+
+        > **NOTE:** The SLS API does not support removing `resource_directory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
         """
         return pulumi.get(self, "resource_directory")
 
@@ -413,7 +421,8 @@ class CollectionPolicy(pulumi.CustomResource):
             data_code="metering_log",
             centralize_enabled=True,
             product_code="oss",
-            policy_name="xc-example-oss-01",
+            policy_name=std.format(input="xc-example-oss-%s",
+                args=[default["result"]]).result,
             enabled=True,
             data_config={
                 "data_region": "cn-hangzhou",
@@ -425,8 +434,7 @@ class CollectionPolicy(pulumi.CustomResource):
                 "dest_logstore": logstore_create01.logstore_name,
             },
             resource_directory={
-                "account_group_type": "custom",
-                "members": ["1936728897040477"],
+                "account_group_type": "all",
             })
         ```
 
@@ -490,7 +498,8 @@ class CollectionPolicy(pulumi.CustomResource):
             data_code="access_log",
             centralize_enabled=False,
             product_code="oss",
-            policy_name="xc-example-oss-01",
+            policy_name=std.format(input="xc-example-oss-%s",
+                args=[default["result"]]).result,
             enabled=True)
         ```
 
@@ -519,6 +528,8 @@ class CollectionPolicy(pulumi.CustomResource):
                - Its length must be between 3 and 63 characters.
         :param pulumi.Input[_builtins.str] product_code: Product code.
         :param pulumi.Input[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict', 'outputs.CollectionPolicyResourceDirectory']] resource_directory: Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
+               
+               > **NOTE:** The SLS API does not support removing `resource_directory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
         """
         ...
     @overload
@@ -592,7 +603,8 @@ class CollectionPolicy(pulumi.CustomResource):
             data_code="metering_log",
             centralize_enabled=True,
             product_code="oss",
-            policy_name="xc-example-oss-01",
+            policy_name=std.format(input="xc-example-oss-%s",
+                args=[default["result"]]).result,
             enabled=True,
             data_config={
                 "data_region": "cn-hangzhou",
@@ -604,8 +616,7 @@ class CollectionPolicy(pulumi.CustomResource):
                 "dest_logstore": logstore_create01.logstore_name,
             },
             resource_directory={
-                "account_group_type": "custom",
-                "members": ["1936728897040477"],
+                "account_group_type": "all",
             })
         ```
 
@@ -669,7 +680,8 @@ class CollectionPolicy(pulumi.CustomResource):
             data_code="access_log",
             centralize_enabled=False,
             product_code="oss",
-            policy_name="xc-example-oss-01",
+            policy_name=std.format(input="xc-example-oss-%s",
+                args=[default["result"]]).result,
             enabled=True)
         ```
 
@@ -774,6 +786,8 @@ class CollectionPolicy(pulumi.CustomResource):
                - Its length must be between 3 and 63 characters.
         :param pulumi.Input[_builtins.str] product_code: Product code.
         :param pulumi.Input[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict', 'outputs.CollectionPolicyResourceDirectory']] resource_directory: Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
+               
+               > **NOTE:** The SLS API does not support removing `resource_directory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -824,7 +838,7 @@ class CollectionPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="centralizeEnabled")
-    def centralize_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def centralize_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         Specifies whether to enable centralized forwarding. Default value: false.
         """
@@ -883,9 +897,11 @@ class CollectionPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="resourceDirectory")
-    def resource_directory(self) -> pulumi.Output['outputs.CollectionPolicyResourceDirectory']:
+    def resource_directory(self) -> pulumi.Output[Optional['outputs.CollectionPolicyResourceDirectory']]:
         """
         Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
+
+        > **NOTE:** The SLS API does not support removing `resource_directory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
         """
         return pulumi.get(self, "resource_directory")
 

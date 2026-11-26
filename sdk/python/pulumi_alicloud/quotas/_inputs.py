@@ -41,13 +41,23 @@ __all__ = [
 
 class ApplicationInfoDimensionArgsDict(TypedDict):
     key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+    """
     value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+    """
 
 @pulumi.input_type
 class ApplicationInfoDimensionArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key: The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+        :param pulumi.Input[_builtins.str] value: The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -56,6 +66,9 @@ class ApplicationInfoDimensionArgs:
     @_builtins.property
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -65,6 +78,9 @@ class ApplicationInfoDimensionArgs:
     @_builtins.property
     @pulumi.getter
     def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -254,7 +270,7 @@ class TemplateApplicationsQuotaApplicationDetailArgsDict(TypedDict):
     """
     period: NotRequired[pulumi.Input[Optional['TemplateApplicationsQuotaApplicationDetailPeriodArgsDict']]]
     """
-    Quota calculation period.
+    Quota calculation period. See `period` below.
     """
     quota_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -275,6 +291,7 @@ class TemplateApplicationsQuotaApplicationDetailArgsDict(TypedDict):
     reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Reason for quota application.
+
     > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
     """
     status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -315,12 +332,13 @@ class TemplateApplicationsQuotaApplicationDetailArgs:
         :param pulumi.Input[_builtins.int] notice_type: Whether to send notification of quota application result. Value:
                - 0 (default): No.
                - 3: Yes.
-        :param pulumi.Input['TemplateApplicationsQuotaApplicationDetailPeriodArgs'] period: Quota calculation period.
+        :param pulumi.Input['TemplateApplicationsQuotaApplicationDetailPeriodArgs'] period: Quota calculation period. See `period` below.
         :param pulumi.Input[_builtins.str] quota_arn: Quota ARN.
         :param pulumi.Input[_builtins.str] quota_description: The quota description.
         :param pulumi.Input[_builtins.str] quota_name: The quota name.
         :param pulumi.Input[_builtins.str] quota_unit: Quota unit.
         :param pulumi.Input[_builtins.str] reason: Reason for quota application.
+               
                > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         :param pulumi.Input[_builtins.str] status: The approval status of the quota promotion application. Value:
                - Disagree: reject.
@@ -449,7 +467,7 @@ class TemplateApplicationsQuotaApplicationDetailArgs:
     @pulumi.getter
     def period(self) -> pulumi.Input[Optional['TemplateApplicationsQuotaApplicationDetailPeriodArgs']]:
         """
-        Quota calculation period.
+        Quota calculation period. See `period` below.
         """
         return pulumi.get(self, "period")
 
@@ -510,6 +528,7 @@ class TemplateApplicationsQuotaApplicationDetailArgs:
     def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reason for quota application.
+
         > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         """
         return pulumi.get(self, "reason")
@@ -635,13 +654,23 @@ class TemplateQuotaDimensionArgs:
 
 class GetApplicationInfosDimensionArgsDict(TypedDict):
     key: NotRequired[_builtins.str]
+    """
+    The key of dimensions.
+    """
     value: NotRequired[_builtins.str]
+    """
+    The value of dimensions.
+    """
 
 @pulumi.input_type
 class GetApplicationInfosDimensionArgs:
     def __init__(__self__, *,
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: The key of dimensions.
+        :param _builtins.str value: The value of dimensions.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -650,6 +679,9 @@ class GetApplicationInfosDimensionArgs:
     @_builtins.property
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
+        """
+        The key of dimensions.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -659,6 +691,9 @@ class GetApplicationInfosDimensionArgs:
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[_builtins.str]:
+        """
+        The value of dimensions.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -668,13 +703,23 @@ class GetApplicationInfosDimensionArgs:
 
 class GetQuotaAlarmsQuotaDimensionArgsDict(TypedDict):
     key: NotRequired[_builtins.str]
+    """
+    The key of quota_dimensions.
+    """
     value: NotRequired[_builtins.str]
+    """
+    The value of quota_dimensions.
+    """
 
 @pulumi.input_type
 class GetQuotaAlarmsQuotaDimensionArgs:
     def __init__(__self__, *,
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: The key of quota_dimensions.
+        :param _builtins.str value: The value of quota_dimensions.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -683,6 +728,9 @@ class GetQuotaAlarmsQuotaDimensionArgs:
     @_builtins.property
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
+        """
+        The key of quota_dimensions.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -692,6 +740,9 @@ class GetQuotaAlarmsQuotaDimensionArgs:
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[_builtins.str]:
+        """
+        The value of quota_dimensions.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -701,13 +752,23 @@ class GetQuotaAlarmsQuotaDimensionArgs:
 
 class GetQuotaApplicationsDimensionArgsDict(TypedDict):
     key: NotRequired[_builtins.str]
+    """
+    The key of dimensions.
+    """
     value: NotRequired[_builtins.str]
+    """
+    The value of dimensions.
+    """
 
 @pulumi.input_type
 class GetQuotaApplicationsDimensionArgs:
     def __init__(__self__, *,
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: The key of dimensions.
+        :param _builtins.str value: The value of dimensions.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -716,6 +777,9 @@ class GetQuotaApplicationsDimensionArgs:
     @_builtins.property
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
+        """
+        The key of dimensions.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -725,6 +789,9 @@ class GetQuotaApplicationsDimensionArgs:
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[_builtins.str]:
+        """
+        The value of dimensions.
+        """
         return pulumi.get(self, "value")
 
     @value.setter

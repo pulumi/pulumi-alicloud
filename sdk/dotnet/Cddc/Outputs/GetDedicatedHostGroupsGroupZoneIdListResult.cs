@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cddc.Outputs
     public sealed class GetDedicatedHostGroupsGroupZoneIdListResult
     {
         /// <summary>
-        /// The ZoneIDList of the Dedicated Host Group.
+        /// The list of zone IDs of the Dedicated Host Group.
         /// </summary>
         public readonly ImmutableArray<string> ZoneIdLists;
 

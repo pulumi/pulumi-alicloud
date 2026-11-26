@@ -69,6 +69,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
+        """
+        A list of Simple Application Server Instances. Each element contains the following attributes:
+        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
@@ -79,6 +82,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Instance names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -89,11 +95,17 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[_builtins.str]:
+        """
+        The billing method of the simple application server.
+        """
         return pulumi.get(self, "payment_type")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -122,7 +134,7 @@ def get_instances(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Simple Application Server Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 
@@ -172,7 +184,7 @@ def get_instances_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.
     """
     This data source provides the Simple Application Server Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 

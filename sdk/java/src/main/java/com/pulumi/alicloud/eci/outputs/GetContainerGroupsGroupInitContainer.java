@@ -53,12 +53,12 @@ public final class GetContainerGroupsGroupInitContainer {
      */
     private String imagePullPolicy;
     /**
-     * @return The amount of memory resources allocated to the container.
+     * @return The amount of memory resources allocated to the container group.
      * 
      */
     private Double memory;
     /**
-     * @return The name of the init container.
+     * @return The name of the volume.
      * 
      */
     private String name;
@@ -139,14 +139,14 @@ public final class GetContainerGroupsGroupInitContainer {
         return this.imagePullPolicy;
     }
     /**
-     * @return The amount of memory resources allocated to the container.
+     * @return The amount of memory resources allocated to the container group.
      * 
      */
     public Double memory() {
         return this.memory;
     }
     /**
-     * @return The name of the init container.
+     * @return The name of the volume.
      * 
      */
     public String name() {

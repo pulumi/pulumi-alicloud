@@ -53,6 +53,9 @@ class GetLifecyclePoliciesResult:
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
     def file_system_id(self) -> _builtins.str:
+        """
+        The ID of the file system.
+        """
         return pulumi.get(self, "file_system_id")
 
     @_builtins.property
@@ -76,6 +79,9 @@ class GetLifecyclePoliciesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Lifecycle Policy names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -86,6 +92,9 @@ class GetLifecyclePoliciesResult:
     @_builtins.property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetLifecyclePoliciesPolicyResult']:
+        """
+        A list of Nas Lifecycle Policies. Each element contains the following attributes:
+        """
         return pulumi.get(self, "policies")
 
 
@@ -112,7 +121,7 @@ def get_lifecycle_policies(file_system_id: Optional[_builtins.str] = None,
     """
     This data source provides the Nas Lifecycle Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.153.0+.
+    > **NOTE:** Available since v1.153.0+.
 
     ## Example Usage
 
@@ -163,7 +172,7 @@ def get_lifecycle_policies_output(file_system_id: pulumi.Input[Optional[_builtin
     """
     This data source provides the Nas Lifecycle Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.153.0+.
+    > **NOTE:** Available since v1.153.0+.
 
     ## Example Usage
 

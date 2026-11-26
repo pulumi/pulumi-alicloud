@@ -124,6 +124,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			invokeFormat4, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "xc-example-oss-%s",
+//				Args: []interface{}{
+//					_default.Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = sls.NewCollectionPolicy(ctx, "default", &sls.CollectionPolicyArgs{
 //				PolicyConfig: &sls.CollectionPolicyPolicyConfigArgs{
 //					ResourceMode: pulumi.String("all"),
@@ -134,7 +143,7 @@ import (
 //				DataCode:          pulumi.String("metering_log"),
 //				CentralizeEnabled: pulumi.Bool(true),
 //				ProductCode:       pulumi.String("oss"),
-//				PolicyName:        pulumi.String("xc-example-oss-01"),
+//				PolicyName:        pulumi.String(invokeFormat4.Result),
 //				Enabled:           pulumi.Bool(true),
 //				DataConfig: &sls.CollectionPolicyDataConfigArgs{
 //					DataRegion: pulumi.String("cn-hangzhou"),
@@ -146,10 +155,7 @@ import (
 //					DestLogstore: logstoreCreate01.LogstoreName,
 //				},
 //				ResourceDirectory: &sls.CollectionPolicyResourceDirectoryArgs{
-//					AccountGroupType: pulumi.String("custom"),
-//					Members: pulumi.StringArray{
-//						pulumi.String("1936728897040477"),
-//					},
+//					AccountGroupType: pulumi.String("all"),
 //				},
 //			})
 //			if err != nil {
@@ -280,6 +286,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			invokeFormat5, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "xc-example-oss-%s",
+//				Args: []interface{}{
+//					_default.Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = sls.NewCollectionPolicy(ctx, "default", &sls.CollectionPolicyArgs{
 //				PolicyConfig: &sls.CollectionPolicyPolicyConfigArgs{
 //					ResourceMode: pulumi.String("instanceMode"),
@@ -290,7 +305,7 @@ import (
 //				DataCode:          pulumi.String("access_log"),
 //				CentralizeEnabled: pulumi.Bool(false),
 //				ProductCode:       pulumi.String("oss"),
-//				PolicyName:        pulumi.String("xc-example-oss-01"),
+//				PolicyName:        pulumi.String(invokeFormat5.Result),
 //				Enabled:           pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -317,7 +332,7 @@ type CollectionPolicy struct {
 	// Centralized forwarding configuration. See `centralizeConfig` below.
 	CentralizeConfig CollectionPolicyCentralizeConfigOutput `pulumi:"centralizeConfig"`
 	// Specifies whether to enable centralized forwarding. Default value: false.
-	CentralizeEnabled pulumi.BoolPtrOutput `pulumi:"centralizeEnabled"`
+	CentralizeEnabled pulumi.BoolOutput `pulumi:"centralizeEnabled"`
 	// Log type code.
 	DataCode pulumi.StringOutput `pulumi:"dataCode"`
 	// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
@@ -334,7 +349,9 @@ type CollectionPolicy struct {
 	// Product code.
 	ProductCode pulumi.StringOutput `pulumi:"productCode"`
 	// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
-	ResourceDirectory CollectionPolicyResourceDirectoryOutput `pulumi:"resourceDirectory"`
+	//
+	// > **NOTE:** The SLS API does not support removing `resourceDirectory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
+	ResourceDirectory CollectionPolicyResourceDirectoryPtrOutput `pulumi:"resourceDirectory"`
 }
 
 // NewCollectionPolicy registers a new resource with the given unique name, arguments, and options.
@@ -402,6 +419,8 @@ type collectionPolicyState struct {
 	// Product code.
 	ProductCode *string `pulumi:"productCode"`
 	// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
+	//
+	// > **NOTE:** The SLS API does not support removing `resourceDirectory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
 	ResourceDirectory *CollectionPolicyResourceDirectory `pulumi:"resourceDirectory"`
 }
 
@@ -426,6 +445,8 @@ type CollectionPolicyState struct {
 	// Product code.
 	ProductCode pulumi.StringPtrInput
 	// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
+	//
+	// > **NOTE:** The SLS API does not support removing `resourceDirectory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
 	ResourceDirectory CollectionPolicyResourceDirectoryPtrInput
 }
 
@@ -460,6 +481,8 @@ type collectionPolicyArgs struct {
 	// Product code.
 	ProductCode string `pulumi:"productCode"`
 	// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
+	//
+	// > **NOTE:** The SLS API does not support removing `resourceDirectory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
 	ResourceDirectory *CollectionPolicyResourceDirectory `pulumi:"resourceDirectory"`
 }
 
@@ -485,6 +508,8 @@ type CollectionPolicyArgs struct {
 	// Product code.
 	ProductCode pulumi.StringInput
 	// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
+	//
+	// > **NOTE:** The SLS API does not support removing `resourceDirectory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
 	ResourceDirectory CollectionPolicyResourceDirectoryPtrInput
 }
 
@@ -581,8 +606,8 @@ func (o CollectionPolicyOutput) CentralizeConfig() CollectionPolicyCentralizeCon
 }
 
 // Specifies whether to enable centralized forwarding. Default value: false.
-func (o CollectionPolicyOutput) CentralizeEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CollectionPolicy) pulumi.BoolPtrOutput { return v.CentralizeEnabled }).(pulumi.BoolPtrOutput)
+func (o CollectionPolicyOutput) CentralizeEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CollectionPolicy) pulumi.BoolOutput { return v.CentralizeEnabled }).(pulumi.BoolOutput)
 }
 
 // Log type code.
@@ -619,8 +644,10 @@ func (o CollectionPolicyOutput) ProductCode() pulumi.StringOutput {
 }
 
 // Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
-func (o CollectionPolicyOutput) ResourceDirectory() CollectionPolicyResourceDirectoryOutput {
-	return o.ApplyT(func(v *CollectionPolicy) CollectionPolicyResourceDirectoryOutput { return v.ResourceDirectory }).(CollectionPolicyResourceDirectoryOutput)
+//
+// > **NOTE:** The SLS API does not support removing `resourceDirectory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
+func (o CollectionPolicyOutput) ResourceDirectory() CollectionPolicyResourceDirectoryPtrOutput {
+	return o.ApplyT(func(v *CollectionPolicy) CollectionPolicyResourceDirectoryPtrOutput { return v.ResourceDirectory }).(CollectionPolicyResourceDirectoryPtrOutput)
 }
 
 type CollectionPolicyArrayOutput struct{ *pulumi.OutputState }

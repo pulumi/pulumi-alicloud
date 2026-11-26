@@ -6,6 +6,7 @@ package com.pulumi.alicloud.nas;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.nas.FileSystemArgs;
 import com.pulumi.alicloud.nas.inputs.FileSystemState;
+import com.pulumi.alicloud.nas.outputs.FileSystemAutoUpgradeConfig;
 import com.pulumi.alicloud.nas.outputs.FileSystemNfsAcl;
 import com.pulumi.alicloud.nas.outputs.FileSystemOptions;
 import com.pulumi.alicloud.nas.outputs.FileSystemRecycleBin;
@@ -142,6 +143,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:nas/fileSystem:FileSystem")
 public class FileSystem extends com.pulumi.resources.CustomResource {
     /**
+     * The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `autoUpgradeConfig` below.
+     * 
+     */
+    @Export(name="autoUpgradeConfig", refs={FileSystemAutoUpgradeConfig.class}, tree="[0]")
+    private Output<FileSystemAutoUpgradeConfig> autoUpgradeConfig;
+
+    /**
+     * @return The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `autoUpgradeConfig` below.
+     * 
+     */
+    public Output<FileSystemAutoUpgradeConfig> autoUpgradeConfig() {
+        return this.autoUpgradeConfig;
+    }
+    /**
      * File system capacity.
      * 
      * Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -193,6 +208,8 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * - Must start with upper and lower case letters or Chinese, and cannot start with &#39;http://&#39; and &#39;https&#39;.
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      * 
+     * &gt; **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
+     * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
@@ -204,6 +221,8 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * - 2~128 English or Chinese characters in length.
      * - Must start with upper and lower case letters or Chinese, and cannot start with &#39;http://&#39; and &#39;https&#39;.
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
+     * 
+     * &gt; **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
      * 
      */
     public Output<Optional<String>> description() {
@@ -428,12 +447,16 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the resource group.
      * 
+     * &gt; **NOTE:** For `standard` file system types, the NAS server writes `resourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
+     * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
      * @return The ID of the resource group.
+     * 
+     * &gt; **NOTE:** For `standard` file system types, the NAS server writes `resourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
      * 
      */
     public Output<String> resourceGroupId() {

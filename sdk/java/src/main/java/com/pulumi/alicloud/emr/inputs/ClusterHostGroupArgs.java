@@ -33,14 +33,14 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+     * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
      * 
      */
     @Import(name="chargeType")
     private @Nullable Output<String> chargeType;
 
     /**
-     * @return Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+     * @return Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
      * 
      */
     public Optional<Output<String>> chargeType() {
@@ -122,9 +122,17 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.enableGracefulDecommission);
     }
 
+    /**
+     * GPU driver.
+     * 
+     */
     @Import(name="gpuDriver")
     private @Nullable Output<String> gpuDriver;
 
+    /**
+     * @return GPU driver.
+     * 
+     */
     public Optional<Output<String>> gpuDriver() {
         return Optional.ofNullable(this.gpuDriver);
     }
@@ -310,7 +318,7 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param chargeType Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+         * @param chargeType Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
          * 
          * @return builder
          * 
@@ -321,7 +329,7 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param chargeType Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+         * @param chargeType Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
          * 
          * @return builder
          * 
@@ -435,11 +443,23 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
             return enableGracefulDecommission(Output.of(enableGracefulDecommission));
         }
 
+        /**
+         * @param gpuDriver GPU driver.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpuDriver(@Nullable Output<String> gpuDriver) {
             $.gpuDriver = gpuDriver;
             return this;
         }
 
+        /**
+         * @param gpuDriver GPU driver.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpuDriver(String gpuDriver) {
             return gpuDriver(Output.of(gpuDriver));
         }

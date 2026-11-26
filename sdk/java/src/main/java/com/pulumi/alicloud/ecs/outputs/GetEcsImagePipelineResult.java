@@ -20,13 +20,37 @@ public final class GetEcsImagePipelineResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Image Pipeline ids.
+     * 
+     */
     private List<String> ids;
+    /**
+     * @return The name of the image template.
+     * 
+     */
     private @Nullable String name;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Image Pipeline names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Ecs Image Pipelines. Each element contains the following attributes:
+     * 
+     */
     private List<GetEcsImagePipelinePipeline> pipelines;
+    /**
+     * @return The ID of the resource group to which the image template belongs.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return (Optional) A mapping of tags to assign to the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
 
     private GetEcsImagePipelineResult() {}
@@ -37,27 +61,51 @@ public final class GetEcsImagePipelineResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Image Pipeline ids.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The name of the image template.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Image Pipeline names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Ecs Image Pipelines. Each element contains the following attributes:
+     * 
+     */
     public List<GetEcsImagePipelinePipeline> pipelines() {
         return this.pipelines;
     }
+    /**
+     * @return The ID of the resource group to which the image template belongs.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return (Optional) A mapping of tags to assign to the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

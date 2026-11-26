@@ -62,16 +62,22 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
+     * Field `firewallSubnetCidr` has been deprecated from provider version 2.2.0.
+     * 
+     * @deprecated Field `firewallSubnetCidr` has been deprecated from provider version 2.2.0.
      * 
      */
+    @Deprecated
     @Import(name="firewallSubnetCidr")
     private @Nullable Output<String> firewallSubnetCidr;
 
     /**
-     * @return The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
+     * @return Field `firewallSubnetCidr` has been deprecated from provider version 2.2.0.
+     * 
+     * @deprecated Field `firewallSubnetCidr` has been deprecated from provider version 2.2.0.
      * 
      */
+    @Deprecated
     public Optional<Output<String>> firewallSubnetCidr() {
         return Optional.ofNullable(this.firewallSubnetCidr);
     }
@@ -80,15 +86,45 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
      * The CIDR block of the firewall VPC in automatic mode.
      * 
      */
-    @Import(name="firewallVpcCidr", required=true)
-    private Output<String> firewallVpcCidr;
+    @Import(name="firewallVpcCidr")
+    private @Nullable Output<String> firewallVpcCidr;
 
     /**
      * @return The CIDR block of the firewall VPC in automatic mode.
      * 
      */
-    public Output<String> firewallVpcCidr() {
-        return this.firewallVpcCidr;
+    public Optional<Output<String>> firewallVpcCidr() {
+        return Optional.ofNullable(this.firewallVpcCidr);
+    }
+
+    /**
+     * The ID of the VPC where the firewall ENI is created in manual mode.
+     * 
+     */
+    @Import(name="firewallVpcId")
+    private @Nullable Output<String> firewallVpcId;
+
+    /**
+     * @return The ID of the VPC where the firewall ENI is created in manual mode.
+     * 
+     */
+    public Optional<Output<String>> firewallVpcId() {
+        return Optional.ofNullable(this.firewallVpcId);
+    }
+
+    /**
+     * The ID of the vSwitch where the firewall ENI is created in manual mode.
+     * 
+     */
+    @Import(name="firewallVswitchId")
+    private @Nullable Output<String> firewallVswitchId;
+
+    /**
+     * @return The ID of the vSwitch where the firewall ENI is created in manual mode.
+     * 
+     */
+    public Optional<Output<String>> firewallVswitchId() {
+        return Optional.ofNullable(this.firewallVswitchId);
     }
 
     /**
@@ -122,24 +158,28 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+     * Field `trAttachmentMasterCidr` has been deprecated from provider version 2.2.0.
+     * 
+     * @deprecated Field `trAttachmentMasterCidr` has been deprecated from provider version 2.2.0.
      * 
      */
+    @Deprecated
     @Import(name="trAttachmentMasterCidr")
     private @Nullable Output<String> trAttachmentMasterCidr;
 
     /**
-     * @return The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+     * @return Field `trAttachmentMasterCidr` has been deprecated from provider version 2.2.0.
+     * 
+     * @deprecated Field `trAttachmentMasterCidr` has been deprecated from provider version 2.2.0.
      * 
      */
+    @Deprecated
     public Optional<Output<String>> trAttachmentMasterCidr() {
         return Optional.ofNullable(this.trAttachmentMasterCidr);
     }
 
     /**
      * The primary zone of the vSwitch.
-     * 
-     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="trAttachmentMasterZone")
@@ -148,24 +188,28 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return The primary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
-     * 
      */
     public Optional<Output<String>> trAttachmentMasterZone() {
         return Optional.ofNullable(this.trAttachmentMasterZone);
     }
 
     /**
-     * The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+     * Field `trAttachmentSlaveCidr` has been deprecated from provider version 2.2.0.
+     * 
+     * @deprecated Field `trAttachmentSlaveCidr` has been deprecated from provider version 2.2.0.
      * 
      */
+    @Deprecated
     @Import(name="trAttachmentSlaveCidr")
     private @Nullable Output<String> trAttachmentSlaveCidr;
 
     /**
-     * @return The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+     * @return Field `trAttachmentSlaveCidr` has been deprecated from provider version 2.2.0.
+     * 
+     * @deprecated Field `trAttachmentSlaveCidr` has been deprecated from provider version 2.2.0.
      * 
      */
+    @Deprecated
     public Optional<Output<String>> trAttachmentSlaveCidr() {
         return Optional.ofNullable(this.trAttachmentSlaveCidr);
     }
@@ -173,16 +217,12 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
     /**
      * The secondary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
-     * 
      */
     @Import(name="trAttachmentSlaveZone")
     private @Nullable Output<String> trAttachmentSlaveZone;
 
     /**
      * @return The secondary zone of the vSwitch.
-     * 
-     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<String>> trAttachmentSlaveZone() {
@@ -212,6 +252,8 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
         this.firewallName = $.firewallName;
         this.firewallSubnetCidr = $.firewallSubnetCidr;
         this.firewallVpcCidr = $.firewallVpcCidr;
+        this.firewallVpcId = $.firewallVpcId;
+        this.firewallVswitchId = $.firewallVswitchId;
         this.regionNo = $.regionNo;
         this.routeMode = $.routeMode;
         this.trAttachmentMasterCidr = $.trAttachmentMasterCidr;
@@ -303,22 +345,28 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param firewallSubnetCidr The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
+         * @param firewallSubnetCidr Field `firewallSubnetCidr` has been deprecated from provider version 2.2.0.
          * 
          * @return builder
          * 
+         * @deprecated Field `firewallSubnetCidr` has been deprecated from provider version 2.2.0.
+         * 
          */
+        @Deprecated
         public Builder firewallSubnetCidr(@Nullable Output<String> firewallSubnetCidr) {
             $.firewallSubnetCidr = firewallSubnetCidr;
             return this;
         }
 
         /**
-         * @param firewallSubnetCidr The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
+         * @param firewallSubnetCidr Field `firewallSubnetCidr` has been deprecated from provider version 2.2.0.
          * 
          * @return builder
          * 
+         * @deprecated Field `firewallSubnetCidr` has been deprecated from provider version 2.2.0.
+         * 
          */
+        @Deprecated
         public Builder firewallSubnetCidr(String firewallSubnetCidr) {
             return firewallSubnetCidr(Output.of(firewallSubnetCidr));
         }
@@ -329,7 +377,7 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder firewallVpcCidr(Output<String> firewallVpcCidr) {
+        public Builder firewallVpcCidr(@Nullable Output<String> firewallVpcCidr) {
             $.firewallVpcCidr = firewallVpcCidr;
             return this;
         }
@@ -342,6 +390,48 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder firewallVpcCidr(String firewallVpcCidr) {
             return firewallVpcCidr(Output.of(firewallVpcCidr));
+        }
+
+        /**
+         * @param firewallVpcId The ID of the VPC where the firewall ENI is created in manual mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallVpcId(@Nullable Output<String> firewallVpcId) {
+            $.firewallVpcId = firewallVpcId;
+            return this;
+        }
+
+        /**
+         * @param firewallVpcId The ID of the VPC where the firewall ENI is created in manual mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallVpcId(String firewallVpcId) {
+            return firewallVpcId(Output.of(firewallVpcId));
+        }
+
+        /**
+         * @param firewallVswitchId The ID of the vSwitch where the firewall ENI is created in manual mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallVswitchId(@Nullable Output<String> firewallVswitchId) {
+            $.firewallVswitchId = firewallVswitchId;
+            return this;
+        }
+
+        /**
+         * @param firewallVswitchId The ID of the vSwitch where the firewall ENI is created in manual mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallVswitchId(String firewallVswitchId) {
+            return firewallVswitchId(Output.of(firewallVswitchId));
         }
 
         /**
@@ -387,30 +477,34 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trAttachmentMasterCidr The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+         * @param trAttachmentMasterCidr Field `trAttachmentMasterCidr` has been deprecated from provider version 2.2.0.
          * 
          * @return builder
          * 
+         * @deprecated Field `trAttachmentMasterCidr` has been deprecated from provider version 2.2.0.
+         * 
          */
+        @Deprecated
         public Builder trAttachmentMasterCidr(@Nullable Output<String> trAttachmentMasterCidr) {
             $.trAttachmentMasterCidr = trAttachmentMasterCidr;
             return this;
         }
 
         /**
-         * @param trAttachmentMasterCidr The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+         * @param trAttachmentMasterCidr Field `trAttachmentMasterCidr` has been deprecated from provider version 2.2.0.
          * 
          * @return builder
          * 
+         * @deprecated Field `trAttachmentMasterCidr` has been deprecated from provider version 2.2.0.
+         * 
          */
+        @Deprecated
         public Builder trAttachmentMasterCidr(String trAttachmentMasterCidr) {
             return trAttachmentMasterCidr(Output.of(trAttachmentMasterCidr));
         }
 
         /**
          * @param trAttachmentMasterZone The primary zone of the vSwitch.
-         * 
-         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -423,8 +517,6 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param trAttachmentMasterZone The primary zone of the vSwitch.
          * 
-         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
-         * 
          * @return builder
          * 
          */
@@ -433,30 +525,34 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trAttachmentSlaveCidr The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+         * @param trAttachmentSlaveCidr Field `trAttachmentSlaveCidr` has been deprecated from provider version 2.2.0.
          * 
          * @return builder
          * 
+         * @deprecated Field `trAttachmentSlaveCidr` has been deprecated from provider version 2.2.0.
+         * 
          */
+        @Deprecated
         public Builder trAttachmentSlaveCidr(@Nullable Output<String> trAttachmentSlaveCidr) {
             $.trAttachmentSlaveCidr = trAttachmentSlaveCidr;
             return this;
         }
 
         /**
-         * @param trAttachmentSlaveCidr The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+         * @param trAttachmentSlaveCidr Field `trAttachmentSlaveCidr` has been deprecated from provider version 2.2.0.
          * 
          * @return builder
          * 
+         * @deprecated Field `trAttachmentSlaveCidr` has been deprecated from provider version 2.2.0.
+         * 
          */
+        @Deprecated
         public Builder trAttachmentSlaveCidr(String trAttachmentSlaveCidr) {
             return trAttachmentSlaveCidr(Output.of(trAttachmentSlaveCidr));
         }
 
         /**
          * @param trAttachmentSlaveZone The secondary zone of the vSwitch.
-         * 
-         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -468,8 +564,6 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param trAttachmentSlaveZone The secondary zone of the vSwitch.
-         * 
-         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -505,9 +599,6 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
             }
             if ($.firewallName == null) {
                 throw new MissingRequiredPropertyException("VpcCenTrFirewallArgs", "firewallName");
-            }
-            if ($.firewallVpcCidr == null) {
-                throw new MissingRequiredPropertyException("VpcCenTrFirewallArgs", "firewallVpcCidr");
             }
             if ($.regionNo == null) {
                 throw new MissingRequiredPropertyException("VpcCenTrFirewallArgs", "regionNo");

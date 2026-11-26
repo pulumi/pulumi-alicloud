@@ -3,6 +3,8 @@
 
 package com.pulumi.alicloud.polardb.inputs;
 
+import com.pulumi.alicloud.polardb.inputs.BackupPolicyAdvancedDataPolicyArgs;
+import com.pulumi.alicloud.polardb.inputs.BackupPolicyAutoCreatedAdvancedDataPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -18,6 +20,51 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     public static final BackupPolicyState Empty = new BackupPolicyState();
 
     /**
+     * Custom advanced data backup policy blocks. Available only when `backupPolicyLevel` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advancedDataPolicies` below.
+     * 
+     */
+    @Import(name="advancedDataPolicies")
+    private @Nullable Output<List<BackupPolicyAdvancedDataPolicyArgs>> advancedDataPolicies;
+
+    /**
+     * @return Custom advanced data backup policy blocks. Available only when `backupPolicyLevel` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advancedDataPolicies` below.
+     * 
+     */
+    public Optional<Output<List<BackupPolicyAdvancedDataPolicyArgs>>> advancedDataPolicies() {
+        return Optional.ofNullable(this.advancedDataPolicies);
+    }
+
+    /**
+     * Whether advanced policies are supported or enabled by the cluster.
+     * 
+     */
+    @Import(name="advancedPolicyOption")
+    private @Nullable Output<String> advancedPolicyOption;
+
+    /**
+     * @return Whether advanced policies are supported or enabled by the cluster.
+     * 
+     */
+    public Optional<Output<String>> advancedPolicyOption() {
+        return Optional.ofNullable(this.advancedPolicyOption);
+    }
+
+    /**
+     * Service-generated advanced backup rules. Fields have the same names as `advancedDataPolicies`, but are read-only.
+     * 
+     */
+    @Import(name="autoCreatedAdvancedDataPolicies")
+    private @Nullable Output<List<BackupPolicyAutoCreatedAdvancedDataPolicyArgs>> autoCreatedAdvancedDataPolicies;
+
+    /**
+     * @return Service-generated advanced backup rules. Fields have the same names as `advancedDataPolicies`, but are read-only.
+     * 
+     */
+    public Optional<Output<List<BackupPolicyAutoCreatedAdvancedDataPolicyArgs>>> autoCreatedAdvancedDataPolicies() {
+        return Optional.ofNullable(this.autoCreatedAdvancedDataPolicies);
+    }
+
+    /**
      * The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
      * 
      */
@@ -30,6 +77,21 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> backupFrequency() {
         return Optional.ofNullable(this.backupFrequency);
+    }
+
+    /**
+     * Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+     * 
+     */
+    @Import(name="backupPolicyLevel")
+    private @Nullable Output<String> backupPolicyLevel;
+
+    /**
+     * @return Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+     * 
+     */
+    public Optional<Output<String>> backupPolicyLevel() {
+        return Optional.ofNullable(this.backupPolicyLevel);
     }
 
     /**
@@ -79,6 +141,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * PolarDB Cluster of level-1 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+     * 
      * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      * 
      */
@@ -87,6 +150,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return PolarDB Cluster of level-1 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+     * 
      * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      * 
      */
@@ -156,6 +220,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * PolarDB Cluster of level-2 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+     * 
      * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      * 
      */
@@ -164,6 +229,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return PolarDB Cluster of level-2 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+     * 
      * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      * 
      */
@@ -233,6 +299,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+     * 
      * &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
      * 
      */
@@ -241,6 +308,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+     * 
      * &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
      * 
      */
@@ -296,7 +364,11 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     private BackupPolicyState() {}
 
     private BackupPolicyState(BackupPolicyState $) {
+        this.advancedDataPolicies = $.advancedDataPolicies;
+        this.advancedPolicyOption = $.advancedPolicyOption;
+        this.autoCreatedAdvancedDataPolicies = $.autoCreatedAdvancedDataPolicies;
         this.backupFrequency = $.backupFrequency;
+        this.backupPolicyLevel = $.backupPolicyLevel;
         this.backupRetentionPeriod = $.backupRetentionPeriod;
         this.backupRetentionPolicyOnClusterDeletion = $.backupRetentionPolicyOnClusterDeletion;
         this.dataLevel1BackupFrequency = $.dataLevel1BackupFrequency;
@@ -335,6 +407,89 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param advancedDataPolicies Custom advanced data backup policy blocks. Available only when `backupPolicyLevel` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advancedDataPolicies` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedDataPolicies(@Nullable Output<List<BackupPolicyAdvancedDataPolicyArgs>> advancedDataPolicies) {
+            $.advancedDataPolicies = advancedDataPolicies;
+            return this;
+        }
+
+        /**
+         * @param advancedDataPolicies Custom advanced data backup policy blocks. Available only when `backupPolicyLevel` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advancedDataPolicies` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedDataPolicies(List<BackupPolicyAdvancedDataPolicyArgs> advancedDataPolicies) {
+            return advancedDataPolicies(Output.of(advancedDataPolicies));
+        }
+
+        /**
+         * @param advancedDataPolicies Custom advanced data backup policy blocks. Available only when `backupPolicyLevel` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advancedDataPolicies` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedDataPolicies(BackupPolicyAdvancedDataPolicyArgs... advancedDataPolicies) {
+            return advancedDataPolicies(List.of(advancedDataPolicies));
+        }
+
+        /**
+         * @param advancedPolicyOption Whether advanced policies are supported or enabled by the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedPolicyOption(@Nullable Output<String> advancedPolicyOption) {
+            $.advancedPolicyOption = advancedPolicyOption;
+            return this;
+        }
+
+        /**
+         * @param advancedPolicyOption Whether advanced policies are supported or enabled by the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedPolicyOption(String advancedPolicyOption) {
+            return advancedPolicyOption(Output.of(advancedPolicyOption));
+        }
+
+        /**
+         * @param autoCreatedAdvancedDataPolicies Service-generated advanced backup rules. Fields have the same names as `advancedDataPolicies`, but are read-only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoCreatedAdvancedDataPolicies(@Nullable Output<List<BackupPolicyAutoCreatedAdvancedDataPolicyArgs>> autoCreatedAdvancedDataPolicies) {
+            $.autoCreatedAdvancedDataPolicies = autoCreatedAdvancedDataPolicies;
+            return this;
+        }
+
+        /**
+         * @param autoCreatedAdvancedDataPolicies Service-generated advanced backup rules. Fields have the same names as `advancedDataPolicies`, but are read-only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoCreatedAdvancedDataPolicies(List<BackupPolicyAutoCreatedAdvancedDataPolicyArgs> autoCreatedAdvancedDataPolicies) {
+            return autoCreatedAdvancedDataPolicies(Output.of(autoCreatedAdvancedDataPolicies));
+        }
+
+        /**
+         * @param autoCreatedAdvancedDataPolicies Service-generated advanced backup rules. Fields have the same names as `advancedDataPolicies`, but are read-only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoCreatedAdvancedDataPolicies(BackupPolicyAutoCreatedAdvancedDataPolicyArgs... autoCreatedAdvancedDataPolicies) {
+            return autoCreatedAdvancedDataPolicies(List.of(autoCreatedAdvancedDataPolicies));
+        }
+
+        /**
          * @param backupFrequency The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
          * 
          * @return builder
@@ -353,6 +508,27 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder backupFrequency(String backupFrequency) {
             return backupFrequency(Output.of(backupFrequency));
+        }
+
+        /**
+         * @param backupPolicyLevel Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupPolicyLevel(@Nullable Output<String> backupPolicyLevel) {
+            $.backupPolicyLevel = backupPolicyLevel;
+            return this;
+        }
+
+        /**
+         * @param backupPolicyLevel Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupPolicyLevel(String backupPolicyLevel) {
+            return backupPolicyLevel(Output.of(backupPolicyLevel));
         }
 
         /**
@@ -420,6 +596,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataLevel1BackupPeriods PolarDB Cluster of level-1 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+         * 
          * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
          * 
          * @return builder
@@ -432,6 +609,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataLevel1BackupPeriods PolarDB Cluster of level-1 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+         * 
          * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
          * 
          * @return builder
@@ -443,6 +621,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataLevel1BackupPeriods PolarDB Cluster of level-1 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+         * 
          * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
          * 
          * @return builder
@@ -538,6 +717,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataLevel2BackupPeriods PolarDB Cluster of level-2 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+         * 
          * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
          * 
          * @return builder
@@ -550,6 +730,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataLevel2BackupPeriods PolarDB Cluster of level-2 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+         * 
          * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
          * 
          * @return builder
@@ -561,6 +742,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataLevel2BackupPeriods PolarDB Cluster of level-2 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+         * 
          * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
          * 
          * @return builder
@@ -656,6 +838,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param logBackupAnotherRegionRetentionPeriod The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+         * 
          * &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
          * 
          * @return builder
@@ -668,6 +851,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param logBackupAnotherRegionRetentionPeriod The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+         * 
          * &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
          * 
          * @return builder

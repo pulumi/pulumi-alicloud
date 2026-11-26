@@ -17,9 +17,17 @@ public final class GetSubnetsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSubnetsArgs Empty = new GetSubnetsArgs();
 
+    /**
+     * A list of Subnet IDs.
+     * 
+     */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
+    /**
+     * @return A list of Subnet IDs.
+     * 
+     */
     public Optional<Output<List<String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
@@ -214,15 +222,33 @@ public final class GetSubnetsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetSubnetsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids A list of Subnet IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable Output<List<String>> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids A list of Subnet IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(List<String> ids) {
             return ids(Output.of(ids));
         }
 
+        /**
+         * @param ids A list of Subnet IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }

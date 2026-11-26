@@ -372,6 +372,8 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Indicates whether the image is available. Valid values:
+     * * true: The image is available and can be used to create ECS instances.
+     * * false: The image is unavailable and cannot be used to create ECS instances.
      * 
      */
     @Import(name="usable")
@@ -379,6 +381,8 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Indicates whether the image is available. Valid values:
+     * * true: The image is available and can be used to create ECS instances.
+     * * false: The image is unavailable and cannot be used to create ECS instances.
      * 
      */
     public Optional<Output<Boolean>> usable() {
@@ -911,6 +915,8 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param usable Indicates whether the image is available. Valid values:
+         * * true: The image is available and can be used to create ECS instances.
+         * * false: The image is unavailable and cannot be used to create ECS instances.
          * 
          * @return builder
          * 
@@ -922,6 +928,8 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param usable Indicates whether the image is available. Valid values:
+         * * true: The image is available and can be used to create ECS instances.
+         * * false: The image is unavailable and cannot be used to create ECS instances.
          * 
          * @return builder
          * 

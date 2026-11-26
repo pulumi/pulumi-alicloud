@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cddc Zones of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.147.0+.
+// > **NOTE:** Available since v1.147.0.
 //
 // ## Example Usage
 //
@@ -60,10 +60,12 @@ type GetZonesArgs struct {
 // A collection of values returned by getZones.
 type GetZonesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string         `pulumi:"id"`
-	Ids        []string       `pulumi:"ids"`
-	OutputFile *string        `pulumi:"outputFile"`
-	Zones      []GetZonesZone `pulumi:"zones"`
+	Id string `pulumi:"id"`
+	// A list of Cddc Zone IDs.
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Cddc Zones. Each element contains the following attributes:
+	Zones []GetZonesZone `pulumi:"zones"`
 }
 
 func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi.InvokeOption) GetZonesResultOutput {
@@ -101,6 +103,7 @@ func (o GetZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Cddc Zone IDs.
 func (o GetZonesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZonesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -109,6 +112,7 @@ func (o GetZonesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cddc Zones. Each element contains the following attributes:
 func (o GetZonesResultOutput) Zones() GetZonesZoneArrayOutput {
 	return o.ApplyT(func(v GetZonesResult) []GetZonesZone { return v.Zones }).(GetZonesZoneArrayOutput)
 }

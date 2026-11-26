@@ -34,7 +34,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new ECS disk-attachment and use it attach one disk to a new instance.
 //			ecsSg, err := ecs.NewSecurityGroup(ctx, "ecs_sg", &ecs.SecurityGroupArgs{
-//				Name:        pulumi.String("terraform-test-group"),
+//				Name:        pulumi.String("terraform-demo-group"),
 //				Description: pulumi.String("New security group"),
 //			})
 //			if err != nil {
@@ -91,15 +91,20 @@ import (
 type DiskAttachment struct {
 	pulumi.CustomResourceState
 
-	Bootable           pulumi.BoolPtrOutput `pulumi:"bootable"`
+	// Whether the disk is bootable.
+	Bootable pulumi.BoolPtrOutput `pulumi:"bootable"`
+	// Whether to delete the disk with the instance.
 	DeleteWithInstance pulumi.BoolPtrOutput `pulumi:"deleteWithInstance"`
-	Device             pulumi.StringOutput  `pulumi:"device"`
+	// The device name allocated to the disk.
+	Device pulumi.StringOutput `pulumi:"device"`
 	// ID of the Disk to be attached.
 	DiskId pulumi.StringOutput `pulumi:"diskId"`
 	// ID of the Instance to attach to.
-	InstanceId  pulumi.StringOutput    `pulumi:"instanceId"`
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// The name of the key pair.
 	KeyPairName pulumi.StringPtrOutput `pulumi:"keyPairName"`
-	Password    pulumi.StringPtrOutput `pulumi:"password"`
+	// The password of the instance.
+	Password pulumi.StringPtrOutput `pulumi:"password"`
 }
 
 // NewDiskAttachment registers a new resource with the given unique name, arguments, and options.
@@ -138,27 +143,37 @@ func GetDiskAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DiskAttachment resources.
 type diskAttachmentState struct {
-	Bootable           *bool   `pulumi:"bootable"`
-	DeleteWithInstance *bool   `pulumi:"deleteWithInstance"`
-	Device             *string `pulumi:"device"`
+	// Whether the disk is bootable.
+	Bootable *bool `pulumi:"bootable"`
+	// Whether to delete the disk with the instance.
+	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
+	// The device name allocated to the disk.
+	Device *string `pulumi:"device"`
 	// ID of the Disk to be attached.
 	DiskId *string `pulumi:"diskId"`
 	// ID of the Instance to attach to.
-	InstanceId  *string `pulumi:"instanceId"`
+	InstanceId *string `pulumi:"instanceId"`
+	// The name of the key pair.
 	KeyPairName *string `pulumi:"keyPairName"`
-	Password    *string `pulumi:"password"`
+	// The password of the instance.
+	Password *string `pulumi:"password"`
 }
 
 type DiskAttachmentState struct {
-	Bootable           pulumi.BoolPtrInput
+	// Whether the disk is bootable.
+	Bootable pulumi.BoolPtrInput
+	// Whether to delete the disk with the instance.
 	DeleteWithInstance pulumi.BoolPtrInput
-	Device             pulumi.StringPtrInput
+	// The device name allocated to the disk.
+	Device pulumi.StringPtrInput
 	// ID of the Disk to be attached.
 	DiskId pulumi.StringPtrInput
 	// ID of the Instance to attach to.
-	InstanceId  pulumi.StringPtrInput
+	InstanceId pulumi.StringPtrInput
+	// The name of the key pair.
 	KeyPairName pulumi.StringPtrInput
-	Password    pulumi.StringPtrInput
+	// The password of the instance.
+	Password pulumi.StringPtrInput
 }
 
 func (DiskAttachmentState) ElementType() reflect.Type {
@@ -172,26 +187,34 @@ func DiskAttachmentExists(ctx *pulumi.Context,
 }
 
 type diskAttachmentArgs struct {
-	Bootable           *bool `pulumi:"bootable"`
+	// Whether the disk is bootable.
+	Bootable *bool `pulumi:"bootable"`
+	// Whether to delete the disk with the instance.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// ID of the Disk to be attached.
 	DiskId string `pulumi:"diskId"`
 	// ID of the Instance to attach to.
-	InstanceId  string  `pulumi:"instanceId"`
+	InstanceId string `pulumi:"instanceId"`
+	// The name of the key pair.
 	KeyPairName *string `pulumi:"keyPairName"`
-	Password    *string `pulumi:"password"`
+	// The password of the instance.
+	Password *string `pulumi:"password"`
 }
 
 // The set of arguments for constructing a DiskAttachment resource.
 type DiskAttachmentArgs struct {
-	Bootable           pulumi.BoolPtrInput
+	// Whether the disk is bootable.
+	Bootable pulumi.BoolPtrInput
+	// Whether to delete the disk with the instance.
 	DeleteWithInstance pulumi.BoolPtrInput
 	// ID of the Disk to be attached.
 	DiskId pulumi.StringInput
 	// ID of the Instance to attach to.
-	InstanceId  pulumi.StringInput
+	InstanceId pulumi.StringInput
+	// The name of the key pair.
 	KeyPairName pulumi.StringPtrInput
-	Password    pulumi.StringPtrInput
+	// The password of the instance.
+	Password pulumi.StringPtrInput
 }
 
 func (DiskAttachmentArgs) ElementType() reflect.Type {
@@ -281,14 +304,17 @@ func (o DiskAttachmentOutput) ToDiskAttachmentOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Whether the disk is bootable.
 func (o DiskAttachmentOutput) Bootable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DiskAttachment) pulumi.BoolPtrOutput { return v.Bootable }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to delete the disk with the instance.
 func (o DiskAttachmentOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DiskAttachment) pulumi.BoolPtrOutput { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
 
+// The device name allocated to the disk.
 func (o DiskAttachmentOutput) Device() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiskAttachment) pulumi.StringOutput { return v.Device }).(pulumi.StringOutput)
 }
@@ -303,10 +329,12 @@ func (o DiskAttachmentOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiskAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// The name of the key pair.
 func (o DiskAttachmentOutput) KeyPairName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiskAttachment) pulumi.StringPtrOutput { return v.KeyPairName }).(pulumi.StringPtrOutput)
 }
 
+// The password of the instance.
 func (o DiskAttachmentOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiskAttachment) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * // Create a new ECS disk-attachment and use it attach one disk to a new instance.
  * const ecsSg = new alicloud.ecs.SecurityGroup("ecs_sg", {
- *     name: "terraform-test-group",
+ *     name: "terraform-demo-group",
  *     description: "New security group",
  * });
  * const ecsDisk = new alicloud.ecs.Disk("ecs_disk", {
@@ -95,8 +95,17 @@ export class DiskAttachment extends pulumi.CustomResource {
         return obj['__pulumiType'] === DiskAttachment.__pulumiType;
     }
 
+    /**
+     * Whether the disk is bootable.
+     */
     declare public readonly bootable: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether to delete the disk with the instance.
+     */
     declare public readonly deleteWithInstance: pulumi.Output<boolean | undefined>;
+    /**
+     * The device name allocated to the disk.
+     */
     declare public /*out*/ readonly device: pulumi.Output<string>;
     /**
      * ID of the Disk to be attached.
@@ -106,7 +115,13 @@ export class DiskAttachment extends pulumi.CustomResource {
      * ID of the Instance to attach to.
      */
     declare public readonly instanceId: pulumi.Output<string>;
+    /**
+     * The name of the key pair.
+     */
     declare public readonly keyPairName: pulumi.Output<string | undefined>;
+    /**
+     * The password of the instance.
+     */
     declare public readonly password: pulumi.Output<string | undefined>;
 
     /**
@@ -154,8 +169,17 @@ export class DiskAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DiskAttachment resources.
  */
 export interface DiskAttachmentState {
+    /**
+     * Whether the disk is bootable.
+     */
     bootable?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to delete the disk with the instance.
+     */
     deleteWithInstance?: pulumi.Input<boolean | undefined>;
+    /**
+     * The device name allocated to the disk.
+     */
     device?: pulumi.Input<string | undefined>;
     /**
      * ID of the Disk to be attached.
@@ -165,7 +189,13 @@ export interface DiskAttachmentState {
      * ID of the Instance to attach to.
      */
     instanceId?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the key pair.
+     */
     keyPairName?: pulumi.Input<string | undefined>;
+    /**
+     * The password of the instance.
+     */
     password?: pulumi.Input<string | undefined>;
 }
 
@@ -173,7 +203,13 @@ export interface DiskAttachmentState {
  * The set of arguments for constructing a DiskAttachment resource.
  */
 export interface DiskAttachmentArgs {
+    /**
+     * Whether the disk is bootable.
+     */
     bootable?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to delete the disk with the instance.
+     */
     deleteWithInstance?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the Disk to be attached.
@@ -183,6 +219,12 @@ export interface DiskAttachmentArgs {
      * ID of the Instance to attach to.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * The name of the key pair.
+     */
     keyPairName?: pulumi.Input<string | undefined>;
+    /**
+     * The password of the instance.
+     */
     password?: pulumi.Input<string | undefined>;
 }

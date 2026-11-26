@@ -19,6 +19,10 @@ public final class GetInstanceTypesResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of ecp Instance types. Each element contains the following attributes:
+     * 
+     */
     private List<GetInstanceTypesInstanceType> instanceTypes;
     private @Nullable String outputFile;
 
@@ -30,6 +34,10 @@ public final class GetInstanceTypesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of ecp Instance types. Each element contains the following attributes:
+     * 
+     */
     public List<GetInstanceTypesInstanceType> instanceTypes() {
         return this.instanceTypes;
     }

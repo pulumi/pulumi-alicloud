@@ -134,7 +134,7 @@ type GetAppTemplatesTemplate struct {
 	AppTemplateName string `pulumi:"appTemplateName"`
 	// List of components.
 	ComponentLists []string `pulumi:"componentLists"`
-	// List of config.
+	// List of config. Each element contains the following attributes:
 	ConfigLists []GetAppTemplatesTemplateConfigList `pulumi:"configLists"`
 	// Creation time.
 	CreateTime string `pulumi:"createTime"`
@@ -148,7 +148,7 @@ type GetAppTemplatesTemplate struct {
 	SdkInfo string `pulumi:"sdkInfo"`
 	// Model room information.
 	StandardRoomInfo string `pulumi:"standardRoomInfo"`
-	// Application template usage status.
+	// Application template usage status. Valid values: ["attached", "unattached"].
 	Status string `pulumi:"status"`
 }
 
@@ -172,7 +172,7 @@ type GetAppTemplatesTemplateArgs struct {
 	AppTemplateName pulumi.StringInput `pulumi:"appTemplateName"`
 	// List of components.
 	ComponentLists pulumi.StringArrayInput `pulumi:"componentLists"`
-	// List of config.
+	// List of config. Each element contains the following attributes:
 	ConfigLists GetAppTemplatesTemplateConfigListArrayInput `pulumi:"configLists"`
 	// Creation time.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
@@ -186,7 +186,7 @@ type GetAppTemplatesTemplateArgs struct {
 	SdkInfo pulumi.StringInput `pulumi:"sdkInfo"`
 	// Model room information.
 	StandardRoomInfo pulumi.StringInput `pulumi:"standardRoomInfo"`
-	// Application template usage status.
+	// Application template usage status. Valid values: ["attached", "unattached"].
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -261,7 +261,7 @@ func (o GetAppTemplatesTemplateOutput) ComponentLists() pulumi.StringArrayOutput
 	return o.ApplyT(func(v GetAppTemplatesTemplate) []string { return v.ComponentLists }).(pulumi.StringArrayOutput)
 }
 
-// List of config.
+// List of config. Each element contains the following attributes:
 func (o GetAppTemplatesTemplateOutput) ConfigLists() GetAppTemplatesTemplateConfigListArrayOutput {
 	return o.ApplyT(func(v GetAppTemplatesTemplate) []GetAppTemplatesTemplateConfigList { return v.ConfigLists }).(GetAppTemplatesTemplateConfigListArrayOutput)
 }
@@ -296,7 +296,7 @@ func (o GetAppTemplatesTemplateOutput) StandardRoomInfo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppTemplatesTemplate) string { return v.StandardRoomInfo }).(pulumi.StringOutput)
 }
 
-// Application template usage status.
+// Application template usage status. Valid values: ["attached", "unattached"].
 func (o GetAppTemplatesTemplateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppTemplatesTemplate) string { return v.Status }).(pulumi.StringOutput)
 }

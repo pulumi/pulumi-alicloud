@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.143.0+.
+// > **NOTE:** Available since v1.143.0.
 //
 // ## Example Usage
 //
@@ -76,14 +76,17 @@ type GetEndpointsArgs struct {
 
 // A collection of values returned by getEndpoints.
 type GetEndpointsResult struct {
+	// A list of Pvtz Endpoints. Each element contains the following attributes:
 	Endpoints []GetEndpointsEndpoint `pulumi:"endpoints"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Endpoint names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
+	Status *string `pulumi:"status"`
 }
 
 func GetEndpointsOutput(ctx *pulumi.Context, args GetEndpointsOutputArgs, opts ...pulumi.InvokeOption) GetEndpointsResultOutput {
@@ -122,6 +125,7 @@ func (o GetEndpointsResultOutput) ToGetEndpointsResultOutputWithContext(ctx cont
 	return o
 }
 
+// A list of Pvtz Endpoints. Each element contains the following attributes:
 func (o GetEndpointsResultOutput) Endpoints() GetEndpointsEndpointArrayOutput {
 	return o.ApplyT(func(v GetEndpointsResult) []GetEndpointsEndpoint { return v.Endpoints }).(GetEndpointsEndpointArrayOutput)
 }
@@ -139,6 +143,7 @@ func (o GetEndpointsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEndpointsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Endpoint names.
 func (o GetEndpointsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEndpointsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -147,6 +152,7 @@ func (o GetEndpointsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEndpointsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
 func (o GetEndpointsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEndpointsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

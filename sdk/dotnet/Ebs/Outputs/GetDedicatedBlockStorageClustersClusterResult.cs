@@ -45,6 +45,9 @@ namespace Pulumi.AliCloud.Ebs.Outputs
         /// The expiration time of the dedicated block storage cluster, in the Unix timestamp format, in seconds.
         /// </summary>
         public readonly string ExpiredTime;
+        /// <summary>
+        /// The first ID of the Dedicated Block Storage Cluster.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Cloud disk performance level, possible values:-PL0.-PL1.-PL2.-PL3.&gt; Only valid in SupportedCategory = cloud_essd.

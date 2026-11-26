@@ -367,6 +367,7 @@ public final class SslCertificatesServicePcaCertState extends com.pulumi.resourc
     /**
      * The status of the certificate. Valid values:
      * - `REVOKE`: indicates that the certificate has been revoked.
+     * 
      * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
      * 
      */
@@ -376,6 +377,7 @@ public final class SslCertificatesServicePcaCertState extends com.pulumi.resourc
     /**
      * @return The status of the certificate. Valid values:
      * - `REVOKE`: indicates that the certificate has been revoked.
+     * 
      * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
      * 
      */
@@ -942,6 +944,7 @@ public final class SslCertificatesServicePcaCertState extends com.pulumi.resourc
         /**
          * @param status The status of the certificate. Valid values:
          * - `REVOKE`: indicates that the certificate has been revoked.
+         * 
          * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
          * 
          * @return builder
@@ -955,6 +958,7 @@ public final class SslCertificatesServicePcaCertState extends com.pulumi.resourc
         /**
          * @param status The status of the certificate. Valid values:
          * - `REVOKE`: indicates that the certificate has been revoked.
+         * 
          * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
          * 
          * @return builder

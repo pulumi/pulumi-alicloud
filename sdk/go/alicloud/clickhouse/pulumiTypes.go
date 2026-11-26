@@ -528,7 +528,8 @@ type GetDbClustersCluster struct {
 	DbClusterAccessWhiteLists []GetDbClustersClusterDbClusterAccessWhiteList `pulumi:"dbClusterAccessWhiteLists"`
 	// The DBCluster description.
 	DbClusterDescription string `pulumi:"dbClusterDescription"`
-	DbClusterId          string `pulumi:"dbClusterId"`
+	// The ID of the DBCluster.
+	DbClusterId string `pulumi:"dbClusterId"`
 	// The DBCluster network type.
 	DbClusterNetworkType string `pulumi:"dbClusterNetworkType"`
 	// The DBCluster type.
@@ -549,7 +550,7 @@ type GetDbClustersCluster struct {
 	EngineVersion string `pulumi:"engineVersion"`
 	// The expiration time of the DBCluster.
 	ExpireTime string `pulumi:"expireTime"`
-	// The ID of the DBCluster.
+	// The DBCluster id.
 	Id string `pulumi:"id"`
 	// If the instance has expired.
 	IsExpired string `pulumi:"isExpired"`
@@ -569,7 +570,7 @@ type GetDbClustersCluster struct {
 	PublicPort string `pulumi:"publicPort"`
 	// Scale state.
 	ScaleOutStatuses []GetDbClustersClusterScaleOutStatus `pulumi:"scaleOutStatuses"`
-	// The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
 	Status string `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType string `pulumi:"storageType"`
@@ -619,7 +620,8 @@ type GetDbClustersClusterArgs struct {
 	DbClusterAccessWhiteLists GetDbClustersClusterDbClusterAccessWhiteListArrayInput `pulumi:"dbClusterAccessWhiteLists"`
 	// The DBCluster description.
 	DbClusterDescription pulumi.StringInput `pulumi:"dbClusterDescription"`
-	DbClusterId          pulumi.StringInput `pulumi:"dbClusterId"`
+	// The ID of the DBCluster.
+	DbClusterId pulumi.StringInput `pulumi:"dbClusterId"`
 	// The DBCluster network type.
 	DbClusterNetworkType pulumi.StringInput `pulumi:"dbClusterNetworkType"`
 	// The DBCluster type.
@@ -640,7 +642,7 @@ type GetDbClustersClusterArgs struct {
 	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
 	// The expiration time of the DBCluster.
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
-	// The ID of the DBCluster.
+	// The DBCluster id.
 	Id pulumi.StringInput `pulumi:"id"`
 	// If the instance has expired.
 	IsExpired pulumi.StringInput `pulumi:"isExpired"`
@@ -660,7 +662,7 @@ type GetDbClustersClusterArgs struct {
 	PublicPort pulumi.StringInput `pulumi:"publicPort"`
 	// Scale state.
 	ScaleOutStatuses GetDbClustersClusterScaleOutStatusArrayInput `pulumi:"scaleOutStatuses"`
-	// The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
 	Status pulumi.StringInput `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType pulumi.StringInput `pulumi:"storageType"`
@@ -778,6 +780,7 @@ func (o GetDbClustersClusterOutput) DbClusterDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersCluster) string { return v.DbClusterDescription }).(pulumi.StringOutput)
 }
 
+// The ID of the DBCluster.
 func (o GetDbClustersClusterOutput) DbClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersCluster) string { return v.DbClusterId }).(pulumi.StringOutput)
 }
@@ -832,7 +835,7 @@ func (o GetDbClustersClusterOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersCluster) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
-// The ID of the DBCluster.
+// The DBCluster id.
 func (o GetDbClustersClusterOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersCluster) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -882,7 +885,7 @@ func (o GetDbClustersClusterOutput) ScaleOutStatuses() GetDbClustersClusterScale
 	return o.ApplyT(func(v GetDbClustersCluster) []GetDbClustersClusterScaleOutStatus { return v.ScaleOutStatuses }).(GetDbClustersClusterScaleOutStatusArrayOutput)
 }
 
-// The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
 func (o GetDbClustersClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersCluster) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1160,7 +1163,7 @@ func (o GetDbClustersClusterScaleOutStatusArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetRegionsRegion struct {
-	// The Region ID.
+	// You can use specified regionId to find the region and available zones information that supports ClickHouse.
 	RegionId string `pulumi:"regionId"`
 	// A list of available zone ids in the region_id.
 	ZoneIds []GetRegionsRegionZoneId `pulumi:"zoneIds"`
@@ -1178,7 +1181,7 @@ type GetRegionsRegionInput interface {
 }
 
 type GetRegionsRegionArgs struct {
-	// The Region ID.
+	// You can use specified regionId to find the region and available zones information that supports ClickHouse.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
 	// A list of available zone ids in the region_id.
 	ZoneIds GetRegionsRegionZoneIdArrayInput `pulumi:"zoneIds"`
@@ -1235,7 +1238,7 @@ func (o GetRegionsRegionOutput) ToGetRegionsRegionOutputWithContext(ctx context.
 	return o
 }
 
-// The Region ID.
+// You can use specified regionId to find the region and available zones information that supports ClickHouse.
 func (o GetRegionsRegionOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionsRegion) string { return v.RegionId }).(pulumi.StringOutput)
 }

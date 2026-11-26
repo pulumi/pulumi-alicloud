@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -71,14 +71,17 @@ type GetMailAddressesArgs struct {
 
 // A collection of values returned by getMailAddresses.
 type GetMailAddressesResult struct {
+	// A list of Direct Mail Mail Addresses. Each element contains the following attributes:
 	Addresses []GetMailAddressesAddress `pulumi:"addresses"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string   `pulumi:"id"`
 	Ids        []string `pulumi:"ids"`
 	KeyWord    *string  `pulumi:"keyWord"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Sendtype   *string  `pulumi:"sendtype"`
-	Status     *string  `pulumi:"status"`
+	// Account type.
+	Sendtype *string `pulumi:"sendtype"`
+	// Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
+	Status *string `pulumi:"status"`
 }
 
 func GetMailAddressesOutput(ctx *pulumi.Context, args GetMailAddressesOutputArgs, opts ...pulumi.InvokeOption) GetMailAddressesResultOutput {
@@ -119,6 +122,7 @@ func (o GetMailAddressesResultOutput) ToGetMailAddressesResultOutputWithContext(
 	return o
 }
 
+// A list of Direct Mail Mail Addresses. Each element contains the following attributes:
 func (o GetMailAddressesResultOutput) Addresses() GetMailAddressesAddressArrayOutput {
 	return o.ApplyT(func(v GetMailAddressesResult) []GetMailAddressesAddress { return v.Addresses }).(GetMailAddressesAddressArrayOutput)
 }
@@ -140,10 +144,12 @@ func (o GetMailAddressesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMailAddressesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Account type.
 func (o GetMailAddressesResultOutput) Sendtype() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMailAddressesResult) *string { return v.Sendtype }).(pulumi.StringPtrOutput)
 }
 
+// Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
 func (o GetMailAddressesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMailAddressesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

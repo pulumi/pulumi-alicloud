@@ -227,14 +227,14 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.options);
     }
     /**
-     * The details about the Tablestore instance. See the following `Block otsDetail`.
+     * The details about the Tablestore instance. See `otsDetail` below.
      * 
      */
     @Export(name="otsDetail", refs={RestoreJobOtsDetail.class}, tree="[0]")
     private Output<RestoreJobOtsDetail> otsDetail;
 
     /**
-     * @return The details about the Tablestore instance. See the following `Block otsDetail`.
+     * @return The details about the Tablestore instance. See `otsDetail` below.
      * 
      */
     public Output<RestoreJobOtsDetail> otsDetail() {

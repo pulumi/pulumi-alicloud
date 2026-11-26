@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides CEN Bandwidth Packages available to the user.
  *
+ * > **NOTE:** Available since v1.18.0+
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -99,6 +101,8 @@ export interface GetBandwidthPackagesResult {
 }
 /**
  * This data source provides CEN Bandwidth Packages available to the user.
+ *
+ * > **NOTE:** Available since v1.18.0+
  *
  * ## Example Usage
  *

@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServerSnapshotsResult {
+    /**
+     * @return The ID of the source disk. This parameter has a value even after the source disk is released.
+     * 
+     */
     private @Nullable String diskId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,12 +27,28 @@ public final class GetServerSnapshotsResult {
     private List<String> ids;
     private @Nullable String instanceId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Snapshot names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Simple Application Server Snapshots. Each element contains the following attributes:
+     * 
+     */
     private List<GetServerSnapshotsSnapshot> snapshots;
+    /**
+     * @return The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
+     * 
+     */
     private @Nullable String status;
 
     private GetServerSnapshotsResult() {}
+    /**
+     * @return The ID of the source disk. This parameter has a value even after the source disk is released.
+     * 
+     */
     public Optional<String> diskId() {
         return Optional.ofNullable(this.diskId);
     }
@@ -48,15 +68,27 @@ public final class GetServerSnapshotsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Snapshot names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Simple Application Server Snapshots. Each element contains the following attributes:
+     * 
+     */
     public List<GetServerSnapshotsSnapshot> snapshots() {
         return this.snapshots;
     }
+    /**
+     * @return The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

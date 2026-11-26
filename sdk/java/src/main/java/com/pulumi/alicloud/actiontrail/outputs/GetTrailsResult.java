@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetTrailsResult {
     /**
-     * @return Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead.&#34;
+     * @return (Deprecated since v1.95.0) Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead. Each element contains the following attributes:
      * 
      * @deprecated Field &#39;actiontrails&#39; has been deprecated from version 1.95.0. Use &#39;trails&#39; instead.
      * 
@@ -56,7 +56,7 @@ public final class GetTrailsResult {
 
     private GetTrailsResult() {}
     /**
-     * @return Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead.&#34;
+     * @return (Deprecated since v1.95.0) Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead. Each element contains the following attributes:
      * 
      * @deprecated Field &#39;actiontrails&#39; has been deprecated from version 1.95.0. Use &#39;trails&#39; instead.
      * 

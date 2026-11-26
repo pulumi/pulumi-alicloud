@@ -99,7 +99,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
-     * *Removed params*
+     * Removed params
      * 
      * @deprecated Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
@@ -111,7 +111,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * @return From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
-     * *Removed params*
+     * Removed params
      * 
      * @deprecated Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
@@ -225,7 +225,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
      * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
      * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
      * 
-     * *Worker params*
+     * Worker params
      * 
      */
     @Import(name="loadBalancerSpec")
@@ -235,7 +235,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
      * @return The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
      * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
      * 
-     * *Worker params*
+     * Worker params
      * 
      */
     public Optional<Output<String>> loadBalancerSpec() {
@@ -461,7 +461,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      * 
-     * *Network params*
+     * Network params
      * 
      */
     @Import(name="skipSetCertificateAuthority")
@@ -470,7 +470,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * @return Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      * 
-     * *Network params*
+     * Network params
      * 
      */
     public Optional<Output<Boolean>> skipSetCertificateAuthority() {
@@ -600,7 +600,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * Worker node system disk auto snapshot policy.
      * 
-     * *Computed params*
+     * Computed params
      * 
      * You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
      * 
@@ -611,7 +611,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * @return Worker node system disk auto snapshot policy.
      * 
-     * *Computed params*
+     * Computed params
      * 
      * You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
      * 
@@ -852,7 +852,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param clusterCaCert From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
          * 
-         * *Removed params*
+         * Removed params
          * 
          * @return builder
          * 
@@ -868,7 +868,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param clusterCaCert From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
          * 
-         * *Removed params*
+         * Removed params
          * 
          * @return builder
          * 
@@ -1020,7 +1020,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
          * @param loadBalancerSpec The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
          * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
          * 
-         * *Worker params*
+         * Worker params
          * 
          * @return builder
          * 
@@ -1034,7 +1034,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
          * @param loadBalancerSpec The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
          * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
          * 
-         * *Worker params*
+         * Worker params
          * 
          * @return builder
          * 
@@ -1376,7 +1376,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
          * 
-         * *Network params*
+         * Network params
          * 
          * @return builder
          * 
@@ -1389,7 +1389,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
          * 
-         * *Network params*
+         * Network params
          * 
          * @return builder
          * 
@@ -1579,7 +1579,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param workerDiskSnapshotPolicyId Worker node system disk auto snapshot policy.
          * 
-         * *Computed params*
+         * Computed params
          * 
          * You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
          * 
@@ -1594,7 +1594,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param workerDiskSnapshotPolicyId Worker node system disk auto snapshot policy.
          * 
-         * *Computed params*
+         * Computed params
          * 
          * You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
          * 

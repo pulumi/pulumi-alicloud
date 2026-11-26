@@ -16,6 +16,10 @@ public final class GetInstancesInstance {
      * 
      */
     private Boolean authed;
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     private String id;
     /**
      * @return The ID of the instance.
@@ -66,6 +70,10 @@ public final class GetInstancesInstance {
     public Boolean authed() {
         return this.authed;
     }
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     public String id() {
         return this.id;
     }

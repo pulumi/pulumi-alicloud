@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf-testAccThreatDetectionHoneypotProbe";
+        ///     var name = config.Get("name") ?? "tf-exampleThreatDetectionHoneypotProbe";
         ///     var defaultHoneypotProbe = new AliCloud.ThreatDetection.HoneypotProbe("default", new()
         ///     {
         ///         Uuid = "e52c7872-29d1-4aa1-9908-0299abd53606",
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf-testAccThreatDetectionHoneypotProbe";
+        ///     var name = config.Get("name") ?? "tf-exampleThreatDetectionHoneypotProbe";
         ///     var defaultHoneypotProbe = new AliCloud.ThreatDetection.HoneypotProbe("default", new()
         ///     {
         ///         Uuid = "e52c7872-29d1-4aa1-9908-0299abd53606",
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf-testAccThreatDetectionHoneypotProbe";
+        ///     var name = config.Get("name") ?? "tf-exampleThreatDetectionHoneypotProbe";
         ///     var defaultHoneypotProbe = new AliCloud.ThreatDetection.HoneypotProbe("default", new()
         ///     {
         ///         Uuid = "e52c7872-29d1-4aa1-9908-0299abd53606",
@@ -240,6 +240,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The status of the honeypot probe.
+        /// </summary>
         [Input("probeStatus")]
         public string? ProbeStatus { get; set; }
 
@@ -293,6 +296,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// The status of the honeypot probe.
+        /// </summary>
         [Input("probeStatus")]
         public Input<string>? ProbeStatus { get; set; }
 

@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetChangeSetsResult {
+    /**
+     * @return The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+     * 
+     */
     private @Nullable String changeSetName;
     private @Nullable Boolean enableDetails;
     /**
@@ -24,13 +28,33 @@ public final class GetChangeSetsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Change Set names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Ros Change Sets. Each element contains the following attributes. See `sets` below.
+     * 
+     */
     private List<GetChangeSetsSet> sets;
+    /**
+     * @return The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
+     * 
+     */
     private String stackId;
+    /**
+     * @return The status of the change set.
+     * 
+     */
     private @Nullable String status;
 
     private GetChangeSetsResult() {}
+    /**
+     * @return The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+     * 
+     */
     public Optional<String> changeSetName() {
         return Optional.ofNullable(this.changeSetName);
     }
@@ -50,18 +74,34 @@ public final class GetChangeSetsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Change Set names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Ros Change Sets. Each element contains the following attributes. See `sets` below.
+     * 
+     */
     public List<GetChangeSetsSet> sets() {
         return this.sets;
     }
+    /**
+     * @return The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
+     * 
+     */
     public String stackId() {
         return this.stackId;
     }
+    /**
+     * @return The status of the change set.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

@@ -24,6 +24,9 @@ namespace Pulumi.AliCloud.Log.Inputs
         [Input("dayOfWeek")]
         public Input<int>? DayOfWeek { get; set; }
 
+        /// <summary>
+        /// Delay time for schedule.
+        /// </summary>
         [Input("delay")]
         public Input<int>? Delay { get; set; }
 
@@ -39,6 +42,9 @@ namespace Pulumi.AliCloud.Log.Inputs
         [Input("interval")]
         public Input<string>? Interval { get; set; }
 
+        /// <summary>
+        /// Whether to run the alert immediately.
+        /// </summary>
         [Input("runImmediately")]
         public Input<bool>? RunImmediately { get; set; }
 

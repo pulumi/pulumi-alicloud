@@ -44,6 +44,9 @@ class GetBackupPoliciesResult:
     @_builtins.property
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> _builtins.str:
+        """
+        The db cluster id.
+        """
         return pulumi.get(self, "db_cluster_id")
 
     @_builtins.property
@@ -62,6 +65,9 @@ class GetBackupPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetBackupPoliciesPolicyResult']:
+        """
+        A list of Click House Backup Policies. Each element contains the following attributes:
+        """
         return pulumi.get(self, "policies")
 
 
@@ -83,7 +89,7 @@ def get_backup_policies(db_cluster_id: Optional[_builtins.str] = None,
     """
     This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.147.0+.
+    > **NOTE:** Available since v1.147.0.
 
     ## Example Usage
 
@@ -118,7 +124,7 @@ def get_backup_policies_output(db_cluster_id: pulumi.Input[Optional[_builtins.st
     """
     This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.147.0+.
+    > **NOTE:** Available since v1.147.0.
 
     ## Example Usage
 

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.148.0+.
+ * > **NOTE:** Available since v1.148.0.
  *
  * ## Example Usage
  *
@@ -114,7 +114,13 @@ export interface GetServerlessInstancesArgs {
  * A collection of values returned by getServerlessInstances.
  */
 export interface GetServerlessInstancesResult {
+    /**
+     * The db instance class.
+     */
     readonly dbInstanceClass?: string;
+    /**
+     * The db instance description.
+     */
     readonly dbInstanceDescription?: string;
     readonly enableDetails?: boolean;
     /**
@@ -122,20 +128,44 @@ export interface GetServerlessInstancesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Mongodb Serverless Instances. Each element contains the following attributes:
+     */
     readonly instances: outputs.mongodb.GetServerlessInstancesInstance[];
+    /**
+     * The network type of the instance.
+     */
     readonly networkType?: string;
     readonly outputFile?: string;
+    /**
+     * The ID of the resource group.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * The status of the instance.
+     */
     readonly status?: string;
+    /**
+     * The tag of the resource.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The ID of the VPC network.
+     */
     readonly vpcId?: string;
+    /**
+     * The id of the vswitch.
+     */
     readonly vswitchId?: string;
+    /**
+     * The ID of the zone.
+     */
     readonly zoneId?: string;
 }
 /**
  * This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.148.0+.
+ * > **NOTE:** Available since v1.148.0.
  *
  * ## Example Usage
  *

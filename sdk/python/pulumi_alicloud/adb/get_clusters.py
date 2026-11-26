@@ -75,7 +75,7 @@ class GetClustersResult:
     @pulumi.getter
     def clusters(self) -> Sequence['outputs.GetClustersClusterResult']:
         """
-        A list of ADB clusters. Each element contains the following attributes:
+        A list of Adb Db Clusters. Each element contains the following attributes:
         """
         return pulumi.get(self, "clusters")
 
@@ -83,7 +83,7 @@ class GetClustersResult:
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         """
-        The description of the ADB cluster.
+        The description of DBCluster.
         """
         return pulumi.get(self, "description")
 
@@ -96,7 +96,7 @@ class GetClustersResult:
     @pulumi.getter
     def descriptions(self) -> Sequence[_builtins.str]:
         """
-        A list of ADB cluster descriptions.
+        A list of DBCluster descriptions.
         """
         return pulumi.get(self, "descriptions")
 
@@ -116,9 +116,6 @@ class GetClustersResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
-        """
-        A list of ADB cluster IDs.
-        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -139,19 +136,25 @@ class GetClustersResult:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
         """
-        Status of the cluster.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The tags of the resource.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
@@ -197,30 +200,29 @@ def get_clusters(description: Optional[_builtins.str] = None,
     The `adb_get_clusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
     Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
 
-    > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
-
-    > **NOTE:** Available in v1.71.0+.
+    > **DEPRECATED:** This data source has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    adb_clusters_ds = alicloud.adb.get_clusters(description_regex="am-\\\\w+",
-        status="Running")
-    pulumi.export("firstAdbClusterId", adb_clusters_ds.clusters[0].id)
+    example = alicloud.adb.get_clusters(description_regex="example")
+    pulumi.export("firstAdbClusterId", example.clusters[0].id)
     ```
 
 
-    :param _builtins.str description: The description of the ADB cluster.
-    :param _builtins.str description_regex: A regex string to filter results by cluster description.
-    :param Sequence[_builtins.str] ids: A list of ADB cluster IDs.
+    :param _builtins.str description: The description of DBCluster.
+    :param _builtins.str description_regex: A regex string to filter results by DBCluster description.
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[_builtins.str] ids: A list of DBCluster IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str status: The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
-    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
-           - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-           - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+    :param _builtins.str resource_group_id: The ID of the resource group.
+    :param _builtins.str status: The status of the resource.
+    :param Mapping[str, _builtins.str] tags: A map of tags assigned to the cluster.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -266,30 +268,29 @@ def get_clusters_output(description: pulumi.Input[Optional[Optional[_builtins.st
     The `adb_get_clusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
     Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
 
-    > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
-
-    > **NOTE:** Available in v1.71.0+.
+    > **DEPRECATED:** This data source has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    adb_clusters_ds = alicloud.adb.get_clusters(description_regex="am-\\\\w+",
-        status="Running")
-    pulumi.export("firstAdbClusterId", adb_clusters_ds.clusters[0].id)
+    example = alicloud.adb.get_clusters(description_regex="example")
+    pulumi.export("firstAdbClusterId", example.clusters[0].id)
     ```
 
 
-    :param _builtins.str description: The description of the ADB cluster.
-    :param _builtins.str description_regex: A regex string to filter results by cluster description.
-    :param Sequence[_builtins.str] ids: A list of ADB cluster IDs.
+    :param _builtins.str description: The description of DBCluster.
+    :param _builtins.str description_regex: A regex string to filter results by DBCluster description.
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[_builtins.str] ids: A list of DBCluster IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str status: The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
-    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
-           - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-           - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+    :param _builtins.str resource_group_id: The ID of the resource group.
+    :param _builtins.str status: The status of the resource.
+    :param Mapping[str, _builtins.str] tags: A map of tags assigned to the cluster.
     """
     __args__ = dict()
     __args__['description'] = description

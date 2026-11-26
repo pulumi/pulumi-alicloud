@@ -17,9 +17,17 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
 
     public static final GetCapacityReservationsArgs Empty = new GetCapacityReservationsArgs();
 
+    /**
+     * A list of Capacity Reservation IDs.
+     * 
+     */
     @Import(name="capacityReservationIds")
     private @Nullable Output<List<String>> capacityReservationIds;
 
+    /**
+     * @return A list of Capacity Reservation IDs.
+     * 
+     */
     public Optional<Output<List<String>>> capacityReservationIds() {
         return Optional.ofNullable(this.capacityReservationIds);
     }
@@ -192,15 +200,33 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
             $ = new GetCapacityReservationsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param capacityReservationIds A list of Capacity Reservation IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder capacityReservationIds(@Nullable Output<List<String>> capacityReservationIds) {
             $.capacityReservationIds = capacityReservationIds;
             return this;
         }
 
+        /**
+         * @param capacityReservationIds A list of Capacity Reservation IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder capacityReservationIds(List<String> capacityReservationIds) {
             return capacityReservationIds(Output.of(capacityReservationIds));
         }
 
+        /**
+         * @param capacityReservationIds A list of Capacity Reservation IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder capacityReservationIds(String... capacityReservationIds) {
             return capacityReservationIds(List.of(capacityReservationIds));
         }

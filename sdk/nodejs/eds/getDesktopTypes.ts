@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.170.0+.
+ * > **NOTE:** Available since v1.170.0.
  *
  * ## Example Usage
  *
@@ -77,23 +77,44 @@ export interface GetDesktopTypesArgs {
  * A collection of values returned by getDesktopTypes.
  */
 export interface GetDesktopTypesResult {
+    /**
+     * The CPU cores.
+     */
     readonly cpuCount?: number;
+    /**
+     * The GPU cores.
+     */
     readonly gpuCount?: number;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Desktop Type IDs.
+     */
     readonly ids: string[];
+    /**
+     * The Specification family.
+     */
     readonly instanceTypeFamily?: string;
+    /**
+     * The Memory size. Unit: MiB.
+     */
     readonly memorySize?: number;
     readonly outputFile?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
+    /**
+     * A list of Ecd Desktop Types. Each element contains the following attributes:
+     */
     readonly types: outputs.eds.GetDesktopTypesType[];
 }
 /**
  * This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.170.0+.
+ * > **NOTE:** Available since v1.170.0.
  *
  * ## Example Usage
  *

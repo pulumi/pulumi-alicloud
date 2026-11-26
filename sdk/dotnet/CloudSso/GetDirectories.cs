@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// <summary>
         /// This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// <summary>
         /// This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// <summary>
         /// This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
@@ -222,6 +222,9 @@ namespace Pulumi.AliCloud.CloudSso
     [OutputType]
     public sealed class GetDirectoriesResult
     {
+        /// <summary>
+        /// A list of Cloud Sso Directories. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDirectoriesDirectoryResult> Directories;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -230,6 +233,9 @@ namespace Pulumi.AliCloud.CloudSso
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Directory names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

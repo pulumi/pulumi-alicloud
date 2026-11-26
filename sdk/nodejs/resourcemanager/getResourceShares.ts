@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.111.0+.
+ * > **NOTE:** Available since v1.111.0.
  *
  * ## Example Usage
  *
@@ -79,17 +79,32 @@ export interface GetResourceSharesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Resource Share names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The name of resource share.
+     */
     readonly resourceShareName?: string;
+    /**
+     * The owner of resource share.
+     */
     readonly resourceShareOwner: string;
+    /**
+     * A list of Resource Manager Resource Shares. Each element contains the following attributes:
+     */
     readonly shares: outputs.resourcemanager.GetResourceSharesShare[];
+    /**
+     * The status of resource share.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.111.0+.
+ * > **NOTE:** Available since v1.111.0.
  *
  * ## Example Usage
  *

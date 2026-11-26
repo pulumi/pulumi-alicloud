@@ -13,7 +13,7 @@ import (
 
 // This data source provides CEN Private Zones available to the user.
 //
-// > **NOTE:** Available in v1.88.0+.
+// > **NOTE:** Available since v1.88.0+.
 //
 // ## Example Usage
 //
@@ -59,11 +59,10 @@ func GetPrivateZones(ctx *pulumi.Context, args *GetPrivateZonesArgs, opts ...pul
 type GetPrivateZonesArgs struct {
 	// The ID of the CEN instance.
 	CenId string `pulumi:"cenId"`
-	// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+	// The service region is the target region of the PrivateZone service accessed through CEN.
 	HostRegionId *string `pulumi:"hostRegionId"`
 	// A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
 	// **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
-	// * ` hostRegionId  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -98,11 +97,10 @@ func GetPrivateZonesOutput(ctx *pulumi.Context, args GetPrivateZonesOutputArgs, 
 type GetPrivateZonesOutputArgs struct {
 	// The ID of the CEN instance.
 	CenId pulumi.StringInput `pulumi:"cenId"`
-	// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+	// The service region is the target region of the PrivateZone service accessed through CEN.
 	HostRegionId pulumi.StringPtrInput `pulumi:"hostRegionId"`
 	// A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
 	// **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
-	// * ` hostRegionId  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.139.0+.
+        /// &gt; **NOTE:** Available since v1.139.0.
         /// 
         /// ## Example Usage
         /// 
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.139.0+.
+        /// &gt; **NOTE:** Available since v1.139.0.
         /// 
         /// ## Example Usage
         /// 
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.139.0+.
+        /// &gt; **NOTE:** Available since v1.139.0.
         /// 
         /// ## Example Usage
         /// 
@@ -150,6 +150,9 @@ namespace Pulumi.AliCloud.ActionTrail
 
     public sealed class GetHistoryDeliveryJobsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Whether to enable details for the jobs. Default value: `False`.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -185,6 +188,9 @@ namespace Pulumi.AliCloud.ActionTrail
 
     public sealed class GetHistoryDeliveryJobsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Whether to enable details for the jobs. Default value: `False`.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -228,8 +234,14 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Actiontrail History Delivery Jobs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHistoryDeliveryJobsJobResult> Jobs;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+        /// </summary>
         public readonly int? Status;
 
         [OutputConstructor]

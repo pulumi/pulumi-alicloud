@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetBundlesBundle {
     /**
-     * @return The bundle id of the bundle.
+     * @return A list of bundle IDs used to filter the results.
      * 
      */
     private String bundleId;
@@ -66,7 +66,7 @@ public final class GetBundlesBundle {
 
     private GetBundlesBundle() {}
     /**
-     * @return The bundle id of the bundle.
+     * @return A list of bundle IDs used to filter the results.
      * 
      */
     public String bundleId() {

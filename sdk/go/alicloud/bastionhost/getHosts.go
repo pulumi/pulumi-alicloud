@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.135.0+.
+// > **NOTE:** Available since v1.135.0.
 //
 // ## Example Usage
 //
@@ -93,21 +93,28 @@ type GetHostsArgs struct {
 
 // A collection of values returned by getHosts.
 type GetHostsResult struct {
-	EnableDetails *bool          `pulumi:"enableDetails"`
-	HostAddress   *string        `pulumi:"hostAddress"`
-	HostName      *string        `pulumi:"hostName"`
-	Hosts         []GetHostsHost `pulumi:"hosts"`
+	EnableDetails *bool   `pulumi:"enableDetails"`
+	HostAddress   *string `pulumi:"hostAddress"`
+	// Specify the new create a host name of the supports up to 128 characters.
+	HostName *string `pulumi:"hostName"`
+	// A list of Bastionhost Hosts. Each element contains the following attributes:
+	Hosts []GetHostsHost `pulumi:"hosts"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                  string   `pulumi:"id"`
-	Ids                 []string `pulumi:"ids"`
-	InstanceId          string   `pulumi:"instanceId"`
-	NameRegex           *string  `pulumi:"nameRegex"`
-	Names               []string `pulumi:"names"`
-	OsType              *string  `pulumi:"osType"`
-	OutputFile          *string  `pulumi:"outputFile"`
-	Source              *string  `pulumi:"source"`
-	SourceInstanceId    *string  `pulumi:"sourceInstanceId"`
-	SourceInstanceState *string  `pulumi:"sourceInstanceState"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// Specify the new create a host where the Bastion host ID of.
+	InstanceId string  `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of Host names.
+	Names []string `pulumi:"names"`
+	// Specify the new create the host's operating system. Valid values: Linux Windows.
+	OsType     *string `pulumi:"osType"`
+	OutputFile *string `pulumi:"outputFile"`
+	// Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
+	Source *string `pulumi:"source"`
+	// Specify the newly created ECS instance ID or dedicated cluster host ID.
+	SourceInstanceId    *string `pulumi:"sourceInstanceId"`
+	SourceInstanceState *string `pulumi:"sourceInstanceState"`
 }
 
 func GetHostsOutput(ctx *pulumi.Context, args GetHostsOutputArgs, opts ...pulumi.InvokeOption) GetHostsResultOutput {
@@ -168,10 +175,12 @@ func (o GetHostsResultOutput) HostAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHostsResult) *string { return v.HostAddress }).(pulumi.StringPtrOutput)
 }
 
+// Specify the new create a host name of the supports up to 128 characters.
 func (o GetHostsResultOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHostsResult) *string { return v.HostName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Bastionhost Hosts. Each element contains the following attributes:
 func (o GetHostsResultOutput) Hosts() GetHostsHostArrayOutput {
 	return o.ApplyT(func(v GetHostsResult) []GetHostsHost { return v.Hosts }).(GetHostsHostArrayOutput)
 }
@@ -185,6 +194,7 @@ func (o GetHostsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// Specify the new create a host where the Bastion host ID of.
 func (o GetHostsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHostsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -193,10 +203,12 @@ func (o GetHostsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHostsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Host names.
 func (o GetHostsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
+// Specify the new create the host's operating system. Valid values: Linux Windows.
 func (o GetHostsResultOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHostsResult) *string { return v.OsType }).(pulumi.StringPtrOutput)
 }
@@ -205,10 +217,12 @@ func (o GetHostsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHostsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
 func (o GetHostsResultOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHostsResult) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+// Specify the newly created ECS instance ID or dedicated cluster host ID.
 func (o GetHostsResultOutput) SourceInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHostsResult) *string { return v.SourceInstanceId }).(pulumi.StringPtrOutput)
 }

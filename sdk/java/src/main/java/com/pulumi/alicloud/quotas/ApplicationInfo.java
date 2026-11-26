@@ -18,113 +18,349 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Provides a Quotas Application Info resource. Details of Quota Application.
+ * 
+ * &gt; **NOTE:** Available since v1.117.0.
+ * 
+ * This is an alias of `alicloud.quotas.QuotaApplication`.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.quotas.ApplicationInfo;
+ * import com.pulumi.alicloud.quotas.ApplicationInfoArgs;
+ * import com.pulumi.alicloud.quotas.inputs.ApplicationInfoDimensionArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new ApplicationInfo("default", ApplicationInfoArgs.builder()
+ *             .quotaActionCode("q_desktop-count")
+ *             .productCode("gws")
+ *             .quotaCategory("CommonQuota")
+ *             .noticeType(3)
+ *             .dimensions(ApplicationInfoDimensionArgs.builder()
+ *                 .key("regionId")
+ *                 .value("cn-hangzhou")
+ *                 .build())
+ *             .desireValue(1001.0)
+ *             .reason("测试")
+ *             .envLanguage("zh")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.quotas.ApplicationInfo` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.quotas.ApplicationInfo`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
+ * ## Import
+ * 
+ * Quotas Application Info can be imported using the id, e.g.
+ * 
+ * ```sh
+ * $ pulumi import alicloud:quotas/applicationInfo:ApplicationInfo example &lt;id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="alicloud:quotas/applicationInfo:ApplicationInfo")
 public class ApplicationInfo extends com.pulumi.resources.CustomResource {
+    /**
+     * The approve value of the quota application.
+     * 
+     */
     @Export(name="approveValue", refs={String.class}, tree="[0]")
     private Output<String> approveValue;
 
+    /**
+     * @return The approve value of the quota application.
+     * 
+     */
     public Output<String> approveValue() {
         return this.approveValue;
     }
+    /**
+     * This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+     * - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+     * - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+     * 
+     */
     @Export(name="auditMode", refs={String.class}, tree="[0]")
     private Output<String> auditMode;
 
+    /**
+     * @return This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+     * - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+     * - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+     * 
+     */
     public Output<String> auditMode() {
         return this.auditMode;
     }
+    /**
+     * The audit reason.
+     * 
+     */
     @Export(name="auditReason", refs={String.class}, tree="[0]")
     private Output<String> auditReason;
 
+    /**
+     * @return The audit reason.
+     * 
+     */
     public Output<String> auditReason() {
         return this.auditReason;
     }
+    /**
+     * Resource attribute field representing creation time.
+     * 
+     */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
+    /**
+     * @return Resource attribute field representing creation time.
+     * 
+     */
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * The desire value of the quota application.
+     * 
+     */
     @Export(name="desireValue", refs={Double.class}, tree="[0]")
     private Output<Double> desireValue;
 
+    /**
+     * @return The desire value of the quota application.
+     * 
+     */
     public Output<Double> desireValue() {
         return this.desireValue;
     }
+    /**
+     * QuotaDimensions. See `dimensions` below.
+     * 
+     */
     @Export(name="dimensions", refs={List.class,ApplicationInfoDimension.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApplicationInfoDimension>> dimensions;
 
+    /**
+     * @return QuotaDimensions. See `dimensions` below.
+     * 
+     */
     public Output<Optional<List<ApplicationInfoDimension>>> dimensions() {
         return Codegen.optional(this.dimensions);
     }
+    /**
+     * The effective time of the quota application.
+     * 
+     */
     @Export(name="effectiveTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> effectiveTime;
 
+    /**
+     * @return The effective time of the quota application.
+     * 
+     */
     public Output<Optional<String>> effectiveTime() {
         return Codegen.optional(this.effectiveTime);
     }
+    /**
+     * The language of the quota alert notification. Value:
+     * - zh (default): Chinese.
+     * - en: English.
+     * 
+     */
     @Export(name="envLanguage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> envLanguage;
 
+    /**
+     * @return The language of the quota alert notification. Value:
+     * - zh (default): Chinese.
+     * - en: English.
+     * 
+     */
     public Output<Optional<String>> envLanguage() {
         return Codegen.optional(this.envLanguage);
     }
+    /**
+     * The expired time of the quota application.
+     * 
+     */
     @Export(name="expireTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expireTime;
 
+    /**
+     * @return The expired time of the quota application.
+     * 
+     */
     public Output<Optional<String>> expireTime() {
         return Codegen.optional(this.expireTime);
     }
+    /**
+     * Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+     * 
+     */
     @Export(name="noticeType", refs={Integer.class}, tree="[0]")
     private Output<Integer> noticeType;
 
+    /**
+     * @return Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+     * 
+     */
     public Output<Integer> noticeType() {
         return this.noticeType;
     }
+    /**
+     * The product code.
+     * 
+     */
     @Export(name="productCode", refs={String.class}, tree="[0]")
     private Output<String> productCode;
 
+    /**
+     * @return The product code.
+     * 
+     */
     public Output<String> productCode() {
         return this.productCode;
     }
+    /**
+     * The ID of quota action.
+     * 
+     */
     @Export(name="quotaActionCode", refs={String.class}, tree="[0]")
     private Output<String> quotaActionCode;
 
+    /**
+     * @return The ID of quota action.
+     * 
+     */
     public Output<String> quotaActionCode() {
         return this.quotaActionCode;
     }
+    /**
+     * The quota type.
+     * - CommonQuota (default): Generic quota.
+     * - FlowControl:API rate quota.
+     * - WhiteListLabel: Equity quota.
+     * 
+     */
     @Export(name="quotaCategory", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> quotaCategory;
 
+    /**
+     * @return The quota type.
+     * - CommonQuota (default): Generic quota.
+     * - FlowControl:API rate quota.
+     * - WhiteListLabel: Equity quota.
+     * 
+     */
     public Output<Optional<String>> quotaCategory() {
         return Codegen.optional(this.quotaCategory);
     }
+    /**
+     * The description of the quota application.
+     * 
+     */
     @Export(name="quotaDescription", refs={String.class}, tree="[0]")
     private Output<String> quotaDescription;
 
+    /**
+     * @return The description of the quota application.
+     * 
+     */
     public Output<String> quotaDescription() {
         return this.quotaDescription;
     }
+    /**
+     * The name of the quota application.
+     * 
+     */
     @Export(name="quotaName", refs={String.class}, tree="[0]")
     private Output<String> quotaName;
 
+    /**
+     * @return The name of the quota application.
+     * 
+     */
     public Output<String> quotaName() {
         return this.quotaName;
     }
+    /**
+     * The unit of the quota application.
+     * 
+     */
     @Export(name="quotaUnit", refs={String.class}, tree="[0]")
     private Output<String> quotaUnit;
 
+    /**
+     * @return The unit of the quota application.
+     * 
+     */
     public Output<String> quotaUnit() {
         return this.quotaUnit;
     }
+    /**
+     * The reason of the quota application.
+     * 
+     */
     @Export(name="reason", refs={String.class}, tree="[0]")
     private Output<String> reason;
 
+    /**
+     * @return The reason of the quota application.
+     * 
+     */
     public Output<String> reason() {
         return this.reason;
     }
+    /**
+     * Application Status:
+     * - Disagree: reject.
+     * - Agree: Approved.
+     * - Process: under review.
+     * - Cancel: Closed.
+     * 
+     */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
+    /**
+     * @return Application Status:
+     * - Disagree: reject.
+     * - Agree: Approved.
+     * - Process: under review.
+     * - Cancel: Closed.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }

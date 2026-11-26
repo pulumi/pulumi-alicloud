@@ -20,6 +20,10 @@ import (
 //
 // > **NOTE:** Available since v1.5.0.
 //
+// > **NOTE:** The `collationName`, `accountName` and `accountPrivilege` arguments take effect only when the database is created. Changing any of them forces a new database to be created.
+//
+// > **NOTE:** The account permission granted through `accountName` and `accountPrivilege` is not read back from the API. If the permission of the same account on this database is also managed by `rds.AccountPrivilege`, both configurations write the same permission and the last applied one wins.
+//
 // ## Example Usage
 //
 // ```go
@@ -83,7 +87,7 @@ import (
 //				EngineVersion:         pulumi.String("8.0"),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
 //				InstanceType:          pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       rds.GetInstanceClassesInstanceClassStorageRangeArgs(defaultGetInstanceClasses.InstanceClasses[0].StorageRanges.Min),
+//				InstanceStorage:       pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRanges[0].Min),
 //				VswitchId:             defaultSwitch.ID(),
 //				InstanceName:          pulumi.String(name),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
@@ -91,10 +95,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			defaultRdsAccount, err := rds.NewRdsAccount(ctx, "default", &rds.RdsAccountArgs{
+//				DbInstanceId:    defaultInstance.ID(),
+//				AccountName:     pulumi.String("terraform_example"),
+//				AccountPassword: pulumi.String("Test12345"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = rds.NewDatabase(ctx, "default", &rds.DatabaseArgs{
-//				InstanceId:   defaultInstance.ID(),
-//				DataBaseName: pulumi.String(name),
-//				CharacterSet: pulumi.String("utf8"),
+//				InstanceId:       defaultInstance.ID(),
+//				DataBaseName:     pulumi.String(name),
+//				CharacterSet:     pulumi.String("gbk"),
+//				CollationName:    pulumi.String("gbk_chinese_ci"),
+//				AccountName:      defaultRdsAccount.AccountName,
+//				AccountPrivilege: pulumi.String("ReadWrite"),
 //			})
 //			if err != nil {
 //				return err
@@ -117,6 +132,14 @@ import (
 type Database struct {
 	pulumi.CustomResourceState
 
+	// The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+	//
+	// > **NOTE:** The account must belong to the instance specified by `instanceId` and must exist before the database is created.
+	AccountName pulumi.StringPtrOutput `pulumi:"accountName"`
+	// The privilege granted to the account specified by `accountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+	//
+	// > **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `accountName` to be set.
+	AccountPrivilege pulumi.StringPtrOutput `pulumi:"accountPrivilege"`
 	// Character set. The value range is limited to the following:
 	// - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
 	// - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -128,7 +151,10 @@ type Database struct {
 	//
 	// More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
 	CharacterSet pulumi.StringPtrOutput `pulumi:"characterSet"`
+	// The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `characterSet`, for example `gbkChineseCi` for `gbk` or `utf8mb4GeneralCi` for `utf8mb4`.
+	CollationName pulumi.StringPtrOutput `pulumi:"collationName"`
 	// The name of the database.
+	//
 	// > **NOTE:**
 	// The name must be 2 to 64 characters in length.
 	// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -141,6 +167,7 @@ type Database struct {
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+	//
 	// > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.
@@ -182,6 +209,14 @@ func GetDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Database resources.
 type databaseState struct {
+	// The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+	//
+	// > **NOTE:** The account must belong to the instance specified by `instanceId` and must exist before the database is created.
+	AccountName *string `pulumi:"accountName"`
+	// The privilege granted to the account specified by `accountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+	//
+	// > **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `accountName` to be set.
+	AccountPrivilege *string `pulumi:"accountPrivilege"`
 	// Character set. The value range is limited to the following:
 	// - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
 	// - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -193,7 +228,10 @@ type databaseState struct {
 	//
 	// More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
 	CharacterSet *string `pulumi:"characterSet"`
+	// The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `characterSet`, for example `gbkChineseCi` for `gbk` or `utf8mb4GeneralCi` for `utf8mb4`.
+	CollationName *string `pulumi:"collationName"`
 	// The name of the database.
+	//
 	// > **NOTE:**
 	// The name must be 2 to 64 characters in length.
 	// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -206,6 +244,7 @@ type databaseState struct {
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	InstanceId *string `pulumi:"instanceId"`
 	// The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+	//
 	// > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.
@@ -215,6 +254,14 @@ type databaseState struct {
 }
 
 type DatabaseState struct {
+	// The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+	//
+	// > **NOTE:** The account must belong to the instance specified by `instanceId` and must exist before the database is created.
+	AccountName pulumi.StringPtrInput
+	// The privilege granted to the account specified by `accountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+	//
+	// > **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `accountName` to be set.
+	AccountPrivilege pulumi.StringPtrInput
 	// Character set. The value range is limited to the following:
 	// - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
 	// - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -226,7 +273,10 @@ type DatabaseState struct {
 	//
 	// More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
 	CharacterSet pulumi.StringPtrInput
+	// The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `characterSet`, for example `gbkChineseCi` for `gbk` or `utf8mb4GeneralCi` for `utf8mb4`.
+	CollationName pulumi.StringPtrInput
 	// The name of the database.
+	//
 	// > **NOTE:**
 	// The name must be 2 to 64 characters in length.
 	// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -239,6 +289,7 @@ type DatabaseState struct {
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	InstanceId pulumi.StringPtrInput
 	// The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+	//
 	// > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.
@@ -258,6 +309,14 @@ func DatabaseExists(ctx *pulumi.Context,
 }
 
 type databaseArgs struct {
+	// The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+	//
+	// > **NOTE:** The account must belong to the instance specified by `instanceId` and must exist before the database is created.
+	AccountName *string `pulumi:"accountName"`
+	// The privilege granted to the account specified by `accountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+	//
+	// > **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `accountName` to be set.
+	AccountPrivilege *string `pulumi:"accountPrivilege"`
 	// Character set. The value range is limited to the following:
 	// - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
 	// - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -269,7 +328,10 @@ type databaseArgs struct {
 	//
 	// More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
 	CharacterSet *string `pulumi:"characterSet"`
+	// The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `characterSet`, for example `gbkChineseCi` for `gbk` or `utf8mb4GeneralCi` for `utf8mb4`.
+	CollationName *string `pulumi:"collationName"`
 	// The name of the database.
+	//
 	// > **NOTE:**
 	// The name must be 2 to 64 characters in length.
 	// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -282,6 +344,7 @@ type databaseArgs struct {
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	InstanceId string `pulumi:"instanceId"`
 	// The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+	//
 	// > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.
@@ -290,6 +353,14 @@ type databaseArgs struct {
 
 // The set of arguments for constructing a Database resource.
 type DatabaseArgs struct {
+	// The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+	//
+	// > **NOTE:** The account must belong to the instance specified by `instanceId` and must exist before the database is created.
+	AccountName pulumi.StringPtrInput
+	// The privilege granted to the account specified by `accountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+	//
+	// > **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `accountName` to be set.
+	AccountPrivilege pulumi.StringPtrInput
 	// Character set. The value range is limited to the following:
 	// - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
 	// - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -301,7 +372,10 @@ type DatabaseArgs struct {
 	//
 	// More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
 	CharacterSet pulumi.StringPtrInput
+	// The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `characterSet`, for example `gbkChineseCi` for `gbk` or `utf8mb4GeneralCi` for `utf8mb4`.
+	CollationName pulumi.StringPtrInput
 	// The name of the database.
+	//
 	// > **NOTE:**
 	// The name must be 2 to 64 characters in length.
 	// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -314,6 +388,7 @@ type DatabaseArgs struct {
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	InstanceId pulumi.StringInput
 	// The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+	//
 	// > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.
@@ -407,6 +482,20 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 	return o
 }
 
+// The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+//
+// > **NOTE:** The account must belong to the instance specified by `instanceId` and must exist before the database is created.
+func (o DatabaseOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.AccountName }).(pulumi.StringPtrOutput)
+}
+
+// The privilege granted to the account specified by `accountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+//
+// > **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `accountName` to be set.
+func (o DatabaseOutput) AccountPrivilege() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.AccountPrivilege }).(pulumi.StringPtrOutput)
+}
+
 // Character set. The value range is limited to the following:
 // - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
 // - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -421,7 +510,13 @@ func (o DatabaseOutput) CharacterSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.CharacterSet }).(pulumi.StringPtrOutput)
 }
 
+// The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `characterSet`, for example `gbkChineseCi` for `gbk` or `utf8mb4GeneralCi` for `utf8mb4`.
+func (o DatabaseOutput) CollationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.CollationName }).(pulumi.StringPtrOutput)
+}
+
 // The name of the database.
+//
 // > **NOTE:**
 // The name must be 2 to 64 characters in length.
 // The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -443,6 +538,7 @@ func (o DatabaseOutput) InstanceId() pulumi.StringOutput {
 }
 
 // The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+//
 // > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.

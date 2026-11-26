@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+        /// The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `EndTimeType` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
         /// </summary>
         [Output("endTime")]
         public Output<string> EndTime { get; private set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+        /// The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `EndTimeType` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
@@ -339,7 +339,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+        /// The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `EndTimeType` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }

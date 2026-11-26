@@ -127,6 +127,9 @@ export class KeyPairAttachment extends pulumi.CustomResource {
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     declare public readonly keyName: pulumi.Output<string>;
+    /**
+     * The name of key pair used to bind.
+     */
     declare public readonly keyPairName: pulumi.Output<string>;
 
     /**
@@ -179,6 +182,9 @@ export interface KeyPairAttachmentState {
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     keyName?: pulumi.Input<string | undefined>;
+    /**
+     * The name of key pair used to bind.
+     */
     keyPairName?: pulumi.Input<string | undefined>;
 }
 
@@ -200,5 +206,8 @@ export interface KeyPairAttachmentArgs {
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     keyName?: pulumi.Input<string | undefined>;
+    /**
+     * The name of key pair used to bind.
+     */
     keyPairName?: pulumi.Input<string | undefined>;
 }

@@ -113,9 +113,17 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.diskType);
     }
 
+    /**
+     * Whether to enable public access. System default to `false`.
+     * 
+     */
     @Import(name="enablePublic")
     private @Nullable Output<Boolean> enablePublic;
 
+    /**
+     * @return Whether to enable public access. System default to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> enablePublic() {
         return Optional.ofNullable(this.enablePublic);
     }
@@ -210,9 +218,17 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.nodeCount);
     }
 
+    /**
+     * The password of the cluster account.
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return The password of the cluster account.
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
@@ -232,23 +248,47 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.payType);
     }
 
+    /**
+     * The purchase period of the cluster. Valid when payType = Subscription.
+     * 
+     */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
+    /**
+     * @return The purchase period of the cluster. Valid when payType = Subscription.
+     * 
+     */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
 
+    /**
+     * The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
+     * 
+     */
     @Import(name="periodUnit")
     private @Nullable Output<String> periodUnit;
 
+    /**
+     * @return The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
+     * 
+     */
     public Optional<Output<String>> periodUnit() {
         return Optional.ofNullable(this.periodUnit);
     }
 
+    /**
+     * The public access points of the Cassandra cluster.
+     * 
+     */
     @Import(name="publicPoints")
     private @Nullable Output<List<String>> publicPoints;
 
+    /**
+     * @return The public access points of the Cassandra cluster.
+     * 
+     */
     public Optional<Output<List<String>>> publicPoints() {
         return Optional.ofNullable(this.publicPoints);
     }
@@ -272,9 +312,17 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.securityGroups);
     }
 
+    /**
+     * The status of the Cassandra cluster.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return The status of the Cassandra cluster.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -500,11 +548,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return diskType(Output.of(diskType));
         }
 
+        /**
+         * @param enablePublic Whether to enable public access. System default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enablePublic(@Nullable Output<Boolean> enablePublic) {
             $.enablePublic = enablePublic;
             return this;
         }
 
+        /**
+         * @param enablePublic Whether to enable public access. System default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enablePublic(Boolean enablePublic) {
             return enablePublic(Output.of(enablePublic));
         }
@@ -635,11 +695,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return nodeCount(Output.of(nodeCount));
         }
 
+        /**
+         * @param password The password of the cluster account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password The password of the cluster account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
@@ -665,33 +737,75 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return payType(Output.of(payType));
         }
 
+        /**
+         * @param period The purchase period of the cluster. Valid when payType = Subscription.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(@Nullable Output<Integer> period) {
             $.period = period;
             return this;
         }
 
+        /**
+         * @param period The purchase period of the cluster. Valid when payType = Subscription.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(Integer period) {
             return period(Output.of(period));
         }
 
+        /**
+         * @param periodUnit The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
+         * 
+         * @return builder
+         * 
+         */
         public Builder periodUnit(@Nullable Output<String> periodUnit) {
             $.periodUnit = periodUnit;
             return this;
         }
 
+        /**
+         * @param periodUnit The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
+         * 
+         * @return builder
+         * 
+         */
         public Builder periodUnit(String periodUnit) {
             return periodUnit(Output.of(periodUnit));
         }
 
+        /**
+         * @param publicPoints The public access points of the Cassandra cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicPoints(@Nullable Output<List<String>> publicPoints) {
             $.publicPoints = publicPoints;
             return this;
         }
 
+        /**
+         * @param publicPoints The public access points of the Cassandra cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicPoints(List<String> publicPoints) {
             return publicPoints(Output.of(publicPoints));
         }
 
+        /**
+         * @param publicPoints The public access points of the Cassandra cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicPoints(String... publicPoints) {
             return publicPoints(List.of(publicPoints));
         }
@@ -733,11 +847,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return securityGroups(List.of(securityGroups));
         }
 
+        /**
+         * @param status The status of the Cassandra cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status The status of the Cassandra cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

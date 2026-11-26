@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:directmail/configSet:ConfigSet":
+		r = &ConfigSet{}
+	case "alicloud:directmail/dedicatedIpPool:DedicatedIpPool":
+		r = &DedicatedIpPool{}
 	case "alicloud:directmail/domain:Domain":
 		r = &Domain{}
 	case "alicloud:directmail/mailAddress:MailAddress":
@@ -42,6 +46,16 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"directmail/configSet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"directmail/dedicatedIpPool",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"directmail/domain",

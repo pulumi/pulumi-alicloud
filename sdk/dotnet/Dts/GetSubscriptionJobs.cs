@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -102,6 +102,9 @@ namespace Pulumi.AliCloud.Dts
 
     public sealed class GetSubscriptionJobsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `False`. Set it to `True` to fetch detailed attributes for each subscription job, including `SourceEndpointOwnerId`, `SourceEndpointRole`, `SubscriptionDataTypeDdl` and `SubscriptionDataTypeDml`.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -137,6 +140,10 @@ namespace Pulumi.AliCloud.Dts
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to filter results.
+        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -151,6 +158,9 @@ namespace Pulumi.AliCloud.Dts
 
     public sealed class GetSubscriptionJobsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `False`. Set it to `True` to fetch detailed attributes for each subscription job, including `SourceEndpointOwnerId`, `SourceEndpointRole`, `SubscriptionDataTypeDdl` and `SubscriptionDataTypeDml`.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -186,6 +196,10 @@ namespace Pulumi.AliCloud.Dts
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to filter results.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -207,12 +221,27 @@ namespace Pulumi.AliCloud.Dts
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Subscription Job IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Dts Subscription Jobs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSubscriptionJobsJobResult> Jobs;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Subscription Job names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]

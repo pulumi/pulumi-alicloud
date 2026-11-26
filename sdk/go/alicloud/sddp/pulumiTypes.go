@@ -344,8 +344,9 @@ func (o GetDataLimitsLimitArrayOutput) Index(i pulumi.IntInput) GetDataLimitsLim
 
 type GetInstancesInstance struct {
 	// Whether the required RAM authorization is configured.
-	Authed bool   `pulumi:"authed"`
-	Id     string `pulumi:"id"`
+	Authed bool `pulumi:"authed"`
+	// The ID of the instance.
+	Id string `pulumi:"id"`
 	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
 	// The number of instances.
@@ -377,8 +378,9 @@ type GetInstancesInstanceInput interface {
 
 type GetInstancesInstanceArgs struct {
 	// Whether the required RAM authorization is configured.
-	Authed pulumi.BoolInput   `pulumi:"authed"`
-	Id     pulumi.StringInput `pulumi:"id"`
+	Authed pulumi.BoolInput `pulumi:"authed"`
+	// The ID of the instance.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The number of instances.
@@ -453,6 +455,7 @@ func (o GetInstancesInstanceOutput) Authed() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstance) bool { return v.Authed }).(pulumi.BoolOutput)
 }
 
+// The ID of the instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -49,7 +49,7 @@ public final class GetDbInstancesInstance {
      */
     private String dbInstanceId;
     /**
-     * @return IP ADDRESS whitelist for the instance group list.
+     * @return IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
      * 
      */
     private List<GetDbInstancesInstanceDbInstanceIpArray> dbInstanceIpArrays;
@@ -159,7 +159,7 @@ public final class GetDbInstancesInstance {
      */
     private List<String> readOnlyDbInstanceIds;
     /**
-     * @return Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+     * @return Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      * 
      */
     private String status;
@@ -230,7 +230,7 @@ public final class GetDbInstancesInstance {
         return this.dbInstanceId;
     }
     /**
-     * @return IP ADDRESS whitelist for the instance group list.
+     * @return IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
      * 
      */
     public List<GetDbInstancesInstanceDbInstanceIpArray> dbInstanceIpArrays() {
@@ -384,7 +384,7 @@ public final class GetDbInstancesInstance {
         return this.readOnlyDbInstanceIds;
     }
     /**
-     * @return Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+     * @return Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      * 
      */
     public String status() {

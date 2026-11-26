@@ -22,7 +22,8 @@ class VpcEndpointServiceConnectionArgs:
                  endpoint_id: pulumi.Input[_builtins.str],
                  service_id: pulumi.Input[_builtins.str],
                  bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
-                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 traffic_control_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcEndpointServiceConnection resource.
 
@@ -32,6 +33,7 @@ class VpcEndpointServiceConnectionArgs:
                
                Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        :param pulumi.Input[_builtins.str] traffic_control_mode: The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
         """
         pulumi.set(__self__, "endpoint_id", endpoint_id)
         pulumi.set(__self__, "service_id", service_id)
@@ -39,6 +41,8 @@ class VpcEndpointServiceConnectionArgs:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if traffic_control_mode is not None:
+            pulumi.set(__self__, "traffic_control_mode", traffic_control_mode)
 
     @_builtins.property
     @pulumi.getter(name="endpointId")
@@ -90,6 +94,18 @@ class VpcEndpointServiceConnectionArgs:
     def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
+    @_builtins.property
+    @pulumi.getter(name="trafficControlMode")
+    def traffic_control_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+        """
+        return pulumi.get(self, "traffic_control_mode")
+
+    @traffic_control_mode.setter
+    def traffic_control_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "traffic_control_mode", value)
+
 
 @pulumi.input_type
 class _VpcEndpointServiceConnectionState:
@@ -97,8 +113,10 @@ class _VpcEndpointServiceConnectionState:
                  bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
                  service_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 status: pulumi.Input[Optional[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_control_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcEndpointServiceConnection resources.
 
@@ -107,8 +125,10 @@ class _VpcEndpointServiceConnectionState:
                Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] endpoint_id: The endpoint ID.
+        :param pulumi.Input[_builtins.int] endpoint_owner_id: The owner ID of the endpoint.
         :param pulumi.Input[_builtins.str] service_id: The endpoint service ID.
         :param pulumi.Input[_builtins.str] status: The state of the endpoint connection.
+        :param pulumi.Input[_builtins.str] traffic_control_mode: The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
         """
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
@@ -116,10 +136,14 @@ class _VpcEndpointServiceConnectionState:
             pulumi.set(__self__, "dry_run", dry_run)
         if endpoint_id is not None:
             pulumi.set(__self__, "endpoint_id", endpoint_id)
+        if endpoint_owner_id is not None:
+            pulumi.set(__self__, "endpoint_owner_id", endpoint_owner_id)
         if service_id is not None:
             pulumi.set(__self__, "service_id", service_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if traffic_control_mode is not None:
+            pulumi.set(__self__, "traffic_control_mode", traffic_control_mode)
 
     @_builtins.property
     @pulumi.getter
@@ -160,6 +184,18 @@ class _VpcEndpointServiceConnectionState:
         pulumi.set(self, "endpoint_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="endpointOwnerId")
+    def endpoint_owner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The owner ID of the endpoint.
+        """
+        return pulumi.get(self, "endpoint_owner_id")
+
+    @endpoint_owner_id.setter
+    def endpoint_owner_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "endpoint_owner_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -183,6 +219,18 @@ class _VpcEndpointServiceConnectionState:
     def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
+    @_builtins.property
+    @pulumi.getter(name="trafficControlMode")
+    def traffic_control_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+        """
+        return pulumi.get(self, "traffic_control_mode")
+
+    @traffic_control_mode.setter
+    def traffic_control_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "traffic_control_mode", value)
+
 
 @pulumi.type_token("alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection")
 class VpcEndpointServiceConnection(pulumi.CustomResource):
@@ -194,6 +242,7 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_control_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Private Link Vpc Endpoint Connection resource.
@@ -249,7 +298,8 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
         example_vpc_endpoint_service_connection = alicloud.privatelink.VpcEndpointServiceConnection("example",
             endpoint_id=example_vpc_endpoint.id,
             service_id=example_vpc_endpoint.service_id,
-            bandwidth=1024)
+            bandwidth=1024,
+            traffic_control_mode="BandwidthLimit")
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -271,6 +321,7 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] endpoint_id: The endpoint ID.
         :param pulumi.Input[_builtins.str] service_id: The endpoint service ID.
+        :param pulumi.Input[_builtins.str] traffic_control_mode: The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
         """
         ...
     @overload
@@ -332,7 +383,8 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
         example_vpc_endpoint_service_connection = alicloud.privatelink.VpcEndpointServiceConnection("example",
             endpoint_id=example_vpc_endpoint.id,
             service_id=example_vpc_endpoint.service_id,
-            bandwidth=1024)
+            bandwidth=1024,
+            traffic_control_mode="BandwidthLimit")
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -365,6 +417,7 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_control_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -382,6 +435,8 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
             if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
             __props__.__dict__["service_id"] = service_id
+            __props__.__dict__["traffic_control_mode"] = traffic_control_mode
+            __props__.__dict__["endpoint_owner_id"] = None
             __props__.__dict__["status"] = None
         super(VpcEndpointServiceConnection, __self__).__init__(
             'alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection',
@@ -396,8 +451,10 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
             bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
             endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
             service_id: pulumi.Input[Optional[_builtins.str]] = None,
-            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcEndpointServiceConnection':
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_control_mode: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcEndpointServiceConnection':
         """
         Get an existing VpcEndpointServiceConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -410,8 +467,10 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
                Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] endpoint_id: The endpoint ID.
+        :param pulumi.Input[_builtins.int] endpoint_owner_id: The owner ID of the endpoint.
         :param pulumi.Input[_builtins.str] service_id: The endpoint service ID.
         :param pulumi.Input[_builtins.str] status: The state of the endpoint connection.
+        :param pulumi.Input[_builtins.str] traffic_control_mode: The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -420,8 +479,10 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["endpoint_id"] = endpoint_id
+        __props__.__dict__["endpoint_owner_id"] = endpoint_owner_id
         __props__.__dict__["service_id"] = service_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["traffic_control_mode"] = traffic_control_mode
         return VpcEndpointServiceConnection(resource_name, opts=opts, __props__=__props__)
 
     @staticmethod
@@ -430,14 +491,18 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
             bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
             endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
             service_id: pulumi.Input[Optional[_builtins.str]] = None,
-            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_control_mode: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["bandwidth"] = bandwidth
         __props__["dryRun"] = dry_run
         __props__["endpointId"] = endpoint_id
+        __props__["endpointOwnerId"] = endpoint_owner_id
         __props__["serviceId"] = service_id
         __props__["status"] = status
+        __props__["trafficControlMode"] = traffic_control_mode
         return pulumi.runtime.exists_resource(None, 'alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
@@ -467,6 +532,14 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
         return pulumi.get(self, "endpoint_id")
 
     @_builtins.property
+    @pulumi.getter(name="endpointOwnerId")
+    def endpoint_owner_id(self) -> pulumi.Output[_builtins.int]:
+        """
+        The owner ID of the endpoint.
+        """
+        return pulumi.get(self, "endpoint_owner_id")
+
+    @_builtins.property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Output[_builtins.str]:
         """
@@ -481,4 +554,12 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
         The state of the endpoint connection.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="trafficControlMode")
+    def traffic_control_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+        """
+        return pulumi.get(self, "traffic_control_mode")
 

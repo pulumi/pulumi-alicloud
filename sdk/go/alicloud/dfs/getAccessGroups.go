@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.133.0+.
+// > **NOTE:** Available since v1.133.0.
 //
 // ## Example Usage
 //
@@ -65,25 +65,31 @@ func GetAccessGroups(ctx *pulumi.Context, args *GetAccessGroupsArgs, opts ...pul
 // A collection of arguments for invoking getAccessGroups.
 type GetAccessGroupsArgs struct {
 	// A list of Access Group IDs.
-	Ids   []string `pulumi:"ids"`
-	Limit *int     `pulumi:"limit"`
+	Ids []string `pulumi:"ids"`
+	// The number of Access Groups to return.
+	Limit *int `pulumi:"limit"`
 	// A regex string to filter results by Access Group name.
 	NameRegex *string `pulumi:"nameRegex"`
-	OrderBy   *string `pulumi:"orderBy"`
+	// The field that sorts the Access Groups. Valid values: `CreateTime`, `AccessGroupName`.
+	OrderBy *string `pulumi:"orderBy"`
+	// The sort order. Valid values: `ASC`, `DESC`.
 	OrderType *string `pulumi:"orderType"`
 	// File name where to save data source results (after running `pulumi preview`).
-	OutputFile  *string `pulumi:"outputFile"`
-	StartOffset *int    `pulumi:"startOffset"`
+	OutputFile *string `pulumi:"outputFile"`
+	// The start offset of the Access Groups list.
+	StartOffset *int `pulumi:"startOffset"`
 }
 
 // A collection of values returned by getAccessGroups.
 type GetAccessGroupsResult struct {
+	// A list of Dfs Access Groups. Each element contains the following attributes:
 	Groups []GetAccessGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string   `pulumi:"id"`
-	Ids         []string `pulumi:"ids"`
-	Limit       *int     `pulumi:"limit"`
-	NameRegex   *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	Limit     *int     `pulumi:"limit"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Access Group names.
 	Names       []string `pulumi:"names"`
 	OrderBy     *string  `pulumi:"orderBy"`
 	OrderType   *string  `pulumi:"orderType"`
@@ -99,15 +105,19 @@ func GetAccessGroupsOutput(ctx *pulumi.Context, args GetAccessGroupsOutputArgs, 
 // A collection of arguments for invoking getAccessGroups.
 type GetAccessGroupsOutputArgs struct {
 	// A list of Access Group IDs.
-	Ids   pulumi.StringArrayInput `pulumi:"ids"`
-	Limit pulumi.IntPtrInput      `pulumi:"limit"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The number of Access Groups to return.
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
 	// A regex string to filter results by Access Group name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
-	OrderBy   pulumi.StringPtrInput `pulumi:"orderBy"`
+	// The field that sorts the Access Groups. Valid values: `CreateTime`, `AccessGroupName`.
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
+	// The sort order. Valid values: `ASC`, `DESC`.
 	OrderType pulumi.StringPtrInput `pulumi:"orderType"`
 	// File name where to save data source results (after running `pulumi preview`).
-	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
-	StartOffset pulumi.IntPtrInput    `pulumi:"startOffset"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The start offset of the Access Groups list.
+	StartOffset pulumi.IntPtrInput `pulumi:"startOffset"`
 }
 
 func (GetAccessGroupsOutputArgs) ElementType() reflect.Type {
@@ -129,6 +139,7 @@ func (o GetAccessGroupsResultOutput) ToGetAccessGroupsResultOutputWithContext(ct
 	return o
 }
 
+// A list of Dfs Access Groups. Each element contains the following attributes:
 func (o GetAccessGroupsResultOutput) Groups() GetAccessGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetAccessGroupsResult) []GetAccessGroupsGroup { return v.Groups }).(GetAccessGroupsGroupArrayOutput)
 }
@@ -150,6 +161,7 @@ func (o GetAccessGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Access Group names.
 func (o GetAccessGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAccessGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

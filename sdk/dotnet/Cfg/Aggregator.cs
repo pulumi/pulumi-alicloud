@@ -71,6 +71,7 @@ namespace Pulumi.AliCloud.Cfg
     {
         /// <summary>
         /// The member accounts of the account group. See `AggregatorAccounts` below.
+        /// 
         /// &gt; **NOTE:** If `AggregatorType` is set to `CUSTOM`, `AggregatorAccounts` is required.
         /// </summary>
         [Output("aggregatorAccounts")]
@@ -166,6 +167,7 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// The member accounts of the account group. See `AggregatorAccounts` below.
+        /// 
         /// &gt; **NOTE:** If `AggregatorType` is set to `CUSTOM`, `AggregatorAccounts` is required.
         /// </summary>
         public InputList<Inputs.AggregatorAggregatorAccountArgs> AggregatorAccounts
@@ -214,6 +216,7 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// The member accounts of the account group. See `AggregatorAccounts` below.
+        /// 
         /// &gt; **NOTE:** If `AggregatorType` is set to `CUSTOM`, `AggregatorAccounts` is required.
         /// </summary>
         public InputList<Inputs.AggregatorAggregatorAccountGetArgs> AggregatorAccounts

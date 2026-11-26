@@ -17,12 +17,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEipAddressesResult {
+    /**
+     * @return The name of the EIP.
+     * 
+     */
     private @Nullable String addressName;
+    /**
+     * @return A list of Eip Addresses. Each element contains the following attributes:
+     * 
+     */
     private List<GetEipAddressesAddress> addresses;
     private @Nullable String associatedInstanceId;
     private @Nullable String associatedInstanceType;
     private @Nullable Boolean dryRun;
     /**
+     * @return (Deprecated since v1.126.0) A list of EIPs. This field has been deprecated. Please use `addresses` instead. Each element contains the following attributes:
+     * 
      * @deprecated Field &#39;eips&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;addresses&#39; instead.
      * 
      */
@@ -36,6 +46,10 @@ public final class GetEipAddressesResult {
     private String id;
     private List<String> ids;
     private @Nullable Boolean includeReservationData;
+    /**
+     * @return The IP address of the EIP.
+     * 
+     */
     private @Nullable String ipAddress;
     /**
      * @deprecated Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
@@ -43,21 +57,57 @@ public final class GetEipAddressesResult {
      */
     @Deprecated
     private @Nullable List<String> ipAddresses;
+    /**
+     * @return The Internet service provider (ISP).
+     * 
+     */
     private @Nullable String isp;
     private @Nullable String lockReason;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Address names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The billing method of the EIP.
+     * 
+     */
     private @Nullable String paymentType;
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return The IDs of the contiguous EIPs.
+     * 
+     */
     private @Nullable String segmentInstanceId;
+    /**
+     * @return The status of the EIP.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
 
     private GetEipAddressesResult() {}
+    /**
+     * @return The name of the EIP.
+     * 
+     */
     public Optional<String> addressName() {
         return Optional.ofNullable(this.addressName);
     }
+    /**
+     * @return A list of Eip Addresses. Each element contains the following attributes:
+     * 
+     */
     public List<GetEipAddressesAddress> addresses() {
         return this.addresses;
     }
@@ -71,6 +121,8 @@ public final class GetEipAddressesResult {
         return Optional.ofNullable(this.dryRun);
     }
     /**
+     * @return (Deprecated since v1.126.0) A list of EIPs. This field has been deprecated. Please use `addresses` instead. Each element contains the following attributes:
+     * 
      * @deprecated Field &#39;eips&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;addresses&#39; instead.
      * 
      */
@@ -94,6 +146,10 @@ public final class GetEipAddressesResult {
     public Optional<Boolean> includeReservationData() {
         return Optional.ofNullable(this.includeReservationData);
     }
+    /**
+     * @return The IP address of the EIP.
+     * 
+     */
     public Optional<String> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
@@ -105,6 +161,10 @@ public final class GetEipAddressesResult {
     public List<String> ipAddresses() {
         return this.ipAddresses == null ? List.of() : this.ipAddresses;
     }
+    /**
+     * @return The Internet service provider (ISP).
+     * 
+     */
     public Optional<String> isp() {
         return Optional.ofNullable(this.isp);
     }
@@ -114,24 +174,48 @@ public final class GetEipAddressesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Address names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The billing method of the EIP.
+     * 
+     */
     public Optional<String> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return The IDs of the contiguous EIPs.
+     * 
+     */
     public Optional<String> segmentInstanceId() {
         return Optional.ofNullable(this.segmentInstanceId);
     }
+    /**
+     * @return The status of the EIP.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

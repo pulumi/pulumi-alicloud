@@ -137,6 +137,8 @@ def get_ca_certificates(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the CA certificate list.
 
+    > **NOTE:** Available since v1.22.0.
+
     ## Example Usage
 
     ```python
@@ -180,6 +182,8 @@ def get_ca_certificates_output(ids: pulumi.Input[Optional[Optional[Sequence[_bui
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCaCertificatesResult]:
     """
     This data source provides the CA certificate list.
+
+    > **NOTE:** Available since v1.22.0.
 
     ## Example Usage
 

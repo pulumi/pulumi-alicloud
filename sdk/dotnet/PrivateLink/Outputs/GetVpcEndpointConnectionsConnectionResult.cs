@@ -22,6 +22,10 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
         /// </summary>
         public readonly string EndpointId;
         /// <summary>
+        /// The endpoint owner id.
+        /// </summary>
+        public readonly int EndpointOwnerId;
+        /// <summary>
         /// The ID of the Vpc Endpoint Connection.
         /// </summary>
         public readonly string Id;
@@ -29,6 +33,10 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
         /// The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The traffic control mode of the endpoint connection.
+        /// </summary>
+        public readonly string TrafficControlMode;
 
         [OutputConstructor]
         private GetVpcEndpointConnectionsConnectionResult(
@@ -36,14 +44,20 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
 
             string endpointId,
 
+            int endpointOwnerId,
+
             string id,
 
-            string status)
+            string status,
+
+            string trafficControlMode)
         {
             Bandwidth = bandwidth;
             EndpointId = endpointId;
+            EndpointOwnerId = endpointOwnerId;
             Id = id;
             Status = status;
+            TrafficControlMode = trafficControlMode;
         }
     }
 }

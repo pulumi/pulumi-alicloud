@@ -179,6 +179,7 @@ type ServerGroupAttachment struct {
 	// ID of Server Group.
 	ServerGroupId pulumi.StringOutput `pulumi:"serverGroupId"`
 	// The type of server group N. Valid values: ALB, NLB, GWLB.
+	//
 	// > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The weight of an ECS instance attached to the Server Group.
@@ -234,6 +235,7 @@ type serverGroupAttachmentState struct {
 	// ID of Server Group.
 	ServerGroupId *string `pulumi:"serverGroupId"`
 	// The type of server group N. Valid values: ALB, NLB, GWLB.
+	//
 	// > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
 	Type *string `pulumi:"type"`
 	// The weight of an ECS instance attached to the Server Group.
@@ -251,6 +253,7 @@ type ServerGroupAttachmentState struct {
 	// ID of Server Group.
 	ServerGroupId pulumi.StringPtrInput
 	// The type of server group N. Valid values: ALB, NLB, GWLB.
+	//
 	// > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
 	Type pulumi.StringPtrInput
 	// The weight of an ECS instance attached to the Server Group.
@@ -278,6 +281,7 @@ type serverGroupAttachmentArgs struct {
 	// ID of Server Group.
 	ServerGroupId string `pulumi:"serverGroupId"`
 	// The type of server group N. Valid values: ALB, NLB, GWLB.
+	//
 	// > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
 	Type string `pulumi:"type"`
 	// The weight of an ECS instance attached to the Server Group.
@@ -296,6 +300,7 @@ type ServerGroupAttachmentArgs struct {
 	// ID of Server Group.
 	ServerGroupId pulumi.StringInput
 	// The type of server group N. Valid values: ALB, NLB, GWLB.
+	//
 	// > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
 	Type pulumi.StringInput
 	// The weight of an ECS instance attached to the Server Group.
@@ -411,6 +416,7 @@ func (o ServerGroupAttachmentOutput) ServerGroupId() pulumi.StringOutput {
 }
 
 // The type of server group N. Valid values: ALB, NLB, GWLB.
+//
 // > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
 func (o ServerGroupAttachmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroupAttachment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)

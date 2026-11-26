@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecp Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.158.0+.
+ * > **NOTE:** Available since v1.158.0.
  *
  * ## Example Usage
  *
@@ -75,6 +75,9 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesArgs {
+    /**
+     * Specifies whether to fetch the VNC login address of the instance. Default value: `false`.
+     */
     enableDetails?: boolean;
     /**
      * A list of Ecp Instances IDs.
@@ -120,6 +123,9 @@ export interface GetInstancesArgs {
      * .
      */
     status?: string;
+    /**
+     * The zone ID of the ECP instance.
+     */
     zoneId?: string;
 }
 
@@ -133,23 +139,53 @@ export interface GetInstancesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The ID Of The Image.
+     */
     readonly imageId?: string;
+    /**
+     * Instance Name.
+     */
     readonly instanceName?: string;
+    /**
+     * Instance Type.
+     */
     readonly instanceType?: string;
+    /**
+     * A list of Ecp Instances. Each element contains the following attributes:
+     */
     readonly instances: outputs.ecp.GetInstancesInstance[];
+    /**
+     * The Key Name.
+     */
     readonly keyPairName?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Instance names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The payment type of the instance.
+     */
     readonly paymentType?: string;
+    /**
+     * Resolution.
+     */
     readonly resolution?: string;
+    /**
+     * Instance Status.
+     */
     readonly status?: string;
+    /**
+     * The zone ID of the instance.
+     */
     readonly zoneId?: string;
 }
 /**
  * This data source provides the Ecp Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.158.0+.
+ * > **NOTE:** Available since v1.158.0.
  *
  * ## Example Usage
  *
@@ -215,6 +251,9 @@ export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesOutputArgs {
+    /**
+     * Specifies whether to fetch the VNC login address of the instance. Default value: `false`.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Ecp Instances IDs.
@@ -260,5 +299,8 @@ export interface GetInstancesOutputArgs {
      * .
      */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * The zone ID of the ECP instance.
+     */
     zoneId?: pulumi.Input<string | undefined>;
 }

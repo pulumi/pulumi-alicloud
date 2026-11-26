@@ -13,7 +13,7 @@ import (
 
 // This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
 //
-// > **NOTE:** Available in 1.195.0+
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
 //

@@ -31,7 +31,9 @@ public final class GetDdosBgpIpsIp {
      */
     private String product;
     /**
-     * @return The current state of the IP address.
+     * @return The current state of the IP address. Valid Value:
+     * - normal: indicates normal (not attacked).
+     * - hole_begin: indicates that you are in a black hole state.
      * 
      */
     private String status;
@@ -66,7 +68,9 @@ public final class GetDdosBgpIpsIp {
         return this.product;
     }
     /**
-     * @return The current state of the IP address.
+     * @return The current state of the IP address. Valid Value:
+     * - normal: indicates normal (not attacked).
+     * - hole_begin: indicates that you are in a black hole state.
      * 
      */
     public String status() {

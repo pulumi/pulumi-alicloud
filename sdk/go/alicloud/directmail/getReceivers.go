@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.125.0+.
+// > **NOTE:** Available since v1.125.0.
 //
 // ## Example Usage
 //
@@ -73,14 +73,17 @@ type LookupReceiversArgs struct {
 // A collection of values returned by getReceivers.
 type LookupReceiversResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                   `pulumi:"id"`
-	Ids         []string                 `pulumi:"ids"`
-	KeyWord     *string                  `pulumi:"keyWord"`
-	NameRegex   *string                  `pulumi:"nameRegex"`
-	Names       []string                 `pulumi:"names"`
-	OutputFile  *string                  `pulumi:"outputFile"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	KeyWord   *string  `pulumi:"keyWord"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Receivers names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Direct Mail Receiverses. Each element contains the following attributes:
 	Receiverses []GetReceiversReceiverse `pulumi:"receiverses"`
-	Status      *int                     `pulumi:"status"`
+	// The status of the resource.
+	Status *int `pulumi:"status"`
 }
 
 func LookupReceiversOutput(ctx *pulumi.Context, args LookupReceiversOutputArgs, opts ...pulumi.InvokeOption) LookupReceiversResultOutput {
@@ -138,6 +141,7 @@ func (o LookupReceiversResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReceiversResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Receivers names.
 func (o LookupReceiversResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupReceiversResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -146,10 +150,12 @@ func (o LookupReceiversResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReceiversResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Direct Mail Receiverses. Each element contains the following attributes:
 func (o LookupReceiversResultOutput) Receiverses() GetReceiversReceiverseArrayOutput {
 	return o.ApplyT(func(v LookupReceiversResult) []GetReceiversReceiverse { return v.Receiverses }).(GetReceiversReceiverseArrayOutput)
 }
 
+// The status of the resource.
 func (o LookupReceiversResultOutput) Status() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupReceiversResult) *int { return v.Status }).(pulumi.IntPtrOutput)
 }

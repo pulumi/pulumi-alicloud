@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// &gt; **NOTE:** Available since v1.142.0.
         /// 
         /// ## Example Usage
         /// 
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// &gt; **NOTE:** Available since v1.142.0.
         /// 
         /// ## Example Usage
         /// 
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// &gt; **NOTE:** Available since v1.142.0.
         /// 
         /// ## Example Usage
         /// 
@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.Hbr
         private List<Inputs.GetServerBackupPlansFilterArgs>? _filters;
 
         /// <summary>
-        /// The filters.
+        /// The filters. See `Filters` below.
         /// </summary>
         public List<Inputs.GetServerBackupPlansFilterArgs> Filters
         {
@@ -201,7 +201,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<Inputs.GetServerBackupPlansFilterInputArgs>? _filters;
 
         /// <summary>
-        /// The filters.
+        /// The filters. See `Filters` below.
         /// </summary>
         public InputList<Inputs.GetServerBackupPlansFilterInputArgs> Filters
         {
@@ -244,6 +244,9 @@ namespace Pulumi.AliCloud.Hbr
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of HBR server backup plan. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServerBackupPlansPlanResult> Plans;
 
         [OutputConstructor]

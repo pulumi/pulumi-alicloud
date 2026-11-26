@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// <summary>
         /// This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// <summary>
         /// This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// <summary>
         /// This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
@@ -333,6 +333,9 @@ namespace Pulumi.AliCloud.CloudSso
     [OutputType]
     public sealed class GetUsersResult
     {
+        /// <summary>
+        /// The ID of the Directory.
+        /// </summary>
         public readonly string DirectoryId;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -341,10 +344,22 @@ namespace Pulumi.AliCloud.CloudSso
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of User names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// ProvisionType.
+        /// </summary>
         public readonly string? ProvisionType;
+        /// <summary>
+        /// User status. Valid values: `Enabled` and `Disabled`.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A list of Cloud Sso Users. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetUsersUserResult> Users;
 
         [OutputConstructor]

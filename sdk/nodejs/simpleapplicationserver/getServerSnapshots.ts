@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *
@@ -86,6 +86,9 @@ export interface GetServerSnapshotsArgs {
  * A collection of values returned by getServerSnapshots.
  */
 export interface GetServerSnapshotsResult {
+    /**
+     * The ID of the source disk. This parameter has a value even after the source disk is released.
+     */
     readonly diskId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -94,15 +97,24 @@ export interface GetServerSnapshotsResult {
     readonly ids: string[];
     readonly instanceId?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Snapshot names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Simple Application Server Snapshots. Each element contains the following attributes:
+     */
     readonly snapshots: outputs.simpleapplicationserver.GetServerSnapshotsSnapshot[];
+    /**
+     * The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *

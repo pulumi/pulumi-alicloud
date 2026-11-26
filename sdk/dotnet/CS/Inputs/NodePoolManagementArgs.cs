@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class NodePoolManagementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable automatic repair. Valid values: `True`: Automatic repair. `False`: not automatically repaired. When `AutoRepair` is `True`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see CsKubernetesAddon for installation.
+        /// Whether to enable automatic repair. Valid values: `True`: Automatic repair. `False`: not automatically repaired. Setting it to `False` suspends automatic repair without clearing the bound policy: `auto_repair_policy.auto_repair_policy_id` is retained, the policy just stops taking effect, and the policy no longer reports this node pool in `ResourceIds` when it is queried. Turning `AutoRepair` back on makes the retained policy take effect again. When `AutoRepair` is `True`, this feature requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later and the `ack-node-problem-detector` add-on at version `1.2.41` or later; the service validates the installed versions and the error message contains the required minimum when an add-on is missing or too old. See CsKubernetesAddon for installation.
         /// </summary>
         [Input("autoRepair")]
         public Input<bool>? AutoRepair { get; set; }

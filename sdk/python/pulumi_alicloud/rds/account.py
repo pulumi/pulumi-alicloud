@@ -39,18 +39,28 @@ class AccountArgs:
         """
         The set of arguments for constructing a Account resource.
 
+        :param pulumi.Input[_builtins.str] account_description: The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+        :param pulumi.Input[_builtins.str] account_name: The name of the account. It conflicts with `name` and is ignored when `name` is set.
+        :param pulumi.Input[_builtins.str] account_password: The password of the account. It conflicts with `password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
         :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        :param pulumi.Input[_builtins.str] instance_id: The Id of instance in which account belongs.
+               The write-only password of the account. It conflicts with `password` and `kms_encrypted_password`, and must be specified together with `account_password_wo_version`.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. It must be specified together with `account_password_wo`.
+        :param pulumi.Input[_builtins.str] account_type: The account type. Valid values: Normal/Super/Sysadmin.
+        :param pulumi.Input[_builtins.bool] check_policy: Whether to apply password policy.
+        :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
+        :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        :param pulumi.Input[_builtins.str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[_builtins.str] name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
-        :param pulumi.Input[_builtins.str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[_builtins.str] name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        :param pulumi.Input[_builtins.str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields. The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
         :param pulumi.Input[_builtins.str] type: Privilege type of account. The SQLServer engine does not support create high privilege accounts.
                - Normal: Common privilege.
                - Super: High privilege.
                
-               Default to Normal.
+               Default to Normal. The attribute has been deprecated from 1.120.0 and using `account_type` instead.
         """
         if account_description is not None:
             pulumi.set(__self__, "account_description", account_description)
@@ -105,6 +115,9 @@ class AccountArgs:
     @_builtins.property
     @pulumi.getter(name="accountDescription")
     def account_description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+        """
         return pulumi.get(self, "account_description")
 
     @account_description.setter
@@ -114,6 +127,9 @@ class AccountArgs:
     @_builtins.property
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the account. It conflicts with `name` and is ignored when `name` is set.
+        """
         return pulumi.get(self, "account_name")
 
     @account_name.setter
@@ -123,6 +139,9 @@ class AccountArgs:
     @_builtins.property
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The password of the account. It conflicts with `password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
+        """
         return pulumi.get(self, "account_password")
 
     @account_password.setter
@@ -134,6 +153,7 @@ class AccountArgs:
     def account_password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It conflicts with `password` and `kms_encrypted_password`, and must be specified together with `account_password_wo_version`.
         """
         return pulumi.get(self, "account_password_wo")
 
@@ -144,6 +164,9 @@ class AccountArgs:
     @_builtins.property
     @pulumi.getter(name="accountPasswordWoVersion")
     def account_password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. It must be specified together with `account_password_wo`.
+        """
         return pulumi.get(self, "account_password_wo_version")
 
     @account_password_wo_version.setter
@@ -153,6 +176,9 @@ class AccountArgs:
     @_builtins.property
     @pulumi.getter(name="accountType")
     def account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The account type. Valid values: Normal/Super/Sysadmin.
+        """
         return pulumi.get(self, "account_type")
 
     @account_type.setter
@@ -162,6 +188,9 @@ class AccountArgs:
     @_builtins.property
     @pulumi.getter(name="checkPolicy")
     def check_policy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to apply password policy.
+        """
         return pulumi.get(self, "check_policy")
 
     @check_policy.setter
@@ -171,6 +200,9 @@ class AccountArgs:
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the instance.
+        """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
@@ -182,7 +214,7 @@ class AccountArgs:
     @_utilities.deprecated("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         """
         return pulumi.get(self, "description")
 
@@ -195,7 +227,7 @@ class AccountArgs:
     @_utilities.deprecated("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
     def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Id of instance in which account belongs.
+        The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         """
         return pulumi.get(self, "instance_id")
 
@@ -232,7 +264,7 @@ class AccountArgs:
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -245,7 +277,7 @@ class AccountArgs:
     @_utilities.deprecated("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields. The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         """
         return pulumi.get(self, "password")
 
@@ -256,6 +288,9 @@ class AccountArgs:
     @_builtins.property
     @pulumi.getter(name="resetPermissionFlag")
     def reset_permission_flag(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        """
         return pulumi.get(self, "reset_permission_flag")
 
     @reset_permission_flag.setter
@@ -265,6 +300,9 @@ class AccountArgs:
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The status of the resource. Valid values: `Available`, `Unavailable`.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -280,7 +318,7 @@ class AccountArgs:
         - Normal: Common privilege.
         - Super: High privilege.
 
-        Default to Normal.
+        Default to Normal. The attribute has been deprecated from 1.120.0 and using `account_type` instead.
         """
         return pulumi.get(self, "type")
 
@@ -312,18 +350,28 @@ class _AccountState:
         """
         Input properties used for looking up and filtering Account resources.
 
+        :param pulumi.Input[_builtins.str] account_description: The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+        :param pulumi.Input[_builtins.str] account_name: The name of the account. It conflicts with `name` and is ignored when `name` is set.
+        :param pulumi.Input[_builtins.str] account_password: The password of the account. It conflicts with `password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
         :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        :param pulumi.Input[_builtins.str] instance_id: The Id of instance in which account belongs.
+               The write-only password of the account. It conflicts with `password` and `kms_encrypted_password`, and must be specified together with `account_password_wo_version`.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. It must be specified together with `account_password_wo`.
+        :param pulumi.Input[_builtins.str] account_type: The account type. Valid values: Normal/Super/Sysadmin.
+        :param pulumi.Input[_builtins.bool] check_policy: Whether to apply password policy.
+        :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
+        :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        :param pulumi.Input[_builtins.str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[_builtins.str] name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
-        :param pulumi.Input[_builtins.str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[_builtins.str] name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        :param pulumi.Input[_builtins.str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields. The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
         :param pulumi.Input[_builtins.str] type: Privilege type of account. The SQLServer engine does not support create high privilege accounts.
                - Normal: Common privilege.
                - Super: High privilege.
                
-               Default to Normal.
+               Default to Normal. The attribute has been deprecated from 1.120.0 and using `account_type` instead.
         """
         if account_description is not None:
             pulumi.set(__self__, "account_description", account_description)
@@ -378,6 +426,9 @@ class _AccountState:
     @_builtins.property
     @pulumi.getter(name="accountDescription")
     def account_description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+        """
         return pulumi.get(self, "account_description")
 
     @account_description.setter
@@ -387,6 +438,9 @@ class _AccountState:
     @_builtins.property
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the account. It conflicts with `name` and is ignored when `name` is set.
+        """
         return pulumi.get(self, "account_name")
 
     @account_name.setter
@@ -396,6 +450,9 @@ class _AccountState:
     @_builtins.property
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The password of the account. It conflicts with `password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
+        """
         return pulumi.get(self, "account_password")
 
     @account_password.setter
@@ -407,6 +464,7 @@ class _AccountState:
     def account_password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It conflicts with `password` and `kms_encrypted_password`, and must be specified together with `account_password_wo_version`.
         """
         return pulumi.get(self, "account_password_wo")
 
@@ -417,6 +475,9 @@ class _AccountState:
     @_builtins.property
     @pulumi.getter(name="accountPasswordWoVersion")
     def account_password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. It must be specified together with `account_password_wo`.
+        """
         return pulumi.get(self, "account_password_wo_version")
 
     @account_password_wo_version.setter
@@ -426,6 +487,9 @@ class _AccountState:
     @_builtins.property
     @pulumi.getter(name="accountType")
     def account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The account type. Valid values: Normal/Super/Sysadmin.
+        """
         return pulumi.get(self, "account_type")
 
     @account_type.setter
@@ -435,6 +499,9 @@ class _AccountState:
     @_builtins.property
     @pulumi.getter(name="checkPolicy")
     def check_policy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to apply password policy.
+        """
         return pulumi.get(self, "check_policy")
 
     @check_policy.setter
@@ -444,6 +511,9 @@ class _AccountState:
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the instance.
+        """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
@@ -455,7 +525,7 @@ class _AccountState:
     @_utilities.deprecated("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         """
         return pulumi.get(self, "description")
 
@@ -468,7 +538,7 @@ class _AccountState:
     @_utilities.deprecated("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
     def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Id of instance in which account belongs.
+        The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         """
         return pulumi.get(self, "instance_id")
 
@@ -505,7 +575,7 @@ class _AccountState:
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -518,7 +588,7 @@ class _AccountState:
     @_utilities.deprecated("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields. The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         """
         return pulumi.get(self, "password")
 
@@ -529,6 +599,9 @@ class _AccountState:
     @_builtins.property
     @pulumi.getter(name="resetPermissionFlag")
     def reset_permission_flag(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        """
         return pulumi.get(self, "reset_permission_flag")
 
     @reset_permission_flag.setter
@@ -538,6 +611,9 @@ class _AccountState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The status of the resource. Valid values: `Available`, `Unavailable`.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -553,7 +629,7 @@ class _AccountState:
         - Normal: Common privilege.
         - Super: High privilege.
 
-        Default to Normal.
+        Default to Normal. The attribute has been deprecated from 1.120.0 and using `account_type` instead.
         """
         return pulumi.get(self, "type")
 
@@ -622,7 +698,7 @@ class Account(pulumi.CustomResource):
             instance_name=name)
         account = alicloud.rds.Account("account",
             instance_id=instance.id,
-            name="tftestnormal",
+            name="tfaccountnormal",
             password="Test12345")
         ```
 
@@ -639,18 +715,28 @@ class Account(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] account_description: The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+        :param pulumi.Input[_builtins.str] account_name: The name of the account. It conflicts with `name` and is ignored when `name` is set.
+        :param pulumi.Input[_builtins.str] account_password: The password of the account. It conflicts with `password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
         :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        :param pulumi.Input[_builtins.str] instance_id: The Id of instance in which account belongs.
+               The write-only password of the account. It conflicts with `password` and `kms_encrypted_password`, and must be specified together with `account_password_wo_version`.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. It must be specified together with `account_password_wo`.
+        :param pulumi.Input[_builtins.str] account_type: The account type. Valid values: Normal/Super/Sysadmin.
+        :param pulumi.Input[_builtins.bool] check_policy: Whether to apply password policy.
+        :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
+        :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        :param pulumi.Input[_builtins.str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[_builtins.str] name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
-        :param pulumi.Input[_builtins.str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[_builtins.str] name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        :param pulumi.Input[_builtins.str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields. The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
         :param pulumi.Input[_builtins.str] type: Privilege type of account. The SQLServer engine does not support create high privilege accounts.
                - Normal: Common privilege.
                - Super: High privilege.
                
-               Default to Normal.
+               Default to Normal. The attribute has been deprecated from 1.120.0 and using `account_type` instead.
         """
         ...
     @overload
@@ -694,7 +780,7 @@ class Account(pulumi.CustomResource):
             instance_name=name)
         account = alicloud.rds.Account("account",
             instance_id=instance.id,
-            name="tftestnormal",
+            name="tfaccountnormal",
             password="Test12345")
         ```
 
@@ -803,18 +889,28 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] account_description: The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+        :param pulumi.Input[_builtins.str] account_name: The name of the account. It conflicts with `name` and is ignored when `name` is set.
+        :param pulumi.Input[_builtins.str] account_password: The password of the account. It conflicts with `password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
         :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        :param pulumi.Input[_builtins.str] instance_id: The Id of instance in which account belongs.
+               The write-only password of the account. It conflicts with `password` and `kms_encrypted_password`, and must be specified together with `account_password_wo_version`.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. It must be specified together with `account_password_wo`.
+        :param pulumi.Input[_builtins.str] account_type: The account type. Valid values: Normal/Super/Sysadmin.
+        :param pulumi.Input[_builtins.bool] check_policy: Whether to apply password policy.
+        :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
+        :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        :param pulumi.Input[_builtins.str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[_builtins.str] name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
-        :param pulumi.Input[_builtins.str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[_builtins.str] name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        :param pulumi.Input[_builtins.str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields. The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
         :param pulumi.Input[_builtins.str] type: Privilege type of account. The SQLServer engine does not support create high privilege accounts.
                - Normal: Common privilege.
                - Super: High privilege.
                
-               Default to Normal.
+               Default to Normal. The attribute has been deprecated from 1.120.0 and using `account_type` instead.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -882,16 +978,25 @@ class Account(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="accountDescription")
     def account_description(self) -> pulumi.Output[_builtins.str]:
+        """
+        The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+        """
         return pulumi.get(self, "account_description")
 
     @_builtins.property
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of the account. It conflicts with `name` and is ignored when `name` is set.
+        """
         return pulumi.get(self, "account_name")
 
     @_builtins.property
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The password of the account. It conflicts with `password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
+        """
         return pulumi.get(self, "account_password")
 
     @_builtins.property
@@ -899,27 +1004,40 @@ class Account(pulumi.CustomResource):
     def account_password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It conflicts with `password` and `kms_encrypted_password`, and must be specified together with `account_password_wo_version`.
         """
         return pulumi.get(self, "account_password_wo")
 
     @_builtins.property
     @pulumi.getter(name="accountPasswordWoVersion")
     def account_password_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. It must be specified together with `account_password_wo`.
+        """
         return pulumi.get(self, "account_password_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="accountType")
     def account_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The account type. Valid values: Normal/Super/Sysadmin.
+        """
         return pulumi.get(self, "account_type")
 
     @_builtins.property
     @pulumi.getter(name="checkPolicy")
     def check_policy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to apply password policy.
+        """
         return pulumi.get(self, "check_policy")
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the instance.
+        """
         return pulumi.get(self, "db_instance_id")
 
     @_builtins.property
@@ -927,7 +1045,7 @@ class Account(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
     def description(self) -> pulumi.Output[_builtins.str]:
         """
-        Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         """
         return pulumi.get(self, "description")
 
@@ -936,7 +1054,7 @@ class Account(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The Id of instance in which account belongs.
+        The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         """
         return pulumi.get(self, "instance_id")
 
@@ -961,7 +1079,7 @@ class Account(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -970,18 +1088,24 @@ class Account(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
     def password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields. The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter(name="resetPermissionFlag")
     def reset_permission_flag(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        """
         return pulumi.get(self, "reset_permission_flag")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
+        """
+        The status of the resource. Valid values: `Available`, `Unavailable`.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
@@ -993,7 +1117,7 @@ class Account(pulumi.CustomResource):
         - Normal: Common privilege.
         - Super: High privilege.
 
-        Default to Normal.
+        Default to Normal. The attribute has been deprecated from 1.120.0 and using `account_type` instead.
         """
         return pulumi.get(self, "type")
 

@@ -68,11 +68,17 @@ class GetApplicationsResult:
     @_builtins.property
     @pulumi.getter(name="appName")
     def app_name(self) -> Optional[_builtins.str]:
+        """
+        Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
+        """
         return pulumi.get(self, "app_name")
 
     @_builtins.property
     @pulumi.getter
     def applications(self) -> Sequence['outputs.GetApplicationsApplicationResult']:
+        """
+        A list of Sae Applications. Each element contains the following attributes:
+        """
         return pulumi.get(self, "applications")
 
     @_builtins.property
@@ -106,6 +112,9 @@ class GetApplicationsResult:
     @_builtins.property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> Optional[_builtins.str]:
+        """
+        SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
+        """
         return pulumi.get(self, "namespace_id")
 
     @_builtins.property
@@ -126,6 +135,9 @@ class GetApplicationsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -163,7 +175,7 @@ def get_applications(app_name: Optional[_builtins.str] = None,
     """
     This data source provides the Sae Applications of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.161.0+.
+    > **NOTE:** Available since v1.161.0.
 
     ## Example Usage
 
@@ -176,10 +188,10 @@ def get_applications(app_name: Optional[_builtins.str] = None,
     config = pulumi.Config()
     name = config.get("name")
     if name is None:
-        name = "tf-testacc"
+        name = "tf-accapp"
     default = alicloud.get_zones(available_resource_creation="VSwitch")
     vpc = alicloud.vpc.Network("vpc",
-        vpc_name="tf_testacc",
+        vpc_name="tf_accapp",
         cidr_block="172.16.0.0/12")
     vsw = alicloud.vpc.Switch("vsw",
         vpc_id=vpc.id,
@@ -192,7 +204,7 @@ def get_applications(app_name: Optional[_builtins.str] = None,
         namespace_name=name)
     default_application = alicloud.sae.Application("default",
         app_description="tf-testaccDescription",
-        app_name="tf-testaccAppName131",
+        app_name="tf-accappName131",
         namespace_id=default_namespace.id,
         image_url="registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
         package_type="Image",
@@ -258,7 +270,7 @@ def get_applications_output(app_name: pulumi.Input[Optional[Optional[_builtins.s
     """
     This data source provides the Sae Applications of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.161.0+.
+    > **NOTE:** Available since v1.161.0.
 
     ## Example Usage
 
@@ -271,10 +283,10 @@ def get_applications_output(app_name: pulumi.Input[Optional[Optional[_builtins.s
     config = pulumi.Config()
     name = config.get("name")
     if name is None:
-        name = "tf-testacc"
+        name = "tf-accapp"
     default = alicloud.get_zones(available_resource_creation="VSwitch")
     vpc = alicloud.vpc.Network("vpc",
-        vpc_name="tf_testacc",
+        vpc_name="tf_accapp",
         cidr_block="172.16.0.0/12")
     vsw = alicloud.vpc.Switch("vsw",
         vpc_id=vpc.id,
@@ -287,7 +299,7 @@ def get_applications_output(app_name: pulumi.Input[Optional[Optional[_builtins.s
         namespace_name=name)
     default_application = alicloud.sae.Application("default",
         app_description="tf-testaccDescription",
-        app_name="tf-testaccAppName131",
+        app_name="tf-accappName131",
         namespace_id=default_namespace.id,
         image_url="registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
         package_type="Image",

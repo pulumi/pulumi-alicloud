@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.136.0+.
+// > **NOTE:** Available since v1.136.0.
 //
 // ## Example Usage
 //
@@ -70,8 +70,9 @@ type GetPrometheusAlertRulesArgs struct {
 	// The ID of the cluster.
 	ClusterId string `pulumi:"clusterId"`
 	// A list of Prometheus Alert Rule IDs.
-	Ids              []string `pulumi:"ids"`
-	MatchExpressions *string  `pulumi:"matchExpressions"`
+	Ids []string `pulumi:"ids"`
+	// Match expressions used to filter Prometheus alert rules.
+	MatchExpressions *string `pulumi:"matchExpressions"`
 	// A regex string to filter results by Prometheus Alert Rule name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
@@ -84,17 +85,22 @@ type GetPrometheusAlertRulesArgs struct {
 
 // A collection of values returned by getPrometheusAlertRules.
 type GetPrometheusAlertRulesResult struct {
+	// The ID of the cluster.
 	ClusterId string `pulumi:"clusterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id               string                        `pulumi:"id"`
-	Ids              []string                      `pulumi:"ids"`
-	MatchExpressions *string                       `pulumi:"matchExpressions"`
-	NameRegex        *string                       `pulumi:"nameRegex"`
-	Names            []string                      `pulumi:"names"`
-	OutputFile       *string                       `pulumi:"outputFile"`
-	Rules            []GetPrometheusAlertRulesRule `pulumi:"rules"`
-	Status           *int                          `pulumi:"status"`
-	Type             *string                       `pulumi:"type"`
+	Id               string   `pulumi:"id"`
+	Ids              []string `pulumi:"ids"`
+	MatchExpressions *string  `pulumi:"matchExpressions"`
+	NameRegex        *string  `pulumi:"nameRegex"`
+	// A list of Prometheus Alert Rule names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Arms Prometheus Alert Rules. Each element contains the following attributes:
+	Rules []GetPrometheusAlertRulesRule `pulumi:"rules"`
+	// The status of the resource. Valid values: `0`, `1` (0=off,1=open).
+	Status *int `pulumi:"status"`
+	// The type of the alert rule.
+	Type *string `pulumi:"type"`
 }
 
 func GetPrometheusAlertRulesOutput(ctx *pulumi.Context, args GetPrometheusAlertRulesOutputArgs, opts ...pulumi.InvokeOption) GetPrometheusAlertRulesResultOutput {
@@ -107,8 +113,9 @@ type GetPrometheusAlertRulesOutputArgs struct {
 	// The ID of the cluster.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// A list of Prometheus Alert Rule IDs.
-	Ids              pulumi.StringArrayInput `pulumi:"ids"`
-	MatchExpressions pulumi.StringPtrInput   `pulumi:"matchExpressions"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Match expressions used to filter Prometheus alert rules.
+	MatchExpressions pulumi.StringPtrInput `pulumi:"matchExpressions"`
 	// A regex string to filter results by Prometheus Alert Rule name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
@@ -138,6 +145,7 @@ func (o GetPrometheusAlertRulesResultOutput) ToGetPrometheusAlertRulesResultOutp
 	return o
 }
 
+// The ID of the cluster.
 func (o GetPrometheusAlertRulesResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusAlertRulesResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -159,6 +167,7 @@ func (o GetPrometheusAlertRulesResultOutput) NameRegex() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetPrometheusAlertRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Prometheus Alert Rule names.
 func (o GetPrometheusAlertRulesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPrometheusAlertRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -167,14 +176,17 @@ func (o GetPrometheusAlertRulesResultOutput) OutputFile() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetPrometheusAlertRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Arms Prometheus Alert Rules. Each element contains the following attributes:
 func (o GetPrometheusAlertRulesResultOutput) Rules() GetPrometheusAlertRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetPrometheusAlertRulesResult) []GetPrometheusAlertRulesRule { return v.Rules }).(GetPrometheusAlertRulesRuleArrayOutput)
 }
 
+// The status of the resource. Valid values: `0`, `1` (0=off,1=open).
 func (o GetPrometheusAlertRulesResultOutput) Status() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPrometheusAlertRulesResult) *int { return v.Status }).(pulumi.IntPtrOutput)
 }
 
+// The type of the alert rule.
 func (o GetPrometheusAlertRulesResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPrometheusAlertRulesResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

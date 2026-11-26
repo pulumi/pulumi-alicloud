@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAclsAcl {
     /**
-     * @return A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
+     * @return A list of entry (IP addresses or CIDR blocks).
      * 
      */
     private List<GetAclsAclEntryList> entryLists;
@@ -25,6 +25,10 @@ public final class GetAclsAcl {
      * 
      */
     private String id;
+    /**
+     * @return The IP version of the access control list.
+     * 
+     */
     private String ipVersion;
     /**
      * @return Acl name.
@@ -32,7 +36,7 @@ public final class GetAclsAcl {
      */
     private String name;
     /**
-     * @return A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
+     * @return A list of listeners attached to the acl.
      * 
      */
     private List<GetAclsAclRelatedListener> relatedListeners;
@@ -49,7 +53,7 @@ public final class GetAclsAcl {
 
     private GetAclsAcl() {}
     /**
-     * @return A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
+     * @return A list of entry (IP addresses or CIDR blocks).
      * 
      */
     public List<GetAclsAclEntryList> entryLists() {
@@ -62,6 +66,10 @@ public final class GetAclsAcl {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The IP version of the access control list.
+     * 
+     */
     public String ipVersion() {
         return this.ipVersion;
     }
@@ -73,7 +81,7 @@ public final class GetAclsAcl {
         return this.name;
     }
     /**
-     * @return A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
+     * @return A list of listeners attached to the acl.
      * 
      */
     public List<GetAclsAclRelatedListener> relatedListeners() {

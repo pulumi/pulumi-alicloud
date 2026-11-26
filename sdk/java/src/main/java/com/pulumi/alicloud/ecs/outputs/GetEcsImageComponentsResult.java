@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsImageComponentsResult {
+    /**
+     * @return A list of Ecs Image Components. Each element contains the following attributes:
+     * 
+     */
     private List<GetEcsImageComponentsComponent> components;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,15 +26,39 @@ public final class GetEcsImageComponentsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The name of the image component.
+     * 
+     */
     private @Nullable String imageComponentName;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Image Component names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The type of the image component.
+     * 
+     */
     private @Nullable String owner;
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return List of label key-value pairs.
+     * 
+     */
     private @Nullable Map<String,String> tags;
 
     private GetEcsImageComponentsResult() {}
+    /**
+     * @return A list of Ecs Image Components. Each element contains the following attributes:
+     * 
+     */
     public List<GetEcsImageComponentsComponent> components() {
         return this.components;
     }
@@ -44,24 +72,44 @@ public final class GetEcsImageComponentsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The name of the image component.
+     * 
+     */
     public Optional<String> imageComponentName() {
         return Optional.ofNullable(this.imageComponentName);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Image Component names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The type of the image component.
+     * 
+     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return List of label key-value pairs.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

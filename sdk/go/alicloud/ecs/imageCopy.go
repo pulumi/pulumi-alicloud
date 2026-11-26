@@ -122,12 +122,6 @@ import (
 //
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
-// ## Attributes Reference0
-//
-//	The following attributes are exported:
-//
-// * `id` - ID of the image.
-//
 // ## Import
 //
 // image can be imported using the id, e.g.
@@ -138,6 +132,9 @@ import (
 type ImageCopy struct {
 	pulumi.CustomResourceState
 
+	// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	DeleteAutoSnapshot pulumi.BoolPtrOutput `pulumi:"deleteAutoSnapshot"`
 	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -151,6 +148,8 @@ type ImageCopy struct {
 	ImageName pulumi.StringOutput `pulumi:"imageName"`
 	// Key ID used to encrypt the image.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
+	// Attribute 'name' has been deprecated, please use `imageName` instead.
+	//
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The source image ID.
@@ -197,6 +196,9 @@ func GetImageCopy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ImageCopy resources.
 type imageCopyState struct {
+	// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
 	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
 	Description *string `pulumi:"description"`
@@ -210,6 +212,8 @@ type imageCopyState struct {
 	ImageName *string `pulumi:"imageName"`
 	// Key ID used to encrypt the image.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// Attribute 'name' has been deprecated, please use `imageName` instead.
+	//
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 	Name *string `pulumi:"name"`
 	// The source image ID.
@@ -221,6 +225,9 @@ type imageCopyState struct {
 }
 
 type ImageCopyState struct {
+	// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	DeleteAutoSnapshot pulumi.BoolPtrInput
 	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
 	Description pulumi.StringPtrInput
@@ -234,6 +241,8 @@ type ImageCopyState struct {
 	ImageName pulumi.StringPtrInput
 	// Key ID used to encrypt the image.
 	KmsKeyId pulumi.StringPtrInput
+	// Attribute 'name' has been deprecated, please use `imageName` instead.
+	//
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 	Name pulumi.StringPtrInput
 	// The source image ID.
@@ -255,6 +264,9 @@ func ImageCopyExists(ctx *pulumi.Context,
 }
 
 type imageCopyArgs struct {
+	// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
 	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
 	Description *string `pulumi:"description"`
@@ -268,6 +280,8 @@ type imageCopyArgs struct {
 	ImageName *string `pulumi:"imageName"`
 	// Key ID used to encrypt the image.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// Attribute 'name' has been deprecated, please use `imageName` instead.
+	//
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 	Name *string `pulumi:"name"`
 	// The source image ID.
@@ -280,6 +294,9 @@ type imageCopyArgs struct {
 
 // The set of arguments for constructing a ImageCopy resource.
 type ImageCopyArgs struct {
+	// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	DeleteAutoSnapshot pulumi.BoolPtrInput
 	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
 	Description pulumi.StringPtrInput
@@ -293,6 +310,8 @@ type ImageCopyArgs struct {
 	ImageName pulumi.StringPtrInput
 	// Key ID used to encrypt the image.
 	KmsKeyId pulumi.StringPtrInput
+	// Attribute 'name' has been deprecated, please use `imageName` instead.
+	//
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 	Name pulumi.StringPtrInput
 	// The source image ID.
@@ -390,6 +409,9 @@ func (o ImageCopyOutput) ToImageCopyOutputWithContext(ctx context.Context) Image
 	return o
 }
 
+// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o ImageCopyOutput) DeleteAutoSnapshot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageCopy) pulumi.BoolPtrOutput { return v.DeleteAutoSnapshot }).(pulumi.BoolPtrOutput)
 }
@@ -421,6 +443,8 @@ func (o ImageCopyOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageCopy) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
+// Attribute 'name' has been deprecated, please use `imageName` instead.
+//
 // Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 func (o ImageCopyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ImageCopy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)

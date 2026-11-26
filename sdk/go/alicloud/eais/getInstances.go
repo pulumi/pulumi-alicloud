@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Eais Instances of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.137.0+.
+// > **NOTE:** Available since v1.137.0.
 //
 // > **DEPRECATED:** This data source has been deprecated since v1.278.0.
 //
@@ -81,14 +81,18 @@ type GetInstancesArgs struct {
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                 `pulumi:"id"`
-	Ids          []string               `pulumi:"ids"`
-	InstanceType *string                `pulumi:"instanceType"`
-	Instances    []GetInstancesInstance `pulumi:"instances"`
-	NameRegex    *string                `pulumi:"nameRegex"`
-	Names        []string               `pulumi:"names"`
-	OutputFile   *string                `pulumi:"outputFile"`
-	Status       *string                `pulumi:"status"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+	InstanceType *string `pulumi:"instanceType"`
+	// A list of EAIS Instances. Each element contains the following attributes:
+	Instances []GetInstancesInstance `pulumi:"instances"`
+	NameRegex *string                `pulumi:"nameRegex"`
+	// A list of Instance names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+	Status *string `pulumi:"status"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -138,10 +142,12 @@ func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
 func (o GetInstancesResultOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
+// A list of EAIS Instances. Each element contains the following attributes:
 func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
 }
@@ -150,6 +156,7 @@ func (o GetInstancesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Instance names.
 func (o GetInstancesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -158,6 +165,7 @@ func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
 func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

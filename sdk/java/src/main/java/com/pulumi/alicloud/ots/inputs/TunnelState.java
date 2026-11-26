@@ -50,6 +50,21 @@ public final class TunnelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `startOffset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+     * 
+     */
+    @Import(name="endOffset")
+    private @Nullable Output<String> endOffset;
+
+    /**
+     * @return The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `startOffset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+     * 
+     */
+    public Optional<Output<String>> endOffset() {
+        return Optional.ofNullable(this.endOffset);
+    }
+
+    /**
      * Whether the tunnel has expired.
      * 
      */
@@ -77,6 +92,36 @@ public final class TunnelState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> instanceName() {
         return Optional.ofNullable(this.instanceName);
+    }
+
+    /**
+     * The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `startOffsetFlag`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+     * 
+     */
+    @Import(name="startOffset")
+    private @Nullable Output<String> startOffset;
+
+    /**
+     * @return The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `startOffsetFlag`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+     * 
+     */
+    public Optional<Output<String>> startOffset() {
+        return Optional.ofNullable(this.startOffset);
+    }
+
+    /**
+     * The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `startOffset`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+     * 
+     */
+    @Import(name="startOffsetFlag")
+    private @Nullable Output<String> startOffsetFlag;
+
+    /**
+     * @return The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `startOffset`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+     * 
+     */
+    public Optional<Output<String>> startOffsetFlag() {
+        return Optional.ofNullable(this.startOffsetFlag);
     }
 
     /**
@@ -174,8 +219,11 @@ public final class TunnelState extends com.pulumi.resources.ResourceArgs {
     private TunnelState(TunnelState $) {
         this.channels = $.channels;
         this.createTime = $.createTime;
+        this.endOffset = $.endOffset;
         this.expired = $.expired;
         this.instanceName = $.instanceName;
+        this.startOffset = $.startOffset;
+        this.startOffsetFlag = $.startOffsetFlag;
         this.tableName = $.tableName;
         this.tunnelId = $.tunnelId;
         this.tunnelName = $.tunnelName;
@@ -255,6 +303,27 @@ public final class TunnelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param endOffset The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `startOffset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endOffset(@Nullable Output<String> endOffset) {
+            $.endOffset = endOffset;
+            return this;
+        }
+
+        /**
+         * @param endOffset The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `startOffset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endOffset(String endOffset) {
+            return endOffset(Output.of(endOffset));
+        }
+
+        /**
          * @param expired Whether the tunnel has expired.
          * 
          * @return builder
@@ -294,6 +363,48 @@ public final class TunnelState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instanceName(String instanceName) {
             return instanceName(Output.of(instanceName));
+        }
+
+        /**
+         * @param startOffset The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `startOffsetFlag`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startOffset(@Nullable Output<String> startOffset) {
+            $.startOffset = startOffset;
+            return this;
+        }
+
+        /**
+         * @param startOffset The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `startOffsetFlag`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startOffset(String startOffset) {
+            return startOffset(Output.of(startOffset));
+        }
+
+        /**
+         * @param startOffsetFlag The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `startOffset`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startOffsetFlag(@Nullable Output<String> startOffsetFlag) {
+            $.startOffsetFlag = startOffsetFlag;
+            return this;
+        }
+
+        /**
+         * @param startOffsetFlag The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `startOffset`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startOffsetFlag(String startOffsetFlag) {
+            return startOffsetFlag(Output.of(startOffsetFlag));
         }
 
         /**

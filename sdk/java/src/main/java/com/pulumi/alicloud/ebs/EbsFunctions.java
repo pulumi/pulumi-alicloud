@@ -27,7 +27,7 @@ public final class EbsFunctions {
     /**
      * This data source provides Ebs Dedicated Block Storage Cluster available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -71,7 +71,7 @@ public final class EbsFunctions {
     /**
      * This data source provides Ebs Dedicated Block Storage Cluster available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -115,7 +115,7 @@ public final class EbsFunctions {
     /**
      * This data source provides Ebs Dedicated Block Storage Cluster available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -159,7 +159,7 @@ public final class EbsFunctions {
     /**
      * This data source provides Ebs Dedicated Block Storage Cluster available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -203,7 +203,7 @@ public final class EbsFunctions {
     /**
      * This data source provides Ebs Dedicated Block Storage Cluster available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -247,7 +247,7 @@ public final class EbsFunctions {
     /**
      * This data source provides Ebs Dedicated Block Storage Cluster available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -291,7 +291,7 @@ public final class EbsFunctions {
     /**
      * This data source provides Ebs Dedicated Block Storage Cluster available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -650,7 +650,7 @@ public final class EbsFunctions {
     /**
      * This data source provides Ebs Disk Replica Pair available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -693,7 +693,7 @@ public final class EbsFunctions {
     /**
      * This data source provides Ebs Disk Replica Pair available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -736,7 +736,7 @@ public final class EbsFunctions {
     /**
      * This data source provides Ebs Disk Replica Pair available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -779,7 +779,7 @@ public final class EbsFunctions {
     /**
      * This data source provides Ebs Disk Replica Pair available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -822,7 +822,7 @@ public final class EbsFunctions {
     /**
      * This data source provides Ebs Disk Replica Pair available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -865,7 +865,7 @@ public final class EbsFunctions {
     /**
      * This data source provides Ebs Disk Replica Pair available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -908,7 +908,7 @@ public final class EbsFunctions {
     /**
      * This data source provides Ebs Disk Replica Pair available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -951,7 +951,7 @@ public final class EbsFunctions {
     /**
      * This data source provides the Ebs Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -996,7 +996,7 @@ public final class EbsFunctions {
     /**
      * This data source provides the Ebs Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -1041,7 +1041,7 @@ public final class EbsFunctions {
     /**
      * This data source provides the Ebs Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -1086,7 +1086,7 @@ public final class EbsFunctions {
     /**
      * This data source provides the Ebs Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -1131,7 +1131,7 @@ public final class EbsFunctions {
     /**
      * This data source provides the Ebs Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -1176,7 +1176,7 @@ public final class EbsFunctions {
     /**
      * This data source provides the Ebs Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -1221,7 +1221,7 @@ public final class EbsFunctions {
     /**
      * This data source provides the Ebs Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 

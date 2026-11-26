@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eci
         /// <summary>
         /// This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.145.0+.
+        /// &gt; **NOTE:** Available since v1.145.0.
         /// 
         /// ## Example Usage
         /// 
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Eci
         /// <summary>
         /// This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.145.0+.
+        /// &gt; **NOTE:** Available since v1.145.0.
         /// 
         /// ## Example Usage
         /// 
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Eci
         /// <summary>
         /// This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.145.0+.
+        /// &gt; **NOTE:** Available since v1.145.0.
         /// 
         /// ## Example Usage
         /// 
@@ -201,6 +201,9 @@ namespace Pulumi.AliCloud.Eci
         [Input("virtualNodeName")]
         public string? VirtualNodeName { get; set; }
 
+        /// <summary>
+        /// The ID of the vSwitch.
+        /// </summary>
         [Input("vswitchId")]
         public string? VswitchId { get; set; }
 
@@ -272,6 +275,9 @@ namespace Pulumi.AliCloud.Eci
         [Input("virtualNodeName")]
         public Input<string>? VirtualNodeName { get; set; }
 
+        /// <summary>
+        /// The ID of the vSwitch.
+        /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
@@ -291,14 +297,38 @@ namespace Pulumi.AliCloud.Eci
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Virtual Node names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// A list of Eci Virtual Nodes. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVirtualNodesNodeResult> Nodes;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The resource group ID.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// The security group ID.
+        /// </summary>
         public readonly string? SecurityGroupId;
+        /// <summary>
+        /// The Status of the virtual node.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The name of the virtual node.
+        /// </summary>
         public readonly string? VirtualNodeName;
+        /// <summary>
+        /// The vswitch id.
+        /// </summary>
         public readonly string? VswitchId;
 
         [OutputConstructor]

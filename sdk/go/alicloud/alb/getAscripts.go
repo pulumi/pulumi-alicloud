@@ -13,7 +13,7 @@ import (
 
 // This data source provides Alb Ascript available to the user.
 //
-// > **NOTE:** Available in 1.195.0+
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
 //
@@ -34,7 +34,7 @@ import (
 //					defaultAlicloudAlbAscript.Id,
 //				},
 //				NameRegex:   pulumi.StringRef(defaultAlicloudAlbAscript.Name),
-//				AscriptName: pulumi.StringRef("test"),
+//				AscriptName: pulumi.StringRef("example"),
 //				ListenerId:  pulumi.StringRef(listenerId),
 //			}, nil)
 //			if err != nil {
@@ -59,8 +59,9 @@ func GetAscripts(ctx *pulumi.Context, args *GetAscriptsArgs, opts ...pulumi.Invo
 // A collection of arguments for invoking getAscripts.
 type GetAscriptsArgs struct {
 	// Script name.
-	AscriptName   *string `pulumi:"ascriptName"`
-	EnableDetails *bool   `pulumi:"enableDetails"`
+	AscriptName *string `pulumi:"ascriptName"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of AScript IDs.
 	Ids []string `pulumi:"ids"`
 	// Listener ID of script attribution
@@ -98,8 +99,9 @@ func GetAscriptsOutput(ctx *pulumi.Context, args GetAscriptsOutputArgs, opts ...
 // A collection of arguments for invoking getAscripts.
 type GetAscriptsOutputArgs struct {
 	// Script name.
-	AscriptName   pulumi.StringPtrInput `pulumi:"ascriptName"`
-	EnableDetails pulumi.BoolPtrInput   `pulumi:"enableDetails"`
+	AscriptName pulumi.StringPtrInput `pulumi:"ascriptName"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of AScript IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// Listener ID of script attribution

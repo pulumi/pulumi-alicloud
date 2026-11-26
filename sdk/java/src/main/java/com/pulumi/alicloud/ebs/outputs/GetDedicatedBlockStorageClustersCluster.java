@@ -50,6 +50,10 @@ public final class GetDedicatedBlockStorageClustersCluster {
      * 
      */
     private String expiredTime;
+    /**
+     * @return The first ID of the Dedicated Block Storage Cluster.
+     * 
+     */
     private String id;
     /**
      * @return Cloud disk performance level, possible values:-PL0.-PL1.-PL2.-PL3.&gt; Only valid in SupportedCategory = cloud_essd.
@@ -149,6 +153,10 @@ public final class GetDedicatedBlockStorageClustersCluster {
     public String expiredTime() {
         return this.expiredTime;
     }
+    /**
+     * @return The first ID of the Dedicated Block Storage Cluster.
+     * 
+     */
     public String id() {
         return this.id;
     }

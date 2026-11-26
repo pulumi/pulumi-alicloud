@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Vpc
     /// {
     ///     var foo = new AliCloud.Vpc.Network("foo", new()
     ///     {
-    ///         VpcName = "tf_test_foo12345",
+    ///         VpcName = "tf_foo12345",
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
@@ -41,8 +41,8 @@ namespace Pulumi.AliCloud.Vpc
     ///         RouterId = foo.RouterId,
     ///         Role = "InitiatingSide",
     ///         Specification = "Large.2",
-    ///         Name = "test1",
-    ///         Description = "test1",
+    ///         Name = "example1",
+    ///         Description = "example1",
     ///     });
     /// 
     /// });
@@ -136,6 +136,7 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// 
         /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
@@ -256,6 +257,7 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// 
         /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
@@ -368,6 +370,7 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// 
         /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]

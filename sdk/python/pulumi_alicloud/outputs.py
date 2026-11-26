@@ -1559,6 +1559,7 @@ class GetRegionsRegionResult(dict):
         """
         :param _builtins.str id: ID of the region.
         :param _builtins.str local_name: Name of the region in the local language.
+        :param _builtins.str region_id: ID of the region.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "local_name", local_name)
@@ -1583,6 +1584,9 @@ class GetRegionsRegionResult(dict):
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> _builtins.str:
+        """
+        ID of the region.
+        """
         return pulumi.get(self, "region_id")
 
 

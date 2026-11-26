@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string CommandContent;
         /// <summary>
-        /// The ID of the command.
+        /// The execution ID of the command.
         /// </summary>
         public readonly string CommandId;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string InvocationId;
         /// <summary>
-        /// The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances.
+        /// The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
         /// </summary>
         public readonly string InvocationStatus;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsInvocationsInvocationInvokeInstanceResult> InvokeInstances;
         /// <summary>
-        /// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `InvocationStatus` response parameter for the overall execution state.
+        /// The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
         /// </summary>
         public readonly string InvokeStatus;
         /// <summary>

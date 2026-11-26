@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.ServiceCatalog.Outputs
     [OutputType]
     public sealed class GetProvisionedProductsProvisionedProductOutputResult
     {
+        /// <summary>
+        /// Description of the output value defined in the template.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The name of the output value defined in the template.
+        /// </summary>
         public readonly string OutputKey;
+        /// <summary>
+        /// The content of the output value defined in the template.
+        /// </summary>
         public readonly string OutputValue;
 
         [OutputConstructor]

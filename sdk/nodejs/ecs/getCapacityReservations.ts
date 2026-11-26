@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Ecs Capacity Reservation available to the user.
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0
  *
  * ## Example Usage
  *
@@ -47,6 +47,9 @@ export function getCapacityReservations(args?: GetCapacityReservationsArgs, opts
  * A collection of arguments for invoking getCapacityReservations.
  */
 export interface GetCapacityReservationsArgs {
+    /**
+     * A list of Capacity Reservation IDs.
+     */
     capacityReservationIds?: string[];
     /**
      * A list of Capacity Reservation IDs.
@@ -130,14 +133,14 @@ export interface GetCapacityReservationsResult {
      */
     readonly status?: string;
     /**
-     * A mapping of tags to assign to the Capacity Reservation.
+     * (Optional) A mapping of tags to assign to the Capacity Reservation.
      */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides Ecs Capacity Reservation available to the user.
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0
  *
  * ## Example Usage
  *
@@ -175,6 +178,9 @@ export function getCapacityReservationsOutput(args?: GetCapacityReservationsOutp
  * A collection of arguments for invoking getCapacityReservations.
  */
 export interface GetCapacityReservationsOutputArgs {
+    /**
+     * A list of Capacity Reservation IDs.
+     */
     capacityReservationIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of Capacity Reservation IDs.

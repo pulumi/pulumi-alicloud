@@ -24,13 +24,37 @@ public final class GetStacksResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Stack names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return Parent Stack Id.
+     * 
+     */
     private @Nullable String parentStackId;
     private @Nullable Boolean showNestedStack;
+    /**
+     * @return Stack Name.
+     * 
+     */
     private @Nullable String stackName;
+    /**
+     * @return A list of Ros Stacks. Each element contains the following attributes:
+     * 
+     */
     private List<GetStacksStack> stacks;
+    /**
+     * @return The status of Stack.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return Tags of the Stack.
+     * 
+     */
     private @Nullable Map<String,String> tags;
 
     private GetStacksResult() {}
@@ -50,27 +74,51 @@ public final class GetStacksResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Stack names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Parent Stack Id.
+     * 
+     */
     public Optional<String> parentStackId() {
         return Optional.ofNullable(this.parentStackId);
     }
     public Optional<Boolean> showNestedStack() {
         return Optional.ofNullable(this.showNestedStack);
     }
+    /**
+     * @return Stack Name.
+     * 
+     */
     public Optional<String> stackName() {
         return Optional.ofNullable(this.stackName);
     }
+    /**
+     * @return A list of Ros Stacks. Each element contains the following attributes:
+     * 
+     */
     public List<GetStacksStack> stacks() {
         return this.stacks;
     }
+    /**
+     * @return The status of Stack.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return Tags of the Stack.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

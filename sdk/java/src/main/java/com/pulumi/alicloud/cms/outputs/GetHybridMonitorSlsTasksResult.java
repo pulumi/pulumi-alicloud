@@ -22,10 +22,18 @@ public final class GetHybridMonitorSlsTasksResult {
     private String id;
     private List<String> ids;
     private @Nullable String keyword;
+    /**
+     * @return The namespace to which the host belongs.
+     * 
+     */
     private @Nullable String namespace;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return A list of Cms Hybrid Monitor Sls Tasks. Each element contains the following attributes:
+     * 
+     */
     private List<GetHybridMonitorSlsTasksTask> tasks;
 
     private GetHybridMonitorSlsTasksResult() {}
@@ -42,6 +50,10 @@ public final class GetHybridMonitorSlsTasksResult {
     public Optional<String> keyword() {
         return Optional.ofNullable(this.keyword);
     }
+    /**
+     * @return The namespace to which the host belongs.
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
@@ -54,6 +66,10 @@ public final class GetHybridMonitorSlsTasksResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return A list of Cms Hybrid Monitor Sls Tasks. Each element contains the following attributes:
+     * 
+     */
     public List<GetHybridMonitorSlsTasksTask> tasks() {
         return this.tasks;
     }

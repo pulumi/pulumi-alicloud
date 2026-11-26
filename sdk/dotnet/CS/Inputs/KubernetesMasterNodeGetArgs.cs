@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class KubernetesMasterNodeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the node.
+        /// (Optional) The id of a node.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The private IP address of node.
+        /// (Optional) The private ip of a node.
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }

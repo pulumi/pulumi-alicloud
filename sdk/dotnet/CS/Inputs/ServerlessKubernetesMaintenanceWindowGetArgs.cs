@@ -34,14 +34,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
         /// 
         /// for example:
-        /// ```
-        /// maintenance_window {
-        /// enable            = true
-        /// maintenance_time  = "2024-10-15T12:31:00.000+08:00"
-        /// duration          = "3h"
-        /// weekly_period     = "Monday,Friday"
-        /// }
-        /// ```
         /// </summary>
         [Input("weeklyPeriod")]
         public Input<string>? WeeklyPeriod { get; set; }

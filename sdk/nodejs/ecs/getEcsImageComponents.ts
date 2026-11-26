@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Image Components of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.159.0+.
+ * > **NOTE:** Available since v1.159.0.
  *
  * ## Example Usage
  *
@@ -83,24 +83,42 @@ export interface GetEcsImageComponentsArgs {
  * A collection of values returned by getEcsImageComponents.
  */
 export interface GetEcsImageComponentsResult {
+    /**
+     * A list of Ecs Image Components. Each element contains the following attributes:
+     */
     readonly components: outputs.ecs.GetEcsImageComponentsComponent[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The name of the image component.
+     */
     readonly imageComponentName?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Image Component names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The type of the image component.
+     */
     readonly owner?: string;
+    /**
+     * The ID of the resource group.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * List of label key-value pairs.
+     */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Ecs Image Components of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.159.0+.
+ * > **NOTE:** Available since v1.159.0.
  *
  * ## Example Usage
  *

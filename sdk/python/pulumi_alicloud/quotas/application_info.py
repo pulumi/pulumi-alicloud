@@ -34,6 +34,25 @@ class ApplicationInfoArgs:
                  quota_category: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationInfo resource.
+
+        :param pulumi.Input[_builtins.float] desire_value: The desire value of the quota application.
+        :param pulumi.Input[_builtins.str] product_code: The product code.
+        :param pulumi.Input[_builtins.str] quota_action_code: The ID of quota action.
+        :param pulumi.Input[_builtins.str] reason: The reason of the quota application.
+        :param pulumi.Input[_builtins.str] audit_mode: This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+               - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+               - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]] dimensions: QuotaDimensions. See `dimensions` below.
+        :param pulumi.Input[_builtins.str] effective_time: The effective time of the quota application.
+        :param pulumi.Input[_builtins.str] env_language: The language of the quota alert notification. Value:
+               - zh (default): Chinese.
+               - en: English.
+        :param pulumi.Input[_builtins.str] expire_time: The expired time of the quota application.
+        :param pulumi.Input[_builtins.int] notice_type: Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+        :param pulumi.Input[_builtins.str] quota_category: The quota type.
+               - CommonQuota (default): Generic quota.
+               - FlowControl:API rate quota.
+               - WhiteListLabel: Equity quota.
         """
         pulumi.set(__self__, "desire_value", desire_value)
         pulumi.set(__self__, "product_code", product_code)
@@ -57,6 +76,9 @@ class ApplicationInfoArgs:
     @_builtins.property
     @pulumi.getter(name="desireValue")
     def desire_value(self) -> pulumi.Input[_builtins.float]:
+        """
+        The desire value of the quota application.
+        """
         return pulumi.get(self, "desire_value")
 
     @desire_value.setter
@@ -66,6 +88,9 @@ class ApplicationInfoArgs:
     @_builtins.property
     @pulumi.getter(name="productCode")
     def product_code(self) -> pulumi.Input[_builtins.str]:
+        """
+        The product code.
+        """
         return pulumi.get(self, "product_code")
 
     @product_code.setter
@@ -75,6 +100,9 @@ class ApplicationInfoArgs:
     @_builtins.property
     @pulumi.getter(name="quotaActionCode")
     def quota_action_code(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of quota action.
+        """
         return pulumi.get(self, "quota_action_code")
 
     @quota_action_code.setter
@@ -84,6 +112,9 @@ class ApplicationInfoArgs:
     @_builtins.property
     @pulumi.getter
     def reason(self) -> pulumi.Input[_builtins.str]:
+        """
+        The reason of the quota application.
+        """
         return pulumi.get(self, "reason")
 
     @reason.setter
@@ -93,6 +124,11 @@ class ApplicationInfoArgs:
     @_builtins.property
     @pulumi.getter(name="auditMode")
     def audit_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+        - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+        - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+        """
         return pulumi.get(self, "audit_mode")
 
     @audit_mode.setter
@@ -102,6 +138,9 @@ class ApplicationInfoArgs:
     @_builtins.property
     @pulumi.getter
     def dimensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]]:
+        """
+        QuotaDimensions. See `dimensions` below.
+        """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
@@ -111,6 +150,9 @@ class ApplicationInfoArgs:
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The effective time of the quota application.
+        """
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
@@ -120,6 +162,11 @@ class ApplicationInfoArgs:
     @_builtins.property
     @pulumi.getter(name="envLanguage")
     def env_language(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The language of the quota alert notification. Value:
+        - zh (default): Chinese.
+        - en: English.
+        """
         return pulumi.get(self, "env_language")
 
     @env_language.setter
@@ -129,6 +176,9 @@ class ApplicationInfoArgs:
     @_builtins.property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The expired time of the quota application.
+        """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
@@ -138,6 +188,9 @@ class ApplicationInfoArgs:
     @_builtins.property
     @pulumi.getter(name="noticeType")
     def notice_type(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+        """
         return pulumi.get(self, "notice_type")
 
     @notice_type.setter
@@ -147,6 +200,12 @@ class ApplicationInfoArgs:
     @_builtins.property
     @pulumi.getter(name="quotaCategory")
     def quota_category(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The quota type.
+        - CommonQuota (default): Generic quota.
+        - FlowControl:API rate quota.
+        - WhiteListLabel: Equity quota.
+        """
         return pulumi.get(self, "quota_category")
 
     @quota_category.setter
@@ -177,6 +236,36 @@ class _ApplicationInfoState:
                  status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationInfo resources.
+
+        :param pulumi.Input[_builtins.str] approve_value: The approve value of the quota application.
+        :param pulumi.Input[_builtins.str] audit_mode: This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+               - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+               - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+        :param pulumi.Input[_builtins.str] audit_reason: The audit reason.
+        :param pulumi.Input[_builtins.str] create_time: Resource attribute field representing creation time.
+        :param pulumi.Input[_builtins.float] desire_value: The desire value of the quota application.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]] dimensions: QuotaDimensions. See `dimensions` below.
+        :param pulumi.Input[_builtins.str] effective_time: The effective time of the quota application.
+        :param pulumi.Input[_builtins.str] env_language: The language of the quota alert notification. Value:
+               - zh (default): Chinese.
+               - en: English.
+        :param pulumi.Input[_builtins.str] expire_time: The expired time of the quota application.
+        :param pulumi.Input[_builtins.int] notice_type: Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+        :param pulumi.Input[_builtins.str] product_code: The product code.
+        :param pulumi.Input[_builtins.str] quota_action_code: The ID of quota action.
+        :param pulumi.Input[_builtins.str] quota_category: The quota type.
+               - CommonQuota (default): Generic quota.
+               - FlowControl:API rate quota.
+               - WhiteListLabel: Equity quota.
+        :param pulumi.Input[_builtins.str] quota_description: The description of the quota application.
+        :param pulumi.Input[_builtins.str] quota_name: The name of the quota application.
+        :param pulumi.Input[_builtins.str] quota_unit: The unit of the quota application.
+        :param pulumi.Input[_builtins.str] reason: The reason of the quota application.
+        :param pulumi.Input[_builtins.str] status: Application Status:
+               - Disagree: reject.
+               - Agree: Approved.
+               - Process: under review.
+               - Cancel: Closed.
         """
         if approve_value is not None:
             pulumi.set(__self__, "approve_value", approve_value)
@@ -218,6 +307,9 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter(name="approveValue")
     def approve_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The approve value of the quota application.
+        """
         return pulumi.get(self, "approve_value")
 
     @approve_value.setter
@@ -227,6 +319,11 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter(name="auditMode")
     def audit_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+        - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+        - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+        """
         return pulumi.get(self, "audit_mode")
 
     @audit_mode.setter
@@ -236,6 +333,9 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter(name="auditReason")
     def audit_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The audit reason.
+        """
         return pulumi.get(self, "audit_reason")
 
     @audit_reason.setter
@@ -245,6 +345,9 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Resource attribute field representing creation time.
+        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -254,6 +357,9 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter(name="desireValue")
     def desire_value(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        The desire value of the quota application.
+        """
         return pulumi.get(self, "desire_value")
 
     @desire_value.setter
@@ -263,6 +369,9 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter
     def dimensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]]:
+        """
+        QuotaDimensions. See `dimensions` below.
+        """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
@@ -272,6 +381,9 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The effective time of the quota application.
+        """
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
@@ -281,6 +393,11 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter(name="envLanguage")
     def env_language(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The language of the quota alert notification. Value:
+        - zh (default): Chinese.
+        - en: English.
+        """
         return pulumi.get(self, "env_language")
 
     @env_language.setter
@@ -290,6 +407,9 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The expired time of the quota application.
+        """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
@@ -299,6 +419,9 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter(name="noticeType")
     def notice_type(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+        """
         return pulumi.get(self, "notice_type")
 
     @notice_type.setter
@@ -308,6 +431,9 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter(name="productCode")
     def product_code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The product code.
+        """
         return pulumi.get(self, "product_code")
 
     @product_code.setter
@@ -317,6 +443,9 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter(name="quotaActionCode")
     def quota_action_code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of quota action.
+        """
         return pulumi.get(self, "quota_action_code")
 
     @quota_action_code.setter
@@ -326,6 +455,12 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter(name="quotaCategory")
     def quota_category(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The quota type.
+        - CommonQuota (default): Generic quota.
+        - FlowControl:API rate quota.
+        - WhiteListLabel: Equity quota.
+        """
         return pulumi.get(self, "quota_category")
 
     @quota_category.setter
@@ -335,6 +470,9 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter(name="quotaDescription")
     def quota_description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the quota application.
+        """
         return pulumi.get(self, "quota_description")
 
     @quota_description.setter
@@ -344,6 +482,9 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter(name="quotaName")
     def quota_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the quota application.
+        """
         return pulumi.get(self, "quota_name")
 
     @quota_name.setter
@@ -353,6 +494,9 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter(name="quotaUnit")
     def quota_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unit of the quota application.
+        """
         return pulumi.get(self, "quota_unit")
 
     @quota_unit.setter
@@ -362,6 +506,9 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter
     def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The reason of the quota application.
+        """
         return pulumi.get(self, "reason")
 
     @reason.setter
@@ -371,6 +518,13 @@ class _ApplicationInfoState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Application Status:
+        - Disagree: reject.
+        - Agree: Approved.
+        - Process: under review.
+        - Cancel: Closed.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -397,10 +551,73 @@ class ApplicationInfo(pulumi.CustomResource):
                  reason: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a ApplicationInfo resource with the given unique name, props, and options.
+        Provides a Quotas Application Info resource. Details of Quota Application.
+
+        > **NOTE:** Available since v1.117.0.
+
+        This is an alias of `quotas.QuotaApplication`.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.quotas.ApplicationInfo("default",
+            quota_action_code="q_desktop-count",
+            product_code="gws",
+            quota_category="CommonQuota",
+            notice_type=3,
+            dimensions=[{
+                "key": "regionId",
+                "value": "cn-hangzhou",
+            }],
+            desire_value=float(1001),
+            reason="测试",
+            env_language="zh")
+        ```
+
+        ### Deleting `quotas.ApplicationInfo` or removing it from your configuration
+
+        Terraform cannot destroy resource `quotas.ApplicationInfo`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
+        ## Import
+
+        Quotas Application Info can be imported using the id, e.g.
+
+        ```sh
+        $ pulumi import alicloud:quotas/applicationInfo:ApplicationInfo example <id>
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] audit_mode: This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+               - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+               - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+        :param pulumi.Input[_builtins.float] desire_value: The desire value of the quota application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationInfoDimensionArgs', 'ApplicationInfoDimensionArgsDict', 'outputs.ApplicationInfoDimension']]]] dimensions: QuotaDimensions. See `dimensions` below.
+        :param pulumi.Input[_builtins.str] effective_time: The effective time of the quota application.
+        :param pulumi.Input[_builtins.str] env_language: The language of the quota alert notification. Value:
+               - zh (default): Chinese.
+               - en: English.
+        :param pulumi.Input[_builtins.str] expire_time: The expired time of the quota application.
+        :param pulumi.Input[_builtins.int] notice_type: Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+        :param pulumi.Input[_builtins.str] product_code: The product code.
+        :param pulumi.Input[_builtins.str] quota_action_code: The ID of quota action.
+        :param pulumi.Input[_builtins.str] quota_category: The quota type.
+               - CommonQuota (default): Generic quota.
+               - FlowControl:API rate quota.
+               - WhiteListLabel: Equity quota.
+        :param pulumi.Input[_builtins.str] reason: The reason of the quota application.
         """
         ...
     @overload
@@ -409,7 +626,52 @@ class ApplicationInfo(pulumi.CustomResource):
                  args: ApplicationInfoArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ApplicationInfo resource with the given unique name, props, and options.
+        Provides a Quotas Application Info resource. Details of Quota Application.
+
+        > **NOTE:** Available since v1.117.0.
+
+        This is an alias of `quotas.QuotaApplication`.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.quotas.ApplicationInfo("default",
+            quota_action_code="q_desktop-count",
+            product_code="gws",
+            quota_category="CommonQuota",
+            notice_type=3,
+            dimensions=[{
+                "key": "regionId",
+                "value": "cn-hangzhou",
+            }],
+            desire_value=float(1001),
+            reason="测试",
+            env_language="zh")
+        ```
+
+        ### Deleting `quotas.ApplicationInfo` or removing it from your configuration
+
+        Terraform cannot destroy resource `quotas.ApplicationInfo`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
+        ## Import
+
+        Quotas Application Info can be imported using the id, e.g.
+
+        ```sh
+        $ pulumi import alicloud:quotas/applicationInfo:ApplicationInfo example <id>
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationInfoArgs args: The arguments to use to populate this resource's properties.
@@ -507,6 +769,35 @@ class ApplicationInfo(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] approve_value: The approve value of the quota application.
+        :param pulumi.Input[_builtins.str] audit_mode: This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+               - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+               - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+        :param pulumi.Input[_builtins.str] audit_reason: The audit reason.
+        :param pulumi.Input[_builtins.str] create_time: Resource attribute field representing creation time.
+        :param pulumi.Input[_builtins.float] desire_value: The desire value of the quota application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationInfoDimensionArgs', 'ApplicationInfoDimensionArgsDict', 'outputs.ApplicationInfoDimension']]]] dimensions: QuotaDimensions. See `dimensions` below.
+        :param pulumi.Input[_builtins.str] effective_time: The effective time of the quota application.
+        :param pulumi.Input[_builtins.str] env_language: The language of the quota alert notification. Value:
+               - zh (default): Chinese.
+               - en: English.
+        :param pulumi.Input[_builtins.str] expire_time: The expired time of the quota application.
+        :param pulumi.Input[_builtins.int] notice_type: Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+        :param pulumi.Input[_builtins.str] product_code: The product code.
+        :param pulumi.Input[_builtins.str] quota_action_code: The ID of quota action.
+        :param pulumi.Input[_builtins.str] quota_category: The quota type.
+               - CommonQuota (default): Generic quota.
+               - FlowControl:API rate quota.
+               - WhiteListLabel: Equity quota.
+        :param pulumi.Input[_builtins.str] quota_description: The description of the quota application.
+        :param pulumi.Input[_builtins.str] quota_name: The name of the quota application.
+        :param pulumi.Input[_builtins.str] quota_unit: The unit of the quota application.
+        :param pulumi.Input[_builtins.str] reason: The reason of the quota application.
+        :param pulumi.Input[_builtins.str] status: Application Status:
+               - Disagree: reject.
+               - Agree: Approved.
+               - Process: under review.
+               - Cancel: Closed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -577,90 +868,155 @@ class ApplicationInfo(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="approveValue")
     def approve_value(self) -> pulumi.Output[_builtins.str]:
+        """
+        The approve value of the quota application.
+        """
         return pulumi.get(self, "approve_value")
 
     @_builtins.property
     @pulumi.getter(name="auditMode")
     def audit_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+        - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+        - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+        """
         return pulumi.get(self, "audit_mode")
 
     @_builtins.property
     @pulumi.getter(name="auditReason")
     def audit_reason(self) -> pulumi.Output[_builtins.str]:
+        """
+        The audit reason.
+        """
         return pulumi.get(self, "audit_reason")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        Resource attribute field representing creation time.
+        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="desireValue")
     def desire_value(self) -> pulumi.Output[_builtins.float]:
+        """
+        The desire value of the quota application.
+        """
         return pulumi.get(self, "desire_value")
 
     @_builtins.property
     @pulumi.getter
     def dimensions(self) -> pulumi.Output[Optional[Sequence['outputs.ApplicationInfoDimension']]]:
+        """
+        QuotaDimensions. See `dimensions` below.
+        """
         return pulumi.get(self, "dimensions")
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The effective time of the quota application.
+        """
         return pulumi.get(self, "effective_time")
 
     @_builtins.property
     @pulumi.getter(name="envLanguage")
     def env_language(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The language of the quota alert notification. Value:
+        - zh (default): Chinese.
+        - en: English.
+        """
         return pulumi.get(self, "env_language")
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The expired time of the quota application.
+        """
         return pulumi.get(self, "expire_time")
 
     @_builtins.property
     @pulumi.getter(name="noticeType")
     def notice_type(self) -> pulumi.Output[_builtins.int]:
+        """
+        Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+        """
         return pulumi.get(self, "notice_type")
 
     @_builtins.property
     @pulumi.getter(name="productCode")
     def product_code(self) -> pulumi.Output[_builtins.str]:
+        """
+        The product code.
+        """
         return pulumi.get(self, "product_code")
 
     @_builtins.property
     @pulumi.getter(name="quotaActionCode")
     def quota_action_code(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of quota action.
+        """
         return pulumi.get(self, "quota_action_code")
 
     @_builtins.property
     @pulumi.getter(name="quotaCategory")
     def quota_category(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The quota type.
+        - CommonQuota (default): Generic quota.
+        - FlowControl:API rate quota.
+        - WhiteListLabel: Equity quota.
+        """
         return pulumi.get(self, "quota_category")
 
     @_builtins.property
     @pulumi.getter(name="quotaDescription")
     def quota_description(self) -> pulumi.Output[_builtins.str]:
+        """
+        The description of the quota application.
+        """
         return pulumi.get(self, "quota_description")
 
     @_builtins.property
     @pulumi.getter(name="quotaName")
     def quota_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of the quota application.
+        """
         return pulumi.get(self, "quota_name")
 
     @_builtins.property
     @pulumi.getter(name="quotaUnit")
     def quota_unit(self) -> pulumi.Output[_builtins.str]:
+        """
+        The unit of the quota application.
+        """
         return pulumi.get(self, "quota_unit")
 
     @_builtins.property
     @pulumi.getter
     def reason(self) -> pulumi.Output[_builtins.str]:
+        """
+        The reason of the quota application.
+        """
         return pulumi.get(self, "reason")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
+        """
+        Application Status:
+        - Disagree: reject.
+        - Agree: Approved.
+        - Process: under review.
+        - Cancel: Closed.
+        """
         return pulumi.get(self, "status")
 

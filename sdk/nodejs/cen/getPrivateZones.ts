@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides CEN Private Zones available to the user.
  *
- * > **NOTE:** Available in v1.88.0+.
+ * > **NOTE:** Available since v1.88.0+.
  *
  * ## Example Usage
  *
@@ -45,13 +45,12 @@ export interface GetPrivateZonesArgs {
      */
     cenId: string;
     /**
-     * The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+     * The service region is the target region of the PrivateZone service accessed through CEN.
      */
     hostRegionId?: string;
     /**
      * A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
      * **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
-     * * ` hostRegionId  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
      */
     ids?: string[];
     /**
@@ -98,7 +97,7 @@ export interface GetPrivateZonesResult {
 /**
  * This data source provides CEN Private Zones available to the user.
  *
- * > **NOTE:** Available in v1.88.0+.
+ * > **NOTE:** Available since v1.88.0+.
  *
  * ## Example Usage
  *
@@ -134,13 +133,12 @@ export interface GetPrivateZonesOutputArgs {
      */
     cenId: pulumi.Input<string>;
     /**
-     * The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+     * The service region is the target region of the PrivateZone service accessed through CEN.
      */
     hostRegionId?: pulumi.Input<string | undefined>;
     /**
      * A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
      * **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
-     * * ` hostRegionId  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

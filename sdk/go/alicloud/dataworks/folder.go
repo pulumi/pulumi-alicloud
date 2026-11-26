@@ -14,9 +14,9 @@ import (
 
 // Provides a Data Works Folder resource.
 //
-// For information about Data Works Folder and how to use it, see [What is Folder](https://help.aliyun.com/document_detail/173940.html).
+// For information about Data Works Folder and how to use it, see [What is Folder](https://www.alibabacloud.com/help/doc-detail/173940.html).
 //
-// > **NOTE:** Available in v1.131.0+.
+// > **NOTE:** Available since v1.131.0.
 //
 // ## Example Usage
 //
@@ -59,11 +59,13 @@ import (
 type Folder struct {
 	pulumi.CustomResourceState
 
+	// The ID of the Folder.
 	FolderId pulumi.StringOutput `pulumi:"folderId"`
 	// Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
 	FolderPath pulumi.StringOutput `pulumi:"folderPath"`
 	// The ID of the project.
-	ProjectId         pulumi.StringPtrOutput `pulumi:"projectId"`
+	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
+	// The project identifier.
 	ProjectIdentifier pulumi.StringPtrOutput `pulumi:"projectIdentifier"`
 }
 
@@ -100,20 +102,24 @@ func GetFolder(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Folder resources.
 type folderState struct {
+	// The ID of the Folder.
 	FolderId *string `pulumi:"folderId"`
 	// Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
 	FolderPath *string `pulumi:"folderPath"`
 	// The ID of the project.
-	ProjectId         *string `pulumi:"projectId"`
+	ProjectId *string `pulumi:"projectId"`
+	// The project identifier.
 	ProjectIdentifier *string `pulumi:"projectIdentifier"`
 }
 
 type FolderState struct {
+	// The ID of the Folder.
 	FolderId pulumi.StringPtrInput
 	// Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
 	FolderPath pulumi.StringPtrInput
 	// The ID of the project.
-	ProjectId         pulumi.StringPtrInput
+	ProjectId pulumi.StringPtrInput
+	// The project identifier.
 	ProjectIdentifier pulumi.StringPtrInput
 }
 
@@ -131,7 +137,8 @@ type folderArgs struct {
 	// Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
 	FolderPath string `pulumi:"folderPath"`
 	// The ID of the project.
-	ProjectId         *string `pulumi:"projectId"`
+	ProjectId *string `pulumi:"projectId"`
+	// The project identifier.
 	ProjectIdentifier *string `pulumi:"projectIdentifier"`
 }
 
@@ -140,7 +147,8 @@ type FolderArgs struct {
 	// Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
 	FolderPath pulumi.StringInput
 	// The ID of the project.
-	ProjectId         pulumi.StringPtrInput
+	ProjectId pulumi.StringPtrInput
+	// The project identifier.
 	ProjectIdentifier pulumi.StringPtrInput
 }
 
@@ -231,6 +239,7 @@ func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutpu
 	return o
 }
 
+// The ID of the Folder.
 func (o FolderOutput) FolderId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.FolderId }).(pulumi.StringOutput)
 }
@@ -245,6 +254,7 @@ func (o FolderOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
+// The project identifier.
 func (o FolderOutput) ProjectIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringPtrOutput { return v.ProjectIdentifier }).(pulumi.StringPtrOutput)
 }

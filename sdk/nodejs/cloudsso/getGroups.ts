@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *
@@ -77,7 +77,13 @@ export interface GetGroupsArgs {
  * A collection of values returned by getGroups.
  */
 export interface GetGroupsResult {
+    /**
+     * The ID of the Directory.
+     */
     readonly directoryId: string;
+    /**
+     * A list of Cloud Sso Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.cloudsso.GetGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -85,14 +91,20 @@ export interface GetGroupsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+     */
     readonly provisionType?: string;
 }
 /**
  * This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *

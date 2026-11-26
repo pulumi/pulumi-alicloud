@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     /// <summary>
-    /// &gt; **DEPRECATION NOTICE:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.ManagedKubernetes` instead.
+    /// &gt; **DEPRECATED:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.ManagedKubernetes` instead.
     /// 
     /// This resource will help you to manage a Edge Kubernetes Cluster in Alibaba Cloud Kubernetes Service, see [What is edge kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-an-ack-edge-cluster).
     /// 
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         /// 
-        /// *Removed params*
+        /// Removed params
         /// </summary>
         [Output("clusterCaCert")]
         public Output<string?> ClusterCaCert { get; private set; } = null!;
@@ -285,7 +285,7 @@ namespace Pulumi.AliCloud.CS
         /// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         /// -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `PodCidr` field and addons with `Flannel`.
         /// 
-        /// *Worker params*
+        /// Worker params
         /// </summary>
         [Output("loadBalancerSpec")]
         public Output<string> LoadBalancerSpec { get; private set; } = null!;
@@ -383,11 +383,14 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`. For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
         /// 
-        /// *Network params*
+        /// Network params
         /// </summary>
         [Output("skipSetCertificateAuthority")]
         public Output<bool?> SkipSetCertificateAuthority { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of APIServer load balancer.
+        /// </summary>
         [Output("slbId")]
         public Output<string> SlbId { get; private set; } = null!;
 
@@ -460,7 +463,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Worker node system disk auto snapshot policy.
         /// 
-        /// *Computed params*
+        /// Computed params
         /// 
         /// You can set some file paths to save KubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
         /// </summary>
@@ -586,7 +589,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         /// 
-        /// *Removed params*
+        /// Removed params
         /// </summary>
         [Input("clusterCaCert")]
         public Input<string>? ClusterCaCert { get; set; }
@@ -633,7 +636,7 @@ namespace Pulumi.AliCloud.CS
         /// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         /// -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `PodCidr` field and addons with `Flannel`.
         /// 
-        /// *Worker params*
+        /// Worker params
         /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }
@@ -753,7 +756,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`. For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
         /// 
-        /// *Network params*
+        /// Network params
         /// </summary>
         [Input("skipSetCertificateAuthority")]
         public Input<bool>? SkipSetCertificateAuthority { get; set; }
@@ -821,7 +824,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Worker node system disk auto snapshot policy.
         /// 
-        /// *Computed params*
+        /// Computed params
         /// 
         /// You can set some file paths to save KubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
         /// </summary>
@@ -918,7 +921,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         /// 
-        /// *Removed params*
+        /// Removed params
         /// </summary>
         [Input("clusterCaCert")]
         public Input<string>? ClusterCaCert { get; set; }
@@ -977,7 +980,7 @@ namespace Pulumi.AliCloud.CS
         /// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         /// -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `PodCidr` field and addons with `Flannel`.
         /// 
-        /// *Worker params*
+        /// Worker params
         /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }
@@ -1103,11 +1106,14 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`. For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
         /// 
-        /// *Network params*
+        /// Network params
         /// </summary>
         [Input("skipSetCertificateAuthority")]
         public Input<bool>? SkipSetCertificateAuthority { get; set; }
 
+        /// <summary>
+        /// The ID of APIServer load balancer.
+        /// </summary>
         [Input("slbId")]
         public Input<string>? SlbId { get; set; }
 
@@ -1192,7 +1198,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Worker node system disk auto snapshot policy.
         /// 
-        /// *Computed params*
+        /// Computed params
         /// 
         /// You can set some file paths to save KubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
         /// </summary>

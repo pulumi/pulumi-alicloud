@@ -13,11 +13,17 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     [OutputType]
     public sealed class GetConnectionsConnectionResult
     {
+        /// <summary>
+        /// The creation time of the VPN connection.
+        /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// Use the VPN customer gateway ID as the search key.
         /// </summary>
         public readonly string CustomerGatewayId;
+        /// <summary>
+        /// Whether the VPN connection takes effect immediately.
+        /// </summary>
         public readonly bool EffectImmediately;
         /// <summary>
         /// Wether enable Dpd detection.
@@ -36,11 +42,11 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The IkeConfig mapping supports the following:
+        /// (Optional) The configurations of phase-one negotiation.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionsConnectionIkeConfigResult> IkeConfigs;
         /// <summary>
-        /// The IpsecConfig mapping supports the following:
+        /// (Optional) The configurations of phase-two negotiation.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionsConnectionIpsecConfigResult> IpsecConfigs;
         /// <summary>
@@ -56,16 +62,19 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string RemoteSubnet;
         /// <summary>
-        /// The negotiation status of the BGP routing protocol. Valid values: `Success`, `False`.
+        /// The status of the tunnel.
         /// </summary>
         public readonly string Status;
         /// <summary>
         /// The TunnelOptionsSpecification supports the following:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionsConnectionTunnelOptionsSpecificationResult> TunnelOptionsSpecifications;
+        /// <summary>
+        /// (Optional) The health check configuration information.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionsConnectionVcoHealthCheckResult> VcoHealthChecks;
         /// <summary>
-        /// The VpnBgpConfig mapping supports the following:
+        /// (Optional) The configuration information for BGP.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionsConnectionVpnBgpConfigResult> VpnBgpConfigs;
         /// <summary>

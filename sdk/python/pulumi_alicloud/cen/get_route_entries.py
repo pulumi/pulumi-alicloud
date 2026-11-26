@@ -115,6 +115,8 @@ def get_route_entries(cidr_block: Optional[_builtins.str] = None,
     """
     This data source provides CEN Route Entries available to the user.
 
+    > **NOTE:** Available since v1.20.0+
+
     ## Example Usage
 
     ```python
@@ -154,6 +156,8 @@ def get_route_entries_output(cidr_block: pulumi.Input[Optional[Optional[_builtin
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteEntriesResult]:
     """
     This data source provides CEN Route Entries available to the user.
+
+    > **NOTE:** Available since v1.20.0+
 
     ## Example Usage
 

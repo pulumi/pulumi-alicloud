@@ -78,15 +78,21 @@ import (
 type ImageTransform struct {
 	pulumi.CustomResourceState
 
-	// Config Id
+	// Specifies whether to enable adaptive AVIF. Valid values:
+	AutoAvif pulumi.StringPtrOutput `pulumi:"autoAvif"`
+	// Specifies whether to enable adaptive WebP. Valid values:
+	AutoWebp pulumi.StringPtrOutput `pulumi:"autoWebp"`
+	// The configuration ID.
 	ConfigId pulumi.IntOutput `pulumi:"configId"`
-	// Indicates whether the image transformations feature is enabled. Valid values:
-	Enable pulumi.StringPtrOutput `pulumi:"enable"`
+	// (Available since v2.2.0) The configuration type.
+	ConfigType pulumi.StringOutput `pulumi:"configType"`
+	// Specifies whether to enable image transformation. Valid values:
+	Enable pulumi.StringOutput `pulumi:"enable"`
 	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
 	// - Match all incoming requests: value set to true
 	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrOutput `pulumi:"rule"`
-	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
@@ -105,6 +111,9 @@ func NewImageTransform(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Enable == nil {
+		return nil, errors.New("invalid value for required argument 'Enable'")
+	}
 	if args.SiteId == nil {
 		return nil, errors.New("invalid value for required argument 'SiteId'")
 	}
@@ -131,15 +140,21 @@ func GetImageTransform(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ImageTransform resources.
 type imageTransformState struct {
-	// Config Id
+	// Specifies whether to enable adaptive AVIF. Valid values:
+	AutoAvif *string `pulumi:"autoAvif"`
+	// Specifies whether to enable adaptive WebP. Valid values:
+	AutoWebp *string `pulumi:"autoWebp"`
+	// The configuration ID.
 	ConfigId *int `pulumi:"configId"`
-	// Indicates whether the image transformations feature is enabled. Valid values:
+	// (Available since v2.2.0) The configuration type.
+	ConfigType *string `pulumi:"configType"`
+	// Specifies whether to enable image transformation. Valid values:
 	Enable *string `pulumi:"enable"`
 	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
 	// - Match all incoming requests: value set to true
 	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
@@ -152,15 +167,21 @@ type imageTransformState struct {
 }
 
 type ImageTransformState struct {
-	// Config Id
+	// Specifies whether to enable adaptive AVIF. Valid values:
+	AutoAvif pulumi.StringPtrInput
+	// Specifies whether to enable adaptive WebP. Valid values:
+	AutoWebp pulumi.StringPtrInput
+	// The configuration ID.
 	ConfigId pulumi.IntPtrInput
-	// Indicates whether the image transformations feature is enabled. Valid values:
+	// (Available since v2.2.0) The configuration type.
+	ConfigType pulumi.StringPtrInput
+	// Specifies whether to enable image transformation. Valid values:
 	Enable pulumi.StringPtrInput
 	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
 	// - Match all incoming requests: value set to true
 	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
@@ -183,13 +204,17 @@ func ImageTransformExists(ctx *pulumi.Context,
 }
 
 type imageTransformArgs struct {
-	// Indicates whether the image transformations feature is enabled. Valid values:
-	Enable *string `pulumi:"enable"`
+	// Specifies whether to enable adaptive AVIF. Valid values:
+	AutoAvif *string `pulumi:"autoAvif"`
+	// Specifies whether to enable adaptive WebP. Valid values:
+	AutoWebp *string `pulumi:"autoWebp"`
+	// Specifies whether to enable image transformation. Valid values:
+	Enable string `pulumi:"enable"`
 	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
 	// - Match all incoming requests: value set to true
 	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
@@ -203,13 +228,17 @@ type imageTransformArgs struct {
 
 // The set of arguments for constructing a ImageTransform resource.
 type ImageTransformArgs struct {
-	// Indicates whether the image transformations feature is enabled. Valid values:
-	Enable pulumi.StringPtrInput
+	// Specifies whether to enable adaptive AVIF. Valid values:
+	AutoAvif pulumi.StringPtrInput
+	// Specifies whether to enable adaptive WebP. Valid values:
+	AutoWebp pulumi.StringPtrInput
+	// Specifies whether to enable image transformation. Valid values:
+	Enable pulumi.StringInput
 	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
 	// - Match all incoming requests: value set to true
 	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
@@ -308,14 +337,29 @@ func (o ImageTransformOutput) ToImageTransformOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Config Id
+// Specifies whether to enable adaptive AVIF. Valid values:
+func (o ImageTransformOutput) AutoAvif() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageTransform) pulumi.StringPtrOutput { return v.AutoAvif }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable adaptive WebP. Valid values:
+func (o ImageTransformOutput) AutoWebp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageTransform) pulumi.StringPtrOutput { return v.AutoWebp }).(pulumi.StringPtrOutput)
+}
+
+// The configuration ID.
 func (o ImageTransformOutput) ConfigId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ImageTransform) pulumi.IntOutput { return v.ConfigId }).(pulumi.IntOutput)
 }
 
-// Indicates whether the image transformations feature is enabled. Valid values:
-func (o ImageTransformOutput) Enable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageTransform) pulumi.StringPtrOutput { return v.Enable }).(pulumi.StringPtrOutput)
+// (Available since v2.2.0) The configuration type.
+func (o ImageTransformOutput) ConfigType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageTransform) pulumi.StringOutput { return v.ConfigType }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable image transformation. Valid values:
+func (o ImageTransformOutput) Enable() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageTransform) pulumi.StringOutput { return v.Enable }).(pulumi.StringOutput)
 }
 
 // Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -325,7 +369,7 @@ func (o ImageTransformOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageTransform) pulumi.StringPtrOutput { return v.Rule }).(pulumi.StringPtrOutput)
 }
 
-// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+// Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
 func (o ImageTransformOutput) RuleEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageTransform) pulumi.StringPtrOutput { return v.RuleEnable }).(pulumi.StringPtrOutput)
 }

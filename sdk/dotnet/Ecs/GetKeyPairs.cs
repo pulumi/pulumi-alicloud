@@ -235,7 +235,7 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         /// <summary>
-        /// A list of key pairs. Each element contains the following attributes:
+        /// (Deprecated) A list of key pairs. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKeyPairsKeyPairResult> KeyPairs;
         public readonly string? NameRegex;
@@ -244,13 +244,16 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of key pairs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKeyPairsPairResult> Pairs;
         /// <summary>
         /// The Id of resource group.
         /// </summary>
         public readonly string? ResourceGroupId;
         /// <summary>
-        /// (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
+        /// A map of tags assigned to the key pair.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 

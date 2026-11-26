@@ -21,12 +21,32 @@ public final class GetImagesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
+     * 
+     */
     private @Nullable String imageType;
+    /**
+     * @return A list of Ecd Images. Each element contains the following attributes:
+     * 
+     */
     private List<GetImagesImage> images;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Image names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return The os type of the image.
+     * 
+     */
     private @Nullable String osType;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
+     * 
+     */
     private @Nullable String status;
 
     private GetImagesResult() {}
@@ -43,24 +63,44 @@ public final class GetImagesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
+     * 
+     */
     public Optional<String> imageType() {
         return Optional.ofNullable(this.imageType);
     }
+    /**
+     * @return A list of Ecd Images. Each element contains the following attributes:
+     * 
+     */
     public List<GetImagesImage> images() {
         return this.images;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Image names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return The os type of the image.
+     * 
+     */
     public Optional<String> osType() {
         return Optional.ofNullable(this.osType);
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

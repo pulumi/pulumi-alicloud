@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.160.0+.
+ * > **NOTE:** Available since v1.160.0.
  *
  * ## Example Usage
  *
@@ -89,24 +89,42 @@ export interface GetEcsSnapshotGroupsArgs {
  * A collection of values returned by getEcsSnapshotGroups.
  */
 export interface GetEcsSnapshotGroupsResult {
+    /**
+     * A list of Ecs Snapshot Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.ecs.GetEcsSnapshotGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The ID of the instance.
+     */
     readonly instanceId?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Snapshot Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The name of the snapshot-consistent group.
+     */
     readonly snapshotGroupName?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
+    /**
+     * (Optional) List of label key-value pairs.
+     */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.160.0+.
+ * > **NOTE:** Available since v1.160.0.
  *
  * ## Example Usage
  *

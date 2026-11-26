@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -297,21 +297,48 @@ namespace Pulumi.AliCloud.BastionHost
     [OutputType]
     public sealed class GetUsersResult
     {
+        /// <summary>
+        /// Specify the New Created the User's Display Name. Supports up to 128 Characters.
+        /// </summary>
         public readonly string? DisplayName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// You Want to Query the User the Bastion Host ID of.
+        /// </summary>
         public readonly string InstanceId;
+        /// <summary>
+        /// Specify the New of the User That Created a Different Mobile Phone Number from Your.
+        /// </summary>
         public readonly string? Mobile;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of User names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+        /// </summary>
         public readonly string? Source;
+        /// <summary>
+        /// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+        /// </summary>
         public readonly string? SourceUserId;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+        /// </summary>
         public readonly string? UserName;
+        /// <summary>
+        /// A list of Bastionhost Users. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetUsersUserResult> Users;
 
         [OutputConstructor]

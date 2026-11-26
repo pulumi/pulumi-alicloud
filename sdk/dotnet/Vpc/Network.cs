@@ -222,14 +222,16 @@ namespace Pulumi.AliCloud.Vpc
         /// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("systemRouteTableDescription")]
-        public Output<string?> SystemRouteTableDescription { get; private set; } = null!;
+        public Output<string> SystemRouteTableDescription { get; private set; } = null!;
 
         /// <summary>
         /// The name of the route table.
         /// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        /// 
+        /// &gt; **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
         /// </summary>
         [Output("systemRouteTableName")]
-        public Output<string?> SystemRouteTableName { get; private set; } = null!;
+        public Output<string> SystemRouteTableName { get; private set; } = null!;
 
         /// <summary>
         /// Whether the system route table receives propagation routes.
@@ -433,6 +435,8 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// The name of the route table.
         /// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        /// 
+        /// &gt; **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
         /// </summary>
         [Input("systemRouteTableName")]
         public Input<string>? SystemRouteTableName { get; set; }
@@ -661,6 +665,8 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// The name of the route table.
         /// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        /// 
+        /// &gt; **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
         /// </summary>
         [Input("systemRouteTableName")]
         public Input<string>? SystemRouteTableName { get; set; }

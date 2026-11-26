@@ -113,7 +113,14 @@ namespace Pulumi.AliCloud.Sls
     ///         DataCode = "metering_log",
     ///         CentralizeEnabled = true,
     ///         ProductCode = "oss",
-    ///         PolicyName = "xc-example-oss-01",
+    ///         PolicyName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "xc-example-oss-%s",
+    ///             Args = new[]
+    ///             {
+    ///                 @default.Result,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         Enabled = true,
     ///         DataConfig = new AliCloud.Sls.Inputs.CollectionPolicyDataConfigArgs
     ///         {
@@ -128,11 +135,7 @@ namespace Pulumi.AliCloud.Sls
     ///         },
     ///         ResourceDirectory = new AliCloud.Sls.Inputs.CollectionPolicyResourceDirectoryArgs
     ///         {
-    ///             AccountGroupType = "custom",
-    ///             Members = new[]
-    ///             {
-    ///                 "1936728897040477",
-    ///             },
+    ///             AccountGroupType = "all",
     ///         },
     ///     });
     /// 
@@ -245,7 +248,14 @@ namespace Pulumi.AliCloud.Sls
     ///         DataCode = "access_log",
     ///         CentralizeEnabled = false,
     ///         ProductCode = "oss",
-    ///         PolicyName = "xc-example-oss-01",
+    ///         PolicyName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "xc-example-oss-%s",
+    ///             Args = new[]
+    ///             {
+    ///                 @default.Result,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         Enabled = true,
     ///     });
     /// 
@@ -275,7 +285,7 @@ namespace Pulumi.AliCloud.Sls
         /// Specifies whether to enable centralized forwarding. Default value: false.
         /// </summary>
         [Output("centralizeEnabled")]
-        public Output<bool?> CentralizeEnabled { get; private set; } = null!;
+        public Output<bool> CentralizeEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Log type code.
@@ -318,9 +328,11 @@ namespace Pulumi.AliCloud.Sls
 
         /// <summary>
         /// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `ResourceDirectory` below.
+        /// 
+        /// &gt; **NOTE:** The SLS API does not support removing `ResourceDirectory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
         /// </summary>
         [Output("resourceDirectory")]
-        public Output<Outputs.CollectionPolicyResourceDirectory> ResourceDirectory { get; private set; } = null!;
+        public Output<Outputs.CollectionPolicyResourceDirectory?> ResourceDirectory { get; private set; } = null!;
 
 
         /// <summary>
@@ -421,6 +433,8 @@ namespace Pulumi.AliCloud.Sls
 
         /// <summary>
         /// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `ResourceDirectory` below.
+        /// 
+        /// &gt; **NOTE:** The SLS API does not support removing `ResourceDirectory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
         /// </summary>
         [Input("resourceDirectory")]
         public Input<Inputs.CollectionPolicyResourceDirectoryArgs>? ResourceDirectory { get; set; }
@@ -486,6 +500,8 @@ namespace Pulumi.AliCloud.Sls
 
         /// <summary>
         /// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `ResourceDirectory` below.
+        /// 
+        /// &gt; **NOTE:** The SLS API does not support removing `ResourceDirectory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
         /// </summary>
         [Input("resourceDirectory")]
         public Input<Inputs.CollectionPolicyResourceDirectoryGetArgs>? ResourceDirectory { get; set; }

@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Ecs.Inputs
 
     public sealed class LaunchTemplateNetworkInterfacesArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to release the ENI when the instance is released.
+        /// </summary>
         [Input("deleteOnRelease")]
         public Input<bool>? DeleteOnRelease { get; set; }
 

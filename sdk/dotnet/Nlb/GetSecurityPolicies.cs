@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nlb
         /// <summary>
         /// This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// &gt; **NOTE:** Available since v1.187.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Nlb
         /// <summary>
         /// This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// &gt; **NOTE:** Available since v1.187.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Nlb
         /// <summary>
         /// This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// &gt; **NOTE:** Available since v1.187.0.
         /// 
         /// ## Example Usage
         /// 
@@ -170,6 +170,10 @@ namespace Pulumi.AliCloud.Nlb
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -234,6 +238,10 @@ namespace Pulumi.AliCloud.Nlb
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -256,12 +264,27 @@ namespace Pulumi.AliCloud.Nlb
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Security Policy names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Nlb Security Policies. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSecurityPoliciesPolicyResult> Policies;
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         public readonly string? ResourceGroupId;
         public readonly ImmutableArray<string> SecurityPolicyNames;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]

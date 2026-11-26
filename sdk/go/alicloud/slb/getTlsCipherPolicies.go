@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.135.0+.
+// > **NOTE:** Available since v1.135.0.
 //
 // ## Example Usage
 //
@@ -82,15 +82,19 @@ type GetTlsCipherPoliciesArgs struct {
 // A collection of values returned by getTlsCipherPolicies.
 type GetTlsCipherPoliciesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                  string                       `pulumi:"id"`
-	Ids                 []string                     `pulumi:"ids"`
-	IncludeListener     *bool                        `pulumi:"includeListener"`
-	NameRegex           *string                      `pulumi:"nameRegex"`
-	Names               []string                     `pulumi:"names"`
-	OutputFile          *string                      `pulumi:"outputFile"`
-	Policies            []GetTlsCipherPoliciesPolicy `pulumi:"policies"`
-	Status              *string                      `pulumi:"status"`
-	TlsCipherPolicyName *string                      `pulumi:"tlsCipherPolicyName"`
+	Id              string   `pulumi:"id"`
+	Ids             []string `pulumi:"ids"`
+	IncludeListener *bool    `pulumi:"includeListener"`
+	NameRegex       *string  `pulumi:"nameRegex"`
+	// A list of Tls Cipher Policy names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Slb Tls Cipher Policies. Each element contains the following attributes:
+	Policies []GetTlsCipherPoliciesPolicy `pulumi:"policies"`
+	// TLS policy instance state.
+	Status *string `pulumi:"status"`
+	// TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
+	TlsCipherPolicyName *string `pulumi:"tlsCipherPolicyName"`
 }
 
 func GetTlsCipherPoliciesOutput(ctx *pulumi.Context, args GetTlsCipherPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetTlsCipherPoliciesResultOutput {
@@ -150,6 +154,7 @@ func (o GetTlsCipherPoliciesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTlsCipherPoliciesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Tls Cipher Policy names.
 func (o GetTlsCipherPoliciesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTlsCipherPoliciesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -158,14 +163,17 @@ func (o GetTlsCipherPoliciesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTlsCipherPoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Slb Tls Cipher Policies. Each element contains the following attributes:
 func (o GetTlsCipherPoliciesResultOutput) Policies() GetTlsCipherPoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetTlsCipherPoliciesResult) []GetTlsCipherPoliciesPolicy { return v.Policies }).(GetTlsCipherPoliciesPolicyArrayOutput)
 }
 
+// TLS policy instance state.
 func (o GetTlsCipherPoliciesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTlsCipherPoliciesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
 func (o GetTlsCipherPoliciesResultOutput) TlsCipherPolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTlsCipherPoliciesResult) *string { return v.TlsCipherPolicyName }).(pulumi.StringPtrOutput)
 }

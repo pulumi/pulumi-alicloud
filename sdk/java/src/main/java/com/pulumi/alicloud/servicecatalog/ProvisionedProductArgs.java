@@ -20,14 +20,14 @@ public final class ProvisionedProductArgs extends com.pulumi.resources.ResourceA
     public static final ProvisionedProductArgs Empty = new ProvisionedProductArgs();
 
     /**
-     * Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+     * Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<ProvisionedProductParameterArgs>> parameters;
 
     /**
-     * @return Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+     * @return Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
      * 
      */
     public Optional<Output<List<ProvisionedProductParameterArgs>>> parameters() {
@@ -171,7 +171,7 @@ public final class ProvisionedProductArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param parameters Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+         * @param parameters Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class ProvisionedProductArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param parameters Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+         * @param parameters Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class ProvisionedProductArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param parameters Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+         * @param parameters Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
          * 
          * @return builder
          * 

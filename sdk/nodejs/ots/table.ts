@@ -14,6 +14,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.9.2.
  *
+ * > **NOTE:** A table can have at most one primary key with `autoIncrement` enabled, the primary key with `autoIncrement` enabled cannot be the first primary key (the partition key) of the table, and `enableLocalTxn` cannot be enabled together with a primary key that enables `autoIncrement`.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -71,6 +73,78 @@ import * as utilities from "../utilities";
  *             type: "Binary",
  *         },
  *     ],
+ * });
+ * ```
+ *
+ * ### Auto-Increment Primary Key
+ *
+ * The following example creates a table whose second primary key column is an auto-increment column. The first primary key column is the partition key and cannot be auto-incremented.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultInstance = new alicloud.ots.Instance("default", {
+ *     name: `${name}-${_default.result}`,
+ *     description: name,
+ *     accessedBy: "Any",
+ * });
+ * const defaultTable = new alicloud.ots.Table("default", {
+ *     instanceName: defaultInstance.name,
+ *     tableName: "terraform_example_auto_increment",
+ *     timeToLive: -1,
+ *     maxVersion: 1,
+ *     primaryKeys: [
+ *         {
+ *             name: "pk1",
+ *             type: "Integer",
+ *         },
+ *         {
+ *             name: "pk2",
+ *             type: "Integer",
+ *             autoIncrement: true,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ### Local Transaction
+ *
+ * The following example creates a table with local transactions enabled.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultInstance = new alicloud.ots.Instance("default", {
+ *     name: `${name}-${_default.result}`,
+ *     description: name,
+ *     accessedBy: "Any",
+ * });
+ * const defaultTable = new alicloud.ots.Table("default", {
+ *     instanceName: defaultInstance.name,
+ *     tableName: "terraform_example_local_txn",
+ *     timeToLive: -1,
+ *     maxVersion: 1,
+ *     enableLocalTxn: true,
+ *     primaryKeys: [{
+ *         name: "pk1",
+ *         type: "Integer",
+ *     }],
  * });
  * ```
  *
@@ -136,7 +210,11 @@ export class Table extends pulumi.CustomResource {
      */
     declare public readonly deviationCellVersionInSec: pulumi.Output<string | undefined>;
     /**
-     * Whether enable OTS server side encryption. Default value is false.
+     * Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+     */
+    declare public readonly enableLocalTxn: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
      */
     declare public readonly enableSse: pulumi.Output<boolean | undefined>;
     /**
@@ -152,15 +230,15 @@ export class Table extends pulumi.CustomResource {
      */
     declare public readonly primaryKeys: pulumi.Output<outputs.ots.TablePrimaryKey[]>;
     /**
-     * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
      */
     declare public readonly sseKeyId: pulumi.Output<string | undefined>;
     /**
-     * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+     * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
      */
     declare public readonly sseKeyType: pulumi.Output<string | undefined>;
     /**
-     * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
      */
     declare public readonly sseRoleArn: pulumi.Output<string | undefined>;
     /**
@@ -188,6 +266,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["allowUpdate"] = state?.allowUpdate;
             resourceInputs["definedColumns"] = state?.definedColumns;
             resourceInputs["deviationCellVersionInSec"] = state?.deviationCellVersionInSec;
+            resourceInputs["enableLocalTxn"] = state?.enableLocalTxn;
             resourceInputs["enableSse"] = state?.enableSse;
             resourceInputs["instanceName"] = state?.instanceName;
             resourceInputs["maxVersion"] = state?.maxVersion;
@@ -217,6 +296,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["allowUpdate"] = args?.allowUpdate;
             resourceInputs["definedColumns"] = args?.definedColumns;
             resourceInputs["deviationCellVersionInSec"] = args?.deviationCellVersionInSec;
+            resourceInputs["enableLocalTxn"] = args?.enableLocalTxn;
             resourceInputs["enableSse"] = args?.enableSse;
             resourceInputs["instanceName"] = args?.instanceName;
             resourceInputs["maxVersion"] = args?.maxVersion;
@@ -249,7 +329,11 @@ export interface TableState {
      */
     deviationCellVersionInSec?: pulumi.Input<string | undefined>;
     /**
-     * Whether enable OTS server side encryption. Default value is false.
+     * Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+     */
+    enableLocalTxn?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
      */
     enableSse?: pulumi.Input<boolean | undefined>;
     /**
@@ -265,15 +349,15 @@ export interface TableState {
      */
     primaryKeys?: pulumi.Input<pulumi.Input<inputs.ots.TablePrimaryKey>[] | undefined>;
     /**
-     * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
      */
     sseKeyId?: pulumi.Input<string | undefined>;
     /**
-     * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+     * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
      */
     sseKeyType?: pulumi.Input<string | undefined>;
     /**
-     * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
      */
     sseRoleArn?: pulumi.Input<string | undefined>;
     /**
@@ -303,7 +387,11 @@ export interface TableArgs {
      */
     deviationCellVersionInSec?: pulumi.Input<string | undefined>;
     /**
-     * Whether enable OTS server side encryption. Default value is false.
+     * Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+     */
+    enableLocalTxn?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
      */
     enableSse?: pulumi.Input<boolean | undefined>;
     /**
@@ -319,15 +407,15 @@ export interface TableArgs {
      */
     primaryKeys: pulumi.Input<pulumi.Input<inputs.ots.TablePrimaryKey>[]>;
     /**
-     * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
      */
     sseKeyId?: pulumi.Input<string | undefined>;
     /**
-     * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+     * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
      */
     sseKeyType?: pulumi.Input<string | undefined>;
     /**
-     * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
      */
     sseRoleArn?: pulumi.Input<string | undefined>;
     /**

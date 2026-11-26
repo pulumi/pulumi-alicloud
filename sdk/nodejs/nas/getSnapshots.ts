@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Nas Snapshots of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.152.0+.
+ * > **NOTE:** Available since v1.152.0+.
  *
  * ## Example Usage
  *
@@ -81,16 +81,28 @@ export interface GetSnapshotsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Snapshot names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The name of the snapshot.
+     */
     readonly snapshotName?: string;
+    /**
+     * A list of Nas Snapshots. Each element contains the following attributes:
+     */
     readonly snapshots: outputs.nas.GetSnapshotsSnapshot[];
+    /**
+     * The status of the snapshot.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Nas Snapshots of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.152.0+.
+ * > **NOTE:** Available since v1.152.0+.
  *
  * ## Example Usage
  *

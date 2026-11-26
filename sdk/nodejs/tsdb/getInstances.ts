@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.112.0+.
+ * > **NOTE:** Available since v1.112.0.
  *
  * ## Example Usage
  *
@@ -84,22 +84,31 @@ export interface GetInstancesArgs {
 export interface GetInstancesResult {
     readonly appKey?: string;
     readonly enableDetails?: boolean;
+    /**
+     * The engine type of instance. Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
+     */
     readonly engineType?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of TSDB Instances. Each element contains the following attributes:
+     */
     readonly instances: outputs.tsdb.GetInstancesInstance[];
     readonly outputFile?: string;
     readonly queryStr?: string;
+    /**
+     * Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+     */
     readonly status?: string;
     readonly statusList?: string;
 }
 /**
  * This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.112.0+.
+ * > **NOTE:** Available since v1.112.0.
  *
  * ## Example Usage
  *

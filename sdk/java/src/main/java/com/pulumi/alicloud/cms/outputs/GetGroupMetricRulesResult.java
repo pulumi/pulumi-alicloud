@@ -15,9 +15,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGroupMetricRulesResult {
+    /**
+     * @return The dimensions that specify the resources to be associated with the alert rule.
+     * 
+     */
     private @Nullable String dimensions;
+    /**
+     * @return Indicates whether the alert rule is enabled.
+     * 
+     */
     private @Nullable Boolean enableState;
+    /**
+     * @return The ID of the application group.
+     * 
+     */
     private @Nullable String groupId;
+    /**
+     * @return The name of the alert rule.
+     * 
+     */
     private @Nullable String groupMetricRuleName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -25,24 +41,60 @@ public final class GetGroupMetricRulesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The name of the metric.
+     * 
+     */
     private @Nullable String metricName;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Group Metric Rule names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return The namespace of the service.
+     * 
+     */
     private @Nullable String namespace;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Cms Group Metric Rules. Each element contains the following attributes:
+     * 
+     */
     private List<GetGroupMetricRulesRule> rules;
+    /**
+     * @return The status of Group Metric Rule..
+     * 
+     */
     private @Nullable String status;
 
     private GetGroupMetricRulesResult() {}
+    /**
+     * @return The dimensions that specify the resources to be associated with the alert rule.
+     * 
+     */
     public Optional<String> dimensions() {
         return Optional.ofNullable(this.dimensions);
     }
+    /**
+     * @return Indicates whether the alert rule is enabled.
+     * 
+     */
     public Optional<Boolean> enableState() {
         return Optional.ofNullable(this.enableState);
     }
+    /**
+     * @return The ID of the application group.
+     * 
+     */
     public Optional<String> groupId() {
         return Optional.ofNullable(this.groupId);
     }
+    /**
+     * @return The name of the alert rule.
+     * 
+     */
     public Optional<String> groupMetricRuleName() {
         return Optional.ofNullable(this.groupMetricRuleName);
     }
@@ -56,24 +108,44 @@ public final class GetGroupMetricRulesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The name of the metric.
+     * 
+     */
     public Optional<String> metricName() {
         return Optional.ofNullable(this.metricName);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Group Metric Rule names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return The namespace of the service.
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Cms Group Metric Rules. Each element contains the following attributes:
+     * 
+     */
     public List<GetGroupMetricRulesRule> rules() {
         return this.rules;
     }
+    /**
+     * @return The status of Group Metric Rule..
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

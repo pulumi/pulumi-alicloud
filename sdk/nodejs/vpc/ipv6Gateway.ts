@@ -20,21 +20,21 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testacc-example";
+ * const name = config.get("name") || "terraform-example";
  * const defaultVpc = new alicloud.vpc.Network("defaultVpc", {
- *     description: "tf-testacc",
+ *     description: "terraform-example",
  *     enableIpv6: true,
  * });
  * const defaultRg = new alicloud.resourcemanager.ResourceGroup("defaultRg", {
- *     displayName: "tf-testacc-ipv6gateway503",
+ *     displayName: "terraform-example-ipv6gateway503",
  *     resourceGroupName: `${name}1`,
  * });
  * const changeRg = new alicloud.resourcemanager.ResourceGroup("changeRg", {
- *     displayName: "tf-testacc-ipv6gateway311",
+ *     displayName: "terraform-example-ipv6gateway311",
  *     resourceGroupName: `${name}2`,
  * });
  * const _default = new alicloud.vpc.Ipv6Gateway("default", {
- *     description: "test",
+ *     description: "terraform-example",
  *     ipv6GatewayName: name,
  *     vpcId: defaultVpc.id,
  *     resourceGroupId: defaultRg.id,
@@ -99,7 +99,7 @@ export class Ipv6Gateway extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+     * The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -115,7 +115,7 @@ export class Ipv6Gateway extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly ipv6GatewayId: pulumi.Output<string>;
     /**
-     * The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+     * The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
      */
     declare public readonly ipv6GatewayName: pulumi.Output<string | undefined>;
     /**
@@ -202,7 +202,7 @@ export interface Ipv6GatewayState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+     * The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -218,7 +218,7 @@ export interface Ipv6GatewayState {
      */
     ipv6GatewayId?: pulumi.Input<string | undefined>;
     /**
-     * The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+     * The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
      */
     ipv6GatewayName?: pulumi.Input<string | undefined>;
     /**
@@ -250,11 +250,11 @@ export interface Ipv6GatewayState {
  */
 export interface Ipv6GatewayArgs {
     /**
-     * The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+     * The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+     * The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
      */
     ipv6GatewayName?: pulumi.Input<string | undefined>;
     /**

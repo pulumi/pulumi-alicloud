@@ -53,6 +53,9 @@ class GetRamDirectoriesResult:
     @_builtins.property
     @pulumi.getter
     def directories(self) -> Sequence['outputs.GetRamDirectoriesDirectoryResult']:
+        """
+        A list of Ecd Ram Directories. Each element contains the following attributes:
+        """
         return pulumi.get(self, "directories")
 
     @_builtins.property
@@ -76,6 +79,9 @@ class GetRamDirectoriesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Ram Directory names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -86,6 +92,9 @@ class GetRamDirectoriesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of directory.
+        """
         return pulumi.get(self, "status")
 
 
@@ -112,7 +121,7 @@ def get_ram_directories(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.174.0+.
+    > **NOTE:** Available since v1.174.0.
 
     ## Example Usage
 
@@ -158,7 +167,7 @@ def get_ram_directories_output(ids: pulumi.Input[Optional[Optional[Sequence[_bui
     """
     This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.174.0+.
+    > **NOTE:** Available since v1.174.0.
 
     ## Example Usage
 

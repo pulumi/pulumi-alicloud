@@ -85,6 +85,9 @@ class GetTemplatesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Template names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -95,21 +98,33 @@ class GetTemplatesResult:
     @_builtins.property
     @pulumi.getter(name="shareType")
     def share_type(self) -> Optional[_builtins.str]:
+        """
+        Share Type.
+        """
         return pulumi.get(self, "share_type")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Tags.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="templateName")
     def template_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        """
         return pulumi.get(self, "template_name")
 
     @_builtins.property
     @pulumi.getter
     def templates(self) -> Sequence['outputs.GetTemplatesTemplateResult']:
+        """
+        A list of Ros Templates. Each element contains the following attributes:
+        """
         return pulumi.get(self, "templates")
 
 
@@ -142,7 +157,7 @@ def get_templates(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Ros Templates of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.108.0+.
+    > **NOTE:** Available since v1.108.0.
 
     ## Example Usage
 
@@ -199,7 +214,7 @@ def get_templates_output(enable_details: pulumi.Input[Optional[Optional[_builtin
     """
     This data source provides the Ros Templates of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.108.0+.
+    > **NOTE:** Available since v1.108.0.
 
     ## Example Usage
 

@@ -1742,15 +1742,15 @@ class ReadOnlyInstanceParameterArgs:
 class GetCollationTimeZonesCollationTimeZoneArgsDict(TypedDict):
     description: NotRequired[_builtins.str]
     """
-    The code of the instance type.
+    The description.
     """
     standard_time_offset: NotRequired[_builtins.str]
     """
-    The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+    The offset of the UTC time.
     """
     time_zone: NotRequired[_builtins.str]
     """
-    The time zone that is available for use in ApsaraDB RDS.
+    The time zone.
     """
 
 @pulumi.input_type
@@ -1760,9 +1760,9 @@ class GetCollationTimeZonesCollationTimeZoneArgs:
                  standard_time_offset: Optional[_builtins.str] = None,
                  time_zone: Optional[_builtins.str] = None):
         """
-        :param _builtins.str description: The code of the instance type.
-        :param _builtins.str standard_time_offset: The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
-        :param _builtins.str time_zone: The time zone that is available for use in ApsaraDB RDS.
+        :param _builtins.str description: The description.
+        :param _builtins.str standard_time_offset: The offset of the UTC time.
+        :param _builtins.str time_zone: The time zone.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -1775,7 +1775,7 @@ class GetCollationTimeZonesCollationTimeZoneArgs:
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         """
-        The code of the instance type.
+        The description.
         """
         return pulumi.get(self, "description")
 
@@ -1787,7 +1787,7 @@ class GetCollationTimeZonesCollationTimeZoneArgs:
     @pulumi.getter(name="standardTimeOffset")
     def standard_time_offset(self) -> Optional[_builtins.str]:
         """
-        The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+        The offset of the UTC time.
         """
         return pulumi.get(self, "standard_time_offset")
 
@@ -1799,7 +1799,7 @@ class GetCollationTimeZonesCollationTimeZoneArgs:
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[_builtins.str]:
         """
-        The time zone that is available for use in ApsaraDB RDS.
+        The time zone.
         """
         return pulumi.get(self, "time_zone")
 

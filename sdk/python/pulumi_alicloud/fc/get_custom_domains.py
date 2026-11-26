@@ -111,7 +111,7 @@ def get_custom_domains(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in 1.98.0+
+    > **NOTE:** Available since v1.98.0
 
     ## Example Usage
 
@@ -149,7 +149,7 @@ def get_custom_domains_output(ids: pulumi.Input[Optional[Optional[Sequence[_buil
     """
     This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in 1.98.0+
+    > **NOTE:** Available since v1.98.0
 
     ## Example Usage
 

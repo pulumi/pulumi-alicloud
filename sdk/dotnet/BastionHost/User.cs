@@ -181,6 +181,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// * Ram: Ram User
         /// * AD: AD-authenticated User
         /// * LDAP: LDAP-authenticated User
+        /// 
         /// &gt; **NOTE:** From version 1.199.0, `Source` can be set to `AD`, `LDAP`.
         /// </summary>
         [Output("source")]
@@ -339,6 +340,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// * Ram: Ram User
         /// * AD: AD-authenticated User
         /// * LDAP: LDAP-authenticated User
+        /// 
         /// &gt; **NOTE:** From version 1.199.0, `Source` can be set to `AD`, `LDAP`.
         /// </summary>
         [Input("source", required: true)]
@@ -449,6 +451,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// * Ram: Ram User
         /// * AD: AD-authenticated User
         /// * LDAP: LDAP-authenticated User
+        /// 
         /// &gt; **NOTE:** From version 1.199.0, `Source` can be set to `AD`, `LDAP`.
         /// </summary>
         [Input("source")]

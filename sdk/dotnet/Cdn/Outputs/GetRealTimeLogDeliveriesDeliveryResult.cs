@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cdn.Outputs
     public sealed class GetRealTimeLogDeliveriesDeliveryResult
     {
         /// <summary>
-        /// Real-Time Log Service Domain.
+        /// The domain name.
         /// </summary>
         public readonly string Domain;
         /// <summary>

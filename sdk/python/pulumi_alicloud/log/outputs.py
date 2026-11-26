@@ -75,6 +75,7 @@ class AlertGroupConfiguration(dict):
                  fields: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.str type: Group configuration type, including no_group, labels_auto, custom.
+        :param Sequence[_builtins.str] fields: Group configuration's fields list when type is custom.
         """
         pulumi.set(__self__, "type", type)
         if fields is not None:
@@ -91,6 +92,9 @@ class AlertGroupConfiguration(dict):
     @_builtins.property
     @pulumi.getter
     def fields(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Group configuration's fields list when type is custom.
+        """
         return pulumi.get(self, "fields")
 
 
@@ -526,8 +530,10 @@ class AlertSchedule(dict):
         :param _builtins.str type: including FixedRate,Hourly,Daily,Weekly,Cron.
         :param _builtins.str cron_expression: Cron expression when type is Cron.
         :param _builtins.int day_of_week: Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
+        :param _builtins.int delay: Delay time for schedule.
         :param _builtins.int hour: Hour of day when type is Weekly/Daily.
         :param _builtins.str interval: Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
+        :param _builtins.bool run_immediately: Whether to run the alert immediately.
         :param _builtins.str time_zone: Time zone for schedule.
         """
         pulumi.set(__self__, "type", type)
@@ -573,6 +579,9 @@ class AlertSchedule(dict):
     @_builtins.property
     @pulumi.getter
     def delay(self) -> Optional[_builtins.int]:
+        """
+        Delay time for schedule.
+        """
         return pulumi.get(self, "delay")
 
     @_builtins.property
@@ -594,6 +603,9 @@ class AlertSchedule(dict):
     @_builtins.property
     @pulumi.getter(name="runImmediately")
     def run_immediately(self) -> Optional[_builtins.bool]:
+        """
+        Whether to run the alert immediately.
+        """
         return pulumi.get(self, "run_immediately")
 
     @_builtins.property
@@ -628,7 +640,7 @@ class AlertSeverityConfiguration(dict):
                  eval_condition: Mapping[str, _builtins.str],
                  severity: _builtins.int):
         """
-        :param Mapping[str, _builtins.str] eval_condition: Severity when this condition is met.
+        :param Mapping[str, _builtins.str] eval_condition: Severity when this condition is met. The map supports `condition` (condition for each row) and `count_condition` (count's condition for the rows met condition above) keys.
         :param _builtins.int severity: Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
         """
         pulumi.set(__self__, "eval_condition", eval_condition)
@@ -638,7 +650,7 @@ class AlertSeverityConfiguration(dict):
     @pulumi.getter(name="evalCondition")
     def eval_condition(self) -> Mapping[str, _builtins.str]:
         """
-        Severity when this condition is met.
+        Severity when this condition is met. The map supports `condition` (condition for each row) and `count_condition` (count's condition for the rows met condition above) keys.
         """
         return pulumi.get(self, "eval_condition")
 
@@ -914,17 +926,27 @@ class OssShipperParquetConfig(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  type: _builtins.str):
+        """
+        :param _builtins.str name: The name of the key.
+        :param _builtins.str type: Type of configuration name.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        The name of the key.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
+        """
+        Type of configuration name.
+        """
         return pulumi.get(self, "type")
 
 
@@ -1404,10 +1426,10 @@ class GetProjectsProjectResult(dict):
         :param _builtins.str id: The ID of the project.
         :param _builtins.str last_modify_time: The last modify time of project.
         :param _builtins.str owner: The owner of project.
-        :param _builtins.str policy: The policy of project.
+        :param _builtins.str policy: (Available in 1.198.0+) The policy of project.
         :param _builtins.str project_name: The name of the project.
         :param _builtins.str region: The region of project.
-        :param _builtins.str status: The status of project.
+        :param _builtins.str status: The status of log project. Valid values `Normal` and `Disable`.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
@@ -1454,7 +1476,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter
     def policy(self) -> _builtins.str:
         """
-        The policy of project.
+        (Available in 1.198.0+) The policy of project.
         """
         return pulumi.get(self, "policy")
 
@@ -1478,7 +1500,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of project.
+        The status of log project. Valid values `Normal` and `Disable`.
         """
         return pulumi.get(self, "status")
 

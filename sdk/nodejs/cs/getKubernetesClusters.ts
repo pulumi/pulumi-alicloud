@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * > **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+ * > **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
  *
  * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
  *
@@ -99,7 +99,7 @@ export interface GetKubernetesClustersResult {
     readonly outputFile?: string;
 }
 /**
- * > **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+ * > **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
  *
  * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
  *

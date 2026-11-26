@@ -120,7 +120,7 @@ def get_instance_class_infos(commodity_code: Optional[_builtins.str] = None,
     """
     This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
 
-    > **NOTE:** Available in v1.196.0+
+    > **NOTE:** Available since v1.196.0
 
     ## Example Usage
 
@@ -145,7 +145,7 @@ def get_instance_class_infos(commodity_code: Optional[_builtins.str] = None,
            * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
            * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
     :param _builtins.str db_instance_id: The ID of the primary instance.
-    :param Sequence[Union['GetInstanceClassInfosInfoArgs', 'GetInstanceClassInfosInfoArgsDict', 'outputs.GetInstanceClassInfosInfoResult']] infos: A list of Rds available resource. Each element contains the following attributes:
+    :param Sequence[Union['GetInstanceClassInfosInfoArgs', 'GetInstanceClassInfosInfoArgsDict', 'outputs.GetInstanceClassInfosInfoResult']] infos: A list of Rds available resource. See `infos` below.
     :param _builtins.str order_type: FThe type of order that you want to query. Valid values:
            * **BUY**: specifies the query orders that are used to purchase instances.
            * **UPGRADE**: specifies the query orders that are used to change the specifications of instances.
@@ -181,7 +181,7 @@ def get_instance_class_infos_output(commodity_code: pulumi.Input[Optional[_built
     """
     This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
 
-    > **NOTE:** Available in v1.196.0+
+    > **NOTE:** Available since v1.196.0
 
     ## Example Usage
 
@@ -206,7 +206,7 @@ def get_instance_class_infos_output(commodity_code: pulumi.Input[Optional[_built
            * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
            * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
     :param _builtins.str db_instance_id: The ID of the primary instance.
-    :param Sequence[Union['GetInstanceClassInfosInfoArgs', 'GetInstanceClassInfosInfoArgsDict', 'outputs.GetInstanceClassInfosInfoResult']] infos: A list of Rds available resource. Each element contains the following attributes:
+    :param Sequence[Union['GetInstanceClassInfosInfoArgs', 'GetInstanceClassInfosInfoArgsDict', 'outputs.GetInstanceClassInfosInfoResult']] infos: A list of Rds available resource. See `infos` below.
     :param _builtins.str order_type: FThe type of order that you want to query. Valid values:
            * **BUY**: specifies the query orders that are used to purchase instances.
            * **UPGRADE**: specifies the query orders that are used to change the specifications of instances.

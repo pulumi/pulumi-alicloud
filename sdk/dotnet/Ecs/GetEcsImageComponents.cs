@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Image Components of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.159.0+.
+        /// &gt; **NOTE:** Available since v1.159.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Image Components of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.159.0+.
+        /// &gt; **NOTE:** Available since v1.159.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Image Components of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.159.0+.
+        /// &gt; **NOTE:** Available since v1.159.0.
         /// 
         /// ## Example Usage
         /// 
@@ -268,18 +268,36 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetEcsImageComponentsResult
     {
+        /// <summary>
+        /// A list of Ecs Image Components. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsImageComponentsComponentResult> Components;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The name of the image component.
+        /// </summary>
         public readonly string? ImageComponentName;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Image Component names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The type of the image component.
+        /// </summary>
         public readonly string? Owner;
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// List of label key-value pairs.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Quick BI Users of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *
@@ -70,12 +70,15 @@ export interface GetUsersResult {
     readonly ids: string[];
     readonly keyword?: string;
     readonly outputFile?: string;
+    /**
+     * A list of Quick BI Users. Each element contains the following attributes:
+     */
     readonly users: outputs.quickbi.GetUsersUser[];
 }
 /**
  * This data source provides the Quick BI Users of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *

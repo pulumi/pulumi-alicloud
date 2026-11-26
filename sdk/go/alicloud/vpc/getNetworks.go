@@ -13,6 +13,8 @@ import (
 
 // This data source provides VPCs available to the user.
 //
+// > **NOTE:** Available since v1.2.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -101,11 +103,12 @@ type GetNetworksResult struct {
 	IsDefault *bool   `pulumi:"isDefault"`
 	NameRegex *string `pulumi:"nameRegex"`
 	// A list of VPC names.
-	Names           []string `pulumi:"names"`
-	OutputFile      *string  `pulumi:"outputFile"`
-	PageNumber      *int     `pulumi:"pageNumber"`
-	PageSize        *int     `pulumi:"pageSize"`
-	ResourceGroupId *string  `pulumi:"resourceGroupId"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
+	// The ID of the resource group to which the VPC belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Status of the VPC.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the VPC.
@@ -231,6 +234,7 @@ func (o GetNetworksResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetNetworksResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// The ID of the resource group to which the VPC belongs.
 func (o GetNetworksResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNetworksResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }

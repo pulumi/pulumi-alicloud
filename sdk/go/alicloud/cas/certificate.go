@@ -17,8 +17,6 @@ import (
 //
 // > **NOTE:** Available since v1.35.0.
 //
-// > **NOTE:** Deprecated since v1.129.0.
-//
 // > **NOTE:** The Certificate name which you want to add must be already registered and had not added by another account. Every Certificate name can only exist in a unique group.
 //
 // > **NOTE:** The Cas Certificate region only support cn-hangzhou, me-east-1, eu-central-1, ap-northeast-1.
@@ -122,26 +120,39 @@ import (
 type Certificate struct {
 	pulumi.CustomResourceState
 
-	// Cert of the Certificate in which the Certificate will add.
-	Cert              pulumi.StringPtrOutput `pulumi:"cert"`
-	CertificateName   pulumi.StringOutput    `pulumi:"certificateName"`
-	EncryptCert       pulumi.StringPtrOutput `pulumi:"encryptCert"`
+	// The content of a non-SM certificate in PEM format.
+	Cert pulumi.StringPtrOutput `pulumi:"cert"`
+	// (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+	CertIdentifier pulumi.StringOutput `pulumi:"certIdentifier"`
+	// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
+	CertificateName pulumi.StringOutput `pulumi:"certificateName"`
+	// The content of an SM encryption certificate in PEM format.
+	EncryptCert pulumi.StringPtrOutput `pulumi:"encryptCert"`
+	// The private key of an SM encryption certificate in PEM format.
 	EncryptPrivateKey pulumi.StringPtrOutput `pulumi:"encryptPrivateKey"`
-	// Key of the Certificate in which the Certificate will add.
+	// The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
 	Key pulumi.StringPtrOutput `pulumi:"key"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	KeyWo        pulumi.StringPtrOutput `pulumi:"keyWo"`
-	KeyWoVersion pulumi.IntPtrOutput    `pulumi:"keyWoVersion"`
+	// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+	KeyWo pulumi.StringPtrOutput `pulumi:"keyWo"`
+	// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+	KeyWoVersion pulumi.IntPtrOutput `pulumi:"keyWoVersion"`
+	// Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+	//
 	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
-	// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+	// Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
-	Name            pulumi.StringOutput    `pulumi:"name"`
-	ResourceGroupId pulumi.StringOutput    `pulumi:"resourceGroupId"`
-	SignCert        pulumi.StringPtrOutput `pulumi:"signCert"`
-	SignPrivateKey  pulumi.StringPtrOutput `pulumi:"signPrivateKey"`
-	Tags            pulumi.StringMapOutput `pulumi:"tags"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The content of an SM signing certificate in PEM format.
+	SignCert pulumi.StringPtrOutput `pulumi:"signCert"`
+	// The private key of an SM signing certificate in PEM format.
+	SignPrivateKey pulumi.StringPtrOutput `pulumi:"signPrivateKey"`
+	// The tag of the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewCertificate registers a new resource with the given unique name, arguments, and options.
@@ -193,49 +204,75 @@ func GetCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Certificate resources.
 type certificateState struct {
-	// Cert of the Certificate in which the Certificate will add.
-	Cert              *string `pulumi:"cert"`
-	CertificateName   *string `pulumi:"certificateName"`
-	EncryptCert       *string `pulumi:"encryptCert"`
+	// The content of a non-SM certificate in PEM format.
+	Cert *string `pulumi:"cert"`
+	// (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+	CertIdentifier *string `pulumi:"certIdentifier"`
+	// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
+	CertificateName *string `pulumi:"certificateName"`
+	// The content of an SM encryption certificate in PEM format.
+	EncryptCert *string `pulumi:"encryptCert"`
+	// The private key of an SM encryption certificate in PEM format.
 	EncryptPrivateKey *string `pulumi:"encryptPrivateKey"`
-	// Key of the Certificate in which the Certificate will add.
+	// The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
 	Key *string `pulumi:"key"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	KeyWo        *string `pulumi:"keyWo"`
-	KeyWoVersion *int    `pulumi:"keyWoVersion"`
+	// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+	KeyWo *string `pulumi:"keyWo"`
+	// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+	KeyWoVersion *int `pulumi:"keyWoVersion"`
+	// Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+	//
 	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	Lang *string `pulumi:"lang"`
-	// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+	// Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
-	Name            *string           `pulumi:"name"`
-	ResourceGroupId *string           `pulumi:"resourceGroupId"`
-	SignCert        *string           `pulumi:"signCert"`
-	SignPrivateKey  *string           `pulumi:"signPrivateKey"`
-	Tags            map[string]string `pulumi:"tags"`
+	Name *string `pulumi:"name"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The content of an SM signing certificate in PEM format.
+	SignCert *string `pulumi:"signCert"`
+	// The private key of an SM signing certificate in PEM format.
+	SignPrivateKey *string `pulumi:"signPrivateKey"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type CertificateState struct {
-	// Cert of the Certificate in which the Certificate will add.
-	Cert              pulumi.StringPtrInput
-	CertificateName   pulumi.StringPtrInput
-	EncryptCert       pulumi.StringPtrInput
+	// The content of a non-SM certificate in PEM format.
+	Cert pulumi.StringPtrInput
+	// (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+	CertIdentifier pulumi.StringPtrInput
+	// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
+	CertificateName pulumi.StringPtrInput
+	// The content of an SM encryption certificate in PEM format.
+	EncryptCert pulumi.StringPtrInput
+	// The private key of an SM encryption certificate in PEM format.
 	EncryptPrivateKey pulumi.StringPtrInput
-	// Key of the Certificate in which the Certificate will add.
+	// The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
 	Key pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	KeyWo        pulumi.StringPtrInput
+	// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+	KeyWo pulumi.StringPtrInput
+	// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
 	KeyWoVersion pulumi.IntPtrInput
+	// Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+	//
 	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	Lang pulumi.StringPtrInput
-	// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+	// Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
-	Name            pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	SignCert        pulumi.StringPtrInput
-	SignPrivateKey  pulumi.StringPtrInput
-	Tags            pulumi.StringMapInput
+	// The content of an SM signing certificate in PEM format.
+	SignCert pulumi.StringPtrInput
+	// The private key of an SM signing certificate in PEM format.
+	SignPrivateKey pulumi.StringPtrInput
+	// The tag of the resource.
+	Tags pulumi.StringMapInput
 }
 
 func (CertificateState) ElementType() reflect.Type {
@@ -249,50 +286,72 @@ func CertificateExists(ctx *pulumi.Context,
 }
 
 type certificateArgs struct {
-	// Cert of the Certificate in which the Certificate will add.
-	Cert              *string `pulumi:"cert"`
-	CertificateName   *string `pulumi:"certificateName"`
-	EncryptCert       *string `pulumi:"encryptCert"`
+	// The content of a non-SM certificate in PEM format.
+	Cert *string `pulumi:"cert"`
+	// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
+	CertificateName *string `pulumi:"certificateName"`
+	// The content of an SM encryption certificate in PEM format.
+	EncryptCert *string `pulumi:"encryptCert"`
+	// The private key of an SM encryption certificate in PEM format.
 	EncryptPrivateKey *string `pulumi:"encryptPrivateKey"`
-	// Key of the Certificate in which the Certificate will add.
+	// The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
 	Key *string `pulumi:"key"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	KeyWo        *string `pulumi:"keyWo"`
-	KeyWoVersion *int    `pulumi:"keyWoVersion"`
+	// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+	KeyWo *string `pulumi:"keyWo"`
+	// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+	KeyWoVersion *int `pulumi:"keyWoVersion"`
+	// Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+	//
 	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	Lang *string `pulumi:"lang"`
-	// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+	// Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
-	Name            *string           `pulumi:"name"`
-	ResourceGroupId *string           `pulumi:"resourceGroupId"`
-	SignCert        *string           `pulumi:"signCert"`
-	SignPrivateKey  *string           `pulumi:"signPrivateKey"`
-	Tags            map[string]string `pulumi:"tags"`
+	Name *string `pulumi:"name"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The content of an SM signing certificate in PEM format.
+	SignCert *string `pulumi:"signCert"`
+	// The private key of an SM signing certificate in PEM format.
+	SignPrivateKey *string `pulumi:"signPrivateKey"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Certificate resource.
 type CertificateArgs struct {
-	// Cert of the Certificate in which the Certificate will add.
-	Cert              pulumi.StringPtrInput
-	CertificateName   pulumi.StringPtrInput
-	EncryptCert       pulumi.StringPtrInput
+	// The content of a non-SM certificate in PEM format.
+	Cert pulumi.StringPtrInput
+	// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
+	CertificateName pulumi.StringPtrInput
+	// The content of an SM encryption certificate in PEM format.
+	EncryptCert pulumi.StringPtrInput
+	// The private key of an SM encryption certificate in PEM format.
 	EncryptPrivateKey pulumi.StringPtrInput
-	// Key of the Certificate in which the Certificate will add.
+	// The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
 	Key pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	KeyWo        pulumi.StringPtrInput
+	// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+	KeyWo pulumi.StringPtrInput
+	// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
 	KeyWoVersion pulumi.IntPtrInput
+	// Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+	//
 	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	Lang pulumi.StringPtrInput
-	// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+	// Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
-	Name            pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	SignCert        pulumi.StringPtrInput
-	SignPrivateKey  pulumi.StringPtrInput
-	Tags            pulumi.StringMapInput
+	// The content of an SM signing certificate in PEM format.
+	SignCert pulumi.StringPtrInput
+	// The private key of an SM signing certificate in PEM format.
+	SignPrivateKey pulumi.StringPtrInput
+	// The tag of the resource.
+	Tags pulumi.StringMapInput
 }
 
 func (CertificateArgs) ElementType() reflect.Type {
@@ -382,61 +441,77 @@ func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) C
 	return o
 }
 
-// Cert of the Certificate in which the Certificate will add.
+// The content of a non-SM certificate in PEM format.
 func (o CertificateOutput) Cert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Cert }).(pulumi.StringPtrOutput)
 }
 
+// (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+func (o CertificateOutput) CertIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CertIdentifier }).(pulumi.StringOutput)
+}
+
+// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
 func (o CertificateOutput) CertificateName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CertificateName }).(pulumi.StringOutput)
 }
 
+// The content of an SM encryption certificate in PEM format.
 func (o CertificateOutput) EncryptCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.EncryptCert }).(pulumi.StringPtrOutput)
 }
 
+// The private key of an SM encryption certificate in PEM format.
 func (o CertificateOutput) EncryptPrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.EncryptPrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// Key of the Certificate in which the Certificate will add.
+// The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
 func (o CertificateOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Key }).(pulumi.StringPtrOutput)
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
 func (o CertificateOutput) KeyWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.KeyWo }).(pulumi.StringPtrOutput)
 }
 
+// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
 func (o CertificateOutput) KeyWoVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.IntPtrOutput { return v.KeyWoVersion }).(pulumi.IntPtrOutput)
 }
 
+// Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+//
 // Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 func (o CertificateOutput) Lang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
 }
 
-// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+// Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
 func (o CertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the resource group.
 func (o CertificateOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// The content of an SM signing certificate in PEM format.
 func (o CertificateOutput) SignCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.SignCert }).(pulumi.StringPtrOutput)
 }
 
+// The private key of an SM signing certificate in PEM format.
 func (o CertificateOutput) SignPrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.SignPrivateKey }).(pulumi.StringPtrOutput)
 }
 
+// The tag of the resource.
 func (o CertificateOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

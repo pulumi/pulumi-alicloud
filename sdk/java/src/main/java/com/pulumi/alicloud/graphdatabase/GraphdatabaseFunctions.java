@@ -18,7 +18,7 @@ public final class GraphdatabaseFunctions {
     /**
      * This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -75,7 +75,7 @@ public final class GraphdatabaseFunctions {
     /**
      * This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -132,7 +132,7 @@ public final class GraphdatabaseFunctions {
     /**
      * This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -189,7 +189,7 @@ public final class GraphdatabaseFunctions {
     /**
      * This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -246,7 +246,7 @@ public final class GraphdatabaseFunctions {
     /**
      * This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -303,7 +303,7 @@ public final class GraphdatabaseFunctions {
     /**
      * This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -360,7 +360,7 @@ public final class GraphdatabaseFunctions {
     /**
      * This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 

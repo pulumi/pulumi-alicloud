@@ -29,15 +29,23 @@ public final class GetConnectionsConnectionTunnelOptionsSpecification {
      * 
      */
     private Boolean enableNatTraversal;
+    /**
+     * @return The internet IP of the tunnel.
+     * 
+     */
     private String internetIp;
     /**
      * @return The role of Tunnel.
      * 
      */
     private String role;
+    /**
+     * @return The state of the tunnel.
+     * 
+     */
     private String state;
     /**
-     * @return The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+     * @return The status of the tunnel.
      * 
      */
     private String status;
@@ -46,6 +54,10 @@ public final class GetConnectionsConnectionTunnelOptionsSpecification {
      * 
      */
     private GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig tunnelBgpConfig;
+    /**
+     * @return The ID of the tunnel.
+     * 
+     */
     private String tunnelId;
     /**
      * @return The configuration of Phase 1 negotiations in Tunnel.
@@ -57,6 +69,10 @@ public final class GetConnectionsConnectionTunnelOptionsSpecification {
      * 
      */
     private GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig tunnelIpsecConfig;
+    /**
+     * @return The zone of the tunnel.
+     * 
+     */
     private String zoneNo;
 
     private GetConnectionsConnectionTunnelOptionsSpecification() {}
@@ -81,6 +97,10 @@ public final class GetConnectionsConnectionTunnelOptionsSpecification {
     public Boolean enableNatTraversal() {
         return this.enableNatTraversal;
     }
+    /**
+     * @return The internet IP of the tunnel.
+     * 
+     */
     public String internetIp() {
         return this.internetIp;
     }
@@ -91,11 +111,15 @@ public final class GetConnectionsConnectionTunnelOptionsSpecification {
     public String role() {
         return this.role;
     }
+    /**
+     * @return The state of the tunnel.
+     * 
+     */
     public String state() {
         return this.state;
     }
     /**
-     * @return The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+     * @return The status of the tunnel.
      * 
      */
     public String status() {
@@ -108,6 +132,10 @@ public final class GetConnectionsConnectionTunnelOptionsSpecification {
     public GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig tunnelBgpConfig() {
         return this.tunnelBgpConfig;
     }
+    /**
+     * @return The ID of the tunnel.
+     * 
+     */
     public String tunnelId() {
         return this.tunnelId;
     }
@@ -125,6 +153,10 @@ public final class GetConnectionsConnectionTunnelOptionsSpecification {
     public GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig tunnelIpsecConfig() {
         return this.tunnelIpsecConfig;
     }
+    /**
+     * @return The zone of the tunnel.
+     * 
+     */
     public String zoneNo() {
         return this.zoneNo;
     }

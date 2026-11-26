@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the domain extensions associated with a server load balancer listener.
  *
- * > **NOTE:** Available in 1.60.0+
+ * > **NOTE:** Available since v1.60.0
  *
  * ## Example Usage
  *
@@ -50,6 +50,9 @@ export interface GetDomainExtensionsArgs {
      * The ID of the SLB instance.
      */
     loadBalancerId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -73,7 +76,7 @@ export interface GetDomainExtensionsResult {
 /**
  * This data source provides the domain extensions associated with a server load balancer listener.
  *
- * > **NOTE:** Available in 1.60.0+
+ * > **NOTE:** Available since v1.60.0
  *
  * ## Example Usage
  *
@@ -114,5 +117,8 @@ export interface GetDomainExtensionsOutputArgs {
      * The ID of the SLB instance.
      */
     loadBalancerId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string | undefined>;
 }

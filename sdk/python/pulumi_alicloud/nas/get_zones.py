@@ -86,7 +86,7 @@ def get_zones(file_system_type: Optional[_builtins.str] = None,
     """
     Provide  a data source to retrieve the type of zone used to create NAS file system.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0+.
 
     ## Example Usage
 
@@ -119,7 +119,7 @@ def get_zones_output(file_system_type: pulumi.Input[Optional[Optional[_builtins.
     """
     Provide  a data source to retrieve the type of zone used to create NAS file system.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0+.
 
     ## Example Usage
 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Ots Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.164.0+.
+        /// &gt; **NOTE:** Available since v1.164.0.
         /// 
         /// ## Example Usage
         /// 
@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Ots Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.164.0+.
+        /// &gt; **NOTE:** Available since v1.164.0.
         /// 
         /// ## Example Usage
         /// 
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Ots Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.164.0+.
+        /// &gt; **NOTE:** Available since v1.164.0.
         /// 
         /// ## Example Usage
         /// 
@@ -98,6 +98,10 @@ namespace Pulumi.AliCloud.Hbr
 
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of Ots Snapshot IDs.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
@@ -132,6 +136,10 @@ namespace Pulumi.AliCloud.Hbr
 
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Ots Snapshot IDs.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());
@@ -167,7 +175,13 @@ namespace Pulumi.AliCloud.Hbr
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Hbr Ots Snapshots. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetOtsSnapshotsSnapshotResult> Snapshots;
+        /// <summary>
+        /// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+        /// </summary>
         public readonly string? StartTime;
 
         [OutputConstructor]

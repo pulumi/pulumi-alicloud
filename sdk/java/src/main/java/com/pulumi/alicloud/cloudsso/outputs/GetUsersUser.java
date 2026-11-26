@@ -58,12 +58,12 @@ public final class GetUsersUser {
      */
     private List<GetUsersUserMfaDevice> mfaDevices;
     /**
-     * @return ProvisionType.
+     * @return ProvisionType. Valid values: `Manual`, `Synchronized`.
      * 
      */
     private String provisionType;
     /**
-     * @return User status. Valid values: `Enabled` and `Disabled`.
+     * @return The status of user. Valid values: `Disabled`, `Enabled`.
      * 
      */
     private String status;
@@ -143,14 +143,14 @@ public final class GetUsersUser {
         return this.mfaDevices;
     }
     /**
-     * @return ProvisionType.
+     * @return ProvisionType. Valid values: `Manual`, `Synchronized`.
      * 
      */
     public String provisionType() {
         return this.provisionType;
     }
     /**
-     * @return User status. Valid values: `Enabled` and `Disabled`.
+     * @return The status of user. Valid values: `Disabled`, `Enabled`.
      * 
      */
     public String status() {

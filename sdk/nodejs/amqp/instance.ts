@@ -234,6 +234,7 @@ export class Instance extends pulumi.CustomResource {
      * - enterprise: enterprise Edition
      * - vip: Platinum Edition.
      * - serverless: Serverless Edition.
+     *
      * > **NOTE:** Do not set `instanceType` when creating a serverless instance. Set `paymentType = "PayAsYouGo"` and choose `serverlessChargeType = "onDemand"` or `serverlessChargeType = "provisioned"`.
      */
     declare public readonly instanceType: pulumi.Output<string>;
@@ -468,6 +469,7 @@ export interface InstanceState {
      * - enterprise: enterprise Edition
      * - vip: Platinum Edition.
      * - serverless: Serverless Edition.
+     *
      * > **NOTE:** Do not set `instanceType` when creating a serverless instance. Set `paymentType = "PayAsYouGo"` and choose `serverlessChargeType = "onDemand"` or `serverlessChargeType = "provisioned"`.
      */
     instanceType?: pulumi.Input<string | undefined>;
@@ -611,6 +613,7 @@ export interface InstanceArgs {
      * - enterprise: enterprise Edition
      * - vip: Platinum Edition.
      * - serverless: Serverless Edition.
+     *
      * > **NOTE:** Do not set `instanceType` when creating a serverless instance. Set `paymentType = "PayAsYouGo"` and choose `serverlessChargeType = "onDemand"` or `serverlessChargeType = "provisioned"`.
      */
     instanceType?: pulumi.Input<string | undefined>;

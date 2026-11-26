@@ -42,7 +42,11 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
-        /// The status of the SAP HANA instance.
+        /// The status of the SAP HANA instance. Valid values:
+        /// - `INITIALIZING`: The instance is being initialized.
+        /// - `INITIALIZED`: The instance is registered.
+        /// - `INVALID_HANA_NODE`: The instance is invalid.
+        /// - `INITIALIZE_FAILED`: The client fails to be installed on the instance.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -62,7 +66,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly bool ValidateCertificate;
         /// <summary>
-        /// The ID of the backup vault.
+        /// The id of the vault.
         /// </summary>
         public readonly string VaultId;
 

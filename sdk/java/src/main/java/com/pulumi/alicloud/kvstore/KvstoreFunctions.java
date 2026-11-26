@@ -36,7 +36,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.102.0+.
+     * &gt; **NOTE:** Available since v1.102.0.
      * 
      * ## Example Usage
      * 
@@ -81,7 +81,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.102.0+.
+     * &gt; **NOTE:** Available since v1.102.0.
      * 
      * ## Example Usage
      * 
@@ -126,7 +126,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.102.0+.
+     * &gt; **NOTE:** Available since v1.102.0.
      * 
      * ## Example Usage
      * 
@@ -171,7 +171,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.102.0+.
+     * &gt; **NOTE:** Available since v1.102.0.
      * 
      * ## Example Usage
      * 
@@ -216,7 +216,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.102.0+.
+     * &gt; **NOTE:** Available since v1.102.0.
      * 
      * ## Example Usage
      * 
@@ -261,7 +261,7 @@ public final class KvstoreFunctions {
     /**
      * This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
      * 
-     * &gt; **NOTE:** Available in v1.101.0+.
+     * &gt; **NOTE:** Available since v1.101.0.
      * 
      * ## Example Usage
      * 
@@ -305,7 +305,7 @@ public final class KvstoreFunctions {
     /**
      * This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
      * 
-     * &gt; **NOTE:** Available in v1.101.0+.
+     * &gt; **NOTE:** Available since v1.101.0.
      * 
      * ## Example Usage
      * 
@@ -349,7 +349,7 @@ public final class KvstoreFunctions {
     /**
      * This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
      * 
-     * &gt; **NOTE:** Available in v1.101.0+.
+     * &gt; **NOTE:** Available since v1.101.0.
      * 
      * ## Example Usage
      * 
@@ -393,7 +393,7 @@ public final class KvstoreFunctions {
     /**
      * This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
      * 
-     * &gt; **NOTE:** Available in v1.101.0+.
+     * &gt; **NOTE:** Available since v1.101.0.
      * 
      * ## Example Usage
      * 
@@ -437,7 +437,7 @@ public final class KvstoreFunctions {
     /**
      * This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
      * 
-     * &gt; **NOTE:** Available in v1.101.0+.
+     * &gt; **NOTE:** Available since v1.101.0.
      * 
      * ## Example Usage
      * 

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *
@@ -69,15 +69,24 @@ export interface GetSimpleOfficeSitesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Simple Office Site names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Ecd Simple Office Sites. Each element contains the following attributes:
+     */
     readonly sites: outputs.eds.GetSimpleOfficeSitesSite[];
+    /**
+     * Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *

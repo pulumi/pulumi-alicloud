@@ -133,10 +133,14 @@ type GetVpcEndpointConnectionsConnection struct {
 	Bandwidth int `pulumi:"bandwidth"`
 	// The ID of the Vpc Endpoint.
 	EndpointId string `pulumi:"endpointId"`
+	// The endpoint owner id.
+	EndpointOwnerId int `pulumi:"endpointOwnerId"`
 	// The ID of the Vpc Endpoint Connection.
 	Id string `pulumi:"id"`
 	// The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
 	Status string `pulumi:"status"`
+	// The traffic control mode of the endpoint connection.
+	TrafficControlMode string `pulumi:"trafficControlMode"`
 }
 
 // GetVpcEndpointConnectionsConnectionInput is an input type that accepts GetVpcEndpointConnectionsConnectionArgs and GetVpcEndpointConnectionsConnectionOutput values.
@@ -155,10 +159,14 @@ type GetVpcEndpointConnectionsConnectionArgs struct {
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
 	// The ID of the Vpc Endpoint.
 	EndpointId pulumi.StringInput `pulumi:"endpointId"`
+	// The endpoint owner id.
+	EndpointOwnerId pulumi.IntInput `pulumi:"endpointOwnerId"`
 	// The ID of the Vpc Endpoint Connection.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
 	Status pulumi.StringInput `pulumi:"status"`
+	// The traffic control mode of the endpoint connection.
+	TrafficControlMode pulumi.StringInput `pulumi:"trafficControlMode"`
 }
 
 func (GetVpcEndpointConnectionsConnectionArgs) ElementType() reflect.Type {
@@ -222,6 +230,11 @@ func (o GetVpcEndpointConnectionsConnectionOutput) EndpointId() pulumi.StringOut
 	return o.ApplyT(func(v GetVpcEndpointConnectionsConnection) string { return v.EndpointId }).(pulumi.StringOutput)
 }
 
+// The endpoint owner id.
+func (o GetVpcEndpointConnectionsConnectionOutput) EndpointOwnerId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcEndpointConnectionsConnection) int { return v.EndpointOwnerId }).(pulumi.IntOutput)
+}
+
 // The ID of the Vpc Endpoint Connection.
 func (o GetVpcEndpointConnectionsConnectionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointConnectionsConnection) string { return v.Id }).(pulumi.StringOutput)
@@ -230,6 +243,11 @@ func (o GetVpcEndpointConnectionsConnectionOutput) Id() pulumi.StringOutput {
 // The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
 func (o GetVpcEndpointConnectionsConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointConnectionsConnection) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The traffic control mode of the endpoint connection.
+func (o GetVpcEndpointConnectionsConnectionOutput) TrafficControlMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointConnectionsConnection) string { return v.TrafficControlMode }).(pulumi.StringOutput)
 }
 
 type GetVpcEndpointConnectionsConnectionArrayOutput struct{ *pulumi.OutputState }

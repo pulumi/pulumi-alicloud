@@ -91,7 +91,7 @@ public final class GetOtsSnapshotsSnapshot {
      */
     private String sourceType;
     /**
-     * @return The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+     * @return The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
      * 
      */
     private String startTime;
@@ -230,7 +230,7 @@ public final class GetOtsSnapshotsSnapshot {
         return this.sourceType;
     }
     /**
-     * @return The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+     * @return The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
      * 
      */
     public String startTime() {

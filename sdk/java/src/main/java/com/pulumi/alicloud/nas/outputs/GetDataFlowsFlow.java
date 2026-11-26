@@ -67,7 +67,7 @@ public final class GetDataFlowsFlow {
      */
     private String sourceStorage;
     /**
-     * @return The status of the Data flow.
+     * @return The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
      * 
      */
     private String status;
@@ -156,7 +156,7 @@ public final class GetDataFlowsFlow {
         return this.sourceStorage;
     }
     /**
-     * @return The status of the Data flow.
+     * @return The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
      * 
      */
     public String status() {

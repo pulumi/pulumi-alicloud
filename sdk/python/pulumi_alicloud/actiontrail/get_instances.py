@@ -75,7 +75,7 @@ class GetInstancesResult:
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
         """
-        A list of instances. Each element contains the following attributes:
+        A list of instances. Each element contains the following attributes. See `instances` for the optional argument block.
         """
         return pulumi.get(self, "instances")
 
@@ -121,7 +121,7 @@ def get_instances(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.59.0+
+    > **NOTE:** Available since v1.59.0.
 
     ## Example Usage
 
@@ -153,6 +153,7 @@ def get_instances(enable_details: Optional[_builtins.bool] = None,
     ```
 
 
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of instance IDs to filter results.
     :param _builtins.str name_regex: A regex string to filter results by the instance name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -181,7 +182,7 @@ def get_instances_output(enable_details: pulumi.Input[Optional[Optional[_builtin
     """
     This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.59.0+
+    > **NOTE:** Available since v1.59.0.
 
     ## Example Usage
 
@@ -213,6 +214,7 @@ def get_instances_output(enable_details: pulumi.Input[Optional[Optional[_builtin
     ```
 
 
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of instance IDs to filter results.
     :param _builtins.str name_regex: A regex string to filter results by the instance name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).

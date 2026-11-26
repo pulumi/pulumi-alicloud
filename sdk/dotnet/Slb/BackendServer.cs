@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Slb
     /// <summary>
     /// Add a group of backend servers (ECS or ENI instance) to the Server Load Balancer or remove them from it.
     /// 
-    /// &gt; **NOTE:** Available in 1.53.0+
+    /// &gt; **NOTE:** Available since v1.53.0+
     /// 
     /// ## Import
     /// 
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Slb
     public partial class BackendServer : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+        /// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `BackendServers` below.
         /// </summary>
         [Output("backendServers")]
         public Output<ImmutableArray<Outputs.BackendServerBackendServer>> BackendServers { get; private set; } = null!;
@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.Slb
         private InputList<Inputs.BackendServerBackendServerArgs>? _backendServers;
 
         /// <summary>
-        /// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+        /// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `BackendServers` below.
         /// </summary>
         public InputList<Inputs.BackendServerBackendServerArgs> BackendServers
         {
@@ -125,7 +125,7 @@ namespace Pulumi.AliCloud.Slb
         private InputList<Inputs.BackendServerBackendServerGetArgs>? _backendServers;
 
         /// <summary>
-        /// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+        /// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `BackendServers` below.
         /// </summary>
         public InputList<Inputs.BackendServerBackendServerGetArgs> BackendServers
         {

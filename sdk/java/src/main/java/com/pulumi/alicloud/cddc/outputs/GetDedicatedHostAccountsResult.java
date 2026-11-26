@@ -15,7 +15,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDedicatedHostAccountsResult {
+    /**
+     * @return A list of Cddc Dedicated Host Accounts. Each element contains the following attributes:
+     * 
+     */
     private List<GetDedicatedHostAccountsAccount> accounts;
+    /**
+     * @return The ID of the Dedicated host.
+     * 
+     */
     private @Nullable String dedicatedHostId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,15 +32,27 @@ public final class GetDedicatedHostAccountsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Account names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
 
     private GetDedicatedHostAccountsResult() {}
+    /**
+     * @return A list of Cddc Dedicated Host Accounts. Each element contains the following attributes:
+     * 
+     */
     public List<GetDedicatedHostAccountsAccount> accounts() {
         return this.accounts;
     }
+    /**
+     * @return The ID of the Dedicated host.
+     * 
+     */
     public Optional<String> dedicatedHostId() {
         return Optional.ofNullable(this.dedicatedHostId);
     }
@@ -49,6 +69,10 @@ public final class GetDedicatedHostAccountsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Account names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

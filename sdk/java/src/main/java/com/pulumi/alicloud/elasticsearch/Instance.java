@@ -8,8 +8,10 @@ import com.pulumi.alicloud.elasticsearch.InstanceArgs;
 import com.pulumi.alicloud.elasticsearch.inputs.InstanceState;
 import com.pulumi.alicloud.elasticsearch.outputs.InstanceClientNodeConfiguration;
 import com.pulumi.alicloud.elasticsearch.outputs.InstanceDataNodeConfiguration;
+import com.pulumi.alicloud.elasticsearch.outputs.InstanceIndexNodeConfiguration;
 import com.pulumi.alicloud.elasticsearch.outputs.InstanceKibanaConfiguration;
 import com.pulumi.alicloud.elasticsearch.outputs.InstanceMasterConfiguration;
+import com.pulumi.alicloud.elasticsearch.outputs.InstanceSearchNodeConfiguration;
 import com.pulumi.alicloud.elasticsearch.outputs.InstanceWarmNodeConfiguration;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -426,6 +428,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.force);
     }
     /**
+     * Configuration of index nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `indexNodeConfiguration` below.
+     * 
+     */
+    @Export(name="indexNodeConfiguration", refs={InstanceIndexNodeConfiguration.class}, tree="[0]")
+    private Output<InstanceIndexNodeConfiguration> indexNodeConfiguration;
+
+    /**
+     * @return Configuration of index nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `indexNodeConfiguration` below.
+     * 
+     */
+    public Output<InstanceIndexNodeConfiguration> indexNodeConfiguration() {
+        return this.indexNodeConfiguration;
+    }
+    /**
      * Edition type:
      * - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
      * - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
@@ -688,6 +704,36 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+     * 
+     */
+    @Export(name="passwordWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+     * 
+     */
+    public Output<Optional<String>> passwordWo() {
+        return Codegen.optional(this.passwordWo);
+    }
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+     * 
+     */
+    @Export(name="passwordWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> passwordWoVersion;
+
+    /**
+     * @return The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+     * 
+     */
+    public Output<Optional<Integer>> passwordWoVersion() {
+        return Codegen.optional(this.passwordWoVersion);
+    }
+    /**
      * The billing method of the instance. Supported values:
      * - `PayAsYouGo`: Pay-as-you-go
      * - `Subscription`: Subscription
@@ -750,12 +796,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The access protocol. Supported protocols: HTTP and HTTPS.
      * 
+     * &gt; **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `clientNodeConfiguration` (or the deprecated `clientNodeSpec` and `clientNodeAmount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
+     * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
      * @return The access protocol. Supported protocols: HTTP and HTTPS.
+     * 
+     * &gt; **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `clientNodeConfiguration` (or the deprecated `clientNodeSpec` and `clientNodeAmount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
      * 
      */
     public Output<String> protocol() {
@@ -846,18 +896,32 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.renewalDurationUnit;
     }
     /**
-     * The ID of the resource group to which the instance belongs.
+     * The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group to which the instance belongs.
+     * @return The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
+    }
+    /**
+     * Configuration of search (query) nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `searchNodeConfiguration` below.
+     * 
+     */
+    @Export(name="searchNodeConfiguration", refs={InstanceSearchNodeConfiguration.class}, tree="[0]")
+    private Output<InstanceSearchNodeConfiguration> searchNodeConfiguration;
+
+    /**
+     * @return Configuration of search (query) nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `searchNodeConfiguration` below.
+     * 
+     */
+    public Output<InstanceSearchNodeConfiguration> searchNodeConfiguration() {
+        return this.searchNodeConfiguration;
     }
     /**
      * YML configuration file settings for the instance.
@@ -1131,7 +1195,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "password"
+                "password",
+                "passwordWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

@@ -154,6 +154,7 @@ namespace Pulumi.AliCloud.Vpc
         /// - `Ipv4Gateway`: An IPv4 gateway.
         /// - `GatewayEndpoint`: A gateway endpoint.
         /// - `Ecr`: A Express Connect Router (ECR).
+        /// - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
         /// </summary>
         [Output("nexthopType")]
         public Output<string?> NexthopType { get; private set; } = null!;
@@ -254,6 +255,7 @@ namespace Pulumi.AliCloud.Vpc
         /// - `Ipv4Gateway`: An IPv4 gateway.
         /// - `GatewayEndpoint`: A gateway endpoint.
         /// - `Ecr`: A Express Connect Router (ECR).
+        /// - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
         /// </summary>
         [Input("nexthopType")]
         public Input<string>? NexthopType { get; set; }
@@ -310,6 +312,7 @@ namespace Pulumi.AliCloud.Vpc
         /// - `Ipv4Gateway`: An IPv4 gateway.
         /// - `GatewayEndpoint`: A gateway endpoint.
         /// - `Ecr`: A Express Connect Router (ECR).
+        /// - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
         /// </summary>
         [Input("nexthopType")]
         public Input<string>? NexthopType { get; set; }

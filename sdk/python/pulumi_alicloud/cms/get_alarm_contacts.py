@@ -131,7 +131,7 @@ def get_alarm_contacts(chanel_type: Optional[_builtins.str] = None,
     """
     Provides a list of alarm contact owned by an Alibaba Cloud account.
 
-    > **NOTE:** Available in v1.99.0+.
+    > **NOTE:** Available since v1.99.0+.
 
     ## Example Usage
 
@@ -181,7 +181,7 @@ def get_alarm_contacts_output(chanel_type: pulumi.Input[Optional[Optional[_built
     """
     Provides a list of alarm contact owned by an Alibaba Cloud account.
 
-    > **NOTE:** Available in v1.99.0+.
+    > **NOTE:** Available since v1.99.0+.
 
     ## Example Usage
 

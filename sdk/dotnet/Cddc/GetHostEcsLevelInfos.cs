@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cddc
         /// <summary>
         /// This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
         /// </summary>
         public static Task<GetHostEcsLevelInfosResult> InvokeAsync(GetHostEcsLevelInfosArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostEcsLevelInfosResult>("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", args ?? new GetHostEcsLevelInfosArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Cddc
         /// <summary>
         /// This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
         /// </summary>
         public static Output<GetHostEcsLevelInfosResult> Invoke(GetHostEcsLevelInfosInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostEcsLevelInfosResult>("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", args ?? new GetHostEcsLevelInfosInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Cddc
         /// <summary>
         /// This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
         /// </summary>
         public static Output<GetHostEcsLevelInfosResult> Invoke(GetHostEcsLevelInfosInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostEcsLevelInfosResult>("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", args ?? new GetHostEcsLevelInfosInvokeArgs(), options.WithDefaults());
@@ -123,6 +123,9 @@ namespace Pulumi.AliCloud.Cddc
         /// </summary>
         public readonly string Id;
         public readonly string? ImageCategory;
+        /// <summary>
+        /// A list of Cddc Dedicated Hosts. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHostEcsLevelInfosInfoResult> Infos;
         public readonly string? OutputFile;
         public readonly string StorageType;

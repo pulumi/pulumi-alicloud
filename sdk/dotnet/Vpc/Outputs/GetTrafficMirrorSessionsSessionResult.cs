@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     public sealed class GetTrafficMirrorSessionsSessionResult
     {
         /// <summary>
-        /// Indicates whether traffic mirror sessions are enabled. default to `False`.
+        /// Specifies whether to enable traffic mirror sessions. default to `False`.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly int PacketLength;
         /// <summary>
-        /// The priority of the traffic mirror session. A smaller value indicates a higher priority.
+        /// The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
         /// </summary>
         public readonly int Priority;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string TrafficMirrorSessionId;
         /// <summary>
-        /// The name of the traffic mirror session.
+        /// The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
         /// </summary>
         public readonly string TrafficMirrorSessionName;
         /// <summary>

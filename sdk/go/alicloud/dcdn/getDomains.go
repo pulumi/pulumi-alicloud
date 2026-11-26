@@ -13,7 +13,7 @@ import (
 
 // Provides a collection of DCDN Domains to the specified filters.
 //
-// > **NOTE:** Available since 1.94.0.
+// > **NOTE:** Available since v1.94.0.
 //
 // ## Example Usage
 //
@@ -73,7 +73,8 @@ type GetDomainsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	SecurityToken   *string `pulumi:"securityToken"`
+	// The security token.
+	SecurityToken *string `pulumi:"securityToken"`
 	// The status of DCDN Domain.
 	Status *string `pulumi:"status"`
 }
@@ -127,7 +128,8 @@ type GetDomainsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	SecurityToken   pulumi.StringPtrInput `pulumi:"securityToken"`
+	// The security token.
+	SecurityToken pulumi.StringPtrInput `pulumi:"securityToken"`
 	// The status of DCDN Domain.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

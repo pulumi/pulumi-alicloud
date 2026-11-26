@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a SCDN Domain resource.
  *
- * For information about SCDN Domain and how to use it, see [What is Domain](https://help.aliyun.com/document_detail/63672.html).
+ * For information about SCDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/doc-detail/63672.html).
  *
  * > **NOTE:** Available since v1.131.0.
  *
@@ -93,7 +93,7 @@ export class Domain extends pulumi.CustomResource {
      */
     declare public readonly bizName: pulumi.Output<string | undefined>;
     /**
-     * Certificate Information. See the following `Block certInfos`.
+     * Certificate Information. See `certInfos` below for details.
      */
     declare public readonly certInfos: pulumi.Output<outputs.scdn.DomainCertInfo[] | undefined>;
     /**
@@ -113,7 +113,7 @@ export class Domain extends pulumi.CustomResource {
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
-     * the Origin Server Information. See the following `Block sources`.
+     * The Origin Server Information. See `sources` below for details.
      */
     declare public readonly sources: pulumi.Output<outputs.scdn.DomainSource[]>;
     /**
@@ -175,7 +175,7 @@ export interface DomainState {
      */
     bizName?: pulumi.Input<string | undefined>;
     /**
-     * Certificate Information. See the following `Block certInfos`.
+     * Certificate Information. See `certInfos` below for details.
      */
     certInfos?: pulumi.Input<pulumi.Input<inputs.scdn.DomainCertInfo>[] | undefined>;
     /**
@@ -195,7 +195,7 @@ export interface DomainState {
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
-     * the Origin Server Information. See the following `Block sources`.
+     * The Origin Server Information. See `sources` below for details.
      */
     sources?: pulumi.Input<pulumi.Input<inputs.scdn.DomainSource>[] | undefined>;
     /**
@@ -215,7 +215,7 @@ export interface DomainArgs {
      */
     bizName?: pulumi.Input<string | undefined>;
     /**
-     * Certificate Information. See the following `Block certInfos`.
+     * Certificate Information. See `certInfos` below for details.
      */
     certInfos?: pulumi.Input<pulumi.Input<inputs.scdn.DomainCertInfo>[] | undefined>;
     /**
@@ -235,7 +235,7 @@ export interface DomainArgs {
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
-     * the Origin Server Information. See the following `Block sources`.
+     * The Origin Server Information. See `sources` below for details.
      */
     sources: pulumi.Input<pulumi.Input<inputs.scdn.DomainSource>[]>;
     /**

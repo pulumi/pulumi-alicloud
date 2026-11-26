@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Disk category. Valid values: `Cloud`, `CloudEfficiency`, `CloudEssd`, `CloudSsd`, `EphemeralSsd`, `CloudAuto`, `CloudEssdEntry`.
+        /// Disk category. Valid values: `Cloud`, `CloudEfficiency`, `CloudEssd`, `CloudSsd`, `EphemeralSsd`, `CloudAuto`, `CloudEssdEntry`, `CloudRegionalDiskAuto`.
         /// </summary>
         [Input("category")]
         public string? Category { get; set; }
@@ -399,7 +399,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Disk category. Valid values: `Cloud`, `CloudEfficiency`, `CloudEssd`, `CloudSsd`, `EphemeralSsd`, `CloudAuto`, `CloudEssdEntry`.
+        /// Disk category. Valid values: `Cloud`, `CloudEfficiency`, `CloudEssd`, `CloudSsd`, `EphemeralSsd`, `CloudAuto`, `CloudEssdEntry`, `CloudRegionalDiskAuto`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }

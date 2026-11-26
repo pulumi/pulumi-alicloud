@@ -24,7 +24,8 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	"github.com/aliyun/terraform-provider-alicloud/alicloud"
+	"github.com/aliyun/terraform-provider-alicloud/alicloud/provider/sdkv2"
+	"github.com/aliyun/terraform-provider-alicloud/alicloud/service/slb"
 	tfSchema "github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -360,11 +361,11 @@ func resource(mod string, res string) tokens.Type {
 // what the ValidateFunc asserts.
 func fixupSchemaDefaults(p *tfSchema.Provider) {
 	// alicloud_slb_rule's health_check_http_code sets Default using the named type
-	// alicloud.HealthCheckHttpCodeType, but its ValidateFunc (validateAllowedSplitStringValue)
+	// slb.HealthCheckHttpCodeType, but its ValidateFunc (validateAllowedSplitStringValue)
 	// asserts a plain string.
 	if r, ok := p.ResourcesMap["alicloud_slb_rule"]; ok {
 		if s, ok := r.Schema["health_check_http_code"]; ok {
-			if v, ok := s.Default.(alicloud.HealthCheckHttpCodeType); ok {
+			if v, ok := s.Default.(slb.HealthCheckHttpCodeType); ok {
 				s.Default = string(v)
 			}
 		}
@@ -373,7 +374,7 @@ func fixupSchemaDefaults(p *tfSchema.Provider) {
 
 // Provider returns additional overlaid schema and metadata associated with the alicloud package.
 func Provider() tfbridge.ProviderInfo {
-	tfProvider := alicloud.Provider()
+	tfProvider := sdkv2.Provider()
 	fixupSchemaDefaults(tfProvider)
 	p := shimv2.NewProvider(tfProvider)
 
@@ -411,6 +412,24 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_msc_sub_contact":      {Tok: resource(alicloudMod, "MscSubContract")},
 			"alicloud_msc_sub_subscription": {Tok: resource(alicloudMod, "MscSubSubscription")},
 			"alicloud_msc_sub_webhook":      {Tok: resource(alicloudMod, "MscSubWebhook")},
+
+			// AgentLoop
+			// The upstream argument names match the resource names, which is invalid in C# (CS0542).
+			"alicloud_agentloop_agent_space": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"agent_space": {CSharpName: "AgentSpaceName"},
+				},
+			},
+			"alicloud_agentloop_pipeline": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"pipeline": {CSharpName: "PipelineConfig"},
+				},
+			},
+			"alicloud_agentloop_context_store_api_key": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"api_key": {CSharpName: "ApiKeyValue"},
+				},
+			},
 
 			// ActionTrail
 			"alicloud_actiontrail_trail":                {Tok: resource(actionTrailMod, "Trail")},

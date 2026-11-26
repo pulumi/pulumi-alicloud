@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.113.0+.
+// > **NOTE:** Available since v1.113.0.
 //
 // ## Example Usage
 //
@@ -73,28 +73,35 @@ type GetMonitorGroupsArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The select contact groups.
-	SelectContactGroups *bool             `pulumi:"selectContactGroups"`
-	Tags                map[string]string `pulumi:"tags"`
+	SelectContactGroups *bool `pulumi:"selectContactGroups"`
+	// A mapping of tags to filter the Cms Monitor Group.
+	Tags map[string]string `pulumi:"tags"`
 	// The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
 	Type *string `pulumi:"type"`
 }
 
 // A collection of values returned by getMonitorGroups.
 type GetMonitorGroupsResult struct {
-	DynamicTagRuleId *string                 `pulumi:"dynamicTagRuleId"`
-	Groups           []GetMonitorGroupsGroup `pulumi:"groups"`
+	// The ID of the tag rule.
+	DynamicTagRuleId *string `pulumi:"dynamicTagRuleId"`
+	// A list of Cms Monitor Groups. Each element contains the following attributes:
+	Groups []GetMonitorGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                     string            `pulumi:"id"`
-	Ids                    []string          `pulumi:"ids"`
-	IncludeTemplateHistory *bool             `pulumi:"includeTemplateHistory"`
-	Keyword                *string           `pulumi:"keyword"`
-	MonitorGroupName       *string           `pulumi:"monitorGroupName"`
-	NameRegex              *string           `pulumi:"nameRegex"`
-	Names                  []string          `pulumi:"names"`
-	OutputFile             *string           `pulumi:"outputFile"`
-	SelectContactGroups    *bool             `pulumi:"selectContactGroups"`
-	Tags                   map[string]string `pulumi:"tags"`
-	Type                   *string           `pulumi:"type"`
+	Id                     string   `pulumi:"id"`
+	Ids                    []string `pulumi:"ids"`
+	IncludeTemplateHistory *bool    `pulumi:"includeTemplateHistory"`
+	Keyword                *string  `pulumi:"keyword"`
+	// The name of the application group.
+	MonitorGroupName *string `pulumi:"monitorGroupName"`
+	NameRegex        *string `pulumi:"nameRegex"`
+	// A list of Monitor Group names.
+	Names               []string `pulumi:"names"`
+	OutputFile          *string  `pulumi:"outputFile"`
+	SelectContactGroups *bool    `pulumi:"selectContactGroups"`
+	// A map of tags assigned to the Cms Monitor Group.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the application group.
+	Type *string `pulumi:"type"`
 }
 
 func GetMonitorGroupsOutput(ctx *pulumi.Context, args GetMonitorGroupsOutputArgs, opts ...pulumi.InvokeOption) GetMonitorGroupsResultOutput {
@@ -119,8 +126,9 @@ type GetMonitorGroupsOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The select contact groups.
-	SelectContactGroups pulumi.BoolPtrInput   `pulumi:"selectContactGroups"`
-	Tags                pulumi.StringMapInput `pulumi:"tags"`
+	SelectContactGroups pulumi.BoolPtrInput `pulumi:"selectContactGroups"`
+	// A mapping of tags to filter the Cms Monitor Group.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -144,10 +152,12 @@ func (o GetMonitorGroupsResultOutput) ToGetMonitorGroupsResultOutputWithContext(
 	return o
 }
 
+// The ID of the tag rule.
 func (o GetMonitorGroupsResultOutput) DynamicTagRuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMonitorGroupsResult) *string { return v.DynamicTagRuleId }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cms Monitor Groups. Each element contains the following attributes:
 func (o GetMonitorGroupsResultOutput) Groups() GetMonitorGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetMonitorGroupsResult) []GetMonitorGroupsGroup { return v.Groups }).(GetMonitorGroupsGroupArrayOutput)
 }
@@ -169,6 +179,7 @@ func (o GetMonitorGroupsResultOutput) Keyword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMonitorGroupsResult) *string { return v.Keyword }).(pulumi.StringPtrOutput)
 }
 
+// The name of the application group.
 func (o GetMonitorGroupsResultOutput) MonitorGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMonitorGroupsResult) *string { return v.MonitorGroupName }).(pulumi.StringPtrOutput)
 }
@@ -177,6 +188,7 @@ func (o GetMonitorGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMonitorGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Monitor Group names.
 func (o GetMonitorGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMonitorGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -189,10 +201,12 @@ func (o GetMonitorGroupsResultOutput) SelectContactGroups() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v GetMonitorGroupsResult) *bool { return v.SelectContactGroups }).(pulumi.BoolPtrOutput)
 }
 
+// A map of tags assigned to the Cms Monitor Group.
 func (o GetMonitorGroupsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetMonitorGroupsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the application group.
 func (o GetMonitorGroupsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMonitorGroupsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

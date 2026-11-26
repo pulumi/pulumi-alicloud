@@ -33,6 +33,21 @@ public final class ServiceCertificateState extends com.pulumi.resources.Resource
     }
 
     /**
+     * (Available since v2.3.0) The global certificate identifier in the format of &#34;id+region&#34;, e.g. &#34;13781326-cn-hangzhou&#34;.
+     * 
+     */
+    @Import(name="certIdentifier")
+    private @Nullable Output<String> certIdentifier;
+
+    /**
+     * @return (Available since v2.3.0) The global certificate identifier in the format of &#34;id+region&#34;, e.g. &#34;13781326-cn-hangzhou&#34;.
+     * 
+     */
+    public Optional<Output<String>> certIdentifier() {
+        return Optional.ofNullable(this.certIdentifier);
+    }
+
+    /**
      * A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
      * 
      */
@@ -230,6 +245,7 @@ public final class ServiceCertificateState extends com.pulumi.resources.Resource
 
     private ServiceCertificateState(ServiceCertificateState $) {
         this.cert = $.cert;
+        this.certIdentifier = $.certIdentifier;
         this.certificateName = $.certificateName;
         this.encryptCert = $.encryptCert;
         this.encryptPrivateKey = $.encryptPrivateKey;
@@ -281,6 +297,27 @@ public final class ServiceCertificateState extends com.pulumi.resources.Resource
          */
         public Builder cert(String cert) {
             return cert(Output.of(cert));
+        }
+
+        /**
+         * @param certIdentifier (Available since v2.3.0) The global certificate identifier in the format of &#34;id+region&#34;, e.g. &#34;13781326-cn-hangzhou&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certIdentifier(@Nullable Output<String> certIdentifier) {
+            $.certIdentifier = certIdentifier;
+            return this;
+        }
+
+        /**
+         * @param certIdentifier (Available since v2.3.0) The global certificate identifier in the format of &#34;id+region&#34;, e.g. &#34;13781326-cn-hangzhou&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certIdentifier(String certIdentifier) {
+            return certIdentifier(Output.of(certIdentifier));
         }
 
         /**

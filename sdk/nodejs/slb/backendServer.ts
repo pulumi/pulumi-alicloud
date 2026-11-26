@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Add a group of backend servers (ECS or ENI instance) to the Server Load Balancer or remove them from it.
  *
- * > **NOTE:** Available in 1.53.0+
+ * > **NOTE:** Available since v1.53.0+
  *
  * ## Import
  *
@@ -59,7 +59,7 @@ export class BackendServer extends pulumi.CustomResource {
     }
 
     /**
-     * A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+     * A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `backendServers` below.
      */
     declare public readonly backendServers: pulumi.Output<outputs.slb.BackendServerBackendServer[] | undefined>;
     /**
@@ -106,7 +106,7 @@ export class BackendServer extends pulumi.CustomResource {
  */
 export interface BackendServerState {
     /**
-     * A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+     * A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `backendServers` below.
      */
     backendServers?: pulumi.Input<pulumi.Input<inputs.slb.BackendServerBackendServer>[] | undefined>;
     /**
@@ -124,7 +124,7 @@ export interface BackendServerState {
  */
 export interface BackendServerArgs {
     /**
-     * A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+     * A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `backendServers` below.
      */
     backendServers?: pulumi.Input<pulumi.Input<inputs.slb.BackendServerBackendServer>[] | undefined>;
     /**

@@ -46,11 +46,11 @@ namespace Pulumi.AliCloud.Mse.Outputs
         /// </summary>
         public readonly string Spec;
         /// <summary>
-        /// The status of the gateway.
+        /// The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The ID of the vpc.
+        /// The ID of the VPC.
         /// </summary>
         public readonly string VpcId;
         /// <summary>

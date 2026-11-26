@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * This data source is the character set supported by querying RDS instances.
  *
- * > **NOTE:** Available in v1.198.0+.
+ * > **NOTE:** Available since v1.198.0+.
  *
  * ## Example Usage
  *
@@ -38,6 +38,9 @@ export interface GetCharacterSetNamesArgs {
      * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
      */
     engine: string;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     */
     outputFile?: string;
 }
 
@@ -50,13 +53,16 @@ export interface GetCharacterSetNamesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The list of supported character sets.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source is the character set supported by querying RDS instances.
  *
- * > **NOTE:** Available in v1.198.0+.
+ * > **NOTE:** Available since v1.198.0+.
  *
  * ## Example Usage
  *
@@ -87,5 +93,8 @@ export interface GetCharacterSetNamesOutputArgs {
      * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
      */
     engine: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     */
     outputFile?: pulumi.Input<string | undefined>;
 }

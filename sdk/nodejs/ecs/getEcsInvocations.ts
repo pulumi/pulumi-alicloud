@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Invocations of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.168.0+.
+ * > **NOTE:** Available since v1.168.0.
  *
  * ## Example Usage
  *
@@ -71,6 +71,9 @@ export interface GetEcsInvocationsArgs {
  * A collection of values returned by getEcsInvocations.
  */
 export interface GetEcsInvocationsResult {
+    /**
+     * The ID of the command.
+     */
     readonly commandId?: string;
     readonly contentEncoding?: string;
     /**
@@ -78,7 +81,13 @@ export interface GetEcsInvocationsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Ecs Invocations. Each element contains the following attributes:
+     */
     readonly invocations: outputs.ecs.GetEcsInvocationsInvocation[];
+    /**
+     * The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+     */
     readonly invokeStatus?: string;
     readonly outputFile?: string;
     readonly pageNumber?: number;
@@ -87,7 +96,7 @@ export interface GetEcsInvocationsResult {
 /**
  * This data source provides the Ecs Invocations of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.168.0+.
+ * > **NOTE:** Available since v1.168.0.
  *
  * ## Example Usage
  *

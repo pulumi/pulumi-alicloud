@@ -25,59 +25,91 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
     public static final LaunchTemplateState Empty = new LaunchTemplateState();
 
     /**
-     * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+     * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
      * 
      */
     @Import(name="autoReleaseTime")
     private @Nullable Output<String> autoReleaseTime;
 
     /**
-     * @return Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+     * @return Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
      * 
      */
     public Optional<Output<String>> autoReleaseTime() {
         return Optional.ofNullable(this.autoReleaseTime);
     }
 
+    /**
+     * Whether to enable auto-renewal for the instance.
+     * 
+     */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
+    /**
+     * @return Whether to enable auto-renewal for the instance.
+     * 
+     */
     public Optional<Output<Boolean>> autoRenew() {
         return Optional.ofNullable(this.autoRenew);
     }
 
+    /**
+     * The auto-renewal period of the instance.
+     * 
+     */
     @Import(name="autoRenewPeriod")
     private @Nullable Output<Integer> autoRenewPeriod;
 
+    /**
+     * @return The auto-renewal period of the instance.
+     * 
+     */
     public Optional<Output<Integer>> autoRenewPeriod() {
         return Optional.ofNullable(this.autoRenewPeriod);
     }
 
     /**
-     * The list of data disks created with instance.
+     * The list of data disks created with instance. See `dataDisks` below.
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<LaunchTemplateDataDiskArgs>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance.
+     * @return The list of data disks created with instance. See `dataDisks` below.
      * 
      */
     public Optional<Output<List<LaunchTemplateDataDiskArgs>>> dataDisks() {
         return Optional.ofNullable(this.dataDisks);
     }
 
+    /**
+     * The version number of the default launch template version.
+     * 
+     */
     @Import(name="defaultVersionNumber")
     private @Nullable Output<Integer> defaultVersionNumber;
 
+    /**
+     * @return The version number of the default launch template version.
+     * 
+     */
     public Optional<Output<Integer>> defaultVersionNumber() {
         return Optional.ofNullable(this.defaultVersionNumber);
     }
 
+    /**
+     * The ID of the deployment set.
+     * 
+     */
     @Import(name="deploymentSetId")
     private @Nullable Output<String> deploymentSetId;
 
+    /**
+     * @return The ID of the deployment set.
+     * 
+     */
     public Optional<Output<String>> deploymentSetId() {
         return Optional.ofNullable(this.deploymentSetId);
     }
@@ -97,45 +129,77 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Whether to enable VM OS configuration.
+     * 
+     */
     @Import(name="enableVmOsConfig")
     private @Nullable Output<Boolean> enableVmOsConfig;
 
+    /**
+     * @return Whether to enable VM OS configuration.
+     * 
+     */
     public Optional<Output<Boolean>> enableVmOsConfig() {
         return Optional.ofNullable(this.enableVmOsConfig);
     }
 
     /**
-     * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+     * Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      * 
      */
     @Import(name="hostName")
     private @Nullable Output<String> hostName;
 
     /**
-     * @return Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+     * @return Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      * 
      */
     public Optional<Output<String>> hostName() {
         return Optional.ofNullable(this.hostName);
     }
 
+    /**
+     * Whether to enable access to instance metadata.
+     * 
+     */
     @Import(name="httpEndpoint")
     private @Nullable Output<String> httpEndpoint;
 
+    /**
+     * @return Whether to enable access to instance metadata.
+     * 
+     */
     public Optional<Output<String>> httpEndpoint() {
         return Optional.ofNullable(this.httpEndpoint);
     }
 
+    /**
+     * The HTTP PUT response hop limit required for instance metadata requests.
+     * 
+     */
     @Import(name="httpPutResponseHopLimit")
     private @Nullable Output<Integer> httpPutResponseHopLimit;
 
+    /**
+     * @return The HTTP PUT response hop limit required for instance metadata requests.
+     * 
+     */
     public Optional<Output<Integer>> httpPutResponseHopLimit() {
         return Optional.ofNullable(this.httpPutResponseHopLimit);
     }
 
+    /**
+     * Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+     * 
+     */
     @Import(name="httpTokens")
     private @Nullable Output<String> httpTokens;
 
+    /**
+     * @return Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+     * 
+     */
     public Optional<Output<String>> httpTokens() {
         return Optional.ofNullable(this.httpTokens);
     }
@@ -155,16 +219,32 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.imageId);
     }
 
+    /**
+     * The options of images. See `imageOptions` below.
+     * 
+     */
     @Import(name="imageOptions")
     private @Nullable Output<LaunchTemplateImageOptionsArgs> imageOptions;
 
+    /**
+     * @return The options of images. See `imageOptions` below.
+     * 
+     */
     public Optional<Output<LaunchTemplateImageOptionsArgs>> imageOptions() {
         return Optional.ofNullable(this.imageOptions);
     }
 
+    /**
+     * The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
+     * 
+     */
     @Import(name="imageOwnerAlias")
     private @Nullable Output<String> imageOwnerAlias;
 
+    /**
+     * @return The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
+     * 
+     */
     public Optional<Output<String>> imageOwnerAlias() {
         return Optional.ofNullable(this.imageOwnerAlias);
     }
@@ -288,7 +368,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The name of the key pair.
-     * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+     * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      * 
      */
@@ -297,7 +377,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The name of the key pair.
-     * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+     * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      * 
      */
@@ -305,22 +385,38 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.keyPairName);
     }
 
+    /**
+     * The latest version number of the launch template.
+     * 
+     */
     @Import(name="latestVersionNumber")
     private @Nullable Output<Integer> latestVersionNumber;
 
+    /**
+     * @return The latest version number of the launch template.
+     * 
+     */
     public Optional<Output<Integer>> latestVersionNumber() {
         return Optional.ofNullable(this.latestVersionNumber);
     }
 
+    /**
+     * The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+     * 
+     */
     @Import(name="launchTemplateName")
     private @Nullable Output<String> launchTemplateName;
 
+    /**
+     * @return The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+     * 
+     */
     public Optional<Output<String>> launchTemplateName() {
         return Optional.ofNullable(this.launchTemplateName);
     }
 
     /**
-     * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+     * It has been deprecated from version 1.120.0. New field `launchTemplateName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
      * 
@@ -330,7 +426,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> name;
 
     /**
-     * @return Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+     * @return It has been deprecated from version 1.120.0. New field `launchTemplateName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
      * 
@@ -341,14 +437,14 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The list of network interfaces created with instance.
+     * The list of network interfaces created with instance. See `networkInterfaces` below.
      * 
      */
     @Import(name="networkInterfaces")
     private @Nullable Output<LaunchTemplateNetworkInterfacesArgs> networkInterfaces;
 
     /**
-     * @return The list of network interfaces created with instance.
+     * @return The list of network interfaces created with instance. See `networkInterfaces` below.
      * 
      */
     public Optional<Output<LaunchTemplateNetworkInterfacesArgs>> networkInterfaces() {
@@ -370,30 +466,62 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.networkType);
     }
 
+    /**
+     * Whether to use the password inherited from the image.
+     * 
+     */
     @Import(name="passwordInherit")
     private @Nullable Output<Boolean> passwordInherit;
 
+    /**
+     * @return Whether to use the password inherited from the image.
+     * 
+     */
     public Optional<Output<Boolean>> passwordInherit() {
         return Optional.ofNullable(this.passwordInherit);
     }
 
+    /**
+     * The purchase duration of the instance.
+     * 
+     */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
+    /**
+     * @return The purchase duration of the instance.
+     * 
+     */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
 
+    /**
+     * The unit of the purchase duration.
+     * 
+     */
     @Import(name="periodUnit")
     private @Nullable Output<String> periodUnit;
 
+    /**
+     * @return The unit of the purchase duration.
+     * 
+     */
     public Optional<Output<String>> periodUnit() {
         return Optional.ofNullable(this.periodUnit);
     }
 
+    /**
+     * The private IP address of the instance.
+     * 
+     */
     @Import(name="privateIpAddress")
     private @Nullable Output<String> privateIpAddress;
 
+    /**
+     * @return The private IP address of the instance.
+     * 
+     */
     public Optional<Output<String>> privateIpAddress() {
         return Optional.ofNullable(this.privateIpAddress);
     }
@@ -413,9 +541,17 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.ramRoleName);
     }
 
+    /**
+     * The ID of the resource group to which the resource belongs.
+     * 
+     */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
+    /**
+     * @return The ID of the resource group to which the resource belongs.
+     * 
+     */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
@@ -450,16 +586,32 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.securityGroupId);
     }
 
+    /**
+     * The list of security group IDs.
+     * 
+     */
     @Import(name="securityGroupIds")
     private @Nullable Output<List<String>> securityGroupIds;
 
+    /**
+     * @return The list of security group IDs.
+     * 
+     */
     public Optional<Output<List<String>>> securityGroupIds() {
         return Optional.ofNullable(this.securityGroupIds);
     }
 
+    /**
+     * The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+     * 
+     */
     @Import(name="spotDuration")
     private @Nullable Output<String> spotDuration;
 
+    /**
+     * @return The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+     * 
+     */
     public Optional<Output<String>> spotDuration() {
         return Optional.ofNullable(this.spotDuration);
     }
@@ -500,20 +652,23 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.spotStrategy);
     }
 
+    /**
+     * The system disk. See `systemDisk` below.
+     * 
+     */
     @Import(name="systemDisk")
     private @Nullable Output<LaunchTemplateSystemDiskArgs> systemDisk;
 
+    /**
+     * @return The system disk. See `systemDisk` below.
+     * 
+     */
     public Optional<Output<LaunchTemplateSystemDiskArgs>> systemDisk() {
         return Optional.ofNullable(this.systemDisk);
     }
 
     /**
-     * The category of the system disk. System disk type. Optional values:
-     * - cloud: Basic cloud disk.
-     * - cloud_efficiency: Ultra cloud disk.
-     * - cloud_ssd: SSD cloud Disks.
-     * - ephemeral_ssd: local SSD Disks
-     * - cloud_essd: ESSD cloud Disks.
+     * It has been deprecated from version 1.120.0. New field `systemDisk` instead.
      * 
      * @deprecated Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -523,12 +678,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> systemDiskCategory;
 
     /**
-     * @return The category of the system disk. System disk type. Optional values:
-     * - cloud: Basic cloud disk.
-     * - cloud_efficiency: Ultra cloud disk.
-     * - cloud_ssd: SSD cloud Disks.
-     * - ephemeral_ssd: local SSD Disks
-     * - cloud_essd: ESSD cloud Disks.
+     * @return It has been deprecated from version 1.120.0. New field `systemDisk` instead.
      * 
      * @deprecated Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -539,7 +689,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * System disk description. It cannot begin with http:// or https://.
+     * It has been deprecated from version 1.120.0. New field `systemDisk` instead.
      * 
      * @deprecated Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -549,7 +699,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> systemDiskDescription;
 
     /**
-     * @return System disk description. It cannot begin with http:// or https://.
+     * @return It has been deprecated from version 1.120.0. New field `systemDisk` instead.
      * 
      * @deprecated Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -560,7 +710,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+     * It has been deprecated from version 1.120.0. New field `systemDisk` instead.
      * 
      * @deprecated Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -570,7 +720,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> systemDiskName;
 
     /**
-     * @return System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+     * @return It has been deprecated from version 1.120.0. New field `systemDisk` instead.
      * 
      * @deprecated Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -581,7 +731,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Size of the system disk, measured in GB. Value range: [20, 500].
+     * It has been deprecated from version 1.120.0. New field `systemDisk` instead.
      * 
      * @deprecated Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -591,7 +741,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<Integer> systemDiskSize;
 
     /**
-     * @return Size of the system disk, measured in GB. Value range: [20, 500].
+     * @return It has been deprecated from version 1.120.0. New field `systemDisk` instead.
      * 
      * @deprecated Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -620,36 +770,68 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The ID of the resource group for the launch template.
+     * 
+     */
     @Import(name="templateResourceGroupId")
     private @Nullable Output<String> templateResourceGroupId;
 
+    /**
+     * @return The ID of the resource group for the launch template.
+     * 
+     */
     public Optional<Output<String>> templateResourceGroupId() {
         return Optional.ofNullable(this.templateResourceGroupId);
     }
 
+    /**
+     * A mapping of tags to assign to the launch template.
+     * 
+     */
     @Import(name="templateTags")
     private @Nullable Output<Map<String,String>> templateTags;
 
+    /**
+     * @return A mapping of tags to assign to the launch template.
+     * 
+     */
     public Optional<Output<Map<String,String>>> templateTags() {
         return Optional.ofNullable(this.templateTags);
     }
 
+    /**
+     * Whether to update the default version of the launch template to the latest version automatically.
+     * 
+     */
     @Import(name="updateDefaultVersionNumber")
     private @Nullable Output<Boolean> updateDefaultVersionNumber;
 
+    /**
+     * @return Whether to update the default version of the launch template to the latest version automatically.
+     * 
+     */
     public Optional<Output<Boolean>> updateDefaultVersionNumber() {
         return Optional.ofNullable(this.updateDefaultVersionNumber);
     }
 
+    /**
+     * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+     * 
+     */
     @Import(name="userData")
     private @Nullable Output<String> userData;
 
+    /**
+     * @return User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+     * 
+     */
     public Optional<Output<String>> userData() {
         return Optional.ofNullable(this.userData);
     }
 
     /**
-     * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+     * It has been deprecated from version 1.120.0. New field `userData` instead.
      * 
      * @deprecated Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
      * 
@@ -659,7 +841,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> userdata;
 
     /**
-     * @return User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+     * @return It has been deprecated from version 1.120.0. New field `userData` instead.
      * 
      * @deprecated Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
      * 
@@ -669,16 +851,32 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.userdata);
     }
 
+    /**
+     * The description of the launch template version.
+     * 
+     */
     @Import(name="versionDescription")
     private @Nullable Output<String> versionDescription;
 
+    /**
+     * @return The description of the launch template version.
+     * 
+     */
     public Optional<Output<String>> versionDescription() {
         return Optional.ofNullable(this.versionDescription);
     }
 
+    /**
+     * The VPC ID.
+     * 
+     */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
+    /**
+     * @return The VPC ID.
+     * 
+     */
     public Optional<Output<String>> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
@@ -792,7 +990,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoReleaseTime Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+         * @param autoReleaseTime Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
          * 
          * @return builder
          * 
@@ -803,7 +1001,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoReleaseTime Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+         * @param autoReleaseTime Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
          * 
          * @return builder
          * 
@@ -812,26 +1010,50 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
             return autoReleaseTime(Output.of(autoReleaseTime));
         }
 
+        /**
+         * @param autoRenew Whether to enable auto-renewal for the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoRenew(@Nullable Output<Boolean> autoRenew) {
             $.autoRenew = autoRenew;
             return this;
         }
 
+        /**
+         * @param autoRenew Whether to enable auto-renewal for the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoRenew(Boolean autoRenew) {
             return autoRenew(Output.of(autoRenew));
         }
 
+        /**
+         * @param autoRenewPeriod The auto-renewal period of the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoRenewPeriod(@Nullable Output<Integer> autoRenewPeriod) {
             $.autoRenewPeriod = autoRenewPeriod;
             return this;
         }
 
+        /**
+         * @param autoRenewPeriod The auto-renewal period of the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoRenewPeriod(Integer autoRenewPeriod) {
             return autoRenewPeriod(Output.of(autoRenewPeriod));
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance.
+         * @param dataDisks The list of data disks created with instance. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -842,7 +1064,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance.
+         * @param dataDisks The list of data disks created with instance. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -852,7 +1074,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance.
+         * @param dataDisks The list of data disks created with instance. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -861,20 +1083,44 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
             return dataDisks(List.of(dataDisks));
         }
 
+        /**
+         * @param defaultVersionNumber The version number of the default launch template version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultVersionNumber(@Nullable Output<Integer> defaultVersionNumber) {
             $.defaultVersionNumber = defaultVersionNumber;
             return this;
         }
 
+        /**
+         * @param defaultVersionNumber The version number of the default launch template version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultVersionNumber(Integer defaultVersionNumber) {
             return defaultVersionNumber(Output.of(defaultVersionNumber));
         }
 
+        /**
+         * @param deploymentSetId The ID of the deployment set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deploymentSetId(@Nullable Output<String> deploymentSetId) {
             $.deploymentSetId = deploymentSetId;
             return this;
         }
 
+        /**
+         * @param deploymentSetId The ID of the deployment set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deploymentSetId(String deploymentSetId) {
             return deploymentSetId(Output.of(deploymentSetId));
         }
@@ -900,17 +1146,29 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
             return description(Output.of(description));
         }
 
+        /**
+         * @param enableVmOsConfig Whether to enable VM OS configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableVmOsConfig(@Nullable Output<Boolean> enableVmOsConfig) {
             $.enableVmOsConfig = enableVmOsConfig;
             return this;
         }
 
+        /**
+         * @param enableVmOsConfig Whether to enable VM OS configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableVmOsConfig(Boolean enableVmOsConfig) {
             return enableVmOsConfig(Output.of(enableVmOsConfig));
         }
 
         /**
-         * @param hostName Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+         * @param hostName Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
          * 
          * @return builder
          * 
@@ -921,7 +1179,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hostName Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+         * @param hostName Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
          * 
          * @return builder
          * 
@@ -930,29 +1188,65 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
             return hostName(Output.of(hostName));
         }
 
+        /**
+         * @param httpEndpoint Whether to enable access to instance metadata.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpEndpoint(@Nullable Output<String> httpEndpoint) {
             $.httpEndpoint = httpEndpoint;
             return this;
         }
 
+        /**
+         * @param httpEndpoint Whether to enable access to instance metadata.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpEndpoint(String httpEndpoint) {
             return httpEndpoint(Output.of(httpEndpoint));
         }
 
+        /**
+         * @param httpPutResponseHopLimit The HTTP PUT response hop limit required for instance metadata requests.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpPutResponseHopLimit(@Nullable Output<Integer> httpPutResponseHopLimit) {
             $.httpPutResponseHopLimit = httpPutResponseHopLimit;
             return this;
         }
 
+        /**
+         * @param httpPutResponseHopLimit The HTTP PUT response hop limit required for instance metadata requests.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpPutResponseHopLimit(Integer httpPutResponseHopLimit) {
             return httpPutResponseHopLimit(Output.of(httpPutResponseHopLimit));
         }
 
+        /**
+         * @param httpTokens Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpTokens(@Nullable Output<String> httpTokens) {
             $.httpTokens = httpTokens;
             return this;
         }
 
+        /**
+         * @param httpTokens Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpTokens(String httpTokens) {
             return httpTokens(Output.of(httpTokens));
         }
@@ -978,20 +1272,44 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
             return imageId(Output.of(imageId));
         }
 
+        /**
+         * @param imageOptions The options of images. See `imageOptions` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageOptions(@Nullable Output<LaunchTemplateImageOptionsArgs> imageOptions) {
             $.imageOptions = imageOptions;
             return this;
         }
 
+        /**
+         * @param imageOptions The options of images. See `imageOptions` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageOptions(LaunchTemplateImageOptionsArgs imageOptions) {
             return imageOptions(Output.of(imageOptions));
         }
 
+        /**
+         * @param imageOwnerAlias The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageOwnerAlias(@Nullable Output<String> imageOwnerAlias) {
             $.imageOwnerAlias = imageOwnerAlias;
             return this;
         }
 
+        /**
+         * @param imageOwnerAlias The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageOwnerAlias(String imageOwnerAlias) {
             return imageOwnerAlias(Output.of(imageOwnerAlias));
         }
@@ -1157,7 +1475,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param keyPairName The name of the key pair.
-         * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+         * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
          * - The password logon method for Linux instances is set to forbidden upon initialization.
          * 
          * @return builder
@@ -1170,7 +1488,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param keyPairName The name of the key pair.
-         * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+         * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
          * - The password logon method for Linux instances is set to forbidden upon initialization.
          * 
          * @return builder
@@ -1180,26 +1498,50 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
             return keyPairName(Output.of(keyPairName));
         }
 
+        /**
+         * @param latestVersionNumber The latest version number of the launch template.
+         * 
+         * @return builder
+         * 
+         */
         public Builder latestVersionNumber(@Nullable Output<Integer> latestVersionNumber) {
             $.latestVersionNumber = latestVersionNumber;
             return this;
         }
 
+        /**
+         * @param latestVersionNumber The latest version number of the launch template.
+         * 
+         * @return builder
+         * 
+         */
         public Builder latestVersionNumber(Integer latestVersionNumber) {
             return latestVersionNumber(Output.of(latestVersionNumber));
         }
 
+        /**
+         * @param launchTemplateName The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder launchTemplateName(@Nullable Output<String> launchTemplateName) {
             $.launchTemplateName = launchTemplateName;
             return this;
         }
 
+        /**
+         * @param launchTemplateName The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder launchTemplateName(String launchTemplateName) {
             return launchTemplateName(Output.of(launchTemplateName));
         }
 
         /**
-         * @param name Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+         * @param name It has been deprecated from version 1.120.0. New field `launchTemplateName` instead.
          * 
          * @return builder
          * 
@@ -1213,7 +1555,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+         * @param name It has been deprecated from version 1.120.0. New field `launchTemplateName` instead.
          * 
          * @return builder
          * 
@@ -1226,7 +1568,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param networkInterfaces The list of network interfaces created with instance.
+         * @param networkInterfaces The list of network interfaces created with instance. See `networkInterfaces` below.
          * 
          * @return builder
          * 
@@ -1237,7 +1579,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param networkInterfaces The list of network interfaces created with instance.
+         * @param networkInterfaces The list of network interfaces created with instance. See `networkInterfaces` below.
          * 
          * @return builder
          * 
@@ -1267,38 +1609,86 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
             return networkType(Output.of(networkType));
         }
 
+        /**
+         * @param passwordInherit Whether to use the password inherited from the image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder passwordInherit(@Nullable Output<Boolean> passwordInherit) {
             $.passwordInherit = passwordInherit;
             return this;
         }
 
+        /**
+         * @param passwordInherit Whether to use the password inherited from the image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder passwordInherit(Boolean passwordInherit) {
             return passwordInherit(Output.of(passwordInherit));
         }
 
+        /**
+         * @param period The purchase duration of the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(@Nullable Output<Integer> period) {
             $.period = period;
             return this;
         }
 
+        /**
+         * @param period The purchase duration of the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(Integer period) {
             return period(Output.of(period));
         }
 
+        /**
+         * @param periodUnit The unit of the purchase duration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder periodUnit(@Nullable Output<String> periodUnit) {
             $.periodUnit = periodUnit;
             return this;
         }
 
+        /**
+         * @param periodUnit The unit of the purchase duration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder periodUnit(String periodUnit) {
             return periodUnit(Output.of(periodUnit));
         }
 
+        /**
+         * @param privateIpAddress The private IP address of the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateIpAddress(@Nullable Output<String> privateIpAddress) {
             $.privateIpAddress = privateIpAddress;
             return this;
         }
 
+        /**
+         * @param privateIpAddress The private IP address of the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateIpAddress(String privateIpAddress) {
             return privateIpAddress(Output.of(privateIpAddress));
         }
@@ -1324,11 +1714,23 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
             return ramRoleName(Output.of(ramRoleName));
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group to which the resource belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
             $.resourceGroupId = resourceGroupId;
             return this;
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group to which the resource belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
         }
@@ -1375,24 +1777,54 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
             return securityGroupId(Output.of(securityGroupId));
         }
 
+        /**
+         * @param securityGroupIds The list of security group IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGroupIds(@Nullable Output<List<String>> securityGroupIds) {
             $.securityGroupIds = securityGroupIds;
             return this;
         }
 
+        /**
+         * @param securityGroupIds The list of security group IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGroupIds(List<String> securityGroupIds) {
             return securityGroupIds(Output.of(securityGroupIds));
         }
 
+        /**
+         * @param securityGroupIds The list of security group IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
         }
 
+        /**
+         * @param spotDuration The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder spotDuration(@Nullable Output<String> spotDuration) {
             $.spotDuration = spotDuration;
             return this;
         }
 
+        /**
+         * @param spotDuration The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder spotDuration(String spotDuration) {
             return spotDuration(Output.of(spotDuration));
         }
@@ -1445,22 +1877,29 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
             return spotStrategy(Output.of(spotStrategy));
         }
 
+        /**
+         * @param systemDisk The system disk. See `systemDisk` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder systemDisk(@Nullable Output<LaunchTemplateSystemDiskArgs> systemDisk) {
             $.systemDisk = systemDisk;
             return this;
         }
 
+        /**
+         * @param systemDisk The system disk. See `systemDisk` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder systemDisk(LaunchTemplateSystemDiskArgs systemDisk) {
             return systemDisk(Output.of(systemDisk));
         }
 
         /**
-         * @param systemDiskCategory The category of the system disk. System disk type. Optional values:
-         * - cloud: Basic cloud disk.
-         * - cloud_efficiency: Ultra cloud disk.
-         * - cloud_ssd: SSD cloud Disks.
-         * - ephemeral_ssd: local SSD Disks
-         * - cloud_essd: ESSD cloud Disks.
+         * @param systemDiskCategory It has been deprecated from version 1.120.0. New field `systemDisk` instead.
          * 
          * @return builder
          * 
@@ -1474,12 +1913,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param systemDiskCategory The category of the system disk. System disk type. Optional values:
-         * - cloud: Basic cloud disk.
-         * - cloud_efficiency: Ultra cloud disk.
-         * - cloud_ssd: SSD cloud Disks.
-         * - ephemeral_ssd: local SSD Disks
-         * - cloud_essd: ESSD cloud Disks.
+         * @param systemDiskCategory It has been deprecated from version 1.120.0. New field `systemDisk` instead.
          * 
          * @return builder
          * 
@@ -1492,7 +1926,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param systemDiskDescription System disk description. It cannot begin with http:// or https://.
+         * @param systemDiskDescription It has been deprecated from version 1.120.0. New field `systemDisk` instead.
          * 
          * @return builder
          * 
@@ -1506,7 +1940,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param systemDiskDescription System disk description. It cannot begin with http:// or https://.
+         * @param systemDiskDescription It has been deprecated from version 1.120.0. New field `systemDisk` instead.
          * 
          * @return builder
          * 
@@ -1519,7 +1953,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param systemDiskName System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+         * @param systemDiskName It has been deprecated from version 1.120.0. New field `systemDisk` instead.
          * 
          * @return builder
          * 
@@ -1533,7 +1967,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param systemDiskName System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+         * @param systemDiskName It has been deprecated from version 1.120.0. New field `systemDisk` instead.
          * 
          * @return builder
          * 
@@ -1546,7 +1980,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param systemDiskSize Size of the system disk, measured in GB. Value range: [20, 500].
+         * @param systemDiskSize It has been deprecated from version 1.120.0. New field `systemDisk` instead.
          * 
          * @return builder
          * 
@@ -1560,7 +1994,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param systemDiskSize Size of the system disk, measured in GB. Value range: [20, 500].
+         * @param systemDiskSize It has been deprecated from version 1.120.0. New field `systemDisk` instead.
          * 
          * @return builder
          * 
@@ -1597,44 +2031,92 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param templateResourceGroupId The ID of the resource group for the launch template.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateResourceGroupId(@Nullable Output<String> templateResourceGroupId) {
             $.templateResourceGroupId = templateResourceGroupId;
             return this;
         }
 
+        /**
+         * @param templateResourceGroupId The ID of the resource group for the launch template.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateResourceGroupId(String templateResourceGroupId) {
             return templateResourceGroupId(Output.of(templateResourceGroupId));
         }
 
+        /**
+         * @param templateTags A mapping of tags to assign to the launch template.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateTags(@Nullable Output<Map<String,String>> templateTags) {
             $.templateTags = templateTags;
             return this;
         }
 
+        /**
+         * @param templateTags A mapping of tags to assign to the launch template.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateTags(Map<String,String> templateTags) {
             return templateTags(Output.of(templateTags));
         }
 
+        /**
+         * @param updateDefaultVersionNumber Whether to update the default version of the launch template to the latest version automatically.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateDefaultVersionNumber(@Nullable Output<Boolean> updateDefaultVersionNumber) {
             $.updateDefaultVersionNumber = updateDefaultVersionNumber;
             return this;
         }
 
+        /**
+         * @param updateDefaultVersionNumber Whether to update the default version of the launch template to the latest version automatically.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateDefaultVersionNumber(Boolean updateDefaultVersionNumber) {
             return updateDefaultVersionNumber(Output.of(updateDefaultVersionNumber));
         }
 
+        /**
+         * @param userData User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userData(@Nullable Output<String> userData) {
             $.userData = userData;
             return this;
         }
 
+        /**
+         * @param userData User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userData(String userData) {
             return userData(Output.of(userData));
         }
 
         /**
-         * @param userdata User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+         * @param userdata It has been deprecated from version 1.120.0. New field `userData` instead.
          * 
          * @return builder
          * 
@@ -1648,7 +2130,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param userdata User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+         * @param userdata It has been deprecated from version 1.120.0. New field `userData` instead.
          * 
          * @return builder
          * 
@@ -1660,20 +2142,44 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
             return userdata(Output.of(userdata));
         }
 
+        /**
+         * @param versionDescription The description of the launch template version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder versionDescription(@Nullable Output<String> versionDescription) {
             $.versionDescription = versionDescription;
             return this;
         }
 
+        /**
+         * @param versionDescription The description of the launch template version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder versionDescription(String versionDescription) {
             return versionDescription(Output.of(versionDescription));
         }
 
+        /**
+         * @param vpcId The VPC ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(@Nullable Output<String> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
 
+        /**
+         * @param vpcId The VPC ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
         }

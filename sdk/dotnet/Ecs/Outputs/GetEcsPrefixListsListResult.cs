@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetEcsPrefixListsListResult
     {
         /// <summary>
-        /// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+        /// The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
         /// </summary>
         public readonly string AddressFamily;
         /// <summary>
@@ -26,9 +26,12 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The description of the prefix list.
+        /// The description of the entry.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The entries of the prefix list.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsPrefixListsListEntryResult> Entries;
         /// <summary>
         /// The ID of the prefix list.

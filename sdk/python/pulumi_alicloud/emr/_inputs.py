@@ -46,7 +46,7 @@ class ClusterBootstrapActionArgsDict(TypedDict):
     """
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+    bootstrap action name.
     """
     path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -67,7 +67,7 @@ class ClusterBootstrapActionArgs:
         :param pulumi.Input[_builtins.str] execution_fail_strategy: bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
         :param pulumi.Input[_builtins.str] execution_moment: bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
         :param pulumi.Input[_builtins.str] execution_target: bootstrap action execution target, you can specify the host group name, e.g. "core_group". If this is not specified, the bootstrap action execution target is whole cluster.
-        :param pulumi.Input[_builtins.str] name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+        :param pulumi.Input[_builtins.str] name: bootstrap action name.
         :param pulumi.Input[_builtins.str] path: bootstrap action path, e.g. "oss://bucket/path".
         """
         if arg is not None:
@@ -135,7 +135,7 @@ class ClusterBootstrapActionArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+        bootstrap action name.
         """
         return pulumi.get(self, "name")
 
@@ -170,6 +170,9 @@ class ClusterConfigArgsDict(TypedDict):
     Custom configuration service file name, e.g. ’hdfs-site’.
     """
     service_name: pulumi.Input[_builtins.str]
+    """
+    Custom configuration service name, e.g. ’HDFS’.
+    """
 
 @pulumi.input_type
 class ClusterConfigArgs:
@@ -182,6 +185,7 @@ class ClusterConfigArgs:
         :param pulumi.Input[_builtins.str] config_key: Custom configuration service config key, e.g. ’dfs.replication’.
         :param pulumi.Input[_builtins.str] config_value: Custom configuration service config value, e.g. ’3’.
         :param pulumi.Input[_builtins.str] file_name: Custom configuration service file name, e.g. ’hdfs-site’.
+        :param pulumi.Input[_builtins.str] service_name: Custom configuration service name, e.g. ’HDFS’.
         """
         pulumi.set(__self__, "config_key", config_key)
         pulumi.set(__self__, "config_value", config_value)
@@ -227,6 +231,9 @@ class ClusterConfigArgs:
     @_builtins.property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Custom configuration service name, e.g. ’HDFS’.
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -241,7 +248,7 @@ class ClusterHostGroupArgsDict(TypedDict):
     """
     charge_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+    Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
     """
     decommission_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -264,6 +271,9 @@ class ClusterHostGroupArgsDict(TypedDict):
     Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
     """
     gpu_driver: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    GPU driver.
+    """
     host_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     host group name.
@@ -318,12 +328,13 @@ class ClusterHostGroupArgs:
                  sys_disk_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
-        :param pulumi.Input[_builtins.str] charge_type: Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+        :param pulumi.Input[_builtins.str] charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
         :param pulumi.Input[_builtins.int] decommission_timeout: Graceful decommission timeout, unit: seconds.
         :param pulumi.Input[_builtins.str] disk_capacity: Data disk capacity.
         :param pulumi.Input[_builtins.str] disk_count: Data disk count.
         :param pulumi.Input[_builtins.str] disk_type: Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
         :param pulumi.Input[_builtins.bool] enable_graceful_decommission: Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
+        :param pulumi.Input[_builtins.str] gpu_driver: GPU driver.
         :param pulumi.Input[_builtins.str] host_group_name: host group name.
         :param pulumi.Input[_builtins.str] host_group_type: host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
         :param pulumi.Input[_builtins.str] instance_list: Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \\".
@@ -382,7 +393,7 @@ class ClusterHostGroupArgs:
     @pulumi.getter(name="chargeType")
     def charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+        Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
         """
         return pulumi.get(self, "charge_type")
 
@@ -453,6 +464,9 @@ class ClusterHostGroupArgs:
     @_builtins.property
     @pulumi.getter(name="gpuDriver")
     def gpu_driver(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        GPU driver.
+        """
         return pulumi.get(self, "gpu_driver")
 
     @gpu_driver.setter
@@ -628,6 +642,9 @@ class ClusterModifyClusterServiceConfigArgsDict(TypedDict):
     Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
     """
     service_name: pulumi.Input[_builtins.str]
+    """
+    Cluster service configuration modification name, e.g. ’HDFS’.
+    """
     comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cluster service configuration modification comment, e.g. "Modify tez configuration".
@@ -671,6 +688,7 @@ class ClusterModifyClusterServiceConfigArgs:
                  refresh_host_config: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] config_params: Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
+        :param pulumi.Input[_builtins.str] service_name: Cluster service configuration modification name, e.g. ’HDFS’.
         :param pulumi.Input[_builtins.str] comment: Cluster service configuration modification comment, e.g. "Modify tez configuration".
         :param pulumi.Input[_builtins.str] config_type: Cluster service configuration modification type.
         :param pulumi.Input[_builtins.str] custom_config_params: Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
@@ -711,6 +729,9 @@ class ClusterModifyClusterServiceConfigArgs:
     @_builtins.property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Cluster service configuration modification name, e.g. ’HDFS’.
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter

@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetIpInfoResult {
+    /**
+     * @return Whether it belongs to an Alibaba Cloud CDN node.Valid values: `True`, `False`.
+     * 
+     */
     private String cdnIp;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -17,12 +21,32 @@ public final class GetIpInfoResult {
      */
     private String id;
     private String ip;
+    /**
+     * @return The operator&#39;s Chinese name, e.g. `电信`.
+     * 
+     */
     private String isp;
+    /**
+     * @return The operator&#39;s English name, e.g. `telecom`.
+     * 
+     */
     private String ispEname;
+    /**
+     * @return Chinese name of the region, e.g. `中国-贵州省-贵阳市`.
+     * 
+     */
     private String region;
+    /**
+     * @return English name of the region, e.g. `China-Guizhou-guiyang`.
+     * 
+     */
     private String regionEname;
 
     private GetIpInfoResult() {}
+    /**
+     * @return Whether it belongs to an Alibaba Cloud CDN node.Valid values: `True`, `False`.
+     * 
+     */
     public String cdnIp() {
         return this.cdnIp;
     }
@@ -36,15 +60,31 @@ public final class GetIpInfoResult {
     public String ip() {
         return this.ip;
     }
+    /**
+     * @return The operator&#39;s Chinese name, e.g. `电信`.
+     * 
+     */
     public String isp() {
         return this.isp;
     }
+    /**
+     * @return The operator&#39;s English name, e.g. `telecom`.
+     * 
+     */
     public String ispEname() {
         return this.ispEname;
     }
+    /**
+     * @return Chinese name of the region, e.g. `中国-贵州省-贵阳市`.
+     * 
+     */
     public String region() {
         return this.region;
     }
+    /**
+     * @return English name of the region, e.g. `China-Guizhou-guiyang`.
+     * 
+     */
     public String regionEname() {
         return this.regionEname;
     }

@@ -74,6 +74,9 @@ class GetVaultsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of vault names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -84,16 +87,25 @@ class GetVaultsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="vaultType")
     def vault_type(self) -> Optional[_builtins.str]:
+        """
+        The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        """
         return pulumi.get(self, "vault_type")
 
     @_builtins.property
     @pulumi.getter
     def vaults(self) -> Sequence['outputs.GetVaultsVaultResult']:
+        """
+        A list of Hbr vaults. Each element contains the following attributes:
+        """
         return pulumi.get(self, "vaults")
 
 
@@ -122,7 +134,7 @@ def get_vaults(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Hbr Vaults of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.129.0+.
+    > **NOTE:** Available since v1.129.0.
 
     ## Example Usage
 
@@ -172,7 +184,7 @@ def get_vaults_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str
     """
     This data source provides the Hbr Vaults of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.129.0+.
+    > **NOTE:** Available since v1.129.0.
 
     ## Example Usage
 

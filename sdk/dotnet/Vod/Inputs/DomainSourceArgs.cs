@@ -19,19 +19,19 @@ namespace Pulumi.AliCloud.Vod.Inputs
         public Input<string> SourceContent { get; set; } = null!;
 
         /// <summary>
-        /// The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+        /// The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
         /// </summary>
         [Input("sourcePort", required: true)]
         public Input<string> SourcePort { get; set; } = null!;
 
         /// <summary>
-        /// The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+        /// The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
         /// </summary>
         [Input("sourcePriority")]
         public Input<string>? SourcePriority { get; set; }
 
         /// <summary>
-        /// The type of the origin server. Valid values:
+        /// The origin server type. Valid values:
         /// </summary>
         [Input("sourceType", required: true)]
         public Input<string> SourceType { get; set; } = null!;

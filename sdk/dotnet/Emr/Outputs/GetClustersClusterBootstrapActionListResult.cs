@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly string Arg;
         /// <summary>
-        /// The name of the boot operation.
+        /// The internal name of the service.
         /// </summary>
         public readonly string Name;
         /// <summary>

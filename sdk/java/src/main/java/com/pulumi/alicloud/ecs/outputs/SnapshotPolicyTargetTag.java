@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SnapshotPolicyTargetTag {
+    /**
+     * @return The key of the tag.
+     * 
+     */
     private @Nullable String tagKey;
+    /**
+     * @return The value of the tag.
+     * 
+     */
     private @Nullable String tagValue;
 
     private SnapshotPolicyTargetTag() {}
+    /**
+     * @return The key of the tag.
+     * 
+     */
     public Optional<String> tagKey() {
         return Optional.ofNullable(this.tagKey);
     }
+    /**
+     * @return The value of the tag.
+     * 
+     */
     public Optional<String> tagValue() {
         return Optional.ofNullable(this.tagValue);
     }

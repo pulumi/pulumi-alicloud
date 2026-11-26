@@ -27,7 +27,7 @@ class GetKubernetesVersionResult:
     """
     A collection of values returned by getKubernetesVersion.
     """
-    def __init__(__self__, cluster_type=None, id=None, kubernetes_version=None, metadatas=None, profile=None):
+    def __init__(__self__, cluster_type=None, id=None, kubernetes_version=None, metadatas=None, profile=None, support_policy=None):
         if cluster_type and not isinstance(cluster_type, str):
             raise TypeError("Expected argument 'cluster_type' to be a str")
         pulumi.set(__self__, "cluster_type", cluster_type)
@@ -43,6 +43,9 @@ class GetKubernetesVersionResult:
         if profile and not isinstance(profile, str):
             raise TypeError("Expected argument 'profile' to be a str")
         pulumi.set(__self__, "profile", profile)
+        if support_policy and not isinstance(support_policy, str):
+            raise TypeError("Expected argument 'support_policy' to be a str")
+        pulumi.set(__self__, "support_policy", support_policy)
 
     @_builtins.property
     @pulumi.getter(name="clusterType")
@@ -66,7 +69,7 @@ class GetKubernetesVersionResult:
     @pulumi.getter
     def metadatas(self) -> Sequence['outputs.GetKubernetesVersionMetadataResult']:
         """
-        A list of metadata of kubernetes version.
+        A Set of Kubernetes version metadata.
         """
         return pulumi.get(self, "metadatas")
 
@@ -74,6 +77,14 @@ class GetKubernetesVersionResult:
     @pulumi.getter
     def profile(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "profile")
+
+    @_builtins.property
+    @pulumi.getter(name="supportPolicy")
+    def support_policy(self) -> Optional[_builtins.str]:
+        """
+        (Available since v2.3.0) The support policy required by the version (`Standard` or `Extended`).
+        """
+        return pulumi.get(self, "support_policy")
 
 
 class AwaitableGetKubernetesVersionResult(GetKubernetesVersionResult):
@@ -86,12 +97,14 @@ class AwaitableGetKubernetesVersionResult(GetKubernetesVersionResult):
             id=self.id,
             kubernetes_version=self.kubernetes_version,
             metadatas=self.metadatas,
-            profile=self.profile)
+            profile=self.profile,
+            support_policy=self.support_policy)
 
 
 def get_kubernetes_version(cluster_type: Optional[_builtins.str] = None,
                            kubernetes_version: Optional[_builtins.str] = None,
                            profile: Optional[_builtins.str] = None,
+                           support_policy: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubernetesVersionResult:
     """
     This data source provides the details of the Kubernetes version supported by ACK.
@@ -144,15 +157,28 @@ def get_kubernetes_version(cluster_type: Optional[_builtins.str] = None,
     pulumi.export("metadata", default.metadatas)
     ```
 
+    ### Query extended support versions
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    extended = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes",
+        profile="Default",
+        support_policy="Extended")
+    ```
+
 
     :param _builtins.str cluster_type: The type of cluster. Its valid value are `Kubernetes` and `ManagedKubernetes`.
     :param _builtins.str kubernetes_version: The ACK released kubernetes version.
     :param _builtins.str profile: The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
+    :param _builtins.str support_policy: Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
     """
     __args__ = dict()
     __args__['clusterType'] = cluster_type
     __args__['kubernetesVersion'] = kubernetes_version
     __args__['profile'] = profile
+    __args__['supportPolicy'] = support_policy
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:cs/getKubernetesVersion:getKubernetesVersion', __args__, opts=opts, typ=GetKubernetesVersionResult).value
 
@@ -161,10 +187,12 @@ def get_kubernetes_version(cluster_type: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         kubernetes_version=pulumi.get(__ret__, 'kubernetes_version'),
         metadatas=pulumi.get(__ret__, 'metadatas'),
-        profile=pulumi.get(__ret__, 'profile'))
+        profile=pulumi.get(__ret__, 'profile'),
+        support_policy=pulumi.get(__ret__, 'support_policy'))
 def get_kubernetes_version_output(cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
                                   kubernetes_version: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   profile: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  support_policy: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubernetesVersionResult]:
     """
     This data source provides the details of the Kubernetes version supported by ACK.
@@ -217,15 +245,28 @@ def get_kubernetes_version_output(cluster_type: pulumi.Input[Optional[_builtins.
     pulumi.export("metadata", default.metadatas)
     ```
 
+    ### Query extended support versions
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    extended = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes",
+        profile="Default",
+        support_policy="Extended")
+    ```
+
 
     :param _builtins.str cluster_type: The type of cluster. Its valid value are `Kubernetes` and `ManagedKubernetes`.
     :param _builtins.str kubernetes_version: The ACK released kubernetes version.
     :param _builtins.str profile: The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
+    :param _builtins.str support_policy: Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
     """
     __args__ = dict()
     __args__['clusterType'] = cluster_type
     __args__['kubernetesVersion'] = kubernetes_version
     __args__['profile'] = profile
+    __args__['supportPolicy'] = support_policy
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getKubernetesVersion:getKubernetesVersion', __args__, opts=opts, typ=GetKubernetesVersionResult)
     return __ret__.apply(lambda __response__: GetKubernetesVersionResult(
@@ -233,4 +274,5 @@ def get_kubernetes_version_output(cluster_type: pulumi.Input[Optional[_builtins.
         id=pulumi.get(__response__, 'id'),
         kubernetes_version=pulumi.get(__response__, 'kubernetes_version'),
         metadatas=pulumi.get(__response__, 'metadatas'),
-        profile=pulumi.get(__response__, 'profile')))
+        profile=pulumi.get(__response__, 'profile'),
+        support_policy=pulumi.get(__response__, 'support_policy')))

@@ -39,12 +39,12 @@ public final class GetClustersClusterHostGroupList {
      */
     private Integer diskCount;
     /**
-     * @return System disk type:
+     * @return System disk type.
      * 
      */
     private String diskType;
     /**
-     * @return The current operation type of the machine Group:
+     * @return The current operation type of the machine Group.
      * 
      */
     private String hostGroupChangeType;
@@ -59,7 +59,7 @@ public final class GetClustersClusterHostGroupList {
      */
     private String hostGroupName;
     /**
-     * @return Role of host in cluster:
+     * @return Role of host in cluster.
      * 
      */
     private String hostGroupType;
@@ -84,7 +84,7 @@ public final class GetClustersClusterHostGroupList {
      */
     private List<GetClustersClusterHostGroupListNode> nodes;
     /**
-     * @return Package year and month time (days).
+     * @return The package year and month time of the machine group. The Valid Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
      * 
      */
     private String period;
@@ -126,14 +126,14 @@ public final class GetClustersClusterHostGroupList {
         return this.diskCount;
     }
     /**
-     * @return System disk type:
+     * @return System disk type.
      * 
      */
     public String diskType() {
         return this.diskType;
     }
     /**
-     * @return The current operation type of the machine Group:
+     * @return The current operation type of the machine Group.
      * 
      */
     public String hostGroupChangeType() {
@@ -154,7 +154,7 @@ public final class GetClustersClusterHostGroupList {
         return this.hostGroupName;
     }
     /**
-     * @return Role of host in cluster:
+     * @return Role of host in cluster.
      * 
      */
     public String hostGroupType() {
@@ -189,7 +189,7 @@ public final class GetClustersClusterHostGroupList {
         return this.nodes;
     }
     /**
-     * @return Package year and month time (days).
+     * @return The package year and month time of the machine group. The Valid Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
      * 
      */
     public String period() {

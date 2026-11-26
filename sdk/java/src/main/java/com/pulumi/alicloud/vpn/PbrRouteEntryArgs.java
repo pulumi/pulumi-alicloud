@@ -10,11 +10,28 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PbrRouteEntryArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PbrRouteEntryArgs Empty = new PbrRouteEntryArgs();
+
+    /**
+     * The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
 
     /**
      * The next hop of the policy-based route.
@@ -29,6 +46,25 @@ public final class PbrRouteEntryArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> nextHop() {
         return this.nextHop;
+    }
+
+    /**
+     * The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+     * 
+     * &gt; **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+     * 
+     */
+    @Import(name="priority")
+    private @Nullable Output<Integer> priority;
+
+    /**
+     * @return The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+     * 
+     * &gt; **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+     * 
+     */
+    public Optional<Output<Integer>> priority() {
+        return Optional.ofNullable(this.priority);
     }
 
     /**
@@ -109,7 +145,9 @@ public final class PbrRouteEntryArgs extends com.pulumi.resources.ResourceArgs {
     private PbrRouteEntryArgs() {}
 
     private PbrRouteEntryArgs(PbrRouteEntryArgs $) {
+        this.description = $.description;
         this.nextHop = $.nextHop;
+        this.priority = $.priority;
         this.publishVpc = $.publishVpc;
         this.routeDest = $.routeDest;
         this.routeSource = $.routeSource;
@@ -136,6 +174,27 @@ public final class PbrRouteEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param description The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
          * @param nextHop The next hop of the policy-based route.
          * 
          * @return builder
@@ -154,6 +213,31 @@ public final class PbrRouteEntryArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nextHop(String nextHop) {
             return nextHop(Output.of(nextHop));
+        }
+
+        /**
+         * @param priority The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+         * 
+         * &gt; **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(@Nullable Output<Integer> priority) {
+            $.priority = priority;
+            return this;
+        }
+
+        /**
+         * @param priority The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+         * 
+         * &gt; **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(Integer priority) {
+            return priority(Output.of(priority));
         }
 
         /**

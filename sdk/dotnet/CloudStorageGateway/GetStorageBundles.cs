@@ -11,12 +11,102 @@ namespace Pulumi.AliCloud.CloudStorageGateway
 {
     public static class GetStorageBundles
     {
+        /// <summary>
+        /// This data source provides the Cloud Storage Gateway Storage Bundles of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.132.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.CloudStorageGateway.GetStorageBundles.Invoke(new()
+        ///     {
+        ///         BackendBucketRegionId = "cn-hangzhou",
+        ///         NameRegex = "^my-StorageBundle",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["storageBundleId"] = example.Apply(getStorageBundlesResult =&gt; getStorageBundlesResult.Bundles[0]?.StorageBundleId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetStorageBundlesResult> InvokeAsync(GetStorageBundlesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStorageBundlesResult>("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", args ?? new GetStorageBundlesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source provides the Cloud Storage Gateway Storage Bundles of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.132.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.CloudStorageGateway.GetStorageBundles.Invoke(new()
+        ///     {
+        ///         BackendBucketRegionId = "cn-hangzhou",
+        ///         NameRegex = "^my-StorageBundle",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["storageBundleId"] = example.Apply(getStorageBundlesResult =&gt; getStorageBundlesResult.Bundles[0]?.StorageBundleId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetStorageBundlesResult> Invoke(GetStorageBundlesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStorageBundlesResult>("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", args ?? new GetStorageBundlesInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source provides the Cloud Storage Gateway Storage Bundles of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.132.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.CloudStorageGateway.GetStorageBundles.Invoke(new()
+        ///     {
+        ///         BackendBucketRegionId = "cn-hangzhou",
+        ///         NameRegex = "^my-StorageBundle",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["storageBundleId"] = example.Apply(getStorageBundlesResult =&gt; getStorageBundlesResult.Bundles[0]?.StorageBundleId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetStorageBundlesResult> Invoke(GetStorageBundlesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetStorageBundlesResult>("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", args ?? new GetStorageBundlesInvokeArgs(), options.WithDefaults());
     }
@@ -24,26 +114,45 @@ namespace Pulumi.AliCloud.CloudStorageGateway
 
     public sealed class GetStorageBundlesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The region id of the backend bucket.
+        /// </summary>
         [Input("backendBucketRegionId", required: true)]
         public string BackendBucketRegionId { get; set; } = null!;
 
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of Storage Bundle IDs.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by Storage Bundle name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// Page number.
+        /// </summary>
         [Input("pageNumber")]
         public int? PageNumber { get; set; }
 
+        /// <summary>
+        /// Page size. Default to 50.
+        /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
@@ -55,26 +164,45 @@ namespace Pulumi.AliCloud.CloudStorageGateway
 
     public sealed class GetStorageBundlesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The region id of the backend bucket.
+        /// </summary>
         [Input("backendBucketRegionId", required: true)]
         public Input<string> BackendBucketRegionId { get; set; } = null!;
 
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Storage Bundle IDs.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by Storage Bundle name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// Page number.
+        /// </summary>
         [Input("pageNumber")]
         public Input<int>? PageNumber { get; set; }
 
+        /// <summary>
+        /// Page size. Default to 50.
+        /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
@@ -89,17 +217,29 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     public sealed class GetStorageBundlesResult
     {
         public readonly string BackendBucketRegionId;
+        /// <summary>
+        /// A list of Cloud Storage Gateway Storage Bundles. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetStorageBundlesBundleResult> Bundles;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Storage Bundle IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Storage Bundle names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// Total count of Storage Bundle.
+        /// </summary>
         public readonly int TotalCount;
 
         [OutputConstructor]

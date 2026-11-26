@@ -50,11 +50,17 @@ class GetGatewayCacheDisksResult:
     @_builtins.property
     @pulumi.getter
     def disks(self) -> Sequence['outputs.GetGatewayCacheDisksDiskResult']:
+        """
+        A list of Cloud Storage Gateway Gateway Cache Disks. Each element contains the following attributes:
+        """
         return pulumi.get(self, "disks")
 
     @_builtins.property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> _builtins.str:
+        """
+        The ID of the gateway.
+        """
         return pulumi.get(self, "gateway_id")
 
     @_builtins.property
@@ -78,6 +84,9 @@ class GetGatewayCacheDisksResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.int]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -103,7 +112,7 @@ def get_gateway_cache_disks(gateway_id: Optional[_builtins.str] = None,
     """
     This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.144.0+.
+    > **NOTE:** Available since v1.144.0.
 
     ## Example Usage
 
@@ -157,7 +166,7 @@ def get_gateway_cache_disks_output(gateway_id: pulumi.Input[Optional[_builtins.s
     """
     This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.144.0+.
+    > **NOTE:** Available since v1.144.0.
 
     ## Example Usage
 

@@ -11,11 +11,19 @@ import java.util.Objects;
 @CustomType
 public final class GetKeyPairsKeyPairInstance {
     /**
-     * @return The ID of the availability zone where the ECS instance is located.
+     * @return The availability zone ID.
      * 
      */
     private String availabilityZone;
+    /**
+     * @return Description of the ECS instance.
+     * 
+     */
     private String description;
+    /**
+     * @return The image ID.
+     * 
+     */
     private String imageId;
     /**
      * @return The ID of the ECS instance.
@@ -27,41 +35,61 @@ public final class GetKeyPairsKeyPairInstance {
      * 
      */
     private String instanceName;
+    /**
+     * @return The instance type.
+     * 
+     */
     private String instanceType;
     /**
-     * @return Name of the key pair.
+     * @return The key name.
      * 
      */
     private String keyName;
     /**
-     * @return The private IP address of the ECS instance.
+     * @return The private IP address.
      * 
      */
     private String privateIp;
     /**
-     * @return The public IP address or EIP of the ECS instance.
+     * @return The public IP address.
      * 
      */
     private String publicIp;
+    /**
+     * @return The region ID.
+     * 
+     */
     private String regionId;
+    /**
+     * @return The status of the ECS instance.
+     * 
+     */
     private String status;
     /**
-     * @return The ID of the vSwitch attached to the ECS instance.
+     * @return The vSwitch ID.
      * 
      */
     private String vswitchId;
 
     private GetKeyPairsKeyPairInstance() {}
     /**
-     * @return The ID of the availability zone where the ECS instance is located.
+     * @return The availability zone ID.
      * 
      */
     public String availabilityZone() {
         return this.availabilityZone;
     }
+    /**
+     * @return Description of the ECS instance.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The image ID.
+     * 
+     */
     public String imageId() {
         return this.imageId;
     }
@@ -79,38 +107,50 @@ public final class GetKeyPairsKeyPairInstance {
     public String instanceName() {
         return this.instanceName;
     }
+    /**
+     * @return The instance type.
+     * 
+     */
     public String instanceType() {
         return this.instanceType;
     }
     /**
-     * @return Name of the key pair.
+     * @return The key name.
      * 
      */
     public String keyName() {
         return this.keyName;
     }
     /**
-     * @return The private IP address of the ECS instance.
+     * @return The private IP address.
      * 
      */
     public String privateIp() {
         return this.privateIp;
     }
     /**
-     * @return The public IP address or EIP of the ECS instance.
+     * @return The public IP address.
      * 
      */
     public String publicIp() {
         return this.publicIp;
     }
+    /**
+     * @return The region ID.
+     * 
+     */
     public String regionId() {
         return this.regionId;
     }
+    /**
+     * @return The status of the ECS instance.
+     * 
+     */
     public String status() {
         return this.status;
     }
     /**
-     * @return The ID of the vSwitch attached to the ECS instance.
+     * @return The vSwitch ID.
      * 
      */
     public String vswitchId() {

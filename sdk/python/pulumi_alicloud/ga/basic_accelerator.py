@@ -534,6 +534,8 @@ class BasicAccelerator(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+
         ## Example Usage
 
         Basic Usage
@@ -543,13 +545,10 @@ class BasicAccelerator(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.ga.BasicAccelerator("default",
-            duration=1,
-            pricing_cycle="Month",
+            payment_type="PayAsYouGo",
             basic_accelerator_name="tf-example-value",
             description="tf-example-value",
-            bandwidth_billing_type="BandwidthPackage",
-            auto_pay=True,
-            auto_use_coupon="true")
+            bandwidth_billing_type="CDT")
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -595,6 +594,8 @@ class BasicAccelerator(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+
         ## Example Usage
 
         Basic Usage
@@ -604,13 +605,10 @@ class BasicAccelerator(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.ga.BasicAccelerator("default",
-            duration=1,
-            pricing_cycle="Month",
+            payment_type="PayAsYouGo",
             basic_accelerator_name="tf-example-value",
             description="tf-example-value",
-            bandwidth_billing_type="BandwidthPackage",
-            auto_pay=True,
-            auto_use_coupon="true")
+            bandwidth_billing_type="CDT")
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES

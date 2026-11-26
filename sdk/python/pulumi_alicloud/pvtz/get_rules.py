@@ -53,6 +53,9 @@ class GetRulesResult:
     @_builtins.property
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the Endpoint.
+        """
         return pulumi.get(self, "endpoint_id")
 
     @_builtins.property
@@ -76,6 +79,9 @@ class GetRulesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Rule names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -86,6 +92,9 @@ class GetRulesResult:
     @_builtins.property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetRulesRuleResult']:
+        """
+        A list of PrivateZone Rules. Each element contains the following attributes:
+        """
         return pulumi.get(self, "rules")
 
 
@@ -112,7 +121,7 @@ def get_rules(endpoint_id: Optional[_builtins.str] = None,
     """
     This data source provides the PrivateZone Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.143.0+.
+    > **NOTE:** Available since v1.143.0.
 
     ## Example Usage
 
@@ -158,7 +167,7 @@ def get_rules_output(endpoint_id: pulumi.Input[Optional[Optional[_builtins.str]]
     """
     This data source provides the PrivateZone Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.143.0+.
+    > **NOTE:** Available since v1.143.0.
 
     ## Example Usage
 

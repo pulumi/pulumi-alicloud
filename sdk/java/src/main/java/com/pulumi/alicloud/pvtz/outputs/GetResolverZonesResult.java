@@ -20,7 +20,15 @@ public final class GetResolverZonesResult {
      */
     private String id;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the Zone.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A list of Private Zone Resolver zones. Each element contains the following attributes:
+     * 
+     */
     private List<GetResolverZonesZone> zones;
 
     private GetResolverZonesResult() {}
@@ -34,9 +42,17 @@ public final class GetResolverZonesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the Zone.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A list of Private Zone Resolver zones. Each element contains the following attributes:
+     * 
+     */
     public List<GetResolverZonesZone> zones() {
         return this.zones;
     }

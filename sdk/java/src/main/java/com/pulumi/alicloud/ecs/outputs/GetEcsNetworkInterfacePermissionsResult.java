@@ -21,11 +21,23 @@ public final class GetEcsNetworkInterfacePermissionsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The ID of the network interface.
+     * 
+     */
     private String networkInterfaceId;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return A list of Ecs Network Interface Permissions. Each element contains the following attributes:
+     * 
+     */
     private List<GetEcsNetworkInterfacePermissionsPermission> permissions;
+    /**
+     * @return The Status of the Network Interface Permissions.
+     * 
+     */
     private @Nullable String status;
     private Integer totalCount;
 
@@ -40,6 +52,10 @@ public final class GetEcsNetworkInterfacePermissionsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The ID of the network interface.
+     * 
+     */
     public String networkInterfaceId() {
         return this.networkInterfaceId;
     }
@@ -52,9 +68,17 @@ public final class GetEcsNetworkInterfacePermissionsResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return A list of Ecs Network Interface Permissions. Each element contains the following attributes:
+     * 
+     */
     public List<GetEcsNetworkInterfacePermissionsPermission> permissions() {
         return this.permissions;
     }
+    /**
+     * @return The Status of the Network Interface Permissions.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

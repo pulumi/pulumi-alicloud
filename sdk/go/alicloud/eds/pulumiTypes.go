@@ -119,6 +119,163 @@ func (o CustomPropertyPropertyValueArrayOutput) Index(i pulumi.IntInput) CustomP
 	}).(CustomPropertyPropertyValueOutput)
 }
 
+type DesktopDesktopTimer struct {
+	// Whether to allow the end user to configure the scheduled timer task. Default to `false`.
+	AllowClientSetting *bool `pulumi:"allowClientSetting"`
+	// The cron expression of the scheduled timer task. The cron expression uses UTC time. For example, to execute at 00:00 Beijing time every day, set the value to `0 0 16 ? * 1,2,3,4,5,6,7`.
+	CronExpression *string `pulumi:"cronExpression"`
+	// Whether to force the execution of the scheduled timer task.
+	Enforce *bool `pulumi:"enforce"`
+	// The time interval, in minutes.
+	Interval *int `pulumi:"interval"`
+	// The operation type of the scheduled timer task, only valid when `timerType` is `NoConnect`. Valid values: `Hibernate`, `Shutdown`.
+	//
+	// > **NOTE:** `desktopTimers` is a write-only field. Since the DescribeDesktops API does not return timer configurations, Terraform cannot detect drift on this field, and the field is ignored when importing. Removing the block stops Terraform from managing the timers: no update is sent, because `ModifyDesktopTimer` rejects a request that sets neither a timer type nor timer entries, so previously configured timers stay on the cloud desktop.
+	OperationType *string `pulumi:"operationType"`
+	// The reset type of the Desktop. Valid values: `RESET_TYPE_BOTH`, `RESET_TYPE_SYSTEM`.
+	ResetType *string `pulumi:"resetType"`
+	// The type of the scheduled timer task. Required when a `desktopTimers` block is configured. Valid values: `LoginAutoConnect`, `LogoutShutdown`, `NoConnect`, `NoOperationDisconnect`, `NoOperationReboot`, `NoOperationShutdown`, `TimerBoot`, `TimerReboot`, `TimerReset`, `TimerShutdown`.
+	TimerType *string `pulumi:"timerType"`
+}
+
+// DesktopDesktopTimerInput is an input type that accepts DesktopDesktopTimerArgs and DesktopDesktopTimerOutput values.
+// You can construct a concrete instance of `DesktopDesktopTimerInput` via:
+//
+//	DesktopDesktopTimerArgs{...}
+type DesktopDesktopTimerInput interface {
+	pulumi.Input
+
+	ToDesktopDesktopTimerOutput() DesktopDesktopTimerOutput
+	ToDesktopDesktopTimerOutputWithContext(context.Context) DesktopDesktopTimerOutput
+}
+
+type DesktopDesktopTimerArgs struct {
+	// Whether to allow the end user to configure the scheduled timer task. Default to `false`.
+	AllowClientSetting pulumi.BoolPtrInput `pulumi:"allowClientSetting"`
+	// The cron expression of the scheduled timer task. The cron expression uses UTC time. For example, to execute at 00:00 Beijing time every day, set the value to `0 0 16 ? * 1,2,3,4,5,6,7`.
+	CronExpression pulumi.StringPtrInput `pulumi:"cronExpression"`
+	// Whether to force the execution of the scheduled timer task.
+	Enforce pulumi.BoolPtrInput `pulumi:"enforce"`
+	// The time interval, in minutes.
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	// The operation type of the scheduled timer task, only valid when `timerType` is `NoConnect`. Valid values: `Hibernate`, `Shutdown`.
+	//
+	// > **NOTE:** `desktopTimers` is a write-only field. Since the DescribeDesktops API does not return timer configurations, Terraform cannot detect drift on this field, and the field is ignored when importing. Removing the block stops Terraform from managing the timers: no update is sent, because `ModifyDesktopTimer` rejects a request that sets neither a timer type nor timer entries, so previously configured timers stay on the cloud desktop.
+	OperationType pulumi.StringPtrInput `pulumi:"operationType"`
+	// The reset type of the Desktop. Valid values: `RESET_TYPE_BOTH`, `RESET_TYPE_SYSTEM`.
+	ResetType pulumi.StringPtrInput `pulumi:"resetType"`
+	// The type of the scheduled timer task. Required when a `desktopTimers` block is configured. Valid values: `LoginAutoConnect`, `LogoutShutdown`, `NoConnect`, `NoOperationDisconnect`, `NoOperationReboot`, `NoOperationShutdown`, `TimerBoot`, `TimerReboot`, `TimerReset`, `TimerShutdown`.
+	TimerType pulumi.StringPtrInput `pulumi:"timerType"`
+}
+
+func (DesktopDesktopTimerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DesktopDesktopTimer)(nil)).Elem()
+}
+
+func (i DesktopDesktopTimerArgs) ToDesktopDesktopTimerOutput() DesktopDesktopTimerOutput {
+	return i.ToDesktopDesktopTimerOutputWithContext(context.Background())
+}
+
+func (i DesktopDesktopTimerArgs) ToDesktopDesktopTimerOutputWithContext(ctx context.Context) DesktopDesktopTimerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DesktopDesktopTimerOutput)
+}
+
+// DesktopDesktopTimerArrayInput is an input type that accepts DesktopDesktopTimerArray and DesktopDesktopTimerArrayOutput values.
+// You can construct a concrete instance of `DesktopDesktopTimerArrayInput` via:
+//
+//	DesktopDesktopTimerArray{ DesktopDesktopTimerArgs{...} }
+type DesktopDesktopTimerArrayInput interface {
+	pulumi.Input
+
+	ToDesktopDesktopTimerArrayOutput() DesktopDesktopTimerArrayOutput
+	ToDesktopDesktopTimerArrayOutputWithContext(context.Context) DesktopDesktopTimerArrayOutput
+}
+
+type DesktopDesktopTimerArray []DesktopDesktopTimerInput
+
+func (DesktopDesktopTimerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DesktopDesktopTimer)(nil)).Elem()
+}
+
+func (i DesktopDesktopTimerArray) ToDesktopDesktopTimerArrayOutput() DesktopDesktopTimerArrayOutput {
+	return i.ToDesktopDesktopTimerArrayOutputWithContext(context.Background())
+}
+
+func (i DesktopDesktopTimerArray) ToDesktopDesktopTimerArrayOutputWithContext(ctx context.Context) DesktopDesktopTimerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DesktopDesktopTimerArrayOutput)
+}
+
+type DesktopDesktopTimerOutput struct{ *pulumi.OutputState }
+
+func (DesktopDesktopTimerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DesktopDesktopTimer)(nil)).Elem()
+}
+
+func (o DesktopDesktopTimerOutput) ToDesktopDesktopTimerOutput() DesktopDesktopTimerOutput {
+	return o
+}
+
+func (o DesktopDesktopTimerOutput) ToDesktopDesktopTimerOutputWithContext(ctx context.Context) DesktopDesktopTimerOutput {
+	return o
+}
+
+// Whether to allow the end user to configure the scheduled timer task. Default to `false`.
+func (o DesktopDesktopTimerOutput) AllowClientSetting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DesktopDesktopTimer) *bool { return v.AllowClientSetting }).(pulumi.BoolPtrOutput)
+}
+
+// The cron expression of the scheduled timer task. The cron expression uses UTC time. For example, to execute at 00:00 Beijing time every day, set the value to `0 0 16 ? * 1,2,3,4,5,6,7`.
+func (o DesktopDesktopTimerOutput) CronExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DesktopDesktopTimer) *string { return v.CronExpression }).(pulumi.StringPtrOutput)
+}
+
+// Whether to force the execution of the scheduled timer task.
+func (o DesktopDesktopTimerOutput) Enforce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DesktopDesktopTimer) *bool { return v.Enforce }).(pulumi.BoolPtrOutput)
+}
+
+// The time interval, in minutes.
+func (o DesktopDesktopTimerOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DesktopDesktopTimer) *int { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+// The operation type of the scheduled timer task, only valid when `timerType` is `NoConnect`. Valid values: `Hibernate`, `Shutdown`.
+//
+// > **NOTE:** `desktopTimers` is a write-only field. Since the DescribeDesktops API does not return timer configurations, Terraform cannot detect drift on this field, and the field is ignored when importing. Removing the block stops Terraform from managing the timers: no update is sent, because `ModifyDesktopTimer` rejects a request that sets neither a timer type nor timer entries, so previously configured timers stay on the cloud desktop.
+func (o DesktopDesktopTimerOutput) OperationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DesktopDesktopTimer) *string { return v.OperationType }).(pulumi.StringPtrOutput)
+}
+
+// The reset type of the Desktop. Valid values: `RESET_TYPE_BOTH`, `RESET_TYPE_SYSTEM`.
+func (o DesktopDesktopTimerOutput) ResetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DesktopDesktopTimer) *string { return v.ResetType }).(pulumi.StringPtrOutput)
+}
+
+// The type of the scheduled timer task. Required when a `desktopTimers` block is configured. Valid values: `LoginAutoConnect`, `LogoutShutdown`, `NoConnect`, `NoOperationDisconnect`, `NoOperationReboot`, `NoOperationShutdown`, `TimerBoot`, `TimerReboot`, `TimerReset`, `TimerShutdown`.
+func (o DesktopDesktopTimerOutput) TimerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DesktopDesktopTimer) *string { return v.TimerType }).(pulumi.StringPtrOutput)
+}
+
+type DesktopDesktopTimerArrayOutput struct{ *pulumi.OutputState }
+
+func (DesktopDesktopTimerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DesktopDesktopTimer)(nil)).Elem()
+}
+
+func (o DesktopDesktopTimerArrayOutput) ToDesktopDesktopTimerArrayOutput() DesktopDesktopTimerArrayOutput {
+	return o
+}
+
+func (o DesktopDesktopTimerArrayOutput) ToDesktopDesktopTimerArrayOutputWithContext(ctx context.Context) DesktopDesktopTimerArrayOutput {
+	return o
+}
+
+func (o DesktopDesktopTimerArrayOutput) Index(i pulumi.IntInput) DesktopDesktopTimerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DesktopDesktopTimer {
+		return vs[0].([]DesktopDesktopTimer)[vs[1].(int)]
+	}).(DesktopDesktopTimerOutput)
+}
+
 type EcdPolicyGroupAuthorizeAccessPolicyRule struct {
 	// The cidrip of authorize access rule.
 	CidrIp *string `pulumi:"cidrIp"`
@@ -376,6 +533,118 @@ func (o EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput) Index(i pulumi.Int
 	}).(EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput)
 }
 
+type EcdPolicyGroupClientType struct {
+	// The client type. Valid values: `android`, `html5`, `ios`, `macos`, `windows`.
+	ClientType *string `pulumi:"clientType"`
+	// Whether to allow the client type to access. Valid values: `off`, `on`.
+	//
+	// > **NOTE:** `clientTypes` manages only the client types listed in the configuration; types that are not listed are not sent to the API and are left to the service. `DescribePolicyGroups` returns every client type, but unconfigured entries are not written back to state, and entries that omit `status` are not read back either, so out-of-band changes to those values are not detected. `pulumi import` does not populate `clientTypes`; apply the configuration again to manage the client types. Removing all `clientTypes` blocks calls `ModifyPolicyGroup` without client-type parameters, which the API treats as allowing every client type.
+	Status *string `pulumi:"status"`
+}
+
+// EcdPolicyGroupClientTypeInput is an input type that accepts EcdPolicyGroupClientTypeArgs and EcdPolicyGroupClientTypeOutput values.
+// You can construct a concrete instance of `EcdPolicyGroupClientTypeInput` via:
+//
+//	EcdPolicyGroupClientTypeArgs{...}
+type EcdPolicyGroupClientTypeInput interface {
+	pulumi.Input
+
+	ToEcdPolicyGroupClientTypeOutput() EcdPolicyGroupClientTypeOutput
+	ToEcdPolicyGroupClientTypeOutputWithContext(context.Context) EcdPolicyGroupClientTypeOutput
+}
+
+type EcdPolicyGroupClientTypeArgs struct {
+	// The client type. Valid values: `android`, `html5`, `ios`, `macos`, `windows`.
+	ClientType pulumi.StringPtrInput `pulumi:"clientType"`
+	// Whether to allow the client type to access. Valid values: `off`, `on`.
+	//
+	// > **NOTE:** `clientTypes` manages only the client types listed in the configuration; types that are not listed are not sent to the API and are left to the service. `DescribePolicyGroups` returns every client type, but unconfigured entries are not written back to state, and entries that omit `status` are not read back either, so out-of-band changes to those values are not detected. `pulumi import` does not populate `clientTypes`; apply the configuration again to manage the client types. Removing all `clientTypes` blocks calls `ModifyPolicyGroup` without client-type parameters, which the API treats as allowing every client type.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (EcdPolicyGroupClientTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcdPolicyGroupClientType)(nil)).Elem()
+}
+
+func (i EcdPolicyGroupClientTypeArgs) ToEcdPolicyGroupClientTypeOutput() EcdPolicyGroupClientTypeOutput {
+	return i.ToEcdPolicyGroupClientTypeOutputWithContext(context.Background())
+}
+
+func (i EcdPolicyGroupClientTypeArgs) ToEcdPolicyGroupClientTypeOutputWithContext(ctx context.Context) EcdPolicyGroupClientTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcdPolicyGroupClientTypeOutput)
+}
+
+// EcdPolicyGroupClientTypeArrayInput is an input type that accepts EcdPolicyGroupClientTypeArray and EcdPolicyGroupClientTypeArrayOutput values.
+// You can construct a concrete instance of `EcdPolicyGroupClientTypeArrayInput` via:
+//
+//	EcdPolicyGroupClientTypeArray{ EcdPolicyGroupClientTypeArgs{...} }
+type EcdPolicyGroupClientTypeArrayInput interface {
+	pulumi.Input
+
+	ToEcdPolicyGroupClientTypeArrayOutput() EcdPolicyGroupClientTypeArrayOutput
+	ToEcdPolicyGroupClientTypeArrayOutputWithContext(context.Context) EcdPolicyGroupClientTypeArrayOutput
+}
+
+type EcdPolicyGroupClientTypeArray []EcdPolicyGroupClientTypeInput
+
+func (EcdPolicyGroupClientTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EcdPolicyGroupClientType)(nil)).Elem()
+}
+
+func (i EcdPolicyGroupClientTypeArray) ToEcdPolicyGroupClientTypeArrayOutput() EcdPolicyGroupClientTypeArrayOutput {
+	return i.ToEcdPolicyGroupClientTypeArrayOutputWithContext(context.Background())
+}
+
+func (i EcdPolicyGroupClientTypeArray) ToEcdPolicyGroupClientTypeArrayOutputWithContext(ctx context.Context) EcdPolicyGroupClientTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcdPolicyGroupClientTypeArrayOutput)
+}
+
+type EcdPolicyGroupClientTypeOutput struct{ *pulumi.OutputState }
+
+func (EcdPolicyGroupClientTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcdPolicyGroupClientType)(nil)).Elem()
+}
+
+func (o EcdPolicyGroupClientTypeOutput) ToEcdPolicyGroupClientTypeOutput() EcdPolicyGroupClientTypeOutput {
+	return o
+}
+
+func (o EcdPolicyGroupClientTypeOutput) ToEcdPolicyGroupClientTypeOutputWithContext(ctx context.Context) EcdPolicyGroupClientTypeOutput {
+	return o
+}
+
+// The client type. Valid values: `android`, `html5`, `ios`, `macos`, `windows`.
+func (o EcdPolicyGroupClientTypeOutput) ClientType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcdPolicyGroupClientType) *string { return v.ClientType }).(pulumi.StringPtrOutput)
+}
+
+// Whether to allow the client type to access. Valid values: `off`, `on`.
+//
+// > **NOTE:** `clientTypes` manages only the client types listed in the configuration; types that are not listed are not sent to the API and are left to the service. `DescribePolicyGroups` returns every client type, but unconfigured entries are not written back to state, and entries that omit `status` are not read back either, so out-of-band changes to those values are not detected. `pulumi import` does not populate `clientTypes`; apply the configuration again to manage the client types. Removing all `clientTypes` blocks calls `ModifyPolicyGroup` without client-type parameters, which the API treats as allowing every client type.
+func (o EcdPolicyGroupClientTypeOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcdPolicyGroupClientType) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type EcdPolicyGroupClientTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (EcdPolicyGroupClientTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EcdPolicyGroupClientType)(nil)).Elem()
+}
+
+func (o EcdPolicyGroupClientTypeArrayOutput) ToEcdPolicyGroupClientTypeArrayOutput() EcdPolicyGroupClientTypeArrayOutput {
+	return o
+}
+
+func (o EcdPolicyGroupClientTypeArrayOutput) ToEcdPolicyGroupClientTypeArrayOutputWithContext(ctx context.Context) EcdPolicyGroupClientTypeArrayOutput {
+	return o
+}
+
+func (o EcdPolicyGroupClientTypeArrayOutput) Index(i pulumi.IntInput) EcdPolicyGroupClientTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EcdPolicyGroupClientType {
+		return vs[0].([]EcdPolicyGroupClientType)[vs[1].(int)]
+	}).(EcdPolicyGroupClientTypeOutput)
+}
+
 type GetAdConnectorDirectoriesDirectory struct {
 	// The ID of the ad connector directory.
 	AdConnectorDirectoryId string `pulumi:"adConnectorDirectoryId"`
@@ -403,7 +672,7 @@ type GetAdConnectorDirectoriesDirectory struct {
 	Id string `pulumi:"id"`
 	// Whether MFA authentication is enabled. After all AD users in this directory log on to the cloud desktop, enter the correct password and then enter the dynamic verification code generated by the MFA device.
 	MfaEnabled bool `pulumi:"mfaEnabled"`
-	// The status of directory.
+	// The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
 	Status string `pulumi:"status"`
 	// The Enterprise already has the DNS address of the AD subdomain.
 	SubDnsAddresses []string `pulumi:"subDnsAddresses"`
@@ -455,7 +724,7 @@ type GetAdConnectorDirectoriesDirectoryArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Whether MFA authentication is enabled. After all AD users in this directory log on to the cloud desktop, enter the correct password and then enter the dynamic verification code generated by the MFA device.
 	MfaEnabled pulumi.BoolInput `pulumi:"mfaEnabled"`
-	// The status of directory.
+	// The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The Enterprise already has the DNS address of the AD subdomain.
 	SubDnsAddresses pulumi.StringArrayInput `pulumi:"subDnsAddresses"`
@@ -587,7 +856,7 @@ func (o GetAdConnectorDirectoriesDirectoryOutput) MfaEnabled() pulumi.BoolOutput
 	return o.ApplyT(func(v GetAdConnectorDirectoriesDirectory) bool { return v.MfaEnabled }).(pulumi.BoolOutput)
 }
 
-// The status of directory.
+// The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
 func (o GetAdConnectorDirectoriesDirectoryOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAdConnectorDirectoriesDirectory) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -828,7 +1097,16 @@ type GetAdConnectorOfficeSitesSite struct {
 	OfficeSiteType string `pulumi:"officeSiteType"`
 	// Whether to Enable Single Sign-on (SSO) for User-Based SSO.
 	SsoEnabled bool `pulumi:"ssoEnabled"`
-	// The workspace status.
+	// The workspace status. Valid values:
+	// - `REGISTERING`: The workspace is being registered.
+	// - `REGISTERED`: The workspace is registered.
+	// - `DEREGISTERING`: The workspace is being deregistered.
+	// - `DEREGISTERED`: The workspace is deregistered.
+	// - `ERROR`: The configurations of the workspace are invalid.
+	// - `NEEDCONFIGTRUST`: The trust relationship needs to be configured.
+	// - `NEEDCONFIGUSER`: Users need to be configured.
+	// - `CONFIGTRUSTING`: The trust relationship is being configured.
+	// - `CONFIGTRUSTFAILED`: The trust relationship fails to be configured.
 	Status string `pulumi:"status"`
 	// Sub-Domain DNS Address.
 	SubDomainDnsAddresses []string `pulumi:"subDomainDnsAddresses"`
@@ -902,7 +1180,16 @@ type GetAdConnectorOfficeSitesSiteArgs struct {
 	OfficeSiteType pulumi.StringInput `pulumi:"officeSiteType"`
 	// Whether to Enable Single Sign-on (SSO) for User-Based SSO.
 	SsoEnabled pulumi.BoolInput `pulumi:"ssoEnabled"`
-	// The workspace status.
+	// The workspace status. Valid values:
+	// - `REGISTERING`: The workspace is being registered.
+	// - `REGISTERED`: The workspace is registered.
+	// - `DEREGISTERING`: The workspace is being deregistered.
+	// - `DEREGISTERED`: The workspace is deregistered.
+	// - `ERROR`: The configurations of the workspace are invalid.
+	// - `NEEDCONFIGTRUST`: The trust relationship needs to be configured.
+	// - `NEEDCONFIGUSER`: Users need to be configured.
+	// - `CONFIGTRUSTING`: The trust relationship is being configured.
+	// - `CONFIGTRUSTFAILED`: The trust relationship fails to be configured.
 	Status pulumi.StringInput `pulumi:"status"`
 	// Sub-Domain DNS Address.
 	SubDomainDnsAddresses pulumi.StringArrayInput `pulumi:"subDomainDnsAddresses"`
@@ -1089,7 +1376,16 @@ func (o GetAdConnectorOfficeSitesSiteOutput) SsoEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) bool { return v.SsoEnabled }).(pulumi.BoolOutput)
 }
 
-// The workspace status.
+// The workspace status. Valid values:
+// - `REGISTERING`: The workspace is being registered.
+// - `REGISTERED`: The workspace is registered.
+// - `DEREGISTERING`: The workspace is being deregistered.
+// - `DEREGISTERED`: The workspace is deregistered.
+// - `ERROR`: The configurations of the workspace are invalid.
+// - `NEEDCONFIGTRUST`: The trust relationship needs to be configured.
+// - `NEEDCONFIGUSER`: Users need to be configured.
+// - `CONFIGTRUSTING`: The trust relationship is being configured.
+// - `CONFIGTRUSTFAILED`: The trust relationship fails to be configured.
 func (o GetAdConnectorOfficeSitesSiteOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1388,7 +1684,7 @@ func (o GetAdConnectorOfficeSitesSiteLogArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetBundlesBundle struct {
-	// The bundle id of the bundle.
+	// A list of bundle IDs used to filter the results.
 	BundleId string `pulumi:"bundleId"`
 	// The name of the bundle.
 	BundleName string `pulumi:"bundleName"`
@@ -1422,7 +1718,7 @@ type GetBundlesBundleInput interface {
 }
 
 type GetBundlesBundleArgs struct {
-	// The bundle id of the bundle.
+	// A list of bundle IDs used to filter the results.
 	BundleId pulumi.StringInput `pulumi:"bundleId"`
 	// The name of the bundle.
 	BundleName pulumi.StringInput `pulumi:"bundleName"`
@@ -1495,7 +1791,7 @@ func (o GetBundlesBundleOutput) ToGetBundlesBundleOutputWithContext(ctx context.
 	return o
 }
 
-// The bundle id of the bundle.
+// A list of bundle IDs used to filter the results.
 func (o GetBundlesBundleOutput) BundleId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBundlesBundle) string { return v.BundleId }).(pulumi.StringOutput)
 }
@@ -2378,11 +2674,11 @@ type GetDesktopTypesType struct {
 	GpuSpec string `pulumi:"gpuSpec"`
 	// The ID of the Desktop Type.
 	Id string `pulumi:"id"`
-	// The Specification family.
+	// The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
 	InstanceTypeFamily string `pulumi:"instanceTypeFamily"`
 	// The Memory size. Unit: MiB.
 	MemorySize string `pulumi:"memorySize"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `SUFFICIENT`.
 	Status string `pulumi:"status"`
 	// The size of the system disk. Unit: GiB.
 	SystemDiskSize string `pulumi:"systemDiskSize"`
@@ -2412,11 +2708,11 @@ type GetDesktopTypesTypeArgs struct {
 	GpuSpec pulumi.StringInput `pulumi:"gpuSpec"`
 	// The ID of the Desktop Type.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The Specification family.
+	// The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
 	InstanceTypeFamily pulumi.StringInput `pulumi:"instanceTypeFamily"`
 	// The Memory size. Unit: MiB.
 	MemorySize pulumi.StringInput `pulumi:"memorySize"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `SUFFICIENT`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The size of the system disk. Unit: GiB.
 	SystemDiskSize pulumi.StringInput `pulumi:"systemDiskSize"`
@@ -2503,7 +2799,7 @@ func (o GetDesktopTypesTypeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopTypesType) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The Specification family.
+// The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
 func (o GetDesktopTypesTypeOutput) InstanceTypeFamily() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopTypesType) string { return v.InstanceTypeFamily }).(pulumi.StringOutput)
 }
@@ -2513,7 +2809,7 @@ func (o GetDesktopTypesTypeOutput) MemorySize() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopTypesType) string { return v.MemorySize }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `SUFFICIENT`.
 func (o GetDesktopTypesTypeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopTypesType) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2546,33 +2842,35 @@ func (o GetDesktopTypesTypeArrayOutput) Index(i pulumi.IntInput) GetDesktopTypes
 type GetDesktopsDesktop struct {
 	// The number of CPUs.
 	Cpu int `pulumi:"cpu"`
-	// The creation time of the Desktop.
+	// The creation time of the cloud desktop.
 	CreateTime string `pulumi:"createTime"`
-	// The desktop id of the Desktop.
+	// The cloud desktop ID.
 	DesktopId string `pulumi:"desktopId"`
-	// The desktop name of the Desktop.
+	// The cloud desktop name.
 	DesktopName string `pulumi:"desktopName"`
-	// The desktop type of the Desktop.
+	// The specifications of the cloud desktop.
 	DesktopType string `pulumi:"desktopType"`
-	// The directory id of the Desktop.
+	// The directory ID.
 	DirectoryId string `pulumi:"directoryId"`
-	// The desktop end user id of the Desktop.
+	// (Available since v2.3.0) The disk information.
+	Disks []GetDesktopsDesktopDisk `pulumi:"disks"`
+	// The authorized users of the cloud desktop.
 	EndUserIds []string `pulumi:"endUserIds"`
-	// The expired time of the Desktop.
+	// The expiration time of the subscription cloud desktop.
 	ExpiredTime string `pulumi:"expiredTime"`
 	// The ID of the Desktop.
 	Id string `pulumi:"id"`
-	// The image id of the Desktop.
+	// The image ID.
 	ImageId string `pulumi:"imageId"`
-	// The memory of the Desktop.
+	// The memory size.
 	Memory string `pulumi:"memory"`
-	// The network interface id of the Desktop.
+	// The ID of the secondary elastic network interface (ENI) created by the cloud desktop service for a RAM or AD user.
 	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
-	// The payment type of the Desktop.
+	// The billing method of the cloud desktop.
 	PaymentType string `pulumi:"paymentType"`
-	// The policy group id of the Desktop.
+	// The cloud desktop policy ID.
 	PolicyGroupId string `pulumi:"policyGroupId"`
-	// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+	// The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
 	Status string `pulumi:"status"`
 	// The system disk size of the Desktop.
 	SystemDiskSize int `pulumi:"systemDiskSize"`
@@ -2592,33 +2890,35 @@ type GetDesktopsDesktopInput interface {
 type GetDesktopsDesktopArgs struct {
 	// The number of CPUs.
 	Cpu pulumi.IntInput `pulumi:"cpu"`
-	// The creation time of the Desktop.
+	// The creation time of the cloud desktop.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The desktop id of the Desktop.
+	// The cloud desktop ID.
 	DesktopId pulumi.StringInput `pulumi:"desktopId"`
-	// The desktop name of the Desktop.
+	// The cloud desktop name.
 	DesktopName pulumi.StringInput `pulumi:"desktopName"`
-	// The desktop type of the Desktop.
+	// The specifications of the cloud desktop.
 	DesktopType pulumi.StringInput `pulumi:"desktopType"`
-	// The directory id of the Desktop.
+	// The directory ID.
 	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
-	// The desktop end user id of the Desktop.
+	// (Available since v2.3.0) The disk information.
+	Disks GetDesktopsDesktopDiskArrayInput `pulumi:"disks"`
+	// The authorized users of the cloud desktop.
 	EndUserIds pulumi.StringArrayInput `pulumi:"endUserIds"`
-	// The expired time of the Desktop.
+	// The expiration time of the subscription cloud desktop.
 	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
 	// The ID of the Desktop.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The image id of the Desktop.
+	// The image ID.
 	ImageId pulumi.StringInput `pulumi:"imageId"`
-	// The memory of the Desktop.
+	// The memory size.
 	Memory pulumi.StringInput `pulumi:"memory"`
-	// The network interface id of the Desktop.
+	// The ID of the secondary elastic network interface (ENI) created by the cloud desktop service for a RAM or AD user.
 	NetworkInterfaceId pulumi.StringInput `pulumi:"networkInterfaceId"`
-	// The payment type of the Desktop.
+	// The billing method of the cloud desktop.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
-	// The policy group id of the Desktop.
+	// The cloud desktop policy ID.
 	PolicyGroupId pulumi.StringInput `pulumi:"policyGroupId"`
-	// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+	// The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The system disk size of the Desktop.
 	SystemDiskSize pulumi.IntInput `pulumi:"systemDiskSize"`
@@ -2680,37 +2980,42 @@ func (o GetDesktopsDesktopOutput) Cpu() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDesktopsDesktop) int { return v.Cpu }).(pulumi.IntOutput)
 }
 
-// The creation time of the Desktop.
+// The creation time of the cloud desktop.
 func (o GetDesktopsDesktopOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The desktop id of the Desktop.
+// The cloud desktop ID.
 func (o GetDesktopsDesktopOutput) DesktopId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.DesktopId }).(pulumi.StringOutput)
 }
 
-// The desktop name of the Desktop.
+// The cloud desktop name.
 func (o GetDesktopsDesktopOutput) DesktopName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.DesktopName }).(pulumi.StringOutput)
 }
 
-// The desktop type of the Desktop.
+// The specifications of the cloud desktop.
 func (o GetDesktopsDesktopOutput) DesktopType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.DesktopType }).(pulumi.StringOutput)
 }
 
-// The directory id of the Desktop.
+// The directory ID.
 func (o GetDesktopsDesktopOutput) DirectoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.DirectoryId }).(pulumi.StringOutput)
 }
 
-// The desktop end user id of the Desktop.
+// (Available since v2.3.0) The disk information.
+func (o GetDesktopsDesktopOutput) Disks() GetDesktopsDesktopDiskArrayOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) []GetDesktopsDesktopDisk { return v.Disks }).(GetDesktopsDesktopDiskArrayOutput)
+}
+
+// The authorized users of the cloud desktop.
 func (o GetDesktopsDesktopOutput) EndUserIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDesktopsDesktop) []string { return v.EndUserIds }).(pulumi.StringArrayOutput)
 }
 
-// The expired time of the Desktop.
+// The expiration time of the subscription cloud desktop.
 func (o GetDesktopsDesktopOutput) ExpiredTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.ExpiredTime }).(pulumi.StringOutput)
 }
@@ -2720,32 +3025,32 @@ func (o GetDesktopsDesktopOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The image id of the Desktop.
+// The image ID.
 func (o GetDesktopsDesktopOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
-// The memory of the Desktop.
+// The memory size.
 func (o GetDesktopsDesktopOutput) Memory() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.Memory }).(pulumi.StringOutput)
 }
 
-// The network interface id of the Desktop.
+// The ID of the secondary elastic network interface (ENI) created by the cloud desktop service for a RAM or AD user.
 func (o GetDesktopsDesktopOutput) NetworkInterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.NetworkInterfaceId }).(pulumi.StringOutput)
 }
 
-// The payment type of the Desktop.
+// The billing method of the cloud desktop.
 func (o GetDesktopsDesktopOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// The policy group id of the Desktop.
+// The cloud desktop policy ID.
 func (o GetDesktopsDesktopOutput) PolicyGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.PolicyGroupId }).(pulumi.StringOutput)
 }
 
-// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+// The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
 func (o GetDesktopsDesktopOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2775,6 +3080,139 @@ func (o GetDesktopsDesktopArrayOutput) Index(i pulumi.IntInput) GetDesktopsDeskt
 	}).(GetDesktopsDesktopOutput)
 }
 
+type GetDesktopsDesktopDisk struct {
+	// The disk category.
+	DiskCategory string `pulumi:"diskCategory"`
+	// The disk ID.
+	DiskId string `pulumi:"diskId"`
+	// The disk size.
+	DiskSize int `pulumi:"diskSize"`
+	// The disk type.
+	DiskType string `pulumi:"diskType"`
+	// The performance level of the enhanced standard SSD cloud disk.
+	PerformanceLevel string `pulumi:"performanceLevel"`
+}
+
+// GetDesktopsDesktopDiskInput is an input type that accepts GetDesktopsDesktopDiskArgs and GetDesktopsDesktopDiskOutput values.
+// You can construct a concrete instance of `GetDesktopsDesktopDiskInput` via:
+//
+//	GetDesktopsDesktopDiskArgs{...}
+type GetDesktopsDesktopDiskInput interface {
+	pulumi.Input
+
+	ToGetDesktopsDesktopDiskOutput() GetDesktopsDesktopDiskOutput
+	ToGetDesktopsDesktopDiskOutputWithContext(context.Context) GetDesktopsDesktopDiskOutput
+}
+
+type GetDesktopsDesktopDiskArgs struct {
+	// The disk category.
+	DiskCategory pulumi.StringInput `pulumi:"diskCategory"`
+	// The disk ID.
+	DiskId pulumi.StringInput `pulumi:"diskId"`
+	// The disk size.
+	DiskSize pulumi.IntInput `pulumi:"diskSize"`
+	// The disk type.
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// The performance level of the enhanced standard SSD cloud disk.
+	PerformanceLevel pulumi.StringInput `pulumi:"performanceLevel"`
+}
+
+func (GetDesktopsDesktopDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDesktopsDesktopDisk)(nil)).Elem()
+}
+
+func (i GetDesktopsDesktopDiskArgs) ToGetDesktopsDesktopDiskOutput() GetDesktopsDesktopDiskOutput {
+	return i.ToGetDesktopsDesktopDiskOutputWithContext(context.Background())
+}
+
+func (i GetDesktopsDesktopDiskArgs) ToGetDesktopsDesktopDiskOutputWithContext(ctx context.Context) GetDesktopsDesktopDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDesktopsDesktopDiskOutput)
+}
+
+// GetDesktopsDesktopDiskArrayInput is an input type that accepts GetDesktopsDesktopDiskArray and GetDesktopsDesktopDiskArrayOutput values.
+// You can construct a concrete instance of `GetDesktopsDesktopDiskArrayInput` via:
+//
+//	GetDesktopsDesktopDiskArray{ GetDesktopsDesktopDiskArgs{...} }
+type GetDesktopsDesktopDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetDesktopsDesktopDiskArrayOutput() GetDesktopsDesktopDiskArrayOutput
+	ToGetDesktopsDesktopDiskArrayOutputWithContext(context.Context) GetDesktopsDesktopDiskArrayOutput
+}
+
+type GetDesktopsDesktopDiskArray []GetDesktopsDesktopDiskInput
+
+func (GetDesktopsDesktopDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDesktopsDesktopDisk)(nil)).Elem()
+}
+
+func (i GetDesktopsDesktopDiskArray) ToGetDesktopsDesktopDiskArrayOutput() GetDesktopsDesktopDiskArrayOutput {
+	return i.ToGetDesktopsDesktopDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetDesktopsDesktopDiskArray) ToGetDesktopsDesktopDiskArrayOutputWithContext(ctx context.Context) GetDesktopsDesktopDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDesktopsDesktopDiskArrayOutput)
+}
+
+type GetDesktopsDesktopDiskOutput struct{ *pulumi.OutputState }
+
+func (GetDesktopsDesktopDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDesktopsDesktopDisk)(nil)).Elem()
+}
+
+func (o GetDesktopsDesktopDiskOutput) ToGetDesktopsDesktopDiskOutput() GetDesktopsDesktopDiskOutput {
+	return o
+}
+
+func (o GetDesktopsDesktopDiskOutput) ToGetDesktopsDesktopDiskOutputWithContext(ctx context.Context) GetDesktopsDesktopDiskOutput {
+	return o
+}
+
+// The disk category.
+func (o GetDesktopsDesktopDiskOutput) DiskCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktopDisk) string { return v.DiskCategory }).(pulumi.StringOutput)
+}
+
+// The disk ID.
+func (o GetDesktopsDesktopDiskOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktopDisk) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// The disk size.
+func (o GetDesktopsDesktopDiskOutput) DiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDesktopsDesktopDisk) int { return v.DiskSize }).(pulumi.IntOutput)
+}
+
+// The disk type.
+func (o GetDesktopsDesktopDiskOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktopDisk) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// The performance level of the enhanced standard SSD cloud disk.
+func (o GetDesktopsDesktopDiskOutput) PerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktopDisk) string { return v.PerformanceLevel }).(pulumi.StringOutput)
+}
+
+type GetDesktopsDesktopDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDesktopsDesktopDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDesktopsDesktopDisk)(nil)).Elem()
+}
+
+func (o GetDesktopsDesktopDiskArrayOutput) ToGetDesktopsDesktopDiskArrayOutput() GetDesktopsDesktopDiskArrayOutput {
+	return o
+}
+
+func (o GetDesktopsDesktopDiskArrayOutput) ToGetDesktopsDesktopDiskArrayOutputWithContext(ctx context.Context) GetDesktopsDesktopDiskArrayOutput {
+	return o
+}
+
+func (o GetDesktopsDesktopDiskArrayOutput) Index(i pulumi.IntInput) GetDesktopsDesktopDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDesktopsDesktopDisk {
+		return vs[0].([]GetDesktopsDesktopDisk)[vs[1].(int)]
+	}).(GetDesktopsDesktopDiskOutput)
+}
+
 type GetImagesImage struct {
 	// The creation time of the image.
 	CreateTime string `pulumi:"createTime"`
@@ -2792,7 +3230,7 @@ type GetImagesImage struct {
 	ImageName string `pulumi:"imageName"`
 	// The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
 	ImageType string `pulumi:"imageType"`
-	// The os type of the image.
+	// The operating system type of the image. Valid values: `Windows` and `Linux`.
 	OsType string `pulumi:"osType"`
 	// The progress of the image.
 	Progress string `pulumi:"progress"`
@@ -2830,7 +3268,7 @@ type GetImagesImageArgs struct {
 	ImageName pulumi.StringInput `pulumi:"imageName"`
 	// The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
 	ImageType pulumi.StringInput `pulumi:"imageType"`
-	// The os type of the image.
+	// The operating system type of the image. Valid values: `Windows` and `Linux`.
 	OsType pulumi.StringInput `pulumi:"osType"`
 	// The progress of the image.
 	Progress pulumi.StringInput `pulumi:"progress"`
@@ -2931,7 +3369,7 @@ func (o GetImagesImageOutput) ImageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.ImageType }).(pulumi.StringOutput)
 }
 
-// The os type of the image.
+// The operating system type of the image. Valid values: `Windows` and `Linux`.
 func (o GetImagesImageOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.OsType }).(pulumi.StringOutput)
 }
@@ -3386,7 +3824,7 @@ type GetPolicyGroupsGroup struct {
 	AuthorizeAccessPolicyRules []GetPolicyGroupsGroupAuthorizeAccessPolicyRule `pulumi:"authorizeAccessPolicyRules"`
 	// The policy rule.
 	AuthorizeSecurityPolicyRules []GetPolicyGroupsGroupAuthorizeSecurityPolicyRule `pulumi:"authorizeSecurityPolicyRules"`
-	// Whether to enable local camera redirection. Valid values: `on`, `off`.
+	// (Available in 1.171.0+) Whether to enable local camera redirection. Valid values: `on`, `off`.
 	CameraRedirect string `pulumi:"cameraRedirect"`
 	// The clipboard policy.
 	Clipboard string `pulumi:"clipboard"`
@@ -3408,13 +3846,13 @@ type GetPolicyGroupsGroup struct {
 	PolicyGroupName string `pulumi:"policyGroupName"`
 	// The type of policy group.
 	PolicyGroupType string `pulumi:"policyGroupType"`
-	// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+	// (Available in 1.171.0+) Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
 	Recording string `pulumi:"recording"`
-	// The end time of recording.
+	// (Available in 1.171.0+) The end time of recording.
 	RecordingEndTime string `pulumi:"recordingEndTime"`
-	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+	// (Available in 1.171.0+) The fps of recording. Valid values: `2`, `5`, `10`, `15`.
 	RecordingFps int `pulumi:"recordingFps"`
-	// The start time of recording.
+	// (Available in 1.171.0+) The start time of recording.
 	RecordingStartTime string `pulumi:"recordingStartTime"`
 	// The status of policy.
 	Status string `pulumi:"status"`
@@ -3446,7 +3884,7 @@ type GetPolicyGroupsGroupArgs struct {
 	AuthorizeAccessPolicyRules GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayInput `pulumi:"authorizeAccessPolicyRules"`
 	// The policy rule.
 	AuthorizeSecurityPolicyRules GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayInput `pulumi:"authorizeSecurityPolicyRules"`
-	// Whether to enable local camera redirection. Valid values: `on`, `off`.
+	// (Available in 1.171.0+) Whether to enable local camera redirection. Valid values: `on`, `off`.
 	CameraRedirect pulumi.StringInput `pulumi:"cameraRedirect"`
 	// The clipboard policy.
 	Clipboard pulumi.StringInput `pulumi:"clipboard"`
@@ -3468,13 +3906,13 @@ type GetPolicyGroupsGroupArgs struct {
 	PolicyGroupName pulumi.StringInput `pulumi:"policyGroupName"`
 	// The type of policy group.
 	PolicyGroupType pulumi.StringInput `pulumi:"policyGroupType"`
-	// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+	// (Available in 1.171.0+) Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
 	Recording pulumi.StringInput `pulumi:"recording"`
-	// The end time of recording.
+	// (Available in 1.171.0+) The end time of recording.
 	RecordingEndTime pulumi.StringInput `pulumi:"recordingEndTime"`
-	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+	// (Available in 1.171.0+) The fps of recording. Valid values: `2`, `5`, `10`, `15`.
 	RecordingFps pulumi.IntInput `pulumi:"recordingFps"`
-	// The start time of recording.
+	// (Available in 1.171.0+) The start time of recording.
 	RecordingStartTime pulumi.StringInput `pulumi:"recordingStartTime"`
 	// The status of policy.
 	Status pulumi.StringInput `pulumi:"status"`
@@ -3555,7 +3993,7 @@ func (o GetPolicyGroupsGroupOutput) AuthorizeSecurityPolicyRules() GetPolicyGrou
 	}).(GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutput)
 }
 
-// Whether to enable local camera redirection. Valid values: `on`, `off`.
+// (Available in 1.171.0+) Whether to enable local camera redirection. Valid values: `on`, `off`.
 func (o GetPolicyGroupsGroupOutput) CameraRedirect() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyGroupsGroup) string { return v.CameraRedirect }).(pulumi.StringOutput)
 }
@@ -3610,22 +4048,22 @@ func (o GetPolicyGroupsGroupOutput) PolicyGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyGroupsGroup) string { return v.PolicyGroupType }).(pulumi.StringOutput)
 }
 
-// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+// (Available in 1.171.0+) Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
 func (o GetPolicyGroupsGroupOutput) Recording() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyGroupsGroup) string { return v.Recording }).(pulumi.StringOutput)
 }
 
-// The end time of recording.
+// (Available in 1.171.0+) The end time of recording.
 func (o GetPolicyGroupsGroupOutput) RecordingEndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyGroupsGroup) string { return v.RecordingEndTime }).(pulumi.StringOutput)
 }
 
-// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+// (Available in 1.171.0+) The fps of recording. Valid values: `2`, `5`, `10`, `15`.
 func (o GetPolicyGroupsGroupOutput) RecordingFps() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPolicyGroupsGroup) int { return v.RecordingFps }).(pulumi.IntOutput)
 }
 
-// The start time of recording.
+// (Available in 1.171.0+) The start time of recording.
 func (o GetPolicyGroupsGroupOutput) RecordingStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyGroupsGroup) string { return v.RecordingStartTime }).(pulumi.StringOutput)
 }
@@ -3681,9 +4119,9 @@ func (o GetPolicyGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetPolicyGroup
 }
 
 type GetPolicyGroupsGroupAuthorizeAccessPolicyRule struct {
-	// The cidrip of authorize access rule..
+	// The cidrip of security rules.
 	CidrIp string `pulumi:"cidrIp"`
-	// The description of authorize access rule.
+	// The description of security rules.
 	Description string `pulumi:"description"`
 }
 
@@ -3699,9 +4137,9 @@ type GetPolicyGroupsGroupAuthorizeAccessPolicyRuleInput interface {
 }
 
 type GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArgs struct {
-	// The cidrip of authorize access rule..
+	// The cidrip of security rules.
 	CidrIp pulumi.StringInput `pulumi:"cidrIp"`
-	// The description of authorize access rule.
+	// The description of security rules.
 	Description pulumi.StringInput `pulumi:"description"`
 }
 
@@ -3756,12 +4194,12 @@ func (o GetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutput) ToGetPolicyGroupsGr
 	return o
 }
 
-// The cidrip of authorize access rule..
+// The cidrip of security rules.
 func (o GetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutput) CidrIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyGroupsGroupAuthorizeAccessPolicyRule) string { return v.CidrIp }).(pulumi.StringOutput)
 }
 
-// The description of authorize access rule.
+// The description of security rules.
 func (o GetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyGroupsGroupAuthorizeAccessPolicyRule) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -3980,7 +4418,7 @@ type GetRamDirectoriesDirectory struct {
 	RamDirectoryName string `pulumi:"ramDirectoryName"`
 	// Whether to enable SSO.
 	SsoEnabled bool `pulumi:"ssoEnabled"`
-	// The status of directory.
+	// The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
 	Status string `pulumi:"status"`
 	// The address of sub DNS.
 	SubDnsAddresses []string `pulumi:"subDnsAddresses"`
@@ -4048,7 +4486,7 @@ type GetRamDirectoriesDirectoryArgs struct {
 	RamDirectoryName pulumi.StringInput `pulumi:"ramDirectoryName"`
 	// Whether to enable SSO.
 	SsoEnabled pulumi.BoolInput `pulumi:"ssoEnabled"`
-	// The status of directory.
+	// The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The address of sub DNS.
 	SubDnsAddresses pulumi.StringArrayInput `pulumi:"subDnsAddresses"`
@@ -4218,7 +4656,7 @@ func (o GetRamDirectoriesDirectoryOutput) SsoEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRamDirectoriesDirectory) bool { return v.SsoEnabled }).(pulumi.BoolOutput)
 }
 
-// The status of directory.
+// The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
 func (o GetRamDirectoriesDirectoryOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRamDirectoriesDirectory) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -4517,7 +4955,7 @@ func (o GetRamDirectoriesDirectoryLogArrayOutput) Index(i pulumi.IntInput) GetRa
 }
 
 type GetSimpleOfficeSitesSite struct {
-	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+	// (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
 	//
 	// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 	Bandwidth int `pulumi:"bandwidth"`
@@ -4547,7 +4985,7 @@ type GetSimpleOfficeSitesSite struct {
 	EnableAdminAccess bool `pulumi:"enableAdminAccess"`
 	// Enable Cross-Desktop Access.
 	EnableCrossDesktopAccess bool `pulumi:"enableCrossDesktopAccess"`
-	// Whether the Open Internet Access Function.
+	// (Deprecated from 1.142.0) Whether the Open Internet Access Function.
 	//
 	// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 	EnableInternetAccess bool `pulumi:"enableInternetAccess"`
@@ -4569,7 +5007,7 @@ type GetSimpleOfficeSitesSite struct {
 	SsoEnabled bool `pulumi:"ssoEnabled"`
 	// Whether to Enable Single Sign-on (SSO) for User-Based SSO.
 	SsoStatus bool `pulumi:"ssoStatus"`
-	// Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+	// Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
 	Status string `pulumi:"status"`
 	// AD Subdomain of the DNS Address.
 	SubDnsAddresses []string `pulumi:"subDnsAddresses"`
@@ -4595,7 +5033,7 @@ type GetSimpleOfficeSitesSiteInput interface {
 }
 
 type GetSimpleOfficeSitesSiteArgs struct {
-	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+	// (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
 	//
 	// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
@@ -4625,7 +5063,7 @@ type GetSimpleOfficeSitesSiteArgs struct {
 	EnableAdminAccess pulumi.BoolInput `pulumi:"enableAdminAccess"`
 	// Enable Cross-Desktop Access.
 	EnableCrossDesktopAccess pulumi.BoolInput `pulumi:"enableCrossDesktopAccess"`
-	// Whether the Open Internet Access Function.
+	// (Deprecated from 1.142.0) Whether the Open Internet Access Function.
 	//
 	// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 	EnableInternetAccess pulumi.BoolInput `pulumi:"enableInternetAccess"`
@@ -4647,7 +5085,7 @@ type GetSimpleOfficeSitesSiteArgs struct {
 	SsoEnabled pulumi.BoolInput `pulumi:"ssoEnabled"`
 	// Whether to Enable Single Sign-on (SSO) for User-Based SSO.
 	SsoStatus pulumi.BoolInput `pulumi:"ssoStatus"`
-	// Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+	// Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// AD Subdomain of the DNS Address.
 	SubDnsAddresses pulumi.StringArrayInput `pulumi:"subDnsAddresses"`
@@ -4712,7 +5150,7 @@ func (o GetSimpleOfficeSitesSiteOutput) ToGetSimpleOfficeSitesSiteOutputWithCont
 	return o
 }
 
-// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+// (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
 //
 // Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 func (o GetSimpleOfficeSitesSiteOutput) Bandwidth() pulumi.IntOutput {
@@ -4784,7 +5222,7 @@ func (o GetSimpleOfficeSitesSiteOutput) EnableCrossDesktopAccess() pulumi.BoolOu
 	return o.ApplyT(func(v GetSimpleOfficeSitesSite) bool { return v.EnableCrossDesktopAccess }).(pulumi.BoolOutput)
 }
 
-// Whether the Open Internet Access Function.
+// (Deprecated from 1.142.0) Whether the Open Internet Access Function.
 //
 // Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 func (o GetSimpleOfficeSitesSiteOutput) EnableInternetAccess() pulumi.BoolOutput {
@@ -4836,7 +5274,7 @@ func (o GetSimpleOfficeSitesSiteOutput) SsoStatus() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSimpleOfficeSitesSite) bool { return v.SsoStatus }).(pulumi.BoolOutput)
 }
 
-// Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+// Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
 func (o GetSimpleOfficeSitesSiteOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -4891,7 +5329,7 @@ type GetSnapshotsSnapshot struct {
 	CreateTime string `pulumi:"createTime"`
 	// The description of the snapshot.
 	Description string `pulumi:"description"`
-	// The ID of the cloud desktop to which the snapshot belongs.
+	// The ID of the Desktop.
 	DesktopId string `pulumi:"desktopId"`
 	// The ID of the Snapshot.
 	Id string `pulumi:"id"`
@@ -4899,7 +5337,7 @@ type GetSnapshotsSnapshot struct {
 	Progress string `pulumi:"progress"`
 	// The remaining time that is required to create the snapshot. Unit: seconds.
 	RemainTime int `pulumi:"remainTime"`
-	// The ID of the snapshot.
+	// The ID of the Snapshot.
 	SnapshotId string `pulumi:"snapshotId"`
 	// The name of the snapshot.
 	SnapshotName string `pulumi:"snapshotName"`
@@ -4929,7 +5367,7 @@ type GetSnapshotsSnapshotArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The description of the snapshot.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The ID of the cloud desktop to which the snapshot belongs.
+	// The ID of the Desktop.
 	DesktopId pulumi.StringInput `pulumi:"desktopId"`
 	// The ID of the Snapshot.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -4937,7 +5375,7 @@ type GetSnapshotsSnapshotArgs struct {
 	Progress pulumi.StringInput `pulumi:"progress"`
 	// The remaining time that is required to create the snapshot. Unit: seconds.
 	RemainTime pulumi.IntInput `pulumi:"remainTime"`
-	// The ID of the snapshot.
+	// The ID of the Snapshot.
 	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
 	// The name of the snapshot.
 	SnapshotName pulumi.StringInput `pulumi:"snapshotName"`
@@ -5012,7 +5450,7 @@ func (o GetSnapshotsSnapshotOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The ID of the cloud desktop to which the snapshot belongs.
+// The ID of the Desktop.
 func (o GetSnapshotsSnapshotOutput) DesktopId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.DesktopId }).(pulumi.StringOutput)
 }
@@ -5032,7 +5470,7 @@ func (o GetSnapshotsSnapshotOutput) RemainTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.RemainTime }).(pulumi.IntOutput)
 }
 
-// The ID of the snapshot.
+// The ID of the Snapshot.
 func (o GetSnapshotsSnapshotOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
@@ -5091,7 +5529,7 @@ type GetUsersUser struct {
 	Id string `pulumi:"id"`
 	// The phone of the mobile phone number.
 	Phone string `pulumi:"phone"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Unlocked`, `Locked`.
 	Status string `pulumi:"status"`
 }
 
@@ -5115,7 +5553,7 @@ type GetUsersUserArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The phone of the mobile phone number.
 	Phone pulumi.StringInput `pulumi:"phone"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Unlocked`, `Locked`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -5190,7 +5628,7 @@ func (o GetUsersUserOutput) Phone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Phone }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `Unlocked`, `Locked`.
 func (o GetUsersUserOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -5315,10 +5753,14 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomPropertyPropertyValueInput)(nil)).Elem(), CustomPropertyPropertyValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomPropertyPropertyValueArrayInput)(nil)).Elem(), CustomPropertyPropertyValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DesktopDesktopTimerInput)(nil)).Elem(), DesktopDesktopTimerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DesktopDesktopTimerArrayInput)(nil)).Elem(), DesktopDesktopTimerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupAuthorizeAccessPolicyRuleInput)(nil)).Elem(), EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupAuthorizeAccessPolicyRuleArrayInput)(nil)).Elem(), EcdPolicyGroupAuthorizeAccessPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupAuthorizeSecurityPolicyRuleInput)(nil)).Elem(), EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayInput)(nil)).Elem(), EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupClientTypeInput)(nil)).Elem(), EcdPolicyGroupClientTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupClientTypeArrayInput)(nil)).Elem(), EcdPolicyGroupClientTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAdConnectorDirectoriesDirectoryInput)(nil)).Elem(), GetAdConnectorDirectoriesDirectoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAdConnectorDirectoriesDirectoryArrayInput)(nil)).Elem(), GetAdConnectorDirectoriesDirectoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAdConnectorDirectoriesDirectoryAdConnectorInput)(nil)).Elem(), GetAdConnectorDirectoriesDirectoryAdConnectorArgs{})
@@ -5347,6 +5789,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDesktopTypesTypeArrayInput)(nil)).Elem(), GetDesktopTypesTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDesktopsDesktopInput)(nil)).Elem(), GetDesktopsDesktopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDesktopsDesktopArrayInput)(nil)).Elem(), GetDesktopsDesktopArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDesktopsDesktopDiskInput)(nil)).Elem(), GetDesktopsDesktopDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDesktopsDesktopDiskArrayInput)(nil)).Elem(), GetDesktopsDesktopDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageArrayInput)(nil)).Elem(), GetImagesImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNasFileSystemsSystemInput)(nil)).Elem(), GetNasFileSystemsSystemArgs{})
@@ -5375,10 +5819,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(CustomPropertyPropertyValueOutput{})
 	pulumi.RegisterOutputType(CustomPropertyPropertyValueArrayOutput{})
+	pulumi.RegisterOutputType(DesktopDesktopTimerOutput{})
+	pulumi.RegisterOutputType(DesktopDesktopTimerArrayOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeAccessPolicyRuleOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(EcdPolicyGroupClientTypeOutput{})
+	pulumi.RegisterOutputType(EcdPolicyGroupClientTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetAdConnectorDirectoriesDirectoryOutput{})
 	pulumi.RegisterOutputType(GetAdConnectorDirectoriesDirectoryArrayOutput{})
 	pulumi.RegisterOutputType(GetAdConnectorDirectoriesDirectoryAdConnectorOutput{})
@@ -5407,6 +5855,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDesktopTypesTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetDesktopsDesktopOutput{})
 	pulumi.RegisterOutputType(GetDesktopsDesktopArrayOutput{})
+	pulumi.RegisterOutputType(GetDesktopsDesktopDiskOutput{})
+	pulumi.RegisterOutputType(GetDesktopsDesktopDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesImageOutput{})
 	pulumi.RegisterOutputType(GetImagesImageArrayOutput{})
 	pulumi.RegisterOutputType(GetNasFileSystemsSystemOutput{})

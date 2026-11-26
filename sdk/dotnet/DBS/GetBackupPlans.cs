@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.DBS
         /// <summary>
         /// This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.185.0+.
+        /// &gt; **NOTE:** Available since v1.185.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.DBS
         /// <summary>
         /// This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.185.0+.
+        /// &gt; **NOTE:** Available since v1.185.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.DBS
         /// <summary>
         /// This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.185.0+.
+        /// &gt; **NOTE:** Available since v1.185.0.
         /// 
         /// ## Example Usage
         /// 
@@ -234,6 +234,9 @@ namespace Pulumi.AliCloud.DBS
     [OutputType]
     public sealed class GetBackupPlansResult
     {
+        /// <summary>
+        /// The name of the resource.
+        /// </summary>
         public readonly string? BackupPlanName;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -242,11 +245,20 @@ namespace Pulumi.AliCloud.DBS
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Backup Plan names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// A list of Dbs Backup Plans. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBackupPlansPlanResult> Plans;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

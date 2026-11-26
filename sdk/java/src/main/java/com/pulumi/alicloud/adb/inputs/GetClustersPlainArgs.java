@@ -19,14 +19,14 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetClustersPlainArgs Empty = new GetClustersPlainArgs();
 
     /**
-     * The description of the ADB cluster.
+     * The description of DBCluster.
      * 
      */
     @Import(name="description")
     private @Nullable String description;
 
     /**
-     * @return The description of the ADB cluster.
+     * @return The description of DBCluster.
      * 
      */
     public Optional<String> description() {
@@ -34,36 +34,44 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * A regex string to filter results by cluster description.
+     * A regex string to filter results by DBCluster description.
      * 
      */
     @Import(name="descriptionRegex")
     private @Nullable String descriptionRegex;
 
     /**
-     * @return A regex string to filter results by cluster description.
+     * @return A regex string to filter results by DBCluster description.
      * 
      */
     public Optional<String> descriptionRegex() {
         return Optional.ofNullable(this.descriptionRegex);
     }
 
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
+    /**
+     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
 
     /**
-     * A list of ADB cluster IDs.
+     * A list of DBCluster IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return A list of ADB cluster IDs.
+     * @return A list of DBCluster IDs.
      * 
      */
     public Optional<List<String>> ids() {
@@ -99,22 +107,30 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * The ID of the resource group.
+     * 
+     */
     @Import(name="resourceGroupId")
     private @Nullable String resourceGroupId;
 
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
     /**
-     * The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+     * @return The status of the resource.
      * 
      */
     public Optional<String> status() {
@@ -122,18 +138,14 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * A mapping of tags to assign to the resource.
-     * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
+     * A map of tags assigned to the cluster.
      * 
      */
     @Import(name="tags")
     private @Nullable Map<String,String> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
-     * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
+     * @return A map of tags assigned to the cluster.
      * 
      */
     public Optional<Map<String,String>> tags() {
@@ -174,7 +186,7 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param description The description of the ADB cluster.
+         * @param description The description of DBCluster.
          * 
          * @return builder
          * 
@@ -185,7 +197,7 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param descriptionRegex A regex string to filter results by cluster description.
+         * @param descriptionRegex A regex string to filter results by DBCluster description.
          * 
          * @return builder
          * 
@@ -195,13 +207,19 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
             return this;
         }
 
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             $.enableDetails = enableDetails;
             return this;
         }
 
         /**
-         * @param ids A list of ADB cluster IDs.
+         * @param ids A list of DBCluster IDs.
          * 
          * @return builder
          * 
@@ -212,7 +230,7 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param ids A list of ADB cluster IDs.
+         * @param ids A list of DBCluster IDs.
          * 
          * @return builder
          * 
@@ -242,13 +260,19 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
             return this;
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             $.resourceGroupId = resourceGroupId;
             return this;
         }
 
         /**
-         * @param status The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -259,9 +283,7 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
-         * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
-         * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
+         * @param tags A map of tags assigned to the cluster.
          * 
          * @return builder
          * 

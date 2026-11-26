@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cdn blocked regions.
 //
-// > **NOTE:** Available in v1.173.0+.
+// > **NOTE:** Available since v1.173.0.
 //
 // ## Example Usage
 //
@@ -61,9 +61,10 @@ type GetBlockedRegionsArgs struct {
 // A collection of values returned by getBlockedRegions.
 type GetBlockedRegionsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id       string                    `pulumi:"id"`
-	Language string                    `pulumi:"language"`
-	Regions  []GetBlockedRegionsRegion `pulumi:"regions"`
+	Id       string `pulumi:"id"`
+	Language string `pulumi:"language"`
+	// A list of Cdn Blocked Regions. Each element contains the following attributes:
+	Regions []GetBlockedRegionsRegion `pulumi:"regions"`
 }
 
 func GetBlockedRegionsOutput(ctx *pulumi.Context, args GetBlockedRegionsOutputArgs, opts ...pulumi.InvokeOption) GetBlockedRegionsResultOutput {
@@ -105,6 +106,7 @@ func (o GetBlockedRegionsResultOutput) Language() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBlockedRegionsResult) string { return v.Language }).(pulumi.StringOutput)
 }
 
+// A list of Cdn Blocked Regions. Each element contains the following attributes:
 func (o GetBlockedRegionsResultOutput) Regions() GetBlockedRegionsRegionArrayOutput {
 	return o.ApplyT(func(v GetBlockedRegionsResult) []GetBlockedRegionsRegion { return v.Regions }).(GetBlockedRegionsRegionArrayOutput)
 }

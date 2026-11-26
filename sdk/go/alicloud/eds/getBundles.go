@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecd bundles of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.143.0+.
+// > **NOTE:** Available since v1.143.0.
 //
 // ## Example Usage
 //
@@ -54,6 +54,7 @@ func GetBundles(ctx *pulumi.Context, args *GetBundlesArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getBundles.
 type GetBundlesArgs struct {
+	// A list of bundle IDs used to filter the results.
 	BundleIds []string `pulumi:"bundleIds"`
 	// The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
 	BundleType *string `pulumi:"bundleType"`
@@ -67,13 +68,17 @@ type GetBundlesArgs struct {
 
 // A collection of values returned by getBundles.
 type GetBundlesResult struct {
-	BundleIds  []string           `pulumi:"bundleIds"`
-	BundleType *string            `pulumi:"bundleType"`
-	Bundles    []GetBundlesBundle `pulumi:"bundles"`
+	// The bundle id of the bundle.
+	BundleIds []string `pulumi:"bundleIds"`
+	// The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
+	BundleType *string `pulumi:"bundleType"`
+	// A list of Ecd Bundle. Each element contains the following attributes:
+	Bundles []GetBundlesBundle `pulumi:"bundles"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Bundle names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -85,6 +90,7 @@ func GetBundlesOutput(ctx *pulumi.Context, args GetBundlesOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getBundles.
 type GetBundlesOutputArgs struct {
+	// A list of bundle IDs used to filter the results.
 	BundleIds pulumi.StringArrayInput `pulumi:"bundleIds"`
 	// The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
 	BundleType pulumi.StringPtrInput `pulumi:"bundleType"`
@@ -115,14 +121,17 @@ func (o GetBundlesResultOutput) ToGetBundlesResultOutputWithContext(ctx context.
 	return o
 }
 
+// The bundle id of the bundle.
 func (o GetBundlesResultOutput) BundleIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBundlesResult) []string { return v.BundleIds }).(pulumi.StringArrayOutput)
 }
 
+// The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
 func (o GetBundlesResultOutput) BundleType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBundlesResult) *string { return v.BundleType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecd Bundle. Each element contains the following attributes:
 func (o GetBundlesResultOutput) Bundles() GetBundlesBundleArrayOutput {
 	return o.ApplyT(func(v GetBundlesResult) []GetBundlesBundle { return v.Bundles }).(GetBundlesBundleArrayOutput)
 }
@@ -140,6 +149,7 @@ func (o GetBundlesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBundlesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Bundle names.
 func (o GetBundlesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBundlesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

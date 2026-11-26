@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Example Usage
 //
@@ -77,18 +77,22 @@ type GetGatewaysArgs struct {
 
 // A collection of values returned by getGateways.
 type GetGatewaysResult struct {
+	// A list of Cloud Storage Gateway Gateways. Each element contains the following attributes:
 	Gateways []GetGatewaysGateway `pulumi:"gateways"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string   `pulumi:"id"`
-	Ids             []string `pulumi:"ids"`
-	NameRegex       *string  `pulumi:"nameRegex"`
-	Names           []string `pulumi:"names"`
-	OutputFile      *string  `pulumi:"outputFile"`
-	PageNumber      *int     `pulumi:"pageNumber"`
-	PageSize        *int     `pulumi:"pageSize"`
-	Status          *string  `pulumi:"status"`
-	StorageBundleId string   `pulumi:"storageBundleId"`
-	TotalCount      int      `pulumi:"totalCount"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Gateway names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
+	// gateway status.
+	Status *string `pulumi:"status"`
+	// storage bundle id.
+	StorageBundleId string `pulumi:"storageBundleId"`
+	TotalCount      int    `pulumi:"totalCount"`
 }
 
 func GetGatewaysOutput(ctx *pulumi.Context, args GetGatewaysOutputArgs, opts ...pulumi.InvokeOption) GetGatewaysResultOutput {
@@ -131,6 +135,7 @@ func (o GetGatewaysResultOutput) ToGetGatewaysResultOutputWithContext(ctx contex
 	return o
 }
 
+// A list of Cloud Storage Gateway Gateways. Each element contains the following attributes:
 func (o GetGatewaysResultOutput) Gateways() GetGatewaysGatewayArrayOutput {
 	return o.ApplyT(func(v GetGatewaysResult) []GetGatewaysGateway { return v.Gateways }).(GetGatewaysGatewayArrayOutput)
 }
@@ -148,6 +153,7 @@ func (o GetGatewaysResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Gateway names.
 func (o GetGatewaysResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGatewaysResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -164,10 +170,12 @@ func (o GetGatewaysResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// gateway status.
 func (o GetGatewaysResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// storage bundle id.
 func (o GetGatewaysResultOutput) StorageBundleId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysResult) string { return v.StorageBundleId }).(pulumi.StringOutput)
 }

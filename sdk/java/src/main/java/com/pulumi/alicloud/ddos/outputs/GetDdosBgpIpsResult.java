@@ -21,12 +21,24 @@ public final class GetDdosBgpIpsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The ID of the native protection enterprise instance to be operated.
+     * 
+     */
     private String instanceId;
+    /**
+     * @return A list of Ddos Bgp Ips. Each element contains the following attributes:
+     * 
+     */
     private List<GetDdosBgpIpsIp> ips;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
     private @Nullable String productName;
+    /**
+     * @return The current state of the IP address.
+     * 
+     */
     private @Nullable String status;
 
     private GetDdosBgpIpsResult() {}
@@ -40,9 +52,17 @@ public final class GetDdosBgpIpsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The ID of the native protection enterprise instance to be operated.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
+    /**
+     * @return A list of Ddos Bgp Ips. Each element contains the following attributes:
+     * 
+     */
     public List<GetDdosBgpIpsIp> ips() {
         return this.ips;
     }
@@ -58,6 +78,10 @@ public final class GetDdosBgpIpsResult {
     public Optional<String> productName() {
         return Optional.ofNullable(this.productName);
     }
+    /**
+     * @return The current state of the IP address.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

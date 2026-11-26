@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.realtimecompute;
 
+import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceDefaultNamespaceResourceSpecArgs;
 import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceResourceSpecArgs;
 import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceStorageArgs;
 import com.pulumi.core.Output;
@@ -34,6 +35,21 @@ public final class VvpInstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> autoRenewDuration() {
         return Optional.ofNullable(this.autoRenewDuration);
+    }
+
+    /**
+     * The default namespace resource configuration. See `defaultNamespaceResourceSpec` below.
+     * 
+     */
+    @Import(name="defaultNamespaceResourceSpec")
+    private @Nullable Output<VvpInstanceDefaultNamespaceResourceSpecArgs> defaultNamespaceResourceSpec;
+
+    /**
+     * @return The default namespace resource configuration. See `defaultNamespaceResourceSpec` below.
+     * 
+     */
+    public Optional<Output<VvpInstanceDefaultNamespaceResourceSpecArgs>> defaultNamespaceResourceSpec() {
+        return Optional.ofNullable(this.defaultNamespaceResourceSpec);
     }
 
     /**
@@ -217,24 +233,31 @@ public final class VvpInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone ID of the resource.
+     * The zone ID of the resource. Field `zoneId` has been deprecated from version 2.3.0.
+     * 
+     * @deprecated Field `zoneId` has been deprecated from version 2.3.0.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Deprecated
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone ID of the resource.
+     * @return The zone ID of the resource. Field `zoneId` has been deprecated from version 2.3.0.
+     * 
+     * @deprecated Field `zoneId` has been deprecated from version 2.3.0.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    @Deprecated
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private VvpInstanceArgs() {}
 
     private VvpInstanceArgs(VvpInstanceArgs $) {
         this.autoRenewDuration = $.autoRenewDuration;
+        this.defaultNamespaceResourceSpec = $.defaultNamespaceResourceSpec;
         this.duration = $.duration;
         this.paymentType = $.paymentType;
         this.pricingCycle = $.pricingCycle;
@@ -287,6 +310,27 @@ public final class VvpInstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autoRenewDuration(Integer autoRenewDuration) {
             return autoRenewDuration(Output.of(autoRenewDuration));
+        }
+
+        /**
+         * @param defaultNamespaceResourceSpec The default namespace resource configuration. See `defaultNamespaceResourceSpec` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultNamespaceResourceSpec(@Nullable Output<VvpInstanceDefaultNamespaceResourceSpecArgs> defaultNamespaceResourceSpec) {
+            $.defaultNamespaceResourceSpec = defaultNamespaceResourceSpec;
+            return this;
+        }
+
+        /**
+         * @param defaultNamespaceResourceSpec The default namespace resource configuration. See `defaultNamespaceResourceSpec` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultNamespaceResourceSpec(VvpInstanceDefaultNamespaceResourceSpecArgs defaultNamespaceResourceSpec) {
+            return defaultNamespaceResourceSpec(Output.of(defaultNamespaceResourceSpec));
         }
 
         /**
@@ -552,22 +596,28 @@ public final class VvpInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID of the resource.
+         * @param zoneId The zone ID of the resource. Field `zoneId` has been deprecated from version 2.3.0.
          * 
          * @return builder
          * 
+         * @deprecated Field `zoneId` has been deprecated from version 2.3.0.
+         * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        @Deprecated
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
         /**
-         * @param zoneId The zone ID of the resource.
+         * @param zoneId The zone ID of the resource. Field `zoneId` has been deprecated from version 2.3.0.
          * 
          * @return builder
          * 
+         * @deprecated Field `zoneId` has been deprecated from version 2.3.0.
+         * 
          */
+        @Deprecated
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
         }
@@ -587,9 +637,6 @@ public final class VvpInstanceArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.vvpInstanceName == null) {
                 throw new MissingRequiredPropertyException("VvpInstanceArgs", "vvpInstanceName");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("VvpInstanceArgs", "zoneId");
             }
             return $;
         }

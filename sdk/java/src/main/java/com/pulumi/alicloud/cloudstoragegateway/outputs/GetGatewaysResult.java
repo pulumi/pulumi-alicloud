@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGatewaysResult {
+    /**
+     * @return A list of Cloud Storage Gateway Gateways. Each element contains the following attributes:
+     * 
+     */
     private List<GetGatewaysGateway> gateways;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,15 +27,31 @@ public final class GetGatewaysResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Gateway names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return gateway status.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return storage bundle id.
+     * 
+     */
     private String storageBundleId;
     private Integer totalCount;
 
     private GetGatewaysResult() {}
+    /**
+     * @return A list of Cloud Storage Gateway Gateways. Each element contains the following attributes:
+     * 
+     */
     public List<GetGatewaysGateway> gateways() {
         return this.gateways;
     }
@@ -48,6 +68,10 @@ public final class GetGatewaysResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Gateway names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -60,9 +84,17 @@ public final class GetGatewaysResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return gateway status.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return storage bundle id.
+     * 
+     */
     public String storageBundleId() {
         return this.storageBundleId;
     }

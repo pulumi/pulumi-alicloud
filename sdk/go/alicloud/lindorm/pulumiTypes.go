@@ -760,7 +760,7 @@ type GetInstancesInstance struct {
 	SearchEngineSpecification string `pulumi:"searchEngineSpecification"`
 	// The service type of Instance, Valid values:  `lindorm`, `serverlessLindorm`, `lindormStandalone`.
 	ServiceType string `pulumi:"serviceType"`
-	// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+	// Instance status, Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
 	Status string `pulumi:"status"`
 	// The count of table engine.
 	TableEngineNodeCount int `pulumi:"tableEngineNodeCount"`
@@ -842,7 +842,7 @@ type GetInstancesInstanceArgs struct {
 	SearchEngineSpecification pulumi.StringInput `pulumi:"searchEngineSpecification"`
 	// The service type of Instance, Valid values:  `lindorm`, `serverlessLindorm`, `lindormStandalone`.
 	ServiceType pulumi.StringInput `pulumi:"serviceType"`
-	// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+	// Instance status, Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The count of table engine.
 	TableEngineNodeCount pulumi.IntInput `pulumi:"tableEngineNodeCount"`
@@ -1041,7 +1041,7 @@ func (o GetInstancesInstanceOutput) ServiceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ServiceType }).(pulumi.StringOutput)
 }
 
-// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+// Instance status, Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }

@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// &gt; **NOTE:** Available since v1.40.0.
     /// 
+    /// &gt; **NOTE:** Destroying a `PrePaid` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+    /// 
     /// &gt; **NOTE:**  The following regions don't support create Classic network MongoDB Sharding Instance.
     /// [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-3`,`ap-southeast-5`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
     /// 
@@ -112,6 +114,19 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string?> AccountPassword { get; private set; } = null!;
 
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `AccountPasswordWoVersion` changes and is never stored in the state or plan.
+        /// </summary>
+        [Output("accountPasswordWo")]
+        public Output<string?> AccountPasswordWo { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `AccountPasswordWo` changes.
+        /// </summary>
+        [Output("accountPasswordWoVersion")]
+        public Output<int?> AccountPasswordWoVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Auto renew for prepaid. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Output("autoRenew")]
@@ -119,6 +134,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+        /// 
         /// &gt; **NOTE:** If `AutoRenew` is set to `True`, `AutoRenewDuration` must be set.
         /// </summary>
         [Output("autoRenewDuration")]
@@ -321,6 +337,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+        /// 
         /// &gt; **NOTE:** You must specify `SrcDbInstanceId` and `RestoreTime` only when you clone an instance based on a point in time.
         /// </summary>
         [Output("restoreTime")]
@@ -387,6 +404,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// - `Open`: turn on SSL encryption.
         /// - `Close`: turn off SSL encryption.
         /// - `Update`: update SSL certificate.
+        /// 
         /// &gt; **NOTE:** Once `SslAction` is set, it isn't allowed to be removed from the Terraform code.
         /// </summary>
         [Output("sslAction")]
@@ -473,6 +491,7 @@ namespace Pulumi.AliCloud.MongoDB
                 AdditionalSecretOutputs =
                 {
                     "accountPassword",
+                    "accountPasswordWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -513,6 +532,29 @@ namespace Pulumi.AliCloud.MongoDB
             }
         }
 
+        [Input("accountPasswordWo")]
+        private Input<string>? _accountPasswordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `AccountPasswordWoVersion` changes and is never stored in the state or plan.
+        /// </summary>
+        public Input<string>? AccountPasswordWo
+        {
+            get => _accountPasswordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPasswordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `AccountPasswordWo` changes.
+        /// </summary>
+        [Input("accountPasswordWoVersion")]
+        public Input<int>? AccountPasswordWoVersion { get; set; }
+
         /// <summary>
         /// Auto renew for prepaid. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
@@ -521,6 +563,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+        /// 
         /// &gt; **NOTE:** If `AutoRenew` is set to `True`, `AutoRenewDuration` must be set.
         /// </summary>
         [Input("autoRenewDuration")]
@@ -753,6 +796,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+        /// 
         /// &gt; **NOTE:** You must specify `SrcDbInstanceId` and `RestoreTime` only when you clone an instance based on a point in time.
         /// </summary>
         [Input("restoreTime")]
@@ -831,6 +875,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// - `Open`: turn on SSL encryption.
         /// - `Close`: turn off SSL encryption.
         /// - `Update`: update SSL certificate.
+        /// 
         /// &gt; **NOTE:** Once `SslAction` is set, it isn't allowed to be removed from the Terraform code.
         /// </summary>
         [Input("sslAction")]
@@ -909,6 +954,29 @@ namespace Pulumi.AliCloud.MongoDB
             }
         }
 
+        [Input("accountPasswordWo")]
+        private Input<string>? _accountPasswordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `AccountPasswordWoVersion` changes and is never stored in the state or plan.
+        /// </summary>
+        public Input<string>? AccountPasswordWo
+        {
+            get => _accountPasswordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPasswordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `AccountPasswordWo` changes.
+        /// </summary>
+        [Input("accountPasswordWoVersion")]
+        public Input<int>? AccountPasswordWoVersion { get; set; }
+
         /// <summary>
         /// Auto renew for prepaid. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
@@ -917,6 +985,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+        /// 
         /// &gt; **NOTE:** If `AutoRenew` is set to `True`, `AutoRenewDuration` must be set.
         /// </summary>
         [Input("autoRenewDuration")]
@@ -1161,6 +1230,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+        /// 
         /// &gt; **NOTE:** You must specify `SrcDbInstanceId` and `RestoreTime` only when you clone an instance based on a point in time.
         /// </summary>
         [Input("restoreTime")]
@@ -1245,6 +1315,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// - `Open`: turn on SSL encryption.
         /// - `Close`: turn off SSL encryption.
         /// - `Update`: update SSL certificate.
+        /// 
         /// &gt; **NOTE:** Once `SslAction` is set, it isn't allowed to be removed from the Terraform code.
         /// </summary>
         [Input("sslAction")]

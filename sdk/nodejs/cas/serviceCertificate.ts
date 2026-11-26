@@ -137,6 +137,10 @@ export class ServiceCertificate extends pulumi.CustomResource {
      */
     declare public readonly cert: pulumi.Output<string | undefined>;
     /**
+     * (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+     */
+    declare public /*out*/ readonly certIdentifier: pulumi.Output<string>;
+    /**
      * A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
      */
     declare public readonly certificateName: pulumi.Output<string>;
@@ -204,6 +208,7 @@ export class ServiceCertificate extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServiceCertificateState | undefined;
             resourceInputs["cert"] = state?.cert;
+            resourceInputs["certIdentifier"] = state?.certIdentifier;
             resourceInputs["certificateName"] = state?.certificateName;
             resourceInputs["encryptCert"] = state?.encryptCert;
             resourceInputs["encryptPrivateKey"] = state?.encryptPrivateKey;
@@ -231,6 +236,7 @@ export class ServiceCertificate extends pulumi.CustomResource {
             resourceInputs["signCert"] = args?.signCert;
             resourceInputs["signPrivateKey"] = args?.signPrivateKey ? pulumi.secret(args.signPrivateKey) : undefined;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["certIdentifier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["encryptPrivateKey", "key", "keyWo", "signPrivateKey"] };
@@ -247,6 +253,10 @@ export interface ServiceCertificateState {
      * The content of a non-SM certificate in PEM format.
      */
     cert?: pulumi.Input<string | undefined>;
+    /**
+     * (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+     */
+    certIdentifier?: pulumi.Input<string | undefined>;
     /**
      * A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
      */

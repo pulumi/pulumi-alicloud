@@ -59,7 +59,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var region = config.get("region").orElse("cn-hangzhou");
- *         final var endpointGroupRegion = config.get("endpointGroupRegion").orElse("cn-beijing");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
  *             .build());
@@ -84,20 +83,17 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBasicAccelerator = new BasicAccelerator("defaultBasicAccelerator", BasicAcceleratorArgs.builder()
- *             .duration(1)
+ *             .paymentType("PayAsYouGo")
  *             .basicAcceleratorName("terraform-example")
  *             .description("terraform-example")
  *             .bandwidthBillingType("CDT")
- *             .autoUseCoupon("true")
- *             .autoPay(true)
  *             .build());
  * 
  *         var defaultBasicEndpointGroup = new BasicEndpointGroup("defaultBasicEndpointGroup", BasicEndpointGroupArgs.builder()
  *             .acceleratorId(defaultBasicAccelerator.id())
- *             .endpointGroupRegion(endpointGroupRegion)
+ *             .endpointGroupRegion(region)
  *             .endpointType("SLB")
  *             .endpointAddress(defaultApplicationLoadBalancer.id())
- *             .endpointSubAddress("192.168.0.1")
  *             .basicEndpointGroupName("terraform-example")
  *             .description("terraform-example")
  *             .build());
@@ -135,28 +131,36 @@ public class BasicEndpointGroup extends com.pulumi.resources.CustomResource {
         return this.acceleratorId;
     }
     /**
-     * The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+     * The name of the endpoint group.
+     * 
+     * The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
      * 
      */
     @Export(name="basicEndpointGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> basicEndpointGroupName;
 
     /**
-     * @return The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+     * @return The name of the endpoint group.
+     * 
+     * The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
      * 
      */
     public Output<Optional<String>> basicEndpointGroupName() {
         return Codegen.optional(this.basicEndpointGroupName);
     }
     /**
-     * The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+     * The description of the endpoint group.
+     * 
+     * The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+     * @return The description of the endpoint group.
+     * 
+     * The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> description() {
@@ -177,42 +181,60 @@ public class BasicEndpointGroup extends com.pulumi.resources.CustomResource {
         return this.endpointAddress;
     }
     /**
-     * The ID of the region where you want to create the endpoint group.
+     * The ID of the region to which the endpoint group belongs.
+     * 
+     * You can call the [ListAvailableBusiRegions](https://www.alibabacloud.com/help/en/doc-detail/2253223.html) operation to query the region ID.
      * 
      */
     @Export(name="endpointGroupRegion", refs={String.class}, tree="[0]")
     private Output<String> endpointGroupRegion;
 
     /**
-     * @return The ID of the region where you want to create the endpoint group.
+     * @return The ID of the region to which the endpoint group belongs.
+     * 
+     * You can call the [ListAvailableBusiRegions](https://www.alibabacloud.com/help/en/doc-detail/2253223.html) operation to query the region ID.
      * 
      */
     public Output<String> endpointGroupRegion() {
         return this.endpointGroupRegion;
     }
     /**
-     * The sub address of the endpoint.
+     * The secondary address of the endpoint.
+     * 
+     * This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+     * - If you set the endpoint type to `ECS`, you can set `endpointSubAddress` to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+     * - If you set the endpoint type to `ENI`, you can set `endpointSubAddress` to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
      * 
      */
     @Export(name="endpointSubAddress", refs={String.class}, tree="[0]")
     private Output<String> endpointSubAddress;
 
     /**
-     * @return The sub address of the endpoint.
+     * @return The secondary address of the endpoint.
+     * 
+     * This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+     * - If you set the endpoint type to `ECS`, you can set `endpointSubAddress` to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+     * - If you set the endpoint type to `ENI`, you can set `endpointSubAddress` to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
      * 
      */
     public Output<String> endpointSubAddress() {
         return this.endpointSubAddress;
     }
     /**
-     * The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
+     * The type of the endpoint. Valid values:
+     * - `ENI`: elastic network interface (ENI).
+     * - `SLB`: Classic Load Balancer (CLB) instance.
+     * - `ECS`: Elastic Compute Service (ECS) instance.
      * 
      */
     @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output<String> endpointType;
 
     /**
-     * @return The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
+     * @return The type of the endpoint. Valid values:
+     * - `ENI`: elastic network interface (ENI).
+     * - `SLB`: Classic Load Balancer (CLB) instance.
+     * - `ECS`: Elastic Compute Service (ECS) instance.
      * 
      */
     public Output<String> endpointType() {

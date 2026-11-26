@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer.Outputs
         /// </summary>
         public readonly string InstanceName;
         /// <summary>
-        /// The billing method of the simple application server.
+        /// The paymen type of the resource. Valid values: `Subscription`.
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer.Outputs
         /// </summary>
         public readonly string PublicIpAddress;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
         /// </summary>
         public readonly string Status;
 

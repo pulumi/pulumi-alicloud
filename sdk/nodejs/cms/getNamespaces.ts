@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cms Namespaces of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.171.0+.
+ * > **NOTE:** Available since v1.171.0.
  *
  * ## Example Usage
  *
@@ -67,6 +67,9 @@ export interface GetNamespacesResult {
     readonly id: string;
     readonly ids: string[];
     readonly keyword?: string;
+    /**
+     * A list of Cms Namespaces. Each element contains the following attributes:
+     */
     readonly namespaces: outputs.cms.GetNamespacesNamespace[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
@@ -75,7 +78,7 @@ export interface GetNamespacesResult {
 /**
  * This data source provides the Cms Namespaces of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.171.0+.
+ * > **NOTE:** Available since v1.171.0.
  *
  * ## Example Usage
  *

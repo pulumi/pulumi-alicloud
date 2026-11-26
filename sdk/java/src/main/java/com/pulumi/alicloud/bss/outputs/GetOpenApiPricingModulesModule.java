@@ -18,7 +18,7 @@ public final class GetOpenApiPricingModulesModule {
      */
     private String code;
     /**
-     * @return A list of Price Module IDs.
+     * @return The ID of the pricing module. The value is formulated as `&lt;product_code&gt;:&lt;product_type&gt;:&lt;subscription_type&gt;:&lt;code&gt;`.
      * 
      */
     private String id;
@@ -64,7 +64,7 @@ public final class GetOpenApiPricingModulesModule {
         return this.code;
     }
     /**
-     * @return A list of Price Module IDs.
+     * @return The ID of the pricing module. The value is formulated as `&lt;product_code&gt;:&lt;product_type&gt;:&lt;subscription_type&gt;:&lt;code&gt;`.
      * 
      */
     public String id() {

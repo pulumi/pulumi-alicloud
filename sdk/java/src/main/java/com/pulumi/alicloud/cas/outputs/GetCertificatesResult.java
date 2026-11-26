@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCertificatesResult {
     /**
-     * @return A list of apis. Each element contains the following attributes:
+     * @return A list of Ssl Certificates Service Certificates. Each element contains the following attributes:
      * 
      */
     private List<GetCertificatesCertificate> certificates;
@@ -26,10 +26,6 @@ public final class GetCertificatesResult {
      * 
      */
     private String id;
-    /**
-     * @return A list of cert IDs.
-     * 
-     */
     private List<String> ids;
     private @Nullable String keyword;
     /**
@@ -40,7 +36,7 @@ public final class GetCertificatesResult {
     private @Nullable String lang;
     private @Nullable String nameRegex;
     /**
-     * @return A list of cert names.
+     * @return A list of Ssl Certificates names.
      * 
      */
     private List<String> names;
@@ -48,7 +44,7 @@ public final class GetCertificatesResult {
 
     private GetCertificatesResult() {}
     /**
-     * @return A list of apis. Each element contains the following attributes:
+     * @return A list of Ssl Certificates Service Certificates. Each element contains the following attributes:
      * 
      */
     public List<GetCertificatesCertificate> certificates() {
@@ -64,10 +60,6 @@ public final class GetCertificatesResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of cert IDs.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }
@@ -86,7 +78,7 @@ public final class GetCertificatesResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return A list of cert names.
+     * @return A list of Ssl Certificates names.
      * 
      */
     public List<String> names() {

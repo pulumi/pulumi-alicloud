@@ -22,11 +22,31 @@ public final class GetDbInstancePlansResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of DB Instance Plan names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return Plan scheduling type. Valid values: `Postpone`, `Regular`.
+     * 
+     */
     private @Nullable String planScheduleType;
+    /**
+     * @return The type of the Plan. Valid values: `PauseResume`, `Resize`.
+     * 
+     */
     private @Nullable String planType;
+    /**
+     * @return A list of Gpdb Db Instance Plans. Each element contains the following attributes:
+     * 
+     */
     private List<GetDbInstancePlansPlan> plans;
+    /**
+     * @return The Status of the Plan.
+     * 
+     */
     private @Nullable String status;
 
     private GetDbInstancePlansResult() {}
@@ -46,21 +66,41 @@ public final class GetDbInstancePlansResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of DB Instance Plan names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Plan scheduling type. Valid values: `Postpone`, `Regular`.
+     * 
+     */
     public Optional<String> planScheduleType() {
         return Optional.ofNullable(this.planScheduleType);
     }
+    /**
+     * @return The type of the Plan. Valid values: `PauseResume`, `Resize`.
+     * 
+     */
     public Optional<String> planType() {
         return Optional.ofNullable(this.planType);
     }
+    /**
+     * @return A list of Gpdb Db Instance Plans. Each element contains the following attributes:
+     * 
+     */
     public List<GetDbInstancePlansPlan> plans() {
         return this.plans;
     }
+    /**
+     * @return The Status of the Plan.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

@@ -38,11 +38,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string SnapshotGroupName;
         /// <summary>
-        /// The status of the resource.
+        /// The state of snapshot-consistent group. Valid Values: `Accomplished`, `Failed` and `Progressing`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// List of label key-value pairs.
+        /// A mapping of tags to assign to the snapshot group.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 

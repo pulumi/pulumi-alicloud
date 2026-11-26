@@ -20,18 +20,47 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as std from "@pulumi/std";
  *
- * // Declare the function
- * const k8s = alicloud.cs.getManagedKubernetesClusters({
- *     nameRegex: "my-cluster",
- *     enableDetails: false,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * const auth = k8s.then(k8s => std.toset({
- *     input: k8s.ids,
- * })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: alicloud.cs.getClusterCredential({
- *     clusterId: String(__key),
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: std.cidrsubnetOutput({
+ *         input: defaultNetwork.cidrBlock,
+ *         newbits: 8,
+ *         netnum: 8,
+ *     }).result,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     name: name,
+ *     clusterSpec: "ack.pro.small",
+ *     vswitchIds: [defaultSwitch.id],
+ *     newNatGateway: false,
+ *     podCidr: std.cidrsubnet({
+ *         input: "10.0.0.0/8",
+ *         newbits: 8,
+ *         netnum: 37,
+ *     }).then(invoke => invoke.result),
+ *     serviceCidr: std.cidrsubnet({
+ *         input: "172.18.0.0/16",
+ *         newbits: 4,
+ *         netnum: 7,
+ *     }).then(invoke => invoke.result),
+ *     slbInternetEnabled: true,
+ * });
+ * const auth = alicloud.cs.getClusterCredentialOutput({
+ *     clusterId: defaultManagedKubernetes.id,
  *     temporaryDurationMinutes: 60,
  *     outputFile: "my-auth-json",
- * }) }), {}));
+ * });
  * ```
  */
 export function getClusterCredential(args: GetClusterCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterCredentialResult> {
@@ -106,18 +135,47 @@ export interface GetClusterCredentialResult {
  * import * as alicloud from "@pulumi/alicloud";
  * import * as std from "@pulumi/std";
  *
- * // Declare the function
- * const k8s = alicloud.cs.getManagedKubernetesClusters({
- *     nameRegex: "my-cluster",
- *     enableDetails: false,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * const auth = k8s.then(k8s => std.toset({
- *     input: k8s.ids,
- * })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: alicloud.cs.getClusterCredential({
- *     clusterId: String(__key),
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: std.cidrsubnetOutput({
+ *         input: defaultNetwork.cidrBlock,
+ *         newbits: 8,
+ *         netnum: 8,
+ *     }).result,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     name: name,
+ *     clusterSpec: "ack.pro.small",
+ *     vswitchIds: [defaultSwitch.id],
+ *     newNatGateway: false,
+ *     podCidr: std.cidrsubnet({
+ *         input: "10.0.0.0/8",
+ *         newbits: 8,
+ *         netnum: 37,
+ *     }).then(invoke => invoke.result),
+ *     serviceCidr: std.cidrsubnet({
+ *         input: "172.18.0.0/16",
+ *         newbits: 4,
+ *         netnum: 7,
+ *     }).then(invoke => invoke.result),
+ *     slbInternetEnabled: true,
+ * });
+ * const auth = alicloud.cs.getClusterCredentialOutput({
+ *     clusterId: defaultManagedKubernetes.id,
  *     temporaryDurationMinutes: 60,
  *     outputFile: "my-auth-json",
- * }) }), {}));
+ * });
  * ```
  */
 export function getClusterCredentialOutput(args: GetClusterCredentialOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterCredentialResult> {

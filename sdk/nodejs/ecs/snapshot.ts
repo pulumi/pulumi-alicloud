@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
  *
- * > **NOTE:** Deprecated since v1.120.0.
+ * > **DEPRECATED:** This resource has been deprecated from v1.120.0.
  *
  * > **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsSnapshot from version 1.120.0.
  *
@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const snapshot = new alicloud.ecs.Snapshot("snapshot", {
  *     diskId: instance_attachment.diskId,
- *     name: "test-snapshot",
+ *     name: "demo-snapshot",
  *     description: "this snapshot is created for testing",
  *     tags: {
  *         version: "1.2",
@@ -78,8 +78,17 @@ export class Snapshot extends pulumi.CustomResource {
         return obj['__pulumiType'] === Snapshot.__pulumiType;
     }
 
+    /**
+     * Whether the snapshot is available.
+     */
     declare public /*out*/ readonly available: pulumi.Output<boolean>;
+    /**
+     * The category of the snapshot. Valid values: `standard`, `flash`.
+     */
     declare public readonly category: pulumi.Output<string>;
+    /**
+     * The creation time of the snapshot.
+     */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -89,34 +98,56 @@ export class Snapshot extends pulumi.CustomResource {
      * The source disk ID.
      */
     declare public readonly diskId: pulumi.Output<string>;
+    /**
+     * Whether to force delete the snapshot.
+     */
     declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
+     * Deprecated.
+     *
      * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
      */
     declare public readonly instantAccess: pulumi.Output<boolean | undefined>;
     /**
+     * Deprecated.
+     *
      * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      */
     declare public readonly instantAccessRetentionDays: pulumi.Output<number | undefined>;
     /**
-     * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     * The name of the snapshot to be created. Deprecated, use `snapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * The region ID of the snapshot.
+     */
     declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
     declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
+    /**
+     * The retention days of the snapshot.
+     */
     declare public readonly retentionDays: pulumi.Output<number | undefined>;
+    /**
+     * The name of the snapshot.
+     */
     declare public readonly snapshotName: pulumi.Output<string>;
+    /**
+     * The status of the snapshot.
+     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
+     */
     declare public readonly waitUntil: pulumi.Output<string | undefined>;
 
     /**
@@ -179,8 +210,17 @@ export class Snapshot extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Snapshot resources.
  */
 export interface SnapshotState {
+    /**
+     * Whether the snapshot is available.
+     */
     available?: pulumi.Input<boolean | undefined>;
+    /**
+     * The category of the snapshot. Valid values: `standard`, `flash`.
+     */
     category?: pulumi.Input<string | undefined>;
+    /**
+     * The creation time of the snapshot.
+     */
     createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -190,34 +230,56 @@ export interface SnapshotState {
      * The source disk ID.
      */
     diskId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to force delete the snapshot.
+     */
     force?: pulumi.Input<boolean | undefined>;
     /**
+     * Deprecated.
+     *
      * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
      */
     instantAccess?: pulumi.Input<boolean | undefined>;
     /**
+     * Deprecated.
+     *
      * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      */
     instantAccessRetentionDays?: pulumi.Input<number | undefined>;
     /**
-     * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     * The name of the snapshot to be created. Deprecated, use `snapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The region ID of the snapshot.
+     */
     regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * The retention days of the snapshot.
+     */
     retentionDays?: pulumi.Input<number | undefined>;
+    /**
+     * The name of the snapshot.
+     */
     snapshotName?: pulumi.Input<string | undefined>;
+    /**
+     * The status of the snapshot.
+     */
     status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
+     */
     waitUntil?: pulumi.Input<string | undefined>;
 }
 
@@ -225,6 +287,9 @@ export interface SnapshotState {
  * The set of arguments for constructing a Snapshot resource.
  */
 export interface SnapshotArgs {
+    /**
+     * The category of the snapshot. Valid values: `standard`, `flash`.
+     */
     category?: pulumi.Input<string | undefined>;
     /**
      * Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -234,17 +299,24 @@ export interface SnapshotArgs {
      * The source disk ID.
      */
     diskId: pulumi.Input<string>;
+    /**
+     * Whether to force delete the snapshot.
+     */
     force?: pulumi.Input<boolean | undefined>;
     /**
+     * Deprecated.
+     *
      * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
      */
     instantAccess?: pulumi.Input<boolean | undefined>;
     /**
+     * Deprecated.
+     *
      * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      */
     instantAccessRetentionDays?: pulumi.Input<number | undefined>;
     /**
-     * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     * The name of the snapshot to be created. Deprecated, use `snapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
@@ -254,11 +326,20 @@ export interface SnapshotArgs {
      * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * The retention days of the snapshot.
+     */
     retentionDays?: pulumi.Input<number | undefined>;
+    /**
+     * The name of the snapshot.
+     */
     snapshotName?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
+     */
     waitUntil?: pulumi.Input<string | undefined>;
 }

@@ -40,14 +40,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Certificate Information. See the following `Block certInfos`.
+     * Certificate Information. See `certInfos` below for details.
      * 
      */
     @Import(name="certInfos")
     private @Nullable Output<List<DomainCertInfoArgs>> certInfos;
 
     /**
-     * @return Certificate Information. See the following `Block certInfos`.
+     * @return Certificate Information. See `certInfos` below for details.
      * 
      */
     public Optional<Output<List<DomainCertInfoArgs>>> certInfos() {
@@ -115,14 +115,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * the Origin Server Information. See the following `Block sources`.
+     * The Origin Server Information. See `sources` below for details.
      * 
      */
     @Import(name="sources")
     private @Nullable Output<List<DomainSourceArgs>> sources;
 
     /**
-     * @return the Origin Server Information. See the following `Block sources`.
+     * @return The Origin Server Information. See `sources` below for details.
      * 
      */
     public Optional<Output<List<DomainSourceArgs>>> sources() {
@@ -203,7 +203,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certInfos Certificate Information. See the following `Block certInfos`.
+         * @param certInfos Certificate Information. See `certInfos` below for details.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certInfos Certificate Information. See the following `Block certInfos`.
+         * @param certInfos Certificate Information. See `certInfos` below for details.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certInfos Certificate Information. See the following `Block certInfos`.
+         * @param certInfos Certificate Information. See `certInfos` below for details.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources the Origin Server Information. See the following `Block sources`.
+         * @param sources The Origin Server Information. See `sources` below for details.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources the Origin Server Information. See the following `Block sources`.
+         * @param sources The Origin Server Information. See `sources` below for details.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources the Origin Server Information. See the following `Block sources`.
+         * @param sources The Origin Server Information. See `sources` below for details.
          * 
          * @return builder
          * 

@@ -30,7 +30,7 @@ class EcsPrefixListArgs:
         The set of arguments for constructing a EcsPrefixList resource.
 
         :param pulumi.Input[_builtins.str] address_family: The IP address family. Valid values: `IPv4`,`IPv6`.
-        :param pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]] entries: The Entry. The details see Block `entry`.
+        :param pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]] entries: The Entry. See `entry` below.
         :param pulumi.Input[_builtins.int] max_entries: The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
         :param pulumi.Input[_builtins.str] prefix_list_name: The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         :param pulumi.Input[_builtins.str] description: The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
@@ -58,7 +58,7 @@ class EcsPrefixListArgs:
     @pulumi.getter
     def entries(self) -> pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]]:
         """
-        The Entry. The details see Block `entry`.
+        The Entry. See `entry` below.
         """
         return pulumi.get(self, "entries")
 
@@ -116,7 +116,7 @@ class _EcsPrefixListState:
 
         :param pulumi.Input[_builtins.str] address_family: The IP address family. Valid values: `IPv4`,`IPv6`.
         :param pulumi.Input[_builtins.str] description: The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
-        :param pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]] entries: The Entry. The details see Block `entry`.
+        :param pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]] entries: The Entry. See `entry` below.
         :param pulumi.Input[_builtins.int] max_entries: The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
         :param pulumi.Input[_builtins.str] prefix_list_name: The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         """
@@ -159,7 +159,7 @@ class _EcsPrefixListState:
     @pulumi.getter
     def entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]]]:
         """
-        The Entry. The details see Block `entry`.
+        The Entry. See `entry` below.
         """
         return pulumi.get(self, "entries")
 
@@ -209,7 +209,7 @@ class EcsPrefixList(pulumi.CustomResource):
 
         For information about ECS Prefix List and how to use it, see [What is Prefix List.](https://www.alibabacloud.com/help/en/doc-detail/207969.html).
 
-        > **NOTE:** Available in v1.152.0+.
+        > **NOTE:** Available since v1.152.0.
 
         ## Example Usage
 
@@ -222,7 +222,7 @@ class EcsPrefixList(pulumi.CustomResource):
         default = alicloud.ecs.EcsPrefixList("default",
             address_family="IPv4",
             max_entries=2,
-            prefix_list_name="tftest",
+            prefix_list_name="tfexample",
             description="description",
             entries=[{
                 "cidr": "192.168.0.0/24",
@@ -245,7 +245,7 @@ class EcsPrefixList(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_family: The IP address family. Valid values: `IPv4`,`IPv6`.
         :param pulumi.Input[_builtins.str] description: The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsPrefixListEntryArgs', 'EcsPrefixListEntryArgsDict', 'outputs.EcsPrefixListEntry']]]] entries: The Entry. The details see Block `entry`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsPrefixListEntryArgs', 'EcsPrefixListEntryArgsDict', 'outputs.EcsPrefixListEntry']]]] entries: The Entry. See `entry` below.
         :param pulumi.Input[_builtins.int] max_entries: The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
         :param pulumi.Input[_builtins.str] prefix_list_name: The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         """
@@ -260,7 +260,7 @@ class EcsPrefixList(pulumi.CustomResource):
 
         For information about ECS Prefix List and how to use it, see [What is Prefix List.](https://www.alibabacloud.com/help/en/doc-detail/207969.html).
 
-        > **NOTE:** Available in v1.152.0+.
+        > **NOTE:** Available since v1.152.0.
 
         ## Example Usage
 
@@ -273,7 +273,7 @@ class EcsPrefixList(pulumi.CustomResource):
         default = alicloud.ecs.EcsPrefixList("default",
             address_family="IPv4",
             max_entries=2,
-            prefix_list_name="tftest",
+            prefix_list_name="tfexample",
             description="description",
             entries=[{
                 "cidr": "192.168.0.0/24",
@@ -358,7 +358,7 @@ class EcsPrefixList(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_family: The IP address family. Valid values: `IPv4`,`IPv6`.
         :param pulumi.Input[_builtins.str] description: The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsPrefixListEntryArgs', 'EcsPrefixListEntryArgsDict', 'outputs.EcsPrefixListEntry']]]] entries: The Entry. The details see Block `entry`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsPrefixListEntryArgs', 'EcsPrefixListEntryArgsDict', 'outputs.EcsPrefixListEntry']]]] entries: The Entry. See `entry` below.
         :param pulumi.Input[_builtins.int] max_entries: The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
         :param pulumi.Input[_builtins.str] prefix_list_name: The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         """
@@ -409,7 +409,7 @@ class EcsPrefixList(pulumi.CustomResource):
     @pulumi.getter
     def entries(self) -> pulumi.Output[Sequence['outputs.EcsPrefixListEntry']]:
         """
-        The Entry. The details see Block `entry`.
+        The Entry. See `entry` below.
         """
         return pulumi.get(self, "entries")
 

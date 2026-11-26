@@ -18,29 +18,54 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
     public static final AccountState Empty = new AccountState();
 
+    /**
+     * The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+     * 
+     */
     @Import(name="accountDescription")
     private @Nullable Output<String> accountDescription;
 
+    /**
+     * @return The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+     * 
+     */
     public Optional<Output<String>> accountDescription() {
         return Optional.ofNullable(this.accountDescription);
     }
 
+    /**
+     * The name of the account. It conflicts with `name` and is ignored when `name` is set.
+     * 
+     */
     @Import(name="accountName")
     private @Nullable Output<String> accountName;
 
+    /**
+     * @return The name of the account. It conflicts with `name` and is ignored when `name` is set.
+     * 
+     */
     public Optional<Output<String>> accountName() {
         return Optional.ofNullable(this.accountName);
     }
 
+    /**
+     * The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
+     * 
+     */
     @Import(name="accountPassword")
     private @Nullable Output<String> accountPassword;
 
+    /**
+     * @return The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
+     * 
+     */
     public Optional<Output<String>> accountPassword() {
         return Optional.ofNullable(this.accountPassword);
     }
 
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It conflicts with `password` and `kmsEncryptedPassword`, and must be specified together with `accountPasswordWoVersion`.
      * 
      */
     @Import(name="accountPasswordWo")
@@ -48,42 +73,75 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It conflicts with `password` and `kmsEncryptedPassword`, and must be specified together with `accountPasswordWoVersion`.
      * 
      */
     public Optional<Output<String>> accountPasswordWo() {
         return Optional.ofNullable(this.accountPasswordWo);
     }
 
+    /**
+     * The version of the write-only password. It must be specified together with `accountPasswordWo`.
+     * 
+     */
     @Import(name="accountPasswordWoVersion")
     private @Nullable Output<Integer> accountPasswordWoVersion;
 
+    /**
+     * @return The version of the write-only password. It must be specified together with `accountPasswordWo`.
+     * 
+     */
     public Optional<Output<Integer>> accountPasswordWoVersion() {
         return Optional.ofNullable(this.accountPasswordWoVersion);
     }
 
+    /**
+     * The account type. Valid values: Normal/Super/Sysadmin.
+     * 
+     */
     @Import(name="accountType")
     private @Nullable Output<String> accountType;
 
+    /**
+     * @return The account type. Valid values: Normal/Super/Sysadmin.
+     * 
+     */
     public Optional<Output<String>> accountType() {
         return Optional.ofNullable(this.accountType);
     }
 
+    /**
+     * Whether to apply password policy.
+     * 
+     */
     @Import(name="checkPolicy")
     private @Nullable Output<Boolean> checkPolicy;
 
+    /**
+     * @return Whether to apply password policy.
+     * 
+     */
     public Optional<Output<Boolean>> checkPolicy() {
         return Optional.ofNullable(this.checkPolicy);
     }
 
+    /**
+     * The ID of the instance.
+     * 
+     */
     @Import(name="dbInstanceId")
     private @Nullable Output<String> dbInstanceId;
 
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     public Optional<Output<String>> dbInstanceId() {
         return Optional.ofNullable(this.dbInstanceId);
     }
 
     /**
-     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
      * 
      * @deprecated Field &#39;description&#39; has been deprecated from provider version 1.120.0. New field &#39;account_description&#39; instead.
      * 
@@ -93,7 +151,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> description;
 
     /**
-     * @return Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * @return Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
      * 
      * @deprecated Field &#39;description&#39; has been deprecated from provider version 1.120.0. New field &#39;account_description&#39; instead.
      * 
@@ -104,7 +162,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Id of instance in which account belongs.
+     * The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
      * 
      * @deprecated Field &#39;instance_id&#39; has been deprecated from provider version 1.120.0. New field &#39;db_instance_id&#39; instead.
      * 
@@ -114,7 +172,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The Id of instance in which account belongs.
+     * @return The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
      * 
      * @deprecated Field &#39;instance_id&#39; has been deprecated from provider version 1.120.0. New field &#39;db_instance_id&#39; instead.
      * 
@@ -155,7 +213,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `accountName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;account_name&#39; instead.
      * 
@@ -165,7 +223,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * @return Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `accountName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;account_name&#39; instead.
      * 
@@ -176,7 +234,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
      * 
      * @deprecated Field &#39;password&#39; has been deprecated from provider version 1.120.0. New field &#39;account_password&#39; instead.
      * 
@@ -186,7 +244,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> password;
 
     /**
-     * @return Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+     * @return Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
      * 
      * @deprecated Field &#39;password&#39; has been deprecated from provider version 1.120.0. New field &#39;account_password&#39; instead.
      * 
@@ -196,16 +254,32 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.password);
     }
 
+    /**
+     * Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+     * 
+     */
     @Import(name="resetPermissionFlag")
     private @Nullable Output<Boolean> resetPermissionFlag;
 
+    /**
+     * @return Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+     * 
+     */
     public Optional<Output<Boolean>> resetPermissionFlag() {
         return Optional.ofNullable(this.resetPermissionFlag);
     }
 
+    /**
+     * The status of the resource. Valid values: `Available`, `Unavailable`.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return The status of the resource. Valid values: `Available`, `Unavailable`.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -215,7 +289,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
      * - Normal: Common privilege.
      * - Super: High privilege.
      * 
-     * Default to Normal.
+     * Default to Normal. The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      * 
      * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.120.0. New field &#39;account_type&#39; instead.
      * 
@@ -229,7 +303,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
      * - Normal: Common privilege.
      * - Super: High privilege.
      * 
-     * Default to Normal.
+     * Default to Normal. The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      * 
      * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.120.0. New field &#39;account_type&#39; instead.
      * 
@@ -279,35 +353,72 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
             $ = new AccountState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountDescription The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountDescription(@Nullable Output<String> accountDescription) {
             $.accountDescription = accountDescription;
             return this;
         }
 
+        /**
+         * @param accountDescription The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountDescription(String accountDescription) {
             return accountDescription(Output.of(accountDescription));
         }
 
+        /**
+         * @param accountName The name of the account. It conflicts with `name` and is ignored when `name` is set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountName(@Nullable Output<String> accountName) {
             $.accountName = accountName;
             return this;
         }
 
+        /**
+         * @param accountName The name of the account. It conflicts with `name` and is ignored when `name` is set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountName(String accountName) {
             return accountName(Output.of(accountName));
         }
 
+        /**
+         * @param accountPassword The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountPassword(@Nullable Output<String> accountPassword) {
             $.accountPassword = accountPassword;
             return this;
         }
 
+        /**
+         * @param accountPassword The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountPassword(String accountPassword) {
             return accountPassword(Output.of(accountPassword));
         }
 
         /**
          * @param accountPasswordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only password of the account. It conflicts with `password` and `kmsEncryptedPassword`, and must be specified together with `accountPasswordWoVersion`.
          * 
          * @return builder
          * 
@@ -319,6 +430,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param accountPasswordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only password of the account. It conflicts with `password` and `kmsEncryptedPassword`, and must be specified together with `accountPasswordWoVersion`.
          * 
          * @return builder
          * 
@@ -327,44 +439,92 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
             return accountPasswordWo(Output.of(accountPasswordWo));
         }
 
+        /**
+         * @param accountPasswordWoVersion The version of the write-only password. It must be specified together with `accountPasswordWo`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountPasswordWoVersion(@Nullable Output<Integer> accountPasswordWoVersion) {
             $.accountPasswordWoVersion = accountPasswordWoVersion;
             return this;
         }
 
+        /**
+         * @param accountPasswordWoVersion The version of the write-only password. It must be specified together with `accountPasswordWo`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountPasswordWoVersion(Integer accountPasswordWoVersion) {
             return accountPasswordWoVersion(Output.of(accountPasswordWoVersion));
         }
 
+        /**
+         * @param accountType The account type. Valid values: Normal/Super/Sysadmin.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountType(@Nullable Output<String> accountType) {
             $.accountType = accountType;
             return this;
         }
 
+        /**
+         * @param accountType The account type. Valid values: Normal/Super/Sysadmin.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountType(String accountType) {
             return accountType(Output.of(accountType));
         }
 
+        /**
+         * @param checkPolicy Whether to apply password policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder checkPolicy(@Nullable Output<Boolean> checkPolicy) {
             $.checkPolicy = checkPolicy;
             return this;
         }
 
+        /**
+         * @param checkPolicy Whether to apply password policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder checkPolicy(Boolean checkPolicy) {
             return checkPolicy(Output.of(checkPolicy));
         }
 
+        /**
+         * @param dbInstanceId The ID of the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dbInstanceId(@Nullable Output<String> dbInstanceId) {
             $.dbInstanceId = dbInstanceId;
             return this;
         }
 
+        /**
+         * @param dbInstanceId The ID of the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dbInstanceId(String dbInstanceId) {
             return dbInstanceId(Output.of(dbInstanceId));
         }
 
         /**
-         * @param description Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+         * @param description Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
          * 
          * @return builder
          * 
@@ -378,7 +538,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+         * @param description Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
          * 
          * @return builder
          * 
@@ -391,7 +551,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The Id of instance in which account belongs.
+         * @param instanceId The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
          * 
          * @return builder
          * 
@@ -405,7 +565,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The Id of instance in which account belongs.
+         * @param instanceId The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
          * 
          * @return builder
          * 
@@ -460,7 +620,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+         * @param name Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `accountName` instead.
          * 
          * @return builder
          * 
@@ -474,7 +634,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+         * @param name Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `accountName` instead.
          * 
          * @return builder
          * 
@@ -487,7 +647,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+         * @param password Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
          * 
          * @return builder
          * 
@@ -501,7 +661,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+         * @param password Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
          * 
          * @return builder
          * 
@@ -513,20 +673,44 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
             return password(Output.of(password));
         }
 
+        /**
+         * @param resetPermissionFlag Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resetPermissionFlag(@Nullable Output<Boolean> resetPermissionFlag) {
             $.resetPermissionFlag = resetPermissionFlag;
             return this;
         }
 
+        /**
+         * @param resetPermissionFlag Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resetPermissionFlag(Boolean resetPermissionFlag) {
             return resetPermissionFlag(Output.of(resetPermissionFlag));
         }
 
+        /**
+         * @param status The status of the resource. Valid values: `Available`, `Unavailable`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status The status of the resource. Valid values: `Available`, `Unavailable`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }
@@ -536,7 +720,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          * - Normal: Common privilege.
          * - Super: High privilege.
          * 
-         * Default to Normal.
+         * Default to Normal. The attribute has been deprecated from 1.120.0 and using `accountType` instead.
          * 
          * @return builder
          * 
@@ -554,7 +738,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          * - Normal: Common privilege.
          * - Super: High privilege.
          * 
-         * Default to Normal.
+         * Default to Normal. The attribute has been deprecated from 1.120.0 and using `accountType` instead.
          * 
          * @return builder
          * 

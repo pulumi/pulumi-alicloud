@@ -59,11 +59,17 @@ class GetDesktopTypesResult:
     @_builtins.property
     @pulumi.getter(name="cpuCount")
     def cpu_count(self) -> Optional[_builtins.int]:
+        """
+        The CPU cores.
+        """
         return pulumi.get(self, "cpu_count")
 
     @_builtins.property
     @pulumi.getter(name="gpuCount")
     def gpu_count(self) -> Optional[_builtins.float]:
+        """
+        The GPU cores.
+        """
         return pulumi.get(self, "gpu_count")
 
     @_builtins.property
@@ -77,16 +83,25 @@ class GetDesktopTypesResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Desktop Type IDs.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
     @pulumi.getter(name="instanceTypeFamily")
     def instance_type_family(self) -> Optional[_builtins.str]:
+        """
+        The Specification family.
+        """
         return pulumi.get(self, "instance_type_family")
 
     @_builtins.property
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> Optional[_builtins.int]:
+        """
+        The Memory size. Unit: MiB.
+        """
         return pulumi.get(self, "memory_size")
 
     @_builtins.property
@@ -97,11 +112,17 @@ class GetDesktopTypesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def types(self) -> Sequence['outputs.GetDesktopTypesTypeResult']:
+        """
+        A list of Ecd Desktop Types. Each element contains the following attributes:
+        """
         return pulumi.get(self, "types")
 
 
@@ -133,7 +154,7 @@ def get_desktop_types(cpu_count: Optional[_builtins.int] = None,
     """
     This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.170.0+.
+    > **NOTE:** Available since v1.170.0.
 
     ## Example Usage
 
@@ -188,7 +209,7 @@ def get_desktop_types_output(cpu_count: pulumi.Input[Optional[Optional[_builtins
     """
     This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.170.0+.
+    > **NOTE:** Available since v1.170.0.
 
     ## Example Usage
 

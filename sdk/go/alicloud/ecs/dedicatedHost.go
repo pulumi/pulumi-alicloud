@@ -16,6 +16,8 @@ import (
 //
 // > **NOTE:** Available since v1.91.0.
 //
+// > **NOTE:** Destroying a `PrePaid` instance fails with an error since v2.1.0. To destroy it, convert the instance to `PostPaid` by setting `paymentType = "PostPaid"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -84,6 +86,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Deleting ecs.DedicatedHost or removing it from your configuration
 //
 // The ecs.DedicatedHost resource allows you to manage paymentType = "PrePaid" dedicated host, but Terraform cannot destroy it.
@@ -131,7 +134,7 @@ type DedicatedHost struct {
 	ExpiredTime pulumi.StringOutput `pulumi:"expiredTime"`
 	// Specify the minimum purchase quantity of a dedicated host.
 	MinQuantity pulumi.IntPtrOutput `pulumi:"minQuantity"`
-	// dedicated host network parameters. contains the following attributes:
+	// Dedicated host network parameters. See `networkAttributes` below.
 	NetworkAttributes DedicatedHostNetworkAttributeArrayOutput `pulumi:"networkAttributes"`
 	// The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
@@ -208,7 +211,7 @@ type dedicatedHostState struct {
 	ExpiredTime *string `pulumi:"expiredTime"`
 	// Specify the minimum purchase quantity of a dedicated host.
 	MinQuantity *int `pulumi:"minQuantity"`
-	// dedicated host network parameters. contains the following attributes:
+	// Dedicated host network parameters. See `networkAttributes` below.
 	NetworkAttributes []DedicatedHostNetworkAttribute `pulumi:"networkAttributes"`
 	// The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -253,7 +256,7 @@ type DedicatedHostState struct {
 	ExpiredTime pulumi.StringPtrInput
 	// Specify the minimum purchase quantity of a dedicated host.
 	MinQuantity pulumi.IntPtrInput
-	// dedicated host network parameters. contains the following attributes:
+	// Dedicated host network parameters. See `networkAttributes` below.
 	NetworkAttributes DedicatedHostNetworkAttributeArrayInput
 	// The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
 	PaymentType pulumi.StringPtrInput
@@ -308,7 +311,7 @@ type dedicatedHostArgs struct {
 	ExpiredTime *string `pulumi:"expiredTime"`
 	// Specify the minimum purchase quantity of a dedicated host.
 	MinQuantity *int `pulumi:"minQuantity"`
-	// dedicated host network parameters. contains the following attributes:
+	// Dedicated host network parameters. See `networkAttributes` below.
 	NetworkAttributes []DedicatedHostNetworkAttribute `pulumi:"networkAttributes"`
 	// The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -352,7 +355,7 @@ type DedicatedHostArgs struct {
 	ExpiredTime pulumi.StringPtrInput
 	// Specify the minimum purchase quantity of a dedicated host.
 	MinQuantity pulumi.IntPtrInput
-	// dedicated host network parameters. contains the following attributes:
+	// Dedicated host network parameters. See `networkAttributes` below.
 	NetworkAttributes DedicatedHostNetworkAttributeArrayInput
 	// The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
 	PaymentType pulumi.StringPtrInput
@@ -523,7 +526,7 @@ func (o DedicatedHostOutput) MinQuantity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DedicatedHost) pulumi.IntPtrOutput { return v.MinQuantity }).(pulumi.IntPtrOutput)
 }
 
-// dedicated host network parameters. contains the following attributes:
+// Dedicated host network parameters. See `networkAttributes` below.
 func (o DedicatedHostOutput) NetworkAttributes() DedicatedHostNetworkAttributeArrayOutput {
 	return o.ApplyT(func(v *DedicatedHost) DedicatedHostNetworkAttributeArrayOutput { return v.NetworkAttributes }).(DedicatedHostNetworkAttributeArrayOutput)
 }

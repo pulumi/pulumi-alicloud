@@ -56,11 +56,17 @@ class GetGroupsResult:
     @_builtins.property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> _builtins.str:
+        """
+        The ID of the Directory.
+        """
         return pulumi.get(self, "directory_id")
 
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetGroupsGroupResult']:
+        """
+        A list of Cloud Sso Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -84,6 +90,9 @@ class GetGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -94,6 +103,9 @@ class GetGroupsResult:
     @_builtins.property
     @pulumi.getter(name="provisionType")
     def provision_type(self) -> Optional[_builtins.str]:
+        """
+        The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+        """
         return pulumi.get(self, "provision_type")
 
 
@@ -122,7 +134,7 @@ def get_groups(directory_id: Optional[_builtins.str] = None,
     """
     This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.138.0+.
+    > **NOTE:** Available since v1.138.0.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
@@ -179,7 +191,7 @@ def get_groups_output(directory_id: pulumi.Input[Optional[_builtins.str]] = None
     """
     This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.138.0+.
+    > **NOTE:** Available since v1.138.0.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 

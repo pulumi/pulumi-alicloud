@@ -307,6 +307,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - `CTDR_STORAGE`: Log Management Module.
      * - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
      * - Value: `0` means off, `1` means on
+     * 
      * &gt; **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      * 
      * @deprecated Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
@@ -330,6 +331,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - `CTDR_STORAGE`: Log Management Module.
      * - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
      * - Value: `0` means off, `1` means on
+     * 
      * &gt; **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      * 
      */

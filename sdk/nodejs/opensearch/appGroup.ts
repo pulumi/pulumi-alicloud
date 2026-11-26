@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Open Search App Group and how to use it, see [What is App Group](https://www.aliyun.com/product/opensearch).
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *
@@ -109,7 +109,7 @@ export class AppGroup extends pulumi.CustomResource {
      */
     declare public readonly orderType: pulumi.Output<string>;
     /**
-     * Order cycle information. The details see Block order.
+     * Order cycle information. See `order` below.
      */
     declare public readonly orders: pulumi.Output<outputs.opensearch.AppGroupOrder[] | undefined>;
     /**
@@ -117,7 +117,7 @@ export class AppGroup extends pulumi.CustomResource {
      */
     declare public readonly paymentType: pulumi.Output<string>;
     /**
-     * Quota information.  The details see Block quota.
+     * Quota information. See `quota` below.
      */
     declare public readonly quota: pulumi.Output<outputs.opensearch.AppGroupQuota>;
     /**
@@ -213,7 +213,7 @@ export interface AppGroupState {
      */
     orderType?: pulumi.Input<string | undefined>;
     /**
-     * Order cycle information. The details see Block order.
+     * Order cycle information. See `order` below.
      */
     orders?: pulumi.Input<pulumi.Input<inputs.opensearch.AppGroupOrder>[] | undefined>;
     /**
@@ -221,7 +221,7 @@ export interface AppGroupState {
      */
     paymentType?: pulumi.Input<string | undefined>;
     /**
-     * Quota information.  The details see Block quota.
+     * Quota information. See `quota` below.
      */
     quota?: pulumi.Input<inputs.opensearch.AppGroupQuota | undefined>;
     /**
@@ -259,7 +259,7 @@ export interface AppGroupArgs {
      */
     orderType?: pulumi.Input<string | undefined>;
     /**
-     * Order cycle information. The details see Block order.
+     * Order cycle information. See `order` below.
      */
     orders?: pulumi.Input<pulumi.Input<inputs.opensearch.AppGroupOrder>[] | undefined>;
     /**
@@ -267,7 +267,7 @@ export interface AppGroupArgs {
      */
     paymentType: pulumi.Input<string>;
     /**
-     * Quota information.  The details see Block quota.
+     * Quota information. See `quota` below.
      */
     quota: pulumi.Input<inputs.opensearch.AppGroupQuota>;
     /**

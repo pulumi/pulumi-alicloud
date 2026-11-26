@@ -263,6 +263,7 @@ def get_instance_classes(architecture: Optional[_builtins.str] = None,
            * OnECS: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a standard disk. This type is available only on the Alibaba Cloud China site.
     :param _builtins.str series_type: The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
     :param _builtins.int shard_number: The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
+    :param _builtins.str sorted_by: The field used to sort the returned instance classes. Valid values: `Price`.
     :param _builtins.str storage_type: It has been deprecated from 1.68.0.
     :param _builtins.str zone_id: The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
     """
@@ -355,6 +356,7 @@ def get_instance_classes_output(architecture: pulumi.Input[Optional[Optional[_bu
            * OnECS: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a standard disk. This type is available only on the Alibaba Cloud China site.
     :param _builtins.str series_type: The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
     :param _builtins.int shard_number: The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
+    :param _builtins.str sorted_by: The field used to sort the returned instance classes. Valid values: `Price`.
     :param _builtins.str storage_type: It has been deprecated from 1.68.0.
     :param _builtins.str zone_id: The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
     """

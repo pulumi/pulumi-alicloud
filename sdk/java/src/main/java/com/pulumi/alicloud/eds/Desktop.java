@@ -6,6 +6,7 @@ package com.pulumi.alicloud.eds;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.eds.DesktopArgs;
 import com.pulumi.alicloud.eds.inputs.DesktopState;
+import com.pulumi.alicloud.eds.outputs.DesktopDesktopTimer;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -196,6 +197,20 @@ public class Desktop extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.desktopName);
     }
     /**
+     * The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktopTimers` below.
+     * 
+     */
+    @Export(name="desktopTimers", refs={List.class,DesktopDesktopTimer.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<DesktopDesktopTimer>> desktopTimers;
+
+    /**
+     * @return The list of scheduled timer tasks for the Desktop. Up to 20 timers can be configured. See `desktopTimers` below.
+     * 
+     */
+    public Output<Optional<List<DesktopDesktopTimer>>> desktopTimers() {
+        return Codegen.optional(this.desktopTimers);
+    }
+    /**
      * The desktop type of the Desktop.
      * 
      */
@@ -224,18 +239,22 @@ public class Desktop extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.endUserIds);
     }
     /**
-     * The hostname of the Desktop.
+     * The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+     * 
+     * &gt; **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `hostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
      * 
      */
     @Export(name="hostName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> hostName;
+    private Output<String> hostName;
 
     /**
-     * @return The hostname of the Desktop.
+     * @return The hostname of the Desktop. It takes effect only for Windows desktops in an AD office site. The value must be 2 to 15 characters and can contain letters, digits and hyphens (-); it cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of digits only. For multiple desktops, the `name_prefix[begin_number,bits]name_suffix` format can be used to assign sequential hostnames. If it is not specified, the hostname assigned by the system is used.
+     * 
+     * &gt; **NOTE:** The host name is set when the desktop is created and is not managed afterwards. Changing `hostName` neither recreates nor modifies the desktop, so the difference between the configuration and the actual host name is not reported.
      * 
      */
-    public Output<Optional<String>> hostName() {
-        return Codegen.optional(this.hostName);
+    public Output<String> hostName() {
+        return this.hostName;
     }
     /**
      * The ID of the Simple Office Site.
@@ -348,6 +367,24 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      */
     public Output<String> stoppedMode() {
         return this.stoppedMode;
+    }
+    /**
+     * The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+     * 
+     * &gt; **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+     * 
+     */
+    @Export(name="subnetId", refs={String.class}, tree="[0]")
+    private Output<String> subnetId;
+
+    /**
+     * @return The ID of the vSwitch in the office site VPC where the Desktop is created. It is required when the office site is bound to a VPC that you created yourself. Changing this argument recreates the Desktop.
+     * 
+     * &gt; **NOTE:** For office sites whose VPC is created by the service, the API accepts this value but does not return it. Terraform keeps the configured value in the state and therefore cannot detect changes made outside Terraform.
+     * 
+     */
+    public Output<String> subnetId() {
+        return this.subnetId;
     }
     /**
      * A mapping of tags to assign to the resource.

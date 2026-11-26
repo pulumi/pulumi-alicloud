@@ -54,6 +54,9 @@ class GetZonesResult:
     @_builtins.property
     @pulumi.getter
     def zones(self) -> Sequence['outputs.GetZonesZoneResult']:
+        """
+        A list of HDFS Zones And Configurations. Each element contains the following attributes:
+        """
         return pulumi.get(self, "zones")
 
 
@@ -73,7 +76,7 @@ def get_zones(output_file: Optional[_builtins.str] = None,
     """
     This data source provides the DFS Zones And Configurations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     ## Example Usage
 
@@ -103,7 +106,7 @@ def get_zones_output(output_file: pulumi.Input[Optional[Optional[_builtins.str]]
     """
     This data source provides the DFS Zones And Configurations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     ## Example Usage
 

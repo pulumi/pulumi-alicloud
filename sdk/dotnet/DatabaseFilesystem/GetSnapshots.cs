@@ -12,11 +12,11 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     public static class GetSnapshots
     {
         /// <summary>
-        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
         /// 
         /// This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.156.0+.
+        /// &gt; **NOTE:** Available since v1.156.0.
         /// 
         /// ## Example Usage
         /// 
@@ -61,11 +61,11 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:databasefilesystem/getSnapshots:getSnapshots", args ?? new GetSnapshotsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
         /// 
         /// This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.156.0+.
+        /// &gt; **NOTE:** Available since v1.156.0.
         /// 
         /// ## Example Usage
         /// 
@@ -110,11 +110,11 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
             => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:databasefilesystem/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
         /// 
         /// This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.156.0+.
+        /// &gt; **NOTE:** Available since v1.156.0.
         /// 
         /// ## Example Usage
         /// 
@@ -246,9 +246,18 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Snapshot names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Dbfs Snapshots. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSnapshotsSnapshotResult> Snapshots;
+        /// <summary>
+        /// The status of the snapshot. Possible values: `Progressing`, `Accomplished`, `Failed`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.140.0+.
+// > **NOTE:** Available since v1.140.0.
 //
 // ## Example Usage
 //
@@ -71,13 +71,16 @@ type GetMountPointsArgs struct {
 
 // A collection of values returned by getMountPoints.
 type GetMountPointsResult struct {
+	// The ID of the File System.
 	FileSystemId string `pulumi:"fileSystemId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                `pulumi:"id"`
-	Ids        []string              `pulumi:"ids"`
-	OutputFile *string               `pulumi:"outputFile"`
-	Points     []GetMountPointsPoint `pulumi:"points"`
-	Status     *string               `pulumi:"status"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Dfs Mount Points. Each element contains the following attributes:
+	Points []GetMountPointsPoint `pulumi:"points"`
+	// The status of the Mount Point. Valid values: `Active`, `Inactive`.
+	Status *string `pulumi:"status"`
 }
 
 func GetMountPointsOutput(ctx *pulumi.Context, args GetMountPointsOutputArgs, opts ...pulumi.InvokeOption) GetMountPointsResultOutput {
@@ -116,6 +119,7 @@ func (o GetMountPointsResultOutput) ToGetMountPointsResultOutputWithContext(ctx 
 	return o
 }
 
+// The ID of the File System.
 func (o GetMountPointsResultOutput) FileSystemId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMountPointsResult) string { return v.FileSystemId }).(pulumi.StringOutput)
 }
@@ -133,10 +137,12 @@ func (o GetMountPointsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMountPointsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Dfs Mount Points. Each element contains the following attributes:
 func (o GetMountPointsResultOutput) Points() GetMountPointsPointArrayOutput {
 	return o.ApplyT(func(v GetMountPointsResult) []GetMountPointsPoint { return v.Points }).(GetMountPointsPointArrayOutput)
 }
 
+// The status of the Mount Point. Valid values: `Active`, `Inactive`.
 func (o GetMountPointsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMountPointsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

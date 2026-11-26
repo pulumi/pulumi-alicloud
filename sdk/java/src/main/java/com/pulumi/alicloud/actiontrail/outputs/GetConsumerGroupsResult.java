@@ -15,9 +15,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetConsumerGroupsResult {
     private @Nullable String consumerIdRegex;
+    /**
+     * @return A list of consumer group ids.
+     * 
+     */
     private List<String> consumerIds;
     /**
-     * @return A list of consumer group. Each element contains the following attributes:
+     * @return A list of consumer group. Each element contains the following attributes. See `groups` for the optional argument block.
      * 
      */
     private List<GetConsumerGroupsGroup> groups;
@@ -43,11 +47,15 @@ public final class GetConsumerGroupsResult {
     public Optional<String> consumerIdRegex() {
         return Optional.ofNullable(this.consumerIdRegex);
     }
+    /**
+     * @return A list of consumer group ids.
+     * 
+     */
     public List<String> consumerIds() {
         return this.consumerIds;
     }
     /**
-     * @return A list of consumer group. Each element contains the following attributes:
+     * @return A list of consumer group. Each element contains the following attributes. See `groups` for the optional argument block.
      * 
      */
     public List<GetConsumerGroupsGroup> groups() {

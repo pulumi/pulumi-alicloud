@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSnapshotsResult {
+    /**
+     * @return The category of the snapshot.
+     * 
+     */
     private @Nullable String category;
     private @Nullable Boolean dryRun;
     /**
@@ -41,9 +45,21 @@ public final class GetSnapshotsResult {
      */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The resource group ID.
+     * 
+     */
     private @Nullable String resourceGroupId;
     private @Nullable String snapshotLinkId;
+    /**
+     * @return The name of the snapshot.
+     * 
+     */
     private @Nullable String snapshotName;
+    /**
+     * @return The type of the snapshot.
+     * 
+     */
     private @Nullable String snapshotType;
     /**
      * @return A list of snapshots. Each element contains the following attributes:
@@ -65,6 +81,10 @@ public final class GetSnapshotsResult {
      * 
      */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The type of the snapshot.
+     * 
+     */
     private @Nullable String type;
     /**
      * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
@@ -73,6 +93,10 @@ public final class GetSnapshotsResult {
     private @Nullable String usage;
 
     private GetSnapshotsResult() {}
+    /**
+     * @return The category of the snapshot.
+     * 
+     */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
@@ -116,15 +140,27 @@ public final class GetSnapshotsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The resource group ID.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
     public Optional<String> snapshotLinkId() {
         return Optional.ofNullable(this.snapshotLinkId);
     }
+    /**
+     * @return The name of the snapshot.
+     * 
+     */
     public Optional<String> snapshotName() {
         return Optional.ofNullable(this.snapshotName);
     }
+    /**
+     * @return The type of the snapshot.
+     * 
+     */
     public Optional<String> snapshotType() {
         return Optional.ofNullable(this.snapshotType);
     }
@@ -156,6 +192,10 @@ public final class GetSnapshotsResult {
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The type of the snapshot.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

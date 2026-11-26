@@ -68,6 +68,9 @@ class GetFileSystemsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of File System names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -78,6 +81,9 @@ class GetFileSystemsResult:
     @_builtins.property
     @pulumi.getter
     def systems(self) -> Sequence['outputs.GetFileSystemsSystemResult']:
+        """
+        A list of Dfs File Systems. Each element contains the following attributes:
+        """
         return pulumi.get(self, "systems")
 
 
@@ -102,7 +108,7 @@ def get_file_systems(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Dfs File Systems of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     ## Example Usage
 
@@ -144,7 +150,7 @@ def get_file_systems_output(ids: pulumi.Input[Optional[Optional[Sequence[_builti
     """
     This data source provides the Dfs File Systems of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     ## Example Usage
 

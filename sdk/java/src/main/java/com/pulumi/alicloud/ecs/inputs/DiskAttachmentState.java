@@ -16,23 +16,47 @@ public final class DiskAttachmentState extends com.pulumi.resources.ResourceArgs
 
     public static final DiskAttachmentState Empty = new DiskAttachmentState();
 
+    /**
+     * Whether the disk is bootable.
+     * 
+     */
     @Import(name="bootable")
     private @Nullable Output<Boolean> bootable;
 
+    /**
+     * @return Whether the disk is bootable.
+     * 
+     */
     public Optional<Output<Boolean>> bootable() {
         return Optional.ofNullable(this.bootable);
     }
 
+    /**
+     * Whether to delete the disk with the instance.
+     * 
+     */
     @Import(name="deleteWithInstance")
     private @Nullable Output<Boolean> deleteWithInstance;
 
+    /**
+     * @return Whether to delete the disk with the instance.
+     * 
+     */
     public Optional<Output<Boolean>> deleteWithInstance() {
         return Optional.ofNullable(this.deleteWithInstance);
     }
 
+    /**
+     * The device name allocated to the disk.
+     * 
+     */
     @Import(name="device")
     private @Nullable Output<String> device;
 
+    /**
+     * @return The device name allocated to the disk.
+     * 
+     */
     public Optional<Output<String>> device() {
         return Optional.ofNullable(this.device);
     }
@@ -67,16 +91,32 @@ public final class DiskAttachmentState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.instanceId);
     }
 
+    /**
+     * The name of the key pair.
+     * 
+     */
     @Import(name="keyPairName")
     private @Nullable Output<String> keyPairName;
 
+    /**
+     * @return The name of the key pair.
+     * 
+     */
     public Optional<Output<String>> keyPairName() {
         return Optional.ofNullable(this.keyPairName);
     }
 
+    /**
+     * The password of the instance.
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return The password of the instance.
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
@@ -111,29 +151,65 @@ public final class DiskAttachmentState extends com.pulumi.resources.ResourceArgs
             $ = new DiskAttachmentState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param bootable Whether the disk is bootable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bootable(@Nullable Output<Boolean> bootable) {
             $.bootable = bootable;
             return this;
         }
 
+        /**
+         * @param bootable Whether the disk is bootable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bootable(Boolean bootable) {
             return bootable(Output.of(bootable));
         }
 
+        /**
+         * @param deleteWithInstance Whether to delete the disk with the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteWithInstance(@Nullable Output<Boolean> deleteWithInstance) {
             $.deleteWithInstance = deleteWithInstance;
             return this;
         }
 
+        /**
+         * @param deleteWithInstance Whether to delete the disk with the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteWithInstance(Boolean deleteWithInstance) {
             return deleteWithInstance(Output.of(deleteWithInstance));
         }
 
+        /**
+         * @param device The device name allocated to the disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(@Nullable Output<String> device) {
             $.device = device;
             return this;
         }
 
+        /**
+         * @param device The device name allocated to the disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(String device) {
             return device(Output.of(device));
         }
@@ -180,20 +256,44 @@ public final class DiskAttachmentState extends com.pulumi.resources.ResourceArgs
             return instanceId(Output.of(instanceId));
         }
 
+        /**
+         * @param keyPairName The name of the key pair.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyPairName(@Nullable Output<String> keyPairName) {
             $.keyPairName = keyPairName;
             return this;
         }
 
+        /**
+         * @param keyPairName The name of the key pair.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyPairName(String keyPairName) {
             return keyPairName(Output.of(keyPairName));
         }
 
+        /**
+         * @param password The password of the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password The password of the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }

@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// &gt; **NOTE:** Available since v1.5.0.
     /// 
+    /// &gt; **NOTE:** The `CollationName`, `AccountName` and `AccountPrivilege` arguments take effect only when the database is created. Changing any of them forces a new database to be created.
+    /// 
+    /// &gt; **NOTE:** The account permission granted through `AccountName` and `AccountPrivilege` is not read back from the API. If the permission of the same account on this database is also managed by `alicloud.rds.AccountPrivilege`, both configurations write the same permission and the last applied one wins.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -69,17 +73,27 @@ namespace Pulumi.AliCloud.Rds
     ///         EngineVersion = "8.0",
     ///         DbInstanceStorageType = "cloud_essd",
     ///         InstanceType = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRanges?.Min),
+    ///         InstanceStorage = Output.Create(defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRanges[0]?.Min)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         VswitchId = defaultSwitch.Id,
     ///         InstanceName = name,
     ///         InstanceChargeType = "Postpaid",
+    ///     });
+    /// 
+    ///     var defaultRdsAccount = new AliCloud.Rds.RdsAccount("default", new()
+    ///     {
+    ///         DbInstanceId = defaultInstance.Id,
+    ///         AccountName = "terraform_example",
+    ///         AccountPassword = "Test12345",
     ///     });
     /// 
     ///     var defaultDatabase = new AliCloud.Rds.Database("default", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
     ///         DataBaseName = name,
-    ///         CharacterSet = "utf8",
+    ///         CharacterSet = "gbk",
+    ///         CollationName = "gbk_chinese_ci",
+    ///         AccountName = defaultRdsAccount.AccountName,
+    ///         AccountPrivilege = "ReadWrite",
     ///     });
     /// 
     /// });
@@ -99,6 +113,22 @@ namespace Pulumi.AliCloud.Rds
     public partial class Database : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+        /// 
+        /// &gt; **NOTE:** The account must belong to the instance specified by `InstanceId` and must exist before the database is created.
+        /// </summary>
+        [Output("accountName")]
+        public Output<string?> AccountName { get; private set; } = null!;
+
+        /// <summary>
+        /// The privilege granted to the account specified by `AccountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+        /// 
+        /// &gt; **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `AccountName` to be set.
+        /// </summary>
+        [Output("accountPrivilege")]
+        public Output<string?> AccountPrivilege { get; private set; } = null!;
+
+        /// <summary>
         /// Character set. The value range is limited to the following:
         /// - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`Utf8mb4` only supports versions 5.5 and 5.6\).
         /// - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -114,7 +144,14 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> CharacterSet { get; private set; } = null!;
 
         /// <summary>
+        /// The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `CharacterSet`, for example `GbkChineseCi` for `Gbk` or `Utf8mb4GeneralCi` for `Utf8mb4`.
+        /// </summary>
+        [Output("collationName")]
+        public Output<string?> CollationName { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the database.
+        /// 
         /// &gt; **NOTE:**
         /// The name must be 2 to 64 characters in length.
         /// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -139,6 +176,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The attribute has been deprecated from 1.267.0 and using `DataBaseName` instead.
+        /// 
         /// &gt; **NOTE:** The value of "DataBaseName" or "CharacterSet"  does not support modification.
         /// </summary>
         [Output("name")]
@@ -197,6 +235,22 @@ namespace Pulumi.AliCloud.Rds
     public sealed class DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+        /// 
+        /// &gt; **NOTE:** The account must belong to the instance specified by `InstanceId` and must exist before the database is created.
+        /// </summary>
+        [Input("accountName")]
+        public Input<string>? AccountName { get; set; }
+
+        /// <summary>
+        /// The privilege granted to the account specified by `AccountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+        /// 
+        /// &gt; **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `AccountName` to be set.
+        /// </summary>
+        [Input("accountPrivilege")]
+        public Input<string>? AccountPrivilege { get; set; }
+
+        /// <summary>
         /// Character set. The value range is limited to the following:
         /// - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`Utf8mb4` only supports versions 5.5 and 5.6\).
         /// - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -212,7 +266,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? CharacterSet { get; set; }
 
         /// <summary>
+        /// The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `CharacterSet`, for example `GbkChineseCi` for `Gbk` or `Utf8mb4GeneralCi` for `Utf8mb4`.
+        /// </summary>
+        [Input("collationName")]
+        public Input<string>? CollationName { get; set; }
+
+        /// <summary>
         /// The name of the database.
+        /// 
         /// &gt; **NOTE:**
         /// The name must be 2 to 64 characters in length.
         /// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -237,6 +298,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The attribute has been deprecated from 1.267.0 and using `DataBaseName` instead.
+        /// 
         /// &gt; **NOTE:** The value of "DataBaseName" or "CharacterSet"  does not support modification.
         /// </summary>
         [Input("name")]
@@ -250,6 +312,22 @@ namespace Pulumi.AliCloud.Rds
 
     public sealed class DatabaseState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+        /// 
+        /// &gt; **NOTE:** The account must belong to the instance specified by `InstanceId` and must exist before the database is created.
+        /// </summary>
+        [Input("accountName")]
+        public Input<string>? AccountName { get; set; }
+
+        /// <summary>
+        /// The privilege granted to the account specified by `AccountName` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+        /// 
+        /// &gt; **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `AccountName` to be set.
+        /// </summary>
+        [Input("accountPrivilege")]
+        public Input<string>? AccountPrivilege { get; set; }
+
         /// <summary>
         /// Character set. The value range is limited to the following:
         /// - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`Utf8mb4` only supports versions 5.5 and 5.6\).
@@ -266,7 +344,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? CharacterSet { get; set; }
 
         /// <summary>
+        /// The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `CharacterSet`, for example `GbkChineseCi` for `Gbk` or `Utf8mb4GeneralCi` for `Utf8mb4`.
+        /// </summary>
+        [Input("collationName")]
+        public Input<string>? CollationName { get; set; }
+
+        /// <summary>
         /// The name of the database.
+        /// 
         /// &gt; **NOTE:**
         /// The name must be 2 to 64 characters in length.
         /// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -291,6 +376,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The attribute has been deprecated from 1.267.0 and using `DataBaseName` instead.
+        /// 
         /// &gt; **NOTE:** The value of "DataBaseName" or "CharacterSet"  does not support modification.
         /// </summary>
         [Input("name")]

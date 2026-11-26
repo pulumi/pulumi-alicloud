@@ -37,6 +37,9 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
         /// Whether to connect to an external data source.
         /// </summary>
         public readonly bool LinkedExternalSource;
+        /// <summary>
+        /// The type of the event source.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

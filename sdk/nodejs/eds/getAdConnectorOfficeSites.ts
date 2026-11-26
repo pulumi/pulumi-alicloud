@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.176.0+.
+ * > **NOTE:** Available since v1.176.0.
  *
  * ## Example Usage
  *
@@ -79,15 +79,24 @@ export interface GetAdConnectorOfficeSitesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Ad Connector Office Site names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Ecd Ad Connector Office Sites. Each element contains the following attributes:
+     */
     readonly sites: outputs.eds.GetAdConnectorOfficeSitesSite[];
+    /**
+     * The workspace status.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.176.0+.
+ * > **NOTE:** Available since v1.176.0.
  *
  * ## Example Usage
  *

@@ -64,6 +64,9 @@ class GetGatewaysResult:
     @_builtins.property
     @pulumi.getter
     def gateways(self) -> Sequence['outputs.GetGatewaysGatewayResult']:
+        """
+        A list of Database Gateway Gateways. Each element contains the following attributes:
+        """
         return pulumi.get(self, "gateways")
 
     @_builtins.property
@@ -87,6 +90,9 @@ class GetGatewaysResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Gateway names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -102,6 +108,9 @@ class GetGatewaysResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -132,7 +141,7 @@ def get_gateways(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 
@@ -186,7 +195,7 @@ def get_gateways_output(enable_details: pulumi.Input[Optional[Optional[_builtins
     """
     This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 

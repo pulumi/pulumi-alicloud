@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// <summary>
         /// This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.128.0+.
+        /// &gt; **NOTE:** Available since v1.128.0.
         /// 
         /// &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// <summary>
         /// This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.128.0+.
+        /// &gt; **NOTE:** Available since v1.128.0.
         /// 
         /// &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// <summary>
         /// This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.128.0+.
+        /// &gt; **NOTE:** Available since v1.128.0.
         /// 
         /// &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
         /// 
@@ -159,13 +159,22 @@ namespace Pulumi.AliCloud.Cassandra
     [OutputType]
     public sealed class GetBackupPlansResult
     {
+        /// <summary>
+        /// The ID of the cluster for the backup.
+        /// </summary>
         public readonly string ClusterId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Backup Plan IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Cassandra Backup Plans. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBackupPlansPlanResult> Plans;
 
         [OutputConstructor]

@@ -27,7 +27,7 @@ class NetworkAclAttachmentArgs:
         The set of arguments for constructing a NetworkAclAttachment resource.
 
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]] resources: List of the resources associated with the network acl. The details see Block Resources.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]] resources: List of the resources associated with the network acl. See `resources` below.
         """
         pulumi.set(__self__, "network_acl_id", network_acl_id)
         pulumi.set(__self__, "resources", resources)
@@ -48,7 +48,7 @@ class NetworkAclAttachmentArgs:
     @pulumi.getter
     def resources(self) -> pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]:
         """
-        List of the resources associated with the network acl. The details see Block Resources.
+        List of the resources associated with the network acl. See `resources` below.
         """
         return pulumi.get(self, "resources")
 
@@ -66,7 +66,7 @@ class _NetworkAclAttachmentState:
         Input properties used for looking up and filtering NetworkAclAttachment resources.
 
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]] resources: List of the resources associated with the network acl. The details see Block Resources.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]] resources: List of the resources associated with the network acl. See `resources` below.
         """
         if network_acl_id is not None:
             pulumi.set(__self__, "network_acl_id", network_acl_id)
@@ -89,7 +89,7 @@ class _NetworkAclAttachmentState:
     @pulumi.getter
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]]:
         """
-        List of the resources associated with the network acl. The details see Block Resources.
+        List of the resources associated with the network acl. See `resources` below.
         """
         return pulumi.get(self, "resources")
 
@@ -155,7 +155,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict', 'outputs.NetworkAclAttachmentResource']]]] resources: List of the resources associated with the network acl. The details see Block Resources.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict', 'outputs.NetworkAclAttachmentResource']]]] resources: List of the resources associated with the network acl. See `resources` below.
         """
         ...
     @overload
@@ -260,7 +260,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict', 'outputs.NetworkAclAttachmentResource']]]] resources: List of the resources associated with the network acl. The details see Block Resources.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict', 'outputs.NetworkAclAttachmentResource']]]] resources: List of the resources associated with the network acl. See `resources` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -292,7 +292,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
     @pulumi.getter
     def resources(self) -> pulumi.Output[Sequence['outputs.NetworkAclAttachmentResource']]:
         """
-        List of the resources associated with the network acl. The details see Block Resources.
+        List of the resources associated with the network acl. See `resources` below.
         """
         return pulumi.get(self, "resources")
 

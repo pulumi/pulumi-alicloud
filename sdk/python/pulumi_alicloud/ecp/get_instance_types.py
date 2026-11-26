@@ -49,6 +49,9 @@ class GetInstanceTypesResult:
     @_builtins.property
     @pulumi.getter(name="instanceTypes")
     def instance_types(self) -> Sequence['outputs.GetInstanceTypesInstanceTypeResult']:
+        """
+        A list of ecp Instance types. Each element contains the following attributes:
+        """
         return pulumi.get(self, "instance_types")
 
     @_builtins.property
@@ -73,7 +76,7 @@ def get_instance_types(output_file: Optional[_builtins.str] = None,
     """
     This data source provides the available instance types with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.158.0+.
+    > **NOTE:** Available since v1.158.0.
 
     ## Example Usage
 
@@ -104,7 +107,7 @@ def get_instance_types_output(output_file: pulumi.Input[Optional[Optional[_built
     """
     This data source provides the available instance types with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.158.0+.
+    > **NOTE:** Available since v1.158.0.
 
     ## Example Usage
 

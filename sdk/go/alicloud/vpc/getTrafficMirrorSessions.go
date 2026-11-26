@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.142.0+.
+// > **NOTE:** Available since v1.142.0.
 //
 // ## Example Usage
 //
@@ -158,20 +158,28 @@ type GetTrafficMirrorSessionsArgs struct {
 
 // A collection of values returned by getTrafficMirrorSessions.
 type GetTrafficMirrorSessionsResult struct {
+	// Indicates whether traffic mirror sessions are enabled. default to `false`.
 	Enabled *bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                       string                            `pulumi:"id"`
-	Ids                      []string                          `pulumi:"ids"`
-	NameRegex                *string                           `pulumi:"nameRegex"`
-	Names                    []string                          `pulumi:"names"`
-	OutputFile               *string                           `pulumi:"outputFile"`
-	Priority                 *int                              `pulumi:"priority"`
-	Sessions                 []GetTrafficMirrorSessionsSession `pulumi:"sessions"`
-	Status                   *string                           `pulumi:"status"`
-	TrafficMirrorFilterId    *string                           `pulumi:"trafficMirrorFilterId"`
-	TrafficMirrorSessionName *string                           `pulumi:"trafficMirrorSessionName"`
-	TrafficMirrorSourceId    *string                           `pulumi:"trafficMirrorSourceId"`
-	TrafficMirrorTargetId    *string                           `pulumi:"trafficMirrorTargetId"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Traffic Mirror Session names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The priority of the traffic mirror session. A smaller value indicates a higher priority.
+	Priority *int `pulumi:"priority"`
+	// A list of Vpc Traffic Mirror Sessions. Each element contains the following attributes:
+	Sessions []GetTrafficMirrorSessionsSession `pulumi:"sessions"`
+	// The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+	Status *string `pulumi:"status"`
+	// The ID of the filter.
+	TrafficMirrorFilterId *string `pulumi:"trafficMirrorFilterId"`
+	// The name of the traffic mirror session.
+	TrafficMirrorSessionName *string `pulumi:"trafficMirrorSessionName"`
+	TrafficMirrorSourceId    *string `pulumi:"trafficMirrorSourceId"`
+	// The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
+	TrafficMirrorTargetId *string `pulumi:"trafficMirrorTargetId"`
 }
 
 func GetTrafficMirrorSessionsOutput(ctx *pulumi.Context, args GetTrafficMirrorSessionsOutputArgs, opts ...pulumi.InvokeOption) GetTrafficMirrorSessionsResultOutput {
@@ -222,6 +230,7 @@ func (o GetTrafficMirrorSessionsResultOutput) ToGetTrafficMirrorSessionsResultOu
 	return o
 }
 
+// Indicates whether traffic mirror sessions are enabled. default to `false`.
 func (o GetTrafficMirrorSessionsResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetTrafficMirrorSessionsResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -239,6 +248,7 @@ func (o GetTrafficMirrorSessionsResultOutput) NameRegex() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetTrafficMirrorSessionsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Traffic Mirror Session names.
 func (o GetTrafficMirrorSessionsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTrafficMirrorSessionsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -247,22 +257,27 @@ func (o GetTrafficMirrorSessionsResultOutput) OutputFile() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetTrafficMirrorSessionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The priority of the traffic mirror session. A smaller value indicates a higher priority.
 func (o GetTrafficMirrorSessionsResultOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetTrafficMirrorSessionsResult) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
+// A list of Vpc Traffic Mirror Sessions. Each element contains the following attributes:
 func (o GetTrafficMirrorSessionsResultOutput) Sessions() GetTrafficMirrorSessionsSessionArrayOutput {
 	return o.ApplyT(func(v GetTrafficMirrorSessionsResult) []GetTrafficMirrorSessionsSession { return v.Sessions }).(GetTrafficMirrorSessionsSessionArrayOutput)
 }
 
+// The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
 func (o GetTrafficMirrorSessionsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTrafficMirrorSessionsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the filter.
 func (o GetTrafficMirrorSessionsResultOutput) TrafficMirrorFilterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTrafficMirrorSessionsResult) *string { return v.TrafficMirrorFilterId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the traffic mirror session.
 func (o GetTrafficMirrorSessionsResultOutput) TrafficMirrorSessionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTrafficMirrorSessionsResult) *string { return v.TrafficMirrorSessionName }).(pulumi.StringPtrOutput)
 }
@@ -271,6 +286,7 @@ func (o GetTrafficMirrorSessionsResultOutput) TrafficMirrorSourceId() pulumi.Str
 	return o.ApplyT(func(v GetTrafficMirrorSessionsResult) *string { return v.TrafficMirrorSourceId }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
 func (o GetTrafficMirrorSessionsResultOutput) TrafficMirrorTargetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTrafficMirrorSessionsResult) *string { return v.TrafficMirrorTargetId }).(pulumi.StringPtrOutput)
 }

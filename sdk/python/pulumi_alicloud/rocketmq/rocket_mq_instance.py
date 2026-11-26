@@ -77,11 +77,21 @@ class RocketMQInstanceArgs:
         :param pulumi.Input[_builtins.str] auto_renew_period_unit: The minimum periodic unit for the duration of auto-renewal. This parameter is only valid when auto-renewal is enabled. Valid values: `Month`, `Year`.
         :param pulumi.Input[_builtins.str] commodity_code: Commodity code
                
+               Domestic station (China) values:
+               
                ons_rmqsub_public_cn: Package year and month instance
                
                ons_rmqpost_public_cn: Pay-As-You-Go instance
                
-               Next: Serverless instances
+               ons_rmqsrvlesspost_public_cn: Serverless instance
+               
+               International station values:
+               
+               ons_rmqsub_public_intl: Package year and month instance
+               
+               ons_rmqpost_public_intl: Pay-As-You-Go instance
+               
+               ons_rmqsrvlesspost_public_intl: Serverless instance
         :param pulumi.Input[_builtins.str] instance_name: The name of instance
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_whitelists: The ip whitelist.
         :param pulumi.Input[_builtins.int] period: Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid).
@@ -271,11 +281,21 @@ class RocketMQInstanceArgs:
         """
         Commodity code
 
+        Domestic station (China) values:
+
         ons_rmqsub_public_cn: Package year and month instance
 
         ons_rmqpost_public_cn: Pay-As-You-Go instance
 
-        Next: Serverless instances
+        ons_rmqsrvlesspost_public_cn: Serverless instance
+
+        International station values:
+
+        ons_rmqsub_public_intl: Package year and month instance
+
+        ons_rmqpost_public_intl: Pay-As-You-Go instance
+
+        ons_rmqsrvlesspost_public_intl: Serverless instance
         """
         return pulumi.get(self, "commodity_code")
 
@@ -439,11 +459,21 @@ class _RocketMQInstanceState:
         :param pulumi.Input[_builtins.str] auto_renew_period_unit: The minimum periodic unit for the duration of auto-renewal. This parameter is only valid when auto-renewal is enabled. Valid values: `Month`, `Year`.
         :param pulumi.Input[_builtins.str] commodity_code: Commodity code
                
+               Domestic station (China) values:
+               
                ons_rmqsub_public_cn: Package year and month instance
                
                ons_rmqpost_public_cn: Pay-As-You-Go instance
                
-               Next: Serverless instances
+               ons_rmqsrvlesspost_public_cn: Serverless instance
+               
+               International station values:
+               
+               ons_rmqsub_public_intl: Package year and month instance
+               
+               ons_rmqpost_public_intl: Pay-As-You-Go instance
+               
+               ons_rmqsrvlesspost_public_intl: Serverless instance
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] instance_name: The name of instance
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_whitelists: The ip whitelist.
@@ -592,11 +622,21 @@ class _RocketMQInstanceState:
         """
         Commodity code
 
+        Domestic station (China) values:
+
         ons_rmqsub_public_cn: Package year and month instance
 
         ons_rmqpost_public_cn: Pay-As-You-Go instance
 
-        Next: Serverless instances
+        ons_rmqsrvlesspost_public_cn: Serverless instance
+
+        International station values:
+
+        ons_rmqsub_public_intl: Package year and month instance
+
+        ons_rmqpost_public_intl: Pay-As-You-Go instance
+
+        ons_rmqsrvlesspost_public_intl: Serverless instance
         """
         return pulumi.get(self, "commodity_code")
 
@@ -868,7 +908,7 @@ class RocketMQInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.212.0.
 
-        > **NOTE:** Destroying a `Subscription` instance fails with an error since v1.294.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+        > **NOTE:** From `v2.3.0`, destroying a `Subscription` (prepaid) instance automatically unsubscribes it through the BssOpenApi `RefundInstance` API with `ImmediatelyRelease` enabled and waits for the instance to be released before clearing the Terraform state. If the refund cannot be confirmed (for example the commodity is not supported for self-service refund), the Terraform state is retained so the destroy can be retried. In versions prior to `v2.3.0` (including v1.294.0), prepaid instances are not unsubscribed on destroy; you must manually unsubscribe them in the console. A `PayAsYouGo` (postpaid) instance keeps using the RocketMQ `DeleteInstance` API.
 
         ## Example Usage
 
@@ -911,9 +951,6 @@ class RocketMQInstance(pulumi.CustomResource):
                 "10.10.0.0/16",
                 "172.168.0.0/16",
             ],
-            software={
-                "maintain_time": "02:00-06:00",
-            },
             tags={
                 "Created": "TF",
                 "For": "example",
@@ -958,11 +995,21 @@ class RocketMQInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] auto_renew_period_unit: The minimum periodic unit for the duration of auto-renewal. This parameter is only valid when auto-renewal is enabled. Valid values: `Month`, `Year`.
         :param pulumi.Input[_builtins.str] commodity_code: Commodity code
                
+               Domestic station (China) values:
+               
                ons_rmqsub_public_cn: Package year and month instance
                
                ons_rmqpost_public_cn: Pay-As-You-Go instance
                
-               Next: Serverless instances
+               ons_rmqsrvlesspost_public_cn: Serverless instance
+               
+               International station values:
+               
+               ons_rmqsub_public_intl: Package year and month instance
+               
+               ons_rmqpost_public_intl: Pay-As-You-Go instance
+               
+               ons_rmqsrvlesspost_public_intl: Serverless instance
         :param pulumi.Input[_builtins.str] instance_name: The name of instance
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_whitelists: The ip whitelist.
         :param pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict', 'outputs.RocketMQInstanceNetworkInfo']] network_info: Instance network configuration information See `network_info` below.
@@ -1017,7 +1064,7 @@ class RocketMQInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.212.0.
 
-        > **NOTE:** Destroying a `Subscription` instance fails with an error since v1.294.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+        > **NOTE:** From `v2.3.0`, destroying a `Subscription` (prepaid) instance automatically unsubscribes it through the BssOpenApi `RefundInstance` API with `ImmediatelyRelease` enabled and waits for the instance to be released before clearing the Terraform state. If the refund cannot be confirmed (for example the commodity is not supported for self-service refund), the Terraform state is retained so the destroy can be retried. In versions prior to `v2.3.0` (including v1.294.0), prepaid instances are not unsubscribed on destroy; you must manually unsubscribe them in the console. A `PayAsYouGo` (postpaid) instance keeps using the RocketMQ `DeleteInstance` API.
 
         ## Example Usage
 
@@ -1060,9 +1107,6 @@ class RocketMQInstance(pulumi.CustomResource):
                 "10.10.0.0/16",
                 "172.168.0.0/16",
             ],
-            software={
-                "maintain_time": "02:00-06:00",
-            },
             tags={
                 "Created": "TF",
                 "For": "example",
@@ -1219,11 +1263,21 @@ class RocketMQInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] auto_renew_period_unit: The minimum periodic unit for the duration of auto-renewal. This parameter is only valid when auto-renewal is enabled. Valid values: `Month`, `Year`.
         :param pulumi.Input[_builtins.str] commodity_code: Commodity code
                
+               Domestic station (China) values:
+               
                ons_rmqsub_public_cn: Package year and month instance
                
                ons_rmqpost_public_cn: Pay-As-You-Go instance
                
-               Next: Serverless instances
+               ons_rmqsrvlesspost_public_cn: Serverless instance
+               
+               International station values:
+               
+               ons_rmqsub_public_intl: Package year and month instance
+               
+               ons_rmqpost_public_intl: Pay-As-You-Go instance
+               
+               ons_rmqsrvlesspost_public_intl: Serverless instance
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] instance_name: The name of instance
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_whitelists: The ip whitelist.
@@ -1389,11 +1443,21 @@ class RocketMQInstance(pulumi.CustomResource):
         """
         Commodity code
 
+        Domestic station (China) values:
+
         ons_rmqsub_public_cn: Package year and month instance
 
         ons_rmqpost_public_cn: Pay-As-You-Go instance
 
-        Next: Serverless instances
+        ons_rmqsrvlesspost_public_cn: Serverless instance
+
+        International station values:
+
+        ons_rmqsub_public_intl: Package year and month instance
+
+        ons_rmqpost_public_intl: Pay-As-You-Go instance
+
+        ons_rmqsrvlesspost_public_intl: Serverless instance
         """
         return pulumi.get(self, "commodity_code")
 

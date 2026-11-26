@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.Quotas
         private List<Inputs.GetQuotaApplicationsDimensionArgs>? _dimensions;
 
         /// <summary>
-        /// The quota dimensions.
+        /// The quota dimensions. See `Dimensions` below.
         /// </summary>
         public List<Inputs.GetQuotaApplicationsDimensionArgs> Dimensions
         {
@@ -189,6 +189,9 @@ namespace Pulumi.AliCloud.Quotas
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The key word.
+        /// </summary>
         [Input("keyWord")]
         public string? KeyWord { get; set; }
 
@@ -234,7 +237,7 @@ namespace Pulumi.AliCloud.Quotas
         private InputList<Inputs.GetQuotaApplicationsDimensionInputArgs>? _dimensions;
 
         /// <summary>
-        /// The quota dimensions.
+        /// The quota dimensions. See `Dimensions` below.
         /// </summary>
         public InputList<Inputs.GetQuotaApplicationsDimensionInputArgs> Dimensions
         {
@@ -260,6 +263,9 @@ namespace Pulumi.AliCloud.Quotas
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The key word.
+        /// </summary>
         [Input("keyWord")]
         public Input<string>? KeyWord { get; set; }
 
@@ -303,7 +309,13 @@ namespace Pulumi.AliCloud.Quotas
     [OutputType]
     public sealed class GetQuotaApplicationsResult
     {
+        /// <summary>
+        /// A list of Quotas Quota Applications. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetQuotaApplicationsApplicationResult> Applications;
+        /// <summary>
+        /// The quota dimensions. See `Dimensions` below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetQuotaApplicationsDimensionResult> Dimensions;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -313,9 +325,18 @@ namespace Pulumi.AliCloud.Quotas
         public readonly ImmutableArray<string> Ids;
         public readonly string? KeyWord;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The product code.
+        /// </summary>
         public readonly string ProductCode;
+        /// <summary>
+        /// The ID of quota action.
+        /// </summary>
         public readonly string? QuotaActionCode;
         public readonly string? QuotaCategory;
+        /// <summary>
+        /// The status of the quota application.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

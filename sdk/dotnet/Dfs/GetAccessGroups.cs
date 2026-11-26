@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dfs
         /// <summary>
         /// This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Dfs
         /// <summary>
         /// This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Dfs
         /// <summary>
         /// This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -150,6 +150,9 @@ namespace Pulumi.AliCloud.Dfs
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The number of Access Groups to return.
+        /// </summary>
         [Input("limit")]
         public int? Limit { get; set; }
 
@@ -159,9 +162,15 @@ namespace Pulumi.AliCloud.Dfs
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// The field that sorts the Access Groups. Valid values: `CreateTime`, `AccessGroupName`.
+        /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
+        /// <summary>
+        /// The sort order. Valid values: `ASC`, `DESC`.
+        /// </summary>
         [Input("orderType")]
         public string? OrderType { get; set; }
 
@@ -171,6 +180,9 @@ namespace Pulumi.AliCloud.Dfs
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The start offset of the Access Groups list.
+        /// </summary>
         [Input("startOffset")]
         public int? StartOffset { get; set; }
 
@@ -194,6 +206,9 @@ namespace Pulumi.AliCloud.Dfs
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The number of Access Groups to return.
+        /// </summary>
         [Input("limit")]
         public Input<int>? Limit { get; set; }
 
@@ -203,9 +218,15 @@ namespace Pulumi.AliCloud.Dfs
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// The field that sorts the Access Groups. Valid values: `CreateTime`, `AccessGroupName`.
+        /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
 
+        /// <summary>
+        /// The sort order. Valid values: `ASC`, `DESC`.
+        /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
 
@@ -215,6 +236,9 @@ namespace Pulumi.AliCloud.Dfs
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// The start offset of the Access Groups list.
+        /// </summary>
         [Input("startOffset")]
         public Input<int>? StartOffset { get; set; }
 
@@ -228,6 +252,9 @@ namespace Pulumi.AliCloud.Dfs
     [OutputType]
     public sealed class GetAccessGroupsResult
     {
+        /// <summary>
+        /// A list of Dfs Access Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAccessGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -236,6 +263,9 @@ namespace Pulumi.AliCloud.Dfs
         public readonly ImmutableArray<string> Ids;
         public readonly int? Limit;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Access Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OrderBy;
         public readonly string? OrderType;

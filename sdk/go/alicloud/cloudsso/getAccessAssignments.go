@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.193.0+.
+// > **NOTE:** Available since v1.193.0.
 //
 // > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 //
@@ -79,16 +79,22 @@ type GetAccessAssignmentsArgs struct {
 
 // A collection of values returned by getAccessAssignments.
 type GetAccessAssignmentsResult struct {
-	AccessConfigurationId *string                          `pulumi:"accessConfigurationId"`
-	Assignments           []GetAccessAssignmentsAssignment `pulumi:"assignments"`
-	DirectoryId           string                           `pulumi:"directoryId"`
+	// Access configuration ID.
+	AccessConfigurationId *string `pulumi:"accessConfigurationId"`
+	// A list of Cloud Sso Access Assignments. Each element contains the following attributes:
+	Assignments []GetAccessAssignmentsAssignment `pulumi:"assignments"`
+	// Directory ID.
+	DirectoryId string `pulumi:"directoryId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string   `pulumi:"id"`
-	Ids           []string `pulumi:"ids"`
-	OutputFile    *string  `pulumi:"outputFile"`
-	PrincipalType *string  `pulumi:"principalType"`
-	TargetId      *string  `pulumi:"targetId"`
-	TargetType    *string  `pulumi:"targetType"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// Create the identity type of the access assignment, which can be a user or a user group.
+	PrincipalType *string `pulumi:"principalType"`
+	// The ID of the target to create the resource range.
+	TargetId *string `pulumi:"targetId"`
+	// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+	TargetType *string `pulumi:"targetType"`
 }
 
 func GetAccessAssignmentsOutput(ctx *pulumi.Context, args GetAccessAssignmentsOutputArgs, opts ...pulumi.InvokeOption) GetAccessAssignmentsResultOutput {
@@ -133,14 +139,17 @@ func (o GetAccessAssignmentsResultOutput) ToGetAccessAssignmentsResultOutputWith
 	return o
 }
 
+// Access configuration ID.
 func (o GetAccessAssignmentsResultOutput) AccessConfigurationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessAssignmentsResult) *string { return v.AccessConfigurationId }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cloud Sso Access Assignments. Each element contains the following attributes:
 func (o GetAccessAssignmentsResultOutput) Assignments() GetAccessAssignmentsAssignmentArrayOutput {
 	return o.ApplyT(func(v GetAccessAssignmentsResult) []GetAccessAssignmentsAssignment { return v.Assignments }).(GetAccessAssignmentsAssignmentArrayOutput)
 }
 
+// Directory ID.
 func (o GetAccessAssignmentsResultOutput) DirectoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessAssignmentsResult) string { return v.DirectoryId }).(pulumi.StringOutput)
 }
@@ -158,14 +167,17 @@ func (o GetAccessAssignmentsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessAssignmentsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Create the identity type of the access assignment, which can be a user or a user group.
 func (o GetAccessAssignmentsResultOutput) PrincipalType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessAssignmentsResult) *string { return v.PrincipalType }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the target to create the resource range.
 func (o GetAccessAssignmentsResultOutput) TargetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessAssignmentsResult) *string { return v.TargetId }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
 func (o GetAccessAssignmentsResultOutput) TargetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessAssignmentsResult) *string { return v.TargetType }).(pulumi.StringPtrOutput)
 }

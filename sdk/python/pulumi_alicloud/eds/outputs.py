@@ -17,8 +17,10 @@ from . import outputs
 
 __all__ = [
     'CustomPropertyPropertyValue',
+    'DesktopDesktopTimer',
     'EcdPolicyGroupAuthorizeAccessPolicyRule',
     'EcdPolicyGroupAuthorizeSecurityPolicyRule',
+    'EcdPolicyGroupClientType',
     'GetAdConnectorDirectoriesDirectoryResult',
     'GetAdConnectorDirectoriesDirectoryAdConnectorResult',
     'GetAdConnectorOfficeSitesSiteResult',
@@ -33,6 +35,7 @@ __all__ = [
     'GetCustomPropertiesPropertyPropertyValueResult',
     'GetDesktopTypesTypeResult',
     'GetDesktopsDesktopResult',
+    'GetDesktopsDesktopDiskResult',
     'GetImagesImageResult',
     'GetNasFileSystemsSystemResult',
     'GetNetworkPackagesPackageResult',
@@ -96,6 +99,126 @@ class CustomPropertyPropertyValue(dict):
         The value of an attribute id.
         """
         return pulumi.get(self, "property_value_id")
+
+
+@pulumi.output_type
+class DesktopDesktopTimer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowClientSetting":
+            suggest = "allow_client_setting"
+        elif key == "cronExpression":
+            suggest = "cron_expression"
+        elif key == "operationType":
+            suggest = "operation_type"
+        elif key == "resetType":
+            suggest = "reset_type"
+        elif key == "timerType":
+            suggest = "timer_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DesktopDesktopTimer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DesktopDesktopTimer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DesktopDesktopTimer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_client_setting: Optional[_builtins.bool] = None,
+                 cron_expression: Optional[_builtins.str] = None,
+                 enforce: Optional[_builtins.bool] = None,
+                 interval: Optional[_builtins.int] = None,
+                 operation_type: Optional[_builtins.str] = None,
+                 reset_type: Optional[_builtins.str] = None,
+                 timer_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool allow_client_setting: Whether to allow the end user to configure the scheduled timer task. Default to `false`.
+        :param _builtins.str cron_expression: The cron expression of the scheduled timer task. The cron expression uses UTC time. For example, to execute at 00:00 Beijing time every day, set the value to `0 0 16 ? * 1,2,3,4,5,6,7`.
+        :param _builtins.bool enforce: Whether to force the execution of the scheduled timer task.
+        :param _builtins.int interval: The time interval, in minutes.
+        :param _builtins.str operation_type: The operation type of the scheduled timer task, only valid when `timer_type` is `NoConnect`. Valid values: `Hibernate`, `Shutdown`.
+               
+               > **NOTE:** `desktop_timers` is a write-only field. Since the DescribeDesktops API does not return timer configurations, Terraform cannot detect drift on this field, and the field is ignored when importing. Removing the block stops Terraform from managing the timers: no update is sent, because `ModifyDesktopTimer` rejects a request that sets neither a timer type nor timer entries, so previously configured timers stay on the cloud desktop.
+        :param _builtins.str reset_type: The reset type of the Desktop. Valid values: `RESET_TYPE_BOTH`, `RESET_TYPE_SYSTEM`.
+        :param _builtins.str timer_type: The type of the scheduled timer task. Required when a `desktop_timers` block is configured. Valid values: `LoginAutoConnect`, `LogoutShutdown`, `NoConnect`, `NoOperationDisconnect`, `NoOperationReboot`, `NoOperationShutdown`, `TimerBoot`, `TimerReboot`, `TimerReset`, `TimerShutdown`.
+        """
+        if allow_client_setting is not None:
+            pulumi.set(__self__, "allow_client_setting", allow_client_setting)
+        if cron_expression is not None:
+            pulumi.set(__self__, "cron_expression", cron_expression)
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if operation_type is not None:
+            pulumi.set(__self__, "operation_type", operation_type)
+        if reset_type is not None:
+            pulumi.set(__self__, "reset_type", reset_type)
+        if timer_type is not None:
+            pulumi.set(__self__, "timer_type", timer_type)
+
+    @_builtins.property
+    @pulumi.getter(name="allowClientSetting")
+    def allow_client_setting(self) -> Optional[_builtins.bool]:
+        """
+        Whether to allow the end user to configure the scheduled timer task. Default to `false`.
+        """
+        return pulumi.get(self, "allow_client_setting")
+
+    @_builtins.property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> Optional[_builtins.str]:
+        """
+        The cron expression of the scheduled timer task. The cron expression uses UTC time. For example, to execute at 00:00 Beijing time every day, set the value to `0 0 16 ? * 1,2,3,4,5,6,7`.
+        """
+        return pulumi.get(self, "cron_expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def enforce(self) -> Optional[_builtins.bool]:
+        """
+        Whether to force the execution of the scheduled timer task.
+        """
+        return pulumi.get(self, "enforce")
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> Optional[_builtins.int]:
+        """
+        The time interval, in minutes.
+        """
+        return pulumi.get(self, "interval")
+
+    @_builtins.property
+    @pulumi.getter(name="operationType")
+    def operation_type(self) -> Optional[_builtins.str]:
+        """
+        The operation type of the scheduled timer task, only valid when `timer_type` is `NoConnect`. Valid values: `Hibernate`, `Shutdown`.
+
+        > **NOTE:** `desktop_timers` is a write-only field. Since the DescribeDesktops API does not return timer configurations, Terraform cannot detect drift on this field, and the field is ignored when importing. Removing the block stops Terraform from managing the timers: no update is sent, because `ModifyDesktopTimer` rejects a request that sets neither a timer type nor timer entries, so previously configured timers stay on the cloud desktop.
+        """
+        return pulumi.get(self, "operation_type")
+
+    @_builtins.property
+    @pulumi.getter(name="resetType")
+    def reset_type(self) -> Optional[_builtins.str]:
+        """
+        The reset type of the Desktop. Valid values: `RESET_TYPE_BOTH`, `RESET_TYPE_SYSTEM`.
+        """
+        return pulumi.get(self, "reset_type")
+
+    @_builtins.property
+    @pulumi.getter(name="timerType")
+    def timer_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the scheduled timer task. Required when a `desktop_timers` block is configured. Valid values: `LoginAutoConnect`, `LogoutShutdown`, `NoConnect`, `NoOperationDisconnect`, `NoOperationReboot`, `NoOperationShutdown`, `TimerBoot`, `TimerReboot`, `TimerReset`, `TimerShutdown`.
+        """
+        return pulumi.get(self, "timer_type")
 
 
 @pulumi.output_type
@@ -259,6 +382,58 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRule(dict):
 
 
 @pulumi.output_type
+class EcdPolicyGroupClientType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientType":
+            suggest = "client_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EcdPolicyGroupClientType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EcdPolicyGroupClientType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EcdPolicyGroupClientType.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_type: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str client_type: The client type. Valid values: `android`, `html5`, `ios`, `macos`, `windows`.
+        :param _builtins.str status: Whether to allow the client type to access. Valid values: `off`, `on`.
+               
+               > **NOTE:** `client_types` manages only the client types listed in the configuration; types that are not listed are not sent to the API and are left to the service. `DescribePolicyGroups` returns every client type, but unconfigured entries are not written back to state, and entries that omit `status` are not read back either, so out-of-band changes to those values are not detected. `pulumi import` does not populate `client_types`; apply the configuration again to manage the client types. Removing all `client_types` blocks calls `ModifyPolicyGroup` without client-type parameters, which the API treats as allowing every client type.
+        """
+        if client_type is not None:
+            pulumi.set(__self__, "client_type", client_type)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="clientType")
+    def client_type(self) -> Optional[_builtins.str]:
+        """
+        The client type. Valid values: `android`, `html5`, `ios`, `macos`, `windows`.
+        """
+        return pulumi.get(self, "client_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Whether to allow the client type to access. Valid values: `off`, `on`.
+
+        > **NOTE:** `client_types` manages only the client types listed in the configuration; types that are not listed are not sent to the API and are left to the service. `DescribePolicyGroups` returns every client type, but unconfigured entries are not written back to state, and entries that omit `status` are not read back either, so out-of-band changes to those values are not detected. `pulumi import` does not populate `client_types`; apply the configuration again to manage the client types. Removing all `client_types` blocks calls `ModifyPolicyGroup` without client-type parameters, which the API treats as allowing every client type.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class GetAdConnectorDirectoriesDirectoryResult(dict):
     def __init__(__self__, *,
                  ad_connector_directory_id: _builtins.str,
@@ -294,7 +469,7 @@ class GetAdConnectorDirectoriesDirectoryResult(dict):
         :param _builtins.bool enable_admin_access: Whether to grant local administrator rights to users who use cloud desktops.
         :param _builtins.str id: The ID of the Ad Connector Directory.
         :param _builtins.bool mfa_enabled: Whether MFA authentication is enabled. After all AD users in this directory log on to the cloud desktop, enter the correct password and then enter the dynamic verification code generated by the MFA device.
-        :param _builtins.str status: The status of directory.
+        :param _builtins.str status: The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
         :param Sequence[_builtins.str] sub_dns_addresses: The Enterprise already has the DNS address of the AD subdomain.
         :param _builtins.str sub_domain_name: The Enterprise already has a fully qualified domain name (FQDN) of an AD subdomain, with both a host name and a domain name.
         :param _builtins.str trust_password: The trust password.
@@ -429,7 +604,7 @@ class GetAdConnectorDirectoriesDirectoryResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of directory.
+        The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
         """
         return pulumi.get(self, "status")
 
@@ -605,7 +780,16 @@ class GetAdConnectorOfficeSitesSiteResult(dict):
         :param _builtins.str office_site_id: The ID of the Workspace.
         :param _builtins.str office_site_type: Workspace Account System Type. Possible Values: Simple: Convenient Account. AD_CONNECTOR: Enterprise Ad Account.
         :param _builtins.bool sso_enabled: Whether to Enable Single Sign-on (SSO) for User-Based SSO.
-        :param _builtins.str status: The workspace status.
+        :param _builtins.str status: The workspace status. Valid values:
+               - `REGISTERING`: The workspace is being registered.
+               - `REGISTERED`: The workspace is registered.
+               - `DEREGISTERING`: The workspace is being deregistered.
+               - `DEREGISTERED`: The workspace is deregistered.
+               - `ERROR`: The configurations of the workspace are invalid.
+               - `NEEDCONFIGTRUST`: The trust relationship needs to be configured.
+               - `NEEDCONFIGUSER`: Users need to be configured.
+               - `CONFIGTRUSTING`: The trust relationship is being configured.
+               - `CONFIGTRUSTFAILED`: The trust relationship fails to be configured.
         :param Sequence[_builtins.str] sub_domain_dns_addresses: Sub-Domain DNS Address.
         :param _builtins.str sub_domain_name: The AD Domain DNS Name.
         :param _builtins.str trust_password: The AD Trust Password.
@@ -839,7 +1023,16 @@ class GetAdConnectorOfficeSitesSiteResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The workspace status.
+        The workspace status. Valid values:
+        - `REGISTERING`: The workspace is being registered.
+        - `REGISTERED`: The workspace is registered.
+        - `DEREGISTERING`: The workspace is being deregistered.
+        - `DEREGISTERED`: The workspace is deregistered.
+        - `ERROR`: The configurations of the workspace are invalid.
+        - `NEEDCONFIGTRUST`: The trust relationship needs to be configured.
+        - `NEEDCONFIGUSER`: Users need to be configured.
+        - `CONFIGTRUSTING`: The trust relationship is being configured.
+        - `CONFIGTRUSTFAILED`: The trust relationship fails to be configured.
         """
         return pulumi.get(self, "status")
 
@@ -1000,7 +1193,7 @@ class GetBundlesBundleResult(dict):
                  image_id: _builtins.str,
                  os_type: _builtins.str):
         """
-        :param _builtins.str bundle_id: The bundle id of the bundle.
+        :param _builtins.str bundle_id: A list of bundle IDs used to filter the results.
         :param _builtins.str bundle_name: The name of the bundle.
         :param _builtins.str bundle_type: The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
         :param _builtins.str description: The description of the bundle.
@@ -1026,7 +1219,7 @@ class GetBundlesBundleResult(dict):
     @pulumi.getter(name="bundleId")
     def bundle_id(self) -> _builtins.str:
         """
-        The bundle id of the bundle.
+        A list of bundle IDs used to filter the results.
         """
         return pulumi.get(self, "bundle_id")
 
@@ -1495,9 +1688,9 @@ class GetDesktopTypesTypeResult(dict):
         :param _builtins.float gpu_count: The GPU cores.
         :param _builtins.str gpu_spec: The GPU video memory.
         :param _builtins.str id: The ID of the Desktop Type.
-        :param _builtins.str instance_type_family: The Specification family.
+        :param _builtins.str instance_type_family: The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
         :param _builtins.str memory_size: The Memory size. Unit: MiB.
-        :param _builtins.str status: The status of the resource.
+        :param _builtins.str status: The status of the resource. Valid values: `SUFFICIENT`.
         :param _builtins.str system_disk_size: The size of the system disk. Unit: GiB.
         """
         pulumi.set(__self__, "cpu_count", cpu_count)
@@ -1563,7 +1756,7 @@ class GetDesktopTypesTypeResult(dict):
     @pulumi.getter(name="instanceTypeFamily")
     def instance_type_family(self) -> _builtins.str:
         """
-        The Specification family.
+        The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
         """
         return pulumi.get(self, "instance_type_family")
 
@@ -1579,7 +1772,7 @@ class GetDesktopTypesTypeResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `SUFFICIENT`.
         """
         return pulumi.get(self, "status")
 
@@ -1601,6 +1794,7 @@ class GetDesktopsDesktopResult(dict):
                  desktop_name: _builtins.str,
                  desktop_type: _builtins.str,
                  directory_id: _builtins.str,
+                 disks: Sequence['outputs.GetDesktopsDesktopDiskResult'],
                  end_user_ids: Sequence[_builtins.str],
                  expired_time: _builtins.str,
                  id: _builtins.str,
@@ -1613,20 +1807,21 @@ class GetDesktopsDesktopResult(dict):
                  system_disk_size: _builtins.int):
         """
         :param _builtins.int cpu: The number of CPUs.
-        :param _builtins.str create_time: The creation time of the Desktop.
-        :param _builtins.str desktop_id: The desktop id of the Desktop.
-        :param _builtins.str desktop_name: The desktop name of the Desktop.
-        :param _builtins.str desktop_type: The desktop type of the Desktop.
-        :param _builtins.str directory_id: The directory id of the Desktop.
-        :param Sequence[_builtins.str] end_user_ids: The desktop end user id of the Desktop.
-        :param _builtins.str expired_time: The expired time of the Desktop.
+        :param _builtins.str create_time: The creation time of the cloud desktop.
+        :param _builtins.str desktop_id: The cloud desktop ID.
+        :param _builtins.str desktop_name: The cloud desktop name.
+        :param _builtins.str desktop_type: The specifications of the cloud desktop.
+        :param _builtins.str directory_id: The directory ID.
+        :param Sequence['GetDesktopsDesktopDiskArgs'] disks: (Available since v2.3.0) The disk information.
+        :param Sequence[_builtins.str] end_user_ids: The authorized users of the cloud desktop.
+        :param _builtins.str expired_time: The expiration time of the subscription cloud desktop.
         :param _builtins.str id: The ID of the Desktop.
-        :param _builtins.str image_id: The image id of the Desktop.
-        :param _builtins.str memory: The memory of the Desktop.
-        :param _builtins.str network_interface_id: The network interface id of the Desktop.
-        :param _builtins.str payment_type: The payment type of the Desktop.
-        :param _builtins.str policy_group_id: The policy group id of the Desktop.
-        :param _builtins.str status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+        :param _builtins.str image_id: The image ID.
+        :param _builtins.str memory: The memory size.
+        :param _builtins.str network_interface_id: The ID of the secondary elastic network interface (ENI) created by the cloud desktop service for a RAM or AD user.
+        :param _builtins.str payment_type: The billing method of the cloud desktop.
+        :param _builtins.str policy_group_id: The cloud desktop policy ID.
+        :param _builtins.str status: The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
         :param _builtins.int system_disk_size: The system disk size of the Desktop.
         """
         pulumi.set(__self__, "cpu", cpu)
@@ -1635,6 +1830,7 @@ class GetDesktopsDesktopResult(dict):
         pulumi.set(__self__, "desktop_name", desktop_name)
         pulumi.set(__self__, "desktop_type", desktop_type)
         pulumi.set(__self__, "directory_id", directory_id)
+        pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "end_user_ids", end_user_ids)
         pulumi.set(__self__, "expired_time", expired_time)
         pulumi.set(__self__, "id", id)
@@ -1658,7 +1854,7 @@ class GetDesktopsDesktopResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         """
-        The creation time of the Desktop.
+        The creation time of the cloud desktop.
         """
         return pulumi.get(self, "create_time")
 
@@ -1666,7 +1862,7 @@ class GetDesktopsDesktopResult(dict):
     @pulumi.getter(name="desktopId")
     def desktop_id(self) -> _builtins.str:
         """
-        The desktop id of the Desktop.
+        The cloud desktop ID.
         """
         return pulumi.get(self, "desktop_id")
 
@@ -1674,7 +1870,7 @@ class GetDesktopsDesktopResult(dict):
     @pulumi.getter(name="desktopName")
     def desktop_name(self) -> _builtins.str:
         """
-        The desktop name of the Desktop.
+        The cloud desktop name.
         """
         return pulumi.get(self, "desktop_name")
 
@@ -1682,7 +1878,7 @@ class GetDesktopsDesktopResult(dict):
     @pulumi.getter(name="desktopType")
     def desktop_type(self) -> _builtins.str:
         """
-        The desktop type of the Desktop.
+        The specifications of the cloud desktop.
         """
         return pulumi.get(self, "desktop_type")
 
@@ -1690,15 +1886,23 @@ class GetDesktopsDesktopResult(dict):
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> _builtins.str:
         """
-        The directory id of the Desktop.
+        The directory ID.
         """
         return pulumi.get(self, "directory_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def disks(self) -> Sequence['outputs.GetDesktopsDesktopDiskResult']:
+        """
+        (Available since v2.3.0) The disk information.
+        """
+        return pulumi.get(self, "disks")
 
     @_builtins.property
     @pulumi.getter(name="endUserIds")
     def end_user_ids(self) -> Sequence[_builtins.str]:
         """
-        The desktop end user id of the Desktop.
+        The authorized users of the cloud desktop.
         """
         return pulumi.get(self, "end_user_ids")
 
@@ -1706,7 +1910,7 @@ class GetDesktopsDesktopResult(dict):
     @pulumi.getter(name="expiredTime")
     def expired_time(self) -> _builtins.str:
         """
-        The expired time of the Desktop.
+        The expiration time of the subscription cloud desktop.
         """
         return pulumi.get(self, "expired_time")
 
@@ -1722,7 +1926,7 @@ class GetDesktopsDesktopResult(dict):
     @pulumi.getter(name="imageId")
     def image_id(self) -> _builtins.str:
         """
-        The image id of the Desktop.
+        The image ID.
         """
         return pulumi.get(self, "image_id")
 
@@ -1730,7 +1934,7 @@ class GetDesktopsDesktopResult(dict):
     @pulumi.getter
     def memory(self) -> _builtins.str:
         """
-        The memory of the Desktop.
+        The memory size.
         """
         return pulumi.get(self, "memory")
 
@@ -1738,7 +1942,7 @@ class GetDesktopsDesktopResult(dict):
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> _builtins.str:
         """
-        The network interface id of the Desktop.
+        The ID of the secondary elastic network interface (ENI) created by the cloud desktop service for a RAM or AD user.
         """
         return pulumi.get(self, "network_interface_id")
 
@@ -1746,7 +1950,7 @@ class GetDesktopsDesktopResult(dict):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> _builtins.str:
         """
-        The payment type of the Desktop.
+        The billing method of the cloud desktop.
         """
         return pulumi.get(self, "payment_type")
 
@@ -1754,7 +1958,7 @@ class GetDesktopsDesktopResult(dict):
     @pulumi.getter(name="policyGroupId")
     def policy_group_id(self) -> _builtins.str:
         """
-        The policy group id of the Desktop.
+        The cloud desktop policy ID.
         """
         return pulumi.get(self, "policy_group_id")
 
@@ -1762,7 +1966,7 @@ class GetDesktopsDesktopResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+        The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
         """
         return pulumi.get(self, "status")
 
@@ -1773,6 +1977,68 @@ class GetDesktopsDesktopResult(dict):
         The system disk size of the Desktop.
         """
         return pulumi.get(self, "system_disk_size")
+
+
+@pulumi.output_type
+class GetDesktopsDesktopDiskResult(dict):
+    def __init__(__self__, *,
+                 disk_category: _builtins.str,
+                 disk_id: _builtins.str,
+                 disk_size: _builtins.int,
+                 disk_type: _builtins.str,
+                 performance_level: _builtins.str):
+        """
+        :param _builtins.str disk_category: The disk category.
+        :param _builtins.str disk_id: The disk ID.
+        :param _builtins.int disk_size: The disk size.
+        :param _builtins.str disk_type: The disk type.
+        :param _builtins.str performance_level: The performance level of the enhanced standard SSD cloud disk.
+        """
+        pulumi.set(__self__, "disk_category", disk_category)
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "performance_level", performance_level)
+
+    @_builtins.property
+    @pulumi.getter(name="diskCategory")
+    def disk_category(self) -> _builtins.str:
+        """
+        The disk category.
+        """
+        return pulumi.get(self, "disk_category")
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> _builtins.str:
+        """
+        The disk ID.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @_builtins.property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> _builtins.int:
+        """
+        The disk size.
+        """
+        return pulumi.get(self, "disk_size")
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> _builtins.str:
+        """
+        The disk type.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> _builtins.str:
+        """
+        The performance level of the enhanced standard SSD cloud disk.
+        """
+        return pulumi.get(self, "performance_level")
 
 
 @pulumi.output_type
@@ -1799,7 +2065,7 @@ class GetImagesImageResult(dict):
         :param _builtins.str image_id: The image id of the image.
         :param _builtins.str image_name: The image name.
         :param _builtins.str image_type: The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
-        :param _builtins.str os_type: The os type of the image.
+        :param _builtins.str os_type: The operating system type of the image. Valid values: `Windows` and `Linux`.
         :param _builtins.str progress: The progress of the image.
         :param _builtins.int size: The size of the image.
         :param _builtins.str status: The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
@@ -1885,7 +2151,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter(name="osType")
     def os_type(self) -> _builtins.str:
         """
-        The os type of the image.
+        The operating system type of the image. Valid values: `Windows` and `Linux`.
         """
         return pulumi.get(self, "os_type")
 
@@ -2243,7 +2509,7 @@ class GetPolicyGroupsGroupResult(dict):
         """
         :param Sequence['GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArgs'] authorize_access_policy_rules: The rule of authorize access rule.
         :param Sequence['GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArgs'] authorize_security_policy_rules: The policy rule.
-        :param _builtins.str camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
+        :param _builtins.str camera_redirect: (Available in 1.171.0+) Whether to enable local camera redirection. Valid values: `on`, `off`.
         :param _builtins.str clipboard: The clipboard policy.
         :param _builtins.str domain_list: The list of domain.
         :param _builtins.int eds_count: The count of eds.
@@ -2254,10 +2520,10 @@ class GetPolicyGroupsGroupResult(dict):
         :param _builtins.str policy_group_id: The policy group id.
         :param _builtins.str policy_group_name: The name of policy group.
         :param _builtins.str policy_group_type: The type of policy group.
-        :param _builtins.str recording: Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
-        :param _builtins.str recording_end_time: The end time of recording.
-        :param _builtins.int recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
-        :param _builtins.str recording_start_time: The start time of recording.
+        :param _builtins.str recording: (Available in 1.171.0+) Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        :param _builtins.str recording_end_time: (Available in 1.171.0+) The end time of recording.
+        :param _builtins.int recording_fps: (Available in 1.171.0+) The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        :param _builtins.str recording_start_time: (Available in 1.171.0+) The start time of recording.
         :param _builtins.str status: The status of policy.
         :param _builtins.str usb_redirect: The usb redirect policy.
         :param _builtins.str visual_quality: The quality of visual.sae_ecdsae_nameecd_po
@@ -2309,7 +2575,7 @@ class GetPolicyGroupsGroupResult(dict):
     @pulumi.getter(name="cameraRedirect")
     def camera_redirect(self) -> _builtins.str:
         """
-        Whether to enable local camera redirection. Valid values: `on`, `off`.
+        (Available in 1.171.0+) Whether to enable local camera redirection. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "camera_redirect")
 
@@ -2397,7 +2663,7 @@ class GetPolicyGroupsGroupResult(dict):
     @pulumi.getter
     def recording(self) -> _builtins.str:
         """
-        Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        (Available in 1.171.0+) Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
         """
         return pulumi.get(self, "recording")
 
@@ -2405,7 +2671,7 @@ class GetPolicyGroupsGroupResult(dict):
     @pulumi.getter(name="recordingEndTime")
     def recording_end_time(self) -> _builtins.str:
         """
-        The end time of recording.
+        (Available in 1.171.0+) The end time of recording.
         """
         return pulumi.get(self, "recording_end_time")
 
@@ -2413,7 +2679,7 @@ class GetPolicyGroupsGroupResult(dict):
     @pulumi.getter(name="recordingFps")
     def recording_fps(self) -> _builtins.int:
         """
-        The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        (Available in 1.171.0+) The fps of recording. Valid values: `2`, `5`, `10`, `15`.
         """
         return pulumi.get(self, "recording_fps")
 
@@ -2421,7 +2687,7 @@ class GetPolicyGroupsGroupResult(dict):
     @pulumi.getter(name="recordingStartTime")
     def recording_start_time(self) -> _builtins.str:
         """
-        The start time of recording.
+        (Available in 1.171.0+) The start time of recording.
         """
         return pulumi.get(self, "recording_start_time")
 
@@ -2480,8 +2746,8 @@ class GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult(dict):
                  cidr_ip: _builtins.str,
                  description: _builtins.str):
         """
-        :param _builtins.str cidr_ip: The cidrip of authorize access rule..
-        :param _builtins.str description: The description of authorize access rule.
+        :param _builtins.str cidr_ip: The cidrip of security rules.
+        :param _builtins.str description: The description of security rules.
         """
         pulumi.set(__self__, "cidr_ip", cidr_ip)
         pulumi.set(__self__, "description", description)
@@ -2490,7 +2756,7 @@ class GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult(dict):
     @pulumi.getter(name="cidrIp")
     def cidr_ip(self) -> _builtins.str:
         """
-        The cidrip of authorize access rule..
+        The cidrip of security rules.
         """
         return pulumi.get(self, "cidr_ip")
 
@@ -2498,7 +2764,7 @@ class GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description of authorize access rule.
+        The description of security rules.
         """
         return pulumi.get(self, "description")
 
@@ -2639,7 +2905,7 @@ class GetRamDirectoriesDirectoryResult(dict):
         :param _builtins.str ram_directory_id: The ID of ram directory.
         :param _builtins.str ram_directory_name: The name of directory.
         :param _builtins.bool sso_enabled: Whether to enable SSO.
-        :param _builtins.str status: The status of directory.
+        :param _builtins.str status: The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
         :param Sequence[_builtins.str] sub_dns_addresses: The address of sub DNS.
         :param _builtins.str sub_domain_name: The Name of the sub-domain.
         :param _builtins.str trust_password: The trust password.
@@ -2846,7 +3112,7 @@ class GetRamDirectoriesDirectoryResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of directory.
+        The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
         """
         return pulumi.get(self, "status")
 
@@ -3027,7 +3293,7 @@ class GetSimpleOfficeSitesSiteResult(dict):
                  vpc_id: _builtins.str,
                  vswitch_ids: Sequence[_builtins.str]):
         """
-        :param _builtins.int bandwidth: The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+        :param _builtins.int bandwidth: (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
         :param _builtins.str cen_id: Cloud Enterprise Network Instance Id.
         :param _builtins.str cidr_block: Workspace Corresponds to the Security Office Network of IPv4 Segment.
         :param _builtins.str create_time: Workspace Creation Time.
@@ -3041,7 +3307,7 @@ class GetSimpleOfficeSitesSiteResult(dict):
         :param _builtins.str domain_user_name: The Domain Administrator's Username.
         :param _builtins.bool enable_admin_access: Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
         :param _builtins.bool enable_cross_desktop_access: Enable Cross-Desktop Access.
-        :param _builtins.bool enable_internet_access: Whether the Open Internet Access Function.
+        :param _builtins.bool enable_internet_access: (Deprecated from 1.142.0) Whether the Open Internet Access Function.
         :param Sequence[_builtins.str] file_system_ids: NAS File System ID.
         :param _builtins.str id: The ID of the Simple Office Site.
         :param _builtins.bool mfa_enabled: Whether to Enable Multi-Factor Authentication MFA.
@@ -3051,7 +3317,7 @@ class GetSimpleOfficeSitesSiteResult(dict):
         :param _builtins.str simple_office_site_name: The simple office site name.
         :param _builtins.bool sso_enabled: Whether to Enable Single Sign-on (SSO) for User-Based SSO.
         :param _builtins.bool sso_status: Whether to Enable Single Sign-on (SSO) for User-Based SSO.
-        :param _builtins.str status: Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+        :param _builtins.str status: Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
         :param Sequence[_builtins.str] sub_dns_addresses: AD Subdomain of the DNS Address.
         :param _builtins.str sub_domain_name: AD Domain DNS Name.
         :param _builtins.str trust_password: AD Trust Password.
@@ -3094,7 +3360,7 @@ class GetSimpleOfficeSitesSiteResult(dict):
     @_utilities.deprecated("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""")
     def bandwidth(self) -> _builtins.int:
         """
-        The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+        (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -3207,7 +3473,7 @@ class GetSimpleOfficeSitesSiteResult(dict):
     @_utilities.deprecated("""Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""")
     def enable_internet_access(self) -> _builtins.bool:
         """
-        Whether the Open Internet Access Function.
+        (Deprecated from 1.142.0) Whether the Open Internet Access Function.
         """
         return pulumi.get(self, "enable_internet_access")
 
@@ -3287,7 +3553,7 @@ class GetSimpleOfficeSitesSiteResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+        Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
         """
         return pulumi.get(self, "status")
 
@@ -3350,11 +3616,11 @@ class GetSnapshotsSnapshotResult(dict):
         """
         :param _builtins.str create_time: The time when the snapshot was created.
         :param _builtins.str description: The description of the snapshot.
-        :param _builtins.str desktop_id: The ID of the cloud desktop to which the snapshot belongs.
+        :param _builtins.str desktop_id: The ID of the Desktop.
         :param _builtins.str id: The ID of the Snapshot.
         :param _builtins.str progress: The progress of creating the snapshot.
         :param _builtins.int remain_time: The remaining time that is required to create the snapshot. Unit: seconds.
-        :param _builtins.str snapshot_id: The ID of the snapshot.
+        :param _builtins.str snapshot_id: The ID of the Snapshot.
         :param _builtins.str snapshot_name: The name of the snapshot.
         :param _builtins.str snapshot_type: The type of the snapshot.
         :param _builtins.str source_disk_size: The capacity of the source disk. Unit: GiB.
@@ -3394,7 +3660,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="desktopId")
     def desktop_id(self) -> _builtins.str:
         """
-        The ID of the cloud desktop to which the snapshot belongs.
+        The ID of the Desktop.
         """
         return pulumi.get(self, "desktop_id")
 
@@ -3426,7 +3692,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> _builtins.str:
         """
-        The ID of the snapshot.
+        The ID of the Snapshot.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -3484,7 +3750,7 @@ class GetUsersUserResult(dict):
         :param _builtins.str end_user_id: The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
         :param _builtins.str id: The ID of the user id.
         :param _builtins.str phone: The phone of the mobile phone number.
-        :param _builtins.str status: The status of the resource.
+        :param _builtins.str status: The status of the resource. Valid values: `Unlocked`, `Locked`.
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "end_user_id", end_user_id)
@@ -3528,7 +3794,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `Unlocked`, `Locked`.
         """
         return pulumi.get(self, "status")
 

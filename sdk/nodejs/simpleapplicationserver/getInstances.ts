@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Simple Application Server Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *
@@ -76,17 +76,29 @@ export interface GetInstancesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Simple Application Server Instances. Each element contains the following attributes:
+     */
     readonly instances: outputs.simpleapplicationserver.GetInstancesInstance[];
     readonly nameRegex?: string;
+    /**
+     * A list of Instance names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The billing method of the simple application server.
+     */
     readonly paymentType?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Simple Application Server Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *

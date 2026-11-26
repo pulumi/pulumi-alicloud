@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// &gt; **NOTE:** Available since v1.113.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// &gt; **NOTE:** Available since v1.113.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// &gt; **NOTE:** Available since v1.113.0.
         /// 
         /// ## Example Usage
         /// 
@@ -179,6 +179,10 @@ namespace Pulumi.AliCloud.Cms
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to filter the Cms Monitor Group.
+        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -255,6 +259,10 @@ namespace Pulumi.AliCloud.Cms
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to filter the Cms Monitor Group.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -277,7 +285,13 @@ namespace Pulumi.AliCloud.Cms
     [OutputType]
     public sealed class GetMonitorGroupsResult
     {
+        /// <summary>
+        /// The ID of the tag rule.
+        /// </summary>
         public readonly string? DynamicTagRuleId;
+        /// <summary>
+        /// A list of Cms Monitor Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetMonitorGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -286,12 +300,24 @@ namespace Pulumi.AliCloud.Cms
         public readonly ImmutableArray<string> Ids;
         public readonly bool? IncludeTemplateHistory;
         public readonly string? Keyword;
+        /// <summary>
+        /// The name of the application group.
+        /// </summary>
         public readonly string? MonitorGroupName;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Monitor Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly bool? SelectContactGroups;
+        /// <summary>
+        /// A map of tags assigned to the Cms Monitor Group.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The type of the application group.
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

@@ -25,6 +25,9 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         /// Plan configuration information.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDbInstancePlansPlanPlanConfigResult> PlanConfigs;
+        /// <summary>
+        /// The description of the Plan.
+        /// </summary>
         public readonly string PlanDesc;
         /// <summary>
         /// The end time of the Plan.
@@ -47,7 +50,7 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         /// </summary>
         public readonly string PlanType;
         /// <summary>
-        /// The Status of the Plan.
+        /// Planning Status. Valid values: `Active`, `Cancel`, `Deleted`, `Finished`.
         /// </summary>
         public readonly string Status;
 

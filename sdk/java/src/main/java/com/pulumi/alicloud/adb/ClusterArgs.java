@@ -21,36 +21,44 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     public static final ClusterArgs Empty = new ClusterArgs();
 
     /**
-     * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+     * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      * 
      */
     @Import(name="autoRenewPeriod")
     private @Nullable Output<Integer> autoRenewPeriod;
 
     /**
-     * @return Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+     * @return Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      * 
      */
     public Optional<Output<Integer>> autoRenewPeriod() {
         return Optional.ofNullable(this.autoRenewPeriod);
     }
 
+    /**
+     * The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
+     * 
+     */
     @Import(name="computeResource")
     private @Nullable Output<String> computeResource;
 
+    /**
+     * @return The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
+     * 
+     */
     public Optional<Output<String>> computeResource() {
         return Optional.ofNullable(this.computeResource);
     }
 
     /**
-     * Cluster category. Value options: `Basic`, `Cluster`.
+     * The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
      * 
      */
     @Import(name="dbClusterCategory", required=true)
     private Output<String> dbClusterCategory;
 
     /**
-     * @return Cluster category. Value options: `Basic`, `Cluster`.
+     * @return The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
      * 
      */
     public Output<String> dbClusterCategory() {
@@ -58,6 +66,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+     * 
      * @deprecated It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      * 
      */
@@ -66,6 +76,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> dbClusterClass;
 
     /**
+     * @return It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+     * 
      * @deprecated It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      * 
      */
@@ -75,14 +87,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster version. Value options: `3.0`, Default to `3.0`.
+     * The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
      * 
      */
     @Import(name="dbClusterVersion")
     private @Nullable Output<String> dbClusterVersion;
 
     /**
-     * @return Cluster version. Value options: `3.0`, Default to `3.0`.
+     * @return The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
      * 
      */
     public Optional<Output<String>> dbClusterVersion() {
@@ -90,14 +102,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The dbNodeClass of cluster node.
+     * The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
      * 
      */
     @Import(name="dbNodeClass")
     private @Nullable Output<String> dbNodeClass;
 
     /**
-     * @return The dbNodeClass of cluster node.
+     * @return The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
      * 
      */
     public Optional<Output<String>> dbNodeClass() {
@@ -105,14 +117,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The dbNodeCount of cluster node.
+     * The db node count.
      * 
      */
     @Import(name="dbNodeCount")
     private @Nullable Output<Integer> dbNodeCount;
 
     /**
-     * @return The dbNodeCount of cluster node.
+     * @return The db node count.
      * 
      */
     public Optional<Output<Integer>> dbNodeCount() {
@@ -120,14 +132,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The dbNodeStorage of cluster node.
+     * The db node storage.
      * 
      */
     @Import(name="dbNodeStorage")
     private @Nullable Output<Integer> dbNodeStorage;
 
     /**
-     * @return The dbNodeStorage of cluster node.
+     * @return The db node storage.
      * 
      */
     public Optional<Output<Integer>> dbNodeStorage() {
@@ -135,94 +147,172 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of cluster.
+     * The description of DBCluster.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of cluster.
+     * @return The description of DBCluster.
      * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
     @Import(name="diskEncryption")
     private @Nullable Output<Boolean> diskEncryption;
 
+    /**
+     * @return Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
     public Optional<Output<Boolean>> diskEncryption() {
         return Optional.ofNullable(this.diskEncryption);
     }
 
+    /**
+     * The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+     * 
+     */
     @Import(name="diskPerformanceLevel")
     private @Nullable Output<String> diskPerformanceLevel;
 
+    /**
+     * @return The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+     * 
+     */
     public Optional<Output<String>> diskPerformanceLevel() {
         return Optional.ofNullable(this.diskPerformanceLevel);
     }
 
+    /**
+     * The elastic io resource.
+     * 
+     */
     @Import(name="elasticIoResource")
     private @Nullable Output<Integer> elasticIoResource;
 
+    /**
+     * @return The elastic io resource.
+     * 
+     */
     public Optional<Output<Integer>> elasticIoResource() {
         return Optional.ofNullable(this.elasticIoResource);
     }
 
+    /**
+     * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+     * - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+     * - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+     * - `16Core128GB`: (Available since v1.237.0)If you set `elasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+     * 
+     */
     @Import(name="elasticIoResourceSize")
     private @Nullable Output<String> elasticIoResourceSize;
 
+    /**
+     * @return The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+     * - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+     * - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+     * - `16Core128GB`: (Available since v1.237.0)If you set `elasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+     * 
+     */
     public Optional<Output<String>> elasticIoResourceSize() {
         return Optional.ofNullable(this.elasticIoResourceSize);
     }
 
+    /**
+     * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
     @Import(name="enableSsl")
     private @Nullable Output<Boolean> enableSsl;
 
+    /**
+     * @return Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
     public Optional<Output<Boolean>> enableSsl() {
         return Optional.ofNullable(this.enableSsl);
     }
 
+    /**
+     * The minor version to which you want to update.
+     * 
+     */
     @Import(name="kernelVersion")
     private @Nullable Output<String> kernelVersion;
 
+    /**
+     * @return The minor version to which you want to update.
+     * 
+     */
     public Optional<Output<String>> kernelVersion() {
         return Optional.ofNullable(this.kernelVersion);
     }
 
+    /**
+     * The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
+     * 
+     */
     @Import(name="kmsId")
     private @Nullable Output<String> kmsId;
 
+    /**
+     * @return The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
+     * 
+     */
     public Optional<Output<String>> kmsId() {
         return Optional.ofNullable(this.kmsId);
     }
 
     /**
-     * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+     * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      * 
      */
     @Import(name="maintainTime")
     private @Nullable Output<String> maintainTime;
 
     /**
-     * @return Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+     * @return The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      * 
      */
     public Optional<Output<String>> maintainTime() {
         return Optional.ofNullable(this.maintainTime);
     }
 
+    /**
+     * The mode of the cluster. Valid values: `reserver`, `flexible`.
+     * 
+     */
     @Import(name="mode", required=true)
     private Output<String> mode;
 
+    /**
+     * @return The mode of the cluster. Valid values: `reserver`, `flexible`.
+     * 
+     */
     public Output<String> mode() {
         return this.mode;
     }
 
+    /**
+     * The modify type.
+     * 
+     */
     @Import(name="modifyType")
     private @Nullable Output<String> modifyType;
 
+    /**
+     * @return The modify type.
+     * 
+     */
     public Optional<Output<String>> modifyType() {
         return Optional.ofNullable(this.modifyType);
     }
@@ -249,14 +339,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+     * The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+     * @return The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -264,14 +354,18 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+     * The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * 
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+     * @return The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * 
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -293,9 +387,17 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.renewalStatus);
     }
 
+    /**
+     * The ID of the resource group.
+     * 
+     */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
@@ -315,9 +417,17 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.securityIps);
     }
 
+    /**
+     * The time when to perform the update. Valid values:
+     * 
+     */
     @Import(name="switchMode")
     private @Nullable Output<Integer> switchMode;
 
+    /**
+     * @return The time when to perform the update. Valid values:
+     * 
+     */
     public Optional<Output<Integer>> switchMode() {
         return Optional.ofNullable(this.switchMode);
     }
@@ -345,22 +455,30 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The vpc ID of the resource.
+     * 
+     */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
+    /**
+     * @return The vpc ID of the resource.
+     * 
+     */
     public Optional<Output<String>> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
 
     /**
-     * The virtual switch ID to launch DB instances in one VPC.
+     * The vswitch id.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The virtual switch ID to launch DB instances in one VPC.
+     * @return The vswitch id.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -368,14 +486,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Zone to launch the DB cluster.
+     * The zone ID of the resource.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The Zone to launch the DB cluster.
+     * @return The zone ID of the resource.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -436,7 +554,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+         * @param autoRenewPeriod Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
          * 
          * @return builder
          * 
@@ -447,7 +565,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+         * @param autoRenewPeriod Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
          * 
          * @return builder
          * 
@@ -456,17 +574,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
             return autoRenewPeriod(Output.of(autoRenewPeriod));
         }
 
+        /**
+         * @param computeResource The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
+         * 
+         * @return builder
+         * 
+         */
         public Builder computeResource(@Nullable Output<String> computeResource) {
             $.computeResource = computeResource;
             return this;
         }
 
+        /**
+         * @param computeResource The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
+         * 
+         * @return builder
+         * 
+         */
         public Builder computeResource(String computeResource) {
             return computeResource(Output.of(computeResource));
         }
 
         /**
-         * @param dbClusterCategory Cluster category. Value options: `Basic`, `Cluster`.
+         * @param dbClusterCategory The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
          * 
          * @return builder
          * 
@@ -477,7 +607,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterCategory Cluster category. Value options: `Basic`, `Cluster`.
+         * @param dbClusterCategory The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
          * 
          * @return builder
          * 
@@ -487,6 +617,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param dbClusterClass It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+         * 
          * @return builder
          * 
          * @deprecated It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
@@ -499,6 +631,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param dbClusterClass It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+         * 
          * @return builder
          * 
          * @deprecated It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
@@ -510,7 +644,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterVersion Cluster version. Value options: `3.0`, Default to `3.0`.
+         * @param dbClusterVersion The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
          * 
          * @return builder
          * 
@@ -521,7 +655,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterVersion Cluster version. Value options: `3.0`, Default to `3.0`.
+         * @param dbClusterVersion The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
          * 
          * @return builder
          * 
@@ -531,7 +665,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeClass The dbNodeClass of cluster node.
+         * @param dbNodeClass The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
          * 
          * @return builder
          * 
@@ -542,7 +676,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeClass The dbNodeClass of cluster node.
+         * @param dbNodeClass The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
          * 
          * @return builder
          * 
@@ -552,7 +686,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeCount The dbNodeCount of cluster node.
+         * @param dbNodeCount The db node count.
          * 
          * @return builder
          * 
@@ -563,7 +697,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeCount The dbNodeCount of cluster node.
+         * @param dbNodeCount The db node count.
          * 
          * @return builder
          * 
@@ -573,7 +707,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeStorage The dbNodeStorage of cluster node.
+         * @param dbNodeStorage The db node storage.
          * 
          * @return builder
          * 
@@ -584,7 +718,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeStorage The dbNodeStorage of cluster node.
+         * @param dbNodeStorage The db node storage.
          * 
          * @return builder
          * 
@@ -594,7 +728,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of cluster.
+         * @param description The description of DBCluster.
          * 
          * @return builder
          * 
@@ -605,7 +739,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of cluster.
+         * @param description The description of DBCluster.
          * 
          * @return builder
          * 
@@ -614,71 +748,161 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param diskEncryption Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskEncryption(@Nullable Output<Boolean> diskEncryption) {
             $.diskEncryption = diskEncryption;
             return this;
         }
 
+        /**
+         * @param diskEncryption Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskEncryption(Boolean diskEncryption) {
             return diskEncryption(Output.of(diskEncryption));
         }
 
+        /**
+         * @param diskPerformanceLevel The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskPerformanceLevel(@Nullable Output<String> diskPerformanceLevel) {
             $.diskPerformanceLevel = diskPerformanceLevel;
             return this;
         }
 
+        /**
+         * @param diskPerformanceLevel The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskPerformanceLevel(String diskPerformanceLevel) {
             return diskPerformanceLevel(Output.of(diskPerformanceLevel));
         }
 
+        /**
+         * @param elasticIoResource The elastic io resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder elasticIoResource(@Nullable Output<Integer> elasticIoResource) {
             $.elasticIoResource = elasticIoResource;
             return this;
         }
 
+        /**
+         * @param elasticIoResource The elastic io resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder elasticIoResource(Integer elasticIoResource) {
             return elasticIoResource(Output.of(elasticIoResource));
         }
 
+        /**
+         * @param elasticIoResourceSize The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+         * - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+         * - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+         * - `16Core128GB`: (Available since v1.237.0)If you set `elasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+         * 
+         * @return builder
+         * 
+         */
         public Builder elasticIoResourceSize(@Nullable Output<String> elasticIoResourceSize) {
             $.elasticIoResourceSize = elasticIoResourceSize;
             return this;
         }
 
+        /**
+         * @param elasticIoResourceSize The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+         * - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+         * - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+         * - `16Core128GB`: (Available since v1.237.0)If you set `elasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+         * 
+         * @return builder
+         * 
+         */
         public Builder elasticIoResourceSize(String elasticIoResourceSize) {
             return elasticIoResourceSize(Output.of(elasticIoResourceSize));
         }
 
+        /**
+         * @param enableSsl Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableSsl(@Nullable Output<Boolean> enableSsl) {
             $.enableSsl = enableSsl;
             return this;
         }
 
+        /**
+         * @param enableSsl Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableSsl(Boolean enableSsl) {
             return enableSsl(Output.of(enableSsl));
         }
 
+        /**
+         * @param kernelVersion The minor version to which you want to update.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kernelVersion(@Nullable Output<String> kernelVersion) {
             $.kernelVersion = kernelVersion;
             return this;
         }
 
+        /**
+         * @param kernelVersion The minor version to which you want to update.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kernelVersion(String kernelVersion) {
             return kernelVersion(Output.of(kernelVersion));
         }
 
+        /**
+         * @param kmsId The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsId(@Nullable Output<String> kmsId) {
             $.kmsId = kmsId;
             return this;
         }
 
+        /**
+         * @param kmsId The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsId(String kmsId) {
             return kmsId(Output.of(kmsId));
         }
 
         /**
-         * @param maintainTime Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+         * @param maintainTime The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
          * 
          * @return builder
          * 
@@ -689,7 +913,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maintainTime Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+         * @param maintainTime The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
          * 
          * @return builder
          * 
@@ -698,20 +922,44 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
             return maintainTime(Output.of(maintainTime));
         }
 
+        /**
+         * @param mode The mode of the cluster. Valid values: `reserver`, `flexible`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(Output<String> mode) {
             $.mode = mode;
             return this;
         }
 
+        /**
+         * @param mode The mode of the cluster. Valid values: `reserver`, `flexible`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(String mode) {
             return mode(Output.of(mode));
         }
 
+        /**
+         * @param modifyType The modify type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder modifyType(@Nullable Output<String> modifyType) {
             $.modifyType = modifyType;
             return this;
         }
 
+        /**
+         * @param modifyType The modify type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder modifyType(String modifyType) {
             return modifyType(Output.of(modifyType));
         }
@@ -744,7 +992,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
          * 
          * @return builder
          * 
@@ -755,7 +1003,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
          * 
          * @return builder
          * 
@@ -765,7 +1013,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+         * @param period The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+         * 
+         * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
          * 
          * @return builder
          * 
@@ -776,7 +1026,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+         * @param period The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+         * 
+         * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
          * 
          * @return builder
          * 
@@ -806,11 +1058,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
             return renewalStatus(Output.of(renewalStatus));
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
             $.resourceGroupId = resourceGroupId;
             return this;
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
         }
@@ -846,11 +1110,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
             return securityIps(List.of(securityIps));
         }
 
+        /**
+         * @param switchMode The time when to perform the update. Valid values:
+         * 
+         * @return builder
+         * 
+         */
         public Builder switchMode(@Nullable Output<Integer> switchMode) {
             $.switchMode = switchMode;
             return this;
         }
 
+        /**
+         * @param switchMode The time when to perform the update. Valid values:
+         * 
+         * @return builder
+         * 
+         */
         public Builder switchMode(Integer switchMode) {
             return switchMode(Output.of(switchMode));
         }
@@ -884,17 +1160,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param vpcId The vpc ID of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(@Nullable Output<String> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
 
+        /**
+         * @param vpcId The vpc ID of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
         }
 
         /**
-         * @param vswitchId The virtual switch ID to launch DB instances in one VPC.
+         * @param vswitchId The vswitch id.
          * 
          * @return builder
          * 
@@ -905,7 +1193,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The virtual switch ID to launch DB instances in one VPC.
+         * @param vswitchId The vswitch id.
          * 
          * @return builder
          * 
@@ -915,7 +1203,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone to launch the DB cluster.
+         * @param zoneId The zone ID of the resource.
          * 
          * @return builder
          * 
@@ -926,7 +1214,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone to launch the DB cluster.
+         * @param zoneId The zone ID of the resource.
          * 
          * @return builder
          * 

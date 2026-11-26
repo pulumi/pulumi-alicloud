@@ -38,11 +38,13 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string ImageComponentId;
         /// <summary>
-        /// The name of the image component.
+        /// The name of the component.
         /// </summary>
         public readonly string ImageComponentName;
         /// <summary>
-        /// The type of the image component.
+        /// Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+        /// - SELF: The custom image component you created.
+        /// - ALIYUN: System components provided by Alibaba Cloud.
         /// </summary>
         public readonly string Owner;
         /// <summary>
@@ -54,7 +56,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string SystemType;
         /// <summary>
-        /// List of label key-value pairs.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
 

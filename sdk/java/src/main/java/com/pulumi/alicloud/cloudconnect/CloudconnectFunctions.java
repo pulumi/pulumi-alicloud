@@ -18,7 +18,7 @@ public final class CloudconnectFunctions {
     /**
      * This data source provides Cloud Connect Networks available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.59.0+
+     * &gt; **NOTE:** Available since v1.59.0+
      * 
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
@@ -31,10 +31,10 @@ public final class CloudconnectFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.cloudconnect.Network;
      * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
+     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -48,16 +48,16 @@ public final class CloudconnectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(defaultAlicloudCloudConnectNetworks.get("id"))
-     *             .nameRegex("^tf-testAcc.*")
-     *             .build());
-     * 
      *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
-     *             .name("tf-testAccCloudConnectNetworkName")
-     *             .description("tf-testAccCloudConnectNetworkDescription")
+     *             .name("terraform-example")
+     *             .description("terraform-example")
      *             .cidrBlock("192.168.0.0/24")
      *             .isDefault(true)
+     *             .build());
+     * 
+     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(defaultNetwork.id())
+     *             .nameRegex("^terraform-example")
      *             .build());
      * 
      *     }
@@ -72,7 +72,7 @@ public final class CloudconnectFunctions {
     /**
      * This data source provides Cloud Connect Networks available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.59.0+
+     * &gt; **NOTE:** Available since v1.59.0+
      * 
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
@@ -85,10 +85,10 @@ public final class CloudconnectFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.cloudconnect.Network;
      * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
+     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -102,16 +102,16 @@ public final class CloudconnectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(defaultAlicloudCloudConnectNetworks.get("id"))
-     *             .nameRegex("^tf-testAcc.*")
-     *             .build());
-     * 
      *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
-     *             .name("tf-testAccCloudConnectNetworkName")
-     *             .description("tf-testAccCloudConnectNetworkDescription")
+     *             .name("terraform-example")
+     *             .description("terraform-example")
      *             .cidrBlock("192.168.0.0/24")
      *             .isDefault(true)
+     *             .build());
+     * 
+     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(defaultNetwork.id())
+     *             .nameRegex("^terraform-example")
      *             .build());
      * 
      *     }
@@ -126,7 +126,7 @@ public final class CloudconnectFunctions {
     /**
      * This data source provides Cloud Connect Networks available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.59.0+
+     * &gt; **NOTE:** Available since v1.59.0+
      * 
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
@@ -139,10 +139,10 @@ public final class CloudconnectFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.cloudconnect.Network;
      * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
+     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -156,16 +156,16 @@ public final class CloudconnectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(defaultAlicloudCloudConnectNetworks.get("id"))
-     *             .nameRegex("^tf-testAcc.*")
-     *             .build());
-     * 
      *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
-     *             .name("tf-testAccCloudConnectNetworkName")
-     *             .description("tf-testAccCloudConnectNetworkDescription")
+     *             .name("terraform-example")
+     *             .description("terraform-example")
      *             .cidrBlock("192.168.0.0/24")
      *             .isDefault(true)
+     *             .build());
+     * 
+     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(defaultNetwork.id())
+     *             .nameRegex("^terraform-example")
      *             .build());
      * 
      *     }
@@ -180,7 +180,7 @@ public final class CloudconnectFunctions {
     /**
      * This data source provides Cloud Connect Networks available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.59.0+
+     * &gt; **NOTE:** Available since v1.59.0+
      * 
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
@@ -193,10 +193,10 @@ public final class CloudconnectFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.cloudconnect.Network;
      * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
+     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -210,16 +210,16 @@ public final class CloudconnectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(defaultAlicloudCloudConnectNetworks.get("id"))
-     *             .nameRegex("^tf-testAcc.*")
-     *             .build());
-     * 
      *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
-     *             .name("tf-testAccCloudConnectNetworkName")
-     *             .description("tf-testAccCloudConnectNetworkDescription")
+     *             .name("terraform-example")
+     *             .description("terraform-example")
      *             .cidrBlock("192.168.0.0/24")
      *             .isDefault(true)
+     *             .build());
+     * 
+     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(defaultNetwork.id())
+     *             .nameRegex("^terraform-example")
      *             .build());
      * 
      *     }
@@ -234,7 +234,7 @@ public final class CloudconnectFunctions {
     /**
      * This data source provides Cloud Connect Networks available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.59.0+
+     * &gt; **NOTE:** Available since v1.59.0+
      * 
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
@@ -247,10 +247,10 @@ public final class CloudconnectFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.cloudconnect.Network;
      * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
+     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -264,16 +264,16 @@ public final class CloudconnectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(defaultAlicloudCloudConnectNetworks.get("id"))
-     *             .nameRegex("^tf-testAcc.*")
-     *             .build());
-     * 
      *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
-     *             .name("tf-testAccCloudConnectNetworkName")
-     *             .description("tf-testAccCloudConnectNetworkDescription")
+     *             .name("terraform-example")
+     *             .description("terraform-example")
      *             .cidrBlock("192.168.0.0/24")
      *             .isDefault(true)
+     *             .build());
+     * 
+     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(defaultNetwork.id())
+     *             .nameRegex("^terraform-example")
      *             .build());
      * 
      *     }
@@ -288,7 +288,7 @@ public final class CloudconnectFunctions {
     /**
      * This data source provides Cloud Connect Networks available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.59.0+
+     * &gt; **NOTE:** Available since v1.59.0+
      * 
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
@@ -301,10 +301,10 @@ public final class CloudconnectFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.cloudconnect.Network;
      * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
+     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -318,16 +318,16 @@ public final class CloudconnectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(defaultAlicloudCloudConnectNetworks.get("id"))
-     *             .nameRegex("^tf-testAcc.*")
-     *             .build());
-     * 
      *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
-     *             .name("tf-testAccCloudConnectNetworkName")
-     *             .description("tf-testAccCloudConnectNetworkDescription")
+     *             .name("terraform-example")
+     *             .description("terraform-example")
      *             .cidrBlock("192.168.0.0/24")
      *             .isDefault(true)
+     *             .build());
+     * 
+     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(defaultNetwork.id())
+     *             .nameRegex("^terraform-example")
      *             .build());
      * 
      *     }
@@ -342,7 +342,7 @@ public final class CloudconnectFunctions {
     /**
      * This data source provides Cloud Connect Networks available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.59.0+
+     * &gt; **NOTE:** Available since v1.59.0+
      * 
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
@@ -355,10 +355,10 @@ public final class CloudconnectFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.cloudconnect.Network;
      * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
+     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -372,16 +372,16 @@ public final class CloudconnectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(defaultAlicloudCloudConnectNetworks.get("id"))
-     *             .nameRegex("^tf-testAcc.*")
-     *             .build());
-     * 
      *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
-     *             .name("tf-testAccCloudConnectNetworkName")
-     *             .description("tf-testAccCloudConnectNetworkDescription")
+     *             .name("terraform-example")
+     *             .description("terraform-example")
      *             .cidrBlock("192.168.0.0/24")
      *             .isDefault(true)
+     *             .build());
+     * 
+     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(defaultNetwork.id())
+     *             .nameRegex("^terraform-example")
      *             .build());
      * 
      *     }

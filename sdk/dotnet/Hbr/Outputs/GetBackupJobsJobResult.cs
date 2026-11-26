@@ -54,15 +54,15 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `SourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        /// (Available in v1.190.0+) The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `SourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
         /// </summary>
         public readonly string CrossAccountRoleName;
         /// <summary>
-        /// The type of the cross account backup. It is valid only when `SourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        /// (Available in v1.190.0+) The type of the cross account backup. It is valid only when `SourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
         /// </summary>
         public readonly string CrossAccountType;
         /// <summary>
-        /// The original account ID of the cross account backup managed by the current account. It is valid only when `SourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        /// (Available in v1.190.0+) The original account ID of the cross account backup managed by the current account. It is valid only when `SourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
         /// </summary>
         public readonly int CrossAccountUserId;
         /// <summary>
@@ -101,6 +101,9 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// File system creation time. UNIX time in seconds.
         /// </summary>
         public readonly string NasCreateTime;
+        /// <summary>
+        /// The details about the Table store instance.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBackupJobsJobOtsDetailResult> OtsDetails;
         /// <summary>
         /// List of backup path. e.g. `["/home", "/var"]`.
@@ -119,7 +122,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Progress;
         /// <summary>
-        /// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
         /// </summary>
         public readonly string SourceType;
         /// <summary>
@@ -127,7 +130,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string StartTime;
         /// <summary>
-        /// The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+        /// The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
         /// </summary>
         public readonly string Status;
         /// <summary>

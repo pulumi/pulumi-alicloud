@@ -64,11 +64,17 @@ class GetDeviceGroupsResult:
     @_builtins.property
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[_builtins.str]:
+        """
+        The GroupName of the device group.
+        """
         return pulumi.get(self, "group_name")
 
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetDeviceGroupsGroupResult']:
+        """
+        A list of Iot Device Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -133,7 +139,7 @@ def get_device_groups(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Iot Device Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 
@@ -188,7 +194,7 @@ def get_device_groups_output(enable_details: pulumi.Input[Optional[Optional[_bui
     """
     This data source provides the Iot Device Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 

@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
         /// </summary>
         public readonly int? DayOfWeek;
+        /// <summary>
+        /// Delay time for schedule.
+        /// </summary>
         public readonly int? Delay;
         /// <summary>
         /// Hour of day when type is Weekly/Daily.
@@ -30,6 +33,9 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
         /// </summary>
         public readonly string? Interval;
+        /// <summary>
+        /// Whether to run the alert immediately.
+        /// </summary>
         public readonly bool? RunImmediately;
         /// <summary>
         /// Time zone for schedule.

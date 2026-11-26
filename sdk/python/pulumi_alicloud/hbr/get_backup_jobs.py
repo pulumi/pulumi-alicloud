@@ -75,6 +75,9 @@ class GetBackupJobsResult:
     @_builtins.property
     @pulumi.getter
     def jobs(self) -> Sequence['outputs.GetBackupJobsJobResult']:
+        """
+        A list of Hbr Backup Jobs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "jobs")
 
     @_builtins.property
@@ -90,11 +93,17 @@ class GetBackupJobsResult:
     @_builtins.property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> _builtins.str:
+        """
+        The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+        """
         return pulumi.get(self, "source_type")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -124,7 +133,7 @@ def get_backup_jobs(filters: Optional[Sequence[Union['GetBackupJobsFilterArgs', 
     """
     This data source provides the Hbr Backup Jobs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.138.0+.
+    > **NOTE:** Available since v1.138.0.
 
     ## Example Usage
 
@@ -180,6 +189,7 @@ def get_backup_jobs(filters: Optional[Sequence[Union['GetBackupJobsFilterArgs', 
     ```
 
 
+    :param Sequence[Union['GetBackupJobsFilterArgs', 'GetBackupJobsFilterArgsDict', 'outputs.GetBackupJobsFilterResult']] filters: More complex filters can be expressed using one or more `filter` sub-blocks, which take the following arguments. See `filter` below.
     :param Sequence[_builtins.str] ids: A list of Backup Job IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str sort_direction: The sort direction, sort results by ascending or descending order based on the value jobs id. Valid values: `ASCEND`, `DESCEND`.
@@ -215,7 +225,7 @@ def get_backup_jobs_output(filters: pulumi.Input[Optional[Optional[Sequence[Unio
     """
     This data source provides the Hbr Backup Jobs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.138.0+.
+    > **NOTE:** Available since v1.138.0.
 
     ## Example Usage
 
@@ -271,6 +281,7 @@ def get_backup_jobs_output(filters: pulumi.Input[Optional[Optional[Sequence[Unio
     ```
 
 
+    :param Sequence[Union['GetBackupJobsFilterArgs', 'GetBackupJobsFilterArgsDict', 'outputs.GetBackupJobsFilterResult']] filters: More complex filters can be expressed using one or more `filter` sub-blocks, which take the following arguments. See `filter` below.
     :param Sequence[_builtins.str] ids: A list of Backup Job IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str sort_direction: The sort direction, sort results by ascending or descending order based on the value jobs id. Valid values: `ASCEND`, `DESCEND`.

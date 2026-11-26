@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cen
     public static class GetTransitRouterRouteTableAssociations
     {
         /// <summary>
-        /// This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+        /// This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://www.alibabacloud.com/help/doc-detail/261243.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0+
         /// 
         /// ## Example Usage
         /// 
@@ -42,9 +42,9 @@ namespace Pulumi.AliCloud.Cen
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterRouteTableAssociationsResult>("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", args ?? new GetTransitRouterRouteTableAssociationsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+        /// This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://www.alibabacloud.com/help/doc-detail/261243.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0+
         /// 
         /// ## Example Usage
         /// 
@@ -72,9 +72,9 @@ namespace Pulumi.AliCloud.Cen
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteTableAssociationsResult>("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", args ?? new GetTransitRouterRouteTableAssociationsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+        /// This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://www.alibabacloud.com/help/doc-detail/261243.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0+
         /// 
         /// ## Example Usage
         /// 

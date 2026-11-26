@@ -13,10 +13,25 @@ namespace Pulumi.AliCloud.Slb.Outputs
     [OutputType]
     public sealed class GetLoadBalancersBalancerListenerPortsAndProtocolResult
     {
+        /// <summary>
+        /// The description of protocol.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The forward port.
+        /// </summary>
         public readonly int ForwardPort;
+        /// <summary>
+        /// The listener forward.
+        /// </summary>
         public readonly string ListenerForward;
+        /// <summary>
+        /// The listener port.
+        /// </summary>
         public readonly int ListenerPort;
+        /// <summary>
+        /// The listener protocol.
+        /// </summary>
         public readonly string ListenerProtocol;
 
         [OutputConstructor]

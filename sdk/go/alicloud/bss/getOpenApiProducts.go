@@ -14,6 +14,33 @@ import (
 // This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
 //
 // > **NOTE:** Available since v1.195.0.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/bss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := bss.GetOpenApiProducts(ctx, &bss.GetOpenApiProductsArgs{
+//				NameRegex: pulumi.StringRef("内容分发网络CDN"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudBssOpenApiProductExampleId", _default.Products[0].ProductCode)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOpenApiProducts(ctx *pulumi.Context, args *GetOpenApiProductsArgs, opts ...pulumi.InvokeOption) (*GetOpenApiProductsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOpenApiProductsResult

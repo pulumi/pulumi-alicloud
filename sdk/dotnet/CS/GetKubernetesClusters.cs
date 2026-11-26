@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.CS
     public static class GetKubernetesClusters
     {
         /// <summary>
-        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+        /// &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
         /// 
         /// This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.CS
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesClustersResult>("alicloud:cs/getKubernetesClusters:getKubernetesClusters", args ?? new GetKubernetesClustersArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+        /// &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
         /// 
         /// This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.CS
             => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesClustersResult>("alicloud:cs/getKubernetesClusters:getKubernetesClusters", args ?? new GetKubernetesClustersInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+        /// &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
         /// 
         /// This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
         /// 

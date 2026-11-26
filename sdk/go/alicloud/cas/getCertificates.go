@@ -28,13 +28,17 @@ func GetCertificates(ctx *pulumi.Context, args *GetCertificatesArgs, opts ...pul
 
 // A collection of arguments for invoking getCertificates.
 type GetCertificatesArgs struct {
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
-	// A list of cert IDs.
-	Ids     []string `pulumi:"ids"`
-	Keyword *string  `pulumi:"keyword"`
+	// A list of Ssl Certificates IDs.
+	Ids []string `pulumi:"ids"`
+	// The domain name that is bound or the ID of the resource. Fuzzy match is supported.
+	Keyword *string `pulumi:"keyword"`
+	// The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
+	//
 	// Deprecated: Field `lang` has been deprecated from provider version 1.232.0.
 	Lang *string `pulumi:"lang"`
-	// A regex string to filter results by the certificate name.
+	// A regex string to filter results by Ssl Certificates name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -42,18 +46,17 @@ type GetCertificatesArgs struct {
 
 // A collection of values returned by getCertificates.
 type GetCertificatesResult struct {
-	// A list of apis. Each element contains the following attributes:
+	// A list of Ssl Certificates Service Certificates. Each element contains the following attributes:
 	Certificates  []GetCertificatesCertificate `pulumi:"certificates"`
 	EnableDetails *bool                        `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of cert IDs.
+	Id      string   `pulumi:"id"`
 	Ids     []string `pulumi:"ids"`
 	Keyword *string  `pulumi:"keyword"`
 	// Deprecated: Field `lang` has been deprecated from provider version 1.232.0.
 	Lang      *string `pulumi:"lang"`
 	NameRegex *string `pulumi:"nameRegex"`
-	// A list of cert names.
+	// A list of Ssl Certificates names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -65,13 +68,17 @@ func GetCertificatesOutput(ctx *pulumi.Context, args GetCertificatesOutputArgs, 
 
 // A collection of arguments for invoking getCertificates.
 type GetCertificatesOutputArgs struct {
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
-	// A list of cert IDs.
-	Ids     pulumi.StringArrayInput `pulumi:"ids"`
-	Keyword pulumi.StringPtrInput   `pulumi:"keyword"`
+	// A list of Ssl Certificates IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The domain name that is bound or the ID of the resource. Fuzzy match is supported.
+	Keyword pulumi.StringPtrInput `pulumi:"keyword"`
+	// The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
+	//
 	// Deprecated: Field `lang` has been deprecated from provider version 1.232.0.
 	Lang pulumi.StringPtrInput `pulumi:"lang"`
-	// A regex string to filter results by the certificate name.
+	// A regex string to filter results by Ssl Certificates name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
@@ -96,7 +103,7 @@ func (o GetCertificatesResultOutput) ToGetCertificatesResultOutputWithContext(ct
 	return o
 }
 
-// A list of apis. Each element contains the following attributes:
+// A list of Ssl Certificates Service Certificates. Each element contains the following attributes:
 func (o GetCertificatesResultOutput) Certificates() GetCertificatesCertificateArrayOutput {
 	return o.ApplyT(func(v GetCertificatesResult) []GetCertificatesCertificate { return v.Certificates }).(GetCertificatesCertificateArrayOutput)
 }
@@ -110,7 +117,6 @@ func (o GetCertificatesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificatesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of cert IDs.
 func (o GetCertificatesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCertificatesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -128,7 +134,7 @@ func (o GetCertificatesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCertificatesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
-// A list of cert names.
+// A list of Ssl Certificates names.
 func (o GetCertificatesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCertificatesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

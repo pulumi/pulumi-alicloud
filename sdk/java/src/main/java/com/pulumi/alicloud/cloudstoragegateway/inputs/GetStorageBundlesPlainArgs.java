@@ -17,44 +17,92 @@ public final class GetStorageBundlesPlainArgs extends com.pulumi.resources.Invok
 
     public static final GetStorageBundlesPlainArgs Empty = new GetStorageBundlesPlainArgs();
 
+    /**
+     * The region id of the backend bucket.
+     * 
+     */
     @Import(name="backendBucketRegionId", required=true)
     private String backendBucketRegionId;
 
+    /**
+     * @return The region id of the backend bucket.
+     * 
+     */
     public String backendBucketRegionId() {
         return this.backendBucketRegionId;
     }
 
+    /**
+     * A list of Storage Bundle IDs.
+     * 
+     */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
+    /**
+     * @return A list of Storage Bundle IDs.
+     * 
+     */
     public Optional<List<String>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * A regex string to filter results by Storage Bundle name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
+    /**
+     * @return A regex string to filter results by Storage Bundle name.
+     * 
+     */
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable String outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * Page number.
+     * 
+     */
     @Import(name="pageNumber")
     private @Nullable Integer pageNumber;
 
+    /**
+     * @return Page number.
+     * 
+     */
     public Optional<Integer> pageNumber() {
         return Optional.ofNullable(this.pageNumber);
     }
 
+    /**
+     * Page size. Default to 50.
+     * 
+     */
     @Import(name="pageSize")
     private @Nullable Integer pageSize;
 
+    /**
+     * @return Page size. Default to 50.
+     * 
+     */
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
@@ -88,35 +136,77 @@ public final class GetStorageBundlesPlainArgs extends com.pulumi.resources.Invok
             $ = new GetStorageBundlesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param backendBucketRegionId The region id of the backend bucket.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backendBucketRegionId(String backendBucketRegionId) {
             $.backendBucketRegionId = backendBucketRegionId;
             return this;
         }
 
+        /**
+         * @param ids A list of Storage Bundle IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable List<String> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids A list of Storage Bundle IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Storage Bundle name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable String nameRegex) {
             $.nameRegex = nameRegex;
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
             return this;
         }
 
+        /**
+         * @param pageNumber Page number.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pageNumber(@Nullable Integer pageNumber) {
             $.pageNumber = pageNumber;
             return this;
         }
 
+        /**
+         * @param pageSize Page size. Default to 50.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pageSize(@Nullable Integer pageSize) {
             $.pageSize = pageSize;
             return this;

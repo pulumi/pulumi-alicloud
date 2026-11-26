@@ -31,7 +31,10 @@ public final class GetInstancesInstance {
      */
     private String instanceId;
     /**
-     * @return Instance Name.
+     * @return The name of the instance. It must be 2 to 128 characters in length and must start with an
+     * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+     * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+     * the instance.
      * 
      */
     private String instanceName;
@@ -41,7 +44,7 @@ public final class GetInstancesInstance {
      */
     private String instanceType;
     /**
-     * @return The Key Name.
+     * @return The name of the key pair of the mobile phone instance.
      * 
      */
     private String keyPairName;
@@ -51,7 +54,7 @@ public final class GetInstancesInstance {
      */
     private String paymentType;
     /**
-     * @return Resolution.
+     * @return The selected resolution for the cloud mobile phone instance.
      * 
      */
     private String resolution;
@@ -61,7 +64,8 @@ public final class GetInstancesInstance {
      */
     private String securityGroupId;
     /**
-     * @return Instance Status.
+     * @return Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+     * .
      * 
      */
     private String status;
@@ -75,6 +79,10 @@ public final class GetInstancesInstance {
      * 
      */
     private String vswitchId;
+    /**
+     * @return The zone ID of the ECP instance.
+     * 
+     */
     private String zoneId;
 
     private GetInstancesInstance() {}
@@ -107,7 +115,10 @@ public final class GetInstancesInstance {
         return this.instanceId;
     }
     /**
-     * @return Instance Name.
+     * @return The name of the instance. It must be 2 to 128 characters in length and must start with an
+     * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+     * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+     * the instance.
      * 
      */
     public String instanceName() {
@@ -121,7 +132,7 @@ public final class GetInstancesInstance {
         return this.instanceType;
     }
     /**
-     * @return The Key Name.
+     * @return The name of the key pair of the mobile phone instance.
      * 
      */
     public String keyPairName() {
@@ -135,7 +146,7 @@ public final class GetInstancesInstance {
         return this.paymentType;
     }
     /**
-     * @return Resolution.
+     * @return The selected resolution for the cloud mobile phone instance.
      * 
      */
     public String resolution() {
@@ -149,7 +160,8 @@ public final class GetInstancesInstance {
         return this.securityGroupId;
     }
     /**
-     * @return Instance Status.
+     * @return Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+     * .
      * 
      */
     public String status() {
@@ -169,6 +181,10 @@ public final class GetInstancesInstance {
     public String vswitchId() {
         return this.vswitchId;
     }
+    /**
+     * @return The zone ID of the ECP instance.
+     * 
+     */
     public String zoneId() {
         return this.zoneId;
     }

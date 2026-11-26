@@ -52,6 +52,9 @@ class GetMetaTagsResult:
     @_builtins.property
     @pulumi.getter(name="keyName")
     def key_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the key.
+        """
         return pulumi.get(self, "key_name")
 
     @_builtins.property
@@ -62,6 +65,9 @@ class GetMetaTagsResult:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetMetaTagsTagResult']:
+        """
+        A list of Meta Tags. Each element contains the following attributes:
+        """
         return pulumi.get(self, "tags")
 
 
@@ -83,7 +89,7 @@ def get_meta_tags(key_name: Optional[_builtins.str] = None,
     """
     This data source provides the Tag Meta Tags of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.169.0+.
+    > **NOTE:** Available since v1.169.0.
 
     ## Example Usage
 
@@ -118,7 +124,7 @@ def get_meta_tags_output(key_name: pulumi.Input[Optional[Optional[_builtins.str]
     """
     This data source provides the Tag Meta Tags of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.169.0+.
+    > **NOTE:** Available since v1.169.0.
 
     ## Example Usage
 

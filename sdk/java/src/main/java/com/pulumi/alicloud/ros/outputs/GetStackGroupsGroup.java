@@ -33,7 +33,7 @@ public final class GetStackGroupsGroup {
      */
     private String id;
     /**
-     * @return The parameters.
+     * @return The parameters. See `parameters` below.
      * 
      */
     private List<GetStackGroupsGroupParameter> parameters;
@@ -48,7 +48,7 @@ public final class GetStackGroupsGroup {
      */
     private String stackGroupName;
     /**
-     * @return The status of Stack Group.
+     * @return The status of Stack Group. Valid Values: `ACTIVE`, `DELETED`.
      * 
      */
     private String status;
@@ -88,7 +88,7 @@ public final class GetStackGroupsGroup {
         return this.id;
     }
     /**
-     * @return The parameters.
+     * @return The parameters. See `parameters` below.
      * 
      */
     public List<GetStackGroupsGroupParameter> parameters() {
@@ -109,7 +109,7 @@ public final class GetStackGroupsGroup {
         return this.stackGroupName;
     }
     /**
-     * @return The status of Stack Group.
+     * @return The status of Stack Group. Valid Values: `ACTIVE`, `DELETED`.
      * 
      */
     public String status() {

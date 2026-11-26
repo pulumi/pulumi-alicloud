@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.186.0+.
+// > **NOTE:** Available since v1.186.0.
 //
 // ## Example Usage
 //
@@ -83,16 +83,21 @@ type GetPublicIpAddressPoolsArgs struct {
 // A collection of values returned by getPublicIpAddressPools.
 type GetPublicIpAddressPoolsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                      string                        `pulumi:"id"`
-	Ids                     []string                      `pulumi:"ids"`
-	Isp                     *string                       `pulumi:"isp"`
-	NameRegex               *string                       `pulumi:"nameRegex"`
-	Names                   []string                      `pulumi:"names"`
-	OutputFile              *string                       `pulumi:"outputFile"`
-	Pools                   []GetPublicIpAddressPoolsPool `pulumi:"pools"`
-	PublicIpAddressPoolIds  []string                      `pulumi:"publicIpAddressPoolIds"`
-	PublicIpAddressPoolName *string                       `pulumi:"publicIpAddressPoolName"`
-	Status                  *string                       `pulumi:"status"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The Internet service provider.
+	Isp       *string `pulumi:"isp"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// A list of Public Ip Address Pool names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Vpc Public Ip Address Pools. Each element contains the following attributes:
+	Pools                  []GetPublicIpAddressPoolsPool `pulumi:"pools"`
+	PublicIpAddressPoolIds []string                      `pulumi:"publicIpAddressPoolIds"`
+	// The name of the Vpc Public Ip Address Pool.
+	PublicIpAddressPoolName *string `pulumi:"publicIpAddressPoolName"`
+	// The status of the Vpc Public Ip Address Pool.
+	Status *string `pulumi:"status"`
 }
 
 func GetPublicIpAddressPoolsOutput(ctx *pulumi.Context, args GetPublicIpAddressPoolsOutputArgs, opts ...pulumi.InvokeOption) GetPublicIpAddressPoolsResultOutput {
@@ -146,6 +151,7 @@ func (o GetPublicIpAddressPoolsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPublicIpAddressPoolsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The Internet service provider.
 func (o GetPublicIpAddressPoolsResultOutput) Isp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPublicIpAddressPoolsResult) *string { return v.Isp }).(pulumi.StringPtrOutput)
 }
@@ -154,6 +160,7 @@ func (o GetPublicIpAddressPoolsResultOutput) NameRegex() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetPublicIpAddressPoolsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Public Ip Address Pool names.
 func (o GetPublicIpAddressPoolsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPublicIpAddressPoolsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -162,6 +169,7 @@ func (o GetPublicIpAddressPoolsResultOutput) OutputFile() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetPublicIpAddressPoolsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Vpc Public Ip Address Pools. Each element contains the following attributes:
 func (o GetPublicIpAddressPoolsResultOutput) Pools() GetPublicIpAddressPoolsPoolArrayOutput {
 	return o.ApplyT(func(v GetPublicIpAddressPoolsResult) []GetPublicIpAddressPoolsPool { return v.Pools }).(GetPublicIpAddressPoolsPoolArrayOutput)
 }
@@ -170,10 +178,12 @@ func (o GetPublicIpAddressPoolsResultOutput) PublicIpAddressPoolIds() pulumi.Str
 	return o.ApplyT(func(v GetPublicIpAddressPoolsResult) []string { return v.PublicIpAddressPoolIds }).(pulumi.StringArrayOutput)
 }
 
+// The name of the Vpc Public Ip Address Pool.
 func (o GetPublicIpAddressPoolsResultOutput) PublicIpAddressPoolName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPublicIpAddressPoolsResult) *string { return v.PublicIpAddressPoolName }).(pulumi.StringPtrOutput)
 }
 
+// The status of the Vpc Public Ip Address Pool.
 func (o GetPublicIpAddressPoolsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPublicIpAddressPoolsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

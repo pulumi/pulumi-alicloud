@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string CreatedTime;
         /// <summary>
-        /// Whether to enable the deduplication function for the database backup Vault.
+        /// (Internal use) Whether to enable the deduplication function for the database backup Vault.
         /// </summary>
         public readonly bool Dedup;
         /// <summary>
@@ -38,15 +38,15 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Index available.
+        /// (Not yet open) Index available.
         /// </summary>
         public readonly bool IndexAvailable;
         /// <summary>
-        /// Index level.
+        /// (Not yet open) Index level.
         /// </summary>
         public readonly string IndexLevel;
         /// <summary>
-        /// Index update time.
+        /// (Not yet open) Index update time.
         /// </summary>
         public readonly string IndexUpdateTime;
         /// <summary>
@@ -54,13 +54,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string LatestReplicationTime;
         /// <summary>
-        /// Billing model, possible values:
-        /// * `FREE` is not billed
-        /// * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
-        /// * `V2` new version of metering mode
-        /// * `AEGIS` Billing method for cloud security use
-        /// * `UNI_BACKUP` the backup of deduplication database
-        /// * `ARCHIVE` archive library.
+        /// Billing model, possible values: `FREE` is not billed, `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items, `V2` new version of metering mode, `AEGIS` Billing method for cloud security use, `UNI_BACKUP` the backup of deduplication database, `ARCHIVE` archive library.
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
@@ -76,13 +70,16 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string ReplicationSourceVaultId;
         /// <summary>
-        /// Warehouse-level data retention days, only valid for archive libraries.
+        /// (Not yet open) Warehouse-level data retention days, only valid for archive libraries.
         /// </summary>
         public readonly string Retention;
         /// <summary>
-        /// Whether to enable the backup search function.
+        /// (Not yet open) Whether to enable the backup search function.
         /// </summary>
         public readonly bool SearchEnabled;
+        /// <summary>
+        /// The list of data source types supported by the vault.
+        /// </summary>
         public readonly ImmutableArray<string> SourceTypes;
         /// <summary>
         /// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
@@ -113,7 +110,9 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string VaultStorageClass;
         /// <summary>
-        /// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        /// VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
+        /// - `STANDARD` - used in OSS, NAS and ECS File backup.
+        /// - `OTS_BACKUP` -  used in OTS backup.
         /// </summary>
         public readonly string VaultType;
 

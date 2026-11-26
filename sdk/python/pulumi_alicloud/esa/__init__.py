@@ -55,6 +55,7 @@ from .scheduled_preload_execution import *
 from .scheduled_preload_job import *
 from .site import *
 from .site_delivery_task import *
+from .site_environment import *
 from .site_origin_client_certificate import *
 from .transport_layer_application import *
 from .url_observation import *

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.174.0+.
+ * > **NOTE:** Available since v1.174.0.
  *
  * ## Example Usage
  *
@@ -66,6 +66,9 @@ export interface GetRamDirectoriesArgs {
  * A collection of values returned by getRamDirectories.
  */
 export interface GetRamDirectoriesResult {
+    /**
+     * A list of Ecd Ram Directories. Each element contains the following attributes:
+     */
     readonly directories: outputs.eds.GetRamDirectoriesDirectory[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -73,14 +76,20 @@ export interface GetRamDirectoriesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Ram Directory names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of directory.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.174.0+.
+ * > **NOTE:** Available since v1.174.0.
  *
  * ## Example Usage
  *

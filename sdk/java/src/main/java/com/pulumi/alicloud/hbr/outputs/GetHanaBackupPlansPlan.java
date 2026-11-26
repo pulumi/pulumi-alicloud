@@ -35,6 +35,10 @@ public final class GetHanaBackupPlansPlan {
      * 
      */
     private String id;
+    /**
+     * @return The total number of pages.
+     * 
+     */
     private String pageTotal;
     /**
      * @return The ID of the backup plan.
@@ -57,7 +61,7 @@ public final class GetHanaBackupPlansPlan {
      */
     private String status;
     /**
-     * @return The ID of the backup vault.
+     * @return The id of the vault.
      * 
      */
     private String vaultId;
@@ -98,6 +102,10 @@ public final class GetHanaBackupPlansPlan {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The total number of pages.
+     * 
+     */
     public String pageTotal() {
         return this.pageTotal;
     }
@@ -130,7 +138,7 @@ public final class GetHanaBackupPlansPlan {
         return this.status;
     }
     /**
-     * @return The ID of the backup vault.
+     * @return The id of the vault.
      * 
      */
     public String vaultId() {

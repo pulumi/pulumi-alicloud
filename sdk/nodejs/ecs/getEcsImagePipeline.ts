@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.163.0+.
+ * > **NOTE:** Available since v1.163.0.
  *
  * ## Example Usage
  *
@@ -47,7 +47,7 @@ export function getEcsImagePipeline(args?: GetEcsImagePipelineArgs, opts?: pulum
  */
 export interface GetEcsImagePipelineArgs {
     /**
-     * A list of Image Pipeline ids.
+     * A list of Image Pipeline IDs.
      */
     ids?: string[];
     /**
@@ -80,19 +80,37 @@ export interface GetEcsImagePipelineResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Image Pipeline ids.
+     */
     readonly ids: string[];
+    /**
+     * The name of the image template.
+     */
     readonly name?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Image Pipeline names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Ecs Image Pipelines. Each element contains the following attributes:
+     */
     readonly pipelines: outputs.ecs.GetEcsImagePipelinePipeline[];
+    /**
+     * The ID of the resource group to which the image template belongs.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * (Optional) A mapping of tags to assign to the resource.
+     */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.163.0+.
+ * > **NOTE:** Available since v1.163.0.
  *
  * ## Example Usage
  *
@@ -130,7 +148,7 @@ export function getEcsImagePipelineOutput(args?: GetEcsImagePipelineOutputArgs, 
  */
 export interface GetEcsImagePipelineOutputArgs {
     /**
-     * A list of Image Pipeline ids.
+     * A list of Image Pipeline IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

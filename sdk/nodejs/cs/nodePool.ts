@@ -141,6 +141,10 @@ import * as utilities from "../utilities";
  *     desiredSize: "0",
  * });
  * // Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
+ * // The management features below require the node-lifecycle-controller add-on at version
+ * // v2.3.13-b581b592 or later and the ack-node-problem-detector add-on at version 1.2.41 or later.
+ * // The service validates the installed versions and rejects the request when an add-on is
+ * // missing or too old, so install or upgrade them with alicloud_cs_kubernetes_addon first.
  * const maintenance = new alicloud.cs.NodePool("maintenance", {
  *     nodePoolName: "maintenance",
  *     clusterId: defaultManagedKubernetes.id,
@@ -154,7 +158,7 @@ import * as utilities from "../utilities";
  *         enable: true,
  *         autoRepair: true,
  *         autoRepairPolicy: {
- *             restartNode: true,
+ *             autoRepairPolicyId: "r-repair-sys-comp-failure",
  *         },
  *         autoUpgrade: true,
  *         autoUpgradePolicy: {
@@ -872,6 +876,8 @@ export class NodePool extends pulumi.CustomResource {
     declare public readonly internetMaxBandwidthOut: pulumi.Output<number | undefined>;
     /**
      * Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     declare public readonly keepInstanceName: pulumi.Output<boolean>;
     /**
@@ -1464,6 +1470,8 @@ export interface NodePoolState {
     internetMaxBandwidthOut?: pulumi.Input<number | undefined>;
     /**
      * Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     keepInstanceName?: pulumi.Input<boolean | undefined>;
     /**
@@ -1865,6 +1873,8 @@ export interface NodePoolArgs {
     internetMaxBandwidthOut?: pulumi.Input<number | undefined>;
     /**
      * Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     keepInstanceName?: pulumi.Input<boolean | undefined>;
     /**

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.DataWorks
         /// <summary>
         /// This data source provides the Data Works Folders of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.131.0+.
+        /// &gt; **NOTE:** Available since v1.131.0.
         /// 
         /// ## Example Usage
         /// 
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.DataWorks
         /// <summary>
         /// This data source provides the Data Works Folders of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.131.0+.
+        /// &gt; **NOTE:** Available since v1.131.0.
         /// 
         /// ## Example Usage
         /// 
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.DataWorks
         /// <summary>
         /// This data source provides the Data Works Folders of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.131.0+.
+        /// &gt; **NOTE:** Available since v1.131.0.
         /// 
         /// ## Example Usage
         /// 
@@ -222,6 +222,9 @@ namespace Pulumi.AliCloud.DataWorks
     [OutputType]
     public sealed class GetFoldersResult
     {
+        /// <summary>
+        /// A list of Data Works Folders. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetFoldersFolderResult> Folders;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -230,6 +233,9 @@ namespace Pulumi.AliCloud.DataWorks
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
         public readonly string ParentFolderPath;
+        /// <summary>
+        /// The ID of the project.
+        /// </summary>
         public readonly string ProjectId;
 
         [OutputConstructor]

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.174.0+.
+        /// &gt; **NOTE:** Available since v1.174.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.174.0+.
+        /// &gt; **NOTE:** Available since v1.174.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.174.0+.
+        /// &gt; **NOTE:** Available since v1.174.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -177,6 +177,9 @@ namespace Pulumi.AliCloud.Rds
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Rds Modify Parameter Logs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetModifyParameterLogsLogResult> Logs;
         public readonly string? OutputFile;
         public readonly string StartTime;

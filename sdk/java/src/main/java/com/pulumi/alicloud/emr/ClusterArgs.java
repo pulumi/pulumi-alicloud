@@ -26,14 +26,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     public static final ClusterArgs Empty = new ClusterArgs();
 
     /**
-     * Boot action parameters.
+     * Boot action parameters. See `bootstrapAction` below.
      * 
      */
     @Import(name="bootstrapActions")
     private @Nullable Output<List<ClusterBootstrapActionArgs>> bootstrapActions;
 
     /**
-     * @return Boot action parameters.
+     * @return Boot action parameters. See `bootstrapAction` below.
      * 
      */
     public Optional<Output<List<ClusterBootstrapActionArgs>>> bootstrapActions() {
@@ -71,14 +71,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The custom configurations of emr-cluster service.
+     * The custom configurations of emr-cluster service. See `configs` below.
      * 
      */
     @Import(name="configs")
     private @Nullable Output<List<ClusterConfigArgs>> configs;
 
     /**
-     * @return The custom configurations of emr-cluster service.
+     * @return The custom configurations of emr-cluster service. See `configs` below.
      * 
      */
     public Optional<Output<List<ClusterConfigArgs>>> configs() {
@@ -146,14 +146,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+     * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `hostGroup` below.
      * 
      */
     @Import(name="hostGroups")
     private @Nullable Output<List<ClusterHostGroupArgs>> hostGroups;
 
     /**
-     * @return Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+     * @return Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `hostGroup` below.
      * 
      */
     public Optional<Output<List<ClusterHostGroupArgs>>> hostGroups() {
@@ -206,14 +206,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+     * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `metaStoreConf` below.
      * 
      */
     @Import(name="metaStoreConf")
     private @Nullable Output<ClusterMetaStoreConfArgs> metaStoreConf;
 
     /**
-     * @return The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+     * @return The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `metaStoreConf` below.
      * 
      */
     public Optional<Output<ClusterMetaStoreConfArgs>> metaStoreConf() {
@@ -236,14 +236,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configurations of emr-cluster service modification after cluster created.
+     * The configurations of emr-cluster service modification after cluster created. See `modifyClusterServiceConfig` below.
      * 
      */
     @Import(name="modifyClusterServiceConfig")
     private @Nullable Output<ClusterModifyClusterServiceConfigArgs> modifyClusterServiceConfig;
 
     /**
-     * @return The configurations of emr-cluster service modification after cluster created.
+     * @return The configurations of emr-cluster service modification after cluster created. See `modifyClusterServiceConfig` below.
      * 
      */
     public Optional<Output<ClusterModifyClusterServiceConfigArgs>> modifyClusterServiceConfig() {
@@ -481,7 +481,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bootstrapActions Boot action parameters.
+         * @param bootstrapActions Boot action parameters. See `bootstrapAction` below.
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bootstrapActions Boot action parameters.
+         * @param bootstrapActions Boot action parameters. See `bootstrapAction` below.
          * 
          * @return builder
          * 
@@ -502,7 +502,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bootstrapActions Boot action parameters.
+         * @param bootstrapActions Boot action parameters. See `bootstrapAction` below.
          * 
          * @return builder
          * 
@@ -554,7 +554,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configs The custom configurations of emr-cluster service.
+         * @param configs The custom configurations of emr-cluster service. See `configs` below.
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configs The custom configurations of emr-cluster service.
+         * @param configs The custom configurations of emr-cluster service. See `configs` below.
          * 
          * @return builder
          * 
@@ -575,7 +575,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configs The custom configurations of emr-cluster service.
+         * @param configs The custom configurations of emr-cluster service. See `configs` below.
          * 
          * @return builder
          * 
@@ -669,7 +669,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostGroups Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+         * @param hostGroups Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `hostGroup` below.
          * 
          * @return builder
          * 
@@ -680,7 +680,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostGroups Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+         * @param hostGroups Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `hostGroup` below.
          * 
          * @return builder
          * 
@@ -690,7 +690,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostGroups Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+         * @param hostGroups Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `hostGroup` below.
          * 
          * @return builder
          * 
@@ -763,7 +763,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metaStoreConf The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+         * @param metaStoreConf The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `metaStoreConf` below.
          * 
          * @return builder
          * 
@@ -774,7 +774,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metaStoreConf The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+         * @param metaStoreConf The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `metaStoreConf` below.
          * 
          * @return builder
          * 
@@ -805,7 +805,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyClusterServiceConfig The configurations of emr-cluster service modification after cluster created.
+         * @param modifyClusterServiceConfig The configurations of emr-cluster service modification after cluster created. See `modifyClusterServiceConfig` below.
          * 
          * @return builder
          * 
@@ -816,7 +816,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyClusterServiceConfig The configurations of emr-cluster service modification after cluster created.
+         * @param modifyClusterServiceConfig The configurations of emr-cluster service modification after cluster created. See `modifyClusterServiceConfig` below.
          * 
          * @return builder
          * 

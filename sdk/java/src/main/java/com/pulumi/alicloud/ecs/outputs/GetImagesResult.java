@@ -34,19 +34,31 @@ public final class GetImagesResult {
      */
     private List<String> ids;
     private @Nullable String imageFamily;
+    /**
+     * @return The ID of the image.
+     * 
+     */
     private @Nullable String imageId;
     private @Nullable String imageName;
     private @Nullable String imageOwnerId;
     /**
-     * @return A `diskDeviceMappings` block as defined below. A list of images.
+     * @return A list of images. Each element contains the following attributes:
      * 
      */
     private List<GetImagesImage> images;
     private @Nullable String instanceType;
     private @Nullable Boolean isSupportCloudInit;
+    /**
+     * @return Whether the image can be used on I/O optimized instances.
+     * 
+     */
     private @Nullable Boolean isSupportIoOptimized;
     private @Nullable Boolean mostRecent;
     private @Nullable String nameRegex;
+    /**
+     * @return The type of the operating system.
+     * 
+     */
     private @Nullable String osType;
     private @Nullable String outputFile;
     private @Nullable String owners;
@@ -61,7 +73,15 @@ public final class GetImagesResult {
      * 
      */
     private @Nullable String status;
+    /**
+     * @return (Optional) A map of tags assigned to the image.
+     * 
+     */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The usage of the image.
+     * 
+     */
     private @Nullable String usage;
 
     private GetImagesResult() {}
@@ -95,6 +115,10 @@ public final class GetImagesResult {
     public Optional<String> imageFamily() {
         return Optional.ofNullable(this.imageFamily);
     }
+    /**
+     * @return The ID of the image.
+     * 
+     */
     public Optional<String> imageId() {
         return Optional.ofNullable(this.imageId);
     }
@@ -105,7 +129,7 @@ public final class GetImagesResult {
         return Optional.ofNullable(this.imageOwnerId);
     }
     /**
-     * @return A `diskDeviceMappings` block as defined below. A list of images.
+     * @return A list of images. Each element contains the following attributes:
      * 
      */
     public List<GetImagesImage> images() {
@@ -117,6 +141,10 @@ public final class GetImagesResult {
     public Optional<Boolean> isSupportCloudInit() {
         return Optional.ofNullable(this.isSupportCloudInit);
     }
+    /**
+     * @return Whether the image can be used on I/O optimized instances.
+     * 
+     */
     public Optional<Boolean> isSupportIoOptimized() {
         return Optional.ofNullable(this.isSupportIoOptimized);
     }
@@ -126,6 +154,10 @@ public final class GetImagesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return The type of the operating system.
+     * 
+     */
     public Optional<String> osType() {
         return Optional.ofNullable(this.osType);
     }
@@ -152,9 +184,17 @@ public final class GetImagesResult {
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return (Optional) A map of tags assigned to the image.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The usage of the image.
+     * 
+     */
     public Optional<String> usage() {
         return Optional.ofNullable(this.usage);
     }

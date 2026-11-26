@@ -20,11 +20,27 @@ public final class GetImagesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The type of the image. Valid values: `app`, `custom`, `system`.
+     * 
+     */
     private @Nullable String imageType;
+    /**
+     * @return A list of Simple Application Server Images. Each element contains the following attributes:
+     * 
+     */
     private List<GetImagesImage> images;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of  Image names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return (Available in v1.161.0) The platform of Plan supported.
+     * 
+     */
     private @Nullable String platform;
 
     private GetImagesResult() {}
@@ -38,21 +54,37 @@ public final class GetImagesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The type of the image. Valid values: `app`, `custom`, `system`.
+     * 
+     */
     public Optional<String> imageType() {
         return Optional.ofNullable(this.imageType);
     }
+    /**
+     * @return A list of Simple Application Server Images. Each element contains the following attributes:
+     * 
+     */
     public List<GetImagesImage> images() {
         return this.images;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of  Image names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return (Available in v1.161.0) The platform of Plan supported.
+     * 
+     */
     public Optional<String> platform() {
         return Optional.ofNullable(this.platform);
     }

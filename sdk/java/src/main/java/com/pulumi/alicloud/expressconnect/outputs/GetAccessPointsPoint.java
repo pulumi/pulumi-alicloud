@@ -53,7 +53,7 @@ public final class GetAccessPointsPoint {
      */
     private String location;
     /**
-     * @return The Physical Connection to Which the Access Point State.
+     * @return The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
      * 
      */
     private String status;
@@ -121,7 +121,7 @@ public final class GetAccessPointsPoint {
         return this.location;
     }
     /**
-     * @return The Physical Connection to Which the Access Point State.
+     * @return The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
      * 
      */
     public String status() {

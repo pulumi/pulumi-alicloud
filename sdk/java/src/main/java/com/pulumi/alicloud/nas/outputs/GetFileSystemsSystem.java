@@ -3,14 +3,21 @@
 
 package com.pulumi.alicloud.nas.outputs;
 
+import com.pulumi.alicloud.nas.outputs.GetFileSystemsSystemAutoUpgradeConfig;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetFileSystemsSystem {
+    /**
+     * @return (List, Available since v2.1.0) The automatic capacity expansion configuration. Each element contains the following attributes:
+     * 
+     */
+    private List<GetFileSystemsSystemAutoUpgradeConfig> autoUpgradeConfigs;
     /**
      * @return (Optional, Available in v1.140.0+) The capacity of the file system.
      * 
@@ -84,6 +91,13 @@ public final class GetFileSystemsSystem {
     private String zoneId;
 
     private GetFileSystemsSystem() {}
+    /**
+     * @return (List, Available since v2.1.0) The automatic capacity expansion configuration. Each element contains the following attributes:
+     * 
+     */
+    public List<GetFileSystemsSystemAutoUpgradeConfig> autoUpgradeConfigs() {
+        return this.autoUpgradeConfigs;
+    }
     /**
      * @return (Optional, Available in v1.140.0+) The capacity of the file system.
      * 
@@ -189,6 +203,7 @@ public final class GetFileSystemsSystem {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetFileSystemsSystemAutoUpgradeConfig> autoUpgradeConfigs;
         private Integer capacity;
         private String createTime;
         private String description;
@@ -204,6 +219,7 @@ public final class GetFileSystemsSystem {
         public Builder() {}
         public Builder(GetFileSystemsSystem defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoUpgradeConfigs = defaults.autoUpgradeConfigs;
     	      this.capacity = defaults.capacity;
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
@@ -218,6 +234,17 @@ public final class GetFileSystemsSystem {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
+        public Builder autoUpgradeConfigs(List<GetFileSystemsSystemAutoUpgradeConfig> autoUpgradeConfigs) {
+            if (autoUpgradeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "autoUpgradeConfigs");
+            }
+            this.autoUpgradeConfigs = autoUpgradeConfigs;
+            return this;
+        }
+        public Builder autoUpgradeConfigs(GetFileSystemsSystemAutoUpgradeConfig... autoUpgradeConfigs) {
+            return autoUpgradeConfigs(List.of(autoUpgradeConfigs));
+        }
         @CustomType.Setter
         public Builder capacity(Integer capacity) {
             if (capacity == null) {
@@ -316,6 +343,7 @@ public final class GetFileSystemsSystem {
         }
         public GetFileSystemsSystem build() {
             final var _resultValue = new GetFileSystemsSystem();
+            _resultValue.autoUpgradeConfigs = autoUpgradeConfigs;
             _resultValue.capacity = capacity;
             _resultValue.createTime = createTime;
             _resultValue.description = description;

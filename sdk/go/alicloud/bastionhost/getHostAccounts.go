@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.135.0+.
+// > **NOTE:** Available since v1.135.0.
 //
 // ## Example Usage
 //
@@ -87,17 +87,23 @@ type GetHostAccountsArgs struct {
 
 // A collection of values returned by getHostAccounts.
 type GetHostAccountsResult struct {
-	Accounts        []GetHostAccountsAccount `pulumi:"accounts"`
-	HostAccountName *string                  `pulumi:"hostAccountName"`
-	HostId          string                   `pulumi:"hostId"`
+	// A list of Bastionhost Host Accounts. Each element contains the following attributes:
+	Accounts []GetHostAccountsAccount `pulumi:"accounts"`
+	// Specify the new hosting account's name, support the longest 128 characters.
+	HostAccountName *string `pulumi:"hostAccountName"`
+	// Specifies the database where you want to create your hosting account's host ID.
+	HostId string `pulumi:"hostId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string   `pulumi:"id"`
-	Ids          []string `pulumi:"ids"`
-	InstanceId   string   `pulumi:"instanceId"`
-	NameRegex    *string  `pulumi:"nameRegex"`
-	Names        []string `pulumi:"names"`
-	OutputFile   *string  `pulumi:"outputFile"`
-	ProtocolName *string  `pulumi:"protocolName"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// Specifies the database where you want to create your hosting account's host bastion host ID of.
+	InstanceId string  `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of Host Account names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
+	ProtocolName *string `pulumi:"protocolName"`
 }
 
 func GetHostAccountsOutput(ctx *pulumi.Context, args GetHostAccountsOutputArgs, opts ...pulumi.InvokeOption) GetHostAccountsResultOutput {
@@ -142,14 +148,17 @@ func (o GetHostAccountsResultOutput) ToGetHostAccountsResultOutputWithContext(ct
 	return o
 }
 
+// A list of Bastionhost Host Accounts. Each element contains the following attributes:
 func (o GetHostAccountsResultOutput) Accounts() GetHostAccountsAccountArrayOutput {
 	return o.ApplyT(func(v GetHostAccountsResult) []GetHostAccountsAccount { return v.Accounts }).(GetHostAccountsAccountArrayOutput)
 }
 
+// Specify the new hosting account's name, support the longest 128 characters.
 func (o GetHostAccountsResultOutput) HostAccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHostAccountsResult) *string { return v.HostAccountName }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the database where you want to create your hosting account's host ID.
 func (o GetHostAccountsResultOutput) HostId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHostAccountsResult) string { return v.HostId }).(pulumi.StringOutput)
 }
@@ -163,6 +172,7 @@ func (o GetHostAccountsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostAccountsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// Specifies the database where you want to create your hosting account's host bastion host ID of.
 func (o GetHostAccountsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHostAccountsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -171,6 +181,7 @@ func (o GetHostAccountsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHostAccountsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Host Account names.
 func (o GetHostAccountsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostAccountsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -179,6 +190,7 @@ func (o GetHostAccountsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHostAccountsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
 func (o GetHostAccountsResultOutput) ProtocolName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHostAccountsResult) *string { return v.ProtocolName }).(pulumi.StringPtrOutput)
 }

@@ -17,6 +17,7 @@ from .. import _utilities
 __all__ = [
     'WorkspaceDatasetLabel',
     'WorkspaceDatasetversionLabel',
+    'WorkspaceExperimentLabel',
     'WorkspaceModelLabel',
     'WorkspaceModelVersionLabel',
 ]
@@ -79,6 +80,37 @@ class WorkspaceDatasetversionLabel(dict):
     def value(self) -> Optional[_builtins.str]:
         """
         The value of the tags
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class WorkspaceExperimentLabel(dict):
+    def __init__(__self__, *,
+                 key: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: The key of the experiment label.
+        :param _builtins.str value: The value of the experiment label.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        The key of the experiment label.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        The value of the experiment label.
         """
         return pulumi.get(self, "value")
 

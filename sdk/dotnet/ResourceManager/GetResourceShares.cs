@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// &gt; **NOTE:** Available since v1.111.0.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// &gt; **NOTE:** Available since v1.111.0.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// &gt; **NOTE:** Available since v1.111.0.
         /// 
         /// ## Example Usage
         /// 
@@ -234,11 +234,26 @@ namespace Pulumi.AliCloud.ResourceManager
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Resource Share names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The name of resource share.
+        /// </summary>
         public readonly string? ResourceShareName;
+        /// <summary>
+        /// The owner of resource share.
+        /// </summary>
         public readonly string ResourceShareOwner;
+        /// <summary>
+        /// A list of Resource Manager Resource Shares. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetResourceSharesShareResult> Shares;
+        /// <summary>
+        /// The status of resource share.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

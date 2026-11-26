@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Commands of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.116.0+.
+// > **NOTE:** Available since v1.116.0.
 //
 // ## Example Usage
 //
@@ -78,18 +78,23 @@ type GetCommandsArgs struct {
 
 // A collection of values returned by getCommands.
 type GetCommandsResult struct {
-	CommandProvider *string              `pulumi:"commandProvider"`
+	CommandProvider *string `pulumi:"commandProvider"`
+	// A list of Ecs Commands. Each element contains the following attributes:
 	Commands        []GetCommandsCommand `pulumi:"commands"`
 	ContentEncoding *string              `pulumi:"contentEncoding"`
-	Description     *string              `pulumi:"description"`
+	// The description of command.
+	Description *string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	Name       *string  `pulumi:"name"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The name of the command
+	Name      *string `pulumi:"name"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// A list of Command names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Type       *string  `pulumi:"type"`
+	// The command type.
+	Type *string `pulumi:"type"`
 }
 
 func GetCommandsOutput(ctx *pulumi.Context, args GetCommandsOutputArgs, opts ...pulumi.InvokeOption) GetCommandsResultOutput {
@@ -140,6 +145,7 @@ func (o GetCommandsResultOutput) CommandProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCommandsResult) *string { return v.CommandProvider }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecs Commands. Each element contains the following attributes:
 func (o GetCommandsResultOutput) Commands() GetCommandsCommandArrayOutput {
 	return o.ApplyT(func(v GetCommandsResult) []GetCommandsCommand { return v.Commands }).(GetCommandsCommandArrayOutput)
 }
@@ -148,6 +154,7 @@ func (o GetCommandsResultOutput) ContentEncoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCommandsResult) *string { return v.ContentEncoding }).(pulumi.StringPtrOutput)
 }
 
+// The description of command.
 func (o GetCommandsResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCommandsResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -161,6 +168,7 @@ func (o GetCommandsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCommandsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The name of the command
 func (o GetCommandsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCommandsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -169,6 +177,7 @@ func (o GetCommandsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCommandsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Command names.
 func (o GetCommandsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCommandsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -177,6 +186,7 @@ func (o GetCommandsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCommandsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The command type.
 func (o GetCommandsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCommandsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

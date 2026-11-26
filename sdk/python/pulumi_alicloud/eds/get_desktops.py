@@ -65,16 +65,25 @@ class GetDesktopsResult:
     @_builtins.property
     @pulumi.getter(name="desktopName")
     def desktop_name(self) -> Optional[_builtins.str]:
+        """
+        The cloud desktop name.
+        """
         return pulumi.get(self, "desktop_name")
 
     @_builtins.property
     @pulumi.getter
     def desktops(self) -> Sequence['outputs.GetDesktopsDesktopResult']:
+        """
+        A list of Ecd Desktops. Each element contains the following attributes:
+        """
         return pulumi.get(self, "desktops")
 
     @_builtins.property
     @pulumi.getter(name="endUserIds")
     def end_user_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The IDs of the authorized users of the cloud desktop.
+        """
         return pulumi.get(self, "end_user_ids")
 
     @_builtins.property
@@ -98,6 +107,9 @@ class GetDesktopsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Desktop names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -113,11 +125,17 @@ class GetDesktopsResult:
     @_builtins.property
     @pulumi.getter(name="policyGroupId")
     def policy_group_id(self) -> Optional[_builtins.str]:
+        """
+        The cloud desktop policy ID.
+        """
         return pulumi.get(self, "policy_group_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The cloud desktop status.
+        """
         return pulumi.get(self, "status")
 
 
@@ -152,7 +170,7 @@ def get_desktops(desktop_name: Optional[_builtins.str] = None,
     """
     This data source provides the Ecd Desktops of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.144.0+.
+    > **NOTE:** Available since v1.144.0.
 
     ## Example Usage
 
@@ -162,53 +180,68 @@ def get_desktops(desktop_name: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform_example"
+    default = alicloud.eds.get_images(image_type="SYSTEM",
+        os_type="Windows",
+        desktop_instance_type="eds.hf.4c8g")
+    default_get_desktop_types = alicloud.eds.get_desktop_types(instance_type_family="eds.hf",
+        cpu_count=4,
+        memory_size=8192)
     default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
         cidr_block="172.16.0.0/12",
         desktop_access_type="Internet",
-        office_site_name="your_office_site_name")
-    default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
+        office_site_name=name)
+    default_bundle = alicloud.eds.Bundle("default",
+        desktop_type=default_get_desktop_types.ids[0],
+        image_id=default.ids[0],
+        user_disk_size_gibs=[110],
+        root_disk_size_gib=120,
+        root_disk_performance_level="PL1",
+        user_disk_performance_level="PL1",
+        bundle_name=name,
+        description=name)
     default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("default",
-        policy_group_name="your_policy_group_name",
+        policy_group_name=name,
         clipboard="readwrite",
         local_drive="read",
         authorize_access_policy_rules=[{
-            "description": "example_value",
+            "description": name,
             "cidr_ip": "1.2.3.4/24",
         }],
         authorize_security_policy_rules=[{
             "type": "inflow",
             "policy": "accept",
-            "description": "example_value",
+            "description": name,
             "port_range": "80/80",
             "ip_protocol": "TCP",
             "priority": "1",
             "cidr_ip": "0.0.0.0/0",
         }])
     default_user = alicloud.eds.User("default",
-        end_user_id="your_end_user_id",
-        email="your_email",
-        phone="your_phone",
-        password="your_password")
+        end_user_id=name,
+        email=f"{name}@aaa.com")
     default_desktop = alicloud.eds.Desktop("default",
         office_site_id=default_simple_office_site.id,
         policy_group_id=default_ecd_policy_group.id,
-        bundle_id=default.bundles[0].id,
-        desktop_name="your_desktop_name",
+        bundle_id=default_bundle.id,
+        desktop_name=name,
         end_user_ids=[default_user.id])
     ids = alicloud.eds.get_desktops_output(ids=[default_desktop.id])
-    pulumi.export("ecdDesktopId1", ids.desktops[0].id)
-    name_regex = alicloud.eds.get_desktops_output(name_regex=default_desktop.desktop_name)
-    pulumi.export("ecdDesktopId2", name_regex.desktops[0].id)
+    pulumi.export("ecdDesktopsId0", ids.desktops[0].id)
     ```
 
 
-    :param _builtins.str desktop_name: The desktop name.
+    :param _builtins.str desktop_name: The cloud desktop name.
+    :param Sequence[_builtins.str] end_user_ids: The authorized users of the cloud desktop.
     :param Sequence[_builtins.str] ids: A list of Desktop IDs.
     :param _builtins.str name_regex: A regex string to filter results by Desktop name.
     :param _builtins.str office_site_id: The ID of the Simple Office Site.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str policy_group_id: The policy group id of the Desktop.
-    :param _builtins.str status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+    :param _builtins.str policy_group_id: The cloud desktop policy ID.
+    :param _builtins.str status: The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
     """
     __args__ = dict()
     __args__['desktopName'] = desktop_name
@@ -246,7 +279,7 @@ def get_desktops_output(desktop_name: pulumi.Input[Optional[Optional[_builtins.s
     """
     This data source provides the Ecd Desktops of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.144.0+.
+    > **NOTE:** Available since v1.144.0.
 
     ## Example Usage
 
@@ -256,53 +289,68 @@ def get_desktops_output(desktop_name: pulumi.Input[Optional[Optional[_builtins.s
     import pulumi
     import pulumi_alicloud as alicloud
 
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform_example"
+    default = alicloud.eds.get_images(image_type="SYSTEM",
+        os_type="Windows",
+        desktop_instance_type="eds.hf.4c8g")
+    default_get_desktop_types = alicloud.eds.get_desktop_types(instance_type_family="eds.hf",
+        cpu_count=4,
+        memory_size=8192)
     default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
         cidr_block="172.16.0.0/12",
         desktop_access_type="Internet",
-        office_site_name="your_office_site_name")
-    default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
+        office_site_name=name)
+    default_bundle = alicloud.eds.Bundle("default",
+        desktop_type=default_get_desktop_types.ids[0],
+        image_id=default.ids[0],
+        user_disk_size_gibs=[110],
+        root_disk_size_gib=120,
+        root_disk_performance_level="PL1",
+        user_disk_performance_level="PL1",
+        bundle_name=name,
+        description=name)
     default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("default",
-        policy_group_name="your_policy_group_name",
+        policy_group_name=name,
         clipboard="readwrite",
         local_drive="read",
         authorize_access_policy_rules=[{
-            "description": "example_value",
+            "description": name,
             "cidr_ip": "1.2.3.4/24",
         }],
         authorize_security_policy_rules=[{
             "type": "inflow",
             "policy": "accept",
-            "description": "example_value",
+            "description": name,
             "port_range": "80/80",
             "ip_protocol": "TCP",
             "priority": "1",
             "cidr_ip": "0.0.0.0/0",
         }])
     default_user = alicloud.eds.User("default",
-        end_user_id="your_end_user_id",
-        email="your_email",
-        phone="your_phone",
-        password="your_password")
+        end_user_id=name,
+        email=f"{name}@aaa.com")
     default_desktop = alicloud.eds.Desktop("default",
         office_site_id=default_simple_office_site.id,
         policy_group_id=default_ecd_policy_group.id,
-        bundle_id=default.bundles[0].id,
-        desktop_name="your_desktop_name",
+        bundle_id=default_bundle.id,
+        desktop_name=name,
         end_user_ids=[default_user.id])
     ids = alicloud.eds.get_desktops_output(ids=[default_desktop.id])
-    pulumi.export("ecdDesktopId1", ids.desktops[0].id)
-    name_regex = alicloud.eds.get_desktops_output(name_regex=default_desktop.desktop_name)
-    pulumi.export("ecdDesktopId2", name_regex.desktops[0].id)
+    pulumi.export("ecdDesktopsId0", ids.desktops[0].id)
     ```
 
 
-    :param _builtins.str desktop_name: The desktop name.
+    :param _builtins.str desktop_name: The cloud desktop name.
+    :param Sequence[_builtins.str] end_user_ids: The authorized users of the cloud desktop.
     :param Sequence[_builtins.str] ids: A list of Desktop IDs.
     :param _builtins.str name_regex: A regex string to filter results by Desktop name.
     :param _builtins.str office_site_id: The ID of the Simple Office Site.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str policy_group_id: The policy group id of the Desktop.
-    :param _builtins.str status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+    :param _builtins.str policy_group_id: The cloud desktop policy ID.
+    :param _builtins.str status: The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
     """
     __args__ = dict()
     __args__['desktopName'] = desktop_name

@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ros.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Share Type.
+        /// Share Type. Valid Values: `Private`, `Shared`
         /// </summary>
         public readonly string ShareType;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Ros.Outputs
         /// </summary>
         public readonly string StackId;
         /// <summary>
-        /// Tags.
+        /// Query the resource bound to the tag. The format of the incoming value is `Json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>

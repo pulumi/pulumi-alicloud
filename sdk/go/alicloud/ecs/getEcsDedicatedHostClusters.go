@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.146.0+.
+// > **NOTE:** Available since v1.146.0.
 //
 // ## Example Usage
 //
@@ -105,17 +105,22 @@ type GetEcsDedicatedHostClustersArgs struct {
 
 // A collection of values returned by getEcsDedicatedHostClusters.
 type GetEcsDedicatedHostClustersResult struct {
-	Clusters                 []GetEcsDedicatedHostClustersCluster `pulumi:"clusters"`
-	DedicatedHostClusterIds  []string                             `pulumi:"dedicatedHostClusterIds"`
-	DedicatedHostClusterName *string                              `pulumi:"dedicatedHostClusterName"`
+	// A list of Ecs Dedicated Host Clusters. Each element contains the following attributes:
+	Clusters                []GetEcsDedicatedHostClustersCluster `pulumi:"clusters"`
+	DedicatedHostClusterIds []string                             `pulumi:"dedicatedHostClusterIds"`
+	// The name of the dedicated host cluster.
+	DedicatedHostClusterName *string `pulumi:"dedicatedHostClusterName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string            `pulumi:"id"`
-	Ids        []string          `pulumi:"ids"`
-	NameRegex  *string           `pulumi:"nameRegex"`
-	Names      []string          `pulumi:"names"`
-	OutputFile *string           `pulumi:"outputFile"`
-	Tags       map[string]string `pulumi:"tags"`
-	ZoneId     *string           `pulumi:"zoneId"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Dedicated Host Cluster names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The zone ID of the dedicated host cluster.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func GetEcsDedicatedHostClustersOutput(ctx *pulumi.Context, args GetEcsDedicatedHostClustersOutputArgs, opts ...pulumi.InvokeOption) GetEcsDedicatedHostClustersResultOutput {
@@ -160,6 +165,7 @@ func (o GetEcsDedicatedHostClustersResultOutput) ToGetEcsDedicatedHostClustersRe
 	return o
 }
 
+// A list of Ecs Dedicated Host Clusters. Each element contains the following attributes:
 func (o GetEcsDedicatedHostClustersResultOutput) Clusters() GetEcsDedicatedHostClustersClusterArrayOutput {
 	return o.ApplyT(func(v GetEcsDedicatedHostClustersResult) []GetEcsDedicatedHostClustersCluster { return v.Clusters }).(GetEcsDedicatedHostClustersClusterArrayOutput)
 }
@@ -168,6 +174,7 @@ func (o GetEcsDedicatedHostClustersResultOutput) DedicatedHostClusterIds() pulum
 	return o.ApplyT(func(v GetEcsDedicatedHostClustersResult) []string { return v.DedicatedHostClusterIds }).(pulumi.StringArrayOutput)
 }
 
+// The name of the dedicated host cluster.
 func (o GetEcsDedicatedHostClustersResultOutput) DedicatedHostClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDedicatedHostClustersResult) *string { return v.DedicatedHostClusterName }).(pulumi.StringPtrOutput)
 }
@@ -185,6 +192,7 @@ func (o GetEcsDedicatedHostClustersResultOutput) NameRegex() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetEcsDedicatedHostClustersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Dedicated Host Cluster names.
 func (o GetEcsDedicatedHostClustersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsDedicatedHostClustersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -193,10 +201,12 @@ func (o GetEcsDedicatedHostClustersResultOutput) OutputFile() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetEcsDedicatedHostClustersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A mapping of tags to assign to the resource.
 func (o GetEcsDedicatedHostClustersResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEcsDedicatedHostClustersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The zone ID of the dedicated host cluster.
 func (o GetEcsDedicatedHostClustersResultOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDedicatedHostClustersResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

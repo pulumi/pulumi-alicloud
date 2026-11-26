@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// gateway .
         /// </summary>
         public readonly string ActivatedTime;
+        /// <summary>
+        /// gateway buy url.
+        /// </summary>
         public readonly string BuyUrl;
         /// <summary>
         /// gateway category.
@@ -86,6 +89,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// gateway public network bandwidth.
         /// </summary>
         public readonly int PublicNetworkBandwidth;
+        /// <summary>
+        /// gateway renew url.
+        /// </summary>
         public readonly string RenewUrl;
         /// <summary>
         /// gateway status.

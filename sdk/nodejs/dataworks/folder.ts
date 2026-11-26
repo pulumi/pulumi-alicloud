@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Data Works Folder resource.
  *
- * For information about Data Works Folder and how to use it, see [What is Folder](https://help.aliyun.com/document_detail/173940.html).
+ * For information about Data Works Folder and how to use it, see [What is Folder](https://www.alibabacloud.com/help/doc-detail/173940.html).
  *
- * > **NOTE:** Available in v1.131.0+.
+ * > **NOTE:** Available since v1.131.0.
  *
  * ## Example Usage
  *
@@ -74,6 +74,9 @@ export class Folder extends pulumi.CustomResource {
         return obj['__pulumiType'] === Folder.__pulumiType;
     }
 
+    /**
+     * The ID of the Folder.
+     */
     declare public /*out*/ readonly folderId: pulumi.Output<string>;
     /**
      * Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
@@ -83,6 +86,9 @@ export class Folder extends pulumi.CustomResource {
      * The ID of the project.
      */
     declare public readonly projectId: pulumi.Output<string | undefined>;
+    /**
+     * The project identifier.
+     */
     declare public readonly projectIdentifier: pulumi.Output<string | undefined>;
 
     /**
@@ -121,6 +127,9 @@ export class Folder extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Folder resources.
  */
 export interface FolderState {
+    /**
+     * The ID of the Folder.
+     */
     folderId?: pulumi.Input<string | undefined>;
     /**
      * Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
@@ -130,6 +139,9 @@ export interface FolderState {
      * The ID of the project.
      */
     projectId?: pulumi.Input<string | undefined>;
+    /**
+     * The project identifier.
+     */
     projectIdentifier?: pulumi.Input<string | undefined>;
 }
 
@@ -145,5 +157,8 @@ export interface FolderArgs {
      * The ID of the project.
      */
     projectId?: pulumi.Input<string | undefined>;
+    /**
+     * The project identifier.
+     */
     projectIdentifier?: pulumi.Input<string | undefined>;
 }

@@ -39,7 +39,7 @@ public final class FcFunctions {
     /**
      * This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.98.0+
+     * &gt; **NOTE:** Available since v1.98.0
      * 
      * ## Example Usage
      * 
@@ -82,7 +82,7 @@ public final class FcFunctions {
     /**
      * This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.98.0+
+     * &gt; **NOTE:** Available since v1.98.0
      * 
      * ## Example Usage
      * 
@@ -125,7 +125,7 @@ public final class FcFunctions {
     /**
      * This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.98.0+
+     * &gt; **NOTE:** Available since v1.98.0
      * 
      * ## Example Usage
      * 
@@ -168,7 +168,7 @@ public final class FcFunctions {
     /**
      * This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.98.0+
+     * &gt; **NOTE:** Available since v1.98.0
      * 
      * ## Example Usage
      * 
@@ -211,7 +211,7 @@ public final class FcFunctions {
     /**
      * This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.98.0+
+     * &gt; **NOTE:** Available since v1.98.0
      * 
      * ## Example Usage
      * 
@@ -254,7 +254,7 @@ public final class FcFunctions {
     /**
      * This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.98.0+
+     * &gt; **NOTE:** Available since v1.98.0
      * 
      * ## Example Usage
      * 
@@ -297,7 +297,7 @@ public final class FcFunctions {
     /**
      * This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.98.0+
+     * &gt; **NOTE:** Available since v1.98.0
      * 
      * ## Example Usage
      * 

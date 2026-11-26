@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// </summary>
         public readonly string DestinationEndpointEngineName;
         /// <summary>
-        /// The destination instance region.
+        /// The target instance region.
         /// </summary>
         public readonly string DestinationRegion;
         /// <summary>
@@ -37,6 +37,9 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// The type of the migration or synchronization instance.- The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.- The types of synchronization instances: **large**, **medium**, **small**, **micro**.
         /// </summary>
         public readonly string InstanceClass;
+        /// <summary>
+        /// The name of the instance.
+        /// </summary>
         public readonly string InstanceName;
         /// <summary>
         /// The payment type of the resource.
@@ -59,7 +62,7 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The tag value corresponding to the tag key.
+        /// (Optional) The tag value corresponding to the tag key.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
