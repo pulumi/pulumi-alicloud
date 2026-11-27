@@ -448,6 +448,7 @@ public class SslCertificatesServicePcaCert extends com.pulumi.resources.CustomRe
     /**
      * The status of the certificate. Valid values:
      * - `REVOKE`: indicates that the certificate has been revoked.
+     * 
      * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
      * 
      */
@@ -457,6 +458,7 @@ public class SslCertificatesServicePcaCert extends com.pulumi.resources.CustomRe
     /**
      * @return The status of the certificate. Valid values:
      * - `REVOKE`: indicates that the certificate has been revoked.
+     * 
      * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
      * 
      */

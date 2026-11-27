@@ -384,12 +384,16 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
      * 
+     * &gt; **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
+     * 
      */
     @Export(name="destSecondaryVswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destSecondaryVswitchId;
 
     /**
      * @return The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+     * 
+     * &gt; **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      * 
      */
     public Output<Optional<String>> destSecondaryVswitchId() {
@@ -586,24 +590,12 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
     /**
      * The environment label of the DTS instance. The value is: **normal**, **online**.
      * 
-     * &gt; **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-     * 
-     * &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-     * 
-     * &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it&#39;s instance to keep them consistent.
-     * 
      */
     @Export(name="dtsBisLabel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dtsBisLabel;
 
     /**
      * @return The environment label of the DTS instance. The value is: **normal**, **online**.
-     * 
-     * &gt; **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-     * 
-     * &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-     * 
-     * &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it&#39;s instance to keep them consistent.
      * 
      */
     public Output<Optional<String>> dtsBisLabel() {
@@ -666,14 +658,18 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.errorPhone);
     }
     /**
-     * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+     * The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+     * 
+     * &gt; **NOTE:** `instanceClass` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `large` or above, the target class cannot be lower than `medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `alicloud.dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
      * 
      */
     @Export(name="instanceClass", refs={String.class}, tree="[0]")
     private Output<String> instanceClass;
 
     /**
-     * @return The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+     * @return The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+     * 
+     * &gt; **NOTE:** `instanceClass` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `large` or above, the target class cannot be lower than `medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `alicloud.dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
      * 
      */
     public Output<String> instanceClass() {
@@ -944,12 +940,16 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
     /**
      * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
      * 
+     * &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+     * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
      * @return The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+     * 
+     * &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
      * 
      */
     public Output<String> status() {

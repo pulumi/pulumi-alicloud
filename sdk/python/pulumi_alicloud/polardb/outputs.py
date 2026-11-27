@@ -29,6 +29,7 @@ __all__ = [
     'GatewayEndpoint',
     'GatewaySecurityIpArray',
     'ParameterGroupParameter',
+    'PolarFsEndpointAddressItem',
     'GetAccountsAccountResult',
     'GetAccountsAccountDatabasePrivilegeResult',
     'GetClustersClusterResult',
@@ -37,12 +38,20 @@ __all__ = [
     'GetDatabasesDatabaseAccountResult',
     'GetEndpointsEndpointResult',
     'GetEndpointsEndpointAddressItemResult',
+    'GetGatewayBudgetPoliciesPolicyResult',
+    'GetGatewayConsumerGroupsGroupResult',
+    'GetGatewayConsumersConsumerResult',
+    'GetGatewayCostRulesRuleResult',
+    'GetGatewayModelApisApiResult',
+    'GetGatewayModelServicesServiceResult',
+    'GetGatewayRateLimitPoliciesPolicyResult',
     'GetGlobalDatabaseNetworksNetworkResult',
     'GetGlobalDatabaseNetworksNetworkDbClusterResult',
     'GetNodeClassesClassResult',
     'GetNodeClassesClassSupportedEngineResult',
     'GetNodeClassesClassSupportedEngineAvailableResourceResult',
     'GetParameterGroupsGroupResult',
+    'GetPolarFsInstancesPolarFsInstanceResult',
     'GetZonesZoneResult',
 ]
 
@@ -863,6 +872,124 @@ class ParameterGroupParameter(dict):
 
 
 @pulumi.output_type
+class PolarFsEndpointAddressItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionString":
+            suggest = "connection_string"
+        elif key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "netType":
+            suggest = "net_type"
+        elif key == "privateZoneConnectionString":
+            suggest = "private_zone_connection_string"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+        elif key == "vswitchId":
+            suggest = "vswitch_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolarFsEndpointAddressItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolarFsEndpointAddressItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolarFsEndpointAddressItem.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_string: Optional[_builtins.str] = None,
+                 ip_address: Optional[_builtins.str] = None,
+                 net_type: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.str] = None,
+                 private_zone_connection_string: Optional[_builtins.str] = None,
+                 vpc_id: Optional[_builtins.str] = None,
+                 vswitch_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str connection_string: (Available since v2.1.0) The connection string.
+        :param _builtins.str ip_address: (Available since v2.1.0) The IP address.
+        :param _builtins.str net_type: (Available since v2.1.0) The network type.
+        :param _builtins.str port: (Available since v2.1.0) The port.
+        :param _builtins.str private_zone_connection_string: (Available since v2.1.0) The PrivateZone connection string.
+        :param _builtins.str vpc_id: The VPC ID.
+        :param _builtins.str vswitch_id: The vSwitch ID.
+        """
+        if connection_string is not None:
+            pulumi.set(__self__, "connection_string", connection_string)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if net_type is not None:
+            pulumi.set(__self__, "net_type", net_type)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if private_zone_connection_string is not None:
+            pulumi.set(__self__, "private_zone_connection_string", private_zone_connection_string)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> Optional[_builtins.str]:
+        """
+        (Available since v2.1.0) The connection string.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[_builtins.str]:
+        """
+        (Available since v2.1.0) The IP address.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="netType")
+    def net_type(self) -> Optional[_builtins.str]:
+        """
+        (Available since v2.1.0) The network type.
+        """
+        return pulumi.get(self, "net_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.str]:
+        """
+        (Available since v2.1.0) The port.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privateZoneConnectionString")
+    def private_zone_connection_string(self) -> Optional[_builtins.str]:
+        """
+        (Available since v2.1.0) The PrivateZone connection string.
+        """
+        return pulumi.get(self, "private_zone_connection_string")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[_builtins.str]:
+        """
+        The VPC ID.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[_builtins.str]:
+        """
+        The vSwitch ID.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
 class GetAccountsAccountResult(dict):
     def __init__(__self__, *,
                  account_description: _builtins.str,
@@ -1590,6 +1717,847 @@ class GetEndpointsEndpointAddressItemResult(dict):
 
 
 @pulumi.output_type
+class GetGatewayBudgetPoliciesPolicyResult(dict):
+    def __init__(__self__, *,
+                 alert_threshold_pct: _builtins.int,
+                 alert_triggered: _builtins.bool,
+                 budget_dimension_ref_id: _builtins.str,
+                 budget_dimension_type: _builtins.str,
+                 budget_points: _builtins.str,
+                 budget_type: _builtins.str,
+                 create_time: _builtins.str,
+                 exceeded: _builtins.str,
+                 id: _builtins.str,
+                 modify_time: _builtins.str,
+                 reset_day_of_month: _builtins.int,
+                 status: _builtins.str,
+                 used_points: _builtins.int):
+        """
+        :param _builtins.int alert_threshold_pct: The alert threshold percentage.
+        :param _builtins.bool alert_triggered: Whether the alert was triggered.
+        :param _builtins.str budget_dimension_ref_id: The consumer group or consumer ID.
+        :param _builtins.str budget_dimension_type: The policy dimension. Valid values: `ConsumerGroup`, `Consumer`.
+        :param _builtins.str budget_points: The budget amount in points.
+        :param _builtins.str budget_type: The budget type.
+        :param _builtins.str create_time: The creation time.
+        :param _builtins.str exceeded: Whether the budget was exceeded.
+        :param _builtins.str id: The budget policy ID.
+        :param _builtins.str modify_time: The last modification time.
+        :param _builtins.int reset_day_of_month: The monthly reset day.
+        :param _builtins.str status: The policy status.
+        :param _builtins.int used_points: The used points.
+        """
+        pulumi.set(__self__, "alert_threshold_pct", alert_threshold_pct)
+        pulumi.set(__self__, "alert_triggered", alert_triggered)
+        pulumi.set(__self__, "budget_dimension_ref_id", budget_dimension_ref_id)
+        pulumi.set(__self__, "budget_dimension_type", budget_dimension_type)
+        pulumi.set(__self__, "budget_points", budget_points)
+        pulumi.set(__self__, "budget_type", budget_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "exceeded", exceeded)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "modify_time", modify_time)
+        pulumi.set(__self__, "reset_day_of_month", reset_day_of_month)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "used_points", used_points)
+
+    @_builtins.property
+    @pulumi.getter(name="alertThresholdPct")
+    def alert_threshold_pct(self) -> _builtins.int:
+        """
+        The alert threshold percentage.
+        """
+        return pulumi.get(self, "alert_threshold_pct")
+
+    @_builtins.property
+    @pulumi.getter(name="alertTriggered")
+    def alert_triggered(self) -> _builtins.bool:
+        """
+        Whether the alert was triggered.
+        """
+        return pulumi.get(self, "alert_triggered")
+
+    @_builtins.property
+    @pulumi.getter(name="budgetDimensionRefId")
+    def budget_dimension_ref_id(self) -> _builtins.str:
+        """
+        The consumer group or consumer ID.
+        """
+        return pulumi.get(self, "budget_dimension_ref_id")
+
+    @_builtins.property
+    @pulumi.getter(name="budgetDimensionType")
+    def budget_dimension_type(self) -> _builtins.str:
+        """
+        The policy dimension. Valid values: `ConsumerGroup`, `Consumer`.
+        """
+        return pulumi.get(self, "budget_dimension_type")
+
+    @_builtins.property
+    @pulumi.getter(name="budgetPoints")
+    def budget_points(self) -> _builtins.str:
+        """
+        The budget amount in points.
+        """
+        return pulumi.get(self, "budget_points")
+
+    @_builtins.property
+    @pulumi.getter(name="budgetType")
+    def budget_type(self) -> _builtins.str:
+        """
+        The budget type.
+        """
+        return pulumi.get(self, "budget_type")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def exceeded(self) -> _builtins.str:
+        """
+        Whether the budget was exceeded.
+        """
+        return pulumi.get(self, "exceeded")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The budget policy ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="modifyTime")
+    def modify_time(self) -> _builtins.str:
+        """
+        The last modification time.
+        """
+        return pulumi.get(self, "modify_time")
+
+    @_builtins.property
+    @pulumi.getter(name="resetDayOfMonth")
+    def reset_day_of_month(self) -> _builtins.int:
+        """
+        The monthly reset day.
+        """
+        return pulumi.get(self, "reset_day_of_month")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The policy status.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="usedPoints")
+    def used_points(self) -> _builtins.int:
+        """
+        The used points.
+        """
+        return pulumi.get(self, "used_points")
+
+
+@pulumi.output_type
+class GetGatewayConsumerGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 allowed_models: _builtins.str,
+                 create_time: _builtins.str,
+                 id: _builtins.str,
+                 is_default: _builtins.str,
+                 modify_time: _builtins.str,
+                 name: _builtins.str,
+                 nickname: _builtins.str):
+        """
+        :param _builtins.str allowed_models: The models the group is allowed to access.
+        :param _builtins.str create_time: The creation time.
+        :param _builtins.str id: The consumer group ID.
+        :param _builtins.str is_default: Whether the group is the default group.
+        :param _builtins.str modify_time: The last modification time.
+        :param _builtins.str name: The consumer group name.
+        :param _builtins.str nickname: The consumer group nickname.
+        """
+        pulumi.set(__self__, "allowed_models", allowed_models)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_default", is_default)
+        pulumi.set(__self__, "modify_time", modify_time)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "nickname", nickname)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedModels")
+    def allowed_models(self) -> _builtins.str:
+        """
+        The models the group is allowed to access.
+        """
+        return pulumi.get(self, "allowed_models")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The consumer group ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> _builtins.str:
+        """
+        Whether the group is the default group.
+        """
+        return pulumi.get(self, "is_default")
+
+    @_builtins.property
+    @pulumi.getter(name="modifyTime")
+    def modify_time(self) -> _builtins.str:
+        """
+        The last modification time.
+        """
+        return pulumi.get(self, "modify_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The consumer group name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nickname(self) -> _builtins.str:
+        """
+        The consumer group nickname.
+        """
+        return pulumi.get(self, "nickname")
+
+
+@pulumi.output_type
+class GetGatewayConsumersConsumerResult(dict):
+    def __init__(__self__, *,
+                 allowed_models: _builtins.str,
+                 consumer_group_id: _builtins.str,
+                 consumer_group_name: _builtins.str,
+                 create_time: _builtins.str,
+                 id: _builtins.str,
+                 lifetime_cost_count: _builtins.int,
+                 lifetime_token_count: _builtins.int,
+                 modify_time: _builtins.str,
+                 month_to_date_cost_count: _builtins.int,
+                 month_to_date_token_count: _builtins.int,
+                 name: _builtins.str,
+                 nickname: _builtins.str):
+        """
+        :param _builtins.str allowed_models: The models the consumer is allowed to access.
+        :param _builtins.str consumer_group_id: The consumer group ID used to filter results.
+        :param _builtins.str consumer_group_name: The consumer group name.
+        :param _builtins.str create_time: The creation time.
+        :param _builtins.str id: The consumer ID.
+        :param _builtins.int lifetime_cost_count: The lifetime cost count.
+        :param _builtins.int lifetime_token_count: The lifetime token count.
+        :param _builtins.str modify_time: The last modification time.
+        :param _builtins.int month_to_date_cost_count: The month-to-date cost count.
+        :param _builtins.int month_to_date_token_count: The month-to-date token count.
+        :param _builtins.str name: The consumer name.
+        :param _builtins.str nickname: The consumer nickname.
+        """
+        pulumi.set(__self__, "allowed_models", allowed_models)
+        pulumi.set(__self__, "consumer_group_id", consumer_group_id)
+        pulumi.set(__self__, "consumer_group_name", consumer_group_name)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "lifetime_cost_count", lifetime_cost_count)
+        pulumi.set(__self__, "lifetime_token_count", lifetime_token_count)
+        pulumi.set(__self__, "modify_time", modify_time)
+        pulumi.set(__self__, "month_to_date_cost_count", month_to_date_cost_count)
+        pulumi.set(__self__, "month_to_date_token_count", month_to_date_token_count)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "nickname", nickname)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedModels")
+    def allowed_models(self) -> _builtins.str:
+        """
+        The models the consumer is allowed to access.
+        """
+        return pulumi.get(self, "allowed_models")
+
+    @_builtins.property
+    @pulumi.getter(name="consumerGroupId")
+    def consumer_group_id(self) -> _builtins.str:
+        """
+        The consumer group ID used to filter results.
+        """
+        return pulumi.get(self, "consumer_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="consumerGroupName")
+    def consumer_group_name(self) -> _builtins.str:
+        """
+        The consumer group name.
+        """
+        return pulumi.get(self, "consumer_group_name")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The consumer ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="lifetimeCostCount")
+    def lifetime_cost_count(self) -> _builtins.int:
+        """
+        The lifetime cost count.
+        """
+        return pulumi.get(self, "lifetime_cost_count")
+
+    @_builtins.property
+    @pulumi.getter(name="lifetimeTokenCount")
+    def lifetime_token_count(self) -> _builtins.int:
+        """
+        The lifetime token count.
+        """
+        return pulumi.get(self, "lifetime_token_count")
+
+    @_builtins.property
+    @pulumi.getter(name="modifyTime")
+    def modify_time(self) -> _builtins.str:
+        """
+        The last modification time.
+        """
+        return pulumi.get(self, "modify_time")
+
+    @_builtins.property
+    @pulumi.getter(name="monthToDateCostCount")
+    def month_to_date_cost_count(self) -> _builtins.int:
+        """
+        The month-to-date cost count.
+        """
+        return pulumi.get(self, "month_to_date_cost_count")
+
+    @_builtins.property
+    @pulumi.getter(name="monthToDateTokenCount")
+    def month_to_date_token_count(self) -> _builtins.int:
+        """
+        The month-to-date token count.
+        """
+        return pulumi.get(self, "month_to_date_token_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The consumer name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nickname(self) -> _builtins.str:
+        """
+        The consumer nickname.
+        """
+        return pulumi.get(self, "nickname")
+
+
+@pulumi.output_type
+class GetGatewayCostRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 cache_cost_points_per_million: _builtins.str,
+                 create_time: _builtins.str,
+                 id: _builtins.str,
+                 input_cost_points_per_million: _builtins.str,
+                 model_name: _builtins.str,
+                 model_service_id: _builtins.str,
+                 modify_time: _builtins.str,
+                 output_cost_points_per_million: _builtins.str):
+        """
+        :param _builtins.str cache_cost_points_per_million: The cached-token cost points.
+        :param _builtins.str create_time: The creation time.
+        :param _builtins.str id: The cost rule ID.
+        :param _builtins.str input_cost_points_per_million: The input cost points.
+        :param _builtins.str model_name: The model name.
+        :param _builtins.str model_service_id: The model service ID.
+        :param _builtins.str modify_time: The last modification time.
+        :param _builtins.str output_cost_points_per_million: The output cost points.
+        """
+        pulumi.set(__self__, "cache_cost_points_per_million", cache_cost_points_per_million)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "input_cost_points_per_million", input_cost_points_per_million)
+        pulumi.set(__self__, "model_name", model_name)
+        pulumi.set(__self__, "model_service_id", model_service_id)
+        pulumi.set(__self__, "modify_time", modify_time)
+        pulumi.set(__self__, "output_cost_points_per_million", output_cost_points_per_million)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheCostPointsPerMillion")
+    def cache_cost_points_per_million(self) -> _builtins.str:
+        """
+        The cached-token cost points.
+        """
+        return pulumi.get(self, "cache_cost_points_per_million")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The cost rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="inputCostPointsPerMillion")
+    def input_cost_points_per_million(self) -> _builtins.str:
+        """
+        The input cost points.
+        """
+        return pulumi.get(self, "input_cost_points_per_million")
+
+    @_builtins.property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> _builtins.str:
+        """
+        The model name.
+        """
+        return pulumi.get(self, "model_name")
+
+    @_builtins.property
+    @pulumi.getter(name="modelServiceId")
+    def model_service_id(self) -> _builtins.str:
+        """
+        The model service ID.
+        """
+        return pulumi.get(self, "model_service_id")
+
+    @_builtins.property
+    @pulumi.getter(name="modifyTime")
+    def modify_time(self) -> _builtins.str:
+        """
+        The last modification time.
+        """
+        return pulumi.get(self, "modify_time")
+
+    @_builtins.property
+    @pulumi.getter(name="outputCostPointsPerMillion")
+    def output_cost_points_per_million(self) -> _builtins.str:
+        """
+        The output cost points.
+        """
+        return pulumi.get(self, "output_cost_points_per_million")
+
+
+@pulumi.output_type
+class GetGatewayModelApisApiResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 force_model: _builtins.str,
+                 id: _builtins.str,
+                 invoke_endpoint: _builtins.str,
+                 model_category: _builtins.str,
+                 name: _builtins.str,
+                 path_prefix: _builtins.str,
+                 protocol: _builtins.str,
+                 record_input: _builtins.str,
+                 record_output: _builtins.str,
+                 route_rules: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str create_time: The creation time.
+        :param _builtins.str force_model: The forced model.
+        :param _builtins.str id: The model API ID.
+        :param _builtins.str invoke_endpoint: The invocation endpoint.
+        :param _builtins.str model_category: The model category.
+        :param _builtins.str name: The model API name.
+        :param _builtins.str path_prefix: The path prefix.
+        :param _builtins.str protocol: The protocol.
+        :param _builtins.str record_input: The input recording configuration.
+        :param _builtins.str record_output: The output recording configuration.
+        :param _builtins.str route_rules: The routing rules as JSON.
+        :param _builtins.str status: The status.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "force_model", force_model)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "invoke_endpoint", invoke_endpoint)
+        pulumi.set(__self__, "model_category", model_category)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path_prefix", path_prefix)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "record_input", record_input)
+        pulumi.set(__self__, "record_output", record_output)
+        pulumi.set(__self__, "route_rules", route_rules)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="forceModel")
+    def force_model(self) -> _builtins.str:
+        """
+        The forced model.
+        """
+        return pulumi.get(self, "force_model")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The model API ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="invokeEndpoint")
+    def invoke_endpoint(self) -> _builtins.str:
+        """
+        The invocation endpoint.
+        """
+        return pulumi.get(self, "invoke_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="modelCategory")
+    def model_category(self) -> _builtins.str:
+        """
+        The model category.
+        """
+        return pulumi.get(self, "model_category")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The model API name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="pathPrefix")
+    def path_prefix(self) -> _builtins.str:
+        """
+        The path prefix.
+        """
+        return pulumi.get(self, "path_prefix")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        The protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="recordInput")
+    def record_input(self) -> _builtins.str:
+        """
+        The input recording configuration.
+        """
+        return pulumi.get(self, "record_input")
+
+    @_builtins.property
+    @pulumi.getter(name="recordOutput")
+    def record_output(self) -> _builtins.str:
+        """
+        The output recording configuration.
+        """
+        return pulumi.get(self, "record_output")
+
+    @_builtins.property
+    @pulumi.getter(name="routeRules")
+    def route_rules(self) -> _builtins.str:
+        """
+        The routing rules as JSON.
+        """
+        return pulumi.get(self, "route_rules")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetGatewayModelServicesServiceResult(dict):
+    def __init__(__self__, *,
+                 base_url: _builtins.str,
+                 create_time: _builtins.str,
+                 id: _builtins.str,
+                 input_cost_points_per_million: _builtins.str,
+                 model_category: _builtins.str,
+                 name: _builtins.str,
+                 output_cost_points_per_million: _builtins.str,
+                 protocol: _builtins.str,
+                 request_cost_points: _builtins.str,
+                 status: _builtins.str,
+                 vendor: _builtins.str):
+        """
+        :param _builtins.str base_url: The upstream service URL.
+        :param _builtins.str create_time: The creation time.
+        :param _builtins.str id: The model service ID.
+        :param _builtins.str input_cost_points_per_million: The input cost points.
+        :param _builtins.str model_category: The model category.
+        :param _builtins.str name: The model service name.
+        :param _builtins.str output_cost_points_per_million: The output cost points.
+        :param _builtins.str protocol: The protocol.
+        :param _builtins.str request_cost_points: The per-request cost points.
+        :param _builtins.str status: The status.
+        :param _builtins.str vendor: The model service vendor.
+        """
+        pulumi.set(__self__, "base_url", base_url)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "input_cost_points_per_million", input_cost_points_per_million)
+        pulumi.set(__self__, "model_category", model_category)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "output_cost_points_per_million", output_cost_points_per_million)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "request_cost_points", request_cost_points)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vendor", vendor)
+
+    @_builtins.property
+    @pulumi.getter(name="baseUrl")
+    def base_url(self) -> _builtins.str:
+        """
+        The upstream service URL.
+        """
+        return pulumi.get(self, "base_url")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The model service ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="inputCostPointsPerMillion")
+    def input_cost_points_per_million(self) -> _builtins.str:
+        """
+        The input cost points.
+        """
+        return pulumi.get(self, "input_cost_points_per_million")
+
+    @_builtins.property
+    @pulumi.getter(name="modelCategory")
+    def model_category(self) -> _builtins.str:
+        """
+        The model category.
+        """
+        return pulumi.get(self, "model_category")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The model service name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="outputCostPointsPerMillion")
+    def output_cost_points_per_million(self) -> _builtins.str:
+        """
+        The output cost points.
+        """
+        return pulumi.get(self, "output_cost_points_per_million")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        The protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="requestCostPoints")
+    def request_cost_points(self) -> _builtins.str:
+        """
+        The per-request cost points.
+        """
+        return pulumi.get(self, "request_cost_points")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def vendor(self) -> _builtins.str:
+        """
+        The model service vendor.
+        """
+        return pulumi.get(self, "vendor")
+
+
+@pulumi.output_type
+class GetGatewayRateLimitPoliciesPolicyResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 id: _builtins.str,
+                 modify_time: _builtins.str,
+                 policy_type: _builtins.str,
+                 rate_limit_rpm: _builtins.str,
+                 rate_limit_tpm: _builtins.str,
+                 scope_ref_id: _builtins.str,
+                 scope_type: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str create_time: The creation time.
+        :param _builtins.str id: The policy ID.
+        :param _builtins.str modify_time: The last modification time.
+        :param _builtins.str policy_type: The policy type.
+        :param _builtins.str rate_limit_rpm: The maximum requests per minute.
+        :param _builtins.str rate_limit_tpm: The maximum tokens per minute.
+        :param _builtins.str scope_ref_id: The consumer group or consumer ID.
+        :param _builtins.str scope_type: The rate limit dimension. Valid values: `ConsumerGroup`, `Consumer`.
+        :param _builtins.str status: The policy status.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "modify_time", modify_time)
+        pulumi.set(__self__, "policy_type", policy_type)
+        pulumi.set(__self__, "rate_limit_rpm", rate_limit_rpm)
+        pulumi.set(__self__, "rate_limit_tpm", rate_limit_tpm)
+        pulumi.set(__self__, "scope_ref_id", scope_ref_id)
+        pulumi.set(__self__, "scope_type", scope_type)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The policy ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="modifyTime")
+    def modify_time(self) -> _builtins.str:
+        """
+        The last modification time.
+        """
+        return pulumi.get(self, "modify_time")
+
+    @_builtins.property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> _builtins.str:
+        """
+        The policy type.
+        """
+        return pulumi.get(self, "policy_type")
+
+    @_builtins.property
+    @pulumi.getter(name="rateLimitRpm")
+    def rate_limit_rpm(self) -> _builtins.str:
+        """
+        The maximum requests per minute.
+        """
+        return pulumi.get(self, "rate_limit_rpm")
+
+    @_builtins.property
+    @pulumi.getter(name="rateLimitTpm")
+    def rate_limit_tpm(self) -> _builtins.str:
+        """
+        The maximum tokens per minute.
+        """
+        return pulumi.get(self, "rate_limit_tpm")
+
+    @_builtins.property
+    @pulumi.getter(name="scopeRefId")
+    def scope_ref_id(self) -> _builtins.str:
+        """
+        The consumer group or consumer ID.
+        """
+        return pulumi.get(self, "scope_ref_id")
+
+    @_builtins.property
+    @pulumi.getter(name="scopeType")
+    def scope_type(self) -> _builtins.str:
+        """
+        The rate limit dimension. Valid values: `ConsumerGroup`, `Consumer`.
+        """
+        return pulumi.get(self, "scope_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The policy status.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class GetGlobalDatabaseNetworksNetworkResult(dict):
     def __init__(__self__, *,
                  create_time: _builtins.str,
@@ -1915,6 +2883,266 @@ class GetParameterGroupsGroupResult(dict):
         The type of the parameter template.
         """
         return pulumi.get(self, "parameter_group_type")
+
+
+@pulumi.output_type
+class GetPolarFsInstancesPolarFsInstanceResult(dict):
+    def __init__(__self__, *,
+                 accelerate_type: _builtins.str,
+                 accelerated_storage_space: _builtins.str,
+                 accelerating_enable: _builtins.str,
+                 bandwidth: _builtins.int,
+                 category: _builtins.str,
+                 create_time: _builtins.str,
+                 description: _builtins.str,
+                 expire_time: _builtins.str,
+                 expired: _builtins.str,
+                 id: _builtins.str,
+                 path: _builtins.str,
+                 pay_type: _builtins.str,
+                 polar_fs_type: _builtins.str,
+                 region_id: _builtins.str,
+                 relative_db_cluster_id: _builtins.str,
+                 security_group_id: _builtins.str,
+                 status: _builtins.str,
+                 storage_space: _builtins.int,
+                 storage_type: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
+                 vpc_id: _builtins.str,
+                 vswitch_id: _builtins.str,
+                 zone_id: _builtins.str):
+        """
+        :param _builtins.str accelerate_type: (Available since v2.1.0) The acceleration type.
+        :param _builtins.str accelerated_storage_space: (Available since v2.1.0) The accelerated storage capacity.
+        :param _builtins.str accelerating_enable: (Available since v2.1.0) Whether acceleration is enabled.
+        :param _builtins.int bandwidth: (Available since v2.1.0) The bandwidth.
+        :param _builtins.str category: (Available since v2.1.0) The product category.
+        :param _builtins.str create_time: (Available since v2.1.0) The creation time.
+        :param _builtins.str description: The instance description.
+        :param _builtins.str expire_time: (Available since v2.1.0) The expiration time.
+        :param _builtins.str expired: (Available since v2.1.0) Whether the instance has expired.
+        :param _builtins.str id: (Available since v2.1.0) The PolarFS instance ID.
+        :param _builtins.str path: (Available since v2.1.0) The PolarFS path.
+        :param _builtins.str pay_type: (Available since v2.1.0) The billing method.
+        :param _builtins.str polar_fs_type: The PolarFS type.
+        :param _builtins.str region_id: (Available since v2.1.0) The region ID.
+        :param _builtins.str relative_db_cluster_id: The associated PolarDB cluster ID.
+        :param _builtins.str security_group_id: (Available since v2.1.0) The security group ID.
+        :param _builtins.str status: (Available since v2.1.0) The instance status.
+        :param _builtins.int storage_space: (Available since v2.1.0) The storage capacity.
+        :param _builtins.str storage_type: (Available since v2.1.0) The storage type.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the query.
+        :param _builtins.str vpc_id: (Available since v2.1.0) The VPC ID.
+        :param _builtins.str vswitch_id: (Available since v2.1.0) The vSwitch ID.
+        :param _builtins.str zone_id: (Available since v2.1.0) The zone ID.
+        """
+        pulumi.set(__self__, "accelerate_type", accelerate_type)
+        pulumi.set(__self__, "accelerated_storage_space", accelerated_storage_space)
+        pulumi.set(__self__, "accelerating_enable", accelerating_enable)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "expired", expired)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "pay_type", pay_type)
+        pulumi.set(__self__, "polar_fs_type", polar_fs_type)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "relative_db_cluster_id", relative_db_cluster_id)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_space", storage_space)
+        pulumi.set(__self__, "storage_type", storage_type)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accelerateType")
+    def accelerate_type(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) The acceleration type.
+        """
+        return pulumi.get(self, "accelerate_type")
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratedStorageSpace")
+    def accelerated_storage_space(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) The accelerated storage capacity.
+        """
+        return pulumi.get(self, "accelerated_storage_space")
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratingEnable")
+    def accelerating_enable(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) Whether acceleration is enabled.
+        """
+        return pulumi.get(self, "accelerating_enable")
+
+    @_builtins.property
+    @pulumi.getter
+    def bandwidth(self) -> _builtins.int:
+        """
+        (Available since v2.1.0) The bandwidth.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) The product category.
+        """
+        return pulumi.get(self, "category")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) The creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The instance description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) The expiration time.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def expired(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) Whether the instance has expired.
+        """
+        return pulumi.get(self, "expired")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) The PolarFS instance ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) The PolarFS path.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter(name="payType")
+    def pay_type(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) The billing method.
+        """
+        return pulumi.get(self, "pay_type")
+
+    @_builtins.property
+    @pulumi.getter(name="polarFsType")
+    def polar_fs_type(self) -> _builtins.str:
+        """
+        The PolarFS type.
+        """
+        return pulumi.get(self, "polar_fs_type")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="relativeDbClusterId")
+    def relative_db_cluster_id(self) -> _builtins.str:
+        """
+        The associated PolarDB cluster ID.
+        """
+        return pulumi.get(self, "relative_db_cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) The security group ID.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) The instance status.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="storageSpace")
+    def storage_space(self) -> _builtins.int:
+        """
+        (Available since v2.1.0) The storage capacity.
+        """
+        return pulumi.get(self, "storage_space")
+
+    @_builtins.property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) The storage type.
+        """
+        return pulumi.get(self, "storage_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        A mapping of tags to assign to the query.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) The VPC ID.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) The vSwitch ID.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> _builtins.str:
+        """
+        (Available since v2.1.0) The zone ID.
+        """
+        return pulumi.get(self, "zone_id")
 
 
 @pulumi.output_type

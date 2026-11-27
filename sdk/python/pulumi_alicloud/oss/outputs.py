@@ -4155,7 +4155,8 @@ class GetBucketObjectsObjectResult(dict):
                  last_modification_time: _builtins.str,
                  server_side_encryption: _builtins.str,
                  sse_kms_key_id: _builtins.str,
-                 storage_class: _builtins.str):
+                 storage_class: _builtins.str,
+                 x_oss_hash_crc64ecma: _builtins.str):
         """
         :param _builtins.str acl: Object access control list. Possible values: `default`, `private`, `public-read` and `public-read-write`.
         :param _builtins.str cache_control: Caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
@@ -4171,6 +4172,7 @@ class GetBucketObjectsObjectResult(dict):
         :param _builtins.str server_side_encryption: Server-side encryption of the object in OSS. It can be empty or `AES256`.
         :param _builtins.str sse_kms_key_id: If present, specifies the ID of the Key Management Service(KMS) master encryption key that was used for the object.
         :param _builtins.str storage_class: Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
+        :param _builtins.str x_oss_hash_crc64ecma: The CRC64-ECMA checksum of the object content, which is the value of the `x-oss-hash-crc64ecma` response header returned by OSS. Available since v2.1.0.
         """
         pulumi.set(__self__, "acl", acl)
         pulumi.set(__self__, "cache_control", cache_control)
@@ -4186,6 +4188,7 @@ class GetBucketObjectsObjectResult(dict):
         pulumi.set(__self__, "server_side_encryption", server_side_encryption)
         pulumi.set(__self__, "sse_kms_key_id", sse_kms_key_id)
         pulumi.set(__self__, "storage_class", storage_class)
+        pulumi.set(__self__, "x_oss_hash_crc64ecma", x_oss_hash_crc64ecma)
 
     @_builtins.property
     @pulumi.getter
@@ -4298,6 +4301,14 @@ class GetBucketObjectsObjectResult(dict):
         Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
         """
         return pulumi.get(self, "storage_class")
+
+    @_builtins.property
+    @pulumi.getter(name="xOssHashCrc64ecma")
+    def x_oss_hash_crc64ecma(self) -> _builtins.str:
+        """
+        The CRC64-ECMA checksum of the object content, which is the value of the `x-oss-hash-crc64ecma` response header returned by OSS. Available since v2.1.0.
+        """
+        return pulumi.get(self, "x_oss_hash_crc64ecma")
 
 
 @pulumi.output_type

@@ -97,6 +97,7 @@ import javax.annotation.Nullable;
 public class CommonBandwithPackageAttachment extends com.pulumi.resources.CustomResource {
     /**
      * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+     * 
      * &gt; **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidthPackageBandwidth` to `Cancelled`.
      * 
      */
@@ -105,6 +106,7 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
 
     /**
      * @return The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+     * 
      * &gt; **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidthPackageBandwidth` to `Cancelled`.
      * 
      */

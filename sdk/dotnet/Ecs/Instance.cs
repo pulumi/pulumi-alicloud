@@ -118,6 +118,14 @@ namespace Pulumi.AliCloud.Ecs
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+        /// 
+        /// &gt; **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `ManagedHostId` is refreshed from the response only when `ManagedHostId` is configured.
+        /// </summary>
+        [Output("additionalAttributes")]
+        public Output<ImmutableArray<string>> AdditionalAttributes { get; private set; } = null!;
+
+        /// <summary>
         /// Field `AllocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `InternetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
         /// </summary>
         [Output("allocatePublicIp")]
@@ -165,6 +173,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        /// 
         /// &gt; **NOTE:** `CreditSpecification` is only supported by burstable instance families (e.g. `T5`, `T6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         /// </summary>
         [Output("creditSpecification")]
@@ -365,6 +374,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `KeyName` can be modified. If you want to use `KeyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+        /// 
         /// &gt; **NOTE:** When modifying `KeyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         /// </summary>
         [Output("keyName")]
@@ -420,6 +430,14 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("maintenanceTime")]
         public Output<Outputs.InstanceMaintenanceTime?> MaintenanceTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `ManagedHostId` and `DedicatedHostId` parameters.
+        /// 
+        /// &gt; **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `AdditionalAttributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `ManagedHostId` is configured.
+        /// </summary>
+        [Output("managedHostId")]
+        public Output<string?> ManagedHostId { get; private set; } = null!;
 
         /// <summary>
         /// The memory size of the instance. Unit: MiB.
@@ -827,6 +845,20 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalAttributes")]
+        private InputList<string>? _additionalAttributes;
+
+        /// <summary>
+        /// A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+        /// 
+        /// &gt; **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `ManagedHostId` is refreshed from the response only when `ManagedHostId` is configured.
+        /// </summary>
+        public InputList<string> AdditionalAttributes
+        {
+            get => _additionalAttributes ?? (_additionalAttributes = new InputList<string>());
+            set => _additionalAttributes = value;
+        }
+
         /// <summary>
         /// Field `AllocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `InternetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
         /// </summary>
@@ -863,6 +895,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        /// 
         /// &gt; **NOTE:** `CreditSpecification` is only supported by burstable instance families (e.g. `T5`, `T6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         /// </summary>
         [Input("creditSpecification")]
@@ -1063,6 +1096,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `KeyName` can be modified. If you want to use `KeyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+        /// 
         /// &gt; **NOTE:** When modifying `KeyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         /// </summary>
         [Input("keyName")]
@@ -1124,6 +1158,14 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("maintenanceTime")]
         public Input<Inputs.InstanceMaintenanceTimeArgs>? MaintenanceTime { get; set; }
+
+        /// <summary>
+        /// The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `ManagedHostId` and `DedicatedHostId` parameters.
+        /// 
+        /// &gt; **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `AdditionalAttributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `ManagedHostId` is configured.
+        /// </summary>
+        [Input("managedHostId")]
+        public Input<string>? ManagedHostId { get; set; }
 
         /// <summary>
         /// The index of the network card for Primary ENI.
@@ -1481,6 +1523,20 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
+        [Input("additionalAttributes")]
+        private InputList<string>? _additionalAttributes;
+
+        /// <summary>
+        /// A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+        /// 
+        /// &gt; **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `ManagedHostId` is refreshed from the response only when `ManagedHostId` is configured.
+        /// </summary>
+        public InputList<string> AdditionalAttributes
+        {
+            get => _additionalAttributes ?? (_additionalAttributes = new InputList<string>());
+            set => _additionalAttributes = value;
+        }
+
         /// <summary>
         /// Field `AllocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `InternetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
         /// </summary>
@@ -1529,6 +1585,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        /// 
         /// &gt; **NOTE:** `CreditSpecification` is only supported by burstable instance families (e.g. `T5`, `T6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         /// </summary>
         [Input("creditSpecification")]
@@ -1741,6 +1798,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `KeyName` can be modified. If you want to use `KeyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+        /// 
         /// &gt; **NOTE:** When modifying `KeyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         /// </summary>
         [Input("keyName")]
@@ -1802,6 +1860,14 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("maintenanceTime")]
         public Input<Inputs.InstanceMaintenanceTimeGetArgs>? MaintenanceTime { get; set; }
+
+        /// <summary>
+        /// The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `ManagedHostId` and `DedicatedHostId` parameters.
+        /// 
+        /// &gt; **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `AdditionalAttributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `ManagedHostId` is configured.
+        /// </summary>
+        [Input("managedHostId")]
+        public Input<string>? ManagedHostId { get; set; }
 
         /// <summary>
         /// The memory size of the instance. Unit: MiB.

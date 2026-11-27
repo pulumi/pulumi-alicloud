@@ -216,6 +216,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     }
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     * 
      * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      * 
      */
@@ -224,6 +225,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     * 
      * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      * 
      */

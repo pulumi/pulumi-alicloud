@@ -132,12 +132,6 @@ class GlobalSecurityIpGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        zone_id = config.get("zoneId")
-        if zone_id is None:
-            zone_id = "cn-beijing-h"
-        region_id = config.get("regionId")
-        if region_id is None:
-            region_id = "cn-beijing"
         default = alicloud.redis.GlobalSecurityIpGroup("default",
             global_ip_group_name="ggn_example_create",
             global_ip_list="192.168.0.1,10.10.10.10,172.16.0.1")
@@ -186,12 +180,6 @@ class GlobalSecurityIpGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        zone_id = config.get("zoneId")
-        if zone_id is None:
-            zone_id = "cn-beijing-h"
-        region_id = config.get("regionId")
-        if region_id is None:
-            region_id = "cn-beijing"
         default = alicloud.redis.GlobalSecurityIpGroup("default",
             global_ip_group_name="ggn_example_create",
             global_ip_list="192.168.0.1,10.10.10.10,172.16.0.1")

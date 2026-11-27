@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.40.0.
  * 
+ * &gt; **NOTE:** Destroying a `PrePaid` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+ * 
  * &gt; **NOTE:**  The following regions don&#39;t support create Classic network MongoDB Sharding Instance.
  * [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-3`,`ap-southeast-5`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
  * 
@@ -164,6 +166,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * 
      * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
      * 
      */
@@ -172,6 +175,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * 
      * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
      * 
      */
@@ -634,6 +638,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * 
      * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
      * 
      */
@@ -642,6 +647,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * 
      * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
      * 
      */
@@ -783,6 +789,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * - `Open`: turn on SSL encryption.
      * - `Close`: turn off SSL encryption.
      * - `Update`: update SSL certificate.
+     * 
      * &gt; **NOTE:** Once `sslAction` is set, it isn&#39;t allowed to be removed from the Terraform code.
      * 
      */
@@ -794,6 +801,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * - `Open`: turn on SSL encryption.
      * - `Close`: turn off SSL encryption.
      * - `Update`: update SSL certificate.
+     * 
      * &gt; **NOTE:** Once `sslAction` is set, it isn&#39;t allowed to be removed from the Terraform code.
      * 
      */

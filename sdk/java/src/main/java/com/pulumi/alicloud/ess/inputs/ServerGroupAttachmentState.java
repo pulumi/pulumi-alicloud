@@ -81,6 +81,7 @@ public final class ServerGroupAttachmentState extends com.pulumi.resources.Resou
 
     /**
      * The type of server group N. Valid values: ALB, NLB, GWLB.
+     * 
      * &gt; **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
      * 
      */
@@ -89,6 +90,7 @@ public final class ServerGroupAttachmentState extends com.pulumi.resources.Resou
 
     /**
      * @return The type of server group N. Valid values: ALB, NLB, GWLB.
+     * 
      * &gt; **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
      * 
      */
@@ -228,6 +230,7 @@ public final class ServerGroupAttachmentState extends com.pulumi.resources.Resou
 
         /**
          * @param type The type of server group N. Valid values: ALB, NLB, GWLB.
+         * 
          * &gt; **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
          * 
          * @return builder
@@ -240,6 +243,7 @@ public final class ServerGroupAttachmentState extends com.pulumi.resources.Resou
 
         /**
          * @param type The type of server group N. Valid values: ALB, NLB, GWLB.
+         * 
          * &gt; **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
          * 
          * @return builder

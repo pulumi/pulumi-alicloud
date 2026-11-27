@@ -103,6 +103,7 @@ export class KeyPair extends pulumi.CustomResource {
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
+     *
      * > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
@@ -177,6 +178,7 @@ export interface KeyPairState {
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
+     *
      * > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -211,6 +213,7 @@ export interface KeyPairArgs {
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
+     *
      * > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;

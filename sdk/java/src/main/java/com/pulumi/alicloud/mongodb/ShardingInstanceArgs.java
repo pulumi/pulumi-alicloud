@@ -57,6 +57,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * 
      * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
      * 
      */
@@ -65,6 +66,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * 
      * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
      * 
      */
@@ -545,6 +547,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * 
      * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
      * 
      */
@@ -553,6 +556,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * 
      * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
      * 
      */
@@ -689,6 +693,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
      * - `Open`: turn on SSL encryption.
      * - `Close`: turn off SSL encryption.
      * - `Update`: update SSL certificate.
+     * 
      * &gt; **NOTE:** Once `sslAction` is set, it isn&#39;t allowed to be removed from the Terraform code.
      * 
      */
@@ -700,6 +705,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
      * - `Open`: turn on SSL encryption.
      * - `Close`: turn off SSL encryption.
      * - `Update`: update SSL certificate.
+     * 
      * &gt; **NOTE:** Once `sslAction` is set, it isn&#39;t allowed to be removed from the Terraform code.
      * 
      */
@@ -932,6 +938,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param autoRenewDuration The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+         * 
          * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
          * 
          * @return builder
@@ -944,6 +951,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param autoRenewDuration The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+         * 
          * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
          * 
          * @return builder
@@ -1662,6 +1670,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param restoreTime The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+         * 
          * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
          * 
          * @return builder
@@ -1674,6 +1683,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param restoreTime The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+         * 
          * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
          * 
          * @return builder
@@ -1890,6 +1900,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
          * - `Open`: turn on SSL encryption.
          * - `Close`: turn off SSL encryption.
          * - `Update`: update SSL certificate.
+         * 
          * &gt; **NOTE:** Once `sslAction` is set, it isn&#39;t allowed to be removed from the Terraform code.
          * 
          * @return builder
@@ -1905,6 +1916,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
          * - `Open`: turn on SSL encryption.
          * - `Close`: turn off SSL encryption.
          * - `Update`: update SSL certificate.
+         * 
          * &gt; **NOTE:** Once `sslAction` is set, it isn&#39;t allowed to be removed from the Terraform code.
          * 
          * @return builder

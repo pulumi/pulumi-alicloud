@@ -446,6 +446,8 @@ public final class OssFunctions {
     /**
      * This data source provides the objects of an OSS bucket.
      * 
+     * &gt; **NOTE:** Available since v1.17.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -487,6 +489,8 @@ public final class OssFunctions {
     }
     /**
      * This data source provides the objects of an OSS bucket.
+     * 
+     * &gt; **NOTE:** Available since v1.17.0.
      * 
      * ## Example Usage
      * 
@@ -530,6 +534,8 @@ public final class OssFunctions {
     /**
      * This data source provides the objects of an OSS bucket.
      * 
+     * &gt; **NOTE:** Available since v1.17.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -572,6 +578,8 @@ public final class OssFunctions {
     /**
      * This data source provides the objects of an OSS bucket.
      * 
+     * &gt; **NOTE:** Available since v1.17.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -613,6 +621,8 @@ public final class OssFunctions {
     }
     /**
      * This data source provides the objects of an OSS bucket.
+     * 
+     * &gt; **NOTE:** Available since v1.17.0.
      * 
      * ## Example Usage
      * 

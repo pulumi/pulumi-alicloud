@@ -456,6 +456,8 @@ class Gateway(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.132.0.
 
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+
         ## Example Usage
 
         Basic Usage
@@ -532,6 +534,8 @@ class Gateway(pulumi.CustomResource):
         For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/csg/developer-reference/api-mnz46x).
 
         > **NOTE:** Available since v1.132.0.
+
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
 
         ## Example Usage
 

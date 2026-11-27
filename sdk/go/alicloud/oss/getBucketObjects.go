@@ -13,6 +13,8 @@ import (
 
 // This data source provides the objects of an OSS bucket.
 //
+// > **NOTE:** Available since v1.17.0.
+//
 // ## Example Usage
 //
 // ```go

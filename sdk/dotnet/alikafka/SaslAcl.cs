@@ -138,6 +138,7 @@ namespace Pulumi.AliCloud.alikafka
         /// - `IdempotentWrite`: idempotent write to Cluster
         /// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
         /// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+        /// 
         /// &gt; **NOTE:**  `AclOperationTypes` is only supported for Serverless instances.
         /// </summary>
         [Output("aclOperationTypes")]
@@ -147,6 +148,7 @@ namespace Pulumi.AliCloud.alikafka
         /// Authorization method. Value:
         /// - `DENY`: deny.
         /// - `ALLOW`: allow.
+        /// 
         /// &gt; **NOTE:**  `AclPermissionType` is only supported for Serverless instances.
         /// </summary>
         [Output("aclPermissionType")]
@@ -180,6 +182,7 @@ namespace Pulumi.AliCloud.alikafka
 
         /// <summary>
         /// The host of the acl.
+        /// 
         /// &gt; **NOTE:** From version 1.270.0, `Host` can be set.
         /// </summary>
         [Output("host")]
@@ -263,6 +266,7 @@ namespace Pulumi.AliCloud.alikafka
         /// - `IdempotentWrite`: idempotent write to Cluster
         /// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
         /// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+        /// 
         /// &gt; **NOTE:**  `AclOperationTypes` is only supported for Serverless instances.
         /// </summary>
         [Input("aclOperationTypes")]
@@ -272,6 +276,7 @@ namespace Pulumi.AliCloud.alikafka
         /// Authorization method. Value:
         /// - `DENY`: deny.
         /// - `ALLOW`: allow.
+        /// 
         /// &gt; **NOTE:**  `AclPermissionType` is only supported for Serverless instances.
         /// </summary>
         [Input("aclPermissionType")]
@@ -305,6 +310,7 @@ namespace Pulumi.AliCloud.alikafka
 
         /// <summary>
         /// The host of the acl.
+        /// 
         /// &gt; **NOTE:** From version 1.270.0, `Host` can be set.
         /// </summary>
         [Input("host")]
@@ -350,6 +356,7 @@ namespace Pulumi.AliCloud.alikafka
         /// - `IdempotentWrite`: idempotent write to Cluster
         /// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
         /// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+        /// 
         /// &gt; **NOTE:**  `AclOperationTypes` is only supported for Serverless instances.
         /// </summary>
         [Input("aclOperationTypes")]
@@ -359,6 +366,7 @@ namespace Pulumi.AliCloud.alikafka
         /// Authorization method. Value:
         /// - `DENY`: deny.
         /// - `ALLOW`: allow.
+        /// 
         /// &gt; **NOTE:**  `AclPermissionType` is only supported for Serverless instances.
         /// </summary>
         [Input("aclPermissionType")]
@@ -392,6 +400,7 @@ namespace Pulumi.AliCloud.alikafka
 
         /// <summary>
         /// The host of the acl.
+        /// 
         /// &gt; **NOTE:** From version 1.270.0, `Host` can be set.
         /// </summary>
         [Input("host")]

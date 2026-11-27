@@ -338,6 +338,7 @@ type DedicatedPropreHost struct {
 	//   Must be consistent with the parent resource cluster engine attributes.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// The ID of the custom image.
+	//
 	// > **NOTE:**  If you need to use the default image, you do not need to fill it in.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
 	// Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
@@ -350,11 +351,13 @@ type DedicatedPropreHost struct {
 	// - Length is 8~30 characters.
 	// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
 	// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+	//
 	// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 	OsPassword pulumi.StringPtrOutput `pulumi:"osPassword"`
 	// Whether to use the default password of the image.
 	// - **false**: (default)Do not use
 	// - **true**: Use
+	//
 	// > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
 	PasswordInherit pulumi.StringPtrOutput `pulumi:"passwordInherit"`
 	// The Payment type. Currently, only **Subscription** is supported.
@@ -462,6 +465,7 @@ type dedicatedPropreHostState struct {
 	//   Must be consistent with the parent resource cluster engine attributes.
 	Engine *string `pulumi:"engine"`
 	// The ID of the custom image.
+	//
 	// > **NOTE:**  If you need to use the default image, you do not need to fill it in.
 	ImageId *string `pulumi:"imageId"`
 	// Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
@@ -474,11 +478,13 @@ type dedicatedPropreHostState struct {
 	// - Length is 8~30 characters.
 	// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
 	// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+	//
 	// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 	OsPassword *string `pulumi:"osPassword"`
 	// Whether to use the default password of the image.
 	// - **false**: (default)Do not use
 	// - **true**: Use
+	//
 	// > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
 	PasswordInherit *string `pulumi:"passwordInherit"`
 	// The Payment type. Currently, only **Subscription** is supported.
@@ -536,6 +542,7 @@ type DedicatedPropreHostState struct {
 	//   Must be consistent with the parent resource cluster engine attributes.
 	Engine pulumi.StringPtrInput
 	// The ID of the custom image.
+	//
 	// > **NOTE:**  If you need to use the default image, you do not need to fill it in.
 	ImageId pulumi.StringPtrInput
 	// Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
@@ -548,11 +555,13 @@ type DedicatedPropreHostState struct {
 	// - Length is 8~30 characters.
 	// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
 	// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+	//
 	// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 	OsPassword pulumi.StringPtrInput
 	// Whether to use the default password of the image.
 	// - **false**: (default)Do not use
 	// - **true**: Use
+	//
 	// > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
 	PasswordInherit pulumi.StringPtrInput
 	// The Payment type. Currently, only **Subscription** is supported.
@@ -618,6 +627,7 @@ type dedicatedPropreHostArgs struct {
 	//   Must be consistent with the parent resource cluster engine attributes.
 	Engine string `pulumi:"engine"`
 	// The ID of the custom image.
+	//
 	// > **NOTE:**  If you need to use the default image, you do not need to fill it in.
 	ImageId *string `pulumi:"imageId"`
 	// Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
@@ -630,11 +640,13 @@ type dedicatedPropreHostArgs struct {
 	// - Length is 8~30 characters.
 	// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
 	// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+	//
 	// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 	OsPassword *string `pulumi:"osPassword"`
 	// Whether to use the default password of the image.
 	// - **false**: (default)Do not use
 	// - **true**: Use
+	//
 	// > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
 	PasswordInherit *string `pulumi:"passwordInherit"`
 	// The Payment type. Currently, only **Subscription** is supported.
@@ -691,6 +703,7 @@ type DedicatedPropreHostArgs struct {
 	//   Must be consistent with the parent resource cluster engine attributes.
 	Engine pulumi.StringInput
 	// The ID of the custom image.
+	//
 	// > **NOTE:**  If you need to use the default image, you do not need to fill it in.
 	ImageId pulumi.StringPtrInput
 	// Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
@@ -703,11 +716,13 @@ type DedicatedPropreHostArgs struct {
 	// - Length is 8~30 characters.
 	// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
 	// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+	//
 	// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 	OsPassword pulumi.StringPtrInput
 	// Whether to use the default password of the image.
 	// - **false**: (default)Do not use
 	// - **true**: Use
+	//
 	// > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
 	PasswordInherit pulumi.StringPtrInput
 	// The Payment type. Currently, only **Subscription** is supported.
@@ -884,6 +899,7 @@ func (o DedicatedPropreHostOutput) Engine() pulumi.StringOutput {
 }
 
 // The ID of the custom image.
+//
 // > **NOTE:**  If you need to use the default image, you do not need to fill it in.
 func (o DedicatedPropreHostOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
@@ -908,6 +924,7 @@ func (o DedicatedPropreHostOutput) KeyPairName() pulumi.StringPtrOutput {
 // - Length is 8~30 characters.
 // - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
 // - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+//
 // > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 func (o DedicatedPropreHostOutput) OsPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.StringPtrOutput { return v.OsPassword }).(pulumi.StringPtrOutput)
@@ -916,6 +933,7 @@ func (o DedicatedPropreHostOutput) OsPassword() pulumi.StringPtrOutput {
 // Whether to use the default password of the image.
 // - **false**: (default)Do not use
 // - **true**: Use
+//
 // > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
 func (o DedicatedPropreHostOutput) PasswordInherit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.StringPtrOutput { return v.PasswordInherit }).(pulumi.StringPtrOutput)

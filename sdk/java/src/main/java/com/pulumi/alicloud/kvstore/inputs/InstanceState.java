@@ -162,6 +162,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     * 
+     */
+    @Import(name="caCertCommonName")
+    private @Nullable Output<String> caCertCommonName;
+
+    /**
+     * @return The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     * 
+     */
+    public Optional<Output<String>> caCertCommonName() {
+        return Optional.ofNullable(this.caCertCommonName);
+    }
+
+    /**
+     * The download URL of the CA certificate. This attribute is populated when `sslEnable` is set to `Enable`.
+     * 
+     */
+    @Import(name="caCertDownloadUrl")
+    private @Nullable Output<String> caCertDownloadUrl;
+
+    /**
+     * @return The download URL of the CA certificate. This attribute is populated when `sslEnable` is set to `Enable`.
+     * 
+     */
+    public Optional<Output<String>> caCertDownloadUrl() {
+        return Optional.ofNullable(this.caCertDownloadUrl);
+    }
+
+    /**
      * The storage capacity of the KVStore DBInstance. Unit: MB.
      * 
      */
@@ -209,14 +239,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Indicates whether the address is a private endpoint.
      * 
-     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     * 
-     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-     * 
-     * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     * 
-     * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
-     * 
      * @deprecated Field &#39;connection_string&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
      * 
      */
@@ -226,14 +248,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Indicates whether the address is a private endpoint.
-     * 
-     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     * 
-     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-     * 
-     * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     * 
-     * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      * 
      * @deprecated Field &#39;connection_string&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
      * 
@@ -484,6 +498,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> globalInstanceId() {
         return Optional.ofNullable(this.globalInstanceId);
+    }
+
+    /**
+     * The list of Global Security Group Ids.
+     * 
+     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     * 
+     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     * 
+     * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     * 
+     * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     * 
+     */
+    @Import(name="globalSecurityGroupLists")
+    private @Nullable Output<List<String>> globalSecurityGroupLists;
+
+    /**
+     * @return The list of Global Security Group Ids.
+     * 
+     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     * 
+     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     * 
+     * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     * 
+     * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     * 
+     */
+    public Optional<Output<List<String>>> globalSecurityGroupLists() {
+        return Optional.ofNullable(this.globalSecurityGroupLists);
     }
 
     /**
@@ -902,6 +947,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+     * 
      * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      * 
      */
@@ -910,6 +956,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+     * 
      * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      * 
      */
@@ -994,6 +1041,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     * 
      * &gt; **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      * 
      */
@@ -1002,6 +1050,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     * 
      * &gt; **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      * 
      */
@@ -1011,6 +1060,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * 
      * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
      * 
      */
@@ -1019,6 +1069,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * 
      * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
      * 
      */
@@ -1056,6 +1107,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> sslEnable() {
         return Optional.ofNullable(this.sslEnable);
+    }
+
+    /**
+     * The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     * 
+     */
+    @Import(name="sslExpiredTime")
+    private @Nullable Output<String> sslExpiredTime;
+
+    /**
+     * @return The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     * 
+     */
+    public Optional<Output<String>> sslExpiredTime() {
+        return Optional.ofNullable(this.sslExpiredTime);
     }
 
     /**
@@ -1164,6 +1230,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.backupTime = $.backupTime;
         this.bandwidth = $.bandwidth;
         this.businessInfo = $.businessInfo;
+        this.caCertCommonName = $.caCertCommonName;
+        this.caCertDownloadUrl = $.caCertDownloadUrl;
         this.capacity = $.capacity;
         this.config = $.config;
         this.connectionDomain = $.connectionDomain;
@@ -1183,6 +1251,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.forceUpgrade = $.forceUpgrade;
         this.globalInstance = $.globalInstance;
         this.globalInstanceId = $.globalInstanceId;
+        this.globalSecurityGroupLists = $.globalSecurityGroupLists;
         this.instanceChargeType = $.instanceChargeType;
         this.instanceClass = $.instanceClass;
         this.instanceName = $.instanceName;
@@ -1219,6 +1288,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.slaveReplicaCount = $.slaveReplicaCount;
         this.srcdbInstanceId = $.srcdbInstanceId;
         this.sslEnable = $.sslEnable;
+        this.sslExpiredTime = $.sslExpiredTime;
         this.status = $.status;
         this.tags = $.tags;
         this.tdeStatus = $.tdeStatus;
@@ -1451,6 +1521,48 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param caCertCommonName The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caCertCommonName(@Nullable Output<String> caCertCommonName) {
+            $.caCertCommonName = caCertCommonName;
+            return this;
+        }
+
+        /**
+         * @param caCertCommonName The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caCertCommonName(String caCertCommonName) {
+            return caCertCommonName(Output.of(caCertCommonName));
+        }
+
+        /**
+         * @param caCertDownloadUrl The download URL of the CA certificate. This attribute is populated when `sslEnable` is set to `Enable`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caCertDownloadUrl(@Nullable Output<String> caCertDownloadUrl) {
+            $.caCertDownloadUrl = caCertDownloadUrl;
+            return this;
+        }
+
+        /**
+         * @param caCertDownloadUrl The download URL of the CA certificate. This attribute is populated when `sslEnable` is set to `Enable`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caCertDownloadUrl(String caCertDownloadUrl) {
+            return caCertDownloadUrl(Output.of(caCertDownloadUrl));
+        }
+
+        /**
          * @param capacity The storage capacity of the KVStore DBInstance. Unit: MB.
          * 
          * @return builder
@@ -1516,14 +1628,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param connectionString Indicates whether the address is a private endpoint.
          * 
-         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-         * 
-         * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-         * 
-         * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-         * 
-         * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
-         * 
          * @return builder
          * 
          * @deprecated Field &#39;connection_string&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
@@ -1537,14 +1641,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param connectionString Indicates whether the address is a private endpoint.
-         * 
-         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-         * 
-         * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-         * 
-         * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-         * 
-         * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
          * 
          * @return builder
          * 
@@ -1887,6 +1983,61 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder globalInstanceId(String globalInstanceId) {
             return globalInstanceId(Output.of(globalInstanceId));
+        }
+
+        /**
+         * @param globalSecurityGroupLists The list of Global Security Group Ids.
+         * 
+         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+         * 
+         * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+         * 
+         * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+         * 
+         * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSecurityGroupLists(@Nullable Output<List<String>> globalSecurityGroupLists) {
+            $.globalSecurityGroupLists = globalSecurityGroupLists;
+            return this;
+        }
+
+        /**
+         * @param globalSecurityGroupLists The list of Global Security Group Ids.
+         * 
+         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+         * 
+         * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+         * 
+         * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+         * 
+         * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSecurityGroupLists(List<String> globalSecurityGroupLists) {
+            return globalSecurityGroupLists(Output.of(globalSecurityGroupLists));
+        }
+
+        /**
+         * @param globalSecurityGroupLists The list of Global Security Group Ids.
+         * 
+         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+         * 
+         * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+         * 
+         * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+         * 
+         * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSecurityGroupLists(String... globalSecurityGroupLists) {
+            return globalSecurityGroupLists(List.of(globalSecurityGroupLists));
         }
 
         /**
@@ -2474,6 +2625,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secondaryZoneId The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+         * 
          * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
          * 
          * @return builder
@@ -2486,6 +2638,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secondaryZoneId The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+         * 
          * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
          * 
          * @return builder
@@ -2612,6 +2765,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param slaveReadOnlyCount The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+         * 
          * &gt; **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
          * 
          * @return builder
@@ -2624,6 +2778,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param slaveReadOnlyCount The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+         * 
          * &gt; **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
          * 
          * @return builder
@@ -2635,6 +2790,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param slaveReplicaCount The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+         * 
          * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
          * 
          * @return builder
@@ -2647,6 +2803,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param slaveReplicaCount The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+         * 
          * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
          * 
          * @return builder
@@ -2698,6 +2855,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sslEnable(String sslEnable) {
             return sslEnable(Output.of(sslEnable));
+        }
+
+        /**
+         * @param sslExpiredTime The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslExpiredTime(@Nullable Output<String> sslExpiredTime) {
+            $.sslExpiredTime = sslExpiredTime;
+            return this;
+        }
+
+        /**
+         * @param sslExpiredTime The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslExpiredTime(String sslExpiredTime) {
+            return sslExpiredTime(Output.of(sslExpiredTime));
         }
 
         /**

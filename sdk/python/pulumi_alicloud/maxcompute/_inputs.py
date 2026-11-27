@@ -126,6 +126,7 @@ class ProjectPropertiesArgsDict(TypedDict):
     encryption: NotRequired[pulumi.Input[Optional['ProjectPropertiesEncryptionArgsDict']]]
     """
     Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+
     > **NOTE :**:
     To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
 
@@ -178,6 +179,7 @@ class ProjectPropertiesArgs:
         :param pulumi.Input[_builtins.bool] enable_decimal2: Whether to turn on Decimal2.0.
         :param pulumi.Input[_builtins.bool] enable_dr: Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
         :param pulumi.Input['ProjectPropertiesEncryptionArgs'] encryption: Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+               
                > **NOTE :**:
                To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
                
@@ -257,6 +259,7 @@ class ProjectPropertiesArgs:
     def encryption(self) -> pulumi.Input[Optional['ProjectPropertiesEncryptionArgs']]:
         """
         Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+
         > **NOTE :**:
         To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
 

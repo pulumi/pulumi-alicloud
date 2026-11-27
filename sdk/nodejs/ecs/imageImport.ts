@@ -143,6 +143,7 @@ export class ImageImport extends pulumi.CustomResource {
     declare public readonly osType: pulumi.Output<string | undefined>;
     /**
      * The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+     *
      * > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
      */
     declare public readonly platform: pulumi.Output<string>;
@@ -227,6 +228,7 @@ export interface ImageImportState {
     osType?: pulumi.Input<string | undefined>;
     /**
      * The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+     *
      * > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
      */
     platform?: pulumi.Input<string | undefined>;
@@ -270,6 +272,7 @@ export interface ImageImportArgs {
     osType?: pulumi.Input<string | undefined>;
     /**
      * The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+     *
      * > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
      */
     platform?: pulumi.Input<string | undefined>;

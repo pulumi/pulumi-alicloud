@@ -138,6 +138,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        /// 
         /// &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         /// </summary>
         [Output("customSan")]
@@ -403,6 +404,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        /// 
         /// &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         /// </summary>
         [Input("customSan")]
@@ -654,6 +656,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        /// 
         /// &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         /// </summary>
         [Input("customSan")]

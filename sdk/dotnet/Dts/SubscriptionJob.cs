@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Dts
     ///     var exampleRdsAccount = new AliCloud.Rds.RdsAccount("example", new()
     ///     {
     ///         DbInstanceId = exampleInstance.Id,
-    ///         AccountName = "test_mysql",
+    ///         AccountName = "example_mysql",
     ///         AccountPassword = "N1cetest",
     ///     });
     /// 
@@ -330,6 +330,12 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Output("sourceEndpointRole")]
         public Output<string?> SourceEndpointRole { get; private set; } = null!;
+
+        /// <summary>
+        /// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+        /// </summary>
+        [Output("sourceEndpointSsl")]
+        public Output<string> SourceEndpointSsl { get; private set; } = null!;
 
         /// <summary>
         /// The username of source database instance account.
@@ -612,6 +618,12 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointRole { get; set; }
 
         /// <summary>
+        /// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+        /// </summary>
+        [Input("sourceEndpointSsl")]
+        public Input<string>? SourceEndpointSsl { get; set; }
+
+        /// <summary>
         /// The username of source database instance account.
         /// </summary>
         [Input("sourceEndpointUserName")]
@@ -858,6 +870,12 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Input("sourceEndpointRole")]
         public Input<string>? SourceEndpointRole { get; set; }
+
+        /// <summary>
+        /// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+        /// </summary>
+        [Input("sourceEndpointSsl")]
+        public Input<string>? SourceEndpointSsl { get; set; }
 
         /// <summary>
         /// The username of source database instance account.

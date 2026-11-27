@@ -15,6 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AclEntryAttachmentEntryArgs',
+    'AclEntryAttachmentEntryArgsDict',
     'AclEntryListArgs',
     'AclEntryListArgsDict',
     'BackendServerBackendServerArgs',
@@ -26,6 +28,54 @@ __all__ = [
     'ServerGroupServerArgs',
     'ServerGroupServerArgsDict',
 ]
+
+class AclEntryAttachmentEntryArgsDict(TypedDict):
+    entry: pulumi.Input[_builtins.str]
+    """
+    The CIDR block of the acl entry.
+    """
+    comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The comment of the acl entry.
+    """
+
+@pulumi.input_type
+class AclEntryAttachmentEntryArgs:
+    def __init__(__self__, *,
+                 entry: pulumi.Input[_builtins.str],
+                 comment: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] entry: The CIDR block of the acl entry.
+        :param pulumi.Input[_builtins.str] comment: The comment of the acl entry.
+        """
+        pulumi.set(__self__, "entry", entry)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+
+    @_builtins.property
+    @pulumi.getter
+    def entry(self) -> pulumi.Input[_builtins.str]:
+        """
+        The CIDR block of the acl entry.
+        """
+        return pulumi.get(self, "entry")
+
+    @entry.setter
+    def entry(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "entry", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The comment of the acl entry.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "comment", value)
+
 
 class AclEntryListArgsDict(TypedDict):
     comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]

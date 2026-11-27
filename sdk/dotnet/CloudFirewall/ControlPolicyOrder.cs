@@ -80,6 +80,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+        /// 
         /// &gt; **NOTE:** From version 1.227.1, `Order` must be set.
         /// </summary>
         [Output("order")]
@@ -145,6 +146,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+        /// 
         /// &gt; **NOTE:** From version 1.227.1, `Order` must be set.
         /// </summary>
         [Input("order", required: true)]
@@ -172,6 +174,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+        /// 
         /// &gt; **NOTE:** From version 1.227.1, `Order` must be set.
         /// </summary>
         [Input("order")]

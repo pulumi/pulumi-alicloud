@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.190.0.
  *
+ * > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, convert the instance to `PayAsYouGo` by setting `paymentType = "PayAsYouGo"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -178,6 +180,7 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
      * The edition of the cluster. Valid values:
      * - `BasicVersion`: Basic Edition.
      * - `EnterpriseVersion`: Enterprise Edition.
+     *
      * > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
      */
     declare public readonly productVersion: pulumi.Output<string>;
@@ -442,6 +445,7 @@ export interface DBClusterLakeVersionState {
      * The edition of the cluster. Valid values:
      * - `BasicVersion`: Basic Edition.
      * - `EnterpriseVersion`: Enterprise Edition.
+     *
      * > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
      */
     productVersion?: pulumi.Input<string | undefined>;
@@ -559,6 +563,7 @@ export interface DBClusterLakeVersionArgs {
      * The edition of the cluster. Valid values:
      * - `BasicVersion`: Basic Edition.
      * - `EnterpriseVersion`: Enterprise Edition.
+     *
      * > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
      */
     productVersion?: pulumi.Input<string | undefined>;

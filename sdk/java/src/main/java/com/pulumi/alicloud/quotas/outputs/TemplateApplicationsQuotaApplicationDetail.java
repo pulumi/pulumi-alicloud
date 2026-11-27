@@ -81,6 +81,7 @@ public final class TemplateApplicationsQuotaApplicationDetail {
     private @Nullable String quotaUnit;
     /**
      * @return Reason for quota application.
+     * 
      * &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      * 
      */
@@ -186,6 +187,7 @@ public final class TemplateApplicationsQuotaApplicationDetail {
     }
     /**
      * @return Reason for quota application.
+     * 
      * &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      * 
      */

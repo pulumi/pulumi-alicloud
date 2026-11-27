@@ -40,14 +40,6 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			zoneId := "cn-beijing-h"
-//			if param := cfg.Get("zoneId"); param != "" {
-//				zoneId = param
-//			}
-//			regionId := "cn-beijing"
-//			if param := cfg.Get("regionId"); param != "" {
-//				regionId = param
-//			}
 //			_, err := redis.NewGlobalSecurityIpGroup(ctx, "default", &redis.GlobalSecurityIpGroupArgs{
 //				GlobalIpGroupName: pulumi.String("ggn_example_create"),
 //				GlobalIpList:      pulumi.String("192.168.0.1,10.10.10.10,172.16.0.1"),

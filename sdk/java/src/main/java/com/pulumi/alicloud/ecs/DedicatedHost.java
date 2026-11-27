@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.91.0.
  * 
+ * &gt; **NOTE:** Destroying a `PrePaid` instance fails with an error since v2.1.0. To destroy it, convert the instance to `PostPaid` by setting `paymentType = &#34;PostPaid&#34;` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

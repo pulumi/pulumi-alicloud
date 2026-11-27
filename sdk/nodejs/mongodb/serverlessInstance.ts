@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * For information about MongoDB Serverless Instance and how to use it, see [What is Serverless Instance](https://www.alibabacloud.com/help/doc-detail/26558.html).
  *
+ * > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+ *
  * > **NOTE:** Deprecated since v1.214.0.
  *
  * > **DEPRECATED:**  This resource has been deprecated from version `1.214.0`.

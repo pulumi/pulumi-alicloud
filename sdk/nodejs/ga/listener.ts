@@ -102,6 +102,7 @@ export class Listener extends pulumi.CustomResource {
     declare public readonly acceleratorId: pulumi.Output<string>;
     /**
      * The certificates of the listener. See `certificates` below.
+     *
      * > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
      */
     declare public readonly certificates: pulumi.Output<outputs.ga.ListenerCertificate[] | undefined>;
@@ -121,6 +122,7 @@ export class Listener extends pulumi.CustomResource {
     declare public readonly forwardedForConfig: pulumi.Output<outputs.ga.ListenerForwardedForConfig | undefined>;
     /**
      * The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+     *
      * > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
      */
     declare public readonly httpVersion: pulumi.Output<string>;
@@ -143,6 +145,7 @@ export class Listener extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * The portRanges of the listener. See `portRanges` below.
+     *
      * > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      */
     declare public readonly portRanges: pulumi.Output<outputs.ga.ListenerPortRange[]>;
@@ -156,6 +159,7 @@ export class Listener extends pulumi.CustomResource {
     declare public readonly proxyProtocol: pulumi.Output<boolean | undefined>;
     /**
      * The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+     *
      * > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
      */
     declare public readonly requestTimeout: pulumi.Output<number>;
@@ -235,6 +239,7 @@ export interface ListenerState {
     acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The certificates of the listener. See `certificates` below.
+     *
      * > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
      */
     certificates?: pulumi.Input<pulumi.Input<inputs.ga.ListenerCertificate>[] | undefined>;
@@ -254,6 +259,7 @@ export interface ListenerState {
     forwardedForConfig?: pulumi.Input<inputs.ga.ListenerForwardedForConfig | undefined>;
     /**
      * The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+     *
      * > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
      */
     httpVersion?: pulumi.Input<string | undefined>;
@@ -276,6 +282,7 @@ export interface ListenerState {
     name?: pulumi.Input<string | undefined>;
     /**
      * The portRanges of the listener. See `portRanges` below.
+     *
      * > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      */
     portRanges?: pulumi.Input<pulumi.Input<inputs.ga.ListenerPortRange>[] | undefined>;
@@ -289,6 +296,7 @@ export interface ListenerState {
     proxyProtocol?: pulumi.Input<boolean | undefined>;
     /**
      * The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+     *
      * > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
      */
     requestTimeout?: pulumi.Input<number | undefined>;
@@ -312,6 +320,7 @@ export interface ListenerArgs {
     acceleratorId: pulumi.Input<string>;
     /**
      * The certificates of the listener. See `certificates` below.
+     *
      * > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
      */
     certificates?: pulumi.Input<pulumi.Input<inputs.ga.ListenerCertificate>[] | undefined>;
@@ -331,6 +340,7 @@ export interface ListenerArgs {
     forwardedForConfig?: pulumi.Input<inputs.ga.ListenerForwardedForConfig | undefined>;
     /**
      * The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+     *
      * > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
      */
     httpVersion?: pulumi.Input<string | undefined>;
@@ -353,6 +363,7 @@ export interface ListenerArgs {
     name?: pulumi.Input<string | undefined>;
     /**
      * The portRanges of the listener. See `portRanges` below.
+     *
      * > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      */
     portRanges: pulumi.Input<pulumi.Input<inputs.ga.ListenerPortRange>[]>;
@@ -366,6 +377,7 @@ export interface ListenerArgs {
     proxyProtocol?: pulumi.Input<boolean | undefined>;
     /**
      * The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+     *
      * > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
      */
     requestTimeout?: pulumi.Input<number | undefined>;

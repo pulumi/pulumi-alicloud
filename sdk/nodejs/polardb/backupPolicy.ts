@@ -120,6 +120,7 @@ export class BackupPolicy extends pulumi.CustomResource {
     declare public readonly dataLevel1BackupFrequency: pulumi.Output<string>;
     /**
      * PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+     *
      * > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      */
     declare public readonly dataLevel1BackupPeriods: pulumi.Output<string[]>;
@@ -141,6 +142,7 @@ export class BackupPolicy extends pulumi.CustomResource {
     declare public readonly dataLevel2BackupAnotherRegionRetentionPeriod: pulumi.Output<number>;
     /**
      * PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+     *
      * > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      */
     declare public readonly dataLevel2BackupPeriods: pulumi.Output<string[] | undefined>;
@@ -162,6 +164,7 @@ export class BackupPolicy extends pulumi.CustomResource {
     declare public readonly logBackupAnotherRegionRegion: pulumi.Output<string | undefined>;
     /**
      * The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+     *
      * > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
      */
     declare public readonly logBackupAnotherRegionRetentionPeriod: pulumi.Output<number | undefined>;
@@ -260,6 +263,7 @@ export interface BackupPolicyState {
     dataLevel1BackupFrequency?: pulumi.Input<string | undefined>;
     /**
      * PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+     *
      * > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      */
     dataLevel1BackupPeriods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -281,6 +285,7 @@ export interface BackupPolicyState {
     dataLevel2BackupAnotherRegionRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+     *
      * > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      */
     dataLevel2BackupPeriods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -302,6 +307,7 @@ export interface BackupPolicyState {
     logBackupAnotherRegionRegion?: pulumi.Input<string | undefined>;
     /**
      * The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+     *
      * > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
      */
     logBackupAnotherRegionRetentionPeriod?: pulumi.Input<number | undefined>;
@@ -341,6 +347,7 @@ export interface BackupPolicyArgs {
     dataLevel1BackupFrequency?: pulumi.Input<string | undefined>;
     /**
      * PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+     *
      * > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      */
     dataLevel1BackupPeriods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -362,6 +369,7 @@ export interface BackupPolicyArgs {
     dataLevel2BackupAnotherRegionRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+     *
      * > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      */
     dataLevel2BackupPeriods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -379,6 +387,7 @@ export interface BackupPolicyArgs {
     logBackupAnotherRegionRegion?: pulumi.Input<string | undefined>;
     /**
      * The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+     *
      * > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
      */
     logBackupAnotherRegionRetentionPeriod?: pulumi.Input<number | undefined>;

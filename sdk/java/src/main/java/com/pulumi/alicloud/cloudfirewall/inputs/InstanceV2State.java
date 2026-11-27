@@ -78,14 +78,14 @@ public final class InstanceV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** The billing method of an existing instance cannot be converted through the API. Changing this value on an existing instance is rejected unless the instance has already been converted to the target billing method in the Cloud Firewall console; in that case the state is aligned with the converted instance without destroying or recreating it. A change of this value combined with a change of `productType` or `spec` is rejected during planning, so no replacement is planned.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+     * @return The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** The billing method of an existing instance cannot be converted through the API. Changing this value on an existing instance is rejected unless the instance has already been converted to the target billing method in the Cloud Firewall console; in that case the state is aligned with the converted instance without destroying or recreating it. A change of this value combined with a change of `productType` or `spec` is rejected during planning, so no replacement is planned.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -223,14 +223,14 @@ public final class InstanceV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The edition of the Cloud Firewall instance. Valid values: `paygVersion`, `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
+     * The edition of the Cloud Firewall instance. Valid values: `paygVersion`, `premiumVersion`, `enterpriseVersion`,`ultimateVersion`. **NOTE:** Changing `spec` replaces the instance; an in-place edition change of an existing instance is not supported through this resource.
      * 
      */
     @Import(name="spec")
     private @Nullable Output<String> spec;
 
     /**
-     * @return The edition of the Cloud Firewall instance. Valid values: `paygVersion`, `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
+     * @return The edition of the Cloud Firewall instance. Valid values: `paygVersion`, `premiumVersion`, `enterpriseVersion`,`ultimateVersion`. **NOTE:** Changing `spec` replaces the instance; an in-place edition change of an existing instance is not supported through this resource.
      * 
      */
     public Optional<Output<String>> spec() {
@@ -391,7 +391,7 @@ public final class InstanceV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** The billing method of an existing instance cannot be converted through the API. Changing this value on an existing instance is rejected unless the instance has already been converted to the target billing method in the Cloud Firewall console; in that case the state is aligned with the converted instance without destroying or recreating it. A change of this value combined with a change of `productType` or `spec` is rejected during planning, so no replacement is planned.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class InstanceV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** The billing method of an existing instance cannot be converted through the API. Changing this value on an existing instance is rejected unless the instance has already been converted to the target billing method in the Cloud Firewall console; in that case the state is aligned with the converted instance without destroying or recreating it. A change of this value combined with a change of `productType` or `spec` is rejected during planning, so no replacement is planned.
          * 
          * @return builder
          * 
@@ -590,7 +590,7 @@ public final class InstanceV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spec The edition of the Cloud Firewall instance. Valid values: `paygVersion`, `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
+         * @param spec The edition of the Cloud Firewall instance. Valid values: `paygVersion`, `premiumVersion`, `enterpriseVersion`,`ultimateVersion`. **NOTE:** Changing `spec` replaces the instance; an in-place edition change of an existing instance is not supported through this resource.
          * 
          * @return builder
          * 
@@ -601,7 +601,7 @@ public final class InstanceV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spec The edition of the Cloud Firewall instance. Valid values: `paygVersion`, `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
+         * @param spec The edition of the Cloud Firewall instance. Valid values: `paygVersion`, `premiumVersion`, `enterpriseVersion`,`ultimateVersion`. **NOTE:** Changing `spec` replaces the instance; an in-place edition change of an existing instance is not supported through this resource.
          * 
          * @return builder
          * 

@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleRdsAccount = new RdsAccount("exampleRdsAccount", RdsAccountArgs.builder()
  *             .dbInstanceId(exampleInstance.id())
- *             .accountName("test_mysql")
+ *             .accountName("example_mysql")
  *             .accountPassword("N1cetest")
  *             .build());
  * 
@@ -587,6 +587,20 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> sourceEndpointRole() {
         return Codegen.optional(this.sourceEndpointRole);
+    }
+    /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+     * 
+     */
+    @Export(name="sourceEndpointSsl", refs={String.class}, tree="[0]")
+    private Output<String> sourceEndpointSsl;
+
+    /**
+     * @return The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+     * 
+     */
+    public Output<String> sourceEndpointSsl() {
+        return this.sourceEndpointSsl;
     }
     /**
      * The username of source database instance account.

@@ -9292,6 +9292,7 @@ func (o GroupMetricRuleEscalationsWarnPtrOutput) Times() pulumi.IntPtrOutput {
 
 type GroupMetricRuleTarget struct {
 	// The Alibaba Cloud Resource Name (ARN) of the resource.
+	//
 	// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 	Arn *string `pulumi:"arn"`
 	// The ID of the resource for which alerts are triggered.
@@ -9315,6 +9316,7 @@ type GroupMetricRuleTargetInput interface {
 
 type GroupMetricRuleTargetArgs struct {
 	// The Alibaba Cloud Resource Name (ARN) of the resource.
+	//
 	// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 	Arn pulumi.StringPtrInput `pulumi:"arn"`
 	// The ID of the resource for which alerts are triggered.
@@ -9377,6 +9379,7 @@ func (o GroupMetricRuleTargetOutput) ToGroupMetricRuleTargetOutputWithContext(ct
 }
 
 // The Alibaba Cloud Resource Name (ARN) of the resource.
+//
 // > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 func (o GroupMetricRuleTargetOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupMetricRuleTarget) *string { return v.Arn }).(pulumi.StringPtrOutput)
@@ -10351,6 +10354,14 @@ type IntegrationPolicyEntityGroup struct {
 	ClusterEntityType *string `pulumi:"clusterEntityType"`
 	// The cluster ID.
 	ClusterId *string `pulumi:"clusterId"`
+	// The cluster Namespace.
+	//
+	// > **NOTE:** If `disablePolicyShare` is set to `true`, you can create multiple policies for a container cluster, and `clusterNamespace` is required.
+	ClusterNamespace *string `pulumi:"clusterNamespace"`
+	// Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+	DisablePolicyShare *bool `pulumi:"disablePolicyShare"`
+	// The ID of the user who owns the cluster.
+	EntityUserId *string `pulumi:"entityUserId"`
 }
 
 // IntegrationPolicyEntityGroupInput is an input type that accepts IntegrationPolicyEntityGroupArgs and IntegrationPolicyEntityGroupOutput values.
@@ -10369,6 +10380,14 @@ type IntegrationPolicyEntityGroupArgs struct {
 	ClusterEntityType pulumi.StringPtrInput `pulumi:"clusterEntityType"`
 	// The cluster ID.
 	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
+	// The cluster Namespace.
+	//
+	// > **NOTE:** If `disablePolicyShare` is set to `true`, you can create multiple policies for a container cluster, and `clusterNamespace` is required.
+	ClusterNamespace pulumi.StringPtrInput `pulumi:"clusterNamespace"`
+	// Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+	DisablePolicyShare pulumi.BoolPtrInput `pulumi:"disablePolicyShare"`
+	// The ID of the user who owns the cluster.
+	EntityUserId pulumi.StringPtrInput `pulumi:"entityUserId"`
 }
 
 func (IntegrationPolicyEntityGroupArgs) ElementType() reflect.Type {
@@ -10458,6 +10477,23 @@ func (o IntegrationPolicyEntityGroupOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationPolicyEntityGroup) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
 
+// The cluster Namespace.
+//
+// > **NOTE:** If `disablePolicyShare` is set to `true`, you can create multiple policies for a container cluster, and `clusterNamespace` is required.
+func (o IntegrationPolicyEntityGroupOutput) ClusterNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationPolicyEntityGroup) *string { return v.ClusterNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+func (o IntegrationPolicyEntityGroupOutput) DisablePolicyShare() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IntegrationPolicyEntityGroup) *bool { return v.DisablePolicyShare }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the user who owns the cluster.
+func (o IntegrationPolicyEntityGroupOutput) EntityUserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationPolicyEntityGroup) *string { return v.EntityUserId }).(pulumi.StringPtrOutput)
+}
+
 type IntegrationPolicyEntityGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (IntegrationPolicyEntityGroupPtrOutput) ElementType() reflect.Type {
@@ -10499,6 +10535,38 @@ func (o IntegrationPolicyEntityGroupPtrOutput) ClusterId() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.ClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The cluster Namespace.
+//
+// > **NOTE:** If `disablePolicyShare` is set to `true`, you can create multiple policies for a container cluster, and `clusterNamespace` is required.
+func (o IntegrationPolicyEntityGroupPtrOutput) ClusterNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationPolicyEntityGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+func (o IntegrationPolicyEntityGroupPtrOutput) DisablePolicyShare() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IntegrationPolicyEntityGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePolicyShare
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the user who owns the cluster.
+func (o IntegrationPolicyEntityGroupPtrOutput) EntityUserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationPolicyEntityGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntityUserId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10610,14 +10678,17 @@ func (o MetricRuleBlackListMetricArrayOutput) Index(i pulumi.IntInput) MetricRul
 
 type MetricRuleTemplateAlertTemplate struct {
 	// The abbreviation of the Alibaba Cloud service name.
+	//
 	// > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
 	Category string `pulumi:"category"`
 	// The information about the trigger condition based on the alert level. See `escalations` below.
 	Escalations *MetricRuleTemplateAlertTemplateEscalations `pulumi:"escalations"`
 	// The name of the metric.
+	//
 	// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	MetricName string `pulumi:"metricName"`
 	// The namespace of the cloud service.
+	//
 	// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Namespace string `pulumi:"namespace"`
 	// The name of the alert rule.
@@ -10639,14 +10710,17 @@ type MetricRuleTemplateAlertTemplateInput interface {
 
 type MetricRuleTemplateAlertTemplateArgs struct {
 	// The abbreviation of the Alibaba Cloud service name.
+	//
 	// > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
 	Category pulumi.StringInput `pulumi:"category"`
 	// The information about the trigger condition based on the alert level. See `escalations` below.
 	Escalations MetricRuleTemplateAlertTemplateEscalationsPtrInput `pulumi:"escalations"`
 	// The name of the metric.
+	//
 	// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	MetricName pulumi.StringInput `pulumi:"metricName"`
 	// The namespace of the cloud service.
+	//
 	// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 	// The name of the alert rule.
@@ -10707,6 +10781,7 @@ func (o MetricRuleTemplateAlertTemplateOutput) ToMetricRuleTemplateAlertTemplate
 }
 
 // The abbreviation of the Alibaba Cloud service name.
+//
 // > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
 func (o MetricRuleTemplateAlertTemplateOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) string { return v.Category }).(pulumi.StringOutput)
@@ -10720,12 +10795,14 @@ func (o MetricRuleTemplateAlertTemplateOutput) Escalations() MetricRuleTemplateA
 }
 
 // The name of the metric.
+//
 // > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 func (o MetricRuleTemplateAlertTemplateOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
 // The namespace of the cloud service.
+//
 // > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 func (o MetricRuleTemplateAlertTemplateOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) string { return v.Namespace }).(pulumi.StringOutput)

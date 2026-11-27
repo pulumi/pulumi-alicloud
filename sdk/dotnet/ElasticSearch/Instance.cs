@@ -342,6 +342,8 @@ namespace Pulumi.AliCloud.ElasticSearch
 
         /// <summary>
         /// The access protocol. Supported protocols: HTTP and HTTPS.
+        /// 
+        /// &gt; **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `Protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `ClientNodeConfiguration` (or the deprecated `ClientNodeSpec` and `ClientNodeAmount`) together with `Protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
@@ -384,7 +386,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> RenewalDurationUnit { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group to which the instance belongs.
+        /// The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -786,6 +788,8 @@ namespace Pulumi.AliCloud.ElasticSearch
 
         /// <summary>
         /// The access protocol. Supported protocols: HTTP and HTTPS.
+        /// 
+        /// &gt; **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `Protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `ClientNodeConfiguration` (or the deprecated `ClientNodeSpec` and `ClientNodeAmount`) together with `Protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -822,7 +826,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? RenewalDurationUnit { get; set; }
 
         /// <summary>
-        /// The ID of the resource group to which the instance belongs.
+        /// The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -1230,6 +1234,8 @@ namespace Pulumi.AliCloud.ElasticSearch
 
         /// <summary>
         /// The access protocol. Supported protocols: HTTP and HTTPS.
+        /// 
+        /// &gt; **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `Protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `ClientNodeConfiguration` (or the deprecated `ClientNodeSpec` and `ClientNodeAmount`) together with `Protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -1278,7 +1284,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? RenewalDurationUnit { get; set; }
 
         /// <summary>
-        /// The ID of the resource group to which the instance belongs.
+        /// The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }

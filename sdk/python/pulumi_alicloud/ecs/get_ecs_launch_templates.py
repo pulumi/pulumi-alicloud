@@ -113,7 +113,6 @@ class GetEcsLaunchTemplatesResult:
     def template_tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
         The tags of the launch template.
-        > **NOTE:** Except for the fields `id`, `launch_template_id`, `launch_template_name`, `default_version_number`, `latest_version_number`, `created_by`, `modified_time`, `resource_group_id`, `template_tags`, all other fields take effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "template_tags")
 

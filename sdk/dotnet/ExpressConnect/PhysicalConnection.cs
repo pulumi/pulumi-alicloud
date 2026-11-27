@@ -139,6 +139,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
         /// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
         /// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+        /// 
         /// &gt; **NOTE:** From version 1.185.0, `PortType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `PortType` cannot be modified.
         /// </summary>
         [Output("portType")]
@@ -146,6 +147,7 @@ namespace Pulumi.AliCloud.ExpressConnect
 
         /// <summary>
         /// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+        /// 
         /// &gt; **NOTE:** `Period` and `PricingCycle` are valid only when `Status` is set to `Enabled`.
         /// </summary>
         [Output("pricingCycle")]
@@ -280,6 +282,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
         /// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
         /// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+        /// 
         /// &gt; **NOTE:** From version 1.185.0, `PortType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `PortType` cannot be modified.
         /// </summary>
         [Input("portType")]
@@ -287,6 +290,7 @@ namespace Pulumi.AliCloud.ExpressConnect
 
         /// <summary>
         /// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+        /// 
         /// &gt; **NOTE:** `Period` and `PricingCycle` are valid only when `Status` is set to `Enabled`.
         /// </summary>
         [Input("pricingCycle")]
@@ -389,6 +393,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
         /// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
         /// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+        /// 
         /// &gt; **NOTE:** From version 1.185.0, `PortType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `PortType` cannot be modified.
         /// </summary>
         [Input("portType")]
@@ -396,6 +401,7 @@ namespace Pulumi.AliCloud.ExpressConnect
 
         /// <summary>
         /// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+        /// 
         /// &gt; **NOTE:** `Period` and `PricingCycle` are valid only when `Status` is set to `Enabled`.
         /// </summary>
         [Input("pricingCycle")]

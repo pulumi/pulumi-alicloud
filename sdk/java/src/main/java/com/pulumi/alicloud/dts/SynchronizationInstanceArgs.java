@@ -108,14 +108,14 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+     * The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. **Note: The parameter is immutable after resource creation.** The class is applied only when the instance is created; this resource does not change the class of an existing instance, and an update to this argument is not applied. To upgrade the class of the synchronization instance, change `instanceClass` on the corresponding `alicloud.dts.SynchronizationJob`, and keep this argument consistent with the resulting class.
      * 
      */
     @Import(name="instanceClass")
     private @Nullable Output<String> instanceClass;
 
     /**
-     * @return The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+     * @return The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. **Note: The parameter is immutable after resource creation.** The class is applied only when the instance is created; this resource does not change the class of an existing instance, and an update to this argument is not applied. To upgrade the class of the synchronization instance, change `instanceClass` on the corresponding `alicloud.dts.SynchronizationJob`, and keep this argument consistent with the resulting class.
      * 
      */
     public Optional<Output<String>> instanceClass() {
@@ -391,7 +391,7 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param instanceClass The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+         * @param instanceClass The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. **Note: The parameter is immutable after resource creation.** The class is applied only when the instance is created; this resource does not change the class of an existing instance, and an update to this argument is not applied. To upgrade the class of the synchronization instance, change `instanceClass` on the corresponding `alicloud.dts.SynchronizationJob`, and keep this argument consistent with the resulting class.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param instanceClass The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+         * @param instanceClass The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. **Note: The parameter is immutable after resource creation.** The class is applied only when the instance is created; this resource does not change the class of an existing instance, and an update to this argument is not applied. To upgrade the class of the synchronization instance, change `instanceClass` on the corresponding `alicloud.dts.SynchronizationJob`, and keep this argument consistent with the resulting class.
          * 
          * @return builder
          * 

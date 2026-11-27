@@ -102,6 +102,7 @@ import javax.annotation.Nullable;
 public class TemplateApplications extends com.pulumi.resources.CustomResource {
     /**
      * The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+     * 
      * &gt; **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
      * 
      */
@@ -110,6 +111,7 @@ public class TemplateApplications extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+     * 
      * &gt; **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
      * 
      */
@@ -118,6 +120,7 @@ public class TemplateApplications extends com.pulumi.resources.CustomResource {
     }
     /**
      * The value of the quota request.
+     * 
      * &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      * 
      */
@@ -126,6 +129,7 @@ public class TemplateApplications extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The value of the quota request.
+     * 
      * &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      * 
      */
@@ -148,6 +152,7 @@ public class TemplateApplications extends com.pulumi.resources.CustomResource {
     }
     /**
      * The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+     * 
      * &gt; **NOTE:**  If the current account does not select the effective time, the default is the submission time.
      * 
      */
@@ -156,6 +161,7 @@ public class TemplateApplications extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+     * 
      * &gt; **NOTE:**  If the current account does not select the effective time, the default is the submission time.
      * 
      */
@@ -182,6 +188,7 @@ public class TemplateApplications extends com.pulumi.resources.CustomResource {
     }
     /**
      * The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+     * 
      * &gt; **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
      * 
      */
@@ -190,6 +197,7 @@ public class TemplateApplications extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+     * 
      * &gt; **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
      * 
      */
@@ -216,6 +224,7 @@ public class TemplateApplications extends com.pulumi.resources.CustomResource {
     }
     /**
      * Cloud service name abbreviation.
+     * 
      * &gt; **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
      * 
      */
@@ -224,6 +233,7 @@ public class TemplateApplications extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Cloud service name abbreviation.
+     * 
      * &gt; **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
      * 
      */
@@ -280,6 +290,7 @@ public class TemplateApplications extends com.pulumi.resources.CustomResource {
     }
     /**
      * Reason for quota application.
+     * 
      * &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      * 
      */
@@ -288,6 +299,7 @@ public class TemplateApplications extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Reason for quota application.
+     * 
      * &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      * 
      */

@@ -20,6 +20,7 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The member accounts of the account group. See `aggregatorAccounts` below.
+     * 
      * &gt; **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
      * 
      */
@@ -28,6 +29,7 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The member accounts of the account group. See `aggregatorAccounts` below.
+     * 
      * &gt; **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
      * 
      */
@@ -131,6 +133,7 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param aggregatorAccounts The member accounts of the account group. See `aggregatorAccounts` below.
+         * 
          * &gt; **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
          * 
          * @return builder
@@ -143,6 +146,7 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param aggregatorAccounts The member accounts of the account group. See `aggregatorAccounts` below.
+         * 
          * &gt; **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
          * 
          * @return builder
@@ -154,6 +158,7 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param aggregatorAccounts The member accounts of the account group. See `aggregatorAccounts` below.
+         * 
          * &gt; **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
          * 
          * @return builder

@@ -24,6 +24,26 @@ namespace Pulumi.AliCloud.Cms.Inputs
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
+        /// <summary>
+        /// The cluster Namespace.
+        /// 
+        /// &gt; **NOTE:** If `DisablePolicyShare` is set to `True`, you can create multiple policies for a container cluster, and `ClusterNamespace` is required.
+        /// </summary>
+        [Input("clusterNamespace")]
+        public Input<string>? ClusterNamespace { get; set; }
+
+        /// <summary>
+        /// Specifies whether to disable unique policy binding. Default Value: `False`. Valid values: `True`, `False`.
+        /// </summary>
+        [Input("disablePolicyShare")]
+        public Input<bool>? DisablePolicyShare { get; set; }
+
+        /// <summary>
+        /// The ID of the user who owns the cluster.
+        /// </summary>
+        [Input("entityUserId")]
+        public Input<string>? EntityUserId { get; set; }
+
         public IntegrationPolicyEntityGroupArgs()
         {
         }

@@ -461,6 +461,7 @@ type TemplateApplicationsQuotaApplicationDetail struct {
 	// Quota unit.
 	QuotaUnit *string `pulumi:"quotaUnit"`
 	// Reason for quota application.
+	//
 	// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 	Reason *string `pulumi:"reason"`
 	// The approval status of the quota promotion application. Value:
@@ -512,6 +513,7 @@ type TemplateApplicationsQuotaApplicationDetailArgs struct {
 	// Quota unit.
 	QuotaUnit pulumi.StringPtrInput `pulumi:"quotaUnit"`
 	// Reason for quota application.
+	//
 	// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 	Reason pulumi.StringPtrInput `pulumi:"reason"`
 	// The approval status of the quota promotion application. Value:
@@ -640,6 +642,7 @@ func (o TemplateApplicationsQuotaApplicationDetailOutput) QuotaUnit() pulumi.Str
 }
 
 // Reason for quota application.
+//
 // > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 func (o TemplateApplicationsQuotaApplicationDetailOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *string { return v.Reason }).(pulumi.StringPtrOutput)

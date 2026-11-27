@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud
     /// 
     /// &gt; **NOTE:** Available since v1.132.0.
     /// 
+    /// &gt; **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -72,8 +74,6 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-        /// 
-        /// &gt; **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
         /// </summary>
         [Output("position")]
         public Output<string> Position { get; private set; } = null!;
@@ -144,8 +144,6 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-        /// 
-        /// &gt; **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
         /// </summary>
         [Input("position", required: true)]
         public Input<string> Position { get; set; } = null!;
@@ -178,8 +176,6 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-        /// 
-        /// &gt; **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
         /// </summary>
         [Input("position")]
         public Input<string>? Position { get; set; }
